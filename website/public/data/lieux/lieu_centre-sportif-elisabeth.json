@@ -1,179 +1,270 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "centre-sportif-elisabeth",
- "name": "Centre sportif Élisabeth",
- "kind_fr": "Centre sportif",
- "kind_en": "Centre sportif",
- "famille": "sport",
- "arrondissement": 14,
- "lat": 48.820503,
- "lon": 2.327811,
- "photo": null,
- "photo_credit": null,
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 734,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (13 trouvés)",
-  "lecture_mode_en": "title naming the place (13 found)",
-  "n_lus": 11,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2002": [
-   {
-    "reference": "2002 DPA 196",
-    "titre": "Approbation du principe de la réalisation des travaux de modernisation des fenêtres de deux appartements de fonction du centre sportif Elisabeth, 7, avenue Paul-Appel (14e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Pascal CHERKI, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73756"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DJS 494",
-    "titre": "Autorisation à M. le Maire de Paris de lancer un marché sur appel d’offres ouvert pour la réfection du revêtement synthétique de la piste, du football à 7 et du basket au Centre Sportif Elisabeth, 7-15, avenue Paul Appell (14e). M. Pascal CHERKI, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91949"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "decp-2026T02878",
-   "objet": "Travaux de rénovation de l’éclairage du terrain de football et du plateau d’athlétisme, au Centre sportif Elisabeth, 7-15 avenue Paul Appell, 75014 Paris- Accord-cadre multi-attributaires à marchés su",
-   "objet_clair": null,
-   "fournisseur": "COGELUM IDF",
-   "montant_max": 185614.0,
-   "date_notification": "2026-03-13",
-   "preuve": "L'objet nomme le lieu et son adresse exacte : « au Centre sportif Elisabeth, 7-15 avenue Paul Appell, 75014 Paris », adresse confirmée par le ctx (2003 JS 543, « centre sportif Elisabeth, 7/15 avenue Paul Appell (14e) » ; 2004 JS 283, même adresse). Travaux d'éclairage du terrain de football et du plateau d'athlétisme de ce site. Le montant retenu (185 614 €) est le montant maximum de l'accord-cadre porté par le candidat, pas un montant payé. Le champ lieu_execution du candidat (« Département 94 ») contredit l'adresse de l'objet ; il n'a pas été retenu comme preuve."
-  },
-  {
-   "numero_marche": "20151210001043",
-   "objet": "AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014",
-   "objet_clair": null,
-   "fournisseur": "MISSION H20",
-   "montant_max": 68950.0,
-   "date_notification": "2015-06-12",
-   "preuve": "L'objet nomme le lieu : « AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014 » — assistance à maîtrise d'ouvrage pour la construction de la piscine de ce centre sportif. Notifié en 2015, année où l'AP 1504768 « PISCINE CENTRE SPORTIF ELISABETH (14e) » commence à être mandatée dans les candidats (41 392,66 €)."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2015": 62722.66,
-   "2016": 1578762.63,
-   "2017": 2294178.18,
-   "2018": 4789749.3,
-   "2019": 8373992.37,
-   "2020": 2387315.89,
-   "2021": 307833.55,
-   "2022": 19620.33
-  },
-  "total_eur": 19814174.91,
-  "operations": [
-   {
-    "ap_cle": "1604768",
-    "ap_texte": "PISCINE CENTRE SPORTIF ELISABETH (14e)",
-    "mandate_par_annee": {
-     "2016": 1149403.08,
-     "2017": 2099999.24,
-     "2018": 4205438.97,
-     "2019": 8265145.61,
-     "2020": 2364846.55,
-     "2021": 301538.69,
-     "2022": 19620.33
-    },
-    "total_mandate": 18405992.47,
-    "preuve": "Le libellé de l'opération nomme le lieu : « PISCINE CENTRE SPORTIF ELISABETH (14e) », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2016 à 2022. Le marché « AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014 » (2015) porte sur la même construction.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604768"
-   },
-   {
-    "ap_cle": "1504689",
-    "ap_texte": "CENTRE SPORTIF ELISABETH 14e -RENOVATION",
-    "mandate_par_annee": {
-     "2015": 21330.0,
-     "2016": 201969.62,
-     "2017": 88523.67,
-     "2018": 563341.23,
-     "2019": 92119.07,
-     "2020": 144.0
-    },
-    "total_mandate": 967427.59,
-    "preuve": "Le libellé de l'opération nomme le lieu : « CENTRE SPORTIF ELISABETH 14e -RENOVATION », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2015 à 2020. Le libellé désigne la rénovation du centre sportif lui-même ; il ne précise pas quelles parties du site sont concernées, l'opération est donc à lire comme couvrant l'ensemble de l'équipement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504689"
-   },
-   {
-    "ap_cle": "1504768",
-    "ap_texte": "PISCINE CENTRE SPORTIF ELISABETH (14e)",
-    "mandate_par_annee": {
-     "2015": 41392.66,
-     "2016": 227389.93,
-     "2017": 105655.27,
-     "2018": 20969.1,
-     "2019": 16727.69,
-     "2020": 22325.34,
-     "2021": 6294.86
-    },
-    "total_mandate": 440754.85,
-    "preuve": "Le libellé de l'opération nomme le lieu : « PISCINE CENTRE SPORTIF ELISABETH (14e) », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2015 à 2021. Deux clés d'AP portent ce même libellé dans les candidats (1504768 et 1604768) ; la source ne documente pas le lien entre elles, les deux sont rattachées au même équipement sur la seule foi du libellé.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504768"
-   }
-  ],
-  "periode": [
-   "2015",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Centre+sportif+%C3%89lisabeth"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "centre-sportif-elisabeth",
+  "name": "Centre sportif Élisabeth",
+  "kind_fr": "Centre sportif",
+  "kind_en": "Centre sportif",
+  "famille": "sport",
+  "arrondissement": 14,
+  "lat": 48.820503,
+  "lon": 2.327811,
+  "photo": null,
+  "photo_credit": null,
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 734,
+    "delibs_span": [
+      1998,
+      2012
+    ],
+    "n_bmo_brut": 472,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (13 trouvés)",
+    "lecture_mode_en": "title naming the place (13 found)",
+    "n_lus": 11,
+    "n_lieu": 11
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Entre 1998 et 2001, le Conseil de Paris approuve successivement le principe de plusieurs travaux au centre sportif Élisabeth (7-15, avenue Paul-Appell, 14e) : réfection du plateau supérieur du stade et rénovation du gymnase (1998), couverture des terrains de tennis n° 8 et 9 (2000), gazon synthétique sur le terrain de football et création d'un hall d'accueil (2001), et autorise à chaque fois le Maire à signer les marchés correspondants. En 1999, il autorise aussi le Maire à déposer une demande de permis de construire pour couvrir les terrains de tennis nos 1 et 2, puis approuve en 2002 le principe de la modernisation des fenêtres de deux appartements de fonction du centre. En 2003, il autorise le Maire à souscrire un avenant aux marchés sur appel d'offres concernant la création d'un hall d'accueil au centre et l'aménagement des tribunes extérieures et des salles annexes du gymnase du centre sportif Charles-Rigoulot (15e), puis 2 marchés pour l'amélioration des allées et du revêtement des tennis 8 et 9 ; en mai 2004, il autorise le Maire à souscrire un contrat de transaction avec la société AUTREMENT visant à l'indemniser des travaux supplémentaires réalisés au centre. En novembre 2010, une délibération porte sur le dépôt d'une demande de permis de construire pour la couverture de deux terrains de tennis, et en juin 2012 une autre sur l'ouverture au grand public, à titre gratuit, du bassin école pendant l'été.",
+  "moments": [
+    {
+      "id": "38098",
+      "seance": "MAI 1998",
+      "fait": "Le Conseil approuve le principe de la réfection du plateau supérieur du stade et de la rénovation du gymnase, et autorise le Maire à signer le marché de travaux.",
+      "pourquoi": "Stade et gymnase : principe des travaux approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38098",
+      "fait_en": "The Council approves the principle of resurfacing the stadium's upper playing area and renovating the gymnasium, and authorizes the Mayor to sign the works contract.",
+      "pourquoi_en": "Stadium and gymnasium: principle of the works approved"
+    },
+    {
+      "id": "28557",
+      "seance": "SEPTEMBRE 2000",
+      "fait": "Le Conseil approuve le principe de la couverture des terrains de tennis n° 8 et 9 et autorise le Maire à signer 3 marchés et à consentir le dépôt du permis de construire.",
+      "pourquoi": "Tennis 8 et 9 : principe de couverture approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28557",
+      "fait_en": "The Council approves the principle of roofing over tennis courts no. 8 and 9 and authorizes the Mayor to sign 3 contracts and to consent to the filing of the building permit application.",
+      "pourquoi_en": "Tennis courts 8 and 9: principle of roofing approved"
+    },
+    {
+      "id": "89833",
+      "seance": "MAI 2001",
+      "fait": "Le Conseil approuve le principe d'un gazon synthétique sur le terrain de football ; la délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert et autorise le Maire à signer ce marché.",
+      "pourquoi": "Gazon synthétique : principe approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89833",
+      "fait_en": "The Council approves the principle of artificial turf on the football pitch; the deliberation provides that these works will be the subject of a contract awarded through an open call for tenders and authorizes the Mayor to sign that contract.",
+      "pourquoi_en": "Artificial turf: principle approved"
+    },
+    {
+      "id": "62586",
+      "seance": "JUILLET 2001",
+      "fait": "Le Conseil approuve le principe de la création d'un hall d'accueil et autorise le Maire à signer les marchés correspondants.",
+      "pourquoi": "Principe d'un hall d'accueil approuvé en 2001",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62586",
+      "fait_en": "The Council approves the principle of creating a reception hall and authorizes the Mayor to sign the corresponding contracts.",
+      "pourquoi_en": "Principle of a reception hall approved in 2001"
+    },
+    {
+      "id": "73756",
+      "seance": "AVRIL 2002",
+      "fait": "Le Conseil approuve le principe de la modernisation des fenêtres de deux appartements de fonction du centre sportif.",
+      "pourquoi": "Deux appartements de fonction au sein du centre",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73756",
+      "fait_en": "The Council approves the principle of modernizing the windows of two staff apartments at the sports centre.",
+      "pourquoi_en": "Two staff apartments within the centre"
+    },
+    {
+      "id": "45722",
+      "seance": "MAI 2004",
+      "fait": "Le Conseil autorise le Maire à souscrire un contrat de transaction avec la société AUTREMENT visant à l'indemniser de travaux supplémentaires réalisés au centre.",
+      "pourquoi": "Travaux supplémentaires : transaction autorisée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45722",
+      "fait_en": "The Council authorizes the Mayor to enter into a settlement agreement with the company AUTREMENT intended to compensate it for additional works carried out at the centre.",
+      "pourquoi_en": "Additional works: settlement authorized"
+    },
+    {
+      "id": "86137",
+      "seance": "NOVEMBRE 2010",
+      "fait": "Une délibération porte sur le dépôt d'une demande de permis de construire pour couvrir deux terrains de tennis.",
+      "pourquoi": "Permis de construire pour couvrir deux tennis",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86137",
+      "fait_en": "A deliberation concerns the filing of a building permit application to roof over two tennis courts.",
+      "pourquoi_en": "Building permit to roof over two tennis courts"
+    },
+    {
+      "id": "106155",
+      "seance": "JUIN 2012",
+      "fait": "Une délibération porte sur l'ouverture au grand public, à titre gratuit, du bassin école pendant l'été 2012.",
+      "pourquoi": "Bassin école : délibération sur une ouverture gratuite",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106155",
+      "fait_en": "A deliberation concerns opening the teaching pool to the general public, free of charge, during summer 2012.",
+      "pourquoi_en": "Teaching pool: deliberation on free opening"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2002": [
+      {
+        "reference": "2002 DPA 196",
+        "titre": "Approbation du principe de la réalisation des travaux de modernisation des fenêtres de deux appartements de fonction du centre sportif Elisabeth, 7, avenue Paul-Appel (14e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Pascal CHERKI, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73756"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DJS 494",
+        "titre": "Autorisation à M. le Maire de Paris de lancer un marché sur appel d’offres ouvert pour la réfection du revêtement synthétique de la piste, du football à 7 et du basket au Centre Sportif Elisabeth, 7-15, avenue Paul Appell (14e). M. Pascal CHERKI, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91949"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "decp-2026T02878",
+      "objet": "Travaux de rénovation de l’éclairage du terrain de football et du plateau d’athlétisme, au Centre sportif Elisabeth, 7-15 avenue Paul Appell, 75014 Paris- Accord-cadre multi-attributaires à marchés su",
+      "objet_clair": null,
+      "fournisseur": "COGELUM IDF",
+      "montant_max": 185614.0,
+      "date_notification": "2026-03-13",
+      "preuve": "L'objet nomme le lieu et son adresse exacte : « au Centre sportif Elisabeth, 7-15 avenue Paul Appell, 75014 Paris », adresse confirmée par le ctx (2003 JS 543, « centre sportif Elisabeth, 7/15 avenue Paul Appell (14e) » ; 2004 JS 283, même adresse). Travaux d'éclairage du terrain de football et du plateau d'athlétisme de ce site. Le montant retenu (185 614 €) est le montant maximum de l'accord-cadre porté par le candidat, pas un montant payé. Le champ lieu_execution du candidat (« Département 94 ») contredit l'adresse de l'objet ; il n'a pas été retenu comme preuve."
+    },
+    {
+      "numero_marche": "20151210001043",
+      "objet": "AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014",
+      "objet_clair": null,
+      "fournisseur": "MISSION H20",
+      "montant_max": 68950.0,
+      "date_notification": "2015-06-12",
+      "preuve": "L'objet nomme le lieu : « AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014 » — assistance à maîtrise d'ouvrage pour la construction de la piscine de ce centre sportif. Notifié en 2015, année où l'AP 1504768 « PISCINE CENTRE SPORTIF ELISABETH (14e) » commence à être mandatée dans les candidats (41 392,66 €)."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2015": 62722.66,
+      "2016": 1578762.63,
+      "2017": 2294178.18,
+      "2018": 4789749.3,
+      "2019": 8373992.37,
+      "2020": 2387315.89,
+      "2021": 307833.55,
+      "2022": 19620.33
+    },
+    "total_eur": 19814174.91,
+    "operations": [
+      {
+        "ap_cle": "1604768",
+        "ap_texte": "PISCINE CENTRE SPORTIF ELISABETH (14e)",
+        "mandate_par_annee": {
+          "2016": 1149403.08,
+          "2017": 2099999.24,
+          "2018": 4205438.97,
+          "2019": 8265145.61,
+          "2020": 2364846.55,
+          "2021": 301538.69,
+          "2022": 19620.33
+        },
+        "total_mandate": 18405992.47,
+        "preuve": "Le libellé de l'opération nomme le lieu : « PISCINE CENTRE SPORTIF ELISABETH (14e) », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2016 à 2022. Le marché « AMO CONSTRUCTION PISCINE CENTRE SPORTIF ELISABETH 75014 » (2015) porte sur la même construction.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604768"
+      },
+      {
+        "ap_cle": "1504689",
+        "ap_texte": "CENTRE SPORTIF ELISABETH 14e -RENOVATION",
+        "mandate_par_annee": {
+          "2015": 21330.0,
+          "2016": 201969.62,
+          "2017": 88523.67,
+          "2018": 563341.23,
+          "2019": 92119.07,
+          "2020": 144.0
+        },
+        "total_mandate": 967427.59,
+        "preuve": "Le libellé de l'opération nomme le lieu : « CENTRE SPORTIF ELISABETH 14e -RENOVATION », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2015 à 2020. Le libellé désigne la rénovation du centre sportif lui-même ; il ne précise pas quelles parties du site sont concernées, l'opération est donc à lire comme couvrant l'ensemble de l'équipement.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504689"
+      },
+      {
+        "ap_cle": "1504768",
+        "ap_texte": "PISCINE CENTRE SPORTIF ELISABETH (14e)",
+        "mandate_par_annee": {
+          "2015": 41392.66,
+          "2016": 227389.93,
+          "2017": 105655.27,
+          "2018": 20969.1,
+          "2019": 16727.69,
+          "2020": 22325.34,
+          "2021": 6294.86
+        },
+        "total_mandate": 440754.85,
+        "preuve": "Le libellé de l'opération nomme le lieu : « PISCINE CENTRE SPORTIF ELISABETH (14e) », mission JEUNESSE ET SPORTS, direction DJS, mandatée de 2015 à 2021. Deux clés d'AP portent ce même libellé dans les candidats (1504768 et 1604768) ; la source ne documente pas le lien entre elles, les deux sont rattachées au même équipement sur la seule foi du libellé.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504768"
+      }
+    ],
+    "periode": [
+      "2015",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Centre+sportif+%C3%89lisabeth"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Centre+sportif+%C3%89lisabeth%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Between 1998 and 2001, the Conseil de Paris successively approves the principle of several works at the Élisabeth sports centre (7-15 avenue Paul-Appell, 14th arrondissement): resurfacing of the stadium's upper playing area and renovation of the gymnasium (1998), roofing over tennis courts no. 8 and 9 (2000), artificial turf on the football pitch and creation of a reception hall (2001), and each time authorizes the Mayor to sign the corresponding contracts. In 1999, it also authorizes the Mayor to file a building permit application to roof over tennis courts no. 1 and 2, then in 2002 approves the principle of modernizing the windows of two staff apartments at the centre. In 2003, it authorizes the Mayor to enter into an amendment to the contracts awarded through calls for tenders concerning the creation of a reception hall at the centre and the fitting-out of the outdoor stands and ancillary rooms of the gymnasium at the Charles-Rigoulot sports centre (15th arrondissement), then 2 contracts for improving the paths and the surface of tennis courts 8 and 9; in May 2004, it authorizes the Mayor to enter into a settlement agreement with the company AUTREMENT intended to compensate it for additional works carried out at the centre. In November 2010, a deliberation concerns the filing of a building permit application to roof over two tennis courts, and in June 2012 another concerns opening the teaching pool to the general public, free of charge, during the summer.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

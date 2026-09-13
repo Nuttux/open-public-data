@@ -1,109 +1,141 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-notre-dame-d-auteuil",
- "name": "Église Notre-Dame-d'Auteuil",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 16,
- "lat": 48.847149,
- "lon": 2.269599,
- "photo": "/img/lieux/eglise-notre-dame-d-auteuil.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guilhem Vellut from Paris, France",
-  "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Notre-Dame-d%27Auteuil,_Paris_25_February_2017_002.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1097,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 2498701.43,
-  "invest_annees": [
-   "2021",
-   "2022",
-   "2023"
-  ],
-  "lecture_mode": "tête du classement Solr (1097 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (1097 documents total)",
-  "n_lus": 42,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [
-  {
-   "annee": 2021,
-   "montant_eur": 985022.0,
-   "nom_projet": "Ediices cultuels Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des v",
-   "preuve": "Libellé (tronqué dans la source) nommant le lieu verbatim : « Ediices cultuels Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des v ». Le même libellé de restauration des décors intérieurs et des vitraux figure dans la source en 2021, 2022 et 2023. Point géocodé à 1 430 m : le rattachement repose sur le libellé, pas sur la distance.",
-   "id": null
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-notre-dame-d-auteuil",
+  "name": "Église Notre-Dame-d'Auteuil",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 16,
+  "lat": 48.847149,
+  "lon": 2.269599,
+  "photo": "/img/lieux/eglise-notre-dame-d-auteuil.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guilhem Vellut from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Notre-Dame-d%27Auteuil,_Paris_25_February_2017_002.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2022,
-   "montant_eur": 1260658.0,
-   "nom_projet": "Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux",
-   "preuve": "Le libellé de l'opération nomme le lieu verbatim : « Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux ». Il désigne des travaux sur le bâtiment lui-même (décors intérieurs, vitraux). Le point géocodé de l'opération est à 1 430 m de l'église : le rattachement repose sur le libellé, pas sur la distance.",
-   "id": "2022_16_48_024"
-  },
-  {
-   "annee": 2023,
-   "montant_eur": 253021.43,
-   "nom_projet": "Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux",
-   "preuve": "Libellé nommant le lieu verbatim : « Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux ». La source contient deux lignes identiques pour 2023 (même libellé, même montant, géocodées à 1 430 m et à 7 434 m) : une seule est retenue, pour ne pas compter le montant deux fois.",
-   "id": "2023_16_45_017"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "decp-2025S11464",
-   "objet": "Marché de maîtrise d’œuvre relatif aux travaux de dépollution du grand orgue de l’église Notre-Dame d’Auteuil et de ses abords, et à la réalisation des travaux complémentaires de restauration de l’ins",
-   "objet_clair": null,
-   "fournisseur": null,
-   "montant_max": 46680.0,
-   "date_notification": "2025-10-21",
-   "preuve": "L'objet du marché nomme le lieu et son arrondissement : « travaux de dépollution du grand orgue de l'église Notre-Dame d'Auteuil et de ses abords, et [...] travaux complémentaires de restauration de l'instrument à Paris 16e ». Le lieu n'est pas un simple repère d'adresse : il est l'objet des travaux. Le Conseil de Paris a examiné en avril 2025 un vœu « relatif à la restauration du grand orgue de l'église Notre-Dame d'Auteuil » (document 180041). Le lieu d'exécution DECP (« Paris ») est trop large pour prouver quoi que ce soit et n'a pas été utilisé."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Notre-Dame-d%27Auteuil"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L’église Notre-Dame d’Auteuil ou simplement église d’Auteuil se situe sur la colline d'Auteuil, place de l'Église-d'Auteuil dans le 16e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-d'Auteuil",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Notre-Dame d'Auteuil church, or simply the Auteuil church, stands on the Auteuil hill, on place de l'Église-d'Auteuil in the 16th arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 1097,
+    "delibs_span": [
+      2012,
+      2025
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 2,
+    "invest_total_eur": 2498701.43,
+    "invest_annees": [
+      "2021",
+      "2022",
+      "2023"
+    ],
+    "lecture_mode": "tête du classement Solr (1097 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (1097 documents total)",
+    "n_lus": 42,
+    "n_lieu": 2
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En septembre 2012, le groupe U.M.P.P.A. dépose au Conseil de Paris un vœu relatif à la restauration du grand orgue de l'église Notre-Dame d'Auteuil. En avril 2025, un vœu du groupe « Les Républicains, Les Centristes et Indépendants - Demain Paris ! » porte sur le même objet. Les intitulés de ces deux vœux ne disent ni ce qui est précisément demandé, ni s'ils ont été adoptés, ni quelle suite leur a été donnée.",
+  "moments": [
+    {
+      "id": "108504",
+      "seance": "SEPTEMBRE 2012",
+      "fait": "Le groupe U.M.P.P.A. dépose un vœu relatif à la restauration du grand orgue de l'église.",
+      "pourquoi": "le grand orgue porté devant le Conseil de Paris",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108504",
+      "fait_en": "The U.M.P.P.A. group submits a motion concerning the restoration of the church's great organ.",
+      "pourquoi_en": "the great organ brought before the Paris Council"
+    },
+    {
+      "id": "180041",
+      "seance": "AVRIL 2025",
+      "fait": "Le groupe « Les Républicains, Les Centristes et Indépendants - Demain Paris ! » dépose un vœu relatif à la restauration du grand orgue.",
+      "pourquoi": "la restauration du grand orgue, de nouveau objet d'un vœu en 2025",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=180041",
+      "fait_en": "The group « Les Républicains, Les Centristes et Indépendants - Demain Paris ! » submits a motion concerning the restoration of the great organ.",
+      "pourquoi_en": "the restoration of the great organ, once again the subject of a motion in 2025"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [
+    {
+      "annee": 2021,
+      "montant_eur": 985022.0,
+      "nom_projet": "Ediices cultuels Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des v",
+      "preuve": "Libellé (tronqué dans la source) nommant le lieu verbatim : « Ediices cultuels Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des v ». Le même libellé de restauration des décors intérieurs et des vitraux figure dans la source en 2021, 2022 et 2023. Point géocodé à 1 430 m : le rattachement repose sur le libellé, pas sur la distance.",
+      "id": null
+    },
+    {
+      "annee": 2022,
+      "montant_eur": 1260658.0,
+      "nom_projet": "Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux",
+      "preuve": "Le libellé de l'opération nomme le lieu verbatim : « Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux ». Il désigne des travaux sur le bâtiment lui-même (décors intérieurs, vitraux). Le point géocodé de l'opération est à 1 430 m de l'église : le rattachement repose sur le libellé, pas sur la distance.",
+      "id": "2022_16_48_024"
+    },
+    {
+      "annee": 2023,
+      "montant_eur": 253021.43,
+      "nom_projet": "Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux",
+      "preuve": "Libellé nommant le lieu verbatim : « Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux ». La source contient deux lignes identiques pour 2023 (même libellé, même montant, géocodées à 1 430 m et à 7 434 m) : une seule est retenue, pour ne pas compter le montant deux fois.",
+      "id": "2023_16_45_017"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "decp-2025S11464",
+      "objet": "Marché de maîtrise d’œuvre relatif aux travaux de dépollution du grand orgue de l’église Notre-Dame d’Auteuil et de ses abords, et à la réalisation des travaux complémentaires de restauration de l’ins",
+      "objet_clair": null,
+      "fournisseur": null,
+      "montant_max": 46680.0,
+      "date_notification": "2025-10-21",
+      "preuve": "L'objet du marché nomme le lieu et son arrondissement : « travaux de dépollution du grand orgue de l'église Notre-Dame d'Auteuil et de ses abords, et [...] travaux complémentaires de restauration de l'instrument à Paris 16e ». Le lieu n'est pas un simple repère d'adresse : il est l'objet des travaux. Le Conseil de Paris a examiné en avril 2025 un vœu « relatif à la restauration du grand orgue de l'église Notre-Dame d'Auteuil » (document 180041). Le lieu d'exécution DECP (« Paris ») est trop large pour prouver quoi que ce soit et n'a pas été utilisé."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Notre-Dame-d%27Auteuil"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Notre-Dame-d%27Auteuil%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In September 2012, the U.M.P.P.A. group submitted a motion to the Paris Council concerning the restoration of the great organ of the Notre-Dame d'Auteuil church. In April 2025, a motion from the group « Les Républicains, Les Centristes et Indépendants - Demain Paris ! » addressed the same subject. The titles of these two motions state neither what exactly is being requested, nor whether they were adopted, nor what follow-up they received.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

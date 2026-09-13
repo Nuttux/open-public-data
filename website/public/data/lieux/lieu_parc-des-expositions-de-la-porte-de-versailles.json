@@ -1,0 +1,258 @@
+{
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-des-expositions-de-la-porte-de-versailles",
+  "name": "Parc des expositions de la Porte de Versailles",
+  "kind_fr": "Parc des expositions",
+  "kind_en": "Parc des expositions",
+  "famille": "urbain",
+  "arrondissement": 15,
+  "lat": 48.828721,
+  "lon": 2.288981,
+  "photo": "/img/lieux/parc-des-expositions-de-la-porte-de-versailles.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Fred Romero from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:Paris_-_Parc_des_expositions_de_la_porte_de_Versailles_-_19_April_2015.jpg",
+    "source": "Wikimedia Commons"
+  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
+  "wiki": {
+    "extract": "Le parc des expositions de la porte de Versailles, ou Paris Expo Porte de Versailles, est le deuxième plus grand parc des expositions français après le parc des expositions de Paris-Nord Villepinte. Il est situé sur les territoires du quartier Saint-Lambert du 15e arrondissement de Paris et des communes d'Issy-les-Moulineaux et de Vanves, dans les Hauts-de-Seine. Il s'étend des deux côtés du boulevard périphérique, de la porte d'Issy, à l'ouest, à la porte de la Plaine, à l'est, l'entrée principale se situant place de la Porte-de-Versailles, à la jonction de deux des boulevards des Maréchaux : Lefebvre et Victor. Le parc des expositions est géré par la société Viparis depuis 1987.",
+    "url": "https://fr.wikipedia.org/wiki/Paris_Expo_Porte_de_Versailles",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Parc des expositions de la porte de Versailles, or Paris Expo Porte de Versailles, is the second-largest exhibition centre in France after the Paris-Nord Villepinte exhibition centre. It is located on the territory of the Saint-Lambert quarter of the 15th arrondissement of Paris and of the communes of Issy-les-Moulineaux and Vanves, in Hauts-de-Seine. It extends on both sides of the boulevard périphérique, from the Porte d'Issy in the west to the Porte de la Plaine in the east, with the main entrance on the Place de la Porte-de-Versailles, at the junction of two of the Boulevards des Maréchaux: Lefebvre and Victor. The exhibition centre has been managed by the company Viparis since 1987."
+  },
+  "stats": {
+    "n_delibs": 1108,
+    "delibs_span": [
+      1998,
+      2020
+    ],
+    "n_bmo_brut": 1995,
+    "n_bmo_verifies": 2,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (14 trouvés)",
+    "lecture_mode_en": "title naming the place (14 found)",
+    "n_lus": 13,
+    "n_lieu": 12
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En juillet 1998, le Conseil de Paris donne un avis favorable à la demande d'autorisation de la société « Paris Expo » pour un réseau de pompes à chaleur destiné au hall n° 1, après un débat où Mme Laure Schneiter juge que les installations « ne sont pas acceptables ». En février 2000, la réponse à une question de M. Georges Sarre évoque l'offre publique d'achat lancée par Unibail sur l'exploitant et un programme de rénovation « dépassant 1,6 milliard de francs » engagé en vertu d'un avenant de 1996 ; le Conseil autorise ensuite la société exploitante à déposer des demandes de permis de démolir et de construire, sous réserve de l'autorisation préalable du Maire (2004), puis le Maire à signer un avenant n° 6 approuvant de nouvelles limites de l'emprise concédée (2006). De 2012 à 2013, le Conseil débat de la création d'une commission spéciale d'élus sur la consultation pour la modernisation et l'exploitation du Parc, de l'attributaire pressenti du nouveau contrat et de la modification du PLU du secteur « Grand Parc » : M. Yves Contassot met en doute « la réalité de la mise en concurrence » et Mme Danielle Simonnet dénonce « la méthode du saucissonnage » avec le projet de tour Triangle, tandis que l'adjoint Bernard Gaudillère juge la procédure de consultation « exemplaire ». En juillet 2020, le rapport de la Chambre régionale des comptes sur la gestion 2010-2019 est débattu : Mme Rachida Dati y voit « de nombreuses et graves irrégularités », l'adjoint Paul Simondon met en avant un programme d'investissement de « plus de 600 millions d'euros ». En décembre 2020, le Conseil adopte des mesures de soutien au titulaire du BEA-concession de travaux du Parc et repousse un vœu relatif à l'exonération d'une partie de la redevance due par Viparis.",
+  "moments": [
+    {
+      "id": "82710",
+      "seance": "JUILLET 1998",
+      "fait": "Le Conseil de Paris donne un avis favorable à la demande d'installation classée de la société « Paris Expo » pour un réseau de pompes à chaleur destiné au chauffage-ventilation et au rafraîchissement de l'air du hall n° 1.",
+      "pourquoi": "Des pompes à chaleur pour le hall n° 1",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82710",
+      "fait_en": "The Conseil de Paris gives a favorable opinion on the classified-installation application by the company “Paris Expo” for a heat pump network intended for heating-ventilation and air cooling of Hall No. 1.",
+      "pourquoi_en": "Heat pumps for Hall No. 1"
+    },
+    {
+      "id": "2843",
+      "seance": "FEVRIER 2000",
+      "fait": "La réponse à une question de M. Georges Sarre indique que la Ville suit l'offre publique d'achat lancée par Unibail sur « Paris Expo » et qu'un programme de rénovation « dépassant 1,6 milliard de francs » a été engagé en vertu d'un avenant de 1996.",
+      "pourquoi": "Une OPA d'Unibail sur l'exploitant du Parc",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2843",
+      "fait_en": "The answer to a question from Mr. Georges Sarre states that the City is monitoring the takeover bid launched by Unibail for “Paris Expo” and that a renovation programme “exceeding 1.6 billion francs” has been undertaken under a 1996 amendment.",
+      "pourquoi_en": "A takeover bid by Unibail for the Parc's operator"
+    },
+    {
+      "id": "87639",
+      "seance": "DECEMBRE 2004",
+      "fait": "Le Conseil autorise la Société d'exploitation du Parc des Expositions à déposer des demandes de permis de démolir et de construire pour des travaux à réaliser dans le cadre de la convention du 23 juin 1987 modifiée, sous réserve de l'autorisation expresse préalable du Maire.",
+      "pourquoi": "Déposer des permis de démolir et de construire, sous condition",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87639",
+      "fait_en": "The Council authorizes the Société d'exploitation du Parc des Expositions to file applications for demolition and building permits for works to be carried out under the amended agreement of 23 June 1987, subject to the express prior authorization of the Mayor.",
+      "pourquoi_en": "Filing demolition and building permits, with a condition"
+    },
+    {
+      "id": "35460",
+      "seance": "OCTOBRE 2006",
+      "fait": "Le Conseil rattache 37,61 m² au domaine public routier, affecte au Parc deux emprises de 146 m² et 103 m², actualise le programme prévisionnel d'investissements sans changer son montant minimum et autorise le Maire à signer l'avenant n° 6 approuvant les nouvelles limites du parc.",
+      "pourquoi": "Un avenant n° 6 sur les limites de l'emprise concédée",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35460",
+      "fait_en": "The Council incorporates 37.61 m² into the public road domain, assigns two plots of 146 m² and 103 m² to the Parc, updates the provisional investment programme without changing its minimum amount, and authorizes the Mayor to sign amendment No. 6 approving the new boundaries of the parc.",
+      "pourquoi_en": "An amendment No. 6 on the boundaries of the concession site"
+    },
+    {
+      "id": "114927",
+      "seance": "JUILLET 2013",
+      "fait": "Débat sur l'approbation de l'attributaire pressenti du contrat d'occupation, examinée avec l'avenant n° 8 : M. Yves Contassot dit douter de « la réalité de la mise en concurrence », l'adjoint Bernard Gaudillère juge la procédure de consultation « exemplaire ».",
+      "pourquoi": "Une mise en concurrence contestée en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114927",
+      "fait_en": "Debate on the approval of the prospective awardee of the occupancy contract, examined together with amendment No. 8: Mr. Yves Contassot says he doubts “the reality of the competitive tendering”, while deputy mayor Bernard Gaudillère describes the consultation procedure as “exemplary”.",
+      "pourquoi_en": "Competitive tendering contested in session"
+    },
+    {
+      "id": "116464",
+      "seance": "NOVEMBRE 2013",
+      "fait": "Six projets de délibération sur le Parc, dont la modification du PLU du secteur « Grand Parc », sont examinés conjointement ; Mme Danielle Simonnet dénonce « la méthode du saucissonnage » avec le projet de tour Triangle et annonce un vote contre, un autre orateur appelle à « voter sans réserve le projet ».",
+      "pourquoi": "Le Parc et la tour Triangle, liés en débat",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116464",
+      "fait_en": "Six draft deliberations on the Parc, including the amendment of the PLU (local urban plan) for the “Grand Parc” sector, are examined jointly; Ms. Danielle Simonnet denounces “the salami-slicing method” in connection with the Triangle tower project and announces a vote against, while another speaker calls for “voting for the project without reservation”.",
+      "pourquoi_en": "The Parc and the Triangle tower, linked in debate"
+    },
+    {
+      "id": "156058",
+      "seance": "JUILLET 2020",
+      "fait": "Débat sur le rapport de la Chambre régionale des comptes (exercices 2010 à 2019) : selon Mme Rachida Dati, « plus de 50 millions d'euros de travaux manquaient à l'appel » ; selon l'adjoint Paul Simondon, le programme d'investissement « représente aujourd'hui plus de 600 millions d'euros ».",
+      "pourquoi": "Dix ans de gestion contrôlés par la C.R.C.",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156058",
+      "fait_en": "Debate on the report of the Chambre régionale des comptes (regional audit chamber) for the financial years 2010 to 2019: according to Ms. Rachida Dati, “more than 50 million euros of works were missing”; according to deputy mayor Paul Simondon, the investment programme “today represents more than 600 million euros”.",
+      "pourquoi_en": "Ten years of management audited by the C.R.C."
+    },
+    {
+      "id": "157267",
+      "seance": "DECEMBRE 2020",
+      "fait": "Le Conseil adopte le projet DFA 75, mesures de soutien au titulaire du BEA-concession de travaux du Parc, et repousse le vœu n° 156 du groupe Changer Paris relatif à l'exonération d'une partie de la redevance due par Viparis.",
+      "pourquoi": "Soutien voté au titulaire, vœu sur la redevance repoussé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157267",
+      "fait_en": "The Council adopts draft deliberation DFA 75, support measures for the holder of the BEA works concession for the Parc, and rejects motion (vœu) No. 156 from the Changer Paris group concerning the exemption from part of the fee owed by Viparis.",
+      "pourquoi_en": "Support for the holder adopted, motion on the fee rejected"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "JUILLET 2020",
+      "montant": "plus de 50 millions d'euros",
+      "objet": "travaux confiés au concessionnaire qui « manquaient à l'appel » sur une période allant jusqu'à 2012, selon Mme Rachida Dati, qui cite les magistrats financiers",
+      "citation": "D'une part, les magistrats financiers soulignent que l'échéancier de travaux confiés au concessionnaire n'a pas été respecté, et sur une période qui allait jusqu'à 2012, nous sommes bien après, plus de 50 millions d'euros de travaux manquaient à l'appel.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156058"
+    },
+    {
+      "seance": "JUILLET 2020",
+      "montant": "plus de 600 millions d'euros",
+      "objet": "programme d'investissement du site dans le nouveau contrat, selon l'adjoint Paul Simondon",
+      "citation": "la C.R.C. reconnaît que le nouveau contrat apporte à la Ville de Paris une redevance plus élevée de l'exploitant \"Viparis\", et que le site bénéficiera d'un programme ambitieux d'investissement. Le programme représente aujourd'hui plus de 600 millions d'euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156058"
+    },
+    {
+      "seance": "JUILLET 2020",
+      "montant": "16 millions",
+      "objet": "redevance attendue par la Ville, relevée selon l'adjoint Paul Simondon",
+      "citation": "la redevance attendue par la Ville a été effectivement relevée pour atteindre le montant de 16 millions",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156058"
+    },
+    {
+      "seance": "JUILLET 2013",
+      "montant": "250 millions",
+      "objet": "droit d'entrée de la concession, que M. Yves Contassot présente comme « un véritable cadeau de 250 millions fait à Viparis »",
+      "citation": "droit d'entrée qui était un véritable cadeau de 250 millions fait à Viparis et que tout autre candidat aurait à payer",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114927"
+    },
+    {
+      "seance": "JUILLET 2013",
+      "montant": "6 milliards d'euros",
+      "objet": "retombées pour Paris attribuées aux foires et salons, selon Mme Anne Tachène",
+      "citation": "le secteur du tourisme, par ce vecteur des foires et des salons, avec ses 7 millions de visiteurs, génère pas moins de 6 milliards d'euros de retombées pour Paris",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114927"
+    },
+    {
+      "seance": "FEVRIER 2013",
+      "montant": "de l'ordre de 250 millions d'euros",
+      "objet": "coût du « ticket d'entrée » de la future concession selon M. Yves Contassot, qui le rapproche de ce qu'Unibail « touchera au titre de la résiliation anticipée »",
+      "citation": "Le coût du ticket d'entrée sera de l'ordre de 250 millions d'euros, soit à peu près ce qu?Unibail touchera au titre de la résiliation anticipée",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111282"
+    },
+    {
+      "seance": "FEVRIER 2000",
+      "montant": "plus de 1,6 milliard de francs",
+      "objet": "valeur globale du programme de rénovation engagé en vertu de l'avenant de 1996, selon la réponse lue en séance",
+      "citation": "En vertu d'un avenant de 1996, un vaste programme de rénovation du Parc des Expositions a été engagé, pour une valeur globale dépassant 1,6 milliard de francs, sur plusieurs années.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2843"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2000": [
+      {
+        "reference": "2000 DVD 31",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec la Société d'exploitation du parc des expositions de la Porte de Versailles une convention en vue de coordonner les travaux de reconstruction du passage souterrain et d'aménagement de l'avenue Ernest-Renan (15e). M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51327"
+      }
+    ],
+    "2013": [
+      {
+        "reference": "2013 DF 57",
+        "titre": "2013 DF 57 - DU 216 - Avenant n° 8 à la convention pour l'exploitation du parc des expositions de la porte de Versailles (15e). 2013 DF 58 - DU 217 - Approbation de l'attributaire pressenti dans le cadre de la procédure de la mise en concurrence du contrat d'occupation du parc des expositions de la porte de Versailles (15e).",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUILLET 2013",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114927"
+      },
+      {
+        "reference": "2013 DU 277",
+        "titre": "2013 DU 277 - Approbation de la modification du PLU sur le secteur \"Grand Parc\" du Parc des expositions de la Porte de Versailles (15e). 2013 DF 84 - DU 304 - Déclassement du domaine public routier d'emprises de terrain et de volumes dans le périmètre du parc des expositions de la Porte de Versailles (15e). 2013 DU 322 - DF 90 - Régularisations foncières à intervenir à Vanves (92) et Issy-les-Moulineaux (92). 2013 DF 85 - Palais de sports (15e) - Avenant à convention d'occupation du domaine publ",
+        "genres": [
+          "autre"
+        ],
+        "seance": "NOVEMBRE 2013",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116464"
+      }
+    ],
+    "2020": [
+      {
+        "reference": "2020 DFA 71",
+        "titre": "2020 DFA 71 - Mesures de soutien à certains titulaires de contrat d’occupation et d’exploitation d’équipements récréatifs et culturels. 2020 DFA 75 - Mesures de soutien au titulaire du BEA-concession de travaux-convention cadre portant sur l’occupation, la rénovation et l’exploitation du Parc des expositions de la Porte de Versailles (15e). Vœu déposé par le groupe Changer Paris relatif à l'exonération d'une partie de la redevance due par Viparis.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2020",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157267"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+des+expositions+de+la+Porte+de+Versailles"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+des+expositions+de+la+Porte+de+Versailles%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In July 1998, the Conseil de Paris gave a favorable opinion on the application by the company “Paris Expo” for authorization of a heat pump network for Hall No. 1, after a debate in which Ms. Laure Schneiter argued that the installations “are not acceptable”. In February 2000, the answer to a question from Mr. Georges Sarre referred to the takeover bid launched by Unibail for the operator and to a renovation programme “exceeding 1.6 billion francs” undertaken under a 1996 amendment; the Council then authorized the operating company to file applications for demolition and building permits, subject to prior authorization by the Mayor (2004), and later authorized the Mayor to sign amendment No. 6 approving new boundaries for the concession site (2006). From 2012 to 2013, the Council debated the creation of a special committee of elected officials on the consultation for the modernization and operation of the Parc, the prospective awardee of the new contract, and the amendment of the PLU (local urban plan) for the “Grand Parc” sector: Mr. Yves Contassot questioned “the reality of the competitive tendering” and Ms. Danielle Simonnet denounced “the salami-slicing method” in connection with the Triangle tower project, while deputy mayor Bernard Gaudillère described the consultation procedure as “exemplary”. In July 2020, the report of the Chambre régionale des comptes (regional audit chamber) on management over 2010-2019 was debated: Ms. Rachida Dati saw in it “numerous and serious irregularities”, while deputy mayor Paul Simondon highlighted an investment programme of “more than 600 million euros”. In December 2020, the Council adopted support measures for the holder of the BEA works concession for the Parc and rejected a motion (vœu) concerning the exemption from part of the fee owed by Viparis.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
+}

@@ -1,679 +1,688 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "maison-de-la-poesie",
- "name": "Maison de la Poésie",
- "kind_fr": "Scène littéraire",
- "kind_en": "Scène littéraire",
- "famille": "culture",
- "arrondissement": 3,
- "lat": 48.86218,
- "lon": 2.351844,
- "photo": "/img/lieux/maison-de-la-poesie.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Armide1686",
-  "url": "https://commons.wikimedia.org/wiki/File:Katia-Sofia_Hakim_%C3%A0_la_Maison_de_la_Po%C3%A9sie.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La Maison de la Poésie de la Ville de Paris est un lieu de création, de diffusion et de rencontres créé en 1983 consacré initialement à la poésie contemporaine.",
-  "url": "https://fr.wikipedia.org/wiki/Maison_de_la_Po%C3%A9sie",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 831,
-  "delibs_span": [
-   1999,
-   2026
-  ],
-  "n_bmo_brut": 605,
-  "n_bmo_verifies": 12,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (26 trouvés)",
-  "lecture_mode_en": "title naming the place (26 found)",
-  "n_lus": 26,
-  "n_lieu": 19
- },
- "subventions_exploitant": {
-  "nom_fiche": "MAISON DE LA POESIE",
-  "total_eur": 15242758.0,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 1149500.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 1000000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 1026000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 1042900.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 1047700.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 994000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 999000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 1004500.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 1014000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2015",
-    "montant_eur": 1035959.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 1058400.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 1091299.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 900000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 939500.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 940000.0,
-    "beneficiaire": "MAISON DE LA POESIE",
-    "thematique": "Culture"
-   }
-  ]
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "La Ville de Paris soutient de longue date l'association Maison de la Poésie, installée au Théâtre Molière, 161 rue Saint-Martin (3e) : une convention de mise à disposition d'un fonctionnaire en 1999, puis conventions de fonctionnement annuelles (976 000 € en 2002, 950 000 € en 2003, puis 920 000 € de 2004 à 2009). Au milieu des années 2000, ces subventions nourrissent des débats récurrents au Conseil, où l'opposition et le maire du 3e arrondissement s'interrogent sur les charges de personnel, un déficit chroniquement évoqué et le degré d'ouverture du lieu au public parisien. La gouvernance change à plusieurs reprises : départ du directeur Michel de Maulne (à la tête du lieu depuis 1982) et arrivée de Claude Guerre en 2006, puis présidence de l'ancienne ministre Françoise Nyssen, annoncée en séance en 2019. En parallèle, la Ville formalise l'occupation des murs par des conventions d'un an (valeur locative estimée à 46 900 €) et finance l'équipement du lieu (20 000 € à plusieurs reprises, 8 000 € en 2019, 150 000 € d'investissement en 2021). La subvention de fonctionnement remonte à 940 000 € en 2010 et, plus récemment, un avenant s'accompagne d'une subvention de 776 000 € en 2026.",
- "moments": [
-  {
-   "id": "85479",
-   "seance": "JUILLET 1999",
-   "fait": "Le Conseil autorise le Maire à signer une convention mettant un fonctionnaire titulaire de la Commune de Paris à disposition de l'association.",
-   "pourquoi": "un agent de la Ville mis à disposition de la maison",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479",
-   "fait_en": "The Council authorized the Mayor to sign an agreement placing a permanent civil servant of the City of Paris at the association's disposal.",
-   "pourquoi_en": "a City employee made available to the venue"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "maison-de-la-poesie",
+  "name": "Maison de la Poésie",
+  "kind_fr": "Scène littéraire",
+  "kind_en": "Scène littéraire",
+  "famille": "culture",
+  "arrondissement": 3,
+  "lat": 48.86218,
+  "lon": 2.351844,
+  "photo": "/img/lieux/maison-de-la-poesie.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Armide1686",
+    "url": "https://commons.wikimedia.org/wiki/File:Katia-Sofia_Hakim_%C3%A0_la_Maison_de_la_Po%C3%A9sie.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "id": "71606",
-   "seance": "DECEMBRE 2002",
-   "fait": "Trois compagnies programmées à la Maison de la Poésie sont subventionnées, dont l'Athanor (20 000 €) pour 85 représentations de spectacles autour de Victor Hugo.",
-   "pourquoi": "la scène accueille 85 représentations Hugo",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606",
-   "fait_en": "Three companies scheduled to perform at the Maison de la Poésie received grants, including l'Athanor (€20,000) for 85 performances of shows about Victor Hugo.",
-   "pourquoi_en": "the venue hosts 85 Hugo performances"
-  },
-  {
-   "id": "9016",
-   "seance": "MAI 2004",
-   "fait": "Lors du vote de la subvention de 920 000 €, le maire du 3e (P. Aidenbaum) juge le lieu trop peu ouvert au public ; l'exécutif soutient son vœu et écarte l'amendement relevant la somme.",
-   "pourquoi": "l'établissement jugé trop peu ouvert",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016",
-   "fait_en": "During the vote on the €920,000 grant, the mayor of the 3rd arrondissement (P. Aidenbaum) judged the venue insufficiently open to the public; the executive backed his motion and rejected the amendment to raise the amount.",
-   "pourquoi_en": "the venue judged insufficiently open"
-  },
-  {
-   "id": "10505",
-   "seance": "MAI 2006",
-   "fait": "Le directeur historique Michel de Maulne (depuis 1982) quitte la direction, remplacé par Claude Guerre élu en février ; l'opposition s'alarme d'une hausse de 130 000 € des charges de personnel.",
-   "pourquoi": "passage de témoin à la direction, tensions",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505",
-   "fait_en": "Long-time director Michel de Maulne (in post since 1982) left the leadership, replaced by Claude Guerre, elected in February; the opposition raised alarm over a €130,000 rise in staff costs.",
-   "pourquoi_en": "a change of leadership, and tensions"
-  },
-  {
-   "id": "53115",
-   "seance": "OCTOBRE 2007",
-   "fait": "Le Conseil autorise une convention d'occupation d'un an du Théâtre Molière – Maison de la Poésie ; la valeur locative du lieu est estimée à 46 900 € par la direction de l'urbanisme.",
-   "pourquoi": "la Ville chiffre l'occupation des murs",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
-   "fait_en": "The Council authorized a one-year occupancy agreement for the Théâtre Molière – Maison de la Poésie; the venue's rental value is estimated at €46,900 by the planning department.",
-   "pourquoi_en": "the City puts a figure on occupancy of the premises"
-  },
-  {
-   "id": "39906",
-   "seance": "SEPTEMBRE 2010",
-   "fait": "Le Conseil autorise un avenant portant la subvention de fonctionnement 2010 de 460 000 € à 940 000 €, soit 480 000 € de dépense complémentaire.",
-   "pourquoi": "le soutien annuel atteint 940 000 €",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906",
-   "fait_en": "The Council authorized an amendment raising the 2010 operating grant from €460,000 to €940,000, i.e. an additional expenditure of €480,000.",
-   "pourquoi_en": "annual support reaches €940,000"
-  },
-  {
-   "id": "152587",
-   "seance": "NOVEMBRE 2019",
-   "fait": "Le Conseil vote une subvention d'équipement de 8 000 € ; en séance, une administratrice indique que l'ex-ministre Françoise Nyssen a succédé à Bernard Comment à la présidence du conseil d'administration.",
-   "pourquoi": "une ex-ministre à la présidence",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587",
-   "fait_en": "The Council voted an equipment grant of €8,000; in session, a board member noted that former minister Françoise Nyssen had succeeded Bernard Comment as chair of the board of directors.",
-   "pourquoi_en": "a former minister becomes chair"
-  },
-  {
-   "id": "184371",
-   "seance": "FEVRIER 2026",
-   "fait": "Le Conseil vote une subvention de 776 000 € à l'association, assortie d'un premier avenant à la convention.",
-   "pourquoi": "dernier soutien en date : 776 000 €",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371",
-   "fait_en": "The Council voted a €776,000 grant to the association, together with a first amendment to the agreement.",
-   "pourquoi_en": "the latest support to date: €776,000"
-  }
- ],
- "montants": [
-  {
-   "seance": "FEVRIER 2002",
-   "montant": "976.000 euros",
-   "objet": "subvention de fonctionnement 2002 (dépense imputée)",
-   "citation": "La dépense correspondante, soit 976.000 euros, sera imputée à la rubrique 33, nature 6574, ligne P003",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58056"
-  },
-  {
-   "seance": "AVRIL 2003",
-   "montant": "950.000 euros",
-   "objet": "subvention de fonctionnement 2003 (dépense imputée)",
-   "citation": "La dépense correspondante, soit 950.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89439"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2004 (dépense imputée)",
-   "citation": "La dépense correspondante, soit 920.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45718"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2004 soumise au vote",
-   "citation": "Il s'agit d'une subvention de fonctionnement à l'association \"Maison de la poésie\" d'un montant de 920.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "950.000 F",
-   "objet": "amendement de M. Bohbot proposant de relever la subvention (transcription : « 950.000 F »), écarté par l'exécutif",
-   "citation": "M. BOHBOT demande qu'au lieu de 920.000 F, 950.000 F soient versés à la Maison de la Poésie qui va cette année fêter son 20e anniversaire",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "436.000 euros",
-   "objet": "« déficit chronique » invoqué en séance par M. Aidenbaum, maire du 3e",
-   "citation": "il y a un déficit chronique encore cette année de 436.000 euros qui n'est toujours pas résorbé",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "48.000 euros",
-   "objet": "économie de 2003 liée à la restructuration de la revue, selon M. Girard",
-   "citation": "La restructuration de la revue a ainsi permis de dégager en 2003 près de 48.000 euros d'économie",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement dont la signature avait été autorisée (rappel en considérant)",
-   "citation": "donnant autorisation au Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement de 920.000 euros à l'association Maison de la Poésie",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "825.982 euros",
-   "objet": "charges de personnel 2002, jugées « excessives » par le Conseil (considérant)",
-   "citation": "Considérant que les sommes consacrées aux charges de personnel (825.982 euros en 2002, en hausse par rapport à 2001) ainsi que le montant des dettes (436.007 euros en 2002, en hausse également par rapport à 2001) apparaissent excessives",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
-  },
-  {
-   "seance": "MAI 2004",
-   "montant": "436.007 euros",
-   "objet": "montant des dettes 2002, jugé « excessif » par le Conseil (considérant)",
-   "citation": "Considérant que les sommes consacrées aux charges de personnel (825.982 euros en 2002, en hausse par rapport à 2001) ainsi que le montant des dettes (436.007 euros en 2002, en hausse également par rapport à 2001) apparaissent excessives",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
-  },
-  {
-   "seance": "OCTOBRE 2004",
-   "montant": "20.000 euros",
-   "objet": "subvention d'équipement (matériels informatiques et scéniques : lumière et son)",
-   "citation": "Une subvention d'équipement d'un montant de 20.000 euros est attribuée à l'association \"Maison de la Poésie\" qui gère le Théâtre Molière situé 161, rue Saint-Martin (3e)",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64132"
-  },
-  {
-   "seance": "AVRIL 2005",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2005 (dépense imputée)",
-   "citation": "La dépense correspondante, soit 920.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43892"
-  },
-  {
-   "seance": "AVRIL 2005",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2005 (intitulé de la délibération)",
-   "citation": "Montant : 920.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15694"
-  },
-  {
-   "seance": "MAI 2006",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2006 (dépense imputée)",
-   "citation": "La dépense correspondante soit 920.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88931"
-  },
-  {
-   "seance": "MAI 2006",
-   "montant": "130.000 euros",
-   "objet": "hausse des charges de personnel en 2006, mise en avant par Mme Macé de Lépinay (opposition)",
-   "citation": "en 2006 les charges de personnels augmentent de 130.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
-  },
-  {
-   "seance": "MAI 2006",
-   "montant": "près de 84 %",
-   "objet": "part de la subvention municipale dans les ressources de l'association, selon M. Bohbot",
-   "citation": "elle représente près de 84 % de ses ressources",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
-  },
-  {
-   "seance": "MARS 2007",
-   "montant": "920.000 euros",
-   "objet": "subvention de fonctionnement 2007 (dépense imputée)",
-   "citation": "La dépense correspondante soit 920.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31310"
-  },
-  {
-   "seance": "SEPTEMBRE 2008",
-   "montant": "460.000 → 920.000 euros",
-   "objet": "subvention de fonctionnement 2008 portée à son plein montant par avenant",
-   "citation": "La subvention de fonctionnement attribuée à l?association ?Maison de la Poésie?, 161, rue Saint-Martin (3e) au titre de l?année 2008 est portée de 460.000 euros à 920.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
-  },
-  {
-   "seance": "SEPTEMBRE 2008",
-   "montant": "20.000 euros",
-   "objet": "subvention d'équipement 2008 (acquisition de divers matériels)",
-   "citation": "Une subvention d?équipement de 20.000 euros est attribuée à l?association ?Maison de la Poésie? 161, rue Saint-Martin (3e) pour permettre l?acquisition de divers matériels en 2008",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
-  },
-  {
-   "seance": "SEPTEMBRE 2009",
-   "montant": "460.000 → 920.000 euros",
-   "objet": "subvention de fonctionnement 2009 portée à son plein montant par avenant",
-   "citation": "La subvention de fonctionnement attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e) au titre de l?année 2009 est portée de 460.000 euros à 920.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
-  },
-  {
-   "seance": "SEPTEMBRE 2009",
-   "montant": "20.000 euros",
-   "objet": "subvention d'équipement 2009 (acquisition de divers matériels)",
-   "citation": "Une subvention d?équipement de 20.000 euros est attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e) pour permettre l?acquisition de divers matériels en 2009",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
-  },
-  {
-   "seance": "SEPTEMBRE 2010",
-   "montant": "460.000 → 940.000 euros",
-   "objet": "subvention de fonctionnement 2010 portée à son plein montant par avenant",
-   "citation": "La subvention de fonctionnement attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e), au titre de l?année 2010 est portée de 460.000 euros à 940.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
-  },
-  {
-   "seance": "SEPTEMBRE 2010",
-   "montant": "480.000 euros",
-   "objet": "dépense correspondant au solde de la subvention 2010",
-   "citation": "La dépense correspondante, soit 480.000 euros, est imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
-  },
-  {
-   "seance": "NOVEMBRE 2019",
-   "montant": "8.000 euros",
-   "objet": "subvention d'équipement (intitulé de la délibération)",
-   "citation": "Subvention d’équipement (8.000 euros) et convention avec l’association \"Maison de la poésie\" (3e).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587"
-  },
-  {
-   "seance": "NOVEMBRE 2021",
-   "montant": "150.000 euros",
-   "objet": "subvention d'investissement (intitulé de la délibération)",
-   "citation": "Subvention d’investissement (150.000 euros) et convention avec l’association \"La Maison de la Poésie\" (Paris Centre).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163968"
-  },
-  {
-   "seance": "FEVRIER 2026",
-   "montant": "776.000 euros",
-   "objet": "subvention à l'association, avec avenant n°1 à la convention (intitulé de la délibération)",
-   "citation": "Subvention (776.000 euros) et avenant n° 1 à convention avec l'association \"Maison de la Poésie\" (Paris Centre).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1999": [
-   {
-    "reference": "1999 DAC 3",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention de mise à disposition d'un fonctionnaire titulaire de la Commune de Paris. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 20",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention relative à son action visant à faire connaître et diffuser la poésie. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "FEVRIER 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58056"
-   },
-   {
-    "reference": "2002 DAC 350",
-    "titre": "Attribution d'une subvention de fonctionnement à des compagnies théâtrales programmées à la Maison de la poésie, \"La compagnie du samovar\", 5, rue Pernety (14e), \"Le petit vivant\", 87, rue Noisy le Sec, 93260 Les Lilas. - Autorisation à M. le Maire de Paris de signer avec l'association \"l'Athanor\", 16, rue Edouard Vaillant, 93230 Romainville, une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DAC 13",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement (dossier D03085). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89439"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 356",
-    "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
-   },
-   {
-    "reference": "2004 DAC 429",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\" (8e) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64132"
-   },
-   {
-    "reference": "2004 DAC 6",
-    "titre": "31 - 2004, DAC 6 - Subvention de fonctionnement à l'association \"Maison de la poésie\". - Montant : 920.000 euros.Vœu déposé par M. Pierre AIDENBAUM et les membres du groupe socialiste et radical de gauche",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
-   },
-   {
-    "reference": "2004 DAC 6",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45718"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DAC 9",
-    "titre": "2005, DAC 9 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie” (3e). - Montant : 920.000 euros.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15694"
-   },
-   {
-    "reference": "2005 DAC 9",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association Maison de la Poésie (161, rue Saint-Martin 75003 Paris). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43892"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 58",
-    "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JANVIER 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
-   },
-   {
-    "reference": "2006 DAC 60",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88931"
-   },
-   {
-    "reference": "2006 DAC 60",
-    "titre": "2006, DAC 60 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). - Montant : 920.000 euros.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DAC 28",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e), une convention relative à l’attribution d’une subvention de fonctionnement de 920.000 euros. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MARS 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31310"
-   },
-   {
-    "reference": "2007 DAC 329",
-    "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’attribution de subventions d’équipement avec les associations et la SARL suivantes : “Maison de la Poésie” 161, rue Saint-Martin (3e) ; “Paris Mouff’Théâtre” 73, rue Mouffetard (5e) ; “A.A.S.C.S.P/Théâtre” 13 103A, bd A. Blanqui (13e) ; “Théâtre Paris 14” 20, Av. Marc Sangnier (14e) ; “Nouveau Théâtre de Novembre/20e Théâtre” 7, rue des Platrières (20e) ; “SARL S.P.G.T/Théâtre Paris-Villette” 211, Av. Jean Jaurès (19e).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66078"
-   },
-   {
-    "reference": "2007 DAC 612",
-    "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
-    "genres": [
-     "autre"
-    ],
-    "seance": "OCTOBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DAC 156",
-    "titre": "Signature d’un avenant à la convention passée avec l’association “Maison de la poésie” (3e), pour l’attribution du solde de la subvention de fonctionnement de 460.000 euros. - Signature d’une convention relative à l’attribution d’une subvention d’équipement de 20.000 euros. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
-   },
-   {
-    "reference": "2008 DAC 556",
-    "titre": "Subvention à l’association Mugiscué pour le spectacle Le Repas présenté à la Maison de la Poésie (3e) en 2008. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78497"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DAC 163",
-    "titre": "Signature d’un avenant à la convention passée avec l'association Maison de la poésie (3e), pour l’attribution du solde de la subvention de fonctionnement; signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
-   },
-   {
-    "reference": "2009 DAC 169",
-    "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "NOVEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DAC 226",
-    "titre": "Signature d’un avenant à convention pour l’attribution d’une subvention à l’association Maison de la poésie (3e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
-   }
-  ],
-  "2021": [
-   {
-    "reference": "2021 DAC 62",
-    "titre": "2021 DAC 62 - Subvention d’investissement (150.000 euros) et convention avec l’association \"La Maison de la Poésie\" (Paris Centre).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2021",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163968"
-   }
-  ],
-  "2026": [
-   {
-    "reference": "2026 DAC 8",
-    "titre": "2026 DAC 8 - Subvention (776.000 euros) et avenant n° 1 à convention avec l'association \"Maison de la Poésie\" (Paris Centre).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "FEVRIER 2026",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "decp-2025T01821",
-   "objet": "Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème\nIl est prévu les travaux suivants :\n- Dépose des matériels s",
-   "objet_clair": null,
-   "fournisseur": "TAMBE",
-   "montant_max": 265000,
-   "date_notification": "2025-02-17",
-   "preuve": "L'objet du marché nomme le lieu verbatim et porte sur le bâtiment lui-même : 'Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème'. Il s'agit de travaux sur l'équipement scénique du lieu, et non d'un repère d'adresse ni d'un marché-cadre de toute la Ville. L'arrondissement cité dans l'objet (3e) correspond à celui du lieu. L'objet indique le 157 rue Saint-Martin, alors que les délibérations du Conseil de Paris citent le 161 / 161 bis rue Saint-Martin : cet écart de numéro n'est pas tranché par les sources disponibles, mais l'objet désigne nommément la Maison de la Poésie dans le 3e arrondissement, seul établissement de ce nom à cette adresse. Cohérent avec les travaux scéniques déjà financés par la Ville sur ce lieu : la Maison de la Poésie a réalisé en 2019 des investissements pour 'la sécurité du bâtiment et la mise aux normes de certains dispositifs scéniques' (2019 DAC 83, doc 152587). Montant repris tel quel du candidat."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Maison+de+la+Po%C3%A9sie"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Maison+de+la+Po%C3%A9sie%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La Maison de la Poésie de la Ville de Paris est un lieu de création, de diffusion et de rencontres créé en 1983 consacré initialement à la poésie contemporaine.",
+    "url": "https://fr.wikipedia.org/wiki/Maison_de_la_Po%C3%A9sie",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 831,
+    "delibs_span": [
+      1999,
+      2026
+    ],
+    "n_bmo_brut": 605,
+    "n_bmo_verifies": 12,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (26 trouvés)",
+    "lecture_mode_en": "title naming the place (26 found)",
+    "n_lus": 26,
+    "n_lieu": 19
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "MAISON DE LA POESIE",
+    "total_eur": 15242758.0,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 1149500.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 1000000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 1026000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 1042900.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 1047700.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 994000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 999000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 1004500.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 1014000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 1035959.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 1058400.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 1091299.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 900000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 939500.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 940000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      }
+    ]
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "La Ville de Paris soutient de longue date l'association Maison de la Poésie, installée au Théâtre Molière, 161 rue Saint-Martin (3e) : une convention de mise à disposition d'un fonctionnaire en 1999, puis conventions de fonctionnement annuelles (976 000 € en 2002, 950 000 € en 2003, puis 920 000 € de 2004 à 2009). Au milieu des années 2000, ces subventions nourrissent des débats récurrents au Conseil, où l'opposition et le maire du 3e arrondissement s'interrogent sur les charges de personnel, un déficit chroniquement évoqué et le degré d'ouverture du lieu au public parisien. La gouvernance change à plusieurs reprises : départ du directeur Michel de Maulne (à la tête du lieu depuis 1982) et arrivée de Claude Guerre en 2006, puis présidence de l'ancienne ministre Françoise Nyssen, annoncée en séance en 2019. En parallèle, la Ville formalise l'occupation des murs par des conventions d'un an (valeur locative estimée à 46 900 €) et finance l'équipement du lieu (20 000 € à plusieurs reprises, 8 000 € en 2019, 150 000 € d'investissement en 2021). La subvention de fonctionnement remonte à 940 000 € en 2010 et, plus récemment, un avenant s'accompagne d'une subvention de 776 000 € en 2026.",
+  "moments": [
+    {
+      "id": "85479",
+      "seance": "JUILLET 1999",
+      "fait": "Le Conseil autorise le Maire à signer une convention mettant un fonctionnaire titulaire de la Commune de Paris à disposition de l'association.",
+      "pourquoi": "un agent de la Ville mis à disposition de la maison",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479",
+      "fait_en": "The Council authorized the Mayor to sign an agreement placing a permanent civil servant of the City of Paris at the association's disposal.",
+      "pourquoi_en": "a City employee made available to the venue"
+    },
+    {
+      "id": "71606",
+      "seance": "DECEMBRE 2002",
+      "fait": "Trois compagnies programmées à la Maison de la Poésie sont subventionnées, dont l'Athanor (20 000 €) pour 85 représentations de spectacles autour de Victor Hugo.",
+      "pourquoi": "la scène accueille 85 représentations Hugo",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606",
+      "fait_en": "Three companies scheduled to perform at the Maison de la Poésie received grants, including l'Athanor (€20,000) for 85 performances of shows about Victor Hugo.",
+      "pourquoi_en": "the venue hosts 85 Hugo performances"
+    },
+    {
+      "id": "9016",
+      "seance": "MAI 2004",
+      "fait": "Lors du vote de la subvention de 920 000 €, le maire du 3e (P. Aidenbaum) juge le lieu trop peu ouvert au public ; l'exécutif soutient son vœu et écarte l'amendement relevant la somme.",
+      "pourquoi": "l'établissement jugé trop peu ouvert",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016",
+      "fait_en": "During the vote on the €920,000 grant, the mayor of the 3rd arrondissement (P. Aidenbaum) judged the venue insufficiently open to the public; the executive backed his motion and rejected the amendment to raise the amount.",
+      "pourquoi_en": "the venue judged insufficiently open"
+    },
+    {
+      "id": "10505",
+      "seance": "MAI 2006",
+      "fait": "Le directeur historique Michel de Maulne (depuis 1982) quitte la direction, remplacé par Claude Guerre élu en février ; l'opposition s'alarme d'une hausse de 130 000 € des charges de personnel.",
+      "pourquoi": "passage de témoin à la direction, tensions",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505",
+      "fait_en": "Long-time director Michel de Maulne (in post since 1982) left the leadership, replaced by Claude Guerre, elected in February; the opposition raised alarm over a €130,000 rise in staff costs.",
+      "pourquoi_en": "a change of leadership, and tensions"
+    },
+    {
+      "id": "53115",
+      "seance": "OCTOBRE 2007",
+      "fait": "Le Conseil autorise une convention d'occupation d'un an du Théâtre Molière – Maison de la Poésie ; la valeur locative du lieu est estimée à 46 900 € par la direction de l'urbanisme.",
+      "pourquoi": "la Ville chiffre l'occupation des murs",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
+      "fait_en": "The Council authorized a one-year occupancy agreement for the Théâtre Molière – Maison de la Poésie; the venue's rental value is estimated at €46,900 by the planning department.",
+      "pourquoi_en": "the City puts a figure on occupancy of the premises"
+    },
+    {
+      "id": "39906",
+      "seance": "SEPTEMBRE 2010",
+      "fait": "Le Conseil autorise un avenant portant la subvention de fonctionnement 2010 de 460 000 € à 940 000 €, soit 480 000 € de dépense complémentaire.",
+      "pourquoi": "le soutien annuel atteint 940 000 €",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906",
+      "fait_en": "The Council authorized an amendment raising the 2010 operating grant from €460,000 to €940,000, i.e. an additional expenditure of €480,000.",
+      "pourquoi_en": "annual support reaches €940,000"
+    },
+    {
+      "id": "152587",
+      "seance": "NOVEMBRE 2019",
+      "fait": "Le Conseil vote une subvention d'équipement de 8 000 € ; en séance, une administratrice indique que l'ex-ministre Françoise Nyssen a succédé à Bernard Comment à la présidence du conseil d'administration.",
+      "pourquoi": "une ex-ministre à la présidence",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587",
+      "fait_en": "The Council voted an equipment grant of €8,000; in session, a board member noted that former minister Françoise Nyssen had succeeded Bernard Comment as chair of the board of directors.",
+      "pourquoi_en": "a former minister becomes chair"
+    },
+    {
+      "id": "184371",
+      "seance": "FEVRIER 2026",
+      "fait": "Le Conseil vote une subvention de 776 000 € à l'association, assortie d'un premier avenant à la convention.",
+      "pourquoi": "dernier soutien en date : 776 000 €",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371",
+      "fait_en": "The Council voted a €776,000 grant to the association, together with a first amendment to the agreement.",
+      "pourquoi_en": "the latest support to date: €776,000"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "FEVRIER 2002",
+      "montant": "976.000 euros",
+      "objet": "subvention de fonctionnement 2002 (dépense imputée)",
+      "citation": "La dépense correspondante, soit 976.000 euros, sera imputée à la rubrique 33, nature 6574, ligne P003",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58056"
+    },
+    {
+      "seance": "AVRIL 2003",
+      "montant": "950.000 euros",
+      "objet": "subvention de fonctionnement 2003 (dépense imputée)",
+      "citation": "La dépense correspondante, soit 950.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89439"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2004 (dépense imputée)",
+      "citation": "La dépense correspondante, soit 920.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45718"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2004 soumise au vote",
+      "citation": "Il s'agit d'une subvention de fonctionnement à l'association \"Maison de la poésie\" d'un montant de 920.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "950.000 F",
+      "objet": "amendement de M. Bohbot proposant de relever la subvention (transcription : « 950.000 F »), écarté par l'exécutif",
+      "citation": "M. BOHBOT demande qu'au lieu de 920.000 F, 950.000 F soient versés à la Maison de la Poésie qui va cette année fêter son 20e anniversaire",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "436.000 euros",
+      "objet": "« déficit chronique » invoqué en séance par M. Aidenbaum, maire du 3e",
+      "citation": "il y a un déficit chronique encore cette année de 436.000 euros qui n'est toujours pas résorbé",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "48.000 euros",
+      "objet": "économie de 2003 liée à la restructuration de la revue, selon M. Girard",
+      "citation": "La restructuration de la revue a ainsi permis de dégager en 2003 près de 48.000 euros d'économie",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement dont la signature avait été autorisée (rappel en considérant)",
+      "citation": "donnant autorisation au Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement de 920.000 euros à l'association Maison de la Poésie",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "825.982 euros",
+      "objet": "charges de personnel 2002, jugées « excessives » par le Conseil (considérant)",
+      "citation": "Considérant que les sommes consacrées aux charges de personnel (825.982 euros en 2002, en hausse par rapport à 2001) ainsi que le montant des dettes (436.007 euros en 2002, en hausse également par rapport à 2001) apparaissent excessives",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
+    },
+    {
+      "seance": "MAI 2004",
+      "montant": "436.007 euros",
+      "objet": "montant des dettes 2002, jugé « excessif » par le Conseil (considérant)",
+      "citation": "Considérant que les sommes consacrées aux charges de personnel (825.982 euros en 2002, en hausse par rapport à 2001) ainsi que le montant des dettes (436.007 euros en 2002, en hausse également par rapport à 2001) apparaissent excessives",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45738"
+    },
+    {
+      "seance": "OCTOBRE 2004",
+      "montant": "20.000 euros",
+      "objet": "subvention d'équipement (matériels informatiques et scéniques : lumière et son)",
+      "citation": "Une subvention d'équipement d'un montant de 20.000 euros est attribuée à l'association \"Maison de la Poésie\" qui gère le Théâtre Molière situé 161, rue Saint-Martin (3e)",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64132"
+    },
+    {
+      "seance": "AVRIL 2005",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2005 (dépense imputée)",
+      "citation": "La dépense correspondante, soit 920.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43892"
+    },
+    {
+      "seance": "AVRIL 2005",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2005 (intitulé de la délibération)",
+      "citation": "Montant : 920.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15694"
+    },
+    {
+      "seance": "MAI 2006",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2006 (dépense imputée)",
+      "citation": "La dépense correspondante soit 920.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88931"
+    },
+    {
+      "seance": "MAI 2006",
+      "montant": "130.000 euros",
+      "objet": "hausse des charges de personnel en 2006, mise en avant par Mme Macé de Lépinay (opposition)",
+      "citation": "en 2006 les charges de personnels augmentent de 130.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
+    },
+    {
+      "seance": "MAI 2006",
+      "montant": "près de 84 %",
+      "objet": "part de la subvention municipale dans les ressources de l'association, selon M. Bohbot",
+      "citation": "elle représente près de 84 % de ses ressources",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
+    },
+    {
+      "seance": "MARS 2007",
+      "montant": "920.000 euros",
+      "objet": "subvention de fonctionnement 2007 (dépense imputée)",
+      "citation": "La dépense correspondante soit 920.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31310"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "460.000 → 920.000 euros",
+      "objet": "subvention de fonctionnement 2008 portée à son plein montant par avenant",
+      "citation": "La subvention de fonctionnement attribuée à l?association ?Maison de la Poésie?, 161, rue Saint-Martin (3e) au titre de l?année 2008 est portée de 460.000 euros à 920.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "20.000 euros",
+      "objet": "subvention d'équipement 2008 (acquisition de divers matériels)",
+      "citation": "Une subvention d?équipement de 20.000 euros est attribuée à l?association ?Maison de la Poésie? 161, rue Saint-Martin (3e) pour permettre l?acquisition de divers matériels en 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "460.000 → 920.000 euros",
+      "objet": "subvention de fonctionnement 2009 portée à son plein montant par avenant",
+      "citation": "La subvention de fonctionnement attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e) au titre de l?année 2009 est portée de 460.000 euros à 920.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "20.000 euros",
+      "objet": "subvention d'équipement 2009 (acquisition de divers matériels)",
+      "citation": "Une subvention d?équipement de 20.000 euros est attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e) pour permettre l?acquisition de divers matériels en 2009",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
+    },
+    {
+      "seance": "SEPTEMBRE 2010",
+      "montant": "460.000 → 940.000 euros",
+      "objet": "subvention de fonctionnement 2010 portée à son plein montant par avenant",
+      "citation": "La subvention de fonctionnement attribuée à l?association Maison de la Poésie - 161, rue Saint-Martin (3e), au titre de l?année 2010 est portée de 460.000 euros à 940.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
+    },
+    {
+      "seance": "SEPTEMBRE 2010",
+      "montant": "480.000 euros",
+      "objet": "dépense correspondant au solde de la subvention 2010",
+      "citation": "La dépense correspondante, soit 480.000 euros, est imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
+    },
+    {
+      "seance": "NOVEMBRE 2019",
+      "montant": "8.000 euros",
+      "objet": "subvention d'équipement (intitulé de la délibération)",
+      "citation": "Subvention d’équipement (8.000 euros) et convention avec l’association \"Maison de la poésie\" (3e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587"
+    },
+    {
+      "seance": "NOVEMBRE 2021",
+      "montant": "150.000 euros",
+      "objet": "subvention d'investissement (intitulé de la délibération)",
+      "citation": "Subvention d’investissement (150.000 euros) et convention avec l’association \"La Maison de la Poésie\" (Paris Centre).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163968"
+    },
+    {
+      "seance": "FEVRIER 2026",
+      "montant": "776.000 euros",
+      "objet": "subvention à l'association, avec avenant n°1 à la convention (intitulé de la délibération)",
+      "citation": "Subvention (776.000 euros) et avenant n° 1 à convention avec l'association \"Maison de la Poésie\" (Paris Centre).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1999": [
+      {
+        "reference": "1999 DAC 3",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention de mise à disposition d'un fonctionnaire titulaire de la Commune de Paris. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 20",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention relative à son action visant à faire connaître et diffuser la poésie. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "FEVRIER 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58056"
+      },
+      {
+        "reference": "2002 DAC 350",
+        "titre": "Attribution d'une subvention de fonctionnement à des compagnies théâtrales programmées à la Maison de la poésie, \"La compagnie du samovar\", 5, rue Pernety (14e), \"Le petit vivant\", 87, rue Noisy le Sec, 93260 Les Lilas. - Autorisation à M. le Maire de Paris de signer avec l'association \"l'Athanor\", 16, rue Edouard Vaillant, 93230 Romainville, une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DAC 13",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement (dossier D03085). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89439"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 356",
+        "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
+      },
+      {
+        "reference": "2004 DAC 429",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\" (8e) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64132"
+      },
+      {
+        "reference": "2004 DAC 6",
+        "titre": "31 - 2004, DAC 6 - Subvention de fonctionnement à l'association \"Maison de la poésie\". - Montant : 920.000 euros.Vœu déposé par M. Pierre AIDENBAUM et les membres du groupe socialiste et radical de gauche",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+      },
+      {
+        "reference": "2004 DAC 6",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45718"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DAC 9",
+        "titre": "2005, DAC 9 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie” (3e). - Montant : 920.000 euros.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15694"
+      },
+      {
+        "reference": "2005 DAC 9",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association Maison de la Poésie (161, rue Saint-Martin 75003 Paris). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43892"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 58",
+        "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JANVIER 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
+      },
+      {
+        "reference": "2006 DAC 60",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88931"
+      },
+      {
+        "reference": "2006 DAC 60",
+        "titre": "2006, DAC 60 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). - Montant : 920.000 euros.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DAC 28",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e), une convention relative à l’attribution d’une subvention de fonctionnement de 920.000 euros. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MARS 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31310"
+      },
+      {
+        "reference": "2007 DAC 329",
+        "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’attribution de subventions d’équipement avec les associations et la SARL suivantes : “Maison de la Poésie” 161, rue Saint-Martin (3e) ; “Paris Mouff’Théâtre” 73, rue Mouffetard (5e) ; “A.A.S.C.S.P/Théâtre” 13 103A, bd A. Blanqui (13e) ; “Théâtre Paris 14” 20, Av. Marc Sangnier (14e) ; “Nouveau Théâtre de Novembre/20e Théâtre” 7, rue des Platrières (20e) ; “SARL S.P.G.T/Théâtre Paris-Villette” 211, Av. Jean Jaurès (19e).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66078"
+      },
+      {
+        "reference": "2007 DAC 612",
+        "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+        "genres": [
+          "autre"
+        ],
+        "seance": "OCTOBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DAC 156",
+        "titre": "Signature d’un avenant à la convention passée avec l’association “Maison de la poésie” (3e), pour l’attribution du solde de la subvention de fonctionnement de 460.000 euros. - Signature d’une convention relative à l’attribution d’une subvention d’équipement de 20.000 euros. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
+      },
+      {
+        "reference": "2008 DAC 556",
+        "titre": "Subvention à l’association Mugiscué pour le spectacle Le Repas présenté à la Maison de la Poésie (3e) en 2008. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78497"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DAC 163",
+        "titre": "Signature d’un avenant à la convention passée avec l'association Maison de la poésie (3e), pour l’attribution du solde de la subvention de fonctionnement; signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
+      },
+      {
+        "reference": "2009 DAC 169",
+        "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "NOVEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DAC 226",
+        "titre": "Signature d’un avenant à convention pour l’attribution d’une subvention à l’association Maison de la poésie (3e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
+      }
+    ],
+    "2021": [
+      {
+        "reference": "2021 DAC 62",
+        "titre": "2021 DAC 62 - Subvention d’investissement (150.000 euros) et convention avec l’association \"La Maison de la Poésie\" (Paris Centre).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2021",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163968"
+      }
+    ],
+    "2026": [
+      {
+        "reference": "2026 DAC 8",
+        "titre": "2026 DAC 8 - Subvention (776.000 euros) et avenant n° 1 à convention avec l'association \"Maison de la Poésie\" (Paris Centre).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "FEVRIER 2026",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "decp-2025T01821",
+      "objet": "Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème\nIl est prévu les travaux suivants :\n- Dépose des matériels s",
+      "objet_clair": null,
+      "fournisseur": "TAMBE",
+      "montant_max": 265000,
+      "date_notification": "2025-02-17",
+      "preuve": "L'objet du marché nomme le lieu verbatim et porte sur le bâtiment lui-même : 'Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème'. Il s'agit de travaux sur l'équipement scénique du lieu, et non d'un repère d'adresse ni d'un marché-cadre de toute la Ville. L'arrondissement cité dans l'objet (3e) correspond à celui du lieu. L'objet indique le 157 rue Saint-Martin, alors que les délibérations du Conseil de Paris citent le 161 / 161 bis rue Saint-Martin : cet écart de numéro n'est pas tranché par les sources disponibles, mais l'objet désigne nommément la Maison de la Poésie dans le 3e arrondissement, seul établissement de ce nom à cette adresse. Cohérent avec les travaux scéniques déjà financés par la Ville sur ce lieu : la Maison de la Poésie a réalisé en 2019 des investissements pour 'la sécurité du bâtiment et la mise aux normes de certains dispositifs scéniques' (2019 DAC 83, doc 152587). Montant repris tel quel du candidat."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Maison+de+la+Po%C3%A9sie"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Maison+de+la+Po%C3%A9sie%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "The City of Paris has long supported the Maison de la Poésie association, housed at the Théâtre Molière, 161 rue Saint-Martin (3rd arrondissement): an agreement making a civil servant available in 1999, then annual operating agreements (€976,000 in 2002, €950,000 in 2003, then €920,000 from 2004 to 2009). In the mid-2000s, these grants fed recurring debates at the Council, where the opposition and the mayor of the 3rd arrondissement questioned staff costs, a chronically mentioned deficit, and the extent to which the venue was open to the Paris public. Governance changed several times: the departure of director Michel de Maulne (who had led the venue since 1982) and the arrival of Claude Guerre in 2006, then the appointment of former minister Françoise Nyssen as chair, announced in session in 2019. In parallel, the City formalized occupancy of the premises through one-year agreements (rental value estimated at €46,900) and funded the venue's equipment (€20,000 on several occasions, €8,000 in 2019, €150,000 in investment in 2021). The operating grant rose back up to €940,000 in 2010 and, more recently, an amendment came with a €776,000 grant in 2026.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "The City of Paris has long supported the Maison de la Poésie association, housed at the Théâtre Molière, 161 rue Saint-Martin (3rd arrondissement): an agreement making a civil servant available in 1999, then annual operating agreements (€976,000 in 2002, €950,000 in 2003, then €920,000 from 2004 to 2009). In the mid-2000s, these grants fed recurring debates at the Council, where the opposition and the mayor of the 3rd arrondissement questioned staff costs, a chronically mentioned deficit, and the extent to which the venue was open to the Paris public. Governance changed several times: the departure of director Michel de Maulne (who had led the venue since 1982) and the arrival of Claude Guerre in 2006, then the appointment of former minister Françoise Nyssen as chair, announced in session in 2019. In parallel, the City formalized occupancy of the premises through one-year agreements (rental value estimated at €46,900) and funded the venue's equipment (€20,000 on several occasions, €8,000 in 2019, €150,000 in investment in 2021). The operating grant rose back up to €940,000 in 2010 and, more recently, an amendment came with a €776,000 grant in 2026."
 }

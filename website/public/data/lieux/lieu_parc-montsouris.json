@@ -1,311 +1,320 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "parc-montsouris",
- "name": "Parc Montsouris",
- "kind_fr": "Parc",
- "kind_en": "Park",
- "famille": "vert",
- "arrondissement": 14,
- "lat": 48.8222,
- "lon": 2.3386,
- "photo": "/img/lieux/parc-montsouris.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "GFreihalter",
-  "url": "https://commons.wikimedia.org/wiki/File:Paris_14e_Parc_Montsouris_Lac_970.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le parc Montsouris est un jardin public situé dans le quartier du même nom, dans le sud de Paris, dans le 14e arrondissement. Aménagé à la fin du XIXe siècle comme le parc des Buttes-Chaumont, ce parc à l'anglaise s'étend sur 15 ha. Le parc abrite un grand nombre d'espèces d'oiseaux et de nombreux arbres.",
-  "url": "https://fr.wikipedia.org/wiki/Parc_Montsouris",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-montsouris",
+  "name": "Parc Montsouris",
+  "kind_fr": "Parc",
+  "kind_en": "Park",
+  "famille": "vert",
+  "arrondissement": 14,
+  "lat": 48.8222,
+  "lon": 2.3386,
+  "photo": "/img/lieux/parc-montsouris.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "GFreihalter",
+    "url": "https://commons.wikimedia.org/wiki/File:Paris_14e_Parc_Montsouris_Lac_970.jpg",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "Parc Montsouris is a public garden located in the neighborhood of the same name, in the south of Paris, in the 14th arrondissement. Laid out at the end of the 19th century like Parc des Buttes-Chaumont, this English-style park covers 15 hectares. The park is home to a large number of bird species and many trees."
- },
- "stats": {
-  "n_delibs": 423,
-  "delibs_span": [
-   2001,
-   2019
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 166735.16,
-  "invest_annees": [
-   "2022",
-   "2023"
-  ],
-  "lecture_mode": "titre nommant le lieu (137 trouvés)",
-  "lecture_mode_en": "title naming the place (137 found)",
-  "n_lus": 45,
-  "n_lieu": 9
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Sur les 45 délibérations captées par le mot « Montsouris », neuf portent réellement sur le parc : le reste concerne des homonymes du 14e — la ZAC « Alésia-Montsouris » ouverte le long du RER B, la traverse de bus Bièvre-Montsouris, la Ferme Montsouris de la rue de la Tombe-Issoire, l'Institut mutualiste Montsouris — ou de simples adresses de sièges associatifs. Le fil le plus continu est celui du restaurant du parc : en décembre 2001, la concession du Pavillon Montsouris est attribuée alors que tous les candidats autres que l'occupant en place se sont retirés, et René DUTREY dépose un amendement pour qu'une terrasse soit accessible aux usagers du parc ; un avenant suit en juillet 2005 ; en avril 2019, une convention d'occupation de dix ans désigne un nouvel opérateur et le groupe Communiste annonce son abstention, les tarifs annexés (49 et 51 euros) réservant selon lui l'établissement aux plus hauts revenus. Le second fil est celui de l'entretien : rénovation des locaux sociaux approuvée en novembre 2004, puis reconstruction des voiries approuvée en octobre 2007 sous forme de marché négocié en deux tranches et à nouveau approuvée en juillet 2009 sous forme d'appel d'offres en deux tranches — les extraits ne disent pas ce qui s'est passé entre les deux, et aucun de ces actes ne chiffre la dépense. Le parc apparaît enfin par sa vie propre : les locaux de l'ancien Observatoire sont confiés à l'Association française d'astronomie en octobre 2006 ; en mars 2015, un vœu sur les six horaires d'ouverture différents est retiré après que l'adjointe a subordonné toute extension à une discussion avec les personnels ; en février 2019, le Conseil examine la dénomination « Allée Jacques Higelin » pour une allée du nord-est du parc.",
- "moments": [
-  {
-   "id": "7581",
-   "seance": "DECEMBRE 2001",
-   "fait": "La concession du Pavillon Montsouris est attribuée alors que tous les candidats autres que l'occupant en place se sont retirés ; un amendement est déposé pour que la fonction « café » et une terrasse soient ouvertes aux usagers du parc.",
-   "pourquoi": "Concession attribuée face à un candidat unique",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7581",
-   "fait_en": "The concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn; an amendment was filed so that a \"café\" function and a terrace would be open to park users.",
-   "pourquoi_en": "Concession awarded against a single remaining candidate"
-  },
-  {
-   "id": "37424",
-   "seance": "NOVEMBRE 2004",
-   "fait": "Le Conseil approuve la rénovation des locaux sociaux du parc, en marché sur appel d'offres ouvert en 8 lots indissociables.",
-   "pourquoi": "Le parc côté coulisses : les locaux du personnel",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424",
-   "fait_en": "The Council approved the renovation of the park's staff facilities, through a contract under an open call for tenders in 8 inseparable lots.",
-   "pourquoi_en": "The park behind the scenes: staff facilities"
-  },
-  {
-   "id": "35261",
-   "seance": "OCTOBRE 2006",
-   "fait": "Les locaux de l'ancien Observatoire du parc sont confiés par convention à l'Association française d'astronomie, avec droit de déposer permis de construire et de démolir.",
-   "pourquoi": "Un équipement du parc confié à une association",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261",
-   "fait_en": "The premises of the park's former Observatory were entrusted by agreement to the Association française d'astronomie, with the right to file building and demolition permits.",
-   "pourquoi_en": "A facility in the park entrusted to an association"
-  },
-  {
-   "id": "53253",
-   "seance": "OCTOBRE 2007",
-   "fait": "Le principe des travaux de reconstruction des voiries du parc est approuvé, sous forme de marché négocié en deux tranches.",
-   "pourquoi": "Première approbation du chantier des voiries",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253",
-   "fait_en": "The principle of works to reconstruct the park's roadways was approved, as a negotiated contract in two phases.",
-   "pourquoi_en": "First approval of the roadworks project"
-  },
-  {
-   "id": "75117",
-   "seance": "JUILLET 2009",
-   "fait": "Les travaux de reconstruction des voiries du parc sont approuvés une seconde fois, cette fois par appel d'offres en deux tranches.",
-   "pourquoi": "Même chantier relancé deux ans après, autre procédure",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117",
-   "fait_en": "The works to reconstruct the park's roadways were approved a second time, this time through a call for tenders in two phases.",
-   "pourquoi_en": "The same project relaunched two years later, under a different procedure"
-  },
-  {
-   "id": "123609",
-   "seance": "MARS 2015",
-   "fait": "Le vœu demandant la simplification des six horaires d'ouverture du parc est retiré, l'adjointe subordonnant toute extension à une discussion avec les personnels.",
-   "pourquoi": "L'usage du parc bute sur l'organisation du travail",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123609",
-   "fait_en": "The motion requesting the simplification of the park's six opening-hours schedules was withdrawn, with the deputy mayor making any extension conditional on discussion with staff.",
-   "pourquoi_en": "Use of the park runs up against work organization"
-  },
-  {
-   "id": "147624",
-   "seance": "FEVRIER 2019",
-   "fait": "Le Conseil examine la dénomination « Allée Jacques Higelin » pour une allée de la partie nord-est du parc.",
-   "pourquoi": "Le parc inscrit une mémoire dans ses allées",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147624",
-   "fait_en": "The Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park.",
-   "pourquoi_en": "The park inscribes memory into its paths"
-  },
-  {
-   "id": "148321",
-   "seance": "AVRIL 2019",
-   "fait": "Une convention d'occupation de dix ans désigne un nouvel opérateur du Pavillon Montsouris ; le groupe Communiste annonce son abstention, jugeant les tarifs annexés réservés aux plus hauts revenus.",
-   "pourquoi": "Le restaurant du parc contesté comme enclave sociale",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321",
-   "fait_en": "A ten-year occupancy agreement designated a new operator for the Pavillon Montsouris; the Communist group announced it would abstain, judging the attached price list reserved for the highest incomes.",
-   "pourquoi_en": "The park's restaurant disputed as a social enclave"
-  }
- ],
- "montants": [
-  {
-   "seance": "AVRIL 2019",
-   "montant": "49 euros",
-   "objet": "formule entrée/plat/verre de vin du Pavillon Montsouris, tarif figurant à l'annexe 3A de la convention d'occupation, cité en débat par Hervé BÉGUÉ (groupe Communiste)",
-   "citation": "le Pavillon Montsouris demeurera, pour l'essentiel, un établissement réservé aux plus hauts revenus, avec des formules à 49 euros pour entrée/plat/verre de vin et 51 euros pour entrée/plat/dessert",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
-  },
-  {
-   "seance": "AVRIL 2019",
-   "montant": "51 euros",
-   "objet": "formule entrée/plat/dessert du Pavillon Montsouris, tarif figurant à l'annexe 3A de la convention d'occupation, cité en débat par Hervé BÉGUÉ (groupe Communiste)",
-   "citation": "le Pavillon Montsouris demeurera, pour l'essentiel, un établissement réservé aux plus hauts revenus, avec des formules à 49 euros pour entrée/plat/verre de vin et 51 euros pour entrée/plat/dessert",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
-  },
-  {
-   "seance": "AVRIL 2019",
-   "montant": "18 euros",
-   "objet": "prix d'entrée des formules de l'activité additionnelle dite « table d'hôtes » prévue au projet d'exploitation, cité en débat par le même élu",
-   "citation": "une activité additionnelle dite table d'hôtes prévoit des formules à partir de 18 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1999": [
-   {
-    "reference": "1999 DAC 239",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat une convention pour le dépôt et l'entretien de la sculpture \"Le Défi du soleil\" de Gérard Garouste au parc Montsouris (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "OCTOBRE 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42378"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DPP 4",
-    "titre": "Dispositif \"Ville Vie Vacances\" Année 2003. - Subvention à l'Association CEREP (Centre de réadaptation psychotérapique) Hôpital de jour du parc Montsouris Chantier de Solidarité Internationale au Mali. M. Christophe CARESCHE, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47377"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DPJEV 85",
-    "titre": "Approbation du principe et des modalités de la réalisation des travaux de rénovation des locaux sociaux du Parc Montsouris (14e). M. Yves CONTASSOT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DF 44",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention datée du 1er février 2002 concédant à la SARL “Restaurant du Pavillon du Lac du Parc Montsouris” le droit à l’occupation de l’établissement dénommé “Le Pavillon du Lac du Parc Montsouris” (14e), pour y exploiter un bar-restaurant. M. Christian SAUTTER, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JUILLET 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87135"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DASES 6",
-    "titre": "G - Autorisation donnée à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention avec l’“Association des Surintendantes d’Usine et de Services Sociaux” située 8, Villa du Parc Montsouris (14e), pour l’attribution d’une subvention d’investissement de 40.000 euros. Mme Gisèle STIEVENARD, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JANVIER 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98115"
-   },
-   {
-    "reference": "2006 DF 58",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation des locaux de l’ancien Observatoire du Parc Montsouris situés 17, rue Emile-Deutsch-de-la-Meurthe (14e). M. Christian SAUTTER, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "OCTOBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261"
-   },
-   {
-    "reference": "2006 DF 86",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’emprises et de la tour radio-anémométrique sises principalement dans le Parc Montsouris (14e) et une convention donnant droit à l’occupation du bâtiment administratif de la station météorologique sis 26, boulevard Jourdan (14e). M. Christian SAUTTER, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "DECEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92014"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DEVE 100",
-    "titre": "Approbation du principe et des modalités de réalisation des travaux de reconstruction des voiries du Parc Montsouris. - Autorisation à M. le Maire de Paris de signer le marché négocié correspondant. M. Yves CONTASSOT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DEVE 80",
-    "titre": "Approbation des modalités de lancement d’un appel d’offres pour les travaux de reconstruction des voiries du Parc Montsouris (14e). Mme Fabienne GIBOUDEAUX, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2022,
-   "montant_eur": 32397.0,
-   "nom_projet": "Parc Montsouris Travaux d'entretien courant",
-   "preuve": "Le nom du projet nomme ce lieu verbatim : « Parc Montsouris Travaux d'entretien courant » (candidat projet, distance 40 m). Aucun autre lieu n'est nommé dans l'intitulé, et l'objet (travaux d'entretien) porte sur le parc lui-même. Corroboration contextuelle seulement : le Conseil de Paris a déjà délibéré sur des travaux du parc (octobre 2007, « Approbation du principe et des modalités de réalisation des travaux de reconstruction des voiries du Parc Montsouris ») ; cette délibération ne finance pas ce projet.",
-   "id": "2022_14_41_011"
-  },
-  {
-   "annee": 2023,
-   "montant_eur": 134338.16,
-   "nom_projet": "Parc Montsouris - Entretien courant",
-   "preuve": "Le nom du projet nomme ce lieu verbatim : « Parc Montsouris - Entretien courant » (candidat projet, distance 40 m). Aucun autre lieu n'est nommé dans l'intitulé, et l'objet (entretien courant) porte sur le parc lui-même.",
-   "id": "2023_14_39_006"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20222022T07789",
-   "objet": "MISE EN PLA FILET ANTICHUTE PASSERELLE RER PARC MONTSOURIS",
-   "objet_clair": null,
-   "fournisseur": "RATP",
-   "montant_max": 33378.61,
-   "date_notification": "2022-09-27",
-   "preuve": "L'objet nomme le lieu verbatim : « MISE EN PLA FILET ANTICHUTE PASSERELLE RER PARC MONTSOURIS ». Travaux physiques (pose d'un filet antichute) sur une passerelle RER du parc, même titulaire (SIRET 77566343801906) que le marché 20242024S12566. Confiance moyenne : l'objet est abrégé, l'ouvrage relève du franchissement du RER au parc plutôt que d'un équipement propre du parc, et le candidat ne renseigne aucun lieu d'exécution."
-  },
-  {
-   "numero_marche": "20242024S12566",
-   "objet": "DIAGNOSTIC STRUCTUREL PASSERELLE CASCADE RER PARC MONTSOURIS",
-   "objet_clair": "Vérification de la solidité de la passerelle de la cascade au parc Montsouris",
-   "fournisseur": "REGIE AUTONOME",
-   "montant_max": 27800.0,
-   "date_notification": "2024-11-27",
-   "preuve": "L'objet nomme le lieu verbatim et désigne un ouvrage situé au parc : « DIAGNOSTIC STRUCTUREL PASSERELLE CASCADE RER PARC MONTSOURIS ». La prestation (diagnostic structurel) porte sur cette passerelle : le parc n'est pas un simple repère d'adresse mais l'emplacement de l'ouvrage diagnostiqué. Titulaire SIRET 77566343801906 (Régie autonome des transports parisiens), conforme au candidat. Confiance moyenne : l'ouvrage est une passerelle de franchissement du RER située au parc, et non un équipement propre du parc ; le lieu d'exécution du candidat (« Paris ») n'apporte aucune précision."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Montsouris"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22parc+de+Montsouris%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le parc Montsouris est un jardin public situé dans le quartier du même nom, dans le sud de Paris, dans le 14e arrondissement. Aménagé à la fin du XIXe siècle comme le parc des Buttes-Chaumont, ce parc à l'anglaise s'étend sur 15 ha. Le parc abrite un grand nombre d'espèces d'oiseaux et de nombreux arbres.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_Montsouris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "Parc Montsouris is a public garden located in the neighborhood of the same name, in the south of Paris, in the 14th arrondissement. Laid out at the end of the 19th century like Parc des Buttes-Chaumont, this English-style park covers 15 hectares. The park is home to a large number of bird species and many trees."
+  },
+  "stats": {
+    "n_delibs": 423,
+    "delibs_span": [
+      2001,
+      2019
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 166735.16,
+    "invest_annees": [
+      "2022",
+      "2023"
+    ],
+    "lecture_mode": "titre nommant le lieu (137 trouvés)",
+    "lecture_mode_en": "title naming the place (137 found)",
+    "n_lus": 45,
+    "n_lieu": 9
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Sur les 45 délibérations captées par le mot « Montsouris », neuf portent réellement sur le parc : le reste concerne des homonymes du 14e — la ZAC « Alésia-Montsouris » ouverte le long du RER B, la traverse de bus Bièvre-Montsouris, la Ferme Montsouris de la rue de la Tombe-Issoire, l'Institut mutualiste Montsouris — ou de simples adresses de sièges associatifs. Le fil le plus continu est celui du restaurant du parc : en décembre 2001, la concession du Pavillon Montsouris est attribuée alors que tous les candidats autres que l'occupant en place se sont retirés, et René DUTREY dépose un amendement pour qu'une terrasse soit accessible aux usagers du parc ; un avenant suit en juillet 2005 ; en avril 2019, une convention d'occupation de dix ans désigne un nouvel opérateur et le groupe Communiste annonce son abstention, les tarifs annexés (49 et 51 euros) réservant selon lui l'établissement aux plus hauts revenus. Le second fil est celui de l'entretien : rénovation des locaux sociaux approuvée en novembre 2004, puis reconstruction des voiries approuvée en octobre 2007 sous forme de marché négocié en deux tranches et à nouveau approuvée en juillet 2009 sous forme d'appel d'offres en deux tranches — les extraits ne disent pas ce qui s'est passé entre les deux, et aucun de ces actes ne chiffre la dépense. Le parc apparaît enfin par sa vie propre : les locaux de l'ancien Observatoire sont confiés à l'Association française d'astronomie en octobre 2006 ; en mars 2015, un vœu sur les six horaires d'ouverture différents est retiré après que l'adjointe a subordonné toute extension à une discussion avec les personnels ; en février 2019, le Conseil examine la dénomination « Allée Jacques Higelin » pour une allée du nord-est du parc.",
+  "moments": [
+    {
+      "id": "7581",
+      "seance": "DECEMBRE 2001",
+      "fait": "La concession du Pavillon Montsouris est attribuée alors que tous les candidats autres que l'occupant en place se sont retirés ; un amendement est déposé pour que la fonction « café » et une terrasse soient ouvertes aux usagers du parc.",
+      "pourquoi": "Concession attribuée face à un candidat unique",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7581",
+      "fait_en": "The concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn; an amendment was filed so that a \"café\" function and a terrace would be open to park users.",
+      "pourquoi_en": "Concession awarded against a single remaining candidate"
+    },
+    {
+      "id": "37424",
+      "seance": "NOVEMBRE 2004",
+      "fait": "Le Conseil approuve la rénovation des locaux sociaux du parc, en marché sur appel d'offres ouvert en 8 lots indissociables.",
+      "pourquoi": "Le parc côté coulisses : les locaux du personnel",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424",
+      "fait_en": "The Council approved the renovation of the park's staff facilities, through a contract under an open call for tenders in 8 inseparable lots.",
+      "pourquoi_en": "The park behind the scenes: staff facilities"
+    },
+    {
+      "id": "35261",
+      "seance": "OCTOBRE 2006",
+      "fait": "Les locaux de l'ancien Observatoire du parc sont confiés par convention à l'Association française d'astronomie, avec droit de déposer permis de construire et de démolir.",
+      "pourquoi": "Un équipement du parc confié à une association",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261",
+      "fait_en": "The premises of the park's former Observatory were entrusted by agreement to the Association française d'astronomie, with the right to file building and demolition permits.",
+      "pourquoi_en": "A facility in the park entrusted to an association"
+    },
+    {
+      "id": "53253",
+      "seance": "OCTOBRE 2007",
+      "fait": "Le principe des travaux de reconstruction des voiries du parc est approuvé, sous forme de marché négocié en deux tranches.",
+      "pourquoi": "Première approbation du chantier des voiries",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253",
+      "fait_en": "The principle of works to reconstruct the park's roadways was approved, as a negotiated contract in two phases.",
+      "pourquoi_en": "First approval of the roadworks project"
+    },
+    {
+      "id": "75117",
+      "seance": "JUILLET 2009",
+      "fait": "Les travaux de reconstruction des voiries du parc sont approuvés une seconde fois, cette fois par appel d'offres en deux tranches.",
+      "pourquoi": "Même chantier relancé deux ans après, autre procédure",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117",
+      "fait_en": "The works to reconstruct the park's roadways were approved a second time, this time through a call for tenders in two phases.",
+      "pourquoi_en": "The same project relaunched two years later, under a different procedure"
+    },
+    {
+      "id": "123609",
+      "seance": "MARS 2015",
+      "fait": "Le vœu demandant la simplification des six horaires d'ouverture du parc est retiré, l'adjointe subordonnant toute extension à une discussion avec les personnels.",
+      "pourquoi": "L'usage du parc bute sur l'organisation du travail",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123609",
+      "fait_en": "The motion requesting the simplification of the park's six opening-hours schedules was withdrawn, with the deputy mayor making any extension conditional on discussion with staff.",
+      "pourquoi_en": "Use of the park runs up against work organization"
+    },
+    {
+      "id": "147624",
+      "seance": "FEVRIER 2019",
+      "fait": "Le Conseil examine la dénomination « Allée Jacques Higelin » pour une allée de la partie nord-est du parc.",
+      "pourquoi": "Le parc inscrit une mémoire dans ses allées",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147624",
+      "fait_en": "The Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park.",
+      "pourquoi_en": "The park inscribes memory into its paths"
+    },
+    {
+      "id": "148321",
+      "seance": "AVRIL 2019",
+      "fait": "Une convention d'occupation de dix ans désigne un nouvel opérateur du Pavillon Montsouris ; le groupe Communiste annonce son abstention, jugeant les tarifs annexés réservés aux plus hauts revenus.",
+      "pourquoi": "Le restaurant du parc contesté comme enclave sociale",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321",
+      "fait_en": "A ten-year occupancy agreement designated a new operator for the Pavillon Montsouris; the Communist group announced it would abstain, judging the attached price list reserved for the highest incomes.",
+      "pourquoi_en": "The park's restaurant disputed as a social enclave"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "AVRIL 2019",
+      "montant": "49 euros",
+      "objet": "formule entrée/plat/verre de vin du Pavillon Montsouris, tarif figurant à l'annexe 3A de la convention d'occupation, cité en débat par Hervé BÉGUÉ (groupe Communiste)",
+      "citation": "le Pavillon Montsouris demeurera, pour l'essentiel, un établissement réservé aux plus hauts revenus, avec des formules à 49 euros pour entrée/plat/verre de vin et 51 euros pour entrée/plat/dessert",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
+    },
+    {
+      "seance": "AVRIL 2019",
+      "montant": "51 euros",
+      "objet": "formule entrée/plat/dessert du Pavillon Montsouris, tarif figurant à l'annexe 3A de la convention d'occupation, cité en débat par Hervé BÉGUÉ (groupe Communiste)",
+      "citation": "le Pavillon Montsouris demeurera, pour l'essentiel, un établissement réservé aux plus hauts revenus, avec des formules à 49 euros pour entrée/plat/verre de vin et 51 euros pour entrée/plat/dessert",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
+    },
+    {
+      "seance": "AVRIL 2019",
+      "montant": "18 euros",
+      "objet": "prix d'entrée des formules de l'activité additionnelle dite « table d'hôtes » prévue au projet d'exploitation, cité en débat par le même élu",
+      "citation": "une activité additionnelle dite table d'hôtes prévoit des formules à partir de 18 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1999": [
+      {
+        "reference": "1999 DAC 239",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat une convention pour le dépôt et l'entretien de la sculpture \"Le Défi du soleil\" de Gérard Garouste au parc Montsouris (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "OCTOBRE 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42378"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DPP 4",
+        "titre": "Dispositif \"Ville Vie Vacances\" Année 2003. - Subvention à l'Association CEREP (Centre de réadaptation psychotérapique) Hôpital de jour du parc Montsouris Chantier de Solidarité Internationale au Mali. M. Christophe CARESCHE, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47377"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DPJEV 85",
+        "titre": "Approbation du principe et des modalités de la réalisation des travaux de rénovation des locaux sociaux du Parc Montsouris (14e). M. Yves CONTASSOT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DF 44",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention datée du 1er février 2002 concédant à la SARL “Restaurant du Pavillon du Lac du Parc Montsouris” le droit à l’occupation de l’établissement dénommé “Le Pavillon du Lac du Parc Montsouris” (14e), pour y exploiter un bar-restaurant. M. Christian SAUTTER, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUILLET 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87135"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DASES 6",
+        "titre": "G - Autorisation donnée à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention avec l’“Association des Surintendantes d’Usine et de Services Sociaux” située 8, Villa du Parc Montsouris (14e), pour l’attribution d’une subvention d’investissement de 40.000 euros. Mme Gisèle STIEVENARD, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JANVIER 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98115"
+      },
+      {
+        "reference": "2006 DF 58",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation des locaux de l’ancien Observatoire du Parc Montsouris situés 17, rue Emile-Deutsch-de-la-Meurthe (14e). M. Christian SAUTTER, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "OCTOBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261"
+      },
+      {
+        "reference": "2006 DF 86",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’emprises et de la tour radio-anémométrique sises principalement dans le Parc Montsouris (14e) et une convention donnant droit à l’occupation du bâtiment administratif de la station météorologique sis 26, boulevard Jourdan (14e). M. Christian SAUTTER, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "DECEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92014"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DEVE 100",
+        "titre": "Approbation du principe et des modalités de réalisation des travaux de reconstruction des voiries du Parc Montsouris. - Autorisation à M. le Maire de Paris de signer le marché négocié correspondant. M. Yves CONTASSOT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DEVE 80",
+        "titre": "Approbation des modalités de lancement d’un appel d’offres pour les travaux de reconstruction des voiries du Parc Montsouris (14e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2022,
+      "montant_eur": 32397.0,
+      "nom_projet": "Parc Montsouris Travaux d'entretien courant",
+      "preuve": "Le nom du projet nomme ce lieu verbatim : « Parc Montsouris Travaux d'entretien courant » (candidat projet, distance 40 m). Aucun autre lieu n'est nommé dans l'intitulé, et l'objet (travaux d'entretien) porte sur le parc lui-même. Corroboration contextuelle seulement : le Conseil de Paris a déjà délibéré sur des travaux du parc (octobre 2007, « Approbation du principe et des modalités de réalisation des travaux de reconstruction des voiries du Parc Montsouris ») ; cette délibération ne finance pas ce projet.",
+      "id": "2022_14_41_011"
+    },
+    {
+      "annee": 2023,
+      "montant_eur": 134338.16,
+      "nom_projet": "Parc Montsouris - Entretien courant",
+      "preuve": "Le nom du projet nomme ce lieu verbatim : « Parc Montsouris - Entretien courant » (candidat projet, distance 40 m). Aucun autre lieu n'est nommé dans l'intitulé, et l'objet (entretien courant) porte sur le parc lui-même.",
+      "id": "2023_14_39_006"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20222022T07789",
+      "objet": "MISE EN PLA FILET ANTICHUTE PASSERELLE RER PARC MONTSOURIS",
+      "objet_clair": null,
+      "fournisseur": "RATP",
+      "montant_max": 33378.61,
+      "date_notification": "2022-09-27",
+      "preuve": "L'objet nomme le lieu verbatim : « MISE EN PLA FILET ANTICHUTE PASSERELLE RER PARC MONTSOURIS ». Travaux physiques (pose d'un filet antichute) sur une passerelle RER du parc, même titulaire (SIRET 77566343801906) que le marché 20242024S12566. Confiance moyenne : l'objet est abrégé, l'ouvrage relève du franchissement du RER au parc plutôt que d'un équipement propre du parc, et le candidat ne renseigne aucun lieu d'exécution."
+    },
+    {
+      "numero_marche": "20242024S12566",
+      "objet": "DIAGNOSTIC STRUCTUREL PASSERELLE CASCADE RER PARC MONTSOURIS",
+      "objet_clair": "Vérification de la solidité de la passerelle de la cascade au parc Montsouris",
+      "fournisseur": "REGIE AUTONOME",
+      "montant_max": 27800.0,
+      "date_notification": "2024-11-27",
+      "preuve": "L'objet nomme le lieu verbatim et désigne un ouvrage situé au parc : « DIAGNOSTIC STRUCTUREL PASSERELLE CASCADE RER PARC MONTSOURIS ». La prestation (diagnostic structurel) porte sur cette passerelle : le parc n'est pas un simple repère d'adresse mais l'emplacement de l'ouvrage diagnostiqué. Titulaire SIRET 77566343801906 (Régie autonome des transports parisiens), conforme au candidat. Confiance moyenne : l'ouvrage est une passerelle de franchissement du RER située au parc, et non un équipement propre du parc ; le lieu d'exécution du candidat (« Paris ») n'apporte aucune précision."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Montsouris"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22parc+de+Montsouris%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Of the 45 deliberations picked up by the word \"Montsouris,\" nine actually concern the park: the rest relate to homonyms in the 14th arrondissement — the \"Alésia-Montsouris\" development zone (ZAC) opened along the RER B line, the Bièvre-Montsouris bus crosstown route, the Ferme Montsouris on rue de la Tombe-Issoire, the Institut mutualiste Montsouris — or simply the registered addresses of associations' headquarters. The most continuous thread is that of the park's restaurant: in December 2001, the concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn, and René DUTREY filed an amendment so that a terrace would be open to park users; a further amendment followed in July 2005; in April 2019, a ten-year occupancy agreement designated a new operator and the Communist group announced it would abstain, arguing that the attached price list (49 and 51 euros) reserved the establishment for the highest incomes. The second thread is maintenance: renovation of the staff facilities approved in November 2004, then reconstruction of the roadways approved in October 2007 as a two-phase negotiated contract and approved again in July 2009 as a two-phase call for tenders — the extracts do not say what happened in between, and none of these acts gives a figure for the expenditure. The park finally appears through its own life: the premises of the former Observatory were entrusted to the Association française d'astronomie in October 2006; in March 2015, a motion on the park's six different opening-hours schedules was withdrawn after the deputy mayor made any extension conditional on discussion with staff; in February 2019, the Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Of the 45 deliberations picked up by the word \"Montsouris,\" nine actually concern the park: the rest relate to homonyms in the 14th arrondissement — the \"Alésia-Montsouris\" development zone (ZAC) opened along the RER B line, the Bièvre-Montsouris bus crosstown route, the Ferme Montsouris on rue de la Tombe-Issoire, the Institut mutualiste Montsouris — or simply the registered addresses of associations' headquarters. The most continuous thread is that of the park's restaurant: in December 2001, the concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn, and René DUTREY filed an amendment so that a terrace would be open to park users; a further amendment followed in July 2005; in April 2019, a ten-year occupancy agreement designated a new operator and the Communist group announced it would abstain, arguing that the attached price list (49 and 51 euros) reserved the establishment for the highest incomes. The second thread is maintenance: renovation of the staff facilities approved in November 2004, then reconstruction of the roadways approved in October 2007 as a two-phase negotiated contract and approved again in July 2009 as a two-phase call for tenders — the extracts do not say what happened in between, and none of these acts gives a figure for the expenditure. The park finally appears through its own life: the premises of the former Observatory were entrusted to the Association française d'astronomie in October 2006; in March 2015, a motion on the park's six different opening-hours schedules was withdrawn after the deputy mayor made any extension conditional on discussion with staff; in February 2019, the Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park."
 }

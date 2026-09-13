@@ -1,163 +1,236 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "temple-de-l-oratoire-du-louvre",
- "name": "Temple de l'Oratoire du Louvre",
- "kind_fr": "Temple",
- "kind_en": "Temple",
- "famille": "culture",
- "arrondissement": 1,
- "lat": 48.861669,
- "lon": 2.340001,
- "photo": "/img/lieux/temple-de-l-oratoire-du-louvre.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Arthur Weidmann",
-  "url": "https://commons.wikimedia.org/wiki/File:Oratoire_du_Louvre_1.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 769,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "tête du classement Solr (769 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (769 documents total)",
-  "n_lus": 43,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2009": 194.12,
-   "2010": 4832.14,
-   "2011": 771471.22,
-   "2012": 331446.2,
-   "2013": 76248.73,
-   "2014": 39321.83,
-   "2015": 5014.19,
-   "2016": 19618.73
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "temple-de-l-oratoire-du-louvre",
+  "name": "Temple de l'Oratoire du Louvre",
+  "kind_fr": "Temple",
+  "kind_en": "Temple",
+  "famille": "culture",
+  "arrondissement": 1,
+  "lat": 48.861669,
+  "lon": 2.340001,
+  "photo": "/img/lieux/temple-de-l-oratoire-du-louvre.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Arthur Weidmann",
+    "url": "https://commons.wikimedia.org/wiki/File:Oratoire_du_Louvre_1.jpg",
+    "source": "Wikimedia Commons"
   },
-  "total_eur": 1248147.16,
-  "operations": [
-   {
-    "ap_cle": "B100/0903656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2011": 749871.06,
-     "2012": 327108.08,
-     "2013": 69171.98
-    },
-    "total_mandate": 1146151.12,
-    "preuve": "Le libellé de l'opération d'investissement nomme exactement le lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il désigne ce temple et aucun autre équipement. Mandatements en 2011, 2012 et 2013. Le Conseil de Paris a par ailleurs approuvé, en septembre 2008, les « marchés de travaux relatifs à la restauration de la façade nord de l'oratoire du Louvre » (2008 DAC 211) : la source d'investissement ne dit pas si cette opération finance ces marchés.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903656"
-   },
-   {
-    "ap_cle": "0903656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2014": 39005.1,
-     "2015": 3324.63
-    },
-    "total_mandate": 42329.73,
-    "preuve": "Libellé de l'opération identique au nom du lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0903656 que la ligne B100/0903656 (deux clés distinctes dans la source). Mandatements en 2014 et 2015.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903656"
-   },
-   {
-    "ap_cle": "B100/0703656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2009": 194.12,
-     "2010": 4832.14,
-     "2011": 21600.16,
-     "2012": 4338.12,
-     "2013": 5634.63
-    },
-    "total_mandate": 36599.17,
-    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il nomme ce lieu et aucun autre équipement. Mandatements de 2009 à 2013.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703656"
-   },
-   {
-    "ap_cle": "1103656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2015": 1689.56,
-     "2016": 19618.73
-    },
-    "total_mandate": 21308.29,
-    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Le temple est situé 145, rue Saint-Honoré (1er), adresse citée par la délibération 2022 DAC 394 (« à l'Oratoire du Louvre, 145, rue Saint-Honoré (1er) »). Mandatements en 2015 et 2016.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103656"
-   },
-   {
-    "ap_cle": "B100/1103656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2013": 1442.12
-    },
-    "total_mandate": 1442.12,
-    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 1103656 que la ligne 1103656 (deux clés distinctes dans la source) ; un seul mandatement, en 2013.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103656"
-   },
-   {
-    "ap_cle": "0703656",
-    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
-    "mandate_par_annee": {
-     "2014": 316.73
-    },
-    "total_mandate": 316.73,
-    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0703656 que la ligne B100/0703656 (deux clés distinctes dans la source) ; un seul mandatement, en 2014.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703656"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2016"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Temple+de+l%27Oratoire+du+Louvre"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le temple protestant de l’Oratoire du Louvre est un lieu de culte situé 145 rue Saint-Honoré dans le 1er arrondissement de Paris. C'est une ancienne église catholique, siège de la Congrégation de l'Oratoire de France, élevée par Louis XIII au titre de chapelle royale du palais du Louvre en 1624. Désaffectée à la Révolution française, elle devient en 1811 sous Napoléon Ier le siège du consistoire réformé de Paris. La paroisse est membre de l'Église protestante unie de France, engagée dans le christianisme social et la théologie libérale.",
+    "url": "https://fr.wikipedia.org/wiki/Temple_protestant_de_l'Oratoire_du_Louvre",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Protestant temple of the Oratoire du Louvre is a place of worship located at 145 rue Saint-Honoré in the 1st arrondissement of Paris. It is a former Catholic church, seat of the Congregation of the Oratory of France, raised by Louis XIII to the rank of royal chapel of the Louvre palace in 1624. Decommissioned during the French Revolution, it became in 1811, under Napoleon I, the seat of the Reformed consistory of Paris. The parish is a member of the United Protestant Church of France, committed to social Christianity and liberal theology."
+  },
+  "stats": {
+    "n_delibs": 769,
+    "delibs_span": [
+      1998,
+      2022
+    ],
+    "n_bmo_brut": 204,
+    "n_bmo_verifies": 4,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "tête du classement Solr (769 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (769 documents total)",
+    "n_lus": 43,
+    "n_lieu": 6
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Entre 1998 et 2001, le Conseil de Paris examine chaque année une subvention à l'Association des amis du chœur de l'Oratoire du Louvre (1er) ; l'intitulé de septembre 2001 la rattache « au titre de ses activités à Paris, en 2001 », et aucun de ces intitulés n'indique de montant. En septembre 2008, une délibération porte sur l'approbation des modalités de passation des marchés de travaux relatifs à la restauration de la façade nord de l'oratoire, répartis en quatre lots : installation de chantier, maçonnerie, pierre de taille et nettoyage des façades ; restauration de sculptures ; couverture ; menuiserie bois. En décembre 2022, une délibération porte sur l'apposition d'une plaque commémorative à l'Oratoire du Louvre, 145 rue Saint-Honoré, en hommage à Paul Vergara, Marcelle Vergara, Marcelle Guillemot et Suzanne Spaak, Justes parmi les Nations.",
+  "moments": [
+    {
+      "id": "57358",
+      "seance": "DECEMBRE 1998",
+      "fait": "Le Conseil de Paris examine une subvention à l'Association des amis du chœur de l'Oratoire du Louvre ; l'intitulé n'en donne pas le montant.",
+      "pourquoi": "Une subvention à l'association des amis du chœur",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57358",
+      "fait_en": "The Conseil de Paris considers a grant to the Association des amis du chœur de l'Oratoire du Louvre; the title does not state its amount.",
+      "pourquoi_en": "A grant to the association of friends of the choir"
+    },
+    {
+      "id": "42530",
+      "seance": "OCTOBRE 1999",
+      "fait": "Nouvelle délibération de subvention à l'Association des amis du chœur de l'Oratoire du Louvre, rapportée par Mme Hélène Macé de Lépinay.",
+      "pourquoi": "La même association à l'ordre du jour, un an après",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42530",
+      "fait_en": "A new grant deliberation for the Association des amis du chœur de l'Oratoire du Louvre, with Mme Hélène Macé de Lépinay as rapporteur.",
+      "pourquoi_en": "The same association on the agenda, a year later"
+    },
+    {
+      "id": "88664",
+      "seance": "NOVEMBRE 2000",
+      "fait": "Le Conseil de Paris examine de nouveau une subvention à l'Association des amis du chœur de l'Oratoire du Louvre.",
+      "pourquoi": "L'association de nouveau à l'ordre du jour en 2000",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88664",
+      "fait_en": "The Conseil de Paris again considers a grant to the Association des amis du chœur de l'Oratoire du Louvre.",
+      "pourquoi_en": "The association back on the agenda in 2000"
+    },
+    {
+      "id": "84785",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Une subvention à l'Association des amis du chœur de l'Oratoire du Louvre est présentée « au titre de ses activités à Paris, en 2001 », rapportée par M. Christophe Girard.",
+      "pourquoi": "Une subvention « au titre de ses activités à Paris, en 2001 »",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84785",
+      "fait_en": "A grant to the Association des amis du chœur de l'Oratoire du Louvre is presented \"for its activities in Paris, in 2001\", with M. Christophe Girard as rapporteur.",
+      "pourquoi_en": "A grant \"for its activities in Paris, in 2001\""
+    },
+    {
+      "id": "66849",
+      "seance": "SEPTEMBRE 2008",
+      "fait": "Délibération sur l'approbation des modalités de passation des marchés de travaux relatifs à la restauration de la façade nord de l'oratoire, en quatre lots : installation de chantier, maçonnerie, pierre de taille et nettoyage des façades ; restauration de sculptures ; couverture ; menuiserie bois.",
+      "pourquoi": "Façade nord : modalités de passation des marchés de restauration",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66849",
+      "fait_en": "Deliberation on the approval of the procurement procedures for the works contracts relating to the restoration of the oratory's north façade, in four lots: site setup, masonry, dressed stone and façade cleaning; restoration of sculptures; roofing; wood joinery.",
+      "pourquoi_en": "North façade: procurement procedures for the restoration contracts"
+    },
+    {
+      "id": "167944",
+      "seance": "DECEMBRE 2022",
+      "fait": "Délibération sur l'apposition d'une plaque commémorative à l'Oratoire du Louvre, 145 rue Saint-Honoré, en hommage à Paul Vergara, Marcelle Vergara, Marcelle Guillemot et Suzanne Spaak, Justes parmi les Nations.",
+      "pourquoi": "Une plaque pour quatre Justes parmi les Nations",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167944",
+      "fait_en": "Deliberation on the affixing of a commemorative plaque at the Oratoire du Louvre, 145 rue Saint-Honoré, in tribute to Paul Vergara, Marcelle Vergara, Marcelle Guillemot and Suzanne Spaak, Righteous Among the Nations.",
+      "pourquoi_en": "A plaque for four Righteous Among the Nations"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2009": 194.12,
+      "2010": 4832.14,
+      "2011": 771471.22,
+      "2012": 331446.2,
+      "2013": 76248.73,
+      "2014": 39321.83,
+      "2015": 5014.19,
+      "2016": 19618.73
+    },
+    "total_eur": 1248147.16,
+    "operations": [
+      {
+        "ap_cle": "B100/0903656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2011": 749871.06,
+          "2012": 327108.08,
+          "2013": 69171.98
+        },
+        "total_mandate": 1146151.12,
+        "preuve": "Le libellé de l'opération d'investissement nomme exactement le lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il désigne ce temple et aucun autre équipement. Mandatements en 2011, 2012 et 2013. Le Conseil de Paris a par ailleurs approuvé, en septembre 2008, les « marchés de travaux relatifs à la restauration de la façade nord de l'oratoire du Louvre » (2008 DAC 211) : la source d'investissement ne dit pas si cette opération finance ces marchés.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903656"
+      },
+      {
+        "ap_cle": "0903656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2014": 39005.1,
+          "2015": 3324.63
+        },
+        "total_mandate": 42329.73,
+        "preuve": "Libellé de l'opération identique au nom du lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0903656 que la ligne B100/0903656 (deux clés distinctes dans la source). Mandatements en 2014 et 2015.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903656"
+      },
+      {
+        "ap_cle": "B100/0703656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2009": 194.12,
+          "2010": 4832.14,
+          "2011": 21600.16,
+          "2012": 4338.12,
+          "2013": 5634.63
+        },
+        "total_mandate": 36599.17,
+        "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il nomme ce lieu et aucun autre équipement. Mandatements de 2009 à 2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703656"
+      },
+      {
+        "ap_cle": "1103656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2015": 1689.56,
+          "2016": 19618.73
+        },
+        "total_mandate": 21308.29,
+        "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Le temple est situé 145, rue Saint-Honoré (1er), adresse citée par la délibération 2022 DAC 394 (« à l'Oratoire du Louvre, 145, rue Saint-Honoré (1er) »). Mandatements en 2015 et 2016.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103656"
+      },
+      {
+        "ap_cle": "B100/1103656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2013": 1442.12
+        },
+        "total_mandate": 1442.12,
+        "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 1103656 que la ligne 1103656 (deux clés distinctes dans la source) ; un seul mandatement, en 2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103656"
+      },
+      {
+        "ap_cle": "0703656",
+        "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+        "mandate_par_annee": {
+          "2014": 316.73
+        },
+        "total_mandate": 316.73,
+        "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0703656 que la ligne B100/0703656 (deux clés distinctes dans la source) ; un seul mandatement, en 2014.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703656"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2016"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Temple+de+l%27Oratoire+du+Louvre"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Temple+de+l%27Oratoire+du+Louvre%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Between 1998 and 2001, the Conseil de Paris considers a grant to the Association des amis du chœur de l'Oratoire du Louvre (1st arrondissement) each year; the September 2001 title ties it to \"its activities in Paris, in 2001\", and none of these titles states an amount. In September 2008, a deliberation concerns the approval of the procurement procedures for the works contracts relating to the restoration of the oratory's north façade, divided into four lots: site setup, masonry, dressed stone and façade cleaning; restoration of sculptures; roofing; wood joinery. In December 2022, a deliberation concerns the affixing of a commemorative plaque at the Oratoire du Louvre, 145 rue Saint-Honoré, in tribute to Paul Vergara, Marcelle Vergara, Marcelle Guillemot and Suzanne Spaak, Righteous Among the Nations.",
+  "bmo_recit_en": "The Temple de l'Oratoire appears in the Bulletin municipal in April 1911, in passing, in the route of a metro line. This route follows the avenue de l'Opéra, the place du Théâtre-Français and the place du Palais-Royal, where a connection with line no. 1 is listed, then the rue Saint-Honoré as far as the rue de Marengo, before passing under the annex of the Magasins du Louvre and under the Temple de l'Oratoire. The temple is not the subject of a decision of its own there: it is one of the points along the underground route.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

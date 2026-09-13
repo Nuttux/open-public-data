@@ -1,325 +1,407 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "halle-pajol",
- "name": "Halle Pajol",
- "kind_fr": "Équipement",
- "kind_en": "Public facility",
- "famille": "urbain",
- "arrondissement": 18,
- "lat": 48.888503,
- "lon": 2.36296,
- "photo": "/img/lieux/halle-pajol.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guilhem Vellut from Paris, France",
-  "url": "https://commons.wikimedia.org/wiki/File:Halle_Pajol,_Paris_23_April_2017_001.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1066,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (9 trouvés)",
-  "lecture_mode_en": "title naming the place (9 found)",
-  "n_lus": 9,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2003": [
-   {
-    "reference": "2003 DAC 586",
-    "titre": "Parquet Pajol - secteur Halle Pajol (18e). - Approbation du principe de l'opération. - Autorisation à M. le Maire de Paris de solliciter une subvention relative à l'opération auprès de la Région d'Ile-de-France. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69122"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DPA 343",
-    "titre": "Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d’un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e), et des modalités de passation de cinq marchés de prestations intellectuelles correspondants. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54809"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DPA 126",
-    "titre": "Approbation de l’attribution à “JOURDA ARCHITECTES PARIS” du marché de maîtrise d’œuvre relatif à la réhabilitation de la Halle Pajol et la création d’un jardin public dans la ZAC “Pajol” (18e) et autorisation de déposer les demandes de permis de démolir et de construire. Mme Anne HIDALGO, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69662"
-   },
-   {
-    "reference": "2008 DPA 126",
-    "titre": "2008, DPA 126 - Approbation de l’attribution à “Jourda Architectes Paris” du marché de maîtrise d’oeuvre relatif à la réhabilitation de la Halle Pajol et la création d’un jardin public dans la ZAC Pajol (18e) et autorisation de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6716"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 107",
-    "titre": "Approbation des modalités de passation de quatre marchés de prestations intellectuelles (assistance à maîtrise d’ouvrage Lot 1 et Lot 2, assistance à la prise en compte de l’exploitation et de la maintenance, étude de sûreté et sécurité publique) relatifs à la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34430"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DPA 51",
-    "titre": "Approbation des modalités de passation des marchés de travaux et signature de l’avenant n°1 à la convention de groupement de commandes pour la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44946"
-   },
-   {
-    "reference": "2010 DPA 94",
-    "titre": "Approbation des modalités de passation des marchés d’assurance et de cellule de synthèse pour la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85853"
-   }
-  ],
-  "2012": [
-   {
-    "reference": "2012 DPA 33",
-    "titre": "79 - 2012, DPA 33 - Approbation des modalités de passation d'un marché de mobilier pour la réhabilitation de la Halle Pajol et création d'un jardin public (18e). 2012, DPA 34 - Signature de l'avenant n° 3 au marché de maîtrise d'oeuvre et signature de l'avenant n° 2 au marché d'assistance à la maîtrise d'ouvrage en stratégie et pilotage pour la réhabilitation de la Halle Pajol et la création d'un jardin public (18e). Vœu déposé par le groupe UMPPA relatif à l'installation de panneaux solaires ph",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2012",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103898"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2009": 1689306.19,
-   "2010": 3586534.95,
-   "2011": 11562374.59,
-   "2012": 41203858.76,
-   "2013": 11612027.34,
-   "2014": 1900412.1,
-   "2015": 1387079.69,
-   "2016": 1298428.25,
-   "2017": 898815.28,
-   "2018": 74947.66,
-   "2019": 101221.09
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "halle-pajol",
+  "name": "Halle Pajol",
+  "kind_fr": "Équipement",
+  "kind_en": "Public facility",
+  "famille": "urbain",
+  "arrondissement": 18,
+  "lat": 48.888503,
+  "lon": 2.36296,
+  "photo": "/img/lieux/halle-pajol.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guilhem Vellut from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:Halle_Pajol,_Paris_23_April_2017_001.jpg",
+    "source": "Wikimedia Commons"
   },
-  "total_eur": 75315005.9,
-  "operations": [
-   {
-    "ap_cle": "B100/0803769",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2009": 1313115.11,
-     "2010": 2679163.81,
-     "2011": 8010563.47,
-     "2012": 14848059.96,
-     "2013": 2490384.08
-    },
-    "total_mandate": 29341286.43,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0803769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803769"
-   },
-   {
-    "ap_cle": "B100/1203814",
-    "ap_texte": "HALLE PAJOL 18e",
-    "mandate_par_annee": {
-     "2012": 18314109.55,
-     "2013": 2895105.21
-    },
-    "total_mandate": 21209214.76,
-    "preuve": "libellé d'opération « HALLE PAJOL 18e » (clé B100/1203814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203814"
-   },
-   {
-    "ap_cle": "B100/0803814",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2009": 376191.08,
-     "2010": 907371.14,
-     "2011": 3424116.59,
-     "2012": 7411035.78,
-     "2013": 2484732.56
-    },
-    "total_mandate": 14603447.15,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0803814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803814"
-   },
-   {
-    "ap_cle": "B100/0903814",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2011": 127694.53,
-     "2012": 540414.09,
-     "2013": 3512518.57
-    },
-    "total_mandate": 4180627.19,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0903814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903814"
-   },
-   {
-    "ap_cle": "1203814",
-    "ap_texte": "HALLE PAJOL 18e",
-    "mandate_par_annee": {
-     "2014": 1267167.01,
-     "2015": 883436.54,
-     "2016": 868544.94,
-     "2017": 814590.02,
-     "2018": 58494.89,
-     "2019": 73669.7
-    },
-    "total_mandate": 3965903.1,
-    "preuve": "libellé d'opération « HALLE PAJOL 18e » (clé 1203814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-1203814-23138, 58 494,89 €) et 2019 (ligne 2019-1203814-2313, 73 669,70 €) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1203814"
-   },
-   {
-    "ap_cle": "0803769",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2014": 199469.01,
-     "2015": 165669.97,
-     "2016": 137612.65,
-     "2017": 26988.89,
-     "2018": 14555.97
-    },
-    "total_mandate": 544296.49,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0803769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-0803769-458139, 14 555,97 €) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0803769"
-   },
-   {
-    "ap_cle": "0903814",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2014": 214680.51,
-     "2015": 184922.5,
-     "2016": 135786.67,
-     "2017": 2677.07
-    },
-    "total_mandate": 538066.75,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0903814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903814"
-   },
-   {
-    "ap_cle": "0903769",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2014": 194290.9,
-     "2015": 136949.99,
-     "2016": 150281.58,
-     "2017": 12957.26,
-     "2018": 1896.8,
-     "2019": 27551.39
-    },
-    "total_mandate": 523927.92,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0903769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-0903769-458139, 1 896,80 €) et 2019 (lignes 2019-0903769-458139 et 2019-0903769-2313, 27 551,39 € au total) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903769"
-   },
-   {
-    "ap_cle": "B100/0903769",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2012": 90239.38,
-     "2013": 229286.92
-    },
-    "total_mandate": 319526.3,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0903769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903769"
-   },
-   {
-    "ap_cle": "0803814",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2014": 21392.78,
-     "2015": 16100.69,
-     "2016": 6202.41,
-     "2017": 41602.04
-    },
-    "total_mandate": 85297.92,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0803814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803814"
-   },
-   {
-    "ap_cle": "1103769",
-    "ap_texte": "HALLE PAJOL 18EME",
-    "mandate_par_annee": {
-     "2014": 3411.89
-    },
-    "total_mandate": 3411.89,
-    "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 1103769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103769"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2019"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Halle+Pajol"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La ZAC Pajol est une zone d'aménagement concerté située rue Pajol au cœur du quartier de la Chapelle.",
+    "url": "https://fr.wikipedia.org/wiki/ZAC_Pajol",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The ZAC Pajol is a concerted development zone (zone d'aménagement concerté) located on rue Pajol in the heart of the La Chapelle neighbourhood."
+  },
+  "stats": {
+    "n_delibs": 1066,
+    "delibs_span": [
+      2007,
+      2020
+    ],
+    "n_bmo_brut": 517,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (9 trouvés)",
+    "lecture_mode_en": "title naming the place (9 found)",
+    "n_lus": 9,
+    "n_lieu": 8
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En décembre 2003, le Conseil de Paris approuve le principe de l'opération « Parquet Pajol », secteur Halle Pajol, et autorise le Maire à solliciter auprès de la Région une subvention dont la recette escomptée est de 60 000 euros. En décembre 2007, il approuve le principe des travaux de réhabilitation de la halle et de création d'un jardin public, puis, en mai 2008, l'attribution du marché de maîtrise d'œuvre à JOURDA Architectes Paris, associée à ECO CITE et IN SITU, et autorise le Maire à déposer les demandes de permis de démolir et de construire. En 2009 et 2010, il approuve les modalités de passation de marchés de prestations intellectuelles (dont l'assistance à maîtrise d'ouvrage), de travaux, d'assurances et de cellule de synthèse, et autorise le Maire à signer l'avenant n° 1 à la convention de groupement de commandes associant la Ville, la SEMAEST et la FUAJ. En février 2012, Mme Frédérique Pigeon déclare en séance que « la halle sera livrée fin 2012 » et qu'elle comprendra notamment une auberge de jeunesse de 330 lits et une bibliothèque, tandis qu'un vœu du groupe UMPPA sur le photovoltaïque donne lieu à un échange sur les panneaux photovoltaïques de la halle. En juillet 2020, le transfert à Enercoop du contrat de revente de l'électricité produite par l'installation photovoltaïque est débattu ; selon l'adjoint Jacques Baudrier, la centrale a été mise en service en 2013 et a produit 446 000 kilowattheures en 2019.",
+  "moments": [
+    {
+      "id": "69122",
+      "seance": "DECEMBRE 2003",
+      "fait": "Le Conseil approuve le principe de l'opération « Parquet Pajol », secteur Halle Pajol, et autorise le Maire à solliciter une subvention régionale, recette escomptée : 60 000 euros.",
+      "pourquoi": "Le Maire autorisé à solliciter la Région pour « Parquet Pajol »",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69122",
+      "fait_en": "The Council approves the principle of the “Parquet Pajol” operation, Halle Pajol sector, and authorizes the Mayor to apply for a regional grant, expected revenue: 60,000 euros.",
+      "pourquoi_en": "The Mayor authorized to apply to the Region for “Parquet Pajol”"
+    },
+    {
+      "id": "54809",
+      "seance": "DECEMBRE 2007",
+      "fait": "Le Conseil approuve le principe des travaux de réhabilitation de la halle et de création d'un jardin public, ainsi que la passation de cinq marchés de prestations intellectuelles.",
+      "pourquoi": "Le principe de la réhabilitation est approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54809",
+      "fait_en": "The Council approves the principle of works to rehabilitate the hall and create a public garden, as well as the award of five intellectual services contracts.",
+      "pourquoi_en": "The principle of the rehabilitation is approved"
+    },
+    {
+      "id": "69662",
+      "seance": "MAI 2008",
+      "fait": "Le Conseil approuve l'attribution de la maîtrise d'œuvre à JOURDA Architectes Paris, associée à ECO CITE et IN SITU, et autorise le Maire à signer ce marché et à déposer les demandes de permis de démolir et de construire.",
+      "pourquoi": "L'équipe de maîtrise d'œuvre est désignée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69662",
+      "fait_en": "The Council approves the award of the design and construction supervision contract to JOURDA Architectes Paris, in association with ECO CITE and IN SITU, and authorizes the Mayor to sign this contract and to file the applications for demolition and building permits.",
+      "pourquoi_en": "The design and construction supervision team is appointed"
+    },
+    {
+      "id": "6716",
+      "seance": "MAI 2008",
+      "fait": "M. Yves Contassot se félicite en séance du choix de confier la réhabilitation de la halle à Hélène Jourda, estimant que « l'on fait bien mieux que le Plan Climat en termes d'efficacité énergétique et de conception ».",
+      "pourquoi": "Un élu salue la conception énergétique retenue",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6716",
+      "fait_en": "Mr Yves Contassot welcomes, during the session, the choice to entrust the rehabilitation of the hall to Hélène Jourda, considering that “we are doing much better than the Climate Plan in terms of energy efficiency and design”.",
+      "pourquoi_en": "A councillor welcomes the energy design chosen"
+    },
+    {
+      "id": "44946",
+      "seance": "MARS 2010",
+      "fait": "Le Conseil approuve les modalités de passation des marchés de travaux et autorise le Maire à signer l'avenant n° 1 à la convention de groupement de commandes.",
+      "pourquoi": "Le mode de passation des marchés de travaux est approuvé",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44946",
+      "fait_en": "The Council approves the award procedures for the works contracts and authorizes the Mayor to sign amendment No. 1 to the joint procurement agreement.",
+      "pourquoi_en": "The award procedure for the works contracts is approved"
+    },
+    {
+      "id": "103898",
+      "seance": "FEVRIER 2012",
+      "fait": "Mme Frédérique Pigeon déclare que « la halle sera livrée fin 2012 » avec auberge de jeunesse et jardins ; sur un vœu UMPPA, l'adjointe s'exprimant au nom de la 8e Commission affirme que l'entreprise avec laquelle l'engagement sur les panneaux photovoltaïques de la halle avait été concrétisé après appel d'offres « a dû se retirer ».",
+      "pourquoi": "Une élue évoque une livraison fin 2012 ; panneaux solaires en débat",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103898",
+      "fait_en": "Ms Frédérique Pigeon states that “the hall will be delivered at the end of 2012” with a youth hostel and gardens; on a UMPPA motion, the deputy mayor speaking on behalf of the 8th Committee asserts that the company with which the commitment on the hall's photovoltaic panels had been finalized following a call for tenders “had to withdraw”.",
+      "pourquoi_en": "A councillor mentions delivery at the end of 2012; solar panels under debate"
+    },
+    {
+      "id": "156163",
+      "seance": "JUILLET 2020",
+      "fait": "Le transfert à Enercoop du contrat de revente d'électricité est débattu : M. Jean-Noël Aqua (groupe Communiste et Citoyen) déclare « nous ne sommes pas convaincus par ce projet de délibération » et juge le service public « mieux à même de répondre aux enjeux posés » ; selon M. Jacques Baudrier, la centrale « a été mise en service en 2013 ».",
+      "pourquoi": "La centrale solaire, entre coopérative et service public",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156163",
+      "fait_en": "The transfer to Enercoop of the electricity resale contract is debated: Mr Jean-Noël Aqua (Communist and Citizen group) states “we are not convinced by this draft deliberation” and considers the public service “better placed to respond to the challenges at stake”; according to Mr Jacques Baudrier, the plant “was commissioned in 2013”.",
+      "pourquoi_en": "The solar plant, between cooperative and public service"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2003": [
+      {
+        "reference": "2003 DAC 586",
+        "titre": "Parquet Pajol - secteur Halle Pajol (18e). - Approbation du principe de l'opération. - Autorisation à M. le Maire de Paris de solliciter une subvention relative à l'opération auprès de la Région d'Ile-de-France. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69122"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DPA 343",
+        "titre": "Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d’un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e), et des modalités de passation de cinq marchés de prestations intellectuelles correspondants. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54809"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DPA 126",
+        "titre": "Approbation de l’attribution à “JOURDA ARCHITECTES PARIS” du marché de maîtrise d’œuvre relatif à la réhabilitation de la Halle Pajol et la création d’un jardin public dans la ZAC “Pajol” (18e) et autorisation de déposer les demandes de permis de démolir et de construire. Mme Anne HIDALGO, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69662"
+      },
+      {
+        "reference": "2008 DPA 126",
+        "titre": "2008, DPA 126 - Approbation de l’attribution à “Jourda Architectes Paris” du marché de maîtrise d’oeuvre relatif à la réhabilitation de la Halle Pajol et la création d’un jardin public dans la ZAC Pajol (18e) et autorisation de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6716"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 107",
+        "titre": "Approbation des modalités de passation de quatre marchés de prestations intellectuelles (assistance à maîtrise d’ouvrage Lot 1 et Lot 2, assistance à la prise en compte de l’exploitation et de la maintenance, étude de sûreté et sécurité publique) relatifs à la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34430"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DPA 51",
+        "titre": "Approbation des modalités de passation des marchés de travaux et signature de l’avenant n°1 à la convention de groupement de commandes pour la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44946"
+      },
+      {
+        "reference": "2010 DPA 94",
+        "titre": "Approbation des modalités de passation des marchés d’assurance et de cellule de synthèse pour la réhabilitation de la Halle Pajol et à la création d’un jardin public (18e). Mme Anne HIDALGO, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85853"
+      }
+    ],
+    "2012": [
+      {
+        "reference": "2012 DPA 33",
+        "titre": "79 - 2012, DPA 33 - Approbation des modalités de passation d'un marché de mobilier pour la réhabilitation de la Halle Pajol et création d'un jardin public (18e). 2012, DPA 34 - Signature de l'avenant n° 3 au marché de maîtrise d'oeuvre et signature de l'avenant n° 2 au marché d'assistance à la maîtrise d'ouvrage en stratégie et pilotage pour la réhabilitation de la Halle Pajol et la création d'un jardin public (18e). Vœu déposé par le groupe UMPPA relatif à l'installation de panneaux solaires ph",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2012",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103898"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2009": 1689306.19,
+      "2010": 3586534.95,
+      "2011": 11562374.59,
+      "2012": 41203858.76,
+      "2013": 11612027.34,
+      "2014": 1900412.1,
+      "2015": 1387079.69,
+      "2016": 1298428.25,
+      "2017": 898815.28,
+      "2018": 74947.66,
+      "2019": 101221.09
+    },
+    "total_eur": 75315005.9,
+    "operations": [
+      {
+        "ap_cle": "B100/0803769",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2009": 1313115.11,
+          "2010": 2679163.81,
+          "2011": 8010563.47,
+          "2012": 14848059.96,
+          "2013": 2490384.08
+        },
+        "total_mandate": 29341286.43,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0803769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803769"
+      },
+      {
+        "ap_cle": "B100/1203814",
+        "ap_texte": "HALLE PAJOL 18e",
+        "mandate_par_annee": {
+          "2012": 18314109.55,
+          "2013": 2895105.21
+        },
+        "total_mandate": 21209214.76,
+        "preuve": "libellé d'opération « HALLE PAJOL 18e » (clé B100/1203814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203814"
+      },
+      {
+        "ap_cle": "B100/0803814",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2009": 376191.08,
+          "2010": 907371.14,
+          "2011": 3424116.59,
+          "2012": 7411035.78,
+          "2013": 2484732.56
+        },
+        "total_mandate": 14603447.15,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0803814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803814"
+      },
+      {
+        "ap_cle": "B100/0903814",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2011": 127694.53,
+          "2012": 540414.09,
+          "2013": 3512518.57
+        },
+        "total_mandate": 4180627.19,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0903814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903814"
+      },
+      {
+        "ap_cle": "1203814",
+        "ap_texte": "HALLE PAJOL 18e",
+        "mandate_par_annee": {
+          "2014": 1267167.01,
+          "2015": 883436.54,
+          "2016": 868544.94,
+          "2017": 814590.02,
+          "2018": 58494.89,
+          "2019": 73669.7
+        },
+        "total_mandate": 3965903.1,
+        "preuve": "libellé d'opération « HALLE PAJOL 18e » (clé 1203814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-1203814-23138, 58 494,89 €) et 2019 (ligne 2019-1203814-2313, 73 669,70 €) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1203814"
+      },
+      {
+        "ap_cle": "0803769",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2014": 199469.01,
+          "2015": 165669.97,
+          "2016": 137612.65,
+          "2017": 26988.89,
+          "2018": 14555.97
+        },
+        "total_mandate": 544296.49,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0803769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-0803769-458139, 14 555,97 €) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0803769"
+      },
+      {
+        "ap_cle": "0903814",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2014": 214680.51,
+          "2015": 184922.5,
+          "2016": 135786.67,
+          "2017": 2677.07
+        },
+        "total_mandate": 538066.75,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0903814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903814"
+      },
+      {
+        "ap_cle": "0903769",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2014": 194290.9,
+          "2015": 136949.99,
+          "2016": 150281.58,
+          "2017": 12957.26,
+          "2018": 1896.8,
+          "2019": 27551.39
+        },
+        "total_mandate": 523927.92,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0903769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; les exercices 2018 (ligne 2018-0903769-458139, 1 896,80 €) et 2019 (lignes 2019-0903769-458139 et 2019-0903769-2313, 27 551,39 € au total) recopiés du candidat sont les mêmes euros que les lignes du jeu « investissements » de ces années (même code d'opération, même montant) : ne pas les cumuler avec le bloc projets ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903769"
+      },
+      {
+        "ap_cle": "B100/0903769",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2012": 90239.38,
+          "2013": 229286.92
+        },
+        "total_mandate": 319526.3,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé B100/0903769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903769"
+      },
+      {
+        "ap_cle": "0803814",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2014": 21392.78,
+          "2015": 16100.69,
+          "2016": 6202.41,
+          "2017": 41602.04
+        },
+        "total_mandate": 85297.92,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 0803814, direction DPA, mission « PATRIMOINE ET ARCHIT ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803814"
+      },
+      {
+        "ap_cle": "1103769",
+        "ap_texte": "HALLE PAJOL 18EME",
+        "mandate_par_annee": {
+          "2014": 3411.89
+        },
+        "total_mandate": 3411.89,
+        "preuve": "libellé d'opération « HALLE PAJOL 18EME » (clé 1103769, direction DPA, mission « OPERATIONS SOUS MAND ») nomme le lieu ; la délibération 2007 DPA 343 « Approbation du principe de réalisation des travaux de réhabilitation de la halle Pajol et de création d'un jardin public, 18 ter - 20-20 bis - 20 ter - 22 ter, rue Pajol, 63 ter, rue Riquet (18e) » désigne ce site, adresse recoupée par « Halle Pajol - 20 Esplanade Nathalie-Sarraute (18e) » (2020 DCPA 25) ; l'opération est conduite dans la ZAC « Pajol », maîtrise d'œuvre attribuée à « JOURDA ARCHITECTES PARIS » (2008 DPA 126) ; la mission « OPERATIONS SOUS MAND » (opérations sous mandat) signale une dépense portée sous mandat, à lire avec ce groupement de commandes ; périmètre : les travaux ont été passés dans le cadre d'une convention de groupement de commandes entre la Ville, la SEMAEST et la FUAJ « en vue de la réalisation des travaux de réhabilitation de la grande halle et d'aménagement du jardin extérieur » (délibération 2007 DU 76 - DPA 115-2°, visée par 2009 DPA 107, 2010 DPA 51 et 2010 DPA 94) — l'opération couvre donc l'ensemble du site (grande halle + jardin public) et non le seul bâtiment de la halle ; montants recopiés à l'identique du candidat (mandaté par exercice), aucun montant ajouté.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103769"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2019"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Halle+Pajol"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Halle+Pajol%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In December 2003, the Council of Paris approves the principle of the “Parquet Pajol” operation, Halle Pajol sector, and authorizes the Mayor to apply to the Region for a grant with expected revenue of 60,000 euros. In December 2007, it approves the principle of works to rehabilitate the hall and create a public garden, then, in May 2008, the award of the design and construction supervision contract (maîtrise d'œuvre) to JOURDA Architectes Paris, in association with ECO CITE and IN SITU, and authorizes the Mayor to file the applications for demolition and building permits. In 2009 and 2010, it approves the award procedures for intellectual services contracts (including project owner support), works, insurance and design coordination (cellule de synthèse) contracts, and authorizes the Mayor to sign amendment No. 1 to the joint procurement agreement bringing together the City, SEMAEST and FUAJ. In February 2012, Ms Frédérique Pigeon states during the session that “the hall will be delivered at the end of 2012” and that it will include, among other things, a 330-bed youth hostel and a library, while a motion by the UMPPA group on photovoltaics gives rise to an exchange about the hall's photovoltaic panels. In July 2020, the transfer to Enercoop of the contract for the resale of electricity produced by the photovoltaic installation is debated; according to deputy mayor Jacques Baudrier, the plant was commissioned in 2013 and produced 446,000 kilowatt-hours in 2019.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

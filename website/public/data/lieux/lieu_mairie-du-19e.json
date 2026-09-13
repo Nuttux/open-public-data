@@ -1,364 +1,373 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-19e",
- "name": "Mairie du 19e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 19,
- "lat": 48.8836,
- "lon": 2.3831,
- "photo": "/img/lieux/mairie-du-19e.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guillaume Baviere",
-  "url": "https://commons.wikimedia.org/wiki/File:La_mairie_du_19e_arrondissement_2010.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 865,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (23 trouvés)",
-  "lecture_mode_en": "title naming the place (23 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1999": [
-   {
-    "reference": "1999 DPA 151",
-    "titre": "Approbation du principe de la confortation de sols de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85561"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DPA 338",
-    "titre": "Approbation du principe de la réalisation de travaux de clos et couvert à la mairie du 19e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40702"
-   },
-   {
-    "reference": "2000 DPA 348",
-    "titre": "Approbation du principe de la mise aux normes des installations électriques et de la lustrerie de l'escalier d'honneur et de la salle des fêtes de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40718"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DPA 202",
-    "titre": "Approbation du principe de la réalisation des 2e et 3e phases de travaux de restructuration des locaux de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de construire et de démolir relatives à cette opération. Mme",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84741"
-   },
-   {
-    "reference": "2001 DPA 313",
-    "titre": "Approbation du principe de la réalisation des travaux de sécurité ainsi que de la rénovation des toitures de la mairie du 19e arrondissement et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30327"
-   },
-   {
-    "reference": "2001 DPA 58",
-    "titre": "26 - 2001, DPA 58 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la reprise de structures et de la restructuration du bâtiment \"salle des fêtes\" à la mairie du 19e arrondissement",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8814"
-   },
-   {
-    "reference": "2001 DPA 58",
-    "titre": "Approbation du principe de la reprise de structures et de la restructuration du bâtiment \"Salle des fêtes\" de la mairie du 19e arrondissement (19e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Christian SAUTTER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28674"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DPA 233",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux de confortation des sols de la Mairie du 19e arrondissement, sise 5-7, place Armand-Carrel à Paris (19e). Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55865"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DPA 117",
-    "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n°1 au marché de travaux n° 02/25-268 signé avec l'entreprise Léon GROSSE dans le cadre de la restructuration du bâtiment \"salle des fêtes\" de la Mairie du 19e arrondissement, sise 5/7, place Armand Carrel à Paris (19ème). Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47498"
-   },
-   {
-    "reference": "2003 DPA 266",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de travaux n° 02/25-268 signé avec l'entreprise Léon GROSSE dans le cadre de la restructuration des locaux du bâtiment \"Salle des fêtes\" de la mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69159"
-   },
-   {
-    "reference": "2003 DPA 357",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des couvertures de la mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69225"
-   },
-   {
-    "reference": "2003 DPA 369",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à la Mairie du 19e arrondissement (19e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69273"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DPA 163",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la société Saga Entreprise dans le cadre de la modernisation des couvertures de la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87260"
-   },
-   {
-    "reference": "2005 DPA 51",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. M. François DAGNAUD, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82328"
-   },
-   {
-    "reference": "2005 DPA 51",
-    "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques et de modernisation de l’alarme-incendie à la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. M. François DAGNAUD, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82273"
-   },
-   {
-    "reference": "2005 DPA 63",
-    "titre": "Approbation des modalités de passation du marché de travaux relatif à la deuxième phase de restructuration des locaux de la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80645"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DPA 266",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des couvertures à la Mairie du 19e arrondissemen, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52429"
-   },
-   {
-    "reference": "2006 DPA 266",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52286"
-   },
-   {
-    "reference": "2006 DPA 266",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des châssis métalliques de l’escalier d’honneur à la Mairie du 19e arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52579"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DPA 303",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux signé avec la société SIE (Sarl), relatif à la mise aux normes des installations électriques et la modernisation de l’alarme incendie à la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54903"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DPA 11",
-    "titre": "Approbation du principe de réalisation de travaux de mise aux normes des installations électriques de la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77169"
-   },
-   {
-    "reference": "2008 DPA 188",
-    "titre": "Approbation et signature d’un avenant n°1 au marché de maîtrise d’œuvre pour la deuxième tranche de restructuration des locaux de la Mairie du 19è. Mme Maîté ERRECART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61800"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 108",
-    "titre": "Approbation et signature d’un avenant n° 1 au marché de travaux relatif à la deuxième tranche de restructuration des locaux de la Mairie du 19e arrondissement. Mme Maïté ERRECART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50040"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20191210000395",
-   "objet": "REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME",
-   "objet_clair": null,
-   "fournisseur": "L2V ASCENSEURS",
-   "montant_max": 56770.0,
-   "date_notification": "2019-05-07",
-   "preuve": "Objet du marché : \"REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-19e",
+  "name": "Mairie du 19e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 19,
+  "lat": 48.8836,
+  "lon": 2.3831,
+  "photo": "/img/lieux/mairie-du-19e.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guillaume Baviere",
+    "url": "https://commons.wikimedia.org/wiki/File:La_mairie_du_19e_arrondissement_2010.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "numero_marche": "20191210001439",
-   "objet": "FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME",
-   "objet_clair": null,
-   "fournisseur": "PORTALP FRANCE",
-   "montant_max": 32500.0,
-   "date_notification": "2019-11-20",
-   "preuve": "Objet du marché : \"FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2010": 3123.17,
-   "2017": 73272.23,
-   "2018": 358337.85,
-   "2019": 254992.3,
-   "2020": 288657.49,
-   "2021": 6807.28
-  },
-  "total_eur": 985190.32,
-  "operations": [
-   {
-    "ap_cle": "1604876",
-    "ap_texte": "MAIRIE DU 19e - ACCESSIBILITE",
-    "mandate_par_annee": {
-     "2017": 73272.23,
-     "2018": 358337.85,
-     "2019": 254992.3,
-     "2020": 288657.49,
-     "2021": 6807.28
-    },
-    "total_mandate": 982067.15,
-    "preuve": "Libellé de l'opération : \"MAIRIE DU 19e - ACCESSIBILITE\" — nomme explicitement le lieu (direction DDCT).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604876"
-   },
-   {
-    "ap_cle": "B100/0500013",
-    "ap_texte": "MAIRIE DU 19EME  - TRAVAUX",
-    "mandate_par_annee": {
-     "2010": 3123.17
-    },
-    "total_mandate": 3123.17,
-    "preuve": "Libellé de l'opération : \"MAIRIE DU 19EME - TRAVAUX\" — nomme explicitement le lieu (direction DPA).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500013"
-   }
-  ],
-  "periode": [
-   "2010",
-   "2021"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+19e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 865,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (23 trouvés)",
+    "lecture_mode_en": "title naming the place (23 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1999": [
+      {
+        "reference": "1999 DPA 151",
+        "titre": "Approbation du principe de la confortation de sols de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85561"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DPA 338",
+        "titre": "Approbation du principe de la réalisation de travaux de clos et couvert à la mairie du 19e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40702"
+      },
+      {
+        "reference": "2000 DPA 348",
+        "titre": "Approbation du principe de la mise aux normes des installations électriques et de la lustrerie de l'escalier d'honneur et de la salle des fêtes de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40718"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DPA 202",
+        "titre": "Approbation du principe de la réalisation des 2e et 3e phases de travaux de restructuration des locaux de la mairie du 19e arrondissement. - Approbation des modalités d'attribution du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de construire et de démolir relatives à cette opération. Mme",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84741"
+      },
+      {
+        "reference": "2001 DPA 313",
+        "titre": "Approbation du principe de la réalisation des travaux de sécurité ainsi que de la rénovation des toitures de la mairie du 19e arrondissement et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30327"
+      },
+      {
+        "reference": "2001 DPA 58",
+        "titre": "26 - 2001, DPA 58 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la reprise de structures et de la restructuration du bâtiment \"salle des fêtes\" à la mairie du 19e arrondissement",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8814"
+      },
+      {
+        "reference": "2001 DPA 58",
+        "titre": "Approbation du principe de la reprise de structures et de la restructuration du bâtiment \"Salle des fêtes\" de la mairie du 19e arrondissement (19e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Christian SAUTTER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28674"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DPA 233",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux de confortation des sols de la Mairie du 19e arrondissement, sise 5-7, place Armand-Carrel à Paris (19e). Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55865"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DPA 117",
+        "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n°1 au marché de travaux n° 02/25-268 signé avec l'entreprise Léon GROSSE dans le cadre de la restructuration du bâtiment \"salle des fêtes\" de la Mairie du 19e arrondissement, sise 5/7, place Armand Carrel à Paris (19ème). Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47498"
+      },
+      {
+        "reference": "2003 DPA 266",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de travaux n° 02/25-268 signé avec l'entreprise Léon GROSSE dans le cadre de la restructuration des locaux du bâtiment \"Salle des fêtes\" de la mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69159"
+      },
+      {
+        "reference": "2003 DPA 357",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des couvertures de la mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69225"
+      },
+      {
+        "reference": "2003 DPA 369",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à la Mairie du 19e arrondissement (19e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69273"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DPA 163",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la société Saga Entreprise dans le cadre de la modernisation des couvertures de la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87260"
+      },
+      {
+        "reference": "2005 DPA 51",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. M. François DAGNAUD, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82328"
+      },
+      {
+        "reference": "2005 DPA 51",
+        "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques et de modernisation de l’alarme-incendie à la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. M. François DAGNAUD, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82273"
+      },
+      {
+        "reference": "2005 DPA 63",
+        "titre": "Approbation des modalités de passation du marché de travaux relatif à la deuxième phase de restructuration des locaux de la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80645"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DPA 266",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des couvertures à la Mairie du 19e arrondissemen, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52429"
+      },
+      {
+        "reference": "2006 DPA 266",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52286"
+      },
+      {
+        "reference": "2006 DPA 266",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des châssis métalliques de l’escalier d’honneur à la Mairie du 19e arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52579"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DPA 303",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux signé avec la société SIE (Sarl), relatif à la mise aux normes des installations électriques et la modernisation de l’alarme incendie à la Mairie du 19e arrondissement. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54903"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DPA 11",
+        "titre": "Approbation du principe de réalisation de travaux de mise aux normes des installations électriques de la Mairie du 19e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77169"
+      },
+      {
+        "reference": "2008 DPA 188",
+        "titre": "Approbation et signature d’un avenant n°1 au marché de maîtrise d’œuvre pour la deuxième tranche de restructuration des locaux de la Mairie du 19è. Mme Maîté ERRECART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61800"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 108",
+        "titre": "Approbation et signature d’un avenant n° 1 au marché de travaux relatif à la deuxième tranche de restructuration des locaux de la Mairie du 19e arrondissement. Mme Maïté ERRECART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50040"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20191210000395",
+      "objet": "REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME",
+      "objet_clair": null,
+      "fournisseur": "L2V ASCENSEURS",
+      "montant_max": 56770.0,
+      "date_notification": "2019-05-07",
+      "preuve": "Objet du marché : \"REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
+    },
+    {
+      "numero_marche": "20191210001439",
+      "objet": "FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME",
+      "objet_clair": null,
+      "fournisseur": "PORTALP FRANCE",
+      "montant_max": 32500.0,
+      "date_notification": "2019-11-20",
+      "preuve": "Objet du marché : \"FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2010": 3123.17,
+      "2017": 73272.23,
+      "2018": 358337.85,
+      "2019": 254992.3,
+      "2020": 288657.49,
+      "2021": 6807.28
+    },
+    "total_eur": 985190.32,
+    "operations": [
+      {
+        "ap_cle": "1604876",
+        "ap_texte": "MAIRIE DU 19e - ACCESSIBILITE",
+        "mandate_par_annee": {
+          "2017": 73272.23,
+          "2018": 358337.85,
+          "2019": 254992.3,
+          "2020": 288657.49,
+          "2021": 6807.28
+        },
+        "total_mandate": 982067.15,
+        "preuve": "Libellé de l'opération : \"MAIRIE DU 19e - ACCESSIBILITE\" — nomme explicitement le lieu (direction DDCT).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604876"
+      },
+      {
+        "ap_cle": "B100/0500013",
+        "ap_texte": "MAIRIE DU 19EME  - TRAVAUX",
+        "mandate_par_annee": {
+          "2010": 3123.17
+        },
+        "total_mandate": 3123.17,
+        "preuve": "Libellé de l'opération : \"MAIRIE DU 19EME - TRAVAUX\" — nomme explicitement le lieu (direction DPA).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500013"
+      }
+    ],
+    "periode": [
+      "2010",
+      "2021"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+19e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

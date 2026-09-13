@@ -49,6 +49,19 @@ seeds:
     # -------------------------------------------------------------------------
     # Mapping thématiques (chapitre/fonction → thématique dashboard)
     # -------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # Subventions 2015 : noms masqués par l'open data, retrouvés dans l'annexe
+    # B1.7 du compte administratif (montant au centime + code postal).
+    # -------------------------------------------------------------------------
+    seed_subventions_2015_noms_annexe:
+      +column_types:
+        annee: INT64
+        pseudonyme: STRING
+        montant: FLOAT64
+        code_postal: STRING
+        nom_annexe: STRING
+        preuve: STRING
+
     seed_mapping_thematiques:
       +column_types:
         chapitre_code: STRING

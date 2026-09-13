@@ -1,619 +1,628 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "les-halles",
- "name": "Les Halles",
- "kind_fr": "Quartier-équipement",
- "kind_en": "District facility",
- "famille": "services",
- "arrondissement": 1,
- "lat": 48.8621,
- "lon": 2.3454,
- "photo": "/img/lieux/les-halles.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "xiquinhosilva from Cacau",
-  "url": "https://commons.wikimedia.org/wiki/File:Canop%C3%A9e_des_Halles,_Paris_(36551928931).jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le Forum des Halles est un centre commercial français installé sur le site des anciennes halles centrales de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/Forum_des_Halles",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "les-halles",
+  "name": "Les Halles",
+  "kind_fr": "Quartier-équipement",
+  "kind_en": "District facility",
+  "famille": "services",
+  "arrondissement": 1,
+  "lat": 48.8621,
+  "lon": 2.3454,
+  "photo": "/img/lieux/les-halles.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "xiquinhosilva from Cacau",
+    "url": "https://commons.wikimedia.org/wiki/File:Canop%C3%A9e_des_Halles,_Paris_(36551928931).jpg",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "The Forum des Halles is a French shopping center built on the site of the former central market halls of Paris."
- },
- "stats": {
-  "n_delibs": 105,
-  "delibs_span": [
-   2007,
-   2018
-  ],
-  "n_bmo_brut": 2974,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (41 trouvés)",
-  "lecture_mode_en": "title naming the place (41 found)",
-  "n_lus": 41,
-  "n_lieu": 40
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "En novembre 2007, le Conseil de Paris approuve le principe de construction du Carreau des Halles et le marché de maîtrise d'œuvre correspondant, après le choix du projet de Patrick Berger et Jacques Anziutti — la Canopée — par un jury fin juin 2007 ; le dossier définitif est arrêté en avril 2009, l'intérêt général de l'opération déclaré en mars 2010, et le protocole foncier de novembre 2010 cède à Unibail la propriété des espaces commerciaux pour 238 millions d'euros, là où le bail de 1976 ne prévoyait qu'une redevance annuelle de 1,8 million d'euros. Le coût annoncé évolue de séance en séance : 200 millions cités pour 2004, 680 puis 760 millions en 2009, 802 millions en 2010, 6,7 millions supplémentaires en 2011, une enveloppe réactualisée à 918 millions H.T. en 2014 encore présentée comme respectée en 2017. Le marché de maîtrise d'œuvre de la Canopée est contesté en justice : le Tribunal administratif annule l'avenant n° 3 en janvier 2012 pour une dérive chiffrée à 28,5 %, une transaction de 2,4 millions est approuvée en mars 2012, puis la Cour administrative d'appel suspend cette annulation en juillet 2012. Le chantier produit ses propres litiges : abattage de 260 arbres le 16 février, élégissements du Forum omis par l'architecte du jardin, 2 millions d'euros de désamiantage des pavillons Willerval, couverture non étanche ayant imposé un parapluie à 1.195.374 euros HT. En novembre 2018, le rapport de la Chambre régionale des comptes est communiqué au Conseil : selon les élus qui le citent, Unibail a réellement payé 142 millions d'euros pour un centre commercial que la société déclarait valoir 752 millions.",
- "moments": [
-  {
-   "id": "25024",
-   "seance": "NOVEMBRE 2007",
-   "fait": "Le Conseil approuve le principe de construction du Carreau des Halles et le marché de maîtrise d'œuvre, après le choix du projet Berger-Anziutti par un jury fin juin 2007.",
-   "pourquoi": "Le point de départ voté de l'opération",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25024",
-   "fait_en": "The Council approved the principle of building the Carreau des Halles and the project management contract, following the selection of the Berger-Anziutti project by a jury in late June 2007.",
-   "pourquoi_en": "The vote that launched the operation"
-  },
-  {
-   "id": "17270",
-   "seance": "SEPTEMBRE 2009",
-   "fait": "À l'occasion des contrats d'assurance du site, le débat acte la disparition de l'auditorium de 350 places du conservatoire, qui « impactait de 11 millions d'euros le coût total », au profit de surfaces commerciales.",
-   "pourquoi": "La programmation publique rabotée avant le chantier",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270",
-   "fait_en": "During discussion of the site's insurance contracts, the debate confirmed the disappearance of the conservatory's 350-seat auditorium, which \"added 11 million euros to the total cost,\" in favor of commercial space.",
-   "pourquoi_en": "Public programming trimmed before construction began"
-  },
-  {
-   "id": "21487",
-   "seance": "NOVEMBRE 2010",
-   "fait": "La Ville propose de céder à Unibail la propriété des espaces commerciaux pour 238 millions d'euros, le bail de 1976 ne rapportant qu'une redevance annuelle de 1,8 million d'euros.",
-   "pourquoi": "La vente du Forum, pivot financier du projet",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487",
-   "fait_en": "The City proposed transferring ownership of the commercial spaces to Unibail for 238 million euros, with the 1976 lease yielding only an annual rent of 1.8 million euros.",
-   "pourquoi_en": "The sale of the Forum, the project's financial pivot"
-  },
-  {
-   "id": "95771",
-   "seance": "MAI 2011",
-   "fait": "Le don des grumes issues de l'abattage à cinq associations (345 euros) déclenche un conflit sur l'état phytosanitaire des 343 arbres du jardin, dont 260 abattus le 16 février.",
-   "pourquoi": "Le conflit du jardin, hors enjeu budgétaire",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771",
-   "fait_en": "The donation of logs from the felling to five associations (345 euros) triggered a dispute over the health condition of the garden's 343 trees, 260 of which were felled on 16 February.",
-   "pourquoi_en": "The garden dispute, outside the budgetary stakes"
-  },
-  {
-   "id": "104597",
-   "seance": "MARS 2012",
-   "fait": "Après l'annulation de l'avenant n° 3 pour une dérive de 28,5 %, le Conseil approuve une transaction de 2,4 millions avec la maîtrise d'œuvre de la Canopée.",
-   "pourquoi": "Le juge sanctionne la dérive des honoraires",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597",
-   "fait_en": "After the annulment of amendment No. 3 over a 28.5 percent overrun, the Council approved a settlement of 2.4 million with the Canopée's project managers.",
-   "pourquoi_en": "The judge penalizes the overrun in fees"
-  },
-  {
-   "id": "116757",
-   "seance": "DECEMBRE 2013",
-   "fait": "Sept délibérations règlent le partage des charges et des surfaces avec Unibail-Rodamco en cours de chantier, et le patio du forum est dénommé place Pina Bausch.",
-   "pourquoi": "La négociation permanente avec l'exploitant privé",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757",
-   "fait_en": "Seven deliberations settled the sharing of costs and floor space with Unibail-Rodamco during construction, and the forum's patio was named place Pina Bausch.",
-   "pourquoi_en": "The ongoing negotiation with the private operator"
-  },
-  {
-   "id": "131234",
-   "seance": "JUIN 2016",
-   "fait": "Deux mois après l'inauguration, un vœu demande qu'Unibail, gestionnaire du Forum sous la canopée, tienne compte des usagers des transports : escalators tardifs, ascenseurs en panne, fuites d'eau.",
-   "pourquoi": "L'équipement ouvert, vu par ses usagers",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131234",
-   "fait_en": "Two months after the opening, a motion called on Unibail, manager of the Forum under the canopy, to take transit users into account: escalators starting late, elevators out of service, water leaks.",
-   "pourquoi_en": "The facility, now open, as seen by its users"
-  },
-  {
-   "id": "146662",
-   "seance": "NOVEMBRE 2018",
-   "fait": "La communication du rapport de la Chambre régionale des comptes chiffre à 142 millions d'euros le prix réellement payé par Unibail pour un bien déclaré 752 millions, et les élus citent le parapluie de 1 195 374 euros HT posé sur une Canopée non étanche.",
-   "pourquoi": "Le contrôle externe, huit ans après la vente",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662",
-   "fait_en": "The presentation of the Chambre régionale des comptes report put at 142 million euros the price actually paid by Unibail for an asset declared to be worth 752 million, and councillors cited the umbrella structure costing 1,195,374 euros excluding tax installed over a leaking Canopée.",
-   "pourquoi_en": "External oversight, eight years after the sale"
-  }
- ],
- "montants": [
-  {
-   "seance": "MARS 2012",
-   "montant": "2,4 millions",
-   "objet": "transaction financière avec la maîtrise d'œuvre pour les prestations déjà réalisées",
-   "citation": "la transaction financière envisagée avec la maîtrise d??uvre a conclu à un montant de 2,4 millions pour les prestations réalisées",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
-  },
-  {
-   "seance": "MARS 2012",
-   "montant": "46.000 euros",
-   "objet": "indemnisation du préjudice moral à laquelle l'architecte Patrick Berger renonce dans la négociation",
-   "citation": "qu?il renonce à ses demandes d?indemnisation d?une moitié du gain manqué et d?indemnisation de la totalité du préjudice moral pour un montant de 46.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
-  },
-  {
-   "seance": "MARS 2012",
-   "montant": "802 millions d’euros",
-   "objet": "enveloppe de l'ensemble de l'opération, rappelée en réponse par Anne Hidalgo",
-   "citation": "Nous sommes tout à fait dans le montant des 802 millions d?euros qui ont été prévus pour l?ensemble de l?opération",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
-  },
-  {
-   "seance": "MARS 2012",
-   "montant": "2 millions d’euros",
-   "objet": "économie à trouver pour ramener la dérive sous 20 % — chiffre cité en débat par Jean-François Legaret, non voté",
-   "citation": "il y a une économie qui doit être de l?ordre de 2 millions d?euros sur le montant de cette opération",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
-  },
-  {
-   "seance": "MARS 2012",
-   "montant": "un milliard d’euros",
-   "objet": "dérapage financier de l'opération annoncé en débat par Jean-François Legaret, non voté",
-   "citation": "Cela fait très longtemps que je dénonce la dérive, le dérapage financier de cette opération, qui va dépasser un milliard d?euros.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
-  },
-  {
-   "seance": "DECEMBRE 2013",
-   "montant": "plus de 4 millions d'euros",
-   "objet": "prix de cession global des 432 m² de circulations verticales du Forum (10.673 euros le mètre carré), accepté par France Domaine",
-   "citation": "Le prix de cession global s'établit à plus de 4 millions d'euros et à 10.673 euros le mètre carré.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
-  },
-  {
-   "seance": "DECEMBRE 2013",
-   "montant": "434.107 euros",
-   "objet": "recette globale pour la Ville de la cession de surfaces commerciales (SG 148)",
-   "citation": "il s'agit cette fois-ci de surfaces commerciales, dont la cession va engendrer une recette globale pour la Ville de 434.107 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
-  },
-  {
-   "seance": "DECEMBRE 2013",
-   "montant": "802 millions d'euros",
-   "objet": "enveloppe du budget total de l'opération, présentée comme respectée aux trois quarts des marchés passés",
-   "citation": "respectent l'enveloppe des 802 millions d'euros pour le budget total et des 216 millions d'euros pour la Canopée",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
-  },
-  {
-   "seance": "DECEMBRE 2013",
-   "montant": "216 millions d'euros",
-   "objet": "enveloppe de la seule Canopée, présentée comme respectée",
-   "citation": "respectent l'enveloppe des 802 millions d'euros pour le budget total et des 216 millions d'euros pour la Canopée",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
-  },
-  {
-   "seance": "FEVRIER 2010",
-   "montant": "5,9 millions",
-   "objet": "chiffrage du marché de coordination générale des travaux, absent de la délibération et obtenu hors séance par le maire du 1er arrondissement",
-   "citation": "Il n?y a même dans le projet aucun chiffrage. J'ai pu obtenir, grâce à la bonne volonté de la présidente de la S.E.M. \"Paris Seine\", qui siège au Conseil d'arrondissement, le chiffrage de 5,9 millions.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4015"
-  },
-  {
-   "seance": "FEVRIER 2010",
-   "montant": "760 millions d'euros dont 460 millions payés par la Ville",
-   "objet": "coût du projet cité en débat par Jacques Boutault, présenté comme l'estimation à cette date",
-   "citation": "on comprend mieux le coût faramineux de ce projet : 760 millions d'euros dont 460 millions payés par la Ville. Et encore, s'agit-il de l'estimation actuelle !",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4015"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "1.195.374 euros hors taxe",
-   "objet": "réalisation du parapluie au-dessus du toit de la Canopée, dépense supplémentaire rendue nécessaire par la non-étanchéité",
-   "citation": "Nous avons un chiffre que nous retenons : 1.195.374 euros hors taxe. Il s?agit de la réalisation du parapluie, au-dessus du toit.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "200 millions d’euros",
-   "objet": "montant annoncé au départ par l'équipe de l'architecte David Mangin pour l'ensemble du programme, selon le rapport cité en débat",
-   "citation": "le montant annoncé par l?équipe de l?architecte David MANGIN pour l?ensemble du programme s?élevait à seulement 200 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "264 million d’euros",
-   "objet": "montant annoncé par la Mairie pour la vente du Forum à Unibail, revu à la baisse par la juridiction financière selon l'élu",
-   "citation": "Le montant annoncé par la Mairie de Paris pour cette vente, à savoir 264 million d?euros, a été largement revu à la baisse par la Cour des comptes.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "40 millions d’euros",
-   "objet": "frais d'indemnisation des commerçants pris en charge par la Ville, rétrocédés sur le prix de vente selon le rapport",
-   "citation": "pour notamment prendre en charge l?intégralité des frais d?indemnisation des commerçants pour 40 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "142 millions d’euros",
-   "objet": "prix réellement payé par Unibail pour acquérir le Forum des Halles, selon le rapport de la Chambre régionale des comptes",
-   "citation": "le prix qu?Unibail a réellement payé pour acquérir le Forum des Halles s?élève, selon le rapport, à 142 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "NOVEMBRE 2018",
-   "montant": "752 millions d’euros",
-   "objet": "valeur du centre commercial déclarée par Unibail à l'article 6 du protocole de vente, avant restauration et hors foncier",
-   "citation": "la valeur du centre commercial déclaré par Unibail à l?article 6 du protocole de vente, avant la restauration et hors foncier, était de 752 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "918 millions H.T.",
-   "objet": "enveloppe globale de l'opération réactualisée en 2014, présentée comme respectée dans la communication",
-   "citation": "on nous dit que tout va bien, puisqu?on reste dans l?enveloppe globale, réactualisée en 2014 à 918 millions H.T.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "200 millions",
-   "objet": "coût de l'opération annoncé en conférence de presse par Bertrand Delanoë en 2004, rappelé en débat",
-   "citation": "en 2004, conférence de presse de Bertrand DELANOË, coût de l?opération : 200 millions",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "656 millions, et 130 millions pour le pôle Transports",
-   "objet": "chiffres officiels de 2009 dans la chronologie du coût citée en débat par Jean-François Legaret",
-   "citation": "en 2009, 656 millions, et 130 millions pour le pôle Transports ; en 2009, au mois de décembre, 760 millions ; en 2010, 802 millions ; en 2014, 918 millions H.T.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "30 millions",
-   "objet": "dépenses imprévues de l'opération, dont plus de la moitié (16 millions) a été prélevée selon l'élu",
-   "citation": "Il y avait 30 millions pour les dépenses imprévues. On en a pris plus de la moitié : 16 millions.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "de 28 à 16 millions d’euros",
-   "objet": "évolution du budget de voirie de l'opération, soit une diminution de 43 % selon Jean-François Legaret",
-   "citation": "le budget de la voirie sur cette opération a évolué de 28 à 16 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
-  },
-  {
-   "seance": "DECEMBRE 2018",
-   "montant": "25.700 euros",
-   "objet": "subvention de la Ville au Groupement des exploitants du Forum des Halles pour les illuminations de fêtes de fin d'année 2018",
-   "citation": "Il nous est proposé, comme pour d?autres associations de commerçants de verser une subvention de 25.700 euros à une association de commerçants du Forum des Halles.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
-  },
-  {
-   "seance": "DECEMBRE 2018",
-   "montant": "257.000 euros",
-   "objet": "coût des illuminations figurant dans la fiche technique annexée au projet de délibération",
-   "citation": "il est dit que sur un coût dont on aimerait connaître le détail, parce qu?il y a juste un seul chiffre, 257.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
-  },
-  {
-   "seance": "DECEMBRE 2018",
-   "montant": "203.000 euros",
-   "objet": "coût réel des illuminations après recettes selon Yves Contassot en débat, portant la participation à près de 13 % et non 10 %",
-   "citation": "car le coût réel, en réalité, était de 203.000 euros, soit, en réalité, près de 13 %, et non pas 10 %, du coût des illuminations",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
-  },
-  {
-   "seance": "DECEMBRE 2018",
-   "montant": "plus de 500.000 euros",
-   "objet": "chiffre d'affaires du groupement d'exploitants du Forum des Halles, cité en débat par Yves Contassot",
-   "citation": "nous nous interrogeons sur les résultats de ce groupement d'exploitants du Forum des Halles, quand on regarde le chiffre d'affaires : plus de 500.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
-  },
-  {
-   "seance": "OCTOBRE 2010",
-   "montant": "1 milliard d’euros",
-   "objet": "dépense annoncée en débat par Pierre Lellouche, non votée",
-   "citation": "Vous allez construire le projet pharaonique en souvenir de M. DELANOË, vous allez dépenser 1 milliard d?euros, vous allez détruire le jardin des Halles",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24645"
-  },
-  {
-   "seance": "MARS 2012",
-   "montant": "30.000 euros",
-   "objet": "appui financier de Vinci, attributaire du marché de construction de la Canopée, à l'exposition consacrée aux Halles",
-   "citation": "Un partenariat a été trouvé, pure coïncidence, avec Vinci, qui, comme vous le savez, a décroché le marché de construction de la Canopée et qui, là, apporte un appui financier à hauteur de 30.000 euros.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104680"
-  },
-  {
-   "seance": "JUILLET 2009",
-   "montant": "2.233.974 euros HT soit 2.671.832,90 euros TTC",
-   "objet": "avenant n° 1 au marché de maîtrise d'œuvre du concours international d'architecture pour la construction du « carreau » des Halles",
-   "citation": "au marché de maîtrise d??uvre relatif au concours international d?architecture pour la construction du ?carreau? des Halles, d?un montant de 2.233.974 euros HT soit 2.671.832,90 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74875"
-  },
-  {
-   "seance": "JUILLET 2009",
-   "montant": "12.850 euros HT soit 15.368,60 euros TTC",
-   "objet": "avenant n° 1 au marché de coordination en matière de sécurité et de protection de la santé de la construction de la Canopée",
-   "citation": "au marché de coordination en matière de sécurité et de protection de la santé de la construction de la Canopée d?un montant de 12.850 euros HT soit 15.368,60 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74875"
-  },
-  {
-   "seance": "JUILLET 2009",
-   "montant": "680 millions d’euros",
-   "objet": "coût pour la Ville de la remise à plat du jardin et de la construction de la canopée — chiffre cité en débat par Jacques Boutault, non voté",
-   "citation": "notamment en raison des coûts importants que vont générer cette remise à plat du jardin et la construction de cette fameuse canopée, coûts très importants pour la Ville, puisqu?ils se montent à 680 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20572"
-  },
-  {
-   "seance": "JUILLET 2012",
-   "montant": "2 millions d'euros",
-   "objet": "marché de travaux complémentaires de désamiantage après découverte d'amiante dans les matériaux des pavillons Willerval",
-   "citation": "ce marché de 2 millions d'euros, consacré à des travaux complémentaires de désamiantage, après la découverte d'une quantité significative d'amiante dans les matériaux de feu les pavillons Willerval",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107299"
-  },
-  {
-   "seance": "FEVRIER 2011",
-   "montant": "6.700.000 euros",
-   "objet": "rallonge supplémentaire aux 802 millions déjà votés — question posée en débat par Jacques Boutault",
-   "citation": "il nous est proposé d?ajouter 6.700.000 euros supplémentaires aux 802 millions que nous avions déjà votés pour l?ensemble du projet",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
-  },
-  {
-   "seance": "FEVRIER 2011",
-   "montant": "31,7 millions d’euros",
-   "objet": "total des marchés recalculé par Jean-François Legaret à partir de la communication, jugé loin de la somme réelle des marchés passés",
-   "citation": "on aboutit à un total de 31,7 millions d?euros, ce qui est bien sûr loin d?être la somme des marchés déjà passés",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
-  },
-  {
-   "seance": "FEVRIER 2011",
-   "montant": "802 millions hors taxes en valeur janvier 2009",
-   "objet": "base de l'enveloppe votée, avant actualisation, telle que rappelée en débat par Jean-François Legaret",
-   "citation": "parce que les 802, c?était avant l?actualisation, et c?étaient 802 millions hors taxes en valeur janvier 2009",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
-  },
-  {
-   "seance": "FEVRIER 2012",
-   "montant": "6,3 millions d'euros",
-   "objet": "avenant accordé aux architectes pour la construction de la Canopée, jugé illégal et annulé par le Tribunal administratif — évoqué en débat par Jacques Boutault",
-   "citation": "concernant l'avenant de 6,3 millions d'euros qui avait été accordé par la Ville (suite à une délibération que nous avions votée) aux architectes pour la construction de la Canopée",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103891"
-  },
-  {
-   "seance": "MAI 2010",
-   "montant": "à peu près 250.000 euros",
-   "objet": "avenant au marché de maîtrise d'œuvre pour traiter les élégissements du Forum — montant approximatif cité en débat par Anne Tachène",
-   "citation": "Cet avenant se monte à peu près à 250.000 euros, auxquels il faudra très probablement rajouter des sommes conséquentes lors de la réalisation des travaux.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20250"
-  },
-  {
-   "seance": "MAI 2011",
-   "montant": "à peine 350 euros, 345 exactement",
-   "objet": "valeur de la subvention en nature en grumes, calculée en débat par Jean-François Legaret",
-   "citation": "parce que si on fait le compte, cela fait à peine 350 euros, 345 exactement, donc cela ne va pas ruiner la Ville",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771"
-  },
-  {
-   "seance": "JUILLET 2008",
-   "montant": "150.000 euros",
-   "objet": "travaux déjà réalisés pour permettre l'utilisation partielle du jardin Lalanne, cités par l'adjointe Fabienne Giboudeaux",
-   "citation": "A terme, déjà avec 150.000 euros de travaux qui ont déjà été réalisés pour pouvoir utiliser ce jardin",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13695"
-  },
-  {
-   "seance": "SEPTEMBRE 2009",
-   "montant": "11 millions d'euros",
-   "objet": "impact de l'auditorium du conservatoire sur le coût total de l'opération, avancé par Anne Hidalgo pour justifier son remplacement par de grandes salles",
-   "citation": "le fait de passer d'un auditorium, qui impactait de 11 millions d'euros le coût total de l'opération, à de grandes salles qui permettent la présentation du travail des élèves",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270"
-  },
-  {
-   "seance": "NOVEMBRE 2010",
-   "montant": "238 millions d’euros",
-   "objet": "cession à Unibail du droit de propriété des espaces commerciaux existants après 2055 et de ceux générés par le projet",
-   "citation": "nous proposons donc de céder à Unibail le droit de propriété des espaces commerciaux existants après 2055 et ceux générés par le projet pour un montant total de 238 millions d?euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
-  },
-  {
-   "seance": "NOVEMBRE 2010",
-   "montant": "1,8 million d’euros",
-   "objet": "redevance annuelle prévue par le bail à construction conclu en 1976 avec Unibail, jugée très faible et à peine suffisante pour couvrir les charges",
-   "citation": "il était prévu qu?Unibail verse une redevance annuelle de 1,8 million d?euros, ce qui est très faible et à peine suffisant pour couvrir les charges",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1888-07-22",
-   "extrait": "1170. — Installation d'un bureau pour les porteurs dans un des pavillons des Halles (M. Chabert, rapporteur … Chabert, au nom dé la Commission du travail, expose que les porteurs aux Halles demandent l'installation, pour leur usage, d'un bureau dans l'un des pavillons des Halle",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6329884q/f2.item",
-   "extrait_en": "1170. — Installation of an office for the porters in one of the pavilions of Les Halles (Mr Chabert, rapporteur … Chabert, on behalf of the Commission du travail, sets out that the porters at Les Halles are requesting the installation, for their use, of an office in one of the pavilions of Les Halle"
-  },
-  {
-   "date": "1918-11-23",
-   "extrait": "Le marché des Halles a perdu par sa propre faute sa clientèle de province … Le système des Halles est désuet, c'est un organisme usé … imminente, déclare que la disette de beurre et d'œufs sous les pavillons des Halles « permet aux détaillants d'augmenter leurs prétentions et",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6331593f/f11.item",
-   "extrait_en": "The Halles market has, through its own fault, lost its provincial clientele … The Halles system is obsolete, it is a worn-out organism … imminent, states that the shortage of butter and eggs under the pavilions of Les Halles \"allows retailers to raise their demands and"
-  },
-  {
-   "date": "1940-03-08",
-   "extrait": "SEINE Réduction de 50 %, à titre définitif, du tarif des droits de place pour les places prises en adjonction dans les pavillons de détail des Halles centrales … Vu l'arrêté préfectoral du 7 février 1938 fixant le tarif des droits et redevances perçus notamment dans les pavillo",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63567952/f2.item",
-   "extrait_en": "SEINE Permanent 50% reduction in the stallage rate for additional stalls taken in the retail pavilions of the central market halls … Having regard to the prefectoral order of 7 February 1938 setting the rate of fees and charges collected notably in the pavil"
-  },
-  {
-   "date": "1941-02-18",
-   "extrait": "Le Comité a homologué un nouveau prix de vente en gros des champignons aux Halles centrales",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64492171/f1.item",
-   "extrait_en": "The Committee approved a new wholesale price for mushrooms at the central market halls"
-  },
-  {
-   "date": "1960-01-06",
-   "extrait": "M. le Président. — Je mets maintenant aux voix, à main levée, les conclusions de M. Legaret sur les deux mémoires concernant la réfection du sol du pavillon IX et la réfection des peintures des fers des pavillons III, IV, V et VI des Halles centrales",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f34.item",
-   "extrait_en": "The Chairman. — I shall now put to a show-of-hands vote Mr Legaret's conclusions on the two reports concerning the resurfacing of the floor of pavilion IX and the repainting of the ironwork of pavilions III, IV, V, and VI of the central market halls"
-  },
-  {
-   "date": "1969-07-16",
-   "extrait": "Il nous faut sauver le 5 de l'avenue Van Dyck, le 68 de la rue de l'Université, le 52 de la rue de Varennes, sauver le quartiers des Halles y compris les pavillons Baltard … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704274r/f12.item",
-   "extrait_en": "We must save No. 5 avenue Van Dyck, No. 68 rue de l'Université, No. 52 rue de Varennes, save the Les Halles district including the Baltard pavilions … "
-  },
-  {
-   "date": "1970-03-15",
-   "extrait": "nombre des postes de grossistes à la section de la vente en gros de la triperie aux Halles centrales … Considérant que, dans ces conditions, il y a lieu de ramener de cinquante-cinq à cinquante-deux le nombre des postes de grossistes en abats exerçant dans les pavillons des Hal",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210308p/f4.item",
-   "extrait_en": "number of wholesaler posts in the wholesale offal section at the central market halls … Considering that, under these conditions, the number of wholesale offal posts operating in the pavilions of Les Hal"
-  }
- ],
- "bmo_recit": "Les Halles apparaissent dans le Bulletin municipal dès 1888, lorsque la Commission du travail expose la demande des porteurs d'installer, pour leur usage, un bureau dans l'un des pavillons des Halles centrales. Le lieu vit ensuite au rythme du marché : en 1918, des voix en séance jugent le système des Halles « désuet », un « organisme usé » qui aurait perdu sa clientèle de province, sur fond de disette de beurre et d'œufs sous les pavillons ; en 1940, le tarif des droits de place pour les places prises en adjonction dans les pavillons de détail est réduit de 50 % à titre définitif, et en 1941 le Comité homologue un nouveau prix de vente en gros des champignons. En 1960, le Conseil est appelé à se prononcer sur la réfection du sol du pavillon IX et des peintures des fers des pavillons III à VI. L'archive porte enfin la trace du basculement du quartier : en 1969, un appel est lancé en séance à « sauver le quartier des Halles, y compris les pavillons Baltard », puis en 1970 le nombre de postes de grossistes en abats exerçant dans les pavillons est ramené de cinquante-cinq à cinquante-deux.",
- "delibs_par_annee": null,
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2010": 87652060.21,
-   "2011": 24109565.2,
-   "2012": 29736969.21,
-   "2013": 8562972.47,
-   "2014": 4999689.1,
-   "2015": 422955.22,
-   "2016": 326851.61
-  },
-  "total_eur": 155811063.02,
-  "operations": [
-   {
-    "ap_cle": "B100/1004063",
-    "ap_texte": "LES HALLES - COMPTE FONCIER",
-    "mandate_par_annee": {
-     "2010": 87652060.21
-    },
-    "total_mandate": 87652060.21,
-    "preuve": "Libellé « LES HALLES - COMPTE FONCIER » (direction DU) : opérations foncières du réaménagement du quartier des Halles, confirmées par les délibérations SG 95 (nov. 2010, « protocole foncier entre la Ville de Paris et la Société Civile du Forum des Halles », « résiliation partielle des baux à construction des 22 juillet 1976 et 29 novembre 1976 ») et 2013 SG 144 (« déclassement et cession de volumes… du Forum »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004063"
-   },
-   {
-    "ap_cle": "B100/1204063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2012": 29736969.21,
-     "2013": 419651.44
-    },
-    "total_mandate": 30156620.65,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec les délibérations foncières du site (protocole foncier nov. 2010 ; 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204063"
-   },
-   {
-    "ap_cle": "B100/1104063",
-    "ap_texte": "COMPTE FONCIER -  LES HALLES",
-    "mandate_par_annee": {
-     "2011": 24109565.2
-    },
-    "total_mandate": 24109565.2,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux » du quartier des Halles.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104063"
-   },
-   {
-    "ap_cle": "B100/1304063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2013": 8143321.03
-    },
-    "total_mandate": 8143321.03,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2013 SG 144 « déclassement et cession de volumes des circulations verticales du Forum ».",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304063"
-   },
-   {
-    "ap_cle": "1404063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2014": 3982448.31
-    },
-    "total_mandate": 3982448.31,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063 que les comptes fonciers Halles 2010-2013.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404063"
-   },
-   {
-    "ap_cle": "1304063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2014": 1017240.79,
-     "2015": 39670.33
-    },
-    "total_mandate": 1056911.12,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304063"
-   },
-   {
-    "ap_cle": "1504063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2015": 183284.89,
-     "2016": 56573.67
-    },
-    "total_mandate": 239858.56,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504063"
-   },
-   {
-    "ap_cle": "1604063",
-    "ap_texte": "COMPTE FONCIER - LES HALLES",
-    "mandate_par_annee": {
-     "2016": 203691.0
-    },
-    "total_mandate": 203691.0,
-    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604063"
-   },
-   {
-    "ap_cle": "1504807",
-    "ap_texte": "PEPINIERE HIP HOP LES HALLES",
-    "mandate_par_annee": {
-     "2015": 200000.0
-    },
-    "total_mandate": 200000.0,
-    "preuve": "Libellé « PEPINIERE HIP HOP LES HALLES » (direction DAE, mission Développement éco.) : le libellé de l'opération nomme explicitement le lieu.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504807"
-   },
-   {
-    "ap_cle": "1404111",
-    "ap_texte": "MOUVEMENTS D'ORDRE - LES HALLES",
-    "mandate_par_annee": {
-     "2016": 66586.94
-    },
-    "total_mandate": 66586.94,
-    "preuve": "Libellé « MOUVEMENTS D'ORDRE - LES HALLES » (direction DPA, mission Patrimoine et architecture) : opération explicitement rattachée au site des Halles ; confiance moyenne car il s'agit de mouvements d'ordre comptables, sans détail de travaux dans le libellé.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404111"
-   }
-  ],
-  "periode": [
-   "2010",
-   "2016"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Halles+AND+Canop%C3%A9e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22pavillons+des+Halles%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le Forum des Halles est un centre commercial français installé sur le site des anciennes halles centrales de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/Forum_des_Halles",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Forum des Halles is a French shopping center built on the site of the former central market halls of Paris."
+  },
+  "stats": {
+    "n_delibs": 105,
+    "delibs_span": [
+      2007,
+      2018
+    ],
+    "n_bmo_brut": 2974,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (41 trouvés)",
+    "lecture_mode_en": "title naming the place (41 found)",
+    "n_lus": 41,
+    "n_lieu": 40
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En novembre 2007, le Conseil de Paris approuve le principe de construction du Carreau des Halles et le marché de maîtrise d'œuvre correspondant, après le choix du projet de Patrick Berger et Jacques Anziutti — la Canopée — par un jury fin juin 2007 ; le dossier définitif est arrêté en avril 2009, l'intérêt général de l'opération déclaré en mars 2010, et le protocole foncier de novembre 2010 cède à Unibail la propriété des espaces commerciaux pour 238 millions d'euros, là où le bail de 1976 ne prévoyait qu'une redevance annuelle de 1,8 million d'euros. Le coût annoncé évolue de séance en séance : 200 millions cités pour 2004, 680 puis 760 millions en 2009, 802 millions en 2010, 6,7 millions supplémentaires en 2011, une enveloppe réactualisée à 918 millions H.T. en 2014 encore présentée comme respectée en 2017. Le marché de maîtrise d'œuvre de la Canopée est contesté en justice : le Tribunal administratif annule l'avenant n° 3 en janvier 2012 pour une dérive chiffrée à 28,5 %, une transaction de 2,4 millions est approuvée en mars 2012, puis la Cour administrative d'appel suspend cette annulation en juillet 2012. Le chantier produit ses propres litiges : abattage de 260 arbres le 16 février, élégissements du Forum omis par l'architecte du jardin, 2 millions d'euros de désamiantage des pavillons Willerval, couverture non étanche ayant imposé un parapluie à 1.195.374 euros HT. En novembre 2018, le rapport de la Chambre régionale des comptes est communiqué au Conseil : selon les élus qui le citent, Unibail a réellement payé 142 millions d'euros pour un centre commercial que la société déclarait valoir 752 millions.",
+  "moments": [
+    {
+      "id": "25024",
+      "seance": "NOVEMBRE 2007",
+      "fait": "Le Conseil approuve le principe de construction du Carreau des Halles et le marché de maîtrise d'œuvre, après le choix du projet Berger-Anziutti par un jury fin juin 2007.",
+      "pourquoi": "Le point de départ voté de l'opération",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25024",
+      "fait_en": "The Council approved the principle of building the Carreau des Halles and the project management contract, following the selection of the Berger-Anziutti project by a jury in late June 2007.",
+      "pourquoi_en": "The vote that launched the operation"
+    },
+    {
+      "id": "17270",
+      "seance": "SEPTEMBRE 2009",
+      "fait": "À l'occasion des contrats d'assurance du site, le débat acte la disparition de l'auditorium de 350 places du conservatoire, qui « impactait de 11 millions d'euros le coût total », au profit de surfaces commerciales.",
+      "pourquoi": "La programmation publique rabotée avant le chantier",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270",
+      "fait_en": "During discussion of the site's insurance contracts, the debate confirmed the disappearance of the conservatory's 350-seat auditorium, which \"added 11 million euros to the total cost,\" in favor of commercial space.",
+      "pourquoi_en": "Public programming trimmed before construction began"
+    },
+    {
+      "id": "21487",
+      "seance": "NOVEMBRE 2010",
+      "fait": "La Ville propose de céder à Unibail la propriété des espaces commerciaux pour 238 millions d'euros, le bail de 1976 ne rapportant qu'une redevance annuelle de 1,8 million d'euros.",
+      "pourquoi": "La vente du Forum, pivot financier du projet",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487",
+      "fait_en": "The City proposed transferring ownership of the commercial spaces to Unibail for 238 million euros, with the 1976 lease yielding only an annual rent of 1.8 million euros.",
+      "pourquoi_en": "The sale of the Forum, the project's financial pivot"
+    },
+    {
+      "id": "95771",
+      "seance": "MAI 2011",
+      "fait": "Le don des grumes issues de l'abattage à cinq associations (345 euros) déclenche un conflit sur l'état phytosanitaire des 343 arbres du jardin, dont 260 abattus le 16 février.",
+      "pourquoi": "Le conflit du jardin, hors enjeu budgétaire",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771",
+      "fait_en": "The donation of logs from the felling to five associations (345 euros) triggered a dispute over the health condition of the garden's 343 trees, 260 of which were felled on 16 February.",
+      "pourquoi_en": "The garden dispute, outside the budgetary stakes"
+    },
+    {
+      "id": "104597",
+      "seance": "MARS 2012",
+      "fait": "Après l'annulation de l'avenant n° 3 pour une dérive de 28,5 %, le Conseil approuve une transaction de 2,4 millions avec la maîtrise d'œuvre de la Canopée.",
+      "pourquoi": "Le juge sanctionne la dérive des honoraires",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597",
+      "fait_en": "After the annulment of amendment No. 3 over a 28.5 percent overrun, the Council approved a settlement of 2.4 million with the Canopée's project managers.",
+      "pourquoi_en": "The judge penalizes the overrun in fees"
+    },
+    {
+      "id": "116757",
+      "seance": "DECEMBRE 2013",
+      "fait": "Sept délibérations règlent le partage des charges et des surfaces avec Unibail-Rodamco en cours de chantier, et le patio du forum est dénommé place Pina Bausch.",
+      "pourquoi": "La négociation permanente avec l'exploitant privé",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757",
+      "fait_en": "Seven deliberations settled the sharing of costs and floor space with Unibail-Rodamco during construction, and the forum's patio was named place Pina Bausch.",
+      "pourquoi_en": "The ongoing negotiation with the private operator"
+    },
+    {
+      "id": "131234",
+      "seance": "JUIN 2016",
+      "fait": "Deux mois après l'inauguration, un vœu demande qu'Unibail, gestionnaire du Forum sous la canopée, tienne compte des usagers des transports : escalators tardifs, ascenseurs en panne, fuites d'eau.",
+      "pourquoi": "L'équipement ouvert, vu par ses usagers",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131234",
+      "fait_en": "Two months after the opening, a motion called on Unibail, manager of the Forum under the canopy, to take transit users into account: escalators starting late, elevators out of service, water leaks.",
+      "pourquoi_en": "The facility, now open, as seen by its users"
+    },
+    {
+      "id": "146662",
+      "seance": "NOVEMBRE 2018",
+      "fait": "La communication du rapport de la Chambre régionale des comptes chiffre à 142 millions d'euros le prix réellement payé par Unibail pour un bien déclaré 752 millions, et les élus citent le parapluie de 1 195 374 euros HT posé sur une Canopée non étanche.",
+      "pourquoi": "Le contrôle externe, huit ans après la vente",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662",
+      "fait_en": "The presentation of the Chambre régionale des comptes report put at 142 million euros the price actually paid by Unibail for an asset declared to be worth 752 million, and councillors cited the umbrella structure costing 1,195,374 euros excluding tax installed over a leaking Canopée.",
+      "pourquoi_en": "External oversight, eight years after the sale"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "MARS 2012",
+      "montant": "2,4 millions",
+      "objet": "transaction financière avec la maîtrise d'œuvre pour les prestations déjà réalisées",
+      "citation": "la transaction financière envisagée avec la maîtrise d??uvre a conclu à un montant de 2,4 millions pour les prestations réalisées",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+    },
+    {
+      "seance": "MARS 2012",
+      "montant": "46.000 euros",
+      "objet": "indemnisation du préjudice moral à laquelle l'architecte Patrick Berger renonce dans la négociation",
+      "citation": "qu?il renonce à ses demandes d?indemnisation d?une moitié du gain manqué et d?indemnisation de la totalité du préjudice moral pour un montant de 46.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+    },
+    {
+      "seance": "MARS 2012",
+      "montant": "802 millions d’euros",
+      "objet": "enveloppe de l'ensemble de l'opération, rappelée en réponse par Anne Hidalgo",
+      "citation": "Nous sommes tout à fait dans le montant des 802 millions d?euros qui ont été prévus pour l?ensemble de l?opération",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+    },
+    {
+      "seance": "MARS 2012",
+      "montant": "2 millions d’euros",
+      "objet": "économie à trouver pour ramener la dérive sous 20 % — chiffre cité en débat par Jean-François Legaret, non voté",
+      "citation": "il y a une économie qui doit être de l?ordre de 2 millions d?euros sur le montant de cette opération",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+    },
+    {
+      "seance": "MARS 2012",
+      "montant": "un milliard d’euros",
+      "objet": "dérapage financier de l'opération annoncé en débat par Jean-François Legaret, non voté",
+      "citation": "Cela fait très longtemps que je dénonce la dérive, le dérapage financier de cette opération, qui va dépasser un milliard d?euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+    },
+    {
+      "seance": "DECEMBRE 2013",
+      "montant": "plus de 4 millions d'euros",
+      "objet": "prix de cession global des 432 m² de circulations verticales du Forum (10.673 euros le mètre carré), accepté par France Domaine",
+      "citation": "Le prix de cession global s'établit à plus de 4 millions d'euros et à 10.673 euros le mètre carré.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
+    },
+    {
+      "seance": "DECEMBRE 2013",
+      "montant": "434.107 euros",
+      "objet": "recette globale pour la Ville de la cession de surfaces commerciales (SG 148)",
+      "citation": "il s'agit cette fois-ci de surfaces commerciales, dont la cession va engendrer une recette globale pour la Ville de 434.107 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
+    },
+    {
+      "seance": "DECEMBRE 2013",
+      "montant": "802 millions d'euros",
+      "objet": "enveloppe du budget total de l'opération, présentée comme respectée aux trois quarts des marchés passés",
+      "citation": "respectent l'enveloppe des 802 millions d'euros pour le budget total et des 216 millions d'euros pour la Canopée",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
+    },
+    {
+      "seance": "DECEMBRE 2013",
+      "montant": "216 millions d'euros",
+      "objet": "enveloppe de la seule Canopée, présentée comme respectée",
+      "citation": "respectent l'enveloppe des 802 millions d'euros pour le budget total et des 216 millions d'euros pour la Canopée",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
+    },
+    {
+      "seance": "FEVRIER 2010",
+      "montant": "5,9 millions",
+      "objet": "chiffrage du marché de coordination générale des travaux, absent de la délibération et obtenu hors séance par le maire du 1er arrondissement",
+      "citation": "Il n?y a même dans le projet aucun chiffrage. J'ai pu obtenir, grâce à la bonne volonté de la présidente de la S.E.M. \"Paris Seine\", qui siège au Conseil d'arrondissement, le chiffrage de 5,9 millions.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4015"
+    },
+    {
+      "seance": "FEVRIER 2010",
+      "montant": "760 millions d'euros dont 460 millions payés par la Ville",
+      "objet": "coût du projet cité en débat par Jacques Boutault, présenté comme l'estimation à cette date",
+      "citation": "on comprend mieux le coût faramineux de ce projet : 760 millions d'euros dont 460 millions payés par la Ville. Et encore, s'agit-il de l'estimation actuelle !",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4015"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "1.195.374 euros hors taxe",
+      "objet": "réalisation du parapluie au-dessus du toit de la Canopée, dépense supplémentaire rendue nécessaire par la non-étanchéité",
+      "citation": "Nous avons un chiffre que nous retenons : 1.195.374 euros hors taxe. Il s?agit de la réalisation du parapluie, au-dessus du toit.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "200 millions d’euros",
+      "objet": "montant annoncé au départ par l'équipe de l'architecte David Mangin pour l'ensemble du programme, selon le rapport cité en débat",
+      "citation": "le montant annoncé par l?équipe de l?architecte David MANGIN pour l?ensemble du programme s?élevait à seulement 200 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "264 million d’euros",
+      "objet": "montant annoncé par la Mairie pour la vente du Forum à Unibail, revu à la baisse par la juridiction financière selon l'élu",
+      "citation": "Le montant annoncé par la Mairie de Paris pour cette vente, à savoir 264 million d?euros, a été largement revu à la baisse par la Cour des comptes.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "40 millions d’euros",
+      "objet": "frais d'indemnisation des commerçants pris en charge par la Ville, rétrocédés sur le prix de vente selon le rapport",
+      "citation": "pour notamment prendre en charge l?intégralité des frais d?indemnisation des commerçants pour 40 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "142 millions d’euros",
+      "objet": "prix réellement payé par Unibail pour acquérir le Forum des Halles, selon le rapport de la Chambre régionale des comptes",
+      "citation": "le prix qu?Unibail a réellement payé pour acquérir le Forum des Halles s?élève, selon le rapport, à 142 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "NOVEMBRE 2018",
+      "montant": "752 millions d’euros",
+      "objet": "valeur du centre commercial déclarée par Unibail à l'article 6 du protocole de vente, avant restauration et hors foncier",
+      "citation": "la valeur du centre commercial déclaré par Unibail à l?article 6 du protocole de vente, avant la restauration et hors foncier, était de 752 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "918 millions H.T.",
+      "objet": "enveloppe globale de l'opération réactualisée en 2014, présentée comme respectée dans la communication",
+      "citation": "on nous dit que tout va bien, puisqu?on reste dans l?enveloppe globale, réactualisée en 2014 à 918 millions H.T.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "200 millions",
+      "objet": "coût de l'opération annoncé en conférence de presse par Bertrand Delanoë en 2004, rappelé en débat",
+      "citation": "en 2004, conférence de presse de Bertrand DELANOË, coût de l?opération : 200 millions",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "656 millions, et 130 millions pour le pôle Transports",
+      "objet": "chiffres officiels de 2009 dans la chronologie du coût citée en débat par Jean-François Legaret",
+      "citation": "en 2009, 656 millions, et 130 millions pour le pôle Transports ; en 2009, au mois de décembre, 760 millions ; en 2010, 802 millions ; en 2014, 918 millions H.T.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "30 millions",
+      "objet": "dépenses imprévues de l'opération, dont plus de la moitié (16 millions) a été prélevée selon l'élu",
+      "citation": "Il y avait 30 millions pour les dépenses imprévues. On en a pris plus de la moitié : 16 millions.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "de 28 à 16 millions d’euros",
+      "objet": "évolution du budget de voirie de l'opération, soit une diminution de 43 % selon Jean-François Legaret",
+      "citation": "le budget de la voirie sur cette opération a évolué de 28 à 16 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138168"
+    },
+    {
+      "seance": "DECEMBRE 2018",
+      "montant": "25.700 euros",
+      "objet": "subvention de la Ville au Groupement des exploitants du Forum des Halles pour les illuminations de fêtes de fin d'année 2018",
+      "citation": "Il nous est proposé, comme pour d?autres associations de commerçants de verser une subvention de 25.700 euros à une association de commerçants du Forum des Halles.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
+    },
+    {
+      "seance": "DECEMBRE 2018",
+      "montant": "257.000 euros",
+      "objet": "coût des illuminations figurant dans la fiche technique annexée au projet de délibération",
+      "citation": "il est dit que sur un coût dont on aimerait connaître le détail, parce qu?il y a juste un seul chiffre, 257.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
+    },
+    {
+      "seance": "DECEMBRE 2018",
+      "montant": "203.000 euros",
+      "objet": "coût réel des illuminations après recettes selon Yves Contassot en débat, portant la participation à près de 13 % et non 10 %",
+      "citation": "car le coût réel, en réalité, était de 203.000 euros, soit, en réalité, près de 13 %, et non pas 10 %, du coût des illuminations",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
+    },
+    {
+      "seance": "DECEMBRE 2018",
+      "montant": "plus de 500.000 euros",
+      "objet": "chiffre d'affaires du groupement d'exploitants du Forum des Halles, cité en débat par Yves Contassot",
+      "citation": "nous nous interrogeons sur les résultats de ce groupement d'exploitants du Forum des Halles, quand on regarde le chiffre d'affaires : plus de 500.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146995"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "1 milliard d’euros",
+      "objet": "dépense annoncée en débat par Pierre Lellouche, non votée",
+      "citation": "Vous allez construire le projet pharaonique en souvenir de M. DELANOË, vous allez dépenser 1 milliard d?euros, vous allez détruire le jardin des Halles",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24645"
+    },
+    {
+      "seance": "MARS 2012",
+      "montant": "30.000 euros",
+      "objet": "appui financier de Vinci, attributaire du marché de construction de la Canopée, à l'exposition consacrée aux Halles",
+      "citation": "Un partenariat a été trouvé, pure coïncidence, avec Vinci, qui, comme vous le savez, a décroché le marché de construction de la Canopée et qui, là, apporte un appui financier à hauteur de 30.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104680"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "2.233.974 euros HT soit 2.671.832,90 euros TTC",
+      "objet": "avenant n° 1 au marché de maîtrise d'œuvre du concours international d'architecture pour la construction du « carreau » des Halles",
+      "citation": "au marché de maîtrise d??uvre relatif au concours international d?architecture pour la construction du ?carreau? des Halles, d?un montant de 2.233.974 euros HT soit 2.671.832,90 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74875"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "12.850 euros HT soit 15.368,60 euros TTC",
+      "objet": "avenant n° 1 au marché de coordination en matière de sécurité et de protection de la santé de la construction de la Canopée",
+      "citation": "au marché de coordination en matière de sécurité et de protection de la santé de la construction de la Canopée d?un montant de 12.850 euros HT soit 15.368,60 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74875"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "680 millions d’euros",
+      "objet": "coût pour la Ville de la remise à plat du jardin et de la construction de la canopée — chiffre cité en débat par Jacques Boutault, non voté",
+      "citation": "notamment en raison des coûts importants que vont générer cette remise à plat du jardin et la construction de cette fameuse canopée, coûts très importants pour la Ville, puisqu?ils se montent à 680 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20572"
+    },
+    {
+      "seance": "JUILLET 2012",
+      "montant": "2 millions d'euros",
+      "objet": "marché de travaux complémentaires de désamiantage après découverte d'amiante dans les matériaux des pavillons Willerval",
+      "citation": "ce marché de 2 millions d'euros, consacré à des travaux complémentaires de désamiantage, après la découverte d'une quantité significative d'amiante dans les matériaux de feu les pavillons Willerval",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107299"
+    },
+    {
+      "seance": "FEVRIER 2011",
+      "montant": "6.700.000 euros",
+      "objet": "rallonge supplémentaire aux 802 millions déjà votés — question posée en débat par Jacques Boutault",
+      "citation": "il nous est proposé d?ajouter 6.700.000 euros supplémentaires aux 802 millions que nous avions déjà votés pour l?ensemble du projet",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
+    },
+    {
+      "seance": "FEVRIER 2011",
+      "montant": "31,7 millions d’euros",
+      "objet": "total des marchés recalculé par Jean-François Legaret à partir de la communication, jugé loin de la somme réelle des marchés passés",
+      "citation": "on aboutit à un total de 31,7 millions d?euros, ce qui est bien sûr loin d?être la somme des marchés déjà passés",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
+    },
+    {
+      "seance": "FEVRIER 2011",
+      "montant": "802 millions hors taxes en valeur janvier 2009",
+      "objet": "base de l'enveloppe votée, avant actualisation, telle que rappelée en débat par Jean-François Legaret",
+      "citation": "parce que les 802, c?était avant l?actualisation, et c?étaient 802 millions hors taxes en valeur janvier 2009",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95975"
+    },
+    {
+      "seance": "FEVRIER 2012",
+      "montant": "6,3 millions d'euros",
+      "objet": "avenant accordé aux architectes pour la construction de la Canopée, jugé illégal et annulé par le Tribunal administratif — évoqué en débat par Jacques Boutault",
+      "citation": "concernant l'avenant de 6,3 millions d'euros qui avait été accordé par la Ville (suite à une délibération que nous avions votée) aux architectes pour la construction de la Canopée",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103891"
+    },
+    {
+      "seance": "MAI 2010",
+      "montant": "à peu près 250.000 euros",
+      "objet": "avenant au marché de maîtrise d'œuvre pour traiter les élégissements du Forum — montant approximatif cité en débat par Anne Tachène",
+      "citation": "Cet avenant se monte à peu près à 250.000 euros, auxquels il faudra très probablement rajouter des sommes conséquentes lors de la réalisation des travaux.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20250"
+    },
+    {
+      "seance": "MAI 2011",
+      "montant": "à peine 350 euros, 345 exactement",
+      "objet": "valeur de la subvention en nature en grumes, calculée en débat par Jean-François Legaret",
+      "citation": "parce que si on fait le compte, cela fait à peine 350 euros, 345 exactement, donc cela ne va pas ruiner la Ville",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771"
+    },
+    {
+      "seance": "JUILLET 2008",
+      "montant": "150.000 euros",
+      "objet": "travaux déjà réalisés pour permettre l'utilisation partielle du jardin Lalanne, cités par l'adjointe Fabienne Giboudeaux",
+      "citation": "A terme, déjà avec 150.000 euros de travaux qui ont déjà été réalisés pour pouvoir utiliser ce jardin",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13695"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "11 millions d'euros",
+      "objet": "impact de l'auditorium du conservatoire sur le coût total de l'opération, avancé par Anne Hidalgo pour justifier son remplacement par de grandes salles",
+      "citation": "le fait de passer d'un auditorium, qui impactait de 11 millions d'euros le coût total de l'opération, à de grandes salles qui permettent la présentation du travail des élèves",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270"
+    },
+    {
+      "seance": "NOVEMBRE 2010",
+      "montant": "238 millions d’euros",
+      "objet": "cession à Unibail du droit de propriété des espaces commerciaux existants après 2055 et de ceux générés par le projet",
+      "citation": "nous proposons donc de céder à Unibail le droit de propriété des espaces commerciaux existants après 2055 et ceux générés par le projet pour un montant total de 238 millions d?euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
+    },
+    {
+      "seance": "NOVEMBRE 2010",
+      "montant": "1,8 million d’euros",
+      "objet": "redevance annuelle prévue par le bail à construction conclu en 1976 avec Unibail, jugée très faible et à peine suffisante pour couvrir les charges",
+      "citation": "il était prévu qu?Unibail verse une redevance annuelle de 1,8 million d?euros, ce qui est très faible et à peine suffisant pour couvrir les charges",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1888-07-22",
+      "extrait": "1170. — Installation d'un bureau pour les porteurs dans un des pavillons des Halles (M. Chabert, rapporteur … Chabert, au nom dé la Commission du travail, expose que les porteurs aux Halles demandent l'installation, pour leur usage, d'un bureau dans l'un des pavillons des Halle",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6329884q/f2.item",
+      "extrait_en": "1170. — Installation of an office for the porters in one of the pavilions of Les Halles (Mr Chabert, rapporteur … Chabert, on behalf of the Commission du travail, sets out that the porters at Les Halles are requesting the installation, for their use, of an office in one of the pavilions of Les Halle"
+    },
+    {
+      "date": "1918-11-23",
+      "extrait": "Le marché des Halles a perdu par sa propre faute sa clientèle de province … Le système des Halles est désuet, c'est un organisme usé … imminente, déclare que la disette de beurre et d'œufs sous les pavillons des Halles « permet aux détaillants d'augmenter leurs prétentions et",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6331593f/f11.item",
+      "extrait_en": "The Halles market has, through its own fault, lost its provincial clientele … The Halles system is obsolete, it is a worn-out organism … imminent, states that the shortage of butter and eggs under the pavilions of Les Halles \"allows retailers to raise their demands and"
+    },
+    {
+      "date": "1940-03-08",
+      "extrait": "SEINE Réduction de 50 %, à titre définitif, du tarif des droits de place pour les places prises en adjonction dans les pavillons de détail des Halles centrales … Vu l'arrêté préfectoral du 7 février 1938 fixant le tarif des droits et redevances perçus notamment dans les pavillo",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63567952/f2.item",
+      "extrait_en": "SEINE Permanent 50% reduction in the stallage rate for additional stalls taken in the retail pavilions of the central market halls … Having regard to the prefectoral order of 7 February 1938 setting the rate of fees and charges collected notably in the pavil"
+    },
+    {
+      "date": "1941-02-18",
+      "extrait": "Le Comité a homologué un nouveau prix de vente en gros des champignons aux Halles centrales",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64492171/f1.item",
+      "extrait_en": "The Committee approved a new wholesale price for mushrooms at the central market halls"
+    },
+    {
+      "date": "1960-01-06",
+      "extrait": "M. le Président. — Je mets maintenant aux voix, à main levée, les conclusions de M. Legaret sur les deux mémoires concernant la réfection du sol du pavillon IX et la réfection des peintures des fers des pavillons III, IV, V et VI des Halles centrales",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f34.item",
+      "extrait_en": "The Chairman. — I shall now put to a show-of-hands vote Mr Legaret's conclusions on the two reports concerning the resurfacing of the floor of pavilion IX and the repainting of the ironwork of pavilions III, IV, V, and VI of the central market halls"
+    },
+    {
+      "date": "1969-07-16",
+      "extrait": "Il nous faut sauver le 5 de l'avenue Van Dyck, le 68 de la rue de l'Université, le 52 de la rue de Varennes, sauver le quartiers des Halles y compris les pavillons Baltard … ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704274r/f12.item",
+      "extrait_en": "We must save No. 5 avenue Van Dyck, No. 68 rue de l'Université, No. 52 rue de Varennes, save the Les Halles district including the Baltard pavilions … "
+    },
+    {
+      "date": "1970-03-15",
+      "extrait": "nombre des postes de grossistes à la section de la vente en gros de la triperie aux Halles centrales … Considérant que, dans ces conditions, il y a lieu de ramener de cinquante-cinq à cinquante-deux le nombre des postes de grossistes en abats exerçant dans les pavillons des Hal",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210308p/f4.item",
+      "extrait_en": "number of wholesaler posts in the wholesale offal section at the central market halls … Considering that, under these conditions, the number of wholesale offal posts operating in the pavilions of Les Hal"
+    }
+  ],
+  "bmo_recit": "Les Halles apparaissent dans le Bulletin municipal dès 1888, lorsque la Commission du travail expose la demande des porteurs d'installer, pour leur usage, un bureau dans l'un des pavillons des Halles centrales. Le lieu vit ensuite au rythme du marché : en 1918, des voix en séance jugent le système des Halles « désuet », un « organisme usé » qui aurait perdu sa clientèle de province, sur fond de disette de beurre et d'œufs sous les pavillons ; en 1940, le tarif des droits de place pour les places prises en adjonction dans les pavillons de détail est réduit de 50 % à titre définitif, et en 1941 le Comité homologue un nouveau prix de vente en gros des champignons. En 1960, le Conseil est appelé à se prononcer sur la réfection du sol du pavillon IX et des peintures des fers des pavillons III à VI. L'archive porte enfin la trace du basculement du quartier : en 1969, un appel est lancé en séance à « sauver le quartier des Halles, y compris les pavillons Baltard », puis en 1970 le nombre de postes de grossistes en abats exerçant dans les pavillons est ramené de cinquante-cinq à cinquante-deux.",
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2010": 87652060.21,
+      "2011": 24109565.2,
+      "2012": 29736969.21,
+      "2013": 8562972.47,
+      "2014": 4999689.1,
+      "2015": 422955.22,
+      "2016": 326851.61
+    },
+    "total_eur": 155811063.02,
+    "operations": [
+      {
+        "ap_cle": "B100/1004063",
+        "ap_texte": "LES HALLES - COMPTE FONCIER",
+        "mandate_par_annee": {
+          "2010": 87652060.21
+        },
+        "total_mandate": 87652060.21,
+        "preuve": "Libellé « LES HALLES - COMPTE FONCIER » (direction DU) : opérations foncières du réaménagement du quartier des Halles, confirmées par les délibérations SG 95 (nov. 2010, « protocole foncier entre la Ville de Paris et la Société Civile du Forum des Halles », « résiliation partielle des baux à construction des 22 juillet 1976 et 29 novembre 1976 ») et 2013 SG 144 (« déclassement et cession de volumes… du Forum »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004063"
+      },
+      {
+        "ap_cle": "B100/1204063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2012": 29736969.21,
+          "2013": 419651.44
+        },
+        "total_mandate": 30156620.65,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec les délibérations foncières du site (protocole foncier nov. 2010 ; 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204063"
+      },
+      {
+        "ap_cle": "B100/1104063",
+        "ap_texte": "COMPTE FONCIER -  LES HALLES",
+        "mandate_par_annee": {
+          "2011": 24109565.2
+        },
+        "total_mandate": 24109565.2,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux » du quartier des Halles.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104063"
+      },
+      {
+        "ap_cle": "B100/1304063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2013": 8143321.03
+        },
+        "total_mandate": 8143321.03,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2013 SG 144 « déclassement et cession de volumes des circulations verticales du Forum ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304063"
+      },
+      {
+        "ap_cle": "1404063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2014": 3982448.31
+        },
+        "total_mandate": 3982448.31,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063 que les comptes fonciers Halles 2010-2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404063"
+      },
+      {
+        "ap_cle": "1304063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2014": 1017240.79,
+          "2015": 39670.33
+        },
+        "total_mandate": 1056911.12,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304063"
+      },
+      {
+        "ap_cle": "1504063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2015": 183284.89,
+          "2016": 56573.67
+        },
+        "total_mandate": 239858.56,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504063"
+      },
+      {
+        "ap_cle": "1604063",
+        "ap_texte": "COMPTE FONCIER - LES HALLES",
+        "mandate_par_annee": {
+          "2016": 203691.0
+        },
+        "total_mandate": 203691.0,
+        "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604063"
+      },
+      {
+        "ap_cle": "1504807",
+        "ap_texte": "PEPINIERE HIP HOP LES HALLES",
+        "mandate_par_annee": {
+          "2015": 200000.0
+        },
+        "total_mandate": 200000.0,
+        "preuve": "Libellé « PEPINIERE HIP HOP LES HALLES » (direction DAE, mission Développement éco.) : le libellé de l'opération nomme explicitement le lieu.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504807"
+      },
+      {
+        "ap_cle": "1404111",
+        "ap_texte": "MOUVEMENTS D'ORDRE - LES HALLES",
+        "mandate_par_annee": {
+          "2016": 66586.94
+        },
+        "total_mandate": 66586.94,
+        "preuve": "Libellé « MOUVEMENTS D'ORDRE - LES HALLES » (direction DPA, mission Patrimoine et architecture) : opération explicitement rattachée au site des Halles ; confiance moyenne car il s'agit de mouvements d'ordre comptables, sans détail de travaux dans le libellé.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404111"
+      }
+    ],
+    "periode": [
+      "2010",
+      "2016"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Halles+AND+Canop%C3%A9e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22pavillons+des+Halles%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In November 2007, Conseil de Paris approved the principle of building the Carreau des Halles and the corresponding project management contract, following the selection of the project by Patrick Berger and Jacques Anziutti — the Canopée — by a jury in late June 2007; the final project file was settled in April 2009, the operation's public-interest status was declared in March 2010, and the land agreement of November 2010 transferred ownership of the commercial spaces to Unibail for 238 million euros, whereas the 1976 lease had provided only for an annual rent of 1.8 million euros. The announced cost evolved from session to session: 200 million cited for 2004, 680 then 760 million in 2009, 802 million in 2010, an additional 6.7 million in 2011, a budget updated to 918 million excluding tax in 2014, still presented as being respected in 2017. The Canopée's project management contract was challenged in court: the Tribunal administratif annulled amendment No. 3 in January 2012 over a cost overrun put at 28.5 percent, a settlement of 2.4 million was approved in March 2012, and the Cour administrative d'appel then suspended that annulment in July 2012. The construction site produced its own disputes: the felling of 260 trees on 16 February, lightening work on the Forum omitted by the garden's architect, 2 million euros to remove asbestos from the former Willerval pavilions, and a leaking roof that required an umbrella structure costing 1,195,374 euros excluding tax. In November 2018, the report of the Chambre régionale des comptes was presented to the Council: according to the councillors who cited it, Unibail actually paid 142 million euros for a shopping center the company had declared to be worth 752 million.",
+  "bmo_recit_en": "Les Halles appear in the Bulletin municipal as early as 1888, when the Commission du travail set out the porters' request to have an office installed, for their own use, in one of the pavilions of the central market halls. The site then lived to the rhythm of the market: in 1918, voices during the session judged the Halles system \"obsolete,\" a \"worn-out organism\" said to have lost its provincial clientele, against a backdrop of butter and egg shortages under the pavilions; in 1940, the stallage rate for additional stalls taken in the retail pavilions was cut by 50 percent on a permanent basis, and in 1941 the Committee approved a new wholesale price for mushrooms. In 1960, the Council was asked to rule on resurfacing the floor of pavilion IX and repainting the ironwork of pavilions III to VI. The archive finally bears the trace of the district's turning point: in 1969, an appeal was made during the session to \"save the Les Halles district, including the Baltard pavilions,\" and in 1970 the number of wholesale offal posts operating in the pavilions was reduced from fifty-five to fifty-two.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In November 2007, Conseil de Paris approved the principle of building the Carreau des Halles and the corresponding project management contract, following the selection of the project by Patrick Berger and Jacques Anziutti — the Canopée — by a jury in late June 2007; the final project file was settled in April 2009, the operation's public-interest status was declared in March 2010, and the land agreement of November 2010 transferred ownership of the commercial spaces to Unibail for 238 million euros, whereas the 1976 lease had provided only for an annual rent of 1.8 million euros. The announced cost evolved from session to session: 200 million cited for 2004, 680 then 760 million in 2009, 802 million in 2010, an additional 6.7 million in 2011, a budget updated to 918 million excluding tax in 2014, still presented as being respected in 2017. The Canopée's project management contract was challenged in court: the Tribunal administratif annulled amendment No. 3 in January 2012 over a cost overrun put at 28.5 percent, a settlement of 2.4 million was approved in March 2012, and the Cour administrative d'appel then suspended that annulment in July 2012. The construction site produced its own disputes: the felling of 260 trees on 16 February, lightening work on the Forum omitted by the garden's architect, 2 million euros to remove asbestos from the former Willerval pavilions, and a leaking roof that required an umbrella structure costing 1,195,374 euros excluding tax. In November 2018, the report of the Chambre régionale des comptes was presented to the Council: according to the councillors who cited it, Unibail actually paid 142 million euros for a shopping center the company had declared to be worth 752 million.",
- "bmo_recit_en": "Les Halles appear in the Bulletin municipal as early as 1888, when the Commission du travail set out the porters' request to have an office installed, for their own use, in one of the pavilions of the central market halls. The site then lived to the rhythm of the market: in 1918, voices during the session judged the Halles system \"obsolete,\" a \"worn-out organism\" said to have lost its provincial clientele, against a backdrop of butter and egg shortages under the pavilions; in 1940, the stallage rate for additional stalls taken in the retail pavilions was cut by 50 percent on a permanent basis, and in 1941 the Committee approved a new wholesale price for mushrooms. In 1960, the Council was asked to rule on resurfacing the floor of pavilion IX and repainting the ironwork of pavilions III to VI. The archive finally bears the trace of the district's turning point: in 1969, an appeal was made during the session to \"save the Les Halles district, including the Baltard pavilions,\" and in 1970 the number of wholesale offal posts operating in the pavilions was reduced from fifty-five to fifty-two."
 }

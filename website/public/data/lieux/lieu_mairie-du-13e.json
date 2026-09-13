@@ -1,409 +1,418 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-13e",
- "name": "Mairie du 13e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 13,
- "lat": 48.8283,
- "lon": 2.3556,
- "photo": "/img/lieux/mairie-du-13e.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "Ordifana75",
-  "url": "https://commons.wikimedia.org/wiki/File:Paris_13_-_mairie_du_13e_et_paulownias.JPG",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 847,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 1118757.47,
-  "invest_annees": [
-   "2022",
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (20 trouvés)",
-  "lecture_mode_en": "title naming the place (20 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1998": [
-   {
-    "reference": "1998 DPA 96",
-    "titre": "Approbation du principe de la réfection des installations électriques à la mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44060"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DVLR 40",
-    "titre": "Subvention à l'association \"Comité municipal d'action sociale et culturelle du 13e arrondissement\", mairie du 13e arrondissement. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUIN 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55420"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DPA 277",
-    "titre": "Approbation du principe de la réalisation des travaux de modernisation de la sous-station vapeur à la crèche, 101, rue de la Glacière (13e) et de modernisation de la climatisation des locaux sous combles à la mairie du 13e arrondissement, 1, place d'Italie (13e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Marie-Thérèse HERMANGE, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
-   },
-   {
-    "reference": "2000 DPA 323",
-    "titre": "Approbation du principe de la réalisation de travaux de sécurité à la Mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JANVIER 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85017"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 304",
-    "titre": "Attribution d'une subvention de fonctionnement à la Société d'Histoire et d'Archéologie du XIIIème arrondissement située à la Mairie du 13e arrondissement 1, place d'Italie (13e). Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70917"
-   },
-   {
-    "reference": "2002 DPA 516",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 13e arrondissement; 1, place d'Italie (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JANVIER 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 506",
-    "titre": "Attribution d'une subvention de fonctionnement à l'association \"Le Cercle Municipal des Gobelins et des Beaux Arts\", Mairie du 13e, 1, place d'Italie (13e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
-   },
-   {
-    "reference": "2004 DPA 385",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation du sol de cour à la Mairie du 13e arrondissement (13e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87696"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DAC 223",
-    "titre": "Attribution d’une subvention de fonctionnement à l’association “Le Cercle Municipal des Gobelins et des Beaux Arts”, Mairie du 13e, 1, place d’Italie (13e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80712"
-   },
-   {
-    "reference": "2005 DASES 106",
-    "titre": "G - Subvention de fonctionnement d’un montant de 3.500 euros attribuée à l’association “Femmes pour le dire, femmes pour agir” (F.D.F.A) située 16 rue Emile Duclaux (15e) pour financer la poursuite de ses activités et notamment, l’organisation de son deuxième forum intitulé “Femmes handicapées : la vie devant elles” du 16 novembre 2005 à la mairie du 13e arrondissement. Mme Pénélope KOMITES, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93059"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 317",
-    "titre": "2006, DAC 317 - Attribution d’une subvention de fonctionnement à l’association “Le Cercle municipal des Gobelins et des Beaux Arts” située à la Mairie du 13e arrondissement, 1, place d’Italie (13e). - Montant : 1.500 euros. Voeu déposé par MM. Serge BLISKO et Jérôme COUMET, adopté par le Conseil du 13e arrondissement.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10844"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DPA 93",
-    "titre": "Approbation du principe de réalisation des travaux de restructuration et d’accessibilité pour tous à la Mairie du 13e arrondissement. - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d’œuvre correspondant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. Mme Mireille FLAM et Mme Pénélope KOMITÈS, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31365"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 122",
-    "titre": "Approbation du principe de réalisation des travaux de restructuration des services et accessibilité pour tous à la Mairie du 13e arrondissement, 1 place d’Italie et des modalités de passation du marché de travaux correspondant. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77346"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2022,
-   "montant_eur": 247029.0,
-   "nom_projet": "Mairie du 13ème arrondissement - Ravalement des façades",
-   "preuve": "Nom du projet d'investissement : \"Mairie du 13ème arrondissement - Ravalement des façades\" (2022) - nomme explicitement le lieu.",
-   "id": "2022_13_38_017"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-13e",
+  "name": "Mairie du 13e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 13,
+  "lat": 48.8283,
+  "lon": 2.3556,
+  "photo": "/img/lieux/mairie-du-13e.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "Ordifana75",
+    "url": "https://commons.wikimedia.org/wiki/File:Paris_13_-_mairie_du_13e_et_paulownias.JPG",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2024,
-   "montant_eur": 608904.85,
-   "nom_projet": "Mairie du 13e Arrondissement - Rénovation interieure de la salle des fêtes",
-   "preuve": "Nom du projet d'investissement : \"Mairie du 13e Arrondissement - Rénovation interieure de la salle des fêtes\" (2024) - nomme explicitement le lieu.",
-   "id": "2024_13_36_005"
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 262823.62,
-   "nom_projet": "Mairie du 13e Arrondissement - Ravalement des façades",
-   "preuve": "Nom du projet d'investissement : \"Mairie du 13e Arrondissement - Ravalement des façades\" (2024) - nomme explicitement le lieu.",
-   "id": "2024_13_36_004"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20222022T08119",
-   "objet": "SA4 RESTAURATION FAÇADE MAIRIE DU 13ÈME",
-   "objet_clair": null,
-   "fournisseur": "CHAMPAGNE CONSTRUCTION RENOVATION",
-   "montant_max": 1044763.21,
-   "date_notification": "2022-10-20",
-   "preuve": "Objet du marché : \"SA4 RESTAURATION FAÇADE MAIRIE DU 13ÈME\" - travaux de façade sur le bâtiment."
-  },
-  {
-   "numero_marche": "20232023T01079",
-   "objet": "MAIRIE DU 13EME LOT N°1 RENOVATIONDE LA SALLE DES FETES",
-   "objet_clair": null,
-   "fournisseur": "LACOUR ENTREPRISE",
-   "montant_max": 306468.0,
-   "date_notification": "2023-02-16",
-   "preuve": "Objet du marché : \"MAIRIE DU 13EME LOT N°1 RENOVATIONDE LA SALLE DES FETES\" - travaux dans le bâtiment (salle des fêtes)."
-  },
-  {
-   "numero_marche": "20181210000451",
-   "objet": "RÉPARATION COUVERTURE SALLE DES FÊTES MAIRIE DU 13ÈME ARRT",
-   "objet_clair": null,
-   "fournisseur": "CCMAP",
-   "montant_max": 219323.0,
-   "date_notification": "2018-04-12",
-   "preuve": "Objet du marché : \"RÉPARATION COUVERTURE SALLE DES FÊTES MAIRIE DU 13ÈME ARRT\" - travaux de toiture sur le bâtiment."
-  },
-  {
-   "numero_marche": "20232023T01084",
-   "objet": "RÉNOVAT° DE LA SALLE DES FÊTES DE LA MAIRIE DU 13E - LOT N4",
-   "objet_clair": null,
-   "fournisseur": "ATELIER MERIGUET CARRERE",
-   "montant_max": 162708.49,
-   "date_notification": "2023-04-24",
-   "preuve": "Objet du marché : \"RÉNOVAT° DE LA SALLE DES FÊTES DE LA MAIRIE DU 13E - LOT N4\" - travaux dans le bâtiment (salle des fêtes)."
-  },
-  {
-   "numero_marche": "20232023T01072",
-   "objet": "MAIRIE DU 13EME LOT N°2  RENOVATION DE LA SALLE DES FETES",
-   "objet_clair": null,
-   "fournisseur": "BALAS",
-   "montant_max": 120124.2,
-   "date_notification": "2023-02-16",
-   "preuve": "Objet du marché : \"MAIRIE DU 13EME LOT N°2 RENOVATION DE LA SALLE DES FETES\" - travaux dans le bâtiment (salle des fêtes)."
-  },
-  {
-   "numero_marche": "20141630012109",
-   "objet": "ILLUMINATIONS DE NOËL DE LA MAIRIE DU 13ÈME",
-   "objet_clair": null,
-   "fournisseur": "BLACHERE ILLUMINATION",
-   "montant_max": 120000.0,
-   "date_notification": "2014-10-22",
-   "preuve": "Objet du marché : \"ILLUMINATIONS DE NOËL DE LA MAIRIE DU 13ÈME\" - décorations installées sur/autour du bâtiment."
-  },
-  {
-   "numero_marche": "20181210000933",
-   "objet": "REMPLACEMENT DU SSI  MAIRIE DU 13E ARRDT.",
-   "objet_clair": null,
-   "fournisseur": "CEMIS SYSTEMES DE SECURITE INCENDIE",
-   "montant_max": 99762.75,
-   "date_notification": "2018-07-03",
-   "preuve": "Objet du marché : \"REMPLACEMENT DU SSI MAIRIE DU 13E ARRDT.\" - remplacement du système de sécurité incendie du bâtiment."
-  },
-  {
-   "numero_marche": "20212021T02373",
-   "objet": "MODERNISATION DU GROUPE FROID MAIRIE DU 13E 1 PL D'ITALIE",
-   "objet_clair": null,
-   "fournisseur": "LA LOUISIANE",
-   "montant_max": 59975.95,
-   "date_notification": "2021-05-03",
-   "preuve": "Objet du marché : \"MODERNISATION DU GROUPE FROID MAIRIE DU 13E 1 PL D'ITALIE\" - cite l'adresse exacte (1 Place d'Italie), équipement technique du bâtiment."
-  },
-  {
-   "numero_marche": "20222022S00829",
-   "objet": "MOE MISE AUX NORMES & INSTALATIONS ELECTRI MAIRIE DU 13ÈME",
-   "objet_clair": null,
-   "fournisseur": "IPH INGENIERIE",
-   "montant_max": 40255.0,
-   "date_notification": "2022-02-16",
-   "preuve": "Objet du marché : \"MOE MISE AUX NORMES & INSTALATIONS ELECTRI MAIRIE DU 13ÈME\" - maîtrise d'œuvre pour les installations électriques du bâtiment."
-  },
-  {
-   "numero_marche": "20232023S00397",
-   "objet": "MOE AMENAGEMENT SCÉNIQUE DE LA SALLE DES FETES MAIRIE DU 13È",
-   "objet_clair": null,
-   "fournisseur": "LGA",
-   "montant_max": 30000.0,
-   "date_notification": "2023-02-01",
-   "preuve": "Objet du marché : \"MOE AMENAGEMENT SCÉNIQUE DE LA SALLE DES FETES MAIRIE DU 13È\" - maîtrise d'œuvre pour l'aménagement de la salle des fêtes du bâtiment."
-  },
-  {
-   "numero_marche": "decp-2025S07558",
-   "objet": "Marché public de CSPS pour l’opération de modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d’Italie 75013 Paris",
-   "objet_clair": null,
-   "fournisseur": null,
-   "montant_max": 6292.0,
-   "date_notification": "2025-08-26",
-   "preuve": "Objet du marché cite l'adresse exacte : \"...modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d'Italie 75013 Paris\"."
-  },
-  {
-   "numero_marche": "decp-2025S06311",
-   "objet": "Marché subséquent suite à l’accord-cadre N° 20232023S11958 de prestations de contrôle technique de la construction pour la modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d’Italie 7",
-   "objet_clair": null,
-   "fournisseur": "ALPHA CONTROLE",
-   "montant_max": 5825.0,
-   "date_notification": "2025-07-09",
-   "preuve": "Objet du marché cite l'adresse exacte : \"...modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d'Italie 75013 Paris\"."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2010": 499153.23,
-   "2011": 2602444.63,
-   "2012": 580793.47,
-   "2013": 105738.55,
-   "2014": 42777.63,
-   "2015": 69147.69
-  },
-  "total_eur": 3900055.2,
-  "operations": [
-   {
-    "ap_cle": "B100/0903652",
-    "ap_texte": "MAIRIE DU 13EME",
-    "mandate_par_annee": {
-     "2010": 499153.23,
-     "2011": 2547204.28,
-     "2012": 557566.58,
-     "2013": 92216.93
-    },
-    "total_mandate": 3696141.02,
-    "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME\", direction DPA (Patrimoine et Architecture) - désigne directement le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903652"
-   },
-   {
-    "ap_cle": "0903652",
-    "ap_texte": "MAIRIE DU 13EME",
-    "mandate_par_annee": {
-     "2014": 38940.05,
-     "2015": 69147.69
-    },
-    "total_mandate": 108087.74,
-    "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME\" (suite de l'AP B100/0903652), direction DPA - désigne directement le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903652"
-   },
-   {
-    "ap_cle": "B100/0703652",
-    "ap_texte": "MAIRIE DU 13EME ARDT",
-    "mandate_par_annee": {
-     "2011": 55240.35,
-     "2012": 23226.89,
-     "2013": 13521.62
-    },
-    "total_mandate": 91988.86,
-    "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME ARDT\", direction DPA - désigne directement le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703652"
-   },
-   {
-    "ap_cle": "0703652",
-    "ap_texte": "MAIRIE DU 13EME ARDT",
-    "mandate_par_annee": {
-     "2014": 3837.58
-    },
-    "total_mandate": 3837.58,
-    "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME ARDT\" (suite de l'AP B100/0703652), direction DPA - désigne directement le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703652"
-   }
-  ],
-  "periode": [
-   "2010",
-   "2015"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+13e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 847,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 1118757.47,
+    "invest_annees": [
+      "2022",
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (20 trouvés)",
+    "lecture_mode_en": "title naming the place (20 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1998": [
+      {
+        "reference": "1998 DPA 96",
+        "titre": "Approbation du principe de la réfection des installations électriques à la mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44060"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DVLR 40",
+        "titre": "Subvention à l'association \"Comité municipal d'action sociale et culturelle du 13e arrondissement\", mairie du 13e arrondissement. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUIN 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55420"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DPA 277",
+        "titre": "Approbation du principe de la réalisation des travaux de modernisation de la sous-station vapeur à la crèche, 101, rue de la Glacière (13e) et de modernisation de la climatisation des locaux sous combles à la mairie du 13e arrondissement, 1, place d'Italie (13e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Marie-Thérèse HERMANGE, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
+      },
+      {
+        "reference": "2000 DPA 323",
+        "titre": "Approbation du principe de la réalisation de travaux de sécurité à la Mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JANVIER 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85017"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 304",
+        "titre": "Attribution d'une subvention de fonctionnement à la Société d'Histoire et d'Archéologie du XIIIème arrondissement située à la Mairie du 13e arrondissement 1, place d'Italie (13e). Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70917"
+      },
+      {
+        "reference": "2002 DPA 516",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 13e arrondissement; 1, place d'Italie (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JANVIER 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 506",
+        "titre": "Attribution d'une subvention de fonctionnement à l'association \"Le Cercle Municipal des Gobelins et des Beaux Arts\", Mairie du 13e, 1, place d'Italie (13e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
+      },
+      {
+        "reference": "2004 DPA 385",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation du sol de cour à la Mairie du 13e arrondissement (13e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87696"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DAC 223",
+        "titre": "Attribution d’une subvention de fonctionnement à l’association “Le Cercle Municipal des Gobelins et des Beaux Arts”, Mairie du 13e, 1, place d’Italie (13e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80712"
+      },
+      {
+        "reference": "2005 DASES 106",
+        "titre": "G - Subvention de fonctionnement d’un montant de 3.500 euros attribuée à l’association “Femmes pour le dire, femmes pour agir” (F.D.F.A) située 16 rue Emile Duclaux (15e) pour financer la poursuite de ses activités et notamment, l’organisation de son deuxième forum intitulé “Femmes handicapées : la vie devant elles” du 16 novembre 2005 à la mairie du 13e arrondissement. Mme Pénélope KOMITES, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93059"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 317",
+        "titre": "2006, DAC 317 - Attribution d’une subvention de fonctionnement à l’association “Le Cercle municipal des Gobelins et des Beaux Arts” située à la Mairie du 13e arrondissement, 1, place d’Italie (13e). - Montant : 1.500 euros. Voeu déposé par MM. Serge BLISKO et Jérôme COUMET, adopté par le Conseil du 13e arrondissement.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10844"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DPA 93",
+        "titre": "Approbation du principe de réalisation des travaux de restructuration et d’accessibilité pour tous à la Mairie du 13e arrondissement. - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d’œuvre correspondant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. Mme Mireille FLAM et Mme Pénélope KOMITÈS, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31365"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 122",
+        "titre": "Approbation du principe de réalisation des travaux de restructuration des services et accessibilité pour tous à la Mairie du 13e arrondissement, 1 place d’Italie et des modalités de passation du marché de travaux correspondant. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77346"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2022,
+      "montant_eur": 247029.0,
+      "nom_projet": "Mairie du 13ème arrondissement - Ravalement des façades",
+      "preuve": "Nom du projet d'investissement : \"Mairie du 13ème arrondissement - Ravalement des façades\" (2022) - nomme explicitement le lieu.",
+      "id": "2022_13_38_017"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 608904.85,
+      "nom_projet": "Mairie du 13e Arrondissement - Rénovation interieure de la salle des fêtes",
+      "preuve": "Nom du projet d'investissement : \"Mairie du 13e Arrondissement - Rénovation interieure de la salle des fêtes\" (2024) - nomme explicitement le lieu.",
+      "id": "2024_13_36_005"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 262823.62,
+      "nom_projet": "Mairie du 13e Arrondissement - Ravalement des façades",
+      "preuve": "Nom du projet d'investissement : \"Mairie du 13e Arrondissement - Ravalement des façades\" (2024) - nomme explicitement le lieu.",
+      "id": "2024_13_36_004"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20222022T08119",
+      "objet": "SA4 RESTAURATION FAÇADE MAIRIE DU 13ÈME",
+      "objet_clair": null,
+      "fournisseur": "CHAMPAGNE CONSTRUCTION RENOVATION",
+      "montant_max": 1044763.21,
+      "date_notification": "2022-10-20",
+      "preuve": "Objet du marché : \"SA4 RESTAURATION FAÇADE MAIRIE DU 13ÈME\" - travaux de façade sur le bâtiment."
+    },
+    {
+      "numero_marche": "20232023T01079",
+      "objet": "MAIRIE DU 13EME LOT N°1 RENOVATIONDE LA SALLE DES FETES",
+      "objet_clair": null,
+      "fournisseur": "LACOUR ENTREPRISE",
+      "montant_max": 306468.0,
+      "date_notification": "2023-02-16",
+      "preuve": "Objet du marché : \"MAIRIE DU 13EME LOT N°1 RENOVATIONDE LA SALLE DES FETES\" - travaux dans le bâtiment (salle des fêtes)."
+    },
+    {
+      "numero_marche": "20181210000451",
+      "objet": "RÉPARATION COUVERTURE SALLE DES FÊTES MAIRIE DU 13ÈME ARRT",
+      "objet_clair": null,
+      "fournisseur": "CCMAP",
+      "montant_max": 219323.0,
+      "date_notification": "2018-04-12",
+      "preuve": "Objet du marché : \"RÉPARATION COUVERTURE SALLE DES FÊTES MAIRIE DU 13ÈME ARRT\" - travaux de toiture sur le bâtiment."
+    },
+    {
+      "numero_marche": "20232023T01084",
+      "objet": "RÉNOVAT° DE LA SALLE DES FÊTES DE LA MAIRIE DU 13E - LOT N4",
+      "objet_clair": null,
+      "fournisseur": "ATELIER MERIGUET CARRERE",
+      "montant_max": 162708.49,
+      "date_notification": "2023-04-24",
+      "preuve": "Objet du marché : \"RÉNOVAT° DE LA SALLE DES FÊTES DE LA MAIRIE DU 13E - LOT N4\" - travaux dans le bâtiment (salle des fêtes)."
+    },
+    {
+      "numero_marche": "20232023T01072",
+      "objet": "MAIRIE DU 13EME LOT N°2  RENOVATION DE LA SALLE DES FETES",
+      "objet_clair": null,
+      "fournisseur": "BALAS",
+      "montant_max": 120124.2,
+      "date_notification": "2023-02-16",
+      "preuve": "Objet du marché : \"MAIRIE DU 13EME LOT N°2 RENOVATION DE LA SALLE DES FETES\" - travaux dans le bâtiment (salle des fêtes)."
+    },
+    {
+      "numero_marche": "20141630012109",
+      "objet": "ILLUMINATIONS DE NOËL DE LA MAIRIE DU 13ÈME",
+      "objet_clair": null,
+      "fournisseur": "BLACHERE ILLUMINATION",
+      "montant_max": 120000.0,
+      "date_notification": "2014-10-22",
+      "preuve": "Objet du marché : \"ILLUMINATIONS DE NOËL DE LA MAIRIE DU 13ÈME\" - décorations installées sur/autour du bâtiment."
+    },
+    {
+      "numero_marche": "20181210000933",
+      "objet": "REMPLACEMENT DU SSI  MAIRIE DU 13E ARRDT.",
+      "objet_clair": null,
+      "fournisseur": "CEMIS SYSTEMES DE SECURITE INCENDIE",
+      "montant_max": 99762.75,
+      "date_notification": "2018-07-03",
+      "preuve": "Objet du marché : \"REMPLACEMENT DU SSI MAIRIE DU 13E ARRDT.\" - remplacement du système de sécurité incendie du bâtiment."
+    },
+    {
+      "numero_marche": "20212021T02373",
+      "objet": "MODERNISATION DU GROUPE FROID MAIRIE DU 13E 1 PL D'ITALIE",
+      "objet_clair": null,
+      "fournisseur": "LA LOUISIANE",
+      "montant_max": 59975.95,
+      "date_notification": "2021-05-03",
+      "preuve": "Objet du marché : \"MODERNISATION DU GROUPE FROID MAIRIE DU 13E 1 PL D'ITALIE\" - cite l'adresse exacte (1 Place d'Italie), équipement technique du bâtiment."
+    },
+    {
+      "numero_marche": "20222022S00829",
+      "objet": "MOE MISE AUX NORMES & INSTALATIONS ELECTRI MAIRIE DU 13ÈME",
+      "objet_clair": null,
+      "fournisseur": "IPH INGENIERIE",
+      "montant_max": 40255.0,
+      "date_notification": "2022-02-16",
+      "preuve": "Objet du marché : \"MOE MISE AUX NORMES & INSTALATIONS ELECTRI MAIRIE DU 13ÈME\" - maîtrise d'œuvre pour les installations électriques du bâtiment."
+    },
+    {
+      "numero_marche": "20232023S00397",
+      "objet": "MOE AMENAGEMENT SCÉNIQUE DE LA SALLE DES FETES MAIRIE DU 13È",
+      "objet_clair": null,
+      "fournisseur": "LGA",
+      "montant_max": 30000.0,
+      "date_notification": "2023-02-01",
+      "preuve": "Objet du marché : \"MOE AMENAGEMENT SCÉNIQUE DE LA SALLE DES FETES MAIRIE DU 13È\" - maîtrise d'œuvre pour l'aménagement de la salle des fêtes du bâtiment."
+    },
+    {
+      "numero_marche": "decp-2025S07558",
+      "objet": "Marché public de CSPS pour l’opération de modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d’Italie 75013 Paris",
+      "objet_clair": null,
+      "fournisseur": null,
+      "montant_max": 6292.0,
+      "date_notification": "2025-08-26",
+      "preuve": "Objet du marché cite l'adresse exacte : \"...modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d'Italie 75013 Paris\"."
+    },
+    {
+      "numero_marche": "decp-2025S06311",
+      "objet": "Marché subséquent suite à l’accord-cadre N° 20232023S11958 de prestations de contrôle technique de la construction pour la modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d’Italie 7",
+      "objet_clair": null,
+      "fournisseur": "ALPHA CONTROLE",
+      "montant_max": 5825.0,
+      "date_notification": "2025-07-09",
+      "preuve": "Objet du marché cite l'adresse exacte : \"...modernisation de la cour intérieure de la Mairie du 13ème, 1 Place d'Italie 75013 Paris\"."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2010": 499153.23,
+      "2011": 2602444.63,
+      "2012": 580793.47,
+      "2013": 105738.55,
+      "2014": 42777.63,
+      "2015": 69147.69
+    },
+    "total_eur": 3900055.2,
+    "operations": [
+      {
+        "ap_cle": "B100/0903652",
+        "ap_texte": "MAIRIE DU 13EME",
+        "mandate_par_annee": {
+          "2010": 499153.23,
+          "2011": 2547204.28,
+          "2012": 557566.58,
+          "2013": 92216.93
+        },
+        "total_mandate": 3696141.02,
+        "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME\", direction DPA (Patrimoine et Architecture) - désigne directement le bâtiment.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903652"
+      },
+      {
+        "ap_cle": "0903652",
+        "ap_texte": "MAIRIE DU 13EME",
+        "mandate_par_annee": {
+          "2014": 38940.05,
+          "2015": 69147.69
+        },
+        "total_mandate": 108087.74,
+        "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME\" (suite de l'AP B100/0903652), direction DPA - désigne directement le bâtiment.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903652"
+      },
+      {
+        "ap_cle": "B100/0703652",
+        "ap_texte": "MAIRIE DU 13EME ARDT",
+        "mandate_par_annee": {
+          "2011": 55240.35,
+          "2012": 23226.89,
+          "2013": 13521.62
+        },
+        "total_mandate": 91988.86,
+        "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME ARDT\", direction DPA - désigne directement le bâtiment.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703652"
+      },
+      {
+        "ap_cle": "0703652",
+        "ap_texte": "MAIRIE DU 13EME ARDT",
+        "mandate_par_annee": {
+          "2014": 3837.58
+        },
+        "total_mandate": 3837.58,
+        "preuve": "Opération budgétaire libellée \"MAIRIE DU 13EME ARDT\" (suite de l'AP B100/0703652), direction DPA - désigne directement le bâtiment.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703652"
+      }
+    ],
+    "periode": [
+      "2010",
+      "2015"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+13e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

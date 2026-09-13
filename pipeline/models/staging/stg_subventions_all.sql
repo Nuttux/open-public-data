@@ -206,6 +206,62 @@ source_ods_2013_2017 AS (
       AND SAFE_CAST(REGEXP_EXTRACT(COALESCE(publication, ''), r'(\d{4})') AS INT64) IS NOT NULL
 ),
 
+-- ─── 2015 : les noms que l'open data a masqués ──────────────────────────────
+-- Pour la publication « CA 2015 », la Ville a pseudonymisé (« Nom3950 ») 772
+-- bénéficiaires qui ne sont PAS des particuliers : 133 établissements publics,
+-- 61 entreprises, 533 associations… soit 668 M€. Les autres années, seuls les
+-- particuliers le sont. L'annexe B1.7 du compte administratif 2015 les nomme :
+-- seed_subventions_2015_noms_annexe ne garde que les rapprochements prouvés
+-- (montant au centime ET code postal ; 116 lignes, 570,1 M€). Le montant de la
+-- ligne doit encore correspondre ici, sinon on ne remplace rien.
+-- Un pseudonyme non prouvé n'est jamais publié comme un nom : il rejoint une
+-- ligne agrégée par nature juridique (ods_non_nommes).
+-- Preuves : pipeline/raw_extracts/subventions_ca2015_annexe/.
+noms_annexe_2015 AS (
+    SELECT annee, pseudonyme, montant, nom_annexe
+    FROM {{ ref('seed_subventions_2015_noms_annexe') }}
+),
+
+ods_2013_2017_resolu AS (
+    SELECT
+        s.*,
+        COALESCE(n.nom_annexe, s.nom) AS nom_resolu,
+        n.nom_annexe IS NOT NULL AS nom_depuis_annexe,
+        (
+            s.nature_juridique != 'Personnes physiques'
+            AND REGEXP_CONTAINS(COALESCE(s.nom, ''), r'^Nom ?\d+$')
+            AND n.nom_annexe IS NULL
+        ) AS pseudonyme_non_resolu
+    FROM source_ods_2013_2017 s
+    LEFT JOIN noms_annexe_2015 n
+        ON s.annee = n.annee
+       AND s.nom = n.pseudonyme
+       AND ABS(s.montant - n.montant) < 0.01
+),
+
+-- Pseudonymes non résolus : une ligne par exercice et nature juridique
+ods_non_nommes AS (
+    SELECT
+        annee,
+        'Paris' AS collectivite,
+        CONCAT(
+            'Bénéficiaires non nommés par la Ville — ', nature_juridique,
+            ' (', CAST(COUNT(*) AS STRING), ' lignes)'
+        ) AS beneficiaire,
+        CONCAT('BENEFICIAIRES NON NOMMES PAR LA VILLE ', UPPER(nature_juridique)) AS beneficiaire_normalise,
+        ANY_VALUE(categorie) AS categorie,
+        nature_juridique,
+        SUM(montant) AS montant,
+        SUM(prestations_nature) AS prestations_nature,
+        TRUE AS donnees_disponibles,
+        'opendata_2013_2017' AS source_systeme,
+        CONCAT(CAST(annee AS STRING), '-Paris-NON-NOMMES-',
+               SUBSTR(TO_HEX(MD5(nature_juridique)), 1, 6)) AS cle_technique
+    FROM ods_2013_2017_resolu
+    WHERE pseudonyme_non_resolu
+    GROUP BY annee, nature_juridique
+),
+
 -- Particuliers 2013-2017 : agrégation RGPD (1 ligne par exercice)
 ods_2013_2017_personnes_physiques AS (
     SELECT
@@ -234,11 +290,11 @@ ods_2013_2017_named AS (
     SELECT
         annee,
         'Paris' AS collectivite,
-        nom AS beneficiaire,
+        nom_resolu AS beneficiaire,
         UPPER(TRIM(REGEXP_REPLACE(
             REGEXP_REPLACE(
                 REGEXP_REPLACE(
-                    COALESCE(nom, ''),
+                    COALESCE(nom_resolu, ''),
                     r"^(L'|LA |LE |LES |D'|DU |DE LA |DE L'|DES )", ''
                 ),
                 r'[^A-Za-zÀ-ÿ0-9\s]', ' '
@@ -250,16 +306,17 @@ ods_2013_2017_named AS (
         montant,
         prestations_nature,
         TRUE AS donnees_disponibles,
-        'opendata_2013_2017' AS source_systeme,
+        IF(nom_depuis_annexe, 'opendata_2013_2017+annexe_ca2015', 'opendata_2013_2017') AS source_systeme,
         CONCAT(
             CAST(annee AS STRING), '-Paris-',
-            UPPER(REGEXP_REPLACE(COALESCE(nom, 'INCONNU'), r'\s+', ' ')), '-',
+            UPPER(REGEXP_REPLACE(COALESCE(nom_resolu, 'INCONNU'), r'\s+', ' ')), '-',
             CAST(CAST(montant AS INT64) AS STRING), '-',
             SUBSTR(TO_HEX(MD5(CONCAT(categorie, nature_juridique))), 1, 6)
         ) AS cle_technique
-    FROM source_ods_2013_2017
+    FROM ods_2013_2017_resolu
     WHERE nature_juridique != 'Personnes physiques'
       AND nom IS NOT NULL
+      AND NOT pseudonyme_non_resolu
 ),
 
 -- ─── UNION des sources ───────────────────────────────────────────────────────
@@ -273,6 +330,8 @@ unioned AS (
     SELECT * FROM ods_2013_2017_named
     UNION ALL
     SELECT * FROM ods_2013_2017_personnes_physiques
+    UNION ALL
+    SELECT * FROM ods_non_nommes
 ),
 
 -- Ajoute un suffixe numérique pour les rares doublons restants

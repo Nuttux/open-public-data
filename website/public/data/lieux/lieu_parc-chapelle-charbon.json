@@ -1,179 +1,188 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "parc-chapelle-charbon",
- "name": "Parc Chapelle-Charbon",
- "kind_fr": "Parc",
- "kind_en": "Park",
- "famille": "vert",
- "arrondissement": 18,
- "lat": 48.861094,
- "lon": 2.40379,
- "photo": "/img/lieux/parc-chapelle-charbon.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Rc1959",
-  "url": "https://commons.wikimedia.org/wiki/File:Parc_Chapelle-Charbon.20201017_144019.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1075,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2020": [
-   {
-    "reference": "2020 DEVE 45",
-    "titre": "2020 DEVE 45 - Mise à disposition à titre gratuit d’un terrain à usage de jardin partagé situé au sein du parc Chapelle Charbon (18e) - Convention d’occupation du domaine public avec l’association \"Vergers Urbains\".",
-    "genres": [
-     "autre"
-    ],
-    "seance": "OCTOBRE 2020",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156284"
-   }
-  ],
-  "2024": [
-   {
-    "reference": "2024 DFA 77",
-    "titre": "2024 DFA 77 - Résiliation de la convention d’occupation du domaine public du 1er octobre 2021 pour l’exploitation de la buvette située dans le parc Chapelle-Charbon, sis 28-32, rue Moussorgski (18e).",
-    "genres": [
-     "autre"
-    ],
-    "seance": "DECEMBRE 2024",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179081"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20191230000147",
-   "objet": "CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON",
-   "objet_clair": null,
-   "fournisseur": "COLAS FRANCE",
-   "montant_max": 5982760.21,
-   "date_notification": "2019-02-21",
-   "preuve": "Objet du marché : \"CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON\" — nomme explicitement le lieu."
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-chapelle-charbon",
+  "name": "Parc Chapelle-Charbon",
+  "kind_fr": "Parc",
+  "kind_en": "Park",
+  "famille": "vert",
+  "arrondissement": 18,
+  "lat": 48.861094,
+  "lon": 2.40379,
+  "photo": "/img/lieux/parc-chapelle-charbon.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Rc1959",
+    "url": "https://commons.wikimedia.org/wiki/File:Parc_Chapelle-Charbon.20201017_144019.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "numero_marche": "decp-2025S13426",
-   "objet": "Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è",
-   "objet_clair": null,
-   "fournisseur": "PROJET BASE",
-   "montant_max": 4000000.0,
-   "date_notification": "2026-01-06",
-   "preuve": "Objet du marché : \"Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è\" — nomme explicitement le lieu, arrondissement cohérent (18e)."
-  },
-  {
-   "numero_marche": "20191230000504",
-   "objet": "CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU",
-   "objet_clair": null,
-   "fournisseur": "UNION TECHNIQUE DU BATIMENT",
-   "montant_max": 1522762.25,
-   "date_notification": "2019-05-06",
-   "preuve": "Objet du marché : \"CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU\" — nomme explicitement le lieu."
-  },
-  {
-   "numero_marche": "20171230001291",
-   "objet": "CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON",
-   "objet_clair": null,
-   "fournisseur": "AGENCE LAVERNE",
-   "montant_max": 1329900.0,
-   "date_notification": "2017-08-10",
-   "preuve": "Objet du marché : \"CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON\" — nomme explicitement le lieu (maîtrise d'œuvre de l'aménagement)."
-  },
-  {
-   "numero_marche": "20191230000148",
-   "objet": "CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME",
-   "objet_clair": null,
-   "fournisseur": "IDVERDE",
-   "montant_max": 754391.35,
-   "date_notification": "2019-02-21",
-   "preuve": "Objet du marché : \"CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME\" — l'objet nomme explicitement le parc (signal \"objet\"). La mention \"8EME\" en fin d'objet contredit l'arrondissement du lieu (18e) : elle est traitée comme une anomalie de saisie de la source, non comme une preuve, le rattachement reposant sur le nom du parc dans l'objet. Ce lot 2 (espaces verts) est le pendant du lot 1 (génie civil, marché 20191230000147) : même préfixe CSP4, numéros consécutifs et même date de notification (2019-02-21)."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2016": 5886.0,
-   "2017": 264440.39,
-   "2018": 595874.45,
-   "2019": 1703021.86,
-   "2020": 647445.26,
-   "2021": 82451.25,
-   "2022": 52548.3
-  },
-  "total_eur": 3351667.51,
-  "operations": [
-   {
-    "ap_cle": "1605001",
-    "ap_texte": "PNE - CHAPELLE CHARBON (18e)  CREATION E",
-    "mandate_par_annee": {
-     "2016": 5886.0,
-     "2017": 264440.39,
-     "2018": 595874.45,
-     "2019": 1703021.86,
-     "2020": 647445.26,
-     "2021": 82451.25,
-     "2022": 52548.3
-    },
-    "total_mandate": 3351667.51,
-    "preuve": "Libellé d'opération, plafonné à 40 caractères par la source : \"PNE - CHAPELLE CHARBON (18e)  CREATION E\" — reconnu via le signal \"partie distinctive (chapelle charbon)\", donc indice faible pris seul. Confirmations : le libellé porte l'arrondissement du lieu (18e) ; la mission \"ESPACES VERTS ET ENV\" et la direction DEVE correspondent à la création d'un parc ; le sigle \"PNE\" est celui employé par la Ville pour ce projet précis dans la délibération 2016 DU 138 - DEVE \"Lancement du projet urbain et du grand parc public de Chapelle Charbon - PNE (18e)\", de la même année que la clé d'AP (1605001). Note secondaire, non probante : les mandatements courent de 2016 à 2022, période cohérente avec la MOE (2017) et les travaux (2019) rattachés par ailleurs.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1605001"
-   }
-  ],
-  "periode": [
-   "2016",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Chapelle-Charbon"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le parc Chapelle-Charbon, dont le nom se réfère à l'histoire du quartier, est un espace vert de Paris réalisé en plusieurs étapes entre 2020 et 2030 sur le site actuel d'un faisceau de voies ferrées de la ligne de Petite Ceinture, dans le 18e arrondissement.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_Chapelle-Charbon",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 1075,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2020": [
+      {
+        "reference": "2020 DEVE 45",
+        "titre": "2020 DEVE 45 - Mise à disposition à titre gratuit d’un terrain à usage de jardin partagé situé au sein du parc Chapelle Charbon (18e) - Convention d’occupation du domaine public avec l’association \"Vergers Urbains\".",
+        "genres": [
+          "autre"
+        ],
+        "seance": "OCTOBRE 2020",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156284"
+      }
+    ],
+    "2024": [
+      {
+        "reference": "2024 DFA 77",
+        "titre": "2024 DFA 77 - Résiliation de la convention d’occupation du domaine public du 1er octobre 2021 pour l’exploitation de la buvette située dans le parc Chapelle-Charbon, sis 28-32, rue Moussorgski (18e).",
+        "genres": [
+          "autre"
+        ],
+        "seance": "DECEMBRE 2024",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179081"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20191230000147",
+      "objet": "CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON",
+      "objet_clair": null,
+      "fournisseur": "COLAS FRANCE",
+      "montant_max": 5982760.21,
+      "date_notification": "2019-02-21",
+      "preuve": "Objet du marché : \"CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON\" — nomme explicitement le lieu."
+    },
+    {
+      "numero_marche": "decp-2025S13426",
+      "objet": "Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è",
+      "objet_clair": null,
+      "fournisseur": "PROJET BASE",
+      "montant_max": 4000000.0,
+      "date_notification": "2026-01-06",
+      "preuve": "Objet du marché : \"Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è\" — nomme explicitement le lieu, arrondissement cohérent (18e)."
+    },
+    {
+      "numero_marche": "20191230000504",
+      "objet": "CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU",
+      "objet_clair": null,
+      "fournisseur": "UNION TECHNIQUE DU BATIMENT",
+      "montant_max": 1522762.25,
+      "date_notification": "2019-05-06",
+      "preuve": "Objet du marché : \"CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU\" — nomme explicitement le lieu."
+    },
+    {
+      "numero_marche": "20171230001291",
+      "objet": "CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON",
+      "objet_clair": null,
+      "fournisseur": "AGENCE LAVERNE",
+      "montant_max": 1329900.0,
+      "date_notification": "2017-08-10",
+      "preuve": "Objet du marché : \"CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON\" — nomme explicitement le lieu (maîtrise d'œuvre de l'aménagement)."
+    },
+    {
+      "numero_marche": "20191230000148",
+      "objet": "CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME",
+      "objet_clair": null,
+      "fournisseur": "IDVERDE",
+      "montant_max": 754391.35,
+      "date_notification": "2019-02-21",
+      "preuve": "Objet du marché : \"CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME\" — l'objet nomme explicitement le parc (signal \"objet\"). La mention \"8EME\" en fin d'objet contredit l'arrondissement du lieu (18e) : elle est traitée comme une anomalie de saisie de la source, non comme une preuve, le rattachement reposant sur le nom du parc dans l'objet. Ce lot 2 (espaces verts) est le pendant du lot 1 (génie civil, marché 20191230000147) : même préfixe CSP4, numéros consécutifs et même date de notification (2019-02-21)."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2016": 5886.0,
+      "2017": 264440.39,
+      "2018": 595874.45,
+      "2019": 1703021.86,
+      "2020": 647445.26,
+      "2021": 82451.25,
+      "2022": 52548.3
+    },
+    "total_eur": 3351667.51,
+    "operations": [
+      {
+        "ap_cle": "1605001",
+        "ap_texte": "PNE - CHAPELLE CHARBON (18e)  CREATION E",
+        "mandate_par_annee": {
+          "2016": 5886.0,
+          "2017": 264440.39,
+          "2018": 595874.45,
+          "2019": 1703021.86,
+          "2020": 647445.26,
+          "2021": 82451.25,
+          "2022": 52548.3
+        },
+        "total_mandate": 3351667.51,
+        "preuve": "Libellé d'opération, plafonné à 40 caractères par la source : \"PNE - CHAPELLE CHARBON (18e)  CREATION E\" — reconnu via le signal \"partie distinctive (chapelle charbon)\", donc indice faible pris seul. Confirmations : le libellé porte l'arrondissement du lieu (18e) ; la mission \"ESPACES VERTS ET ENV\" et la direction DEVE correspondent à la création d'un parc ; le sigle \"PNE\" est celui employé par la Ville pour ce projet précis dans la délibération 2016 DU 138 - DEVE \"Lancement du projet urbain et du grand parc public de Chapelle Charbon - PNE (18e)\", de la même année que la clé d'AP (1605001). Note secondaire, non probante : les mandatements courent de 2016 à 2022, période cohérente avec la MOE (2017) et les travaux (2019) rattachés par ailleurs.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1605001"
+      }
+    ],
+    "periode": [
+      "2016",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Chapelle-Charbon"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

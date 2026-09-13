@@ -1,171 +1,199 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "espci-paris",
- "name": "ESPCI Paris",
- "kind_fr": "École",
- "kind_en": "École",
- "famille": "services",
- "arrondissement": 5,
- "lat": 48.84146,
- "lon": 2.34681,
- "photo": "/img/lieux/espci-paris.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "LPLT",
-  "url": "https://commons.wikimedia.org/wiki/File:ESPCI_de_Paris.JPG",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 621,
-  "delibs_span": [
-   2001,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": null
- },
- "subventions_exploitant": {
-  "nom_fiche": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-  "total_eur": 294663182.5,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 19947600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 13357600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 14517600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 15057368.5,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 21295000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 15300000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 38270000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 37100000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 30675000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 17995000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 23980014.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 15700000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 16468000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 15000000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   }
-  ],
-  "perimetre": "multi",
-  "note_publique": "Ces montants sont les subventions de fonctionnement et d'investissement versées par la Ville à la régie qui gère l'école : ils financent son activité d'enseignement et de recherche, pas seulement ses bâtiments du 10-22, rue Vauquelin. La Ville a par ailleurs financé en 2010 l'aménagement de locaux destinés à l'Institut Langevin de l'école sur le campus de Jussieu — une dépense versée à l'Établissement public du campus de Jussieu, donc absente du total ci-dessus.",
-  "autres_sites": [
-   "Locaux de l'Institut Langevin de l'ESPCI, campus de Jussieu (5e)"
-  ]
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=ESPCI+Paris"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "espci-paris",
+  "name": "ESPCI Paris",
+  "kind_fr": "École",
+  "kind_en": "École",
+  "famille": "services",
+  "arrondissement": 5,
+  "lat": 48.84146,
+  "lon": 2.34681,
+  "photo": "/img/lieux/espci-paris.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "LPLT",
+    "url": "https://commons.wikimedia.org/wiki/File:ESPCI_de_Paris.JPG",
+    "source": "Wikimedia Commons"
   },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L’École supérieure de physique et de chimie industrielles de la ville de Paris, ou ESPCI Paris, est l'une des 204 écoles d'ingénieurs françaises accréditées au 1er septembre 2020 à délivrer un diplôme d'ingénieur. Elle est, avec l'École des ingénieurs de la ville de Paris (EIVP), l'une des deux écoles d'ingénieurs de la Ville de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89cole_sup%C3%A9rieure_de_physique_et_de_chimie_industrielles_de_la_ville_de_Paris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The École supérieure de physique et de chimie industrielles de la ville de Paris, or ESPCI Paris, is one of the 204 French engineering schools accredited as of 1 September 2020 to award an engineering degree. Along with the École des ingénieurs de la ville de Paris (EIVP), it is one of the City of Paris's two engineering schools."
+  },
+  "stats": {
+    "n_delibs": 621,
+    "delibs_span": [
+      2012,
+      2012
+    ],
+    "n_bmo_brut": 1,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": 1
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+    "total_eur": 315642582.5,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 19947600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 13357600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 14517600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 15057368.5,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 21295000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 15300000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 38270000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 37100000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 30675000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 20979400.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 17995000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 23980014.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 15700000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 16468000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 15000000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      }
+    ],
+    "perimetre": "multi",
+    "note_publique": "Ces montants sont les subventions de fonctionnement et d'investissement versées par la Ville à la régie qui gère l'école : ils financent son activité d'enseignement et de recherche, pas seulement ses bâtiments du 10-22, rue Vauquelin. La Ville a par ailleurs financé en 2010 l'aménagement de locaux destinés à l'Institut Langevin de l'école sur le campus de Jussieu — une dépense versée à l'Établissement public du campus de Jussieu, donc absente du total ci-dessus.",
+    "autres_sites": [
+      "Locaux de l'Institut Langevin de l'ESPCI, campus de Jussieu (5e)"
+    ]
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En février 2012, le Conseil de Paris examine le projet de délibération DDEEES 32, portant sur un contrat d'objectifs et de moyens entre la Ville de Paris et l'École supérieure de physique et de chimie industrielles de la Ville de Paris (ESPCI ParisTech). Répondant au nom de la 2e Commission, l'adjoint Jean-Louis Missika décrit l'école comme une régie municipale « autonomisée par rapport à la Ville » ; selon lui, ce document définit « en quelque sorte » les droits et devoirs réciproques de la Ville et de l'école, et une série d'indicateurs permet d'évaluer la performance de l'ESPCI. Mme Marinette Bache et M. Jacques Bravo, maire du 9e arrondissement, prennent la parole en faveur du texte. Selon M. Bravo, l'école est surnommée « l'école des prix Nobel », en référence aux travaux des Curie et Joliot-Curie, de Langevin, de Pierre-Gilles de Gennes et de Georges Charpak. Mme Bache évoque aussi l'espace Pierre-Gilles de Gennes, qu'elle décrit comme un espace ouvert au public visant à rapprocher la science des citoyens.",
+  "moments": [
+    {
+      "id": "103883",
+      "seance": "FEVRIER 2012",
+      "fait": "Le Conseil de Paris examine le projet de délibération DDEEES 32 relatif à un contrat d'objectifs et de moyens entre la Ville et l'ESPCI ; selon l'adjoint Jean-Louis Missika, ce document définit « en quelque sorte » les droits et devoirs réciproques des deux parties, et une série d'indicateurs permet d'évaluer la performance de l'école.",
+      "pourquoi": "Contrat d'objectifs et de moyens entre la Ville et l'ESPCI (DDEEES 32)",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103883",
+      "fait_en": "The Conseil de Paris examines draft deliberation DDEEES 32 concerning a contract of objectives and resources between the City and ESPCI; according to deputy mayor Jean-Louis Missika, this document defines, \"in a way\", the reciprocal rights and duties of the two parties, and a series of indicators makes it possible to assess the school's performance.",
+      "pourquoi_en": "Contract of objectives and resources between the City and ESPCI (DDEEES 32)"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=ESPCI+Paris"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22ESPCI+Paris%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In February 2012, the Conseil de Paris examines draft deliberation DDEEES 32, concerning a contract of objectives and resources between the City of Paris and the École supérieure de physique et de chimie industrielles de la Ville de Paris (ESPCI ParisTech). Responding on behalf of the 2nd Committee, deputy mayor Jean-Louis Missika describes the school as a municipal agency (régie) \"made autonomous from the City\"; according to him, this document defines, \"in a way\", the reciprocal rights and duties of the City and the school, and a series of indicators makes it possible to assess ESPCI's performance. Ms Marinette Bache and Mr Jacques Bravo, mayor of the 9th arrondissement, speak in favour of the text. According to Mr Bravo, the school is nicknamed \"the school of Nobel Prizes\", in reference to the work of the Curies and the Joliot-Curies, of Langevin, of Pierre-Gilles de Gennes and of Georges Charpak. Ms Bache also mentions the Espace Pierre-Gilles de Gennes, which she describes as a space open to the public aimed at bringing science closer to citizens.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

@@ -1,200 +1,209 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "parc-martin-luther-king",
- "name": "Parc Martin Luther King",
- "kind_fr": "Parc",
- "kind_en": "Park",
- "famille": "vert",
- "arrondissement": 17,
- "lat": 48.8912,
- "lon": 2.316,
- "photo": "/img/lieux/parc-martin-luther-king.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guilhem Vellut from Annecy, France",
-  "url": "https://commons.wikimedia.org/wiki/File:H%C3%A9ron_cendr%C3%A9_@_Parc_Clichy-Batignolles_-_Martin-Luther-King_@_Paris_(29769549362).jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le parc Martin-Luther-King ou parc Clichy-Batignolles – Martin-Luther-King est un espace vert public de 10 hectares à Paris dans le quartier des Batignolles, non loin du square des Batignolles.",
-  "url": "https://fr.wikipedia.org/wiki/Parc_Martin-Luther-King",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1234,
-  "delibs_span": [
-   2007,
-   2025
-  ],
-  "n_bmo_brut": 18,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (9 trouvés)",
-  "lecture_mode_en": "title naming the place (9 found)",
-  "n_lus": 9,
-  "n_lieu": 8
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "En 2007, un vœu propose de baptiser « parc Martin Luther King » le futur parc Clichy-Batignolles, l'Exécutif se disant favorable tout en renvoyant le nom à une concertation. Dès l'ouverture, la sécurité domine les débats : gardiennage jugé insuffisant en 2009, question sur le coût d'une ouverture 24h/24 restée sans réponse en 2016, vœux de fermeture nocturne repoussés en 2017, tandis qu'un cabinet médical de secteur 1 portant le nom du parc fait l'objet d'une subvention proposée de 30.000 euros. La même année, la remise en exploitation des locaux « La Forge » et « Le Belvédère » et la tranquillité des riverains reviennent en séance, l'adjointe disant avoir éteint « Le Belvédère » à titre expérimental. En 2021, l'adjoint annonce la livraison de la dernière tranche de ce parc de 10 hectares, encore coupé par un faisceau ferroviaire dont un vœu réclame le franchissement piéton. En 2025, le Conseil adopte la dénomination de six allées, choisies par les habitants au terme d'une démarche participative.",
- "moments": [
-  {
-   "id": "14093",
-   "seance": "JUILLET 2007",
-   "fait": "Un vœu propose de nommer le futur parc « parc Martin Luther King » ; l'Exécutif y est favorable mais diffère la décision finale à une concertation.",
-   "pourquoi": "L'acte de baptême, différé pour concertation",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14093",
-   "fait_en": "A motion proposed naming the future park \"Parc Martin Luther King\"; the executive was in favor but deferred the final decision to a consultation process.",
-   "pourquoi_en": "The naming, deferred for consultation"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-martin-luther-king",
+  "name": "Parc Martin Luther King",
+  "kind_fr": "Parc",
+  "kind_en": "Park",
+  "famille": "vert",
+  "arrondissement": 17,
+  "lat": 48.8912,
+  "lon": 2.316,
+  "photo": "/img/lieux/parc-martin-luther-king.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guilhem Vellut from Annecy, France",
+    "url": "https://commons.wikimedia.org/wiki/File:H%C3%A9ron_cendr%C3%A9_@_Parc_Clichy-Batignolles_-_Martin-Luther-King_@_Paris_(29769549362).jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "id": "20579",
-   "seance": "JUILLET 2009",
-   "fait": "Des élus du 17e demandent un gardiennage renforcé face à l'insécurité ; l'adjoint reconnaît de « vrais problèmes » mais renvoie à la police nationale.",
-   "pourquoi": "Dès l'ouverture, la sécurité fait débat",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20579",
-   "fait_en": "Councillors from the 17th arrondissement called for increased guarding in the face of insecurity; the deputy mayor acknowledged \"real problems\" but referred the matter to the national police.",
-   "pourquoi_en": "Security is debated from the moment the park opens"
-  },
-  {
-   "id": "129862",
-   "seance": "MAI 2016",
-   "fait": "Une question écrite réclame le coût de l'ouverture 24h/24 du parc, en investissement et fonctionnement ; la réponse n'est pas parvenue.",
-   "pourquoi": "Combien coûte un parc ouvert nuit et jour ?",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129862",
-   "fait_en": "A written question requested the cost of keeping the park open 24 hours a day, in both capital and operating expenditure; no response was received.",
-   "pourquoi_en": "How much does a park open day and night cost?"
-  },
-  {
-   "id": "134780",
-   "seance": "JANVIER 2017",
-   "fait": "Une subvention proposée de 30 000 euros accompagne l'installation d'un cabinet médical de secteur 1 portant le nom du parc, via « Paris Med' ».",
-   "pourquoi": "30 000 € pour un cabinet médical de proximité",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780",
-   "fait_en": "A proposed grant of 30,000 euros accompanied the installation of a secteur 1 medical practice bearing the park's name, via \"Paris Med'\".",
-   "pourquoi_en": "30,000 euros for a local medical practice"
-  },
-  {
-   "id": "135834",
-   "seance": "MAI 2017",
-   "fait": "Deux vœux des Républicains demandant la fermeture nocturne estivale du parc et plus d'effectifs DPP sont repoussés, avis défavorable de l'Exécutif.",
-   "pourquoi": "Fermer le parc la nuit ? Rejeté",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135834",
-   "fait_en": "Two motions from Les Républicains requesting the park's nighttime closure in summer and more DPP staff were rejected, with an unfavorable opinion from the executive.",
-   "pourquoi_en": "Close the park at night? Rejected"
-  },
-  {
-   "id": "138068",
-   "seance": "SEPTEMBRE 2017",
-   "fait": "Vœux sur la tranquillité des riverains et la remise en exploitation de « La Forge » et « Le Belvédère » ; l'adjointe dit avoir éteint « Le Belvédère » à l'essai.",
-   "pourquoi": "Deux locaux inoccupés, la tranquillité en question",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138068",
-   "fait_en": "Motions on residents' peace and quiet and on bringing \"La Forge\" and \"Le Belvédère\" back into use; the deputy mayor said she had shut down \"Le Belvédère\" on a trial basis.",
-   "pourquoi_en": "Two vacant premises, residents' peace and quiet in question"
-  },
-  {
-   "id": "157802",
-   "seance": "MARS 2021",
-   "fait": "Un vœu réclame un franchissement piéton des voies ferrées ; l'adjoint annonce la livraison de la dernière tranche du parc de 10 hectares.",
-   "pourquoi": "Le parc s'achève, encore coupé par le rail",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157802",
-   "fait_en": "A motion called for a pedestrian crossing over the rail tracks; the deputy mayor announced the delivery of the final phase of the 10-hectare park.",
-   "pourquoi_en": "The park nears completion, still cut off by the railway"
-  },
-  {
-   "id": "179866",
-   "seance": "AVRIL 2025",
-   "fait": "Le Conseil adopte la dénomination de six allées du parc, issue d'une démarche participative de féminisation menée par la mairie du 17e.",
-   "pourquoi": "Six allées nommées, choisies par les habitants",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179866",
-   "fait_en": "The Council adopted the naming of six paths in the park, resulting from a participatory initiative to give more places women's names, led by the mairie of the 17th arrondissement.",
-   "pourquoi_en": "Six paths named, chosen by residents"
-  }
- ],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2017": [
-   {
-    "reference": "2017 DASES 3",
-    "titre": "2017 DASES 3 G - Subvention (30.000 euros) et convention avec la S.C.M. \"Cabinet médical et paramédical du parc Martin Luther King\" (17e) dans le cadre du dispositif \"Paris Med’\".",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JANVIER 2017",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2018": 3189222.14,
-   "2019": 6433322.91,
-   "2020": 6215910.84,
-   "2021": 2899747.36,
-   "2022": 66845.58
-  },
-  "total_eur": 18805048.83,
-  "operations": [
-   {
-    "ap_cle": "1705028",
-    "ap_texte": "CLICHY-BATIGNOLLES (17e) - PARC MARTIN L",
-    "mandate_par_annee": {
-     "2018": 3189222.14,
-     "2019": 6433322.91,
-     "2020": 6215910.84,
-     "2021": 2899747.36,
-     "2022": 66845.58
-    },
-    "total_mandate": 18805048.83,
-    "preuve": "Libellé coupé à 40 caractères par la source : « CLICHY-BATIGNOLLES (17e) - PARC MARTIN L », soit « PARC MARTIN L[UTHER KING] ». La confirmation vient du contexte : le vœu de juillet 2007 du Conseil de Paris demande « Que le parc Clichy-Batignolles soit dénommé ?parc Martin Luther King? » — le parc de la ZAC Clichy-Batignolles dans le 17e EST ce lieu. Cohérent aussi avec le type d'équipement (mission « ESPACES VERTS ET ENV », direction DEVE) et avec l'arrondissement 17. Les montants mandatés par année (6,43 M€ en 2019, 6,22 M€ en 2020) suivent la même trajectoire que le projet d'investissement « Parc Martin Luther King - Aménagement (phase 3) » ; l'opération couvre l'aménagement de l'ensemble du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705028"
-   }
-  ],
-  "periode": [
-   "2018",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Martin+Luther+King"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+Martin+Luther+King%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le parc Martin-Luther-King ou parc Clichy-Batignolles – Martin-Luther-King est un espace vert public de 10 hectares à Paris dans le quartier des Batignolles, non loin du square des Batignolles.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_Martin-Luther-King",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 1234,
+    "delibs_span": [
+      2007,
+      2025
+    ],
+    "n_bmo_brut": 18,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (9 trouvés)",
+    "lecture_mode_en": "title naming the place (9 found)",
+    "n_lus": 9,
+    "n_lieu": 8
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En 2007, un vœu propose de baptiser « parc Martin Luther King » le futur parc Clichy-Batignolles, l'Exécutif se disant favorable tout en renvoyant le nom à une concertation. Dès l'ouverture, la sécurité domine les débats : gardiennage jugé insuffisant en 2009, question sur le coût d'une ouverture 24h/24 restée sans réponse en 2016, vœux de fermeture nocturne repoussés en 2017, tandis qu'un cabinet médical de secteur 1 portant le nom du parc fait l'objet d'une subvention proposée de 30.000 euros. La même année, la remise en exploitation des locaux « La Forge » et « Le Belvédère » et la tranquillité des riverains reviennent en séance, l'adjointe disant avoir éteint « Le Belvédère » à titre expérimental. En 2021, l'adjoint annonce la livraison de la dernière tranche de ce parc de 10 hectares, encore coupé par un faisceau ferroviaire dont un vœu réclame le franchissement piéton. En 2025, le Conseil adopte la dénomination de six allées, choisies par les habitants au terme d'une démarche participative.",
+  "moments": [
+    {
+      "id": "14093",
+      "seance": "JUILLET 2007",
+      "fait": "Un vœu propose de nommer le futur parc « parc Martin Luther King » ; l'Exécutif y est favorable mais diffère la décision finale à une concertation.",
+      "pourquoi": "L'acte de baptême, différé pour concertation",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14093",
+      "fait_en": "A motion proposed naming the future park \"Parc Martin Luther King\"; the executive was in favor but deferred the final decision to a consultation process.",
+      "pourquoi_en": "The naming, deferred for consultation"
+    },
+    {
+      "id": "20579",
+      "seance": "JUILLET 2009",
+      "fait": "Des élus du 17e demandent un gardiennage renforcé face à l'insécurité ; l'adjoint reconnaît de « vrais problèmes » mais renvoie à la police nationale.",
+      "pourquoi": "Dès l'ouverture, la sécurité fait débat",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20579",
+      "fait_en": "Councillors from the 17th arrondissement called for increased guarding in the face of insecurity; the deputy mayor acknowledged \"real problems\" but referred the matter to the national police.",
+      "pourquoi_en": "Security is debated from the moment the park opens"
+    },
+    {
+      "id": "129862",
+      "seance": "MAI 2016",
+      "fait": "Une question écrite réclame le coût de l'ouverture 24h/24 du parc, en investissement et fonctionnement ; la réponse n'est pas parvenue.",
+      "pourquoi": "Combien coûte un parc ouvert nuit et jour ?",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129862",
+      "fait_en": "A written question requested the cost of keeping the park open 24 hours a day, in both capital and operating expenditure; no response was received.",
+      "pourquoi_en": "How much does a park open day and night cost?"
+    },
+    {
+      "id": "134780",
+      "seance": "JANVIER 2017",
+      "fait": "Une subvention proposée de 30 000 euros accompagne l'installation d'un cabinet médical de secteur 1 portant le nom du parc, via « Paris Med' ».",
+      "pourquoi": "30 000 € pour un cabinet médical de proximité",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780",
+      "fait_en": "A proposed grant of 30,000 euros accompanied the installation of a secteur 1 medical practice bearing the park's name, via \"Paris Med'\".",
+      "pourquoi_en": "30,000 euros for a local medical practice"
+    },
+    {
+      "id": "135834",
+      "seance": "MAI 2017",
+      "fait": "Deux vœux des Républicains demandant la fermeture nocturne estivale du parc et plus d'effectifs DPP sont repoussés, avis défavorable de l'Exécutif.",
+      "pourquoi": "Fermer le parc la nuit ? Rejeté",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135834",
+      "fait_en": "Two motions from Les Républicains requesting the park's nighttime closure in summer and more DPP staff were rejected, with an unfavorable opinion from the executive.",
+      "pourquoi_en": "Close the park at night? Rejected"
+    },
+    {
+      "id": "138068",
+      "seance": "SEPTEMBRE 2017",
+      "fait": "Vœux sur la tranquillité des riverains et la remise en exploitation de « La Forge » et « Le Belvédère » ; l'adjointe dit avoir éteint « Le Belvédère » à l'essai.",
+      "pourquoi": "Deux locaux inoccupés, la tranquillité en question",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138068",
+      "fait_en": "Motions on residents' peace and quiet and on bringing \"La Forge\" and \"Le Belvédère\" back into use; the deputy mayor said she had shut down \"Le Belvédère\" on a trial basis.",
+      "pourquoi_en": "Two vacant premises, residents' peace and quiet in question"
+    },
+    {
+      "id": "157802",
+      "seance": "MARS 2021",
+      "fait": "Un vœu réclame un franchissement piéton des voies ferrées ; l'adjoint annonce la livraison de la dernière tranche du parc de 10 hectares.",
+      "pourquoi": "Le parc s'achève, encore coupé par le rail",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157802",
+      "fait_en": "A motion called for a pedestrian crossing over the rail tracks; the deputy mayor announced the delivery of the final phase of the 10-hectare park.",
+      "pourquoi_en": "The park nears completion, still cut off by the railway"
+    },
+    {
+      "id": "179866",
+      "seance": "AVRIL 2025",
+      "fait": "Le Conseil adopte la dénomination de six allées du parc, issue d'une démarche participative de féminisation menée par la mairie du 17e.",
+      "pourquoi": "Six allées nommées, choisies par les habitants",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179866",
+      "fait_en": "The Council adopted the naming of six paths in the park, resulting from a participatory initiative to give more places women's names, led by the mairie of the 17th arrondissement.",
+      "pourquoi_en": "Six paths named, chosen by residents"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2017": [
+      {
+        "reference": "2017 DASES 3",
+        "titre": "2017 DASES 3 G - Subvention (30.000 euros) et convention avec la S.C.M. \"Cabinet médical et paramédical du parc Martin Luther King\" (17e) dans le cadre du dispositif \"Paris Med’\".",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JANVIER 2017",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2018": 3189222.14,
+      "2019": 6433322.91,
+      "2020": 6215910.84,
+      "2021": 2899747.36,
+      "2022": 66845.58
+    },
+    "total_eur": 18805048.83,
+    "operations": [
+      {
+        "ap_cle": "1705028",
+        "ap_texte": "CLICHY-BATIGNOLLES (17e) - PARC MARTIN L",
+        "mandate_par_annee": {
+          "2018": 3189222.14,
+          "2019": 6433322.91,
+          "2020": 6215910.84,
+          "2021": 2899747.36,
+          "2022": 66845.58
+        },
+        "total_mandate": 18805048.83,
+        "preuve": "Libellé coupé à 40 caractères par la source : « CLICHY-BATIGNOLLES (17e) - PARC MARTIN L », soit « PARC MARTIN L[UTHER KING] ». La confirmation vient du contexte : le vœu de juillet 2007 du Conseil de Paris demande « Que le parc Clichy-Batignolles soit dénommé ?parc Martin Luther King? » — le parc de la ZAC Clichy-Batignolles dans le 17e EST ce lieu. Cohérent aussi avec le type d'équipement (mission « ESPACES VERTS ET ENV », direction DEVE) et avec l'arrondissement 17. Les montants mandatés par année (6,43 M€ en 2019, 6,22 M€ en 2020) suivent la même trajectoire que le projet d'investissement « Parc Martin Luther King - Aménagement (phase 3) » ; l'opération couvre l'aménagement de l'ensemble du parc.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705028"
+      }
+    ],
+    "periode": [
+      "2018",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Martin+Luther+King"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+Martin+Luther+King%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In 2007, a motion proposed naming the future Parc Clichy-Batignolles \"Parc Martin Luther King\"; the executive said it was in favor while deferring the final decision to a consultation process. From the moment it opened, security dominated the debates: guarding judged insufficient in 2009, a question on the cost of a 24-hour opening left unanswered in 2016, motions for nighttime closure rejected in 2017, while a secteur 1 medical practice bearing the park's name was the subject of a proposed grant of 30,000 euros. That same year, bringing the \"La Forge\" and \"Le Belvédère\" premises back into use and local residents' peace and quiet came up in session, with the deputy mayor saying she had shut down \"Le Belvédère\" on an experimental basis. In 2021, the deputy mayor announced the delivery of the final phase of this 10-hectare park, still cut off by a rail corridor for which a motion demanded a pedestrian crossing. In 2025, the Council adopted the naming of six paths, chosen by residents through a participatory process.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In 2007, a motion proposed naming the future Parc Clichy-Batignolles \"Parc Martin Luther King\"; the executive said it was in favor while deferring the final decision to a consultation process. From the moment it opened, security dominated the debates: guarding judged insufficient in 2009, a question on the cost of a 24-hour opening left unanswered in 2016, motions for nighttime closure rejected in 2017, while a secteur 1 medical practice bearing the park's name was the subject of a proposed grant of 30,000 euros. That same year, bringing the \"La Forge\" and \"Le Belvédère\" premises back into use and local residents' peace and quiet came up in session, with the deputy mayor saying she had shut down \"Le Belvédère\" on an experimental basis. In 2021, the deputy mayor announced the delivery of the final phase of this 10-hectare park, still cut off by a rail corridor for which a motion demanded a pedestrian crossing. In 2025, the Council adopted the naming of six paths, chosen by residents through a participatory process."
 }

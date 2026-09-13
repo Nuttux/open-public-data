@@ -1,74 +1,83 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "cimetiere-de-belleville",
- "name": "Cimetière de Belleville",
- "kind_fr": "Cimetière",
- "kind_en": "Cemetery",
- "famille": "vert",
- "arrondissement": 20,
- "lat": 48.875062,
- "lon": 2.392401,
- "photo": "/img/lieux/cimetiere-de-belleville.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "LPLT",
-  "url": "https://commons.wikimedia.org/wiki/File:Vue_1_du_cimeti%C3%A8re_de_Belleville.JPG",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le cimetière de Belleville est situé dans le quartier de quartier de Belleville à l'angle de la rue de Belleville et de la rue du Télégraphe dans le 20e arrondissement de Paris. Ce cimetière de 1,80 hectare de superficie accueille 3 210 concessions.",
-  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Belleville",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 841,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "tête du classement Solr (841 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (841 documents total)",
-  "n_lus": 43,
-  "n_lieu": 0
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Aucune des délibérations examinées ne porte sur le cimetière de Belleville lui-même. Les textes réunis autour de ce nom concernent soit d'autres lieux appelés Belleville dans le 19e et le 20e arrondissement (le parc et son pavillon Maison de l'air, le boulevard, la rue de Belleville et ses programmes de logements sociaux, des associations comme le Groupe d'œuvres sociales de Belleville ou Les Hauts de Belleville), soit d'autres cimetières parisiens ou franciliens (Montmartre, Père Lachaise, Montparnasse, Batignolles, Bagneux, Thiais), soit une voie au nom voisin sans rapport avec un cimetière (l'avenue du Cimetière Parisien à Pantin). Aucun de ces documents n'apporte de fait, de montant ou de décision spécifiquement rattaché au cimetière de Belleville.",
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Belleville"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "cimetiere-de-belleville",
+  "name": "Cimetière de Belleville",
+  "kind_fr": "Cimetière",
+  "kind_en": "Cemetery",
+  "famille": "vert",
+  "arrondissement": 20,
+  "lat": 48.875062,
+  "lon": 2.392401,
+  "photo": "/img/lieux/cimetiere-de-belleville.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "LPLT",
+    "url": "https://commons.wikimedia.org/wiki/File:Vue_1_du_cimeti%C3%A8re_de_Belleville.JPG",
+    "source": "Wikimedia Commons"
   },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le cimetière de Belleville est situé dans le quartier de quartier de Belleville à l'angle de la rue de Belleville et de la rue du Télégraphe dans le 20e arrondissement de Paris. Ce cimetière de 1,80 hectare de superficie accueille 3 210 concessions.",
+    "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Belleville",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 841,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "tête du classement Solr (841 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (841 documents total)",
+    "n_lus": 43,
+    "n_lieu": 0
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Aucune des délibérations examinées ne porte sur le cimetière de Belleville lui-même. Les textes réunis autour de ce nom concernent soit d'autres lieux appelés Belleville dans le 19e et le 20e arrondissement (le parc et son pavillon Maison de l'air, le boulevard, la rue de Belleville et ses programmes de logements sociaux, des associations comme le Groupe d'œuvres sociales de Belleville ou Les Hauts de Belleville), soit d'autres cimetières parisiens ou franciliens (Montmartre, Père Lachaise, Montparnasse, Batignolles, Bagneux, Thiais), soit une voie au nom voisin sans rapport avec un cimetière (l'avenue du Cimetière Parisien à Pantin). Aucun de ces documents n'apporte de fait, de montant ou de décision spécifiquement rattaché au cimetière de Belleville.",
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Belleville"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "None of the resolutions examined concern the Cimetière de Belleville itself. The documents gathered under this name relate either to other places called Belleville in the 19th and 20th arrondissements (the park and its Maison de l'air pavilion, the boulevard, the rue de Belleville and its social housing programs, associations such as the Groupe d'œuvres sociales de Belleville or Les Hauts de Belleville), or to other Parisian or Île-de-France cemeteries (Montmartre, Père Lachaise, Montparnasse, Batignolles, Bagneux, Thiais), or to a street with a similar name unrelated to any cemetery (the avenue du Cimetière Parisien in Pantin). None of these documents provides any fact, amount, or decision specifically tied to the Cimetière de Belleville.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "None of the resolutions examined concern the Cimetière de Belleville itself. The documents gathered under this name relate either to other places called Belleville in the 19th and 20th arrondissements (the park and its Maison de l'air pavilion, the boulevard, the rue de Belleville and its social housing programs, associations such as the Groupe d'œuvres sociales de Belleville or Les Hauts de Belleville), or to other Parisian or Île-de-France cemeteries (Montmartre, Père Lachaise, Montparnasse, Batignolles, Bagneux, Thiais), or to a street with a similar name unrelated to any cemetery (the avenue du Cimetière Parisien in Pantin). None of these documents provides any fact, amount, or decision specifically tied to the Cimetière de Belleville."
 }

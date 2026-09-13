@@ -1,101 +1,171 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-du-saint-esprit",
- "name": "Église du Saint-Esprit",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 12,
- "lat": 48.838211,
- "lon": 2.397626,
- "photo": "/img/lieux/eglise-du-saint-esprit.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Dr Dobeaucoup",
-  "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_du_Saint_Esprit_Paris_int%C3%A9rieur_avec_b%C3%A9ton_brut.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 622,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 866126.0,
-  "invest_annees": [
-   "2019",
-   "2021"
-  ],
-  "lecture_mode": "titre nommant le lieu (5 trouvés)",
-  "lecture_mode_en": "title naming the place (5 found)",
-  "n_lus": 5,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 550808.0,
-   "nom_projet": "Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn",
-   "preuve": "Le libellé de l'opération nomme le lieu verbatim : « Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn[erie divers] » (signal « nom » ; le candidat tronque le libellé à 90 caractères, la fin est lue dans la source citée ci-dessous). La ligne source (CA 2019, investissements localisés, id 2019_12_il_000, https://cdn.paris.fr/paris/2020/07/24/a553a4550362175f3d609b65a5998072.pdf) est rattachée à l'arrondissement 12, celui de l'église (1, rue Cannebière / 186, avenue Daumesnil). Antécédent distinct, cité comme contexte et non comme la même opération : le Conseil de Paris a déjà financé des travaux thermiques sur ce bâtiment — « travaux de rénovation des installations thermiques de l'église du Saint-Esprit, 1, rue Cannebière (12e) » (octobre 1996).",
-   "id": null
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-du-saint-esprit",
+  "name": "Église du Saint-Esprit",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 12,
+  "lat": 48.838211,
+  "lon": 2.397626,
+  "photo": "/img/lieux/eglise-du-saint-esprit.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Dr Dobeaucoup",
+    "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_du_Saint_Esprit_Paris_int%C3%A9rieur_avec_b%C3%A9ton_brut.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2021,
-   "montant_eur": 315318.0,
-   "nom_projet": "tisanerie Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise ",
-   "preuve": "Le libellé de l'opération nomme le lieu : « […] Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise en conformité de l'ascenseur » (signal « nom »). La ligne source (CA 2021, investissements localisés, id 2021_12_il_001, https://cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf) est rattachée à l'arrondissement 12, celui de l'église. Réserve : le préfixe « tisanerie » du libellé candidat n'appartient pas à l'opération — le même export laisse des fragments de catégorie en tête d'autres lignes (« premier degré EE 32, rue Buffault », « Etablissements de petite HG 8, rue des Prouvaires ») — d'où une confiance moyenne.",
-   "id": null
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "decp-2026T02790",
-   "objet": "Démontage, restauration et réimplantation de l'orgue de tribune, classé au titre des monuments historiques, de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème (relance de la c",
-   "objet_clair": null,
-   "fournisseur": null,
-   "montant_max": 1035524.0,
-   "date_notification": "2026-03-12",
-   "preuve": "L'objet du marché désigne le lieu comme destination des travaux : « Démontage, restauration et réimplantation de l'orgue de tribune […] de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème ». Confirmé par la délibération 2023 DAC 341 (mars 2023) : « Cession à titre gratuit de l'orgue de tribune de l'église Saint-Nicaise de Rouen en vue de son implantation dans l'église du Saint-Esprit (12e) ». Le lieu d'exécution DECP (« Paris ») ne prouve rien à lui seul : le signal est l'objet. Montant = montant maximum du marché, notifié le 12 mars 2026."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+du+Saint-Esprit"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L’église du Saint-Esprit est une église de confession catholique située dans le 12e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_du_Saint-Esprit_de_Paris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Église du Saint-Esprit is a Catholic church located in the 12th arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 622,
+    "delibs_span": [
+      1995,
+      2025
+    ],
+    "n_bmo_brut": 1999,
+    "n_bmo_verifies": 3,
+    "invest_total_eur": 866126.0,
+    "invest_annees": [
+      "2019",
+      "2021"
+    ],
+    "lecture_mode": "titre nommant le lieu (5 trouvés)",
+    "lecture_mode_en": "title naming the place (5 found)",
+    "n_lus": 5,
+    "n_lieu": 5
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En octobre 1995, le Conseil de Paris approuve le principe de la réfection des installations électriques de l'église du Saint-Esprit, 1, rue Cannebière (12e), et autorise le Maire à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1.000.000 F. En février 1996, il approuve le principe des travaux de réfection des installations électriques et d'éclairage et autorise le Maire à signer le marché correspondant ; en octobre 1996, il fait de même pour la rénovation des installations thermiques. Lors de la séance de mars 2023, le dossier 2023 DAC 341 porte sur la cession à titre gratuit de l'orgue de tribune de l'église Saint-Nicaise de Rouen en vue de son implantation dans l'église. En décembre 2025, le groupe Changer Paris dépose un vœu relatif au projet d'éclairage L.E.D. de l'église, présenté dans son intitulé comme « lauréat du budget participatif 2023 ».",
+  "moments": [
+    {
+      "id": "1251",
+      "seance": "OCTOBRE 1995",
+      "fait": "Le Conseil approuve le principe de la réfection des installations électriques et autorise le Maire à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1 000 000 F.",
+      "pourquoi": "Une subvention de 1.000.000 F à solliciter",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1251",
+      "fait_en": "The Council approves in principle the refurbishment of the electrical installations and authorizes the Mayor to request from the Prefect of the Île-de-France Region (Regional Directorate of Cultural Affairs) a subsidy of 1,000,000 F.",
+      "pourquoi_en": "A 1,000,000 F subsidy to be requested"
+    },
+    {
+      "id": "38059",
+      "seance": "FEVRIER 1996",
+      "fait": "Le Conseil approuve le principe des travaux sur l'électricité et l'éclairage, fixe la procédure d'appel d'offres et autorise le Maire à signer le marché.",
+      "pourquoi": "Électricité et éclairage : principe approuvé, signature du marché autorisée",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38059",
+      "fait_en": "The Council approves in principle the electrical and lighting works, sets the tendering procedure and authorizes the Mayor to sign the contract.",
+      "pourquoi_en": "Electrical and lighting works: approved in principle, signing of the contract authorized"
+    },
+    {
+      "id": "55017",
+      "seance": "OCTOBRE 1996",
+      "fait": "Le Conseil approuve le principe de la rénovation des installations thermiques et autorise le Maire à signer le marché de travaux avec l'attributaire désigné.",
+      "pourquoi": "Même procédure, cette fois pour les installations thermiques",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55017",
+      "fait_en": "The Council approves in principle the renovation of the heating installations and authorizes the Mayor to sign the works contract with the designated successful bidder.",
+      "pourquoi_en": "Same procedure, this time for the heating installations"
+    },
+    {
+      "id": "168322",
+      "seance": "MARS 2023",
+      "fait": "Le dossier 2023 DAC 341 porte sur la cession à titre gratuit de l'orgue de tribune de Saint-Nicaise de Rouen en vue de son implantation dans l'église.",
+      "pourquoi": "Un dossier de cession gratuite de l'orgue de Saint-Nicaise de Rouen",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168322",
+      "fait_en": "Item 2023 DAC 341 concerns the transfer free of charge of the gallery organ of Saint-Nicaise in Rouen with a view to its installation in the church.",
+      "pourquoi_en": "An item on the free transfer of the Saint-Nicaise organ from Rouen"
+    },
+    {
+      "id": "183913",
+      "seance": "DECEMBRE 2025",
+      "fait": "Le groupe Changer Paris dépose un vœu relatif au projet d'éclairage L.E.D. de l'église, présenté dans l'intitulé comme « lauréat du budget participatif 2023 ».",
+      "pourquoi": "Éclairage L.E.D. de l'église : un vœu du groupe Changer Paris",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183913",
+      "fait_en": "The Changer Paris group files a motion (vœu) concerning the church's L.E.D. lighting project, described in the title as \"winner of the 2023 participatory budget\".",
+      "pourquoi_en": "L.E.D. lighting for the church: a motion from the Changer Paris group"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "OCTOBRE 1995",
+      "montant": "1.000.000 F",
+      "objet": "subvention que le Maire est autorisé à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) pour la réalisation des travaux",
+      "citation": "Art. 2.- M. le Maire de Paris est autorisé à solliciter de M. le Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1.000.000 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1251"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 550808.0,
+      "nom_projet": "Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn",
+      "preuve": "Le libellé de l'opération nomme le lieu verbatim : « Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn[erie divers] » (signal « nom » ; le candidat tronque le libellé à 90 caractères, la fin est lue dans la source citée ci-dessous). La ligne source (CA 2019, investissements localisés, id 2019_12_il_000, https://cdn.paris.fr/paris/2020/07/24/a553a4550362175f3d609b65a5998072.pdf) est rattachée à l'arrondissement 12, celui de l'église (1, rue Cannebière / 186, avenue Daumesnil). Antécédent distinct, cité comme contexte et non comme la même opération : le Conseil de Paris a déjà financé des travaux thermiques sur ce bâtiment — « travaux de rénovation des installations thermiques de l'église du Saint-Esprit, 1, rue Cannebière (12e) » (octobre 1996).",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 315318.0,
+      "nom_projet": "tisanerie Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise ",
+      "preuve": "Le libellé de l'opération nomme le lieu : « […] Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise en conformité de l'ascenseur » (signal « nom »). La ligne source (CA 2021, investissements localisés, id 2021_12_il_001, https://cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf) est rattachée à l'arrondissement 12, celui de l'église. Réserve : le préfixe « tisanerie » du libellé candidat n'appartient pas à l'opération — le même export laisse des fragments de catégorie en tête d'autres lignes (« premier degré EE 32, rue Buffault », « Etablissements de petite HG 8, rue des Prouvaires ») — d'où une confiance moyenne.",
+      "id": null
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "decp-2026T02790",
+      "objet": "Démontage, restauration et réimplantation de l'orgue de tribune, classé au titre des monuments historiques, de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème (relance de la c",
+      "objet_clair": null,
+      "fournisseur": null,
+      "montant_max": 1035524.0,
+      "date_notification": "2026-03-12",
+      "preuve": "L'objet du marché désigne le lieu comme destination des travaux : « Démontage, restauration et réimplantation de l'orgue de tribune […] de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème ». Confirmé par la délibération 2023 DAC 341 (mars 2023) : « Cession à titre gratuit de l'orgue de tribune de l'église Saint-Nicaise de Rouen en vue de son implantation dans l'église du Saint-Esprit (12e) ». Le lieu d'exécution DECP (« Paris ») ne prouve rien à lui seul : le signal est l'objet. Montant = montant maximum du marché, notifié le 12 mars 2026."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+du+Saint-Esprit"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+du+Saint-Esprit%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In October 1995, the Paris Council approved in principle the refurbishment of the electrical installations of the Église du Saint-Esprit, 1, rue Cannebière (12th arrondissement), and authorized the Mayor to request from the Prefect of the Île-de-France Region (Regional Directorate of Cultural Affairs) a subsidy of 1,000,000 F. In February 1996, it approved in principle the refurbishment of the electrical and lighting installations and authorized the Mayor to sign the corresponding contract; in October 1996, it did the same for the renovation of the heating installations. At the March 2023 session, item 2023 DAC 341 concerned the transfer free of charge of the gallery organ of the Église Saint-Nicaise in Rouen with a view to its installation in the church. In December 2025, the Changer Paris group filed a motion (vœu) concerning the church's L.E.D. lighting project, described in its title as \"winner of the 2023 participatory budget\".",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

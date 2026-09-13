@@ -98,9 +98,12 @@ export type LieuFicheData = {
    *  licences et auteurs différents. */
   photo_credit: { licence: string | null; auteur: string | null; url: string | null; source: string } | null;
   /** Premier exercice où tous les flux d'argent existent (la Ville publie
-   *  l'investissement depuis 2009 et les subventions depuis 2013). Le chiffre
+   *  l'investissement plus tôt que les subventions). Le chiffre
    *  de tête couvre cette fenêtre ; ce qui est avant est montré à part. */
   seuil_commun?: number;
+  /** Premier exercice de dépense d'investissement publié par la Ville, lu dans
+   *  les opérations d'investissement mandatées. Affiché sous le graphe. */
+  premier_exercice_investissement?: number | null;
   wiki: { extract: string | null; extract_en?: string | null; url: string | null; source: { name: string; url: string } };
   famille: string;
   stats: {

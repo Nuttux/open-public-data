@@ -1,336 +1,464 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-saint-gervais-saint-protais",
- "name": "Église Saint-Gervais-Saint-Protais",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 4,
- "lat": 48.855509,
- "lon": 2.354697,
- "photo": "/img/lieux/eglise-saint-gervais-saint-protais.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "Diliff",
-  "url": "https://commons.wikimedia.org/wiki/File:Church_of_St-Gervais-et-St-Protais_Interior_1,_Paris,_France_-_Diliff.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 452,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 4353593.74,
-  "invest_annees": [
-   "2023",
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (13 trouvés)",
-  "lecture_mode_en": "title naming the place (13 found)",
-  "n_lus": 13,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1997": [
-   {
-    "reference": "1997 DAC 102",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché signé avec l'entreprise \"Léon Noël\" pour les travaux de nettoyage intérieur de l'église Saint-Gervais-Saint-Protais (4e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329"
-   },
-   {
-    "reference": "1997 DAC 108",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) une convention de versement de fonds de concours en vue de la réalisation de travaux urgents sur la façade de l'église Saint-Gervais-Saint-Protais (4e), édifice cultuel appartenant à la Ville de Paris et classé parmi les Monuments historiques. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207"
-   }
-  ],
-  "1998": [
-   {
-    "reference": "1998 DAC 127",
-    "titre": "Approbation du principe de la réalisation des travaux de réfection des planchers des chapelles Dorée et Saint-Joseph à l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92577"
-   },
-   {
-    "reference": "1998 DAC 70",
-    "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Sainte-Catherine à l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92628"
-   },
-   {
-    "reference": "1998 DAC 89",
-    "titre": "Approbation du principe de la réalisation des travaux de réfection des installations électriques de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92509"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DAC 105",
-    "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Saint-Laurent de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55529"
-   },
-   {
-    "reference": "1999 DAC 190",
-    "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle commémorative de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83948"
-   },
-   {
-    "reference": "1999 DAC 50",
-    "titre": "Approbation du principe de la restauration de la façade occidentale de l'église Saint-Gervais - Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer le marché négocié de maîtrise d'oeuvre correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85587"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DAC 13",
-    "titre": "Approbation du principe de l'achèvement des travaux de réfection des installations électriques de l'église Saint-Gervais - Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer un marché négocié pour la mise aux normes de ces installations électriques à la suite de la défection d'une entreprise. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51290"
-   },
-   {
-    "reference": "2000 DAC 14",
-    "titre": "Approbation du principe de la réalisation des travaux de restauration de la façade ouest de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34837"
-   },
-   {
-    "reference": "2000 DAC 221",
-    "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Notre-Dame-des-Sept-Douleurs de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du ou des marché(s) de travaux correspondant(s). - Autorisation à M. le Maire de Paris de signer ledit ou lesdits marché(s). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28515"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DAC 71",
-    "titre": "Approbation du principe de la réalisation des travaux de repose de la verrière de Salomon de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Claude ROLAND, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JANVIER 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85310"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 111",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec les entreprises groupées solidaires SNC SACHET et BRULET (mandataire) et S.A. H.CHEVALIER, pour la réalisation de prestations complémentaires nécessaires pour la restauration de la façade ouest de l'église Saint-Gervais-Saint-Protais (4e). Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745"
-   },
-   {
-    "reference": "2002 DAC 226",
-    "titre": "Approbation du principe et des modalités d'attribution de marchés de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de restauration de la verrière haute de la façade occidentale de l'église Saint-Gervais-Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer les marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55867"
-   },
-   {
-    "reference": "2002 DAC 32",
-    "titre": "Approbation du principe de réalisation des travaux de restauration et de doublage de la baie 124 de l'église Saint Gervais - Saint Protais (4e). - Approbation des modalités d'attribution du marché sur appel d'offres ouvert correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39077"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DAC 171",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec l'entreprise GROUX, pour la réalisation de prestations complémentaires nécessaires pour la restauration de la façade Ouest de l'église Saint-Gervais-Saint-Protais, lot n° 3 \"restauration de sculpture\" (4e). Mme Sandrine MAZETIER, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
-   },
-   {
-    "reference": "2003 DAC 61",
-    "titre": "Autorisation à M. le Maire de Paris de conclure un avenant n° 1 aux marchés 01-41.093 signés avec la SNC \"Sachet et Brulet\" et avec l'atelier \"De Pirey\" pour les travaux de repose et de doublage de la verrière de Salomon de l'église Saint-Gervais - Saint-Protais (4e). Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78851"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 476",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché n° 0041111 passé avec l'entreprise Groux en vue de substituer la société Quelin SA à la société Groux SA pour la restauration de la façade Ouest de l'église Saint-Gervais-Saint-Protais (4e) (lot n° 3) \"restauration de sculpture\". Mme Sandrine MAZETIER, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45951"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 289",
-    "titre": "2006, DAC 289 - Approbation du principe des travaux de réalisation et de pose de deux vitraux contemporains, aux baies 120 et 122 de l’église Saint-Gervais Saint-Protais (4e), financés par l’Association Diocésaine de Paris. - Autorisation à M. le Maire de Paris d’habiliter l’Association Diocésaine à déposer la déclaration de travaux.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17831"
-   },
-   {
-    "reference": "2006 DAC 289",
-    "titre": "Approbation du principe des travaux de réalisation et de pose de deux vitraux contemporains, aux baies 120 et 122 de l’église Saint-Gervais Saint-Protais (4e), financés par l’Association Diocésaine de Paris. Autorisation à M. le Maire de Paris à habiliter l’Association Diocésaine à déposer la déclaration de travaux en vue de la réalisation de cette opération. Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91972"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DAC 93",
-    "titre": "Autorisation à M. le Maire de Paris d’habiliter l’Association Diocésaine de Paris à déposer auprès du Service Départemental de l’Architecture de Paris la demande d’autorisation de travaux sur un monument historique classé en vue de la réalisation et de la pose de trois vitraux contemporains aux baies 112, 114 et 116 de l’église Saint-Gervais-Saint-Protais (4e) financés par l’Association Diocésaine. Mme Colombe BROSSEL, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50804"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2023,
-   "montant_eur": 2852192.95,
-   "nom_projet": "Eglise Saint Gervais-Saint-Protais - Clocher et bras nord du transept",
-   "preuve": "Nom du projet verbatim « Eglise Saint Gervais-Saint-Protais - Clocher et bras nord du transept » : il nomme ce lieu et designe des travaux sur l'edifice (clocher, bras nord du transept), meme libelle de chantier que les lignes 2020 a 2024. Distance non renseignee dans la source ; le rattachement repose sur le nom seul.",
-   "id": "2023_00_9_030"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-saint-gervais-saint-protais",
+  "name": "Église Saint-Gervais-Saint-Protais",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 4,
+  "lat": 48.855509,
+  "lon": 2.354697,
+  "photo": "/img/lieux/eglise-saint-gervais-saint-protais.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "Diliff",
+    "url": "https://commons.wikimedia.org/wiki/File:Church_of_St-Gervais-et-St-Protais_Interior_1,_Paris,_France_-_Diliff.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2024,
-   "montant_eur": 1501400.79,
-   "nom_projet": "Eglise Saint-Gervais Et Saint-Protais - Clocher et bras nord du transept",
-   "preuve": "Nom du projet verbatim « Eglise Saint-Gervais Et Saint-Protais - Clocher et bras nord du transept », a 97 m : il nomme ce lieu et designe des travaux sur l'edifice, meme libelle de chantier que les lignes 2020 a 2023.",
-   "id": "2024_00_9_019"
-  }
- ],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2017": 83486.7,
-   "2018": 55308.06,
-   "2019": 6008.92,
-   "2020": 498605.04,
-   "2021": 691985.96,
-   "2022": 1251126.14
-  },
-  "total_eur": 2586520.82,
-  "operations": [
-   {
-    "ap_cle": "1604411",
-    "ap_texte": "EGLISE SAINT GERVAIS - SAINT PROTAIS (4e",
-    "mandate_par_annee": {
-     "2017": 83486.7,
-     "2018": 55308.06,
-     "2019": 6008.92,
-     "2020": 498605.04,
-     "2021": 691985.96,
-     "2022": 1251126.14
-    },
-    "total_mandate": 2586520.82,
-    "preuve": "Libelle de l'operation verbatim « EGLISE SAINT GERVAIS - SAINT PROTAIS (4e » : il nomme ce lieu et son arrondissement, sans autre equipement cite et sans formulation d'enveloppe generique. Direction DAC / mission AFFAIRES CULTURELLES coherente avec les deliberations du corpus, qui rattachent l'entretien de cet edifice a la Ville : 1997 DAC 108 vise « la facade de l'eglise Saint-Gervais-Saint-Protais, place Saint-Gervais (4e), edifice cultuel appartenant a la Ville de Paris et classe parmi les Monuments historiques » et delegue la signature au Directeur des Affaires culturelles. Les mandatements annuels recoupent, a l'arrondi pres, les projets rattaches (2018 : 55 308,06 = 50 424,99 + 4 883,07 ; 2020 : 498 605,04 ; 2021 : 691 985,96 ; 2022 : 1 251 126,14) : les montants de la ligne AP et ceux des projets decrivent la meme depense vue sous deux angles, ils ne s'additionnent pas.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604411"
-   }
-  ],
-  "periode": [
-   "2017",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Gervais-Saint-Protais"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L'église Saint-Gervais-Saint-Protais de Paris, généralement connue sous le nom d'église Saint-Gervais, est située sur la place Saint-Gervais, dans le quartier Saint-Gervais, auxquels elle donne leurs noms, dans le 4e arrondissement, à l'est de l'Hôtel de Ville.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Gervais-Saint-Protais_de_Paris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Church of Saint-Gervais-Saint-Protais in Paris, generally known as the Church of Saint-Gervais, is located on Place Saint-Gervais, in the Saint-Gervais quarter, both of which take their names from it, in the 4th arrondissement, east of the Hôtel de Ville."
+  },
+  "stats": {
+    "n_delibs": 452,
+    "delibs_span": [
+      1997,
+      2008
+    ],
+    "n_bmo_brut": 68,
+    "n_bmo_verifies": 2,
+    "invest_total_eur": 4353593.74,
+    "invest_annees": [
+      "2023",
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (13 trouvés)",
+    "lecture_mode_en": "title naming the place (13 found)",
+    "n_lus": 13,
+    "n_lieu": 13
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "L'église Saint-Gervais-Saint-Protais, qu'une délibération de 1997 décrit comme un édifice cultuel appartenant à la Ville de Paris et classé parmi les Monuments historiques, fait l'objet de délibérations successives sur ses travaux, ses vitraux et ses verrières entre 1997 et 2008. En 1997, le Conseil autorise le Maire à signer avec l'État une convention de versement de fonds de concours pour des travaux urgents sur la façade, dépense évaluée à 333 500 F, ainsi qu'à souscrire un avenant ayant pour objet de porter le marché de nettoyage intérieur de 4 947 437,12 F à 5 159 272,54 F TTC ; en 1998, il approuve le principe de la réfection des installations électriques et de celle des planchers des chapelles Dorée et Saint-Joseph. Le principe de la restauration de la façade ouest, approuvé en 2000, est suivi de la souscription autorisée de deux avenants, en 2002 (avenant portant le montant total du marché de 2 226 686,34 à 2 509 382,23 euros HT) et en 2003 (avenant portant le marché du lot sculpture de 29 464,92 à 41 594,93 euros HT), puis, en 2004, d'un avenant autorisé ayant pour objet de substituer la société Quelin SA à Groux SA, déclaré sans incidence financière. Les vitraux et verrières forment un second fil : acceptation autorisée du don d'un vitrail en 2000, principe de la repose de la verrière de Salomon en 2001 et de la restauration de la verrière haute de la façade occidentale en 2002, acceptation autorisée du don d'une verrière contemporaine financée par l'Association diocésaine de Paris pour la baie de la tribune d'orgue en 2003, et en 2008 principe des travaux de réalisation et de pose de trois vitraux contemporains aux baies 112, 114 et 116, également financés par l'Association diocésaine.",
+  "moments": [
+    {
+      "id": "75207",
+      "seance": "SEPTEMBRE 1997",
+      "fait": "Le Conseil autorise le Maire à signer avec l'État une convention de versement de fonds de concours pour des travaux urgents sur la façade de l'église, édifice cultuel appartenant à la Ville et classé parmi les Monuments historiques ; dépense évaluée à 333 500 F.",
+      "pourquoi": "Travaux urgents sur la façade : une convention avec l'État",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207",
+      "fait_en": "The Council authorizes the Mayor to sign with the State an agreement for the payment of contribution funds for urgent works on the façade of the church, a place of worship owned by the City and listed as a Historic Monument; expenditure estimated at 333,500 F.",
+      "pourquoi_en": "Urgent works on the façade: an agreement with the State"
+    },
+    {
+      "id": "75329",
+      "seance": "SEPTEMBRE 1997",
+      "fait": "Le Conseil approuve le principe et les modalités de travaux supplémentaires de nettoyage intérieur et autorise le Maire à souscrire un avenant au marché de l'entreprise Léon Noël, ayant pour objet de porter son montant de 4 947 437,12 F à 5 159 272,54 F TTC.",
+      "pourquoi": "Nettoyage intérieur : un avenant pour travaux supplémentaires",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329",
+      "fait_en": "The Council approves the principle and terms of additional interior cleaning works and authorizes the Mayor to enter into an amendment to the contract of the company Léon Noël, intended to raise its amount from 4,947,437.12 F to 5,159,272.54 F incl. VAT.",
+      "pourquoi_en": "Interior cleaning: an amendment for additional works"
+    },
+    {
+      "id": "92577",
+      "seance": "SEPTEMBRE 1998",
+      "fait": "Le Conseil approuve le principe de la réfection des planchers des chapelles Dorée et Saint-Joseph et autorise le Maire à signer le marché sur appel d'offres ouvert.",
+      "pourquoi": "Les planchers des chapelles Dorée et Saint-Joseph",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92577",
+      "fait_en": "The Council approves the principle of refurbishing the floors of the Dorée and Saint-Joseph chapels and authorizes the Mayor to sign the contract awarded through an open call for tenders.",
+      "pourquoi_en": "The floors of the Dorée and Saint-Joseph chapels"
+    },
+    {
+      "id": "34837",
+      "seance": "JUIN 2000",
+      "fait": "Le Conseil approuve le principe de la restauration de la façade ouest et autorise le Maire à signer les marchés sur appel d'offres ouvert, en 3 tranches et 4 lots ; les dépenses des tranches conditionnelles relèvent d'un budget ultérieur, sous réserve de la décision de financement.",
+      "pourquoi": "Façade ouest : un marché en trois tranches et quatre lots",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34837",
+      "fait_en": "The Council approves the principle of restoring the west façade and authorizes the Mayor to sign the contracts awarded through an open call for tenders, in 3 phases and 4 lots; expenditure for the conditional phases falls under a later budget, subject to the funding decision.",
+      "pourquoi_en": "West façade: a contract in three phases and four lots"
+    },
+    {
+      "id": "73745",
+      "seance": "AVRIL 2002",
+      "fait": "Le Conseil approuve le principe et les modalités de prestations complémentaires sur la façade ouest et autorise le Maire à souscrire un avenant portant le montant total du marché de 2 226 686,34 à 2 509 382,23 euros HT (valeur juin 2000).",
+      "pourquoi": "Façade ouest : un avenant pour prestations complémentaires",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745",
+      "fait_en": "The Council approves the principle and terms of additional services on the west façade and authorizes the Mayor to enter into an amendment raising the total contract amount from 2,226,686.34 to 2,509,382.23 euros excl. VAT (June 2000 value).",
+      "pourquoi_en": "West façade: an amendment for additional services"
+    },
+    {
+      "id": "89442",
+      "seance": "AVRIL 2003",
+      "fait": "Le Conseil autorise le Maire à accepter les modalités de mise en œuvre et le don d'une verrière contemporaine financée par l'Association diocésaine de Paris, dans la baie de la tribune d'orgue.",
+      "pourquoi": "Une verrière contemporaine en don pour la tribune d'orgue",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89442",
+      "fait_en": "The Council authorizes the Mayor to accept the implementation terms and the gift of a contemporary glass window funded by the Association diocésaine de Paris, in the organ-loft bay.",
+      "pourquoi_en": "A contemporary glass window donated for the organ loft"
+    },
+    {
+      "id": "45951",
+      "seance": "SEPTEMBRE 2004",
+      "fait": "Le Conseil autorise le Maire à souscrire un avenant substituant Quelin SA à Groux SA pour le lot sculpture de la façade ouest, motif indiqué : dissolution sans liquidation de Groux SA ; avenant déclaré sans incidence financière.",
+      "pourquoi": "Lot sculpture : un avenant pour substituer Quelin SA à Groux SA",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45951",
+      "fait_en": "The Council authorizes the Mayor to enter into an amendment substituting Quelin SA for Groux SA for the sculpture lot of the west façade, stated reason: dissolution without liquidation of Groux SA; amendment declared to have no financial impact.",
+      "pourquoi_en": "Sculpture lot: an amendment to substitute Quelin SA for Groux SA"
+    },
+    {
+      "id": "50804",
+      "seance": "AVRIL 2008",
+      "fait": "Le Conseil approuve le principe des travaux de réalisation et de pose de trois vitraux contemporains aux baies 112, 114 et 116, financés par l'Association diocésaine de Paris, et autorise le Maire à habiliter celle-ci à déposer une demande d'autorisation de travaux sur monument historique classé.",
+      "pourquoi": "Trois vitraux contemporains financés par l'Association diocésaine",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50804",
+      "fait_en": "The Council approves the principle of works to make and install three contemporary stained-glass windows in bays 112, 114 and 116, funded by the Association diocésaine de Paris, and authorizes the Mayor to empower the latter to file an application for authorization of works on a listed historic monument.",
+      "pourquoi_en": "Three contemporary stained-glass windows funded by the Association diocésaine"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 1997",
+      "montant": "333.500 F",
+      "objet": "dépense correspondant à la convention de fonds de concours pour les travaux urgents sur la façade, évaluée à ce montant et à imputer au budget d'investissement de la Ville de 1997",
+      "citation": "Art. 3.- La dépense correspondante, évaluée à 333.500 F, sera imputée au chapitre 900, sous-chapitre 900-40, article 2301, du budget d'investissement de la Ville de Paris de 1997.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207"
+    },
+    {
+      "seance": "SEPTEMBRE 1997",
+      "montant": "5.159.272,54 F T.T.C.",
+      "objet": "montant du marché de nettoyage intérieur (entreprise Léon Noël) prévu par l'avenant dont la souscription est autorisée, contre 4.947.437,12 F jusque-là",
+      "citation": "de porter le montant du marché de 4.947.437,12 F à 5.159.272,54 F T.T.C.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329"
+    },
+    {
+      "seance": "AVRIL 2002",
+      "montant": "2.509.382,23 euros H.T.",
+      "objet": "montant total du marché de restauration de la façade ouest (SNC Sachet et Brulet, S.A. H. Chevalier) prévu par l'avenant dont la souscription est autorisée, contre 2.226.686,34 euros H.T. jusque-là",
+      "citation": "ledit avenant ayant pour objet la réalisation des travaux supplémentaires mentionnés à l'article précédent et portant le montant total du marché de 2.226.686,34 euros H.T. à 2.509.382,23 euros H.T. (valeur juin 2000).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "12.130,01 euros H.T.",
+      "objet": "coût des travaux supplémentaires objet de l'avenant au marché du lot n° 3 (restauration de sculpture) passé avec l'entreprise Groux, avenant dont la souscription est autorisée",
+      "citation": "ledit avenant ayant pour objet la réalisation des travaux supplémentaires mentionnés à l'article précédent, d'un coût de 12.130,01 euros H.T.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "41.594,93 euros H.T.",
+      "objet": "montant total du marché Groux (lot n° 3) prévu par l'avenant dont la souscription est autorisée, contre 29.464,92 euros H.T. jusque-là",
+      "citation": "portant le montant total du marché de 29.464,92 euros H.T. à 41.594,93 euros H.T. (valeur juin 2000).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1997": [
+      {
+        "reference": "1997 DAC 102",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché signé avec l'entreprise \"Léon Noël\" pour les travaux de nettoyage intérieur de l'église Saint-Gervais-Saint-Protais (4e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329"
+      },
+      {
+        "reference": "1997 DAC 108",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) une convention de versement de fonds de concours en vue de la réalisation de travaux urgents sur la façade de l'église Saint-Gervais-Saint-Protais (4e), édifice cultuel appartenant à la Ville de Paris et classé parmi les Monuments historiques. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207"
+      }
+    ],
+    "1998": [
+      {
+        "reference": "1998 DAC 127",
+        "titre": "Approbation du principe de la réalisation des travaux de réfection des planchers des chapelles Dorée et Saint-Joseph à l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92577"
+      },
+      {
+        "reference": "1998 DAC 70",
+        "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Sainte-Catherine à l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92628"
+      },
+      {
+        "reference": "1998 DAC 89",
+        "titre": "Approbation du principe de la réalisation des travaux de réfection des installations électriques de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92509"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DAC 105",
+        "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Saint-Laurent de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55529"
+      },
+      {
+        "reference": "1999 DAC 190",
+        "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle commémorative de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83948"
+      },
+      {
+        "reference": "1999 DAC 50",
+        "titre": "Approbation du principe de la restauration de la façade occidentale de l'église Saint-Gervais - Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer le marché négocié de maîtrise d'oeuvre correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85587"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DAC 13",
+        "titre": "Approbation du principe de l'achèvement des travaux de réfection des installations électriques de l'église Saint-Gervais - Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer un marché négocié pour la mise aux normes de ces installations électriques à la suite de la défection d'une entreprise. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51290"
+      },
+      {
+        "reference": "2000 DAC 14",
+        "titre": "Approbation du principe de la réalisation des travaux de restauration de la façade ouest de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34837"
+      },
+      {
+        "reference": "2000 DAC 221",
+        "titre": "Approbation du principe de la réalisation des travaux de restauration intérieure de la chapelle Notre-Dame-des-Sept-Douleurs de l'église Saint-Gervais - Saint-Protais (4e). - Approbation des modalités d'attribution du ou des marché(s) de travaux correspondant(s). - Autorisation à M. le Maire de Paris de signer ledit ou lesdits marché(s). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28515"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DAC 71",
+        "titre": "Approbation du principe de la réalisation des travaux de repose de la verrière de Salomon de l'église Saint-Gervais-Saint-Protais (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Claude ROLAND, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JANVIER 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85310"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 111",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec les entreprises groupées solidaires SNC SACHET et BRULET (mandataire) et S.A. H.CHEVALIER, pour la réalisation de prestations complémentaires nécessaires pour la restauration de la façade ouest de l'église Saint-Gervais-Saint-Protais (4e). Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745"
+      },
+      {
+        "reference": "2002 DAC 226",
+        "titre": "Approbation du principe et des modalités d'attribution de marchés de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de restauration de la verrière haute de la façade occidentale de l'église Saint-Gervais-Saint-Protais (4e). - Autorisation à M. le Maire de Paris de signer les marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55867"
+      },
+      {
+        "reference": "2002 DAC 32",
+        "titre": "Approbation du principe de réalisation des travaux de restauration et de doublage de la baie 124 de l'église Saint Gervais - Saint Protais (4e). - Approbation des modalités d'attribution du marché sur appel d'offres ouvert correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39077"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DAC 171",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec l'entreprise GROUX, pour la réalisation de prestations complémentaires nécessaires pour la restauration de la façade Ouest de l'église Saint-Gervais-Saint-Protais, lot n° 3 \"restauration de sculpture\" (4e). Mme Sandrine MAZETIER, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
+      },
+      {
+        "reference": "2003 DAC 61",
+        "titre": "Autorisation à M. le Maire de Paris de conclure un avenant n° 1 aux marchés 01-41.093 signés avec la SNC \"Sachet et Brulet\" et avec l'atelier \"De Pirey\" pour les travaux de repose et de doublage de la verrière de Salomon de l'église Saint-Gervais - Saint-Protais (4e). Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78851"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 476",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché n° 0041111 passé avec l'entreprise Groux en vue de substituer la société Quelin SA à la société Groux SA pour la restauration de la façade Ouest de l'église Saint-Gervais-Saint-Protais (4e) (lot n° 3) \"restauration de sculpture\". Mme Sandrine MAZETIER, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45951"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 289",
+        "titre": "2006, DAC 289 - Approbation du principe des travaux de réalisation et de pose de deux vitraux contemporains, aux baies 120 et 122 de l’église Saint-Gervais Saint-Protais (4e), financés par l’Association Diocésaine de Paris. - Autorisation à M. le Maire de Paris d’habiliter l’Association Diocésaine à déposer la déclaration de travaux.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17831"
+      },
+      {
+        "reference": "2006 DAC 289",
+        "titre": "Approbation du principe des travaux de réalisation et de pose de deux vitraux contemporains, aux baies 120 et 122 de l’église Saint-Gervais Saint-Protais (4e), financés par l’Association Diocésaine de Paris. Autorisation à M. le Maire de Paris à habiliter l’Association Diocésaine à déposer la déclaration de travaux en vue de la réalisation de cette opération. Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91972"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DAC 93",
+        "titre": "Autorisation à M. le Maire de Paris d’habiliter l’Association Diocésaine de Paris à déposer auprès du Service Départemental de l’Architecture de Paris la demande d’autorisation de travaux sur un monument historique classé en vue de la réalisation et de la pose de trois vitraux contemporains aux baies 112, 114 et 116 de l’église Saint-Gervais-Saint-Protais (4e) financés par l’Association Diocésaine. Mme Colombe BROSSEL, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50804"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2023,
+      "montant_eur": 2852192.95,
+      "nom_projet": "Eglise Saint Gervais-Saint-Protais - Clocher et bras nord du transept",
+      "preuve": "Nom du projet verbatim « Eglise Saint Gervais-Saint-Protais - Clocher et bras nord du transept » : il nomme ce lieu et designe des travaux sur l'edifice (clocher, bras nord du transept), meme libelle de chantier que les lignes 2020 a 2024. Distance non renseignee dans la source ; le rattachement repose sur le nom seul.",
+      "id": "2023_00_9_030"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 1501400.79,
+      "nom_projet": "Eglise Saint-Gervais Et Saint-Protais - Clocher et bras nord du transept",
+      "preuve": "Nom du projet verbatim « Eglise Saint-Gervais Et Saint-Protais - Clocher et bras nord du transept », a 97 m : il nomme ce lieu et designe des travaux sur l'edifice, meme libelle de chantier que les lignes 2020 a 2023.",
+      "id": "2024_00_9_019"
+    }
+  ],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2017": 83486.7,
+      "2018": 55308.06,
+      "2019": 6008.92,
+      "2020": 498605.04,
+      "2021": 691985.96,
+      "2022": 1251126.14
+    },
+    "total_eur": 2586520.82,
+    "operations": [
+      {
+        "ap_cle": "1604411",
+        "ap_texte": "EGLISE SAINT GERVAIS - SAINT PROTAIS (4e",
+        "mandate_par_annee": {
+          "2017": 83486.7,
+          "2018": 55308.06,
+          "2019": 6008.92,
+          "2020": 498605.04,
+          "2021": 691985.96,
+          "2022": 1251126.14
+        },
+        "total_mandate": 2586520.82,
+        "preuve": "Libelle de l'operation verbatim « EGLISE SAINT GERVAIS - SAINT PROTAIS (4e » : il nomme ce lieu et son arrondissement, sans autre equipement cite et sans formulation d'enveloppe generique. Direction DAC / mission AFFAIRES CULTURELLES coherente avec les deliberations du corpus, qui rattachent l'entretien de cet edifice a la Ville : 1997 DAC 108 vise « la facade de l'eglise Saint-Gervais-Saint-Protais, place Saint-Gervais (4e), edifice cultuel appartenant a la Ville de Paris et classe parmi les Monuments historiques » et delegue la signature au Directeur des Affaires culturelles. Les mandatements annuels recoupent, a l'arrondi pres, les projets rattaches (2018 : 55 308,06 = 50 424,99 + 4 883,07 ; 2020 : 498 605,04 ; 2021 : 691 985,96 ; 2022 : 1 251 126,14) : les montants de la ligne AP et ceux des projets decrivent la meme depense vue sous deux angles, ils ne s'additionnent pas.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604411"
+      }
+    ],
+    "periode": [
+      "2017",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Gervais-Saint-Protais"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Gervais-Saint-Protais%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "The Church of Saint-Gervais-Saint-Protais, which a 1997 deliberation describes as a place of worship owned by the City of Paris and listed as a Historic Monument, is the subject of successive deliberations on its works, its stained glass and its windows between 1997 and 2008. In 1997, the Council authorizes the Mayor to sign with the State an agreement for the payment of contribution funds for urgent works on the façade, an expenditure estimated at 333,500 F, as well as to enter into an amendment intended to raise the interior cleaning contract from 4,947,437.12 F to 5,159,272.54 F incl. VAT; in 1998, it approves the principle of refurbishing the electrical installations and the floors of the Dorée and Saint-Joseph chapels. The principle of restoring the west façade, approved in 2000, is followed by the authorized entry into two amendments, in 2002 (amendment raising the total contract amount from 2,226,686.34 to 2,509,382.23 euros excl. VAT) and in 2003 (amendment raising the sculpture lot contract from 29,464.92 to 41,594.93 euros excl. VAT), then, in 2004, by an authorized amendment intended to substitute Quelin SA for Groux SA, declared to have no financial impact. The stained glass and windows form a second thread: authorized acceptance of the gift of a stained-glass window in 2000, the principle of reinstalling the Solomon window in 2001 and of restoring the upper window of the west façade in 2002, authorized acceptance of the gift of a contemporary glass window funded by the Association diocésaine de Paris for the organ-loft bay in 2003, and in 2008 the principle of works to make and install three contemporary stained-glass windows in bays 112, 114 and 116, also funded by the Association diocésaine.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

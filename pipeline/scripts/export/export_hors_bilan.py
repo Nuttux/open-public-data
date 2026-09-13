@@ -536,7 +536,15 @@ def main():
         processed.append(y)
 
     if processed:
-        write_index(processed, logger)
+        # L'index liste tous les exercices publiés, pas seulement ceux de ce
+        # passage : l'appel sans argument (refresh, porte de parité) ne traite
+        # que le dernier exercice, et réécrivait un index à une seule année
+        # alors que les 19 fichiers restaient en place.
+        on_disk = {
+            int(p.stem.rsplit("_", 1)[1])
+            for p in DATA_DIR.glob("hors_bilan_[0-9][0-9][0-9][0-9].json")
+        }
+        write_index(sorted(on_disk | set(processed)), logger)
     logger.success(f"Terminé · {len(processed)} exercice(s) traité(s)")
 
 

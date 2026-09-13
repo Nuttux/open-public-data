@@ -1,133 +1,143 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "conservatoire-paul-dukas",
- "name": "Conservatoire Paul-Dukas",
- "kind_fr": "Conservatoire",
- "kind_en": "Conservatoire",
- "famille": "culture",
- "arrondissement": 12,
- "lat": 48.842318,
- "lon": 2.384129,
- "photo": "/img/lieux/conservatoire-paul-dukas.jpg",
- "photo_credit": {
-  "licence": "Public domain",
-  "auteur": "\nDukas, Paul (1865-1935). Auteur du texte",
-  "url": "https://commons.wikimedia.org/wiki/File:Quelques_r%C3%A9flexions_faites_par_Paul_Dukas_%C3%A0_sa_classe_du_Conservatoire,_de_janvier_1934_%C3%A0_avril_1935_(manuscrit_autographe)_-_btv1b52518345f_(2_of_2).jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1251,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "tête du classement Solr (1251 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (1251 documents total)",
-  "n_lus": 44,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "decp-2025T05503",
-   "objet": "Travaux de mise en œuvre de films solaires au conservatoire Paul Dukas Paris 12ème N° Opération 202202390",
-   "objet_clair": null,
-   "fournisseur": "CONFORT GLASS",
-   "montant_max": 37668.0,
-   "date_notification": "2025-06-05",
-   "preuve": "L'objet nomme le lieu verbatim et porte sur le batiment lui-meme : « Travaux de mise en oeuvre de films solaires au conservatoire Paul Dukas Paris 12eme N° Operation 202202390 » — travaux executes sur ce lieu, pas un simple repere d'adresse ni un marche-cadre de toute la Ville. Titulaire CONFORT GLASS, SIRET 48829585800028. Le champ lieu_execution vaut « Paris », trop large pour prouver quoi que ce soit : il n'est pas utilise comme preuve."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2011": 1028807.54,
-   "2012": 2538308.81,
-   "2013": 10285703.82,
-   "2014": 2811379.21,
-   "2015": 133121.32,
-   "2016": 643740.24,
-   "2017": 4893.8,
-   "2018": 180293.98,
-   "2019": 100438.51
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "conservatoire-paul-dukas",
+  "name": "Conservatoire Paul-Dukas",
+  "kind_fr": "Conservatoire",
+  "kind_en": "Conservatoire",
+  "famille": "culture",
+  "arrondissement": 12,
+  "lat": 48.842318,
+  "lon": 2.384129,
+  "photo": "/img/lieux/conservatoire-paul-dukas.jpg",
+  "photo_credit": {
+    "licence": "Public domain",
+    "auteur": "\nDukas, Paul (1865-1935). Auteur du texte",
+    "url": "https://commons.wikimedia.org/wiki/File:Quelques_r%C3%A9flexions_faites_par_Paul_Dukas_%C3%A0_sa_classe_du_Conservatoire,_de_janvier_1934_%C3%A0_avril_1935_(manuscrit_autographe)_-_btv1b52518345f_(2_of_2).jpg",
+    "source": "Wikimedia Commons"
   },
-  "total_eur": 17726687.23,
-  "operations": [
-   {
-    "ap_cle": "B100/1004116",
-    "ap_texte": "CONSERVATOIRE RUE DU CHAROLAIS",
-    "mandate_par_annee": {
-     "2011": 1028807.54,
-     "2012": 2538308.81,
-     "2013": 10285703.82
-    },
-    "total_mandate": 13852820.17,
-    "preuve": "Libelle « CONSERVATOIRE RUE DU CHAROLAIS » = alias declare du lieu (champ aliases), mission AFFAIRES CULTURELLES, direction DAC. Meme numero d'operation 1004116 que la serie 2014-2019 ci-dessous, dont le mandate 2019 (100 438,51 EUR) correspond au projet nommant « Conservatoire Paul Dukas » (100 439,00 EUR) : l'operation 1004116 designe donc bien ce lieu. Cette ligne couvre la serie 2011-2013 (mandate le plus eleve en 2013 : 10 285 703,82 EUR) ; aucune annee commune avec la serie 2014-2019, donc pas de double compte entre les deux lignes AP.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004116"
-   },
-   {
-    "ap_cle": "1004116",
-    "ap_texte": "CONSERVATOIRE RUE DU CHAROLAIS",
-    "mandate_par_annee": {
-     "2014": 2811379.21,
-     "2015": 133121.32,
-     "2016": 643740.24,
-     "2017": 4893.8,
-     "2018": 180293.98,
-     "2019": 100438.51
-    },
-    "total_mandate": 3873867.06,
-    "preuve": "Meme operation 1004116, serie 2014-2019, mission AFFAIRES CULTURELLES, direction DAC, libelle « CONSERVATOIRE RUE DU CHAROLAIS » = alias declare du lieu (champ aliases). Preuve chiffree : le mandate 2019 de 100 438,51 EUR correspond au projet « Enseignement artistique Conservatoire Paul Dukas - Divers travaux de construction » (100 439,00 EUR, 2019), et le mandate 2018 de 180 293,98 EUR est la meme ligne source que le projet « CONSERVATOIRE RUE DU CHAROLAIS » (180 293,98 EUR, 2018). Ce n'est pas une enveloppe generique de direction : le libelle designe un equipement precis. Attention : les annees 2018 et 2019 de cette AP font double emploi avec les deux projets rattaches ci-dessus, a ne pas additionner.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1004116"
-   }
-  ],
-  "periode": [
-   "2011",
-   "2019"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Paul-Dukas"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 1251,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 18,
+    "n_bmo_verifies": 1,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "tête du classement Solr (1251 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (1251 documents total)",
+    "n_lus": 44,
+    "n_lieu": 0
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Aucun des textes du Conseil de Paris examinés sous le nom « Conservatoire Paul-Dukas » ne cite ce conservatoire dans son intitulé. Plusieurs portent sur d'autres conservatoires : Rachmaninoff (16e), Erik Satie (7e), Darius Milhaud (14e), Frédéric Chopin (15e), Gabriel Fauré, conservatoires des 8e et 17e ; d'autres sur le Conservatoire à rayonnement régional de Paris, et un vœu sur le tirage au sort pour l'entrée au conservatoire, sans désigner d'établissement. Un texte de décembre 2019 concerne la dénomination de l'espace vert situé 6, rue Paul Dukas (12e) : son intitulé mentionne la rue, pas le conservatoire. Les autres intitulés contiennent le mot « Paul » dans un nom de personne ou de lieu : cité scolaire Paul Valéry, Saint-Vincent-de-Paul, Paul Watson, Paul Varry. D'après leurs intitulés, aucun de ces textes ne concerne le conservatoire Paul-Dukas lui-même.",
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "decp-2025T05503",
+      "objet": "Travaux de mise en œuvre de films solaires au conservatoire Paul Dukas Paris 12ème N° Opération 202202390",
+      "objet_clair": null,
+      "fournisseur": "CONFORT GLASS",
+      "montant_max": 37668.0,
+      "date_notification": "2025-06-05",
+      "preuve": "L'objet nomme le lieu verbatim et porte sur le batiment lui-meme : « Travaux de mise en oeuvre de films solaires au conservatoire Paul Dukas Paris 12eme N° Operation 202202390 » — travaux executes sur ce lieu, pas un simple repere d'adresse ni un marche-cadre de toute la Ville. Titulaire CONFORT GLASS, SIRET 48829585800028. Le champ lieu_execution vaut « Paris », trop large pour prouver quoi que ce soit : il n'est pas utilise comme preuve."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2011": 1028807.54,
+      "2012": 2538308.81,
+      "2013": 10285703.82,
+      "2014": 2811379.21,
+      "2015": 133121.32,
+      "2016": 643740.24,
+      "2017": 4893.8,
+      "2018": 180293.98,
+      "2019": 100438.51
+    },
+    "total_eur": 17726687.23,
+    "operations": [
+      {
+        "ap_cle": "B100/1004116",
+        "ap_texte": "CONSERVATOIRE RUE DU CHAROLAIS",
+        "mandate_par_annee": {
+          "2011": 1028807.54,
+          "2012": 2538308.81,
+          "2013": 10285703.82
+        },
+        "total_mandate": 13852820.17,
+        "preuve": "Libelle « CONSERVATOIRE RUE DU CHAROLAIS » = alias declare du lieu (champ aliases), mission AFFAIRES CULTURELLES, direction DAC. Meme numero d'operation 1004116 que la serie 2014-2019 ci-dessous, dont le mandate 2019 (100 438,51 EUR) correspond au projet nommant « Conservatoire Paul Dukas » (100 439,00 EUR) : l'operation 1004116 designe donc bien ce lieu. Cette ligne couvre la serie 2011-2013 (mandate le plus eleve en 2013 : 10 285 703,82 EUR) ; aucune annee commune avec la serie 2014-2019, donc pas de double compte entre les deux lignes AP.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004116"
+      },
+      {
+        "ap_cle": "1004116",
+        "ap_texte": "CONSERVATOIRE RUE DU CHAROLAIS",
+        "mandate_par_annee": {
+          "2014": 2811379.21,
+          "2015": 133121.32,
+          "2016": 643740.24,
+          "2017": 4893.8,
+          "2018": 180293.98,
+          "2019": 100438.51
+        },
+        "total_mandate": 3873867.06,
+        "preuve": "Meme operation 1004116, serie 2014-2019, mission AFFAIRES CULTURELLES, direction DAC, libelle « CONSERVATOIRE RUE DU CHAROLAIS » = alias declare du lieu (champ aliases). Preuve chiffree : le mandate 2019 de 100 438,51 EUR correspond au projet « Enseignement artistique Conservatoire Paul Dukas - Divers travaux de construction » (100 439,00 EUR, 2019), et le mandate 2018 de 180 293,98 EUR est la meme ligne source que le projet « CONSERVATOIRE RUE DU CHAROLAIS » (180 293,98 EUR, 2018). Ce n'est pas une enveloppe generique de direction : le libelle designe un equipement precis. Attention : les annees 2018 et 2019 de cette AP font double emploi avec les deux projets rattaches ci-dessus, a ne pas additionner.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1004116"
+      }
+    ],
+    "periode": [
+      "2011",
+      "2019"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Paul-Dukas"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Conservatoire+Paul-Dukas%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "None of the Conseil de Paris texts examined under the name “Conservatoire Paul-Dukas” mentions this conservatory in its title. Several concern other conservatories: Rachmaninoff (16th), Erik Satie (7th), Darius Milhaud (14th), Frédéric Chopin (15th), Gabriel Fauré, and the conservatories of the 8th and 17th arrondissements; others concern the Conservatoire à rayonnement régional de Paris, and one motion concerns the lottery for admission to the conservatory, without naming a specific institution. A December 2019 text concerns the naming of the green space located at 6, rue Paul Dukas (12th): its title mentions the street, not the conservatory. The other titles contain the word “Paul” in the name of a person or place: the Paul Valéry school complex, Saint-Vincent-de-Paul, Paul Watson, Paul Varry. According to their titles, none of these texts concerns the Paul-Dukas conservatory itself.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

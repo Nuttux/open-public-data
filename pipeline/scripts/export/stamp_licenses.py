@@ -36,12 +36,56 @@ ODBL = {
     ),
 }
 
-# Top-level directory under website/public/data -> licence block.
-# Paris writes flat and into topical subdirs, so it is the default.
+# Licence Ouverte v2.0 (Etalab): attribution, no share-alike. The form of the
+# attribution is the producer's: OFGL asks for « calcul OFGL - source DGFiP »,
+# INSEE for « Source : Insee ».
+LO2 = {
+    "id": "Licence-Ouverte-2.0",
+    "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+    "share_alike": False,
+    "notice": (
+        "Derived from French public open data under Licence Ouverte v2.0 "
+        "(Etalab): attribution required, no share-alike."
+    ),
+}
+STATE_ATTRIBUTION = "DGFiP ; calcul OFGL - source DGFiP ; DECP ; Source : Insee — Licence Ouverte v2.0"
+
+# Top-level directory under website/public/data -> licence block. Licences
+# checked on each portal on 13 Sep 2026. Paris writes flat and into topical
+# subdirs, so it is the default; every other French directory derives from
+# State or Marseille data only and used to be stamped ODbL by that default.
 BUCKETS = {
     "us": None,          # DataSF — PDDL, public domain, no obligation
-    "marseille": None,   # AMP Métropole — mostly Licence Ouverte 2.0; verify per dataset
     "br": {**ODBL, "attribution": "Prefeitura do Recife (Dados Abertos), sob licença ODbL"},
+    "communes": {**LO2, "attribution": STATE_ATTRIBUTION},
+    "communes-all": {**LO2, "attribution": STATE_ATTRIBUTION},
+    "communes-budget": {**LO2, "attribution": STATE_ATTRIBUTION},
+    "communes-fonctions": {**LO2, "attribution": STATE_ATTRIBUTION},
+    "communes-marches": {**LO2, "attribution": STATE_ATTRIBUTION},
+    "marseille": {
+        **LO2,
+        "attribution": (
+            "Ville de Marseille et Métropole Aix-Marseille-Provence (data.gouv.fr, "
+            "data.ampmetropole.fr) ; calcul OFGL - source DGFiP — Licence Ouverte v2.0"
+        ),
+    },
+    "fr": {
+        **LO2,
+        "attribution": "Ville de Marseille (data.gouv.fr) ; calcul OFGL - source DGFiP — Licence Ouverte v2.0",
+    },
+    "national": {
+        "id": "CC-BY-4.0+Licence-Ouverte-2.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "share_alike": False,
+        "notice": (
+            "Derived from Eurostat data (CC BY 4.0, figures reprocessed by Qipu) and "
+            "French public data under Licence Ouverte v2.0: attribution required, no share-alike."
+        ),
+        "attribution": (
+            "Eurostat (CC BY 4.0), données retraitées par Qipu ; Source : Insee ; "
+            "PLF, PLFSS, DGFiP, OFGL — Licence Ouverte v2.0"
+        ),
+    },
 }
 PARIS = {
     **ODBL,
@@ -63,7 +107,8 @@ def bucket_for(path: Path):
 
 def stamp(path: Path, block: dict, check: bool) -> str:
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        payload = json.loads(text)
     except Exception:
         return "unreadable"
     if not isinstance(payload, dict):
@@ -74,9 +119,13 @@ def stamp(path: Path, block: dict, check: bool) -> str:
     if check:
         return "would-change"
     payload["license"] = desired
-    path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    # Keep the file's own layout: a compact export stays compact. Re-indenting
+    # every commune and national file would inflate what each function ships.
+    if "\n " in text[:4000]:
+        out = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    else:
+        out = json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + ("\n" if text.endswith("\n") else "")
+    path.write_text(out, encoding="utf-8")
     return "stamped"
 
 
@@ -84,6 +133,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="report drift, write nothing")
     ap.add_argument("--all", action="store_true", help="include no-obligation buckets")
+    ap.add_argument(
+        "--existing-only",
+        action="store_true",
+        help="only rewrite files that already carry a licence block (keeps compact files compact)",
+    )
     args = ap.parse_args()
 
     counts: dict[str, int] = {}
@@ -93,6 +147,9 @@ def main() -> int:
             counts["skipped-no-obligation"] = counts.get("skipped-no-obligation", 0) + 1
             continue
         if block is None:
+            continue
+        if args.existing_only and '"license"' not in path.read_text(encoding="utf-8"):
+            counts["skipped-unstamped"] = counts.get("skipped-unstamped", 0) + 1
             continue
         result = stamp(path, block, args.check)
         counts[result] = counts.get(result, 0) + 1

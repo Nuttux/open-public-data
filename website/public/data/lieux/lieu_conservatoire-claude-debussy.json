@@ -1,206 +1,276 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "conservatoire-claude-debussy",
- "name": "Conservatoire Claude-Debussy",
- "kind_fr": "Conservatoire",
- "kind_en": "Conservatoire",
- "famille": "culture",
- "arrondissement": 17,
- "lat": 48.888419,
- "lon": 2.29444,
- "photo": "/img/lieux/conservatoire-claude-debussy.jpg",
- "photo_credit": {
-  "licence": "Public domain",
-  "auteur": "Claude Debussy (1862-1918) - extrait des \"Trois Chansons de France\" (manuscrit a",
-  "url": "https://commons.wikimedia.org/wiki/File:Claude_Debussy_-_extrait_du_Promenoir_des_deux_amants.png",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1802,
-  "delibs_span": [
-   1995,
-   2025
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "tête du classement Solr (1802 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (1802 documents total)",
-  "n_lus": 45,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [
-  {
-   "beneficiaire": "CONSERVATOIRE DU 17EME",
-   "montant_total": 11870.89,
-   "preuve": "Le nom du bénéficiaire est la désignation que la Ville emploie pour ce conservatoire : « 2007, DAC 189 - Attribution d'une subvention de fonctionnement à l'Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" ayant son siège social 29, avenue de Villiers (17e) » et « 2010 DAC 585 - Signature d'une convention avec l'Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) pour l'attribution d'une subvention ». En revanche rien ne montre que ce bénéficiaire exploite le bâtiment : le candidat n'a ni SIRET ni objet, il ne porte qu'une seule ligne, dans les subventions de 2011, et la délibération de novembre 2018 montre la Ville gérant les conservatoires en direct (« le travail des services de la Direction des Affaires culturelles avec les conservatoires », recrutement d'un agent d'accueil pour le conservatoire Claude-Debussy). Requalifié d'exploitant en résident : argent lié au lieu, gestion du lieu non prouvée."
-  }
- ],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2007": [
-   {
-    "reference": "2007 DAC 189",
-    "titre": "2007, DAC 189 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 17e arrondissement, “conservatoire Claude Debussy” ayant son siège social 29, avenue de Villiers (17e). - Montant : 26.512 euros. 2007, DAC 645 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 7e arrondissement “Erik Satie”, ayant son siège social 116, rue de Grenelle. - Montant : 51.432 euros. 2007, DAC 646 - Attribution d’une subvention de f",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4735"
-   }
-  ],
-  "2011": [
-   {
-    "reference": "2011 DPA 17",
-    "titre": "43 - 2011, DPA 17 - Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2011",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95758"
-   },
-   {
-    "reference": "2011 DPA 17",
-    "titre": "Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2011",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97863"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20131210012203",
-   "objet": "ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME",
-   "objet_clair": null,
-   "fournisseur": "SOC MUTUELLE D ASSURANCE DU BTP",
-   "montant_max": 41804.96,
-   "date_notification": "2013-08-14",
-   "preuve": "L'objet du marché nomme le lieu et porte sur sa construction : « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » (catégorie « Assurances construction », titulaire unique, notifié le 2013-08-14). Ce n'est ni un repère d'adresse ni un marché-cadre de toute la Ville : l'objet ne désigne que cet équipement. Il coïncide avec le chantier que montrent les opérations budgétaires DAC « CONSERVATOIRE DU 17EME » mandatées de 2009 à 2013, et le bâtiment neuf est évoqué en Conseil de Paris en novembre 2018 (« le nouveau bâtiment est plus grand »)."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2009": 177760.84,
-   "2010": 525614.66,
-   "2011": 1552870.52,
-   "2012": 6541563.82,
-   "2013": 10880300.16,
-   "2014": 1113492.3,
-   "2015": 168593.09,
-   "2016": 43255.59,
-   "2017": 671466.93,
-   "2018": 261201.95,
-   "2019": 111903.04,
-   "2020": 36829.81,
-   "2021": 168726.09,
-   "2022": 198363.39
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "conservatoire-claude-debussy",
+  "name": "Conservatoire Claude-Debussy",
+  "kind_fr": "Conservatoire",
+  "kind_en": "Conservatoire",
+  "famille": "culture",
+  "arrondissement": 17,
+  "lat": 48.888419,
+  "lon": 2.29444,
+  "photo": "/img/lieux/conservatoire-claude-debussy.jpg",
+  "photo_credit": {
+    "licence": "Public domain",
+    "auteur": "Claude Debussy (1862-1918) - extrait des \"Trois Chansons de France\" (manuscrit a",
+    "url": "https://commons.wikimedia.org/wiki/File:Claude_Debussy_-_extrait_du_Promenoir_des_deux_amants.png",
+    "source": "Wikimedia Commons"
   },
-  "total_eur": 22451942.19,
-  "operations": [
-   {
-    "ap_cle": "B100/0803772",
-    "ap_texte": "CONSERVATOIRE DU 17EME",
-    "mandate_par_annee": {
-     "2009": 177760.84,
-     "2010": 525614.66,
-     "2011": 1190932.02,
-     "2012": 6406892.64,
-     "2013": 8717904.8
-    },
-    "total_mandate": 17019104.96,
-    "preuve": "Le libellé de l'opération est la désignation de ce lieu par la Ville : « CONSERVATOIRE DU 17EME » (mission « AFFAIRES CULTURELLES », direction DAC). Les délibérations lient ce nom au lieu : « Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" » (2007 DAC 189) et « Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) » (2010 DAC 585). Ce n'est pas une enveloppe générique de direction : l'opération est nommée par l'équipement lui-même. Les mandatements 2009-2013 (17 019 104,96 €) correspondent au chantier attesté par le marché « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » notifié en 2013 et par la délibération de novembre 2018 (« le nouveau bâtiment est plus grand »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803772"
-   },
-   {
-    "ap_cle": "B100/0903772",
-    "ap_texte": "CONSERVATOIRE DU 17EME",
-    "mandate_par_annee": {
-     "2011": 361938.5,
-     "2012": 134671.18,
-     "2013": 2162395.36
-    },
-    "total_mandate": 2659005.04,
-    "preuve": "Même libellé nommant l'équipement : « CONSERVATOIRE DU 17EME », mission « AFFAIRES CULTURELLES », direction DAC — nom que les délibérations rattachent au conservatoire Claude-Debussy (2007 DAC 189, 2010 DAC 585). Opération distincte de B100/0803772 (numéro 0903772), mandatée 2011-2013 sur la même période de chantier que le marché d'assurance construction du conservatoire du 17e.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903772"
-   },
-   {
-    "ap_cle": "0903772",
-    "ap_texte": "CONSERVATOIRE DU 17EME",
-    "mandate_par_annee": {
-     "2014": 934421.97,
-     "2015": 99069.05,
-     "2016": 40800.85,
-     "2017": 671466.93,
-     "2018": 260295.5,
-     "2019": 111903.04,
-     "2020": 36829.81,
-     "2021": 168726.09,
-     "2022": 198363.39
-    },
-    "total_mandate": 2521876.63,
-    "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0903772) que la ligne B100/0903772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2011-2013 pour B100/0903772, 2014-2022 ici — donc la suite de la même opération, sans double compte.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903772"
-   },
-   {
-    "ap_cle": "0803772",
-    "ap_texte": "CONSERVATOIRE DU 17EME",
-    "mandate_par_annee": {
-     "2014": 179070.33,
-     "2015": 69524.04,
-     "2016": 2454.74,
-     "2018": 906.45
-    },
-    "total_mandate": 251955.56,
-    "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0803772) que la ligne B100/0803772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2009-2013 pour B100/0803772, 2014-2018 ici — donc la suite de la même opération, sans double compte.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0803772"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Claude-Debussy"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 1802,
+    "delibs_span": [
+      1999,
+      2018
+    ],
+    "n_bmo_brut": 47,
+    "n_bmo_verifies": 1,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "tête du classement Solr (1802 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (1802 documents total)",
+    "n_lus": 45,
+    "n_lieu": 6
+  },
+  "subventions_exploitant": null,
+  "residents": [
+    {
+      "beneficiaire": "CONSERVATOIRE DU 17EME",
+      "montant_total": 11870.89,
+      "preuve": "Le nom du bénéficiaire est la désignation que la Ville emploie pour ce conservatoire : « 2007, DAC 189 - Attribution d'une subvention de fonctionnement à l'Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" ayant son siège social 29, avenue de Villiers (17e) » et « 2010 DAC 585 - Signature d'une convention avec l'Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) pour l'attribution d'une subvention ». En revanche rien ne montre que ce bénéficiaire exploite le bâtiment : le candidat n'a ni SIRET ni objet, il ne porte qu'une seule ligne, dans les subventions de 2011, et la délibération de novembre 2018 montre la Ville gérant les conservatoires en direct (« le travail des services de la Direction des Affaires culturelles avec les conservatoires », recrutement d'un agent d'accueil pour le conservatoire Claude-Debussy). Requalifié d'exploitant en résident : argent lié au lieu, gestion du lieu non prouvée.",
+      "preuve_en": "The beneficiary's name is the designation the City uses for this conservatory: “2007, DAC 189 - Award of an operating subsidy to the Association du Conservatoire municipal du 17e arrondissement, ‘conservatoire Claude Debussy’, with its registered office at 29, avenue de Villiers (17th)” and “2010 DAC 585 - Signing of an agreement with the Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy (17th) for the award of a subsidy”. However, nothing shows that this beneficiary operates the building: the candidate has neither a SIRET number nor a stated purpose, it appears on only one line, in the 2011 subsidies, and the November 2018 deliberation shows the City running the conservatories directly (“the work of the Direction des Affaires culturelles departments with the conservatories”, recruitment of a reception officer for the Claude-Debussy conservatory). Reclassified from operator to resident: money linked to the place, management of the place not proven."
+    }
+  ],
+  "kpi_montant": null,
+  "synthese_fr": "En 1999, deux questions d'élus au Maire de Paris sont inscrites : en juin, M. Jean-Pierre REVEAU interroge « au sujet du relogement du conservatoire de la rue Claude-Debussy (17e) », et en octobre, M. Hervé BENESSIANO pose une question « à propos du conservatoire municipal Claude Debussy (17e) ». En décembre 2007, le projet de délibération 2007 DAC 189 porte sur une subvention de fonctionnement de 26 512 euros à l'Association du Conservatoire municipal du 17e arrondissement, « conservatoire Claude Debussy », dont le siège social est au 29, avenue de Villiers (17e). En octobre 2010, le projet 2010 DAC 585, rapporté par M. Christophe GIRARD, porte sur la signature d'une convention avec l'Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy pour l'attribution d'une subvention. En novembre 2018, sur un vœu du groupe les Républicains et Indépendants relatif à l'accueil au conservatoire du 17e, M. BOULARD demande un engagement ferme sur le recrutement d'un agent d'accueil. La réponse est prononcée par Mme Karen TAÏEB, adjointe, qui précise que c'est « toujours Christophe GIRARD qui parle ». Selon cette réponse, le conservatoire Claude-Debussy a été contraint de fermer ses portes 3 heures avant la fermeture, les deux agents prévus le soir étant malades ; la réponse qualifie l'incident d'exceptionnel et ajoute, à l'adresse de M. BOULARD : « Contrairement à ce que vous avancez, ces cas restent heureusement rares ». La même réponse affirme que « le nouveau bâtiment est plus grand » et a permis un accroissement du nombre de bénéficiaires de l'offre d'enseignement.",
+  "moments": [
+    {
+      "id": "20148",
+      "seance": "JUIN 1999",
+      "fait": "M. Jean-Pierre REVEAU, élu du Front national, interroge le Maire de Paris au sujet du relogement du conservatoire de la rue Claude-Debussy (17e).",
+      "pourquoi": "une question d'élu sur le relogement du conservatoire de la rue Claude-Debussy (17e)",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20148",
+      "fait_en": "Mr Jean-Pierre REVEAU, a Front National elected official, questions the Mayor of Paris about the relocation of the conservatory on rue Claude-Debussy (17th).",
+      "pourquoi_en": "a question from an elected official on the relocation of the conservatory on rue Claude-Debussy (17th)"
+    },
+    {
+      "id": "6129",
+      "seance": "OCTOBRE 1999",
+      "fait": "M. Hervé BENESSIANO adresse au Maire de Paris une question à propos du conservatoire municipal Claude Debussy (17e).",
+      "pourquoi": "autre question d'élu la même année, cette fois sur le conservatoire municipal Claude Debussy (17e)",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6129",
+      "fait_en": "Mr Hervé BENESSIANO addresses a question to the Mayor of Paris about the Claude Debussy municipal conservatory (17th).",
+      "pourquoi_en": "another question from an elected official the same year, this time on the Claude Debussy municipal conservatory (17th)"
+    },
+    {
+      "id": "4735",
+      "seance": "DECEMBRE 2007",
+      "fait": "Le projet de délibération 2007 DAC 189 porte sur une subvention de fonctionnement de 26 512 euros à l'Association du Conservatoire municipal du 17e arrondissement.",
+      "pourquoi": "subvention de fonctionnement à l'association du conservatoire",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4735",
+      "fait_en": "Draft deliberation 2007 DAC 189 concerns an operating subsidy of 26,512 euros to the Association du Conservatoire municipal du 17e arrondissement.",
+      "pourquoi_en": "operating subsidy to the conservatory's association"
+    },
+    {
+      "id": "23393",
+      "seance": "OCTOBRE 2010",
+      "fait": "Le projet de délibération 2010 DAC 585, rapporté par M. Christophe GIRARD, porte sur la signature d'une convention avec l'Association du Conservatoire Municipal du 17e arrondissement pour l'attribution d'une subvention.",
+      "pourquoi": "une convention avec l'association pour une subvention",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23393",
+      "fait_en": "Draft deliberation 2010 DAC 585, presented by Mr Christophe GIRARD, concerns the signing of an agreement with the Association du Conservatoire Municipal du 17e arrondissement for the award of a subsidy.",
+      "pourquoi_en": "an agreement with the association for a subsidy"
+    },
+    {
+      "id": "146633",
+      "seance": "NOVEMBRE 2018",
+      "fait": "Sur un vœu relatif à l'accueil au conservatoire du 17e, la réponse prononcée par Mme Karen TAÏEB, adjointe, qui précise que c'est « toujours Christophe GIRARD qui parle », déclare que le conservatoire Claude-Debussy a dû fermer 3 heures avant la fermeture, les deux agents prévus le soir étant malades, et qualifie l'incident d'exceptionnel.",
+      "pourquoi": "une fermeture prématurée du conservatoire, évoquée en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146633",
+      "fait_en": "On a motion concerning reception at the 17th arrondissement conservatory, the response delivered by Ms Karen TAÏEB, deputy mayor, who specifies that it is “still Christophe GIRARD speaking”, states that the Claude-Debussy conservatory had to close 3 hours before closing time, as the two staff members scheduled for the evening were ill, and describes the incident as exceptional.",
+      "pourquoi_en": "an early closure of the conservatory, raised in session"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "DECEMBRE 2007",
+      "montant": "26 512 €",
+      "objet": "subvention de fonctionnement à l'Association du Conservatoire municipal du 17e arrondissement (2007 DAC 189)",
+      "citation": "2007, DAC 189 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 17e arrondissement, “conservatoire Claude Debussy” ayant son siège social 29, avenue de Villiers (17e). - Montant : 26.512 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4735"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2007": [
+      {
+        "reference": "2007 DAC 189",
+        "titre": "2007, DAC 189 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 17e arrondissement, “conservatoire Claude Debussy” ayant son siège social 29, avenue de Villiers (17e). - Montant : 26.512 euros. 2007, DAC 645 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 7e arrondissement “Erik Satie”, ayant son siège social 116, rue de Grenelle. - Montant : 51.432 euros. 2007, DAC 646 - Attribution d’une subvention de f",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4735"
+      }
+    ],
+    "2011": [
+      {
+        "reference": "2011 DPA 17",
+        "titre": "43 - 2011, DPA 17 - Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2011",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95758"
+      },
+      {
+        "reference": "2011 DPA 17",
+        "titre": "Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2011",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97863"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20131210012203",
+      "objet": "ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME",
+      "objet_clair": null,
+      "fournisseur": "SOC MUTUELLE D ASSURANCE DU BTP",
+      "montant_max": 41804.96,
+      "date_notification": "2013-08-14",
+      "preuve": "L'objet du marché nomme le lieu et porte sur sa construction : « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » (catégorie « Assurances construction », titulaire unique, notifié le 2013-08-14). Ce n'est ni un repère d'adresse ni un marché-cadre de toute la Ville : l'objet ne désigne que cet équipement. Il coïncide avec le chantier que montrent les opérations budgétaires DAC « CONSERVATOIRE DU 17EME » mandatées de 2009 à 2013, et le bâtiment neuf est évoqué en Conseil de Paris en novembre 2018 (« le nouveau bâtiment est plus grand »)."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2009": 177760.84,
+      "2010": 525614.66,
+      "2011": 1552870.52,
+      "2012": 6541563.82,
+      "2013": 10880300.16,
+      "2014": 1113492.3,
+      "2015": 168593.09,
+      "2016": 43255.59,
+      "2017": 671466.93,
+      "2018": 261201.95,
+      "2019": 111903.04,
+      "2020": 36829.81,
+      "2021": 168726.09,
+      "2022": 198363.39
+    },
+    "total_eur": 22451942.19,
+    "operations": [
+      {
+        "ap_cle": "B100/0803772",
+        "ap_texte": "CONSERVATOIRE DU 17EME",
+        "mandate_par_annee": {
+          "2009": 177760.84,
+          "2010": 525614.66,
+          "2011": 1190932.02,
+          "2012": 6406892.64,
+          "2013": 8717904.8
+        },
+        "total_mandate": 17019104.96,
+        "preuve": "Le libellé de l'opération est la désignation de ce lieu par la Ville : « CONSERVATOIRE DU 17EME » (mission « AFFAIRES CULTURELLES », direction DAC). Les délibérations lient ce nom au lieu : « Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" » (2007 DAC 189) et « Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) » (2010 DAC 585). Ce n'est pas une enveloppe générique de direction : l'opération est nommée par l'équipement lui-même. Les mandatements 2009-2013 (17 019 104,96 €) correspondent au chantier attesté par le marché « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » notifié en 2013 et par la délibération de novembre 2018 (« le nouveau bâtiment est plus grand »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803772"
+      },
+      {
+        "ap_cle": "B100/0903772",
+        "ap_texte": "CONSERVATOIRE DU 17EME",
+        "mandate_par_annee": {
+          "2011": 361938.5,
+          "2012": 134671.18,
+          "2013": 2162395.36
+        },
+        "total_mandate": 2659005.04,
+        "preuve": "Même libellé nommant l'équipement : « CONSERVATOIRE DU 17EME », mission « AFFAIRES CULTURELLES », direction DAC — nom que les délibérations rattachent au conservatoire Claude-Debussy (2007 DAC 189, 2010 DAC 585). Opération distincte de B100/0803772 (numéro 0903772), mandatée 2011-2013 sur la même période de chantier que le marché d'assurance construction du conservatoire du 17e.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903772"
+      },
+      {
+        "ap_cle": "0903772",
+        "ap_texte": "CONSERVATOIRE DU 17EME",
+        "mandate_par_annee": {
+          "2014": 934421.97,
+          "2015": 99069.05,
+          "2016": 40800.85,
+          "2017": 671466.93,
+          "2018": 260295.5,
+          "2019": 111903.04,
+          "2020": 36829.81,
+          "2021": 168726.09,
+          "2022": 198363.39
+        },
+        "total_mandate": 2521876.63,
+        "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0903772) que la ligne B100/0903772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2011-2013 pour B100/0903772, 2014-2022 ici — donc la suite de la même opération, sans double compte.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903772"
+      },
+      {
+        "ap_cle": "0803772",
+        "ap_texte": "CONSERVATOIRE DU 17EME",
+        "mandate_par_annee": {
+          "2014": 179070.33,
+          "2015": 69524.04,
+          "2016": 2454.74,
+          "2018": 906.45
+        },
+        "total_mandate": 251955.56,
+        "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0803772) que la ligne B100/0803772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2009-2013 pour B100/0803772, 2014-2018 ici — donc la suite de la même opération, sans double compte.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0803772"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Claude-Debussy"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Conservatoire+Claude-Debussy%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In 1999, two questions from elected officials to the Mayor of Paris are on record: in June, Mr Jean-Pierre REVEAU asks a question “about the relocation of the conservatory on rue Claude-Debussy (17th)”, and in October, Mr Hervé BENESSIANO puts a question “about the Claude Debussy municipal conservatory (17th)”. In December 2007, draft deliberation 2007 DAC 189 concerns an operating subsidy of 26,512 euros to the Association du Conservatoire municipal du 17e arrondissement, “conservatoire Claude Debussy”, whose registered office is at 29, avenue de Villiers (17th). In October 2010, draft deliberation 2010 DAC 585, presented by Mr Christophe GIRARD, concerns the signing of an agreement with the Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy for the award of a subsidy. In November 2018, on a motion from the Républicains et Indépendants group concerning reception at the 17th arrondissement conservatory, Mr BOULARD asks for a firm commitment on the recruitment of a reception officer. The response is delivered by Ms Karen TAÏEB, deputy mayor, who specifies that it is “still Christophe GIRARD speaking”. According to this response, the Claude-Debussy conservatory was forced to close its doors 3 hours before closing time, as the two staff members scheduled for the evening were ill; the response describes the incident as exceptional and adds, addressing Mr BOULARD: “Contrary to what you claim, such cases fortunately remain rare”. The same response states that “the new building is larger” and has enabled an increase in the number of people benefiting from the teaching on offer.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

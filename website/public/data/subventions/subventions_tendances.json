@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:25:24.641391",
+  "generated_at": "2026-09-13T13:15:13.692547",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
@@ -589,7 +589,7 @@
         },
         {
           "label": "Logement",
-          "montant": 224488856.35,
+          "montant": 224488856.35000002,
           "count": 35
         },
         {
@@ -781,38 +781,43 @@
     {
       "year": 2015,
       "total_montant": 1149891407.56,
-      "nb_subventions": 3504,
-      "nb_beneficiaires": 3464,
+      "nb_subventions": 2864,
+      "nb_beneficiaires": 2790,
       "par_thematique": [
         {
-          "label": "Non classifié",
-          "montant": 665189713.0200003,
-          "count": 1416
+          "label": "Social - Solidarité",
+          "montant": 349360323.08,
+          "count": 213
+        },
+        {
+          "label": "Culture",
+          "montant": 161493267.01000002,
+          "count": 479
         },
         {
           "label": "Économie",
           "montant": 158680832.54999992,
-          "count": 319
+          "count": 259
         },
         {
-          "label": "Culture",
-          "montant": 90482146.67999999,
-          "count": 474
+          "label": "Éducation",
+          "montant": 131072643.85000002,
+          "count": 346
         },
         {
           "label": "Logement",
-          "montant": 85449582.36,
-          "count": 33
+          "montant": 118866563.3,
+          "count": 34
+        },
+        {
+          "label": "Non classifié",
+          "montant": 103197151.71000001,
+          "count": 752
         },
         {
           "label": "Transport",
-          "montant": 38247432.849999994,
-          "count": 5
-        },
-        {
-          "label": "Social - Solidarité",
-          "montant": 35572131.38,
-          "count": 213
+          "montant": 61320748.64,
+          "count": 6
         },
         {
           "label": "Social - Petite enfance",
@@ -820,14 +825,9 @@
           "count": 100
         },
         {
-          "label": "Éducation",
-          "montant": 17156016.850000005,
-          "count": 314
-        },
-        {
           "label": "Administration",
-          "montant": 9712938.0,
-          "count": 45
+          "montant": 11902792.0,
+          "count": 52
         },
         {
           "label": "Sport",
@@ -835,19 +835,24 @@
           "count": 328
         },
         {
+          "label": "Sécurité",
+          "montant": 4339971.55,
+          "count": 4
+        },
+        {
           "label": "International",
-          "montant": 3054541.6,
-          "count": 68
+          "montant": 3194541.6,
+          "count": 69
         },
         {
           "label": "Santé",
-          "montant": 1756225.12,
-          "count": 26
+          "montant": 2019725.12,
+          "count": 27
         },
         {
           "label": "Environnement",
-          "montant": 1744903.0,
-          "count": 61
+          "montant": 1747903.0,
+          "count": 62
         },
         {
           "label": "Autre",
@@ -858,18 +863,13 @@
           "label": "Social",
           "montant": 198782.0,
           "count": 11
-        },
-        {
-          "label": "Sécurité",
-          "montant": 150000.0,
-          "count": 3
         }
       ],
       "par_direction": [
         {
           "label": "Non renseignée",
-          "montant": 1067437809.9399999,
-          "count": 2714
+          "montant": 1067427109.94,
+          "count": 2040
         },
         {
           "label": "DAC",
@@ -913,7 +913,7 @@
         },
         {
           "label": "DASES",
-          "montant": 381894.0,
+          "montant": 392594.0,
           "count": 21
         },
         {
@@ -951,22 +951,22 @@
         {
           "label": "Établissements publics",
           "montant": 638734978.5100001,
-          "count": 284
+          "count": 215
         },
         {
           "label": "Associations",
           "montant": 261827161.94999996,
-          "count": 2792
+          "count": 2270
         },
         {
           "label": "Entreprises",
-          "montant": 226486538.73999992,
-          "count": 318
+          "montant": 226486538.73999995,
+          "count": 258
         },
         {
           "label": "Autres",
           "montant": 20899615.34,
-          "count": 69
+          "count": 46
         },
         {
           "label": "Personnes physiques",

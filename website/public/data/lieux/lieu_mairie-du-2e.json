@@ -1,123 +1,132 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-2e",
- "name": "Mairie du 2e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 2,
- "lat": 48.8676,
- "lon": 2.3423,
- "photo": null,
- "photo_credit": null,
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 687,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (7 trouvés)",
-  "lecture_mode_en": "title naming the place (7 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1997": [
-   {
-    "reference": "1997 DPA 52",
-    "titre": "Approbation du principe de la réalisation de travaux de génie climatique dans la mairie du 2e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Camille CABANA, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40245"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DPA 186",
-    "titre": "Approbation du principe de la modernisation des menuiseries extérieures à la Mairie du 2e arrondissement située 8, rue de la Banque (2e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire correspondante. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84450"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DPA 291",
-    "titre": "Approbation du principe de réalisation des travaux de restructuration d’ensemble de la mairie du 2ème arrondissement de Paris et des modalités de passation du marché de maîtrise d’œuvre correspondant.- Autorisation à Monsieur le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation des travaux susvisés. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65583"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DPA 41",
-    "titre": "Autorisation de signer une convention avec l’Association Diocésaine de Paris, représentée par M. Bertrand de FEYDEAU, pour la remise en état de sanitaires situés dans la Mairie du 2e arrondissement, et mis à disposition des fidèles de la Basilique Notre-Dame-des-Victoires. Mme Danièle POURTAUD, rapporteure.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JUIN 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48953"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20171210001446",
-   "objet": "TRAVAUX ESCALIER D'HONNEUR MAIRIE DU 2ÈME ARRT",
-   "objet_clair": null,
-   "fournisseur": "SAS BUILDING",
-   "montant_max": 57929.4,
-   "date_notification": "2017-09-05",
-   "preuve": "Objet du marché : « TRAVAUX ESCALIER D'HONNEUR MAIRIE DU 2ÈME ARRT » — nomme explicitement le lieu."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+2e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-2e",
+  "name": "Mairie du 2e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 2,
+  "lat": 48.8676,
+  "lon": 2.3423,
+  "photo": null,
+  "photo_credit": null,
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 687,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (7 trouvés)",
+    "lecture_mode_en": "title naming the place (7 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1997": [
+      {
+        "reference": "1997 DPA 52",
+        "titre": "Approbation du principe de la réalisation de travaux de génie climatique dans la mairie du 2e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Camille CABANA, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40245"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DPA 186",
+        "titre": "Approbation du principe de la modernisation des menuiseries extérieures à la Mairie du 2e arrondissement située 8, rue de la Banque (2e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire correspondante. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84450"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DPA 291",
+        "titre": "Approbation du principe de réalisation des travaux de restructuration d’ensemble de la mairie du 2ème arrondissement de Paris et des modalités de passation du marché de maîtrise d’œuvre correspondant.- Autorisation à Monsieur le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation des travaux susvisés. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65583"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DPA 41",
+        "titre": "Autorisation de signer une convention avec l’Association Diocésaine de Paris, représentée par M. Bertrand de FEYDEAU, pour la remise en état de sanitaires situés dans la Mairie du 2e arrondissement, et mis à disposition des fidèles de la Basilique Notre-Dame-des-Victoires. Mme Danièle POURTAUD, rapporteure.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUIN 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48953"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20171210001446",
+      "objet": "TRAVAUX ESCALIER D'HONNEUR MAIRIE DU 2ÈME ARRT",
+      "objet_clair": null,
+      "fournisseur": "SAS BUILDING",
+      "montant_max": 57929.4,
+      "date_notification": "2017-09-05",
+      "preuve": "Objet du marché : « TRAVAUX ESCALIER D'HONNEUR MAIRIE DU 2ÈME ARRT » — nomme explicitement le lieu."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+2e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

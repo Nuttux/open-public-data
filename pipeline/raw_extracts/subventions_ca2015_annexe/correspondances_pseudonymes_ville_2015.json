@@ -1,0 +1,1651 @@
+[
+ {
+  "pseudonyme": "Nom3860",
+  "montant": 1080000.0,
+  "cp": "75001",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "AGENCE NATIONALE DE L'HABITAT"
+ },
+ {
+  "pseudonyme": "Nom3959",
+  "montant": 1923556.0,
+  "cp": "75009",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 9E ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3895",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3955",
+  "montant": 2130579.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 5 EME ARRONDISSEMENT"
+ },
+ {
+  "pseudonyme": "Nom3944",
+  "montant": 5034450.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "REGIE ECOLE INGENIEURS VILLE PARIS"
+ },
+ {
+  "pseudonyme": "Nom3882",
+  "montant": 77128.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL CHARLES DE GAUL"
+ },
+ {
+  "pseudonyme": "Nom3848",
+  "montant": 40000.0,
+  "cp": "93200",
+  "nature_juridique": "Commune",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COMMUNE DE ST DENIS",
+   "FEDERATION FRANCAISE DE TRIATHLON"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3914",
+  "montant": 350.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BEAUMARCHAIS",
+   "COLLEGE LUCIE AUBRAC",
+   "COLLEGE VOLTAIRE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3851",
+  "montant": 7500.0,
+  "cp": "75003",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "MUSEE NATIONAL PICASSO PARIS"
+ },
+ {
+  "pseudonyme": "Nom3839",
+  "montant": 361014.0,
+  "cp": "75017",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION DEPARTENTALE SYNDICAT CFTC PA"
+ },
+ {
+  "pseudonyme": "Nom3846",
+  "montant": 12102.0,
+  "cp": "75002",
+  "nature_juridique": "Etat",
+  "statut": "absent",
+  "nom_annexe": []
+ },
+ {
+  "pseudonyme": "Nom3872",
+  "montant": 350.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BEAUMARCHAIS",
+   "COLLEGE LUCIE AUBRAC",
+   "COLLEGE VOLTAIRE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3829",
+  "montant": 8500.0,
+  "cp": "G1E 0A9",
+  "nature_juridique": "Autres",
+  "statut": "absent",
+  "nom_annexe": []
+ },
+ {
+  "pseudonyme": "Nom3841",
+  "montant": 681320.0,
+  "cp": "75019",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION SYNDICATS CFDT PARIS"
+ },
+ {
+  "pseudonyme": "Nom3950",
+  "montant": 313788191.7,
+  "cp": "75012",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CENTRE ACTION SOCIALE VILLE PARIS"
+ },
+ {
+  "pseudonyme": "Nom3885",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3932",
+  "montant": 69960.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NATIONALE SUPERIEURE MINES PA"
+ },
+ {
+  "pseudonyme": "Nom3978",
+  "montant": 140000.0,
+  "cp": "75015",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INSTITUT FRANCAIS"
+ },
+ {
+  "pseudonyme": "Nom3929",
+  "montant": 65000.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "COLLEGE DE FRANCE"
+ },
+ {
+  "pseudonyme": "Nom3858",
+  "montant": 3840.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "MUSEUM NATIONAL D HISTOIRE NATURELL"
+ },
+ {
+  "pseudonyme": "Nom3859",
+  "montant": 40500.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "MUSEUM NATIONAL D HISTOIRE NATURELL"
+ },
+ {
+  "pseudonyme": "Nom3905",
+  "montant": 79680.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NAT SUP ARCHITECTURE LA VILLE"
+ },
+ {
+  "pseudonyme": "Nom3956",
+  "montant": 983820.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 6E ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3843",
+  "montant": 30000.0,
+  "cp": "75007",
+  "nature_juridique": "Etat",
+  "statut": "prouvé",
+  "nom_annexe": "MINISTERE DES OUTRE-MER"
+ },
+ {
+  "pseudonyme": "Nom3930",
+  "montant": 63040.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE PRATIQUE DES HAUTES ETUDES"
+ },
+ {
+  "pseudonyme": "Nom3975",
+  "montant": 50000.0,
+  "cp": "93210",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "CE GERANT INFRASTRUCTURE SNCF",
+   "EPA LA PLAINE DE FRANCE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3891",
+  "montant": 1661481.0,
+  "cp": "75012",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE DES METIERS BOULLE E.S.A.A."
+ },
+ {
+  "pseudonyme": "Nom3865",
+  "montant": 511000.0,
+  "cp": "94800",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CTRE NAT DE LA RECHERCHE SCIENTIF"
+ },
+ {
+  "pseudonyme": "Nom3853",
+  "montant": 10240.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CCI REGION PARIS ILE FRANCE"
+ },
+ {
+  "pseudonyme": "Nom3844",
+  "montant": 4189971.55,
+  "cp": "75004",
+  "nature_juridique": "Etat",
+  "statut": "prouvé",
+  "nom_annexe": "PREFECTURE DE POLICE DE PARIS"
+ },
+ {
+  "pseudonyme": "Nom3962",
+  "montant": 5024199.0,
+  "cp": "75012",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 12 EME ARRON PARIS"
+ },
+ {
+  "pseudonyme": "Nom3973",
+  "montant": 9360.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LA CITE DE LA MUSIQUE"
+ },
+ {
+  "pseudonyme": "Nom3967",
+  "montant": 4915150.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 17E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3936",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3982",
+  "montant": 5100.0,
+  "cp": "CONGO",
+  "nature_juridique": "Autres",
+  "statut": "absent",
+  "nom_annexe": []
+ },
+ {
+  "pseudonyme": "Nom3880",
+  "montant": 143936.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE M VOX-ART-DESSI"
+ },
+ {
+  "pseudonyme": "Nom3943",
+  "montant": 20979400.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND"
+ },
+ {
+  "pseudonyme": "Nom3951",
+  "montant": 572645.0,
+  "cp": "75001",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 1ER ARRONDISSEMENT PA"
+ },
+ {
+  "pseudonyme": "Nom3870",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3835",
+  "montant": 4200.0,
+  "cp": "93600",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "SYND.COPR. DU 20 RUE CAVE 75018 PAR"
+ },
+ {
+  "pseudonyme": "Nom3952",
+  "montant": 962956.0,
+  "cp": "75002",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 2E ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3974",
+  "montant": 12483052.49,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "SNCF RESEAU"
+ },
+ {
+  "pseudonyme": "Nom3958",
+  "montant": 1057835.0,
+  "cp": "75008",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 8E ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3985",
+  "montant": 30000.0,
+  "cp": "75020",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "GIP CAFES CULTURES"
+ },
+ {
+  "pseudonyme": "Nom3854",
+  "montant": 64000.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INST NATIONAL SANTE RECHERCHE MEDIC"
+ },
+ {
+  "pseudonyme": "Nom3917",
+  "montant": 350.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BORIS VIAN",
+   "COLLEGE HONORE DE BALZAC",
+   "COLLEGE STEPHANE MALLARME"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3912",
+  "montant": 350.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CAMILLE CLAUDEL",
+   "COLLEGE ELSA TRIOLET",
+   "COLLEGE EVARISTE GALOIS"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3836",
+  "montant": 1609076.69,
+  "cp": "75013",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "SYNDICAT COPROPRIETE"
+ },
+ {
+  "pseudonyme": "Nom3968",
+  "montant": 8949166.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 18E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3939",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3888",
+  "montant": 350.0,
+  "cp": "75010",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE LA GRANGE AUX BELLES",
+   "COLLEGE LOUISE MICHEL",
+   "COLLEGE VALMY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3987",
+  "montant": 3600.0,
+  "cp": "98800",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "PROVINCE SUD"
+ },
+ {
+  "pseudonyme": "Nom3831",
+  "montant": 203777.4,
+  "cp": null,
+  "nature_juridique": "Autres",
+  "statut": "absent",
+  "nom_annexe": []
+ },
+ {
+  "pseudonyme": "Nom3980",
+  "montant": 1568145.33,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "MAISON DES METALLOS"
+ },
+ {
+  "pseudonyme": "Nom3945",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3886",
+  "montant": 103815.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL GASTON BACHELAR"
+ },
+ {
+  "pseudonyme": "Nom3940",
+  "montant": 130320.0,
+  "cp": "75116",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS DAUPHINE"
+ },
+ {
+  "pseudonyme": "Nom3935",
+  "montant": 350.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CAMILLE CLAUDEL",
+   "COLLEGE ELSA TRIOLET",
+   "COLLEGE EVARISTE GALOIS"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3942",
+  "montant": 2000.0,
+  "cp": "93200",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE DE PARIS VIII.PARIS VINC"
+ },
+ {
+  "pseudonyme": "Nom3922",
+  "montant": 119494.0,
+  "cp": "75012",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL THEOPHILE GAUTI"
+ },
+ {
+  "pseudonyme": "Nom3864",
+  "montant": 54000.0,
+  "cp": "92190",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ"
+ },
+ {
+  "pseudonyme": "Nom3900",
+  "montant": 153600.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE DE PARIS IV PARIS-SORBON"
+ },
+ {
+  "pseudonyme": "Nom3913",
+  "montant": 75343.0,
+  "cp": "75001",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL PIERRE LESCOT"
+ },
+ {
+  "pseudonyme": "Nom3969",
+  "montant": 7922809.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 19 EME ARRON PARIS"
+ },
+ {
+  "pseudonyme": "Nom3927",
+  "montant": 119000.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NORMALE SUPERIEURE"
+ },
+ {
+  "pseudonyme": "Nom3971",
+  "montant": 32336980.94,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "PARIS HABITAT-OPH"
+ },
+ {
+  "pseudonyme": "Nom3834",
+  "montant": 11700.0,
+  "cp": "75008",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "SYND.COPR. DU 17 RUE POLONCEAU 7501"
+ },
+ {
+  "pseudonyme": "Nom3965",
+  "montant": 6711006.0,
+  "cp": "75015",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES 15EME ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3840",
+  "montant": 244980.0,
+  "cp": "75019",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION SYNDICALE SOLIDAIRES PARIS"
+ },
+ {
+  "pseudonyme": "Nom3832",
+  "montant": 50000.0,
+  "cp": "75015",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "SDC DU 5 SQUARE AUGUSTE RENOIR 7"
+ },
+ {
+  "pseudonyme": "NOMAD'ECHECS CLUB",
+  "montant": 2500.0,
+  "cp": "75007",
+  "nature_juridique": "Associations",
+  "statut": "prouvé",
+  "nom_annexe": "NOMAD'ECHECS CLUB"
+ },
+ {
+  "pseudonyme": "Nom3931",
+  "montant": 73480.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INALCO"
+ },
+ {
+  "pseudonyme": "Nom3961",
+  "montant": 5468778.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 11E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3941",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3916",
+  "montant": 350.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BORIS VIAN",
+   "COLLEGE HONORE DE BALZAC",
+   "COLLEGE STEPHANE MALLARME"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3833",
+  "montant": 23000.0,
+  "cp": "75004",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "SOC PUBLIQUE LOCALE CARREAU TEMPLE"
+ },
+ {
+  "pseudonyme": "Nom3910",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3976",
+  "montant": 122500.0,
+  "cp": "75008",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CENTRE NATIONAL CHANSON VARIETES JA"
+ },
+ {
+  "pseudonyme": "Nom3925",
+  "montant": 350.0,
+  "cp": "75010",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE LA GRANGE AUX BELLES",
+   "COLLEGE LOUISE MICHEL",
+   "COLLEGE VALMY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3823",
+  "montant": 1000.0,
+  "cp": "75009",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "ACADEMIE D'ARMES DE FRANCE",
+   "ASS CERCLE AMITIE ET PROGRES",
+   "ASS SPORTIVE DU LYCEE CONDORCET",
+   "ASS SPORTIVE NOTRE DAME DE LORETTE",
+   "ASSOCIATION DES COMMERCANTS DU",
+   "AU COEUR DU NEUVIEME NOS VOISINS ON",
+   "COM IXE ARDT PARIS FED NAT ANC COMB",
+   "COMPAGNIE OPERA SUR LE TOIT",
+   "L'USAGE DU MONDE AU 21E SIECLE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3869",
+  "montant": 1723400.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CENTRE REGIONAL OEUVRES UNIV SCOLAI"
+ },
+ {
+  "pseudonyme": "Nom3875",
+  "montant": 70915.0,
+  "cp": "75015",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL CLAUDE ANTHIME"
+ },
+ {
+  "pseudonyme": "Nom3920",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3947",
+  "montant": 2650000.0,
+  "cp": "75002",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "SYND MIXTE AUTOLIB"
+ },
+ {
+  "pseudonyme": "Nom3838",
+  "montant": 310804.0,
+  "cp": "75008",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION DEPARTEMENTALE DE PARIS CFE-C"
+ },
+ {
+  "pseudonyme": "Nom3822",
+  "montant": 80000.0,
+  "cp": "75001",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "ASS ARTISTIQUE CONCERT COLONNE",
+   "CENTRE FORMATION FOOTBALL PARIS"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3921",
+  "montant": 73903.0,
+  "cp": "75003",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE FRANCOIS TRUFFA"
+ },
+ {
+  "pseudonyme": "Nom3845",
+  "montant": 1302957.94,
+  "cp": "75004",
+  "nature_juridique": "Etat",
+  "statut": "prouvé",
+  "nom_annexe": "9 BD DU PALAIS"
+ },
+ {
+  "pseudonyme": "Nom3879",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3827",
+  "montant": 50000.0,
+  "cp": "93210",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "CE GERANT INFRASTRUCTURE SNCF",
+   "EPA LA PLAINE DE FRANCE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3908",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3979",
+  "montant": 10590263.3,
+  "cp": "75012",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "REGIE AUTONOME TRANSPORTS PARISIENS"
+ },
+ {
+  "pseudonyme": "Nom3887",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3903",
+  "montant": 341920.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS DIDEROT - PARIS 7"
+ },
+ {
+  "pseudonyme": "Nom3893",
+  "montant": 4000.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "ASS FR DES VICTIMES DU TERRORISME",
+   "ASS QUARTIER DE SOLEIL",
+   "ASS SPORTIVE COLLEGE HONORE DE BALZ",
+   "LYCEE GEN TECHNOLOGIQUE HONORE DE B"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3883",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3874",
+  "montant": 159576.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE JACQUES MONOD"
+ },
+ {
+  "pseudonyme": "Nom3842",
+  "montant": 111662.0,
+  "cp": "75003",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION SYNDICATS CGT PARIS"
+ },
+ {
+  "pseudonyme": "Nom3899",
+  "montant": 208400.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS III SORBONNE NOUVE"
+ },
+ {
+  "pseudonyme": "Nom3986",
+  "montant": 500000.0,
+  "cp": "75116",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "ATELIER GD PARIS PROJETS ARCHI URBA"
+ },
+ {
+  "pseudonyme": "Nom3902",
+  "montant": 239600.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS 6 PIERRE ET MARIE"
+ },
+ {
+  "pseudonyme": "Nom3933",
+  "montant": 4800.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CONSERVATOIRE NAT SUP MUSIQUE ET DA"
+ },
+ {
+  "pseudonyme": "Nom3828",
+  "montant": 10000.0,
+  "cp": "75004",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "CHAMBRE PROFESSIONNELLE DES ARTISAN",
+   "COMITE OFFICES MOUVEMENT SPORTIF PA",
+   "GRANIT FILMS",
+   "LES AMIS DU CINEMA DU REEL"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3954",
+  "montant": 1239414.0,
+  "cp": "75004",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 4 EME ARRONDISSEMENT"
+ },
+ {
+  "pseudonyme": "Nom3824",
+  "montant": 2500.0,
+  "cp": "75020",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "ASOCIATION BENKADI",
+   "ASS COMITE DEPART PARISIEN ECHECS",
+   "ASS SPORTIVE HANDI JEUNES PARIS",
+   "ASSOCIATION BOUGE TON QUARTIER",
+   "ASSOCIATION LES COMPTOIRS INDE",
+   "COULEURS PAYS",
+   "DAVOUT RELAIS",
+   "FEMMES DU MONDE, FEMMES DU QUARTIER",
+   "TATOOSPORTS",
+   "UNION SPORTIVE DU COLLEGE GAMBETTA"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3877",
+  "montant": 128586.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU"
+ },
+ {
+  "pseudonyme": "Nom3852",
+  "montant": 2000000.0,
+  "cp": "93210",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "EPCS CAMPUS CONDORCET"
+ },
+ {
+  "pseudonyme": "Nom3881",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3953",
+  "montant": 1274223.0,
+  "cp": "75003",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 3E ARRONDISSEM"
+ },
+ {
+  "pseudonyme": "Nom3915",
+  "montant": 350.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE ALBERTO GIACOMETTI",
+   "COLLEGE FRANCOIS VILLON"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3919",
+  "montant": 350.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CAMILLE CLAUDEL",
+   "COLLEGE ELSA TRIOLET",
+   "COLLEGE EVARISTE GALOIS"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3960",
+  "montant": 3676416.0,
+  "cp": "75010",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 10E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3923",
+  "montant": 350.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BORIS VIAN",
+   "COLLEGE HONORE DE BALZAC",
+   "COLLEGE STEPHANE MALLARME"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3890",
+  "montant": 496180.0,
+  "cp": "75003",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA"
+ },
+ {
+  "pseudonyme": "Nom3906",
+  "montant": 34720.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NAT SUP ARCHIT PARIS BELLEVIL"
+ },
+ {
+  "pseudonyme": "Nom3938",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3884",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3981",
+  "montant": 130000.0,
+  "cp": "75015",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "AGCE FR EXPERTISE TECH INTERNATIONA"
+ },
+ {
+  "pseudonyme": "Nom3871",
+  "montant": 102955.0,
+  "cp": "75017",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL MARIA DERAISMES"
+ },
+ {
+  "pseudonyme": "Nom3894",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3972",
+  "montant": 184915.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ETS PUBLIC PARC GRANDE HALLE VILLET"
+ },
+ {
+  "pseudonyme": "Nom3918",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3897",
+  "montant": 185120.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS 1 PANTHEON-SORBONN"
+ },
+ {
+  "pseudonyme": "Nom3934",
+  "montant": 65000.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "OBSERVATOIRE DE PARIS"
+ },
+ {
+  "pseudonyme": "Nom3946",
+  "montant": 2712500.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "MAISON PRATIQUES ARTISTIQUES AMATEU"
+ },
+ {
+  "pseudonyme": "Nom3983",
+  "montant": 11555.34,
+  "cp": "1777",
+  "nature_juridique": "Autres",
+  "statut": "absent",
+  "nom_annexe": []
+ },
+ {
+  "pseudonyme": "Nom3924",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3867",
+  "montant": 19200.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NAT SUP ARCHITECTURE MALAQUAI"
+ },
+ {
+  "pseudonyme": "Nom3826",
+  "montant": 10700.0,
+  "cp": "75013",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "ATELIERS PLURICULTURELS"
+ },
+ {
+  "pseudonyme": "Nom3907",
+  "montant": 60664.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL SUZANNE VALADON"
+ },
+ {
+  "pseudonyme": "Nom3964",
+  "montant": 5156531.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 14E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3928",
+  "montant": 225000.0,
+  "cp": "75003",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CONSERVATOIRE NATIONAL ARTS ET METI"
+ },
+ {
+  "pseudonyme": "Nom3868",
+  "montant": 7200.0,
+  "cp": "75008",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INRAP"
+ },
+ {
+  "pseudonyme": "Nom3861",
+  "montant": 29220.0,
+  "cp": "45100",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ"
+ },
+ {
+  "pseudonyme": "Nom3896",
+  "montant": 350.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE CHARLES PEGUY",
+   "COLLEGE EDGAR VARESE",
+   "COLLEGE EDMOND MICHELET",
+   "COLLEGE EDOUARD PAILLERON",
+   "COLLEGE GEORGES BRASSENS",
+   "COLLEGE GEORGES MELIES",
+   "COLLEGE GEORGES ROUAULT",
+   "COLLEGE GUILLAUME BUDE",
+   "COLLEGE SONIA DELAUNAY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3898",
+  "montant": 64320.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE PARIS II PANTHEON ASSAS"
+ },
+ {
+  "pseudonyme": "Nom3949",
+  "montant": 3080.0,
+  "cp": "77230",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "SYND EN VUE ETUDE AMENA ET ENTRE"
+ },
+ {
+  "pseudonyme": "Nom3977",
+  "montant": 4355000.0,
+  "cp": "75019",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "104 CENT QUATRE"
+ },
+ {
+  "pseudonyme": "Nom3957",
+  "montant": 951422.0,
+  "cp": "75007",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 7EME ARRONDISS"
+ },
+ {
+  "pseudonyme": "Nom3855",
+  "montant": 68000.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INST NATIONAL SANTE RECHERCHE MEDIC"
+ },
+ {
+  "pseudonyme": "Nom3911",
+  "montant": 350.0,
+  "cp": "75010",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE LA GRANGE AUX BELLES",
+   "COLLEGE LOUISE MICHEL",
+   "COLLEGE VALMY"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3850",
+  "montant": 160000.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "EPCS SORBONNE PARIS CITE"
+ },
+ {
+  "pseudonyme": "Nom3901",
+  "montant": 75600.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "UNIVERSITE DE PARIS 5 RENE DESCARTE"
+ },
+ {
+  "pseudonyme": "Nom3970",
+  "montant": 8056072.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 20 EME ARRON PARIS"
+ },
+ {
+  "pseudonyme": "Nom3909",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3926",
+  "montant": 56000.0,
+  "cp": "75337",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INST ETUDES POLITIQ PARIS-SCIENC PO"
+ },
+ {
+  "pseudonyme": "Nom3878",
+  "montant": 350.0,
+  "cp": "75011",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE BEAUMARCHAIS",
+   "COLLEGE LUCIE AUBRAC",
+   "COLLEGE VOLTAIRE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3847",
+  "montant": 10000.0,
+  "cp": "93006",
+  "nature_juridique": "Departement",
+  "statut": "prouvé",
+  "nom_annexe": "DEPARTEMENT DE LA SEINE SAINT DENIS"
+ },
+ {
+  "pseudonyme": "Nom3892",
+  "montant": 1046102.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A."
+ },
+ {
+  "pseudonyme": "Nom3856",
+  "montant": 131500.0,
+  "cp": "94000",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "INST NATIONAL SANTE RECHERCHE MEDIC"
+ },
+ {
+  "pseudonyme": "Nom3889",
+  "montant": 80513.0,
+  "cp": "75016",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL RENE CASSIN"
+ },
+ {
+  "pseudonyme": "Nom3849",
+  "montant": 22400.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "POLE RECHERCHE ENSEIGNEMENT SUP PAR"
+ },
+ {
+  "pseudonyme": "Nom3857",
+  "montant": 20000.0,
+  "cp": "75006",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "RESEAU CANOPE"
+ },
+ {
+  "pseudonyme": "Nom3966",
+  "montant": 3698836.0,
+  "cp": "75116",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE ECOLES 16 EME ARRON PARIS"
+ },
+ {
+  "pseudonyme": "Nom3963",
+  "montant": 6969865.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CAISSE DES ECOLES DU 13E ARRONDISSE"
+ },
+ {
+  "pseudonyme": "Nom3873",
+  "montant": 147653.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "LYCEE PROFESSIONNEL CAMILLE JENATZY"
+ },
+ {
+  "pseudonyme": "Nom3863",
+  "montant": 75000.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CTRE NAT DE LA RECHER SCIENTIFIQUE"
+ },
+ {
+  "pseudonyme": "Nom3825",
+  "montant": 5000.0,
+  "cp": "75020",
+  "nature_juridique": "Autres",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "129 H PRODUCTIONS",
+   "ASS LA VOIE DES LIVRES",
+   "ASSO LE CHAINON MANQUANT",
+   "ASSOCIATION ARTTAKT",
+   "ASSOCIATION PAGES",
+   "CIE SYLSYL",
+   "LE MOUVEMENT NI PUTES NI SOUMISES",
+   "LES ATELIERS DU PERE LACHAISE ASSOC",
+   "PAPIER GACHE",
+   "PASSERELLE LYCEE UNIVERSITE SOLIDAI",
+   "ZONE VIVE"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3866",
+  "montant": 51360.0,
+  "cp": "75013",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "ECOLE NAT SUP ARCHITECTURE VAL SEIN"
+ },
+ {
+  "pseudonyme": "Nom3937",
+  "montant": 350.0,
+  "cp": "75020",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE COLETTE BESSON",
+   "COLLEGE FLORA TRISTAN",
+   "COLLEGE FRANCOISE DOLTO",
+   "COLLEGE JEAN PERRIN",
+   "COLLEGE JEAN-BAPTISTE-CLEMENT",
+   "COLLEGE LUCIE FAURE",
+   "COLLEGE PIERRE MENDES FRANCE",
+   "COLLEGE ROBERT DOISNEAU"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3837",
+  "montant": 355074.0,
+  "cp": "75018",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "UNION DEPARTEM. SYNDICATS CGT FO PA"
+ },
+ {
+  "pseudonyme": "Nom3904",
+  "montant": 350.0,
+  "cp": "75018",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE DANIEL MAYER",
+   "COLLEGE GEORGES CLEMENCEAU",
+   "COLLEGE GERARD PHILIPPE",
+   "COLLEGE MARIE CURIE",
+   "COLLEGE MARX DORMOY",
+   "COLLEGE MAURICE-UTRILLO"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3862",
+  "montant": 553000.0,
+  "cp": "75005",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ"
+ },
+ {
+  "pseudonyme": "Nom3830",
+  "montant": 3000.0,
+  "cp": "93170",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "CONFEDERATION PAYSANNE"
+ },
+ {
+  "pseudonyme": "Nom3876",
+  "montant": 350.0,
+  "cp": "75014",
+  "nature_juridique": "Etablissements publics",
+  "statut": "ambigu",
+  "nom_annexe": [
+   "COLLEGE ALBERTO GIACOMETTI",
+   "COLLEGE FRANCOIS VILLON"
+  ]
+ },
+ {
+  "pseudonyme": "Nom3984",
+  "montant": 75000.0,
+  "cp": "75001",
+  "nature_juridique": "Autres",
+  "statut": "prouvé",
+  "nom_annexe": "CONSEIL DEP DE L'ACCES AU DROIT"
+ },
+ {
+  "pseudonyme": "Nom3948",
+  "montant": 62025000.0,
+  "cp": "75010",
+  "nature_juridique": "Etablissements publics",
+  "statut": "prouvé",
+  "nom_annexe": "PARIS MUSEES"
+ }
+]

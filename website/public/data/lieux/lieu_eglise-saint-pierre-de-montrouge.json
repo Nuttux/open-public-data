@@ -1,192 +1,224 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-saint-pierre-de-montrouge",
- "name": "Église Saint-Pierre-de-Montrouge",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 14,
- "lat": 48.828718,
- "lon": 2.327048,
- "photo": "/img/lieux/eglise-saint-pierre-de-montrouge.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guilhem Vellut from Paris, France",
-  "url": "https://commons.wikimedia.org/wiki/File:Eglise_Saint-Pierre_de_Montrouge_@_Paris_14_(31699177372).jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 762,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 4072165.0,
-  "invest_annees": [
-   "2019",
-   "2020",
-   "2021",
-   "2022"
-  ],
-  "lecture_mode": "titre nommant le lieu (2 trouvés)",
-  "lecture_mode_en": "title naming the place (2 found)",
-  "n_lus": 2,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2000": [
-   {
-    "reference": "2000 DAC 129",
-    "titre": "Approbation du principe de la réalisation des travaux de mise en conformité des évacuations des eaux pluviales à l'église Saint-Pierre-de-Montrouge (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34762"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DAC 138",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché signé avec la société \"L'union travaux\" (Société anonyme coopérative), pour la mise en conformité des évacuations des eaux pluviales de l'église Saint-Pierre-de-Montrouge (14e). Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84637"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 109",
-    "titre": "Approbation du principe et des modalités d'attribution de marchés de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de restauration du grand orgue de l'église Saint-Pierre de Montrouge (14ème) et de ses abords. - Autorisation à M. le Maire de Paris de signer les marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95508"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 337",
-    "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de construire en vue de travaux de restauration du clocher-porche à l'église Saint-Pierre de Montrouge à Paris 14ème. Mme Sandrine MAZETIER, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46987"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 305",
-    "titre": "Approbation du principe de réalisation de l’opération de restauration du clocher-porche de l’église Saint-Pierre de Montrouge (14e), et des modalités de passation du marché de travaux correspondant - lot n°1 : “maçonnerie; pierre de taille ; décors sculptés”. Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81103"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DAC 253",
-    "titre": "Signature d’un avenant n° 1 au marché n° 07/41021 passé avec l’entreprise Paris Ouest Construction SA pour la restauration du clocher-porche de l’église Saint Pierre de Montrouge, 82 avenue du Général Leclerc (14e) (marché 1 - maçonnerie/pierre de taille - décors sculptés). Mme Danièle POURTAUD, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59550"
-   }
-  ],
-  "2019": [
-   {
-    "reference": "2019 DAC 582",
-    "titre": "2019 DAC 582 - Convention d'occupation du domaine public relative à l'installation et à l'exploitation d'un espace d'affichage sur l'échafaudage de restauration de l'église Saint-Pierre de Montrouge (14e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2019",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175645"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 96782.0,
-   "nom_projet": "Edifices cultuels Eglise Saint-Pierre de Montrouge - Travaux de restauration et sécurisati",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise Saint-Pierre de Montrouge - Travaux de restauration et sécurisati… » (libellé tronqué à la source).",
-   "id": null
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-saint-pierre-de-montrouge",
+  "name": "Église Saint-Pierre-de-Montrouge",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 14,
+  "lat": 48.828718,
+  "lon": 2.327048,
+  "photo": "/img/lieux/eglise-saint-pierre-de-montrouge.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guilhem Vellut from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:Eglise_Saint-Pierre_de_Montrouge_@_Paris_14_(31699177372).jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2020,
-   "montant_eur": 1573599.0,
-   "nom_projet": "mobiliers Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche d",
-   "preuve": "Le libellé du projet nomme le lieu verbatim : « mobiliers Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche d… » (libellé repris tel quel du candidat, tronqué à la source, préfixe « mobiliers » compris).",
-   "id": null
-  },
-  {
-   "annee": 2021,
-   "montant_eur": 1687965.0,
-   "nom_projet": "Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche du clocher",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche du clocher ». La flèche du clocher est un élément de cet édifice. Le contexte délibératif confirme que la Ville de Paris fait réaliser des travaux sur cette église (2000 DAC 129 : « travaux de mise en conformité des évacuations des eaux pluviales à l'église Saint-Pierre-de-Montrouge (14e) »).",
-   "id": "2021_14_il_014"
-  },
-  {
-   "annee": 2021,
-   "montant_eur": 150058.0,
-   "nom_projet": "Eglise Saint-Pierre-de-Montrouge - Travaux de restauration d'un gosier et réglages du Trém",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Pierre-de-Montrouge - Travaux de restauration d'un gosier et réglages du Trém… » (libellé tronqué à la source ; la nature exacte de l'ouvrage concerné n'est pas précisée par la source).",
-   "id": null
-  },
-  {
-   "annee": 2022,
-   "montant_eur": 563761.0,
-   "nom_projet": "Eglise Saint-Pierre de Montrouge - Restauration de la flèche du clocher",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Pierre de Montrouge - Restauration de la flèche du clocher ».",
-   "id": "2022_14_41_024"
-  }
- ],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Pierre-de-Montrouge"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L'église Saint-Pierre-de-Montrouge est une église paroissiale construite dans la deuxième moitié du XIXe siècle sur les plans d'Émile Vaudremer au 82, avenue du Général-Leclerc dans le 14e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Pierre_de_Montrouge",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Église Saint-Pierre-de-Montrouge is a parish church built in the second half of the 19th century to plans by Émile Vaudremer at 82, avenue du Général-Leclerc in the 14th arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 762,
+    "delibs_span": [
+      2000,
+      2001
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 4072165.0,
+    "invest_annees": [
+      "2019",
+      "2020",
+      "2021",
+      "2022"
+    ],
+    "lecture_mode": "titre nommant le lieu (2 trouvés)",
+    "lecture_mode_en": "title naming the place (2 found)",
+    "n_lus": 2,
+    "n_lieu": 2
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En juin 2000, vu l'avis du Conseil du 14e arrondissement du 13 juin 2000, le Conseil de Paris approuve le principe de travaux de mise en conformité des évacuations des eaux pluviales de l'église Saint-Pierre-de-Montrouge (14e). La même délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert et autorise le Maire à signer ce marché — ou, si l'appel d'offres était déclaré infructueux, un marché négocié — après avis favorable de la Commission d'appel d'offres ; les dépenses correspondantes seront imputées au budget d'investissement de la Ville de Paris de 2000. En septembre 2001, le Conseil autorise le Maire à souscrire un avenant au marché de travaux attribué à la société « L'union travaux » (Société anonyme coopérative), en vue de lui substituer la société « L'union travaux S.N.C. », présentée comme repreneur de l'exécution de la totalité du marché. Selon cette délibération, le montant hors taxe du marché reste inchangé.",
+  "moments": [
+    {
+      "id": "34762",
+      "seance": "JUIN 2000",
+      "fait": "Le Conseil de Paris approuve le principe des travaux de mise en conformité des évacuations des eaux pluviales de l'église, prévoit un marché sur appel d'offres ouvert et autorise le Maire à le signer (ou un marché négocié si l'appel d'offres était déclaré infructueux), après avis favorable de la Commission d'appel d'offres.",
+      "pourquoi": "Approbation du principe des travaux et des modalités d'attribution du marché",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34762",
+      "fait_en": "The Council of Paris approves in principle works to bring the church's rainwater drainage into compliance, provides for a contract awarded through an open call for tenders and authorises the Mayor to sign it (or a negotiated contract if the call for tenders were declared unsuccessful), following a favourable opinion from the Tender Committee (Commission d'appel d'offres).",
+      "pourquoi_en": "Approval in principle of the works and of the contract award procedure"
+    },
+    {
+      "id": "84637",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Le Conseil de Paris autorise le Maire à souscrire un avenant au marché attribué à « L'union travaux » (Société anonyme coopérative), en vue de lui substituer « L'union travaux S.N.C. », repreneur de l'exécution de la totalité du marché, le montant hors taxe restant inchangé.",
+      "pourquoi": "Avenant de substitution de société, montant hors taxe inchangé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84637",
+      "fait_en": "The Council of Paris authorises the Mayor to enter into an amendment to the contract awarded to \"L'union travaux\" (Société anonyme coopérative), in order to replace it with \"L'union travaux S.N.C.\", which is taking over performance of the entire contract, the amount excluding tax remaining unchanged.",
+      "pourquoi_en": "Amendment substituting the contractor company, amount excluding tax unchanged"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2000": [
+      {
+        "reference": "2000 DAC 129",
+        "titre": "Approbation du principe de la réalisation des travaux de mise en conformité des évacuations des eaux pluviales à l'église Saint-Pierre-de-Montrouge (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34762"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DAC 138",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché signé avec la société \"L'union travaux\" (Société anonyme coopérative), pour la mise en conformité des évacuations des eaux pluviales de l'église Saint-Pierre-de-Montrouge (14e). Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84637"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 109",
+        "titre": "Approbation du principe et des modalités d'attribution de marchés de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de restauration du grand orgue de l'église Saint-Pierre de Montrouge (14ème) et de ses abords. - Autorisation à M. le Maire de Paris de signer les marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95508"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 337",
+        "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de construire en vue de travaux de restauration du clocher-porche à l'église Saint-Pierre de Montrouge à Paris 14ème. Mme Sandrine MAZETIER, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46987"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 305",
+        "titre": "Approbation du principe de réalisation de l’opération de restauration du clocher-porche de l’église Saint-Pierre de Montrouge (14e), et des modalités de passation du marché de travaux correspondant - lot n°1 : “maçonnerie; pierre de taille ; décors sculptés”. Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81103"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DAC 253",
+        "titre": "Signature d’un avenant n° 1 au marché n° 07/41021 passé avec l’entreprise Paris Ouest Construction SA pour la restauration du clocher-porche de l’église Saint Pierre de Montrouge, 82 avenue du Général Leclerc (14e) (marché 1 - maçonnerie/pierre de taille - décors sculptés). Mme Danièle POURTAUD, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59550"
+      }
+    ],
+    "2019": [
+      {
+        "reference": "2019 DAC 582",
+        "titre": "2019 DAC 582 - Convention d'occupation du domaine public relative à l'installation et à l'exploitation d'un espace d'affichage sur l'échafaudage de restauration de l'église Saint-Pierre de Montrouge (14e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2019",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175645"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 96782.0,
+      "nom_projet": "Edifices cultuels Eglise Saint-Pierre de Montrouge - Travaux de restauration et sécurisati",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise Saint-Pierre de Montrouge - Travaux de restauration et sécurisati… » (libellé tronqué à la source).",
+      "id": null
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 1573599.0,
+      "nom_projet": "mobiliers Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche d",
+      "preuve": "Le libellé du projet nomme le lieu verbatim : « mobiliers Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche d… » (libellé repris tel quel du candidat, tronqué à la source, préfixe « mobiliers » compris).",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 1687965.0,
+      "nom_projet": "Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche du clocher",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise Saint-Pierre-de-Montrouge - Restauration de la flèche du clocher ». La flèche du clocher est un élément de cet édifice. Le contexte délibératif confirme que la Ville de Paris fait réaliser des travaux sur cette église (2000 DAC 129 : « travaux de mise en conformité des évacuations des eaux pluviales à l'église Saint-Pierre-de-Montrouge (14e) »).",
+      "id": "2021_14_il_014"
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 150058.0,
+      "nom_projet": "Eglise Saint-Pierre-de-Montrouge - Travaux de restauration d'un gosier et réglages du Trém",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Pierre-de-Montrouge - Travaux de restauration d'un gosier et réglages du Trém… » (libellé tronqué à la source ; la nature exacte de l'ouvrage concerné n'est pas précisée par la source).",
+      "id": null
+    },
+    {
+      "annee": 2022,
+      "montant_eur": 563761.0,
+      "nom_projet": "Eglise Saint-Pierre de Montrouge - Restauration de la flèche du clocher",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Pierre de Montrouge - Restauration de la flèche du clocher ».",
+      "id": "2022_14_41_024"
+    }
+  ],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Pierre-de-Montrouge"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Pierre-de-Montrouge%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In June 2000, having regard to the opinion of the 14th arrondissement Council of 13 June 2000, the Council of Paris approved in principle works to bring the rainwater drainage of the Église Saint-Pierre-de-Montrouge (14th) into compliance. The same deliberation provided that these works would be the subject of a contract awarded through an open call for tenders and authorised the Mayor to sign that contract — or, if the call for tenders were declared unsuccessful, a negotiated contract — following a favourable opinion from the Tender Committee (Commission d'appel d'offres); the corresponding expenditure is to be charged to the City of Paris's 2000 investment budget. In September 2001, the Council authorised the Mayor to enter into an amendment to the works contract awarded to the company \"L'union travaux\" (Société anonyme coopérative), in order to replace it with the company \"L'union travaux S.N.C.\", presented as taking over performance of the entire contract. According to this deliberation, the contract amount excluding tax remains unchanged.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

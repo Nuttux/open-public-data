@@ -89,6 +89,7 @@ export function marseilleCityHub(): FrHub {
     },
     dataset: {
       creator: CREATOR,
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(index.availableYears),
       dateModified: day(date),
@@ -127,6 +128,7 @@ export function marseilleBudgetHub(): FrHub {
     },
     dataset: {
       creator: CREATOR,
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(index.availableYears),
       dateModified: day(date),
@@ -220,6 +222,7 @@ export function marseilleInvestissementsHub(): FrHub {
     },
     dataset: {
       creator: CREATOR,
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(d.availableYears),
       dateModified: day(date),
@@ -298,6 +301,7 @@ export function marseilleLogementHub(): FrHub {
     },
     dataset: {
       creator: "Métropole Aix-Marseille-Provence",
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(d.availableYears),
       dateModified: day(date),
@@ -339,6 +343,7 @@ export function marseilleMarchesHub(): FrHub {
     },
     dataset: {
       creator: CREATOR,
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(d.availableYears),
       dateModified: day(date),
@@ -381,6 +386,7 @@ export function marseilleSubventionsHub(): FrHub {
     },
     dataset: {
       creator: CREATOR,
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(idx?.availableYears ?? []),
       dateModified: day(date),

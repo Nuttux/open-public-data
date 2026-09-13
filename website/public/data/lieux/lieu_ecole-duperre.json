@@ -1,227 +1,265 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "ecole-duperre",
- "name": "École Duperré",
- "kind_fr": "École",
- "kind_en": "École",
- "famille": "services",
- "arrondissement": 3,
- "lat": 48.864907,
- "lon": 2.362001,
- "photo": "/img/lieux/ecole-duperre.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "L’École supérieure des arts appliqués Duperré, ou école Duperré, est une école supérieure d'art située au 11, rue Dupetit-Thouars dans le 3e arrondissement de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1291,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 183990.0,
-  "invest_annees": [
-   "2020"
-  ],
-  "lecture_mode": "titre nommant le lieu (2 trouvés)",
-  "lecture_mode_en": "title naming the place (2 found)",
-  "n_lus": 2,
-  "n_lieu": null
- },
- "subventions_exploitant": {
-  "nom_fiche": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-  "total_eur": 9611859.0,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 887600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 623600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 680600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 719600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 724600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 635600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 565600.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 639800.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 639840.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 630160.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 689618.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 687965.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 675476.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 811800.0,
-    "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "thematique": "Éducation"
-   }
-  ]
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2003": [
-   {
-    "reference": "2003 DASCO 143",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs applicables aux usagers de la cantine de ladite école à compter du 1er septembre 2003. Mme Danièle POURTAUD, rapporteure.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JUILLET 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70272"
-   }
-  ],
-  "2024": [
-   {
-    "reference": "2024 DAC 144",
-    "titre": "2024 DAC 144 - Convention d’occupation temporaire du domaine public annexée d’une convention de cession de droits patrimoniaux avec l’Ecole Duperré.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "NOVEMBRE 2024",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178578"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2020,
-   "montant_eur": 183990.0,
-   "nom_projet": "Ecoles d'Art Ecole Duperré - Travaux de rénovation",
-   "preuve": "Le nom du projet nomme le lieu verbatim et le range dans la famille des écoles d'art de la Ville : « Ecoles d'Art Ecole Duperré - Travaux de rénovation » ; l'objet porte sur le bâti (« Travaux de rénovation »). Les 226 m affichés sont l'écart au point de géocodage du projet, pas une contradiction : le libellé désigne explicitement l'École Duperré, dont l'adresse (11, rue Dupetit-Thouars, 3e) est donnée par « 2005 DPA 77 » et « 2001 DPA 330 ».",
-   "id": "2020_03_il_002"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20171210004613",
-   "objet": "MOE  CT ECOLE DUPERRÉ GS TROIS BORNES FONTAINE AU ROI",
-   "objet_clair": null,
-   "fournisseur": "BET 2C",
-   "montant_max": 52340.0,
-   "date_notification": "2017-07-31",
-   "preuve": "L'objet nomme le lieu en premier et porte sur une prestation de maîtrise d'œuvre et de contrôle technique, donc sur des travaux du bâtiment : « MOE  CT ECOLE DUPERRÉ GS TROIS BORNES FONTAINE AU ROI » (marché de services, catégorie « Prestations intellectuelles pour opérations BTP,urbanisme »). Dans l'ensemble des marchés de la Ville, « Duperré » ne désigne que cet établissement (« RÉFECTION TOITURE TERRASSE ESA DUPERRÉ 75003 », « CHANGEMENT D'ENERGIE GAZ VERS CPCU ESAA DUPERRÉ », « … ESAA Duperré - 11 rue du Petit Thouars - 75003 Paris ») : pas d'homonyme connu. Réserve explicite, d'où la confiance « moyenne » : le même marché couvre deux autres écoles nommées dans l'objet (« GS TROIS BORNES », « FONTAINE AU ROI ») et l'objet ne précise pas l'arrondissement ; le plafond de 52 340 € porte sur les trois sites et la source ne dit pas quelle part revient à l'École Duperré."
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "ecole-duperre",
+  "name": "École Duperré",
+  "kind_fr": "École",
+  "kind_en": "École",
+  "famille": "services",
+  "arrondissement": 3,
+  "lat": 48.864907,
+  "lon": 2.362001,
+  "photo": "/img/lieux/ecole-duperre.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
+    "source": "Wikipédia"
   },
-  {
-   "numero_marche": "20242024S07282",
-   "objet": "MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM",
-   "objet_clair": "Conception des travaux de réaménagement du rez-de-chaussée de l'école Duperré",
-   "fournisseur": "DEL ZOTTO",
-   "montant_max": 27492.97,
-   "date_notification": "2024-07-19",
-   "preuve": "L'objet porte sur des travaux dans ce bâtiment et le nomme avec son arrondissement : « MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM » (maîtrise d'œuvre du chantier de restructuration du rez-de-chaussée). Un seul site est nommé dans l'objet."
-  },
-  {
-   "numero_marche": "decp-2025S02524",
-   "objet": "mission OPC pour la restructuration partielle du rez de chaussée de l'école Duperré à Paris 3e ",
-   "objet_clair": null,
-   "fournisseur": "[NON-DIFFUSIBLE]",
-   "montant_max": 2960.0,
-   "date_notification": "2025-03-10",
-   "preuve": "L'objet nomme le lieu, l'arrondissement et le chantier : « mission OPC pour la restructuration partielle du rez de chaussée de l'école Duperré à Paris 3e ». C'est la mission d'ordonnancement-pilotage-coordination du même chantier que la maîtrise d'œuvre 20242024S07282 (« MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM »), dont l'objet le dit mot pour mot. Le lieu_execution « Paris » n'est pas retenu comme preuve."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+Duperr%C3%A9"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L’École supérieure des arts appliqués Duperré, ou école Duperré, est une école supérieure d'art située au 11, rue Dupetit-Thouars dans le 3e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The École supérieure des arts appliqués Duperré, or école Duperré, is an art school of higher education located at 11, rue Dupetit-Thouars in the 3rd arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 1291,
+    "delibs_span": [
+      2003,
+      2024
+    ],
+    "n_bmo_brut": 1052,
+    "n_bmo_verifies": 12,
+    "invest_total_eur": 183990.0,
+    "invest_annees": [
+      "2020"
+    ],
+    "lecture_mode": "titre nommant le lieu (2 trouvés)",
+    "lecture_mode_en": "title naming the place (2 found)",
+    "n_lus": 2,
+    "n_lieu": 2
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+    "total_eur": 10108039.0,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 887600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 623600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 680600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 719600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 724600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 635600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 565600.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 639800.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 639840.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 496180.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 630160.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 689618.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 687965.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 675476.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 811800.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      }
+    ]
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En juillet 2003, le dossier 2003 DASCO 143, dont Mme Danièle Pourtaud est rapporteure, porte sur une autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs applicables aux usagers de sa cantine à compter du 1er septembre 2003. En novembre 2024, le dossier 2024 DAC 144 porte sur une convention d'occupation temporaire du domaine public, annexée d'une convention de cession de droits patrimoniaux, avec l'École Duperré. Les intitulés de ces deux dossiers ne précisent ni le montant des tarifs, ni l'emplacement occupé, ni l'objet des droits cédés, ni la décision prise.",
+  "moments": [
+    {
+      "id": "70272",
+      "seance": "JUILLET 2003",
+      "fait": "D'après son intitulé, le dossier 2003 DASCO 143 porte sur une autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs de sa cantine à compter du 1er septembre 2003.",
+      "pourquoi": "Convention de fourniture de repas et tarifs de la cantine",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70272",
+      "fait_en": "According to its title, file 2003 DASCO 143 concerns an authorization for the Mayor of Paris to sign with the Caisse des écoles of the 3rd arrondissement an agreement for the supply of meals to the école Duperré and to set the rates of its canteen from 1 September 2003.",
+      "pourquoi_en": "Meal supply agreement and canteen rates"
+    },
+    {
+      "id": "178578",
+      "seance": "NOVEMBRE 2024",
+      "fait": "D'après son intitulé, le dossier 2024 DAC 144 porte sur une convention d'occupation temporaire du domaine public, annexée d'une convention de cession de droits patrimoniaux, avec l'École Duperré.",
+      "pourquoi": "Occupation du domaine public et cession de droits patrimoniaux",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178578",
+      "fait_en": "According to its title, file 2024 DAC 144 concerns a temporary public-domain occupancy agreement, with an annexed agreement assigning economic rights (droits patrimoniaux), with the École Duperré.",
+      "pourquoi_en": "Public-domain occupancy and assignment of economic rights"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2003": [
+      {
+        "reference": "2003 DASCO 143",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs applicables aux usagers de la cantine de ladite école à compter du 1er septembre 2003. Mme Danièle POURTAUD, rapporteure.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUILLET 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70272"
+      }
+    ],
+    "2024": [
+      {
+        "reference": "2024 DAC 144",
+        "titre": "2024 DAC 144 - Convention d’occupation temporaire du domaine public annexée d’une convention de cession de droits patrimoniaux avec l’Ecole Duperré.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "NOVEMBRE 2024",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178578"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2020,
+      "montant_eur": 183990.0,
+      "nom_projet": "Ecoles d'Art Ecole Duperré - Travaux de rénovation",
+      "preuve": "Le nom du projet nomme le lieu verbatim et le range dans la famille des écoles d'art de la Ville : « Ecoles d'Art Ecole Duperré - Travaux de rénovation » ; l'objet porte sur le bâti (« Travaux de rénovation »). Les 226 m affichés sont l'écart au point de géocodage du projet, pas une contradiction : le libellé désigne explicitement l'École Duperré, dont l'adresse (11, rue Dupetit-Thouars, 3e) est donnée par « 2005 DPA 77 » et « 2001 DPA 330 ».",
+      "id": "2020_03_il_002"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20171210004613",
+      "objet": "MOE  CT ECOLE DUPERRÉ GS TROIS BORNES FONTAINE AU ROI",
+      "objet_clair": null,
+      "fournisseur": "BET 2C",
+      "montant_max": 52340.0,
+      "date_notification": "2017-07-31",
+      "preuve": "L'objet nomme le lieu en premier et porte sur une prestation de maîtrise d'œuvre et de contrôle technique, donc sur des travaux du bâtiment : « MOE  CT ECOLE DUPERRÉ GS TROIS BORNES FONTAINE AU ROI » (marché de services, catégorie « Prestations intellectuelles pour opérations BTP,urbanisme »). Dans l'ensemble des marchés de la Ville, « Duperré » ne désigne que cet établissement (« RÉFECTION TOITURE TERRASSE ESA DUPERRÉ 75003 », « CHANGEMENT D'ENERGIE GAZ VERS CPCU ESAA DUPERRÉ », « … ESAA Duperré - 11 rue du Petit Thouars - 75003 Paris ») : pas d'homonyme connu. Réserve explicite, d'où la confiance « moyenne » : le même marché couvre deux autres écoles nommées dans l'objet (« GS TROIS BORNES », « FONTAINE AU ROI ») et l'objet ne précise pas l'arrondissement ; le plafond de 52 340 € porte sur les trois sites et la source ne dit pas quelle part revient à l'École Duperré."
+    },
+    {
+      "numero_marche": "20242024S07282",
+      "objet": "MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM",
+      "objet_clair": "Conception des travaux de réaménagement du rez-de-chaussée de l'école Duperré",
+      "fournisseur": "DEL ZOTTO",
+      "montant_max": 27492.97,
+      "date_notification": "2024-07-19",
+      "preuve": "L'objet porte sur des travaux dans ce bâtiment et le nomme avec son arrondissement : « MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM » (maîtrise d'œuvre du chantier de restructuration du rez-de-chaussée). Un seul site est nommé dans l'objet."
+    },
+    {
+      "numero_marche": "decp-2025S02524",
+      "objet": "mission OPC pour la restructuration partielle du rez de chaussée de l'école Duperré à Paris 3e ",
+      "objet_clair": null,
+      "fournisseur": "[NON-DIFFUSIBLE]",
+      "montant_max": 2960.0,
+      "date_notification": "2025-03-10",
+      "preuve": "L'objet nomme le lieu, l'arrondissement et le chantier : « mission OPC pour la restructuration partielle du rez de chaussée de l'école Duperré à Paris 3e ». C'est la mission d'ordonnancement-pilotage-coordination du même chantier que la maîtrise d'œuvre 20242024S07282 (« MOE RESTRUCTURATION PARTIELLE DU RDC ÉCOLE DUPERRÉ PARIS 3ÈM »), dont l'objet le dit mot pour mot. Le lieu_execution « Paris » n'est pas retenu comme preuve."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+Duperr%C3%A9"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+Duperr%C3%A9%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In July 2003, file 2003 DASCO 143, for which Ms Danièle Pourtaud is rapporteur, concerns an authorization for the Mayor of Paris to sign with the Caisse des écoles of the 3rd arrondissement an agreement for the supply of meals to the école Duperré and to set the rates applicable to users of its canteen from 1 September 2003. In November 2024, file 2024 DAC 144 concerns a temporary public-domain occupancy agreement, with an annexed agreement assigning economic rights (droits patrimoniaux), with the École Duperré. The titles of these two files specify neither the amount of the rates, nor the location occupied, nor the subject of the rights assigned, nor the decision taken.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

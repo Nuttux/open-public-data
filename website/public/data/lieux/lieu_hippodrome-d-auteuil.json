@@ -1,296 +1,357 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "hippodrome-d-auteuil",
- "name": "Hippodrome d'Auteuil",
- "kind_fr": "Hippodrome",
- "kind_en": "Hippodrome",
- "famille": "sport",
- "arrondissement": 16,
- "lat": 48.853371,
- "lon": 2.257,
- "photo": "/img/lieux/hippodrome-d-auteuil.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Hippodrome_d'Auteuil",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "L'hippodrome d'Auteuil est un champ de courses hippiques situé à proximité de la porte d'Auteuil à Paris (France), considéré comme l'hippodrome français de référence pour les courses d'obstacles.",
-  "url": "https://fr.wikipedia.org/wiki/Hippodrome_d'Auteuil",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 580,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (4 trouvés)",
-  "lecture_mode_en": "title naming the place (4 found)",
-  "n_lus": 4,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2007": [
-   {
-    "reference": "2007 DJS 337",
-    "titre": "2007, DJS 337 - DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’oeuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination, de coordination en matière de sécurité et de protection de la santé et de contrôle technique et de déposer les demandes de permis de démolir et d",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4709"
-   },
-   {
-    "reference": "2007 DJS 337",
-    "titre": "DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’œuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination (OPC), de coordination en matière de sécurité et de protection de la santé (SPS) et de contrôle technique. - Autorisation à M. le Maire de Paris de déposer les dem",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54462"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DEVE 124",
-    "titre": "2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958"
-   },
-   {
-    "reference": "2008 DEVE 124",
-    "titre": "DJS 386 - Approbation des modalités d’attribution du marché de maîtrise d’oeuvre des pelouses centrales de l’hippodrome d’Auteuil, bois de Boulogne (16e). Mme Fabienne GIBOUDEAUX et M. Jean VUILLERMOZ, rapporteurs.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67394"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DEVE 100",
-    "titre": "2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13572"
-   },
-   {
-    "reference": "2010 DEVE 100",
-    "titre": "DJS 358 Approbation des principes d’aménagement des pelouses centrales de l’hippodrome d’Auteuil (16e). Autorisation de déposer la demande de permis d’aménager, autorisation de signer le marché de travaux préparatoires et autorisation de lancer les marchés de travaux d’aménagement. Mme Fabienne GIBOUDEAUX et M. Jean VUILLERMOZ, rapporteurs.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79579"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2009": 168930.61,
-   "2010": 1163252.22,
-   "2011": 4500691.08,
-   "2012": 10604457.75,
-   "2013": 9579225.41,
-   "2014": 1147417.11,
-   "2015": 357119.96,
-   "2016": 31978.6,
-   "2017": 232483.56
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "hippodrome-d-auteuil",
+  "name": "Hippodrome d'Auteuil",
+  "kind_fr": "Hippodrome",
+  "kind_en": "Hippodrome",
+  "famille": "sport",
+  "arrondissement": 16,
+  "lat": 48.853371,
+  "lon": 2.257,
+  "photo": "/img/lieux/hippodrome-d-auteuil.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Hippodrome_d'Auteuil",
+    "source": "Wikipédia"
   },
-  "total_eur": 27785556.3,
-  "operations": [
-   {
-    "ap_cle": "B100/0903857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2011": 1719471.14,
-     "2012": 5979996.75,
-     "2013": 6591987.74
-    },
-    "total_mandate": 14291455.63,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903857"
-   },
-   {
-    "ap_cle": "B100/1003946",
-    "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2010": 1059740.96,
-     "2011": 2471212.42,
-     "2012": 4390348.16,
-     "2013": 1954349.45
-    },
-    "total_mandate": 9875650.99,
-    "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003946"
-   },
-   {
-    "ap_cle": "B100/0803857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2009": 168930.61,
-     "2010": 103511.26,
-     "2011": 310007.52,
-     "2012": 187767.3,
-     "2013": 133151.44
-    },
-    "total_mandate": 903368.13,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803857"
-   },
-   {
-    "ap_cle": "0903857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 254444.84,
-     "2015": 279537.1
-    },
-    "total_mandate": 533981.94,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903857"
-   },
-   {
-    "ap_cle": "1303857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 264868.49,
-     "2015": 3816.44,
-     "2016": 55.1,
-     "2017": 232483.56
-    },
-    "total_mandate": 501223.59,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303857"
-   },
-   {
-    "ap_cle": "1303946",
-    "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 349817.12,
-     "2015": 46093.86,
-     "2016": 30855.78
-    },
-    "total_mandate": 426766.76,
-    "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303946"
-   },
-   {
-    "ap_cle": "B100/1303857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2013": 400912.75
-    },
-    "total_mandate": 400912.75,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303857"
-   },
-   {
-    "ap_cle": "B100/1303946",
-    "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2013": 368219.09
-    },
-    "total_mandate": 368219.09,
-    "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303946"
-   },
-   {
-    "ap_cle": "1003946",
-    "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 269718.48,
-     "2015": 13438.79,
-     "2016": 1067.72
-    },
-    "total_mandate": 284224.99,
-    "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003946"
-   },
-   {
-    "ap_cle": "B100/1203857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2012": 46345.54,
-     "2013": 130604.94
-    },
-    "total_mandate": 176950.48,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203857"
-   },
-   {
-    "ap_cle": "0803857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 916.93,
-     "2015": 14233.77
-    },
-    "total_mandate": 15150.7,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803857"
-   },
-   {
-    "ap_cle": "1203857",
-    "ap_texte": "HIPPODROME D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 7651.25
-    },
-    "total_mandate": 7651.25,
-    "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203857"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Hippodrome+d%27Auteuil"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L'hippodrome d'Auteuil est un champ de courses hippiques situé à proximité de la porte d'Auteuil à Paris (France), considéré comme l'hippodrome français de référence pour les courses d'obstacles.",
+    "url": "https://fr.wikipedia.org/wiki/Hippodrome_d'Auteuil",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Auteuil racecourse (hippodrome d'Auteuil) is a horse-racing track located near the Porte d'Auteuil in Paris (France), regarded as the benchmark French racecourse for steeplechase and hurdle racing."
+  },
+  "stats": {
+    "n_delibs": 580,
+    "delibs_span": [
+      1999,
+      2013
+    ],
+    "n_bmo_brut": 637,
+    "n_bmo_verifies": 5,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (4 trouvés)",
+    "lecture_mode_en": "title naming the place (4 found)",
+    "n_lus": 4,
+    "n_lieu": 4
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En juin 1999, en réponse à une question de M. Jean-Yves Mano sur le cadre juridique de l'exploitation de l'hippodrome, l'adjoint Jean-François Legaret indique que le droit d'occupation a été consenti à la Société des steeple-chases de France par convention du 28 septembre 1972, pour 50 ans, et que la Ville continue de percevoir sur cette base la redevance due par la société France-Galop, jusqu'à la conclusion d'un nouveau projet de convention qui sera soumis au Conseil de Paris. En septembre 2008, le Conseil adopte le projet de délibération approuvant les modalités d'attribution du marché de maîtrise d'œuvre des pelouses centrales ; M. Pierre Gaboriau se dit inquiet du devenir des scolaires et des associations sportives du quartier, tandis que Mme Fabienne Giboudeaux présente le projet comme étant aussi un projet d'espace vert qui permettra la création d'un parc de 12 hectares. En juillet 2010, le Conseil débat du principe d'aménagement de ces pelouses et de l'autorisation de lancer les marchés de travaux : M. Jean-François Martins et un autre orateur annoncent voter contre, le premier estimant que le projet ne répond pas au cahier des charges nécessaire à la pratique du sport par les scolaires ; Mme Fabienne Giboudeaux répond que c'est aussi un parc redonné aux Parisiens et aux riverains. En novembre 2013, le Conseil examine l'attribution du nom de Billie Holiday à la pelouse B, M. David Alphand et Mme Laurence Dreyfuss proposant par vœu celui d'Alain Mimoun.",
+  "moments": [
+    {
+      "id": "20070",
+      "seance": "JUIN 1999",
+      "fait": "En réponse à une question de M. Jean-Yves Mano, l'adjoint Jean-François Legaret indique que la Ville continue de percevoir la redevance due par France-Galop sur la base de la convention du 28 septembre 1972, jusqu'à la conclusion d'un nouveau projet de convention qui sera soumis au Conseil de Paris.",
+      "pourquoi": "Qui exploite l'hippodrome, et à quel titre",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20070",
+      "fait_en": "In response to a question from Mr Jean-Yves Mano, deputy mayor Jean-François Legaret states that the City continues to collect the fee owed by France-Galop on the basis of the agreement of 28 September 1972, until a new draft agreement is concluded, which will be submitted to the Council of Paris.",
+      "pourquoi_en": "Who operates the racecourse, and on what legal basis"
+    },
+    {
+      "id": "6958",
+      "seance": "SEPTEMBRE 2008",
+      "fait": "Le Conseil de Paris adopte le projet de délibération approuvant les modalités d'attribution du marché de maîtrise d'œuvre des pelouses centrales, après l'intervention de M. Pierre Gaboriau, inquiet du devenir des scolaires et des associations sportives du quartier.",
+      "pourquoi": "Fixer les modalités d'attribution de la maîtrise d'œuvre des pelouses centrales",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958",
+      "fait_en": "The Council of Paris adopts the draft resolution approving the award procedures for the project-management (maîtrise d'œuvre) contract for the central lawns, following remarks by Mr Pierre Gaboriau, who is concerned about what will become of schoolchildren and the neighbourhood's sports associations.",
+      "pourquoi_en": "Setting the award procedures for the project management of the central lawns"
+    },
+    {
+      "id": "13572",
+      "seance": "JUILLET 2010",
+      "fait": "Le Conseil débat du principe d'aménagement des pelouses centrales et de l'autorisation de lancer les marchés de travaux ; M. Jean-François Martins et un autre orateur annoncent voter contre, Mme Fabienne Giboudeaux répond que c'est aussi « un parc redonné aux Parisiens et aux riverains ».",
+      "pourquoi": "« Plaine de jeux » ou « parc » : deux lectures des pelouses centrales",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13572",
+      "fait_en": "The Council debates the principle of redeveloping the central lawns and the authorisation to launch the works contracts; Mr Jean-François Martins and another speaker announce they will vote against, and Ms Fabienne Giboudeaux replies that it is also “a park given back to Parisians and local residents”.",
+      "pourquoi_en": "“Playing fields” or “park”: two readings of the central lawns"
+    },
+    {
+      "id": "116556",
+      "seance": "NOVEMBRE 2013",
+      "fait": "Le Conseil examine l'attribution du nom de Billie Holiday à la pelouse B ; M. David Alphand et Mme Laurence Dreyfuss proposent par vœu le nom d'Alain Mimoun.",
+      "pourquoi": "Billie Holiday ou Alain Mimoun pour la pelouse B",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116556",
+      "fait_en": "The Council examines naming lawn B after Billie Holiday; Mr David Alphand and Ms Laurence Dreyfuss propose, by way of a motion (vœu), the name of Alain Mimoun.",
+      "pourquoi_en": "Billie Holiday or Alain Mimoun for lawn B"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "200 000 € par an",
+      "objet": "contribution financière à la Ville que M. Pierre Gaboriau attribue aux joueurs du golf de proximité dont il regrette qu'on se passe",
+      "citation": "il est vraiment dommage de se passer de ce golf de proximité qui réunit de nombreux joueurs tous les jours, qui apportent une contribution financière de 200.000 euros par an à la Ville",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2007": [
+      {
+        "reference": "2007 DJS 337",
+        "titre": "2007, DJS 337 - DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’oeuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination, de coordination en matière de sécurité et de protection de la santé et de contrôle technique et de déposer les demandes de permis de démolir et d",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4709"
+      },
+      {
+        "reference": "2007 DJS 337",
+        "titre": "DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’œuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination (OPC), de coordination en matière de sécurité et de protection de la santé (SPS) et de contrôle technique. - Autorisation à M. le Maire de Paris de déposer les dem",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54462"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DEVE 124",
+        "titre": "2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958"
+      },
+      {
+        "reference": "2008 DEVE 124",
+        "titre": "DJS 386 - Approbation des modalités d’attribution du marché de maîtrise d’oeuvre des pelouses centrales de l’hippodrome d’Auteuil, bois de Boulogne (16e). Mme Fabienne GIBOUDEAUX et M. Jean VUILLERMOZ, rapporteurs.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67394"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DEVE 100",
+        "titre": "2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13572"
+      },
+      {
+        "reference": "2010 DEVE 100",
+        "titre": "DJS 358 Approbation des principes d’aménagement des pelouses centrales de l’hippodrome d’Auteuil (16e). Autorisation de déposer la demande de permis d’aménager, autorisation de signer le marché de travaux préparatoires et autorisation de lancer les marchés de travaux d’aménagement. Mme Fabienne GIBOUDEAUX et M. Jean VUILLERMOZ, rapporteurs.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79579"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2009": 168930.61,
+      "2010": 1163252.22,
+      "2011": 4500691.08,
+      "2012": 10604457.75,
+      "2013": 9579225.41,
+      "2014": 1147417.11,
+      "2015": 357119.96,
+      "2016": 31978.6,
+      "2017": 232483.56
+    },
+    "total_eur": 27785556.3,
+    "operations": [
+      {
+        "ap_cle": "B100/0903857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2011": 1719471.14,
+          "2012": 5979996.75,
+          "2013": 6591987.74
+        },
+        "total_mandate": 14291455.63,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903857"
+      },
+      {
+        "ap_cle": "B100/1003946",
+        "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2010": 1059740.96,
+          "2011": 2471212.42,
+          "2012": 4390348.16,
+          "2013": 1954349.45
+        },
+        "total_mandate": 9875650.99,
+        "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003946"
+      },
+      {
+        "ap_cle": "B100/0803857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2009": 168930.61,
+          "2010": 103511.26,
+          "2011": 310007.52,
+          "2012": 187767.3,
+          "2013": 133151.44
+        },
+        "total_mandate": 903368.13,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803857"
+      },
+      {
+        "ap_cle": "0903857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 254444.84,
+          "2015": 279537.1
+        },
+        "total_mandate": 533981.94,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903857"
+      },
+      {
+        "ap_cle": "1303857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 264868.49,
+          "2015": 3816.44,
+          "2016": 55.1,
+          "2017": 232483.56
+        },
+        "total_mandate": 501223.59,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303857"
+      },
+      {
+        "ap_cle": "1303946",
+        "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 349817.12,
+          "2015": 46093.86,
+          "2016": 30855.78
+        },
+        "total_mandate": 426766.76,
+        "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303946"
+      },
+      {
+        "ap_cle": "B100/1303857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2013": 400912.75
+        },
+        "total_mandate": 400912.75,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303857"
+      },
+      {
+        "ap_cle": "B100/1303946",
+        "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2013": 368219.09
+        },
+        "total_mandate": 368219.09,
+        "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303946"
+      },
+      {
+        "ap_cle": "1003946",
+        "ap_texte": "PELOUSE HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 269718.48,
+          "2015": 13438.79,
+          "2016": 1067.72
+        },
+        "total_mandate": 284224.99,
+        "preuve": "Libellé d'opération verbatim « PELOUSE HIPPODROME D'AUTEUIL » (mission « ESPACES VERTS ET ENV », direction DEVE) : le libellé nomme ce lieu. Il correspond à l'aménagement des pelouses centrales voté au Conseil de Paris — « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) et autorisation de déposer la demande de permis d'aménager, de signer le marché de travaux préparatoires et de lancer les marchés de travaux d'aménagement » — projet présenté en séance de septembre 2008 comme « la création d'un parc de 12 hectares, dont 6 hectares dédiés aux équipements sportifs et 6 hectares dédiés à la promenade » et, en juillet 2010, comme comportant « 284 arbres supplémentaires ». Périmètre : l'opération ne couvre pas tout le site — « tout cela ne fera que 12 hectares sur les 36 de l'hippodrome d'Auteuil » (débat au Conseil de Paris, juillet 2010). Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, juin 1999).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003946"
+      },
+      {
+        "ap_cle": "B100/1203857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2012": 46345.54,
+          "2013": 130604.94
+        },
+        "total_mandate": 176950.48,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203857"
+      },
+      {
+        "ap_cle": "0803857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 916.93,
+          "2015": 14233.77
+        },
+        "total_mandate": 15150.7,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803857"
+      },
+      {
+        "ap_cle": "1203857",
+        "ap_texte": "HIPPODROME D'AUTEUIL",
+        "mandate_par_annee": {
+          "2014": 7651.25
+        },
+        "total_mandate": 7651.25,
+        "preuve": "Libellé d'opération verbatim « HIPPODROME D'AUTEUIL » (mission « JEUNESSE ET SPORTS », direction DJS) : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction, ni un autre équipement du quartier. Le site est municipal : « L'hippodrome d'Auteuil, propriété de la Ville de Paris, et dont l'exploitation est concédée à la société \"France-Galop\" » (QOC 99-405, Conseil de Paris, juin 1999) — ces crédits sont donc de l'investissement de la Ville sur le site, pas une aide versée au concessionnaire. Sur la période, le Conseil de Paris a voté un volet sportif sur ce site (« 2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e) » ; « 2010, DEVE 100 - DJS 358 - Approbation du principe d'aménagement des pelouses centrales de l'hippodrome d'Auteuil (16e) ») ; le libellé de l'opération ne détaille pas les travaux qu'elle finance.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203857"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2017"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Hippodrome+d%27Auteuil"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Hippodrome+d%27Auteuil%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In June 1999, in response to a question from Mr Jean-Yves Mano on the legal framework for operating the racecourse, deputy mayor Jean-François Legaret states that the right of occupation was granted to the Société des steeple-chases de France by an agreement dated 28 September 1972, for 50 years, and that on this basis the City continues to collect the fee owed by the company France-Galop, until a new draft agreement is concluded, which will be submitted to the Council of Paris. In September 2008, the Council adopts the draft resolution approving the award procedures for the project-management (maîtrise d'œuvre) contract for the central lawns; Mr Pierre Gaboriau expresses concern about what will become of schoolchildren and the neighbourhood's sports associations, while Ms Fabienne Giboudeaux presents the project as also being a green-space project that will create a 12-hectare park. In July 2010, the Council debates the principle of redeveloping these lawns and the authorisation to launch the works contracts: Mr Jean-François Martins and another speaker announce they will vote against, the former considering that the project does not meet the specifications needed for sport by schoolchildren; Ms Fabienne Giboudeaux replies that it is also a park given back to Parisians and local residents. In November 2013, the Council examines naming lawn B after Billie Holiday, with Mr David Alphand and Ms Laurence Dreyfuss proposing, by way of a motion (vœu), the name of Alain Mimoun.",
+  "bmo_recit_en": "In the Bulletin municipal, the Auteuil racecourse appears in connection with its admission prices: by a memorandum dated 10 November 1960, the Prefect of the Seine submits to the Council the request of the Société des steeple-chases de France to increase the price of certain admissions. The same matter provides, in connection with this increase, for an adjustment of the fee to be paid to the City of Paris.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

@@ -307,16 +307,37 @@ def apply_en_translations(fiche: dict, slug: str) -> None:
 
 
 _SEUIL: int | None = None
+_PREMIER_INVEST: int | None = None
+
+
+def premier_exercice_investissement() -> int | None:
+    """Le premier exercice de dépense d'investissement que la Ville publie.
+
+    La fiche l'écrit sous le graphe (« la Ville publie l'investissement dès … »).
+    Il était codé en dur dans la traduction ; il est désormais lu dans la même
+    série que la ligne « Travaux et rénovation » : les opérations
+    d'investissement mandatées (ca/ap_operations.json). Le jour où la Ville
+    republiera des comptes plus anciens, la phrase suivra seule."""
+    global _PREMIER_INVEST
+    if _PREMIER_INVEST is None:
+        p = ROOT / "website/public/data/ca/ap_operations.json"
+        if not p.exists():
+            return None
+        annees = [int(y) for o in json.load(open(p)).get("operations", [])
+                  for y in (o.get("mandate_par_annee") or {}) if str(y).isdigit()]
+        _PREMIER_INVEST = min(annees) if annees else None
+    return _PREMIER_INVEST
 
 
 def seuil_commun() -> int:
     """Le premier exercice où TOUS les flux d'argent d'un lieu existent.
 
     Les deux flux ne commencent pas la même année, et ce n'est pas un choix :
-    la Ville publie la dépense d'investissement depuis 2009 et les subventions
-    depuis 2013 seulement. Additionner les deux « depuis 2009 » donnait un
-    total qu'aucune période ne produit, et deux lieux n'étaient pas comparables
-    puisque leur fenêtre dépendait des flux qu'ils portent.
+    la Ville publie la dépense d'investissement plus tôt que les subventions
+    (voir premier_exercice_investissement). Additionner les deux depuis le
+    premier exercice d'investissement donnait un total qu'aucune période ne
+    produit, et deux lieux n'étaient pas comparables puisque leur fenêtre
+    dépendait des flux qu'ils portent.
 
     Le chiffre de tête d'une fiche couvre donc la fenêtre commune, ici le
     premier exercice de subvention publié. Ce qui tombe avant reste affiché,
@@ -732,6 +753,7 @@ def main() -> int:
             # Fenêtre commune à toutes les fiches (cf. seuil_commun) : le chiffre
             # de tête la couvre, ce qui est avant est montré à part.
             "seuil_commun": seuil_commun(),
+            "premier_exercice_investissement": premier_exercice_investissement(),
             "wiki": {"extract": w.get("extract"), "url": w.get("url"), "source": SOURCES["wiki"]},
             "stats": {
                 "n_delibs": len(delibs),

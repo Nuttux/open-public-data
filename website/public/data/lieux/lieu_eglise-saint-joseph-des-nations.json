@@ -1,131 +1,153 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-saint-joseph-des-nations",
- "name": "Église Saint-Joseph-des-Nations",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 11,
- "lat": 48.86896,
- "lon": 2.373322,
- "photo": "/img/lieux/eglise-saint-joseph-des-nations.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "L'église Saint-Joseph-des-Nations est un édifice religieux catholique situé au 161 rue Saint-Maur dans le 11e arrondissement de Paris (France).",
-  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 666,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2006": [
-   {
-    "reference": "2006 DAC 44",
-    "titre": "Approbation du principe de réalisation de l’opération de restauration des couvertures de l’église Saint-Joseph des Nations (11e), et des modalités de passation des marchés de travaux correspondants. Autorisation à M. le Maire Paris de déposer le permis de démolir et le permis de construire en vue de la réalisation de cette opération. Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27832"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DAC 27",
-    "titre": "Signature d’un avenant n° 1 au marché relatif à la restauration des couvertures de l’église Saint-Joseph des Nations (11e) - lot n° 1 “échafaudage-char-pente-couverture”. Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77123"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2017": 66045.94,
-   "2018": 165042.57,
-   "2019": 841490.44,
-   "2020": 908213.58,
-   "2021": 238399.44,
-   "2022": 79473.59
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-saint-joseph-des-nations",
+  "name": "Église Saint-Joseph-des-Nations",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 11,
+  "lat": 48.86896,
+  "lon": 2.373322,
+  "photo": "/img/lieux/eglise-saint-joseph-des-nations.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
+    "source": "Wikipédia"
   },
-  "total_eur": 2298665.56,
-  "operations": [
-   {
-    "ap_cle": "1603599",
-    "ap_texte": "EGLISE SAINT JOSEPH DES NATIONS (11e)",
-    "mandate_par_annee": {
-     "2017": 66045.94,
-     "2018": 165042.57,
-     "2019": 841490.44,
-     "2020": 908213.58,
-     "2021": 238399.44,
-     "2022": 79473.59
-    },
-    "total_mandate": 2298665.56,
-    "preuve": "Le libellé de l'opération nomme ce seul édifice : « EGLISE SAINT JOSEPH DES NATIONS (11e) » — ce n'est pas une enveloppe générique de direction, même si elle est portée par la DAC (mission « AFFAIRES CULTURELLES »). La question QOC 2002-243 (mars 2002) situe l'église 154, rue Saint-Maur (11e) et indique que le Bureau des Affaires cultuelles et historiques y conduit des travaux de restauration. Attention au cumul : le mandaté 2018 de l'opération (165 042,57 €) est exactement la somme des trois lignes projet 2018 ci-dessus (136 359,61 + 25 464,79 + 3 218,17 €) — l'opération AP et ces lignes décrivent la même dépense.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1603599"
-   }
-  ],
-  "periode": [
-   "2017",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Joseph-des-Nations"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L'église Saint-Joseph-des-Nations est un édifice religieux catholique situé au 161 rue Saint-Maur dans le 11e arrondissement de Paris (France).",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Église Saint-Joseph-des-Nations is a Catholic religious building located at 161 rue Saint-Maur in the 11th arrondissement of Paris (France)."
+  },
+  "stats": {
+    "n_delibs": 666,
+    "delibs_span": [
+      2002,
+      2002
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": 1
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En mars 2002, Mme Liliane Capelle, M. Georges Sarre et les membres du groupe du Mouvement des citoyens interrogent le Maire de Paris sur la salle dite « du chevet » de l'église, 154 rue Saint-Maur, dont les murs, selon eux, présentent « un aspect très dégradé », avec « de gros problèmes d'humidité » pour les personnes accueillies ; ils souhaitent qu'une étude des travaux à effectuer soit menée rapidement. Dans sa réponse, Mme Sandrine Mazetier, adjointe, indique que la salle « présente effectivement un aspect très dégradé » et que le Bureau des Affaires cultuelles et historiques procède à des travaux de réfection de toiture au niveau du transept droit. Selon cette réponse, ces travaux doivent être suivis de travaux d'aménagement financés par l'Association Diocésaine de Paris, prévoyant notamment le réaménagement intérieur de la salle du chevet. L'adjointe indique que le Bureau examine les possibilités techniques d'assainir les abords immédiats et d'aménager des issues de secours, travaux qui « pourraient être réalisés dès 2002 » si les disponibilités budgétaires le permettent, et estime qu'une restauration extérieure complète « conviendrait » dans les années à venir.",
+  "moments": [
+    {
+      "id": "7480",
+      "seance": "MARS 2002",
+      "fait": "Question de Mme Capelle, M. Sarre et du groupe du Mouvement des citoyens sur la salle du chevet ; l'adjointe Sandrine Mazetier répond que des travaux de toiture du transept droit sont en cours et que des travaux d'aménagement financés par l'Association Diocésaine de Paris, dont le réaménagement intérieur de la salle, doivent suivre.",
+      "pourquoi": "Humidité signalée par des élus ; travaux annoncés en réponse",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7480",
+      "fait_en": "Question from Ms Capelle, Mr Sarre and the Mouvement des citoyens group about the chevet hall; deputy mayor Sandrine Mazetier replies that roof works on the right transept are under way and that fit-out works funded by the Association Diocésaine de Paris, including the interior refurbishment of the hall, are to follow.",
+      "pourquoi_en": "Damp reported by elected officials; works announced in reply"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2006": [
+      {
+        "reference": "2006 DAC 44",
+        "titre": "Approbation du principe de réalisation de l’opération de restauration des couvertures de l’église Saint-Joseph des Nations (11e), et des modalités de passation des marchés de travaux correspondants. Autorisation à M. le Maire Paris de déposer le permis de démolir et le permis de construire en vue de la réalisation de cette opération. Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27832"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DAC 27",
+        "titre": "Signature d’un avenant n° 1 au marché relatif à la restauration des couvertures de l’église Saint-Joseph des Nations (11e) - lot n° 1 “échafaudage-char-pente-couverture”. Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77123"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2017": 66045.94,
+      "2018": 165042.57,
+      "2019": 841490.44,
+      "2020": 908213.58,
+      "2021": 238399.44,
+      "2022": 79473.59
+    },
+    "total_eur": 2298665.56,
+    "operations": [
+      {
+        "ap_cle": "1603599",
+        "ap_texte": "EGLISE SAINT JOSEPH DES NATIONS (11e)",
+        "mandate_par_annee": {
+          "2017": 66045.94,
+          "2018": 165042.57,
+          "2019": 841490.44,
+          "2020": 908213.58,
+          "2021": 238399.44,
+          "2022": 79473.59
+        },
+        "total_mandate": 2298665.56,
+        "preuve": "Le libellé de l'opération nomme ce seul édifice : « EGLISE SAINT JOSEPH DES NATIONS (11e) » — ce n'est pas une enveloppe générique de direction, même si elle est portée par la DAC (mission « AFFAIRES CULTURELLES »). La question QOC 2002-243 (mars 2002) situe l'église 154, rue Saint-Maur (11e) et indique que le Bureau des Affaires cultuelles et historiques y conduit des travaux de restauration. Attention au cumul : le mandaté 2018 de l'opération (165 042,57 €) est exactement la somme des trois lignes projet 2018 ci-dessus (136 359,61 + 25 464,79 + 3 218,17 €) — l'opération AP et ces lignes décrivent la même dépense.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1603599"
+      }
+    ],
+    "periode": [
+      "2017",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Joseph-des-Nations"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Joseph-des-Nations%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In March 2002, Ms Liliane Capelle, Mr Georges Sarre and the members of the Mouvement des citoyens group question the Mayor of Paris about the so-called \"chevet\" hall of the church, 154 rue Saint-Maur, whose walls, according to them, are \"in a very dilapidated state\", with \"major damp problems\" for the people using it; they ask for a study of the necessary works to be carried out promptly. In her reply, Ms Sandrine Mazetier, deputy mayor, states that the hall \"is indeed in a very dilapidated state\" and that the Bureau des Affaires cultuelles et historiques is carrying out roof repair works on the right transept. According to this reply, these works are to be followed by fit-out works funded by the Association Diocésaine de Paris, including in particular the interior refurbishment of the chevet hall. The deputy mayor states that the Bureau is examining the technical options for draining the immediate surroundings and fitting emergency exits, works that \"could be carried out as early as 2002\" if budget availability allows, and considers that a complete exterior restoration \"would be appropriate\" in the coming years.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

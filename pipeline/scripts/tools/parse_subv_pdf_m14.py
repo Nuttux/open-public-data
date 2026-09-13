@@ -74,6 +74,11 @@ RE_LINE = re.compile(
 # n'est PAS une subvention mais un local ou du personnel mis à disposition —
 # le compter en numéraire gonflait le total de 0,2 à 0,3 % en 2011 et 2012.
 RE_HEADER = re.compile(r"Montant de la.*Mise à disposition", re.I)
+# En 2015, « Mise à disposition » est imprimé SEUL sur la ligne au-dessus de
+# l'en-tête « Nom de l'organisme … Montant de la … Prestations ». Sans cette
+# forme, la borne n'était jamais posée : locaux, personnel et prestations
+# diverses étaient lus comme des subventions (+4,6 M€, extraction refusée).
+RE_HEADER_SEUL = re.compile(r"^\s{20,}Mise à disposition\s*$", re.I)
 RE_IGNORE = re.compile(
     r"^\s*(TOTAL\b|Nom de l['’]organisme|Nom de la rue|subvention\b|Locaux\b|Personnel\b|"
     r"\(article L\.|Ville de Paris|COMPTE ADMINISTRATIF|Page \d+|B1\.[67]\b)", re.I)
@@ -93,7 +98,7 @@ def parse_text(text: str) -> tuple[list[dict], float | None]:
             if RE_START.search(line):
                 in_section = True
             continue
-        if RE_HEADER.search(line):
+        if RE_HEADER.search(line) or RE_HEADER_SEUL.match(line):
             borne_mad = line.lower().index("mise à disposition")
             continue
         m_tot = RE_TOTAL_GENERAL.match(line)

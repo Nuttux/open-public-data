@@ -1,317 +1,326 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "place-d-italie",
- "name": "Place d'Italie",
- "kind_fr": "Place",
- "kind_en": "Square",
- "famille": "urbain",
- "arrondissement": 13,
- "lat": 48.831342,
- "lon": 2.355345,
- "photo": "/img/lieux/place-d-italie.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "Cramos",
-  "url": "https://commons.wikimedia.org/wiki/File:Place_d%27Italie_m%C3%A9tro_Paris_ligne_6_par_Cramos.JPG",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La place d’Italie est une place du 13e arrondissement de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/Place_d'Italie_(Paris)",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "place-d-italie",
+  "name": "Place d'Italie",
+  "kind_fr": "Place",
+  "kind_en": "Square",
+  "famille": "urbain",
+  "arrondissement": 13,
+  "lat": 48.831342,
+  "lon": 2.355345,
+  "photo": "/img/lieux/place-d-italie.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "Cramos",
+    "url": "https://commons.wikimedia.org/wiki/File:Place_d%27Italie_m%C3%A9tro_Paris_ligne_6_par_Cramos.JPG",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "The place d'Italie is a square in the 13th arrondissement of Paris."
- },
- "stats": {
-  "n_delibs": 1055,
-  "delibs_span": [
-   2018,
-   2018
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (9 trouvés)",
-  "lecture_mode_en": "title naming the place (9 found)",
-  "n_lus": 9,
-  "n_lieu": 1
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Sur pres de vingt ans, \"place d'Italie\" revient au Conseil de Paris surtout comme l'adresse de la mairie du 13e, 1 place d'Italie, ou plusieurs associations de l'arrondissement sont domiciliees : le Conseil y vote des subventions de fonctionnement a la Societe d'Histoire et d'Archeologie (4 573 EUR en 2002), au Comite des Fetes (70 927 EUR en 2002, dont 10 000 EUR pour un \"Festival italien\"), aux Anciens Combattants du 13e (534 EUR en 2002) et au Cercle des Beaux-Arts (3 000 EUR en 2004). Des 1998, le Conseil general autorise la signature de conventions en vue de l'installation d'un \"Point Info Jeunes\" a la station de metro place d'Italie, avec une subvention de 120 000 F a la Mission locale \"Soleil\". En 2000 puis 2003, il approuve le principe de travaux sur le batiment de la mairie - climatisation des combles, menuiseries exterieures - et autorise le Maire a signer les marches, sans qu'un montant soit chiffre dans ces deliberations. En 2018, un voeu du maire du 13e Jerome Coumet porte cette fois sur la place elle-meme : il denonce des proces-verbaux dresses a des cyclistes, que le representant du Prefet de police reconnait en seance avoir ete etablis \"au mépris du Code de la route\", tandis que Coumet evoque un \"futur de la place d'Italie\" attendu pas avant 2020.",
- "moments": [
-  {
-   "id": "56746",
-   "seance": "MARS 1998",
-   "fait": "Le Conseil general autorise la signature d'une convention avec l'Etat et la Mission locale \"Soleil\" pour un \"Point Info Jeunes\" a la station de metro place d'Italie, avec 120 000 F a la Mission locale.",
-   "pourquoi": "Un guichet jeunesse au hub metro",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56746",
-   "fait_en": "The Conseil général authorized signing an agreement with the State and the Mission locale \"Soleil\" for a \"Point Info Jeunes\" at the place d'Italie metro station, with 120,000 F going to the Mission locale.",
-   "pourquoi_en": "A youth information point at the metro hub"
-  },
-  {
-   "id": "58847",
-   "seance": "OCTOBRE 2000",
-   "fait": "Le Conseil approuve le principe de modernisation de la climatisation des combles de la mairie du 13e (place d'Italie) et autorise le Maire a signer les marches.",
-   "pourquoi": "Entretenir le batiment-phare de la place",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847",
-   "fait_en": "The Council approved the principle of modernizing the air conditioning in the attic of the 13th arrondissement town hall (place d'Italie) and authorized the Mayor to sign the contracts.",
-   "pourquoi_en": "Maintaining the square's landmark building"
-  },
-  {
-   "id": "71521",
-   "seance": "DECEMBRE 2002",
-   "fait": "Le Conseil autorise la signature d'une convention avec le Comite des Fetes du 13e et lui attribue 70 927 EUR, dont 10 000 EUR pour un projet \"Festival italien\".",
-   "pourquoi": "La place fete son nom italien",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521",
-   "fait_en": "The Council authorized signing an agreement with the Comité des Fêtes of the 13th arrondissement and awarded it €70,927, including €10,000 for a \"Festival italien\" project.",
-   "pourquoi_en": "The square celebrates its Italian name"
-  },
-  {
-   "id": "41692",
-   "seance": "JANVIER 2003",
-   "fait": "Le Conseil approuve le principe de travaux de modernisation des menuiseries exterieures de la mairie du 13e, place d'Italie, et autorise le Maire a signer le marche.",
-   "pourquoi": "Refaire les fenetres de la mairie",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692",
-   "fait_en": "The Council approved the principle of modernization works on the exterior joinery of the 13th arrondissement town hall, place d'Italie, and authorized the Mayor to sign the contract.",
-   "pourquoi_en": "Redoing the town hall's windows"
-  },
-  {
-   "id": "68932",
-   "seance": "MARS 2003",
-   "fait": "Le Conseil attribue 534 EUR au Comite d'entente des Anciens Combattants et Victimes de Guerre du 13e, domicilie a la mairie, place d'Italie.",
-   "pourquoi": "La memoire combattante logee a la mairie",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68932",
-   "fait_en": "The Council awarded €534 to the Comité d'entente des Anciens Combattants et Victimes de Guerre of the 13th arrondissement, based at the town hall, place d'Italie.",
-   "pourquoi_en": "Veterans' memory housed at the town hall"
-  },
-  {
-   "id": "64254",
-   "seance": "OCTOBRE 2004",
-   "fait": "Le Conseil attribue 3 000 EUR au Cercle Municipal des Gobelins et des Beaux-Arts, domicilie a la mairie du 13e, place d'Italie.",
-   "pourquoi": "Le cercle des beaux-arts, adresse mairie",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254",
-   "fait_en": "The Council awarded €3,000 to the Cercle Municipal des Gobelins et des Beaux-Arts, based at the 13th arrondissement town hall, place d'Italie.",
-   "pourquoi_en": "The fine arts circle, town hall address"
-  },
-  {
-   "id": "146582",
-   "seance": "NOVEMBRE 2018",
-   "fait": "Voeu du maire du 13e Jerome Coumet : des cyclistes ont ete verbalises place d'Italie ; le representant du Prefet reconnait des PV \"au mépris du Code de la route\".",
-   "pourquoi": "Quand la place se conteste a velo",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146582",
-   "fait_en": "Motion from the mayor of the 13th arrondissement, Jérôme Coumet: cyclists had been ticketed at place d'Italie; the Prefect's representative acknowledged that the tickets had been issued \"in disregard of the Highway Code.\"",
-   "pourquoi_en": "When the square is contested on two wheels"
-  }
- ],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1998": [
-   {
-    "reference": "1998 DAEE 9",
-    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer avec la R.A.T.P. une convention en vue de l'installation d'un point d'information \"Point Info Jeunes\" à la station de métro \"place d'Italie\" (13e). Mme Nicole CATALA, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56704"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DPA 277",
-    "titre": "Approbation du principe de la réalisation des travaux de modernisation de la sous-station vapeur à la crèche, 101, rue de la Glacière (13e) et de modernisation de la climatisation des locaux sous combles à la mairie du 13e arrondissement, 1, place d'Italie (13e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Marie-Thérèse HERMANGE, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 304",
-    "titre": "Attribution d'une subvention de fonctionnement à la Société d'Histoire et d'Archéologie du XIIIème arrondissement située à la Mairie du 13e arrondissement 1, place d'Italie (13e). Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70917"
-   },
-   {
-    "reference": "2002 DPA 516",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 13e arrondissement; 1, place d'Italie (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JANVIER 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
-   },
-   {
-    "reference": "2002 DVLR 182",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention pour l'attribution d'une subvention de fonctionnement au profit du Comité des Fêtes et de Solidarité du XIIIème arrondissement, 1, place d'Italie (13e). Mme Marie-Pierre de LA GONTRIE, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 506",
-    "titre": "Attribution d'une subvention de fonctionnement à l'association \"Le Cercle Municipal des Gobelins et des Beaux Arts\", Mairie du 13e, 1, place d'Italie (13e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DAC 223",
-    "titre": "Attribution d’une subvention de fonctionnement à l’association “Le Cercle Municipal des Gobelins et des Beaux Arts”, Mairie du 13e, 1, place d’Italie (13e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80712"
-   },
-   {
-    "reference": "2005 DAC 453",
-    "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIème arrondissement de Paris, 1, place d’Italie, 75013 Paris. Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63085"
-   },
-   {
-    "reference": "2005 DVD 143",
-    "titre": "Approbation du principe d’aménagement de la Place d’Italie (13e). - Approbation du principe et des modalités de passation du marché de travaux de voirie correspondant. M. Denis BAUPIN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87155"
-   },
-   {
-    "reference": "2005 DVD 143",
-    "titre": "2005, DVD 143 - Approbation du principe d’aménagement de la place d’Italie (13e). - Approbation du principe et des modalités de passation du marché de travaux de voirie correspondant. Vœu déposé par le groupe socialiste et radical de gauche.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9298"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 203",
-    "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIe arrondissement de Paris, 1, place d’Italie (13e). Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89162"
-   },
-   {
-    "reference": "2006 DAC 317",
-    "titre": "2006, DAC 317 - Attribution d’une subvention de fonctionnement à l’association “Le Cercle municipal des Gobelins et des Beaux Arts” située à la Mairie du 13e arrondissement, 1, place d’Italie (13e). - Montant : 1.500 euros. Voeu déposé par MM. Serge BLISKO et Jérôme COUMET, adopté par le Conseil du 13e arrondissement.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10844"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DAC 257",
-    "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIe arrondissement de Paris, 1 place d’Italie (13e). Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUIN 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72683"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 122",
-    "titre": "Approbation du principe de réalisation des travaux de restructuration des services et accessibilité pour tous à la Mairie du 13e arrondissement, 1 place d’Italie et des modalités de passation du marché de travaux correspondant. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77346"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20171370000093",
-   "objet": "CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION",
-   "objet_clair": null,
-   "fournisseur": "CONTEMPORARY LANDSCAPE CREATIONS",
-   "montant_max": 1000000.0,
-   "date_notification": "2017-01-17",
-   "preuve": "L'objet nomme explicitement le lieu : « CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION ». Mission de conception portant sur la place elle-même. Réserve : le même lot couvre aussi la place de la Nation, le montant maximum de 1 000 000 € n'est donc pas imputable à la seule place d'Italie."
-  },
-  {
-   "numero_marche": "20191230082702",
-   "objet": "CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E",
-   "objet_clair": null,
-   "fournisseur": "AGRIGEX ENVIRO/LACHAUX PAYSA/SEGEX",
-   "montant_max": 226375.12,
-   "date_notification": "2019-04-26",
-   "preuve": "L'objet porte des travaux sur la place elle-même : « CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E ». Le jardin central est une composante physique de la place, et l'arrondissement cité (13E) correspond."
-  },
-  {
-   "numero_marche": "20191370090073",
-   "objet": "CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE",
-   "objet_clair": null,
-   "fournisseur": "LOUIS BERGER",
-   "montant_max": 51630.0,
-   "date_notification": "2019-04-29",
-   "preuve": "L'objet nomme le lieu et son objet d'intervention : « CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE ». Mission d'ordonnancement-pilotage-coordination adossée aux travaux d'aménagement du jardin central de la place (notifiée à 3 jours du marché de travaux 20191230082702)."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+d%27Italie"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+d%27Italie%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La place d’Italie est une place du 13e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/Place_d'Italie_(Paris)",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The place d'Italie is a square in the 13th arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 1055,
+    "delibs_span": [
+      2018,
+      2018
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (9 trouvés)",
+    "lecture_mode_en": "title naming the place (9 found)",
+    "n_lus": 9,
+    "n_lieu": 1
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Sur pres de vingt ans, \"place d'Italie\" revient au Conseil de Paris surtout comme l'adresse de la mairie du 13e, 1 place d'Italie, ou plusieurs associations de l'arrondissement sont domiciliees : le Conseil y vote des subventions de fonctionnement a la Societe d'Histoire et d'Archeologie (4 573 EUR en 2002), au Comite des Fetes (70 927 EUR en 2002, dont 10 000 EUR pour un \"Festival italien\"), aux Anciens Combattants du 13e (534 EUR en 2002) et au Cercle des Beaux-Arts (3 000 EUR en 2004). Des 1998, le Conseil general autorise la signature de conventions en vue de l'installation d'un \"Point Info Jeunes\" a la station de metro place d'Italie, avec une subvention de 120 000 F a la Mission locale \"Soleil\". En 2000 puis 2003, il approuve le principe de travaux sur le batiment de la mairie - climatisation des combles, menuiseries exterieures - et autorise le Maire a signer les marches, sans qu'un montant soit chiffre dans ces deliberations. En 2018, un voeu du maire du 13e Jerome Coumet porte cette fois sur la place elle-meme : il denonce des proces-verbaux dresses a des cyclistes, que le representant du Prefet de police reconnait en seance avoir ete etablis \"au mépris du Code de la route\", tandis que Coumet evoque un \"futur de la place d'Italie\" attendu pas avant 2020.",
+  "moments": [
+    {
+      "id": "56746",
+      "seance": "MARS 1998",
+      "fait": "Le Conseil general autorise la signature d'une convention avec l'Etat et la Mission locale \"Soleil\" pour un \"Point Info Jeunes\" a la station de metro place d'Italie, avec 120 000 F a la Mission locale.",
+      "pourquoi": "Un guichet jeunesse au hub metro",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56746",
+      "fait_en": "The Conseil général authorized signing an agreement with the State and the Mission locale \"Soleil\" for a \"Point Info Jeunes\" at the place d'Italie metro station, with 120,000 F going to the Mission locale.",
+      "pourquoi_en": "A youth information point at the metro hub"
+    },
+    {
+      "id": "58847",
+      "seance": "OCTOBRE 2000",
+      "fait": "Le Conseil approuve le principe de modernisation de la climatisation des combles de la mairie du 13e (place d'Italie) et autorise le Maire a signer les marches.",
+      "pourquoi": "Entretenir le batiment-phare de la place",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847",
+      "fait_en": "The Council approved the principle of modernizing the air conditioning in the attic of the 13th arrondissement town hall (place d'Italie) and authorized the Mayor to sign the contracts.",
+      "pourquoi_en": "Maintaining the square's landmark building"
+    },
+    {
+      "id": "71521",
+      "seance": "DECEMBRE 2002",
+      "fait": "Le Conseil autorise la signature d'une convention avec le Comite des Fetes du 13e et lui attribue 70 927 EUR, dont 10 000 EUR pour un projet \"Festival italien\".",
+      "pourquoi": "La place fete son nom italien",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521",
+      "fait_en": "The Council authorized signing an agreement with the Comité des Fêtes of the 13th arrondissement and awarded it €70,927, including €10,000 for a \"Festival italien\" project.",
+      "pourquoi_en": "The square celebrates its Italian name"
+    },
+    {
+      "id": "41692",
+      "seance": "JANVIER 2003",
+      "fait": "Le Conseil approuve le principe de travaux de modernisation des menuiseries exterieures de la mairie du 13e, place d'Italie, et autorise le Maire a signer le marche.",
+      "pourquoi": "Refaire les fenetres de la mairie",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692",
+      "fait_en": "The Council approved the principle of modernization works on the exterior joinery of the 13th arrondissement town hall, place d'Italie, and authorized the Mayor to sign the contract.",
+      "pourquoi_en": "Redoing the town hall's windows"
+    },
+    {
+      "id": "68932",
+      "seance": "MARS 2003",
+      "fait": "Le Conseil attribue 534 EUR au Comite d'entente des Anciens Combattants et Victimes de Guerre du 13e, domicilie a la mairie, place d'Italie.",
+      "pourquoi": "La memoire combattante logee a la mairie",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68932",
+      "fait_en": "The Council awarded €534 to the Comité d'entente des Anciens Combattants et Victimes de Guerre of the 13th arrondissement, based at the town hall, place d'Italie.",
+      "pourquoi_en": "Veterans' memory housed at the town hall"
+    },
+    {
+      "id": "64254",
+      "seance": "OCTOBRE 2004",
+      "fait": "Le Conseil attribue 3 000 EUR au Cercle Municipal des Gobelins et des Beaux-Arts, domicilie a la mairie du 13e, place d'Italie.",
+      "pourquoi": "Le cercle des beaux-arts, adresse mairie",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254",
+      "fait_en": "The Council awarded €3,000 to the Cercle Municipal des Gobelins et des Beaux-Arts, based at the 13th arrondissement town hall, place d'Italie.",
+      "pourquoi_en": "The fine arts circle, town hall address"
+    },
+    {
+      "id": "146582",
+      "seance": "NOVEMBRE 2018",
+      "fait": "Voeu du maire du 13e Jerome Coumet : des cyclistes ont ete verbalises place d'Italie ; le representant du Prefet reconnait des PV \"au mépris du Code de la route\".",
+      "pourquoi": "Quand la place se conteste a velo",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146582",
+      "fait_en": "Motion from the mayor of the 13th arrondissement, Jérôme Coumet: cyclists had been ticketed at place d'Italie; the Prefect's representative acknowledged that the tickets had been issued \"in disregard of the Highway Code.\"",
+      "pourquoi_en": "When the square is contested on two wheels"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1998": [
+      {
+        "reference": "1998 DAEE 9",
+        "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer avec la R.A.T.P. une convention en vue de l'installation d'un point d'information \"Point Info Jeunes\" à la station de métro \"place d'Italie\" (13e). Mme Nicole CATALA, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56704"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DPA 277",
+        "titre": "Approbation du principe de la réalisation des travaux de modernisation de la sous-station vapeur à la crèche, 101, rue de la Glacière (13e) et de modernisation de la climatisation des locaux sous combles à la mairie du 13e arrondissement, 1, place d'Italie (13e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Marie-Thérèse HERMANGE, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 304",
+        "titre": "Attribution d'une subvention de fonctionnement à la Société d'Histoire et d'Archéologie du XIIIème arrondissement située à la Mairie du 13e arrondissement 1, place d'Italie (13e). Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70917"
+      },
+      {
+        "reference": "2002 DPA 516",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 13e arrondissement; 1, place d'Italie (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JANVIER 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
+      },
+      {
+        "reference": "2002 DVLR 182",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention pour l'attribution d'une subvention de fonctionnement au profit du Comité des Fêtes et de Solidarité du XIIIème arrondissement, 1, place d'Italie (13e). Mme Marie-Pierre de LA GONTRIE, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 506",
+        "titre": "Attribution d'une subvention de fonctionnement à l'association \"Le Cercle Municipal des Gobelins et des Beaux Arts\", Mairie du 13e, 1, place d'Italie (13e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DAC 223",
+        "titre": "Attribution d’une subvention de fonctionnement à l’association “Le Cercle Municipal des Gobelins et des Beaux Arts”, Mairie du 13e, 1, place d’Italie (13e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80712"
+      },
+      {
+        "reference": "2005 DAC 453",
+        "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIème arrondissement de Paris, 1, place d’Italie, 75013 Paris. Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63085"
+      },
+      {
+        "reference": "2005 DVD 143",
+        "titre": "Approbation du principe d’aménagement de la Place d’Italie (13e). - Approbation du principe et des modalités de passation du marché de travaux de voirie correspondant. M. Denis BAUPIN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87155"
+      },
+      {
+        "reference": "2005 DVD 143",
+        "titre": "2005, DVD 143 - Approbation du principe d’aménagement de la place d’Italie (13e). - Approbation du principe et des modalités de passation du marché de travaux de voirie correspondant. Vœu déposé par le groupe socialiste et radical de gauche.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9298"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 203",
+        "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIe arrondissement de Paris, 1, place d’Italie (13e). Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89162"
+      },
+      {
+        "reference": "2006 DAC 317",
+        "titre": "2006, DAC 317 - Attribution d’une subvention de fonctionnement à l’association “Le Cercle municipal des Gobelins et des Beaux Arts” située à la Mairie du 13e arrondissement, 1, place d’Italie (13e). - Montant : 1.500 euros. Voeu déposé par MM. Serge BLISKO et Jérôme COUMET, adopté par le Conseil du 13e arrondissement.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10844"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DAC 257",
+        "titre": "Attribution d’une subvention de fonctionnement à la Société d’Histoire et d’Archéologie du XIIIe arrondissement de Paris, 1 place d’Italie (13e). Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUIN 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72683"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 122",
+        "titre": "Approbation du principe de réalisation des travaux de restructuration des services et accessibilité pour tous à la Mairie du 13e arrondissement, 1 place d’Italie et des modalités de passation du marché de travaux correspondant. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77346"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20171370000093",
+      "objet": "CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION",
+      "objet_clair": null,
+      "fournisseur": "CONTEMPORARY LANDSCAPE CREATIONS",
+      "montant_max": 1000000.0,
+      "date_notification": "2017-01-17",
+      "preuve": "L'objet nomme explicitement le lieu : « CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION ». Mission de conception portant sur la place elle-même. Réserve : le même lot couvre aussi la place de la Nation, le montant maximum de 1 000 000 € n'est donc pas imputable à la seule place d'Italie."
+    },
+    {
+      "numero_marche": "20191230082702",
+      "objet": "CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E",
+      "objet_clair": null,
+      "fournisseur": "AGRIGEX ENVIRO/LACHAUX PAYSA/SEGEX",
+      "montant_max": 226375.12,
+      "date_notification": "2019-04-26",
+      "preuve": "L'objet porte des travaux sur la place elle-même : « CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E ». Le jardin central est une composante physique de la place, et l'arrondissement cité (13E) correspond."
+    },
+    {
+      "numero_marche": "20191370090073",
+      "objet": "CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE",
+      "objet_clair": null,
+      "fournisseur": "LOUIS BERGER",
+      "montant_max": 51630.0,
+      "date_notification": "2019-04-29",
+      "preuve": "L'objet nomme le lieu et son objet d'intervention : « CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE ». Mission d'ordonnancement-pilotage-coordination adossée aux travaux d'aménagement du jardin central de la place (notifiée à 3 jours du marché de travaux 20191230082702)."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+d%27Italie"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+d%27Italie%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Over nearly twenty years, \"place d'Italie\" comes up before the Council of Paris mainly as the address of the 13th arrondissement's town hall, 1 place d'Italie, where several of the arrondissement's associations are based: the Council votes operating grants there to the Société d'Histoire et d'Archéologie (€4,573 in 2002), to the Comité des Fêtes (€70,927 in 2002, including €10,000 for a \"Festival italien\"), to the Anciens Combattants du 13e (€534 in 2002), and to the Cercle des Beaux-Arts (€3,000 in 2004). As early as 1998, the Conseil général authorized signing agreements for setting up a \"Point Info Jeunes\" at the place d'Italie metro station, with a grant of 120,000 F to the Mission locale \"Soleil\". In 2000 and then 2003, it approved the principle of works on the town hall building — air conditioning in the attic, exterior joinery — and authorized the Mayor to sign the contracts, without any amount being specified in these deliberations. In 2018, a motion from the mayor of the 13th arrondissement, Jérôme Coumet, addressed the square itself for once: he denounced tickets issued to cyclists, which the Prefect of Police's representative acknowledged during the session had been issued \"in disregard of the Highway Code,\" while Coumet spoke of a \"future for the place d'Italie\" not expected before 2020.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Over nearly twenty years, \"place d'Italie\" comes up before the Council of Paris mainly as the address of the 13th arrondissement's town hall, 1 place d'Italie, where several of the arrondissement's associations are based: the Council votes operating grants there to the Société d'Histoire et d'Archéologie (€4,573 in 2002), to the Comité des Fêtes (€70,927 in 2002, including €10,000 for a \"Festival italien\"), to the Anciens Combattants du 13e (€534 in 2002), and to the Cercle des Beaux-Arts (€3,000 in 2004). As early as 1998, the Conseil général authorized signing agreements for setting up a \"Point Info Jeunes\" at the place d'Italie metro station, with a grant of 120,000 F to the Mission locale \"Soleil\". In 2000 and then 2003, it approved the principle of works on the town hall building — air conditioning in the attic, exterior joinery — and authorized the Mayor to sign the contracts, without any amount being specified in these deliberations. In 2018, a motion from the mayor of the 13th arrondissement, Jérôme Coumet, addressed the square itself for once: he denounced tickets issued to cyclists, which the Prefect of Police's representative acknowledged during the session had been issued \"in disregard of the Highway Code,\" while Coumet spoke of a \"future for the place d'Italie\" not expected before 2020."
 }

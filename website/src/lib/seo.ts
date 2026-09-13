@@ -177,15 +177,16 @@ export function websiteJsonLd() {
  *   - DataSF (/us) : PDDL — budget, paiements, contrats, rémunérations ;
  *   - Recife (/br) et Paris Open Data : ODbL ;
  *   - toute autre commune (/fr/city/…) : DGFiP, OFGL et DECP, Licence Ouverte v2.0.
- * Marseille et le national mêlent des sources : leurs pages passent la licence
- * explicitement, ou n'en déclarent aucune. L'ancien défaut, ODbL partout,
+ * Marseille : Licence Ouverte v2.0 (Ville sur data.gouv.fr, Métropole AMP). Le
+ * national mêle des sources : ses pages passent la licence explicitement. L'ancien défaut, ODbL partout,
  * prêtait la licence de Paris à des données qui ne l'ont pas.
  */
 export function licenseForPath(path: string): string | undefined {
   if (path === '/us' || path.startsWith('/us/')) return 'https://opendatacommons.org/licenses/pddl/1-0/';
   if (path === '/br' || path.startsWith('/br/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
   if (path === '/fr/city/paris' || path.startsWith('/fr/city/paris/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
-  if (path.startsWith('/fr/city/marseille')) return undefined;
+  // Marseille : data.gouv.fr (Ville) et Métropole AMP, Licence Ouverte 2.0 — vérifié.
+  if (path.startsWith('/fr/city/marseille')) return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
   if (path.startsWith('/fr/city/')) return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
   return undefined;
 }
