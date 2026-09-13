@@ -195,6 +195,98 @@ export function isIndexable(pathname: string): boolean {
   return false;
 }
 
+// ── Logical paths: what the code writes ─────────────────────────────────────
+//
+// Code links to a page without knowing the reader's language: a LOGICAL path,
+// the address minus its language, with site pages under their French key.
+//   /france/paris/budget   /usa/san-francisco/payroll   /methode   /
+// The link components (components/LocalizedLink, lib/navigation) put the
+// reader's language back at render time with localize().
+
+/** Logical path → address in `lang`. Anything that is not a logical path passes through untouched. */
+export function localize(href: string, lang: Lang): string {
+  if (!href.startsWith('/') || href.startsWith('//')) return href;
+  const cut = href.search(/[?#]/);
+  const pathPart = cut === -1 ? href : href.slice(0, cut);
+  const suffix = cut === -1 ? '' : href.slice(cut);
+  if (parsePath(pathPart)) return href; // already an address
+  const segs = pathPart.split('/').filter(Boolean);
+  if (segs.length === 0) return landingPath(lang) + suffix;
+  if ((COUNTRIES as readonly string[]).includes(segs[0])) {
+    return countryPath(lang, segs[0] as Country, ...segs.slice(1)) + suffix;
+  }
+  if (SITE_PAGES.includes(segs[0] as SitePage)) {
+    return sitePagePath(segs[0] as SitePage, lang, ...segs.slice(1)) + suffix;
+  }
+  return href;
+}
+
+/**
+ * parsePath, also reading a site page under its French key in any language:
+ * /en/methode is the route the proxy rewrites /en/method to, and a server
+ * render may see either spelling.
+ */
+function parseRoute(pathname: string): ParsedPath | null {
+  const p = parsePath(pathname);
+  if (p) return p;
+  const segs = pathname.split('?')[0].split('/').filter(Boolean);
+  if (LANGS.includes(segs[0] as Lang) && SITE_PAGES.includes(segs[1] as SitePage)) {
+    return { kind: 'site', lang: segs[0] as Lang, page: segs[1] as SitePage, rest: segs.slice(2) };
+  }
+  return null;
+}
+
+/** Address → logical path: /fr/france/paris/budget → /france/paris/budget, /en/method → /methode, /fr → /. */
+export function toLogical(pathname: string): string {
+  const p = parseRoute(pathname);
+  if (!p) return pathname;
+  if (p.kind === 'landing') return '/';
+  if (p.kind === 'country') return join(p.country, ...p.rest);
+  return join(p.page, ...p.rest);
+}
+
+/** Language of an address, if it is one. */
+export function langOf(pathname: string): Lang | null {
+  return parseRoute(pathname)?.lang ?? null;
+}
+
+/** Absolute URL of a logical path (or an address) in `lang`: absoluteUrl('/france/lille', 'fr') → https://www.qipu.org/fr/france/lille. */
+export function absoluteUrl(path: string, lang: Lang): string {
+  return SITE_ORIGIN + localize(path, lang);
+}
+
+export type Scope = {
+  country: Country;
+  /** The city or commune the page is about; null on a country's national pages. */
+  place: string | null;
+  /** The segment under the place (or under the country, for a national page). */
+  section: string | null;
+  /** Everything after the section. */
+  rest: string[];
+};
+
+/**
+ * What a logical path (or an address) is about. The legacy tree told a commune
+ * from a national page by its prefix (/fr/city/… vs /fr/national/…); both now
+ * sit under /france, so code asks this instead of matching a prefix:
+ *   /france/lille/budget → { country: france, place: lille, section: budget }
+ *   /france/dette        → { country: france, place: null, section: dette }
+ *   /france/comparer/a/b → { country: france, place: null, section: comparer, rest: [a, b] }
+ */
+export function scopeOf(pathname: string): Scope | null {
+  const logical = toLogical(pathname.split(/[?#]/)[0]);
+  const segs = logical.split('/').filter(Boolean);
+  const country = segs[0] as Country;
+  if (!COUNTRIES.includes(country)) return null;
+  const [second, third, ...more] = segs.slice(1);
+  const national =
+    !second ||
+    (country === 'france' && FRANCE_NATIONAL_SECTIONS.includes(second)) ||
+    (country === 'usa' && second === 'national');
+  if (national) return { country, place: null, section: second ?? null, rest: segs.slice(2) };
+  return { country, place: second, section: third ?? null, rest: more };
+}
+
 // ── Legacy → new ────────────────────────────────────────────────────────────
 
 const LEGACY_COUNTRY: Record<string, Country> = { fr: 'france', us: 'usa', br: 'brasil' };

@@ -33,7 +33,7 @@ export const bailleurConfig: EntityPageConfig<D> = {
     } else {
       capital = locale === "en" ? "Paris social-housing operator" : "bailleur social parisien";
     }
-    const canonical = `/fr/city/paris/dette/bailleur/${encodeURIComponent(b.slug)}`;
+    const canonical = `/france/paris/dette/bailleur/${encodeURIComponent(b.slug)}`;
     const title = locale === "en"
       ? `${b.name} — Operator · Qipu`
       : `${b.name} — Bailleur · Qipu`;
@@ -99,8 +99,8 @@ export const bailleurConfig: EntityPageConfig<D> = {
       return <span className="fx-kicker-mono">{kicker}</span>;
     },
     title: ({ bailleur }) => bailleur.name,
-    shareUrl: ({ bailleur }) => `/fr/city/paris/dette/bailleur/${encodeURIComponent(bailleur.slug)}`,
-    backHref: () => "/fr/city/paris/dette#sec-hors-bilan",
+    shareUrl: ({ bailleur }) => `/france/paris/dette/bailleur/${encodeURIComponent(bailleur.slug)}`,
+    backHref: () => "/france/paris/dette#sec-hors-bilan",
     breadcrumbLabel: ({ bailleur }) => bailleur.name,
     children: ({ bailleur }) => <BailleurFiche bailleur={bailleur} />,
   },

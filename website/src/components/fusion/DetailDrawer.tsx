@@ -1,6 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useLang } from "@/lib/navigation";
+
+import { localize } from "@/lib/urls";
+
+import { useRouter } from "@/lib/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
@@ -87,6 +91,7 @@ export default function DetailDrawer({
 }: Props) {
   const t = useT();
   const router = useRouter();
+  const lang = useLang();
   const track = useTrack();
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -212,7 +217,7 @@ export default function DetailDrawer({
       // explicit backHref (SF / Marseille / national); else the section hub.
       const target = backHref || hubFromShareUrl();
       if (target && typeof window !== "undefined") {
-        window.location.assign(target);
+        window.location.assign(localize(target, lang));
         return;
       }
     }
@@ -234,7 +239,7 @@ export default function DetailDrawer({
         to_url: parentLink.url,
       });
       if (parentLink.hard) {
-        window.location.assign(parentLink.url);
+        window.location.assign(localize(parentLink.url, lang));
       } else {
         router.push(parentLink.url, { scroll: false });
       }
@@ -255,7 +260,7 @@ export default function DetailDrawer({
     if (!shareUrl) return "";
     return shareUrl.startsWith("http")
       ? shareUrl
-      : `${window.location.origin}${shareUrl}`;
+      : `${window.location.origin}${localize(shareUrl, lang)}`;
   };
 
   const shareBody = () => {
@@ -346,7 +351,7 @@ export default function DetailDrawer({
               // suffit). Action plus utile : explorer le listing complet de
               // l'entité une fois qu'on a peeké un cas spécifique.
               if (!shareUrl) return null;
-              const m = shareUrl.match(/^(\/fr\/city\/[^/]+\/([^/]+))\//);
+              const m = shareUrl.match(/^(\/france\/[^/]+\/([^/]+))\//);
               if (!m) return null;
               const hubHref = m[1];
               const section = m[2];
@@ -361,7 +366,7 @@ export default function DetailDrawer({
               const key = labelKey[section];
               if (!key) return null;
               return (
-                <a className="fx-drawer-iconbtn fx-drawer-fullpage" href={hubHref}>
+                <a className="fx-drawer-iconbtn fx-drawer-fullpage" href={localize(hubHref, lang)}>
                   ↗ {t(key)}
                 </a>
               );

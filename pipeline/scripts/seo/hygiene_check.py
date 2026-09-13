@@ -23,7 +23,7 @@ over the pages it applies to. Exit 1 when a hard rule fails (everything except
 cache and speed, which are reported).
 
 A family is a URL SHAPE: the route the URL resolves to in website/src/app, its
-slugs collapsed into the route's placeholders — /fr/city/[slug]/fonction/[fonction]
+slugs collapsed into the route's placeholders — /[lang]/france/[slug]/fonction/[fonction]
 is one family, not one per commune. (Grouping by the path up to the slug made
 ~5 500 families per host once every commune had fonction and nature pages, and a
 `--per-family 1` run took over 50 minutes.) A URL with no route in this checkout
@@ -37,7 +37,7 @@ breadcrumb link is fetched once per run. Never run it in the background from a
 cloud routine — the session ends with its last message.
 
 Usage:
-  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www,fr,pt] [--out scratchpad/seo] [--workers 4]
+  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www] [--out scratchpad/seo] [--workers 4]
 """
 from __future__ import annotations
 
@@ -58,12 +58,13 @@ from pathlib import Path
 from threading import Lock
 
 UA = "Mozilla/5.0 (compatible; QipuHygiene/1.0; +https://www.qipu.org)"
-HOSTS = {"www": "https://www.qipu.org", "fr": "https://fr.qipu.org", "pt": "https://pt.qipu.org"}
+# One host since 2026-09-13 (website/src/lib/urls.ts): fr. and pt. redirect to www.
+HOSTS = {"www": "https://www.qipu.org"}
 ROOT = Path(__file__).resolve().parents[3]
 APP = ROOT / "website" / "src" / "app"
 MAX_WORKERS = 4  # more trips Vercel's bot mitigation
 
-# The static segment an entity page hangs under (/fr/city/paris/subventions/association/[slug]):
+# The static segment an entity page hangs under (/[lang]/france/paris/subventions/association/[slug]):
 # those pages must carry the answer sentence, a Dataset and a see-also block.
 ENTITY_TAILS = ("association", "fournisseur", "contrat", "projet", "lieu", "bailleur", "poste", "theme", "categorie",
                 "chapitre", "instrument", "masse", "arrondissement", "payee", "dept", "place", "role", "family", "area",
@@ -251,7 +252,7 @@ def soft404(url: str) -> bool:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--per-family", type=int, default=2)
-    ap.add_argument("--hosts", default="www,fr,pt")
+    ap.add_argument("--hosts", default="www")
     ap.add_argument("--out", default=str(ROOT / "scratchpad" / "seo"))
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--workers", type=int, default=MAX_WORKERS, help=f"parallel requests, at most {MAX_WORKERS}")

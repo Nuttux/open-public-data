@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "@/components/LocalizedLink";
+
 import type { ReactNode } from "react";
 import ExportRow from "@/components/fusion/ExportRow";
 import { useT } from "@/lib/localeContext";
@@ -46,16 +48,16 @@ export default function SfSourceFooter({
 }) {
   const t = useT();
   const sourcesHref = sourcesAnchor
-    ? `/us/city/sf/sources#${sourcesAnchor}`
-    : "/us/city/sf/sources";
+    ? `/usa/san-francisco/sources#${sourcesAnchor}`
+    : "/usa/san-francisco/sources";
   return (
     <section className="fx-footer-sources" id={id}>
       <div className="fx-wrap">
         <div className="fx-footer-sources-head">
           <span className="fx-footer-sources-label">{t("us.sf.footer.heading")}</span>
-          <a href={sourcesHref} className="fx-footer-sources-methode">
+          <Link href={sourcesHref} className="fx-footer-sources-methode">
             {t("us.sf.footer.method_link")}
-          </a>
+          </Link>
         </div>
         <p className="fx-footer-sources-meta">
           <b>{t("us.sf.footer.perimeter_label")}</b> {perimeter}

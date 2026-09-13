@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useT } from "@/lib/localeContext";
 import { registryFooterModel } from "@/lib/footer-model";
 import type { Place } from "@/lib/places";

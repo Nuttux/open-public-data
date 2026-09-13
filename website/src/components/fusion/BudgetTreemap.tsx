@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 /**
  * Treemap squarified pour la page /fr/national/budget.

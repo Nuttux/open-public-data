@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT } from "@/lib/localeContext";
 
 /** Carte « Par exemple » — le langage visuel des hero cards de la landing

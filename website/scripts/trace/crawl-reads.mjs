@@ -46,7 +46,9 @@ const PLAN = path.join(TRACE, 'route-plan.json');
 const PARALLEL = Number(process.env.PARALLEL || 6);
 const ONLY = process.env.ROUTES ? new RegExp(process.env.ROUTES) : null;
 const BASE_PORT = Number(process.env.BASE_PORT || 3200);
-const HOSTS = ['fr', 'www'];
+// One host since 2026-09-13 (src/lib/urls.ts): the language is in the path, and
+// fr./www. hosts redirect to the bare one, so a crawl on them would measure redirects.
+const HOSTS = ['www'];
 const RECORDER = path.join(HERE, 'read-recorder.cjs');
 const EXTRA = path.join(HERE, 'extra-requests.json');
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'qipu-reads-'));
@@ -58,7 +60,7 @@ const asciiPath = (p) => (/[^\x21-\x7e]/.test(p) ? encodeURI(p) : p);
 function get(port, host, p, headers = {}) {
   return new Promise((resolve) => {
     const req = http.request(
-      { host: '127.0.0.1', port, path: asciiPath(p), method: 'GET', headers: { host: `${host}.localhost:${port}`, ...headers } },
+      { host: '127.0.0.1', port, path: asciiPath(p), method: 'GET', headers: { host: host === 'www' ? `localhost:${port}` : `${host}.localhost:${port}`, ...headers } },
       (res) => {
         const chunks = [];
         res.on('data', (c) => chunks.push(c));

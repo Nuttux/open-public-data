@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { placesForCountry, orderedModules, type Place } from "@/lib/places";

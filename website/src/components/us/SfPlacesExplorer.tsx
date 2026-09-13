@@ -68,7 +68,7 @@ export default function SfPlacesExplorer({ places }: { places: SfPlaceIndexEntry
   const config = useMemo<PlacesConfig>(
     () => ({
       families: GROUPS,
-      hrefFor: (slug) => `/us/city/sf/places/place/${slug}`,
+      hrefFor: (slug) => `/usa/san-francisco/places/place/${slug}`,
       bounds: SF_VIEW,
       clampToBounds: false,
       minZoom: 10,

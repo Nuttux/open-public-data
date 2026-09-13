@@ -13,7 +13,7 @@
  * sends a document with the title in it.
  */
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CityData } from "@/lib/city/data";
@@ -1997,7 +1997,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
        it — where the fiche would open on "Filbert St · Greenwich St ·
        Montgomery St" — answers a question they did not ask. */
     if (hit.kind === "place") {
-      router.push(`/us/city/sf/places/place/${hit.to}`);
+      router.push(`/usa/san-francisco/places/place/${hit.to}`);
       return;
     }
     await openAt(

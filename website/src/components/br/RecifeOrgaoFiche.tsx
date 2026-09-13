@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { useRouter } from "@/lib/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
@@ -60,10 +60,10 @@ export default function RecifeOrgaoFiche({
                 <tr
                   key={s.cnpj}
                   className="fx-row-link"
-                  onClick={() => router.push(`/br/city/recife/quem-recebe/${s.cnpj}`)}
+                  onClick={() => router.push(`/brasil/recife/quem-recebe/${s.cnpj}`)}
                 >
                   <td>
-                    <Link href={`/br/city/recife/quem-recebe/${s.cnpj}`} onClick={(e) => e.stopPropagation()}>
+                    <Link href={`/brasil/recife/quem-recebe/${s.cnpj}`} onClick={(e) => e.stopPropagation()}>
                       {titleCasePt(s.nome)}
                     </Link>
                   </td>
@@ -84,10 +84,10 @@ export default function RecifeOrgaoFiche({
                 <tr
                   key={c.contrato_id}
                   className="fx-row-link"
-                  onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}
+                  onClick={() => router.push(`/brasil/recife/contratos/${c.contrato_id}`)}
                 >
                   <td>
-                    <Link href={`/br/city/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>
+                    <Link href={`/brasil/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>
                       {c.numero ?? t("br.recife.contrato.sem_numero")}
                     </Link>
                     <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>

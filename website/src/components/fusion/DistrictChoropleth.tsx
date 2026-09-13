@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "@/lib/navigation";
 import { useState } from "react";
 
 import { CHOROPLETH_PALETTE as PALETTE } from "./choropleth-palette";

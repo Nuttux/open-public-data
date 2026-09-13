@@ -156,7 +156,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.depenses)} Md€ — où va l'argent ?`,
         rows: topDep,
         sourceText: "Source Paris Open Data · Comptes M57",
-        urlText: "qipu.org/fr/city/paris/budget",
+        urlText: "qipu.org/fr/france/paris/budget",
       });
     }
     case "paris-subv-top-themes": {
@@ -170,7 +170,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.total)} Md€ versés — par thème`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "qipu.org/fr/city/paris/subventions",
+        urlText: "qipu.org/fr/france/paris/subventions",
       });
     }
     case "paris-subv-top-benef": {
@@ -186,7 +186,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top bénéficiaires — ${Math.round(d.concentrationTop10Pct)}% du total`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "qipu.org/fr/city/paris/subventions",
+        urlText: "qipu.org/fr/france/paris/subventions",
       });
     }
     case "paris-marches-top-fournisseurs": {
@@ -203,7 +203,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top 10 fournisseurs — ${Math.round(top10Share * 100)}% des enveloppes`,
         rows,
         sourceText: "Source DECP · Ville de Paris",
-        urlText: "qipu.org/fr/city/paris/marches",
+        urlText: "qipu.org/fr/france/paris/marches",
       });
     }
     case "paris-dette-capacite": {
@@ -226,7 +226,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Statut", value: status, accent: status !== "Sain" },
         ],
         sourceText: "Source Paris Open Data · Bilan + CA",
-        urlText: "qipu.org/fr/city/paris/dette",
+        urlText: "qipu.org/fr/france/paris/dette",
       });
     }
     case "paris-logement-tension": {
@@ -247,7 +247,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Logements financés", value: fmtFr(d.nouveauxParAn), accent: true },
         ],
         sourceText: "Source DRIHL · Paris Open Data",
-        urlText: "qipu.org/fr/city/paris/logement",
+        urlText: "qipu.org/fr/france/paris/logement",
       });
     }
     case "fr-daily-bread-composition": {
@@ -270,7 +270,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(tot)} Md€ — qui dépense quoi ?`,
         rows,
         sourceText: "Source Eurostat · gov_10a_main",
-        urlText: "qipu.org/fr/national/daily-bread",
+        urlText: "qipu.org/fr/france/daily-bread",
       });
     }
     case "fr-fiscalite-categories": {
@@ -291,7 +291,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${totalPo.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}% du PIB — qui paie quoi ?`,
         rows: cats,
         sourceText: "Source Eurostat · gov_10a_taxag",
-        urlText: "qipu.org/fr/national/fiscalite",
+        urlText: "qipu.org/fr/france/fiscalite",
       });
     }
     case "landing-per-capita": {

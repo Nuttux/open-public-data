@@ -123,7 +123,7 @@ function budgetPostePaths(city: string, base: string): string[] {
 
 /** Paris-only families: investments, places, guaranteed debt, balance sheet, arrondissements. */
 function parisOnlyPaths(): string[] {
-  const base = "/fr/city/paris";
+  const base = "/france/paris";
   const out: string[] = [];
   guarded(out, () => {
     const ids = new Set<string>();
@@ -177,14 +177,14 @@ function parisOnlyPaths(): string[] {
 function marseillePlacesPaths(): string[] {
   const out: string[] = [];
   guarded(out, () => {
-    for (const p of loadMarseillePlaces()) if (p.slug) out.push(`/fr/city/marseille/lieu/${p.slug}`);
+    for (const p of loadMarseillePlaces()) if (p.slug) out.push(`/france/marseille/lieu/${p.slug}`);
   });
   return out;
 }
 
 /** Recife (br-municipal): one JSON per family, keyed the way each route resolves. */
 function recifePaths(): string[] {
-  const base = "/br/city/recife";
+  const base = "/brasil/recife";
   const out: string[] = [];
   const b = "br/recife";
   guarded(out, () => {
@@ -226,7 +226,7 @@ function recifePaths(): string[] {
 const MARSEILLE_SECTIONS = ["budget", "subventions", "marches", "investissements", "dette", "logement", "lieux"];
 
 function frenchCitySectionPaths(): string[] {
-  return MARSEILLE_SECTIONS.map((s) => `/fr/city/marseille/${s}`);
+  return MARSEILLE_SECTIONS.map((s) => `/france/marseille/${s}`);
 }
 
 /** Browse indexes (lib/seo/browse.ts): index, letter/year pages and their pagination. */
@@ -241,16 +241,16 @@ function lettersPaged(base: string, names: string[]): string[] {
 }
 function frBrowsePaths(city: string): string[] {
   const out: string[] = [];
-  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/subventions/associations`, associationUniqueNames(city))));
-  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/marches/fournisseurs`, fournisseurList(city).map((f) => f.nom))));
+  guarded(out, () => out.push(...lettersPaged(`/france/${city}/subventions/associations`, associationUniqueNames(city))));
+  guarded(out, () => out.push(...lettersPaged(`/france/${city}/marches/fournisseurs`, fournisseurList(city).map((f) => f.nom))));
   guarded(out, () => {
-    const base = `/fr/city/${city}/marches/contrats`;
+    const base = `/france/${city}/marches/contrats`;
     out.push(base);
     for (const y of marchesYears(city)) out.push(`${base}/${y}`);
   });
   if (city === "paris") {
     guarded(out, () => {
-      const base = "/fr/city/paris/investissements/projets";
+      const base = "/france/paris/investissements/projets";
       out.push(base);
       for (const y of projetYears()) {
         out.push(`${base}/${y}`);
@@ -262,7 +262,7 @@ function frBrowsePaths(city: string): string[] {
 }
 export function sfBrowsePaths(): string[] {
   const out: string[] = [];
-  guarded(out, () => out.push(...lettersPaged("/us/city/sf/who-gets-paid/payees", sfPayeeNames())));
+  guarded(out, () => out.push(...lettersPaged("/usa/san-francisco/who-gets-paid/payees", sfPayeeNames())));
   return out;
 }
 
@@ -270,7 +270,7 @@ export function sfBrowsePaths(): string[] {
 export function frEntityPaths(): string[] {
   const out: string[] = [];
   for (const city of ["paris", "marseille"]) {
-    const base = `/fr/city/${city}`;
+    const base = `/france/${city}`;
     out.push(...frBrowsePaths(city), ...subventionPaths(city, base), ...marchesPaths(city, base), ...budgetPostePaths(city, base));
   }
   out.push(...parisOnlyPaths(), ...marseillePlacesPaths());
@@ -279,12 +279,12 @@ export function frEntityPaths(): string[] {
 
 export function brEntityPaths(): string[] {
   return [
-    "/br/city/recife",
-    "/br/city/recife/budget",
-    "/br/city/recife/contratos",
-    "/br/city/recife/quem-recebe",
-    "/br/city/recife/lugares",
-    ...lettersPaged("/br/city/recife/quem-recebe/todos", recifeRecipientNames()),
+    "/brasil/recife",
+    "/brasil/recife/budget",
+    "/brasil/recife/contratos",
+    "/brasil/recife/quem-recebe",
+    "/brasil/recife/lugares",
+    ...lettersPaged("/brasil/recife/quem-recebe/todos", recifeRecipientNames()),
     ...recifePaths(),
   ];
 }

@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useT } from "@/lib/localeContext";
 
 const PAGES = [
-  { href: "/fr/national/etat", labelKey: "fx.scope.france.etat", numKey: "fx.macro.nav.num.etat" },
-  { href: "/fr/national/dette", labelKey: "fx.scope.france.dette", numKey: "fx.macro.nav.num.dette" },
-  { href: "/fr/national/fiscalite", labelKey: "fx.scope.france.fiscalite", numKey: "fx.macro.nav.num.fiscalite" },
+  { href: "/france/etat", labelKey: "fx.scope.france.etat", numKey: "fx.macro.nav.num.etat" },
+  { href: "/france/dette", labelKey: "fx.scope.france.dette", numKey: "fx.macro.nav.num.dette" },
+  { href: "/france/fiscalite", labelKey: "fx.scope.france.fiscalite", numKey: "fx.macro.nav.num.fiscalite" },
 ];
 
 /**

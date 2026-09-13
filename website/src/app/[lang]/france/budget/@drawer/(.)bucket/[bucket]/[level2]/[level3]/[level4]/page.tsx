@@ -1,0 +1,25 @@
+import { renderDrilldownPage } from "@/lib/render-drilldown-page";
+
+type Params = {
+  bucket: string;
+  level2: string;
+  level3: string;
+  level4: string;
+};
+
+export default async function DrawerBudgetL4Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<Params>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  return renderDrilldownPage({
+    params,
+    searchParams,
+    voice: "impersonal",
+    basePath: "/france/budget",
+    isDrawer: true,
+    kind: "level4",
+  });
+}

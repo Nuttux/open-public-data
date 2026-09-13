@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 /**
  * The pay ladder — one range row per kind of work: the p25–p75 band where the

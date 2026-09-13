@@ -24,7 +24,7 @@ const pct = (share: number | null, locale: L) =>
 function communeRow(doc: CommuneFonctions, locale: L): RelatedRow {
   const t = relatedT(locale);
   const nom = doc.commune.nom;
-  return { href: `/fr/city/${doc.commune.slug}`, label: t("fx.related.commune.page", { nom, de_nom: deNom(nom) }) };
+  return { href: `/france/${doc.commune.slug}`, label: t("fx.related.commune.page", { nom, de_nom: deNom(nom) }) };
 }
 
 /** A public policy of a commune: the commune's other policies, then the commune page. */
@@ -37,7 +37,7 @@ export function communeFonctionRelated(doc: CommuneFonctions, fonction: Fonction
     .map((f) => {
       const p = pct(f.share, locale);
       return {
-        href: `/fr/city/${doc.commune.slug}/fonction/${f.slug}`,
+        href: `/france/${doc.commune.slug}/fonction/${f.slug}`,
         label: locale === "en" ? f.libelle_en : f.libelle,
         sub: p != null ? t("fx.related.commune.fonc_sub", { pct: p, year: doc.annee }) : t("fx.related.commune.year_sub", { year: doc.annee }),
         amount: eur(f.montant, locale),
@@ -59,7 +59,7 @@ export function communeNatureRelated(doc: CommuneFonctions, nature: NatureFamill
     .map((n) => {
       const p = pct(n.share, locale);
       return {
-        href: `/fr/city/${doc.commune.slug}/nature/${n.slug}`,
+        href: `/france/${doc.commune.slug}/nature/${n.slug}`,
         label: locale === "en" ? n.libelle_en : n.libelle,
         sub: p != null ? t("fx.related.commune.nat_sub", { pct: p, year: doc.annee }) : t("fx.related.commune.year_sub", { year: doc.annee }),
         amount: eur(n.montant, locale),

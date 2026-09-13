@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { LieuLien } from "@/lib/lieux-data";
 
 /**
@@ -19,7 +19,7 @@ export default function VoirLeLieu({ lien, locale }: { lien: LieuLien | null; lo
         ? locale === "en" ? "is funded at" : "est financé au"
         : locale === "en" ? "concerns" : "concerne";
   return (
-    <Link href={`/fr/city/paris/lieu/${lien.slug}`} scroll={false} className="fx-voir-lieu">
+    <Link href={`/france/paris/lieu/${lien.slug}`} scroll={false} className="fx-voir-lieu">
       {lien.photo && (
         <img src={lien.photo} alt="" width={104} height={70} loading="lazy" className="fx-voir-lieu-img" />
       )}

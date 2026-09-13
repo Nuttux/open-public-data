@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import Tip from "@/components/fusion/Tip";
 import { FicheBreakdown, FicheMore, FicheYearBars } from "@/components/fiche";
 import { fmtUsd, fmtUsdCompact, fmtShare } from "@/lib/us/format";

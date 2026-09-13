@@ -79,7 +79,7 @@ export default function MarseillePlacesExplorer({
   const config = useMemo<PlacesConfig>(
     () => ({
       families,
-      hrefFor: (slug) => `/fr/city/marseille/lieu/${slug}`,
+      hrefFor: (slug) => `/france/marseille/lieu/${slug}`,
       bounds: MARSEILLE_BOUNDS,
       clampToBounds: true,
       minZoom: 11,

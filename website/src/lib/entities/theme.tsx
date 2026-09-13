@@ -23,7 +23,7 @@ const fmtEur = (n: number) => {
  */
 export function makeThemeConfig(city: string): EntityPageConfig<D> {
   const cityNom = getCity(city)?.nom ?? "la Ville";
-  const base = `/fr/city/${city}/subventions`;
+  const base = `/france/${city}/subventions`;
   return {
     load: ({ slug }) => {
       const fiche = loadThemeSubventions(slug, undefined, city);

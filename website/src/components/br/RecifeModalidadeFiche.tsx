@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { useRouter } from "@/lib/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
@@ -38,7 +38,7 @@ function OrgaoBars({ items }: { items: ModalidadeDetail["top_orgaos"] }) {
         const val = <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>{fmtBrlCompact(o.valor)}</span>;
         const style = { display: "grid", gridTemplateColumns: "1fr 96px", gap: 14, padding: "6px 0", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-ui)", fontSize: 13 } as const;
         return o.slug ? (
-          <Link key={o.orgao} href={`/br/city/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>{label}{val}</Link>
+          <Link key={o.orgao} href={`/brasil/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>{label}{val}</Link>
         ) : (
           <div key={o.orgao ?? `outros-${i}`} style={style}>{label}{val}</div>
         );
@@ -120,9 +120,9 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
           <table className="fx-fiche-table">
             <tbody>
               {m.top_suppliers.map((s) => (
-                <tr key={s.cnpj} className="fx-row-link" onClick={() => router.push(`/br/city/recife/quem-recebe/${s.cnpj}`)}>
+                <tr key={s.cnpj} className="fx-row-link" onClick={() => router.push(`/brasil/recife/quem-recebe/${s.cnpj}`)}>
                   <td>
-                    <Link href={`/br/city/recife/quem-recebe/${s.cnpj}`} onClick={(e) => e.stopPropagation()}>{titleCasePt(s.nome)}</Link>
+                    <Link href={`/brasil/recife/quem-recebe/${s.cnpj}`} onClick={(e) => e.stopPropagation()}>{titleCasePt(s.nome)}</Link>
                     <div className="fx-fiche-sub">{fill(t("br.recife.mod.n_contratos_sup"), { n: fmtInt(s.n) })}</div>
                   </td>
                   <td className="num mono">{fmtBrlCompact(s.valor)}</td>
@@ -139,9 +139,9 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
           <table className="fx-fiche-table">
             <tbody>
               {m.top_contracts.map((c) => (
-                <tr key={c.contrato_id} className="fx-row-link" onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}>
+                <tr key={c.contrato_id} className="fx-row-link" onClick={() => router.push(`/brasil/recife/contratos/${c.contrato_id}`)}>
                   <td>
-                    <Link href={`/br/city/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>{c.numero ?? t("br.recife.contrato.sem_numero")}</Link>
+                    <Link href={`/brasil/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>{c.numero ?? t("br.recife.contrato.sem_numero")}</Link>
                     <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>
                   <td className="num mono">
@@ -155,7 +155,7 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
       )}
 
       <p style={{ margin: "18px 0 0", fontSize: 14 }}>
-        <Link href={`/br/city/recife/contratos?mod=${encodeURIComponent(m.modalidade)}#sec-contratos`} style={{ fontWeight: 600 }}>
+        <Link href={`/brasil/recife/contratos?mod=${encodeURIComponent(m.modalidade)}#sec-contratos`} style={{ fontWeight: 600 }}>
           {fill(t("br.recife.mod.ver_todos"), { n: fmtInt(m.n_contratos), mod: modalidadeLabel(m.modalidade, locale) })} →
         </Link>
       </p>

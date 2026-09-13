@@ -1,3 +1,5 @@
+import { permanentRedirectLocalized } from "@/lib/redirect-server";
+import { scopeOf } from "@/lib/urls";
 /**
  * Factory unique pour les fiches d'entités Paris (page complète + drawer).
  *
@@ -22,7 +24,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { cache } from "react";
 
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import "@/app/fusion.css";
 import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
@@ -142,7 +144,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     // every unknown entity URL served until 2026-09-08.
     if (!d) notFound();
     const to = cfg.canonicalRedirect?.(d, params);
-    if (to) permanentRedirect(to);
+    if (to) await permanentRedirectLocalized(to);
     const md = cfg.metadata(d, locale, params);
     const seo = cfg.seo?.(d, locale, params) ?? null;
     if (seo) {
@@ -160,7 +162,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const d = await loadOnce(params, sp);
     if (!d) return notFound();
     const to = cfg.canonicalRedirect?.(d, params);
-    if (to) permanentRedirect(to);
+    if (to) await permanentRedirectLocalized(to);
     const locale = await readLocale();
     const body = cfg.page.body(d, locale);
     const seo = cfg.seo?.(d, locale, params) ?? null;
@@ -169,7 +171,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     // the path the entity config declares as canonical.
     const declared = seo ? cfg.metadata(d, locale, params).alternates?.canonical : null;
     const jsonLdPath = typeof declared === "string" && declared.startsWith("/") ? declared : null;
-    const city = jsonLdPath?.match(/^\/fr\/city\/([^/]+)/)?.[1];
+    const city = jsonLdPath ? scopeOf(jsonLdPath)?.place : null;
     const cityNom = city === "marseille" ? "Marseille" : "Paris";
     return (
       <div className="theme-fusion">

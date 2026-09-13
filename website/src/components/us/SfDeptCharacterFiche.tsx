@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { SfDeptCharacterDetailData, SfDeptCharacterVendorRow } from "@/lib/us/sf-budget-data";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
-import { bucketColor, bucketLabelKey, UNCLASSIFIED_COLOR } from "@/app/us/city/sf/who-gets-paid/bucket";
+import { bucketColor, bucketLabelKey, UNCLASSIFIED_COLOR } from "@/app/[lang]/usa/san-francisco/who-gets-paid/bucket";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -116,7 +116,7 @@ function VendorRow({
   if (slug) {
     return (
       <Link
-        href={`/us/city/sf/who-gets-paid/payee/${slug}?year=${fy}`}
+        href={`/usa/san-francisco/who-gets-paid/payee/${slug}?year=${fy}`}
         scroll={false}
         className="fx-row-link"
         style={{ ...rowStyle, textDecoration: "none", color: "inherit" }}
@@ -280,7 +280,7 @@ export default function SfDeptCharacterFiche({
           <p className="fx-note">
             {t("us.sf.fiche.dc.payments_empty")}{" "}
             <Link
-              href="/us/city/sf/payroll"
+              href="/usa/san-francisco/payroll"
               style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", textDecoration: "none" }}
             >
               {t("us.sf.fiche.dc.payments_payroll_link")}

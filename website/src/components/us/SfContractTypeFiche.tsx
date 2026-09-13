@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import Tip from "@/components/fusion/Tip";
 import { FicheMore } from "@/components/fiche";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
-import { contractLabel, typeLabel } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
-import type { SfActiveRow } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+import { contractLabel, typeLabel } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
+import type { SfActiveRow } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
 
 /**
  * Contract-type fiche — the SF analogue of Recife's `modalidade` fiche
@@ -47,7 +47,7 @@ export default function SfContractTypeFiche({ d }: { d: SfContractTypeData }) {
   const contractRow = (r: SfContractTypeData["active"][number]) => (
     <Link
       key={r.contract_no}
-      href={`/us/city/sf/contracts/contract/${r.contract_no}`}
+      href={`/usa/san-francisco/contracts/contract/${r.contract_no}`}
       scroll={false}
       className="fx-row-link"
       style={{
@@ -140,7 +140,7 @@ export default function SfContractTypeFiche({ d }: { d: SfContractTypeData }) {
           {d.n_active > TOP_N && (
             <p style={{ margin: "10px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
               Showing the {TOP_N} biggest of {nfInt.format(d.n_active)} active contracts of this type
-              · <Link href="/us/city/sf/contracts#sec-search" style={{ color: "var(--bleu)" }}>search them all →</Link>
+              · <Link href="/usa/san-francisco/contracts#sec-search" style={{ color: "var(--bleu)" }}>search them all →</Link>
             </p>
           )}
         </section>

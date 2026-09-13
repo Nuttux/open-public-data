@@ -1,3 +1,4 @@
+import { scopeOf } from "@/lib/urls";
 /**
  * Footer model (ADR-0010 D2 spirit) — normalises the site footer into ONE shape
  * that a single presentational <SiteFooter> renders for every country.
@@ -74,17 +75,17 @@ function withYear(s: string, year: number): string {
  * French page — the wrong licence for Paris, the wrong source elsewhere.
  */
 function franceCreditKey(pathname: string): string {
-  if (pathname.startsWith("/fr/national")) return "fx.foot.credit.national";
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  if (!m) return "fx.foot.license";
-  if (m[1] === "paris") return "fx.foot.credit.paris";
-  if (m[1] === "marseille") return "fx.foot.credit.marseille";
+  const s = scopeOf(pathname);
+  if (s?.country !== "france") return "fx.foot.license";
+  if (s.place === null) return "fx.foot.credit.national";
+  if (s.place === "paris") return "fx.foot.credit.paris";
+  if (s.place === "marseille") return "fx.foot.credit.marseille";
   return "fx.foot.credit.communes";
 }
 
 function footerCitySlug(pathname: string): string {
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  return m ? m[1] : "paris";
+  const s = scopeOf(pathname);
+  return (s?.country === "france" && s.place) || "paris";
 }
 
 export function franceFooterModel(
@@ -113,11 +114,11 @@ export function franceFooterModel(
   // the underlying sections (Paris and Marseille today).
   if (!commune && (citySlug === "paris" || citySlug === "marseille")) {
     sections.push(
-      { href: `/fr/city/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") },
-      { href: `/fr/city/${citySlug}/marches/fournisseurs`, label: t("fx.foot.link.idx_fourn") },
-      { href: `/fr/city/${citySlug}/marches/contrats`, label: t("fx.foot.link.idx_contrats") },
+      { href: `/france/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") },
+      { href: `/france/${citySlug}/marches/fournisseurs`, label: t("fx.foot.link.idx_fourn") },
+      { href: `/france/${citySlug}/marches/contrats`, label: t("fx.foot.link.idx_contrats") },
     );
-    if (citySlug === "paris") sections.push({ href: "/fr/city/paris/investissements/projets", label: t("fx.foot.link.idx_projets") });
+    if (citySlug === "paris") sections.push({ href: "/france/paris/investissements/projets", label: t("fx.foot.link.idx_projets") });
   }
 
   const project: FooterLink[] = [

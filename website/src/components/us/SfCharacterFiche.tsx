@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { SfCharacterFicheData } from "@/lib/us/sf-budget-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
@@ -84,7 +84,7 @@ export default function SfCharacterFiche({ c }: { c: SfCharacterFicheData }) {
         const row = (d: SfCharacterFicheData["departments"][number]) => (
           <Link
             key={d.code}
-            href={`/us/city/sf/budget/dept/${deptSlug(d.code)}?year=${c.fiscal_year}`}
+            href={`/usa/san-francisco/budget/dept/${deptSlug(d.code)}?year=${c.fiscal_year}`}
             scroll={false}
             className="fx-row-link"
             style={{

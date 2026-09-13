@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useT } from "@/lib/localeContext";
 import { franceFooterModel } from "@/lib/footer-model";
 import { useCommuneNav } from "@/components/CommuneNavContext";

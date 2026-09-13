@@ -14,8 +14,8 @@ import {
   loadSfContractsOverview,
   loadSfContractType,
   sfContractDeptHref,
-} from "@/app/us/city/sf/contracts/data";
-import { contractLabel, FAMILY_LABELS, typeLabel, typeSlug, type SfContractFiche } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+} from "@/app/[lang]/usa/san-francisco/contracts/data";
+import { contractLabel, FAMILY_LABELS, typeLabel, typeSlug, type SfContractFiche } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
 import type { SfAuthorityData } from "@/components/us/SfAuthorityFiche";
 import type { SfContractTypeData } from "@/components/us/SfContractTypeFiche";
 import type { SfDeptContractsData } from "@/components/us/SfDeptContractsFiche";
@@ -72,7 +72,7 @@ export function sfContractRelated(fiche: SfContractFiche): RelatedBlock | null {
     : [];
   for (const r of same) {
     rows.push({
-      href: `/us/city/sf/contracts/contract/${r.contract_no}`,
+      href: `/usa/san-francisco/contracts/contract/${r.contract_no}`,
       label: contractLabel(r) || t("us.sf.related.contract_fallback", { no: r.contract_no }),
       sub: r.department ? t("us.sf.related.same_prime_dept", { dept: r.department }) : t("us.sf.related.same_prime"),
       amount: usd(r.agreed_usd),
@@ -88,7 +88,7 @@ export function sfContractRelated(fiche: SfContractFiche): RelatedBlock | null {
       .filter((r) => loadSfContractFiche(r.contract_no))
       .slice(0, 2 - same.length)) {
       rows.push({
-        href: `/us/city/sf/contracts/contract/${r.contract_no}`,
+        href: `/usa/san-francisco/contracts/contract/${r.contract_no}`,
         label: contractLabel(r) || t("us.sf.related.contract_fallback", { no: r.contract_no }),
         sub: r.prime ? t("us.sf.related.same_dept_type_prime", { prime: r.prime }) : t("us.sf.related.same_dept_type"),
         amount: usd(r.agreed_usd),
@@ -98,7 +98,7 @@ export function sfContractRelated(fiche: SfContractFiche): RelatedBlock | null {
   if (prime) {
     const payee = contractPrimePayeeSlug(c.contract_no);
     if (payee) {
-      rows.push({ href: `/us/city/sf/who-gets-paid/payee/${payee}`, label: t("us.sf.related.payee", { name: prime }), sub: t("us.sf.related.payee_sub") });
+      rows.push({ href: `/usa/san-francisco/who-gets-paid/payee/${payee}`, label: t("us.sf.related.payee", { name: prime }), sub: t("us.sf.related.payee_sub") });
     }
   }
   const deptHref = sfContractDeptHref(c.department_code);
@@ -108,7 +108,7 @@ export function sfContractRelated(fiche: SfContractFiche): RelatedBlock | null {
   const type = c.contract_type ? loadSfContractType(typeSlug(c.contract_type)) : null;
   if (type) {
     rows.push({
-      href: `/us/city/sf/contracts/type/${typeSlug(type.raw)}`,
+      href: `/usa/san-francisco/contracts/type/${typeSlug(type.raw)}`,
       label: t("us.sf.related.type", { type: typeLabel(type.raw) }),
       sub: t("us.sf.related.type_sub"),
       amount: usd(type.register.agreed_usd),
@@ -145,23 +145,23 @@ export function sfPayeeRelated(p: SfPayeeFicheData): RelatedBlock | null {
   const me = all.find((x) => x.slug === p.slug);
   const sameDept = me?.dept ? all.filter((x) => x.dept === me.dept && x.slug !== p.slug).sort((a, b) => b.total - a.total).slice(0, 3) : [];
   for (const x of sameDept) {
-    rows.push({ href: `/us/city/sf/who-gets-paid/payee/${x.slug}`, label: x.name, sub: t("us.sf.related.payee_same_dept", { dept: x.deptName ?? "" }), amount: usd(x.total) });
+    rows.push({ href: `/usa/san-francisco/who-gets-paid/payee/${x.slug}`, label: x.name, sub: t("us.sf.related.payee_same_dept", { dept: x.deptName ?? "" }), amount: usd(x.total) });
   }
   if (sameDept.length < 2) {
     const ranked = all.slice().sort((a, b) => b.total - a.total);
     const taken = new Set(sameDept.map((x) => x.slug));
     for (const x of neighbours(ranked, ranked.findIndex((x) => x.slug === p.slug), 3).filter((x) => !taken.has(x.slug)).slice(0, 3 - sameDept.length)) {
-      rows.push({ href: `/us/city/sf/who-gets-paid/payee/${x.slug}`, label: x.name, sub: t("us.sf.related.payee_rank"), amount: usd(x.total) });
+      rows.push({ href: `/usa/san-francisco/who-gets-paid/payee/${x.slug}`, label: x.name, sub: t("us.sf.related.payee_rank"), amount: usd(x.total) });
     }
   }
   const slugs = loadSfCategorySlugMap();
   const cat = (p.profile?.categories ?? []).find((c) => slugs[c.code]);
   if (cat) {
-    rows.push({ href: `/us/city/sf/who-gets-paid/category/${slugs[cat.code]}`, label: t("us.sf.related.category", { label: cat.label }), sub: t("us.sf.related.category_sub") });
+    rows.push({ href: `/usa/san-francisco/who-gets-paid/category/${slugs[cat.code]}`, label: t("us.sf.related.category", { label: cat.label }), sub: t("us.sf.related.category_sub") });
   }
   const deptHref = sfContractDeptHref(me?.dept);
   if (deptHref && me?.deptName) rows.push({ href: deptHref, label: t("us.sf.related.dept_contracts", { dept: me.deptName }), sub: t("us.sf.related.dept_contracts_sub") });
-  rows.push({ href: "/us/city/sf/who-gets-paid", label: t("us.sf.related.hub_wgp"), sub: t("us.sf.related.hub_wgp_sub") });
+  rows.push({ href: "/usa/san-francisco/who-gets-paid", label: t("us.sf.related.hub_wgp"), sub: t("us.sf.related.hub_wgp_sub") });
   return block(t("us.sf.related.payee_block_sub"), rows);
 }
 
@@ -175,25 +175,25 @@ export function sfCategoryRelated(d: SfCategoryData): RelatedBlock | null {
     .filter((r) => r.spend_class === d.spendClass && slugs[r.code] && r.paid_usd > 0)
     .sort((a, b) => b.paid_usd - a.paid_usd);
   const rows: RelatedRow[] = neighbours(ranked, ranked.findIndex((r) => r.code === d.code), 5).map((r) => ({
-    href: `/us/city/sf/who-gets-paid/category/${slugs[r.code]}?year=${d.fiscalYear}`,
+    href: `/usa/san-francisco/who-gets-paid/category/${slugs[r.code]}?year=${d.fiscalYear}`,
     label: r.label,
     sub: t("us.sf.related.category_peer_sub", { fy: d.fiscalYear }),
     amount: usd(r.paid_usd),
   }));
-  rows.push({ href: "/us/city/sf/who-gets-paid", label: t("us.sf.related.hub_wgp"), sub: t("us.sf.related.hub_wgp_sub") });
+  rows.push({ href: "/usa/san-francisco/who-gets-paid", label: t("us.sf.related.hub_wgp"), sub: t("us.sf.related.hub_wgp_sub") });
   return block(t("us.sf.related.category_block_sub", { fy: d.fiscalYear }), rows);
 }
 
 /* ── Contracts facets ──────────────────────────────────────────────────── */
 
-const contractsHub = (): RelatedRow => ({ href: "/us/city/sf/contracts", label: t("us.sf.related.hub_contracts"), sub: t("us.sf.related.hub_contracts_sub") });
+const contractsHub = (): RelatedRow => ({ href: "/usa/san-francisco/contracts", label: t("us.sf.related.hub_contracts"), sub: t("us.sf.related.hub_contracts_sub") });
 
 /** Department (contracts): its budget and payroll pages, its neighbours in the ranking of active contracts, the hub. */
 export function sfContractDeptRelated(d: SfDeptContractsData): RelatedBlock | null {
   const rows: RelatedRow[] = [];
   if (d.budgetHref) rows.push({ href: d.budgetHref, label: t("us.sf.related.dept_budget", { dept: d.name }), sub: t("us.sf.related.dept_budget_sub") });
   const payroll = payrollDeptSlug(d.code);
-  if (sfPayrollDeptSlugs().includes(payroll)) rows.push({ href: `/us/city/sf/payroll/dept/${payroll}`, label: t("us.sf.related.dept_payroll", { dept: d.name }), sub: t("us.sf.related.dept_payroll_sub") });
+  if (sfPayrollDeptSlugs().includes(payroll)) rows.push({ href: `/usa/san-francisco/payroll/dept/${payroll}`, label: t("us.sf.related.dept_payroll", { dept: d.name }), sub: t("us.sf.related.dept_payroll_sub") });
   const bars = loadSfContractDeptBars(1000);
   for (const b of neighbours(bars, bars.findIndex((b) => b.code === d.code), 3)) {
     const href = sfContractDeptHref(b.code);
@@ -207,7 +207,7 @@ export function sfContractDeptRelated(d: SfDeptContractsData): RelatedBlock | nu
 export function sfContractTypeRelated(d: SfContractTypeData): RelatedBlock | null {
   const ranked = loadSfContractsOverview().landscape.by_type.slice().sort((a, b) => b.agreed_usd - a.agreed_usd);
   const rows: RelatedRow[] = neighbours(ranked, ranked.findIndex((r) => r.contract_type === d.raw), 5).map((r) => ({
-    href: `/us/city/sf/contracts/type/${typeSlug(r.contract_type)}`,
+    href: `/usa/san-francisco/contracts/type/${typeSlug(r.contract_type)}`,
     label: typeLabel(r.contract_type),
     sub: t("us.sf.related.register_sub", { n: r.n_contracts.toLocaleString("en-US") }),
     amount: usd(r.agreed_usd),
@@ -220,7 +220,7 @@ export function sfContractTypeRelated(d: SfContractTypeData): RelatedBlock | nul
 export function sfAuthorityRelated(d: SfAuthorityData): RelatedBlock | null {
   const ranked = loadSfContractsOverview().authority_families.families.slice().sort((a, b) => b.agreed_usd - a.agreed_usd);
   const rows: RelatedRow[] = neighbours(ranked, ranked.findIndex((f) => f.family === d.family), 5).map((f) => ({
-    href: `/us/city/sf/contracts/authority/${f.family}`,
+    href: `/usa/san-francisco/contracts/authority/${f.family}`,
     label: FAMILY_LABELS[f.family] ?? f.family,
     sub: t("us.sf.related.register_sub", { n: f.n_contracts.toLocaleString("en-US") }),
     amount: usd(f.agreed_usd),
@@ -231,7 +231,7 @@ export function sfAuthorityRelated(d: SfAuthorityData): RelatedBlock | null {
 
 /* ── Budget ────────────────────────────────────────────────────────────── */
 
-const budgetHub = (fy: number): RelatedRow => ({ href: `/us/city/sf/budget?year=${fy}`, label: t("us.sf.related.hub_budget", { fy }), sub: t("us.sf.related.hub_budget_sub") });
+const budgetHub = (fy: number): RelatedRow => ({ href: `/usa/san-francisco/budget?year=${fy}`, label: t("us.sf.related.hub_budget", { fy }), sub: t("us.sf.related.hub_budget_sub") });
 const sideWord = (side: string) => t(side === "revenue" ? "us.sf.related.side_revenue" : "us.sf.related.side_spending");
 
 /** Spending/revenue type: its neighbours on the same side of the same year, the budget. */
@@ -239,7 +239,7 @@ export function sfCharacterRelated(c: SfCharacterFicheData): RelatedBlock | null
   const bd = loadSfBudgetBreakdown(c.fiscal_year);
   const ranked = (bd?.characters[c.side] ?? []).filter((r) => r.total_usd > 0).sort((a, b) => b.total_usd - a.total_usd);
   const rows: RelatedRow[] = neighbours(ranked, ranked.findIndex((r) => r.code === c.code), 5).map((r) => ({
-    href: `/us/city/sf/budget/character/${characterSlug(r.code)}?year=${c.fiscal_year}&side=${c.side}`,
+    href: `/usa/san-francisco/budget/character/${characterSlug(r.code)}?year=${c.fiscal_year}&side=${c.side}`,
     label: r.label,
     sub: t("us.sf.related.budget_peer_sub", { side: sideWord(c.side), fy: c.fiscal_year }),
     amount: usd(r.total_usd),
@@ -256,7 +256,7 @@ export function sfServiceRelated(sv: SfServiceFicheData): RelatedBlock | null {
     .sort((a, b) => b.total_usd - a.total_usd)
     .slice(0, 5)
     .map((g) => ({
-      href: `/us/city/sf/budget/service/${serviceSlug(g.label)}?year=${sv.fiscal_year}&side=${sv.side}`,
+      href: `/usa/san-francisco/budget/service/${serviceSlug(g.label)}?year=${sv.fiscal_year}&side=${sv.side}`,
       label: g.label,
       sub: t(g.n_departments === 1 ? "us.sf.related.service_peer_sub_one" : "us.sf.related.service_peer_sub", { n: g.n_departments, fy: sv.fiscal_year }),
       amount: usd(g.total_usd),
@@ -270,8 +270,8 @@ export function sfDeptCharacterRelated(d: SfDeptCharacterDetailData): RelatedBlo
   const fy = d.fiscal_year;
   const name = d.dept.display_name ?? d.dept.label;
   const rows: RelatedRow[] = [
-    { href: `/us/city/sf/budget/dept/${deptSlug(d.dept.code)}?year=${fy}`, label: t("us.sf.related.cell_dept", { dept: name }), sub: t("us.sf.related.cell_dept_sub", { fy }), amount: usd(d.dept_total_usd) },
-    { href: `/us/city/sf/budget/character/${characterSlug(d.character.code)}?year=${fy}&side=${d.side}`, label: t("us.sf.related.cell_char", { label: d.character.label }), sub: t("us.sf.related.cell_char_sub", { fy }) },
+    { href: `/usa/san-francisco/budget/dept/${deptSlug(d.dept.code)}?year=${fy}`, label: t("us.sf.related.cell_dept", { dept: name }), sub: t("us.sf.related.cell_dept_sub", { fy }), amount: usd(d.dept_total_usd) },
+    { href: `/usa/san-francisco/budget/character/${characterSlug(d.character.code)}?year=${fy}&side=${d.side}`, label: t("us.sf.related.cell_char", { label: d.character.label }), sub: t("us.sf.related.cell_char_sub", { fy }) },
   ];
   const bd = loadSfBudgetBreakdown(fy);
   const labels = new Map((bd?.characters[d.side] ?? []).map((c) => [c.code, c.label]));
@@ -280,7 +280,7 @@ export function sfDeptCharacterRelated(d: SfDeptCharacterDetailData): RelatedBlo
     .sort((a, b) => b[2] - a[2])
     .slice(0, 3)) {
     rows.push({
-      href: `/us/city/sf/budget/dept/${deptSlug(d.dept.code)}/character/${characterSlug(code)}?year=${fy}&side=${d.side}`,
+      href: `/usa/san-francisco/budget/dept/${deptSlug(d.dept.code)}/character/${characterSlug(code)}?year=${fy}&side=${d.side}`,
       label: labels.get(code) ?? code,
       sub: t("us.sf.related.cell_peer_sub", { dept: name, fy }),
       amount: usd(amount),
@@ -292,7 +292,7 @@ export function sfDeptCharacterRelated(d: SfDeptCharacterDetailData): RelatedBlo
 
 /* ── Payroll ───────────────────────────────────────────────────────────── */
 
-const payrollHub = (): RelatedRow => ({ href: "/us/city/sf/payroll", label: t("us.sf.related.hub_payroll"), sub: t("us.sf.related.hub_payroll_sub") });
+const payrollHub = (): RelatedRow => ({ href: "/usa/san-francisco/payroll", label: t("us.sf.related.hub_payroll"), sub: t("us.sf.related.hub_payroll_sub") });
 
 /** Payroll department: its service area, its budget and contracts, its neighbours in the area, the hub. */
 export function sfPayrollDeptRelated(d: SfPayrollDeptData): RelatedBlock | null {
@@ -318,7 +318,7 @@ export function sfPayrollAreaRelated(a: SfPayrollAreaData): RelatedBlock | null 
     .sort((x, y) => y.latest.total_compensation_usd - x.latest.total_compensation_usd)
     .slice(0, 5)
     .map((o) => ({
-      href: `/us/city/sf/payroll/area/${o.slug}`,
+      href: `/usa/san-francisco/payroll/area/${o.slug}`,
       label: o.name,
       sub: t("us.sf.related.payroll_area_peer_sub", { n: o.latest.n_employees_listed.toLocaleString("en-US"), fy: o.fiscalYear }),
       amount: usd(o.latest.total_compensation_usd),
@@ -334,7 +334,7 @@ export function sfPayrollFamilyRelated(f: SfPayrollFamilyData): RelatedBlock | n
     .map((r) => ({ slug: familySlug(r.display_family), family: r.display_family, usd: r.total_compensation_usd, n: r.n_employees }))
     .sort((a, b) => b.usd - a.usd);
   const rows: RelatedRow[] = neighbours(ranked, ranked.findIndex((r) => r.family === f.family), 5).map((r) => ({
-    href: `/us/city/sf/payroll/family/${r.slug}`,
+    href: `/usa/san-francisco/payroll/family/${r.slug}`,
     label: r.family,
     sub: t("us.sf.related.payroll_family_peer_sub", { n: r.n.toLocaleString("en-US"), fy: f.fiscalYear }),
     amount: usd(r.usd),
@@ -362,14 +362,14 @@ export async function sfCityPageRelated(p: CityPage): Promise<RelatedBlock | nul
   const rows: RelatedRow[] = [];
   if (p.kind === "neighbourhood") {
     for (const h of await hoodNeighbourPages(p.slug)) {
-      rows.push({ href: `/us/city/sf/the-city/neighbourhood/${h.slug}`, label: h.name, sub: t(h.count === "1" ? "us.sf.related.city_hood_sub_one" : "us.sf.related.city_hood_sub", { count: h.count }) });
+      rows.push({ href: `/usa/san-francisco/the-city/neighbourhood/${h.slug}`, label: h.name, sub: t(h.count === "1" ? "us.sf.related.city_hood_sub_one" : "us.sf.related.city_hood_sub", { count: h.count }) });
     }
   } else {
     for (const s of await streetRelatedPages(p.slug)) {
-      rows.push({ href: `/us/city/sf/the-city/street/${s.slug}`, label: s.name, sub: t(`us.sf.related.city_street_${s.sameBlock ? "block" : "rank"}_sub${s.count === "1" ? "_one" : ""}`, { count: s.count }) });
+      rows.push({ href: `/usa/san-francisco/the-city/street/${s.slug}`, label: s.name, sub: t(`us.sf.related.city_street_${s.sameBlock ? "block" : "rank"}_sub${s.count === "1" ? "_one" : ""}`, { count: s.count }) });
     }
   }
-  rows.push({ href: "/us/city/sf/the-city", label: t("us.sf.related.hub_city"), sub: t("us.sf.related.hub_city_sub") });
+  rows.push({ href: "/usa/san-francisco/the-city", label: t("us.sf.related.hub_city"), sub: t("us.sf.related.hub_city_sub") });
   return block(t(p.kind === "neighbourhood" ? "us.sf.related.city_hood_block_sub" : "us.sf.related.city_street_block_sub_block"), rows);
 }
 
@@ -392,13 +392,13 @@ export function sfPlaceRelated(place: SfPlaceFicheData): RelatedBlock | null {
     ...others.filter((p) => p.family === place.family && p.owning_dept_code !== place.owning_dept.code && !shown.has(p.slug)).sort(byMoney).map((p) => ({ p, why: "kind" as const })),
   ].slice(0, 4);
   const rows: RelatedRow[] = pick.map(({ p, why }) => ({
-    href: `/us/city/sf/places/place/${p.slug}`,
+    href: `/usa/san-francisco/places/place/${p.slug}`,
     label: p.name,
     sub: why === "dept" ? t("us.sf.related.place_same_dept", { kind: p.kind, dept: place.owning_dept.name }) : t("us.sf.related.place_same_kind", { kind: p.kind }),
     amount: p.funds_usd > 0 ? usd(p.funds_usd) : null,
   }));
   const contracts = sfContractDeptHref(place.owning_dept.code);
   if (contracts) rows.push({ href: contracts, label: t("us.sf.related.dept_contracts", { dept: place.owning_dept.name }), sub: t("us.sf.related.dept_contracts_sub") });
-  rows.push({ href: "/us/city/sf/places", label: t("us.sf.related.hub_places"), sub: t("us.sf.related.hub_places_sub") });
+  rows.push({ href: "/usa/san-francisco/places", label: t("us.sf.related.hub_places"), sub: t("us.sf.related.hub_places_sub") });
   return block(t("us.sf.related.place_block_sub", { dept: place.owning_dept.name }), rows);
 }

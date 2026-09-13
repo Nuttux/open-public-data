@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { ARRONDISSEMENT_PATHS } from "@/components/fusion/paris-arrondissements";
 import { fmtInt, fmtBillions, fmtMillions, fill, numLocale, sufOrdinal } from "@/lib/fmt";
@@ -32,67 +32,67 @@ type MarqueeSource = {
 
 const MARQUEE_SOURCE: MarqueeSource[] = [
   // === PROJETS ===
-  { href: "/fr/city/paris/investissements/projet/2024_18_51_019", type: "projet", label_fr: "Piscine Belliard", label_en: "Belliard Swimming Pool", amount_fr: "13,2 M€", amount_en: "€13.2M" },
-  { href: "/fr/city/paris/investissements/projet/2024_19_54_014", type: "projet", label_fr: "Médiathèque James Baldwin", label_en: "James Baldwin Media Library", amount_fr: "6,6 M€", amount_en: "€6.6M" },
-  { href: "/fr/city/paris/investissements/projet/2023_20_57_022", type: "projet", label_fr: "Parc Python-Duvernois", label_en: "Python-Duvernois Park", amount_fr: "4,2 M€", amount_en: "€4.2M" },
-  { href: "/fr/city/paris/investissements/projet/2023_20_57_020", type: "projet", label_fr: "École Davout", label_en: "Davout School", amount_fr: "5,3 M€", amount_en: "€5.3M" },
-  { href: "/fr/city/paris/investissements/projet/2024_18_51_017", type: "projet", label_fr: "Aréna 2 (porte de la Chapelle)", label_en: "Arena 2 (porte de la Chapelle)", amount_fr: "12 M€", amount_en: "€12M" },
-  { href: "/fr/city/paris/investissements/projet/2024_16_45_010", type: "projet", label_fr: "Porte Maillot", label_en: "Porte Maillot", amount_fr: "7,1 M€", amount_en: "€7.1M" },
-  { href: "/fr/city/paris/investissements/projet/2024_20_57_022", type: "projet", label_fr: "Porte de Montreuil", label_en: "Porte de Montreuil", amount_fr: "6,1 M€", amount_en: "€6.1M" },
-  { href: "/fr/city/paris/marches/fournisseur/750043937", type: "fournisseur", label_fr: "Polyreva (propreté)", label_en: "Polyreva (cleaning services)", amount_fr: "235 M€ cumulés", amount_en: "€235M cumulative" },
+  { href: "/france/paris/investissements/projet/2024_18_51_019", type: "projet", label_fr: "Piscine Belliard", label_en: "Belliard Swimming Pool", amount_fr: "13,2 M€", amount_en: "€13.2M" },
+  { href: "/france/paris/investissements/projet/2024_19_54_014", type: "projet", label_fr: "Médiathèque James Baldwin", label_en: "James Baldwin Media Library", amount_fr: "6,6 M€", amount_en: "€6.6M" },
+  { href: "/france/paris/investissements/projet/2023_20_57_022", type: "projet", label_fr: "Parc Python-Duvernois", label_en: "Python-Duvernois Park", amount_fr: "4,2 M€", amount_en: "€4.2M" },
+  { href: "/france/paris/investissements/projet/2023_20_57_020", type: "projet", label_fr: "École Davout", label_en: "Davout School", amount_fr: "5,3 M€", amount_en: "€5.3M" },
+  { href: "/france/paris/investissements/projet/2024_18_51_017", type: "projet", label_fr: "Aréna 2 (porte de la Chapelle)", label_en: "Arena 2 (porte de la Chapelle)", amount_fr: "12 M€", amount_en: "€12M" },
+  { href: "/france/paris/investissements/projet/2024_16_45_010", type: "projet", label_fr: "Porte Maillot", label_en: "Porte Maillot", amount_fr: "7,1 M€", amount_en: "€7.1M" },
+  { href: "/france/paris/investissements/projet/2024_20_57_022", type: "projet", label_fr: "Porte de Montreuil", label_en: "Porte de Montreuil", amount_fr: "6,1 M€", amount_en: "€6.1M" },
+  { href: "/france/paris/marches/fournisseur/750043937", type: "fournisseur", label_fr: "Polyreva (propreté)", label_en: "Polyreva (cleaning services)", amount_fr: "235 M€ cumulés", amount_en: "€235M cumulative" },
 
   // === ASSOS / INSTITUTIONS PUBLIQUES-PUBLIQUES ===
-  { href: "/fr/city/paris/subventions/association/centre-action-sociale-ville-paris", type: "asso", label_fr: "CASVP", label_en: "CASVP (city social action)", amount_fr: "416 M€/an", amount_en: "€416M/yr" },
-  { href: "/fr/city/paris/subventions/association/paris-musees", type: "asso", label_fr: "Paris Musées", label_en: "Paris Musées (city museums)", amount_fr: "65 M€/an", amount_en: "€65M/yr" },
-  { href: "/fr/city/paris/subventions/association/theatre-musical-de-paris", type: "asso", label_fr: "Théâtre du Châtelet", label_en: "Théâtre du Châtelet", amount_fr: "15,6 M€/an", amount_en: "€15.6M/yr" },
-  { href: "/fr/city/paris/subventions/association/theatre-de-la-ville", type: "asso", label_fr: "Théâtre de la Ville", label_en: "Théâtre de la Ville", amount_fr: "14,4 M€/an", amount_en: "€14.4M/yr" },
-  { href: "/fr/city/paris/subventions/association/forum-des-images", type: "asso", label_fr: "Forum des Images", label_en: "Forum des Images", amount_fr: "5,9 M€/an", amount_en: "€5.9M/yr" },
-  { href: "/fr/city/paris/subventions/association/atelier-parisien-d-urbanisme", type: "asso", label_fr: "Atelier Parisien d'Urbanisme", label_en: "Paris Urban Planning Studio", amount_fr: "5,8 M€/an", amount_en: "€5.8M/yr" },
-  { href: "/fr/city/paris/subventions/association/orchestre-de-chambre-de-paris", type: "asso", label_fr: "Orchestre de Chambre de Paris", label_en: "Paris Chamber Orchestra", amount_fr: "4,8 M€/an", amount_en: "€4.8M/yr" },
-  { href: "/fr/city/paris/subventions/association/agospap", type: "asso", label_fr: "AGOSPAP (œuvres sociales agents)", label_en: "AGOSPAP (staff welfare)", amount_fr: "7 M€/an", amount_en: "€7M/yr" },
-  { href: "/fr/city/paris/subventions/association/abc-puericulture", type: "asso", label_fr: "ABC Puériculture", label_en: "ABC Childcare", amount_fr: "8,6 M€/an", amount_en: "€8.6M/yr" },
-  { href: "/fr/city/paris/subventions/association/crescendo", type: "asso", label_fr: "Crescendo (petite enfance)", label_en: "Crescendo (early childhood)", amount_fr: "6,5 M€/an", amount_en: "€6.5M/yr" },
-  { href: "/fr/city/paris/subventions/association/alteralia", type: "asso", label_fr: "Alteralia (social)", label_en: "Alteralia (social action)", amount_fr: "7,3 M€/an", amount_en: "€7.3M/yr" },
+  { href: "/france/paris/subventions/association/centre-action-sociale-ville-paris", type: "asso", label_fr: "CASVP", label_en: "CASVP (city social action)", amount_fr: "416 M€/an", amount_en: "€416M/yr" },
+  { href: "/france/paris/subventions/association/paris-musees", type: "asso", label_fr: "Paris Musées", label_en: "Paris Musées (city museums)", amount_fr: "65 M€/an", amount_en: "€65M/yr" },
+  { href: "/france/paris/subventions/association/theatre-musical-de-paris", type: "asso", label_fr: "Théâtre du Châtelet", label_en: "Théâtre du Châtelet", amount_fr: "15,6 M€/an", amount_en: "€15.6M/yr" },
+  { href: "/france/paris/subventions/association/theatre-de-la-ville", type: "asso", label_fr: "Théâtre de la Ville", label_en: "Théâtre de la Ville", amount_fr: "14,4 M€/an", amount_en: "€14.4M/yr" },
+  { href: "/france/paris/subventions/association/forum-des-images", type: "asso", label_fr: "Forum des Images", label_en: "Forum des Images", amount_fr: "5,9 M€/an", amount_en: "€5.9M/yr" },
+  { href: "/france/paris/subventions/association/atelier-parisien-d-urbanisme", type: "asso", label_fr: "Atelier Parisien d'Urbanisme", label_en: "Paris Urban Planning Studio", amount_fr: "5,8 M€/an", amount_en: "€5.8M/yr" },
+  { href: "/france/paris/subventions/association/orchestre-de-chambre-de-paris", type: "asso", label_fr: "Orchestre de Chambre de Paris", label_en: "Paris Chamber Orchestra", amount_fr: "4,8 M€/an", amount_en: "€4.8M/yr" },
+  { href: "/france/paris/subventions/association/agospap", type: "asso", label_fr: "AGOSPAP (œuvres sociales agents)", label_en: "AGOSPAP (staff welfare)", amount_fr: "7 M€/an", amount_en: "€7M/yr" },
+  { href: "/france/paris/subventions/association/abc-puericulture", type: "asso", label_fr: "ABC Puériculture", label_en: "ABC Childcare", amount_fr: "8,6 M€/an", amount_en: "€8.6M/yr" },
+  { href: "/france/paris/subventions/association/crescendo", type: "asso", label_fr: "Crescendo (petite enfance)", label_en: "Crescendo (early childhood)", amount_fr: "6,5 M€/an", amount_en: "€6.5M/yr" },
+  { href: "/france/paris/subventions/association/alteralia", type: "asso", label_fr: "Alteralia (social)", label_en: "Alteralia (social action)", amount_fr: "7,3 M€/an", amount_en: "€7.3M/yr" },
 
   // === BAILLEURS ===
-  { href: "/fr/city/paris/dette/bailleur/paris-habitat", type: "bailleur", label_fr: "Paris Habitat", label_en: "Paris Habitat (social housing)", amount_fr: "2,7 Md€ garanties", amount_en: "€2.7Bn guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/rivp", type: "bailleur", label_fr: "RIVP", label_en: "RIVP (social housing)", amount_fr: "4,25 Md€ garanties", amount_en: "€4.25Bn guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/elogie-siemp", type: "bailleur", label_fr: "Elogie-Siemp", label_en: "Elogie-Siemp (social housing)", amount_fr: "1,68 Md€ garanties", amount_en: "€1.68Bn guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/3f-residences", type: "bailleur", label_fr: "Immobilière 3F", label_en: "Immobilière 3F", amount_fr: "560 M€ garanties", amount_en: "€560M guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/icf-habitat", type: "bailleur", label_fr: "ICF Habitat La Sablière", label_en: "ICF Habitat La Sablière", amount_fr: "510 M€ garanties", amount_en: "€510M guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/batigere-habitat-ile-de-france", type: "bailleur", label_fr: "Batigère Habitat IDF", label_en: "Batigère Habitat IDF", amount_fr: "420 M€ garanties", amount_en: "€420M guarantees" },
+  { href: "/france/paris/dette/bailleur/paris-habitat", type: "bailleur", label_fr: "Paris Habitat", label_en: "Paris Habitat (social housing)", amount_fr: "2,7 Md€ garanties", amount_en: "€2.7Bn guarantees" },
+  { href: "/france/paris/dette/bailleur/rivp", type: "bailleur", label_fr: "RIVP", label_en: "RIVP (social housing)", amount_fr: "4,25 Md€ garanties", amount_en: "€4.25Bn guarantees" },
+  { href: "/france/paris/dette/bailleur/elogie-siemp", type: "bailleur", label_fr: "Elogie-Siemp", label_en: "Elogie-Siemp (social housing)", amount_fr: "1,68 Md€ garanties", amount_en: "€1.68Bn guarantees" },
+  { href: "/france/paris/dette/bailleur/3f-residences", type: "bailleur", label_fr: "Immobilière 3F", label_en: "Immobilière 3F", amount_fr: "560 M€ garanties", amount_en: "€560M guarantees" },
+  { href: "/france/paris/dette/bailleur/icf-habitat", type: "bailleur", label_fr: "ICF Habitat La Sablière", label_en: "ICF Habitat La Sablière", amount_fr: "510 M€ garanties", amount_en: "€510M guarantees" },
+  { href: "/france/paris/dette/bailleur/batigere-habitat-ile-de-france", type: "bailleur", label_fr: "Batigère Habitat IDF", label_en: "Batigère Habitat IDF", amount_fr: "420 M€ garanties", amount_en: "€420M guarantees" },
 
   // === FOURNISSEURS NEUTRES CONSENSUELS ===
-  { href: "/fr/city/paris/marches/fournisseur/622044501", type: "fournisseur", label_fr: "JCDecaux (mobilier urbain)", label_en: "JCDecaux (street furniture)", amount_fr: "314 M€ cumulés", amount_en: "€314M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/420948226", type: "fournisseur", label_fr: "Eurovia (voirie)", label_en: "Eurovia (roadworks)", amount_fr: "287 M€ cumulés", amount_en: "€287M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/321057978", type: "fournisseur", label_fr: "Urbaine de Travaux (BTP)", label_en: "Urbaine de Travaux (construction)", amount_fr: "259 M€ cumulés", amount_en: "€259M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/350050589", type: "fournisseur", label_fr: "Sepur (collecte déchets)", label_en: "Sepur (waste collection)", amount_fr: "255 M€ cumulés", amount_en: "€255M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/433900834", type: "fournisseur", label_fr: "Bouygues Bâtiment IDF", label_en: "Bouygues Bâtiment IDF", amount_fr: "237 M€ cumulés", amount_en: "€237M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/444578389", type: "fournisseur", label_fr: "Polysotis (propreté urbaine)", label_en: "Polysotis (urban cleaning)", amount_fr: "419 M€ cumulés", amount_en: "€419M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/441408812", type: "fournisseur", label_fr: "Korrigan (propreté)", label_en: "Korrigan (cleaning services)", amount_fr: "195 M€ cumulés", amount_en: "€195M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/424982650", type: "fournisseur", label_fr: "SCC France (informatique)", label_en: "SCC France (IT services)", amount_fr: "222 M€ cumulés", amount_en: "€222M cumulative" },
-  { href: "/fr/city/paris/marches/fournisseur/325807220", type: "fournisseur", label_fr: "Maintenance Industrie (bâtiments)", label_en: "Maintenance Industrie (buildings)", amount_fr: "192 M€ cumulés", amount_en: "€192M cumulative" },
+  { href: "/france/paris/marches/fournisseur/622044501", type: "fournisseur", label_fr: "JCDecaux (mobilier urbain)", label_en: "JCDecaux (street furniture)", amount_fr: "314 M€ cumulés", amount_en: "€314M cumulative" },
+  { href: "/france/paris/marches/fournisseur/420948226", type: "fournisseur", label_fr: "Eurovia (voirie)", label_en: "Eurovia (roadworks)", amount_fr: "287 M€ cumulés", amount_en: "€287M cumulative" },
+  { href: "/france/paris/marches/fournisseur/321057978", type: "fournisseur", label_fr: "Urbaine de Travaux (BTP)", label_en: "Urbaine de Travaux (construction)", amount_fr: "259 M€ cumulés", amount_en: "€259M cumulative" },
+  { href: "/france/paris/marches/fournisseur/350050589", type: "fournisseur", label_fr: "Sepur (collecte déchets)", label_en: "Sepur (waste collection)", amount_fr: "255 M€ cumulés", amount_en: "€255M cumulative" },
+  { href: "/france/paris/marches/fournisseur/433900834", type: "fournisseur", label_fr: "Bouygues Bâtiment IDF", label_en: "Bouygues Bâtiment IDF", amount_fr: "237 M€ cumulés", amount_en: "€237M cumulative" },
+  { href: "/france/paris/marches/fournisseur/444578389", type: "fournisseur", label_fr: "Polysotis (propreté urbaine)", label_en: "Polysotis (urban cleaning)", amount_fr: "419 M€ cumulés", amount_en: "€419M cumulative" },
+  { href: "/france/paris/marches/fournisseur/441408812", type: "fournisseur", label_fr: "Korrigan (propreté)", label_en: "Korrigan (cleaning services)", amount_fr: "195 M€ cumulés", amount_en: "€195M cumulative" },
+  { href: "/france/paris/marches/fournisseur/424982650", type: "fournisseur", label_fr: "SCC France (informatique)", label_en: "SCC France (IT services)", amount_fr: "222 M€ cumulés", amount_en: "€222M cumulative" },
+  { href: "/france/paris/marches/fournisseur/325807220", type: "fournisseur", label_fr: "Maintenance Industrie (bâtiments)", label_en: "Maintenance Industrie (buildings)", amount_fr: "192 M€ cumulés", amount_en: "€192M cumulative" },
 
   // === CATÉGORIES MARCHÉS ===
-  { href: "/fr/city/paris/marches/categorie/entretien-des-espaces-verts", type: "categorie", label_fr: "Entretien espaces verts", label_en: "Green spaces maintenance", amount_fr: "44 M€ · 23 marchés", amount_en: "€44M · 23 contracts" },
-  { href: "/fr/city/paris/marches/categorie/travaux-d-amenagement-de-voirie", type: "categorie", label_fr: "Travaux de voirie", label_en: "Roadworks", amount_fr: "30 marchés/an", amount_en: "30 contracts/yr" },
-  { href: "/fr/city/paris/marches/categorie/travaux-de-genie-climatique", type: "categorie", label_fr: "Génie climatique", label_en: "Climate engineering", amount_fr: "43 marchés/an", amount_en: "43 contracts/yr" },
-  { href: "/fr/city/paris/marches/categorie/prestations-intellectuelles", type: "categorie", label_fr: "Prestations intellectuelles", label_en: "Consulting services", amount_fr: "119 marchés/an", amount_en: "119 contracts/yr" },
-  { href: "/fr/city/paris/marches/categorie/fournitures-courantes-et-services", type: "categorie", label_fr: "Fournitures courantes & services", label_en: "Office supplies & services", amount_fr: "126 marchés/an", amount_en: "126 contracts/yr" },
-  { href: "/fr/city/paris/marches/categorie/maitrise-d-oeuvre-btp", type: "categorie", label_fr: "Maîtrise d'œuvre BTP", label_en: "Construction supervision", amount_fr: "54 marchés/an", amount_en: "54 contracts/yr" },
+  { href: "/france/paris/marches/categorie/entretien-des-espaces-verts", type: "categorie", label_fr: "Entretien espaces verts", label_en: "Green spaces maintenance", amount_fr: "44 M€ · 23 marchés", amount_en: "€44M · 23 contracts" },
+  { href: "/france/paris/marches/categorie/travaux-d-amenagement-de-voirie", type: "categorie", label_fr: "Travaux de voirie", label_en: "Roadworks", amount_fr: "30 marchés/an", amount_en: "30 contracts/yr" },
+  { href: "/france/paris/marches/categorie/travaux-de-genie-climatique", type: "categorie", label_fr: "Génie climatique", label_en: "Climate engineering", amount_fr: "43 marchés/an", amount_en: "43 contracts/yr" },
+  { href: "/france/paris/marches/categorie/prestations-intellectuelles", type: "categorie", label_fr: "Prestations intellectuelles", label_en: "Consulting services", amount_fr: "119 marchés/an", amount_en: "119 contracts/yr" },
+  { href: "/france/paris/marches/categorie/fournitures-courantes-et-services", type: "categorie", label_fr: "Fournitures courantes & services", label_en: "Office supplies & services", amount_fr: "126 marchés/an", amount_en: "126 contracts/yr" },
+  { href: "/france/paris/marches/categorie/maitrise-d-oeuvre-btp", type: "categorie", label_fr: "Maîtrise d'œuvre BTP", label_en: "Construction supervision", amount_fr: "54 marchés/an", amount_en: "54 contracts/yr" },
 
   // === POSTES BUDGÉTAIRES ===
-  { href: "/fr/city/paris/budget/poste/reversements-a-l-etat-et-aux-communes", type: "poste", label_fr: "Reversements à l'État et aux communes", label_en: "Transfers to the State and other councils", amount_fr: "1,58 Md€/an", amount_en: "€1.58Bn/yr" },
-  { href: "/fr/city/paris/budget/poste/administration-generale", type: "poste", label_fr: "Administration générale", label_en: "General administration", amount_fr: "945 M€/an", amount_en: "€945M/yr" },
-  { href: "/fr/city/paris/budget/poste/action-sociale", type: "poste", label_fr: "Action sociale", label_en: "Social action", amount_fr: "2,31 Md€/an", amount_en: "€2.31Bn/yr" },
-  { href: "/fr/city/paris/budget/poste/amenagement-logement", type: "poste", label_fr: "Aménagement & Logement", label_en: "Housing & Planning", amount_fr: "1,3 Md€/an", amount_en: "€1.3Bn/yr" },
-  { href: "/fr/city/paris/budget/poste/education", type: "poste", label_fr: "Éducation", label_en: "Education", amount_fr: "992 M€/an", amount_en: "€992M/yr" },
-  { href: "/fr/city/paris/budget/poste/environnement", type: "poste", label_fr: "Environnement", label_en: "Environment", amount_fr: "918 M€/an", amount_en: "€918M/yr" },
-  { href: "/fr/city/paris/budget/poste/transports", type: "poste", label_fr: "Transports", label_en: "Transport", amount_fr: "854 M€/an", amount_en: "€854M/yr" },
-  { href: "/fr/city/paris/budget/poste/culture-sport", type: "poste", label_fr: "Culture & Sport", label_en: "Culture & Sports", amount_fr: "795 M€/an", amount_en: "€795M/yr" },
-  { href: "/fr/city/paris/budget/poste/securite", type: "poste", label_fr: "Sécurité", label_en: "Security", amount_fr: "514 M€/an", amount_en: "€514M/yr" },
-  { href: "/fr/city/paris/budget/poste/remboursement-de-la-dette", type: "poste", label_fr: "Remboursement de la dette", label_en: "Debt repayment", amount_fr: "327 M€/an", amount_en: "€327M/yr" },
-  { href: "/fr/city/paris/budget/poste/economie", type: "poste", label_fr: "Économie", label_en: "Economy", amount_fr: "92 M€/an", amount_en: "€92M/yr" },
+  { href: "/france/paris/budget/poste/reversements-a-l-etat-et-aux-communes", type: "poste", label_fr: "Reversements à l'État et aux communes", label_en: "Transfers to the State and other councils", amount_fr: "1,58 Md€/an", amount_en: "€1.58Bn/yr" },
+  { href: "/france/paris/budget/poste/administration-generale", type: "poste", label_fr: "Administration générale", label_en: "General administration", amount_fr: "945 M€/an", amount_en: "€945M/yr" },
+  { href: "/france/paris/budget/poste/action-sociale", type: "poste", label_fr: "Action sociale", label_en: "Social action", amount_fr: "2,31 Md€/an", amount_en: "€2.31Bn/yr" },
+  { href: "/france/paris/budget/poste/amenagement-logement", type: "poste", label_fr: "Aménagement & Logement", label_en: "Housing & Planning", amount_fr: "1,3 Md€/an", amount_en: "€1.3Bn/yr" },
+  { href: "/france/paris/budget/poste/education", type: "poste", label_fr: "Éducation", label_en: "Education", amount_fr: "992 M€/an", amount_en: "€992M/yr" },
+  { href: "/france/paris/budget/poste/environnement", type: "poste", label_fr: "Environnement", label_en: "Environment", amount_fr: "918 M€/an", amount_en: "€918M/yr" },
+  { href: "/france/paris/budget/poste/transports", type: "poste", label_fr: "Transports", label_en: "Transport", amount_fr: "854 M€/an", amount_en: "€854M/yr" },
+  { href: "/france/paris/budget/poste/culture-sport", type: "poste", label_fr: "Culture & Sport", label_en: "Culture & Sports", amount_fr: "795 M€/an", amount_en: "€795M/yr" },
+  { href: "/france/paris/budget/poste/securite", type: "poste", label_fr: "Sécurité", label_en: "Security", amount_fr: "514 M€/an", amount_en: "€514M/yr" },
+  { href: "/france/paris/budget/poste/remboursement-de-la-dette", type: "poste", label_fr: "Remboursement de la dette", label_en: "Debt repayment", amount_fr: "327 M€/an", amount_en: "€327M/yr" },
+  { href: "/france/paris/budget/poste/economie", type: "poste", label_fr: "Économie", label_en: "Economy", amount_fr: "92 M€/an", amount_en: "€92M/yr" },
 ];
 
 /** Round-robin merge by type so the visible window always mixes angles. */
@@ -131,7 +131,7 @@ export function buildParisLandingModel(
 
   if (fl) {
     deck.push({
-      href: `/fr/city/paris/lieu/${fl.slug}`,
+      href: `/france/paris/lieu/${fl.slug}`,
       scroll: false,
       kicker: t("fx.land.deck.lieu.kicker"),
       title: fl.name,
@@ -151,7 +151,7 @@ export function buildParisLandingModel(
   }
   if (fa) {
     deck.push({
-      href: `/fr/city/paris/subventions/association/${assocSlug(decodeURIComponent(fa.slug))}`,
+      href: `/france/paris/subventions/association/${assocSlug(decodeURIComponent(fa.slug))}`,
       scroll: false,
       kicker: t("fx.land.deck.c2.kicker"),
       title: t("fx.land.deck.c2.title"),
@@ -165,7 +165,7 @@ export function buildParisLandingModel(
   }
   if (fm) {
     deck.push({
-      href: `/fr/city/paris/marches/categorie/${fm.slug}`,
+      href: `/france/paris/marches/categorie/${fm.slug}`,
       scroll: false,
       kicker: t("fx.land.deck.c3.kicker"),
       title: t("fx.land.deck.c3.title"),
@@ -179,7 +179,7 @@ export function buildParisLandingModel(
   }
   if (fb) {
     deck.push({
-      href: `/fr/city/paris/dette/bailleur/${fb.slug}`,
+      href: `/france/paris/dette/bailleur/${fb.slug}`,
       scroll: false,
       kicker: t("fx.land.deck.c4.kicker"),
       title: t("fx.land.deck.c4.title"),
@@ -240,13 +240,13 @@ export function buildParisLandingModel(
       ),
       ariaLabel: t("fx.land.chips.aria"),
       items: [
-        { href: "/fr/city/paris/lieux", title: t("fx.land.chips.lieux"), desc: t("fx.land.chips.lieux_desc"), featured: true },
-        { href: "/fr/city/paris/budget", title: t("fx.land.chips.budget"), desc: t("fx.land.chips.budget_desc") },
-        { href: "/fr/city/paris/investissements", title: t("fx.land.chips.invest"), desc: t("fx.land.chips.invest_desc") },
-        { href: "/fr/city/paris/subventions", title: t("fx.land.chips.subv"), desc: t("fx.land.chips.subv_desc") },
-        { href: "/fr/city/paris/marches", title: t("fx.land.chips.marches"), desc: t("fx.land.chips.marches_desc") },
-        { href: "/fr/city/paris/dette", title: t("fx.land.chips.dette"), desc: t("fx.land.chips.dette_desc") },
-        { href: "/fr/city/paris/logement", title: t("fx.land.chips.logement"), desc: t("fx.land.chips.logement_desc") },
+        { href: "/france/paris/lieux", title: t("fx.land.chips.lieux"), desc: t("fx.land.chips.lieux_desc"), featured: true },
+        { href: "/france/paris/budget", title: t("fx.land.chips.budget"), desc: t("fx.land.chips.budget_desc") },
+        { href: "/france/paris/investissements", title: t("fx.land.chips.invest"), desc: t("fx.land.chips.invest_desc") },
+        { href: "/france/paris/subventions", title: t("fx.land.chips.subv"), desc: t("fx.land.chips.subv_desc") },
+        { href: "/france/paris/marches", title: t("fx.land.chips.marches"), desc: t("fx.land.chips.marches_desc") },
+        { href: "/france/paris/dette", title: t("fx.land.chips.dette"), desc: t("fx.land.chips.dette_desc") },
+        { href: "/france/paris/logement", title: t("fx.land.chips.logement"), desc: t("fx.land.chips.logement_desc") },
       ],
     },
     extras: <ParisLandingTail t={t} locale={locale} posts={posts} />,

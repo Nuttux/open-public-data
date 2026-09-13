@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { scopeOf } from "@/lib/urls";
+
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
@@ -31,8 +33,8 @@ function sectionFromParisPath(pathname: string): string | null {
 
 // Extract section from /fr/city/[city]/[section]/... pathname.
 function sectionFromVillePath(pathname: string): string | null {
-  const m = pathname.match(/^\/fr\/city\/[^/]+\/([^/]+)/);
-  return m && m[1] !== "daily-bread" ? m[1] : null;
+  const s = scopeOf(pathname);
+  return s?.country === "france" && s.place && s.section && s.section !== "daily-bread" ? s.section : null;
 }
 
 type Variant = "nav" | "h1" | "overlay";
@@ -74,16 +76,13 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
   const otherCities = cities.filter((c) => c.slug !== "paris");
 
   // National scope: any /fr/national/* page or the Daily Bread tool (national).
+  const scope = scopeOf(pathname);
   const isOnFrance =
-    pathname.startsWith("/fr/national/") ||
-    /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname);
-  // Match /fr/city/[city] AND /fr/city/[city]/<sub> so the label stays right on
-  // rich subpages (e.g. /fr/city/marseille/budget).
-  const cityMatch = pathname.startsWith("/fr/city/")
-    ? cities.find(
-        (c) => pathname === `/fr/city/${c.slug}` || pathname.startsWith(`/fr/city/${c.slug}/`),
-      )
-    : undefined;
+    scope?.country === "france" && (scope.place === null || scope.section === "daily-bread");
+  // /france/[city] AND /france/[city]/<sub>, so the label stays right on rich
+  // subpages (e.g. /france/marseille/budget).
+  const cityMatch =
+    scope?.country === "france" && scope.place ? cities.find((c) => c.slug === scope.place) : undefined;
   const isOnParisRich = !isOnFrance && !cityMatch;
 
   // Preserve user context when switching cities (if they're on /budget,
@@ -96,7 +95,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
 
   function hrefForExhaustiveCity(slug: string): string {
     const sec = currentSection ?? "budget";
-    return `/fr/city/${slug}/${sec}`;
+    return `/france/${slug}/${sec}`;
   }
 
   function hrefForParis(): string {
@@ -143,9 +142,9 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
           {/* France (national scope) — top entry, lands on /fr/national/budget. */}
           <Link
             className={`fx-sm-item ${isOnFrance ? "fx-sm-active" : ""}`}
-            href="/fr/national/budget"
+            href="/france/budget"
             role="menuitem"
-            onClick={() => handleNav("/fr/national/budget")}
+            onClick={() => handleNav("/france/budget")}
           >
             <span>{t("fx.scope.france")}</span>
             {isOnFrance && <span className="fx-sm-check" aria-hidden="true">✓</span>}

@@ -30,7 +30,7 @@ export const projetConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ projet: p }, locale) => {
-    const canonical = `/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`;
+    const canonical = `/france/paris/investissements/projet/${encodeURIComponent(p.id)}`;
     const projectName = locale === "en" && (p as { name_en?: string }).name_en
       ? (p as { name_en?: string }).name_en!
       : p.name;
@@ -108,7 +108,7 @@ export const projetConfig: EntityPageConfig<D> = {
     title: ({ projet }, locale) =>
       locale === "en" && projet.name_en ? projet.name_en : projet.name,
     shareUrl: ({ projet }) =>
-      `/fr/city/paris/investissements/projet/${encodeURIComponent(projet.id)}`,
+      `/france/paris/investissements/projet/${encodeURIComponent(projet.id)}`,
     shareText: ({ projet }, locale) => {
       const displayName = locale === "en" && projet.name_en ? projet.name_en : projet.name;
       const montantStr = projet.montant >= 1e6

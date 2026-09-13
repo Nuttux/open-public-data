@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "@/components/LocalizedLink";
+
 import type { BondIssuance, DetteInstrument } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -135,7 +137,7 @@ export default function InstrumentDetteFiche({ instrument, year, bondIssuances }
         <p className="muted">{t("fx.fiche.instr.limites_desc")}</p>
 
         <div className="fx-fiche-foot-cta">
-          <a className="fx-btn" href="/methode?tool=dette-patrimoine#outils">{t("fx.fiche.instr.methode")}</a>
+          <Link className="fx-btn" href="/methode?tool=dette-patrimoine#outils">{t("fx.fiche.instr.methode")}</Link>
           <a className="fx-btn" href={`/data/patrimoine_structure_${year}.json`} target="_blank" rel="noopener noreferrer">{t("fx.fiche.instr.json")}</a>
         </div>
       </div>

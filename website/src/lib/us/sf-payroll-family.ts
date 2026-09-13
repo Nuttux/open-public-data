@@ -6,7 +6,7 @@ import type {
   PayrollByFamilyCitywide,
   PayrollFamilyDistribution,
   PayrollFamilyRow,
-} from "@/app/us/city/sf/payroll/payroll-types";
+} from "@/app/[lang]/usa/san-francisco/payroll/payroll-types";
 
 /**
  * Job-family facet — the payroll counterpart of the contract-type fiche
@@ -165,7 +165,7 @@ export function loadSfPayrollFamily(slug: string): SfPayrollFamilyData | null {
       total_compensation_usd: mine.reduce((s, r) => s + r.total_compensation_usd, 0),
       // The department's PAYROLL fiche, not its budget one — a department
       // clicked from inside payroll answers the payroll question.
-      href: `/us/city/sf/payroll/dept/${payrollDeptSlug(code)}`,
+      href: `/usa/san-francisco/payroll/dept/${payrollDeptSlug(code)}`,
     });
     for (const r of mine) {
       const cur = roleTotals.get(r.family_label) ?? { n: 0, usd: 0, pooled: false };
@@ -184,7 +184,7 @@ export function loadSfPayrollFamily(slug: string): SfPayrollFamilyData | null {
       n_employees: v.n,
       total_compensation_usd: v.usd,
       pooled: v.pooled,
-      href: v.pooled ? null : `/us/city/sf/payroll/role/${roleSlug(label)}`,
+      href: v.pooled ? null : `/usa/san-francisco/payroll/role/${roleSlug(label)}`,
     }))
     .sort((a, b) => b.total_compensation_usd - a.total_compensation_usd);
 

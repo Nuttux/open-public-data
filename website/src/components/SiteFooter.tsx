@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { Fragment, type ReactNode } from "react";
 import { useTrack } from "@/lib/analyticsContext";
 import type { FooterLink, FooterModel } from "@/lib/footer-model";
@@ -23,7 +23,7 @@ export default function SiteFooter({
   const renderLink = (l: FooterLink, surface: string) => {
     if (l.external) {
       return (
-        <a
+        <Link
           href={l.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -43,7 +43,7 @@ export default function SiteFooter({
           }
         >
           {l.label}
-        </a>
+        </Link>
       );
     }
     return (

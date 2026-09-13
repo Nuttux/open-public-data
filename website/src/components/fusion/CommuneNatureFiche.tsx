@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLocale, useT } from "@/lib/localeContext";
 import { sensDe } from "@/lib/ecart-mots";
 import { deNom } from "@/lib/nom-commune";
@@ -96,7 +96,7 @@ export default function CommuneNatureFiche({
               </>
             );
             return f.slug
-              ? <Link key={f.cle} href={`/fr/city/${doc.commune.slug}/fonction/${f.slug}`} className="l lien">{row}</Link>
+              ? <Link key={f.cle} href={`/france/${doc.commune.slug}/fonction/${f.slug}`} className="l lien">{row}</Link>
               : <div key={f.cle} className="l autres">{row}</div>;
           })}
         </div>
@@ -112,7 +112,7 @@ export default function CommuneNatureFiche({
           <h3>{t("fx.fonc.h_voisins")}</h3>
           <div className="fx-fonc-lignes">
             {c.voisins.map((v) => (
-              <Link key={v.slug} href={`/fr/city/${v.slug}/nature/${nature.slug}`} className="l lien">
+              <Link key={v.slug} href={`/france/${v.slug}/nature/${nature.slug}`} className="l lien">
                 <span>{v.nom}</span>
                 <span className="tnum">{fill("fx.fonc.part_court", { n: dec1(v.part) })}</span>
               </Link>
@@ -128,7 +128,7 @@ export default function CommuneNatureFiche({
       </p>
 
       {!embedded ? (
-        <p className="fx-fonc-retour"><Link href={`/fr/city/${doc.commune.slug}#depenses`}>{fill("fx.nat.retour", { nom, de_nom: deNom(nom) })}</Link></p>
+        <p className="fx-fonc-retour"><Link href={`/france/${doc.commune.slug}#depenses`}>{fill("fx.nat.retour", { nom, de_nom: deNom(nom) })}</Link></p>
       ) : null}
     </div>
   );

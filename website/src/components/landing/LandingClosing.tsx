@@ -1,3 +1,4 @@
+import Link from "@/components/LocalizedLink";
 import type { LandingClosing as ClosingModel } from "./types";
 
 /**
@@ -14,9 +15,9 @@ export default function LandingClosing({ closing }: { closing: ClosingModel }) {
             <h2 className="fx-closing-title">{closing.title}</h2>
             <p className="fx-closing-sub">{closing.text}</p>
           </div>
-          <a className="fx-closing-cta" href={closing.href} data-cta="for_cities_closing">
+          <Link className="fx-closing-cta" href={closing.href} data-cta="for_cities_closing">
             {closing.cta} <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

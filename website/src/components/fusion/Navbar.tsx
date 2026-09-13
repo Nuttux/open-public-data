@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { scopeOf } from "@/lib/urls";
+
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 import PlaceSwitcher from "../PlaceSwitcher";
@@ -17,16 +19,17 @@ import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDrawerOpen } from "@/lib/drawerState";
 
-// France scope is on any /fr/national/* page, /comparer, or the Daily Bread tool.
+// France scope is on France's national pages (/france, /france/dette,
+// /france/comparer…) or the Daily Bread tool under a city.
 function isFranceScope(pathname: string): boolean {
-  return (
-    pathname === "/fr/national" ||
-    pathname.startsWith("/fr/national/") ||
-    pathname === "/comparer" ||
-    pathname.startsWith("/comparer/") ||
-    pathname.startsWith("/fr/compare/") ||
-    /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname)
-  );
+  const s = scopeOf(pathname);
+  return s?.country === "france" && (s.place === null || s.section === "daily-bread");
+}
+
+/** The French city or commune a path is about, if any. */
+function frPlace(pathname: string): string | null {
+  const s = scopeOf(pathname);
+  return s?.country === "france" ? s.place : null;
 }
 
 // Pick the right top-nav link set based on the current pathname.
@@ -40,11 +43,10 @@ function navLinksForPath(pathname: string, commune: CommuneNav | null) {
     // ancres, avec des mots différents ("Investissement" contre "Ce qu'elle
     // construit"). Sur les sous-pages (explorateur, fiche fournisseur) les
     // liens de section restent utiles pour revenir.
-    if (pathname === `/fr/city/${commune.slug}`) return [];
+    if (pathname === `/france/${commune.slug}`) return [];
     return communeNavLinks(commune.slug, commune.sections);
   }
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  return villeNavLinks(m ? m[1] : "paris");
+  return villeNavLinks(frPlace(pathname) ?? "paris");
 }
 
 // The registry slug of the current France scope, for the unified switcher.
@@ -52,8 +54,7 @@ function navLinksForPath(pathname: string, commune: CommuneNav | null) {
 // so we resolve it here rather than by registry path matching.
 function currentFrSlug(pathname: string): string {
   if (isFranceScope(pathname)) return "fr-national";
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  return m ? m[1] : "paris";
+  return frPlace(pathname) ?? "paris";
 }
 
 /**
@@ -92,7 +93,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
     if (drawerOpen) return false;
     // Bare city-landing hrefs (/fr/city/<slug>) match exactly too, so "Accueil"
     // isn't highlighted on every sub-page of the city.
-    return EXACT_MATCH_HREFS.has(href) || /^\/fr\/city\/[^/]+$/.test(href)
+    return EXACT_MATCH_HREFS.has(href) || /^\/france\/[^/]+$/.test(href)
       ? pathname === href
       : pathname.startsWith(href);
   };
@@ -105,9 +106,9 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
     <>
       <header className="fx-nav">
         <Link
-          href={commune ? `/fr/city/${commune.slug}` : "/"}
+          href={commune ? `/france/${commune.slug}` : "/"}
           className="fx-brand"
-          onClick={() => trackNav(commune ? `/fr/city/${commune.slug}` : "/", "fx.nav.brand", "brand")}
+          onClick={() => trackNav(commune ? `/france/${commune.slug}` : "/", "fx.nav.brand", "brand")}
         >
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>

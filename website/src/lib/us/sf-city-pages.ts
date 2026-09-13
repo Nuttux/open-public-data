@@ -295,7 +295,7 @@ export async function hoodPage(slug: string): Promise<CityPage | null> {
       .slice(0, 8)
       .sort((a, b) => b.n - a.n),
     notable: notableOf(rows),
-    mapHref: block ? `/us/city/sf/the-city?block=${encodeURIComponent(block)}&hood=1` : "/us/city/sf/the-city",
+    mapHref: block ? `/usa/san-francisco/the-city?block=${encodeURIComponent(block)}&hood=1` : "/usa/san-francisco/the-city",
     holds: `This page carries the ${h.per_decade} most notable decisions of each decade, ${h.n_shipped.toLocaleString("en-US")} of the ${h.n.toLocaleString("en-US")} on record; the rest are on its streets.`,
   };
 }
@@ -344,7 +344,7 @@ export async function streetPage(slug: string): Promise<CityPage | null> {
     streets: [],
     notable: notableOf(rows),
     mapHref: block
-      ? `/us/city/sf/the-city?block=${encodeURIComponent(block)}&street=${encodeURIComponent(file)}`
+      ? `/usa/san-francisco/the-city?block=${encodeURIComponent(block)}&street=${encodeURIComponent(file)}`
       : null,
     holds: capped
       ? `The street holds more than ${cap} decisions; this page carries the ${cap} most notable.`

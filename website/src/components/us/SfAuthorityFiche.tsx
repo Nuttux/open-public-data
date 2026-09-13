@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
-import { contractLabel } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
-import type { SfActiveRow } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+import { contractLabel } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
+import type { SfActiveRow } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
 
 /**
  * Purchasing-authority fiche — the SF analogue of Recife's `modalidade`
@@ -66,7 +66,7 @@ export default function SfAuthorityFiche({ d }: { d: SfAuthorityData }) {
             {rows.map((r) => (
               <Link
                 key={r.contract_no}
-                href={`/us/city/sf/contracts/contract/${r.contract_no}`}
+                href={`/usa/san-francisco/contracts/contract/${r.contract_no}`}
                 scroll={false}
                 className="fx-row-link"
                 style={{
@@ -116,7 +116,7 @@ export default function SfAuthorityFiche({ d }: { d: SfAuthorityData }) {
           {d.n_active > TOP_N && (
             <p style={{ margin: "10px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
               Showing the {TOP_N} biggest of {nfInt.format(d.n_active)} running today ·{" "}
-              <Link href="/us/city/sf/contracts#sec-search" style={{ color: "var(--bleu)" }}>
+              <Link href="/usa/san-francisco/contracts#sec-search" style={{ color: "var(--bleu)" }}>
                 search them all →
               </Link>
             </p>

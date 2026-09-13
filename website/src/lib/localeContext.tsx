@@ -7,10 +7,11 @@ import {
   use,
   type ReactNode,
 } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname } from "@/lib/navigation";
 
 import { getCity } from '@/lib/cities';
-import { urlForLocale } from '@/lib/site-locale';
+import { switchLanguage } from '@/lib/site-locale';
+import { scopeOf } from '@/lib/urls';
 import frDictionary from '@/i18n/fr';
 
 // City label rewriter — replaces hardcoded "Paris" forms with the current
@@ -42,8 +43,8 @@ function detectCityFromPath(pathname: string | null): string | null {
   // server. Guard defensively rather than crash the render; the next render
   // a few ms later gets a proper string and the city label rewrite applies.
   if (typeof pathname !== 'string') return null;
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  return m ? m[1] : null;
+  const s = scopeOf(pathname);
+  return s?.country === 'france' ? s.place : null;
 }
 
 function rewriteForCity(value: string, citySlug: string): string {
@@ -205,9 +206,8 @@ function LocaleProviderInner({
   // Nothing is stored client-side: there is no preference to remember, the
   // address IS the choice.
   const setLocale = useCallback((l: Locale) => {
-    if (l === locale || typeof window === 'undefined') return;
-    const { pathname, search, hash, host } = window.location;
-    window.location.assign(urlForLocale(l, `${pathname}${search}${hash}`, host));
+    if (l === locale) return;
+    switchLanguage(l);
   }, [locale]);
 
   const pathname = usePathname();

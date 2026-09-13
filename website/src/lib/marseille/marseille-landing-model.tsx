@@ -9,7 +9,7 @@ import {
 } from "@/components/fusion/marseille-arrondissements";
 import { assocSlug } from "@/lib/assoc-slug";
 
-const BASE = "/fr/city/marseille";
+const BASE = "/france/marseille";
 const IMG = "/img/fr/marseille/places";
 
 /** Plain, pre-loaded numbers handed from the server page to the client model

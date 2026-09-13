@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import Tip from "@/components/fusion/Tip";
@@ -84,7 +84,7 @@ export default function RecifeContratoFiche({
     <div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
         {c.modalidade && c.modalidade !== "—" && (
-          <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`} className="fx-sm-tag" style={{ textDecoration: "none" }}>{modalidadeLabel(c.modalidade, locale)}</Link>
+          <Link href={`/brasil/recife/modalidade/${slugModalidade(c.modalidade)}`} className="fx-sm-tag" style={{ textDecoration: "none" }}>{modalidadeLabel(c.modalidade, locale)}</Link>
         )}
         {c.is_ativo && <span className="fx-sm-tag">{t("br.recife.ct.badge_ativo")}</span>}
       </div>
@@ -127,7 +127,7 @@ export default function RecifeContratoFiche({
             label: t("br.recife.contrato.fornecedor"),
             value: c.is_org
               ? (c.fornecedor_cnpj
-                  ? <Link href={`/br/city/recife/quem-recebe/${c.fornecedor_cnpj}`}>{titleCasePt(c.fornecedor)}</Link>
+                  ? <Link href={`/brasil/recife/quem-recebe/${c.fornecedor_cnpj}`}>{titleCasePt(c.fornecedor)}</Link>
                   : titleCasePt(c.fornecedor))
               : t("br.recife.ct.pessoa_fisica"),
           },
@@ -190,7 +190,7 @@ export default function RecifeContratoFiche({
           <div style={{ margin: "0 0 14px" }}>
             <div style={{ fontFamily: "var(--f-ui)", fontSize: 15, fontWeight: 600, color: toneColor }}>
               {c.modalidade && c.modalidade !== "—" ? (
-                <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`} style={{ color: "inherit", textDecorationColor: "var(--rule)" }}>
+                <Link href={`/brasil/recife/modalidade/${slugModalidade(c.modalidade)}`} style={{ color: "inherit", textDecorationColor: "var(--rule)" }}>
                   <Tip label={`${c.modalidade} — ${t(conc.glossKey)}`}>{t(conc.labelKey)}</Tip>
                 </Link>
               ) : (
@@ -224,11 +224,11 @@ export default function RecifeContratoFiche({
               <td>
                 {c.orgao_slug ? (
                   // Taxonomy bridged → the payments-anchored órgão fiche.
-                  <Link href={`/br/city/recife/orgao/${c.orgao_slug}`}>{titleCasePt(c.orgao)}</Link>
+                  <Link href={`/brasil/recife/orgao/${c.orgao_slug}`}>{titleCasePt(c.orgao)}</Link>
                 ) : c.orgao ? (
                   // No payments fiche for this contratante → all of the agency's
                   // contracts. Keeps every department name clickable.
-                  <Link href={`/br/city/recife/contratos?orgao=${encodeURIComponent(c.orgao)}#sec-contratos`}>{titleCasePt(c.orgao)}</Link>
+                  <Link href={`/brasil/recife/contratos?orgao=${encodeURIComponent(c.orgao)}#sec-contratos`}>{titleCasePt(c.orgao)}</Link>
                 ) : "—"}
               </td>
             </tr>
@@ -236,7 +236,7 @@ export default function RecifeContratoFiche({
               <td>{t("br.recife.contrato.modalidade")}</td>
               <td>
                 {c.modalidade && c.modalidade !== "—" ? (
-                  <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`}>
+                  <Link href={`/brasil/recife/modalidade/${slugModalidade(c.modalidade)}`}>
                     {modalidadeLabel(c.modalidade, locale)}
                   </Link>
                 ) : "—"}

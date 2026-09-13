@@ -45,11 +45,11 @@ describe("scope containment", () => {
   });
 
   it("une route sans toolset ne monte aucun assistant", () => {
-    expect(scopeForPath("/us/city/sf/budget")).toBe("sf");
-    expect(scopeForPath("/fr/city/paris/budget")).toBe("paris");
-    expect(scopeForPath("/us/national")).toBeNull();
-    expect(scopeForPath("/br/city/recife")).toBeNull();
-    expect(scopeForPath("/fr/city/marseille/budget")).toBeNull();
+    expect(scopeForPath("/usa/san-francisco/budget")).toBe("sf");
+    expect(scopeForPath("/france/paris/budget")).toBe("paris");
+    expect(scopeForPath("/usa/national")).toBeNull();
+    expect(scopeForPath("/brasil/recife")).toBeNull();
+    expect(scopeForPath("/france/marseille/budget")).toBeNull();
   });
 
   it("un outil Paris n'est pas atteignable depuis le scope sf", () => {

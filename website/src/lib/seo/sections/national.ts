@@ -15,7 +15,7 @@ import "server-only";
  */
 import { createElement, Fragment, type ReactElement } from "react";
 import { breadcrumbJsonLd, datasetJsonLd } from "@/lib/seo";
-import { LOCALE_HOSTS } from "@/lib/site-locale";
+import { absoluteUrl } from "@/lib/site-locale";
 import {
   loadDailyBread,
   loadEtatLFI,
@@ -77,7 +77,7 @@ export const day = (iso: string | null | undefined) => (iso ? iso.slice(0, 10) :
 // ─── /fr/national/dette ─────────────────────────────────────────────────────
 
 export function nationalDetteHub(): FrHub {
-  const path = "/fr/national/dette";
+  const path = "/france/dette";
   const d = loadEurostatDette();
   const s13 = d?.fr_series.find((s) => s.code === "S13");
   // Hero = the last point of the S13 series (DetteClient).
@@ -134,7 +134,7 @@ export function nationalDetteHub(): FrHub {
 const REMB_LABEL = "Remboursements et dégrèvements"; // same filter as EtatClient
 
 export function nationalEtatHub(): FrHub {
-  const path = "/fr/national/etat";
+  const path = "/france/etat";
   const e = loadEtatLFI();
   const base = { path, parents: [], crumb: { fr: "Budget de l’État", en: "State budget" } };
   if (!e) {
@@ -183,7 +183,7 @@ export function nationalEtatHub(): FrHub {
 const lcFirst = (s: string) => (/^[A-ZÀ-Ý][a-zà-ÿ]/.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s);
 
 export function nationalFiscaliteHub(): FrHub {
-  const path = "/fr/national/fiscalite";
+  const path = "/france/fiscalite";
   const f = loadEurostatFiscalite();
   const base = { path, parents: [], crumb: { fr: "Fiscalité", en: "Taxation" } };
   const totalPct = f?.fr_total_po.pc_gdp ?? null;
@@ -235,7 +235,7 @@ export function nationalFiscaliteHub(): FrHub {
 // ─── /fr/national/budget ────────────────────────────────────────────────────
 
 export function nationalBudgetHub(): FrHub {
-  const path = "/fr/national/budget";
+  const path = "/france/budget";
   const db = loadDailyBread();
   const a = db?.apu_subsectors;
   const inst = a?.institutions;
@@ -295,7 +295,7 @@ export function nationalDailyBreadHub(): FrHub {
   const db = loadDailyBread();
   const irYear = db?.fiscal_constants?.ir?.date_reference?.slice(0, 4);
   return {
-    path: "/fr/national/daily-bread",
+    path: "/france/daily-bread",
     parents: [],
     crumb: { fr: "Daily Bread", en: "Daily Bread" },
     fr: {
@@ -336,15 +336,13 @@ const ld = (obj: unknown, key: string) =>
 
 /** BreadcrumbList (+ Dataset when the answer is a figure), on the host that speaks `locale`. Nothing visible. */
 export function FrHubJsonLd({ hub, locale }: { hub: FrHub; locale: Lang }): ReactElement {
-  const host = LOCALE_HOSTS[locale];
   const a = hub[locale];
   const crumbs = [
     { name: "Qipu", path: "/" },
     ...hub.parents.map((p) => ({ name: p[locale], path: p.path })),
     { name: hub.crumb[locale], path: hub.path },
   ];
-  const bc = breadcrumbJsonLd(crumbs);
-  bc.itemListElement = bc.itemListElement.map((i) => ({ ...i, item: i.item.replace(/^https:\/\/www\.qipu\.org/, host) }));
+  const bc = breadcrumbJsonLd(crumbs, locale);
   const scripts = [ld(bc, "bc")];
   if (hub.dataset) {
     scripts.push(
@@ -361,7 +359,7 @@ export function FrHubJsonLd({ hub, locale }: { hub: FrHub; locale: Lang }): Reac
             creator: hub.dataset.creator,
             license: hub.dataset.license,
           }),
-          url: `${host}${hub.path}`,
+          url: absoluteUrl(hub.path, locale),
           inLanguage: locale === "fr" ? "fr-FR" : "en",
         },
         "ds",

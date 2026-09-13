@@ -40,7 +40,7 @@ type D = {
  */
 export function makeContratConfig(city: string): EntityPageConfig<D> {
   const cityNom = getCity(city)?.nom ?? "la Ville";
-  const base = `/fr/city/${city}/marches`;
+  const base = `/france/${city}/marches`;
   const isParis = city === "paris";
   return {
   load: ({ numero }) => {

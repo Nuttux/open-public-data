@@ -138,7 +138,7 @@ export function fournisseurItems(city: string, letter: string, locale: "fr" | "e
     .filter((f) => letterOf(f.nom) === letter)
     .sort((a, b) => a.nom.localeCompare(b.nom, "fr"))
     .map((f) => ({
-      href: `/fr/city/${city}/marches/fournisseur/${f.siren}`,
+      href: `/france/${city}/marches/fournisseur/${f.siren}`,
       label: f.nom,
       sub: locale === "en" ? `${f.count} contract${f.count > 1 ? "s" : ""}, ${f.first === f.last ? f.first : `${f.first}–${f.last}`}` : `${f.count} marché${f.count > 1 ? "s" : ""}, ${f.first === f.last ? f.first : `${f.first}–${f.last}`}`,
       amount: eur(f.total),
@@ -150,7 +150,7 @@ export function contratItems(city: string, year: number, locale: "fr" | "en"): B
     .filter((r) => r.numero_marche)
     .sort((a, b) => (Number(b.montant_max ?? 0) || 0) - (Number(a.montant_max ?? 0) || 0))
     .map((r) => ({
-      href: `/fr/city/${city}/marches/contrat/${encodeURIComponent(r.numero_marche!)}`,
+      href: `/france/${city}/marches/contrat/${encodeURIComponent(r.numero_marche!)}`,
       label: (r.objet ?? r.numero_marche!).slice(0, 120),
       sub: [r.fournisseur_nom, locale === "en" ? `notified ${year}` : `notifié en ${year}`].filter(Boolean).join(" · "),
       amount: r.montant_max != null ? eur(Number(r.montant_max)) : null,
@@ -185,7 +185,7 @@ export function projetItems(year: number, arr: number, locale: "fr" | "en"): Bro
     .filter((r) => Number(r.arrondissement ?? 0) === arr && r.id)
     .sort((a, b) => (b.montant ?? 0) - (a.montant ?? 0))
     .map((r) => ({
-      href: `/fr/city/paris/investissements/projet/${encodeURIComponent(r.id)}`,
+      href: `/france/paris/investissements/projet/${encodeURIComponent(r.id)}`,
       label: r.nom_projet ?? r.id,
       sub: [r.chapitre_libelle, String(year)].filter(Boolean).join(" · ") || (locale === "en" ? `Project, ${year}` : `Projet, ${year}`),
       amount: r.montant != null ? eur(r.montant) : null,
@@ -200,7 +200,7 @@ export function sfPayeeItems(letter: string): BrowseItem[] {
     .filter((p) => withFiche.has(p.slug) && letterOf(p.name) === letter)
     .sort((a, b) => a.name.localeCompare(b.name, "en"))
     .map((p) => ({
-      href: `/us/city/sf/who-gets-paid/payee/${p.slug}`,
+      href: `/usa/san-francisco/who-gets-paid/payee/${p.slug}`,
       label: p.name,
       sub: `${p.kind}${p.last_year ? `, paid through ${p.last_year}` : ""}`,
       amount: { v: fmtUsdCompact(p.total_paid_usd), u: "" },
@@ -230,7 +230,7 @@ export function recifeRecipientItems(letter: string, locale: "pt" | "en"): Brows
       const ys = (r.by_year ?? []).map((y) => y.ano).sort();
       const span = ys.length > 1 ? `${ys[0]}–${ys[ys.length - 1]}` : (ys[0] ?? "");
       return {
-        href: `/br/city/recife/quem-recebe/${r.cnpj}`,
+        href: `/brasil/recife/quem-recebe/${r.cnpj}`,
         label: r.nome,
         sub: span ? (locale === "en" ? `Paid ${span}` : `Pagamentos ${span}`) : null,
         amount: { v: fmtBrlCompact(r.total_pago), u: "" },

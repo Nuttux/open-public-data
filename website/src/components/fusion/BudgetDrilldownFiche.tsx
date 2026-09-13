@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import DrilldownBreadcrumb, {
   type DrilldownBreadcrumbCrumb,
@@ -143,7 +143,7 @@ type LegacyProps = {
   /** Query string profil à propager aux liens enfants (level3/level4/agg). */
   profileQuery?: string;
   /** Préfixe URL pour les liens enfants — par défaut /fr/national/daily-bread.
-   *  Ex: "/fr/national/budget" pour le drawer Budget Explorer. */
+   *  Ex: "/france/budget" pour le drawer Budget Explorer. */
   basePath?: string;
   /** Asides éditoriaux ("Chiffres à retenir") — i18n keys, le composant
    *  appelle `t()` lui-même via le hook. Affichés en bas de la fiche. */
@@ -255,7 +255,7 @@ export default function BudgetDrilldownFiche(props: Props) {
   const flocale: "fr" | "en" = locale === "en" ? "en" : "fr";
   const { bucket, bucketKey, isStub, amounts, breadcrumb, profileQuery } =
     props;
-  const basePath = props.basePath ?? "/fr/national/daily-bread";
+  const basePath = props.basePath ?? "/france/daily-bread";
   const editorialAsides = props.editorialAsides;
   const voice: Voice = inferVoice(basePath);
   const hasProfile = (amounts?.parentPersonalMonthlyEur ?? null) !== null;

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 import LieuFiche from "@/components/fusion/LieuFiche";
 import LieuxVoisins from "@/components/fusion/LieuxVoisins";
@@ -89,7 +89,7 @@ export const lieuConfig: EntityPageConfig<D> = {
     const description = locale === "en"
       ? `${lieu.name}: ${lieu.stats.n_lieu ?? 0} Conseil de Paris deliberations, municipal bulletin extracts back to 1882, city investments — every fact linked to its source.`
       : `${lieu.name} : ${lieu.stats.n_lieu ?? 0} délibérations du Conseil de Paris, extraits du Bulletin municipal depuis 1882, investissements de la Ville — chaque fait relié à sa source.`;
-    const canonical = `/fr/city/paris/lieu/${slug}`;
+    const canonical = `/france/paris/lieu/${slug}`;
     return {
       title,
       description,
@@ -107,7 +107,7 @@ export const lieuConfig: EntityPageConfig<D> = {
       return (
         <>
           <nav className="fx-fiche-back">
-            <Link href="/fr/city/paris/lieux" className="fx-row-link">← {locale === "en" ? "All places" : "Tous les lieux"}</Link>
+            <Link href="/france/paris/lieux" className="fx-row-link">← {locale === "en" ? "All places" : "Tous les lieux"}</Link>
           </nav>
           <div className="fx-page-kicker">
             {kind}
@@ -139,8 +139,8 @@ export const lieuConfig: EntityPageConfig<D> = {
   drawer: {
     kicker: ({ lieu }) => `${lieu.kind_fr} · ${lieu.arrondissement}${lieu.arrondissement === 1 ? "er" : "e"}`,
     title: ({ lieu }) => lieu.name,
-    shareUrl: ({ lieu }) => `/fr/city/paris/lieu/${lieu.slug}`,
-    backHref: () => "/fr/city/paris/lieux",
+    shareUrl: ({ lieu }) => `/france/paris/lieu/${lieu.slug}`,
+    backHref: () => "/france/paris/lieux",
     breadcrumbLabel: ({ lieu }) => lieu.name,
     children: ({ lieu }) => <LieuFiche lieu={lieu} />,
   },
