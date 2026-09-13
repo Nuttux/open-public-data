@@ -40,7 +40,8 @@ export function localeFromHost(host: string | null | undefined): SiteLocale {
 }
 
 /** Paths outside the country trees that carry a Portuguese version too. */
-const TRILINGUAL_PATHS = new Set(['/pour-les-villes', '/confidentialite']);
+export const TRILINGUAL_PATHS: readonly string[] = ['/pour-les-villes', '/confidentialite'];
+const TRILINGUAL = new Set(TRILINGUAL_PATHS);
 
 /**
  * The languages a path exists in. Everything French-authored (root pages,
@@ -50,7 +51,7 @@ const TRILINGUAL_PATHS = new Set(['/pour-les-villes', '/confidentialite']);
 export function localesForPath(path: string): SiteLocale[] {
   if (path === '/us' || path.startsWith('/us/')) return ['en'];
   if (path === '/br' || path.startsWith('/br/')) return ['pt', 'en'];
-  if (TRILINGUAL_PATHS.has(path)) return ['en', 'fr', 'pt'];
+  if (TRILINGUAL.has(path)) return ['en', 'fr', 'pt'];
   return ['en', 'fr'];
 }
 

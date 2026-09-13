@@ -73,14 +73,23 @@ export function communeBudgetDir(slug: string): string {
   return `communes-budget/${slug}`;
 }
 
+/**
+ * The nature layer alone (`getCommuneCapabilities(slug).budget.nature`), without
+ * probing the disk for the other layers — for callers that test it on every
+ * commune of a département.
+ */
+export function communeHasBudgetNatureLayer(slug: string): boolean {
+  // Nature layer (national) is DATA-DERIVED from the committed manifest (slug →
+  // years). The actual budget JSON lives in the bucket; the manifest is the
+  // local, instant presence check — no per-request bucket probe.
+  return !(OVERRIDES[slug]?.hide ?? []).includes("budget") && communeHasBudgetNature(slug);
+}
+
 export function getCommuneCapabilities(slug: string): CommuneCapabilities {
   const ov = OVERRIDES[slug] ?? {};
   const hidden = new Set(ov.hide ?? []);
 
-  // Nature layer (national) is DATA-DERIVED from the committed manifest (slug →
-  // years). The actual budget JSON lives in the bucket; the manifest is the
-  // local, instant presence check — no per-request bucket probe.
-  const nature = !hidden.has("budget") && communeHasBudgetNature(slug);
+  const nature = communeHasBudgetNatureLayer(slug);
 
   // Derived from data presence too — a future mart_budget_fonction / PDF export
   // writes this file and the layer flips on with no code or registry edit.
