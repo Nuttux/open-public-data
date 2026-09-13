@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import "@/app/fusion.css";
 import { getCityOrNull, hasDedicatedRoutes, listCities, listCitySlugs } from "@/lib/cities";
 import {
@@ -17,6 +17,7 @@ import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneBudget } from "@/lib/commune-budget";
 import { deNom } from "@/lib/nom-commune";
+import { communeAlias } from "@/lib/commune-aliases";
 
 /** « 213,9 M€ », « 386 k€ » — les mêmes unités que la page, pour le titre. */
 function fmtEur(eur: number, locale: "fr" | "en"): string {
@@ -33,6 +34,7 @@ import PageVilleClient from "./PageVilleClient";
 import { loadPageVille } from "./page-ville-data";
 import { loadPageVilleRiche } from "./page-ville-riche-data";
 import VilleRicheClient from "./VilleRicheClient";
+import CommuneHomonymes, { homonymesOf } from "./CommuneHomonymes";
 
 // Statically pre-render only the 9 rich top-N cities (Paris excluded — it
 // redirects to /). The thousands of slim "tail" pages are generated on
@@ -99,6 +101,25 @@ export async function generateMetadata({
       path: `/fr/city/${slug}`,
     });
   }
+  // Nom partagé par plusieurs communes : la page du choix, hors index. (Les
+  // noms à commune dominante sont redirigés par proxy.ts ; filet ici.)
+  const alias = communeAlias(slug);
+  if (alias?.kind === "redirect") permanentRedirect(`/fr/city/${alias.to}`);
+  if (alias?.kind === "choose") {
+    const cs = homonymesOf(alias.slugs);
+    const nom = cs[0]?.nom ?? slug;
+    const liste = cs.map((c) => `${c.nom} (${c.dep_name})`).join(", ");
+    const meta = await buildLocaleAwareMetadata({
+      title: `${nom} : ${cs.length} communes portent ce nom`,
+      description: `Plusieurs communes françaises s'appellent ${nom} : ${liste}. Choisissez la vôtre pour voir son budget.`,
+      en: {
+        title: `${nom}: ${cs.length} French towns share this name`,
+        description: `Several French towns are called ${nom}: ${liste}. Pick yours to see its budget.`,
+      },
+      path: `/fr/city/${slug}`,
+    });
+    return { ...meta, robots: { index: false, follow: true } };
+  }
   // A real 404 (thrown before streaming), not a page titled "not found".
   notFound();
 }
@@ -163,6 +184,13 @@ export default async function CityPage({
         labels={labels}
       />
     );
+  }
+
+  const alias = communeAlias(slug);
+  if (alias?.kind === "redirect") permanentRedirect(`/fr/city/${alias.to}`);
+  if (alias?.kind === "choose") {
+    const cs = homonymesOf(alias.slugs);
+    if (cs.length > 1) return <CommuneHomonymes communes={cs} locale={(await readLocale()) === "en" ? "en" : "fr"} />;
   }
 
   notFound();

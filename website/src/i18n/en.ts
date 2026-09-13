@@ -6769,6 +6769,11 @@ const en: Record<string, string> = {
   'us.sf.related.place_same_kind': '{kind}, the same kind of place',
   'us.sf.related.hub_places': 'Every San Francisco place on the site',
   'us.sf.related.hub_places_sub': 'Parks, libraries, hospitals, piers, and the contract money paid for work at each',
+  'fx.homonymes.h1': '{nom}: {n} towns share this name',
+  'fx.homonymes.lead': 'Several French towns are called {nom}. Pick yours to see its budget, debt and public contracts.',
+  'fx.homonymes.h_list': 'Towns called {nom}',
+  'fx.homonymes.sub': 'From most to least populated. Population: OFGL.',
+  'fx.homonymes.hab': 'inhab.',
 };
 
 export default en;
