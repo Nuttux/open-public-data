@@ -102,14 +102,14 @@ export function nationalDetteHub(): FrHub {
   return {
     ...base,
     fr: {
-      title: `Dette publique de la France : ${pct(lastPct, "fr")} du PIB au ${quarter("fr")}${bn("fr") ? ` (${bn("fr")})` : ""}`,
+      title: `Dette publique de la France : ${pct(lastPct, "fr")} du PIB (${quarter("fr")})`,
       description:
         `Au ${quarter("fr")}, la dette des administrations publiques françaises au sens de Maastricht atteint ${pct(lastPct, "fr")} du PIB` +
         `${bn("fr") ? `, soit ${bn("fr")}` : ""}, ventilée entre État, collectivités locales et Sécurité sociale. ` +
         `Source : ${d.source}${fetched("fr") ? `, données récupérées le ${fetched("fr")}` : ""}.`,
     },
     en: {
-      title: `French public debt: ${pct(lastPct, "en")} of GDP in ${quarter("en")}${bn("en") ? ` (${bn("en")})` : ""}`,
+      title: `French public debt: ${pct(lastPct, "en")} of GDP (${quarter("en")})`,
       description:
         `In ${quarter("en")}, the Maastricht debt of French general government stood at ${pct(lastPct, "en")} of GDP` +
         `${bn("en") ? `, or ${bn("en")}` : ""}, split between central government, local authorities and social security. ` +
@@ -149,14 +149,14 @@ export function nationalEtatHub(): FrHub {
   return {
     ...base,
     fr: {
-      title: `Budget de l’État ${e.exercice} : ${bnEur(t.bg_net_cp, "fr")} de dépenses nettes (${e.loi})`,
+      title: `Budget de l’État ${e.exercice} : ${bnEur(t.bg_net_cp, "fr")} (${e.loi})`,
       description:
         `Le ${e.loi} ${e.exercice} prévoit ${bnEur(t.bg_net_cp, "fr")} de dépenses nettes pour le budget général de l’État ` +
         `(${bnEur(t.bg_brut_cp, "fr")} brut, dont ${bnEur(t.remboursements_degrev_cp, "fr")} de remboursements et dégrèvements), réparties en ${nMissions} missions. ` +
         `Source : ${e.source}${fetched("fr") ? `, données récupérées le ${fetched("fr")}` : ""}.`,
     },
     en: {
-      title: `French State budget ${e.exercice}: ${bnEur(t.bg_net_cp, "en")} net spending (${e.loi})`,
+      title: `French State budget ${e.exercice}: ${bnEur(t.bg_net_cp, "en")} (${e.loi})`,
       description:
         `The ${e.exercice} budget bill (${e.loi}) plans ${bnEur(t.bg_net_cp, "en")} of net spending for the State general budget ` +
         `(${bnEur(t.bg_brut_cp, "en")} gross, including ${bnEur(t.remboursements_degrev_cp, "en")} of tax refunds and rebates), across ${nMissions} missions. ` +
@@ -202,14 +202,14 @@ export function nationalFiscaliteHub(): FrHub {
   return {
     ...base,
     fr: {
-      title: `Prélèvements obligatoires en France : ${pct(totalPct, "fr")} du PIB en ${y}${bn("fr") ? ` (${bn("fr")})` : ""}`,
+      title: `Prélèvements obligatoires ${y} : ${pct(totalPct, "fr")} du PIB`,
       description:
         `En ${y}, les prélèvements obligatoires des administrations publiques représentent ${pct(totalPct, "fr")} du PIB` +
         `${bn("fr") ? `, soit environ ${bn("fr")}` : ""}${parts.length ? ` (dont ${partsText("fr")} du PIB)` : ""}. ` +
         `Source : ${f.source}${fetched("fr") ? `, données récupérées le ${fetched("fr")}` : ""}.`,
     },
     en: {
-      title: `Compulsory levies in France: ${pct(totalPct, "en")} of GDP in ${y}${bn("en") ? ` (${bn("en")})` : ""}`,
+      title: `Taxes and levies in France ${y}: ${pct(totalPct, "en")} of GDP`,
       description:
         `In ${y}, compulsory levies collected by French general government amounted to ${pct(totalPct, "en")} of GDP` +
         `${bn("en") ? `, about ${bn("en")}` : ""}${parts.length ? ` (of which ${partsText("en")} of GDP)` : ""}. ` +
@@ -255,14 +255,14 @@ export function nationalBudgetHub(): FrHub {
   return {
     ...base,
     fr: {
-      title: `Le budget de la France ${y} : ${md(total, "fr")} de dépenses publiques`,
+      title: `Budget de la France ${y} : ${md(total, "fr")} de dépenses`,
       description:
         `En ${y}, la Sécurité sociale (${md(secu, "fr")}), l’État central et ses opérateurs (${md(etat, "fr")}) et les collectivités locales (${md(local, "fr")}) ` +
         `dépensent ${md(total, "fr")}, avant transferts entre administrations. ` +
         `Source : ${a.source}, détail par PLF et OFGL${fetched("fr") ? ` ; données récupérées le ${fetched("fr")}` : ""}.`,
     },
     en: {
-      title: `The French budget ${y}: ${md(total, "en")} of public spending`,
+      title: `French public spending ${y}: ${md(total, "en")}`,
       description:
         `In ${y}, social security (${md(secu, "en")}), central government and its agencies (${md(etat, "en")}) and local authorities (${md(local, "en")}) ` +
         `spent ${md(total, "en")}, before transfers between public bodies. ` +
@@ -290,14 +290,14 @@ export function nationalDailyBreadHub(): FrHub {
     parents: [],
     crumb: { fr: "Daily Bread", en: "Daily Bread" },
     fr: {
-      title: "Daily Bread, simulateur : où vont chaque mois les prélèvements sur un salaire",
+      title: "Où vont les prélèvements sur un salaire : simulateur",
       description:
         "À partir d’un salaire net, du nombre de parts et de la commune, le simulateur estime les prélèvements obligatoires mensuels " +
         "(cotisations, CSG, impôt sur le revenu, TVA) et leur répartition entre Sécurité sociale, État et collectivités locales. " +
         `Sources : barèmes CGI et URSSAF${irYear ? ` ${irYear}` : ""}, Eurostat, PLF, OFGL.`,
     },
     en: {
-      title: "Daily Bread simulator: where the levies on a salary go each month",
+      title: "Where the taxes on a salary go: simulator",
       description:
         "From a net salary, household size and municipality, the simulator estimates monthly compulsory levies " +
         "(social contributions, CSG, income tax, VAT) and how they split between social security, central government and local authorities. " +

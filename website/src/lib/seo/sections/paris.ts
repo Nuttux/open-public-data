@@ -142,28 +142,28 @@ function budget(year?: number): ParisSectionSeo {
 
   const fr: Text = isVoted
     ? {
-        title: `Budget de Paris ${d.year} : ${bn(d.depenses, "fr")} de dépenses prévues au budget voté`,
+        title: `Budget de Paris ${d.year} : ${bn(d.depenses, "fr")} (budget voté)`,
         answer:
           `Pour ${d.year}, le budget voté par le Conseil de Paris prévoit ${bn(d.depenses, "fr")} de dépenses et ${bn(d.recettes, "fr")} de recettes` +
           (lastExec ? ` ; en ${lastExec.year}, dernière année de comptes exécutés, la Ville a dépensé ${bn(lastExec.depenses, "fr")}.` : ".") +
           ` Série ${span}. ${sourceLine("fr", src.fr, iso)}`,
       }
     : {
-        title: `Budget de Paris ${d.year} : ${bn(d.depenses, "fr")} dépensés, comptes exécutés`,
+        title: `Budget de Paris ${d.year} : ${bn(d.depenses, "fr")} dépensés`,
         answer:
           `En ${d.year}, d'après le compte administratif, la Ville de Paris a dépensé ${bn(d.depenses, "fr")} et encaissé ${bn(d.recettes, "fr")} de recettes. ` +
           `Série ${span}. ${sourceLine("fr", src.fr, iso)}`,
       };
   const en: Text = isVoted
     ? {
-        title: `Paris budget ${d.year}: ${bn(d.depenses, "en")} of spending planned in the voted budget`,
+        title: `Paris budget ${d.year}: ${bn(d.depenses, "en")} (voted budget)`,
         answer:
           `For ${d.year}, the budget voted by the Conseil de Paris plans ${bn(d.depenses, "en")} of spending and ${bn(d.recettes, "en")} of revenue` +
           (lastExec ? `; in ${lastExec.year}, the latest year of executed accounts, the City spent ${bn(lastExec.depenses, "en")}.` : ".") +
           ` Series ${span}. ${sourceLine("en", src.en, iso)}`,
       }
     : {
-        title: `Paris budget ${d.year}: ${bn(d.depenses, "en")} spent, executed accounts`,
+        title: `Paris budget ${d.year}: ${bn(d.depenses, "en")} spent`,
         answer:
           `In ${d.year}, according to the administrative account, the City of Paris spent ${bn(d.depenses, "en")} and took in ${bn(d.recettes, "en")} of revenue. ` +
           `Series ${span}. ${sourceLine("en", src.en, iso)}`,
@@ -187,13 +187,13 @@ function subventions(year?: number): ParisSectionSeo {
   return {
     path: PATH("subventions"),
     fr: {
-      title: `Subventions de Paris en ${d.year} : ${amount(d.total, "fr")} versés à ${int(d.nbBeneficiaires, "fr")} bénéficiaires`,
+      title: `Subventions de Paris ${d.year} : ${amount(d.total, "fr")} versés`,
       answer:
         `En ${d.year}, la Ville de Paris a versé ${amount(d.total, "fr")} à ${int(d.nbBeneficiaires, "fr")} bénéficiaires (${int(d.nbSubventions, "fr")} subventions), d'après l'annexe du compte administratif. ` +
         `Série ${span}. ${sourceLine("fr", "subventions versées, Ville de Paris (opendata.paris.fr)", iso)}`,
     },
     en: {
-      title: `Paris city grants in ${d.year}: ${amount(d.total, "en")} paid to ${int(d.nbBeneficiaires, "en")} recipients`,
+      title: `Paris city grants ${d.year}: ${amount(d.total, "en")} paid`,
       answer:
         `In ${d.year}, the City of Paris paid ${amount(d.total, "en")} to ${int(d.nbBeneficiaires, "en")} recipients (${int(d.nbSubventions, "en")} grants), according to the appendix of its administrative account. ` +
         `Series ${span}. ${sourceLine("en", "grants paid, City of Paris (opendata.paris.fr)", iso)}`,
@@ -211,15 +211,15 @@ function marches(year?: number): ParisSectionSeo {
   return {
     path: PATH("marches"),
     fr: {
-      title: `Marchés publics de Paris en ${d.year} : ${int(d.nb, "fr")} contrats, ${amount(d.total, "fr")} d'enveloppes maximales`,
+      title: `Marchés publics de Paris ${d.year} : ${int(d.nb, "fr")} contrats`,
       answer:
-        `En ${d.year}, la Ville de Paris a notifié ${int(d.nb, "fr")} marchés publics à ${int(d.nbTitulaires, "fr")} titulaires distincts, pour ${amount(d.total, "fr")} d'enveloppes maximales cumulées : des plafonds sur la durée des contrats, pas des dépenses de l'année. ` +
+        `En ${d.year}, la Ville de Paris a notifié ${int(d.nb, "fr")} marchés publics à ${int(d.nbTitulaires, "fr")} titulaires distincts, pour ${amount(d.total, "fr")} au total : ce sont les montants maximum prévus sur toute la durée des contrats, pas ce qui est dépensé dans l'année. ` +
         sourceLine("fr", "données essentielles de la commande publique (DECP), Ville de Paris (opendata.paris.fr)", iso),
     },
     en: {
-      title: `Paris public contracts in ${d.year}: ${int(d.nb, "en")} contracts, ${amount(d.total, "en")} in maximum envelopes`,
+      title: `Paris public contracts ${d.year}: ${int(d.nb, "en")} awarded`,
       answer:
-        `In ${d.year}, the City of Paris awarded ${int(d.nb, "en")} public contracts to ${int(d.nbTitulaires, "en")} distinct holders, for ${amount(d.total, "en")} in cumulative maximum envelopes: ceilings over the life of the contracts, not spending in the year. ` +
+        `In ${d.year}, the City of Paris awarded ${int(d.nb, "en")} public contracts to ${int(d.nbTitulaires, "en")} distinct holders, worth up to ${amount(d.total, "en")} in total: the maximum each contract allows over its whole life, not what is spent in the year. ` +
         sourceLine("en", "essential public procurement data (DECP), City of Paris (opendata.paris.fr)", iso),
     },
     label: { fr: "Marchés publics de la Ville de Paris", en: "City of Paris public contracts" },
@@ -236,15 +236,17 @@ function investissements(year?: number): ParisSectionSeo {
   return {
     path: PATH("investissements"),
     fr: {
-      title: `Investissements de Paris en ${d.year} : ${amount(d.total, "fr")} dépensés, ${int(d.nbProjets, "fr")} projets recensés`,
+      title: `Investissements de Paris ${d.year} : ${int(d.nbProjets, "fr")} projets`,
       answer:
-        `En ${d.year}, d'après le compte administratif, les dépenses d'investissement de la Ville de Paris atteignent ${amount(d.total, "fr")} ; les ${int(d.nbProjets, "fr")} projets détaillés dans ses annexes représentent ${pct(d.projetsCoveragePct, "fr", 0)} de ce total. ` +
+        // Le total de tête de la page inclut encore dette et dotations : tant que
+        // ce n'est pas corrigé, la phrase s'en tient aux projets.
+        `En ${d.year}, les annexes du compte administratif de la Ville de Paris détaillent ${int(d.nbProjets, "fr")} projets d'investissement, avec leur montant, leur thème et leur arrondissement. ` +
         sourceLine("fr", "compte administratif et annexes d'investissement de la Ville de Paris (opendata.paris.fr)", iso),
     },
     en: {
-      title: `Paris capital spending in ${d.year}: ${amount(d.total, "en")}, ${int(d.nbProjets, "en")} projects listed`,
+      title: `Paris capital projects ${d.year}: ${int(d.nbProjets, "en")} listed`,
       answer:
-        `In ${d.year}, according to the administrative account, the City of Paris's capital spending reached ${amount(d.total, "en")}; the ${int(d.nbProjets, "en")} projects itemised in its appendices account for ${pct(d.projetsCoveragePct, "en", 0)} of that total. ` +
+        `In ${d.year}, the appendices of the City of Paris administrative account itemise ${int(d.nbProjets, "en")} capital projects, with their amount, theme and district. ` +
         sourceLine("en", "City of Paris administrative account and investment appendices (opendata.paris.fr)", iso),
     },
     label: { fr: "Investissements de la Ville de Paris", en: "City of Paris capital investment" },
@@ -260,13 +262,13 @@ function dette(year?: number): ParisSectionSeo {
   return {
     path: PATH("dette"),
     fr: {
-      title: `Dette de la Ville de Paris : ${amount(d.detteFinanciere, "fr")} de dette financière au 31 décembre ${d.year}`,
+      title: `Dette de la Ville de Paris : ${amount(d.detteFinanciere, "fr")} fin ${d.year}`,
       answer:
         `Au 31 décembre ${d.year}, d'après le bilan du compte administratif, la dette financière de la Ville de Paris (emprunts auprès des banques et obligations) s'élève à ${amount(d.detteFinanciere, "fr")}, ses fonds propres à ${amount(d.fondsPropres, "fr")} et son actif à ${amount(d.actif, "fr")}. ` +
         sourceLine("fr", "compte administratif M57 de la Ville de Paris (bilan)", iso),
     },
     en: {
-      title: `City of Paris debt: ${amount(d.detteFinanciere, "en")} of financial debt at 31 December ${d.year}`,
+      title: `City of Paris debt: ${amount(d.detteFinanciere, "en")} at end-${d.year}`,
       answer:
         `At 31 December ${d.year}, according to the balance sheet of the administrative account, the City of Paris owed ${amount(d.detteFinanciere, "en")} in financial debt (bank loans and bonds); its equity stood at ${amount(d.fondsPropres, "en")} and its assets at ${amount(d.actif, "en")}. ` +
         sourceLine("en", "City of Paris M57 administrative account (balance sheet)", iso),
@@ -288,8 +290,8 @@ function logement(year?: number): ParisSectionSeo {
     path: PATH("logement"),
     fr: {
       title: hasSru
-        ? `Logement social à Paris : taux SRU de ${pct(d.sruRatio, "fr")} (${d.sruYear}), ${int(d.nouveauxParAn, "fr")} logements financés en ${d.year}`
-        : `Logement social à Paris : ${int(d.nouveauxParAn, "fr")} logements financés en ${d.year}`,
+        ? `Logement social à Paris : ${pct(d.sruRatio, "fr")} (SRU ${d.sruYear})`
+        : `Logement social à Paris : ${int(d.nouveauxParAn, "fr")} financés en ${d.year}`,
       answer:
         (hasSru
           ? `D'après l'inventaire SRU ${d.sruYear}, Paris compte ${int(d.stockTotal, "fr")} logements sociaux, soit ${pct(d.sruRatio, "fr")} des résidences principales pour une cible légale de ${pct(d.sruTarget, "fr", 0)} ; `
@@ -299,7 +301,7 @@ function logement(year?: number): ParisSectionSeo {
     },
     en: {
       title: hasSru
-        ? `Social housing in Paris: ${pct(d.sruRatio, "en")} SRU rate (${d.sruYear}), ${int(d.nouveauxParAn, "en")} units funded in ${d.year}`
+        ? `Social housing in Paris: ${pct(d.sruRatio, "en")} (SRU ${d.sruYear})`
         : `Social housing in Paris: ${int(d.nouveauxParAn, "en")} units funded in ${d.year}`,
       answer:
         (hasSru
@@ -322,18 +324,10 @@ function lieux(): ParisSectionSeo {
   const since = all.reduce<number | null>((min, l) => (l.depuis && (min === null || l.depuis < min) ? l.depuis : min), null);
   const iso = dataIso(["lieux/index.json"]);
   const money = (lang: Lang) => (argent > 0 ? mn(argent, lang) : null);
-  const frTitleBits = [
-    since ? `archives depuis ${since}` : null,
-    money("fr") ? `${money("fr")} d'argent public identifié` : null,
-  ].filter(Boolean);
-  const enTitleBits = [
-    since ? `archives since ${since}` : null,
-    money("en") ? `${money("en")} of public money identified` : null,
-  ].filter(Boolean);
   return {
     path: PATH("lieux"),
     fr: {
-      title: `${int(n, "fr")} lieux de Paris${frTitleBits.length ? ` : ${frTitleBits.join(", ")}` : ""}`,
+      title: `Lieux de Paris : ${int(n, "fr")} lieux${money("fr") ? `, ${money("fr")} d'argent public` : ""}`,
       answer:
         `Piscines, théâtres, parcs : pour ${int(n, "fr")} lieux de Paris, les délibérations du Conseil de Paris, les archives du Bulletin municipal` +
         (since ? ` depuis ${since}` : "") +
@@ -343,7 +337,7 @@ function lieux(): ParisSectionSeo {
         (longDate(iso, "fr") ? `Données au ${longDate(iso, "fr")}.` : ""),
     },
     en: {
-      title: `${int(n, "en")} Paris places${enTitleBits.length ? `: ${enTitleBits.join(", ")}` : ""}`,
+      title: `Paris places: ${int(n, "en")}${money("en") ? `, ${money("en")} of public money` : ""}`,
       answer:
         `Pools, theatres, parks: for ${int(n, "en")} places in Paris, the Conseil de Paris deliberations, the municipal bulletin archives` +
         (since ? ` since ${since}` : "") +

@@ -31,7 +31,9 @@ export async function generateMetadata({
   // Le titre répond avec les chiffres de l'en-tête de la page : le manifeste
   // engagé porte le même total, sans lire le bucket pour la balise <title>.
   const m = marchesManifestEntry(slug);
-  if (!m || m.nb === 0 || m.years.length === 0) {
+  // Une série finie depuis plus de deux ans ne va pas dans le titre (voir
+  // lib/seo/sections/marseille.ts, isRecent) : titre descriptif, sans chiffre.
+  if (!m || m.nb === 0 || m.years.length === 0 || Math.max(...m.years) < new Date().getFullYear() - 2) {
     return buildLocaleAwareMetadata({
       title: `Les marchés publics ${deNom(nom)}`,
       description: `Montants, fournisseurs et domaines des marchés publics ${deNom(nom)}. Source : DECP consolidé (data.gouv.fr).`,
@@ -44,7 +46,6 @@ export async function generateMetadata({
   }
   const y0 = Math.min(...m.years);
   const y1 = Math.max(...m.years);
-  const years = y0 === y1 ? String(y0) : `${y0}–${y1}`;
   // Même arrondi que l'en-tête (CommuneMarchesClient, split()).
   const amount = (tag: string) => {
     const a = Math.abs(m.montant);
@@ -55,10 +56,10 @@ export async function generateMetadata({
   const nbFr = m.nb.toLocaleString("fr-FR");
   const nbEn = m.nb.toLocaleString("en-GB");
   return buildLocaleAwareMetadata({
-    title: `Marchés publics ${deNom(nom)} : ${nbFr} marchés, ${amount("fr-FR")} (${years})`,
+    title: `Marchés publics ${deNom(nom)} : ${nbFr} marchés, ${amount("fr-FR")}`,
     description: `${nom} a notifié ${nbFr} marchés publics de ${y0} à ${y1}, pour ${amount("fr-FR")} de contrats : fournisseurs, domaines et montants, année par année. Source : DECP consolidé (data.gouv.fr).`,
     en: {
-      title: `${nom} public contracts: ${nbEn} awarded, ${amount("en-GB")} (${years})`,
+      title: `${nom} public contracts: ${nbEn} awarded, ${amount("en-GB")}`,
       description: `${nom} awarded ${nbEn} public contracts from ${y0} to ${y1}, worth ${amount("en-GB")}: suppliers, categories and amounts, year by year. Source: consolidated DECP (data.gouv.fr).`,
     },
     path,

@@ -67,7 +67,7 @@ export function sfBudgetHub(): SfHub {
     path: "/us/city/sf/budget",
     crumb: "Budget",
     answer: {
-      title: `San Francisco budget FY${fy}: ${bn(tot.total_usd)} adopted${perRes}`,
+      title: `San Francisco budget FY${fy}: ${bn(tot.total_usd)} adopted`,
       answer:
         `San Francisco's adopted budget for FY${fy} is ${bn(tot.total_usd)} across all funds${perRes}, ` +
         `spread over ${n("service area", nAreas)} and ${n("department", nDepts)}, each dollar counted once net of transfers between City funds; ` +
@@ -99,7 +99,7 @@ export function sfPayeesHub(): SfHub {
     path: "/us/city/sf/who-gets-paid",
     crumb: "Who gets paid",
     answer: {
-      title: `Who San Francisco pays: ${bn(y.totals.all_usd)} to ${n("payee", y.n_vendors)} in FY${fy}`,
+      title: `Who San Francisco pays: ${bn(y.totals.all_usd)} in FY${fy}`,
       answer:
         `In FY${fy}, ${bn(y.totals.all_usd)} was paid through the City and County of San Francisco's financial system: ` +
         `${n("voucher", y.n_vouchers)} to ${n("payee", y.n_vendors)}${related}; fiscal years FY${years[0].fy} to FY${years.at(-1)!.fy} on file. ` +
@@ -149,7 +149,7 @@ export function sfPayrollHub(): SfHub {
     path: "/us/city/sf/payroll",
     crumb: "Payroll",
     answer: {
-      title: `San Francisco payroll FY${fy}: ${bn(last.total_compensation_usd)} paid to ${n("person", last.n_employees, "en", "people")}`,
+      title: `San Francisco payroll FY${fy}: ${bn(last.total_compensation_usd)}`,
       answer:
         `In FY${fy}, the City and County of San Francisco paid ${bn(last.total_compensation_usd)} in total compensation ` +
         `(salaries, overtime, other pay and benefits) to ${n("person", last.n_employees, "en", "people")} — a headcount, not full-time equivalents — ` +
@@ -179,7 +179,7 @@ export function sfPlacesHub(): SfHub {
     crumb: "Places",
     answer: {
       title: funds
-        ? `${n("San Francisco place", places.length)}: ${bn(totalFunds)} in contract dollars paid for work there`
+        ? `San Francisco places: ${places.length.toLocaleString("en-US")} sites, ${bn(totalFunds)} paid`
         : `San Francisco, place by place: ${n("place", places.length)}`,
       answer:
         `${n("San Francisco place", places.length)} — parks, libraries, hospitals, piers — run by ${n("City department", nDepts)}: ` +
@@ -206,7 +206,7 @@ export function sfCityHub(): SfHub {
     path: "/us/city/sf",
     crumb: "San Francisco",
     answer: {
-      title: `Where public money goes in San Francisco: ${bn(ref.total_usd)} budget in FY${fy}`,
+      title: `San Francisco public money: ${bn(ref.total_usd)} budget (FY${fy})`,
       answer:
         `San Francisco adopted a ${bn(ref.total_usd)} budget for FY${fy}` +
         `${perMonth != null ? `, ${fmtUsd(perMonth)} per resident per month for ${pop.value.toLocaleString("en-US")} residents (U.S. Census, ${pop.year})` : ""}. ` +
@@ -250,7 +250,7 @@ export function usCountryHub(): SfHub {
     path: "/us",
     crumb: "United States",
     answer: {
-      title: `US public money: ${bn(outlays)} federal outlays in FY${db.fiscal_year}${toDate}, San Francisco's ${bn(sfTotal)} budget`,
+      title: "US public money: federal spending and San Francisco",
       answer:
         `Federal outlays reached ${bn(outlays)} in fiscal year ${db.fiscal_year}${through && toDate ? ` through ${through}` : ""}, according to the U.S. Treasury's ${db.source.name}, ` +
         `and San Francisco adopted a ${bn(sfTotal)} budget for FY${sfFy}, according to the SF Controller's Office on DataSF: ` +
