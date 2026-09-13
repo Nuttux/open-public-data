@@ -7,6 +7,7 @@ import ContactForm from "./ContactForm";
 import { readLocale } from "@/lib/seo";
 import fr from "@/i18n/fr";
 import en from "@/i18n/en";
+import { ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
 
 export default async function ContactClient() {
   const locale = await readLocale();
@@ -94,8 +95,8 @@ export default async function ContactClient() {
           </div>
 
           <div style={{ marginTop: 32, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="/analyses">{t("fx.contact.btn.analyses")}</Button>
-            <Button href="/">{t("fx.contact.btn.home")}</Button>
+            {ANALYSES_PUBLIC && <Button variant="primary" href="/analyses">{t("fx.contact.btn.analyses")}</Button>}
+            <Button variant={ANALYSES_PUBLIC ? undefined : "primary"} href="/">{t("fx.contact.btn.home")}</Button>
           </div>
         </div>
       </section>

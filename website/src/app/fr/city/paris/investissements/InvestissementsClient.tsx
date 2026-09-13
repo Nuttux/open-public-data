@@ -93,7 +93,7 @@ export default function InvestissementsClient({
           ...(d.byChapitre.length > 0 ? [{ id: "sec-chapitre", label: t("fx.toc.chapitres") }] : []),
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-projets", label: t("fx.toc.projets") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />

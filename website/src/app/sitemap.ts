@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, readSiteLocale } from '@/lib/seo';
+import { ANALYSES_PUBLIC } from '@/lib/analyses-visibility';
 import { LOCALE_HOSTS, localesForPath, type SiteLocale } from '@/lib/site-locale';
 import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } from '@/lib/seo/entity-paths';
 import { listCities } from '@/lib/cities';
@@ -46,7 +47,7 @@ const MAIN_ROUTES = [
   { path: '/fr/national/etat', priority: 0.8 },
   { path: '/fr/national/budget', priority: 0.85 },
   { path: '/comparer', priority: 0.7 },
-  { path: '/analyses', priority: 0.7 },
+  ...(ANALYSES_PUBLIC ? [{ path: '/analyses', priority: 0.7 }] : []),
   { path: '/methode', priority: 0.6 },
   { path: '/contact', priority: 0.4 },
   { path: '/confidentialite', priority: 0.2 },

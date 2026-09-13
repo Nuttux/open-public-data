@@ -96,7 +96,7 @@ export default function LogementSocialClient({
                 { id: "sec-tension-arr", label: t("fx.log.toc.par_arr") },
               ]
             : []),
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />

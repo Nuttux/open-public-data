@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { ANALYSES_PUBLIC } from "./analyses-visibility";
 
 // Blog posts directory
 const POSTS_PATH = path.join(process.cwd(), "content/blog");
@@ -20,6 +21,9 @@ export interface BlogPost {
   /** When true, post is reachable by direct URL but excluded from the listing
    *  (used for the manifesto / about page that lives in the blog dir). */
   hidden?: boolean;
+  /** Frontmatter `published: true` — reviewed and cleared for publication.
+   *  Absent or false: the post answers 404 and is listed nowhere. */
+  published: boolean;
   readingTime: string;
   content: string;
   /** EN frontmatter overrides — populated when locale === "en" */
@@ -39,6 +43,7 @@ export interface BlogPostMeta {
   image?: string;
   category?: string;
   hidden?: boolean;
+  published: boolean;
   readingTime: string;
   title_en?: string;
   description_en?: string;
@@ -80,6 +85,7 @@ function parseMDXFile(fileName: string): BlogPost {
     image: data.image,
     category: typeof data.category === "string" ? data.category : undefined,
     hidden: data.hidden === true,
+    published: data.published === true,
     readingTime: stats.text,
     content,
     title_en: typeof data.title_en === "string" ? data.title_en : undefined,
@@ -89,8 +95,26 @@ function parseMDXFile(fileName: string): BlogPost {
   };
 }
 
+/** A post is public only when the section is on AND the post was cleared. */
+function isPublic(post: { published: boolean }): boolean {
+  return ANALYSES_PUBLIC && post.published;
+}
+
 /**
- * Get all blog posts, sorted by date (newest first)
+ * Every post, published or not, newest first — for editorial review (risk
+ * scoring, LinkedIn reuse). Never feed this to a public page.
+ */
+export function getAllPostsForReview(): BlogPostMeta[] {
+  return getMDXFiles()
+    .map((file) => {
+      const { content: _, ...meta } = parseMDXFile(file);
+      return meta;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+/**
+ * Get all public blog posts, sorted by date (newest first)
  */
 export function getAllPosts(): BlogPostMeta[] {
   const files = getMDXFiles();
@@ -101,7 +125,7 @@ export function getAllPosts(): BlogPostMeta[] {
       const { content: _, ...meta } = post;
       return meta;
     })
-    .filter((p) => !p.hidden);
+    .filter((p) => isPublic(p) && !p.hidden);
 
   // Sort by date, newest first
   return posts.sort(
@@ -128,6 +152,9 @@ export function getPostBySlug(slug: string, locale: "fr" | "en" = "fr"): BlogPos
   }
 
   const post = parseMDXFile(fileName);
+  if (!isPublic(post)) {
+    return null;
+  }
 
   if (locale === "en") {
     const enFileName = `${slug}.en.mdx`;
@@ -159,5 +186,7 @@ export function getAllTags(): string[] {
  * Get all post slugs (for static generation)
  */
 export function getAllPostSlugs(): string[] {
-  return getMDXFiles().map((file) => file.replace(/\.mdx?$/, ""));
+  return getMDXFiles()
+    .filter((file) => isPublic(parseMDXFile(file)))
+    .map((file) => file.replace(/\.mdx?$/, ""));
 }

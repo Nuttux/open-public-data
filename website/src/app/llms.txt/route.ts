@@ -6,6 +6,7 @@ import { marchesManifestSlugs } from '@/lib/commune-marches';
 import { readDataJsonOrNull } from '@/lib/data/read';
 import { loadLieuxIndex } from '@/lib/lieux-data';
 import { SITE_URL } from '@/lib/seo';
+import { ANALYSES_PUBLIC } from '@/lib/analyses-visibility';
 import { loadSfPlacesIndex } from '@/lib/us/sf-places-data';
 
 /**
@@ -138,8 +139,7 @@ Every organisation, contract, supplier and place has its own page:
 
 - [Method](${u}/methode): how each figure is built, source by source.
 - [Corrections](${u}/corrections): every correction, with its date and scope.
-- [Analyses](${u}/analyses): written pieces.
-- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
+${ANALYSES_PUBLIC ? `- [Analyses](${u}/analyses): written pieces.\n` : ''}- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
 
 Known limits, stated because they matter when citing this site: the number of
 Paris grant lines drops sharply in 2020 and 2021 while the amounts hold, so
