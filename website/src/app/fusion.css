@@ -20097,6 +20097,11 @@ a.fx-pv-row--fiche:hover .n { text-decoration: underline; text-underline-offset:
   .theme-fusion .fx-pv .fx-v3-h2 { margin-top: 48px; padding-top: 20px; }
   .theme-fusion .fx-pv .fx-related { margin-top: 44px; }
 }
+/* Sur téléphone, une fiche v3 réserve déjà 76 px sous elle pour le lanceur du
+   chat : le bloc qui la suit n'ajoute rien, sinon l'écart double. */
+@media (max-width: 720px) {
+  .theme-fusion .fx-v3 + .fx-related { margin-top: 0; }
+}
 /* Une seule mesure de prose : les sous-titres et les notes couraient sur toute
    la largeur (177 et 198 caractères par ligne contre 81 pour les phrases). */
 .theme-fusion .fx-pv .fx-v3-h2sub,
