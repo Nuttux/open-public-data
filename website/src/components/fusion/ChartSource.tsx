@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "@/components/LocalizedLink";
+
 import { useEffect, useState, type ReactNode } from "react";
 import { useLocale, useT } from "@/lib/localeContext";
 
@@ -87,7 +89,7 @@ export default function ChartSource({ source, dataHref, methodAnchor, methodHref
       {method ? (
         <>
           <span className="sep">·</span>
-          <a href={method}>{t("fx.chart.method")} →</a>
+          <Link href={method}>{t("fx.chart.method")} →</Link>
         </>
       ) : null}
     </figcaption>

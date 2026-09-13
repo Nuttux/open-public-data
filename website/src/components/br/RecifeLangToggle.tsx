@@ -1,37 +1,31 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useT, type Locale } from "@/lib/localeContext";
-import { LOCALE_HOSTS, urlForLocale } from "@/lib/site-locale";
+import { HREFLANG, switchLanguage } from "@/lib/site-locale";
+import { localize } from "@/lib/urls";
 
 /**
- * PT/EN toggle for /br routes — the same segmented control as the France
- * LangSwitcher, and like it a pair of real <a href> to the twin host
- * (pt.qipu.org speaks Portuguese, www English), so crawlers pass link
- * equity between the twins. On click the navigation uses the host actually
- * serving, so it also works on localhost and previews.
+ * PT/EN toggle for the Recife routes — the same segmented control as the
+ * France LangSwitcher, and like it a pair of real <a href> to the page's twin
+ * (/pt/brasil/recife/… and /en/brasil/recife/…), so crawlers pass link equity
+ * between them. On click the choice is remembered and the query and hash kept.
  */
 export default function RecifeLangToggle({ locale }: { locale: Locale }) {
   const t = useT();
-  const pathname = usePathname() ?? "/br/city/recife";
+  const logical = usePathname();
 
   const go = (next: "pt" | "en") => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (next === locale) {
-      e.preventDefault();
-      return;
-    }
-    if (typeof window !== "undefined") {
-      e.preventDefault();
-      const { search, hash, host } = window.location;
-      window.location.assign(urlForLocale(next, `${pathname}${search}${hash}`, host));
-    }
+    e.preventDefault();
+    if (next === locale) return;
+    switchLanguage(next);
   };
 
   const item = (l: "pt" | "en", label: string) => (
     <a
       key={l}
-      href={`${LOCALE_HOSTS[l]}${pathname}`}
-      hrefLang={l === "pt" ? "pt-BR" : "en"}
+      href={localize(logical, l)}
+      hrefLang={HREFLANG[l]}
       onClick={go(l)}
       className={locale === l ? "fx-lang-on" : "fx-lang-off"}
       aria-current={locale === l ? "page" : undefined}

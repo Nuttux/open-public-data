@@ -11,7 +11,7 @@
  * Données : loadRecettesApu() depuis recettes_apu.json. Tout est sourcé
  * (PLF V&M, PLFSS annexe 4, OFGL, INSEE, Cour des comptes).
  */
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 import type {
   RecetteInstitution,
@@ -108,7 +108,7 @@ export default function RecettesPanel({ data, locale, t }: Props) {
               institution.annual_eur > 0
                 ? item.annual_eur / institution.annual_eur
                 : 0;
-            const href = `/fr/national/budget/recettes/${encodeURIComponent(item.key)}`;
+            const href = `/france/budget/recettes/${encodeURIComponent(item.key)}`;
             return (
               <li key={item.key} className="fx-recettes-item">
                 <Link

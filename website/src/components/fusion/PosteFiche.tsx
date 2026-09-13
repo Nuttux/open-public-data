@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { BudgetPosteFiche, BudgetPosteSubPoste, PosteLink } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale, sufOrdinal } from "@/lib/fmt";
@@ -252,12 +252,12 @@ export default function PosteFiche({ poste }: Props) {
           <div className="stack">
             {natureRows.map((g) => g.key === "autres"
               ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
-              : <Link key={g.key} href={`/fr/city/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
+              : <Link key={g.key} href={`/france/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
           </div>
           <div className="legend">
             {natureRows.map((g) => g.key === "autres"
               ? <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
-              : <Link key={g.key} href={`/fr/city/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
+              : <Link key={g.key} href={`/france/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
           </div>
           <p className="note">{t("fx.poste.v3.forme_sub")}</p>
         </div>

@@ -38,7 +38,7 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ arr, year }, locale) => {
-    const canonical = `/fr/city/paris/dette/garanties/arrondissement/${arr.arr}`;
+    const canonical = `/france/paris/dette/garanties/arrondissement/${arr.arr}`;
     const amount = locale === "en"
       ? (arr.capital_restant >= 1e9 ? `€${fmtBillions(arr.capital_restant)}Bn` : `€${fmtMillions(arr.capital_restant, 0)}M`)
       : fmtEur(arr.capital_restant);
@@ -99,13 +99,13 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
     ),
     title: ({ arr }) => whereFr(arr.arr),
     shareUrl: ({ arr, requestedYear }) =>
-      `/fr/city/paris/dette/garanties/arrondissement/${arr.arr}${requestedYear ? `?year=${requestedYear}` : ""}`,
+      `/france/paris/dette/garanties/arrondissement/${arr.arr}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ arr, year }) =>
       `${whereFr(arr.arr)} — ${fmtEur(arr.capital_restant)} d'emprunts garantis par la Ville de Paris au 31.12.${year} (${fmtInt(arr.count_emprunts)} emprunts).`,
     backHref: ({ requestedYear }) =>
       requestedYear
-        ? `/fr/city/paris/dette?year=${requestedYear}#sec-hors-bilan`
-        : "/fr/city/paris/dette#sec-hors-bilan",
+        ? `/france/paris/dette?year=${requestedYear}#sec-hors-bilan`
+        : "/france/paris/dette#sec-hors-bilan",
     breadcrumbLabel: ({ arr }) => (arr.arr === 0 ? "Paris Centre" : `${arr.arr}${suf(arr.arr)} arr.`),
     children: ({ arr, year }) => <ArrondissementGarantiesFiche arr={arr} year={year} />,
   },

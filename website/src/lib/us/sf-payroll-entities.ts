@@ -12,7 +12,7 @@ import type {
   PayrollDept,
   PayrollDeptSeriesPoint,
   PayrollSource,
-} from "@/app/us/city/sf/payroll/payroll-types";
+} from "@/app/[lang]/usa/san-francisco/payroll/payroll-types";
 
 /**
  * The two payroll facets the page needed and did not have: a DEPARTMENT and a
@@ -161,7 +161,7 @@ function familiesFor(
       n_employees: v.n,
       overtime_usd: v.ot,
       total_compensation_usd: v.usd,
-      href: v.pooled ? null : `/us/city/sf/payroll/family/${familySlug(display_family)}`,
+      href: v.pooled ? null : `/usa/san-francisco/payroll/family/${familySlug(display_family)}`,
     }))
     .sort((a, b) => b.total_compensation_usd - a.total_compensation_usd);
 }
@@ -174,7 +174,7 @@ function budgetHrefFor(code: string): string | null {
   const codes = new Set(
     (loadSfBudgetBreakdown(budgetFy)?.departments.spending ?? []).map((d) => d.code),
   );
-  return codes.has(code) ? `/us/city/sf/budget/dept/${deptSlug(code)}?year=${budgetFy}` : null;
+  return codes.has(code) ? `/usa/san-francisco/budget/dept/${deptSlug(code)}?year=${budgetFy}` : null;
 }
 
 // ───────────────────────────────────────────────────────────── departments ──
@@ -209,7 +209,7 @@ export function loadSfPayrollDept(slug: string): SfPayrollDeptData | null {
     slug,
     name: dept.department,
     organizationGroup: dept.organization_group,
-    areaHref: `/us/city/sf/payroll/area/${areaSlug(dept.organization_group)}`,
+    areaHref: `/usa/san-francisco/payroll/area/${areaSlug(dept.organization_group)}`,
     fiscalYear: fy,
     latest,
     first: series[0],
@@ -278,7 +278,7 @@ export function loadSfPayrollArea(slug: string): SfPayrollAreaData | null {
     departments: depts.map(({ d, p }) => ({
       code: d.department_code,
       name: d.department,
-      href: `/us/city/sf/payroll/dept/${payrollDeptSlug(d.department_code)}`,
+      href: `/usa/san-francisco/payroll/dept/${payrollDeptSlug(d.department_code)}`,
       n_employees: p.n_employees,
       median_total_comp_usd: p.median_total_comp_usd,
       ot_share_of_comp: p.ot_share_of_comp,
@@ -412,7 +412,7 @@ export function loadSfPayrollRole(slug: string): SfPayrollRoleData | null {
     label: mine.label,
     slug,
     family: mine.display_family,
-    familyHref: `/us/city/sf/payroll/family/${familySlug(mine.display_family)}`,
+    familyHref: `/usa/san-francisco/payroll/family/${familySlug(mine.display_family)}`,
     fiscalYear: fy,
     latest: { n_employees: mine.n, overtime_usd: mine.ot, total_compensation_usd: mine.usd },
     first: series[0] ?? { fiscal_year: fy, n_employees: mine.n, total_compensation_usd: mine.usd },
@@ -422,7 +422,7 @@ export function loadSfPayrollRole(slug: string): SfPayrollRoleData | null {
       .map(([code, v]) => ({
         code,
         name: deptName.get(code) ?? code,
-        href: `/us/city/sf/payroll/dept/${payrollDeptSlug(code)}`,
+        href: `/usa/san-francisco/payroll/dept/${payrollDeptSlug(code)}`,
         n_employees: v.n,
         overtime_usd: v.ot,
         total_compensation_usd: v.usd,
@@ -432,7 +432,7 @@ export function loadSfPayrollRole(slug: string): SfPayrollRoleData | null {
       .filter((r) => r.display_family === mine.display_family && r.label !== mine.label)
       .map((r) => ({
         label: r.label,
-        href: `/us/city/sf/payroll/role/${roleSlug(r.label)}`,
+        href: `/usa/san-francisco/payroll/role/${roleSlug(r.label)}`,
         total_compensation_usd: r.usd,
         n_employees: r.n,
       }))

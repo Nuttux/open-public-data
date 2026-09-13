@@ -31,7 +31,7 @@ type D = {
  */
 export function makeAssociationConfig(city: string): EntityPageConfig<D> {
   const cityNom = getCity(city)?.nom ?? "la Ville";
-  const base = `/fr/city/${city}/subventions`;
+  const base = `/france/${city}/subventions`;
   return {
     load: ({ slug }) => {
       const asso = loadAssociation(slug, city);

@@ -9,7 +9,8 @@ requête de sitemap est exclu. Ce script lit une fois les fichiers exportés et
 écrit les segments prêts à servir :
 
   website/public/data/communes-marches/_sitemap/contrats-000.txt  (→ bucket)
-      une adresse par ligne : /fr/city/<commune>/marche/<objet>-<id>
+      un chemin logique par ligne : /france/<commune>/marche/<objet>-<id>
+      (le site ajoute la langue, lib/urls.ts)
   website/public/data/communes-marches/_sitemap/index.json        (→ bucket)
   website/src/data/communes-marches-manifest.json                 (commité)
       clé « contrats_sitemap » : {segments, urls} — le site sait combien de
@@ -70,7 +71,7 @@ def collect_paths(root: Path = OUT_ROOT) -> list[str]:
             (c for c in contrats.values() if c.get("slug") and indexable(c)),
             key=lambda c: (-float(c.get("montant") or 0), c["slug"]),
         )[:PAR_COMMUNE]
-        out.extend(f"/fr/city/{commune_dir.name}/marche/{c['slug']}" for c in sorted(solides, key=lambda c: c["slug"]))
+        out.extend(f"/france/{commune_dir.name}/marche/{c['slug']}" for c in sorted(solides, key=lambda c: c["slug"]))
     return out
 
 

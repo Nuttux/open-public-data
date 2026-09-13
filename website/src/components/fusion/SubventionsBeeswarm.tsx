@@ -10,7 +10,7 @@
  * chargé paresseusement à l'approche de la section.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
 import { fill } from "@/lib/fmt";
 import { ChartTip, useChartTip } from "./ChartTip";

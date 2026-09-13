@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { SfServiceFicheData } from "@/lib/us/sf-budget-data";
 import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
@@ -101,7 +101,7 @@ export default function SfServiceFiche({ s }: { s: SfServiceFicheData }) {
   const deptRow = (d: SfServiceFicheData["departments"][number]) => (
     <Row
       key={d.code}
-      href={`/us/city/sf/budget/dept/${deptSlug(d.code)}?year=${s.fiscal_year}`}
+      href={`/usa/san-francisco/budget/dept/${deptSlug(d.code)}?year=${s.fiscal_year}`}
       name={d.display_name ?? d.label}
       amount={d.amount_usd}
       max={deptMax}
@@ -111,7 +111,7 @@ export default function SfServiceFiche({ s }: { s: SfServiceFicheData }) {
   const charRow = (c: SfServiceFicheData["characters"][number]) => (
     <Row
       key={c.code}
-      href={`/us/city/sf/budget/character/${characterSlug(c.code)}?year=${s.fiscal_year}&side=${s.side}`}
+      href={`/usa/san-francisco/budget/character/${characterSlug(c.code)}?year=${s.fiscal_year}&side=${s.side}`}
       name={c.gloss ? <Tip label={c.gloss}>{c.label}</Tip> : c.label}
       amount={c.amount_usd}
       max={charMax}

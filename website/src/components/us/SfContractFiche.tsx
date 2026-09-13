@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact, fmtDateLong } from "@/lib/us/format";
 import Tip from "@/components/fusion/Tip";
 import { FicheMore } from "@/components/fiche";
 import Fy2018Note from "@/components/us/Fy2018Note";
-import { FAMILY_LABELS, typeLabel, typeSlug } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
-import type { SfContractFiche as SfContractFicheType } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+import { FAMILY_LABELS, typeLabel, typeSlug } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
+import type { SfContractFiche as SfContractFicheType } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
 
 /**
  * SF contract fiche — used by both the root-level drawer and the full-page
@@ -232,7 +232,7 @@ export default function SfContractFiche({
   const t = useT();
   const c = fiche.contract;
   const primeHref = primePayeeSlug
-    ? `/us/city/sf/who-gets-paid/payee/${primePayeeSlug}`
+    ? `/usa/san-francisco/who-gets-paid/payee/${primePayeeSlug}`
     : null;
 
   const paidRatio = c.agreed_usd > 0 ? c.paid_usd / c.agreed_usd : null;
@@ -447,7 +447,7 @@ export default function SfContractFiche({
              *  for that facet (Recife `modalidade` parity). */}
             {c.contract_type ? (
               <Link
-                href={`/us/city/sf/contracts/type/${typeSlug(c.contract_type)}`}
+                href={`/usa/san-francisco/contracts/type/${typeSlug(c.contract_type)}`}
                 scroll={false}
                 style={{ color: "inherit", borderBottom: "1px solid var(--bleu)", textDecoration: "none" }}
               >
@@ -546,7 +546,7 @@ export default function SfContractFiche({
               {c.sole_source && <>{t("us.sf.contracts.fiche.sole.neutral")} </>}
               {c.authority_family && (
                 <Link
-                  href={`/us/city/sf/contracts/authority/${c.authority_family}`}
+                  href={`/usa/san-francisco/contracts/authority/${c.authority_family}`}
                   scroll={false}
                   style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
                 >

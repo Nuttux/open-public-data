@@ -16,9 +16,9 @@ site entier à chaque passage. --all est pour le premier envoi ; ensuite
 vient de publier).
 
     python3 pipeline/scripts/seo/indexnow_submit.py --all                      # compte, n'envoie rien
-    python3 pipeline/scripts/seo/indexnow_submit.py --all --submit             # premier envoi, 3 hôtes
+    python3 pipeline/scripts/seo/indexnow_submit.py --all --submit             # premier envoi
     python3 pipeline/scripts/seo/indexnow_submit.py --since 2026-09-09 --submit
-    python3 pipeline/scripts/seo/indexnow_submit.py fr.qipu.org --prefix /fr/city/paris/lieu --submit
+    python3 pipeline/scripts/seo/indexnow_submit.py --prefix /fr/france/paris/lieu --submit
 """
 from __future__ import annotations
 
@@ -33,7 +33,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-HOSTS = ["www.qipu.org", "fr.qipu.org", "pt.qipu.org"]
+# One host since 2026-09-13 (website/src/lib/urls.ts): fr. and pt. redirect to www.
+HOSTS = ["www.qipu.org"]
 ENDPOINT = "https://api.indexnow.org/indexnow"
 BATCH = 10_000
 UA = "Mozilla/5.0 (compatible; QipuIndexNow/1.0; +https://www.qipu.org)"

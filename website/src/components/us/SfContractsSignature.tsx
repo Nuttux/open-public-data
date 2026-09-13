@@ -1,8 +1,8 @@
 "use client";
 
 import ExempleCards, { type ExempleCardItem } from "@/components/fusion/ExempleCards";
-import type { SfSignatureItem } from "@/app/us/city/sf/contracts/data";
-import { contractLabel, deptDisplayName, typeLabel } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+import type { SfSignatureItem } from "@/app/[lang]/usa/san-francisco/contracts/data";
+import { contractLabel, deptDisplayName, typeLabel } from "@/app/[lang]/usa/san-francisco/contracts/us-sf-contracts-types";
 import { fmtUsdCompact } from "@/lib/us/format";
 
 /**
@@ -63,7 +63,7 @@ export default function SfContractsSignature({ items }: { items: SfSignatureItem
       .join(" · ");
 
     return {
-      href: `/us/city/sf/contracts/contract/${r.contract_no}`,
+      href: `/usa/san-francisco/contracts/contract/${r.contract_no}`,
       kicker: KICKER[it.kind],
       // Ocre marks the two procurement exceptions, the same ink the register
       // rows and the contract fiche use for sole-source and overruns.

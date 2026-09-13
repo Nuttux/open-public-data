@@ -1,3 +1,4 @@
+import { scopeOf } from "@/lib/urls";
 /**
  * Chat scopes — which city the assistant is answering about.
  *
@@ -33,7 +34,7 @@ export const CHAT_SCOPES: Record<ChatScopeId, ChatScope> = {
     id: "paris",
     cityLabel: "Paris",
     dataPrefix: "",
-    basePath: "/fr/city/paris",
+    basePath: "/france/paris",
     currency: "EUR",
     promptLang: "fr",
   },
@@ -41,7 +42,7 @@ export const CHAT_SCOPES: Record<ChatScopeId, ChatScope> = {
     id: "sf",
     cityLabel: "San Francisco",
     dataPrefix: "us/sf",
-    basePath: "/us/city/sf",
+    basePath: "/usa/san-francisco",
     currency: "USD",
     promptLang: "en",
   },
@@ -68,12 +69,13 @@ const under = (pathname: string, prefix: string) => pathname === prefix || pathn
  * confidently with another city's numbers.
  */
 export function scopeForPath(pathname: string): ChatScopeId | null {
-  if (under(pathname, "/us/city/sf")) return "sf";
+  if (under(pathname, "/usa/san-francisco")) return "sf";
   // Recife is Portuguese and has no toolset; /us national and other cities
   // under /fr/city (Marseille…) read from their own exports, which no scope
   // covers yet.
-  if (under(pathname, "/us") || under(pathname, "/br")) return null;
-  if (pathname.startsWith("/fr/city/") && !under(pathname, "/fr/city/paris")) return null;
+  if (under(pathname, "/usa") || under(pathname, "/brasil")) return null;
+  const s = scopeOf(pathname);
+  if (s?.country === "france" && s.place && s.place !== "paris") return null;
   return DEFAULT_SCOPE_ID;
 }
 

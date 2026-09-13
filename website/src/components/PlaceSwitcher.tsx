@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useCommuneNav } from "@/components/CommuneNavContext";
@@ -50,8 +50,8 @@ export default function PlaceSwitcher({
   // sends you to the French home where that search lives.
   const openCommuneSearch = () => {
     setOpen(false);
-    if (pathname.startsWith("/us") || pathname.startsWith("/br")) {
-      window.location.href = "/";
+    if (pathname.startsWith("/usa") || pathname.startsWith("/brasil")) {
+      window.location.href = "/fr";
     } else {
       window.dispatchEvent(new CustomEvent("fx:open-search"));
     }

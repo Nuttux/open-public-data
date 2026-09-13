@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import {
   FicheShell,
   FicheStatHero,
@@ -50,7 +50,7 @@ export default function SfCategoryFiche({
     meta: p.department ?? undefined,
     value: p.amount_usd,
     href: vendorSlugMap[p.vendor]
-      ? `/us/city/sf/who-gets-paid/payee/${vendorSlugMap[p.vendor]}`
+      ? `/usa/san-francisco/who-gets-paid/payee/${vendorSlugMap[p.vendor]}`
       : undefined,
   }));
   const notShown = Math.max(0, d.nPayeesRanked - d.topPayees.length);

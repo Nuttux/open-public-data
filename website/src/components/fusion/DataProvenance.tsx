@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "@/components/LocalizedLink";
+
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { useLocale } from "@/lib/localeContext";
 
@@ -282,12 +284,12 @@ export default function DataProvenance({
                       {isFr ? "Voir le code des transformations dbt (GitHub) ↗" : "View dbt transformation code (GitHub) ↗"}
                     </a>
                   )}
-                  <a href="/methode#audit">
+                  <Link href="/methode#audit">
                     {isFr ? "Audit data quality →" : "Data quality audit →"}
-                  </a>
-                  <a href={`/signalement?cat=erreur_chiffre&page=${encodeURIComponent(typeof window !== "undefined" ? window.location.pathname : "")}`}>
+                  </Link>
+                  <Link href={`/signalement?cat=erreur_chiffre&page=${encodeURIComponent(typeof window !== "undefined" ? window.location.pathname : "")}`}>
                     {isFr ? "Signaler une erreur →" : "Report an error →"}
-                  </a>
+                  </Link>
                 </div>
               </>
             )}

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import { useTrack } from "@/lib/analyticsContext";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   previewYears?: number[];
   /** Currently selected year. */
   current: number;
-  /** Base path (e.g. "/fr/city/paris/budget"). The year is appended as ?year=YYYY. */
+  /** Base path (e.g. "/france/paris/budget"). The year is appended as ?year=YYYY. */
   basePath: string;
   /** Optional prefix label; defaults to "Exercice". */
   label?: string;

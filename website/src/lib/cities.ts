@@ -1,5 +1,5 @@
 /**
- * Cities registry — single source of truth for `/fr/city/[slug]` pages.
+ * Cities registry — single source of truth for `/france/[slug]` pages.
  *
  * `src/data/cities.json` is a hand-maintained registry (the former
  * export_cities.py generator was removed 2026-08-26: it read columns that

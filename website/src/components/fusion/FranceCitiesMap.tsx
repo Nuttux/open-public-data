@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useState } from "react";
 
 import { CHOROPLETH_PALETTE as PALETTE } from "./choropleth-palette";
@@ -167,7 +167,7 @@ export default function FranceCitiesMap({
               const fill = PALETTE[q];
               return (
                 <g key={c.slug}>
-                  <Link href={`/fr/city/${c.slug}`} aria-label={`${c.nom}: ${fmtInt(c.value, locale)} ${unitSuffix}`}>
+                  <Link href={`/france/${c.slug}`} aria-label={`${c.nom}: ${fmtInt(c.value, locale)} ${unitSuffix}`}>
                     <circle
                       cx={cx}
                       cy={cy}
@@ -232,7 +232,7 @@ export default function FranceCitiesMap({
                 onMouseLeave={() => setHoverSlug(null)}
               >
                 <span className="fx-france-map-rank-n">{i + 1}.</span>
-                <Link href={`/fr/city/${c.slug}`} className="fx-france-map-rank-name">
+                <Link href={`/france/${c.slug}`} className="fx-france-map-rank-name">
                   <span
                     className="fx-france-map-rank-dot"
                     style={{ background: PALETTE[q] }}

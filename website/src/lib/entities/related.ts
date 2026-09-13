@@ -42,14 +42,14 @@ export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
     .filter((b) => canonicalBailleurSlug(b.name) !== me)
     .slice(0, 5)
     .map((b) => ({
-      href: `/fr/city/paris/dette/bailleur/${canonicalBailleurSlug(b.name)}`,
+      href: `/france/paris/dette/bailleur/${canonicalBailleurSlug(b.name)}`,
       label: b.name,
       sub: locale === "en" ? `${b.count_emprunts.toLocaleString("en-GB")} loans guaranteed, end ${hb?.year}` : `${b.count_emprunts.toLocaleString("fr-FR")} emprunts garantis, fin ${hb?.year}`,
       amount: eur(b.capital_restant, locale),
     }));
   rows.push(
-    { href: "/fr/city/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur" },
-    { href: "/fr/city/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "Balance sheet, financial debt and every guarantee" : "Bilan, dette financière et l'ensemble des garanties" },
+    { href: "/france/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur" },
+    { href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "Balance sheet, financial debt and every guarantee" : "Bilan, dette financière et l'ensemble des garanties" },
   );
   return {
     title: locale === "en" ? "See also" : "Voir aussi",
@@ -72,12 +72,12 @@ export function instrumentRelated(key: string, year: number, locale: L): Related
   const rows: RelatedRow[] = doc.structure_dette.instruments
     .filter((i) => i.key !== key)
     .map((i) => ({
-      href: `/fr/city/paris/dette/instrument/${i.key}${year ? `?year=${year}` : ""}`,
+      href: `/france/paris/dette/instrument/${i.key}${year ? `?year=${year}` : ""}`,
       label: trLabel(i.label, locale),
       sub: locale === "en" ? `${Math.round(i.part * 100)}% of the financial debt at end ${year}` : `${Math.round(i.part * 100)} % de la dette financière fin ${year}`,
       amount: eur(i.encours, locale),
     }));
-  rows.push({ href: "/fr/city/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "All instruments, the balance sheet and the guarantees" : "Tous les instruments, le bilan et les garanties" });
+  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "All instruments, the balance sheet and the guarantees" : "Tous les instruments, le bilan et les garanties" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other instruments of the ${year} debt.` : `Les autres instruments de la dette ${year}.`, rows };
 }
 
@@ -93,12 +93,12 @@ export function masseRelated(slug: string, year: number, locale: L): RelatedBloc
   const rows: RelatedRow[] = all
     .filter((m) => slugifyLabel(m.label) !== slug && (!me || m.side === me.side))
     .map((m) => ({
-      href: `/fr/city/paris/dette/masse/${slugifyLabel(m.label)}${year ? `?year=${year}` : ""}`,
+      href: `/france/paris/dette/masse/${slugifyLabel(m.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(m.label, locale),
       sub: locale === "en" ? `${(m.share * 100).toFixed(1)}% of ${m.side === "actif" ? "assets" : "liabilities"}, ${year}` : `${(m.share * 100).toFixed(1).replace(".", ",")} % ${m.side === "actif" ? "de l'actif" : "du passif"}, ${year}`,
       amount: eur(m.value, locale),
     }));
-  rows.push({ href: "/fr/city/paris/dette", label: locale === "en" ? "The City of Paris's balance sheet and debt" : "Le bilan et la dette de la Ville de Paris", sub: locale === "en" ? "Assets, liabilities, instruments and guarantees" : "Actif, passif, instruments et garanties" });
+  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's balance sheet and debt" : "Le bilan et la dette de la Ville de Paris", sub: locale === "en" ? "Assets, liabilities, instruments and guarantees" : "Actif, passif, instruments et garanties" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other items on the same side of the ${year} balance sheet.` : `Les autres masses du même côté du bilan ${year}.`, rows };
 }
 
@@ -112,19 +112,19 @@ export function chapitreRelated(slug: string, year: number, locale: L): RelatedB
     .sort((a, b) => b.depenses - a.depenses)
     .slice(0, 6)
     .map((c) => ({
-      href: `/fr/city/paris/investissements/chapitre/${slugifyChapitre(c.label)}${year ? `?year=${year}` : ""}`,
+      href: `/france/paris/investissements/chapitre/${slugifyChapitre(c.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(c.label, locale),
       sub: locale === "en" ? `Investment chapter, ${y.year}` : `Chapitre d'investissement, ${y.year}`,
       amount: eur(c.depenses, locale),
     }));
-  rows.push({ href: "/fr/city/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets" });
+  rows.push({ href: "/france/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other chapters of ${y.year} investment.` : `Les autres chapitres d'investissement ${y.year}.`, rows };
 }
 
 /** Association: the theme page and its other big recipients, plus the hub. */
 export function associationRelated(asso: { name: string; theme: string | null }, city: string, locale: L): RelatedBlock | null {
   const rows: RelatedRow[] = [];
-  const base = `/fr/city/${city}/subventions`;
+  const base = `/france/${city}/subventions`;
   if (asso.theme) {
     const slug = slugifyLabel(asso.theme);
     const fiche = loadThemeSubventions(slug, undefined, city);
@@ -156,7 +156,7 @@ export function contratRelated(
   locale: L,
 ): RelatedBlock | null {
   const rows: RelatedRow[] = [];
-  const base = `/fr/city/${city}/marches`;
+  const base = `/france/${city}/marches`;
   const siren = (c.fournisseurSiret ?? "").replace(/\s/g, "").slice(0, 9);
   if (/^\d{9}$/.test(siren)) {
     const f = loadFournisseur(siren, city);
@@ -208,7 +208,7 @@ export function fournisseurRelated(
   categoryHref?: (category: string) => string,
 ): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = `/fr/city/${city}/marches`;
+  const base = `/france/${city}/marches`;
   const rows: RelatedRow[] = [];
   const main = f.byCategory.slice().sort((a, b) => b.amount - a.amount)[0];
   if (main) {
@@ -262,7 +262,7 @@ type ProjetLite = { id: string; arrondissement: number; chapitre_libelle?: strin
  */
 export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = "/fr/city/paris/investissements";
+  const base = "/france/paris/investissements";
   const rows: RelatedRow[] = [];
   const arr = p.arrondissement;
   const ord = arr > 0 ? (locale === "en" ? ordEn(arr) : ordFr(arr)) : "";
@@ -309,7 +309,7 @@ export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
  */
 export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = "/fr/city/paris";
+  const base = "/france/paris";
   const rows: RelatedRow[] = [];
   const arr = lieu.arrondissement;
   const ord = arr > 0 ? (locale === "en" ? ordEn(arr) : ordFr(arr)) : "";
@@ -345,7 +345,7 @@ export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null
  */
 export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = "/fr/city/paris/marches";
+  const base = "/france/paris/marches";
   const file = readDataJsonOrNull<{ data?: MarcheLite[]; marches?: MarcheLite[] }>(`marches-publics/marches_${f.year}.json`);
   const cats = new Map<string, { label: string; amount: number; n: number }>();
   for (const r of file?.data ?? file?.marches ?? []) {
@@ -379,7 +379,7 @@ export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlo
  */
 export function themeRelated(f: ThemeSubventionsFiche, city: string, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = `/fr/city/${city}/subventions`;
+  const base = `/france/${city}/subventions`;
   const file = readDataJsonOrNull<{ data: { beneficiaire: string; thematique?: string | null; montant_total: number }[] }>(cityJsonPath(city, `subventions/beneficiaires_${f.year}.json`));
   const themes = new Map<string, { label: string; amount: number; names: Set<string> }>();
   for (const r of file?.data ?? []) {
@@ -412,7 +412,7 @@ export function themeRelated(f: ThemeSubventionsFiche, city: string, locale: L):
  */
 export function posteRelated(p: BudgetPosteFiche, city: string, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = `/fr/city/${city}/budget`;
+  const base = `/france/${city}/budget`;
   const sk = readDataJsonOrNull<{ nodes?: { name: string; category?: string }[]; links: { source: string; target: string; value: number }[] }>(cityJsonPath(city, `budget_sankey_${p.year}.json`));
   const central = sk?.nodes?.find((n) => n.category === "central")?.name;
   const rows: RelatedRow[] = [];
@@ -437,7 +437,7 @@ export function posteRelated(p: BudgetPosteFiche, city: string, locale: L): Rela
 }
 
 type ArrLens = "invest" | "logement" | "garanties";
-const ARR_BASE = "/fr/city/paris";
+const ARR_BASE = "/france/paris";
 /** 1–4 are merged into "Paris Centre" by the housing and guarantee fiches. */
 const CENTRE = [1, 2, 3, 4];
 /** The page of arrondissement `n` in a lens, when its loader resolves it. */
@@ -501,7 +501,7 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
  */
 export function marseilleLieuRelated(place: MarseillePlace, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = "/fr/city/marseille";
+  const base = "/france/marseille";
   const others = loadMarseillePlaces().filter((p) => p.slug !== place.slug);
   const ord = (n: number) => (locale === "en" ? ordEn(n) : ordFr(n));
   const sameArr = place.arrondissement ? others.filter((p) => p.arrondissement === place.arrondissement) : [];
@@ -517,7 +517,7 @@ export function marseilleLieuRelated(place: MarseillePlace, locale: L): RelatedB
 /** Kind of spending (Paris budget): the other kinds of the same year, then the budget page. */
 export function natureRelated(n: BudgetNatureFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const base = "/fr/city/paris/budget";
+  const base = "/france/paris/budget";
   const rows: RelatedRow[] = NATURE_GROUPS
     .filter((g) => g.key !== n.key)
     .map((g) => loadBudgetNature(g.key, n.year))

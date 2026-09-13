@@ -1,3 +1,4 @@
+import { scopeOf } from "@/lib/urls";
 /**
  * Méthodologie — source unique de vérité pour toutes les constantes factuelles.
  *
@@ -99,8 +100,8 @@ export function cityNbArrondissements(slug: string): number {
 // root paths (Paris-rich pages live at the root for rétro-compat).
 export function citySlugFromPathname(pathname: string | null): string {
   if (!pathname) return "paris";
-  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
-  return m ? m[1] : "paris";
+  const s = scopeOf(pathname);
+  return (s?.country === "france" && s.place) || "paris";
 }
 
 // ─── Legal thresholds ──────────────────────────────────────────────────────

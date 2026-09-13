@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { usePathname } from "@/lib/navigation";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { citySlugFromPathname } from "@/lib/methodology";
@@ -119,7 +119,7 @@ export default function AssociationFiche({
   })();
   const directionKnown = byDirection.reduce((s, r) => s + r.value, 0);
   const directionUnknown = Math.max(0, asso.totalAmount - directionKnown);
-  const themeHref = (theme: string) => `/fr/city/${citySlug}/subventions/theme/${slugifyLabel(theme)}`;
+  const themeHref = (theme: string) => `/france/${citySlug}/subventions/theme/${slugifyLabel(theme)}`;
   const byTheme: FicheBreakdownRow[] = asso.byTheme.slice().sort((a, b) => b.amount - a.amount)
     .map((th) => ({ key: th.theme, label: trLabel(th.theme, locale), value: th.amount, href: themeHref(th.theme) }));
 

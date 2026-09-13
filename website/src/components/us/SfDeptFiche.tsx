@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { SfDeptFicheData, SfDeptSideBlock, SfSide } from "@/lib/us/sf-budget-data";
 import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsd, fmtUsdCompact, fmtShare, fmtYoy } from "@/lib/us/format";
@@ -306,7 +306,7 @@ function CharacterBars({
   const row = (c: SfDeptSideBlock["characters"][number]) => (
         <Link
           key={c.code}
-          href={`/us/city/sf/budget/dept/${deptSlug(deptCode)}/character/${characterSlug(c.code)}?year=${fiscalYear}&side=${side}`}
+          href={`/usa/san-francisco/budget/dept/${deptSlug(deptCode)}/character/${characterSlug(c.code)}?year=${fiscalYear}&side=${side}`}
           scroll={false}
           className="fx-row-link"
           title={c.gloss ?? glossFallback}

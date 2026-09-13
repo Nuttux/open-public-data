@@ -3,7 +3,7 @@
 import AnneesRail from "./AnneesRail";
 import type { ReactNode } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, numLocale, seanceEn } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";

@@ -7,7 +7,7 @@
  * arrondissement stood in a past year (the 18-year story in one glyph).
  * Rows are links to the arrondissement fiche.
  */
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useNumLocale } from "@/lib/use-fmt";
 
 export type SruBarRow = {

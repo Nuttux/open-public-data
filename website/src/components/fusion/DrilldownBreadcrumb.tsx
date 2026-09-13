@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 /**
  * Daily Bread drill-down breadcrumb.
@@ -49,9 +49,9 @@ export default function DrilldownBreadcrumb({
                   {crumb.label}
                 </span>
               ) : crumb.hard ? (
-                <a href={crumb.href} className="db-breadcrumb-link">
+                <Link href={crumb.href} className="db-breadcrumb-link">
                   {crumb.label}
-                </a>
+                </Link>
               ) : (
                 <Link
                   href={crumb.href}

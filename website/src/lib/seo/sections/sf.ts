@@ -18,10 +18,10 @@ import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
 import { isoDate, n, sourceSentence, type PageAnswer } from "@/lib/seo/page-answer";
 import { defaultFiscalYear, loadSfBudgetBreakdown, loadSfBudgetByYear } from "@/lib/us/sf-budget-data";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
-import { loadSfContractsOverview } from "@/app/us/city/sf/contracts/data";
-import type { WgpFile } from "@/app/us/city/sf/who-gets-paid/wgp-types";
-import type { PayrollByYear } from "@/app/us/city/sf/payroll/payroll-types";
-import type { UsDailyBread } from "@/app/us/national/us-types";
+import { loadSfContractsOverview } from "@/app/[lang]/usa/san-francisco/contracts/data";
+import type { WgpFile } from "@/app/[lang]/usa/san-francisco/who-gets-paid/wgp-types";
+import type { PayrollByYear } from "@/app/[lang]/usa/san-francisco/payroll/payroll-types";
+import type { UsDailyBread } from "@/app/[lang]/usa/national/us-types";
 
 const CREATOR = "City and County of San Francisco";
 const SPATIAL = "San Francisco, California, United States";
@@ -64,7 +64,7 @@ export function sfBudgetHub(): SfHub {
   const nDepts = bd.org_groups.spending.reduce((s, g) => s + g.n_departments, 0);
   const perRes = tot.per_resident_usd != null ? `, ${fmtUsd(tot.per_resident_usd)} per resident` : "";
   return {
-    path: "/us/city/sf/budget",
+    path: "/usa/san-francisco/budget",
     crumb: "Budget",
     answer: {
       title: `San Francisco budget FY${fy}: ${bn(tot.total_usd)} adopted`,
@@ -96,7 +96,7 @@ export function sfPayeesHub(): SfHub {
       ? `, ${bn(y.totals.related_govt_units_usd)} of it via related government units`
       : "";
   return {
-    path: "/us/city/sf/who-gets-paid",
+    path: "/usa/san-francisco/who-gets-paid",
     crumb: "Who gets paid",
     answer: {
       title: `Who San Francisco pays: ${bn(y.totals.all_usd)} in FY${fy}`,
@@ -120,7 +120,7 @@ export function sfContractsHub(): SfHub {
   const { active, register } = o.hero;
   const asOfActive = isoDate(o.export_date_pacific, "en");
   return {
-    path: "/us/city/sf/contracts",
+    path: "/usa/san-francisco/contracts",
     crumb: "Contracts",
     answer: {
       // One figure, the page's first: agreed on the contracts active today; the
@@ -148,7 +148,7 @@ export function sfPayrollHub(): SfHub {
   const first = pts[0];
   const fy = last.fiscal_year;
   return {
-    path: "/us/city/sf/payroll",
+    path: "/usa/san-francisco/payroll",
     crumb: "Payroll",
     answer: {
       title: `San Francisco payroll FY${fy}: ${bn(last.total_compensation_usd)}`,
@@ -177,7 +177,7 @@ export function sfPlacesHub(): SfHub {
   const idx = readDataJson<{ generated_at: string }>("us/sf/places/index.json");
   const funds = totalFunds > 0 ? `${bn(totalFunds)} in contract dollars paid for work at them` : null;
   return {
-    path: "/us/city/sf/places",
+    path: "/usa/san-francisco/places",
     crumb: "Places",
     answer: {
       title: funds
@@ -205,7 +205,7 @@ export function sfCityHub(): SfHub {
   const perMonth = ref.per_resident_usd != null ? Math.round(ref.per_resident_usd / 12) : null;
   const pop = byYear.population;
   return {
-    path: "/us/city/sf",
+    path: "/usa/san-francisco",
     crumb: "San Francisco",
     answer: {
       title: `San Francisco public money: ${bn(ref.total_usd)} budget (FY${fy})`,
@@ -227,7 +227,7 @@ export function sfCityHub(): SfHub {
 
 export function sfSourcesHub(): SfHub {
   return {
-    path: "/us/city/sf/sources",
+    path: "/usa/san-francisco/sources",
     crumb: "Sources & method",
     answer: {
       title: "San Francisco public finance data: sources and methodology",
@@ -249,7 +249,7 @@ export function usCountryHub(): SfHub {
   const through = isoDate(db.completeness.fytd_through, "en");
   const toDate = db.completeness.fiscal_year_complete ? "" : " to date";
   return {
-    path: "/us",
+    path: "/usa",
     crumb: "United States",
     answer: {
       title: "US public money: federal spending and San Francisco",
@@ -267,10 +267,10 @@ export function usCountryHub(): SfHub {
 /** Breadcrumb trail of a hub: Qipu › United States › San Francisco › section. */
 function hubCrumbs(h: SfHub): { name: string; path: string }[] {
   const out = [{ name: "Qipu", path: "/" }];
-  if (h.path === "/us") return [...out, { name: h.crumb, path: h.path }];
-  out.push({ name: "United States", path: "/us" });
-  if (h.path === "/us/city/sf") return [...out, { name: h.crumb, path: h.path }];
-  out.push({ name: "San Francisco", path: "/us/city/sf" });
+  if (h.path === "/usa") return [...out, { name: h.crumb, path: h.path }];
+  out.push({ name: "United States", path: "/usa" });
+  if (h.path === "/usa/san-francisco") return [...out, { name: h.crumb, path: h.path }];
+  out.push({ name: "San Francisco", path: "/usa/san-francisco" });
   return [...out, { name: h.crumb, path: h.path }];
 }
 

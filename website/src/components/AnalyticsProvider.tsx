@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { useAddressPathname } from "@/lib/navigation";
 import posthog from 'posthog-js';
 import { AnalyticsProvider as ContextProvider } from '@/lib/analyticsContext';
 import { getClickCoords } from '@/lib/analytics-helpers';
@@ -132,7 +132,8 @@ function track(eventName: string, properties: Record<string, unknown> = {}) {
 }
 
 export default function AnalyticsProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+  // The address, language included (/fr/france/lille): events keep the language the page was read in.
+  const pathname = useAddressPathname();
 
   useEffect(() => {
     initPostHog();

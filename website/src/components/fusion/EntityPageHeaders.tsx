@@ -12,7 +12,7 @@
  * see /Users/daniel/code/open-public-data/website/src/app/.../page.tsx.
  */
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import { sufOrdinal } from "@/lib/fmt";
 import { useCity } from "./CityContext";
@@ -43,14 +43,14 @@ export function InvestBackKicker() {
   const t = useT();
   return (
     <div className="fx-page-kicker">
-      <Link href="/fr/city/paris/investissements" style={{ color: "var(--ocre)" }}>
+      <Link href="/france/paris/investissements" style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.invest")}
       </Link>
     </div>
   );
 }
 
-export function SubventionsBackKicker({ href = "/fr/city/paris/subventions" }: { href?: string } = {}) {
+export function SubventionsBackKicker({ href = "/france/paris/subventions" }: { href?: string } = {}) {
   const t = useT();
   return (
     <div className="fx-page-kicker">
@@ -134,7 +134,7 @@ export function LogementArrBackLink() {
   const t = useT();
   return (
     <p className="fx-page-lede">
-      <Link href="/fr/city/paris/logement">{t("fx.fiche.back.logement")}</Link>
+      <Link href="/france/paris/logement">{t("fx.fiche.back.logement")}</Link>
     </p>
   );
 }

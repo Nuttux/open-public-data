@@ -62,8 +62,8 @@ export async function renderRecettePage(
         locale === "en"
           ? "EU balance · gross / received / net"
           : "Bilan UE · brut / reçu / net",
-      shareUrl: "/fr/national/budget/recettes/psr_ue",
-      backHref: "/fr/national/budget#recettes-apu",
+      shareUrl: "/france/budget/recettes/psr_ue",
+      backHref: "/france/budget#recettes-apu",
       fiche: (
         <RecetteFiche
           item={ficheItem}
@@ -110,8 +110,8 @@ export async function renderRecettePage(
         locale === "en"
           ? "EU balance · gross / received / net"
           : "Bilan UE · brut / reçu / net",
-      shareUrl: "/fr/national/budget/recettes/ue_fonds_recus",
-      backHref: "/fr/national/budget#recettes-apu",
+      shareUrl: "/france/budget/recettes/ue_fonds_recus",
+      backHref: "/france/budget#recettes-apu",
       fiche: (
         <RecetteFiche
           item={ficheItem}
@@ -166,8 +166,8 @@ export async function renderRecettePage(
     isDrawer: opts.isDrawer,
     title,
     kicker,
-    shareUrl: `/fr/national/budget/recettes/${encodeURIComponent(decoded)}`,
-    backHref: "/fr/national/budget#recettes-apu",
+    shareUrl: `/france/budget/recettes/${encodeURIComponent(decoded)}`,
+    backHref: "/france/budget#recettes-apu",
     fiche: (
       <RecetteFiche
         item={item}

@@ -6,7 +6,7 @@ import { loadPlace } from "@/lib/br/recife-places-data";
 import { fmtBrl, fmtBrlCompact, fmtBrlDeck, fmtInt } from "@/lib/br/format";
 import { landingClosing } from "@/lib/landing-closing";
 
-const BASE = "/br/city/recife";
+const BASE = "/brasil/recife";
 
 function truncate(s: string, n: number) {
   if (s.length <= n) return s;

@@ -26,7 +26,7 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ instrument, year, slug }, locale) => {
-    const canonical = `/fr/city/paris/dette/instrument/${slug}`;
+    const canonical = `/france/paris/dette/instrument/${slug}`;
     const label = trLabel(instrument.label, locale);
     const amount = locale === "en"
       ? (instrument.encours >= 1e9 ? `€${fmtBillions(instrument.encours)}Bn` : `€${fmtMillions(instrument.encours, 0)}M`)
@@ -93,13 +93,13 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
     ),
     title: ({ instrument }) => `${instrument.label} · ${fmtEur(instrument.encours)}`,
     shareUrl: ({ slug, requestedYear }) =>
-      `/fr/city/paris/dette/instrument/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
+      `/france/paris/dette/instrument/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ instrument, year }) =>
       `${instrument.label} — ${fmtEur(instrument.encours)} d'encours au 31.12.${year}, ${fmtInt(instrument.part * 100)} % de la dette de la Ville de Paris (taux moyen ${fmtDec(instrument.taux_moyen_pct, 1)} %).`,
     backHref: ({ requestedYear }) =>
       requestedYear
-        ? `/fr/city/paris/dette?year=${requestedYear}#sec-dette`
-        : "/fr/city/paris/dette#sec-dette",
+        ? `/france/paris/dette?year=${requestedYear}#sec-dette`
+        : "/france/paris/dette#sec-dette",
     breadcrumbLabel: ({ instrument }) => instrument.label,
     children: ({ instrument, year, bondIssuances }) => (
       <InstrumentDetteFiche instrument={instrument} year={year} bondIssuances={bondIssuances} />

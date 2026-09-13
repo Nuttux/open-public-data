@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { ArrondissementLogementData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, sufOrdinal } from "@/lib/fmt";

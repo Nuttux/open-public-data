@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { BudgetNatureFiche } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale, sufOrdinal } from "@/lib/fmt";
@@ -71,7 +71,7 @@ export default function NatureFiche({ nature }: Props) {
                 {it.fonction && <span className="s">{fonctionName(it.fonction).toLowerCase()}</span>}
               </div>
             ))}
-            <Link href={`/fr/city/paris/budget/poste/${p.slug}?year=${nature.year}`} scroll={false} className="fx-v3-mline fx-row-link" style={{ color: "var(--bleu)" }}>
+            <Link href={`/france/paris/budget/poste/${p.slug}?year=${nature.year}`} scroll={false} className="fx-v3-mline fx-row-link" style={{ color: "var(--bleu)" }}>
               <span className="l">{fill(t("fx.nature.v3.open_poste"), { p: posteName(p.label) })} <span aria-hidden="true">→</span></span>
             </Link>
           </>

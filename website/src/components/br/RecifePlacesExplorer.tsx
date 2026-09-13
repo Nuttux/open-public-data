@@ -62,7 +62,7 @@ export default function RecifePlacesExplorer({
 
   const config = useMemo<PlacesConfig>(() => ({
     families,
-    hrefFor: (slug) => `/br/city/recife/lugares/${slug}`,
+    hrefFor: (slug) => `/brasil/recife/lugares/${slug}`,
     bounds: RECIFE_VIEW,
     clampToBounds: true,
     minZoom: 11,

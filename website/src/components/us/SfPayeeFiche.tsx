@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { SfPayeeFicheData, SfSpendClass } from "@/lib/us/sf-payees-data";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import FicheKpis from "@/components/fusion/FicheKpis";
@@ -130,7 +130,7 @@ export default function SfPayeeFiche({
     value: c.usd,
     tone: isPurchase(c.spend_class) ? "solid" : "muted",
     href: categorySlugs[c.code]
-      ? `/us/city/sf/who-gets-paid/category/${categorySlugs[c.code]}`
+      ? `/usa/san-francisco/who-gets-paid/category/${categorySlugs[c.code]}`
       : undefined,
   }));
 
@@ -351,7 +351,7 @@ export default function SfPayeeFiche({
         const row = (c: (typeof payee.contracts_held)[number]) => (
           <li key={c.contract_no}>
             <Link
-              href={`/us/city/sf/contracts/contract/${c.contract_no}`}
+              href={`/usa/san-francisco/contracts/contract/${c.contract_no}`}
               scroll={false}
               className="fx-row-link"
             >

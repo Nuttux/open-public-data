@@ -84,7 +84,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import type { LatLng, Map as LMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -1102,7 +1102,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   /* the GPU page's own routing of a hit, kind for kind */
   const goToHit = useCallback(async (hit: SearchHit) => {
     if (hit.kind === "place") {
-      router.push(`/us/city/sf/places/place/${hit.to}`);
+      router.push(`/usa/san-francisco/places/place/${hit.to}`);
       return;
     }
     await openAt(

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import Tip from "@/components/fusion/Tip";
 import { FicheBreakdown, FicheMore, FicheYearBars } from "@/components/fiche";
 import { fmtUsd, fmtUsdCompact, fmtShare } from "@/lib/us/format";
@@ -131,7 +131,7 @@ export default function SfPayrollFamilyFiche({ d }: { d: SfPayrollFamilyData }) 
             Exact percentiles over the {nfInt.format(d.pay.n_people)} people whose main job that
             year was in this family, total compensation included. A low median means part-time and
             partial-year staff, not a low hourly rate.{" "}
-            <Link href="/us/city/sf/payroll#sec-ladder" scroll={false} style={{ color: "var(--bleu)" }}>
+            <Link href="/usa/san-francisco/payroll#sec-ladder" scroll={false} style={{ color: "var(--bleu)" }}>
               Compare every kind of work →
             </Link>
           </p>

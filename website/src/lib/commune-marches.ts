@@ -53,10 +53,13 @@ export async function loadContratsSitemapSegment(k: number): Promise<string[]> {
   if (k < 0 || k >= contratsSitemapSegments()) return [];
   const txt = await readCommuneText(`${PREFIX}/_sitemap/contrats-${String(k).padStart(3, "0")}.txt`);
   if (!txt) return [];
+  // Chemins logiques (/france/<commune>/marche/<fiche>) ; les segments écrits
+  // avant la migration des adresses (/fr/city/…) sont convertis à la lecture.
   return txt
     .split("\n")
-    .filter((p) => p.startsWith("/fr/city/"))
-    .filter((p) => !hasDedicatedRoutes(p.split("/")[3] ?? ""));
+    .map((p) => p.replace(/^\/fr\/city\//, "/france/"))
+    .filter((p) => p.startsWith("/france/"))
+    .filter((p) => !hasDedicatedRoutes(p.split("/")[2] ?? ""));
 }
 
 export function communeHasMarches(slug: string): boolean {

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLocale, useT } from "@/lib/localeContext";
 import { sensDe } from "@/lib/ecart-mots";
 import { deNom } from "@/lib/nom-commune";
@@ -111,7 +111,7 @@ export default function FonctionFiche({
           <h3>{t("fx.fonc.h_voisins")}</h3>
           <div className="fx-fonc-lignes">
             {c.voisins.map((v) => (
-              <Link key={v.slug} href={`/fr/city/${v.slug}/fonction/${fonction.slug}`} className="l lien">
+              <Link key={v.slug} href={`/france/${v.slug}/fonction/${fonction.slug}`} className="l lien">
                 <span>
                   
                   {v.nom}
@@ -131,7 +131,7 @@ export default function FonctionFiche({
 
       {!embedded ? (
         <p className="fx-fonc-retour">
-          <Link href={`/fr/city/${doc.commune.slug}#a-quoi-sert`}>{fill("fx.fonc.retour", { nom, de_nom: deNom(nom) })}</Link>
+          <Link href={`/france/${doc.commune.slug}#a-quoi-sert`}>{fill("fx.fonc.retour", { nom, de_nom: deNom(nom) })}</Link>
         </p>
       ) : null}
     </div>

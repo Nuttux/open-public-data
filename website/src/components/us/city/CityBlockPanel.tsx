@@ -89,7 +89,7 @@
  * behaviour, and no URL of its own.
  */
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { useT } from "@/lib/localeContext";

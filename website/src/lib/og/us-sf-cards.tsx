@@ -3,7 +3,7 @@ import { themeFor, themeImage, localPhotoDataUri } from "@/lib/og/theme-image";
 import { ogFmtUsd, ogFmtEn } from "@/lib/og";
 import { loadSfPlacesIndex, loadSfPlace } from "@/lib/us/sf-places-data";
 import { loadSfPayee } from "@/lib/us/sf-payees-data";
-import { loadSfContractFiche } from "@/app/us/city/sf/contracts/data";
+import { loadSfContractFiche } from "@/app/[lang]/usa/san-francisco/contracts/data";
 import {
   blockLead,
   stripFileNumber,
@@ -169,7 +169,7 @@ function quoteForCard(raw: string): string {
 /**
  * ── THE BLOCK SHARE CARD ─────────────────────────────────────────────────
  *
- * `/us/city/sf/the-city?block=3752`. Every link to a block used to preview as
+ * `/usa/san-francisco/the-city?block=3752`. Every link to a block used to preview as
  * the site-wide card, so a link to one block on the map and a link to the map
  * itself looked identical — which is most of the reason a block is worth
  * sharing and none of it survived the paste.

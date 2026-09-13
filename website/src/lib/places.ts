@@ -62,7 +62,7 @@ export type Place = {
   slug: string;
   country: "fr" | "us" | "br";
   scale: "national" | "city";
-  /** Route prefix, e.g. "/us/city/sf". */
+  /** Route prefix, e.g. "/usa/san-francisco". */
   path: string;
   labelKey: string;
   schemaFamily: "fr-commune" | "fr-national" | "us-federal" | "us-municipal" | "br-municipal";
@@ -110,7 +110,7 @@ export const PLACES: Place[] = [
     slug: "fr-national",
     country: "fr",
     scale: "national",
-    path: "/fr/national/budget",
+    path: "/france/budget",
     labelKey: "chrome.scope.national",
     name: undefined,
     schemaFamily: "fr-national",
@@ -124,7 +124,7 @@ export const PLACES: Place[] = [
     slug: "paris",
     country: "fr",
     scale: "city",
-    path: "/fr/city/paris",
+    path: "/france/paris",
     switchHref: "/",
     labelKey: "chrome.place.paris",
     name: "Paris",
@@ -139,7 +139,7 @@ export const PLACES: Place[] = [
     slug: "marseille",
     country: "fr",
     scale: "city",
-    path: "/fr/city/marseille",
+    path: "/france/marseille",
     labelKey: "chrome.place.marseille",
     name: "Marseille",
     schemaFamily: "fr-commune",
@@ -157,7 +157,7 @@ export const PLACES: Place[] = [
     slug: "us-national",
     country: "us",
     scale: "national",
-    path: "/us/national",
+    path: "/usa/national",
     labelKey: "us.chrome.nav.national",
     schemaFamily: "us-federal",
     defaultLocale: "en",
@@ -172,7 +172,7 @@ export const PLACES: Place[] = [
     name: "San Francisco",
     country: "us",
     scale: "city",
-    path: "/us/city/sf",
+    path: "/usa/san-francisco",
     labelKey: "us.chrome.nav.sf",
     schemaFamily: "us-municipal",
     defaultLocale: "en",
@@ -195,7 +195,7 @@ export const PLACES: Place[] = [
     name: "Recife",
     country: "br",
     scale: "city",
-    path: "/br/city/recife",
+    path: "/brasil/recife",
     labelKey: "br.chrome.nav.recife",
     schemaFamily: "br-municipal",
     defaultLocale: "pt",
@@ -265,7 +265,7 @@ export function switchTarget(p: Place): string | null {
 
 /**
  * The place a pathname is inside — longest registry `path` prefix wins so
- * `/us/city/sf/budget` resolves to SF, not US-national. Paris (root URLs) is
+ * `/usa/san-francisco/budget` resolves to SF, not US-national. Paris (root URLs) is
  * matched by its `switchHref` when that is a real prefix. Used by the switcher
  * to mark the current place; France's own chrome still uses lib/cities.ts.
  */

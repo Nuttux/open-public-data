@@ -24,7 +24,7 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
   // slug était invalide ou introuvable — on préserve tel quel.
   notFoundMetadata: () => ({}),
   metadata: ({ data }, locale) => {
-    const canonical = `/fr/city/paris/logement/arrondissement/${data.slug}`;
+    const canonical = `/france/paris/logement/arrondissement/${data.slug}`;
     const title = locale === "en"
       ? `${data.label} · social housing — Qipu`
       : `${data.label} · logement social — Qipu`;
@@ -96,8 +96,8 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
       </span>
     ),
     title: ({ data }) => data.label,
-    shareUrl: ({ data }) => `/fr/city/paris/logement/arrondissement/${data.slug}`,
-    backHref: () => "/fr/city/paris/logement",
+    shareUrl: ({ data }) => `/france/paris/logement/arrondissement/${data.slug}`,
+    backHref: () => "/france/paris/logement",
     breadcrumbLabel: ({ data }) => data.label,
     children: ({ data }) => <ArrondissementLogementFiche data={data} />,
   },

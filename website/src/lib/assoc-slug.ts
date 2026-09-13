@@ -14,5 +14,5 @@ export function assocSlug(name: string): string {
 }
 
 export function assocHref(city: string, name: string): string {
-  return `/fr/city/${city}/subventions/association/${assocSlug(name)}`;
+  return `/france/${city}/subventions/association/${assocSlug(name)}`;
 }

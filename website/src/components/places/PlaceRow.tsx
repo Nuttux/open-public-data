@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { PlaceEntry, PlacesConfig } from "./types";
 
 /**

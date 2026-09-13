@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import type { Map as LMap, Marker as LMarker, LatLng } from "leaflet";
 import type { PlaceEntry, PlacesConfig } from "./types";
 import "leaflet/dist/leaflet.css";

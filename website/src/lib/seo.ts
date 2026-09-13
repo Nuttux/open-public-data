@@ -10,7 +10,8 @@
 
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
-import { alternatesFor, localeFromHost, DEFAULT_SITE_LOCALE, type SiteLocale } from '@/lib/site-locale';
+import { alternatesFor, DEFAULT_SITE_LOCALE, type SiteLocale } from '@/lib/site-locale';
+import { COUNTRY_LANGS, DEFAULT_LANG, absoluteUrl, scopeOf, type Lang } from '@/lib/urls';
 
 // The apex 308-redirects to www in production, so www is the host that
 // actually serves. Pointing canonicals, OG urls and ~42 000 sitemap entries at
@@ -22,10 +23,10 @@ export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
 
 /**
- * The language this request is served in — decided by the HOST, never by a
- * cookie or Accept-Language (lib/site-locale.ts): www = English, fr. = French,
- * pt. = Portuguese. proxy.ts stamps `x-qipu-locale`; the host header is the
- * fallback for routes the proxy does not cover (sitemap, robots).
+ * The language this request is served in: the first segment of its address
+ * (lib/urls.ts), never a cookie or Accept-Language. proxy.ts stamps
+ * `x-qipu-locale`; routes the proxy does not cover (sitemap, robots) get the
+ * default.
  *
  * Why no cookie: crawlers never carry one, so a cookie-chosen language meant
  * exactly one language per page in Google's index — and a DEFAULT_LOCALE=en
@@ -37,7 +38,7 @@ export async function readSiteLocale(): Promise<SiteLocale> {
     const h = await headers();
     const forced = h.get('x-qipu-locale');
     if (forced === 'fr' || forced === 'en' || forced === 'pt') return forced;
-    return localeFromHost(h.get('host'));
+    return DEFAULT_SITE_LOCALE;
   } catch {
     /* headers() throws outside a request (module evaluation, static build) */
     return DEFAULT_SITE_LOCALE;
@@ -75,13 +76,16 @@ function _assemble(
   const path = input.path ?? '/';
   const ogLocale = locale === 'en' ? 'en_US' : DEFAULT_LOCALE;
   const altLocale = locale === 'en' ? ['fr_FR'] : ['en_US'];
-  // Each language has its own host, so every page declares its twins
-  // (lib/site-locale.ts). An explicit per-language override wins when a page
-  // has genuinely different paths per language.
+  // Every page declares its language twins (lib/site-locale.ts). An explicit
+  // per-language override wins when a page has genuinely different paths per
+  // language.
   const alt = alternatesFor(path, locale);
   const canonical = alt.canonical;
   const languages = input.alternates
-    ? { 'fr-FR': input.alternates.fr, 'en-US': input.alternates.en }
+    ? {
+        ...(input.alternates.fr ? { 'fr-FR': absoluteUrl(input.alternates.fr, 'fr') } : {}),
+        ...(input.alternates.en ? { en: absoluteUrl(input.alternates.en, 'en') } : {}),
+      }
     : alt.languages;
 
   // Only set images when an explicit override is provided. Otherwise let Next.js
@@ -174,21 +178,34 @@ export function websiteJsonLd() {
 /**
  * The licence a page's data carries at its source, vérifiée sur chaque portail
  * le 13 septembre 2026 :
- *   - DataSF (/us) : PDDL — budget, paiements, contrats, rémunérations ;
- *   - Recife (/br) et Paris Open Data : ODbL ;
- *   - toute autre commune (/fr/city/…) : DGFiP, OFGL et DECP, Licence Ouverte v2.0.
+ *   - DataSF (/usa) : PDDL — budget, paiements, contrats, rémunérations ;
+ *   - Recife (/brasil) et Paris Open Data : ODbL ;
+ *   - toute autre commune (/france/…) : DGFiP, OFGL et DECP, Licence Ouverte v2.0.
  * Marseille : Licence Ouverte v2.0 (Ville sur data.gouv.fr, Métropole AMP). Le
  * national mêle des sources : ses pages passent la licence explicitement. L'ancien défaut, ODbL partout,
  * prêtait la licence de Paris à des données qui ne l'ont pas.
  */
 export function licenseForPath(path: string): string | undefined {
-  if (path === '/us' || path.startsWith('/us/')) return 'https://opendatacommons.org/licenses/pddl/1-0/';
-  if (path === '/br' || path.startsWith('/br/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
-  if (path === '/fr/city/paris' || path.startsWith('/fr/city/paris/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
-  // Marseille : data.gouv.fr (Ville) et Métropole AMP, Licence Ouverte 2.0 — vérifié.
-  if (path.startsWith('/fr/city/marseille')) return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
-  if (path.startsWith('/fr/city/')) return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
-  return undefined;
+  const s = scopeOf(path);
+  if (!s) return undefined;
+  if (s.country === 'usa') return 'https://opendatacommons.org/licenses/pddl/1-0/';
+  if (s.country === 'brasil') return 'https://opendatacommons.org/licenses/odbl/1-0/';
+  // National pages mix sources and pass their licence explicitly.
+  if (s.place === null) return undefined;
+  if (s.place === 'paris') return 'https://opendatacommons.org/licenses/odbl/1-0/';
+  // Marseille (data.gouv.fr, Métropole AMP) and every other commune (DGFiP, OFGL, DECP) — vérifié.
+  return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
+}
+
+/** The language a page is written in when none is given: its country's, English elsewhere. */
+function nativeLang(path: string): Lang {
+  const s = scopeOf(path);
+  return s ? COUNTRY_LANGS[s.country].native : DEFAULT_LANG;
+}
+
+/** Absolute URL of a page (logical path or address) in `lang`, its country's language by default. */
+function pageUrl(path: string, lang?: Lang): string {
+  return absoluteUrl(path, lang ?? nativeLang(path));
 }
 
 /**
@@ -212,13 +229,15 @@ export function datasetJsonLd(input: {
    *  from the national treasury, San Francisco's from DataSF, Recife's from
    *  the Prefeitura. */
   creator?: string;
+  /** Language of the page the dataset is described on; its country's by default. */
+  lang?: Lang;
 }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
     name: input.name,
     description: input.description,
-    url: `${SITE_URL}${input.path}`,
+    url: pageUrl(input.path, input.lang),
     keywords: input.keywords,
     dateModified: input.dateModified,
     temporalCoverage: input.temporalCoverage,
@@ -235,7 +254,8 @@ export function datasetJsonLd(input: {
 /**
  * GEO: Breadcrumb schema — improves navigation context for AI engines.
  */
-export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+export function breadcrumbJsonLd(items: { name: string; path: string }[], lang?: Lang) {
+  const trailLang = lang ?? nativeLang(items[items.length - 1]?.path ?? '/');
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -243,7 +263,7 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       '@type': 'ListItem',
       position: idx + 1,
       name: item.name,
-      item: `${SITE_URL}${item.path}`,
+      item: pageUrl(item.path, trailLang),
     })),
   };
 }

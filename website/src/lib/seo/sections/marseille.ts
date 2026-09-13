@@ -24,7 +24,7 @@ import { cityPopulation } from "@/lib/methodology";
 import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { day, longDate, mEur, num, pct, type FrHub, type Lang } from "./national";
 
-const BASE = "/fr/city/marseille";
+const BASE = "/france/marseille";
 const CREATOR = "Ville de Marseille";
 const SPATIAL = "Marseille, France";
 const PARENTS = [{ fr: "Marseille", en: "Marseille", path: BASE }];

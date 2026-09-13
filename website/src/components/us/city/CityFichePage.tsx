@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { CityPage } from "@/lib/us/sf-city-pages";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 
@@ -31,7 +31,7 @@ export default function CityFichePage({ page, related }: { page: CityPage; relat
             {p.streets.map((s, i) => (
               <span key={s.slug}>
                 {i > 0 ? <span className="fx-block-streets-sep"> · </span> : null}
-                <Link href={`/us/city/sf/the-city/street/${s.slug}`}>
+                <Link href={`/usa/san-francisco/the-city/street/${s.slug}`}>
                   {s.label}
                   <span className="fx-block-street-n">{s.count}</span>
                 </Link>
@@ -109,9 +109,9 @@ export default function CityFichePage({ page, related }: { page: CityPage; relat
           Supervisors, the city council, and links to the page it was printed on at the Internet Archive or
           in the Clerk&apos;s own files. Many of the Board&apos;s decisions name no street at all, and only the
           ones that do can be placed here.{" "}
-          <Link href="/us/city/sf/records">How the record was read</Link>
+          <Link href="/usa/san-francisco/records">How the record was read</Link>
           {" · "}
-          <Link href="/us/city/sf/the-city">The whole city</Link>
+          <Link href="/usa/san-francisco/the-city">The whole city</Link>
         </p>
       </section>
 

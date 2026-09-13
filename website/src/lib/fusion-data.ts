@@ -4735,7 +4735,7 @@ export function loadPosteLinks(slug: string, year: number, city: string = "paris
   const spec = POSTE_LINKS[slug];
   if (!spec) return [];
   const out: PosteLink[] = [];
-  const base = `/fr/city/${city}`;
+  const base = `/france/${city}`;
   for (const theme of spec.themes ?? []) {
     try {
       const th = loadThemeSubventions(slugifyLabel(theme), year, city);

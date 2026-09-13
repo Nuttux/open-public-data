@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { useRouter } from "@/lib/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
@@ -25,7 +25,7 @@ function OrgaoBars({ items }: { items: TemaDetail["top_orgaos"] }) {
         const val = <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>{fmtBrlCompact(o.valor)}</span>;
         const style = { display: "grid", gridTemplateColumns: "1fr 96px", gap: 14, padding: "6px 0", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-ui)", fontSize: 13 } as const;
         return o.slug ? (
-          <Link key={o.orgao} href={`/br/city/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>{label}{val}</Link>
+          <Link key={o.orgao} href={`/brasil/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>{label}{val}</Link>
         ) : (
           <div key={o.orgao ?? `outros-${i}`} style={style}>{label}{val}</div>
         );
@@ -81,9 +81,9 @@ export default function RecifeTemaFiche({ tm, temaMethod, source }: { tm: TemaDe
           <table className="fx-fiche-table">
             <tbody>
               {tm.top_recebedores.map((r) => (
-                <tr key={r.cnpj} className="fx-row-link" onClick={() => router.push(`/br/city/recife/quem-recebe/${r.cnpj}`)}>
+                <tr key={r.cnpj} className="fx-row-link" onClick={() => router.push(`/brasil/recife/quem-recebe/${r.cnpj}`)}>
                   <td>
-                    <Link href={`/br/city/recife/quem-recebe/${r.cnpj}`} onClick={(e) => e.stopPropagation()}>{titleCasePt(r.nome)}</Link>
+                    <Link href={`/brasil/recife/quem-recebe/${r.cnpj}`} onClick={(e) => e.stopPropagation()}>{titleCasePt(r.nome)}</Link>
                     {r.is_subvencao && <span className="fx-sm-tag" style={{ marginLeft: 8 }}>{t("br.recife.qr.badge_subv")}</span>}
                   </td>
                   <td className="num mono">{fmtBrlCompact(r.total_pago)}</td>
@@ -95,7 +95,7 @@ export default function RecifeTemaFiche({ tm, temaMethod, source }: { tm: TemaDe
       )}
 
       <p style={{ margin: "18px 0 0", fontSize: 14 }}>
-        <Link href={`/br/city/recife/quem-recebe?theme=${encodeURIComponent(tm.tema)}#sec-recebedores`} style={{ fontWeight: 600 }}>
+        <Link href={`/brasil/recife/quem-recebe?theme=${encodeURIComponent(tm.tema)}#sec-recebedores`} style={{ fontWeight: 600 }}>
           {fill(t("br.recife.tema.ver_todas"), { n: fmtInt(tm.n_organizacoes) })} →
         </Link>
       </p>

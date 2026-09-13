@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { MarqueeItem } from "./types";
 
 /**

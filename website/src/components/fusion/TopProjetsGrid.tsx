@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { ProjetPhotoResolved } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useFmtEur } from "@/lib/use-fmt";
