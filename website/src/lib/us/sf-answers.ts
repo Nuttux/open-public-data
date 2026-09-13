@@ -8,7 +8,8 @@
  * adopted budget) and the Internet Archive for places.
  */
 import { fmtUsd, fmtUsdCompact, fmtShare } from "@/lib/us/format";
-import { isoDate, n, sourceSentence, yearSpan, type PageAnswer } from "@/lib/seo/page-answer";
+import { isoDate, n, sourceSentence, type PageAnswer } from "@/lib/seo/page-answer";
+import { titleName } from "@/lib/entities/seo-text";
 
 const SRC_PAYMENTS = "SF Controller vendor payments (open data)";
 const SRC_PAYROLL = "SF Controller employee compensation (open data)";
@@ -26,7 +27,6 @@ export function payeeAnswer(p: {
   n_contracts_held: number;
   as_of?: string;
 }): PageAnswer {
-  const span = yearSpan(p.first_year, p.last_year);
   const amt = fmtUsdCompact(p.total_paid_usd);
   const lead =
     p.first_year != null && p.last_year != null && p.first_year !== p.last_year
@@ -36,7 +36,7 @@ export function payeeAnswer(p: {
         : "";
   const dept = p.top_departments[0];
   return {
-    title: `${p.name}: ${amt} paid by San Francisco${span ? ` (${span})` : ""}`,
+    title: `${titleName(p.name)}: ${amt} paid by San Francisco`,
     answer: `${lead} the City and County of San Francisco paid ${amt} to ${p.name}${dept ? `, mostly through ${dept}` : ""}${
       p.n_contracts_held > 0 ? `, with ${n("contract", p.n_contracts_held)} on file` : ""
     }. ${src(SRC_PAYMENTS, p.as_of)}`.trim(),

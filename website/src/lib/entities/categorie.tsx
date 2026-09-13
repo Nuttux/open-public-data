@@ -4,7 +4,7 @@ import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
-import { eur, pct, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { eur, pct, int, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadMarcheCategorie>> };
 
@@ -56,12 +56,12 @@ export const categorieConfig: EntityPageConfig<D> = {
   const date = dataDate("marches-publics/index.json", locale);
   if (locale === "en") {
     return {
-      title: `${cat} public contracts in Paris, ${f.year}: ${amt}, ${int(f.nbContrats, "en")} contracts`,
+      title: `Paris ${clip(cat, 30)} contracts ${f.year}: ${amt}`,
       answer: `In ${f.year}, the City of Paris notified ${int(f.nbContrats, "en")} ${cat.toLowerCase()} contracts to ${int(f.nbTitulaires, "en")} suppliers, for ${amt} (maximum amounts), ${pct(f.shareOfTotalPct, "en")} of the year's contracts. ${sourceLine("en", "DECP via opendata.paris.fr", date)}`,
     };
   }
   return {
-    title: `Marchés publics ${f.category} à Paris en ${f.year} : ${amt}, ${int(f.nbContrats, "fr")} contrats`,
+    title: `Marchés ${clip(f.category, 30)} à Paris ${f.year} : ${amt}`,
     answer: `En ${f.year}, la Ville de Paris a notifié ${int(f.nbContrats, "fr")} marchés de ${f.category.toLowerCase()} à ${int(f.nbTitulaires, "fr")} titulaires, pour ${amt} (montants maximaux), soit ${pct(f.shareOfTotalPct, "fr")} des marchés de l'année. ${sourceLine("fr", "DECP via opendata.paris.fr", date)}`,
   };
   },

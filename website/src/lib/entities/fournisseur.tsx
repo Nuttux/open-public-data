@@ -7,7 +7,7 @@ import { numLocale } from "@/lib/fmt";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
-import { eur, int, span, periodLead, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
+import { eur, int, periodLead, cityDataDate, sourceLine, cityPortal, titleName } from "@/lib/entities/seo-text";
 
 type D = {
   fournisseur: NonNullable<ReturnType<typeof loadFournisseur>>;
@@ -69,7 +69,6 @@ export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
   },
   seo: ({ fournisseur: f }, locale) => {
     const amt = eur(f.totalAmount, locale);
-    const sp = span(f.yearsActive);
     const top = f.byCategory.slice().sort((x, y) => y.amount - x.amount)[0];
     const cat = top ? trLabel(top.category, locale) : null;
     const date = cityDataDate(city, "marches-publics/index.json", locale);
@@ -77,12 +76,12 @@ export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
     const src = `DECP via ${cityPortal(city)}`;
     if (locale === "en") {
       return {
-        title: `${f.nom}: ${amt} in public contracts with the City of ${cityNom}${sp ? ` (${sp})` : ""}`,
+        title: `${titleName(f.nom)}: ${amt} in ${cityNom} public contracts`,
         answer: `${periodLead(f.yearsActive, "en")} ${f.nom} won ${int(n, "en")} public contract${n > 1 ? "s" : ""} from the City of ${cityNom}, worth ${amt} in total (maximum amounts notified)${cat ? `, mostly in ${cat.toLowerCase()}` : ""}. ${sourceLine("en", src, date)}`,
       };
     }
     return {
-      title: `${f.nom} : ${amt} de marchés publics avec la Ville de ${cityNom}${sp ? ` (${sp})` : ""}`,
+      title: `${titleName(f.nom)} : ${amt} de marchés publics à ${cityNom}`,
       answer: `${periodLead(f.yearsActive, "fr")} ${f.nom} a obtenu ${int(n, "fr")} marché${n > 1 ? "s" : ""} public${n > 1 ? "s" : ""} de la Ville de ${cityNom}, pour ${amt} au total (montants maximaux notifiés)${cat ? `, surtout en ${cat.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
     };
   },
