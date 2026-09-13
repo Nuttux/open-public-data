@@ -6636,6 +6636,12 @@ const en: Record<string, string> = {
   'fx.related.arr.hub_logement_sub': 'The homes funded each year, by arrondissement and landlord',
   'fx.related.arr.hub_garanties': 'The City of Paris\'s debt',
   'fx.related.arr.hub_garanties_sub': 'Balance sheet, financial debt and every guarantee',
+  'fx.related.commune.page': 'All of {nom}\'s budget',
+  'fx.related.commune.fonc_block_sub': '{nom}\'s other public policies in {year}.',
+  'fx.related.commune.nat_block_sub': '{nom}\'s other kinds of spending in {year}.',
+  'fx.related.commune.fonc_sub': '{pct}% of the operating budget in {year}',
+  'fx.related.commune.nat_sub': '{pct}% of operating spending in {year}',
+  'fx.related.commune.year_sub': 'Operating spending, {year}',
 
   // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
   'br.recife.related.title': 'See also',

@@ -6389,6 +6389,12 @@ const fr: Record<string, string> = {
   'fx.related.arr.hub_logement_sub': 'Les logements financés chaque année, par arrondissement et par bailleur',
   'fx.related.arr.hub_garanties': 'La dette de la Ville de Paris',
   'fx.related.arr.hub_garanties_sub': 'Bilan, dette financière et l’ensemble des garanties',
+  'fx.related.commune.page': 'Tout le budget {de_nom}',
+  'fx.related.commune.fonc_block_sub': 'Les autres politiques publiques {de_nom} en {year}.',
+  'fx.related.commune.nat_block_sub': 'Les autres formes de dépense {de_nom} en {year}.',
+  'fx.related.commune.fonc_sub': '{pct} % du budget de fonctionnement en {year}',
+  'fx.related.commune.nat_sub': '{pct} % du fonctionnement en {year}',
+  'fx.related.commune.year_sub': 'Dépenses de fonctionnement, {year}',
 
   // ── US · SF see also — EN-only (values mirrored verbatim in the other locale file) ──
   'us.sf.related.title': 'See also',

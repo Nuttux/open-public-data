@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { communeNatureRelated } from "@/lib/commune-related";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import CommuneNatureFiche from "@/components/fusion/CommuneNatureFiche";
@@ -58,6 +60,7 @@ export default async function NaturePage({ params }: { params: Promise<{ slug: s
           <p className="fx-fonc-kicker">{r.doc.commune.nom}</p>
           <h1 className="fx-fonc-titre">{r.nature.libelle}</h1>
           <CommuneNatureFiche doc={r.doc} nature={r.nature} />
+          <RelatedLinks block={communeNatureRelated(r.doc, r.nature, await readLocale())} />
         </div>
       </main>
       <Footer />
