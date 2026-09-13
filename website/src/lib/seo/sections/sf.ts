@@ -123,7 +123,9 @@ export function sfContractsHub(): SfHub {
     path: "/us/city/sf/contracts",
     crumb: "Contracts",
     answer: {
-      title: `San Francisco contracts: ${active.n_contracts.toLocaleString("en-US")} active, ${bn(active.agreed_usd)} agreed`,
+      // One figure, the page's first: agreed on the contracts active today; the
+      // counts stay in the sentence.
+      title: `San Francisco active contracts: ${bn(active.agreed_usd)} agreed`,
       answer:
         `${n("supplier contract", register.n_contracts)} are on San Francisco's books; ` +
         `${active.n_contracts.toLocaleString("en-US")} are active${asOfActive ? ` (ending on or after ${asOfActive})` : ""}, ` +
@@ -179,7 +181,7 @@ export function sfPlacesHub(): SfHub {
     crumb: "Places",
     answer: {
       title: funds
-        ? `San Francisco places: ${places.length.toLocaleString("en-US")} sites, ${bn(totalFunds)} paid`
+        ? `San Francisco places: ${bn(totalFunds)} paid to contractors`
         : `San Francisco, place by place: ${n("place", places.length)}`,
       answer:
         `${n("San Francisco place", places.length)} — parks, libraries, hospitals, piers — run by ${n("City department", nDepts)}: ` +
