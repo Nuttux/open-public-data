@@ -52,8 +52,8 @@ Sortie :
     website/src/data/communes-fonctions-manifest.json             (engagé)
 
 Usage :
-    python3 pipeline/scripts/export/export_communes_fonctions.py               # exercice 2024
-    python3 pipeline/scripts/export/export_communes_fonctions.py --annee 2025
+    python3 pipeline/scripts/export/export_communes_fonctions.py               # exercice le plus récent du mart
+    python3 pipeline/scripts/export/export_communes_fonctions.py --annee 2024
     NATIONAL_MARTS_DATASET=dbt_paris_dev_<user>_national_marts python3 …      # mart de dev
 
 Envoi (non fait ici) :
@@ -92,7 +92,6 @@ DATASET_PREFIX = (
     "locaux-avec-la-presentation-croisee-nature-fonction-"
 )
 BUCKET_BASE = "https://storage.googleapis.com/qipu-communes-budget/communes-fonctions"
-ANNEE_PAR_DEFAUT = 2024
 
 SOURCE_LABEL = "DGFiP — balances comptables, présentation croisée nature-fonction"
 SOURCE_PIPELINE = "balance DGFiP (ZIP) → dbt national (mart_communes_fonctions) → export_communes_fonctions.py"
@@ -301,6 +300,12 @@ def client_bq():
     return bigquery.Client(project=PROJECT_ID)
 
 
+def annee_la_plus_recente(client) -> int | None:
+    """Le dernier exercice présent dans le mart : celui qu'on exporte par défaut."""
+    row = next(iter(client.query(f"SELECT MAX(annee) AS annee FROM `{MART}`").result()))
+    return row["annee"]
+
+
 def lire_mart(client, annee: int) -> dict[str, dict]:
     """Les cellules de chaque commune, dans l'ordre du fichier source.
 
@@ -311,7 +316,7 @@ def lire_mart(client, annee: int) -> dict[str, dict]:
     from google.cloud import bigquery
 
     sql = f"""
-        SELECT code_insee, nomenclature, compartiment, fonction_reference, compte,
+        SELECT code_insee, libelle_budget, nomenclature, compartiment, fonction_reference, compte,
                famille_nature, montant
         FROM `{MART}`
         WHERE annee = @annee
@@ -328,6 +333,7 @@ def lire_mart(client, annee: int) -> dict[str, dict]:
         bucket = by_insee.setdefault(r["code_insee"], {
             "cellules": defaultdict(float),   # (compartiment, ref, compte) → montant
             "familles": {},                   # compte → famille de nature
+            "libelle": r["libelle_budget"],
             "nomen": r["nomenclature"],
             "total": 0.0,
         })
@@ -684,13 +690,18 @@ def attacher_comparaisons(docs: dict[str, dict], pops: dict[str, int], noms: dic
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--annee", type=int, default=ANNEE_PAR_DEFAUT, help=f"exercice (défaut {ANNEE_PAR_DEFAUT})")
+    ap.add_argument("--annee", type=int, default=None, help="exercice (défaut : le plus récent présent dans le mart)")
     ap.add_argument("--limit", type=int, default=0, help="n'écrire que N communes (mise au point)")
     args = ap.parse_args()
-    annee = args.annee
+    client = client_bq()
+    annee = args.annee if args.annee is not None else annee_la_plus_recente(client)
+    if annee is None:
+        _log(f"✗ {MART} est vide — charger un exercice (sync_dgfip_nature_fonction.py) puis relancer dbt")
+        return 1
     dataset_page = f"https://data.economie.gouv.fr/explore/dataset/{DATASET_PREFIX}{annee}/"
 
-    _log(f"→ À quoi sert l'argent : ventilation fonction × nature, par commune ({annee})")
+    origine = "demandé" if args.annee is not None else "le plus récent du mart"
+    _log(f"→ À quoi sert l'argent : ventilation fonction × nature, par commune ({annee}, {origine})")
     if not NOMENCLATURE_FILE.exists():
         _log(f"✗ {NOMENCLATURE_FILE.relative_to(ROOT)} manquant — lancer d'abord "
              "pipeline/scripts/sync/sync_nomenclature_budgetaire.py")
@@ -700,7 +711,7 @@ def main() -> int:
          f"{len(lib.nature_m14)} comptes M14")
 
     index = json.loads(INDEX_FILE.read_text(encoding="utf-8"))["communes"]
-    by_insee = lire_mart(client_bq(), annee)
+    by_insee = lire_mart(client, annee)
     if not by_insee:
         _log(f"✗ aucune cellule pour {annee} dans {MART} — charger l'exercice puis relancer dbt")
         return 1
@@ -716,11 +727,15 @@ def main() -> int:
     docs: dict[str, dict] = {}
     metas: dict[str, dict] = {}
     pops: dict[str, int] = {}
-    sans_slug = 0
+    sans_slug: list[str] = []
     for insee, bucket in sorted(by_insee.items()):
         meta = index.get(insee)
         if not meta:
-            sans_slug += 1
+            # Une commune que la balance connaît et que l'index des communes du
+            # site ne connaît pas (il est bâti sur un exercice OFGL donné, voir
+            # sync_ofgl_all_communes.py) : pas de slug, donc pas d'adresse où
+            # publier sa fiche. On la saute sans arrêter l'export, et on la nomme.
+            sans_slug.append(f"{insee} ({bucket['libelle']})")
             continue
         payload = build_commune(bucket, lib)
         if payload is None or not payload["fonctions"]:
@@ -788,7 +803,8 @@ def main() -> int:
 
     _log(f"  ✓ {written:,} fichiers dans {OUT_ROOT.relative_to(ROOT)}")
     if sans_slug:
-        _log(f"  • {sans_slug} communes du mart absentes de l'index (ignorées)")
+        _log(f"  ⚠ {len(sans_slug)} communes du mart absentes de {INDEX_FILE.relative_to(ROOT)}, "
+             f"ignorées (pas de slug où publier) : {', '.join(sans_slug)}")
     if tailles:
         _log(f"  • poids par commune : médiane {statistics.median(tailles)/1024:.1f} Ko · "
              f"max {max(tailles)/1024:.1f} Ko · total {sum(tailles)/1e6:.1f} Mo")

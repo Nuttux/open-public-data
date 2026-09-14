@@ -41,6 +41,9 @@
   plus de dépenses ; ex aequo → la première rencontrée dans le fichier). Elle
   choisit les libellés M14 ou M57 à l'export.
 
+  libelle_budget : le nom du budget tel que la DGFiP l'écrit (« AJACCIO »). Il
+  sert à nommer, dans les avertissements de l'export, une commune du fichier
+  que l'index des communes du site ne connaît pas.
 */
 
 WITH lignes AS (
@@ -48,6 +51,7 @@ WITH lignes AS (
         annee,
         ligne,
         code_insee,
+        libelle_budget,
         COALESCE(nomen, '?')                                AS nomen,
         IF(est_reversement, 'rev', fonction_cle)            AS compartiment,
         fonction_reference,
@@ -65,9 +69,10 @@ WITH lignes AS (
 ),
 
 nomenclatures AS (
-    SELECT annee, code_insee, nomen AS nomenclature
+    SELECT annee, code_insee, nomen AS nomenclature, libelle_budget
     FROM (
-        SELECT annee, code_insee, nomen, SUM(montant) AS montant, MIN(ligne) AS premiere_ligne
+        SELECT annee, code_insee, nomen, SUM(montant) AS montant, MIN(ligne) AS premiere_ligne,
+               MIN(libelle_budget) AS libelle_budget
         FROM lignes
         GROUP BY annee, code_insee, nomen
     )
@@ -94,6 +99,7 @@ cellules AS (
 SELECT
     c.annee,
     c.code_insee,
+    n.libelle_budget,
     n.nomenclature,
     c.compartiment,
     c.fonction_reference,
