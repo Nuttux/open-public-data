@@ -35,7 +35,7 @@ export default function OffresFiche({ fiche }: { fiche: MarchesOffresFiche }) {
       : named.join(", ");
     return (
       <V3Row key={c.numero || title} href={c.numero ? `${basePath}/marches/contrat/${encodeURIComponent(c.numero)}` : null}
-        label={title} subText={[detail, who || t("fx.sec.mp.holder_unknown")].filter(Boolean).join(" · ")} amount={<Amt n={c.montant} />} />
+        label={title} subText={[detail, who || (c.fournisseur === "MARCHE MULTIATTRIBUTAIRE" ? t("fx.sec.mp.multi_holders") : t("fx.sec.mp.holder_unknown"))].filter(Boolean).join(" · ")} amount={<Amt n={c.montant} />} />
     );
   };
   const otherYears = fiche.years.filter((y) => y !== fiche.year);

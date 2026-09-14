@@ -2,7 +2,7 @@
 
 import type { MarcheCategorieFiche } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";
-import { cutObjet, shortObjet } from "@/lib/objet-normalizer";
+import { cutObjet, rowObjet } from "@/lib/objet-normalizer";
 import { isNamedTitulaire } from "@/lib/marches-shape";
 import { displayOrgName } from "@/lib/fournisseur-display";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -35,16 +35,16 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
 
   const ContratRow = (c: MarcheCategorieFiche["topContrats"][number]) => {
     const preferred = locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
-    const objet = preferred ? cutObjet(preferred) : shortObjet(c.objet || "");
+    const { title, detail } = preferred ? { title: cutObjet(preferred, 96), detail: null } : rowObjet(c.objet || "");
     const named = (c.titulaires ?? []).filter((n) => isNamedTitulaire(n)).map((n) => displayOrgName(n));
     const extra = named.length - 2;
     const who = extra > 0
       ? fill(t(extra === 1 ? "fx.categorie.titulaires_more_one" : "fx.categorie.titulaires_more"), { names: named.slice(0, 2).join(", "), n: extra })
-      : named.join(", ");
+      : named.join(", ") || (c.fournisseur === "MARCHE MULTIATTRIBUTAIRE" ? t("fx.sec.mp.multi_holders") : "");
     return (
-      <V3Row key={c.numero || objet} href={c.numero ? `${basePath}/marches/contrat/${encodeURIComponent(c.numero)}` : null}
-        label={objet}
-        subText={who || undefined}
+      <V3Row key={c.numero || title} href={c.numero ? `${basePath}/marches/contrat/${encodeURIComponent(c.numero)}` : null}
+        label={title}
+        subText={[detail, who].filter(Boolean).join(" · ") || undefined}
         amount={<Amt n={c.montant} />} />
     );
   };

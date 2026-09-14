@@ -4,6 +4,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { relatedT } from "@/lib/related-t";
 import { loadMarchesOffres } from "@/lib/fusion-data";
 import { eur, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { offresRelated } from "@/lib/entities/related";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadMarchesOffres>> };
 
@@ -55,6 +56,7 @@ export const offresConfig: EntityPageConfig<D> = {
       answer: `En ${f.year}, ${int(f.count, "fr")} des ${int(f.known, "fr")} contrats de la Ville de Paris dont le nombre d’offres est publié ont été ${HOW_FR[f.bucket]}, pour ${amt} de montants maximums. ${sourceLine("fr", "DECP via data.gouv.fr", date)}`,
     };
   },
+  related: ({ fiche }, locale) => offresRelated(fiche, locale),
   page: {
     header: ({ fiche }, locale) => (
       <>

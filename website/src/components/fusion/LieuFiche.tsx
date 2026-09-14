@@ -6,7 +6,7 @@ import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, numLocale, seanceEn } from "@/lib/fmt";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { useCity } from "./CityContext";
 import { assocSlug } from "@/lib/assoc-slug";
 import { displayOrgName } from "@/lib/fournisseur-display";
@@ -264,8 +264,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const MarcheRow = (m: (typeof marches)[number]) => (
     <Link key={m.numero_marche} href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`} scroll={false} className="fx-v3-row fx-row-link">
       <span className="lbl">
-        {m.objet_clair || normalizeObjet(m.objet)}
-        <span aria-hidden="true" className="muted"> →</span>
+        {m.objet_clair || rowObjet(m.objet, 96).title}
+        <span aria-hidden="true" className="muted"> ›</span>
         {m.fournisseur && <span className="sub">{m.fournisseur}{m.date_notification ? ` · ${m.date_notification.slice(0, 4)}` : ""}</span>}
       </span>
       <Eur {...fmtEur(m.montant_max)} size={14} />

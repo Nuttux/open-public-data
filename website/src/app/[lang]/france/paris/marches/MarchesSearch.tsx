@@ -2,7 +2,7 @@
 
 import Link from "@/components/LocalizedLink";
 import { useEffect, useMemo, useState } from "react";
-import { normalizeObjet, rowObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
@@ -419,8 +419,8 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
                 </div>
                 <h3>{(() => {
                   const preferred = locale === "en" && it.objetClairEn ? it.objetClairEn : it.objetClair;
-                  const clean = preferred || normalizeObjet(it.objet);
-                  return clean.length > 90 ? clean.slice(0, 90) + "…" : clean;
+                  const clean = preferred || rowObjet(it.objet, 90).title;
+                  return clean.length > 90 ? clean.slice(0, 90).trimEnd() + "…" : clean;
                 })()}</h3>
                 {via.length > 0 && (
                   <div className="fx-result-card-via">

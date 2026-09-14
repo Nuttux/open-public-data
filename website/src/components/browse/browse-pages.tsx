@@ -16,6 +16,7 @@ import {
   fournisseurList,
   isLetter,
   marchesYears,
+  marchesYearsAll,
   page,
   projetArrondissements,
   projetItems,
@@ -200,7 +201,8 @@ export function makeContratsBrowse(city: string) {
   const parse = (parts: string[] = []) => {
     const year = parts[0] ? Number(parts[0]) : null;
     const p = parts[1] ? Number(parts[1]) : 1;
-    if (year != null && (!Number.isInteger(year) || !marchesYears(city).includes(year))) return null;
+    // Any year with a file is an address (the current, still filling year too); the rail lists complete years only.
+    if (year != null && (!Number.isInteger(year) || !marchesYearsAll(city).includes(year))) return null;
     if (parts.length > 2 || !Number.isInteger(p) || p < 1) return null;
     return { year, p };
   };
@@ -215,8 +217,8 @@ export function makeContratsBrowse(city: string) {
       ? en ? `Public contracts notified by the City of ${cityNom} in ${q.year}${q.p > 1 ? ` (page ${q.p})` : ""}` : `Marchés publics notifiés par la Ville de ${cityNom} en ${q.year}${q.p > 1 ? ` (page ${q.p})` : ""}`
       : en ? `Every public contract of the City of ${cityNom}, year by year` : `Tous les marchés publics de la Ville de ${cityNom}, année par année`;
     const answer = en
-      ? `The contracts the City of ${cityNom} notified from ${years[years.length - 1]} to ${years[0]}, each with its own page: object, supplier, maximum amount, procedure. Source: DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`
-      : `Les marchés notifiés par la Ville de ${cityNom} de ${years[years.length - 1]} à ${years[0]}, chacun avec sa page : objet, titulaire, montant maximal, procédure. Source : DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`;
+      ? `The contracts the City of ${cityNom} notified from ${years[0]} to ${years[years.length - 1]}, each with its own page: object, supplier, maximum amount, procedure. Source: DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`
+      : `Les marchés notifiés par la Ville de ${cityNom} de ${years[0]} à ${years[years.length - 1]}, chacun avec sa page : objet, titulaire, montant maximal, procédure. Source : DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`;
     return answerMetadata({ title, answer }, path, locale);
   }
   async function Page({ params }: Props) {

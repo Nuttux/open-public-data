@@ -18,7 +18,10 @@ import {
   loadMarcheCategorie,
 } from "@/lib/fusion-data";
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
+
+/** The readable object of a contract without a clear title: title and lot, at a clause. */
+const readableObjet = (raw: string) => { const r = rowObjet(raw, 140); return [r.title, r.detail].filter(Boolean).join(" · "); };
 import { eur, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
 import { contratRelated } from "@/lib/entities/related";
 import Link from "@/components/LocalizedLink";
@@ -98,7 +101,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
   },
   seo: ({ contrat: c, vulgarization: v }, locale) => {
     const amt = eur(c.montantMax, locale);
-    const objetFr = v?.objet_clair || normalizeObjet(c.objet);
+    const objetFr = v?.objet_clair || readableObjet(c.objet);
     const objet = locale === "en" ? (v?.objet_clair_en || objetFr) : objetFr;
     const kind = [c.nature, c.categorie].filter(Boolean).map((x) => x.toLowerCase()).join(", ");
     const date = cityDataDate(city, "marches-publics/index.json", locale);
@@ -119,7 +122,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     header: ({ contrat, vulgarization }) => {
       // h1 keeps proper-noun data (objet_clair / normalizeObjet output) — already
       // FR but data-driven, not template text. Fallback uses a translation key.
-      const titleText = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+      const titleText = vulgarization?.objet_clair || readableObjet(contrat.objet);
       return (
         <>
           <MarchesBackKicker />
@@ -157,7 +160,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     // ("SA4.TRVX CSTRUCT…") juste au-dessus du lead qui, lui, montrait la version
     // normalisée ("Sa4.Travaux Cstruct…") — deux titres pour un même contrat.
     title: ({ contrat, vulgarization }, locale) => {
-      const label = (locale === "en" ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+      const label = (locale === "en" ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || readableObjet(contrat.objet);
       return label || `${locale === "en" ? "Contract" : "Marché"} ${contrat.numero}`;
     },
     shareUrl: ({ contrat }) => `${base}/contrat/${contrat.numero}`,
@@ -165,7 +168,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
       const montantStr = contrat.montantMax >= 1e6
         ? `${(contrat.montantMax / 1e6).toFixed(1).replace(".", ",")} M€`
         : `${Math.round(contrat.montantMax / 1000).toLocaleString("fr-FR")} k€`;
-      const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+      const label = vulgarization?.objet_clair || readableObjet(contrat.objet);
       return `${cityNom} a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
     },
     backHref: () => base,

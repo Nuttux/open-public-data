@@ -142,19 +142,32 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
 
   const contrats = foldRest(d.topContrats, CONTRATS_CAP);
   // A row: a short title (the clear title when one exists, else the object cut
-  // at a clause), then the lot and the holder on the grey line.
-  const ContratRow = (x: MarchesPageData["topContrats"][number]) => {
+  // at a clause), then the lot and the holder on the grey line. Lots of one
+  // framework share a title in the source: the line says « un des 3 lots ».
+  const rowTitleOf = (x: MarchesPageData["topContrats"][number]) => {
     const preferred = locale === "en" && x.objetClairEn ? x.objetClairEn : x.objetClair;
-    const { title, detail } = preferred ? { title: cutObjet(preferred, 96), detail: null } : rowObjet(x.objet || "");
+    return preferred ? { title: cutObjet(preferred, 96), detail: null } : rowObjet(x.objet || "");
+  };
+  const titleCounts = new Map<string, number>();
+  for (const x of d.topContrats) { const k = rowTitleOf(x).title; titleCounts.set(k, (titleCounts.get(k) ?? 0) + 1); }
+  const ContratRow = (x: MarchesPageData["topContrats"][number]) => {
+    const { title, detail } = rowTitleOf(x);
     const named = x.titulaires.filter((n) => isNamedTitulaire(n)).map((n) => displayOrgName(n));
     const who = x.holders > 1
       ? fill(t("fx.sec.mp.shared_lot"), { n: x.holders })
-      : named[0] ?? (isNamedTitulaire(x.fournisseur) ? displayOrgName(x.fournisseur) : t("fx.sec.mp.holder_unknown"));
+      : x.fournisseur === "MARCHE MULTIATTRIBUTAIRE"
+        ? t("fx.sec.mp.multi_holders")
+        : named[0] ?? (isNamedTitulaire(x.fournisseur) ? displayOrgName(x.fournisseur) : t("fx.sec.mp.holder_unknown"));
+    const lots = titleCounts.get(title) ?? 1;
+    const sub = [lots > 1 ? fill(t("fx.sec.mp.one_of_lots"), { n: lots }) : null, detail, who].filter(Boolean).join(" · ");
     return (
       <V3Row key={x.numero || title} href={x.numero ? `${marchesBase}/contrat/${encodeURIComponent(x.numero)}` : null}
-        label={title} subText={[detail, who].filter(Boolean).join(" · ")} amount={<Amt n={x.montant} />} />
+        label={title} subText={sub} amount={<Amt n={x.montant} />} />
     );
   };
+  // One image: the year's largest contract behind a documented worksite with a
+  // real photo (rule-based, never an illustration passed off as real).
+  const photo = d.signature.find((s) => s.kind === "chantier" && s.photoKind === "reelle" && s.photoUrl) ?? null;
 
   // The movement under the number: the year against the one before, in ocre —
   // only when both years come from the same source (2024 → 2025 crosses the
@@ -186,7 +199,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3" data-variant={variant}>
-          <div className="fx-sec-grid">
+          <div className="fx-sec-grid" data-photo={photo ? "1" : "0"}>
             <div className="fx-sec-a-hero">
               <SectionHero
                 kicker={<><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.mp.kicker")}</>}
@@ -233,6 +246,20 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="achats" />
               </V3Section>
+            </div>
+
+            <div className="fx-sec-a-photo" data-section={photo ? "photo" : undefined}>
+              {photo ? (
+                <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="fx-sec-photo">
+                  <img src={photo.photoUrl!} alt="" loading="lazy" />
+                  <span className="fx-sec-photo-cap">
+                    <span className="k">{t("fx.sec.mp.photo_kicker")}</span>
+                    <span className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</span>
+                    <span className="s">{[(locale === "en" && photo.projetNomEn) || photo.projetNom, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
+                    {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
+                  </span>
+                </Link>
+              ) : null}
             </div>
 
             <div className="fx-sec-a-rows">

@@ -15,7 +15,7 @@ import { fmtBrlCompact } from "@/lib/br/format";
 import { fmtUsdCompact } from "@/lib/us/format";
 import { loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
 import { assocHref } from "@/lib/assoc-slug";
-import { shortObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { displayOrgName } from "@/lib/fournisseur-display";
 
 export type BrowseItem = { href: string; label: string; sub?: string | null; amount?: { v: string; u: string } | null };
@@ -108,8 +108,19 @@ type MarchesIndex = { availableYears: number[] };
 type MarcheRow = { numero_marche?: string; objet?: string; fournisseur_nom?: string; fournisseur_siret?: string; montant_max?: number; montant_min?: number; date_notification?: string };
 type MarchesFile = { data?: MarcheRow[]; marches?: MarcheRow[] };
 
+/** Complete years, oldest first (the rail reads left to right like the years
+ *  rail of the section page). The current year is still filling up: it is
+ *  reachable by its address, not listed. */
 export function marchesYears(city: string): number[] {
-  return (readDataJsonOrNull<MarchesIndex>(cityJsonPath(city, "marches-publics/index.json"))?.availableYears ?? []).slice().sort((a, b) => b - a);
+  const currentYear = new Date().getFullYear();
+  return (readDataJsonOrNull<MarchesIndex>(cityJsonPath(city, "marches-publics/index.json"))?.availableYears ?? [])
+    .filter((y) => y < currentYear)
+    .sort((a, b) => a - b);
+}
+
+/** Every year with a file, the current one included: what an address may name. */
+export function marchesYearsAll(city: string): number[] {
+  return (readDataJsonOrNull<MarchesIndex>(cityJsonPath(city, "marches-publics/index.json"))?.availableYears ?? []).slice().sort((a, b) => a - b);
 }
 
 function marchesRows(city: string, year: number): MarcheRow[] {
@@ -148,16 +159,30 @@ export function fournisseurItems(city: string, letter: string, locale: "fr" | "e
 }
 
 export function contratItems(city: string, year: number, locale: "fr" | "en"): BrowseItem[] {
+  // The clear titles (LLM or hand-written) when the city has them, FR then EN.
+  const vulg = readDataJsonOrNull<{ items?: Record<string, { objet_clair?: string }> }>(cityJsonPath(city, "enrichment/vulgarization_marches.json"))?.items ?? {};
+  const vulgEn = locale === "en" ? readDataJsonOrNull<{ items?: Record<string, { objet_clair?: string }> }>(cityJsonPath(city, "enrichment/vulgarization_marches_en.json"))?.items ?? {} : {};
+  const holder = (name?: string) => {
+    if (!name || name === "Non précisé") return null;
+    if (name === "MARCHE MULTIATTRIBUTAIRE") return locale === "en" ? "several holders" : "plusieurs titulaires";
+    return displayOrgName(name);
+  };
   return marchesRows(city, year)
     .filter((r) => r.numero_marche)
     .sort((a, b) => (Number(b.montant_max ?? 0) || 0) - (Number(a.montant_max ?? 0) || 0))
-    .map((r) => ({
+    .map((r) => {
+      // The readable title, not the source's « SA4 - TRVX … » (same rule as the
+      // fiches): the clear title when one exists, else a short title with the
+      // lot on the grey line.
+      const clear = vulgEn[r.numero_marche!]?.objet_clair || vulg[r.numero_marche!]?.objet_clair;
+      const row = clear ? { title: clear, detail: null } : r.objet ? rowObjet(r.objet, 96) : { title: r.numero_marche!, detail: null };
+      return {
       href: `/france/${city}/marches/contrat/${encodeURIComponent(r.numero_marche!)}`,
-      // The readable title, not the source's « SA4 - TRVX … » (same rule as the fiches).
-      label: r.objet ? shortObjet(r.objet, 120) : r.numero_marche!,
-      sub: [r.fournisseur_nom ? displayOrgName(r.fournisseur_nom) : null, locale === "en" ? `notified ${year}` : `notifié en ${year}`].filter(Boolean).join(" · "),
+      label: row.title,
+      sub: [row.detail, holder(r.fournisseur_nom), locale === "en" ? `notified ${year}` : `notifié en ${year}`].filter(Boolean).join(" · "),
       amount: r.montant_max != null ? eur(Number(r.montant_max)) : null,
-    }));
+      };
+    });
 }
 
 // ── Paris: projets ──────────────────────────────────────────────────────────

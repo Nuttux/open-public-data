@@ -63,7 +63,7 @@ export default function SectionHero({
         {captionBefore}{" "}
         {years.length > 1 ? (
           <select className="fx-pv-yearsel" aria-label={t("fx.sec.year_label")} value={year} onChange={(e) => onYear(e.target.value)}>
-            {years.map((y) => (
+            {years.slice().sort((a, b) => b - a).map((y) => (
               <option key={y} value={y}>{y}</option>
             ))}
           </select>

@@ -13,7 +13,10 @@ import { relatedInt, relatedT } from "@/lib/related-t";
 import { NATURE_GROUPS, NATURE_LABELS } from "@/lib/budget-natures";
 import { canonicalBailleurSlug, loadBudgetPoste, getProjetNameEn, loadBudgetNature, type BudgetNatureFiche, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
+import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
+import { sumLots } from "@/lib/marches-shape";
+import type { MarchesOffresFiche } from "@/lib/fusion-data";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import { ordEn, ordFr } from "@/lib/entities/seo-text";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
@@ -59,6 +62,48 @@ function budgetRows(match: (spec: PosteLinkSpec) => boolean, locale: L, max = 1)
     });
   }
   return out;
+}
+
+/**
+ * The door back up to the section page, with the year's number: what turns a
+ * fiche reached from a search engine into a visit of the section. The number
+ * is the index's yearly total (a shared lot counted once, like the page).
+ */
+export function marchesSectionRow(city: string, year: number, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  const idx = readDataJsonOrNull<{ totalsByYear?: Record<string, { enveloppe_max_totale?: number }> }>(cityJsonPath(city, "marches-publics/index.json"));
+  const total = Number(idx?.totalsByYear?.[String(year)]?.enveloppe_max_totale ?? 0);
+  return {
+    href: `/france/${city}/marches?year=${year}`,
+    label: t("fx.related.marches_section", { year }),
+    sub: t("fx.related.marches_section_sub"),
+    ...(total > 0 ? { amount: eur(total, locale) } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
+/** « Number of bids » fiche: the section door, the other bids counts of the
+ *  same year (each with its fiche), the year's index. */
+export function offresRelated(f: MarchesOffresFiche, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const rows: RelatedRow[] = [marchesSectionRow("paris", f.year, locale)];
+  const file = readDataJsonOrNull<{ data?: (MarcheLite & { decp_offres_recues?: number | null })[]; marches?: (MarcheLite & { decp_offres_recues?: number | null })[] }>(`marches-publics/marches_${f.year}.json`);
+  const rows0 = (file?.data ?? file?.marches ?? []).filter((r) => Number(r.decp_offres_recues ?? 0) >= 1);
+  for (const b of OFFRES_BUCKETS) {
+    if (b === f.bucket) continue;
+    const inBucket = rows0.filter((r) => offresBucketOf(Number(r.decp_offres_recues)) === b);
+    if (inBucket.length === 0) continue;
+    const total = sumLots(inBucket);
+    rows.push({
+      href: `/france/paris/marches/offres/${offresBucketSlug(b)}${f.year === f.years[f.years.length - 1] ? "" : `-${f.year}`}`,
+      label: t(`fx.mp.s05.bucket.${b}`),
+      sub: t("fx.related.offres.peer_sub", { n: relatedInt(inBucket.length, locale) }),
+      amount: eur(total, locale),
+      group: t("fx.related.g.other_buckets", { year: f.year }),
+    });
+  }
+  rows.push({ href: `/france/paris/marches/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /** Bailleur: the other operators the City guarantees, then the two hubs. */
@@ -215,7 +260,7 @@ export function contratRelated(
           // l'écran : « SA4 ACBC TVX ETANCHEITE/VEGETAL.BAT.ADM./LOCAUX
           // PROF.LOT1 ». Toutes les autres fiches passent par normalizeObjet ;
           // ce repli-ci l'avait oublié.
-          label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || normalizeObjet(k.objet),
+          label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || rowObjet(k.objet, 96).title,
           sub: locale === "en" ? `Signed in ${k.year}` : `Signé en ${k.year}`,
           amount: eur(k.montant, locale),
           group: t("fx.related.g.same_supplier"),
@@ -238,7 +283,7 @@ export function contratRelated(
       group: context,
     });
   }
-  rows.push({ href: base, label: locale === "en" ? "Public contracts of the City" : "Les marchés publics de la Ville", sub: locale === "en" ? "Every contract, by year, category and supplier" : "Tous les contrats, par année, catégorie et titulaire", group: context });
+  rows.push(marchesSectionRow(city, c.year, locale));
   if (city === "paris" && c.categorie) rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === slugifyLabel(c.categorie)), locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }
@@ -298,8 +343,10 @@ export function fournisseurRelated(
       });
     }
   }
-  const nom = getCity(city)?.nom ?? city;
-  rows.push({ href: base, label: t("fx.related.marches.hub", { city: nom }), sub: t("fx.related.marches.hub_sub"), group: t("fx.related.g.context") });
+  const lastYear = Math.max(...f.contrats.map((c) => c.year));
+  rows.push(Number.isFinite(lastYear)
+    ? marchesSectionRow(city, lastYear, locale)
+    : { href: base, label: t("fx.related.marches.hub", { city: getCity(city)?.nom ?? city }), sub: t("fx.related.marches.hub_sub"), group: t("fx.related.g.context") });
   if (city === "paris" && main) rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === slugifyLabel(main.category)), locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }
@@ -419,8 +466,8 @@ export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlo
       amount: eur(c.amount, locale),
       group: t("fx.related.g.other_categories", { year: f.year }),
     }));
+  rows.push(marchesSectionRow("paris", f.year, locale));
   rows.push({ href: `${base}/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });
-  rows.push({ href: base, label: t("fx.related.marches.hub", { city: "Paris" }), sub: t("fx.related.marches.hub_sub"), group: t("fx.related.g.context") });
   rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === f.slug), locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }
