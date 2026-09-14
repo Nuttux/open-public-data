@@ -22,7 +22,7 @@ import { assocSlug } from "@/lib/assoc-slug";
 import { lieuxVoisins, loadLieuxIndex, type LieuFicheData } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces, type MarseillePlace } from "@/lib/marseille/marseille-places-data";
 import { displayOrgName } from "@/lib/fournisseur-display";
-import { lotRepeatFlags } from "@/lib/marches-shape";
+import { lotInfo, lotRepeatFlags } from "@/lib/marches-shape";
 
 type L = "fr" | "en";
 const FMT = { fr: makeFmt("fr"), en: makeFmt("en") };
@@ -268,8 +268,12 @@ export function fournisseurRelated(
       ? readDataJsonOrNull<{ data?: MarcheLite[]; marches?: MarcheLite[] }>(cityJsonPath(city, `marches-publics/marches_${year}.json`))
       : null;
     const peers = new Map<string, { name: string; amount: number }>();
-    for (const r of file?.data ?? file?.marches ?? []) {
+    const peerRows = file?.data ?? file?.marches ?? [];
+    // Un lot partagé ne range aucune entreprise parmi les pairs (voir lotInfo).
+    const peerLots = lotInfo(peerRows);
+    for (const [i, r] of peerRows.entries()) {
       if ((r.categorie_libelle || r.nature || "Autres") !== main.category) continue;
+      if (peerLots[i].holders > 1) continue;
       const siren = (r.fournisseur_siret ?? "").replace(/\s/g, "").slice(0, 9);
       if (!/^\d{9}$/.test(siren) || siren === f.siren || !r.fournisseur_nom || r.fournisseur_nom === "MARCHE MULTIATTRIBUTAIRE") continue;
       const cur = peers.get(siren) ?? { name: r.fournisseur_nom, amount: 0 };

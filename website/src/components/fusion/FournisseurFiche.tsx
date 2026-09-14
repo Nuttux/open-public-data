@@ -59,7 +59,10 @@ export default function FournisseurFiche({
     return (
       <V3Row key={c.numero || clean} href={c.numero ? `${basePath}/marches/contrat/${c.numero}` : null}
         label={clean.length > 110 ? clean.slice(0, 110) + "…" : clean}
-        sub={c.date ? `${t("fx.fiche.fourn.notifie_le")} ${fmtDate(c.date)}` : String(c.year)}
+        sub={[
+          c.date ? `${t("fx.fiche.fourn.notifie_le")} ${fmtDate(c.date)}` : String(c.year),
+          c.partage ? fill(t("fx.fiche.fourn.lot_partage"), { n: c.partage }) : null,
+        ].filter(Boolean).join(" · ")}
         amount={<V3Amt {...fmtEur(c.montant)} />} />
     );
   };
@@ -108,6 +111,7 @@ export default function FournisseurFiche({
           <>
             {fill(t(fournisseur.contratCount === 1 ? "fx.fiche.fourn.meta_n1" : "fx.fiche.fourn.meta_n"), { n: fournisseur.contratCount })}
             {fournisseur.yearsActive.length > 1 ? ` · ${fill(t("fx.fiche.fourn.meta_annees"), { n: fournisseur.yearsActive.length })}` : ""}
+            {fournisseur.sharedCount ? ` · ${fill(t(fournisseur.sharedCount === 1 ? "fx.fiche.fourn.meta_partage_1" : "fx.fiche.fourn.meta_partage"), { n: fournisseur.sharedCount })}` : ""}
           </>
         }
       />

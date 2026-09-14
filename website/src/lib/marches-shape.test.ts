@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { lotRepeatFlags, sumLots } from "./marches-shape";
+import { lotInfo, lotRepeatFlags, sumLots } from "./marches-shape";
 
 describe("lotRepeatFlags / sumLots", () => {
   const lot = "SA2-ATELIERS SPORTIFS _ÉCOLES ÉLÉMENTAIRES PUBLIQUES V.P.";
@@ -44,5 +44,22 @@ describe("lotRepeatFlags / sumLots", () => {
       { objet: "L", montant_max: 0, montant_min: 3, fournisseur_siret: "222222222" },
     ];
     expect(sumLots(rows, (r) => Number(r.montant_max || r.montant_min || 0))).toBe(3);
+  });
+});
+
+describe("lotInfo", () => {
+  it("counts every company of a shared lot, including those listed together", () => {
+    const rows = [
+      { objet: "AC travaux - CVC Généraliste", montant_max: 17e6, fournisseur_nom: "BALAS", fournisseur_siret: "56207779200058" },
+      { objet: "AC travaux - CVC Généraliste", montant_max: 17e6, fournisseur_nom: "UNION TECHNIQUE DU BATIMENT", fournisseur_siret: "57206414500087" },
+      { objet: "AC travaux - CVC Généraliste", montant_max: 17e6, fournisseur_nom: "MARCHE MULTIATTRIBUTAIRE", fournisseur_siret: "38302656400047|85480074501125|78432563100074" },
+      { objet: "Autre contrat", montant_max: 1e6, fournisseur_nom: "SEUL", fournisseur_siret: "11111111100011" },
+    ];
+    expect(lotInfo(rows)).toEqual([
+      { repeat: false, holders: 5 },
+      { repeat: true, holders: 5 },
+      { repeat: true, holders: 5 },
+      { repeat: false, holders: 1 },
+    ]);
   });
 });

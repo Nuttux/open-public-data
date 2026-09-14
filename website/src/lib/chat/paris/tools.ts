@@ -1,7 +1,7 @@
 import { GENERATED_DATA_INVENTORY as INV } from "./dataContext.generated";
 import { createScopedReader } from "../scopedRead";
 import { CHAT_SCOPES } from "../scopes";
-import { lotRepeatFlags, sumLots } from "../../marches-shape";
+import { lotInfo, lotRepeatFlags, sumLots } from "../../marches-shape";
 
 // Toolset du scope « paris ». Le reader est lié au scope à la construction :
 // aucun outil d'ici ne peut atteindre les exports d'une autre ville, et aucun
@@ -370,10 +370,13 @@ export function get_top_fournisseurs({ limit = 15, year }: { limit?: number; yea
   for (const y of years) {
     const d = loadJson<MarchesYearFile>(`marches-publics/marches_${y}.json`);
     if (!d) continue;
-    for (const r of d.data) {
+    // Un lot partagé ne se range sous aucun titulaire ; il compte une fois avec
+    // les marchés multiattributaires (voir lotInfo).
+    const lots = lotInfo(d.data);
+    for (const [i, r] of d.data.entries()) {
       const montant = r.montant_max ?? 0;
-      if (r.is_multiattributaire || fold(r.fournisseur_nom ?? "") === "marche multiattributaire") {
-        multiTotal += montant;
+      if (r.is_multiattributaire || fold(r.fournisseur_nom ?? "") === "marche multiattributaire" || lots[i].holders > 1) {
+        if (!lots[i].repeat) multiTotal += montant;
         multiNb += 1;
         continue;
       }

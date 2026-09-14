@@ -1,7 +1,7 @@
 import { loadLieuxIndex, loadLieu } from "./lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
-import { lotRepeatFlags, sumLots } from "./marches-shape";
+import { lotRepeatFlags, sumLots, lotInfo } from "./marches-shape";
 import { POSTE_LINKS } from "./budget-poste-links";
 import { cityPopulation } from "@/lib/methodology";
 import { NATURE_GROUPS, isNatureKey, natureOfFlow, type NatureKey } from "@/lib/budget-natures";
@@ -2152,7 +2152,10 @@ export type FournisseurFiche = {
    *  sont la version vulgarisée quand elle existe (couverture partielle). Les
    *  consommateurs suivent la même précédence qu'ailleurs :
    *  objetClair → normalizeObjet(objet) → objet. */
-  contrats: { numero: string; objet: string; objetClair?: string; objetClairEn?: string; montant: number; year: number; date: string; categorie: string; nature: string }[];
+  contrats: { numero: string; objet: string; objetClair?: string; objetClairEn?: string; montant: number; year: number; date: string; categorie: string; nature: string; /** Entreprises qui partagent le lot, quand il est partagé : le montant est alors celui du lot entier. */ partage?: number }[];
+  /** Contrats de lots partagés avec d'autres entreprises, et leur montant (lot entier). */
+  sharedCount?: number;
+  sharedAmount?: number;
   /** Détail de l'agrégation par SIREN : un même SIREN peut couvrir plusieurs
    *  établissements (SIRETs) qui apparaissent sous des libellés différents
    *  dans DECP. Les montants ci-dessus somment tous ces SIRETs. */
@@ -2183,7 +2186,10 @@ export function loadFournisseur(key: string, city: string = "paris"): Fournisseu
     try {
       const f = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
       const rows = f.data ?? f.marches ?? [];
-      for (const m of rows) {
+      // La source répète le montant d'un lot pour chacune des entreprises qui
+      // l'ont gagné : la fiche le garde, mais dit que le lot est partagé.
+      const lots = lotInfo(rows as MarcheRow[], (x) => Number(x.montant_max ?? x.montant_min ?? 0));
+      for (const [rowIndex, m] of rows.entries()) {
         const r = m as MarcheRow & {
           numero_marche?: string;
           fournisseur_siret?: string;
@@ -2216,6 +2222,7 @@ export function loadFournisseur(key: string, city: string = "paris"): Fournisseu
           date: r.date_notification ?? "",
           categorie: cat,
           nature: r.nature || "Autres",
+          partage: lots[rowIndex].holders > 1 ? lots[rowIndex].holders : undefined,
         });
 
         const yy = byYearMap.get(y) ?? { amount: 0, count: 0 };
@@ -2270,6 +2277,8 @@ export function loadFournisseur(key: string, city: string = "paris"): Fournisseu
     byCategory,
     contrats,
     siretBreakdown,
+    sharedCount: contrats.filter((c) => c.partage).length,
+    sharedAmount: contrats.filter((c) => c.partage).reduce((sum, c) => sum + c.montant, 0),
   };
 }
 
@@ -2347,10 +2356,13 @@ export function loadFournisseursRanking(city: string = "paris", topN = 12): Four
     } catch {
       continue;
     }
-    for (const m of file.data ?? file.marches ?? []) {
+    const yearRows = file.data ?? file.marches ?? [];
+    // Un lot partagé ne se range sous aucun titulaire (voir lotInfo).
+    const yearLots = lotInfo(yearRows as MarcheRow[], (x) => Number(x.montant_max ?? x.montant_min ?? 0));
+    for (const [rowIndex, m] of yearRows.entries()) {
       const r = m as MarcheRow & { fournisseur_siret?: string; is_multiattributaire?: boolean };
       const name = (r.fournisseur_nom ?? "").trim();
-      if (!name || name === MULTI_NAME || Boolean(r.is_multiattributaire)) continue;
+      if (!name || name === MULTI_NAME || Boolean(r.is_multiattributaire) || yearLots[rowIndex].holders > 1) continue;
       const v = Number(r.montant_max ?? r.montant_min ?? 0);
       if (!Number.isFinite(v) || v <= 0) continue;
       const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
@@ -2500,11 +2512,14 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   // gagné : dans les totaux, il compte une fois (voir sumLots). Les montants
   // par titulaire gardent le plafond de leurs contrats.
   const lotAmountOf = (x: MarcheRow) => Number(x.montant_max ?? x.montant_min ?? 0);
-  const hubRepeats = lotRepeatFlags(marches as MarcheRow[], lotAmountOf);
+  const hubLots = lotInfo(marches as MarcheRow[], lotAmountOf);
   for (const [rowIndex, m] of marches.entries()) {
     const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
     const v = Number(r.montant_max ?? r.montant_min ?? 0);
-    const lotV = hubRepeats[rowIndex] ? 0 : v;
+    const lotV = hubLots[rowIndex].repeat ? 0 : v;
+    // Un lot partagé ne se range sous aucun titulaire : il compte avec les
+    // marchés multiattributaires, comme ceux que la source nomme ainsi.
+    const sharedLot = hubLots[rowIndex].holders > 1;
     total += lotV;
     const offres = Number(r.decp_offres_recues ?? 0);
     if (Number.isFinite(offres) && offres >= 1) {
@@ -2515,7 +2530,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
       concurrenceBuckets[bucket].count += 1;
       concurrenceBuckets[bucket].amount += lotV;
     }
-    const isMulti = r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire);
+    const isMulti = r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire) || sharedLot;
     if (isMulti) {
       multi.count += 1;
       multi.amount += lotV;
@@ -2526,33 +2541,37 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
       : "";
     const tName = r.fournisseur_nom || "Non précisé";
     const aggKey = validSiret ? validSiret.slice(0, 9) : `name:${tName.toLowerCase()}`;
-    const tA = titAgg.get(aggKey) ?? { name: tName, amount: 0, count: 0, siret: validSiret, contrats: [] };
-    tA.amount += v;
-    tA.count += 1;
-    if (!tA.siret && validSiret) tA.siret = validSiret;
-    // Garder le nom le plus long (souvent le plus descriptif, ex.
-    // "EIFFAGE ROUTE ILE DE FRANCE/CENTRE" plutôt que "EIFFAGE ROUTE IDF")
-    if (tName.length > tA.name.length && tName !== "Non précisé") tA.name = tName;
-    const numero = r.numero_marche ?? "";
-    tA.contrats.push({
-      numero,
-      objet: r.objet || "",
-      objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
-      objetClairEn: (numero && vulgMap[numero]?.objet_clair_en) || null,
-      montant: v,
-      categorie: r.categorie_libelle || "—",
-      nature: r.nature || "—",
-      date: r.date_notification || "",
-    });
-    titAgg.set(aggKey, tA);
+    if (!sharedLot) {
+      const tA = titAgg.get(aggKey) ?? { name: tName, amount: 0, count: 0, siret: validSiret, contrats: [] };
+      tA.amount += v;
+      tA.count += 1;
+      if (!tA.siret && validSiret) tA.siret = validSiret;
+      // Garder le nom le plus long (souvent le plus descriptif, ex.
+      // "EIFFAGE ROUTE ILE DE FRANCE/CENTRE" plutôt que "EIFFAGE ROUTE IDF")
+      if (tName.length > tA.name.length && tName !== "Non précisé") tA.name = tName;
+      const numero = r.numero_marche ?? "";
+      tA.contrats.push({
+        numero,
+        objet: r.objet || "",
+        objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
+        objetClairEn: (numero && vulgMap[numero]?.objet_clair_en) || null,
+        montant: v,
+        categorie: r.categorie_libelle || "—",
+        nature: r.nature || "—",
+        date: r.date_notification || "",
+      });
+      titAgg.set(aggKey, tA);
+    }
     const c = r.categorie_libelle || r.nature || "Autres";
     const cA = catAgg.get(c) ?? { amount: 0, count: 0, items: new Map() };
     cA.amount += lotV;
     cA.count += 1;
-    const titInCat = cA.items.get(aggKey) ?? { amount: 0, count: 0 };
-    titInCat.amount += v;
-    titInCat.count += 1;
-    cA.items.set(aggKey, titInCat);
+    if (!sharedLot) {
+      const titInCat = cA.items.get(aggKey) ?? { amount: 0, count: 0 };
+      titInCat.amount += v;
+      titInCat.count += 1;
+      cA.items.set(aggKey, titInCat);
+    }
     catAgg.set(c, cA);
     const nature = (r.nature || "Autres").trim() || "Autres";
     const nA = natureAgg.get(nature) ?? { amount: 0, count: 0 };
@@ -5247,9 +5266,18 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
   // Agrégation par SIREN (cf. note dans loadMarchesPageData) pour éviter
   // les doublons quand un même SIREN a plusieurs SIRETs/libellés DECP.
   const titMap = new Map<string, { name: string; amount: number; count: number; siret: string }>();
+  // Un lot partagé ne se range sous aucun titulaire (voir lotInfo) ; ses
+  // entreprises comptent quand même parmi les titulaires de la catégorie.
+  const matchingLots = lotInfo(matching);
+  const allHolders = new Set<string>();
   for (const r of matching) {
+    const sirens = String(r.fournisseur_siret ?? "").split("|").map((x) => x.replace(/\s/g, "")).filter((x) => /^\d{9}/.test(x));
+    if (sirens.length) sirens.forEach((x) => allHolders.add(x.slice(0, 9)));
+    else if (r.fournisseur_nom && r.fournisseur_nom !== "MARCHE MULTIATTRIBUTAIRE" && r.fournisseur_nom !== "Non précisé") allHolders.add(`name:${r.fournisseur_nom.toLowerCase()}`);
+  }
+  for (const [rowIndex, r] of matching.entries()) {
     const name = r.fournisseur_nom || "Non précisé";
-    if (name === "MARCHE MULTIATTRIBUTAIRE") continue;
+    if (name === "MARCHE MULTIATTRIBUTAIRE" || matchingLots[rowIndex].holders > 1) continue;
     const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
     const validSiret = rawSiret && rawSiret !== "#" && !rawSiret.includes("|") && rawSiret.length >= 9
       ? rawSiret
@@ -5339,7 +5367,7 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
     total,
     shareOfTotalPct,
     nbContrats: matching.length,
-    nbTitulaires: titMap.size,
+    nbTitulaires: Math.max(titMap.size, allHolders.size),
     topTitulaires,
     topContrats,
     series,

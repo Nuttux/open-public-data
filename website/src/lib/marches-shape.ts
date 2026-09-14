@@ -145,10 +145,17 @@ export type LotRow = {
  * flagged as repeats. The same holder twice keeps both rows: two budgets can
  * sign the same contract.
  */
-export function lotRepeatFlags<T extends LotRow>(
+export type LotInfo = {
+  /** This row repeats a lot already counted on an earlier row. */
+  repeat: boolean;
+  /** Distinct companies holding the lot this row belongs to; 1 when the lot is not shared. */
+  holders: number;
+};
+
+export function lotInfo<T extends LotRow>(
   rows: readonly T[],
   amountOf: (r: T) => number = (r) => Number(r.montant_max ?? 0),
-): boolean[] {
+): LotInfo[] {
   const holdersOf = (r: T): string[] => {
     const sirens = String(r.fournisseur_siret ?? "")
       .split("|")
@@ -169,14 +176,21 @@ export function lotRepeatFlags<T extends LotRow>(
     if (list) list.push(i);
     else groups.set(key, [i]);
   });
-  const flags = rows.map(() => false);
+  const info: LotInfo[] = rows.map(() => ({ repeat: false, holders: 1 }));
   for (const idx of groups.values()) {
     if (idx.length < 2) continue;
     const holders = new Set(idx.flatMap((i) => holdersOf(rows[i])));
     if (holders.size < 2) continue;
-    for (const i of idx.slice(1)) flags[i] = true;
+    idx.forEach((i, k) => { info[i] = { repeat: k > 0, holders: holders.size }; });
   }
-  return flags;
+  return info;
+}
+
+export function lotRepeatFlags<T extends LotRow>(
+  rows: readonly T[],
+  amountOf: (r: T) => number = (r) => Number(r.montant_max ?? 0),
+): boolean[] {
+  return lotInfo(rows, amountOf).map((x) => x.repeat);
 }
 
 /** Sum of amounts where a shared lot counts once (see lotRepeatFlags). */
