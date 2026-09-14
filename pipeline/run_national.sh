@@ -24,8 +24,9 @@
 #   1. sync    — chaque chargeur compare la source à sa table et ne charge que ce
 #                qui manque ou a changé, par _national_raw (une année à la fois,
 #                ou un instantané versionné, toujours derrière une garde de
-#                volume) : DGFiP balances, OFGL consolidée, REI, Fonds vert, RNE,
-#                SIRENE. Chaque table écrite est notée ; rien de noté → arrêt.
+#                volume) : DGFiP balances, balance croisée nature-fonction, OFGL
+#                consolidée, REI, Fonds vert, RNE, SIRENE. Chaque table écrite
+#                est notée ; rien de noté → arrêt.
 #   2. dbt     — les modèles en aval des seules tables écrites
 #                (source:national_raw.<table>+), puis leurs tests.
 #   3. export  — les exports qui lisent ces modèles, pour toutes les communes.
@@ -34,7 +35,7 @@
 #
 # Usage :
 #   ./run_national.sh --cadence=weekly                  # prod, chaîne complète
-#   ./run_national.sh --cadence=weekly --target=dev     # datasets dbt_paris_dev_local_national_*
+#   ./run_national.sh --cadence=weekly --target=dev     # datasets dbt_paris_dev_${DBT_USER:-local}_national_*
 #   ./run_national.sh --cadence=weekly --no-upload      # tout sauf l'envoi au bucket
 #   ./run_national.sh --cadence=weekly --force          # même si la DECP n'a pas changé
 #   ./run_national.sh --cadence=annual                  # sources annuelles, seulement ce qui a bougé
@@ -64,7 +65,7 @@ done
 
 case "$TARGET" in
     prod) export NATIONAL_MARTS_DATASET="dbt_paris_national_marts" ;;
-    dev)  export NATIONAL_MARTS_DATASET="dbt_paris_dev_local_national_marts" ;;
+    dev)  export NATIONAL_MARTS_DATASET="dbt_paris_dev_${DBT_USER:-local}_national_marts" ;;
     *) echo "--target=prod|dev" >&2; exit 2 ;;
 esac
 
@@ -74,11 +75,11 @@ step() { echo ""; echo "── $* ───────────────�
 # Cadence annuelle
 # =============================================================================
 if [[ "$CADENCE" == "annual" ]]; then
-    ALL_TABLES="dgfip_balances ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux sirene_unites_legales"
+    ALL_TABLES="dgfip_balances dgfip_balances_nature_fonction ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux sirene_unites_legales"
 
     step "1/5 sync : sources annuelles"
     export NATIONAL_CHANGES_FILE="$(mktemp)"
-    for loader in sync_dgfip_balances_national sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_sirene_unites_legales; do
+    for loader in sync_dgfip_balances_national sync_dgfip_nature_fonction sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_sirene_unites_legales; do
         echo "· $loader"
         $PYTHON "$PIPELINE_DIR/scripts/sync/$loader.py"
     done
@@ -107,6 +108,7 @@ if [[ "$CADENCE" == "annual" ]]; then
     for t in $CHANGED; do
         case "$t" in
             dgfip_balances)             add budget; add investissements ;;
+            dgfip_balances_nature_fonction) add fonctions ;;
             ofgl_communes)              add budget; add investissements; add evolution; add chantiers; add taux ;;
             rei_taux)                   add taux ;;
             fonds_vert)                 add chantiers ;;
@@ -132,6 +134,8 @@ if [[ "$CADENCE" == "annual" ]]; then
                              MANIFESTS="$MANIFESTS communes-maires.json" ;;
             marches)         $PYTHON "$PIPELINE_DIR/scripts/export/export_marches_national.py" --all
                              MANIFESTS="$MANIFESTS communes-marches-manifest.json"; DIRS="$DIRS communes-marches" ;;
+            fonctions)       $PYTHON "$PIPELINE_DIR/scripts/export/export_communes_fonctions.py"
+                             MANIFESTS="$MANIFESTS communes-fonctions-manifest.json"; DIRS="$DIRS communes-fonctions" ;;
         esac
     done
 
