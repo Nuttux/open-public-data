@@ -6,7 +6,7 @@ name: CI
 #   - build      : lint + typecheck + Vitest + next build (avec artefact .next)
 #   - e2e        : Playwright sur build artefact (golden path 6 routes)
 #   - lighthouse : audit perf/a11y/SEO sur build artefact (gates : perf ≥ 80, a11y ≥ 95)
-#   - pipeline   : Python syntax check
+#   (le contrôle de syntaxe Python est une étape du build)
 #
 # Les jobs e2e + lighthouse partagent le .next via artifact pour éviter
 # de rebuild 3 fois (économie ~6 min wall-time).
@@ -14,11 +14,21 @@ name: CI
 # Auto-triggers actifs : gate sur les PRs et les pushes vers `main` et `test`
 # (réactivés le 2026-07-23 après reset du quota Actions). `workflow_dispatch`
 # reste disponible pour les lancements manuels.
+#
+# Minutes Actions (dépôt privé, 2 000 min/mois incluses) : le quota de
+# septembre 2026 a été épuisé le 13, et tous les jobs ont cessé de démarrer.
+# Depuis : un push qui ne touche ni le site ni les scripts ne lance rien,
+# Lighthouse ne part qu'à la main, et le contrôle Python est une étape du build
+# (GitHub arrondit chaque job à la minute : un job de 20 s coûtait 1 min).
 on:
   pull_request:
     branches: [main, test]
   push:
     branches: [main, test]
+    paths:
+      - 'website/**'
+      - 'pipeline/scripts/**'
+      - '.github/workflows/ci.yml'
   workflow_dispatch:
   # Appelé par enrich-pipeline.yml comme gate avant publication d'un refresh
   # data : mêmes checks, sur la branche data/refresh-*. Un push fait avec
@@ -58,6 +68,12 @@ jobs:
           node-version: "20"
           cache: npm
           cache-dependency-path: website/package-lock.json
+
+      # Ancien job « Pipeline (Python syntax) », ici pour ne pas payer un runner
+      # de plus : python3 est déjà sur l'image ubuntu-latest.
+      - name: Pipeline (Python syntax)
+        working-directory: .
+        run: python3 -m compileall -q pipeline/scripts/
 
       - name: Install dependencies
         run: npm ci
@@ -177,7 +193,9 @@ jobs:
     # de l'avoir sur chaque PR : on peut lancer manuellement si on
     # touche à un truc perf-sensible. Pas non plus sur un refresh data
     # (inputs.ref) : les JSON ne changent pas la perf.
-    if: ${{ !inputs.ref && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    # Lancement manuel seulement depuis le 2026-09-14 : desktop + mobile
+    # coûtaient deux jobs à chaque push sur main.
+    if: ${{ !inputs.ref && github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -230,19 +248,3 @@ jobs:
           temporaryPublicStorage: true
           configPath: ./website/.lighthouserc${{ matrix.profile == 'mobile' && '.mobile' || '' }}.json
 
-  pipeline-python:
-    name: Pipeline (Python syntax)
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-          ref: ${{ inputs.ref }}
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Python syntax check
-        run: python -m compileall -q pipeline/scripts/
