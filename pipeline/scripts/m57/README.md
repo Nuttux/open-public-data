@@ -3,7 +3,8 @@
 ## Pourquoi ces scripts existent
 
 La DGFiP publie déjà la ventilation par **fonction** pour ~3 384 communes
-(`sync_communes_fonctionnelle.py`, jeu « présentation croisée nature-fonction »).
+(`sync_dgfip_nature_fonction.py` → dbt `mart_communes_fonctions` →
+`export_communes_fonctions.py`, jeu « présentation croisée nature-fonction »).
 Ce n'est donc **pas** ce qu'on cherche ici.
 
 Ce qu'aucun jeu national ne couvre — vérifié le 2026-09-10 sur data.economie,

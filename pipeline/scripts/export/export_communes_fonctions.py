@@ -1,42 +1,42 @@
 #!/usr/bin/env python3
 """
-DGFiP « présentation croisée nature-fonction » → à quoi sert l'argent, commune
-par commune, jusqu'au grain que le fichier autorise.
+À quoi sert l'argent, commune par commune : mart_communes_fonctions → un
+fonctions.json par commune et le manifeste.
 
 Ce que la source est vraiment :
-    Chaque ligne de la balance porte À LA FOIS une FONCTION (la politique
-    publique : écoles, culture, voirie) et un COMPTE (la nature : personnel,
-    achats, subventions versées). Le grain réel est donc
-    `commune × fonction × compte`, soit 1,8 million de lignes pour 3 384
-    communes — 534 couples par commune en moyenne, 3 153 au maximum.
-
-    La première version de ce script ne gardait que le PREMIER CHIFFRE du code
-    fonction et sommait tous les comptes : neuf lignes plates par commune. Elle
-    transformait une table croisée en camembert. On garde désormais l'arbre :
+    Chaque ligne de la balance DGFiP « présentation croisée nature-fonction »
+    porte À LA FOIS une FONCTION (la politique publique : écoles, culture,
+    voirie) et un COMPTE (la nature : personnel, achats, subventions versées).
+    Le grain réel est donc `commune × fonction × compte` — 1,8 million de
+    cellules pour 3 384 communes en 2024. On garde l'arbre :
 
         fonction principale  →  sous-fonction (le code tel que la commune le
                                 vote : « Écoles primaires », « Crèches »)
                              →  nature (« Personnel titulaire », « Subventions
                                 aux associations »)
 
-Trois pièges, tous payés une fois :
+D'où viennent les chiffres :
+    sync_dgfip_nature_fonction.py  ZIP → raw_national.dgfip_balances_nature_fonction
+    dbt  stg_dgfip_nature_fonction   typage, code INSEE
+         core_dgfip_nature_fonction  une ligne de balance, avec ses règles de lecture :
+                                     référence fonctionnelle, clé NEUTRE (M14 et M57
+                                     ne désignent pas la même chose par le même
+                                     chiffre), rubrique 01 « non ventilable » à part,
+                                     reversements (6554, 6556), familles de nature
+         mart_communes_fonctions     communes, budget principal, CLASSE 6 seulement,
+                                     une ligne par cellule, nomenclature dominante
+    ce script                        lit le mart, et seulement lui.
 
- 1. LES CODES M14 ET M57 NE DÉSIGNENT PAS LA MÊME CHOSE. Le jeu est à 99 % en
-    M57. Appliquer les libellés M14 à des codes M57 faisait apparaître Paris
-    avec « 27 % de sport et jeunesse » là où il s'agit de santé et action
-    sociale. On agrège sur des clés NEUTRES et le libellé se choisit d'après la
-    nomenclature dominante de chaque commune.
-
- 2. LA RUBRIQUE 01 N'EST PAS LA FONCTION 0. La nomenclature officielle la
-    nomme « Opérations non ventilables » : dette, fiscalité, opérations
-    générales, rattachées à AUCUNE politique. La replier dans « administration
-    générale » faisait lire 48 % à Pantin quand 23,3 M€ sur 68,5 M€ n'étaient
-    simplement pas ventilés. Elle sort en ligne propre, avec sa propre
-    ventilation par nature, et les parts se calculent sur le ventilé seul.
-
- 3. CLASSE 6 UNIQUEMENT. Les comptes de classe 2 sont de l'investissement ;
-    les additionner gonflait les totaux d'environ 20 % (Nemours 21,4 M€ au
-    lieu des 17,8 M€ de sa maquette).
+Ce que ce script ajoute, et qui est de la présentation :
+    - le repliement des cellules en arbre et en familles de nature, dans l'ordre
+      du fichier source (premiere_ligne) : les sommes sont celles des fichiers
+      déjà publiés, au flottant près ;
+    - les libellés (nomenclature DGCL, M57 ou M14 selon la commune) et leur
+      traduction anglaise ;
+    - les plafonds de lignes, avec une ligne « Autres » qui porte le reste ;
+    - la comparaison aux communes de même strate démographique, calculée sur
+      les montants ARRONDIS affichés et la population de l'index des communes,
+      pour que la part lue dans une fiche soit exactement celle qui la classe.
 
 Sources :
     Balance   https://data.economie.gouv.fr/explore/dataset/balances-comptables-
@@ -45,56 +45,56 @@ Sources :
     Libellés  pipeline/data/nomenclature-budgetaire.json
               (voir sync_nomenclature_budgetaire.py — la balance n'a QUE des
               codes, et on n'invente pas le sens d'un code)
+    Communes  website/public/data/communes-all/index.json (slug, nom, population)
 
 Sortie :
     website/public/data/communes-fonctions/{slug}/fonctions.json  (→ bucket privé)
     website/src/data/communes-fonctions-manifest.json             (engagé)
 
-Idempotent : oui (re-télécharge le ZIP seulement s'il manque ou si --force).
+Usage :
+    python3 pipeline/scripts/export/export_communes_fonctions.py               # exercice le plus récent du mart
+    python3 pipeline/scripts/export/export_communes_fonctions.py --annee 2024
+    NATIONAL_MARTS_DATASET=dbt_paris_dev_<user>_national_marts python3 …      # mart de dev
+
+Envoi (non fait ici) :
+    gcloud storage rsync -r website/public/data/communes-fonctions gs://qipu-communes-budget/communes-fonctions
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
 import json
+import os
 import re
 import shutil
-import unicodedata
 import statistics
-import zipfile
+import unicodedata
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.request import Request, urlopen
 
 # ---------------------------------------------------------------------------
 # Constantes
 
 ROOT = Path(__file__).resolve().parents[3]
-CACHE_DIR = ROOT / "pipeline" / "cache" / "dgfip"
 NOMENCLATURE_FILE = ROOT / "pipeline" / "data" / "nomenclature-budgetaire.json"
 TRADUCTIONS_FILE = ROOT / "pipeline" / "data" / "nomenclature-libelles-en.json"
 INDEX_FILE = ROOT / "website" / "public" / "data" / "communes-all" / "index.json"
 OUT_ROOT = ROOT / "website" / "public" / "data" / "communes-fonctions"
 MANIFEST_FILE = ROOT / "website" / "src" / "data" / "communes-fonctions-manifest.json"
 
-DATASET_ID = (
+PROJECT_ID = "open-data-france-484717"
+_MARTS = os.environ.get("NATIONAL_MARTS_DATASET", "dbt_paris_national_marts")
+MART = f"{PROJECT_ID}.{_MARTS}.mart_communes_fonctions"
+
+DATASET_PREFIX = (
     "balances-comptables-des-collectivites-et-des-etablissements-publics-"
-    "locaux-avec-la-presentation-croisee-nature-fonction-2024"
+    "locaux-avec-la-presentation-croisee-nature-fonction-"
 )
-ATTACHMENT_URL = (
-    f"https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/"
-    f"{DATASET_ID}/attachments/balancespl_fonction_2024_dec2025_zip"
-)
-DATASET_PAGE = f"https://data.economie.gouv.fr/explore/dataset/{DATASET_ID}/"
 BUCKET_BASE = "https://storage.googleapis.com/qipu-communes-budget/communes-fonctions"
-ZIP_NAME = "BalanceSPL_Fonction_2024_Dec2025.zip"
-CSV_NAME = "BalanceSPL_Fonction_2024_Dec2025.csv"
-YEAR = 2024
 
 SOURCE_LABEL = "DGFiP — balances comptables, présentation croisée nature-fonction"
-SOURCE_PIPELINE = "balance DGFiP (ZIP) → sync_communes_fonctionnelle.py"
+SOURCE_PIPELINE = "balance DGFiP (ZIP) → dbt national (mart_communes_fonctions) → export_communes_fonctions.py"
 SCOPE = "dépenses de fonctionnement (comptes de classe 6)"
 
 # Combien de lignes on garde à chaque niveau avant de replier le reste dans une
@@ -105,7 +105,7 @@ TOP_SOUS_FONCTIONS = 12
 TOP_NATURES = 12
 TOP_NATURES_SOUS = 8
 
-# Fonctions principales : clés NEUTRES (voir piège 1), libellés M57 par défaut.
+# Fonctions principales : les clés NEUTRES du core, libellés M57 par défaut.
 FONCTIONS = [
     ("f0_services_generaux", "Administration générale", "General administration"),
     ("f1_securite", "Sécurité et salubrité publiques", "Security and public health"),
@@ -127,15 +127,12 @@ LIB_M14 = {
     "f7": ("Logement", "Housing"),
     "f8": ("Aménagement, environnement", "Urban planning, environment"),
 }
-# Reversements à d'autres collectivités : de l'argent que la commune encaisse et
-# transmet, pas un service qu'elle rend. La nomenclature les range en fonction 0
-# faute de politique publique à laquelle les rattacher, ce qui faisait ressortir
-# les communes d'un établissement public territorial à 43 % d'« administration »
-# — 22 M€ sur 56 à Pantin — pour une raison de structure et non de gestion.
-# Ils sortent en compartiment PROPRE, comme le non-ventilé : une ligne, c'est
-# une politique que la commune délivre, et un transfert n'en est pas une. Le
-# total ne bouge pas, rien n'est caché, le premier regard dit enfin la vérité.
-REVERSEMENTS = ("6554", "6556")
+# Reversements à d'autres collectivités (compartiment « rev » du mart) : de
+# l'argent que la commune encaisse et transmet, pas un service qu'elle rend. La
+# nomenclature les range en fonction 0 faute de politique publique à laquelle
+# les rattacher, ce qui faisait ressortir les communes d'un établissement
+# public territorial à 43 % d'« administration » — 22 M€ sur 56 à Pantin. Ils
+# sortent en compartiment PROPRE, comme le non-ventilé.
 REV_FR = "Reversé à l'intercommunalité"
 REV_EN = "Passed on to the inter-municipal body"
 
@@ -163,98 +160,25 @@ def strate_de(pop: int) -> int:
     return len(STRATES) - 1
 
 
-# Les familles de natures : la seconde lecture du budget, « sous quelle forme
-# l'argent sort ». Elles suivent les préfixes officiels de la classe 6 — c'est la
-# structure des chapitres M57 (011 = 60-62, 012 = 64, 65, 66…), pas une grille
-# maison. Chaque famille a sa fiche pour les communes qui ont l'axe fonction :
-# c'est là qu'elle porte le croisement « les salaires, dans quelles politiques ».
+# Les familles de natures (colonne famille_nature du core, qui porte la règle
+# des préfixes de la classe 6). Ici : leur ordre, leur adresse et leurs libellés.
 NATURES = [
-    ("salaires", "salaires", ("64",), "Salaires et charges de personnel", "Staff pay and costs"),
-    ("achats", "achats-et-services", ("60", "61", "62"), "Achats et services extérieurs", "Purchases and external services"),
-    ("gestion", "subventions-et-contributions", ("65",), "Subventions et contributions", "Grants and contributions"),
-    ("dette", "interets-de-la-dette", ("66",), "Intérêts de la dette", "Debt interest"),
-    ("impots", "impots-et-taxes", ("63",), "Impôts et taxes payés", "Taxes paid"),
-    ("exceptionnel", "charges-exceptionnelles", ("67",), "Charges exceptionnelles", "Exceptional charges"),
-    ("dotations", "amortissements-et-provisions", ("68",), "Amortissements et provisions", "Depreciation and provisions"),
+    ("salaires", "salaires", "Salaires et charges de personnel", "Staff pay and costs"),
+    ("achats", "achats-et-services", "Achats et services extérieurs", "Purchases and external services"),
+    ("gestion", "subventions-et-contributions", "Subventions et contributions", "Grants and contributions"),
+    ("dette", "interets-de-la-dette", "Intérêts de la dette", "Debt interest"),
+    ("impots", "impots-et-taxes", "Impôts et taxes payés", "Taxes paid"),
+    ("exceptionnel", "charges-exceptionnelles", "Charges exceptionnelles", "Exceptional charges"),
+    ("dotations", "amortissements-et-provisions", "Amortissements et provisions", "Depreciation and provisions"),
 ]
-NATURE_DE_PREFIXE = {pfx: n[0] for n in NATURES for pfx in n[2]}
+COMPARTIMENTS = {cle for cle, _, _ in FONCTIONS} | {"nv", "rev"}
 
 NV_FR = "Non ventilé"
 NV_EN = "Not allocated"
 
-# Colonnes du CSV (positions vérifiées contre l'en-tête au démarrage)
-COL_NDEPT = 2
-COL_LBUDG = 3
-COL_INSEE = 5
-COL_CBUDG = 6
-COL_NOMEN = 9
-COL_CATEG = 16
-COL_BAL = 17
-COL_FONCTION = 18
-COL_COMPTE = 19
-COL_OBNETDEB = 22
-
 
 def _log(msg: str) -> None:
     print(msg, flush=True)
-
-
-# ---------------------------------------------------------------------------
-# Téléchargement
-
-def download_zip(force: bool = False) -> Path:
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    target = CACHE_DIR / ZIP_NAME
-    if target.exists() and not force:
-        _log(f"  = ZIP en cache ({target.stat().st_size / 1e6:.0f} Mo)")
-        return target
-    _log(f"  ↓ {ATTACHMENT_URL}")
-    req = Request(ATTACHMENT_URL, headers={"User-Agent": "qipu-pipeline/1.0"})
-    with urlopen(req, timeout=600) as resp, open(target, "wb") as f:
-        while chunk := resp.read(1 << 20):
-            f.write(chunk)
-    _log(f"  ✓ {target.name} ({target.stat().st_size / 1e6:.0f} Mo)")
-    return target
-
-
-def parse_montant(s: str) -> float:
-    if not s:
-        return 0.0
-    try:
-        return float(s.replace(",", "."))
-    except ValueError:
-        return 0.0
-
-
-# ---------------------------------------------------------------------------
-# Codes fonction
-
-def reference_fonctionnelle(code: str) -> str | None:
-    """Le code fonction de la balance → la référence de la nomenclature.
-
-    La balance mélange deux écritures du même axe :
-      - vote par nature   : la référence nue — « 020 », « 212 », « 4212 »
-      - vote par fonction : « 9 » + chiffre de section + référence — « 93020 »,
-        « 934212 ». Les préfixes observés vont de 90 à 96 ; les deux premiers
-        caractères se retirent dans tous les cas.
-    Une seule normalisation en tête, et tout le reste du script ne voit plus
-    qu'une référence de nomenclature.
-    """
-    if not code:
-        return None
-    ref = code[2:] if code[0] == "9" else code
-    return ref if ref and ref[0].isdigit() else None
-
-
-def fonction_principale(ref: str) -> str | None:
-    """Fonction principale (chiffre 0-9) d'une référence, ou "nv".
-
-    « 01 », « 010 »…« 019 » sont la rubrique « Opérations non ventilables »
-    (piège 2) ; « 020 », « 022 »… sont bien l'administration générale.
-    """
-    if not ref:
-        return None
-    return "nv" if ref[:2] == "01" else ref[0]
 
 
 # ---------------------------------------------------------------------------
@@ -364,82 +288,61 @@ class Libelles:
 
 
 # ---------------------------------------------------------------------------
-# Agrégation
+# Lecture du mart
 
-def stream_aggregate(zip_path: Path) -> tuple[dict[str, dict], dict[str, float], int, int]:
-    """Une seule passe sur les 835 Mo de CSV.
+def client_bq():
+    from google.cloud import bigquery
 
-    Par commune on conserve le couple (référence fonctionnelle, compte) — le
-    grain du fichier, rien de moins. Le repliement en arbre se fait après, où
-    il est relisible, pas dans la boucle chaude.
+    if not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
+        adc = Path.home() / ".config" / "gcloud" / "application_default_credentials.json"
+        if adc.exists():
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(adc)
+    return bigquery.Client(project=PROJECT_ID)
+
+
+def annee_la_plus_recente(client) -> int | None:
+    """Le dernier exercice présent dans le mart : celui qu'on exporte par défaut."""
+    row = next(iter(client.query(f"SELECT MAX(annee) AS annee FROM `{MART}`").result()))
+    return row["annee"]
+
+
+def lire_mart(client, annee: int) -> dict[str, dict]:
+    """Les cellules de chaque commune, dans l'ordre du fichier source.
+
+    L'ordre n'est pas cosmétique : les montants sont additionnés en flottant,
+    et l'ordre d'addition décide de l'arrondi d'un total qui tombe sur
+    50 centimes. Le rejouer à l'identique garde les fichiers publiés stables.
     """
+    from google.cloud import bigquery
+
+    sql = f"""
+        SELECT code_insee, libelle_budget, nomenclature, compartiment, fonction_reference, compte,
+               famille_nature, montant
+        FROM `{MART}`
+        WHERE annee = @annee
+        ORDER BY code_insee, premiere_ligne
+    """
+    job = client.query(sql, job_config=bigquery.QueryJobConfig(
+        query_parameters=[bigquery.ScalarQueryParameter("annee", "INT64", annee)]
+    ))
     by_insee: dict[str, dict] = {}
-    national: dict[str, float] = defaultdict(float)
-    kept = skipped = 0
-    key_by_digit = {str(i): FONCTIONS[i][0] for i in range(10)}
-    key_by_digit["nv"] = "nv"
-
-    with zipfile.ZipFile(zip_path) as zf, zf.open(CSV_NAME, "r") as raw:
-        text = (line.decode("latin-1", errors="replace") for line in raw)
-        reader = csv.reader(text, delimiter=";")
-        header = next(reader, None)
-        if header is None:
-            raise RuntimeError("CSV vide")
-        assert header[COL_FONCTION].lower() == "fonction", f"colonne FONCTION déplacée : {header}"
-        assert header[COL_COMPTE].lower() == "compte", f"colonne COMPTE déplacée : {header}"
-        assert header[COL_OBNETDEB].lower() == "obnetdeb", f"colonne OBNETDEB déplacée : {header}"
-
-        for row in reader:
-            if len(row) <= COL_OBNETDEB:
-                skipped += 1
-                continue
-            if row[COL_CATEG] not in ("Commune", "PARIS") or row[COL_CBUDG] != "1" or row[COL_BAL] != "DEF":
-                skipped += 1
-                continue
-            compte = row[COL_COMPTE]
-            # Fonctionnement SEULEMENT (piège 3).
-            if not compte or compte[0] != "6":
-                skipped += 1
-                continue
-            ref = reference_fonctionnelle(row[COL_FONCTION])
-            if ref is None:
-                skipped += 1
-                continue
-            fkey = key_by_digit.get(fonction_principale(ref) or "")
-            if fkey is None:
-                skipped += 1
-                continue
-            # Un reversement n'est pas une politique : il quitte sa fonction ici,
-            # avant toute agrégation, pour que natures, domaines et totaux suivent.
-            if compte.startswith(REVERSEMENTS):
-                fkey = "rev"
-            montant = parse_montant(row[COL_OBNETDEB])
-            if montant == 0.0:
-                skipped += 1
-                continue
-
-            ndept, ins3 = row[COL_NDEPT], row[COL_INSEE]
-            if not ndept or not ins3:
-                skipped += 1
-                continue
-            # INSEE complet = NDEPT sans son zéro de tête + rang dans le
-            # département. « 075 » + « 056 » → « 75056 ». La Corse (02A/02B)
-            # n'a pas de zéro à retirer.
-            short = ndept[1:] if ndept[0] == "0" and ndept[1:].isdigit() else ndept
-            insee = f"{short}{ins3}".zfill(5)
-
-            bucket = by_insee.setdefault(insee, {
-                "libelle": row[COL_LBUDG],
-                "cellules": defaultdict(float),   # (fkey, ref, compte) → montant
-                "nomen": defaultdict(float),
-                "total": 0.0,
-            })
-            bucket["cellules"][(fkey, ref, compte)] += montant
-            bucket["nomen"][row[COL_NOMEN] or "?"] += montant
-            bucket["total"] += montant
-            national[fkey] += montant
-            kept += 1
-    return by_insee, dict(national), kept, skipped
+    for r in job.result(page_size=200_000):
+        cle = r["compartiment"]
+        if cle not in COMPARTIMENTS:
+            raise RuntimeError(f"compartiment inconnu dans le mart : {cle!r}")
+        bucket = by_insee.setdefault(r["code_insee"], {
+            "cellules": defaultdict(float),   # (compartiment, ref, compte) → montant
+            "familles": {},                   # compte → famille de nature
+            "libelle": r["libelle_budget"],
+            "nomen": r["nomenclature"],
+            "total": 0.0,
+        })
+        montant = float(r["montant"])
+        bucket["cellules"][(cle, r["fonction_reference"], r["compte"])] += montant
+        bucket["familles"][r["compte"]] = r["famille_nature"]
+        bucket["total"] += montant
+    _log(f"  = {MART} : {job.total_bytes_processed / 1e6:.0f} Mo lus")
+    return by_insee
 
 
 # ---------------------------------------------------------------------------
@@ -481,7 +384,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     total = bucket["total"]
     if total <= 0:
         return None
-    nomen = max(bucket["nomen"], key=bucket["nomen"].get)
+    nomen = bucket["nomen"]
     est_m14 = nomen.startswith("M14")
 
     par_fonction: dict[str, float] = defaultdict(float)
@@ -565,7 +468,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     for (fkey, ref, compte), montant in bucket["cellules"].items():
         if fkey == "rev":
             continue
-        fam = NATURE_DE_PREFIXE.get(compte[:2])
+        fam = bucket["familles"][compte]
         if not fam:
             continue
         fam_montant[fam] += montant
@@ -575,7 +478,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     lib_fonction = {cle: (fr, en) for cle, fr, en in FONCTIONS}
     lib_fonction["nv"] = (NV_FR, NV_EN)
     natures_out: list[dict] = []
-    for key, slug_n, _pfx, fr_n, en_n in NATURES:
+    for key, slug_n, fr_n, en_n in NATURES:
         montant = fam_montant.get(key, 0.0)
         if montant == 0:
             continue
@@ -630,7 +533,6 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
             "natures": natures_rows(natures["nv"], TOP_NATURES),
         }
     return out
-
 
 
 # ---------------------------------------------------------------------------
@@ -787,12 +689,19 @@ def attacher_comparaisons(docs: dict[str, dict], pops: dict[str, int], noms: dic
 # Écriture
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--force", action="store_true", help="re-télécharger le ZIP")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--annee", type=int, default=None, help="exercice (défaut : le plus récent présent dans le mart)")
     ap.add_argument("--limit", type=int, default=0, help="n'écrire que N communes (mise au point)")
     args = ap.parse_args()
+    client = client_bq()
+    annee = args.annee if args.annee is not None else annee_la_plus_recente(client)
+    if annee is None:
+        _log(f"✗ {MART} est vide — charger un exercice (sync_dgfip_nature_fonction.py) puis relancer dbt")
+        return 1
+    dataset_page = f"https://data.economie.gouv.fr/explore/dataset/{DATASET_PREFIX}{annee}/"
 
-    _log("→ À quoi sert l'argent : ventilation fonction × nature, par commune")
+    origine = "demandé" if args.annee is not None else "le plus récent du mart"
+    _log(f"→ À quoi sert l'argent : ventilation fonction × nature, par commune ({annee}, {origine})")
     if not NOMENCLATURE_FILE.exists():
         _log(f"✗ {NOMENCLATURE_FILE.relative_to(ROOT)} manquant — lancer d'abord "
              "pipeline/scripts/sync/sync_nomenclature_budgetaire.py")
@@ -802,12 +711,12 @@ def main() -> int:
          f"{len(lib.nature_m14)} comptes M14")
 
     index = json.loads(INDEX_FILE.read_text(encoding="utf-8"))["communes"]
-    zip_path = download_zip(force=args.force)
-
-    _log("  → lecture du CSV (835 Mo) …")
-    by_insee, national, kept, skipped = stream_aggregate(zip_path)
-    _log(f"  ✓ cellules retenues : {kept:,} · écartées : {skipped:,}")
-    _log(f"  ✓ communes avec fonction renseignée : {len(by_insee):,}")
+    by_insee = lire_mart(client, annee)
+    if not by_insee:
+        _log(f"✗ aucune cellule pour {annee} dans {MART} — charger l'exercice puis relancer dbt")
+        return 1
+    _log(f"  ✓ cellules : {sum(len(b['cellules']) for b in by_insee.values()):,} · "
+         f"communes avec fonction renseignée : {len(by_insee):,}")
 
     if OUT_ROOT.exists():
         shutil.rmtree(OUT_ROOT)
@@ -818,11 +727,15 @@ def main() -> int:
     docs: dict[str, dict] = {}
     metas: dict[str, dict] = {}
     pops: dict[str, int] = {}
-    sans_slug = 0
+    sans_slug: list[str] = []
     for insee, bucket in sorted(by_insee.items()):
         meta = index.get(insee)
         if not meta:
-            sans_slug += 1
+            # Une commune que la balance connaît et que l'index des communes du
+            # site ne connaît pas (il est bâti sur un exercice OFGL donné, voir
+            # sync_ofgl_all_communes.py) : pas de slug, donc pas d'adresse où
+            # publier sa fiche. On la saute sans arrêter l'export, et on la nomme.
+            sans_slug.append(f"{insee} ({bucket['libelle']})")
             continue
         payload = build_commune(bucket, lib)
         if payload is None or not payload["fonctions"]:
@@ -845,10 +758,10 @@ def main() -> int:
         insee = meta["insee"]
         doc = {
             "source": SOURCE_LABEL,
-            "source_url": DATASET_PAGE,
+            "source_url": dataset_page,
             "source_libelles": lib.source_url,
             "source_pipeline": SOURCE_PIPELINE,
-            "annee": YEAR,
+            "annee": annee,
             "scope": SCOPE,
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "commune": {"insee": insee, "slug": slug, "nom": meta["nom"], "pop": meta.get("pop")},
@@ -878,9 +791,9 @@ def main() -> int:
     MANIFEST_FILE.write_text(
         json.dumps({
             "source": SOURCE_LABEL,
-            "source_url": DATASET_PAGE,
+            "source_url": dataset_page,
             "bucket": BUCKET_BASE,
-            "annee": YEAR,
+            "annee": annee,
             "scope": SCOPE,
             "n_communes": len(manifest),
             "communes": manifest,
@@ -890,7 +803,8 @@ def main() -> int:
 
     _log(f"  ✓ {written:,} fichiers dans {OUT_ROOT.relative_to(ROOT)}")
     if sans_slug:
-        _log(f"  • {sans_slug} communes de la balance absentes de l'index (ignorées)")
+        _log(f"  ⚠ {len(sans_slug)} communes du mart absentes de {INDEX_FILE.relative_to(ROOT)}, "
+             f"ignorées (pas de slug où publier) : {', '.join(sans_slug)}")
     if tailles:
         _log(f"  • poids par commune : médiane {statistics.median(tailles)/1024:.1f} Ko · "
              f"max {max(tailles)/1024:.1f} Ko · total {sum(tailles)/1e6:.1f} Mo")
@@ -900,6 +814,7 @@ def main() -> int:
         # La liste COMPLÈTE part dans un fichier : vingt lignes à l'écran ne
         # suffisent pas pour compléter la table de traduction en une passe.
         dump = ROOT / "pipeline" / "cache" / "libelles-manquants.json"
+        dump.parent.mkdir(parents=True, exist_ok=True)
         dump.write_text(json.dumps(sorted(lib.manquants), ensure_ascii=False, indent=1), encoding="utf-8")
         _log(f"✗ {len(lib.manquants)} libellés sans traduction anglaise "
              f"(pipeline/data/nomenclature-libelles-en.json) — liste dans {dump.relative_to(ROOT)} :")
@@ -908,13 +823,14 @@ def main() -> int:
         return 1
     _log("  ✓ tous les libellés affichés ont une traduction anglaise")
 
+    national: dict[str, float] = defaultdict(float)
+    for bucket in by_insee.values():
+        for (fkey, _ref, _compte), montant in bucket["cellules"].items():
+            national[fkey] += montant
     nat_total = sum(national.values())
     nat_nv = national.get("nv", 0.0)
-    nat_ventile = nat_total - nat_nv
     _log(f"  • national : {nat_total/1e9:.1f} Md€ dont {nat_nv/1e9:.1f} Md€ non ventilés "
          f"({nat_nv/nat_total:.1%})")
-    _log(f"  • somme des parts nationales sur le ventilé : "
-         f"{sum(v for k, v in national.items() if k != 'nv')/nat_ventile:.3f} (attendu 1.000)")
     return 0
 
 

@@ -1,5 +1,5 @@
 """Sonde v9 — on ne cherche plus la ventilation par FONCTION (la DGFiP la publie
-déjà pour 3 384 communes : voir sync_communes_fonctionnelle.py), mais la LISTE
+déjà pour 3 384 communes : voir export_communes_fonctions.py), mais la LISTE
 NOMINATIVE DES SUBVENTIONS, qui n'existe dans aucun jeu national :
     M14 → annexe B1.7 « concours attribués à des tiers en nature ou en subventions »
     M57 → annexe B8  « subventions versées »

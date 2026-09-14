@@ -23,3 +23,26 @@ models:
 
   - name: core_subventions_national
     description: "Subventions nationales > 23k€ dénormalisées par ville"
+
+  - name: core_dgfip_nature_fonction
+    description: "Balances DGFiP nature × fonction, row-level, toutes collectivités - 1 ligne = 1 ligne de balance (annee, ligne). Règles de lecture posées ligne par ligne : fonction_reference (préfixe 9x retiré), fonction_principale / fonction_cle (clés neutres, rubrique 01 = nv), est_reversement (6554, 6556), famille_nature (préfixes de la classe 6)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [annee, ligne]
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: ligne
+        tests: [not_null]
+      - name: categ
+        tests: [not_null]
+      - name: fonction_cle
+        tests:
+          - accepted_values:
+              values: ['f0_services_generaux', 'f1_securite', 'f2_enseignement', 'f3_culture', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9_action_eco', 'nv']
+      - name: famille_nature
+        tests:
+          - accepted_values:
+              values: ['achats', 'impots', 'salaires', 'gestion', 'dette', 'exceptionnel', 'dotations']
+      - name: est_reversement
+        tests: [not_null]
