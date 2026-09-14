@@ -95,6 +95,10 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          # next build dépasse lui aussi le tas par défaut de Node (2 Go) :
+          # « Reached heap limit », run 34794760769 du 2026-09-14. Vercel,
+          # qui construit avec plus de mémoire, passe sur le même commit.
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Remove .next/cache (not needed downstream)
         run: rm -rf .next/cache
