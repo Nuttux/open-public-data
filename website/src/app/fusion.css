@@ -20797,6 +20797,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-share:hover { color: var(--ink); text-decoration-color: currentColor; }
 .theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
+/* The scene as one picture (variant « mosaïque ») : area = euros, one hue from
+   dark to light, the label and the amount on tiles big enough. */
+.theme-fusion .fx-mosaic { position: relative; width: 100%; aspect-ratio: 4 / 3; margin: 10px 0 8px; }
+@media (min-width: 700px) { .theme-fusion .fx-mosaic { aspect-ratio: 16 / 10; } }
+.theme-fusion .fx-mosaic-tile { position: absolute; display: flex; flex-direction: column; justify-content: flex-end; gap: 1px; padding: 7px 9px; box-sizing: border-box; overflow: hidden; text-decoration: none; line-height: 1.2; }
+.theme-fusion .fx-mosaic-tile.dark { color: #fff; }
+.theme-fusion .fx-mosaic-tile.light { color: var(--ink); }
+.theme-fusion .fx-mosaic-tile .t { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.theme-fusion .fx-mosaic-tile .v { font-family: var(--f-disp); font-weight: 700; font-size: 15px; letter-spacing: -.02em; }
+.theme-fusion .fx-mosaic-tile.small .t, .theme-fusion .fx-mosaic-tile.small .v { display: none; }
+.theme-fusion a.fx-mosaic-tile .t::after { content: " ›"; font-weight: 400; opacity: .75; }
+.theme-fusion a.fx-mosaic-tile:hover { filter: brightness(1.08); }
+.theme-fusion a.fx-mosaic-tile:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 /* The scene's grouping switch: one chart, four ways to cut it. Text, not tabs;
    the active one is ink with a rule under it. */
 .theme-fusion .fx-sec-switch { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 10px 0 2px; }

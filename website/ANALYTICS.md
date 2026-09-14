@@ -71,9 +71,11 @@ Fiche kit sections carry short English ids stable across locales: `who`,
 `why`, `years`, `lines`, `contracts`, `loans`, `missions`, `links`,
 `related`… A **section page** (Contrats publics since 2026-09-14, the others
 as they move to the fiche grammar) reads top to bottom: `hero` (the number),
-`scene` (on Contrats publics: the year's euros cut by category, type, number
-of bids or company — the switch is `filter_change` with `field =
-scene_group`, the share is `share_click` with `object = scene_<group>`),
+`scene` (on Contrats publics: the year's euros cut by category, number of
+bids or company — the switch is `filter_change` with `field = scene_group`
+and `variant` = `bars` | `mosaic`, the share is `share_click` with `object =
+scene_<group>`; a bar or a tile that opens a fiche is a `link_click` with
+`role = row` or `role = tile`),
 `contracts` (rows), `years` (the years rail), `search` (field only; results
 are `search_submit` / `search_result_click`), `understand` (the « Comprendre »
 folds), `related` (the doors), `next` (the next section). Reach of `next` is

@@ -2,6 +2,7 @@ import { loadLieuxIndex, loadLieu } from "./lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
 import { lotRepeatFlags, sumLots, lotInfo } from "./marches-shape";
+import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug, type OffresBucket } from "./marches-offres";
 import { POSTE_LINKS } from "./budget-poste-links";
 import { cityPopulation } from "@/lib/methodology";
 import { NATURE_GROUPS, isNatureKey, natureOfFlow, type NatureKey } from "@/lib/budget-natures";
@@ -5257,6 +5258,100 @@ export function loadThemeSubventions(slug: string, requestedYear?: number, city:
     evolution,
     topBeneficiaires,
   };
+}
+
+/** Une barre « par nombre d'offres » de la page Contrats publics ouvre cette
+ *  fiche : les contrats de l'année signés avec autant d'offres reçues. */
+export type MarchesOffresFiche = {
+  bucket: OffresBucket;
+  /** Forme dans l'adresse : 1, 2-3, 4-5, 6-plus. */
+  slug: string;
+  /** Le chemin de CETTE année : `slug` pour la dernière année couverte, `slug-2024` sinon. */
+  hrefSlug: string;
+  year: number;
+  /** Les années où le nombre d'offres est publié (≥ 50 contrats et ≥ 20 %). */
+  years: number[];
+  total: number;
+  count: number;
+  /** Contrats de l'année dont le nombre d'offres est publié, et tous les contrats. */
+  known: number;
+  all: number;
+  topContrats: MarcheCategorieFiche["topContrats"];
+};
+
+/** `1`, `6-plus` (latest covered year) or `1-2024`, `6-plus-2024` (one year):
+ *  the year lives in the path, never in a query string, so the drawer route
+ *  intercepts it like any fiche. */
+export function loadMarchesOffres(slug: string, requestedYear?: number): MarchesOffresFiche | null {
+  const m = slug.match(/^(1|2-3|4-5|6-plus)(?:-(\d{4}))?$/);
+  if (!m) return null;
+  const bucket = OFFRES_BUCKETS.find((b) => offresBucketSlug(b) === m[1]);
+  if (!bucket) return null;
+  if (m[2]) requestedYear = Number(m[2]);
+  const idx = readJson<MarchesIndexRaw>("marches-publics/index.json");
+  // Complete years only, like the page: the current year is still filling up.
+  const currentYear = new Date().getFullYear();
+  const allYears = (idx.availableYears ?? []).filter((y) => y < currentYear).sort((a, b) => a - b);
+  type Row = MarcheRow & { numero_marche?: string; fournisseur_siret?: string; fournisseur_nom?: string; decp_offres_recues?: number | null };
+  const cache = new Map<number, Row[]>();
+  const rowsOf = (y: number): Row[] => {
+    if (!cache.has(y)) {
+      try {
+        const f = readJson<MarchesFile>(`marches-publics/marches_${y}.json`);
+        cache.set(y, (f.data ?? f.marches ?? []) as Row[]);
+      } catch {
+        cache.set(y, []);
+      }
+    }
+    return cache.get(y)!;
+  };
+  const knownOf = (rows: Row[]) => rows.filter((r) => Number(r.decp_offres_recues ?? 0) >= 1);
+  // Same threshold as the page's scene: the cut only exists where the source covers the year.
+  const years = allYears.filter((y) => {
+    const rows = rowsOf(y);
+    const k = knownOf(rows).length;
+    return rows.length > 0 && k >= 50 && k / rows.length >= 0.2;
+  });
+  if (years.length === 0) return null;
+  const year = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
+  const rows = rowsOf(year);
+  const knownRows = knownOf(rows);
+  const matching = knownRows.filter((r) => offresBucketOf(Number(r.decp_offres_recues)) === bucket);
+  const total = sumLots(matching);
+
+  // Un lot partagé = une ligne qui nomme ses titulaires (même règle que la fiche catégorie).
+  const vulg = loadMarcheVulgMap();
+  const MULTI = "MARCHE MULTIATTRIBUTAIRE";
+  const lots = new Map<string, { row: Row; titulaires: string[] }>();
+  matching.slice().sort((a, b) => Number(b.montant_max ?? 0) - Number(a.montant_max ?? 0)).forEach((r, i) => {
+    const objetKey = (r.objet ?? "").trim().toLowerCase();
+    const key = objetKey ? `${objetKey}|${Number(r.montant_max ?? 0)}` : `row:${i}`;
+    const lot = lots.get(key) ?? { row: r, titulaires: [] };
+    const name = (r.fournisseur_nom ?? "").trim();
+    const named = Boolean(name) && name !== MULTI && name !== "Non précisé";
+    if (named && !lot.titulaires.includes(name)) lot.titulaires.push(name);
+    if (named && lot.row.fournisseur_nom === MULTI) lot.row = r;
+    lots.set(key, lot);
+  });
+  const topContrats = [...lots.values()].slice(0, 12).map(({ row: r, titulaires }) => {
+    const numero = r.numero_marche ?? "";
+    return {
+      numero,
+      titulaires,
+      objet: r.objet ?? "",
+      objetClair: (numero && vulg[numero]?.objet_clair) || null,
+      objetClairEn: (numero && vulg[numero]?.objet_clair_en) || null,
+      montant: Number(r.montant_max ?? 0),
+      fournisseur: r.fournisseur_nom ?? "Non précisé",
+      fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
+      date: r.date_notification ?? "",
+      nature: r.nature ?? "—",
+    };
+  });
+
+  const latest = years[years.length - 1];
+  const hrefSlug = year === latest ? offresBucketSlug(bucket) : `${offresBucketSlug(bucket)}-${year}`;
+  return { bucket, slug: offresBucketSlug(bucket), hrefSlug, year, years, total, count: matching.length, known: knownRows.length, all: rows.length, topContrats };
 }
 
 export type MarcheCategorieFiche = {

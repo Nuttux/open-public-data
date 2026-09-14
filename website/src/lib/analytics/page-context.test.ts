@@ -20,6 +20,7 @@ const cases: [string, Partial<ReturnType<typeof pageContext>>][] = [
   ["/fr/france/paris/marches/contrat/decp-2025T01374", { page_kind: "fiche", page_entity_type: "contrat", page_pattern: "/france/paris/marches/contrat/{slug}" }],
   ["/fr/france/paris/marches/fournisseur/552032534", { page_kind: "fiche", page_entity_type: "fournisseur", page_pattern: "/france/paris/marches/fournisseur/{n}" }],
   ["/fr/france/paris/marches/categorie/travaux", { page_kind: "fiche", page_entity_type: "categorie" }],
+  ["/fr/france/paris/marches/offres/6-plus", { page_kind: "fiche", page_entity_type: "offres", page_pattern: "/france/paris/marches/offres/{slug}" }],
   ["/fr/france/paris/dette/stress-test", { page_family: "dette", page_kind: "hub", page_pattern: "/france/paris/dette/stress-test" }],
   ["/fr/france/paris/dette/garanties/arrondissement/19", { page_kind: "fiche", page_entity_type: "arrondissement", page_pattern: "/france/paris/dette/garanties/arrondissement/{n}" }],
   ["/fr/france/paris/lieux", { page_family: "lieux", page_kind: "explorer" }],

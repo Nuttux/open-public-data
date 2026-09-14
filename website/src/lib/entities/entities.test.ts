@@ -14,6 +14,7 @@ import { lieuConfig, lieuStaticParams } from "./lieu";
 import { logementArrondissementConfig } from "./logement-arrondissement";
 import { posteConfig } from "./poste";
 import { natureConfig } from "./nature";
+import { offresConfig } from "./offres";
 import { projetConfig } from "./projet";
 import { themeConfig } from "./theme";
 
@@ -30,6 +31,25 @@ describe("entity configs load() against real corpus samples", () => {
     const d = await associationConfig.load({ slug: "CENTRE ACTION SOCIALE VILLE PARIS" }, {});
     expect(d).not.toBeNull();
     expect(d!.asso.name.length).toBeGreaterThan(0);
+  });
+
+  it("offres — 1 (single bid), the fiche behind a bar of the marchés scene", async () => {
+    const d = await offresConfig.load({ slug: "1" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.fiche.bucket).toBe("1");
+    expect(d!.fiche.count).toBeGreaterThan(0);
+    expect(d!.fiche.total).toBeGreaterThan(0);
+    expect(d!.fiche.topContrats.length).toBeGreaterThan(0);
+    expect(d!.fiche.years.length).toBeGreaterThan(0);
+    // The year rides in the slug; an uncovered year falls back to the latest covered one.
+    const older = await offresConfig.load({ slug: "6-plus-2015" }, {});
+    expect(older!.fiche.year).toBe(d!.fiche.year);
+    expect(older!.fiche.hrefSlug).toBe("6-plus");
+    const y2024 = await offresConfig.load({ slug: "1-2024" }, {});
+    expect(y2024!.fiche.year).toBe(2024);
+    expect(y2024!.fiche.hrefSlug).toBe(d!.fiche.year === 2024 ? "1" : "1-2024");
+    expect(await offresConfig.load({ slug: "7" }, {})).toBeNull();
+    expect(await offresConfig.load({ slug: "1-20" }, {})).toBeNull();
   });
 
   it("theme — social", async () => {
