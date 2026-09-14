@@ -22,18 +22,22 @@ Rattachement (déterministe, aucun modèle) :
     c'est-à-dire l'année du vote, pas celle du paiement. Les deux diffèrent
     souvent d'un an : la fiche doit le dire, pas le masquer.
 
-Sorties :
+Sorties — toutes dans pipeline/cache/lieux/, jamais dans website/public/data :
+c'est l'export (export_lieux.py) qui publie.
   - {slug}_delibs_annee.json — pour la fiche lieu ;
-  - website/public/data/subventions/delibs_par_beneficiaire.json — pour la fiche
-    d'une association subventionnée : les mêmes délibérations rangées sous le
-    nom du BÉNÉFICIAIRE, et retenues seulement quand le titre le nomme lui (pas
-    le bâtiment). Une association qui n'exploite aucun lieu n'a pas de corpus de
-    délibérations : elle n'entre pas dans ce fichier, et sa fiche reste telle
-    quelle plutôt que d'afficher une section vide.
+  - delibs_par_beneficiaire.json (avec --all seulement) — pour la fiche d'une
+    association subventionnée : les mêmes délibérations rangées sous le nom du
+    BÉNÉFICIAIRE, et retenues seulement quand le titre le nomme lui (pas le
+    bâtiment). export_lieux.py le publie tel quel dans
+    website/public/data/subventions/delibs_par_beneficiaire.json. Une
+    association qui n'exploite aucun lieu n'a pas de corpus de délibérations :
+    elle n'entre pas dans ce fichier, et sa fiche reste telle quelle plutôt que
+    d'afficher une section vide.
 
 Usage :
     python pipeline/scripts/enrich/link_delibs_par_annee.py --slug theatre-du-chatelet
     python pipeline/scripts/enrich/link_delibs_par_annee.py --all [--stats]
+    puis, pour publier : python pipeline/scripts/export/export_lieux.py
 """
 from __future__ import annotations
 
@@ -48,7 +52,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
-SUBV = ROOT / "website" / "public" / "data" / "subventions"
+# Publié par export_lieux.py sous website/public/data/subventions/.
+PAR_BENE = CACHE / "delibs_par_beneficiaire.json"
 
 # Un titre qui décide de l'argent. « Vœu », « communication », « débat » n'en
 # sont pas : ils parlent du lieu sans rien décider.
@@ -250,14 +255,16 @@ def main() -> int:
     if args.all and par_bene_global:
         for nom in par_bene_global:
             par_bene_global[nom] = dict(sorted(par_bene_global[nom].items()))
-        SUBV.mkdir(parents=True, exist_ok=True)
-        (SUBV / "delibs_par_beneficiaire.json").write_text(json.dumps(
+        # Dans le cache, à côté des {slug}_delibs_annee.json : un enrichissement
+        # n'écrit pas dans website/public/data, export_lieux.py publie.
+        PAR_BENE.write_text(json.dumps(
             {"beneficiaires": dict(sorted(par_bene_global.items())),
              "source": {"name": "Conseil de Paris — archive des délibérations",
                         "url": "https://a06-v7.apps.paris.fr/a06/"}},
             ensure_ascii=False, indent=1))
         n_de = sum(len(v) for b in par_bene_global.values() for v in b.values())
-        print(f"→ delibs_par_beneficiaire.json : {len(par_bene_global)} bénéficiaires, {n_de} délibérations")
+        print(f"→ {PAR_BENE.relative_to(ROOT)} : {len(par_bene_global)} bénéficiaires, "
+              f"{n_de} délibérations (publié par export_lieux.py)")
     print(f"\n{ecrits} lieux avec au moins un exercice rattaché ; "
           f"{total_annees} exercices, {total_delibs} délibérations.")
     if args.stats:
