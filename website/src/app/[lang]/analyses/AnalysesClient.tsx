@@ -124,7 +124,11 @@ export default function AnalysesClient({
             {t("fx.analyses.page_lede")}
           </p>
           <div className="fx-analyses-cats">
-            {CATEGORIES.map((c) => (
+            {/* A chip only for a category that has a published note: a filter
+                that can only lead to the empty state is a dead end. */}
+            {CATEGORIES.filter(
+              (c) => c.key === "all" || posts.some((p) => (p.category ?? "Explications") === c.raw),
+            ).map((c) => (
               <button
                 key={c.key}
                 type="button"
@@ -147,8 +151,10 @@ export default function AnalysesClient({
               {fill(t("fx.analyses.meta.published"), {
                 n: posts.length,
                 s: posts.length > 1 ? "s" : "",
-              })}{" "}
-              · {fill(t("fx.analyses.meta.planned"), { n: planned.length })}
+              })}
+              {planned.length > 0 && (
+                <> · {fill(t("fx.analyses.meta.planned"), { n: planned.length })}</>
+              )}
               {lastPublished && (
                 <> · {fill(t("fx.analyses.meta.last"), { date: formatDate(lastPublished.date) })}</>
               )}

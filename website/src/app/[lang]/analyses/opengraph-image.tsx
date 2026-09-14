@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/blog";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Qipu — Analyses, enquêtes et portraits";
+export const alt = "Qipu — Notes de méthode";
 
 const fmtFr = (n: number) => n.toLocaleString("fr-FR");
 
@@ -52,7 +52,7 @@ export default async function AnalysesOG() {
             color: "#666",
           }}
         >
-          Analyses · Enquêtes · Portraits · Explications
+          Notes de méthode
         </div>
         <div
           style={{
@@ -66,7 +66,7 @@ export default async function AnalysesOG() {
             maxWidth: 1040,
           }}
         >
-          Ce que les données publiques permettent de comprendre.
+          Lire un document public, fabriquer un chiffre.
         </div>
 
         <div style={{ display: "flex", flex: 1 }} />
@@ -82,7 +82,7 @@ export default async function AnalysesOG() {
                 textTransform: "uppercase",
               }}
             >
-              Articles publiés
+              Notes publiées
             </div>
             <div
               style={{

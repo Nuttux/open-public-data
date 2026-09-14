@@ -10,13 +10,13 @@ import AnalysesClient from "./AnalysesClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Analyses",
+    title: "Notes de méthode",
     description:
-      "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
+      "Comment lire un document public, et comment chaque chiffre du site est fabriqué, de la source à la page.",
     en: {
-      title: "Analyses",
+      title: "Method notes",
       description:
-        "Investigations, profiles, and explainers — what public data lets us understand about French local-government finance.",
+        "How to read a public document, and how each figure on this site is built, from the source to the page.",
     },
     path: "/analyses",
   });
@@ -62,7 +62,7 @@ export default function AnalysesPage() {
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      {/* PLANNED list intentionally not rendered for now — section "Les fondamentaux / En préparation" retirée du flux public. La constante PLANNED reste définie en repo comme roadmap interne. */}
+      {/* _PLANNED (« à paraître ») deliberately not rendered: editorial promises, not published notes. The constant stays in the repo as an internal roadmap. */}
       <AnalysesClient posts={posts} planned={[]} />
       </main>
       <Footer />

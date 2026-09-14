@@ -8,6 +8,7 @@ import "@/app/fusion.css";
 import { Navbar, Footer, BlogTimeBars } from "@/components/fusion";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { readLocale } from "@/lib/seo";
+import { alternatesFor } from "@/lib/site-locale";
 import { numLocale } from "@/lib/fmt";
 
 /** Lien interne → Next Link (déclenche les drawer intercepts au root).
@@ -41,15 +42,18 @@ export async function generateMetadata(
   const locale = await readLocale();
   const post = getPostBySlug(slug, locale);
   if (!post) {
-    return { title: locale === "en" ? "Article not found" : "Analyse introuvable" };
+    return { title: locale === "en" ? "Note not found" : "Note introuvable" };
   }
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;
-  const suffix = locale === "en" ? "Analyses" : "Analyses";
+  const suffix = locale === "en" ? "Method notes" : "Notes de méthode";
   return {
     title: `${title} — ${suffix}`,
     description,
-    alternates: { canonical: `/analyses/${slug}` },
+    // The note's own address in the reader's language, with its twin: the bare
+    // /analyses/<slug> only redirects (to /en for the www host), so a French
+    // note declared its English twin as canonical.
+    alternates: alternatesFor(`/analyses/${slug}`, locale),
     openGraph: {
       title,
       description,
@@ -78,7 +82,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;
   const tags = locale === "en" && post.tags_en && post.tags_en.length > 0 ? post.tags_en : post.tags;
-  const backLabel = locale === "en" ? "← All analyses" : "← Toutes les analyses";
+  const backLabel = locale === "en" ? "← All method notes" : "← Toutes les notes de méthode";
 
   return (
     <div className="theme-fusion">

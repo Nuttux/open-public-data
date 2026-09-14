@@ -5,6 +5,7 @@ import "@/app/fusion.css";
 
 import { loadLandingStats } from "@/lib/fusion-data";
 import { getAllPosts, type BlogPostMeta } from "@/lib/blog";
+import { ANALYSES_ON_HOME } from "@/lib/analyses-visibility";
 import { SITE_URL, readLocale } from "@/lib/seo";
 import LandingClient from "./LandingClient";
 
@@ -60,8 +61,8 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
   // readers start on Recife. Temporary, and /pt is left out of the sitemap.
   if ((await params).lang === "pt") redirect("/pt/brasil/recife");
   const stats = loadLandingStats();
-  const all = getAllPosts();
-  const bySlug = new Map(all.map((p) => [p.slug, p]));
+  // The notes are reachable, not advertised on the home page (analyses-visibility.ts).
+  const bySlug = new Map((ANALYSES_ON_HOME ? getAllPosts() : []).map((p) => [p.slug, p]));
   const posts: BlogPostMeta[] = LANDING_FEATURED_SLUGS
     .map((slug) => bySlug.get(slug))
     .filter((p): p is BlogPostMeta => !!p);

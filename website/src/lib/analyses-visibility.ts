@@ -1,16 +1,34 @@
 /**
- * Whether the editorial Analyses are public at all.
+ * Visibility of the editorial section — route /analyses (the address stays,
+ * for inbound links and indexing), shown to readers as « Notes de méthode » /
+ * "Method notes". Two switches, from least to most exposed.
  *
- * Off since 2026-09-13: during client prospecting, forty articles were too many
- * to vouch for one by one, and some could read as a political position. The
- * articles stay in content/blog; nothing is deleted. To bring one back:
+ * History: the whole section went offline on 2026-09-13 (twenty articles were
+ * too many to vouch for one by one during client prospecting). It reopened
+ * with only the notes that explain how to read a public document or how a
+ * figure is built. Nothing is deleted from content/blog.
  *
- *   1. set `published: true` in its frontmatter (after reviewing it);
- *   2. set ANALYSES_PUBLIC to true.
+ * A post is public only when ANALYSES_PUBLIC is true AND its frontmatter
+ * carries `published: true` (lib/blog.ts). An unpublished post answers 404,
+ * never a redirect — so a note must not link to one.
  *
- * A post is public only when both hold (lib/blog.ts). While this is false the
- * whole section disappears: /analyses and every article answer 404, and the
- * nav, footer, landing tail, related-article blocks, contact button, sitemap
- * and llms.txt drop it. No server imports — the nav reads it client-side.
+ * No server imports — the nav reads these client-side.
  */
-export const ANALYSES_PUBLIC = false;
+
+/**
+ * The section exists. When true: /analyses and every `published: true` note
+ * answer 200; the section is listed in the footer (Paris column), the sitemap
+ * and llms.txt; the « À lire » blocks of the Paris pages and the contact page
+ * button may point to published notes.
+ * When false: all of that disappears and every note answers 404.
+ */
+export const ANALYSES_PUBLIC = true;
+
+/**
+ * The section is put forward on the home page. When true: the three-note
+ * teaser at the bottom of the landing, and the link in the top nav (the top
+ * nav is the one the home page carries, so it follows this switch everywhere).
+ * Kept false on purpose: the notes are reachable, not advertised.
+ * Has no effect while ANALYSES_PUBLIC is false.
+ */
+export const ANALYSES_ON_HOME = false;

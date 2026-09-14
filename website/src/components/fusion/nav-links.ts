@@ -1,4 +1,4 @@
-import { ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
+import { ANALYSES_ON_HOME, ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
 
 export type NavLink = {
   href: string;
@@ -44,8 +44,9 @@ export function citySectionLinks(citySlug: string): NavLink[] {
   }));
 }
 
-// Whether a city surfaces the (currently Paris-only) editorial Analyses —
-// never while the section is unpublished (lib/analyses-visibility.ts).
+// Whether a city has the (currently Paris-only) method notes (route /analyses)
+// — never while the section is unpublished (lib/analyses-visibility.ts). The
+// footer lists them on this alone; the top nav also needs ANALYSES_ON_HOME.
 export function cityHasAnalyses(citySlug: string): boolean {
   return ANALYSES_PUBLIC && citySlug === "paris";
 }
@@ -59,7 +60,7 @@ export function villeNavLinks(citySlug: string): NavLink[] {
     { href: citySlug === "paris" ? "/" : `/france/${citySlug}`, labelKey: "fx.nav.link.home" },
     ...citySectionLinks(citySlug),
   ];
-  if (cityHasAnalyses(citySlug)) links.push({ href: "/analyses", labelKey: "fx.nav.link.analyses" });
+  if (ANALYSES_ON_HOME && cityHasAnalyses(citySlug)) links.push({ href: "/analyses", labelKey: "fx.nav.link.analyses" });
   return links;
 }
 

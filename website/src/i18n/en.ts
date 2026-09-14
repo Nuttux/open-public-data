@@ -1116,7 +1116,7 @@ const en: Record<string, string> = {
   'fx.nav.link.invest': 'Investments',
   'fx.nav.link.logement': 'Social housing',
   'fx.nav.link.dette': 'Balance sheet',
-  'fx.nav.link.analyses': 'Analyses',
+  'fx.nav.link.analyses': 'Method notes',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
   'fx.scope.heading': 'Jurisdiction',
@@ -1173,7 +1173,7 @@ const en: Record<string, string> = {
   'fx.foot.link.invest': 'Investments',
   'fx.foot.link.logement': 'Social housing',
   'fx.foot.link.dette': 'Debt & assets',
-  'fx.foot.link.analyses': 'Analyses',
+  'fx.foot.link.analyses': 'Method notes',
   'fx.foot.link.methode': 'Method',
   'fx.foot.link.api': 'API',
   'fx.foot.link.github': 'GitHub ↗',
@@ -1320,10 +1320,10 @@ const en: Record<string, string> = {
   'fx.land.meth_strip.cta': "See sources",
   // Analyses teaser
   'fx.land.analyses.h2.before': "The ",
-  'fx.land.analyses.h2.em': "analyses",
+  'fx.land.analyses.h2.em': "method notes",
   'fx.land.analyses.h2.dot': ".",
-  'fx.land.analyses.sub': "Investigations and comparisons, sourced from the official accounts.",
-  'fx.land.analyses.see_all': "All analyses",
+  'fx.land.analyses.sub': "How to read a public document, and how each figure is built.",
+  'fx.land.analyses.see_all': "All method notes",
   // Method section
   'fx.land.meth.h2.before': '',
   'fx.land.meth.h2.em': 'Auditable',
@@ -2940,7 +2940,7 @@ const en: Record<string, string> = {
   'fx.contact.c3.h': "Journalist enquiries",
   'fx.contact.c3.p': "Citing figures, interviews, editorial collaboration — please specify the outlet and timeline.",
   'fx.contact.note': "Note: no published article is sponsored. Any funding — public, foundations, donors — is published with its amount and does not condition the editorial line.",
-  'fx.contact.btn.analyses': "Read the analyses",
+  'fx.contact.btn.analyses': "Read the method notes",
   'fx.contact.btn.home': "Back to home",
 
   // ── For cities (/pour-les-villes page + landing closing block) ────────────
@@ -3361,7 +3361,7 @@ const en: Record<string, string> = {
   'fx.toc.carte': 'Map',
   'fx.toc.chapitres': 'Chapters',
   'fx.toc.arrondissements': 'Districts',
-  'fx.toc.analyses': 'Analyses',
+  'fx.toc.analyses': 'Method notes',
 
   // ── Inv: ranking list (non-Paris, district fallback) ─────────────────────
   'fx.inv.rank.district': 'district',
@@ -3369,10 +3369,10 @@ const en: Record<string, string> = {
   'fx.inv.rank.project_many': 'projects',
 
   // ── Related analyses (per-page) ─────────────────────────────────────────────
-  'fx.s.analyses.kind': 'Analyses',
+  'fx.s.analyses.kind': 'Method notes',
   'fx.s.analyses.title.before': 'Further ',
   'fx.s.analyses.title.em': 'reading',
-  'fx.s.analyses.sub': 'Articles, investigations and profiles connected to the numbers on this page.',
+  'fx.s.analyses.sub': 'Method notes connected to the numbers on this page.',
   'fx.s.analyses.planned': 'Coming soon',
 
   // ── MarchesFullList ─────────────────────────────────────────────────────────
@@ -3422,9 +3422,9 @@ const en: Record<string, string> = {
   'fx.mfl.empty.desc': 'Try another term or a different category.',
 
   // ── AnalysesClient ──────────────────────────────────────────────────────────
-  'fx.analyses.page_kicker': 'Analyses & features · editorials from Qipu',
+  'fx.analyses.page_kicker': '— Method notes',
   'fx.analyses.page_title': 'The numbers, <em>told</em>.',
-  'fx.analyses.page_lede': 'Analyses, investigations, profiles and explanations — what public data lets us understand, in a format worth reading. No article is sponsored.',
+  'fx.analyses.page_lede': 'How to read a public document, and how each figure on this site is built, from the source to the page. Every note cites its sources and states what the figures do not allow one to conclude.',
   'fx.analyses.cat.all': 'All',
   'fx.analyses.cat.enquetes': 'Investigations',
   'fx.analyses.cat.enquetes.tip': "Articles based on original data cross-referencing, OSINT or interviews. Surface information that official sources do not publish as such.",
@@ -3441,7 +3441,7 @@ const en: Record<string, string> = {
   'fx.analyses.hero.une': 'Featured',
   'fx.analyses.hero.by': 'By',
   'fx.analyses.hero.published': 'Published',
-  'fx.analyses.hero.cta': 'Read the article →',
+  'fx.analyses.hero.cta': 'Read the note →',
   'fx.analyses.recent.kind': 'Recent',
   'fx.analyses.recent.title_all': 'Recent articles',
   'fx.analyses.recent.title_cat': 'Recent · {cat}',
