@@ -45,8 +45,13 @@ INDEX_FILE = WEBSITE_DATA / "communes-all" / "index.json"
 OUT_ROOT = WEBSITE_DATA / "communes-budget"
 
 SOURCE_LABEL = "Balances comptables DGFiP (axe nature)"
-SOURCE_URL = "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/"
+def source_url(year: int) -> str:
+    """La DGFiP publie un jeu par exercice : l'adresse suit l'année affichée."""
+    return f"https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-{year}/"
 SOURCE_PIPELINE = "sync_dgfip_balances_national.py → dbt national (mart_sankey_national) → export_budget_national.py"
+
+
+BATCH_SIZE = 1500  # communes par requête : ~0,5 Go en mémoire au plus
 
 
 def load_slug_index() -> dict[str, dict]:
@@ -79,6 +84,9 @@ def fetch_lines(client: bigquery.Client, insees: list[str] | None) -> dict[str, 
                sens_flux, sankey_group_fr, category_fr, montant
         FROM `{MART_TABLE}`
         {where}
+        -- Ordre total : les sommes de décimaux se font toujours dans le même
+        -- ordre, donc au centime près le même résultat d'un passage à l'autre.
+        ORDER BY code_insee, annee, sens_flux, sankey_group_fr, category_fr, section, montant
     """
     job = client.query(
         sql, job_config=bigquery.QueryJobConfig(query_parameters=params)
@@ -102,6 +110,7 @@ def fetch_comptes(client: bigquery.Client, insees: list[str] | None) -> dict[str
                libelle_fr, libelle_en, montant
         FROM `{COMPTES_TABLE}`
         {where}
+        ORDER BY code_insee, annee, sens_flux, sankey_group_fr, compte, montant
     """
     job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
     by_insee: dict[str, list[dict]] = defaultdict(list)
@@ -127,7 +136,8 @@ def build_comptes(comptes: list[dict], year: int, rev_disp, exp_disp) -> dict:
         })
     for side in out:
         for disp, items in out[side].items():
-            items.sort(key=lambda x: (x["compte"] == "autres", -x["value"]))
+            # Montants égaux : départagés par numéro de compte, pas par l'ordre d'arrivée.
+            items.sort(key=lambda x: (x["compte"] == "autres", -x["value"], x["compte"]))
     return {side: dict(groups) for side, groups in out.items()}
 
 
@@ -176,35 +186,42 @@ def build_sankey(records: list[dict], year: int, central: str, comptes: list[dic
     nodes.append({"name": central, "category": "central"})
     nodes += [{"name": exp_disp(n), "category": "expense"} for n in sorted(exp_names)]
 
+    # Même ordre que les nœuds (par nom) : l'ordre d'arrivée des lignes changeait
+    # d'un passage à l'autre et, avec lui, l'ordre des flux du sankey.
     links = []
-    for n, v in revenue_by_cat.items():
+    for n in sorted(revenue_by_cat):
+        v = revenue_by_cat[n]
         if v > 0:
             links.append({"source": rev_disp(n), "target": central, "value": v})
-    for n, v in expense_by_cat.items():
+    for n in sorted(expense_by_cat):
+        v = expense_by_cat[n]
         if v > 0:
             links.append({"source": central, "target": exp_disp(n), "value": v})
 
     drilldown = {"revenue": {}, "expenses": {}}
-    for cat, items in revenue_drill.items():
+    for cat in sorted(revenue_drill):
+        items = revenue_drill[cat]
         drilldown["revenue"][rev_disp(cat)] = sorted(
             [{"name": n, "value": v} for n, v in items.items() if v > 0],
-            key=lambda x: -x["value"],
+            key=lambda x: (-x["value"], x["name"]),
         )[:50]
-    for cat, items in expense_drill.items():
+    for cat in sorted(expense_drill):
+        items = expense_drill[cat]
         drilldown["expenses"][exp_disp(cat)] = sorted(
             [{"name": n, "value": v} for n, v in items.items() if v > 0],
-            key=lambda x: -x["value"],
+            key=lambda x: (-x["value"], x["name"]),
         )[:50]
 
     by_section = {}
-    for cat, sections in expense_section.items():
+    for cat in sorted(expense_section):
+        sections = expense_section[cat]
         if expense_by_cat.get(cat, 0) <= 0:
             continue
         disp = exp_disp(cat)
         by_section[disp] = {}
         for sec_name, sec_data in sections.items():
             if sec_data["total"] > 0:
-                items_sorted = sorted(sec_data["items"].items(), key=lambda x: -x[1])[:20]
+                items_sorted = sorted(sec_data["items"].items(), key=lambda x: (-x[1], x[0]))[:20]
                 by_section[disp][sec_name] = {
                     "total": sec_data["total"],
                     "items": [{"name": n, "value": v} for n, v in items_sorted],
@@ -218,7 +235,7 @@ def build_sankey(records: list[dict], year: int, central: str, comptes: list[dic
         "dataStatus": "COMPLET",
         "axis": "nature",
         "source": SOURCE_LABEL,
-        "source_url": SOURCE_URL,
+        "source_url": source_url(year),
         "totals": {
             "recettes": total_recettes,
             "depenses": total_depenses,
@@ -272,7 +289,7 @@ def export_commune(insee: str, meta: dict, records: list[dict], comptes: list[di
         "generated_at": now,
         "source_pipeline": SOURCE_PIPELINE,
         "source": SOURCE_LABEL,
-        "source_url": SOURCE_URL,
+        "source_url": source_url(summaries[0]["year"]),
         "axis": "nature",
         "commune": {"insee": insee, "slug": slug, "nom": nom},
         "availableYears": [s["year"] for s in summaries],
@@ -316,26 +333,42 @@ def main() -> int:
         print(f"→ Exporting {len(target_insees)} commune(s): {target_insees}")
 
     client = get_client()
-    by_insee = fetch_lines(client, target_insees)
-    print(f"  mart returned lines for {len(by_insee)} commune(s)")
-    comptes_by_insee = fetch_comptes(client, target_insees)
-    print(f"  comptes detail for {len(comptes_by_insee)} commune(s)")
+
+    # Par lots de communes (2026-09-14) : tout charger d'un coup montait à 12 Go
+    # de mémoire à mi-parcours (15 M de lignes en dictionnaires), plus que les
+    # 7 Go d'un runner GitHub. Un lot ne garde en mémoire que ses communes ; les
+    # deux marts sont regroupés par code_insee, donc chaque requête ne lit que
+    # les blocs de son lot.
+    if target_insees is None:
+        wanted = sorted(slug_index)
+    else:
+        wanted = sorted(set(target_insees))
+    if args.limit:
+        wanted = wanted[: args.limit]
+        print(f"  ⚠️  --limit {args.limit}: capping export at {len(wanted)} communes (rest deferred, NOT dropped from pipeline)")
 
     exported = []
-    all_insees = list(by_insee.keys())
-    if args.limit:
-        all_insees = all_insees[: args.limit]
-        print(f"  ⚠️  --limit {args.limit}: capping export at {len(all_insees)} communes (rest deferred, NOT dropped from pipeline)")
-    for insee in all_insees:
-        meta = slug_index.get(insee)
-        if not meta:
-            print(f"  ⚠️  insee {insee} not in all-communes index — cannot map to slug, skipping")
-            continue
-        res = export_commune(insee, meta, by_insee[insee], comptes_by_insee.get(insee))
-        if res:
-            exported.append(res)
-            if not args.all:
-                print(f"  ✓ {res['slug']} ({insee}) — years {res['years']}")
+    n_lines = n_comptes = 0
+    for start in range(0, len(wanted), BATCH_SIZE):
+        batch = wanted[start:start + BATCH_SIZE]
+        by_insee = fetch_lines(client, batch)
+        comptes_by_insee = fetch_comptes(client, batch)
+        n_lines += len(by_insee)
+        n_comptes += len(comptes_by_insee)
+        for insee in sorted(by_insee):
+            meta = slug_index.get(insee)
+            if not meta:
+                print(f"  ⚠️  insee {insee} not in all-communes index — cannot map to slug, skipping")
+                continue
+            res = export_commune(insee, meta, by_insee[insee], comptes_by_insee.get(insee))
+            if res:
+                exported.append(res)
+                if not args.all:
+                    print(f"  ✓ {res['slug']} ({insee}) — years {res['years']}")
+        del by_insee, comptes_by_insee
+        print(f"  lot {start // BATCH_SIZE + 1} : {min(start + BATCH_SIZE, len(wanted)):,}/{len(wanted):,} communes demandées, {len(exported):,} exportées")
+    print(f"  mart returned lines for {n_lines} commune(s), comptes detail for {n_comptes}")
+    exported.sort(key=lambda e: e["slug"])
 
     # Manifest (small) — the ONLY artifact committed to the repo. Lets
     # getCommuneCapabilities resolve capability locally/instantly without 34k

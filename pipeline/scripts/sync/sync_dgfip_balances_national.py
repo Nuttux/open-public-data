@@ -10,32 +10,43 @@ Strategy (national-first, NOT gated by any commune seed):
     Download the FULL year via the /exports/csv streaming endpoint, filtered
     SERVER-SIDE to the *budget principal* of *communes* only
     (`cbudg="1" AND categ="Commune"`), keeping only the 9 columns the budget
-    models need. ~6.1M rows/year → ~250 MB CSV. Then `bq load` into BigQuery.
+    models need. ~6.1M rows/year → ~250 MB CSV. Both M14 and M57 kept.
 
-    We do NOT gate by seed_communes_cibles: the national tier must reach every
-    commune. `cbudg="1"` isolates the main budget (annexes = eau, assainissement,
-    CCAS, arrondissements… are cbudg="3"). Both M14 and M57 nomenclatures kept.
+Mise à jour automatique (2026-09-14) :
+    Par défaut, le script lit dans le catalogue les années publiées, compare
+    pour chacune le nombre de lignes annoncé par le serveur à celui de la table,
+    et ne recharge que les années absentes ou différentes, une par une, par
+    _national_raw.replace_year (table temporaire, compte exact, garde de volume,
+    transaction). Avant, il remplaçait la table sur sa première année et figeait
+    [2024, 2023] : relancé tel quel, il effaçait 2019-2022, et les balances 2025
+    publiées par la DGFiP n'ont jamais été chargées.
+
+    L'export CSV s'arrête parfois en route sans erreur (2023 : 2,6 M lignes pour
+    6,1 M annoncées, le 2026-09-09) : chaque année est retéléchargée jusqu'à
+    MAX_ATTEMPTS fois tant que le compte n'est pas exact.
 
 Usage:
-    python scripts/sync/sync_dgfip_balances_national.py            # 2 latest years
-    python scripts/sync/sync_dgfip_balances_national.py --years 2024 2023 2022
-    python scripts/sync/sync_dgfip_balances_national.py --dry-run  # download only
+    python scripts/sync/sync_dgfip_balances_national.py               # années manquantes ou changées
+    python scripts/sync/sync_dgfip_balances_national.py --dry-run     # dit ce qui serait chargé, ne télécharge rien
+    python scripts/sync/sync_dgfip_balances_national.py --years 2023  # recharge ces années (gardes actives)
 
 Output:
     BigQuery table open-data-france-484717.raw_national.dgfip_balances
 """
 
 import argparse
-import subprocess
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urlencode
 
 import requests
 
-PROJECT_ID = "open-data-france-484717"
-DATASET_ID = "raw_national"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _national_raw as NR  # noqa: E402
+
 TABLE = "dgfip_balances"
+YEAR_COL = "exer"
 
 DGFIP_EXPORT = (
     "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/"
@@ -59,7 +70,12 @@ BQ_SCHEMA = (
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "cache" / "wip" / "national" / "dgfip"
 
-LATEST_YEARS = [2024, 2023]
+CATALOG = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets"
+DATASET_RE = re.compile(r"balances-comptables-des-communes-en-(\d{4})")
+# Première année du socle national : sert quand la table n'existe pas encore.
+FIRST_YEAR = 2019
+MAX_ATTEMPTS = 5
+LOAD_ARGS = ("--source_format=CSV", "--skip_leading_rows=1", "--field_delimiter=;")
 
 
 def expected_count(year: int) -> int:
@@ -94,69 +110,55 @@ def download_year(year: int) -> tuple[Path, int]:
     return out, data_rows
 
 
-def bq_load(csv_path: Path, replace: bool) -> None:
-    mode = "--replace" if replace else "--noreplace"
-    cmd = [
-        "bq", "load", mode,
-        "--source_format=CSV",
-        "--skip_leading_rows=1",
-        "--field_delimiter=;",
-        f"--project_id={PROJECT_ID}",
-        f"{DATASET_ID}.{TABLE}",
-        str(csv_path),
-        BQ_SCHEMA,
-    ]
-    print(f"  bq load ({'replace' if replace else 'append'}) {csv_path.name} …")
-    subprocess.run(cmd, check=True)
+def available_years() -> list[int]:
+    """Années publiées : un jeu `balances-comptables-des-communes-en-AAAA` par année."""
+    url = CATALOG + "?" + urlencode({"where": 'search("balances-comptables-des-communes-en")', "limit": 100, "select": "dataset_id"})
+    r = requests.get(url, timeout=60)
+    r.raise_for_status()
+    return sorted({int(m.group(1)) for x in r.json().get("results", []) if (m := DATASET_RE.fullmatch(x["dataset_id"]))})
 
 
-def ensure_dataset() -> None:
-    subprocess.run(
-        ["bq", "--location=EU", "mk", "-f", "--dataset",
-         f"--description=National raw data (DGFiP, OFGL, DECP, REI)",
-         f"{PROJECT_ID}:{DATASET_ID}"],
-        check=False,
-    )
+def sync_year(year: int, expected: int, force: bool = False) -> None:
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        path, rows = download_year(year)
+        if rows == expected:
+            break
+        print(f"  [{year}] tentative {attempt} : {rows:,} lignes pour {expected:,} annoncées — export tronqué, on recommence")
+    else:
+        raise NR.GuardError(f"✗ [{year}] export toujours incomplet après {MAX_ATTEMPTS} tentatives — table inchangée")
+    NR.replace_year(TABLE, YEAR_COL, year, path, BQ_SCHEMA, expected_rows=expected, load_args=LOAD_ARGS, force=force)
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="DGFiP balances → raw_national (national, ungated)")
-    ap.add_argument("--years", type=int, nargs="+", default=LATEST_YEARS)
-    ap.add_argument("--dry-run", action="store_true", help="Download only, no BQ load")
+    ap = argparse.ArgumentParser(description="DGFiP balances → raw_national, année par année")
+    ap.add_argument("--years", type=int, nargs="+", help="recharger ces années (sinon : années manquantes ou changées)")
+    ap.add_argument("--dry-run", action="store_true", help="dire ce qui serait chargé, sans télécharger ni écrire")
+    ap.add_argument("--force", action="store_true", help="accepter une baisse de volume sur une année")
     args = ap.parse_args()
 
-    print(f"→ DGFiP balances national sync — years {args.years}")
-    print(f"  filter: {WHERE}  (budget principal, communes; ALL communes, ungated)")
+    have = NR.rows_by_year(TABLE, YEAR_COL)
+    published = available_years()
+    floor = min(have) if have else FIRST_YEAR
+    years = args.years or [y for y in published if y >= floor]
+    print(f"→ DGFiP balances → {NR.DATASET_ID}.{TABLE} — publiées {published[0] if published else '?'}–{published[-1] if published else '?'}, en table {sorted(have)}")
 
-    if not args.dry_run:
-        ensure_dataset()
-
-    total = 0
-    for i, year in enumerate(args.years):
-        try:
-            exp = expected_count(year)
-            print(f"  [{year}] server total_count (filtered): {exp:,}")
-        except Exception as e:
-            print(f"  [{year}] WARN could not fetch total_count: {e}")
-            exp = None
-
-        path, rows = download_year(year)
-        if exp is not None and abs(rows - exp) > max(1000, exp * 0.01):
-            print(
-                f"  [{year}] ⚠️  DOWNLOAD MISMATCH: got ~{rows:,} rows vs "
-                f"expected {exp:,} — possible truncation. NOT silently ignoring."
-            )
-        total += rows
-
-        if not args.dry_run:
-            bq_load(path, replace=(i == 0))
-
-    print(f"\n✓ Done. ~{total:,} rows across {len(args.years)} years.")
+    todo = []
+    for year in years:
+        exp = expected_count(year)
+        cur = have.get(year, 0)
+        state = "à jour" if cur == exp else ("absente" if not cur else f"différente ({cur:,} en table)")
+        print(f"  [{year}] serveur {exp:,} lignes — {state}")
+        if args.years or cur != exp:
+            todo.append((year, exp))
+    if not todo:
+        print("  = toutes les années publiées sont à jour — rien à faire")
+        return 0
     if args.dry_run:
-        print("  (dry-run — nothing loaded to BigQuery)")
-    else:
-        print(f"  → {PROJECT_ID}.{DATASET_ID}.{TABLE}")
-        print("  Next: dbt run --select tag:national  (budget models)")
+        print(f"  (dry-run) à charger : {[y for y, _ in todo]}")
+        return 0
+    for year, exp in todo:
+        sync_year(year, exp, force=args.force)
+    print(f"✓ {NR.DATASET_ID}.{TABLE} : {len(todo)} année(s) rechargée(s)")
     return 0
 
 

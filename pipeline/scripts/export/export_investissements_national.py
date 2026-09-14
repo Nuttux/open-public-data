@@ -32,7 +32,9 @@ OUT_ROOT = WEBSITE_DATA / "communes-investissements"
 MANIFEST_FILE = PIPELINE_ROOT.parent / "website" / "src" / "data" / "communes-investissements-manifest.json"
 
 SOURCE_LABEL = "Balances comptables DGFiP — section investissement (axe nature)"
-SOURCE_URL = "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/"
+def source_url(year: int) -> str:
+    """La DGFiP publie un jeu par exercice : l'adresse suit l'année affichée."""
+    return f"https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-{year}/"
 SOURCE_PIPELINE = "dbt national (mart_investissements_national) → export_investissements_national.py"
 BUCKET_BASE = "https://storage.googleapis.com/qipu-communes-budget/communes-investissements"
 
@@ -50,7 +52,8 @@ def fetch(client, insees):
     params = [bigquery.ArrayQueryParameter("insees", "STRING", insees)] if insees else []
     sql = f"""SELECT code_insee, commune_nom, population, annee, sens_flux,
                      sankey_group_fr, montant
-              FROM `{MART}` {where}"""
+              FROM `{MART}` {where}
+              ORDER BY code_insee, annee, sens_flux, sankey_group_fr, montant"""
     job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
     by_insee = defaultdict(list)
     for r in job.result():
@@ -62,7 +65,10 @@ def build(insee, meta, rows, now):
     if not rows:
         return None
     latest = max(int(r["annee"]) for r in rows)
-    pop = next((r["population"] for r in rows if r["population"]), 0) or 0
+    # La population de l'année affichée : prendre la première ligne venue
+    # donnait selon l'ordre de BigQuery celle d'une autre année (Cherves :
+    # 185 ou 178 €/hab pour la même dépense).
+    pop = next((r["population"] for r in sorted(rows, key=lambda r: -int(r["annee"])) if r["population"]), 0) or 0
     dep = defaultdict(float)
     rec = defaultdict(float)
     by_year = defaultdict(lambda: {"depenses": 0.0, "recettes": 0.0})
@@ -81,7 +87,7 @@ def build(insee, meta, rows, now):
     tot_dep = sum(dep.values())
     tot_rec = sum(rec.values())
     return {
-        "generated_at": now, "source": SOURCE_LABEL, "source_url": SOURCE_URL,
+        "generated_at": now, "source": SOURCE_LABEL, "source_url": source_url(latest),
         "source_pipeline": SOURCE_PIPELINE,
         "commune": {"insee": insee, "slug": meta["slug"], "nom": meta["nom"]},
         "year": latest,
@@ -90,10 +96,10 @@ def build(insee, meta, rows, now):
             "depenses_eur_hab": round(tot_dep / pop) if pop else None,
         },
         "depenses_par_groupe": sorted(
-            ({"groupe": k, "montant": v} for k, v in dep.items()), key=lambda x: -x["montant"]
+            ({"groupe": k, "montant": v} for k, v in dep.items()), key=lambda x: (-x["montant"], x["groupe"])
         ),
         "financement_par_groupe": sorted(
-            ({"groupe": k, "montant": v} for k, v in rec.items()), key=lambda x: -x["montant"]
+            ({"groupe": k, "montant": v} for k, v in rec.items()), key=lambda x: (-x["montant"], x["groupe"])
         ),
         "by_year": [{"year": y, **v} for y, v in sorted(by_year.items())],
     }

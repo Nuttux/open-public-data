@@ -10,6 +10,10 @@
 #             DECP nouvelle ? → dbt (marchés) + tests → export --all →
 #             contrôle du manifeste → envoi au bucket privé (lu par le site).
 #             DECP inchangée → rien d'autre ne tourne.
+#           puis pipeline/run_national.sh --cadence=annual (2026-09-14)
+#             DGFiP, OFGL, REI, Fonds vert, RNE, SIRENE : chaque chargeur ne
+#             charge que ce qui manque ou a changé ; rien de neuf → arrêt.
+#             Sinon dbt en aval des tables écrites, exports, contrôles, envoi.
 #   publish : le manifeste (website/src/data/communes-marches-manifest.json)
 #             passe par une branche data/, le gate du site (ci.yml), puis un
 #             fast-forward de main → Vercel. Main a bougé → PR.
@@ -27,7 +31,11 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Reconstruire même si la DECP n'a pas changé"
+        description: "Reconstruire les marchés même si la DECP n'a pas changé"
+        type: boolean
+        default: false
+      force_annual:
+        description: "Reconstruire et exporter toutes les sources annuelles même sans nouveauté"
         type: boolean
         default: false
       upload:
@@ -48,7 +56,9 @@ jobs:
   refresh:
     name: DECP → dbt → export → bucket
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # La cadence annuelle reconstruit et exporte les 35 000 communes quand une
+    # source a bougé (une à trois fois par an) : bien plus long que la DECP.
+    timeout-minutes: 240
     outputs:
       changed: ${{ steps.detect.outputs.changed }}
       branch: ${{ steps.push.outputs.branch }}
@@ -104,10 +114,20 @@ jobs:
           if [[ "${{ inputs.upload }}" == "false" ]]; then FLAGS="$FLAGS --no-upload"; fi
           bash pipeline/run_national.sh $FLAGS
 
+      - name: run_national.sh --cadence=annual
+        env:
+          PYTHON: python
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: |
+          FLAGS="--cadence=annual --target=prod"
+          if [[ "${{ inputs.force_annual }}" == "true" ]]; then FLAGS="$FLAGS --force"; fi
+          if [[ "${{ inputs.upload }}" == "false" ]]; then FLAGS="$FLAGS --no-upload"; fi
+          bash pipeline/run_national.sh $FLAGS
+
       - name: Detect manifest change
         id: detect
         run: |
-          git add website/src/data/communes-marches-manifest.json
+          git add website/src/data/communes-*.json
           if git diff --cached --quiet || [[ "${{ inputs.upload }}" == "false" ]]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Manifeste inchangé (ou envoi désactivé) : rien à publier."
@@ -124,7 +144,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           BRANCH="data/national-$(date -u +%Y%m%d)-${{ github.run_id }}"
           git checkout -b "$BRANCH"
-          git commit -m "data(communes): marchés publics DECP du $(date -u +%Y-%m-%d)" -m "Refresh national automatique : nouvelle DECP consolidée chargée, modèles et tests dbt passés, export envoyé au bucket, manifeste contrôlé face à la version précédente."
+          git commit -m "data(communes): refresh national du $(date -u +%Y-%m-%d)" -m "Refresh national automatique : sources nouvelles chargées (DECP et sources annuelles), modèles et tests dbt passés, exports envoyés au bucket, manifestes contrôlés face à la version précédente." -m "$(git diff --cached --stat)"
           git push origin "$BRANCH"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 

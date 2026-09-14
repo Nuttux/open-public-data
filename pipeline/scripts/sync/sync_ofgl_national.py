@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 National ingest — OFGL consolidated aggregates → raw_national.ofgl_communes (BigQuery).
-
 Source: data.ofgl.fr, ODS Explore v2.1, `ofgl-base-communes-consolidee` (LONG:
         one row per commune × year × agregat).
 
@@ -11,26 +10,37 @@ Serves TWO jobs at once (national-first, ungated, ALL ~35k communes):
   2. Reconciliation top-lines — `montant_bp` is the *budget principal* figure, which
      reconciles directly against the DGFiP balances filtered to cbudg="1".
 
+Mise à jour automatique (2026-09-14) :
+    Tous les agrégats sont chargés par défaut : c'est ce que contient la table
+    depuis le 2026-09-09 (sync --all-agregats), et une année chargée avec la
+    liste courte y aurait côtoyé des années complètes. Par défaut, le script
+    compare année par année le nombre de lignes publié à celui de la table et
+    ne recharge que les années absentes ou différentes, par
+    _national_raw.replace_year. Constat du jour : 2024 était tronqué en table
+    (1 123 501 lignes pour 1 698 387 publiées) et 2025 absent.
+
 Usage:
-    python scripts/sync/sync_ofgl_national.py                 # 2 latest years
-    python scripts/sync/sync_ofgl_national.py --years 2024 2023 2022
-    python scripts/sync/sync_ofgl_national.py --dry-run
+    python scripts/sync/sync_ofgl_national.py                 # années manquantes ou changées
+    python scripts/sync/sync_ofgl_national.py --dry-run       # dit ce qui serait chargé
+    python scripts/sync/sync_ofgl_national.py --years 2024    # recharge ces années
+    python scripts/sync/sync_ofgl_national.py --liste-agregats --years 2024   # liste courte (diagnostic)
 
 Output:
     BigQuery table open-data-france-484717.raw_national.ofgl_communes
 """
 
 import argparse
-import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import urlencode
 
 import requests
 
-PROJECT_ID = "open-data-france-484717"
-DATASET_ID = "raw_national"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _national_raw as NR  # noqa: E402
+
 TABLE = "ofgl_communes"
+YEAR_COL = "exer"
 
 OFGL_EXPORT = (
     "https://data.ofgl.fr/api/explore/v2.1/catalog/datasets/"
@@ -72,10 +82,12 @@ BQ_SCHEMA = (
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "cache" / "wip" / "national" / "ofgl"
 
-LATEST_YEARS = [2024, 2023]
+FIRST_YEAR = 2018
+MAX_ATTEMPTS = 5
+LOAD_ARGS = ("--source_format=CSV", "--skip_leading_rows=1", "--field_delimiter=;")
 
 
-ALL_AGREGATS = False  # --all-agregats : les 53 agrégats OFGL (DGF, subventions versées, fiscalité reversée…)
+ALL_AGREGATS = True  # --liste-agregats pour la liste courte AGREGATS ; défaut = tout, comme la table : les 53 agrégats OFGL (DGF, subventions versées, fiscalité reversée…)
 
 
 def _agregat_filter() -> str:
@@ -114,62 +126,62 @@ def download_year(year: int) -> tuple[Path, int]:
     return out, data_rows
 
 
-def bq_load(csv_path: Path, replace: bool) -> None:
-    mode = "--replace" if replace else "--noreplace"
-    cmd = [
-        "bq", "load", mode,
-        "--source_format=CSV",
-        "--skip_leading_rows=1",
-        "--field_delimiter=;",
-        f"--project_id={PROJECT_ID}",
-        f"{DATASET_ID}.{TABLE}",
-        str(csv_path),
-        BQ_SCHEMA,
-    ]
-    print(f"  bq load ({'replace' if replace else 'append'}) {csv_path.name} …")
-    subprocess.run(cmd, check=True)
+def published_counts() -> dict[int, int]:
+    """Lignes publiées par année, avec le filtre même du chargement."""
+    where = f'categ="Commune" AND {_agregat_filter()}'
+    # L'API ignore l'alias d'un group_by sur une expression (« year(exer) as y »
+    # rend y = None) : on regroupe sur la date d'exercice elle-même.
+    url = OFGL_RECORDS + "?" + urlencode({"select": "exer, count(*) as n", "where": where, "group_by": "exer", "limit": 100})
+    r = requests.get(url, timeout=120)
+    r.raise_for_status()
+    return {int(str(x["exer"])[:4]): int(x["n"]) for x in r.json().get("results", []) if x.get("exer")}
 
 
-def ensure_dataset() -> None:
-    subprocess.run(
-        ["bq", "--location=EU", "mk", "-f", "--dataset",
-         "--description=National raw data (DGFiP, OFGL, DECP, REI)",
-         f"{PROJECT_ID}:{DATASET_ID}"],
-        check=False,
-    )
+def sync_year(year: int, expected: int, force: bool = False) -> None:
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        path, rows = download_year(year)
+        if rows == expected:
+            break
+        print(f"  [{year}] tentative {attempt} : {rows:,} lignes pour {expected:,} annoncées — export tronqué, on recommence")
+    else:
+        raise NR.GuardError(f"✗ [{year}] export toujours incomplet après {MAX_ATTEMPTS} tentatives — table inchangée")
+    NR.replace_year(TABLE, YEAR_COL, year, path, BQ_SCHEMA, expected_rows=expected, load_args=LOAD_ARGS, force=force)
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="OFGL consolidee → raw_national (dim + reconcile)")
-    ap.add_argument("--years", type=int, nargs="+", default=LATEST_YEARS)
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--all-agregats", action="store_true", help="tous les agrégats OFGL, pas seulement la liste AGREGATS")
+    ap = argparse.ArgumentParser(description="OFGL consolidée → raw_national, année par année")
+    ap.add_argument("--years", type=int, nargs="+", help="recharger ces années (sinon : années manquantes ou changées)")
+    ap.add_argument("--dry-run", action="store_true", help="dire ce qui serait chargé, sans télécharger ni écrire")
+    ap.add_argument("--force", action="store_true", help="accepter une baisse de volume sur une année")
+    ap.add_argument("--liste-agregats", action="store_true", help="seulement la liste courte AGREGATS (diagnostic, pas pour la table de prod)")
+    ap.add_argument("--all-agregats", action="store_true", help=argparse.SUPPRESS)  # ancien drapeau, désormais le défaut
     args = ap.parse_args()
     global ALL_AGREGATS
-    ALL_AGREGATS = args.all_agregats
+    ALL_AGREGATS = not args.liste_agregats
 
-    print(f"→ OFGL national sync — years {args.years}, {'ALL' if ALL_AGREGATS else len(AGREGATS)} aggregates")
-    if not args.dry_run:
-        ensure_dataset()
+    have = NR.rows_by_year(TABLE, YEAR_COL)
+    published = published_counts()
+    floor = min(have) if have else FIRST_YEAR
+    years = args.years or sorted(y for y in published if y >= floor)
+    print(f"→ OFGL consolidée → {NR.DATASET_ID}.{TABLE} — {'tous agrégats' if ALL_AGREGATS else 'liste courte'}, publiées {sorted(published)}, en table {sorted(have)}")
 
-    total = 0
-    for i, year in enumerate(args.years):
-        try:
-            exp = expected_count(year)
-            print(f"  [{year}] expected rows: {exp:,}")
-        except Exception as e:
-            print(f"  [{year}] WARN total_count: {e}")
-            exp = None
-        path, rows = download_year(year)
-        if exp is not None and abs(rows - exp) > max(500, exp * 0.01):
-            print(f"  [{year}] ⚠️  MISMATCH got ~{rows:,} vs expected {exp:,}")
-        total += rows
-        if not args.dry_run:
-            bq_load(path, replace=(i == 0))
-
-    print(f"\n✓ Done. ~{total:,} rows.")
-    if not args.dry_run:
-        print(f"  → {PROJECT_ID}.{DATASET_ID}.{TABLE}")
+    todo = []
+    for year in years:
+        exp = published.get(year, 0)
+        cur = have.get(year, 0)
+        state = "à jour" if cur == exp else ("absente" if not cur else f"différente ({cur:,} en table)")
+        print(f"  [{year}] publié {exp:,} lignes — {state}")
+        if exp and (args.years or cur != exp):
+            todo.append((year, exp))
+    if not todo:
+        print("  = toutes les années publiées sont à jour — rien à faire")
+        return 0
+    if args.dry_run:
+        print(f"  (dry-run) à charger : {[y for y, _ in todo]}")
+        return 0
+    for year, exp in todo:
+        sync_year(year, exp, force=args.force)
+    print(f"✓ {NR.DATASET_ID}.{TABLE} : {len(todo)} année(s) rechargée(s)")
     return 0
 
 
