@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-09-03T00:49:25Z",
+ "generated_at": "2026-09-14T01:02:22Z",
  "generated_by": "blocks/measure_accuracy.py",
- "n": 3043,
- "exact": 88.5,
- "within_one_block_face": 91.3,
- "within_250m": 95.3,
- "over_600m": 3.5,
+ "n": 3181,
+ "exact": 88.9,
+ "within_one_block_face": 91.6,
+ "within_250m": 95.5,
+ "over_600m": 3.3,
  "by_tier": {
   "addr": {
-   "n": 2735,
-   "exact": 92.5,
-   "within_one_block_face": 93.6
+   "n": 2869,
+   "exact": 92.8,
+   "within_one_block_face": 93.8
   },
   "corner": {
-   "n": 288,
-   "exact": 51.4,
-   "within_one_block_face": 71.5
+   "n": 291,
+   "exact": 51.9,
+   "within_one_block_face": 71.8
   },
   "segment": {
-   "n": 20,
-   "exact": 70.0,
-   "within_one_block_face": 70.0
+   "n": 21,
+   "exact": 71.4,
+   "within_one_block_face": 71.4
   }
  },
  "face_m": 120.0,
  "near_m": 250.0,
  "far_m": 600.0,
- "key_items": 4704,
+ "key_items": 4858,
  "index": {
   "precision_counts": {
-   "stated": 4534,
-   "addr": 18066,
-   "segment": 7119,
-   "corner": 24210,
-   "street": 40498
+   "stated": 4688,
+   "addr": 18164,
+   "segment": 7128,
+   "corner": 24224,
+   "street": 40560
   },
-  "n_decisions_placed": 94427,
+  "n_decisions_placed": 94764,
   "n_blocks": 5404,
-  "sha256": "466fe4a2980fadc6"
+  "sha256": "c3daff88136c0cfb"
  },
  "control_journal_wording_only": {
   "key_items": 3529,
