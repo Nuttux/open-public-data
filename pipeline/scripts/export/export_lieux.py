@@ -13,6 +13,14 @@ extraits vérifiés du BMO (Gallica, dates OAIRecord), subventions de l'exploita
 lignes d'investissement des annexes CA. Contrat d'export habituel :
 generated_at, source_pipeline, sources par bloc — zéro chiffre sans source_url.
 
+Publie aussi website/public/data/subventions/delibs_par_beneficiaire.json, lu
+par la fiche association : les délibérations rangées par bénéficiaire, que
+link_delibs_par_annee.py --all écrit dans pipeline/cache/lieux/ en même temps
+que les {slug}_delibs_annee.json des fiches lieux. Cache absent ou vide : le
+fichier publié reste tel quel.
+
+Ordre : link_delibs_par_annee.py --all → export_lieux.py → stamp_licenses.py.
+
 Usage : python pipeline/scripts/export/export_lieux.py
 """
 from __future__ import annotations
@@ -31,6 +39,7 @@ ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
 OUT = ROOT / "website" / "public" / "data" / "lieux"
+SUBV_OUT = ROOT / "website" / "public" / "data" / "subventions"
 IMG = ROOT / "website" / "public" / "img" / "lieux"
 
 KIND_EN = {
@@ -564,6 +573,38 @@ def garde_fou_resolus() -> int:
     return 1
 
 
+def publie_delibs_par_beneficiaire() -> None:
+    """Publie pour la fiche association les délibérations rangées par
+    bénéficiaire. Le rattachement est fait par link_delibs_par_annee.py --all,
+    sur le même corpus et avec les mêmes bénéficiaires ({slug}_money_resolved)
+    que les délibérations par année des fiches lieux ; l'export ne fait que
+    publier. Même contenu, même mise en page que le fichier du cache : tant que
+    le cache ne bouge pas, le fichier publié ne bouge pas d'un octet.
+
+    Cache absent, illisible ou sans bénéficiaire : on le dit et on laisse le
+    fichier publié en place, comme les autres entrées manquantes de cet export.
+    Un export lancé sans corpus ne doit pas vider la section de la fiche."""
+    src = CACHE / "delibs_par_beneficiaire.json"
+    dest = SUBV_OUT / "delibs_par_beneficiaire.json"
+    garde = f"{dest.relative_to(ROOT)} laissé tel quel"
+    if not src.exists():
+        print(f"⚠ {src.relative_to(ROOT)} absent (link_delibs_par_annee.py --all) — {garde}")
+        return
+    try:
+        data = json.load(open(src))
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"⚠ {src.relative_to(ROOT)} illisible ({e}) — {garde}")
+        return
+    benes = data.get("beneficiaires") if isinstance(data, dict) else None
+    if not isinstance(benes, dict) or not benes:
+        print(f"⚠ {src.relative_to(ROOT)} sans bénéficiaire — {garde}")
+        return
+    SUBV_OUT.mkdir(parents=True, exist_ok=True)
+    dest.write_text(json.dumps(data, ensure_ascii=False, indent=1))
+    n_de = sum(len(v) for b in benes.values() for v in b.values())
+    print(f"→ {dest.relative_to(ROOT)} — {len(benes)} bénéficiaires, {n_de} délibérations")
+
+
 def main() -> int:
     if garde_fou_resolus():
         return 1
@@ -867,6 +908,7 @@ def main() -> int:
         ensure_ascii=False, indent=1))
     print(f"→ {OUT.relative_to(ROOT)} — {len(index)} lieux · "
           f"index inverse : {len(rev_benef)} bénéficiaires, {len(rev_projet)} projets")
+    publie_delibs_par_beneficiaire()
     return 0
 
 
