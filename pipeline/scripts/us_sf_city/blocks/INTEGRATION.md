@@ -172,12 +172,14 @@ Take `d[]` in order. The first 8–12 are what a panel should show.
 
 Report these; do not round them away.
 
-- **Join accuracy, against the source itself.** **3,043** block-precision placements land on
+- **Join accuracy, against the source itself.** **3,181** block-precision placements land on
   items where the record *also* names its own assessor block. Those are independent
-  ground truth. **88.5% land on exactly the stated block; 91.3% within 120 m (the
-  adjacent block face); 95.3% within 250 m; 3.5% further than 600 m.** By tier:
-  `addr` **92.5% exact** (n=2,735), `segment` **70.0%** (n=20), `corner` 51.4% exact / 71.5%
-  within one block face (n=288) — a corner is a four-block object and behaves like one.
+  ground truth. **88.9% land on exactly the stated block; 91.6% within 120 m (the
+  adjacent block face); 95.5% within 250 m; 3.3% further than 600 m.** By tier:
+  `addr` **92.8% exact** (n=2,869), `segment` **71.4%** (n=21), `corner` 51.9% exact / 71.8%
+  within one block face (n=291) — a corner is a four-block object and behaves like one.
+  Re-taken 2026-09-14 on the index rebuilt with the 2026 Legistar records (94,764 placed
+  decisions); the previous take, on 94,427, read 3,043 / 88.5 / 91.3 / 95.3 / 3.5.
   That is the accuracy of the index in each
   state, not a like-for-like test of one change; the controlled A/B is in
   `merge/BLOCK-MERGE.md` §2.
