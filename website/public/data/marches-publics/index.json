@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T23:23:47.224250",
+  "generated_at": "2026-09-14T03:18:12.864407",
   "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [
@@ -21,59 +21,59 @@
   "totalsByYear": {
     "2026": {
       "nb_marches": 266,
-      "enveloppe_max_totale": 647101024.95
+      "enveloppe_max_totale": 561496024.95
     },
     "2025": {
       "nb_marches": 1122,
-      "enveloppe_max_totale": 1608151115.9400005
+      "enveloppe_max_totale": 1606487045.92
     },
     "2024": {
       "nb_marches": 1762,
-      "enveloppe_max_totale": 3219823753.229999
+      "enveloppe_max_totale": 3181958639.67
     },
     "2023": {
       "nb_marches": 1336,
-      "enveloppe_max_totale": 2606711521.330001
+      "enveloppe_max_totale": 2606361521.33
     },
     "2022": {
       "nb_marches": 1286,
-      "enveloppe_max_totale": 3934593902.8399997
+      "enveloppe_max_totale": 3933543902.84
     },
     "2021": {
       "nb_marches": 1570,
-      "enveloppe_max_totale": 5483477436.490001
+      "enveloppe_max_totale": 5335026236.49
     },
     "2020": {
       "nb_marches": 1201,
-      "enveloppe_max_totale": 3292522877.9199996
+      "enveloppe_max_totale": 1821184489.31
     },
     "2019": {
       "nb_marches": 1342,
-      "enveloppe_max_totale": 2313239644.3
+      "enveloppe_max_totale": 2300439564.38
     },
     "2018": {
       "nb_marches": 1458,
-      "enveloppe_max_totale": 2836151932.3100004
+      "enveloppe_max_totale": 2833151932.31
     },
     "2017": {
       "nb_marches": 1698,
-      "enveloppe_max_totale": 3465550059.509998
+      "enveloppe_max_totale": 1998750059.51
     },
     "2016": {
       "nb_marches": 1601,
-      "enveloppe_max_totale": 1916840484.3
+      "enveloppe_max_totale": 1633814742.3
     },
     "2015": {
       "nb_marches": 1556,
-      "enveloppe_max_totale": 1538504362.7000003
+      "enveloppe_max_totale": 1472954362.7
     },
     "2014": {
       "nb_marches": 1483,
-      "enveloppe_max_totale": 1530498987.8500001
+      "enveloppe_max_totale": 1326498987.85
     },
     "2013": {
       "nb_marches": 1713,
-      "enveloppe_max_totale": 1901057959.8699996
+      "enveloppe_max_totale": 1819057895.87
     }
   },
   "filters": {
