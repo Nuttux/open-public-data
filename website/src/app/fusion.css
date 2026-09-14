@@ -20911,6 +20911,23 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-photo-cap a.t:hover { color: var(--bleu); }
 .theme-fusion .fx-sec-photo-cap .s a { color: var(--bleu); text-decoration: none; }
 .theme-fusion .fx-sec-photo-cap .s a:hover { text-decoration: underline; }
+/* ── Kit moderne (2026-09-15), pour toutes les fiches : traits gris sous les
+   titres, kickers et groupes en petites capitales de la police de texte,
+   survol bleu pâle sur les lignes qui ouvrent une fiche, focus visible seul. */
+.theme-fusion .fx-v3-rule { background: var(--rule); }
+.theme-fusion .fx-page-kicker, .theme-fusion .fx-drawer-kicker, .theme-fusion .fx-related-group, .theme-fusion .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
+.theme-fusion .fx-drawer-kicker { font-size: 11.5px; }
+@media (min-width: 701px) {
+  .theme-fusion .fx-v3-row.fx-row-link { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+  .theme-fusion .fx-v3-row.fx-row-link:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+  /* The scene's title sits on the number's title line, baseline to baseline. */
+  .theme-fusion .fx-sec-a-scene { padding-top: 26px; }
+}
+/* Le menu d'année : un mot en gras avec son chevron, pas un champ de formulaire ;
+   l'anneau ne vient qu'au clavier. */
+.theme-fusion .fx-pv-yearsel { background: #fff; border-color: var(--rule); padding: 2px 8px 2px 10px; font-weight: 600; }
+.theme-fusion .fx-pv-yearsel:focus { outline: none; }
+.theme-fusion .fx-pv-yearsel:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 /* La recherche : une boîte arrondie sur fond blanc, un anneau bleu au focus au
    lieu d'un second trait noir sous le titre ; des mots à essayer en pastilles. */
 .theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding-top: 14px; }
