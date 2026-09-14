@@ -1,5 +1,5 @@
 ---
-title: "Patrimoine 48 Md€ : pourquoi le bilan d'une mairie ne dit jamais la vraie valeur"
+title: "Patrimoine 48 Md€ : pourquoi le bilan d'une mairie ne dit pas la valeur de marché"
 description: "Au 31 décembre 2024, la Ville inscrit 48 milliards d'euros d'actif à son bilan, dont 47 Md€ d'immobilisations corporelles. Ce chiffre est calculé en coût historique amorti — la valeur de marché serait bien plus élevée. Explication d'un écart structurel, et de ce qu'il signifie pour la lecture des comptes."
 date: "2026-04-25"
 author: "Qipu"
@@ -9,7 +9,7 @@ image: "https://commons.wikimedia.org/wiki/Special:FilePath/Notre-Dame%20de%20Pa
 imageAlt: "Notre-Dame de Paris — patrimoine emblématique dont la valeur comptable amortie diffère radicalement de la valeur économique réelle"
 imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
 readingTime: "8 min"
-title_en: "€48Bn in assets: why a city's balance sheet never shows the real value"
+title_en: "€48Bn in assets: why a city's balance sheet does not show market value"
 description_en: "On 31 December 2024, the City of Paris booked €48 billion of total assets, of which €47Bn in tangible fixed assets. This figure is computed at amortised historical cost — market value would be considerably higher. Explanation of a structural gap, and what it means when reading the accounts."
 imageAlt_en: "Notre-Dame de Paris — emblematic public asset whose amortised book value differs radically from its real economic value"
 imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
@@ -84,16 +84,16 @@ Assets and debt evolve at distinct paces. Over the period:
   {/* Legend */}
   <rect x="600" y="100" width="14" height="14" fill="#1e45e4"/>
   <text x="620" y="111" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672">Total assets</text>
-  <line x1="600" y1="135" x2="615" y2="135" stroke="#e11d1d" strokeWidth="2.5"/>
+  <line x1="600" y1="135" x2="615" y2="135" stroke="#8C5E2A" strokeWidth="2.5"/>
   <text x="620" y="139" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672">Financial debt</text>
   {/* Debt trace : 6.9 → 7.77 → 8.43 → 9.29 → 9.85 → 10.70 → scale 0..50 → y = 260 - val*4.4 */}
-  <polyline points="142,229 222,226 302,223 382,219 462,217 542,213" fill="none" stroke="#e11d1d" strokeWidth="2.5"/>
-  <circle cx="142" cy="229" r="3" fill="#e11d1d"/>
-  <circle cx="222" cy="226" r="3" fill="#e11d1d"/>
-  <circle cx="302" cy="223" r="3" fill="#e11d1d"/>
-  <circle cx="382" cy="219" r="3" fill="#e11d1d"/>
-  <circle cx="462" cy="217" r="3" fill="#e11d1d"/>
-  <circle cx="542" cy="213" r="3" fill="#e11d1d"/>
+  <polyline points="142,229 222,226 302,223 382,219 462,217 542,213" fill="none" stroke="#8C5E2A" strokeWidth="2.5"/>
+  <circle cx="142" cy="229" r="3" fill="#8C5E2A"/>
+  <circle cx="222" cy="226" r="3" fill="#8C5E2A"/>
+  <circle cx="302" cy="223" r="3" fill="#8C5E2A"/>
+  <circle cx="382" cy="219" r="3" fill="#8C5E2A"/>
+  <circle cx="462" cy="217" r="3" fill="#8C5E2A"/>
+  <circle cx="542" cy="213" r="3" fill="#8C5E2A"/>
   <text x="395" y="22" fontFamily="Inter Tight, sans-serif" fontSize="13" fill="#0a0a0a" textAnchor="middle" fontWeight="600">Ville de Paris balance sheet — total assets and financial debt 2019-2024</text>
 </svg>
 <figcaption>Total assets and financial debt of the Ville de Paris as of 31 December, 2019-2024, in billions of current euros. Total assets grew by +21% over six years (from 39.6 to 48.1 €Bn). Debt grew by +55% (from 6.9 to 10.7 €Bn). Source: open-public-data pipeline, `patrimoine_structure_*.json` files.</figcaption>
@@ -101,7 +101,7 @@ Assets and debt evolve at distinct paces. Over the period:
 
 Total assets grow by **+21% in six years**: the City invests, delivers facilities, and records each delivery on its balance sheet at acquisition or construction value. Debt grows faster — **+55% over the same period** — because a growing share of annual investment is financed by borrowing rather than by gross saving.
 
-The debt / assets ratio rises from 17.4% in 2019 to 22.3% in 2024. That is a deterioration, but at a level still very far from the alert thresholds (cf. our [explanation of financial ratios](/analyses/paris-peut-elle-faire-faillite)).
+The debt / assets ratio rises from 17.4% in 2019 to 22.3% in 2024, at a level still very far from the alert thresholds (cf. our [explanation of financial ratios](/analyses/paris-peut-elle-faire-faillite)).
 
 <figure className="fx-photo-fig">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20de%20Ville%20de%20Paris%20-%20Journ%C3%A9e%20du%20Patrimoine%202013%20039.jpg?width=1200" alt="Council Chamber of the Hôtel de Ville de Paris" />
