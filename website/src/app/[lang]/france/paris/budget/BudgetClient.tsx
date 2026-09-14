@@ -238,11 +238,14 @@ export default function BudgetClient({ index, d, posts }: Props) {
                 <div className="fx-bud-forme">
                   <div className="h">{t("fx.bud.v3.forme")}</div>
                   {/* Chaque segment et chaque mot de la légende ouvrent la fiche de la nature :
-                      « les salaires, combien, et où ils vont poste par poste ». Pas de fiche pour « autres ». */}
-                  <div className="stack">
+                      « les salaires, combien, et où ils vont poste par poste ». Pas de fiche pour « autres ».
+                      Le ruban est un raccourci à la souris : un segment de 2 % ne peut pas mesurer 24 px sans
+                      fausser la proportion. Chaque lien a son jumeau dans la légende, assez grand au doigt et
+                      au clavier ; le ruban sort donc de la tabulation et des lecteurs d'écran. */}
+                  <div className="stack" aria-hidden="true">
                     {flowRows.map((g) => g.key === "autres"
                       ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
-                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
+                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false} tabIndex={-1} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
                   </div>
                   <div className="legend">
                     {flowRows.map((g) => g.key === "autres"
