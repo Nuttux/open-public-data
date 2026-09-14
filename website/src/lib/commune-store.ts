@@ -40,3 +40,28 @@ export async function readCommuneJson<T>(objectPath: string): Promise<T | null> 
     return null;
   }
 }
+
+/**
+ * Lecture d'un objet texte du bucket (les segments du sitemap des contrats,
+ * une adresse par ligne), mêmes règles que readCommuneJson : dossier local
+ * avec COMMUNE_DATA_LOCAL_DIR, sinon le bucket ; absent → null.
+ */
+export async function readCommuneText(objectPath: string): Promise<string | null> {
+  const key = `text:${objectPath}`;
+  if (memo.has(key)) return memo.get(key) as string | null;
+  const localDir = process.env.COMMUNE_DATA_LOCAL_DIR;
+  let val: string | null = null;
+  try {
+    if (localDir) {
+      const fs = await import("node:fs/promises");
+      val = await fs.readFile(`${localDir}/${objectPath.replace(/^communes-[a-z]+\//, "")}`, "utf8");
+    } else {
+      const [buf] = await communeStorage().bucket(BUCKET_NAME).file(objectPath).download();
+      val = buf.toString("utf8");
+    }
+  } catch {
+    val = null;
+  }
+  memo.set(key, val);
+  return val;
+}

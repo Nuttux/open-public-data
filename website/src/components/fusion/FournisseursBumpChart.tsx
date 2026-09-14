@@ -9,7 +9,7 @@
  * fournisseur (navigation douce → drawer) quand le SIREN est connu.
  */
 import { useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
 import type { FournisseurRankRow, FournisseursRankingData } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";

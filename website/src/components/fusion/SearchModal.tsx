@@ -1,10 +1,11 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/lib/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useNumLocale } from "@/lib/use-fmt";
+import { nomDistinct } from "@/lib/nom-commune";
 
 type Hit = {
   insee: string;
@@ -98,11 +99,8 @@ function SearchModalInner() {
   const goTo = useCallback(
     (hit: Hit) => {
       track("search_modal_select", { slug: hit.slug, insee: hit.insee });
-      // Paris rich pages live at the root, not under /fr/city/paris (which would
-      // fall through to the slim generic fiche). Marseille has /fr/city/marseille
-      // wired to redirect to its rich PoC pages, so /fr/city/<slug> works for it
-      // and for every other commune (slim fiche).
-      const target = hit.slug === "paris" ? "/" : `/fr/city/${hit.slug}`;
+      // Every place, Paris included, lives at /france/<slug> (lib/urls.ts).
+      const target = `/france/${hit.slug}`;
       router.push(target);
       setOpen(false);
     },
@@ -184,7 +182,7 @@ function SearchModalInner() {
                     onClick={() => goTo(h)}
                     onMouseEnter={() => setActiveIdx(i)}
                   >
-                    <span className="fx-search-result-name">{h.nom}</span>
+                    <span className="fx-search-result-name">{nomDistinct(h)}</span>
                     <span className="fx-search-result-meta">
                       {h.dep_name} · {h.pop.toLocaleString(nl)} hab · INSEE {h.insee}
                     </span>
@@ -218,6 +216,6 @@ function SearchModalInner() {
  */
 export default function SearchModal() {
   const pathname = usePathname() ?? "/";
-  if (pathname === "/us" || pathname.startsWith("/us/")) return null;
+  if (pathname === "/usa" || pathname.startsWith("/usa/")) return null;
   return <SearchModalInner />;
 }

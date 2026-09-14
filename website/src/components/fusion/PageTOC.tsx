@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useTrack } from "@/lib/analyticsContext";
 import { useT } from "@/lib/localeContext";
 

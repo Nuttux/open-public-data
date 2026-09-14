@@ -10,6 +10,7 @@ top titulaires, biggest marchés + coverage note). Deterministic — no enrichme
   website/public/data/communes-marches/{slug}/fournisseurs.json  (→ private bucket)
   website/public/data/communes-marches/{slug}/contrats.json      (→ private bucket, fiche contrat)
   website/src/data/communes-marches-manifest.json            (committed, slug→years)
+  website/public/data/communes-marches/_sitemap/*.txt        (→ private bucket, sitemap des fiches contrat)
 
 Coverage: DECP publishes marchés ≥ 40 k€ HT (~50-70% national). Shown, not hidden.
 
@@ -644,6 +645,11 @@ def main() -> int:
             open(MANIFEST_FILE, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"),
         )
         print(f"  ✓ manifest → {MANIFEST_FILE} ({len(manifest)} communes)")
+        # Les adresses des fiches contrat, en segments prêts pour le sitemap
+        # (dans OUT_ROOT/_sitemap, envoyés au bucket avec le reste).
+        from build_contrats_sitemap import collect_paths, write_segments
+        paths = collect_paths(OUT_ROOT)
+        print(f"  ✓ sitemap des contrats : {len(paths)} adresses en {write_segments(paths, OUT_ROOT, MANIFEST_FILE)} segments")
     return 0
 
 

@@ -25,7 +25,7 @@ import { readDataJsonOrNull } from "@/lib/data/read";
 import type { RecifeLocale } from "@/lib/br/recife-answers";
 import { relatedInt, relatedT } from "@/lib/related-t";
 
-const BASE = "/br/city/recife";
+const BASE = "/brasil/recife";
 const NS = "br/recife";
 const brl = (n: number) => ({ v: fmtBrlCompact(n), u: "" });
 const clip = (x: string, n = 90) => (x.length > n ? `${x.slice(0, n).replace(/\s+\S*$/, "")}…` : x);

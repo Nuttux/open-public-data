@@ -1,8 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/lib/navigation";
 import { useT } from "@/lib/localeContext";
-import { franceFooterModel } from "@/lib/footer-model";
+import { franceFooterModel, type FooterPlace } from "@/lib/footer-model";
 import { useCommuneNav } from "@/components/CommuneNavContext";
 import SiteFooter from "@/components/SiteFooter";
 import ReplayOptIn from "./ReplayOptIn";
@@ -13,12 +13,18 @@ import ReplayOptIn from "./ReplayOptIn";
  * the shared <SiteFooter>. Session-replay consent lives in France's `optIn` slot.
  * Imported per-page by France clients; US/BR use RegistryFooter via their layout.
  */
-export default function Footer() {
+export default function Footer({
+  scopePath,
+  place,
+}: { scopePath?: string; place?: FooterPlace | null } = {}) {
   const t = useT();
   const pathname = usePathname() ?? "/";
   // National tail commune → its DATA-DERIVED sections (no Paris-shaped fallback).
   const commune = useCommuneNav();
   const year = new Date().getFullYear();
-  const model = franceFooterModel(pathname, t, year, commune);
+  // `scopePath` : même rôle que dans Navbar — une page qui n'est pas un lieu
+  // (le choix entre communes homonymes) prend le pied de page de ce chemin.
+  // `place` : une page qui impose sa colonne (la comparaison de deux communes).
+  const model = franceFooterModel(scopePath ?? pathname, t, year, commune, place);
   return <SiteFooter model={model} optIn={<ReplayOptIn />} />;
 }

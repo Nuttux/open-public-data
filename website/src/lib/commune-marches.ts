@@ -1,5 +1,6 @@
 import "server-only";
-import { readCommuneJson } from "@/lib/commune-store";
+import { readCommuneJson, readCommuneText } from "@/lib/commune-store";
+import { hasDedicatedRoutes } from "@/lib/cities";
 import manifest from "@/data/communes-marches-manifest.json";
 
 /**
@@ -16,6 +17,9 @@ type Manifest = {
   bucket: string;
   n_communes: number;
   communes: Record<string, { years: number[]; montant: number; nb: number }>;
+  /** Les fiches contrat, en segments de 5 000 adresses dans le bucket
+   *  (`_sitemap/contrats-NNN.txt`, écrits par build_contrats_sitemap.py). */
+  contrats_sitemap?: { segments: number; urls: number };
 };
 const M = manifest as Manifest;
 
@@ -34,6 +38,28 @@ export function marchesManifestSlugs(min: number): string[] {
 /** Le manifeste d'une commune (années, montant, nombre), null si aucune page. */
 export function marchesManifestEntry(slug: string): { years: number[]; montant: number; nb: number } | null {
   return M.communes[slug] ?? null;
+}
+
+/** Nombre de segments du sitemap des fiches contrat (0 tant qu'aucun export
+ *  ne les a écrits). */
+export function contratsSitemapSegments(): number {
+  return M.contrats_sitemap?.segments ?? 0;
+}
+
+/** Les adresses d'un segment du sitemap des contrats, sans les villes à
+ *  routes dédiées (Paris, Marseille… ont leurs propres fiches). Bucket
+ *  inaccessible → liste vide, jamais une erreur de build. */
+export async function loadContratsSitemapSegment(k: number): Promise<string[]> {
+  if (k < 0 || k >= contratsSitemapSegments()) return [];
+  const txt = await readCommuneText(`${PREFIX}/_sitemap/contrats-${String(k).padStart(3, "0")}.txt`);
+  if (!txt) return [];
+  // Chemins logiques (/france/<commune>/marche/<fiche>) ; les segments écrits
+  // avant la migration des adresses (/fr/city/…) sont convertis à la lecture.
+  return txt
+    .split("\n")
+    .map((p) => p.replace(/^\/fr\/city\//, "/france/"))
+    .filter((p) => p.startsWith("/france/"))
+    .filter((p) => !hasDedicatedRoutes(p.split("/")[2] ?? ""));
 }
 
 export function communeHasMarches(slug: string): boolean {

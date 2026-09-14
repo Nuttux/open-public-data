@@ -1551,7 +1551,7 @@ export interface BlockMoneyFile {
     readonly places_resolved_to_a_block: number;
     readonly places_unresolved: number;
   };
-  /** `/us/city/sf/places/place/{slug}` */
+  /** `/usa/san-francisco/places/place/{slug}` */
   readonly href: string;
   readonly b: Readonly<Record<string, readonly BlockPlace[]>>;
 }
@@ -2702,11 +2702,11 @@ export function ficheOpener(
  * search engine or a shared link with a preview, and a reader who wanted to
  * send "what the city decided about Castro Street" had a map URL to send
  * (2026-09-10). Each neighbourhood and each street with a file now has a
- * server-rendered page under `/us/city/sf/the-city/…`, and the map is one
+ * server-rendered page under `/usa/san-francisco/the-city/…`, and the map is one
  * press away from it. These are the slugs, shared by the pages, the sitemap
  * and the panel's link out, so the three can never disagree.
  */
-export const CITY_PAGE_BASE = "/us/city/sf/the-city";
+export const CITY_PAGE_BASE = "/usa/san-francisco/the-city";
 
 export function hoodSlug(name: string): string {
   return name

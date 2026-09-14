@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import SectionHead from "./SectionHead";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -46,11 +46,12 @@ export default function RelatedArticles({
       day: "numeric",
     });
 
-  // Keep at most `maxItems` cards in total : real posts in priority,
-  // then fill remaining slots with planned placeholders.
+  // Real posts only. The « à paraître » placeholders were editorial promises,
+  // some with figures typed by hand (« 17 Md€ nets ») — no longer rendered;
+  // the prop stays accepted so callers need not change.
   const visiblePosts = posts.slice(0, maxItems);
-  const remainingSlots = Math.max(0, maxItems - visiblePosts.length);
-  const visiblePlaceholders = placeholders.slice(0, remainingSlots);
+  const visiblePlaceholders: ArticlePlaceholder[] = [];
+  void placeholders;
 
   if (visiblePosts.length === 0 && visiblePlaceholders.length === 0) return null;
 

@@ -1,3 +1,5 @@
+import { ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
+
 export type NavLink = {
   href: string;
   labelKey: string;
@@ -7,8 +9,8 @@ export type NavLink = {
 // (/fr/national*, /comparer, /fr/city/*/daily-bread).
 export const NATIONAL_NAV_LINKS: NavLink[] = [
   { href: "/",                          labelKey: "fx.nav.link.home" },
-  { href: "/fr/national/budget",             labelKey: "fx.nav.link.budget_france" },
-  { href: "/fr/national/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
+  { href: "/france/budget",             labelKey: "fx.nav.link.budget_france" },
+  { href: "/france/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
 ];
 
 const LIEUX = { section: "lieux", labelKey: "fx.nav.link.lieux" };
@@ -37,14 +39,15 @@ const CITY_SECTIONS: Record<string, { section: string; labelKey: string }[]> = {
 export function citySectionLinks(citySlug: string): NavLink[] {
   const sections = CITY_SECTIONS[citySlug] ?? PARIS_SECTIONS;
   return sections.map((s) => ({
-    href: `/fr/city/${citySlug}/${s.section}`,
+    href: `/france/${citySlug}/${s.section}`,
     labelKey: s.labelKey,
   }));
 }
 
-// Whether a city surfaces the (currently Paris-only) editorial Analyses.
+// Whether a city surfaces the (currently Paris-only) editorial Analyses —
+// never while the section is unpublished (lib/analyses-visibility.ts).
 export function cityHasAnalyses(citySlug: string): boolean {
-  return citySlug === "paris";
+  return ANALYSES_PUBLIC && citySlug === "paris";
 }
 
 // Top-nav links scoped to a city — preserves the active city slug so
@@ -53,7 +56,7 @@ export function villeNavLinks(citySlug: string): NavLink[] {
   const links: NavLink[] = [
     // Home = the city's OWN landing. Paris lives at the root URL; every other
     // city has its hub at /fr/city/<slug> (Marseille's landing exists now).
-    { href: citySlug === "paris" ? "/" : `/fr/city/${citySlug}`, labelKey: "fx.nav.link.home" },
+    { href: citySlug === "paris" ? "/" : `/france/${citySlug}`, labelKey: "fx.nav.link.home" },
     ...citySectionLinks(citySlug),
   ];
   if (cityHasAnalyses(citySlug)) links.push({ href: "/analyses", labelKey: "fx.nav.link.analyses" });
@@ -84,7 +87,7 @@ export function communeSectionLinks(slug: string, sections: string[]): NavLink[]
   return sections
     .map((s) => COMMUNE_SECTION_META[s])
     .filter((m): m is { suffix: string; labelKey: string } => Boolean(m))
-    .map((m) => ({ href: `/fr/city/${slug}${m.suffix}`, labelKey: m.labelKey }));
+    .map((m) => ({ href: `/france/${slug}${m.suffix}`, labelKey: m.labelKey }));
 }
 
 // Top-nav links for a national commune (Home + its real sections). Home points
@@ -93,7 +96,7 @@ export function communeSectionLinks(slug: string, sections: string[]): NavLink[]
 // These communes have no separate landing; their hub (budget-lead) IS the home.
 export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
   return [
-    { href: `/fr/city/${slug}`, labelKey: "fx.nav.link.home" },
+    { href: `/france/${slug}`, labelKey: "fx.nav.link.home" },
     ...communeSectionLinks(slug, sections),
   ];
 }

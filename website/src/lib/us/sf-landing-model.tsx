@@ -195,14 +195,14 @@ export function buildSfLandingModel(): LandingModel {
 
   // ── Marquee: three honest strands, all hrefs derived from the live corpus ──
   const deptItems: MarqueeItem[] = topDepts(8).map((d) => ({
-    href: `/us/city/sf/budget/dept/${deptSlug(d.code)}`,
+    href: `/usa/san-francisco/budget/dept/${deptSlug(d.code)}`,
     label: d.display_name || d.label,
     amount: fmtUsdCompact(d.actual_usd),
   }));
 
   const payeeItems: MarqueeItem[] = topOperationalPayees(10)
     .map((p) => ({
-      href: `/us/city/sf/who-gets-paid/payee/${p.slug}`,
+      href: `/usa/san-francisco/who-gets-paid/payee/${p.slug}`,
       label: p.name,
       amount: fmtUsdCompact(p.total_paid_usd),
     }));
@@ -212,7 +212,7 @@ export function buildSfLandingModel(): LandingModel {
     .sort((a, b) => b.n_documents + b.n_contracts - (a.n_documents + a.n_contracts))
     .slice(0, 8)
     .map((pl) => ({
-      href: `/us/city/sf/places/place/${pl.slug}`,
+      href: `/usa/san-francisco/places/place/${pl.slug}`,
       label: pl.name,
       amount:
         pl.n_documents > 0
@@ -263,7 +263,7 @@ export function buildSfLandingModel(): LandingModel {
         ? `${library.n_documents} archival records${oldestDoc ? `, back to ${oldestDoc}` : ""}`
         : library.kind;
     deck.push({
-      href: `/us/city/sf/places/place/${library.slug}`,
+      href: `/usa/san-francisco/places/place/${library.slug}`,
       kicker: "A place, and its archive",
       title: library.name,
       amount,
@@ -290,7 +290,7 @@ export function buildSfLandingModel(): LandingModel {
     >((best, d) => (best && best.usd >= d.usd ? best : d), null)?.department;
     const since = payeeFiche?.first_year;
     deck.push({
-      href: `/us/city/sf/who-gets-paid/payee/${payee.slug}`,
+      href: `/usa/san-francisco/who-gets-paid/payee/${payee.slug}`,
       kicker: "Largest service provider",
       title: DECK_SHORT_NAMES[payee.slug] ?? payee.name,
       amount,
@@ -313,7 +313,7 @@ export function buildSfLandingModel(): LandingModel {
     const { amount, unit } = splitCompact(row.paid_usd);
     const startYear = row.start ? row.start.slice(0, 4) : null;
     deck.push({
-      href: `/us/city/sf/contracts/contract/${row.contract_no}`,
+      href: `/usa/san-francisco/contracts/contract/${row.contract_no}`,
       kicker: "A public contract",
       title: row.title_clear || row.title_plain || row.title,
       amount,
@@ -338,7 +338,7 @@ export function buildSfLandingModel(): LandingModel {
   if (air) {
     const { amount, unit } = splitCompact(air.actual_usd);
     deck.push({
-      href: `/us/city/sf/budget/dept/${deptSlug(air.code)}`,
+      href: `/usa/san-francisco/budget/dept/${deptSlug(air.code)}`,
       kicker: "The airport enterprise",
       title: "Airport · SFO",
       amount,
@@ -388,12 +388,12 @@ export function buildSfLandingModel(): LandingModel {
       ),
       ariaLabel: "Explore San Francisco by section",
       items: [
-        { href: "/us/city/sf/places", title: "Places", desc: "Parks, libraries, hospitals, piers: money and archival record.", featured: true },
-        { href: "/us/city/sf/budget", title: "Budget", desc: "Revenue and spending, by service area or by type." },
-        { href: "/us/city/sf/who-gets-paid", title: "Payees", desc: "Every payment in the City's ledger." },
-        { href: "/us/city/sf/contracts", title: "Contracts", desc: "The active register — sole-source lens, award vs paid." },
-        { href: "/us/city/sf/payroll", title: "Payroll", desc: "What city work pays, and the overtime pattern." },
-        { href: "/us/city/sf/sources", title: "Sources & method", desc: "Every dataset — perimeters, privacy, method." },
+        { href: "/usa/san-francisco/places", title: "Places", desc: "Parks, libraries, hospitals, piers: money and archival record.", featured: true },
+        { href: "/usa/san-francisco/budget", title: "Budget", desc: "Revenue and spending, by service area or by type." },
+        { href: "/usa/san-francisco/who-gets-paid", title: "Payees", desc: "Every payment in the City's ledger." },
+        { href: "/usa/san-francisco/contracts", title: "Contracts", desc: "The active register — sole-source lens, award vs paid." },
+        { href: "/usa/san-francisco/payroll", title: "Payroll", desc: "What city work pays, and the overtime pattern." },
+        { href: "/usa/san-francisco/sources", title: "Sources & method", desc: "Every dataset — perimeters, privacy, method." },
       ],
     },
     closing: landingClosing("en"),

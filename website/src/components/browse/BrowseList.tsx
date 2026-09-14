@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { V3Amt, V3Row } from "@/components/fiche/v3";
 import type { BrowseItem } from "@/lib/seo/browse";
 import PageJsonLd from "@/components/seo/PageJsonLd";

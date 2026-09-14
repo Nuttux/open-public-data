@@ -31,7 +31,7 @@ export const natureConfig: EntityPageConfig<D> = {
     return { nature, year };
   },
   metadata: ({ nature: n }, locale) => {
-    const canonical = `/fr/city/paris/budget/nature/${n.key}`;
+    const canonical = `/france/paris/budget/nature/${n.key}`;
     const label = NATURE_LABELS[n.key][locale === "en" ? "en" : "fr"];
     const title = locale === "en"
       ? `${label} — Paris budget ${n.year} · Qipu`
@@ -79,7 +79,7 @@ export const natureConfig: EntityPageConfig<D> = {
   page: {
     header: ({ nature, year }, locale) => (
       <>
-        <BudgetBackKicker href={year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget"} />
+        <BudgetBackKicker href={year ? `/france/paris/budget?year=${year}` : "/france/paris/budget"} />
         <h1 className="fx-page-title">{NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"]}</h1>
       </>
     ),
@@ -89,9 +89,9 @@ export const natureConfig: EntityPageConfig<D> = {
     usesLocale: true,
     kicker: ({ nature }, locale) => relatedT(locale)("fx.drawer.kicker.nature", { year: nature.year }),
     title: ({ nature }, locale) => NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"],
-    shareUrl: ({ nature, year }) => `/fr/city/paris/budget/nature/${nature.key}${year ? `?year=${year}` : ""}`,
+    shareUrl: ({ nature, year }) => `/france/paris/budget/nature/${nature.key}${year ? `?year=${year}` : ""}`,
     shareText: ({ nature }, locale) => `${NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"]} — ${fmtEur(nature.total)} (${nature.year}) · ${nature.byPoste.length} postes.`,
-    backHref: ({ year }) => (year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget"),
+    backHref: ({ year }) => (year ? `/france/paris/budget?year=${year}` : "/france/paris/budget"),
     breadcrumbLabel: ({ nature }, locale) => NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"],
     children: ({ nature }) => <NatureFiche nature={nature} />,
   },

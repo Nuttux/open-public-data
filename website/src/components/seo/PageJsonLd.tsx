@@ -1,5 +1,6 @@
 import { breadcrumbJsonLd, datasetJsonLd } from "@/lib/seo";
-import { LOCALE_HOSTS, type SiteLocale } from "@/lib/site-locale";
+import { absoluteUrl, type SiteLocale } from "@/lib/site-locale";
+import { scopeOf, type Country } from "@/lib/urls";
 
 /**
  * Structured data of an answered page (feedback_seo_aigeo_by_default):
@@ -10,11 +11,11 @@ import { LOCALE_HOSTS, type SiteLocale } from "@/lib/site-locale";
  * Labels are the ones the navigation uses, per language; unknown segments
  * are skipped rather than guessed.
  */
-const CITY: Record<string, string> = { paris: "Paris", marseille: "Marseille", sf: "San Francisco", recife: "Recife" };
-const COUNTRY: Record<string, Record<SiteLocale, string>> = {
-  fr: { fr: "France", en: "France", pt: "França" },
-  us: { fr: "États-Unis", en: "United States", pt: "Estados Unidos" },
-  br: { fr: "Brésil", en: "Brazil", pt: "Brasil" },
+const CITY: Record<string, string> = { paris: "Paris", marseille: "Marseille", "san-francisco": "San Francisco", recife: "Recife" };
+const COUNTRY: Record<Country, Record<SiteLocale, string>> = {
+  france: { fr: "France", en: "France", pt: "França" },
+  usa: { fr: "États-Unis", en: "United States", pt: "Estados Unidos" },
+  brasil: { fr: "Brésil", en: "Brazil", pt: "Brasil" },
 };
 const SECTION: Record<string, Record<SiteLocale, string>> = {
   budget: { fr: "Budget", en: "Budget", pt: "Orçamento" },
@@ -36,22 +37,20 @@ const SECTION: Record<string, Record<SiteLocale, string>> = {
   tema: { fr: "Thèmes", en: "Themes", pt: "Temas" },
   modalidade: { fr: "Modalités", en: "Procurement types", pt: "Modalidades" },
 };
-const COUNTRY_PAGE = new Set(["us"]);
+const COUNTRY_PAGE = new Set<Country>(["usa"]);
 const SECTION_HREF: Record<string, string> = { lieu: "lieux", orgao: "quem-recebe", tema: "quem-recebe", modalidade: "contratos" };
 
 function crumbs(path: string, title: string, locale: SiteLocale): { name: string; path: string }[] {
-  const seg = path.split("/").filter(Boolean);
   const out: { name: string; path: string }[] = [{ name: "Qipu", path: "/" }];
-  // /fr/city/paris/budget/poste/x  ·  /us/city/sf/payroll/dept/x  ·  /br/city/recife/orgao/x
-  if (seg.length >= 3 && seg[1] === "city") {
-    // Only /us has a country page; a breadcrumb must not point at a 404.
-    const country = COUNTRY[seg[0]]?.[locale];
-    if (country && COUNTRY_PAGE.has(seg[0])) out.push({ name: country, path: `/${seg[0]}` });
-    const city = CITY[seg[2]] ?? seg[2].charAt(0).toUpperCase() + seg[2].slice(1);
-    out.push({ name: city, path: `/${seg[0]}/city/${seg[2]}` });
-    const section = seg[3];
-    if (section && SECTION[section]) {
-      out.push({ name: SECTION[section][locale], path: `/${seg[0]}/city/${seg[2]}/${SECTION_HREF[section] ?? section}` });
+  // /france/paris/budget/poste/x  ·  /usa/san-francisco/payroll/dept/x  ·  /brasil/recife/orgao/x
+  const s = scopeOf(path);
+  if (s?.place) {
+    // Only the United States has a country page; a breadcrumb must not point at a redirect.
+    if (COUNTRY_PAGE.has(s.country)) out.push({ name: COUNTRY[s.country][locale], path: `/${s.country}` });
+    const city = CITY[s.place] ?? s.place.charAt(0).toUpperCase() + s.place.slice(1);
+    out.push({ name: city, path: `/${s.country}/${s.place}` });
+    if (s.section && SECTION[s.section]) {
+      out.push({ name: SECTION[s.section][locale], path: `/${s.country}/${s.place}/${SECTION_HREF[s.section] ?? s.section}` });
     }
   }
   out.push({ name: title, path });
@@ -80,13 +79,11 @@ export default function PageJsonLd({
   creator?: string;
   spatialCoverage?: string;
 }) {
-  const base = LOCALE_HOSTS[locale];
-  const bc = breadcrumbJsonLd(crumbs(path, title, locale));
-  bc.itemListElement = bc.itemListElement.map((i) => ({ ...i, item: i.item.replace(/^https:\/\/www\.qipu\.org/, base) }));
+  const bc = breadcrumbJsonLd(crumbs(path, title, locale), locale);
   const ds = dataset
     ? {
         ...datasetJsonLd({ name: title, description, path, keywords, dateModified: dateModified ?? undefined, spatialCoverage, creator }),
-        url: `${base}${path}`,
+        url: absoluteUrl(path, locale),
         inLanguage: locale === "fr" ? "fr-FR" : locale === "pt" ? "pt-BR" : "en",
       }
     : null;

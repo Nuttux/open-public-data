@@ -2,7 +2,7 @@
 
 import ParisChoropleth from "./ParisChoropleth";
 import { useCity } from "./CityContext";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useT, useLocale } from "@/lib/localeContext";
 import { sufOrdinal } from "@/lib/fmt";
 import { useFmt } from "@/lib/use-fmt";

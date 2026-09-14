@@ -56,7 +56,7 @@ function frChrome(children: React.ReactNode) {
 
 /** Associations of a French city, by first letter. */
 export function makeAssociationsBrowse(city: string) {
-  const base = `/fr/city/${city}/subventions/associations`;
+  const base = `/france/${city}/subventions/associations`;
   const cityNom = getCity(city)?.nom ?? city;
   const parse = (parts: string[] = []) => {
     const letter = parts[0] ? decodeURIComponent(parts[0]).toUpperCase() : null;
@@ -108,7 +108,7 @@ export function makeAssociationsBrowse(city: string) {
         seoPath={path}
         locale={locale}
         kicker={en ? `Who receives the City's grants` : `Qui reçoit les subventions de la Ville`}
-        kickerHref={`/fr/city/${city}/subventions`}
+        kickerHref={`/france/${city}/subventions`}
         title={title}
         intro={intro}
         rail={rail}
@@ -116,9 +116,9 @@ export function makeAssociationsBrowse(city: string) {
         items={items}
         pager={pager}
         siblings={[
-          { href: `/fr/city/${city}/marches/fournisseurs`, label: en ? "Suppliers A to Z" : "Fournisseurs de A à Z" },
-          { href: `/fr/city/${city}/marches/contrats`, label: en ? "Contracts by year" : "Marchés par année" },
-          ...(city === "paris" ? [{ href: "/fr/city/paris/investissements/projets", label: en ? "Projects by year" : "Projets par année" }, { href: "/fr/city/paris/lieux", label: en ? "Places" : "Lieux" }] : []),
+          { href: `/france/${city}/marches/fournisseurs`, label: en ? "Suppliers A to Z" : "Fournisseurs de A à Z" },
+          { href: `/france/${city}/marches/contrats`, label: en ? "Contracts by year" : "Marchés par année" },
+          ...(city === "paris" ? [{ href: "/france/paris/investissements/projets", label: en ? "Projects by year" : "Projets par année" }, { href: "/france/paris/lieux", label: en ? "Places" : "Lieux" }] : []),
         ]}
         siblingsLabel={en ? "Other indexes:" : "Autres index :"}
       />,
@@ -129,7 +129,7 @@ export function makeAssociationsBrowse(city: string) {
 
 /** Suppliers of a French city, by first letter. */
 export function makeFournisseursBrowse(city: string) {
-  const base = `/fr/city/${city}/marches/fournisseurs`;
+  const base = `/france/${city}/marches/fournisseurs`;
   const cityNom = getCity(city)?.nom ?? city;
   const parse = (parts: string[] = []) => {
     const letter = parts[0] ? decodeURIComponent(parts[0]).toUpperCase() : null;
@@ -175,7 +175,7 @@ export function makeFournisseursBrowse(city: string) {
         seoPath={path}
         locale={locale}
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
-        kickerHref={`/fr/city/${city}/marches`}
+        kickerHref={`/france/${city}/marches`}
         title={q.letter ? (en ? `Suppliers starting with ${q.letter}` : `Fournisseurs, lettre ${q.letter}`) : en ? `Every supplier of the City of ${cityNom}, A to Z` : `Tous les fournisseurs de la Ville de ${cityNom}, de A à Z`}
         intro={en ? `${intFr(list.length, "en")} companies with at least one public contract, each with its own page. Amounts are the maximum notified, not what was paid.` : `${intFr(list.length, "fr")} entreprises titulaires d'au moins un marché, chacune avec sa page. Les montants sont les plafonds notifiés, pas la dépense.`}
         rail={rail}
@@ -183,8 +183,8 @@ export function makeFournisseursBrowse(city: string) {
         items={items}
         pager={pager}
         siblings={[
-          { href: `/fr/city/${city}/marches/contrats`, label: en ? "Contracts by year" : "Marchés par année" },
-          { href: `/fr/city/${city}/subventions/associations`, label: en ? "Grant recipients A to Z" : "Bénéficiaires de subventions de A à Z" },
+          { href: `/france/${city}/marches/contrats`, label: en ? "Contracts by year" : "Marchés par année" },
+          { href: `/france/${city}/subventions/associations`, label: en ? "Grant recipients A to Z" : "Bénéficiaires de subventions de A à Z" },
         ]}
         siblingsLabel={en ? "Other indexes:" : "Autres index :"}
       />,
@@ -195,7 +195,7 @@ export function makeFournisseursBrowse(city: string) {
 
 /** Contracts of a French city, by year of notification. */
 export function makeContratsBrowse(city: string) {
-  const base = `/fr/city/${city}/marches/contrats`;
+  const base = `/france/${city}/marches/contrats`;
   const cityNom = getCity(city)?.nom ?? city;
   const parse = (parts: string[] = []) => {
     const year = parts[0] ? Number(parts[0]) : null;
@@ -243,7 +243,7 @@ export function makeContratsBrowse(city: string) {
         seoPath={path}
         locale={locale}
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
-        kickerHref={`/fr/city/${city}/marches`}
+        kickerHref={`/france/${city}/marches`}
         title={q.year ? (en ? `Contracts notified in ${q.year}` : `Marchés notifiés en ${q.year}`) : en ? `Every public contract of the City of ${cityNom}, by year` : `Tous les marchés publics de la Ville de ${cityNom}, par année`}
         intro={q.year ? (en ? `${intFr(n, "en")} contracts notified in ${q.year}, biggest first. Amounts are the maximum notified, not what was paid.` : `${intFr(n, "fr")} marchés notifiés en ${q.year}, du plus gros au plus petit. Les montants sont les plafonds notifiés, pas la dépense.`) : en ? "Pick a year." : "Choisissez une année."}
         rail={rail}
@@ -251,8 +251,8 @@ export function makeContratsBrowse(city: string) {
         items={items}
         pager={pager}
         siblings={[
-          { href: `/fr/city/${city}/marches/fournisseurs`, label: en ? "Suppliers A to Z" : "Fournisseurs de A à Z" },
-          { href: `/fr/city/${city}/subventions/associations`, label: en ? "Grant recipients A to Z" : "Bénéficiaires de subventions de A à Z" },
+          { href: `/france/${city}/marches/fournisseurs`, label: en ? "Suppliers A to Z" : "Fournisseurs de A à Z" },
+          { href: `/france/${city}/subventions/associations`, label: en ? "Grant recipients A to Z" : "Bénéficiaires de subventions de A à Z" },
         ]}
         siblingsLabel={en ? "Other indexes:" : "Autres index :"}
       />,
@@ -263,7 +263,7 @@ export function makeContratsBrowse(city: string) {
 
 /** Paris investment projects, by year then arrondissement. */
 export function makeProjetsBrowse() {
-  const base = "/fr/city/paris/investissements/projets";
+  const base = "/france/paris/investissements/projets";
   const parse = (parts: string[] = []) => {
     const year = parts[0] ? Number(parts[0]) : null;
     const arr = parts[1] != null ? Number(parts[1]) : null;
@@ -312,15 +312,15 @@ export function makeProjetsBrowse() {
         seoPath={path}
         locale={locale}
         kicker={en ? "The City of Paris's investments" : "Les investissements de la Ville de Paris"}
-        kickerHref="/fr/city/paris/investissements"
+        kickerHref="/france/paris/investissements"
         title={q.year ? (q.arr != null ? (en ? `Projects in ${q.year}, ${arrLabel(q.arr, true)} arrondissement` : `Projets ${q.year}, ${arrLabel(q.arr, false)} arrondissement`) : en ? `Projects in ${q.year}, by arrondissement` : `Projets ${q.year}, par arrondissement`) : en ? "Every investment project, by year" : "Tous les projets d'investissement, par année"}
         intro={q.year ? (q.arr != null ? (en ? `${intFr(items.length, "en")} projects, biggest first.` : `${intFr(items.length, "fr")} projets, du plus gros au plus petit.`) : en ? "Pick an arrondissement." : "Choisissez un arrondissement.") : en ? "Pick a year." : "Choisissez une année."}
         rail={rail}
         railLabel={q.year ? (en ? "By arrondissement" : "Par arrondissement") : en ? "By year" : "Par année"}
         items={items}
         siblings={[
-          { href: "/fr/city/paris/lieux", label: en ? "Places" : "Lieux" },
-          { href: "/fr/city/paris/marches/contrats", label: en ? "Contracts by year" : "Marchés par année" },
+          { href: "/france/paris/lieux", label: en ? "Places" : "Lieux" },
+          { href: "/france/paris/marches/contrats", label: en ? "Contracts by year" : "Marchés par année" },
         ]}
         siblingsLabel={en ? "Other indexes:" : "Autres index :"}
       />,
@@ -331,7 +331,7 @@ export function makeProjetsBrowse() {
 
 /** San Francisco payees with a fiche, by first letter (English only). */
 export function makeSfPayeesBrowse() {
-  const base = "/us/city/sf/who-gets-paid/payees";
+  const base = "/usa/san-francisco/who-gets-paid/payees";
   const parse = (parts: string[] = []) => {
     const letter = parts[0] ? decodeURIComponent(parts[0]).toUpperCase() : null;
     if (letter && !isLetter(letter)) return null;
@@ -365,7 +365,7 @@ export function makeSfPayeesBrowse() {
         seoPath={path}
         locale={"en"}
         kicker="Who gets paid in San Francisco"
-        kickerHref="/us/city/sf/who-gets-paid"
+        kickerHref="/usa/san-francisco/who-gets-paid"
         title={q.letter ? `Payees starting with ${q.letter}` : "Every payee with a page, A to Z"}
         intro={`${intFr(total, "en")} organisations paid by the City, each with its own page. Pick a letter.`}
         rail={letterRail(base, counts, q.letter)}
@@ -379,7 +379,7 @@ export function makeSfPayeesBrowse() {
 
 /** Recife recipients, by first letter (Portuguese on pt., English on www). */
 export function makeRecifeRecipientsBrowse() {
-  const base = "/br/city/recife/quem-recebe/todos";
+  const base = "/brasil/recife/quem-recebe/todos";
   const parse = (parts: string[] = []) => {
     const letter = parts[0] ? decodeURIComponent(parts[0]).toUpperCase() : null;
     const p = parts[1] ? Number(parts[1]) : 1;
@@ -429,7 +429,7 @@ export function makeRecifeRecipientsBrowse() {
         seoPath={path}
         locale={locale}
           kicker={en ? "Who gets paid in Recife" : "Quem recebe da Prefeitura do Recife"}
-          kickerHref="/br/city/recife/quem-recebe"
+          kickerHref="/brasil/recife/quem-recebe"
           title={q.letter ? (en ? `Payees starting with ${q.letter}` : `Letra ${q.letter}`) : en ? "Every organisation paid by the City, A to Z" : "Todas as organizações pagas pela Prefeitura, de A a Z"}
           intro={en ? `${intFr(total, "en")} organisations, each with its own page. Pick a letter.` : `${intFr(total, "pt")} organizações, cada uma com sua página. Escolha uma letra.`}
           rail={letterRail(base, counts, q.letter)}

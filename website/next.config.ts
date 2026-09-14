@@ -65,7 +65,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/((?!api/|chat|ingest/|_next/).*)',
+        source: '/((?!api/|chat|[a-z]{2}/chat|ingest/|_next/).*)',
         headers: [{ key: 'Vercel-CDN-Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' }],
       },
     ];
@@ -78,83 +78,88 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Legacy domain. franceopendata.org still served the whole site with a
-      // 200 (35 of 83 Google-referred human visits in Aug–Sep 2026): duplicate
-      // content and authority split three ways. The old site was French, so
-      // every path goes to fr.qipu.org; the proxy there sends /us and /br on
-      // to www. A next.config redirect runs before the filesystem, so
-      // robots.txt and the sitemaps redirect too.
+      // Liens courts des posts (LinkedIn, X…). LinkedIn remplace toute adresse
+      // de plus de 26 caractères par un lnkd.in qui cache le nom du site ;
+      // « qipu.org/chatelet » reste affiché tel quel. Un lien par langue,
+      // /<sujet> pour l'anglais et /fr/<sujet> pour le français, vers l'hôte
+      // unique en un saut, avec les UTM qui attribuent la visite. Temporaire
+      // (307) : le lien peut être repointé sans que les navigateurs l'aient
+      // mémorisé. Les redirections passent avant le proxy, donc sur tout hôte.
       {
-        source: '/:path*',
-        has: [{ type: 'host', value: '(www\\.)?franceopendata\\.org' }],
-        destination: 'https://fr.qipu.org/:path*',
+        source: '/chatelet',
+        destination: 'https://www.qipu.org/en/france/paris/lieu/theatre-du-chatelet?utm_source=linkedin&utm_medium=social&utm_campaign=chatelet',
+        permanent: false,
+      },
+      {
+        source: '/fr/chatelet',
+        destination: 'https://www.qipu.org/fr/france/paris/lieu/theatre-du-chatelet?utm_source=linkedin&utm_medium=social&utm_campaign=chatelet',
+        permanent: false,
+      },
+      // Legacy hosts (fr.qipu.org, pt.qipu.org, the apex, franceopendata.org).
+      // Their pages are sent on by proxy.ts, which converts the path and picks
+      // the language the old host spoke in one hop. Files never reach the proxy
+      // (robots.txt, sitemaps, the IndexNow key), so they go here: www serves
+      // the only robots.txt and sitemaps since 2026-09-13 (lib/urls.ts).
+      {
+        source: '/:file(.*\\.[a-zA-Z0-9]+)',
+        has: [{ type: 'host', value: '((www\\.)?franceopendata\\.org|(fr|pt)\\.qipu\\.org|qipu\\.org)' }],
+        destination: 'https://www.qipu.org/:file',
         permanent: true,
       },
       // The GPU renderer took over /the-city on 2026-08-30 and the Canvas one
       // was deleted with it. `/the-city-gl` was noindex and linked from
-      // nowhere, so this is for the hand-pasted links only.
-      { source: '/us/city/sf/the-city-gl', destination: '/us/city/sf/the-city', permanent: true },
+      // nowhere, so this is for the hand-pasted links only (the legacy
+      // /us/city/sf/the-city-gl reaches it through the proxy).
+      { source: '/en/usa/san-francisco/the-city-gl', destination: '/en/usa/san-francisco/the-city', permanent: true },
 
-      // Blog rename (kept from earlier)
-      { source: '/blog', destination: '/analyses', permanent: true },
-      { source: '/blog/:slug', destination: '/analyses/:slug', permanent: true },
+      // Blog rename (kept from earlier). The blog was French.
+      { source: '/blog', destination: '/fr/analyses', permanent: true },
+      { source: '/blog/:slug', destination: '/fr/analyses/:slug', permanent: true },
 
-      // Dead routes (pre-fusion) — point at the new Paris locations
       // Poste scindé le 2026-09-08 : l'ancienne adresse mène à la moitié « administration ».
-      { source: '/fr/city/paris/budget/poste/personnel-admin', destination: '/fr/city/paris/budget/poste/administration-generale', permanent: true },
-      // Dette scindée et recette renommée le 2026-09-09.
-      { source: '/fr/city/paris/budget/poste/remboursement-dette', destination: '/fr/city/paris/budget/poste/remboursement-de-la-dette', permanent: true },
-      { source: '/fr/city/paris/budget/poste/investissement', destination: '/fr/city/paris/budget/poste/recettes-d-investissement', permanent: true },
-      { source: '/evolution', destination: '/fr/city/paris/budget', permanent: true },
-      { source: '/prevision', destination: '/fr/city/paris/budget', permanent: true },
-      { source: '/bilan', destination: '/fr/city/paris/dette', permanent: true },
-      { source: '/carte', destination: '/fr/city/paris/investissements', permanent: true },
+      // Dette scindée et recette renommée le 2026-09-09. (The legacy /fr/city/paris/…
+      // spelling reaches these through the proxy, in its host's language.)
+      { source: '/:lang(fr|en)/france/paris/budget/poste/personnel-admin', destination: '/:lang/france/paris/budget/poste/administration-generale', permanent: true },
+      { source: '/:lang(fr|en)/france/paris/budget/poste/remboursement-dette', destination: '/:lang/france/paris/budget/poste/remboursement-de-la-dette', permanent: true },
+      { source: '/:lang(fr|en)/france/paris/budget/poste/investissement', destination: '/:lang/france/paris/budget/poste/recettes-d-investissement', permanent: true },
+
+      // Dead routes of the French-only site (pre-fusion) — point at the Paris pages, in French.
+      { source: '/evolution', destination: '/fr/france/paris/budget', permanent: true },
+      { source: '/prevision', destination: '/fr/france/paris/budget', permanent: true },
+      { source: '/bilan', destination: '/fr/france/paris/dette', permanent: true },
+      { source: '/carte', destination: '/fr/france/paris/investissements', permanent: true },
       { source: '/tableau-de-bord', destination: '/', permanent: true },
       { source: '/v2', destination: '/', permanent: true },
-
-      // Paris thematic pages migrated under /fr/city/paris/<theme>
-      { source: '/budget', destination: '/fr/city/paris/budget', permanent: true },
-      { source: '/budget/:path*', destination: '/fr/city/paris/budget/:path*', permanent: true },
-      { source: '/marches-publics', destination: '/fr/city/paris/marches', permanent: true },
-      { source: '/marches-publics/:path*', destination: '/fr/city/paris/marches/:path*', permanent: true },
-      { source: '/qui-recoit', destination: '/fr/city/paris/subventions', permanent: true },
-      { source: '/qui-recoit/:path*', destination: '/fr/city/paris/subventions/:path*', permanent: true },
-      { source: '/subventions', destination: '/fr/city/paris/subventions', permanent: true },
-      { source: '/dette-patrimoine', destination: '/fr/city/paris/dette', permanent: true },
-      { source: '/dette-patrimoine/:path*', destination: '/fr/city/paris/dette/:path*', permanent: true },
-      { source: '/patrimoine', destination: '/fr/city/paris/dette', permanent: true },
-      { source: '/investissements', destination: '/fr/city/paris/investissements', permanent: true },
-      { source: '/investissements/:path*', destination: '/fr/city/paris/investissements/:path*', permanent: true },
-      { source: '/logement-social', destination: '/fr/city/paris/logement', permanent: true },
-      { source: '/logement-social/:path*', destination: '/fr/city/paris/logement/:path*', permanent: true },
-      { source: '/logements', destination: '/fr/city/paris/logement', permanent: true },
-      { source: '/daily-bread', destination: '/fr/national/daily-bread', permanent: true },
-      { source: '/daily-bread/:path*', destination: '/fr/national/daily-bread/:path*', permanent: true },
-      { source: '/ville/paris/daily-bread', destination: '/fr/national/daily-bread', permanent: true },
-      { source: '/ville/paris/daily-bread/:path*', destination: '/fr/national/daily-bread/:path*', permanent: true },
-
-      // Paris is the showcase — keep its rich pages at the root, redirect
-      // /fr/city/paris (canonical commune URL) to /. Other cities live at
-      // /fr/city/[slug]. Same behavior kept for the legacy /ville/paris.
-      { source: '/ville/paris', destination: '/', permanent: true },
-      { source: '/fr/city/paris', destination: '/', permanent: true },
-
-      // /c/[slug] → /fr/city/[slug] (pivot to commune namespace)
-      // Specific Paris case kept first for clarity.
-      { source: '/c/paris', destination: '/', permanent: true },
-      { source: '/c/:slug', destination: '/fr/city/:slug', permanent: true },
-
-      // Macro pages regrouped under /fr/national
-      { source: '/apu', destination: '/fr/national', permanent: true },
-      { source: '/etat', destination: '/fr/national/etat', permanent: true },
-      { source: '/dette', destination: '/fr/national/dette', permanent: true },
-      { source: '/fiscalite', destination: '/fr/national/fiscalite', permanent: true },
-
-      // Legacy URL-scheme catch-alls (ADR-0010) — keep LAST so the more
-      // specific legacy sources above (e.g. /ville/paris/daily-bread) win.
-      { source: '/ville/:path*', destination: '/fr/city/:path*', permanent: true },
-      { source: '/france/:path*', destination: '/fr/national/:path*', permanent: true },
-
+      { source: '/budget', destination: '/fr/france/paris/budget', permanent: true },
+      { source: '/budget/:path*', destination: '/fr/france/paris/budget/:path*', permanent: true },
+      { source: '/marches-publics', destination: '/fr/france/paris/marches', permanent: true },
+      { source: '/marches-publics/:path*', destination: '/fr/france/paris/marches/:path*', permanent: true },
+      { source: '/qui-recoit', destination: '/fr/france/paris/subventions', permanent: true },
+      { source: '/qui-recoit/:path*', destination: '/fr/france/paris/subventions/:path*', permanent: true },
+      { source: '/subventions', destination: '/fr/france/paris/subventions', permanent: true },
+      { source: '/dette-patrimoine', destination: '/fr/france/paris/dette', permanent: true },
+      { source: '/dette-patrimoine/:path*', destination: '/fr/france/paris/dette/:path*', permanent: true },
+      { source: '/patrimoine', destination: '/fr/france/paris/dette', permanent: true },
+      { source: '/investissements', destination: '/fr/france/paris/investissements', permanent: true },
+      { source: '/investissements/:path*', destination: '/fr/france/paris/investissements/:path*', permanent: true },
+      { source: '/logement-social', destination: '/fr/france/paris/logement', permanent: true },
+      { source: '/logement-social/:path*', destination: '/fr/france/paris/logement/:path*', permanent: true },
+      { source: '/logements', destination: '/fr/france/paris/logement', permanent: true },
+      { source: '/daily-bread', destination: '/fr/france/daily-bread', permanent: true },
+      { source: '/daily-bread/:path*', destination: '/fr/france/daily-bread/:path*', permanent: true },
+      { source: '/ville/paris/daily-bread', destination: '/fr/france/daily-bread', permanent: true },
+      { source: '/ville/paris/daily-bread/:path*', destination: '/fr/france/daily-bread/:path*', permanent: true },
+      { source: '/ville/paris', destination: '/fr/france/paris', permanent: true },
+      { source: '/c/paris', destination: '/fr/france/paris', permanent: true },
+      { source: '/c/:slug', destination: '/fr/france/:slug', permanent: true },
+      { source: '/apu', destination: '/fr/france', permanent: true },
+      { source: '/etat', destination: '/fr/france/etat', permanent: true },
+      { source: '/dette', destination: '/fr/france/dette', permanent: true },
+      { source: '/fiscalite', destination: '/fr/france/fiscalite', permanent: true },
+      // Legacy URL-scheme catch-all (ADR-0010) — keep LAST so the more specific
+      // sources above (e.g. /ville/paris/daily-bread) win. /fr/city/…, /us/…,
+      // /br/… and /france/… are converted by proxy.ts.
+      { source: '/ville/:path*', destination: '/fr/france/:path*', permanent: true },
     ];
   },
 };

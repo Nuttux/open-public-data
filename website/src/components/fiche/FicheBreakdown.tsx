@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 /**
  * A ranked money breakdown inside a fiche: label + proportional bar + amount,

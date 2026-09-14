@@ -48,7 +48,7 @@ SEED_EXCLUDE='(place|timeline|gloss|editorial|lieux|candidates)'
 #     rows are 'Autre' anyway and resolve to the same value through the
 #     downstream LEFT JOIN fallback, so published figures do not move.
 SEED_PII_DROP='seed_cache_siret_by_name.csv'
-PERSON_ROW='personne physique|nom de personne|particulier|^"?(M|MME|MLLE|MR|MONSIEUR|MADAME|MADEMOISELLE)[ .]'
+PERSON_ROW='personnes? physiques?|nom de personnes?|particulier|^"?(M|MME|MLLE|MR|MONSIEUR|MADAME|MADEMOISELLE)[ .]'
 THEMATIQUE_SEED='pipeline/seeds/seed_cache_thematique_beneficiaires.csv'
 
 SKIPPED_SEEDS="$(mktemp)"
@@ -157,6 +157,10 @@ if grep -rn "danielshavit92" "$DEST" 2>/dev/null; then
 fi
 if [ -e "$DEST/pipeline/seeds/$SEED_PII_DROP" ]; then
   echo "✗ LEAK: $SEED_PII_DROP (name->SIRET->address on individuals) in mirror. Aborting." >&2; exit 1
+fi
+# Le contrôle commun au workflow : chemins interdits, lignes « personne physique ».
+if ! python3 "$ROOT/scripts/public-mirror/pii_gate.py" "$DEST"; then
+  echo "✗ LEAK: personal data in mirror. Aborting." >&2; exit 1
 fi
 if [ -f "$DEST/$THEMATIQUE_SEED" ] && \
    tail -n +2 "$DEST/$THEMATIQUE_SEED" | grep -iqE "$PERSON_ROW"; then

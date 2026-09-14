@@ -112,7 +112,7 @@ function firstOfPair(a: Meta, b: Meta): boolean {
 /**
  * The canonical ordering of the pilot pair made of `a` and `b`, or null when
  * the two are not a pilot pair. The ordering is the one the proposing commune
- * page links to (`/fr/compare/<commune>/<proposed>`); when each page proposes
+ * page links to (`/france/comparer/<commune>/<proposed>`); when each page proposes
  * the other, the larger town comes first.
  */
 export function pilotPair(a: string, b: string): [string, string] | null {
@@ -139,7 +139,7 @@ export function comparePilotPaths(): string[] {
     if (!partner) continue;
     const pair = pilotPair(c.slug, partner);
     if (!pair) continue;
-    const path = `/fr/compare/${pair[0]}/${pair[1]}`;
+    const path = `/france/comparer/${pair[0]}/${pair[1]}`;
     if (seen.has(path)) continue;
     seen.add(path);
     out.push(path);

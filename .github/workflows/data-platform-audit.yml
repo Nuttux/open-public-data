@@ -12,8 +12,8 @@ name: data-platform-audit
 # Federation + service account avec permissions BQ) — voir
 # docs/runbooks/enable-bq-ci.md.
 #
-# Tant que ce setup n'est pas fait, le job `ci-status` annonce VISIBLEMENT
-# que le mode complet n'est pas actif (pas de fausse impression de couverture).
+# Le job `ci-status`, qui annonçait ce mode, est retiré le 2026-09-14 : un
+# simple echo coûtait une minute arrondie à chaque run.
 #
 # Retiré le 2026-09-09 : le job `verify-exports` (égalité octet entre un
 # export régénéré depuis BigQuery et le JSON committé). Depuis que le refresh
@@ -38,38 +38,21 @@ on:
       - 'website/public/**'
       - 'docs/data-platform/**'
       - '.github/workflows/data-platform-audit.yml'
+  # Sur main, seulement quand le pipeline change. Jusqu'au 2026-09-13, chaque
+  # push lançait les 7 jobs, dont dbt test sur BigQuery : 1 287 des 2 000
+  # minutes de septembre, quota épuisé le 13.
   push:
     branches:
       - main
+    paths:
+      - 'pipeline/**'
+      - '.github/workflows/data-platform-audit.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  ci-status:
-    name: ⚠️  CI Status — BQ-dependent jobs may be disabled
-    runs-on: ubuntu-latest
-    steps:
-      - name: Announce coverage
-        run: |
-          if [[ "${{ vars.ENABLE_BQ_CI }}" == "true" ]]; then
-            echo "✅ Full CI : layering + dbt parse + dbt test + source freshness + data-quality-audit"
-          else
-            echo "⚠️  Partial CI : layering + dbt parse + schema completeness ONLY"
-            echo ""
-            echo "  The following data-quality jobs are DISABLED:"
-            echo "    - dbt test (the 280+ data tests)"
-            echo "    - dbt source freshness"
-            echo "    - data-quality-audit (réconciliation/complétude/freshness, /methode#audit)"
-            echo ""
-            echo "  To enable full CI, an admin must:"
-            echo "    1. Set up Workload Identity Federation with a GCP service account"
-            echo "    2. Add repository secrets: GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT"
-            echo "    3. Set repository variable ENABLE_BQ_CI=true"
-            echo ""
-            echo "  See docs/runbooks/dev-prod-separation.md for the recommended setup."
-          fi
 
   layering-gate:
     name: Layering audit (--strict)
@@ -221,10 +204,11 @@ jobs:
   dbt-test:
     name: dbt test (data-quality, full BQ access)
     runs-on: ubuntu-latest
-    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
-    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
-    # déclencher le workflow manuellement via workflow_dispatch.
-    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    # Jobs BQ-dependent (coût $ + minutes Actions) : lancement manuel seulement
+    # depuis le 2026-09-14. Le refresh du lundi (enrich-pipeline.yml) fait déjà
+    # tourner dbt test et l'audit qualité avant toute publication ; les relancer
+    # à chaque push sur main doublait le coût sans rien protéger de plus.
+    if: ${{ vars.ENABLE_BQ_CI == 'true' && github.event_name == 'workflow_dispatch' }}
     permissions:
       id-token: write   # for Workload Identity Federation
       contents: read
@@ -275,10 +259,11 @@ jobs:
   data-quality-audit:
     name: data quality audit (réconciliation, complétude, freshness)
     runs-on: ubuntu-latest
-    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
-    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
-    # déclencher le workflow manuellement via workflow_dispatch.
-    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    # Jobs BQ-dependent (coût $ + minutes Actions) : lancement manuel seulement
+    # depuis le 2026-09-14. Le refresh du lundi (enrich-pipeline.yml) fait déjà
+    # tourner dbt test et l'audit qualité avant toute publication ; les relancer
+    # à chaque push sur main doublait le coût sans rien protéger de plus.
+    if: ${{ vars.ENABLE_BQ_CI == 'true' && github.event_name == 'workflow_dispatch' }}
     permissions:
       id-token: write
       contents: read

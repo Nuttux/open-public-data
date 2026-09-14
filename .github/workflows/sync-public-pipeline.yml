@@ -50,6 +50,11 @@ jobs:
             | tar -xz -C /tmp gitleaks
           sudo mv /tmp/gitleaks /usr/local/bin/
 
+      # Le contrôle vit hors de pipeline/ : on le met de côté avant que
+      # filter-repo ne réduise l'arbre à pipeline/.
+      - name: Keep the PII gate aside
+        run: cp scripts/public-mirror/pii_gate.py /tmp/pii_gate.py
+
       - name: Configure git
         run: |
           git config --global user.name "AbstractsMachine"
@@ -65,12 +70,22 @@ jobs:
             --path README.md \
             --path docs/architecture-modelling.md
 
-      - name: Filter-repo — exclude dbt artifacts
+      - name: Filter-repo — exclude dbt artifacts and personal data
+        # Données de personnes retirées de TOUT l'historique (2026-09-13) : les
+        # extraits bruts de subventions nommaient ~25 000 particuliers
+        # (« nature_juridique: Personnes physiques »), les caches de
+        # bénéficiaires et de titulaires DECP les listent un par un. Un push
+        # public ne se rattrape pas ; ils ne partent jamais.
         run: |
           git filter-repo --force --invert-paths \
             --path pipeline/dbt_packages/ \
             --path pipeline/target/ \
-            --path pipeline/logs/
+            --path pipeline/logs/ \
+            --path pipeline/raw_extracts/ \
+            --path pipeline/cache/ \
+            --path-glob '*seed_cache_siret_by_name*' \
+            --path-glob '*seed_cache_thematique_beneficiaires*' \
+            --path-glob '*seed_marseille_cache_thematique*'
 
       - name: Filter-repo — strip Claude trailers and footers
         run: |
@@ -91,6 +106,9 @@ jobs:
           cleaned = cleaned.rstrip(b"\n") + b"\n"
           return cleaned
           '
+
+      - name: Audit — personnes physiques (arbre et historique)
+        run: python3 /tmp/pii_gate.py . --history
 
       - name: Audit — gitleaks scan
         run: |

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import ReactECharts from "./EChart";
 import { useNumLocale } from "@/lib/use-fmt";
@@ -49,6 +49,18 @@ export default function DebtLineChart({
   height = 460,
 }: Props) {
   const nl = useNumLocale();
+  // Sur un écran étroit, une année sur cinq et la légende sur plusieurs
+  // lignes : à 390 px, les 26 années se chevauchaient et la légende passait
+  // sur le graphique.
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(([e]) => setNarrow(e.contentRect.width < 640));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const option = useMemo(() => {
     // X axis: union of all timestamps, sorted
     const allTimes = Array.from(
@@ -86,7 +98,7 @@ export default function DebtLineChart({
       backgroundColor: "transparent",
       textStyle: { fontFamily: "Inter, sans-serif" },
       animation: false,
-      grid: { left: 56, right: 24, top: 32, bottom: 36 },
+      grid: { left: narrow ? 44 : 56, right: narrow ? 12 : 24, top: narrow ? 96 : 32, bottom: 36 },
       tooltip: {
         trigger: "axis",
         backgroundColor: "#fff",
@@ -111,7 +123,9 @@ export default function DebtLineChart({
       },
       legend: {
         top: 0,
-        right: 0,
+        left: narrow ? 0 : undefined,
+        right: narrow ? undefined : 0,
+        itemGap: narrow ? 8 : 10,
         textStyle: { fontSize: 12, color: "#0a0a0a" },
         itemWidth: 14,
         itemHeight: 8,
@@ -123,7 +137,11 @@ export default function DebtLineChart({
         axisLabel: {
           fontSize: 11,
           color: "#5f6672",
-          formatter: (v: string) => (v.endsWith("Q1") ? v.slice(0, 4) : ""),
+          formatter: (v: string) => {
+            if (!v.endsWith("Q1")) return "";
+            const year = v.slice(0, 4);
+            return narrow && Number(year) % 5 !== 0 ? "" : year;
+          },
           interval: 0,
         },
         axisLine: { lineStyle: { color: "#0a0a0a" } },
@@ -147,14 +165,16 @@ export default function DebtLineChart({
       },
       series: seriesSpec,
     };
-  }, [series, unitLabel, unitMode, nl]);
+  }, [series, unitLabel, unitMode, nl, narrow]);
 
   return (
-    <ReactECharts
-      option={option}
-      style={{ height, width: "100%" }}
-      notMerge
-      lazyUpdate
-    />
+    <div ref={wrapRef}>
+      <ReactECharts
+        option={option}
+        style={{ height, width: "100%" }}
+        notMerge
+        lazyUpdate
+      />
+    </div>
   );
 }

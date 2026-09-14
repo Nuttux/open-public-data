@@ -28,7 +28,7 @@ export function loadSfDeptHrefs(): Record<string, string> {
   const budgetFy = defaultFiscalYear(loadSfBudgetByYear());
   const deptHrefs: Record<string, string> = {};
   for (const dep of loadSfBudgetBreakdown(budgetFy)?.departments.spending ?? []) {
-    deptHrefs[dep.code] = `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${budgetFy}`;
+    deptHrefs[dep.code] = `/usa/san-francisco/budget/dept/${deptSlug(dep.code)}?year=${budgetFy}`;
   }
   return deptHrefs;
 }

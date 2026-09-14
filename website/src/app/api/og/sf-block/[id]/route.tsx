@@ -1,7 +1,7 @@
 import { renderSfBlockOg } from "@/lib/og/us-sf-cards";
 
 /**
- * The share card for one block of `/us/city/sf/the-city`.
+ * The share card for one block of `/usa/san-francisco/the-city`.
  *
  * A ROUTE HANDLER rather than an `opengraph-image.tsx`, and that is forced
  * rather than chosen: the block is a QUERY PARAM (`?block=3752`), and Next's

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { ReactNode } from "react";
 import type { SfPlaceFicheData, SfPlaceDoc } from "@/lib/us/sf-places-data";
 import { loadSfPlacesIndex, sfPlaceHeadline } from "@/lib/us/sf-places-data";
@@ -19,7 +19,7 @@ function payeeHref(vendor: string): string | null {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  return payeeSlugIfKeyed(slug) ? `/us/city/sf/who-gets-paid/payee/${slug}` : null;
+  return payeeSlugIfKeyed(slug) ? `/usa/san-francisco/who-gets-paid/payee/${slug}` : null;
 }
 
 /**
@@ -280,7 +280,7 @@ function MoneySection({ place }: { place: SfPlaceFicheData }) {
             <MoneyRow
               key={c.contract_no}
               label={c.title || c.contract_no}
-              href={`/us/city/sf/contracts/contract/${c.contract_no}`}
+              href={`/usa/san-francisco/contracts/contract/${c.contract_no}`}
               sub={[c.prime, c.department_code].filter(Boolean).join(" · ")}
               amount={c.paid_usd ? <Amt usd={c.paid_usd} /> : c.agreed_usd ? <span className="fx-place-row-agreed"><Amt usd={c.agreed_usd} /> agreed</span> : undefined}
             />
@@ -290,7 +290,7 @@ function MoneySection({ place }: { place: SfPlaceFicheData }) {
               <MoneyRow
                 key={c.contract_no}
                 label={c.title || c.contract_no}
-                href={`/us/city/sf/contracts/contract/${c.contract_no}`}
+                href={`/usa/san-francisco/contracts/contract/${c.contract_no}`}
                 sub={[c.prime, c.department_code].filter(Boolean).join(" · ")}
                 amount={c.paid_usd ? <Amt usd={c.paid_usd} /> : undefined}
               />
@@ -347,7 +347,7 @@ function MoneySection({ place }: { place: SfPlaceFicheData }) {
       {bl && (
         <p className="fx-fiche-note fx-place-dept-line">
           Run by the{" "}
-          <Link href={`/us/city/sf/budget/dept/${deptSlug(bl.code)}?year=${bl.fiscal_year}`} scroll={false}>{bl.name}</Link>
+          <Link href={`/usa/san-francisco/budget/dept/${deptSlug(bl.code)}?year=${bl.fiscal_year}`} scroll={false}>{bl.name}</Link>
           , whose whole-department budget is <Amt usd={bl.total_usd} />
           {pl ? <> across {pl.n_employees.toLocaleString("en-US")} staff</> : null} (FY{bl.fiscal_year}) —
           citywide, not this place&rsquo;s own. The City does not publish a running cost per building.
@@ -506,7 +506,7 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
           <div className="fx-fiche-h">{relatedTitle}</div>
           <div className="fx-voisins">
             {related.map((p) => (
-              <Link key={p.slug} href={`/us/city/sf/places/place/${p.slug}`} scroll={false} className="fx-voisin">
+              <Link key={p.slug} href={`/usa/san-francisco/places/place/${p.slug}`} scroll={false} className="fx-voisin">
                 {p.photo ? <img src={p.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}
                 <span className="fx-voisin-name">{p.name}</span>
               </Link>

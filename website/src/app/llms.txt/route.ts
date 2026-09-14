@@ -1,11 +1,12 @@
 import fonctionsManifest from '@/data/communes-fonctions-manifest.json';
-import { MARCHES_EXPLORER_MIN } from '@/app/fr/city/[slug]/page-ville-data';
+import { MARCHES_EXPLORER_MIN } from '@/app/[lang]/france/[slug]/page-ville-data';
 import { listAllCommunesMeta } from '@/lib/all-communes';
 import { hasDedicatedRoutes } from '@/lib/cities';
 import { marchesManifestSlugs } from '@/lib/commune-marches';
 import { readDataJsonOrNull } from '@/lib/data/read';
 import { loadLieuxIndex } from '@/lib/lieux-data';
 import { SITE_URL } from '@/lib/seo';
+import { ANALYSES_PUBLIC } from '@/lib/analyses-visibility';
 import { loadSfPlacesIndex } from '@/lib/us/sf-places-data';
 
 /**
@@ -73,73 +74,73 @@ public accounts: Paris Open Data, DGFiP/OFGL, DECP (France), DataSF and the
 Internet Archive (United States), Prefeitura do Recife (Brazil). Each figure
 carries a link to the dataset it comes from.
 
-The same pages exist in several languages, one host per language:
-${u} (English), https://fr.qipu.org (French), https://pt.qipu.org (Portuguese,
-Recife). Paths are identical across hosts.
+Every address starts with its language, then its country:
+${u}/fr/… (French), ${u}/en/… (English), ${u}/pt/… (Portuguese, Recife).
+A country's pages are written in its language; the English versions of France's
+and Brazil's hubs exist too.
 
 ## Cities
 
-- [Paris](${u}/): budget, grants, public contracts, investments, social housing,
+- [Paris](${u}/fr/france/paris): budget, grants, public contracts, investments, social housing,
   debt, and ${counted(parisPlaces, 'places')} with the money that reached each.
-- [San Francisco](${u}/us/city/sf): budget and a timeline back to 1888, contracts,
+- [San Francisco](${u}/en/usa/san-francisco): budget and a timeline back to 1888, contracts,
   payroll, who the city pays, ${counted(sfPlaces, 'places')} with their archival
   record, and every neighbourhood and street of the city map.
-- [Recife](${u}/br/city/recife): orçamento, ${counted(recifeContracts, 'contratos')},
+- [Recife](${u}/pt/brasil/recife): orçamento, ${counted(recifeContracts, 'contratos')},
   quem recebe, and ${counted(recifePlaces, 'lugares')}. In Portuguese.
-- [Marseille](${u}/fr/city/marseille): budget, grants, public contracts,
+- [Marseille](${u}/fr/france/marseille): budget, grants, public contracts,
   investments, debt, social housing, places.
 
 ## France, nationally
 
-- [State budget](${u}/fr/national/budget): where national revenue comes from and
+- [State budget](${u}/fr/france/budget): where national revenue comes from and
   where it goes.
-- [Daily bread](${u}/fr/national/daily-bread): the same money seen per inhabitant,
+- [Daily bread](${u}/fr/france/daily-bread): the same money seen per inhabitant,
   per day.
-- [Debt](${u}/fr/national/dette) · [Taxation](${u}/fr/national/fiscalite) ·
-  [The State](${u}/fr/national/etat)
-- **Every French commune** has a budget page at \`${u}/fr/city/{commune-slug}\` —
+- [Debt](${u}/fr/france/dette) · [Taxation](${u}/fr/france/fiscalite) ·
+  [The State](${u}/fr/france/etat)
+- **Every French commune** has a budget page at \`${u}/fr/france/{commune-slug}\` —
   ${counted(allCommunes, 'of them')}, built from the accounts published by the
-  DGFiP and harmonised by the OFGL. Example: [Lille](${u}/fr/city/lille).
+  DGFiP and harmonised by the OFGL. Example: [Lille](${u}/fr/france/lille).
 ${policyLine}
-  - \`${u}/fr/city/{commune-slug}/fonction/{policy}\` — e.g. \`enseignement-formation\`, education and training
-  - \`${u}/fr/city/{commune-slug}/nature/{form}\` — e.g. \`salaires\`, staff pay
+  - \`${u}/fr/france/{commune-slug}/fonction/{policy}\` — e.g. \`enseignement-formation\`, education and training
+  - \`${u}/fr/france/{commune-slug}/nature/{form}\` — e.g. \`salaires\`, staff pay
 - ${counted(marchesPages, 'communes')} have a public-contracts explorer at
-  \`${u}/fr/city/{commune-slug}/marches\` (DECP), with a page per supplier at
-  \`${u}/fr/city/{commune-slug}/fournisseur/{siren}\`.
+  \`${u}/fr/france/{commune-slug}/marches\` (DECP), with a page per supplier at
+  \`${u}/fr/france/{commune-slug}/fournisseur/{siren}\`.
 - [Compare communes](${u}/comparer)
 
 ## Paris sections
 
-- [Budget](${u}/fr/city/paris/budget) ·
-  [Grants](${u}/fr/city/paris/subventions) ·
-  [Public contracts](${u}/fr/city/paris/marches) ·
-  [Investments](${u}/fr/city/paris/investissements) ·
-  [Social housing](${u}/fr/city/paris/logement) ·
-  [Debt and assets](${u}/fr/city/paris/dette) ·
-  [Places](${u}/fr/city/paris/lieux)
+- [Budget](${u}/fr/france/paris/budget) ·
+  [Grants](${u}/fr/france/paris/subventions) ·
+  [Public contracts](${u}/fr/france/paris/marches) ·
+  [Investments](${u}/fr/france/paris/investissements) ·
+  [Social housing](${u}/fr/france/paris/logement) ·
+  [Debt and assets](${u}/fr/france/paris/dette) ·
+  [Places](${u}/fr/france/paris/lieux)
 
 ## Entity pages
 
 Every organisation, contract, supplier and place has its own page:
 
-- \`${u}/fr/city/paris/lieu/{slug}\` — a Paris place
-- \`${u}/fr/city/paris/subventions/association/{slug}\` — a grant recipient
-- \`${u}/fr/city/paris/marches/contrat/{number}\` — a Paris contract
-- \`${u}/fr/city/paris/marches/fournisseur/{siren}\` — a Paris supplier
-- \`${u}/us/city/sf/places/place/{slug}\` — a San Francisco place
-- \`${u}/us/city/sf/who-gets-paid/payee/{slug}\` — a San Francisco payee
-- \`${u}/us/city/sf/contracts/contract/{number}\` — a San Francisco contract
-- \`${u}/us/city/sf/the-city/neighbourhood/{slug}\` — a San Francisco neighbourhood
-- \`${u}/br/city/recife/lugares/{slug}\` — a Recife place
-- \`${u}/br/city/recife/quem-recebe/{cnpj}\` — a Recife recipient
-- \`${u}/br/city/recife/contratos/{id}\` — a Recife contract
+- \`${u}/fr/france/paris/lieu/{slug}\` — a Paris place
+- \`${u}/fr/france/paris/subventions/association/{slug}\` — a grant recipient
+- \`${u}/fr/france/paris/marches/contrat/{number}\` — a Paris contract
+- \`${u}/fr/france/paris/marches/fournisseur/{siren}\` — a Paris supplier
+- \`${u}/en/usa/san-francisco/places/place/{slug}\` — a San Francisco place
+- \`${u}/en/usa/san-francisco/who-gets-paid/payee/{slug}\` — a San Francisco payee
+- \`${u}/en/usa/san-francisco/contracts/contract/{number}\` — a San Francisco contract
+- \`${u}/en/usa/san-francisco/the-city/neighbourhood/{slug}\` — a San Francisco neighbourhood
+- \`${u}/pt/brasil/recife/lugares/{slug}\` — a Recife place
+- \`${u}/pt/brasil/recife/quem-recebe/{cnpj}\` — a Recife recipient
+- \`${u}/pt/brasil/recife/contratos/{id}\` — a Recife contract
 
 ## Method and limits
 
 - [Method](${u}/methode): how each figure is built, source by source.
 - [Corrections](${u}/corrections): every correction, with its date and scope.
-- [Analyses](${u}/analyses): written pieces.
-- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
+${ANALYSES_PUBLIC ? `- [Analyses](${u}/analyses): written pieces.\n` : ''}- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
 
 Known limits, stated because they matter when citing this site: the number of
 Paris grant lines drops sharply in 2020 and 2021 while the amounts hold, so

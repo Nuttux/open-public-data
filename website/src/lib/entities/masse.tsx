@@ -27,7 +27,7 @@ export const masseConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ masse, year, slug }, locale) => {
-    const canonical = `/fr/city/paris/dette/masse/${slug}`;
+    const canonical = `/france/paris/dette/masse/${slug}`;
     const label = trLabel(masse.label, locale);
     const amount = locale === "en"
       ? (masse.value >= 1e9 ? `€${fmtBillions(masse.value)}Bn` : `€${fmtMillions(masse.value, 0)}M`)
@@ -97,13 +97,13 @@ export const masseConfig: EntityPageConfig<D> = {
     },
     title: ({ masse }, locale) => trLabel(masse.label, locale),
     shareUrl: ({ slug, requestedYear }) =>
-      `/fr/city/paris/dette/masse/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
+      `/france/paris/dette/masse/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ masse, year }) =>
       `${masse.label} — ${fmtEur(masse.value)} au bilan ${year} de la Ville de Paris (${fmtDec(masse.share * 100, 1)} % du ${masse.side}).`,
     backHref: ({ requestedYear }) =>
       requestedYear
-        ? `/fr/city/paris/dette?year=${requestedYear}#sec-bilan`
-        : "/fr/city/paris/dette#sec-bilan",
+        ? `/france/paris/dette?year=${requestedYear}#sec-bilan`
+        : "/france/paris/dette#sec-bilan",
     breadcrumbLabel: ({ masse }) => masse.label,
     children: ({ masse, year }) => <MasseFiche masse={masse} year={year} />,
   },

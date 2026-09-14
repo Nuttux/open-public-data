@@ -2,6 +2,8 @@
 
 import type { ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
+import { useLang } from "@/lib/navigation";
+import { localize } from "@/lib/urls";
 
 type Item = {
   label: ReactNode;
@@ -25,6 +27,7 @@ type Props = {
  */
 export default function ExportRow({ title, items }: Props) {
   const t = useT();
+  const lang = useLang();
   const resolvedTitle = title ?? t("fx.export.label");
   return (
     <div className="fx-export-row">
@@ -42,7 +45,7 @@ export default function ExportRow({ title, items }: Props) {
             <a
               key={i}
               className={cls}
-              href={it.href}
+              href={localize(it.href, lang)}
               download={downloadAttr}
               target={it.external ? "_blank" : undefined}
               rel={it.external ? "noopener noreferrer" : undefined}

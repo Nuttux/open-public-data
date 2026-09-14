@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { ComponentProps, ReactNode } from "react";
 
 type Variant = "primary" | "secondary";

@@ -76,7 +76,9 @@ export async function GET(req: NextRequest) {
   const { capacite, status } = compute(taux, recettesDelta, investMult);
   const isCollapsed = !Number.isFinite(capacite);
 
-  const bigValue = isCollapsed ? "∞" : fmt1(capacite);
+  // « ∞ » manque à la police par défaut de next/og (une case vide) : la réponse
+  // à « années pour rembourser la dette » est dite en mot.
+  const bigValue = isCollapsed ? "Jamais" : fmt1(capacite);
   const statusLabel = STATUS_LABELS[status];
   const statusColor = STATUS_COLORS[status];
 
@@ -137,7 +139,8 @@ export async function GET(req: NextRequest) {
         <div
           style={{
             marginTop: 8,
-            fontSize: 64,
+            flexShrink: 0,
+            fontSize: 56,
             fontWeight: 800,
             color: "#111",
             lineHeight: 1.05,
@@ -150,7 +153,8 @@ export async function GET(req: NextRequest) {
 
         <div
           style={{
-            marginTop: 24,
+            marginTop: 12,
+            flexShrink: 0,
             fontSize: 22,
             letterSpacing: 2,
             textTransform: "uppercase",
@@ -168,6 +172,8 @@ export async function GET(req: NextRequest) {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
+            flexShrink: 0,
+            marginTop: 12,
           }}
         >
           <div
@@ -184,25 +190,25 @@ export async function GET(req: NextRequest) {
           </div>
           <div
             style={{
-              fontSize: 220,
+              fontSize: 140,
               fontWeight: 800,
               color: statusColor,
-              letterSpacing: -6,
-              lineHeight: 0.95,
+              letterSpacing: -4,
+              lineHeight: 1,
               display: "flex",
               alignItems: "baseline",
             }}
           >
             {bigValue}
             {!isCollapsed && (
-              <span style={{ fontSize: 48, color: "#666", marginLeft: 16, fontWeight: 500 }}>
+              <span style={{ fontSize: 40, color: "#666", marginLeft: 14, fontWeight: 500 }}>
                 ans
               </span>
             )}
           </div>
           <div
             style={{
-              marginTop: 18,
+              marginTop: 10,
               fontSize: 28,
               fontWeight: 700,
               color: statusColor,
@@ -222,7 +228,8 @@ export async function GET(req: NextRequest) {
           style={{
             display: "flex",
             flexDirection: "column",
-            marginTop: 20,
+            marginTop: 12,
+            flexShrink: 0,
           }}
         >
           <div
@@ -265,7 +272,9 @@ export async function GET(req: NextRequest) {
             <div
               style={{
                 position: "absolute",
-                left: `calc(${Math.min(1, Number.isFinite(capacite) ? capacite / 30 : 1) * 100}% - 4px)`,
+                // Satori ne calcule pas `calc()` : la jauge fait 1 056 px (1 200 moins
+                // deux marges de 72), le curseur de 8 px se centre sur sa valeur.
+                left: Math.round(Math.min(1, Number.isFinite(capacite) ? capacite / 30 : 1) * 1056) - 4,
                 top: -4,
                 bottom: -4,
                 width: 8,
@@ -274,27 +283,22 @@ export async function GET(req: NextRequest) {
               }}
             />
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: 6,
-              fontSize: 14,
-              color: "#666",
-              letterSpacing: 1,
-            }}
-          >
-            <span>0</span>
-            <span style={{ marginLeft: "34%" }}>12 seuil alerte</span>
-            <span>20 critique</span>
-            <span>30+</span>
+          {/* Les étiquettes à l'échelle de la jauge (0 → 30 ans) : 12 ans tombe à
+              40 %, 20 ans à 66,6 %. L'ancienne rangée « space-between » posait
+              le seuil d'alerte vers 57 %, loin de sa zone. */}
+          <div style={{ position: "relative", display: "flex", height: 20, marginTop: 6, fontSize: 14, color: "#666", letterSpacing: 1 }}>
+            <span style={{ position: "absolute", left: 0 }}>0</span>
+            <span style={{ position: "absolute", left: "40%" }}>12 seuil alerte</span>
+            <span style={{ position: "absolute", left: "66.6%" }}>20 critique</span>
+            <span style={{ position: "absolute", right: 0 }}>30+</span>
           </div>
         </div>
 
         <div
           style={{
-            marginTop: 28,
-            paddingTop: 18,
+            marginTop: 16,
+            paddingTop: 14,
+            flexShrink: 0,
             borderTop: "2px solid #111",
             fontSize: 14,
             color: "#666",

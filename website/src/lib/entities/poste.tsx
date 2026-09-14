@@ -30,7 +30,7 @@ export const posteConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ poste: p }, locale) => {
-    const canonical = `/fr/city/paris/budget/poste/${p.slug}`;
+    const canonical = `/france/paris/budget/poste/${p.slug}`;
     const labelEn = trLabel(p.label, locale);
     const kindLabel = locale === "en"
       ? (p.kind === "depense" ? "expense" : "revenue")
@@ -79,7 +79,7 @@ export const posteConfig: EntityPageConfig<D> = {
   page: {
     header: ({ poste, year }) => (
       <>
-        <BudgetBackKicker href={year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget"} />
+        <BudgetBackKicker href={year ? `/france/paris/budget?year=${year}` : "/france/paris/budget"} />
         <h1 className="fx-page-title">{poste.label}</h1>
       </>
     ),
@@ -89,13 +89,13 @@ export const posteConfig: EntityPageConfig<D> = {
     kicker: ({ poste }, locale) => relatedT(locale)(poste.kind === "depense" ? "fx.drawer.kicker.depense" : "fx.drawer.kicker.recette", { year: poste.year }),
     title: ({ poste }, locale) => trLabel(poste.label, locale),
     shareUrl: ({ poste, year }) =>
-      `/fr/city/paris/budget/poste/${poste.slug}${year ? `?year=${year}` : ""}`,
+      `/france/paris/budget/poste/${poste.slug}${year ? `?year=${year}` : ""}`,
     shareText: ({ poste }) => {
       const kindLabel = poste.kind === "depense" ? "Dépense" : "Recette";
       return `${poste.label} — ${fmtEur(poste.total)} (${poste.year}, ${kindLabel.toLowerCase()}) · ${poste.subPostes.length} sous-postes.`;
     },
     backHref: ({ year }) =>
-      year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget",
+      year ? `/france/paris/budget?year=${year}` : "/france/paris/budget",
     breadcrumbLabel: ({ poste }) => poste.label,
     children: ({ poste }) => <PosteFiche poste={poste} />,
   },

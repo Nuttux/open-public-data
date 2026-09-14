@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 /**
  * ── THE SITE'S OWN HONESTY CLAIM, AND IT HAD NEVER BEEN RE-TAKEN ─────────
  *
- * `/us/city/sf/the-city` prints one sentence about how well the map places a
+ * `/usa/san-francisco/the-city` prints one sentence about how well the map places a
  * decision, and it is the sentence that exists to say the map is not
  * overstating itself. On 2026-08-26 it read:
  *

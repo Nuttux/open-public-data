@@ -72,7 +72,7 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
   const config = useMemo<PlacesConfig>(
     () => ({
       families: FAMILLES.map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
-      hrefFor: (slug) => `/fr/city/paris/lieu/${slug}`,
+      hrefFor: (slug) => `/france/paris/lieu/${slug}`,
       bounds: PARIS_BOUNDS,
       clampToBounds: true,
       minZoom: 11,

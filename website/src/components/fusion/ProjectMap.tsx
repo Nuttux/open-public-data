@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "@/lib/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -308,7 +308,7 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
             arr: p.arr,
             is_jo: p.isJO,
           });
-          router.push(`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`, { scroll: false });
+          router.push(`/france/paris/investissements/projet/${encodeURIComponent(p.id)}`, { scroll: false });
         });
         cluster.addLayer(marker);
       }

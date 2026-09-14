@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useFmt } from "@/lib/use-fmt";

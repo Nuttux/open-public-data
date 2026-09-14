@@ -3,7 +3,7 @@ import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { relatedT } from "@/lib/related-t";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { numLocale, sufOrdinal } from "@/lib/fmt";
 import { loadArrondissement, loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
@@ -32,7 +32,7 @@ export const projetConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ projet: p }, locale) => {
-    const canonical = `/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`;
+    const canonical = `/france/paris/investissements/projet/${encodeURIComponent(p.id)}`;
     const projectName = locale === "en" && (p as { name_en?: string }).name_en
       ? (p as { name_en?: string }).name_en!
       : p.name;
@@ -105,7 +105,7 @@ export const projetConfig: EntityPageConfig<D> = {
       const arr = n > 0 ? t("fx.drawer.kicker.arr_long", { arr: `${n}${sufOrdinal(n, locale)}` }) : t("fx.drawer.kicker.transverse");
       return (
         <>
-          {n > 0 && loadArrondissement(n) ? <Link href={`/fr/city/paris/investissements/arrondissement/${n}`} scroll={false}>{arr}</Link> : arr}
+          {n > 0 && loadArrondissement(n) ? <Link href={`/france/paris/investissements/arrondissement/${n}`} scroll={false}>{arr}</Link> : arr}
           {" · "}{projet.year}
         </>
       );
@@ -113,7 +113,7 @@ export const projetConfig: EntityPageConfig<D> = {
     title: ({ projet }, locale) =>
       locale === "en" && projet.name_en ? projet.name_en : projet.name,
     shareUrl: ({ projet }) =>
-      `/fr/city/paris/investissements/projet/${encodeURIComponent(projet.id)}`,
+      `/france/paris/investissements/projet/${encodeURIComponent(projet.id)}`,
     shareText: ({ projet }, locale) => {
       const displayName = locale === "en" && projet.name_en ? projet.name_en : projet.name;
       const montantStr = projet.montant >= 1e6

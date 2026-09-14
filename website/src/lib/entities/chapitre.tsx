@@ -28,7 +28,7 @@ export const chapitreConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ chap: c }, locale) => {
-    const canonical = `/fr/city/paris/investissements/chapitre/${c.slug}`;
+    const canonical = `/france/paris/investissements/chapitre/${c.slug}`;
     const labelEn = trLabel(c.label, locale);
     const totalFmt = c.total.toLocaleString(numLocale(locale));
     const title = locale === "en"
@@ -81,10 +81,10 @@ export const chapitreConfig: EntityPageConfig<D> = {
   drawer: {
     kicker: ({ chap }, locale) => relatedT(locale)("fx.drawer.kicker.chapitre", { year: chap.year }),
     title: ({ chap }, locale) => trLabel(chap.label, locale),
-    shareUrl: ({ chap }) => `/fr/city/paris/investissements/chapitre/${chap.slug}`,
+    shareUrl: ({ chap }) => `/france/paris/investissements/chapitre/${chap.slug}`,
     shareText: ({ chap }) =>
       `${chap.label} — ${fmtEur(chap.total)} investis en ${chap.year} par la Ville de Paris · ${chap.nbProjets} projets`,
-    backHref: () => "/fr/city/paris/investissements",
+    backHref: () => "/france/paris/investissements",
     breadcrumbLabel: ({ chap }) => chap.label,
     children: ({ chap }) => <ChapitreFiche chap={chap} />,
   },

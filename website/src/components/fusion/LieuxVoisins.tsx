@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { lieuxVoisins } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 import { relatedT } from "@/lib/related-t";
@@ -45,7 +45,7 @@ export default async function LieuxVoisins({
       <div className="fx-fiche-h">{titre}</div>
       <div className="fx-voisins fx-voisins--voisins">
         {voisins.map((l) => (
-          <Link key={l.slug} href={`/fr/city/paris/lieu/${l.slug}`} scroll={false} className="fx-voisin">
+          <Link key={l.slug} href={`/france/paris/lieu/${l.slug}`} scroll={false} className="fx-voisin">
             {l.photo ? <img src={l.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}
             <span className="fx-voisin-name">{l.name}</span>
             {(l.argent_total_eur ?? 0) > 0 && <span className="fx-voisin-meta">{fmtEur(l.argent_total_eur ?? 0, locale)}</span>}

@@ -204,11 +204,11 @@ export function getChatSuggestions(section: SectionKey, locale: Locale, scope: C
 
 /** Rubrique de la page courante — pilote seulement les questions suggérées. */
 export function sectionForPath(pathname: string): SectionKey {
-  const fr = pathname.match(/^\/fr\/city\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
+  const fr = pathname.match(/^\/france\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
   if (fr) return fr[1] as SectionKey;
   // SF : on mappe les rubriques US sur les mêmes clés pour garder un seul
   // jeu de sections (marches = contrats, subventions = paiements aux tiers).
-  const sf = pathname.match(/^\/us\/city\/sf\/(budget|contracts|who-gets-paid|payroll)(\/|$)/);
+  const sf = pathname.match(/^\/usa\/san-francisco\/(budget|contracts|who-gets-paid|payroll)(\/|$)/);
   if (sf) {
     const key = { budget: "budget", contracts: "marches", "who-gets-paid": "subventions", payroll: "payroll" } as const;
     return key[sf[1] as keyof typeof key];

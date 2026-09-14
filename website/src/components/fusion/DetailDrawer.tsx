@@ -1,6 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useLang } from "@/lib/navigation";
+
+import { localize } from "@/lib/urls";
+
+import { useRouter } from "@/lib/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
@@ -65,7 +69,7 @@ const SECTIONS: Record<string, { key: string; path?: string }> = {
 };
 
 function sectionOf(shareUrl?: string): { href: string; key: string } | null {
-  const m = shareUrl?.match(/^(\/fr\/city\/[^/]+)\/([^/]+)\//);
+  const m = shareUrl?.match(/^(\/france\/[^/]+)\/([^/]+)\//);
   if (!m) return null;
   const s = SECTIONS[m[2]];
   return s ? { href: `${m[1]}/${s.path ?? m[2]}`, key: s.key } : null;
@@ -115,6 +119,7 @@ export default function DetailDrawer({
 }: Props) {
   const t = useT();
   const router = useRouter();
+  const lang = useLang();
   const track = useTrack();
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -284,7 +289,7 @@ export default function DetailDrawer({
       // explicit backHref (SF / Marseille / national); else the section hub.
       const target = backHref || hubFromShareUrl();
       if (target && typeof window !== "undefined") {
-        window.location.assign(target);
+        window.location.assign(localize(target, lang));
         return;
       }
     }
@@ -306,7 +311,7 @@ export default function DetailDrawer({
         to_url: parentLink.url,
       });
       if (parentLink.hard) {
-        window.location.assign(parentLink.url);
+        window.location.assign(localize(parentLink.url, lang));
       } else {
         router.push(parentLink.url, { scroll: false });
       }
@@ -327,7 +332,7 @@ export default function DetailDrawer({
     if (!shareUrl) return "";
     return shareUrl.startsWith("http")
       ? shareUrl
-      : `${window.location.origin}${shareUrl}`;
+      : `${window.location.origin}${localize(shareUrl, lang)}`;
   };
 
   const shareBody = () => {
@@ -411,7 +416,7 @@ export default function DetailDrawer({
               <div className="fx-drawer-kicker">
                 {section && (
                   <>
-                    <a className="fx-drawer-section" href={section.href}>{t(section.key)}</a>
+                    <a className="fx-drawer-section" href={localize(section.href, lang)}>{t(section.key)}</a>
                     {kicker ? <span className="fx-drawer-kicker-sep" aria-hidden="true"> › </span> : null}
                   </>
                 )}

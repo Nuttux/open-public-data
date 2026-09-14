@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { PatrimoineMasse } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";
 import { slugifyLabel } from "@/lib/projet-utils";

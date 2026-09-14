@@ -32,7 +32,7 @@ export function makeFournisseurConfig(
   categoryHref?: (category: string) => string,
 ): EntityPageConfig<D> {
   const cityNom = getCity(city)?.nom ?? "la Ville";
-  const base = `/fr/city/${city}/marches`;
+  const base = `/france/${city}/marches`;
   const isParis = city === "paris";
   return {
   load: ({ siren }) => {
@@ -138,5 +138,5 @@ export function makeFournisseurConfig(
 /** Paris supplier page — the original config, now via the factory. */
 export const fournisseurConfig: EntityPageConfig<D> = makeFournisseurConfig(
   "paris",
-  (category) => `/fr/city/paris/marches/categorie/${slugifyLabel(category)}`,
+  (category) => `/france/paris/marches/categorie/${slugifyLabel(category)}`,
 );

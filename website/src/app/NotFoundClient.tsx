@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next/link';
+import Link from "@/components/LocalizedLink";
 import { useLocale } from '@/lib/localeContext';
 
 /**
@@ -34,7 +34,7 @@ export default function NotFoundClient() {
           {en ? 'Back home' : 'Retour à l’accueil'}
         </Link>
         <Link
-          href="/fr/city/paris/budget"
+          href="/france/paris/budget"
           className="rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
         >
           {en ? 'Explore the budget' : 'Explorer le budget'}

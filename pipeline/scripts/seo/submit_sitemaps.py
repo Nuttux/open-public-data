@@ -19,8 +19,7 @@ Authentification, dans cet ordre :
 Il n'existe pas d'API pour demander l'indexation d'une page ordinaire : ça
 reste un geste manuel dans l'interface.
 
-    python3 pipeline/scripts/seo/submit_sitemaps.py            # fr + www + pt
-    python3 pipeline/scripts/seo/submit_sitemaps.py fr.qipu.org
+    python3 pipeline/scripts/seo/submit_sitemaps.py            # www, the only host since 2026-09-13
     python3 pipeline/scripts/seo/submit_sitemaps.py --dry-run  # liste, ne soumet rien
 """
 from __future__ import annotations
@@ -29,7 +28,9 @@ import argparse, base64, json, re, subprocess, sys, time, urllib.parse, urllib.r
 from search_report import env
 
 PROJECT = "open-data-france-484717"
-HOSTS = {"fr.qipu.org": "sc-domain:fr.qipu.org", "www.qipu.org": "sc-domain:qipu.org", "pt.qipu.org": "sc-domain:pt.qipu.org"}
+# One host since 2026-09-13 (website/src/lib/urls.ts): fr. and pt. redirect to www,
+# robots.txt and the sitemaps included.
+HOSTS = {"www.qipu.org": "sc-domain:qipu.org"}
 SCOPE = "https://www.googleapis.com/auth/webmasters"
 
 

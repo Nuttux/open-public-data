@@ -28,7 +28,7 @@ import {
   loadQuiRecoitData,
 } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
-import { LOCALE_HOSTS } from "@/lib/site-locale";
+import { absoluteUrl } from "@/lib/site-locale";
 
 export type ParisSection = "budget" | "subventions" | "marches" | "investissements" | "dette" | "logement" | "lieux";
 type Lang = "fr" | "en";
@@ -123,7 +123,7 @@ function sourceLine(lang: Lang, source: string, iso: string | undefined): string
 
 // ─── Per section ───────────────────────────────────────────────────────────
 
-const PATH = (s: ParisSection) => `/fr/city/paris/${s}`;
+const PATH = (s: ParisSection) => `/france/paris/${s}`;
 
 function budget(year?: number): ParisSectionSeo {
   const index = loadBudgetIndex();
@@ -382,19 +382,19 @@ export async function parisSectionMetadata(section: ParisSection, year?: number)
 }
 
 /**
- * Dataset + BreadcrumbList for a hub, with URLs on the host that speaks
- * `lang`. The breadcrumb is Qipu › section: /fr/city/paris itself redirects
- * to the home page (next.config.ts), so it is not listed as a crumb.
+ * Dataset + BreadcrumbList for a hub, with URLs in `lang`: Qipu › Paris › section.
  */
 export function parisSectionJsonLd(section: ParisSection, lang: Lang, year?: number): object[] {
   const s = parisSectionSeo(section, year);
-  const base = LOCALE_HOSTS[lang];
   const t = s[lang];
-  const bc = breadcrumbJsonLd([
-    { name: "Qipu", path: "/" },
-    { name: s.label[lang], path: s.path },
-  ]);
-  bc.itemListElement = bc.itemListElement.map((i) => ({ ...i, item: i.item.replace(/^https:\/\/www\.qipu\.org/, base) }));
+  const bc = breadcrumbJsonLd(
+    [
+      { name: "Qipu", path: "/" },
+      { name: "Paris", path: "/france/paris" },
+      { name: s.label[lang], path: s.path },
+    ],
+    lang,
+  );
   const ds = {
     ...datasetJsonLd({
       name: s.label[lang],
@@ -406,7 +406,7 @@ export function parisSectionJsonLd(section: ParisSection, lang: Lang, year?: num
       spatialCoverage: "Paris, France",
       creator: "Ville de Paris",
     }),
-    url: `${base}${s.path}`,
+    url: absoluteUrl(s.path, lang),
     inLanguage: lang === "fr" ? "fr-FR" : "en",
   };
   return [bc, ds];

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { useRouter } from "@/lib/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
@@ -90,11 +90,11 @@ export default function RecifeLugarFiche({
                 <tr
                   key={c.contrato_id}
                   className="fx-row-link"
-                  onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}
+                  onClick={() => router.push(`/brasil/recife/contratos/${c.contrato_id}`)}
                 >
                   <td>
                     <Link
-                      href={`/br/city/recife/contratos/${c.contrato_id}`}
+                      href={`/brasil/recife/contratos/${c.contrato_id}`}
                       onClick={(e) => e.stopPropagation()}
                     >
                       {c.numero ?? t("br.recife.contrato.sem_numero")}

@@ -46,7 +46,7 @@ export default function SfBuysBar({ d }: { d: SfSpendingSection }) {
     // year happens to be newest in the file.
     href:
       r.top_payees.length > 0
-        ? `/us/city/sf/who-gets-paid/category/${r.slug}?year=${d.fiscalYear}`
+        ? `/usa/san-francisco/who-gets-paid/category/${r.slug}?year=${d.fiscalYear}`
         : null,
   }));
 

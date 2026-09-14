@@ -27,7 +27,7 @@ export const categorieConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ fiche: f }, locale) => {
-    const canonical = `/fr/city/paris/marches/categorie/${f.slug}`;
+    const canonical = `/france/paris/marches/categorie/${f.slug}`;
     const categoryLabel = trLabel(f.category, locale);
     const totalM = Math.round(f.total / 1e6);
     const title = locale === "en"
@@ -80,10 +80,10 @@ export const categorieConfig: EntityPageConfig<D> = {
   drawer: {
     kicker: ({ fiche }, locale) => relatedT(locale)("fx.drawer.kicker.categorie", { year: fiche.year }),
     title: ({ fiche }, locale) => cap(trLabel(fiche.category, locale)),
-    shareUrl: ({ fiche }) => `/fr/city/paris/marches/categorie/${fiche.slug}`,
+    shareUrl: ({ fiche }) => `/france/paris/marches/categorie/${fiche.slug}`,
     shareText: ({ fiche }) =>
       `${fiche.category} — ${fmtEur(fiche.total)} d'enveloppe sur ${fiche.nbContrats} contrats (Paris ${fiche.year})`,
-    backHref: () => "/fr/city/paris/marches",
+    backHref: () => "/france/paris/marches",
     breadcrumbLabel: ({ fiche }) => cap(fiche.category) || fiche.category,
     children: ({ fiche }) => <CategorieMarcheFiche fiche={fiche} />,
   },

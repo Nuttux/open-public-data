@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLocale } from "@/lib/localeContext";
 import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
@@ -28,7 +28,7 @@ const arrSuffix = (n: number, en: boolean) =>
   en ? `${n}${n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th"}` : `${n}${n === 1 ? "ᵉʳ" : "ᵉ"}`;
 
 const SUBV_HREF = (beneficiaire: string) =>
-  `/fr/city/marseille/subventions/association/${assocSlug(beneficiaire)}`;
+  `/france/marseille/subventions/association/${assocSlug(beneficiaire)}`;
 
 /**
  * Marseille civic-place fiche — mirrors a Paris lieu (deliberations aside): a

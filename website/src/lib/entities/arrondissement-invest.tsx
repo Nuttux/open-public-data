@@ -49,7 +49,7 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ arr: a }, locale) => {
-    const canonical = `/fr/city/paris/investissements/arrondissement/${a.arr}`;
+    const canonical = `/france/paris/investissements/arrondissement/${a.arr}`;
     const arrLabel = locale === "en"
       ? `${a.arr}${sufEn(a.arr)} arrondissement`
       : `${a.arr}${sufFr(a.arr)} arrondissement`;
@@ -119,10 +119,10 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
   drawer: {
     kicker: ({ arr }, locale) => relatedT(locale)("fx.drawer.kicker.arrondissement", { year: arr.year }),
     title: ({ arr }, locale) => `${arr.arr}${sufOrdinal(arr.arr, locale)} arrondissement`,
-    shareUrl: ({ arr }) => `/fr/city/paris/investissements/arrondissement/${arr.arr}`,
+    shareUrl: ({ arr }) => `/france/paris/investissements/arrondissement/${arr.arr}`,
     shareText: ({ arr }) =>
       `${arr.arr}${suf(arr.arr)} arrondissement de Paris — ${fmtEur(arr.total)} investis en ${arr.year} sur ${arr.nbProjets} projets`,
-    backHref: () => "/fr/city/paris/investissements",
+    backHref: () => "/france/paris/investissements",
     breadcrumbLabel: ({ arr }) => `${arr.arr}${suf(arr.arr)} arr.`,
     children: ({ arr, lieuxArr }, locale) => (
       <>

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/LocalizedLink";
+import { useRouter } from "@/lib/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
@@ -40,7 +40,7 @@ export default function RecifeRecebedorFiche({
     <div>
       {(rec.tema || rec.perfil?.natureza || contratosOnly) && (
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
-          {rec.tema && <Link href={`/br/city/recife/tema/${slugTema(rec.tema)}`} className="fx-sm-tag" style={{ textDecoration: "none" }} title={t("br.recife.rec.tema_tip")}>{rec.tema}</Link>}
+          {rec.tema && <Link href={`/brasil/recife/tema/${slugTema(rec.tema)}`} className="fx-sm-tag" style={{ textDecoration: "none" }} title={t("br.recife.rec.tema_tip")}>{rec.tema}</Link>}
           {rec.perfil?.natureza && <span className="fx-sm-tag">{rec.perfil.natureza}</span>}
           {rec.is_subvencao && <span className="fx-sm-tag">{t("br.recife.qr.badge_subv")}</span>}
           {contratosOnly && <span className="fx-sm-tag">{t("br.recife.rec.contratos_only_tag")}</span>}
@@ -126,7 +126,7 @@ export default function RecifeRecebedorFiche({
               );
               const style = { display: "grid", gridTemplateColumns: "1fr 96px", gap: 14, padding: "6px 0", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-ui)", fontSize: 13 } as const;
               return linkable ? (
-                <Link key={o.orgao} href={`/br/city/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>
+                <Link key={o.orgao} href={`/brasil/recife/orgao/${o.slug}`} className="fx-row-link" style={{ ...style, color: "inherit", textDecoration: "none" }}>
                   {label}{val}
                 </Link>
               ) : (
@@ -146,11 +146,11 @@ export default function RecifeRecebedorFiche({
                 <tr
                   key={c.contrato_id}
                   className="fx-row-link"
-                  onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}
+                  onClick={() => router.push(`/brasil/recife/contratos/${c.contrato_id}`)}
                 >
                   <td>
                     <Link
-                      href={`/br/city/recife/contratos/${c.contrato_id}`}
+                      href={`/brasil/recife/contratos/${c.contrato_id}`}
                       onClick={(e) => e.stopPropagation()}
                     >
                       {c.numero ?? t("br.recife.contrato.sem_numero")}
