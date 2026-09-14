@@ -46,7 +46,7 @@ export default function Bars({
     const body = (
       <>
         <span className="lbl">
-          {r.label}
+          <span className="t">{r.label}</span>
           {r.sub ? <span className="sub">{r.sub}</span> : null}
         </span>
         <span className="track"><i className={r.tone ?? "blue"} style={{ width: `${w}%` }} /></span>

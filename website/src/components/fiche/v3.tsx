@@ -69,19 +69,21 @@ export function V3Amt({ v, u, size = 14 }: { v: string; u: string; size?: number
  * `sub` est en petites capitales mono (fournisseur · année), `subText` en
  * texte courant gris (une phrase, un motif).
  */
-export function V3Row({ href, external, label, sub, subText, amount }: {
+export function V3Row({ href, external, label, sub, subText, amount, onClick }: {
   href?: string | null;
   external?: boolean;
   label: ReactNode;
   sub?: ReactNode;
   subText?: ReactNode;
   amount?: ReactNode;
+  /** A component-level event on top of the universal link_click (search results report their rank). */
+  onClick?: () => void;
 }) {
   const body = (
     <>
       <span className="lbl">
         {label}
-        {href ? <span aria-hidden="true" className="muted">{external ? " ↗" : " →"}</span> : null}
+        {href ? <span aria-hidden="true" className="muted">{external ? " ↗" : " ›"}</span> : null}
         {sub ? <span className="sub">{sub}</span> : null}
         {subText ? <span className="subtext">{subText}</span> : null}
       </span>
@@ -89,8 +91,8 @@ export function V3Row({ href, external, label, sub, subText, amount }: {
     </>
   );
   if (!href) return <div className="fx-v3-row">{body}</div>;
-  if (external) return <a className="fx-v3-row fx-row-link" href={href} target="_blank" rel="noopener noreferrer">{body}</a>;
-  return <Link className="fx-v3-row fx-row-link" href={href} scroll={false}>{body}</Link>;
+  if (external) return <a className="fx-v3-row fx-row-link" href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>{body}</a>;
+  return <Link className="fx-v3-row fx-row-link" href={href} scroll={false} onClick={onClick}>{body}</Link>;
 }
 
 /** `id` names the fold for analytics (details_toggle.fold_id): "more-contracts",

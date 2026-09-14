@@ -20758,22 +20758,26 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-grid { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 44px; }
 .theme-fusion .fx-sec-grid > div { min-width: 0; }
 @media (min-width: 960px) {
+  /* First screen = the number and the scene side by side; the rows face the
+     competition and the years rail; the search is a band; then « Comprendre »
+     faces « Voir aussi »; the next section closes at full width. */
   .theme-fusion .fx-sec-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-areas: "hero hero" "scene rows" "cats rows" "years search" "understand related" "understand next" "foot foot";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-areas: "hero scene" "rows conc" "rows years" "search search" "understand related" "next next" "foot foot";
+    align-items: start;
   }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
   .theme-fusion .fx-sec-a-scene { grid-area: scene; }
   .theme-fusion .fx-sec-a-rows { grid-area: rows; }
-  .theme-fusion .fx-sec-a-cats { grid-area: cats; }
+  .theme-fusion .fx-sec-a-conc { grid-area: conc; }
   .theme-fusion .fx-sec-a-years { grid-area: years; }
   .theme-fusion .fx-sec-a-search { grid-area: search; }
-  /* The search shares its row with the years rail: its results read as one column. */
-  .theme-fusion .fx-sec-a-search .fx-results-grid { grid-template-columns: minmax(0, 1fr); }
   .theme-fusion .fx-sec-a-understand { grid-area: understand; }
   .theme-fusion .fx-sec-a-related { grid-area: related; }
   .theme-fusion .fx-sec-a-next { grid-area: next; }
   .theme-fusion .fx-sec-a-foot { grid-area: foot; }
+  .theme-fusion .fx-sec-hero { border-bottom: 0; margin-bottom: 0; padding-top: 10px; }
+  .theme-fusion .fx-sec-a-search .fx-search-wrap--fiche { max-width: 720px; }
 }
 /* La réponse : là où se trouve, le titre, UN chiffre, sa phrase avec l'année en
    menu, une ligne grise, la tendance en ocre, « Partager ». */
@@ -20783,10 +20787,15 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-hero .fx-v3-hero-num { margin-top: 18px; }
 .theme-fusion .fx-sec-cap { font-size: 15px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
 .theme-fusion .fx-sec-cap b { color: var(--ink); font-weight: 600; }
-.theme-fusion .fx-sec-meta { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.45; max-width: 62ch; }
+/* Under the caption: the grey line and « Partager » on one line, in text. */
+.theme-fusion .fx-sec-hero-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: 8px; }
+.theme-fusion .fx-sec-hero-meta { font-size: 13px; color: var(--muted); line-height: 1.45; max-width: 52ch; }
 .theme-fusion .fx-sec-move { font-size: 13px; color: var(--ocre); margin-top: 6px; }
-.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12.5px; color: var(--ink-2); background: transparent; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 4px 11px; margin-top: 14px; cursor: pointer; }
-.theme-fusion .fx-sec-share:hover { border-color: var(--ink); color: var(--ink); }
+/* The kicker is a link like the others: blue, never the ocre of the movement. */
+.theme-fusion .fx-sec-hero .fx-page-kicker--links a { color: var(--bleu); }
+.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 12.5px; color: var(--bleu); background: transparent; border: 0; padding: 0; margin-top: 12px; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--bleu) 35%, transparent); }
+.theme-fusion .fx-sec-hero-line .fx-sec-share { margin-top: 0; }
+.theme-fusion .fx-sec-share:hover { color: var(--ink); text-decoration-color: currentColor; }
 .theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
 .theme-fusion .fx-sec-sentence { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin: 12px 0 4px; max-width: 60ch; }
@@ -20798,8 +20807,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
 .theme-fusion .fx-bars-row:first-child { border-top: 0; }
 .theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
+/* Only the rows that open a fiche look like links: ink label, the doors' chevron, blue on hover. */
 .theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
-.theme-fusion .fx-bars-row.is-link:hover .lbl { color: var(--bleu); }
+.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-bars-row.is-link:hover .lbl .t { color: var(--bleu); }
+/* Phone: the label above, the bar at full width with its value at the right. */
+@media (max-width: 700px) {
+  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "lbl v" "track track"; gap: 4px 10px; padding: 8px 0; }
+  .theme-fusion .fx-bars-row .lbl { grid-area: lbl; }
+  .theme-fusion .fx-bars-row .lbl .sub { display: inline; margin-left: 6px; white-space: nowrap; }
+  .theme-fusion .fx-bars-row .track { grid-area: track; }
+  .theme-fusion .fx-bars-row .track i { height: 10px; }
+  .theme-fusion .fx-bars-row .v { grid-area: v; }
+}
 .theme-fusion .fx-bars-row .sub { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
 .theme-fusion .fx-bars-row .track { display: block; min-width: 0; }
 .theme-fusion .fx-bars-row .track i { display: block; height: 14px; background: var(--bleu); }
@@ -20825,3 +20845,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-next .cc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 /* Les replis « Comprendre » contiennent des phrases et des lignes. */
 .theme-fusion .fx-sec .fx-v3-fold > .fx-v3-sentence { margin: 8px 0 10px; }
+/* La recherche sur une page de section : le champ, trois mots à essayer, et
+   des lignes de fiche quand on tape. Pas de cadre, pas de cartes. */
+.theme-fusion .fx-search-wrap--fiche { border: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding: 4px 0 0; border-bottom: 0; background: transparent; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { height: 48px; border-color: var(--rule); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap:focus-within { border-color: var(--ink); box-shadow: none; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input { font-size: 15px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-filters { margin-top: 10px; gap: 8px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-filter-label { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seeds { gap: 6px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--bleu); background: transparent; border: 1px solid var(--rule-2); border-radius: 999px; padding: 3px 11px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed:hover { border-color: var(--bleu); background: transparent; color: var(--bleu); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-meta { padding: 12px 0 2px; font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); border: 0; flex-wrap: wrap; gap: 4px 16px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-placeholder { padding: 14px 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-rows { margin-top: 4px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-rows .fx-v3-note a { color: var(--bleu); }

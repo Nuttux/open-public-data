@@ -71,10 +71,11 @@ Fiche kit sections carry short English ids stable across locales: `who`,
 `why`, `years`, `lines`, `contracts`, `loans`, `missions`, `links`,
 `related`… A **section page** (Contrats publics since 2026-09-14, the others
 as they move to the fiche grammar) reads top to bottom: `hero` (the number),
-the scene (`competition` on Contrats publics), `contracts` (rows), `categories`
-(bars), `years` (the years rail), `search`, `understand` (the « Comprendre »
-folds), `related` (the doors), `next` (the next section). Reach of `next` is
-the page's completion rate.
+the scene (`categories` on Contrats publics: euros that sum to the number),
+`contracts` (rows), `competition` (bars), `years` (the years rail), `search`
+(field only; results are `search_submit` / `search_result_click`),
+`understand` (the « Comprendre » folds), `related` (the doors), `next` (the
+next section). Reach of `next` is the page's completion rate.
 
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`

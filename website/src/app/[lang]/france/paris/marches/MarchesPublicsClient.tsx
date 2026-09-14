@@ -30,11 +30,12 @@ const CATEGORIES_CAP = 5;
 /**
  * La section « Contrats publics » sur la grammaire des fiches (2026-09-14) :
  * la réponse (un chiffre, sa phrase, l'année en menu, « Partager »), UNE scène
- * qui surprend (la concurrence : un contrat sur trois signé sur une seule
- * offre), des lignes qui mènent aux fiches, les autres découpes en barres,
- * le rail des années, la recherche plus bas, « Comprendre » en replis, « Voir
- * aussi » et la section suivante. Deux écrans portent tout sur un téléphone ;
- * sur ordinateur, la scène à gauche et les lignes à droite (.fx-sec-grid).
+ * en euros qui fait la somme du chiffre (ce que la Ville achète, en barres qui
+ * ouvrent les fiches), des lignes qui mènent aux fiches, la concurrence en
+ * troisième, le rail des années, la recherche (le champ seul, les résultats en
+ * lignes), « Comprendre » en replis, « Voir aussi » et la section suivante.
+ * Deux écrans portent tout sur un téléphone ; sur ordinateur, le chiffre et la
+ * scène côte à côte au premier écran (.fx-sec-grid).
  *
  * Chaque bloc porte un data-section stable pour section_view / link_click ;
  * les replis un data-fold ; le menu d'année et les partages leurs événements.
@@ -126,6 +127,22 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
             </div>
 
             <div className="fx-sec-a-scene">
+              <V3Section id="categories" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })}>
+                <div id="achats">
+                  <Bars rows={categoryRows} cap={CATEGORIES_CAP} foldId="more-categories" foldLabel={fill(t("fx.sec.mp.categories_more"), { n: fmtInt(d.byCategory.length) })} />
+                </div>
+                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="categories" anchor="achats" />
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-rows">
+              <V3Section id="contracts" title={fill(t("fx.sec.mp.h.contracts"), { year: d.year })}>
+                {contrats.shown.map(ContratRow)}
+                {contrats.rest.length > 0 && <V3Fold id="more-contracts" text label={t("fx.v3.voir_plus")}>{contrats.rest.map(ContratRow)}</V3Fold>}
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-conc">
               {hasCompetition ? (
                 <V3Section id="competition" title={fill(t("fx.sec.mp.h.competition"), { year: d.year })}>
                   <p className="fx-sec-sentence" id="concurrence">
@@ -145,19 +162,6 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
               )}
             </div>
 
-            <div className="fx-sec-a-rows">
-              <V3Section id="contracts" title={fill(t("fx.sec.mp.h.contracts"), { year: d.year })}>
-                {contrats.shown.map(ContratRow)}
-                {contrats.rest.length > 0 && <V3Fold id="more-contracts" text label={t("fx.v3.voir_plus")}>{contrats.rest.map(ContratRow)}</V3Fold>}
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-cats">
-              <V3Section id="categories" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })}>
-                <Bars rows={categoryRows} cap={CATEGORIES_CAP} foldId="more-categories" foldLabel={fill(t("fx.sec.mp.categories_more"), { n: fmtInt(d.byCategory.length) })} />
-              </V3Section>
-            </div>
-
             <div className="fx-sec-a-years">
               {series.length >= RAIL_MIN ? (
                 <V3Section id="years" title={t("fx.sec.years")} sub={t("fx.sec.mp.years_sub")}>
@@ -168,7 +172,7 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
 
             <div className="fx-sec-a-search">
               <V3Section id="search" title={t("fx.sec.mp.h.search")}>
-                <MarchesSearch citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
+                <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
               </V3Section>
             </div>
 
