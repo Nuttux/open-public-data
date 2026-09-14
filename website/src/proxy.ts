@@ -106,14 +106,12 @@ function logicalCountryPath(path: string): string | null {
 }
 
 function redirectTo(req: NextRequest, host: string, path: string, status: 307 | 308, keepSearch: boolean) {
-  const url = req.nextUrl.clone();
-  url.host = host;
-  if (host === CANONICAL_HOST) {
-    url.protocol = 'https:';
-    url.port = '';
-  }
-  url.pathname = path;
-  if (!keepSearch) url.search = '';
+  // A plain URL, never req.nextUrl.clone(): NextURL remembers the trailing
+  // slash of the request and puts it back on whatever pathname is assigned
+  // afterwards, so every address ending in "/" was redirected to itself,
+  // without end (seen in production on 2026-09-14).
+  const secure = host === CANONICAL_HOST || req.nextUrl.protocol === 'https:';
+  const url = new URL(`${secure ? 'https:' : 'http:'}//${host}${path}${keepSearch ? req.nextUrl.search : ''}`);
   url.searchParams.delete('lang');
   return NextResponse.redirect(url, status);
 }

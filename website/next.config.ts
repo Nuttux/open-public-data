@@ -95,6 +95,28 @@ const nextConfig: NextConfig = {
         destination: 'https://www.qipu.org/fr/france/paris/lieu/theatre-du-chatelet?utm_source=linkedin&utm_medium=social&utm_campaign=chatelet',
         permanent: false,
       },
+      // Post « bénéficiaires à null » : le corps du post mène aux bénéficiaires
+      // retrouvés, le commentaire à l'explication qui raconte la méthode.
+      {
+        source: '/beneficiaires',
+        destination: 'https://www.qipu.org/en/france/paris/subventions?utm_source=linkedin&utm_medium=social&utm_campaign=beneficiaires',
+        permanent: false,
+      },
+      {
+        source: '/fr/beneficiaires',
+        destination: 'https://www.qipu.org/fr/france/paris/subventions?utm_source=linkedin&utm_medium=social&utm_campaign=beneficiaires',
+        permanent: false,
+      },
+      {
+        source: '/beneficiaires/article',
+        destination: 'https://www.qipu.org/en/analyses/beneficiaires-fantomes-2020-2021-portail?utm_source=linkedin&utm_medium=social&utm_campaign=beneficiaires',
+        permanent: false,
+      },
+      {
+        source: '/fr/beneficiaires/article',
+        destination: 'https://www.qipu.org/fr/analyses/beneficiaires-fantomes-2020-2021-portail?utm_source=linkedin&utm_medium=social&utm_campaign=beneficiaires',
+        permanent: false,
+      },
       // Legacy hosts (fr.qipu.org, pt.qipu.org, the apex, franceopendata.org).
       // Their pages are sent on by proxy.ts, which converts the path and picks
       // the language the old host spoke in one hop. Files never reach the proxy
