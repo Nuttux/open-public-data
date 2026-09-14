@@ -3960,6 +3960,8 @@ const en: Record<string, string> = {
   'fx.sec.mp.g.entreprise': 'By company',
   'fx.sec.mp.g.aria': 'Group the contracts',
   'fx.sec.mp.other': 'Other',
+  'fx.sec.mp.rest_companies': '{n} other companies and shared lots',
+  'fx.sec.mp.rest_offres': 'Number of bids not published',
   'fx.sec.mp.amounts': 'See the amounts',
   'fx.offres.cap.1': 'in contracts signed on a single bid in {year}',
   'fx.offres.cap.2-3': 'in contracts signed with 2 or 3 bids in {year}',

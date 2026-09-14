@@ -47,13 +47,39 @@ export function squarify(values: number[], w: number, h: number): Rect[] {
   return out;
 }
 
+type Tile = BarRow & { merged?: number };
+
+/** Does the label fit the tile? Estimated from the font: 13 px text is about
+ *  7 px per character, 16 px per line; the amount takes 18 px; padding 14. */
+function labelFits(label: string, w: number, h: number): boolean {
+  const perLine = Math.max(1, Math.floor((w - 18) / 7.2));
+  const words = label.split(/\s+/);
+  // A word longer than the line would break mid-word: no label at all then.
+  if (words.some((word) => word.length + 2 > perLine)) return false;
+  const lines = words.reduce((acc, word) => {
+    const cur = acc[acc.length - 1];
+    if (cur !== undefined && cur + 1 + word.length <= perLine) acc[acc.length - 1] = cur + 1 + word.length;
+    else acc.push(Math.min(word.length, perLine));
+    return acc;
+  }, [] as number[]).length;
+  return lines * 16 + 18 + 14 <= h;
+}
+
 /**
  * The scene as one picture: the year's euros cut into tiles, area = amount,
  * one hue from dark (largest) to light, label and amount written on tiles
- * big enough to carry them. Tiles with an href open a fiche (link role
- * `tile`). Slivers under 2.5 % fold into one « Autres » tile.
+ * big enough to carry them, the others say it on hover. Tiles with an href
+ * open a fiche (link role `tile`). At most `maxTiles` named tiles: the rest
+ * folds into the « other » tile — the soft row the caller passes (« 679
+ * autres entreprises ») when there is one, else a tile named by `otherLabel`.
  */
-export default function Mosaic({ rows, otherLabel, format }: { rows: BarRow[]; otherLabel: string; format: (n: number) => string }) {
+export default function Mosaic({ rows, otherLabel, format, maxTiles = 7 }: {
+  rows: BarRow[];
+  /** Name of the merged tile, given how many rows it absorbed. */
+  otherLabel: (merged: number) => string;
+  format: (n: number) => string;
+  maxTiles?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   useEffect(() => {
@@ -65,23 +91,41 @@ export default function Mosaic({ rows, otherLabel, format }: { rows: BarRow[]; o
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
-  const total = rows.reduce((a, r) => a + Math.max(0, r.value), 0);
-  const sorted = rows.filter((r) => r.value > 0).slice().sort((a, b) => b.value - a.value);
-  const big = sorted.filter((r) => r.value / total >= 0.025);
-  const rest = sorted.filter((r) => r.value / total < 0.025);
-  const items: (BarRow & { other?: boolean })[] = rest.length > 1
-    ? [...big, { key: "__other", label: otherLabel, value: rest.reduce((a, r) => a + r.value, 0), text: "", other: true }].sort((a, b) => b.value - a.value)
-    : sorted;
+
+  const positive = rows.filter((r) => r.value > 0);
+  const total = positive.reduce((a, r) => a + r.value, 0);
+  const ranked = positive.filter((r) => r.tone !== "soft").sort((a, b) => b.value - a.value);
+  const soft = positive.filter((r) => r.tone === "soft");
+  // A tile under 1.5 % of the whole cannot carry a word: it joins the rest.
+  const keep = ranked.filter((r, i) => r.value / total >= 0.015 && i < maxTiles - 1);
+  const rest = ranked.filter((r) => !keep.includes(r));
+  const restSum = rest.reduce((a, r) => a + r.value, 0);
+  let items: Tile[] = [...keep];
+  if (soft.length > 0) {
+    // The caller's remainder absorbs the small named rows; its label says how many.
+    const base = soft[0];
+    items.push({ ...base, value: base.value + restSum, merged: rest.length, label: rest.length > 0 ? otherLabel(rest.length) : base.label, href: null });
+    items.push(...soft.slice(1));
+  } else if (rest.length > 0) {
+    items.push({ key: "__other", label: otherLabel(rest.length), value: restSum, text: "", tone: "soft", merged: rest.length, href: null });
+  }
+  items = items.sort((a, b) => b.value - a.value);
+
   const W = size.w || 400;
   const H = size.h || 300;
   const rects = squarify(items.map((it) => it.value), W, H);
+  let rank = 0;
   return (
     <div className="fx-mosaic" ref={ref}>
       {items.map((it, i) => {
         const r = rects[i];
-        const p = Math.max(28, 100 - i * 11);
-        const small = r.w < 84 || r.h < 40;
-        const cls = `fx-mosaic-tile ${p >= 55 ? "dark" : "light"}${small ? " small" : ""}`;
+        const isSoft = it.tone === "soft";
+        const p = isSoft ? 22 : Math.max(30, 100 - rank++ * 11);
+        const label = typeof it.label === "string" ? it.label : "";
+        const amount = format(it.value);
+        const showAmount = r.w >= 64 && r.h >= 36;
+        const showLabel = showAmount && labelFits(label, r.w, r.h);
+        const cls = `fx-mosaic-tile ${isSoft ? "soft" : p >= 55 ? "dark" : "light"}${showAmount ? "" : " small"}${showLabel ? "" : " no-label"}`;
         const style = {
           left: `calc(${(r.x / W) * 100}% + 1px)`,
           top: `calc(${(r.y / H) * 100}% + 1px)`,
@@ -89,16 +133,17 @@ export default function Mosaic({ rows, otherLabel, format }: { rows: BarRow[]; o
           height: `calc(${(r.h / H) * 100}% - 2px)`,
           background: `color-mix(in srgb, var(--bleu) ${p}%, #fff)`,
         };
+        const title = `${label} · ${amount}`;
         const body = (
           <>
             <span className="t">{it.label}</span>
-            <span className="v tnum">{format(it.value)}</span>
+            <span className="v tnum">{amount}</span>
           </>
         );
-        return it.href && !it.other ? (
-          <Link key={it.key} href={it.href} scroll={false} className={cls} style={style}>{body}</Link>
+        return it.href ? (
+          <Link key={it.key} href={it.href} scroll={false} className={cls} style={style} title={title}>{body}</Link>
         ) : (
-          <div key={it.key} className={cls} style={style}>{body}</div>
+          <div key={it.key} className={cls} style={style} title={title}>{body}</div>
         );
       })}
     </div>

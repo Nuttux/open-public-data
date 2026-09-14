@@ -31,14 +31,17 @@ export default function Bars({
   foldLabel,
   foldId,
   max: maxIn,
+  footRow,
 }: {
   rows: BarRow[];
   cap?: number;
   foldLabel?: string;
   foldId?: string;
   max?: number;
+  /** A closing row always shown after the fold: the remainder (« 679 autres entreprises »). */
+  footRow?: BarRow;
 }) {
-  const max = maxIn ?? Math.max(...rows.map((r) => r.value), 1);
+  const max = maxIn ?? Math.max(...rows.map((r) => r.value), footRow?.value ?? 0, 1);
   const shown = cap && rows.length > cap ? rows.slice(0, cap) : rows;
   const rest = cap && rows.length > cap ? rows.slice(cap) : [];
   const Row = (r: BarRow) => {
@@ -65,6 +68,7 @@ export default function Bars({
       {rest.length > 0 && foldLabel ? (
         <V3Fold id={foldId} text label={foldLabel}>{rest.map(Row)}</V3Fold>
       ) : null}
+      {footRow ? Row(footRow) : null}
     </div>
   );
 }

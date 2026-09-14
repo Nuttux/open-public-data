@@ -3957,6 +3957,8 @@ const fr: Record<string, string> = {
   'fx.sec.mp.g.entreprise': 'Par entreprise',
   'fx.sec.mp.g.aria': 'Regrouper les contrats',
   'fx.sec.mp.other': 'Autres',
+  'fx.sec.mp.rest_companies': '{n} autres entreprises et lots partagés',
+  'fx.sec.mp.rest_offres': 'Nombre d’offres non publié',
   'fx.sec.mp.amounts': 'Voir les montants',
   'fx.offres.cap.1': 'de contrats signés sur une seule offre en {year}',
   'fx.offres.cap.2-3': 'de contrats signés avec 2 ou 3 offres en {year}',

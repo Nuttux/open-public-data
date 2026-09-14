@@ -82,6 +82,19 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   const c = d.concurrence;
   const coveragePct = c.coverageTotal > 0 ? (c.coverageCount / c.coverageTotal) * 100 : 0;
   const hasCompetition = coveragePct >= 20 && c.coverageCount >= 50;
+  // Every cut sums to the page's number: what the ten largest companies do not
+  // cover (the other 679 and the shared lots), and the contracts whose number
+  // of bids is not published, are rows too — soft, without a fiche.
+  const top10Sum = d.top10.reduce((a, ti) => a + ti.amount, 0);
+  const restCompanies = Math.max(0, d.total - top10Sum);
+  const restCompaniesRow: BarRow | undefined = restCompanies > d.total * 0.005
+    ? { key: "__rest", label: fill(t("fx.sec.mp.rest_companies"), { n: fmtInt(Math.max(0, d.nbTitulaires - d.top10.length)) }), value: restCompanies, text: eurTxt(restCompanies), tone: "soft" }
+    : undefined;
+  const bucketsSum = c.buckets.reduce((a, b) => a + b.amount, 0);
+  const restOffres = Math.max(0, d.total - bucketsSum);
+  const restOffresRow: BarRow | undefined = hasCompetition && restOffres > d.total * 0.005
+    ? { key: "__unknown", label: t("fx.sec.mp.rest_offres"), value: restOffres, text: eurTxt(restOffres), tone: "soft" }
+    : undefined;
   const sceneRows: Record<Group, BarRow[]> = {
     categorie: d.byCategory.map((cat) => ({
       key: cat.category,
@@ -140,9 +153,15 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   const series = d.yearsSummary.filter((y) => y.total > 0).map((y) => ({ year: y.year, amount: y.total }));
   const shareTitle = fill(t("fx.sec.mp.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
 
+  const sceneFoot: Partial<Record<Group, BarRow | undefined>> = { entreprise: restCompaniesRow, offres: restOffresRow };
   const sceneBars = (
-    <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} />
+    <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} footRow={sceneFoot[group]} />
   );
+  const mosaicRows = sceneFoot[group] ? [...sceneRows[group], sceneFoot[group]!] : sceneRows[group];
+  const otherLabel = (merged: number) =>
+    group === "entreprise"
+      ? fill(t("fx.sec.mp.rest_companies"), { n: fmtInt(Math.max(0, d.nbTitulaires - d.top10.length + merged)) })
+      : t("fx.sec.mp.other");
 
   return (
     <div className="theme-fusion">
@@ -183,7 +202,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                     <p className="fx-sec-sentence">{t("fx.sec.mp.conc.na")}</p>
                   ) : variant === "mosaic" ? (
                     <>
-                      <Mosaic key={group} rows={sceneRows[group]} otherLabel={t("fx.sec.mp.other")} format={eurTxt} />
+                      <Mosaic key={group} rows={mosaicRows} otherLabel={otherLabel} format={eurTxt} />
                       <V3Fold id="amounts" text label={t("fx.sec.mp.amounts")}>{sceneBars}</V3Fold>
                     </>
                   ) : (
