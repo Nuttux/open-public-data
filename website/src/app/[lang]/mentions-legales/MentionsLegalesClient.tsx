@@ -8,8 +8,8 @@ import { readLocale } from "@/lib/seo";
 // Mentions légales conformes LCEN art. 6-III-1.
 // À mettre à jour si statut juridique, hébergeur ou contact change.
 
-const LAST_UPDATE = "7 mai 2026";
-const LAST_UPDATE_EN = "May 7, 2026";
+const LAST_UPDATE = "14 septembre 2026";
+const LAST_UPDATE_EN = "September 14, 2026";
 
 type DLProps = { children: React.ReactNode };
 function DefList({ children }: DLProps) {
@@ -156,24 +156,24 @@ export default async function MentionsLegalesClient() {
           <SectionHead
             number="04"
             kind={isFr ? "Propriété intellectuelle" : "Intellectual property"}
-            title={isFr ? <>Tout <em>est ouvert</em>, sous licences explicites</> : <>Everything <em>is open</em>, under explicit licenses</>}
+            title={isFr ? <>Ce qui est <em>réutilisable</em></> : <>What you can <em>reuse</em></>}
           />
           <p>
             {isFr ? (
               <>
-                Le code source du site et du pipeline est publié sous licence{" "}
-                <b>GNU AGPL-3.0</b>. Les données dérivées sont publiées sous{" "}
-                <b>Licence Ouverte 2.0 (Etalab)</b>. Les contenus éditoriaux (articles, analyses,
-                méthodologie) sont publiés sous <b>Creative Commons CC BY 4.0</b>. Les conditions
-                de réutilisation et d'attribution sont détaillées sur la page Licence.
+                Le code du pipeline est publié sous licence <b>MIT</b>. Le code du site web
+                n&apos;est pas publié. Les données gardent la licence de leur source (ODbL, Licence
+                Ouverte 2.0, CC BY 4.0 ou PDDL selon le portail). Les textes rédigés par Qipu sont
+                publiés sous <b>Creative Commons CC BY 4.0</b>. Le détail et la façon de citer
+                sont sur la page Licence.
               </>
             ) : (
               <>
-                The source code of the site and pipeline is published under{" "}
-                <b>GNU AGPL-3.0</b>. The derived data is published under the{" "}
-                <b>Etalab Open License 2.0</b>. Editorial content (articles, analyses,
-                methodology) is published under <b>Creative Commons CC BY 4.0</b>. Reuse and
-                attribution terms are detailed on the License page.
+                The pipeline code is published under the <b>MIT</b> licence. The website code
+                is not published. Data keeps the licence of its source (ODbL, Etalab Open
+                Licence 2.0, CC BY 4.0 or PDDL depending on the portal). Text written by Qipu is
+                published under <b>Creative Commons CC BY 4.0</b>. Details and how to credit are
+                on the License page.
               </>
             )}
           </p>

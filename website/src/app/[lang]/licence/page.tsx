@@ -7,11 +7,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
     title: "Licence",
     description:
-      "Licences appliquées au site : code AGPL-3.0, données ODbL 1.0 ou Licence Ouverte 2.0 selon la source, contenus éditoriaux CC BY 4.0. Conditions de réutilisation et attribution.",
+      "Code du pipeline sous licence MIT, données sous la licence de leur source (ODbL, Licence Ouverte 2.0, CC BY 4.0, PDDL), textes sous CC BY 4.0. Ce que vous pouvez réutiliser et comment citer.",
     en: {
       title: "License",
       description:
-        "Licenses applied to the site: AGPL-3.0 for code, ODbL 1.0 or Etalab Open Licence 2.0 for data depending on the source, CC BY 4.0 for editorial content. Reuse conditions and attribution.",
+        "Pipeline code under the MIT licence, data under the licence of its source (ODbL, Etalab Open Licence 2.0, CC BY 4.0, PDDL), text under CC BY 4.0. What you can reuse and how to credit it.",
     },
     path: "/licence",
   });

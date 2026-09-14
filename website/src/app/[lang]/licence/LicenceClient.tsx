@@ -1,13 +1,90 @@
+import type { CSSProperties, ReactNode } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
+import Link from "@/components/LocalizedLink";
 import LocaleRefresh from "@/components/LocaleRefresh";
 import { readLocale } from "@/lib/seo";
+
+// Data licences mirror website/public/data/LICENSE.md and the stamps written by
+// pipeline/scripts/export/stamp_licenses.py — change all three together.
+
+const PIPELINE_REPO = "https://github.com/AbstractsMachine/qipu-pipeline";
+
+type Licence = { name: string; nameEn?: string; url: string };
+type Bilingual = { fr: string; en: string };
+
+const LICENCES = {
+  mit: { name: "MIT", url: "https://opensource.org/license/mit" },
+  odbl: { name: "ODbL 1.0", url: "https://opendatacommons.org/licenses/odbl/1-0/" },
+  lo2: {
+    name: "Licence Ouverte 2.0",
+    nameEn: "Etalab Open Licence 2.0",
+    url: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+  },
+  ccBy: { name: "CC BY 4.0", url: "https://creativecommons.org/licenses/by/4.0/" },
+  ccBySa: { name: "CC BY-SA 4.0", url: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  pddl: { name: "PDDL", url: "https://opendatacommons.org/licenses/pddl/1-0/" },
+} satisfies Record<string, Licence>;
+
+const DATA_SOURCES: { sources: Bilingual; licence: Licence; duty: Bilingual }[] = [
+  {
+    sources: {
+      fr: "Paris (Paris Open Data) et Recife (Dados Abertos)",
+      en: "Paris (Paris Open Data) and Recife (Dados Abertos)",
+    },
+    licence: LICENCES.odbl,
+    duty: {
+      fr: "Citer la source et Qipu. Une base dérivée que vous redistribuez doit rester sous ODbL.",
+      en: "Credit the source and Qipu. A derived database you redistribute must stay under ODbL.",
+    },
+  },
+  {
+    sources: {
+      fr: "Communes, Marseille et données nationales (DGFiP, OFGL, DECP, INSEE, PLF, PLFSS, Ville de Marseille, Métropole Aix-Marseille-Provence)",
+      en: "French municipalities, Marseille and national data (DGFiP, OFGL, DECP, INSEE, PLF, PLFSS, Ville de Marseille, Métropole Aix-Marseille-Provence)",
+    },
+    licence: LICENCES.lo2,
+    duty: {
+      fr: "Citer la source dans la forme demandée par le producteur, par exemple « calcul OFGL - source DGFiP » ou « Source : Insee ».",
+      en: "Credit the source in the form its producer asks for, for example “calcul OFGL - source DGFiP” or “Source : Insee”.",
+    },
+  },
+  {
+    sources: { fr: "Eurostat", en: "Eurostat" },
+    licence: LICENCES.ccBy,
+    duty: {
+      fr: "Citer Eurostat et préciser que les chiffres ont été retraités.",
+      en: "Credit Eurostat and state that the figures were reprocessed.",
+    },
+  },
+  {
+    sources: { fr: "San Francisco (DataSF)", en: "San Francisco (DataSF)" },
+    licence: LICENCES.pddl,
+    duty: { fr: "Domaine public : aucune obligation.", en: "Public domain: no obligation." },
+  },
+];
+
+const TEXT: CSSProperties = { lineHeight: 1.65, maxWidth: 780, margin: "0 0 12px" };
+const LIST: CSSProperties = { ...TEXT, listStyle: "disc", paddingLeft: 20, display: "grid", gap: 10 };
+// Same look as the other inline text links on the site (.fx-fiche-grounded-sources a).
+const LINK: CSSProperties = { color: "var(--bleu)", textDecoration: "underline", textUnderlineOffset: 2 };
+const NOTE: CSSProperties = { fontSize: 13, color: "var(--muted)", marginTop: 16, maxWidth: 780 };
+
+function Ext({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" style={LINK}>
+      {children} ↗
+    </a>
+  );
+}
 
 export default async function LicenceClient() {
   const locale = await readLocale();
   const isFr = locale !== "en";
+  const tr = (s: Bilingual) => (isFr ? s.fr : s.en);
+  const licenceName = (l: Licence) => (!isFr && l.nameEn ? l.nameEn : l.name);
 
   return (
     <div className="theme-fusion">
@@ -19,196 +96,35 @@ export default async function LicenceClient() {
         <div className="fx-wrap">
           <div className="fx-page-kicker">{isFr ? "— Licence" : "— License"}</div>
           <h1 className="fx-page-title">
-            {isFr ? (
-              <>Trois <em>licences</em>, un projet ouvert.</>
-            ) : (
-              <>Three <em>licenses</em>, one open project.</>
-            )}
+            {isFr ? <>Ce que vous pouvez <em>réutiliser</em></> : <>What you can <em>reuse</em></>}
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "Qipu publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage."
-              : "Qipu publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use."}
+              ? "Le code, les données et les textes du site ont chacun leur licence. Voici lesquelles, et comment citer la source."
+              : "The site's code, data and text each have their own licence. Here is which, and how to credit the source."}
           </p>
-        </div>
-      </section>
-
-      <section className="fx-section" id="resume">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={isFr ? "Vue d'ensemble" : "Overview"}
-            title={isFr ? <>Que <em>couvre</em> quoi</> : <>What <em>covers</em> what</>}
-          />
-          <table className="fx-sources-table" style={{ marginTop: 16 }}>
-            <thead>
-              <tr>
-                <th>{isFr ? "Production" : "Output"}</th>
-                <th>{isFr ? "Périmètre" : "Scope"}</th>
-                <th>{isFr ? "Licence" : "License"}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{isFr ? "Code du pipeline" : "Pipeline code"}</td>
-                <td>
-                  {isFr
-                    ? "Pipeline Python (extraction, transformation), modèles dbt, scripts d'export, configurations"
-                    : "Python pipeline (extraction, transformation), dbt models, export scripts, configurations"}
-                </td>
-                <td>
-                  <a
-                    href="https://www.gnu.org/licenses/agpl-3.0.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GNU AGPL-3.0 ↗
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>{isFr ? "Données dérivées" : "Derived data"}</td>
-                <td>
-                  {isFr
-                    ? "Fichiers JSON/CSV publiés sous /public/data/"
-                    : "JSON/CSV files published under /public/data/"}
-                </td>
-                <td>
-                  <a
-                    href="https://opendatacommons.org/licenses/odbl/1-0/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ODbL 1.0 ↗
-                  </a>
-                  <br />
-                  <span style={{ fontSize: 12, color: "var(--ink-2)" }}>
-                    {isFr
-                      ? "(ou la licence de la source quand elle n'impose pas le partage à l'identique — voir §04)"
-                      : "(or the source licence where it imposes no share-alike — see §04)"}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>{isFr ? "Contenus éditoriaux" : "Editorial content"}</td>
-                <td>
-                  {isFr
-                    ? "Articles, analyses, méthodologie, vulgarisations IA"
-                    : "Articles, analyses, methodology, AI summaries"}
-                </td>
-                <td>
-                  <a
-                    href="https://creativecommons.org/licenses/by/4.0/deed.fr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Creative Commons CC BY 4.0 ↗
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
       <section className="fx-section" id="code">
         <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={isFr ? "Code du pipeline" : "Pipeline code"}
-            title={isFr ? <>Pipeline <em>libre</em>, copyleft « réseau »</> : <>Free <em>pipeline</em>, network-aware copyleft</>}
-            subtitle={
-              isFr
-                ? "Le code du pipeline (Python + dbt + scripts d'export) est publié sous GNU Affero General Public License version 3."
-                : "The pipeline code (Python + dbt + export scripts) is published under the GNU Affero General Public License version 3."
-            }
-          />
-          <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
-            <li>{isFr ? "Cloner le dépôt, étudier le code, l'auditer librement." : "Clone the repository, study the code, audit it freely."}</li>
-            <li>{isFr ? "Le modifier pour vos propres besoins (collectivité, association, recherche)." : "Modify it for your own needs (local government, non-profit, research)."}</li>
-            <li>{isFr ? "Le redéployer pour votre territoire (multi-villes, multi-régions, échelle nationale)." : "Redeploy it for your territory (multi-city, multi-region, national scale)."}</li>
-            <li>{isFr ? "L'utiliser à des fins commerciales (formation, conseil, intégration sur mesure)." : "Use it commercially (training, consulting, custom integration)."}</li>
-          </ul>
-          <h3>{isFr ? "Vous devez" : "You must"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
-            <li>
-              {isFr
-                ? "Préserver les mentions de copyright et la licence dans toute redistribution."
-                : "Preserve copyright notices and the license in any redistribution."}
-            </li>
-            <li>
-              {isFr
-                ? "Si vous faites tourner une version modifiée sur un serveur accessible (site web, SaaS), publier votre version modifiée sous AGPL-3.0 elle aussi."
-                : "If you run a modified version on a publicly accessible server (website, SaaS), publish your modified version under AGPL-3.0 as well."}
-            </li>
-            <li>
-              {isFr
-                ? "Permettre aux utilisateurs de votre version modifiée d'accéder à votre code source."
-                : "Allow users of your modified version to access your source code."}
-            </li>
-          </ul>
-          <div className="fx-note">
-            {isFr ? (
-              <>
-                <b>Pourquoi AGPL et pas MIT ?</b> L'AGPL est l'une des rares licences qui empêche
-                qu'un acteur tiers prenne notre travail, le fasse tourner en service propriétaire et
-                récupère les bénéfices sans contribuer en retour. C'est exactement le modèle utilisé
-                par Plausible, Mastodon, Element, GitLab. Pour une infrastructure citoyenne, c'est
-                la garantie que les améliorations restent dans le commun.
-              </>
-            ) : (
-              <>
-                <b>Why AGPL and not MIT?</b> AGPL is one of the few licenses that prevents a third
-                party from taking our work, running it as a proprietary service, and reaping the
-                benefits without giving back. It's the exact model used by Plausible, Mastodon,
-                Element, GitLab. For citizen infrastructure, it's a guarantee that improvements
-                stay in the commons.
-              </>
-            )}
-          </div>
-          <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="https://www.gnu.org/licenses/agpl-3.0.html">
-              {isFr ? "Texte intégral AGPL-3.0 ↗" : "Full AGPL-3.0 text ↗"}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="fx-section" id="commercial">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind={isFr ? "Usage commercial sans AGPL" : "Commercial use without AGPL"}
-            title={
-              isFr ? (
-                <>Une <em>licence commerciale</em> est possible</>
-              ) : (
-                <>A <em>commercial license</em> is available</>
-              )
-            }
-          />
-          <p>
-            {isFr ? (
-              <>
-                Si votre organisation souhaite intégrer notre code dans un produit propriétaire
-                <b> sans publier ses modifications</b> (par exemple : un cabinet de conseil qui
-                intègre notre pipeline dans une suite logicielle vendue à ses clients), une licence
-                commerciale alternative à l'AGPL peut être négociée. Contactez-nous pour discuter
-                des conditions.
-              </>
-            ) : (
-              <>
-                If your organisation wishes to integrate our code into a proprietary product
-                <b> without publishing its modifications</b> (e.g. a consulting firm integrating
-                our pipeline into a software suite sold to its clients), a commercial license
-                alternative to AGPL can be negotiated. Contact us to discuss terms.
-              </>
-            )}
+          <SectionHead title={isFr ? <>Le code du pipeline : <em>MIT</em></> : <>Pipeline code: <em>MIT</em></>} />
+          <p style={TEXT}>
+            {isFr
+              ? "Le pipeline qui calcule les chiffres du site est publié sous licence MIT. Vous pouvez l'utiliser, le modifier et le redistribuer, y compris à des fins commerciales. Il faut seulement conserver la mention de copyright et le texte de la licence."
+              : "The pipeline that computes the site's figures is published under the MIT licence. You may use, modify and redistribute it, including commercially. You only need to keep the copyright notice and the licence text."}
           </p>
-          <div style={{ marginTop: 16 }}>
-            <Button variant="primary" href="mailto:daniel@qipu.org?subject=Licence%20commerciale">
-              daniel@qipu.org ↗
+          <p style={TEXT}>
+            {isFr
+              ? "Le code du site web et des enrichissements n'est pas publié."
+              : "The code of the website and of the enrichment steps is not published."}
+          </p>
+          <div style={{ marginTop: 20, display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Button variant="primary" href={PIPELINE_REPO} target="_blank" rel="noopener noreferrer">
+              {isFr ? "Dépôt qipu-pipeline sur GitHub ↗" : "qipu-pipeline repository on GitHub ↗"}
+            </Button>
+            <Button href={LICENCES.mit.url} target="_blank" rel="noopener noreferrer">
+              {isFr ? "Texte de la licence MIT ↗" : "Text of the MIT licence ↗"}
             </Button>
           </div>
         </div>
@@ -217,256 +133,105 @@ export default async function LicenceClient() {
       <section className="fx-section" id="donnees">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
-            kind={isFr ? "Données" : "Data"}
-            title={
-              isFr ? (
-                <>Données dérivées : <em>ODbL 1.0</em></>
-              ) : (
-                <>Derived data: <em>ODbL 1.0</em></>
-              )
-            }
-            subtitle={
-              isFr
-                ? "La licence d'une base dérivée est celle de sa source la plus contraignante. Paris Open Data et Recife publient sous ODbL, qui impose le partage à l'identique : nos exports JSON/CSV qui en dérivent sont donc eux aussi sous ODbL. Les exports issus uniquement de données publiques françaises (DGFiP, OFGL, DECP, INSEE, Ville de Marseille, Métropole Aix-Marseille-Provence) restent sous Licence Ouverte 2.0, avec l'attribution demandée par chaque producteur (« calcul OFGL - source DGFiP », « Source : Insee ») ; les données Eurostat sont sous CC BY 4.0 et signalées comme retraitées ; ceux issus de DataSF sont dans le domaine public (PDDL). Licences vérifiées sur chaque portail le 13 septembre 2026."
-                : "A derived database carries the licence of its most restrictive source. Paris Open Data and Recife publish under ODbL, which requires share-alike, so our JSON/CSV exports derived from them are ODbL too. Exports built solely from French public data (DGFiP, OFGL, DECP, INSEE, Ville de Marseille, Métropole Aix-Marseille-Provence) remain under Licence Ouverte 2.0, with the attribution each producer asks for (\"calcul OFGL - source DGFiP\", \"Source : Insee\"); Eurostat data is CC BY 4.0 and flagged as reprocessed; exports built from DataSF are public domain (PDDL). Licences checked on each portal on 13 September 2026."
-            }
+            title={isFr ? <>Les données : <em>selon la source</em></> : <>Data: <em>depends on the source</em></>}
           />
-          <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
-            <li>{isFr ? "Télécharger librement les fichiers, à toutes fins, y compris commerciales." : "Download files freely for any purpose, including commercial."}</li>
-            <li>{isFr ? "Les republier, les modifier, les croiser avec d'autres jeux." : "Republish, modify, and cross with other datasets."}</li>
-            <li>{isFr ? "Les intégrer dans des produits payants (rapports, études, dashboards)." : "Embed them in paid products (reports, studies, dashboards)."}</li>
-          </ul>
-          <h3>{isFr ? "Vous devez" : "You must"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
-            <li>
-              {isFr
-                ? "Attribuer chaque jeu de données d'origine dans la forme exigée par son producteur. Pour la Ville de Paris : « Nom du jeu de données, Ville de Paris, sous licence ODbL »."
-                : "Attribute each source dataset in the form its producer requires. For the City of Paris: \"Dataset name, Ville de Paris, sous licence ODbL\"."}
-            </li>
-            <li>
-              {isFr ? (
-                <>
-                  <b>Partage à l&apos;identique (ODbL)</b> — si vous redistribuez une base dérivée
-                  de nos exports Paris ou Recife, publiquement ou en tant que service, elle doit
-                  elle aussi être sous ODbL. Cette obligation ne s&apos;applique pas aux exports
-                  issus uniquement de données d&apos;État (Licence Ouverte 2.0) ni de DataSF (PDDL).
-                </>
-              ) : (
-                <>
-                  <b>Share-alike (ODbL)</b> — if you redistribute a database derived from our Paris
-                  or Recife exports, publicly or as a service, it must itself be under ODbL. This
-                  does not apply to exports built solely from French State data (Etalab Open
-                  Licence 2.0) or from DataSF (PDDL).
-                </>
-              )}
-            </li>
-            <li>
-              {isFr
-                ? "Citer Qipu comme producteur de la base dérivée : « Qipu · base dérivée, sous licence ODbL »."
-                : "Credit Qipu as the producer of the derived database: \"Qipu · derived database, licensed ODbL\"."}
-            </li>
-            <li>
-              {isFr
-                ? "Conserver les champs source et source_url présents dans nos JSON — ils tracent l'origine ligne par ligne."
-                : "Keep the source and source_url fields present in our JSON files — they trace the origin row by row."}
-            </li>
-            <li>
-              {isFr
-                ? "Ne pas suggérer que Qipu approuve votre réutilisation."
-                : "Not imply that Qipu endorses your reuse."}
-            </li>
-          </ul>
-          <h3 style={{ marginTop: 8 }}>{isFr ? "Licence par source" : "Licence by source"}</h3>
-          <table className="fx-sources-table" style={{ marginTop: 12, marginBottom: 24 }}>
-            <thead>
-              <tr>
-                <th>{isFr ? "Source" : "Source"}</th>
-                <th>{isFr ? "Licence d'origine" : "Source licence"}</th>
-                <th>{isFr ? "Obligations" : "Obligations"}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Paris Open Data</td>
-                <td>ODbL 1.0</td>
-                <td>{isFr ? "Attribution + partage à l'identique" : "Attribution + share-alike"}</td>
-              </tr>
-              <tr>
-                <td>{isFr ? "Recife (Dados Abertos)" : "Recife (Dados Abertos)"}</td>
-                <td>ODbL 1.0</td>
-                <td>{isFr ? "Attribution + partage à l'identique" : "Attribution + share-alike"}</td>
-              </tr>
-              <tr>
-                <td>{isFr ? "État français (DGFiP, DECP, INSEE, DRIHL)" : "French State (DGFiP, DECP, INSEE, DRIHL)"}</td>
-                <td>{isFr ? "Licence Ouverte 2.0" : "Etalab Open Licence 2.0"}</td>
-                <td>{isFr ? "Attribution seule" : "Attribution only"}</td>
-              </tr>
-              <tr>
-                <td>San Francisco (DataSF)</td>
-                <td>PDDL</td>
-                <td>{isFr ? "Domaine public — aucune obligation" : "Public domain — no obligation"}</td>
-              </tr>
-              <tr>
-                <td>Vancouver</td>
-                <td>{isFr ? "Open Government Licence – Vancouver" : "Open Government Licence – Vancouver"}</td>
-                <td>{isFr ? "Attribution seule" : "Attribution only"}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="fx-note">
+          <p style={TEXT}>
             {isFr
-              ? "Les données brutes émises par les administrations restent toujours accessibles à leur source d'origine. Notre rôle est d'enrichir et d'organiser, pas de re-encadrer juridiquement — et lorsque la source impose le partage à l'identique, nos dérivés le conservent."
-              : "The raw data published by administrations always remains accessible at its original source. Our role is to enrich and organise, not to re-restrict it legally — and where the source requires share-alike, our derivatives keep it."}
-          </div>
-        </div>
-      </section>
-
-      <section className="fx-section" id="editorial">
-        <div className="fx-wrap">
-          <SectionHead
-            number="05"
-            kind={isFr ? "Contenus éditoriaux" : "Editorial content"}
-            title={
-              isFr ? (
-                <>Articles & analyses : <em>CC BY 4.0</em></>
-              ) : (
-                <>Articles & analyses: <em>CC BY 4.0</em></>
-              )
-            }
-            subtitle={
-              isFr
-                ? "Les articles, analyses et textes méthodologiques sont sous Creative Commons Attribution 4.0 — réutilisables librement avec attribution."
-                : "Articles, analyses and methodology texts are under Creative Commons Attribution 4.0 — freely reusable with attribution."
-            }
-          />
-          <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
-            <li>{isFr ? "Citer un paragraphe ou un article entier dans un autre média." : "Quote a paragraph or an entire article in another medium."}</li>
-            <li>{isFr ? "Traduire un article et publier la traduction." : "Translate an article and publish the translation."}</li>
-            <li>{isFr ? "Réutiliser une analyse dans un livre, un cours, un rapport (y compris commerciaux)." : "Reuse an analysis in a book, a course, a report (including commercial ones)."}</li>
+              ? "Les fichiers de données du site sont dérivés des portails open data. Chacun garde la licence de sa source la plus contraignante."
+              : "The site's data files are derived from open data portals. Each keeps the licence of its most restrictive source."}
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: "20px 0 0", maxWidth: 900 }}>
+            {DATA_SOURCES.map((row) => (
+              <li
+                key={row.licence.url}
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "6px 32px",
+                  padding: "14px 0",
+                  borderTop: "1px solid var(--rule)",
+                  lineHeight: 1.55,
+                }}
+              >
+                <div style={{ flex: "1 1 15rem", fontWeight: 600 }}>{tr(row.sources)}</div>
+                <div style={{ flex: "2 1 20rem" }}>
+                  <Ext href={row.licence.url}>{licenceName(row.licence)}</Ext>
+                  <div style={{ color: "var(--ink-2)", marginTop: 2 }}>{tr(row.duty)}</div>
+                </div>
+              </li>
+            ))}
           </ul>
-          <h3>{isFr ? "Vous devez" : "You must"}</h3>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
-            <li>
-              {isFr
-                ? "Citer Qipu (ou l'auteur·e nommé·e quand indiqué) avec un lien vers l'article original."
-                : "Cite Qipu (or the named author when indicated) with a link to the original article."}
-            </li>
-            <li>
-              {isFr
-                ? "Indiquer si vous avez modifié le texte (traduction, condensé, montage)."
-                : "Indicate whether you have modified the text (translation, summary, edit)."}
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="fx-section" id="ia">
-        <div className="fx-wrap">
-          <SectionHead
-            number="06"
-            kind={isFr ? "Transparence IA" : "AI transparency"}
-            title={
-              isFr ? (
-                <>Quand un texte est <em>généré par IA</em></>
-              ) : (
-                <>When a text is <em>AI-generated</em></>
-              )
-            }
-          />
-          <p>
-            {isFr ? (
-              <>
-                Une partie des résumés courts publiés sur ce site (vulgarisations d'objets de
-                subvention, traductions automatiques) sont générés par modèles de langage
-                (Gemini, Claude). Ils sont distribués sous CC BY 4.0 comme le reste de l'éditorial,
-                <b> mais leur provenance IA doit être indiquée si vous les republiez</b>, conformément
-                aux recommandations Open Data Paris et à l'AI Act européen d'août 2024 sur
-                l'étiquetage transparent des contenus synthétiques.
-              </>
-            ) : (
-              <>
-                Some short summaries published on this site (grant-purpose plain-language
-                rewrites, automatic translations) are generated by language models (Gemini,
-                Claude). They are released under CC BY 4.0 like other editorial content,
-                <b> but their AI provenance must be disclosed if you republish them</b>, in line
-                with Paris Open Data editorial guidance and the European AI Act of August 2024
-                on transparent labelling of synthetic content.
-              </>
-            )}
+          <p style={NOTE}>
+            {isFr
+              ? "Licences vérifiées sur chaque portail le 13 septembre 2026. "
+              : "Licences checked on each portal on 13 September 2026. "}
+            <a href="/data/LICENSE.md" style={LINK}>
+              {isFr ? "Détail par dossier de fichiers (LICENSE.md, en anglais)" : "Details per file folder (LICENSE.md)"}
+            </a>
           </p>
         </div>
       </section>
 
-      <section className="fx-section" id="citation">
+      <section className="fx-section" id="textes">
         <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind={isFr ? "Citation recommandée" : "Recommended citation"}
-            title={isFr ? <>Comment <em>nous citer</em></> : <>How to <em>cite us</em></>}
-          />
-          <p>
-            {isFr
-              ? "Si vous êtes journaliste, chercheur·se, étudiant·e, ou simplement curieux·se, voici le format de citation recommandé pour vos articles, mémoires et rapports :"
-              : "If you are a journalist, researcher, student, or just curious, here is the recommended citation format for your articles, theses and reports:"}
+          <SectionHead title={isFr ? <>Les textes et les <em>images</em></> : <>Text and <em>images</em></>} />
+          <ul style={LIST}>
+            <li>
+              {isFr ? "Les textes écrits par Qipu sont sous " : "Text written by Qipu is under "}
+              <Ext href={LICENCES.ccBy.url}>CC BY 4.0</Ext>
+              {isFr
+                ? ". Vous pouvez les reprendre, y compris à des fins commerciales, en citant Qipu avec un lien vers la page."
+                : ". You may reuse it, including commercially, by crediting Qipu with a link to the page."}
+            </li>
+            <li>
+              {isFr
+                ? "Certains textes courts sont rédigés par un modèle de langage à partir des sources. C'est le cas des réponses de l'assistant et des descriptions en langage clair des contrats et des projets. Si vous les reprenez, merci de préciser qu'ils ont été rédigés par IA."
+                : "Some short texts are written by a language model from the sources. This is the case for the assistant's answers and the plain-language descriptions of contracts and projects. If you reuse them, please say they were written by AI."}
+            </li>
+            <li>
+              {isFr ? "Les extraits de Wikipédia sur les fiches de lieux restent sous " : "Wikipedia extracts on place pages remain under "}
+              <Ext href={LICENCES.ccBySa.url}>CC BY-SA 4.0</Ext>.
+            </li>
+            <li>
+              {isFr
+                ? "Chaque photo garde la licence indiquée dans son crédit."
+                : "Each photo keeps the licence shown in its credit."}
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="fx-section" id="citer">
+        <div className="fx-wrap">
+          <SectionHead title={isFr ? <>Comment <em>citer</em></> : <>How to <em>credit</em></>} />
+          <p style={TEXT}>
+            {isFr ? "Pour un chiffre, un graphique ou un fichier :" : "For a figure, a chart or a file:"}
           </p>
           <blockquote
             style={{
               borderLeft: "2px solid var(--ink)",
               paddingLeft: 20,
-              margin: "20px 0",
+              margin: "16px 0",
               fontFamily: "var(--f-mono)",
               fontSize: 14,
               lineHeight: 1.7,
               color: "var(--ink-2)",
+              maxWidth: 780,
             }}
           >
-            {isFr ? (
-              <>
-                D&apos;après <b>qipu.org</b>, base dérivée sous licence ODbL, à partir de
-                Paris Open Data (Ville de Paris, sous licence ODbL), Etalab et INSEE
-                (Licence Ouverte 2.0). Méthodologie complète :
-                <code> qipu.org/methode</code>. Consulté le [date].
-              </>
-            ) : (
-              <>
-                Based on <b>qipu.org</b>, a derived database licensed ODbL, built from
-                Paris Open Data (Ville de Paris, sous licence ODbL), Etalab and INSEE
-                (Etalab Open Licence 2.0). Full methodology:
-                <code> qipu.org/methode</code>. Accessed [date].
-              </>
-            )}
+            {isFr
+              ? "Qipu (qipu.org), d'après [producteur de la donnée], sous licence [licence]. Consulté le [date]."
+              : "Qipu (qipu.org), based on [data producer], under [licence]. Accessed [date]."}
           </blockquote>
-        </div>
-      </section>
-
-      <section className="fx-section" id="contact">
-        <div className="fx-wrap">
-          <SectionHead
-            number="08"
-            kind={isFr ? "Questions" : "Questions"}
-            title={
-              isFr ? (
-                <>Un <em>doute</em> ? Écrivez-nous.</>
-              ) : (
-                <>In <em>doubt</em>? Get in touch.</>
-              )
-            }
-            subtitle={
-              isFr
-                ? "Nous répondons sous cinq jours ouvrés sur les questions de licence, attribution, citation, intégration commerciale ou redistribution."
-                : "We respond within five business days to questions about license, attribution, citation, commercial integration or redistribution."
-            }
-          />
-          <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="mailto:daniel@qipu.org">
-              daniel@qipu.org ↗
-            </Button>
-            <Button href="/contact">{isFr ? "Formulaire de contact" : "Contact form"}</Button>
-            <Button href="/methode">{isFr ? "Méthodologie" : "Methodology"}</Button>
-          </div>
+          <p style={TEXT}>
+            {isFr
+              ? "Pour une base dérivée des données de Paris ou de Recife, ajoutez : « Qipu · base dérivée, sous licence ODbL »."
+              : "For a database derived from the Paris or Recife data, add: “Qipu · derived database, licensed ODbL”."}
+          </p>
+          <p style={{ ...TEXT, marginTop: 24 }}>
+            {isFr ? "Pour toute question sur une réutilisation : " : "For any question about reuse: "}
+            <Link href="/contact" style={LINK}>{isFr ? "page Contact" : "Contact page"}</Link>
+          </p>
         </div>
       </section>
 

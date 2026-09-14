@@ -2,7 +2,7 @@
 
 > Pipeline open source qui transforme les données publiques des collectivités françaises en JSON exploitables par le site [qipu.org](https://qipu.org).
 
-**Licence** : [GNU AGPL-3.0](../LICENSE) · **Données dérivées** : [Licence Ouverte Etalab 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0)
+**Licence** : [MIT](https://github.com/AbstractsMachine/qipu-pipeline/blob/main/LICENSE) · **Données dérivées** : licence de chaque source, voir [website/public/data/LICENSE.md](../website/public/data/LICENSE.md)
 
 ---
 
@@ -10,7 +10,7 @@
 
 Ce pipeline ingère les données ouvertes publiées par les administrations françaises (Open Data Paris, DECP, INSEE, DGFiP, OFGL…), les nettoie, les enrichit, les normalise, puis exporte des fichiers JSON consommés par le site web.
 
-Publié sous licence **GNU AGPL-3.0**.
+Publié sous licence **MIT** dans le dépôt public [qipu-pipeline](https://github.com/AbstractsMachine/qipu-pipeline).
 
 ## Architecture
 

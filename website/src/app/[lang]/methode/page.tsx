@@ -7,11 +7,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
     title: "Méthode",
     description:
-      "Architecture technique, sources, modèles dbt, enrichissements LLM, choix éditoriaux, limites et pipeline ouvert sous AGPL : la méthodologie complète derrière chaque outil de Qipu.",
+      "Architecture technique, sources, modèles dbt, enrichissements LLM, choix éditoriaux, limites et pipeline ouvert sous licence MIT : la méthodologie complète derrière chaque outil de Qipu.",
     en: {
       title: "Method",
       description:
-        "Technical architecture, sources, dbt models, LLM enrichments, editorial choices, limits, and AGPL-licensed pipeline: the full methodology behind every tool on Qipu.",
+        "Technical architecture, sources, dbt models, LLM enrichments, editorial choices, limits, and MIT-licensed pipeline: the full methodology behind every tool on Qipu.",
     },
     path: "/methode",
   });

@@ -369,15 +369,16 @@ export default async function MethodeClient() {
           <SectionHead
             number="04"
             kind={isFr ? "Engagements" : "Commitments"}
-            title={isFr ? <>Pipeline AGPL, <em>corrections</em> traçables</> : <>AGPL pipeline, <em>traceable</em> corrections</>}
+            title={isFr ? <>Pipeline public, <em>corrections</em> traçables</> : <>Public pipeline, <em>traceable</em> corrections</>}
           />
           <p style={{ lineHeight: 1.6, maxWidth: 780 }}>
             {isFr
-              ? <>Le code qui produit ces chiffres est publié en libre accès, sous licence AGPL-3.0. N&apos;importe qui peut le récupérer et refaire les calculs depuis les sources publiques pour obtenir exactement les mêmes résultats. Quand une erreur est signalée, elle est corrigée dans le code et inscrite dans l&apos;historique public du projet avec sa date et son origine. On ne réécrit jamais l&apos;historique : tout ancien screenshot ou citation reste rattachable à l&apos;état du calcul à l&apos;époque.</>
-              : <>The code that produces these figures is published in open access, under the AGPL-3.0 licence. Anyone can download it and re-run the calculations from the public sources to obtain exactly the same results. When an error is reported, it is fixed in the code and recorded in the project&apos;s public history with its date and source. We never rewrite history: any old screenshot or citation can still be linked to the state of the calculation at the time.</>}
+              ? <>Le code qui produit ces chiffres est publié en libre accès, sous licence MIT. N&apos;importe qui peut le récupérer et refaire les calculs depuis les sources publiques pour obtenir exactement les mêmes résultats. Quand une erreur est signalée, elle est corrigée dans le code. Les corrections sont publiées sur la page Corrections, avec leur date et l&apos;origine du signalement.</>
+              : <>The code that produces these figures is published in open access, under the MIT licence. Anyone can download it and re-run the calculations from the public sources to obtain exactly the same results. When an error is reported, it is fixed in the code. Corrections are published on the Corrections page, with their date and the source of the report.</>}
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>
+            <Button href="/corrections">{isFr ? "Page Corrections" : "Corrections page"}</Button>
           </div>
         </div>
       </section>

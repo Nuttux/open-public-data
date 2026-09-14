@@ -1,6 +1,6 @@
 name: sync-public-pipeline
 
-# Auto-sync du pipeline (raw → JSON) vers le repo public AGPL-3.0
+# Auto-sync du pipeline (raw → JSON) vers le repo public (licence MIT)
 # AbstractsMachine/france-open-data-pipeline à chaque push sur main.
 #
 # Stratégie :

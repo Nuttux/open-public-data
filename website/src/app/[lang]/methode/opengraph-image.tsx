@@ -104,7 +104,7 @@ export default async function MethodeOG() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", color: "#b8551c", fontSize: 12, letterSpacing: 2, textTransform: "uppercase" }}>04</div>
             <div style={{ display: "flex", marginTop: 4, fontWeight: 600 }}>Publication</div>
-            <div style={{ display: "flex", marginTop: 2, fontSize: 14, color: "#666" }}>JSON ouverts, code AGPL</div>
+            <div style={{ display: "flex", marginTop: 2, fontSize: 14, color: "#666" }}>JSON ouverts, code MIT</div>
           </div>
         </div>
 
