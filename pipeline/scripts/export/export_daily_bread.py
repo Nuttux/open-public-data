@@ -93,16 +93,46 @@ def build_fiscal_constants() -> dict:
     # Look up source (same article CGI for all IR brackets)
     ir_source = keyed["ir_tranche_1_taux"]
     plafond = keyed["ir_plafond_demi_part"]
+    # Abattement forfaitaire de 10 % et décote : lus par le calculateur
+    # (lib/daily-bread.ts). Jusqu'au 2026-09-14 ils n'existaient que dans le
+    # JSON publié, ajoutés à la main en mai : l'export les faisait disparaître.
+    abat = {k: keyed[f"ir_abattement_10pct_{k}"] for k in ("taux", "min", "max")}
+    decote = {k: keyed[f"ir_decote_{k}"] for k in ("celibataire_seuil", "celibataire_base", "couple_seuil", "couple_base", "taux")}
+
+    def _eur(v: float) -> str:
+        return f"{v:,.0f}".replace(",", "\u202f") + " €"
+
+    def _pct(v: float, digits: int = 0) -> str:
+        return f"{v * 100:.{digits}f}".replace(".", ",") + " %"
 
     return {
         "ir": {
             "year": int(ir_source.get("year") or 2025),
             "baremes": ir_baremes,
             "plafond_demi_part_eur": plafond["value"],
+            "abattement_10pct_taux": abat["taux"]["value"],
+            "abattement_10pct_min_eur": abat["min"]["value"],
+            "abattement_10pct_max_eur": abat["max"]["value"],
+            "abattement_source": abat["taux"]["source"],
+            "abattement_source_url": abat["taux"]["source_url"],
+            "decote_celibataire_seuil_eur": decote["celibataire_seuil"]["value"],
+            "decote_celibataire_base_eur": decote["celibataire_base"]["value"],
+            "decote_couple_seuil_eur": decote["couple_seuil"]["value"],
+            "decote_couple_base_eur": decote["couple_base"]["value"],
+            "decote_taux": decote["taux"]["value"],
+            "decote_source": decote["taux"]["source"],
+            "decote_source_url": decote["taux"]["source_url"],
             "source": ir_source["source"],
             "source_url": ir_source["source_url"],
             "date_reference": ir_source["date_reference"],
-            "notes": "Barème IR par tranche en EUR / part fiscale. Le plafond du quotient familial limite l'avantage fiscal procuré par les demi-parts supplémentaires.",
+            "notes": (
+                "Barème IR par tranche en EUR / part fiscale. Le plafond du quotient familial limite "
+                "l'avantage des demi-parts. Abattement de "
+                f"{_pct(abat['taux']['value'])} (min {_eur(abat['min']['value'])}, max {_eur(abat['max']['value'])}) "
+                "sur les salaires pour frais professionnels. Décote sur un IR brut bas "
+                f"(≤ {_eur(decote['celibataire_seuil']['value'])} célibataire / {_eur(decote['couple_seuil']['value'])} couple) : "
+                f"décote = base − {str(decote['taux']['value']).replace('.', ',')} × IR brut."
+            ),
         },
         "csg_crds": {
             "taux_total_activite": keyed["csg_crds_total_activite"]["value"],
@@ -138,14 +168,27 @@ def build_fiscal_constants() -> dict:
             "taux_moyen_consommation": keyed["tva_taux_moyen_consommation"]["value"],
             "propension_consommer": keyed["propension_consommer"]["value"],
             "taux_effectif_sur_disponible": keyed["tva_effective_sur_disponible"]["value"],
+            # Affectation de la TVA nette (État / Sécu / collectivités) : lue par le
+            # calculateur (lib/daily-bread.ts) pour attribuer la TVA payée à chaque
+            # sous-secteur. Présente dans le seed, absente de l'export jusqu'au
+            # 2026-09-14 : le JSON publié la tenait d'une saisie à la main.
+            "part_etat_nette": keyed["tva_part_etat_nette"]["value"],
+            "part_secu_nette": keyed["tva_part_secu_nette"]["value"],
+            "part_local_nette": keyed["tva_part_local_nette"]["value"],
             "year": int(keyed["tva_taux_moyen_consommation"].get("year") or 2024),
-            "source": keyed["tva_taux_moyen_consommation"]["source"],
+            "source": (
+                f"{keyed['tva_taux_moyen_consommation']['source']} + "
+                f"PLF {keyed['tva_part_etat_nette'].get('year')} V&M tome I (affectations)"
+            ),
             "source_url": keyed["tva_taux_moyen_consommation"]["source_url"],
             "date_reference": keyed["tva_taux_moyen_consommation"]["date_reference"],
             "notes": (
-                "Taux effectif TVA sur revenu disponible = 12,2% (taux moyen pondéré "
-                "consommation, INSEE T_TES) × 85% (propension à consommer moyenne, "
-                "INSEE comptes ménages). Lisse les disparités par décile."
+                "Taux effectif TVA sur revenu disponible = "
+                f"{_pct(keyed['tva_taux_moyen_consommation']['value'], 1)} × {_pct(keyed['propension_consommer']['value'])} = "
+                f"{_pct(keyed['tva_effective_sur_disponible']['value'], 1)}. "
+                f"Affectations TVA nette (PLF {keyed['tva_part_etat_nette'].get('year')} V&M tome I) : "
+                f"{_pct(keyed['tva_part_etat_nette']['value'])} État, {_pct(keyed['tva_part_secu_nette']['value'])} Sécu, "
+                f"{_pct(keyed['tva_part_local_nette']['value'])} collectivités. Permet l'attribution causale par sous-secteur."
             ),
         },
         # ── PFU / capital (dividendes, intérêts, plus-values mobilières) ──
@@ -280,13 +323,24 @@ def build_apu_subsectors() -> dict:
                 "annual_eur": s.get("annual_eur"),
             }
 
+    # La population n'est pas une donnée Eurostat : elle vient d'un seed INSEE,
+    # lue par le calculateur pour passer du national au par-habitant.
+    pop = _build_keyed(_read_seed("seed_population_france.csv"), cast=True)["population_france"]
+    totals = {
+        **data["totals"],
+        "population_france": pop["value"],
+        "population_year": int(pop["year"]),
+        "population_source": pop["source"],
+        "population_source_url": pop["source_url"],
+    }
+
     return {
         "year": data["year"],
         "source": data["source"],
         "source_url": data["source_url"],
         "fetched_at": data["fetched_at"],
         "institutions": institutions,
-        "totals": data["totals"],
+        "totals": totals,
         "notes_fr": (
             "Décomposition non consolidée S1311/S1313/S1314 — "
             "lecture « qui dépense quoi avant transferts intra-admin ». "
@@ -575,7 +629,9 @@ def _build_local_from_seed(
     for r in rows:
         key = r["key"]
         share = float(r["share"] or 0)
-        eur_hab = float(r["eur_hab"] or 0)
+        # Les tableaux du rapport OFGL publient des parts, pas de montant par
+        # habitant : absent du seed → null, jamais un 0 inventé.
+        eur_hab = float(r["eur_hab"]) if r.get("eur_hab") not in (None, "") else None
         national_avg[key] = {
             "share": share,
             "eur_hab": eur_hab,
@@ -726,16 +782,25 @@ def build_deepdive_autres_ministeres() -> dict:
     )
 
 
+# Les trois rubriques locales lisent les tableaux du rapport OFGL 2025
+# (annexe 2F, données 2024, nomenclature commune en 9 groupes), les MÊMES seeds
+# que le détail du calculateur (build_drilldown_local*.py). Jusqu'au 2026-09-14
+# elles lisaient seed_ofgl_{departements,regions}_fonctionnelle.csv, jamais
+# commités, et un fichier communes-all/fonctionnelle.json de mai : l'export ne
+# tournait plus, et le JSON publié portait des parts arrondies à la main
+# (50 %, 12 %, 12 %, 12 %) qui contredisaient le détail de la même page.
+# La portée exacte de chaque tableau vient de la colonne notes du seed.
+
+
 def build_deepdive_departement() -> dict:
     return _build_local_from_seed(
-        "seed_ofgl_departements_fonctionnelle.csv",
-        scope="ofgl_departements_fonctionnelle_national_avg",
-        perimeter_fr="OFGL — Ventilation fonctionnelle moyenne des départements (M52)",
-        perimeter_en="OFGL — Functional breakdown of departments (M52, national avg)",
+        "seed_ofgl_local_dept_l2.csv",
+        scope="ofgl_rapport_2025_annexe_2f_departements",
+        perimeter_fr="OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des départements",
+        perimeter_en="OFGL — 2025 report, annex 2F: functional breakdown of départements",
         notes_fr=(
-            "Moyenne nationale des dépenses départementales (M52) par "
-            "fonction. Action sociale (RSA, APA, ASE, PCH) domine "
-            "très largement. Appliquée à la part Département de la "
+            "Part de chaque fonction dans les dépenses des départements, telle "
+            "que publiée par l'OFGL. Appliquée à la part Département de la "
             "contribution Local."
         ),
     )
@@ -743,44 +808,76 @@ def build_deepdive_departement() -> dict:
 
 def build_deepdive_region() -> dict:
     return _build_local_from_seed(
-        "seed_ofgl_regions_fonctionnelle.csv",
-        scope="ofgl_regions_fonctionnelle_national_avg",
-        perimeter_fr="OFGL — Ventilation fonctionnelle moyenne des régions (M71)",
-        perimeter_en="OFGL — Functional breakdown of regions (M71, national avg)",
+        "seed_ofgl_local_region_l2.csv",
+        scope="ofgl_rapport_2025_annexe_2f_regions",
+        perimeter_fr="OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des régions",
+        perimeter_en="OFGL — 2025 report, annex 2F: functional breakdown of regions",
         notes_fr=(
-            "Moyenne nationale des dépenses régionales (M71) par fonction. "
-            "Transports (TER), lycées et formation professionnelle "
-            "constituent le cœur. Appliquée à la part Région de la "
-            "contribution Local."
+            "Part de chaque fonction dans les dépenses des régions, telle que "
+            "publiée par l'OFGL. Appliquée à la part Région de la contribution "
+            "Local."
         ),
     )
 
 
 def build_deepdive_bloc_communal() -> dict:
-    """OFGL/DGCL — Bloc communal national average breakdown by fonction."""
-    src_path = ROOT / "website" / "public" / "data" / "communes-all" / "fonctionnelle.json"
-    if not src_path.exists():
-        print(f"  ⚠ {src_path.name} missing — run sync_ofgl_communes_fonctionnelle.py first")
-        return {}
-    with open(src_path, encoding="utf-8") as f:
-        data = json.load(f)
-
-    return {
-        "scope": "ofgl_communes_fonctionnelle_national_avg",
-        "perimeter_fr": "OFGL/DGCL — Ventilation fonctionnelle moyenne du bloc communal (national pondéré population)",
-        "perimeter_en": "OFGL/DGCL — Functional breakdown of the municipal block (national, pop-weighted)",
-        "year": data.get("year"),
-        "source": data.get("source"),
-        "source_url": data.get("source_url"),
-        "scope_note_fr": data.get("scope_note_fr"),
-        "fonctions": data.get("fonctions", []),
-        "national_avg_weighted": data.get("national_avg_weighted", {}),
-        "by_insee_top_200": data.get("by_insee_top_200", {}),
-        "notes_fr": (
-            "Moyenne nationale du bloc communal (communes + EPCI) ventilée "
-            "par grande fonction M14. Appliquée à la part bloc communal "
-            "de la contribution Local de l'utilisateur."
+    return _build_local_from_seed(
+        "seed_ofgl_local_commune_l2.csv",
+        scope="ofgl_rapport_2025_annexe_2f_communes",
+        perimeter_fr="OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des communes",
+        perimeter_en="OFGL — 2025 report, annex 2F: functional breakdown of communes",
+        notes_fr=(
+            "Part de chaque fonction dans les dépenses des communes, telle que "
+            "publiée par l'OFGL. Appliquée à la part bloc communal de la "
+            "contribution Local."
         ),
+    )
+
+
+def build_state_overlay() -> dict:
+    """Dépenses de l'État au sens S1311 hors missions du budget général (CAS
+    Pensions, opérateurs, budgets annexes, contribution UE, résiduel), chacune
+    rattachée à un bucket éditorial. Lue par lib/daily-bread.ts. Jusqu'au
+    2026-09-14, ce bloc n'existait que dans le JSON publié, saisi à la main en
+    mai : il est désormais dans seed_etat_s1311_overlay.csv, source par ligne."""
+    rows = _read_seed("seed_etat_s1311_overlay.csv")
+    items = []
+    for r in rows:
+        it = {
+            "key": r["key"], "parent_bucket": r["parent_bucket"],
+            "label_fr": r["label_fr"], "label_en": r["label_en"],
+            "annual_eur": int(float(r["annual_eur"])), "type": r["type"],
+            "source": r["source"], "source_url": r["source_url"],
+        }
+        if r["notes"]:
+            it["notes"] = r["notes"]
+        items.append(it)
+    by_type: dict[str, float] = {}
+    for it in items:
+        by_type[it["type"]] = by_type.get(it["type"], 0) + it["annual_eur"]
+    md = lambda t: round(by_type.get(t, 0) / 1e9)  # noqa: E731
+    total = round(sum(by_type.values()) / 1e9)
+    year = int(rows[0]["year"]) if rows else None
+    return {
+        "year": year,
+        "description_fr": (
+            f"Dépenses de l'État au sens S1311 (Eurostat) hors missions du budget général : environ {total} Md€ — "
+            f"CAS Pensions ({md('cas_pensions')} Md€), opérateurs sur ressources propres ({md('odac_ressources_propres')} Md€), "
+            f"contribution à l'Union européenne ({md('psr_ue')} Md€), budgets annexes ({md('budget_annexe')} Md€), "
+            f"résiduel non rattachable ({md('residuel')} Md€). Chaque ligne est rattachée à un bucket éditorial du calculateur."
+        ),
+        "description_en": (
+            f"State spending in the Eurostat S1311 sense outside general-budget missions: about €{total}bn — "
+            f"CAS Pensions (€{md('cas_pensions')}bn), operators' own resources (€{md('odac_ressources_propres')}bn), "
+            f"EU contribution (€{md('psr_ue')}bn), annex budgets (€{md('budget_annexe')}bn), "
+            f"unallocated residual (€{md('residuel')}bn). Each line is attached to one of the calculator's editorial buckets."
+        ),
+        "source": (
+            f"Multi-source : Rapport CAS Pensions PLF {year} + Jaune budgétaire Opérateurs PLF {year} + "
+            f"Voies & Moyens PLF {year} + Cour des comptes"
+        ),
+        "source_url": f"https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-{year}/projet-de-loi-de-finances",
+        "items": items,
     }
 
 
@@ -820,6 +917,7 @@ def main() -> int:
     apul = build_apul_subsectors()
     state = build_state_breakdown()
     local_avg = build_local_avg_eur_hab()
+    state_overlay = build_state_overlay()
     equivalents = build_equivalents()
     deepdive_sante = build_deepdive_sante()
     deepdive_retraites = build_deepdive_retraites()
@@ -886,13 +984,14 @@ def main() -> int:
             "pipeline/seeds/seed_fiscal_constants.csv + seed_csg_retraite_tranches.csv + "
             "seed_db_equivalents.csv + "
             "seed_apul_subsectors.csv + seed_ondam_subobjectifs.csv + "
-            "seed_plf_defense_titres.csv + seed_ofgl_communes_fonctionnelle.csv + "
+            "seed_plf_defense_titres.csv + seed_ofgl_local_commune_l2.csv + "
             "seed_drees_retraites_branches.csv + seed_secu_famille_prestations.csv + "
             "seed_unedic_prestations.csv + seed_education_niveaux.csv + "
             "seed_dette_charges.csv + seed_etat_autres_ministeres.csv + "
-            "seed_ofgl_departements_fonctionnelle.csv + seed_ofgl_regions_fonctionnelle.csv + "
+            "seed_ofgl_local_dept_l2.csv + seed_ofgl_local_region_l2.csv + "
+            "seed_etat_s1311_overlay.csv + seed_population_france.csv + "
             "sync_eurostat_apu_subsectors.json + sync_etat_lfi.json + "
-            "sync_ofgl_all_communes/index.json + sync_ofgl_communes_fonctionnelle.json"
+            "sync_ofgl_all_communes/index.json"
         ),
         "audit_promise": (
             "Toute valeur numérique du calculateur Daily Bread est tracée "
@@ -903,6 +1002,7 @@ def main() -> int:
         "apu_subsectors": apu,
         "subsector_breakdowns": apul,
         "state_breakdown": state,
+        "state_overlay": state_overlay,
         "local_avg_dep_eur_hab": local_avg,
         "equivalents": equivalents,
         "deepdive": {
@@ -953,6 +1053,13 @@ def main() -> int:
     print(f"    Deepdive Bloc com.: {len(deepdive_bloc_communal.get('national_avg_weighted', {}))} fonctions")
     print(f"    Deepdive Dépt     : {len(deepdive_departement.get('national_avg_weighted', {}))} fonctions")
     print(f"    Deepdive Région   : {len(deepdive_region.get('national_avg_weighted', {}))} fonctions")
+    # Recalage des deepdives État sur les montants PLF (state_breakdown) :
+    # étape de la même chaîne, lancée ici pour qu'une seule commande régénère le
+    # fichier que lit le calculateur.
+    import align_daily_bread_state_deepdives as _align  # noqa: E402
+    rc = _align.main()
+    if rc:
+        return rc
     return 0
 
 

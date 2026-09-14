@@ -818,10 +818,10 @@ export default function DailyBreadClient({
   const localShare = institutionShares.find((i) => i.code === "S1313");
 
   // PER-CAPITA national constants (Approche A) — ce que la France dépense
-  // par habitant chaque mois en moyenne, par sous-secteur. Population INSEE
-  // 1er janvier 2024 (~68 M) depuis db.apu_subsectors.totals.population_france.
-  const populationFr =
-    db?.apu_subsectors?.totals?.population_france ?? 68042591;
+  // par habitant chaque mois en moyenne, par sous-secteur. La population vient
+  // du seed INSEE via db.apu_subsectors.totals.population_france ; sans elle,
+  // pas de par-habitant (0) plutôt qu'un chiffre écrit en dur.
+  const populationFr = db?.apu_subsectors?.totals?.population_france ?? 0;
   const s1311Total = db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
   const s1313Total = db?.apu_subsectors?.institutions?.S1313?.annual_eur ?? 0;
   const s1314Total = db?.apu_subsectors?.institutions?.S1314?.annual_eur ?? 0;
