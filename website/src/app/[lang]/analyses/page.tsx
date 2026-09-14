@@ -10,11 +10,11 @@ import AnalysesClient from "./AnalysesClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Notes de méthode",
+    title: "Explications",
     description:
       "Comment lire un document public, et comment chaque chiffre du site est fabriqué, de la source à la page.",
     en: {
-      title: "Method notes",
+      title: "Explainers",
       description:
         "How to read a public document, and how each figure on this site is built, from the source to the page.",
     },

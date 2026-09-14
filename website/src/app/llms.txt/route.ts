@@ -140,7 +140,7 @@ Every organisation, contract, supplier and place has its own page:
 
 - [Method](${u}/methode): how each figure is built, source by source.
 - [Corrections](${u}/corrections): every correction, with its date and scope.
-${ANALYSES_PUBLIC ? `- [Method notes](${u}/analyses): how to read a public document, and how a given figure on this site is built.\n` : ''}- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
+${ANALYSES_PUBLIC ? `- [Explainers](${u}/analyses): how to read a public document, and how a given figure on this site is built.\n` : ''}- [For cities](${u}/pour-les-villes): what it takes to build this for another city.
 
 Known limits, stated because they matter when citing this site: the number of
 Paris grant lines drops sharply in 2020 and 2021 while the amounts hold, so

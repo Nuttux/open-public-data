@@ -4,6 +4,7 @@ import Link from "@/components/LocalizedLink";
 import { useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import { readingTimeLabel } from "@/lib/reading-time-label";
 import Tip from "@/components/fusion/Tip";
 import { fill, numLocale } from "@/lib/fmt";
 
@@ -94,6 +95,10 @@ export default function AnalysesClient({
     return t("fx.analyses.cat.explications").replace(/s$/, "");
   }
 
+  // Every published note in one category: the chips and the per-card category
+  // tag would only repeat the section name, so neither is shown.
+  const oneCategory = new Set(posts.map((p) => p.category ?? "Explications")).size <= 1;
+
   const filtered = useMemo(() => {
     if (active === "all") return posts;
     return posts.filter((p) => (p.category ?? "Explications") === activeRaw);
@@ -126,7 +131,7 @@ export default function AnalysesClient({
           <div className="fx-analyses-cats">
             {/* A chip only for a category that has a published note: a filter
                 that can only lead to the empty state is a dead end. */}
-            {CATEGORIES.filter(
+            {!oneCategory && CATEGORIES.filter(
               (c) => c.key === "all" || posts.some((p) => (p.category ?? "Explications") === c.raw),
             ).map((c) => (
               <button
@@ -185,12 +190,12 @@ export default function AnalysesClient({
                 <span
                   className={`fx-photo-tag fx-photo-tag-hero fx-tag-${categorySlug(hero.category)}`}
                 >
-                  {t("fx.analyses.hero.une")} · {categoryLabel(hero.category).toLowerCase()}
+                  {t("fx.analyses.hero.une")}{!oneCategory && <> · {categoryLabel(hero.category).toLowerCase()}</>}
                 </span>
               </div>
               <div className="fx-hero-article-body">
                 <div className={`fx-hero-article-kicker fx-kicker-${categorySlug(hero.category)}`}>
-                  {categoryLabel(hero.category)} · {hero.readingTime}
+                  {!oneCategory && <>{categoryLabel(hero.category)} · </>}{readingTimeLabel(hero.readingTime, t("fx.analyses.reading_time"))}
                 </div>
                 <h2>{renderTitle(locale === "en" && hero.title_en ? hero.title_en : hero.title)}</h2>
                 <p className="fx-hero-article-deck">
@@ -259,9 +264,11 @@ export default function AnalysesClient({
                     {p.image && (
                       <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
                     )}
-                    <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
-                      {categoryLabel(p.category)}
-                    </span>
+                    {!oneCategory && (
+                      <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
+                        {categoryLabel(p.category)}
+                      </span>
+                    )}
                   </div>
                   <div className="fx-article-body">
                     <h3>{renderTitle(locale === "en" && p.title_en ? p.title_en : p.title)}</h3>
@@ -269,7 +276,7 @@ export default function AnalysesClient({
                     <div className="fx-article-meta">
                       <span>{t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b></span>
                       <span>·</span>
-                      <span>{p.readingTime}</span>
+                      <span>{readingTimeLabel(p.readingTime, t("fx.analyses.reading_time"))}</span>
                     </div>
                   </div>
                 </Link>

@@ -4,6 +4,7 @@ import Link from "@/components/LocalizedLink";
 import SectionHead from "./SectionHead";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
+import { readingTimeLabel } from "@/lib/reading-time-label";
 
 export type ArticlePlaceholder = {
   title: string;
@@ -93,7 +94,7 @@ export default function RelatedArticles({
                       {t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b>
                     </span>
                     <span>·</span>
-                    <span>{p.readingTime}</span>
+                    <span>{readingTimeLabel(p.readingTime, t("fx.analyses.reading_time"))}</span>
                   </div>
                 </div>
               </Link>

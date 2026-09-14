@@ -1116,7 +1116,7 @@ const fr: Record<string, string> = {
   'fx.nav.link.invest': 'Investissements',
   'fx.nav.link.logement': 'Logement social',
   'fx.nav.link.dette': 'Bilan',
-  'fx.nav.link.analyses': 'Notes de méthode',
+  'fx.nav.link.analyses': 'Explications',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
   'fx.scope.heading': 'Collectivité',
@@ -1173,7 +1173,7 @@ const fr: Record<string, string> = {
   'fx.foot.link.invest': 'Investissements',
   'fx.foot.link.logement': 'Logement social',
   'fx.foot.link.dette': 'Dette et patrimoine',
-  'fx.foot.link.analyses': 'Notes de méthode',
+  'fx.foot.link.analyses': 'Explications',
   'fx.foot.link.methode': 'Méthode',
   'fx.foot.link.api': 'API',
   'fx.foot.link.github': 'GitHub ↗',
@@ -1317,10 +1317,10 @@ const fr: Record<string, string> = {
   'fx.land.meth_strip.cta': "Voir les sources",
   // Analyses teaser
   'fx.land.analyses.h2.before': "Les ",
-  'fx.land.analyses.h2.em': "notes de méthode",
+  'fx.land.analyses.h2.em': "explications",
   'fx.land.analyses.h2.dot': ".",
   'fx.land.analyses.sub': "Comment lire un document public, et comment chaque chiffre est fabriqué.",
-  'fx.land.analyses.see_all': "Toutes les notes de méthode",
+  'fx.land.analyses.see_all': "Toutes les explications",
   // Method section
   'fx.land.meth.h2.before': '',
   'fx.land.meth.h2.em': 'Vérifiable',
@@ -2937,7 +2937,7 @@ const fr: Record<string, string> = {
   'fx.contact.c3.h': "Demandes journalistes",
   'fx.contact.c3.p': "Reprise des chiffres, interview, collaboration éditoriale — précisez le média et le calendrier.",
   'fx.contact.note': "À savoir : aucun article publié n'est sponsorisé. Les éventuels financements — publics, fondations, mécènes — sont publiés avec leur montant et ne conditionnent pas la ligne éditoriale.",
-  'fx.contact.btn.analyses': "Lire les notes de méthode",
+  'fx.contact.btn.analyses': "Lire les explications",
   'fx.contact.btn.home': "Retour à l'accueil",
 
   // ── Pour les villes (page /pour-les-villes + bloc de clôture) ─────────────
@@ -3358,7 +3358,7 @@ const fr: Record<string, string> = {
   'fx.toc.carte': 'Carte',
   'fx.toc.chapitres': 'Chapitres',
   'fx.toc.arrondissements': 'Arrondissements',
-  'fx.toc.analyses': 'Notes de méthode',
+  'fx.toc.analyses': 'Explications',
 
   // ── Inv: ranking list (non-Paris, district fallback) ─────────────────────
   'fx.inv.rank.district': 'arrondissement',
@@ -3366,10 +3366,10 @@ const fr: Record<string, string> = {
   'fx.inv.rank.project_many': 'projets',
 
   // ── Related analyses (per-page) ─────────────────────────────────────────────
-  'fx.s.analyses.kind': 'Notes de méthode',
+  'fx.s.analyses.kind': 'Explications',
   'fx.s.analyses.title.before': 'À ',
   'fx.s.analyses.title.em': "lire",
-  'fx.s.analyses.sub': "Notes de méthode liées aux chiffres de cette page.",
+  'fx.s.analyses.sub': "Explications liées aux chiffres de cette page.",
   'fx.s.analyses.planned': 'À paraître',
 
   // ── MarchesFullList ─────────────────────────────────────────────────────────
@@ -3419,9 +3419,9 @@ const fr: Record<string, string> = {
   'fx.mfl.empty.desc': 'Essayez un autre terme ou une catégorie différente.',
 
   // ── AnalysesClient ──────────────────────────────────────────────────────────
-  'fx.analyses.page_kicker': '— Notes de méthode',
+  'fx.analyses.page_kicker': '— Explications',
   'fx.analyses.page_title': 'Les chiffres, <em>racontés</em>.',
-  'fx.analyses.page_lede': "Comment lire un document public, et comment chaque chiffre de ce site est fabriqué, de la source jusqu'à la page. Chaque note cite ses sources et dit ce que les chiffres ne permettent pas de conclure.",
+  'fx.analyses.page_lede': "Comment lire un document public, et comment chaque chiffre de ce site est fabriqué, de la source jusqu'à la page. Chaque explication cite ses sources et dit ce que les chiffres ne permettent pas de conclure.",
   'fx.analyses.cat.all': 'Toutes',
   'fx.analyses.cat.enquetes': 'Enquêtes',
   'fx.analyses.cat.enquetes.tip': "Articles fondés sur un travail original de recoupement de données, d'OSINT ou d'entretiens. Font émerger une information que les sources officielles ne publient pas telle quelle.",
@@ -3438,7 +3438,8 @@ const fr: Record<string, string> = {
   'fx.analyses.hero.une': 'À la une',
   'fx.analyses.hero.by': 'Par',
   'fx.analyses.hero.published': 'Publié le',
-  'fx.analyses.hero.cta': "Lire la note →",
+  'fx.analyses.hero.cta': "Lire l'explication",
+  'fx.analyses.reading_time': '{n} min de lecture',
   'fx.analyses.recent.kind': 'Récents',
   'fx.analyses.recent.title_all': 'Articles récents',
   'fx.analyses.recent.title_cat': 'Récents · {cat}',

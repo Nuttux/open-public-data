@@ -121,7 +121,7 @@ export function franceFooterModel(
   const placeHeading =
     place?.heading ?? commune?.nom ?? getPlace(citySlug)?.name ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
 
-  // Method notes (route /analyses) are city editorial, so they belong in
+  // Explainers (route /analyses) are city editorial, so they belong in
   // the place column — NOT "The project". Method stays project-level: a single
   // shared /methode ("how we work") is cheaper to maintain than per-city ones.
   const sections = place

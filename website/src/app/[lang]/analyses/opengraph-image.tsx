@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/blog";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Qipu — Notes de méthode";
+export const alt = "Qipu — Explications";
 
 const fmtFr = (n: number) => n.toLocaleString("fr-FR");
 
@@ -52,7 +52,7 @@ export default async function AnalysesOG() {
             color: "#666",
           }}
         >
-          Notes de méthode
+          Explications
         </div>
         <div
           style={{

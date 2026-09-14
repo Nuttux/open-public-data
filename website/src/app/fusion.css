@@ -2344,7 +2344,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   padding-bottom: 2px;
 }
 @media (max-width: 900px) {
-  .theme-fusion .fx-hero-article { grid-template-columns: 1fr; gap: 0; }
+  /* minmax(0, 1fr), not 1fr: a plain 1fr track grows to its widest child, so
+     on a phone the text column spilled past the card and the title was clipped. */
+  .theme-fusion .fx-hero-article { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .theme-fusion .fx-hero-article-body { padding: 28px; }
 }
 

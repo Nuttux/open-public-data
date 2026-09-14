@@ -10,6 +10,8 @@ import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { readLocale } from "@/lib/seo";
 import { alternatesFor } from "@/lib/site-locale";
 import { numLocale } from "@/lib/fmt";
+import { relatedT } from "@/lib/related-t";
+import { readingTimeLabel } from "@/lib/reading-time-label";
 
 /** Lien interne → Next Link (déclenche les drawer intercepts au root).
  *  Lien externe / mailto → <a> classique avec target=_blank. */
@@ -42,11 +44,11 @@ export async function generateMetadata(
   const locale = await readLocale();
   const post = getPostBySlug(slug, locale);
   if (!post) {
-    return { title: locale === "en" ? "Note not found" : "Note introuvable" };
+    return { title: locale === "en" ? "Explainer not found" : "Explication introuvable" };
   }
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;
-  const suffix = locale === "en" ? "Method notes" : "Notes de méthode";
+  const suffix = locale === "en" ? "Explainers" : "Explications";
   return {
     title: `${title} — ${suffix}`,
     description,
@@ -82,7 +84,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;
   const tags = locale === "en" && post.tags_en && post.tags_en.length > 0 ? post.tags_en : post.tags;
-  const backLabel = locale === "en" ? "← All method notes" : "← Toutes les notes de méthode";
+  const backLabel = locale === "en" ? "← All explainers" : "← Toutes les explications";
 
   return (
     <div className="theme-fusion">
@@ -103,7 +105,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
             <span>·</span>
             <span>{formatDate(post.date, locale)}</span>
             <span>·</span>
-            <span>{post.readingTime}</span>
+            <span>{readingTimeLabel(post.readingTime, relatedT(locale)("fx.analyses.reading_time"))}</span>
             {tags && tags.length > 0 && (
               <>
                 <span>·</span>

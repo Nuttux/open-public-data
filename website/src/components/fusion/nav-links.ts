@@ -44,7 +44,7 @@ export function citySectionLinks(citySlug: string): NavLink[] {
   }));
 }
 
-// Whether a city has the (currently Paris-only) method notes (route /analyses)
+// Whether a city has the (currently Paris-only) explainers (route /analyses)
 // — never while the section is unpublished (lib/analyses-visibility.ts). The
 // footer lists them on this alone; the top nav also needs ANALYSES_ON_HOME.
 export function cityHasAnalyses(citySlug: string): boolean {

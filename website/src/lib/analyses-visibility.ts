@@ -1,7 +1,7 @@
 /**
  * Visibility of the editorial section — route /analyses (the address stays,
- * for inbound links and indexing), shown to readers as « Notes de méthode » /
- * "Method notes". Two switches, from least to most exposed.
+ * for inbound links and indexing), shown to readers as « Explications » /
+ * "Explainers". Two switches, from least to most exposed.
  *
  * History: the whole section went offline on 2026-09-13 (twenty articles were
  * too many to vouch for one by one during client prospecting). It reopened
