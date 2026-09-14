@@ -27,13 +27,10 @@
       qui quittent leur fonction AVANT toute agrégation — natures, domaines et
       totaux les suivent. « nv » (non ventilable) reste sa propre clé.
 
-  CORSE ET OUTRE-MER : les fichiers publiés pour 2024 ne les contiennent pas.
-  L'ancien script recomposait leur code INSEE en « 02A004 » ou « 101101 », qui
-  ne correspondaient à aucune commune et les écartaient sans le dire (128
-  communes). Le staging recompose désormais le bon code (« 2A004 », « 97101 ») ;
-  les inclure changerait aussi les médianes de strate des autres communes, donc
-  c'est une décision de publication, pas un effet de bord d'un refactor :
-      dbt run --select mart_communes_fonctions --vars '{fonctions_inclure_corse_outremer: true}'
+  CORSE ET OUTRE-MER : incluses. L'ancien script recomposait leur code INSEE en
+  « 02A004 » ou « 101101 », qui ne correspondaient à aucune commune et les
+  écartaient sans le dire (128 communes en 2024, dont Ajaccio et Cayenne). Le
+  staging recompose le bon code (« 2A004 », « 97101 »).
 
   montant : NUMERIC exact. premiere_ligne : le rang de la cellule dans le CSV
   source — l'export replie les cellules dans cet ordre, pour que ses sommes
@@ -43,6 +40,7 @@
   nomenclature : la nomenclature dominante de la commune (celle qui porte le
   plus de dépenses ; ex aequo → la première rencontrée dans le fichier). Elle
   choisit les libellés M14 ou M57 à l'export.
+
 */
 
 WITH lignes AS (
@@ -64,9 +62,6 @@ WITH lignes AS (
       AND fonction_reference IS NOT NULL
       AND operations_nettes_debit != 0
       AND code_insee IS NOT NULL
-      {% if not var('fonctions_inclure_corse_outremer', false) %}
-      AND NOT (ndept IN ('02A', '02B') OR REGEXP_CONTAINS(ndept, r'^1[0-9]{2}$'))
-      {% endif %}
 ),
 
 nomenclatures AS (
