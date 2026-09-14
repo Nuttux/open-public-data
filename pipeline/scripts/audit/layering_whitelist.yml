@@ -82,3 +82,5 @@ e5_ast_reviewed_clean:
     reason: "PDF text extraction via pdfplumber subprocess — pas d'écriture vers public/data/, vérifié manuellement 2026-05-13"
   - script: pipeline/scripts/enrich/clean_bmo_snippets.py
     reason: "Re-nettoie les extraits BMO dans pipeline/cache/lieux/*.jsonl (write_text sur ces fichiers) — aucune écriture vers public/data/, vérifié manuellement 2026-08-26"
+  - script: pipeline/scripts/tools/parse_subv_pdf_m14.py
+    reason: "Parseur des annexes M14 de subventions 2010-2012 : écrit un seul fichier, au chemin passé par --out (même forme que parse_subv_pdf_text.py, lu par sync_pdf_subventions_b811.py) — l'AST ne peut pas suivre un chemin donné à l'appel ; aucune mention de public/data ni de website dans le script, aucun appel depuis le dépôt, vérifié manuellement 2026-09-14"
