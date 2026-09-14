@@ -220,7 +220,6 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
               {series.length >= RAIL_MIN ? (
                 <div className="fx-sec-years" data-section="years">
                   <div className="fx-page-kicker">{t("fx.sec.years")}</div>
-                  <p className="fx-v3-h2sub">{t("fx.sec.mp.years_sub")}</p>
                   <AnneesRail rows={series} />
                 </div>
               ) : null}
@@ -255,6 +254,13 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                   ) : null}
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="achats" />
+              </V3Section>
+            </div>
+
+            {/* Right after the first screen, as a band: for whoever came with a name in mind. */}
+            <div className="fx-sec-a-search">
+              <V3Section id="search" title={t("fx.sec.mp.h.search")}>
+                <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
               </V3Section>
             </div>
 
@@ -315,13 +321,6 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 )}
                 <Door href={`${marchesBase}/contrats`} hard title={t("fx.sec.mp.r.all")} sub={t("fx.sec.mp.r.all_sub")} />
                 <Door href={`${cityBase}/budget`} hard title={t("fx.sec.mp.r.budget")} sub={t("fx.sec.mp.r.budget_sub")} />
-              </V3Section>
-            </div>
-
-            {/* Last before the next section: where you go when the page did not answer. */}
-            <div className="fx-sec-a-search">
-              <V3Section id="search" title={t("fx.sec.mp.h.search")}>
-                <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
               </V3Section>
             </div>
 

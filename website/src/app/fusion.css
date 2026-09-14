@@ -20763,18 +20763,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 @media (min-width: 960px) {
   /* Bands (2026-09-15): every row opens with two titles on the same line, the
      grey rules drawing one line across the page. The number (with its years
-     rail under it) faces the scene; the rows face « Voir aussi »; « Comprendre »
-     faces the search; the next section closes at full width. Blank space only
+     rail under it) faces the scene; the search is a band right after, for
+     whoever came with a name in mind; the rows face « Voir aussi »; then
+     « Comprendre »; the next section closes at full width. Blank space only
      falls under the shorter block of a band, never above a title. */
   .theme-fusion .fx-sec-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    grid-template-areas: "hero scene" "rows related" "understand search" "next next" "foot foot";
+    grid-template-areas: "hero scene" "search search" "rows related" "understand understand" "next next" "foot foot";
     align-items: start;
   }
   /* With the year's photo: « Ce que paie un contrat » faces « Les plus gros
-     contrats », then « Comprendre » faces « Voir aussi », the search is a band. */
+     contrats », then « Comprendre » faces « Voir aussi ». */
   .theme-fusion .fx-sec-grid[data-photo="1"] {
-    grid-template-areas: "hero scene" "photo rows" "understand related" "search search" "next next" "foot foot";
+    grid-template-areas: "hero scene" "search search" "photo rows" "understand related" "next next" "foot foot";
   }
   .theme-fusion .fx-sec-a-photo { grid-area: photo; }
   .theme-fusion .fx-sec-grid[data-photo="0"] .fx-sec-a-photo { display: none; }
@@ -20898,9 +20899,10 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec .fx-page-kicker, .theme-fusion .fx-sec .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
 .theme-fusion .fx-sec .fx-page-kicker a { font-weight: 600; }
 .theme-fusion .fx-sec-hero { border-bottom: 0; padding-bottom: 6px; margin-bottom: 26px; }
-/* Under the number, its history: a kicker, the sentence, the rail. */
+/* Under the number, its history: a kicker and the rail, no paragraph (the
+   counting rule lives in « Ce que mesure ce chiffre »). */
 .theme-fusion .fx-sec-years { margin: 0 0 40px; }
-.theme-fusion .fx-sec-years .fx-v3-h2sub { margin: 6px 0 12px; }
+.theme-fusion .fx-sec-years .fx-page-kicker { margin-bottom: 10px; }
 .theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
