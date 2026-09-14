@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-07T17:48:18.471123+00:00",
-  "source_pipeline": "pipeline/seeds/seed_fiscal_constants.csv + seed_csg_retraite_tranches.csv + seed_db_equivalents.csv + seed_apul_subsectors.csv + seed_ondam_subobjectifs.csv + seed_plf_defense_titres.csv + seed_ofgl_communes_fonctionnelle.csv + seed_drees_retraites_branches.csv + seed_secu_famille_prestations.csv + seed_unedic_prestations.csv + seed_education_niveaux.csv + seed_dette_charges.csv + seed_etat_autres_ministeres.csv + seed_ofgl_departements_fonctionnelle.csv + seed_ofgl_regions_fonctionnelle.csv + sync_eurostat_apu_subsectors.json + sync_etat_lfi.json + sync_ofgl_all_communes/index.json + sync_ofgl_communes_fonctionnelle.json",
+  "generated_at": "2026-09-14T02:22:10.856528+00:00",
+  "source_pipeline": "pipeline/seeds/seed_fiscal_constants.csv + seed_csg_retraite_tranches.csv + seed_db_equivalents.csv + seed_apul_subsectors.csv + seed_ondam_subobjectifs.csv + seed_plf_defense_titres.csv + seed_ofgl_local_commune_l2.csv + seed_drees_retraites_branches.csv + seed_secu_famille_prestations.csv + seed_unedic_prestations.csv + seed_education_niveaux.csv + seed_dette_charges.csv + seed_etat_autres_ministeres.csv + seed_ofgl_local_dept_l2.csv + seed_ofgl_local_region_l2.csv + seed_etat_s1311_overlay.csv + seed_population_france.csv + sync_eurostat_apu_subsectors.json + sync_etat_lfi.json + sync_ofgl_all_communes/index.json",
   "audit_promise": "Toute valeur numérique du calculateur Daily Bread est tracée jusqu'à sa source officielle (CGI, URSSAF, Eurostat, INSEE, OFGL, DREES, Sécurité sociale).",
   "fiscal_constants": {
     "ir": {
@@ -36,19 +36,19 @@
       "abattement_10pct_taux": 0.1,
       "abattement_10pct_min_eur": 504,
       "abattement_10pct_max_eur": 14426,
-      "abattement_source": "Article 83-3° CGI — abattement forfaitaire 10% pour frais professionnels (revenus 2024)",
+      "abattement_source": "Article 83-3° CGI - abattement forfaitaire 10% frais professionnels",
       "abattement_source_url": "https://www.impots.gouv.fr/particulier/frais-professionnels",
       "decote_celibataire_seuil_eur": 1964,
       "decote_celibataire_base_eur": 889,
       "decote_couple_seuil_eur": 3248,
       "decote_couple_base_eur": 1470,
       "decote_taux": 0.4525,
-      "decote_source": "Article 197 I-4 CGI — décote IR (LFI 2025, revenus 2024)",
+      "decote_source": "Article 197 I-4 CGI - décote IR LFI 2025 (revenus 2024)",
       "decote_source_url": "https://bofip.impots.gouv.fr/bofip/2247-PGP.html",
       "source": "Article 197 CGI - barème IR revalorisé par LFI 2025",
       "source_url": "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/",
       "date_reference": "2025-01-01",
-      "notes": "Barème IR par tranche en EUR / part fiscale. Plafond du quotient familial limite l'avantage des demi-parts. Abattement 10% (min 504 €, max 14 426 €) sur salaires pour frais pro. Décote sur IR brut bas (≤ 1 964 € célib / 3 248 € couple) : décote = base - 0,4525 × IR_brut."
+      "notes": "Barème IR par tranche en EUR / part fiscale. Le plafond du quotient familial limite l'avantage des demi-parts. Abattement de 10 % (min 504 €, max 14 426 €) sur les salaires pour frais professionnels. Décote sur un IR brut bas (≤ 1 964 € célibataire / 3 248 € couple) : décote = base − 0,4525 × IR brut."
     },
     "csg_crds": {
       "taux_total_activite": 0.097,
@@ -82,7 +82,7 @@
       "source": "INSEE - Comptes nationaux annuels (T_TES) + PLF 2025 V&M tome I (affectations)",
       "source_url": "https://www.insee.fr/fr/statistiques/serie/010003222",
       "date_reference": "2024-01-01",
-      "notes": "Taux effectif TVA sur revenu disponible = 12,2% × 85% = 10,4%. Affectations TVA nette 2025 (PLF V&M tome I) : 45% État (102 Md€), 31% Sécu (~70 Md€ compensation exonérations), 24% Local (~52 Md€ compensation TH + CVAE supprimée). Permet l'attribution causale par sous-secteur."
+      "notes": "Taux effectif TVA sur revenu disponible = 12,2 % × 85 % = 10,4 %. Affectations TVA nette (PLF 2025 V&M tome I) : 45 % État, 31 % Sécu, 24 % collectivités. Permet l'attribution causale par sous-secteur."
     },
     "pfu": {
       "taux_total": 0.3,
@@ -213,10 +213,10 @@
       "gdp_total_md_eur": 2979.1,
       "gdp_source": "Eurostat — nama_10_gdp (B1GQ, CP_MEUR)",
       "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table",
-      "population_france": 68042591,
-      "population_year": 2024,
-      "population_source": "INSEE — Estimation de population au 1er janvier 2024",
-      "population_source_url": "https://www.insee.fr/fr/statistiques/1893198"
+      "population_france": 68851996,
+      "population_year": 2025,
+      "population_source": "INSEE — Population totale au 1er janvier 2025, France (Mayotte incluse), estimation provisoire, série 001641586",
+      "population_source_url": "https://www.insee.fr/fr/statistiques/serie/001641586"
     },
     "notes_fr": "Décomposition non consolidée S1311/S1313/S1314 — lecture « qui dépense quoi avant transferts intra-admin ». Les ratios sont normalisés sur leur somme (et non sur S13). `institutions.<code>.annual_eur` est en € (= value_pct_gdp/100 × PIB FR) et permet aux drawers d'afficher le national absolu sans hardcode."
   },
@@ -525,8 +525,8 @@
   },
   "state_overlay": {
     "year": 2025,
-    "description_fr": "Périmètre S1311 Eurostat (~676 Md€) — Budget Général PLF (~447 Md€) = ~230 Md€ de dépenses hors missions PLF : CAS Pensions (62 Md€), opérateurs ODAC ressources propres (~30 Md€), PSR-UE (23 Md€), budgets annexes (~2 Md€), résiduel (~113 Md€). Ces items sont attribués aux 11 buckets éditoriaux ci-dessous pour atteindre 100 % de la dépense État perçue par l'utilisateur.",
-    "description_en": "Eurostat S1311 perimeter (~676 Md€) — PLF general budget (~447 Md€) = ~230 Md€ of spending outside PLF missions: CAS Pensions (62 Md€), ODAC operators own resources (~30 Md€), EU contribution (23 Md€), annex budgets (~2 Md€), residual (~113 Md€). These items are attributed to the 11 editorial buckets to reach 100 % of the State spending visible to the user.",
+    "description_fr": "Dépenses de l'État au sens S1311 (Eurostat) hors missions du budget général : environ 228 Md€ — CAS Pensions (62 Md€), opérateurs sur ressources propres (28 Md€), contribution à l'Union européenne (23 Md€), budgets annexes (2 Md€), résiduel non rattachable (113 Md€). Chaque ligne est rattachée à un bucket éditorial du calculateur.",
+    "description_en": "State spending in the Eurostat S1311 sense outside general-budget missions: about €228bn — CAS Pensions (€62bn), operators' own resources (€28bn), EU contribution (€23bn), annex budgets (€2bn), unallocated residual (€113bn). Each line is attached to one of the calculator's editorial buckets.",
     "source": "Multi-source : Rapport CAS Pensions PLF 2025 + Jaune budgétaire Opérateurs PLF 2025 + Voies & Moyens PLF 2025 + Cour des comptes",
     "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances",
     "items": [
@@ -1141,7 +1141,7 @@
       "scope": "aft_dette_charges_2024",
       "perimeter_fr": "AFT/Bercy — Charge de la dette 2024 ventilée",
       "perimeter_en": "AFT/Treasury — Debt service 2024 split",
-      "total_md_eur": 61.3,
+      "total_md_eur": 61.4,
       "sum_share": 1.0,
       "source": "Bercy / AFT — Rapport annuel sur la dette publique 2024",
       "source_url": "https://www.aft.gouv.fr/files/medias-aft/3_Dette/3.1_RapportActivite/2024_RapportActivite.pdf",
@@ -1150,15 +1150,15 @@
         "interets_long_terme": {
           "label_fr": "Intérêts long terme (OAT)",
           "label_en": "Long-term interest (OAT)",
-          "montant_md_eur": 52.25,
-          "share": 0.8518,
+          "montant_md_eur": 52.28,
+          "share": 0.8519,
           "notes": "Intérêts versés sur les Obligations Assimilables du Trésor (OAT), titres de moyen-long terme (2 à 50 ans) qui constituent l'essentiel de l'encours de dette négociable de l'État. TODO: vérifier vs rapport AFT 2024."
         },
         "interets_court_terme": {
           "label_fr": "Intérêts court terme (BTF)",
           "label_en": "Short-term interest (BTF)",
           "montant_md_eur": 6.25,
-          "share": 0.1019,
+          "share": 0.1018,
           "notes": "Intérêts versés sur les Bons du Trésor à taux Fixe (BTF), titres de court terme (jusqu'à 1 an), utilisés pour la trésorerie. TODO: vérifier vs rapport AFT."
         },
         "frais_emission_couverture": {
@@ -1187,22 +1187,22 @@
         "operateurs_universites_pole_emploi_ademe": {
           "label_fr": "Opérateurs (universités, France Travail, ADEME)",
           "label_en": "Operators (universities, France Travail, ADEME)",
-          "montant_md_eur": 19.44,
-          "share": 0.34,
+          "montant_md_eur": 19.43,
+          "share": 0.3399,
           "notes": "Subventions pour charges de service public (SCSP) versées aux opérateurs de l'État hors top 5 : universités, France Travail (ex-Pôle Emploi, ~50 000 agents), ADEME, Météo-France, IGN, BPI, INRAE, CEA hors défense, etc. TODO: vérifier vs jaune Opérateurs."
         },
         "solidarites_sante_handicap": {
           "label_fr": "Solidarités, santé, handicap (AAH, AME)",
           "label_en": "Solidarity, health, disability (AAH, AME)",
-          "montant_md_eur": 16.01,
-          "share": 0.28,
+          "montant_md_eur": 16.0,
+          "share": 0.2799,
           "notes": "Mission 'Solidarité, insertion et égalité des chances' : AAH (Allocation Adulte Handicapé, 1,3 M bénéficiaires), AME (Aide Médicale d'État, 466 000 bénéficiaires), prime d'activité (financement État via CAF). TODO: vérifier vs PAP."
         },
         "interieur_hors_securite": {
           "label_fr": "Intérieur (administration, asile, immigration)",
           "label_en": "Interior (admin, asylum, immigration)",
           "montant_md_eur": 9.15,
-          "share": 0.16,
+          "share": 0.1601,
           "notes": "Missions hors sécurité : 'Administration générale et territoriale' (préfectures, élections, état civil), 'Immigration, asile, intégration' (OFPRA, CNDA, CADA, hébergement demandeurs d'asile). TODO: vérifier vs PAP."
         },
         "affaires_etrangeres_outre_mer": {
@@ -1216,7 +1216,7 @@
           "label_fr": "Agriculture, alimentation, forêts",
           "label_en": "Agriculture, food, forests",
           "montant_md_eur": 5.72,
-          "share": 0.1,
+          "share": 0.1001,
           "notes": "Mission 'Agriculture, alimentation, forêt et affaires rurales' : aides PAC nationales (en complément des fonds UE), enseignement agricole, sécurité sanitaire (ANSES, FranceAgriMer), ONF. TODO: vérifier vs PAP."
         }
       },
@@ -1226,196 +1226,238 @@
       "alignment_source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
     },
     "bloc_communal": {
-      "scope": "ofgl_communes_fonctionnelle_national_avg",
-      "perimeter_fr": "OFGL/DGCL — Ventilation fonctionnelle moyenne du bloc communal (national pondéré population)",
-      "perimeter_en": "OFGL/DGCL — Functional breakdown of the municipal block (national, pop-weighted)",
+      "scope": "ofgl_rapport_2025_annexe_2f_communes",
+      "perimeter_fr": "OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des communes",
+      "perimeter_en": "OFGL — 2025 report, annex 2F: functional breakdown of communes",
       "year": 2024,
-      "source": "DGCL/OFGL — Rapport annuel finances locales 2024",
+      "source": "DGCL/OFGL — Rapport 2025 (annexe 2F, fonctionnelle commune)",
       "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
-      "scope_note_fr": "Le dataset OFGL ne publie pas la ventilation fonctionnelle au niveau de chaque commune (seul `departements-fonctionnelle` est exposé). Les valeurs ici sont les moyennes nationales du bloc communal (communes + EPCI) issues du rapport annuel OFGL/DGCL. L'overlay `by_insee_top_200` est laissé vide pour l'instant.",
+      "scope_note_fr": "OFGL Rapport 2025 – Annexe 2F (nomenclature commune 9 groupes M14/M52/M71). Données 2024. Total commune, fonctionnement (hors charges fi.) + investissement (hors remb.).",
       "fonctions": [
-        "administration_generale",
-        "enseignement",
-        "culture_sport",
-        "amenagement_urbain",
-        "action_sociale",
-        "voirie",
-        "securite",
-        "proprete_dechets",
-        "autres"
+        "services_generaux",
+        "securite_salubrite",
+        "enseignement_formation",
+        "culture_sport_jeunesse",
+        "sante_action_sociale",
+        "amenagement_habitat",
+        "environnement",
+        "transports_routes_voiries",
+        "action_economique"
       ],
       "national_avg_weighted": {
-        "administration_generale": {
-          "share": 0.32,
-          "eur_hab": 540.0,
-          "label_fr": "Administration générale",
+        "services_generaux": {
+          "share": 0.28929,
+          "eur_hab": null,
+          "label_fr": "Services généraux",
           "label_en": "General administration"
         },
-        "enseignement": {
-          "share": 0.14,
-          "eur_hab": 230.0,
-          "label_fr": "Enseignement (écoles primaires)",
-          "label_en": "Education (primary schools)"
+        "securite_salubrite": {
+          "share": 0.043946,
+          "eur_hab": null,
+          "label_fr": "Sécurité et salubrité publiques",
+          "label_en": "Security & public hygiene"
         },
-        "culture_sport": {
-          "share": 0.12,
-          "eur_hab": 200.0,
-          "label_fr": "Culture, sport, loisirs",
-          "label_en": "Culture, sport, recreation"
-        },
-        "amenagement_urbain": {
-          "share": 0.11,
-          "eur_hab": 185.0,
-          "label_fr": "Aménagement urbain",
-          "label_en": "Urban planning"
-        },
-        "action_sociale": {
-          "share": 0.1,
-          "eur_hab": 170.0,
-          "label_fr": "Action sociale (CCAS)",
-          "label_en": "Social action (CCAS)"
-        },
-        "voirie": {
-          "share": 0.08,
-          "eur_hab": 135.0,
-          "label_fr": "Voirie communale",
-          "label_en": "Municipal roads"
-        },
-        "securite": {
-          "share": 0.06,
-          "eur_hab": 100.0,
-          "label_fr": "Sécurité (police municipale)",
-          "label_en": "Security (municipal police)"
-        },
-        "proprete_dechets": {
-          "share": 0.05,
-          "eur_hab": 85.0,
-          "label_fr": "Propreté + déchets",
-          "label_en": "Cleanliness + waste"
-        },
-        "autres": {
-          "share": 0.02,
-          "eur_hab": 35.0,
-          "label_fr": "Autres",
-          "label_en": "Other"
-        }
-      },
-      "by_insee_top_200": {},
-      "notes_fr": "Moyenne nationale du bloc communal (communes + EPCI) ventilée par grande fonction M14. Appliquée à la part bloc communal de la contribution Local de l'utilisateur."
-    },
-    "departement": {
-      "scope": "ofgl_departements_fonctionnelle_national_avg",
-      "perimeter_fr": "OFGL — Ventilation fonctionnelle moyenne des départements (M52)",
-      "perimeter_en": "OFGL — Functional breakdown of departments (M52, national avg)",
-      "year": 2024,
-      "source": "DGCL/OFGL — Comptes des départements 2023 (M52 fonctionnelle)",
-      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-departements-fonctionnelle/",
-      "scope_note_fr": "Fonction 4-5 départementale : RSA versé (compétence département), aide sociale à l'enfance (ASE), allocation personnalisée d'autonomie (APA), prestation de compensation du handicap (PCH). C'est de loin le 1er poste. TODO: vérifier vs rapport OFGL annuel.",
-      "fonctions": [
-        "action_sociale_rsa_dependance_enfance",
-        "colleges_education",
-        "routes_transport_voirie_dep",
-        "administration_autres",
-        "securite_civile_sdis_pompiers",
-        "culture_sport_jeunesse"
-      ],
-      "national_avg_weighted": {
-        "action_sociale_rsa_dependance_enfance": {
-          "share": 0.5,
-          "eur_hab": 475.0,
-          "label_fr": "Action sociale (RSA, dépendance, enfance)",
-          "label_en": "Social action (RSA, dependency, childcare)"
-        },
-        "colleges_education": {
-          "share": 0.12,
-          "eur_hab": 115.0,
-          "label_fr": "Collèges + éducation",
-          "label_en": "Lower secondary + education"
-        },
-        "routes_transport_voirie_dep": {
-          "share": 0.12,
-          "eur_hab": 115.0,
-          "label_fr": "Routes départementales + transport",
-          "label_en": "Departmental roads + transport"
-        },
-        "administration_autres": {
-          "share": 0.12,
-          "eur_hab": 115.0,
-          "label_fr": "Administration + autres",
-          "label_en": "Administration + others"
-        },
-        "securite_civile_sdis_pompiers": {
-          "share": 0.08,
-          "eur_hab": 75.0,
-          "label_fr": "Sécurité civile (SDIS, pompiers)",
-          "label_en": "Civil safety (fire & rescue)"
+        "enseignement_formation": {
+          "share": 0.16461,
+          "eur_hab": null,
+          "label_fr": "Enseignement, formation et apprentissage",
+          "label_en": "Education, training & apprenticeship"
         },
         "culture_sport_jeunesse": {
-          "share": 0.06,
-          "eur_hab": 55.0,
-          "label_fr": "Culture, sport, jeunesse",
-          "label_en": "Culture, sport, youth"
+          "share": 0.18238,
+          "eur_hab": null,
+          "label_fr": "Culture, vie sociale, sport et jeunesse",
+          "label_en": "Culture, social life, sport & youth"
+        },
+        "sante_action_sociale": {
+          "share": 0.107926,
+          "eur_hab": null,
+          "label_fr": "Santé, action sociale",
+          "label_en": "Health & social action"
+        },
+        "amenagement_habitat": {
+          "share": 0.111312,
+          "eur_hab": null,
+          "label_fr": "Aménagement des territoires et habitat",
+          "label_en": "Territorial planning & housing"
+        },
+        "environnement": {
+          "share": 0.02962,
+          "eur_hab": null,
+          "label_fr": "Environnement",
+          "label_en": "Environment"
+        },
+        "transports_routes_voiries": {
+          "share": 0.059964,
+          "eur_hab": null,
+          "label_fr": "Transports, routes et voiries",
+          "label_en": "Transport, roads & infrastructure"
+        },
+        "action_economique": {
+          "share": 0.010951,
+          "eur_hab": null,
+          "label_fr": "Action économique",
+          "label_en": "Economic action"
         }
       },
       "by_insee_top_200": {},
-      "notes_fr": "Moyenne nationale des dépenses départementales (M52) par fonction. Action sociale (RSA, APA, ASE, PCH) domine très largement. Appliquée à la part Département de la contribution Local."
+      "notes_fr": "Part de chaque fonction dans les dépenses des communes, telle que publiée par l'OFGL. Appliquée à la part bloc communal de la contribution Local."
     },
-    "region": {
-      "scope": "ofgl_regions_fonctionnelle_national_avg",
-      "perimeter_fr": "OFGL — Ventilation fonctionnelle moyenne des régions (M71)",
-      "perimeter_en": "OFGL — Functional breakdown of regions (M71, national avg)",
+    "departement": {
+      "scope": "ofgl_rapport_2025_annexe_2f_departements",
+      "perimeter_fr": "OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des départements",
+      "perimeter_en": "OFGL — 2025 report, annex 2F: functional breakdown of départements",
       "year": 2024,
-      "source": "DGCL/OFGL — Comptes des régions 2023 (M71 fonctionnelle)",
-      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-regions/",
-      "scope_note_fr": "Fonction 8 transports : autorité organisatrice des TER (conventions SNCF Voyageurs, ~360 000 voyageurs/jour), transports routiers interurbains (compétence transférée des départements en 2017), liaisons aériennes essentielles. TODO: vérifier.",
+      "source": "DGCL/OFGL — Rapport 2025 (annexe 2F, fonctionnelle commune)",
+      "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
+      "scope_note_fr": "OFGL Rapport 2025 – Annexe 2F (nomenclature commune 9 groupes M14/M52/M71). Données 2024. Total dept, fonctionnement (hors charges fi.) + investissement (hors remb.).",
       "fonctions": [
-        "transports_ter_routier",
-        "lycees_enseignement",
-        "formation_professionnelle_apprentissage",
-        "amenagement_environnement",
-        "culture_sport_administration_autres",
-        "developpement_economique_emploi"
+        "services_generaux",
+        "securite_salubrite",
+        "enseignement_formation",
+        "culture_sport_jeunesse",
+        "sante_action_sociale",
+        "amenagement_habitat",
+        "environnement",
+        "transports_routes_voiries",
+        "action_economique"
       ],
       "national_avg_weighted": {
-        "transports_ter_routier": {
-          "share": 0.3,
-          "eur_hab": 135.0,
-          "label_fr": "Transports (TER, routier)",
-          "label_en": "Transport (regional trains, road)"
+        "services_generaux": {
+          "share": 0.093609,
+          "eur_hab": null,
+          "label_fr": "Services généraux",
+          "label_en": "General administration"
         },
-        "lycees_enseignement": {
-          "share": 0.2,
-          "eur_hab": 90.0,
-          "label_fr": "Lycées + enseignement",
-          "label_en": "Upper secondary + education"
+        "securite_salubrite": {
+          "share": 0.043576,
+          "eur_hab": null,
+          "label_fr": "Sécurité et salubrité publiques",
+          "label_en": "Security & public hygiene"
         },
-        "formation_professionnelle_apprentissage": {
-          "share": 0.17,
-          "eur_hab": 75.0,
-          "label_fr": "Formation pro + apprentissage",
-          "label_en": "Vocational training + apprenticeship"
+        "enseignement_formation": {
+          "share": 0.086388,
+          "eur_hab": null,
+          "label_fr": "Enseignement, formation et apprentissage",
+          "label_en": "Education, training & apprenticeship"
         },
-        "amenagement_environnement": {
-          "share": 0.12,
-          "eur_hab": 55.0,
-          "label_fr": "Aménagement + environnement",
-          "label_en": "Planning + environment"
+        "culture_sport_jeunesse": {
+          "share": 0.029729,
+          "eur_hab": null,
+          "label_fr": "Culture, vie sociale, sport et jeunesse",
+          "label_en": "Culture, social life, sport & youth"
         },
-        "culture_sport_administration_autres": {
-          "share": 0.11,
-          "eur_hab": 50.0,
-          "label_fr": "Culture, sport, administration, autres",
-          "label_en": "Culture, sport, administration, others"
+        "sante_action_sociale": {
+          "share": 0.601628,
+          "eur_hab": null,
+          "label_fr": "Santé, action sociale",
+          "label_en": "Health & social action"
         },
-        "developpement_economique_emploi": {
-          "share": 0.1,
-          "eur_hab": 45.0,
-          "label_fr": "Développement économique",
-          "label_en": "Economic development"
+        "amenagement_habitat": {
+          "share": 0.026799,
+          "eur_hab": null,
+          "label_fr": "Aménagement des territoires et habitat",
+          "label_en": "Territorial planning & housing"
+        },
+        "environnement": {
+          "share": 0.014366,
+          "eur_hab": null,
+          "label_fr": "Environnement",
+          "label_en": "Environment"
+        },
+        "transports_routes_voiries": {
+          "share": 0.090692,
+          "eur_hab": null,
+          "label_fr": "Transports, routes et voiries",
+          "label_en": "Transport, roads & infrastructure"
+        },
+        "action_economique": {
+          "share": 0.013212,
+          "eur_hab": null,
+          "label_fr": "Action économique",
+          "label_en": "Economic action"
         }
       },
       "by_insee_top_200": {},
-      "notes_fr": "Moyenne nationale des dépenses régionales (M71) par fonction. Transports (TER), lycées et formation professionnelle constituent le cœur. Appliquée à la part Région de la contribution Local."
+      "notes_fr": "Part de chaque fonction dans les dépenses des départements, telle que publiée par l'OFGL. Appliquée à la part Département de la contribution Local."
+    },
+    "region": {
+      "scope": "ofgl_rapport_2025_annexe_2f_regions",
+      "perimeter_fr": "OFGL — Rapport 2025, annexe 2F : ventilation fonctionnelle des régions",
+      "perimeter_en": "OFGL — 2025 report, annex 2F: functional breakdown of regions",
+      "year": 2024,
+      "source": "DGCL/OFGL — Rapport 2025 (annexe 2F, fonctionnelle commune)",
+      "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
+      "scope_note_fr": "OFGL Rapport 2025 – Annexe 2F (nomenclature commune 9 groupes M14/M52/M71). Données 2024. Total region, fonctionnement (hors charges fi.) + investissement (hors remb.).",
+      "fonctions": [
+        "services_generaux",
+        "securite_salubrite",
+        "enseignement_formation",
+        "culture_sport_jeunesse",
+        "sante_action_sociale",
+        "amenagement_habitat",
+        "environnement",
+        "transports_routes_voiries",
+        "action_economique"
+      ],
+      "national_avg_weighted": {
+        "services_generaux": {
+          "share": 0.152655,
+          "eur_hab": null,
+          "label_fr": "Services généraux",
+          "label_en": "General administration"
+        },
+        "securite_salubrite": {
+          "share": 0.003488,
+          "eur_hab": null,
+          "label_fr": "Sécurité et salubrité publiques",
+          "label_en": "Security & public hygiene"
+        },
+        "enseignement_formation": {
+          "share": 0.317126,
+          "eur_hab": null,
+          "label_fr": "Enseignement, formation et apprentissage",
+          "label_en": "Education, training & apprenticeship"
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.035659,
+          "eur_hab": null,
+          "label_fr": "Culture, vie sociale, sport et jeunesse",
+          "label_en": "Culture, social life, sport & youth"
+        },
+        "sante_action_sociale": {
+          "share": 0.021577,
+          "eur_hab": null,
+          "label_fr": "Santé, action sociale",
+          "label_en": "Health & social action"
+        },
+        "amenagement_habitat": {
+          "share": 0.033758,
+          "eur_hab": null,
+          "label_fr": "Aménagement des territoires et habitat",
+          "label_en": "Territorial planning & housing"
+        },
+        "environnement": {
+          "share": 0.018974,
+          "eur_hab": null,
+          "label_fr": "Environnement",
+          "label_en": "Environment"
+        },
+        "transports_routes_voiries": {
+          "share": 0.349115,
+          "eur_hab": null,
+          "label_fr": "Transports, routes et voiries",
+          "label_en": "Transport, roads & infrastructure"
+        },
+        "action_economique": {
+          "share": 0.067647,
+          "eur_hab": null,
+          "label_fr": "Action économique",
+          "label_en": "Economic action"
+        }
+      },
+      "by_insee_top_200": {},
+      "notes_fr": "Part de chaque fonction dans les dépenses des régions, telle que publiée par l'OFGL. Appliquée à la part Région de la contribution Local."
     }
   },
   "snapshot_align_applied": true,
