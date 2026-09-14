@@ -9,6 +9,8 @@ import { cap, fill, numLocale, seanceEn } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useCity } from "./CityContext";
 import { assocSlug } from "@/lib/assoc-slug";
+import { displayOrgName } from "@/lib/fournisseur-display";
+import { sumLots } from "@/lib/marches-shape";
 
 /**
  * Fiche « lieu » v3 (2026-09-03) — un chiffre, deux blocs.
@@ -118,7 +120,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const travauxTotal = investTotal + (lieu.mandate?.total_eur ?? 0);
   const reelTotal = subvTotal + travauxTotal;
   const marches = [...(lieu.marches ?? [])].sort((a, b) => (b.montant_max || 0) - (a.montant_max || 0));
-  const plafond = marches.reduce((a, m) => a + (m.montant_max || 0), 0);
+  // Un lot gagné par plusieurs entreprises compte une fois (voir sumLots).
+  const plafond = sumLots(marches.map((m) => ({ objet: m.objet, fournisseur_nom: m.fournisseur, montant_max: m.montant_max })));
   const nChantiers = (lieu.mandate?.operations.length ?? 0) + lieu.invest.length;
 
   const travauxSpan = minMax([
@@ -137,7 +140,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * 39,2 M€ sur 2009-2022 pendant que le chiffre de tête en excluait 4,1 :
    * deux nombres justes qui ne s'additionnent pas sous les yeux du lecteur.
    * Ce qui tombe avant le seuil est dit en une ligne, sous les graphes. */
-  const showBars = subvTotal > 0 && travauxTotal > 0;
 
   /* La fenêtre commune. Les deux flux ne commencent pas la même année : la
    * Ville publie l'investissement plus tôt que les subventions.
@@ -180,7 +182,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const subvDansFenetre = seuil ? depuisSeuil(exploitSeries) : subvTotal;
   const travauxDansFenetre = seuil ? depuisSeuil(travauxSeries) : travauxTotal;
   const heroTotal = seuil ? subvDansFenetre + travauxDansFenetre : reelTotal;
-  const barMaxF = Math.max(subvDansFenetre, travauxDansFenetre);
   const horsFenetre = seuil
     ? [
         { montant: avantSeuil(travauxSeries), label: t("fx.lieu.line.travaux").toLowerCase(),
@@ -365,23 +366,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </div>
               <div className="s">
                 {t("fx.lieu.line.exploitant_sub")}{" "}
-                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{subv.nom_fiche} →</Link>
+                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{displayOrgName(subv.nom_fiche)} →</Link>
                 {subv.note_publique && <> {(en && subv.note_publique_en) || subv.note_publique}</>}
               </div>
               <Years series={exploitSeries} tone="x" />
-              {showBars && <div className="bar x"><div className="track"><span style={{ width: `${(subvDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(subvDansFenetre)}</i></div>}
-              {subv.rows.length > 1 && (
-                <div className="fold-wrap">
-                  <Fold label={fill(t("fx.lieu.subv_deplier"), { n: subv.rows.length })}>
-                    {subv.rows.map((r) => (
-                      <div key={r.annee} className="fx-v3-row">
-                        <span className="lbl mono">{r.annee}</span>
-                        <Eur {...fmtEur(r.montant_eur)} size={14} />
-                      </div>
-                    ))}
-                  </Fold>
-                </div>
-              )}
             </div>
           )}
 
@@ -413,7 +401,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   </div>
                 )}
                 <Years series={travauxSeries} tone="w" />
-                {showBars && <div className="bar w"><div className="track"><span style={{ width: `${(travauxDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(travauxDansFenetre)}</i></div>}
                 <div className="fold-wrap">
                   {paye && nChantiers > 0 && (
                     <Fold label={fill(t(nChantiers === 1 ? "fx.lieu.fold_chantier1" : "fx.lieu.fold_chantiers"), { n: nChantiers })}>
@@ -467,7 +454,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <div className="fold-wrap" style={{ marginTop: 4 }}>
                 {lieu.residents.map((r, i) => (
                   <Link key={i} href={`${basePath}/subventions/association/${assocSlug(r.beneficiaire)}`} scroll={false} className="fx-v3-row fx-row-link">
-                    <span className="lbl">{r.beneficiaire} <span aria-hidden="true" className="muted">→</span></span>
+                    <span className="lbl">{displayOrgName(r.beneficiaire)} <span aria-hidden="true" className="muted">→</span></span>
                     {r.montant_total > 0 && <Eur {...fmtEur(r.montant_total)} size={14} />}
                   </Link>
                 ))}

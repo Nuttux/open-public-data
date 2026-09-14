@@ -1,5 +1,6 @@
 import MasseFiche from "@/components/fusion/MasseFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
 import { loadPatrimoineMasse } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
@@ -89,12 +90,12 @@ export const masseConfig: EntityPageConfig<D> = {
     body: ({ masse, year }) => <MasseFiche masse={masse} year={year} />,
   },
   drawer: {
-    kicker: ({ masse, year }) => (
-      <span className="fx-kicker-mono">
-        {masse.tag} · {fmtDec(masse.share * 100, 1)} % {masse.side === "actif" ? "de l'actif" : "du passif"} · Bilan {year}
-      </span>
-    ),
-    title: ({ masse }) => `${masse.label} · ${fmtEur(masse.value)}`,
+    // Pas de montant dans le titre : le chiffre est le rôle du héros de la fiche.
+    kicker: ({ masse, year }, locale) => {
+      const t = relatedT(locale);
+      return t("fx.drawer.kicker.masse", { year, side: t(masse.side === "actif" ? "fx.drawer.kicker.actif" : "fx.drawer.kicker.passif") });
+    },
+    title: ({ masse }, locale) => trLabel(masse.label, locale),
     shareUrl: ({ slug, requestedYear }) =>
       `/france/paris/dette/masse/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ masse, year }) =>

@@ -1,5 +1,6 @@
 import InstrumentDetteFiche from "@/components/fusion/InstrumentDetteFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadInstrumentDette } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
@@ -88,10 +89,9 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
     ),
   },
   drawer: {
-    kicker: ({ instrument }) => (
-      <span className="fx-kicker-mono">{instrument.tag} · {fmtInt(instrument.part * 100)} % de l'encours</span>
-    ),
-    title: ({ instrument }) => `${instrument.label} · ${fmtEur(instrument.encours)}`,
+    // Pas de montant dans le titre : le chiffre est le rôle du héros de la fiche.
+    kicker: ({ year }, locale) => relatedT(locale)("fx.drawer.kicker.instrument", { year }),
+    title: ({ instrument }, locale) => trLabel(instrument.label, locale),
     shareUrl: ({ slug, requestedYear }) =>
       `/france/paris/dette/instrument/${slug}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ instrument, year }) =>

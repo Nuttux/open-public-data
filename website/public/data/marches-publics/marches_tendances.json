@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-08T23:24:08.606059",
+  "generated_at": "2026-09-14T03:18:34.991830",
   "source": "dbt marts (mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels).",
   "years": [
     {
       "year": 2013,
-      "enveloppe_totale": 1901057959.8700001,
+      "enveloppe_totale": 1819057895.8700001,
       "nb_marches": 1713,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 1131236050.7700005,
+          "montant": 1049235986.7699996,
           "count": 908
         },
         {
@@ -51,19 +51,9 @@
           "count": 4
         },
         {
-          "label": "Animation culturelle et de loisirs",
-          "montant": 62557386.7,
-          "count": 155
-        },
-        {
           "label": "Surveillance, protection du patrimoine et des manifestations",
           "montant": 57592650.0,
           "count": 11
-        },
-        {
-          "label": "Services d'actions éducatives scolaires et périscolaires",
-          "montant": 52288710.33,
-          "count": 108
         },
         {
           "label": "Services d'accueil à la petite enfance",
@@ -86,20 +76,30 @@
           "count": 3
         },
         {
+          "label": "travaux de génie civil et ouvrages d'art",
+          "montant": 27166698.89,
+          "count": 10
+        },
+        {
+          "label": "Animation culturelle et de loisirs",
+          "montant": 24357386.7,
+          "count": 155
+        },
+        {
           "label": "Autres",
-          "montant": 637892925.39,
-          "count": 937
+          "montant": 619214872.8299999,
+          "count": 1035
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 1721888708.5600011,
+          "montant": 1644688644.5600011,
           "count": 1495
         },
         {
           "label": "M57 Département",
-          "montant": 122210782.28999999,
+          "montant": 117410782.28999999,
           "count": 184
         },
         {
@@ -121,18 +121,18 @@
     },
     {
       "year": 2014,
-      "enveloppe_totale": 1530498987.85,
+      "enveloppe_totale": 1326498987.85,
       "nb_marches": 1483,
       "par_nature": [
-        {
-          "label": "SERVICES",
-          "montant": 725319806.3900002,
-          "count": 821
-        },
         {
           "label": "TRAVAUX",
           "montant": 567861637.0400003,
           "count": 473
+        },
+        {
+          "label": "SERVICES",
+          "montant": 521319806.3899999,
+          "count": 821
         },
         {
           "label": "FOURNITURE",
@@ -147,11 +147,6 @@
           "count": 17
         },
         {
-          "label": "Animation culturelle et de loisirs",
-          "montant": 229771164.79,
-          "count": 282
-        },
-        {
           "label": "Travaux de construction, rénovation équipements publics",
           "montant": 122986312.80000001,
           "count": 96
@@ -163,7 +158,7 @@
         },
         {
           "label": "Services d'accueil à la petite enfance",
-          "montant": 61529445.20999999,
+          "montant": 49529445.20999999,
           "count": 18
         },
         {
@@ -175,6 +170,11 @@
           "label": "Matériels,matériaux  de batiments pour ateliers",
           "montant": 41880000.0,
           "count": 14
+        },
+        {
+          "label": "Animation culturelle et de loisirs",
+          "montant": 38521164.79,
+          "count": 282
         },
         {
           "label": "Restauration et conception de menus",
@@ -203,14 +203,14 @@
         },
         {
           "label": "Autres",
-          "montant": 539271127.21,
+          "montant": 538521127.21,
           "count": 723
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 1424889416.8800018,
+          "montant": 1220889416.8800015,
           "count": 1289
         },
         {
@@ -227,12 +227,12 @@
     },
     {
       "year": 2015,
-      "enveloppe_totale": 1538504362.7,
+      "enveloppe_totale": 1472954362.7,
       "nb_marches": 1556,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 744964748.6299999,
+          "montant": 679414748.6299999,
           "count": 825
         },
         {
@@ -256,11 +256,6 @@
           "label": "Travaux sur le  réseau d'assainissement",
           "montant": 113712286.97,
           "count": 17
-        },
-        {
-          "label": "Animation culturelle et de loisirs",
-          "montant": 96504361.27,
-          "count": 125
         },
         {
           "label": "Travaux de construction, rénovation équipements publics",
@@ -308,15 +303,20 @@
           "count": 23
         },
         {
+          "label": "Animation culturelle et de loisirs",
+          "montant": 33354361.27,
+          "count": 125
+        },
+        {
           "label": "Autres",
-          "montant": 703035991.2299998,
+          "montant": 700635991.2299998,
           "count": 974
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 1414166207.5399988,
+          "montant": 1348616207.5399988,
           "count": 1349
         },
         {
@@ -343,12 +343,12 @@
     },
     {
       "year": 2016,
-      "enveloppe_totale": 1916840484.3,
+      "enveloppe_totale": 1633814742.3,
       "nb_marches": 1601,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 1131859061.82,
+          "montant": 848833319.82,
           "count": 915
         },
         {
@@ -364,11 +364,6 @@
       ],
       "par_categorie": [
         {
-          "label": "Services de centres de vacances et de centres de loisirs",
-          "montant": 350829990.0,
-          "count": 75
-        },
-        {
           "label": "Organisation des services : audit, conseil, contrôle gestion",
           "montant": 172730704.08999997,
           "count": 20
@@ -377,6 +372,11 @@
           "label": "Travaux d'entretien, préservation équipements publics",
           "montant": 157551719.9000001,
           "count": 220
+        },
+        {
+          "label": "Services de centres de vacances et de centres de loisirs",
+          "montant": 98829990.0,
+          "count": 75
         },
         {
           "label": "Travaux de construction, rénovation équipements publics",
@@ -399,11 +399,6 @@
           "count": 15
         },
         {
-          "label": "Services d'actions éducatives scolaires et périscolaires",
-          "montant": 53171566.01,
-          "count": 169
-        },
-        {
           "label": "Travaux dans les équipements sportifs",
           "montant": 42160327.069999985,
           "count": 56
@@ -424,15 +419,20 @@
           "count": 11
         },
         {
+          "label": "Services d'accueil jeunesse et animation",
+          "montant": 38486879.86,
+          "count": 9
+        },
+        {
           "label": "Autres",
-          "montant": 774239968.3999997,
-          "count": 961
+          "montant": 757898912.5499998,
+          "count": 1121
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 1666367770.6100006,
+          "montant": 1383342028.61,
           "count": 1460
         },
         {
@@ -464,12 +464,12 @@
     },
     {
       "year": 2017,
-      "enveloppe_totale": 3465550059.51,
+      "enveloppe_totale": 1998750059.51,
       "nb_marches": 1698,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 2311937396.8600006,
+          "montant": 845137396.8600004,
           "count": 907
         },
         {
@@ -485,14 +485,14 @@
       ],
       "par_categorie": [
         {
-          "label": "Animation culturelle et de loisirs",
-          "montant": 1628853446.09,
-          "count": 224
-        },
-        {
           "label": "Travaux d'entretien, préservation équipements publics",
           "montant": 372479072.06000006,
           "count": 279
+        },
+        {
+          "label": "Animation culturelle et de loisirs",
+          "montant": 162053446.09,
+          "count": 224
         },
         {
           "label": "Travaux de construction, rénovation équipements publics",
@@ -553,7 +553,7 @@
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 3308732278.599998,
+          "montant": 1841932278.5999973,
           "count": 1480
         },
         {
@@ -575,7 +575,7 @@
     },
     {
       "year": 2018,
-      "enveloppe_totale": 2836151932.31,
+      "enveloppe_totale": 2833151932.31,
       "nb_marches": 1458,
       "par_nature": [
         {
@@ -585,7 +585,7 @@
         },
         {
           "label": "TRAVAUX",
-          "montant": 1202265462.4899988,
+          "montant": 1199265462.4899988,
           "count": 620
         },
         {
@@ -657,7 +657,7 @@
         },
         {
           "label": "Autres",
-          "montant": 913786329.26,
+          "montant": 910786329.26,
           "count": 895
         }
       ],
@@ -669,7 +669,7 @@
         },
         {
           "label": "M57 Département",
-          "montant": 169306502.46999997,
+          "montant": 166306502.46999997,
           "count": 167
         },
         {
@@ -696,12 +696,12 @@
     },
     {
       "year": 2019,
-      "enveloppe_totale": 2313239644.3,
+      "enveloppe_totale": 2300439564.38,
       "nb_marches": 1342,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 1237163044.0700011,
+          "montant": 1224362964.150001,
           "count": 623
         },
         {
@@ -723,7 +723,7 @@
       "par_categorie": [
         {
           "label": "Services de centres de vacances et de centres de loisirs",
-          "montant": 504041198.7999996,
+          "montant": 491241118.87999964,
           "count": 32
         },
         {
@@ -790,7 +790,7 @@
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 2280232213.1400013,
+          "montant": 2267432133.220002,
           "count": 1299
         },
         {
@@ -812,12 +812,12 @@
     },
     {
       "year": 2020,
-      "enveloppe_totale": 3292522877.92,
+      "enveloppe_totale": 1821184489.31,
       "nb_marches": 1201,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 2395465273.189972,
+          "montant": 924126884.5800015,
           "count": 666
         },
         {
@@ -839,7 +839,7 @@
       "par_categorie": [
         {
           "label": "Services d'actions éducatives scolaires et périscolaires",
-          "montant": 1799676729.2700005,
+          "montant": 340128339.6600002,
           "count": 67
         },
         {
@@ -899,14 +899,14 @@
         },
         {
           "label": "Autres",
-          "montant": 690162103.5200007,
+          "montant": 678372104.5200006,
           "count": 801
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 3238603527.049943,
+          "montant": 1767265138.4400027,
           "count": 1166
         },
         {
@@ -938,7 +938,7 @@
     },
     {
       "year": 2021,
-      "enveloppe_totale": 5483477436.49,
+      "enveloppe_totale": 5335026236.49,
       "nb_marches": 1570,
       "par_nature": [
         {
@@ -948,7 +948,7 @@
         },
         {
           "label": "SERVICES",
-          "montant": 2031528814.0600011,
+          "montant": 1883077614.0600011,
           "count": 859
         },
         {
@@ -989,11 +989,6 @@
           "count": 13
         },
         {
-          "label": "Animation culturelle et de loisirs",
-          "montant": 177377939.24000013,
-          "count": 233
-        },
-        {
           "label": "Electricité (distribué)",
           "montant": 162471546.28,
           "count": 5
@@ -1019,15 +1014,20 @@
           "count": 7
         },
         {
+          "label": "services de maintenance multitechnique de bâtiment",
+          "montant": 77880417.90999998,
+          "count": 11
+        },
+        {
           "label": "Autres",
-          "montant": 1668593036.8500016,
-          "count": 996
+          "montant": 1619639358.1800015,
+          "count": 1218
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 5467753552.079912,
+          "montant": 5319302352.079912,
           "count": 1523
         },
         {
@@ -1049,12 +1049,12 @@
     },
     {
       "year": 2022,
-      "enveloppe_totale": 3934593902.84,
+      "enveloppe_totale": 3933543902.84,
       "nb_marches": 1286,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 2164874740.08,
+          "montant": 2163824740.08,
           "count": 642
         },
         {
@@ -1141,14 +1141,14 @@
         },
         {
           "label": "Autres",
-          "montant": 1402511449.08,
+          "montant": 1401461449.08,
           "count": 926
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 3760015762.419994,
+          "montant": 3758965762.419994,
           "count": 1201
         },
         {
@@ -1170,12 +1170,12 @@
     },
     {
       "year": 2023,
-      "enveloppe_totale": 2606711521.33,
+      "enveloppe_totale": 2606361521.33,
       "nb_marches": 1336,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 1173323143.4200003,
+          "montant": 1172973143.4200003,
           "count": 670
         },
         {
@@ -1257,14 +1257,14 @@
         },
         {
           "label": "Autres",
-          "montant": 1322675903.55,
+          "montant": 1322325903.55,
           "count": 1151
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 2603465317.960001,
+          "montant": 2603115317.960001,
           "count": 1332
         },
         {
@@ -1281,7 +1281,7 @@
     },
     {
       "year": 2024,
-      "enveloppe_totale": 3219823753.23,
+      "enveloppe_totale": 3181958639.67,
       "nb_marches": 1762,
       "par_nature": [
         {
@@ -1291,12 +1291,12 @@
         },
         {
           "label": "SERVICES",
-          "montant": 867926212.0500009,
+          "montant": 867089848.4900006,
           "count": 771
         },
         {
           "label": "Travaux",
-          "montant": 556798852.9799995,
+          "montant": 532798852.97999996,
           "count": 74
         },
         {
@@ -1311,7 +1311,7 @@
         },
         {
           "label": "Services",
-          "montant": 51457011.84000001,
+          "montant": 38428261.839999996,
           "count": 136
         },
         {
@@ -1323,7 +1323,7 @@
       "par_categorie": [
         {
           "label": "Travaux",
-          "montant": 556798852.9799995,
+          "montant": 532798852.97999996,
           "count": 74
         },
         {
@@ -1383,19 +1383,19 @@
         },
         {
           "label": "Autres",
-          "montant": 1191154899.4999995,
+          "montant": 1177289785.9399996,
           "count": 1175
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 2488796377.5499988,
+          "montant": 2487960013.9899993,
           "count": 1394
         },
         {
           "label": "Non renseigné",
-          "montant": 724338583.5599993,
+          "montant": 687309833.5599993,
           "count": 356
         },
         {
@@ -1417,17 +1417,17 @@
     },
     {
       "year": 2025,
-      "enveloppe_totale": 1608151115.94,
+      "enveloppe_totale": 1606487045.92,
       "nb_marches": 1122,
       "par_nature": [
         {
           "label": "Fournitures",
-          "montant": 768665422.5000001,
+          "montant": 768605422.5000001,
           "count": 521
         },
         {
           "label": "Travaux",
-          "montant": 505484243.09,
+          "montant": 504120173.07,
           "count": 410
         },
         {
@@ -1437,19 +1437,19 @@
         },
         {
           "label": "Marché",
-          "montant": 2153786.65,
+          "montant": 1913786.65,
           "count": 10
         }
       ],
       "par_categorie": [
         {
           "label": "Fournitures courantes et services",
-          "montant": 768665422.5000001,
+          "montant": 768605422.5000001,
           "count": 521
         },
         {
           "label": "Travaux",
-          "montant": 505484243.09,
+          "montant": 504120173.07,
           "count": 410
         },
         {
@@ -1469,26 +1469,26 @@
         },
         {
           "label": "Pas de CCAG",
-          "montant": 2153786.65,
+          "montant": 1913786.65,
           "count": 10
         }
       ],
       "par_perimetre": [
         {
           "label": "Non renseigné",
-          "montant": 1608151115.9400008,
+          "montant": 1606487045.9200008,
           "count": 1122
         }
       ]
     },
     {
       "year": 2026,
-      "enveloppe_totale": 647101024.95,
+      "enveloppe_totale": 561496024.95,
       "nb_marches": 266,
       "par_nature": [
         {
           "label": "Travaux",
-          "montant": 409177962.75,
+          "montant": 325572962.75,
           "count": 90
         },
         {
@@ -1498,14 +1498,14 @@
         },
         {
           "label": "Services",
-          "montant": 55129159.5,
+          "montant": 53129159.5,
           "count": 50
         }
       ],
       "par_categorie": [
         {
           "label": "Travaux",
-          "montant": 409177962.75,
+          "montant": 325572962.75,
           "count": 90
         },
         {
@@ -1514,14 +1514,14 @@
           "count": 126
         },
         {
-          "label": "Prestations intellectuelles",
-          "montant": 22168476.5,
-          "count": 31
-        },
-        {
           "label": "Techniques de l'information et de la communication",
           "montant": 21359000.0,
           "count": 13
+        },
+        {
+          "label": "Prestations intellectuelles",
+          "montant": 20168476.5,
+          "count": 31
         },
         {
           "label": "Maitrise d'œuvre",
@@ -1532,7 +1532,7 @@
       "par_perimetre": [
         {
           "label": "Non renseigné",
-          "montant": 647101024.95,
+          "montant": 561496024.95,
           "count": 266
         }
       ]

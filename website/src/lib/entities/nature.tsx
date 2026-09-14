@@ -1,6 +1,7 @@
 import { BudgetBackKicker } from "@/components/fusion/EntityPageHeaders";
 import NatureFiche from "@/components/fusion/NatureFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { loadBudgetNature } from "@/lib/fusion-data";
 import { NATURE_LABELS } from "@/lib/budget-natures";
 import { eur, pct, int, ordFr, ordEn, sourceLine } from "@/lib/entities/seo-text";
@@ -86,7 +87,7 @@ export const natureConfig: EntityPageConfig<D> = {
   },
   drawer: {
     usesLocale: true,
-    kicker: ({ nature }, locale) => <>{locale === "en" ? "Kind of spending" : "Nature de dépense"} · Budget {nature.year}</>,
+    kicker: ({ nature }, locale) => relatedT(locale)("fx.drawer.kicker.nature", { year: nature.year }),
     title: ({ nature }, locale) => NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"],
     shareUrl: ({ nature, year }) => `/france/paris/budget/nature/${nature.key}${year ? `?year=${year}` : ""}`,
     shareText: ({ nature }, locale) => `${NATURE_LABELS[nature.key][locale === "en" ? "en" : "fr"]} — ${fmtEur(nature.total)} (${nature.year}) · ${nature.byPoste.length} postes.`,

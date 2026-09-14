@@ -14,6 +14,7 @@ import type { FicheBreakdownRow } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
 import AnneesRail, { RAIL_MIN } from "./AnneesRail";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
  * l'export en sont issus verbatim, le refine matche donc exactement).
@@ -59,10 +60,13 @@ export default function AssociationFiche({
   asso,
   vulgarization,
   grounded,
+  lieu,
 }: {
   asso: AssociationFicheType;
   vulgarization?: SubventionVulgarization | null;
   grounded?: BeneficiaireGrounded | null;
+  /** Carte du lieu que ce bénéficiaire exploite, posée sous le chiffre. */
+  lieu?: React.ReactNode;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -91,6 +95,10 @@ export default function AssociationFiche({
   if (asso.natureJuridique) srcBits.push(<span key="nj">{asso.natureJuridique}</span>);
   if (useGrounded && grounded!.perimetre_geographique) {
     srcBits.push(<span key="pg">{t("fx.fiche.asso.scope_label")} : {en && grounded!.perimetre_geographique_en ? grounded!.perimetre_geographique_en : grounded!.perimetre_geographique}</span>);
+  }
+  // Le titre met le nom en casse lisible ; la graphie de la source reste dite ici.
+  if (displayOrgName(asso.name) !== asso.name) {
+    srcBits.push(<span key="nom">{fill(t("fx.fiche.asso.nom_source"), { nom: asso.name })}</span>);
   }
   if (useGrounded && grounded!.sources && grounded!.sources.length > 0) {
     srcBits.push(
@@ -177,6 +185,8 @@ export default function AssociationFiche({
           </>
         }
       />
+
+      {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
 
       {asso.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.asso.h.annees")}>

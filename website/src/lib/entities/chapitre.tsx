@@ -1,6 +1,7 @@
 import { ChapitreFiche } from "@/components/fusion";
 import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { numLocale } from "@/lib/fmt";
 import { loadChapitre } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
@@ -78,8 +79,8 @@ export const chapitreConfig: EntityPageConfig<D> = {
     body: ({ chap }) => <ChapitreFiche chap={chap} />,
   },
   drawer: {
-    kicker: ({ chap }) => <>Chapitre · Investissement · {chap.year}</>,
-    title: ({ chap }) => chap.label,
+    kicker: ({ chap }, locale) => relatedT(locale)("fx.drawer.kicker.chapitre", { year: chap.year }),
+    title: ({ chap }, locale) => trLabel(chap.label, locale),
     shareUrl: ({ chap }) => `/france/paris/investissements/chapitre/${chap.slug}`,
     shareText: ({ chap }) =>
       `${chap.label} — ${fmtEur(chap.total)} investis en ${chap.year} par la Ville de Paris · ${chap.nbProjets} projets`,

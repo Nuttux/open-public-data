@@ -77,12 +77,20 @@ export default function AnneesRail({
   const lignes = sel !== null ? delibsDe(sel) : [];
   const ouverte = sel !== null ? parAn.get(sel) : undefined;
   const precision = ouverte && countText ? countText(ouverte) : null;
+  // Les deux bouts de la série, dits au-dessus du rail. Sous l'axe, un montant
+  // plus large que sa barre se lisait sous la barre voisine.
+  const publies = pts.slice().sort((x, z) => x.year - z.year);
+  const premier = publies[0];
+  const dernier = publies[publies.length - 1];
   // L'infobulle s'ancre au bord du rail pour les barres des extrémités : centrée,
   // elle déborderait de l'écran d'un téléphone.
   const bord = (i: number) => (i < annees.length / 3 ? " tl" : i >= (annees.length * 2) / 3 ? " tr" : "");
   return (
     <>
-      <div className={`fx-v3-years ${tone} clic`} style={{ marginTop: 4 }}>
+      <p className="fx-v3-years-cap tnum">
+        <b>{eur(premier.amount)}</b> {t("fx.v3.years.in")} {premier.year} · <b>{eur(dernier.amount)}</b> {t("fx.v3.years.in")} {dernier.year}
+      </p>
+      <div className={`fx-v3-years ${tone} clic`} style={{ marginTop: 10 }}>
         {annees.map((y, i) => {
           const r = parAn.get(y);
           const n = delibsDe(y).length;
@@ -91,11 +99,9 @@ export default function AnneesRail({
           const corps = (
             <>
               {r === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((r.amount / max) * 40)) }} />}
-              {n > 0 && <b aria-hidden="true" />}
+              {n > 0 && <b aria-hidden="true" style={{ bottom: (r === undefined ? 2 : Math.max(2, Math.round((r.amount / max) * 40))) + 4 }} />}
               {bout && (
-                <span className={i === 0 ? "yr" : "yr end"}>
-                  {y}{r !== undefined && <span className="yv"> · {eur(r.amount)}</span>}
-                </span>
+                <span className={i === 0 ? "yr" : "yr end"}>{y}</span>
               )}
             </>
           );

@@ -2,8 +2,10 @@ import { ProjetFiche } from "@/components/fusion";
 import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
-import { numLocale } from "@/lib/fmt";
-import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
+import { relatedT } from "@/lib/related-t";
+import Link from "@/components/LocalizedLink";
+import { numLocale, sufOrdinal } from "@/lib/fmt";
+import { loadArrondissement, loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, ordFr, ordEn, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
@@ -90,20 +92,23 @@ export const projetConfig: EntityPageConfig<D> = {
     },
     body: ({ projet, photo, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={locale} />
-        <ProjetFiche projet={projet} photo={photo} />
+        <ProjetFiche projet={projet} photo={photo} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
       </>
     ),
   },
   drawer: {
     usesLocale: true,
+    // « Investissements › 18ᵉ arrondissement · 2024 » : l'arrondissement mène à sa fiche.
     kicker: ({ projet }, locale) => {
-      const arr = projet.arrondissement > 0
-        ? (locale === "en"
-            ? `${projet.arrondissement}${projet.arrondissement === 1 ? "st" : projet.arrondissement === 2 ? "nd" : projet.arrondissement === 3 ? "rd" : "th"} district`
-            : `${projet.arrondissement}${projet.arrondissement === 1 ? "er" : "ᵉ"} arr.`)
-        : (locale === "en" ? "Citywide" : "Transverse");
-      return <>{locale === "en" ? "Investment" : "Investissement"} · {projet.year} · {arr}</>;
+      const t = relatedT(locale);
+      const n = projet.arrondissement;
+      const arr = n > 0 ? t("fx.drawer.kicker.arr_long", { arr: `${n}${sufOrdinal(n, locale)}` }) : t("fx.drawer.kicker.transverse");
+      return (
+        <>
+          {n > 0 && loadArrondissement(n) ? <Link href={`/france/paris/investissements/arrondissement/${n}`} scroll={false}>{arr}</Link> : arr}
+          {" · "}{projet.year}
+        </>
+      );
     },
     title: ({ projet }, locale) =>
       locale === "en" && projet.name_en ? projet.name_en : projet.name,
@@ -125,8 +130,7 @@ export const projetConfig: EntityPageConfig<D> = {
     },
     children: ({ projet, photo, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={locale} />
-        <ProjetFiche projet={projet} photo={photo} />
+        <ProjetFiche projet={projet} photo={photo} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
       </>
     ),
   },

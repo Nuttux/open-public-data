@@ -2,6 +2,7 @@ import { ArrondissementFiche } from "@/components/fusion";
 import { InvestBackKicker, ArrInvestTitleAndLede } from "@/components/fusion/EntityPageHeaders";
 import LieuxLies from "@/components/fusion/LieuxLies";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { numLocale, sufOrdinal } from "@/lib/fmt";
 import { loadArrondissement } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
@@ -116,21 +117,21 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
     },
   },
   drawer: {
-    kicker: ({ arr }) => <>Arrondissement · Investissement · {arr.year}</>,
-    title: ({ arr }) => `${arr.arr}${suf(arr.arr)} arrondissement`,
+    kicker: ({ arr }, locale) => relatedT(locale)("fx.drawer.kicker.arrondissement", { year: arr.year }),
+    title: ({ arr }, locale) => `${arr.arr}${sufOrdinal(arr.arr, locale)} arrondissement`,
     shareUrl: ({ arr }) => `/france/paris/investissements/arrondissement/${arr.arr}`,
     shareText: ({ arr }) =>
       `${arr.arr}${suf(arr.arr)} arrondissement de Paris — ${fmtEur(arr.total)} investis en ${arr.year} sur ${arr.nbProjets} projets`,
     backHref: () => "/france/paris/investissements",
     breadcrumbLabel: ({ arr }) => `${arr.arr}${suf(arr.arr)} arr.`,
-    children: ({ arr, lieuxArr }) => (
+    children: ({ arr, lieuxArr }, locale) => (
       <>
         <ArrondissementFiche arr={arr} />
         <LieuxLies
           lieux={lieuxArr}
-          title={`Lieux du ${arr.arr}${suf(arr.arr)}`}
-          intro="Lieux de cet arrondissement dotés d’une fiche — délibérations, archives et argent public."
-          locale="fr"
+          title={relatedT(locale)("fx.drawer.lieux_arr", { arr: `${arr.arr}${sufOrdinal(arr.arr, locale)}` })}
+          intro={relatedT(locale)("fx.drawer.lieux_arr_intro")}
+          locale={locale}
         />
       </>
     ),

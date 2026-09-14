@@ -2,7 +2,9 @@
 
 import ParisChoropleth from "./ParisChoropleth";
 import { useCity } from "./CityContext";
-import { useT } from "@/lib/localeContext";
+import Link from "@/components/LocalizedLink";
+import { useT, useLocale } from "@/lib/localeContext";
+import { sufOrdinal } from "@/lib/fmt";
 import { useFmt } from "@/lib/use-fmt";
 
 type ArrItem = {
@@ -28,6 +30,7 @@ const CENTRAL_ARRS = [1, 2, 3, 4];
 
 export default function HorsBilanMap({ byArrondissement, nonLocalised, totalCapital, year }: Props) {
   const t = useT();
+  const { locale } = useLocale();
   const { fmtBillions, fmtMillions } = useFmt();
   const { basePath } = useCity();
 
@@ -55,6 +58,21 @@ export default function HorsBilanMap({ byArrondissement, nonLocalised, totalCapi
     if (!hasData) return null;
     return `${basePath}/dette/garanties/arrondissement/${cAr}?year=${year}`;
   };
+
+  /* La carte ouvre chaque fiche d'un clic sur une tuile, sans lien que le
+   * clavier ou un moteur puisse suivre. La même liste en liens simples, sous
+   * la carte : Paris Centre (1er–4e fusionnés), puis les arrondissements qui
+   * portent au moins un emprunt garanti. */
+  const centre = byArrondissement.filter((a) => CENTRAL_ARRS.includes(a.arr));
+  const listItems = [
+    ...(centre.some((a) => a.count_emprunts > 0)
+      ? [{ key: 0, label: t("fx.hbmap.centre"), amount: centre.reduce((sum, a) => sum + a.capital_restant, 0) }]
+      : []),
+    ...byArrondissement
+      .filter((a) => !CENTRAL_ARRS.includes(a.arr) && a.count_emprunts > 0)
+      .sort((a, b) => a.arr - b.arr)
+      .map((a) => ({ key: a.arr, label: `${a.arr}${sufOrdinal(a.arr, locale)}`, amount: a.capital_restant })),
+  ];
 
   return (
     <div className="fx-hbmap">
@@ -84,6 +102,19 @@ export default function HorsBilanMap({ byArrondissement, nonLocalised, totalCapi
         hrefFor={hrefFor}
         showRanking
       />
+
+      {listItems.length > 0 && (
+        <nav className="fx-hbmap-list" aria-label={t("fx.hbmap.list_aria")}>
+          {listItems.map((it) => {
+            const href = hrefFor(it.key);
+            return href ? (
+              <Link key={it.key} href={href} scroll={false}>
+                {it.label} <span className="tnum">{formatValue(it.amount)}</span>
+              </Link>
+            ) : null;
+          })}
+        </nav>
+      )}
 
       {nonLocalised.capital_restant > 0 && (
         <p className="fx-hbmap-footnote muted">

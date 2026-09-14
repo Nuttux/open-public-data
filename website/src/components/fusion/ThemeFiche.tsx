@@ -10,16 +10,8 @@ import YearBars from "./YearBars";
 import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 import { assocSlug } from "@/lib/assoc-slug";
 import { useFmt } from "@/lib/use-fmt";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
-const THEME_COLORS: Record<string, string> = {
-  "Social": "#c12323", "Logement": "#546583", "Éducation": "#2a3680", "Culture": "#a67638", "Sport": "#3a8f4a",
-  "Environnement": "#6b9c52", "Santé": "#b8495d", "Transport": "#4a8aa6", "Économie": "#8a5a3b",
-  "Administration": "#6b6f7a", "Sécurité": "#3d4045", "International": "#7b6aa3",
-};
-function colorFor(theme: string): string {
-  for (const k of Object.keys(THEME_COLORS)) if (theme.startsWith(k)) return THEME_COLORS[k];
-  return "#9099a6";
-}
 
 /**
  * Fiche thème de subventions v3 (2026-09-03) — UN chiffre (le versé dans le
@@ -32,7 +24,6 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
   const { fmtInt, fmtCompactEur } = useFmt();
   const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);
-  const color = colorFor(fiche.theme);
   const eurTxt = (n: number) => { const { value, unit } = fmtCompactEur(n); return `${value} ${unit}`; };
   const evo = fiche.evolution.slice().reverse().map((e) => ({ year: e.year, amount: e.amount, count: e.count }));
 
@@ -47,7 +38,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
       <V3Section title={fill(t("fx.fiche.theme.h.top"), { year: fiche.year })} sub={fiche.nbBeneficiaires > fiche.topBeneficiaires.length ? fill(t("fx.fiche.theme.h.top_sub_n"), { n: fiche.topBeneficiaires.length, t: fmtInt(fiche.nbBeneficiaires) }) : t("fx.fiche.theme.h.top_sub")}>
         <FicheBreakdown
           cap={fiche.topBeneficiaires.length}
-          rows={fiche.topBeneficiaires.map((b) => ({ key: b.name, label: b.name, meta: b.direction ?? undefined, value: b.amount, href: `${basePath}/subventions/association/${assocSlug(b.name)}` }))}
+          rows={fiche.topBeneficiaires.map((b) => ({ key: b.name, label: displayOrgName(b.name), meta: b.direction ?? undefined, value: b.amount, href: `${basePath}/subventions/association/${assocSlug(b.name)}` }))}
           format={eurTxt}
         />
       </V3Section>
@@ -56,7 +47,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
         <V3Section title={t("fx.fiche.theme.h.annees")}>
           {evo.length >= RAIL_MIN
             ? <AnneesRail rows={evo} countText={(r) => fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(r.count ?? 0) })} />
-            : <YearBars rows={evo} barColor={color} countLabel={(y) => <span className="muted">{fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(y.count ?? 0) })}</span>} />}
+            : <YearBars rows={evo} countLabel={(y) => <span className="muted">{fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(y.count ?? 0) })}</span>} />}
         </V3Section>
       )}
 

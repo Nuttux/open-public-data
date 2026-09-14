@@ -1,6 +1,7 @@
 import { BudgetBackKicker } from "@/components/fusion/EntityPageHeaders";
 import PosteFiche from "@/components/fusion/PosteFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { loadBudgetPoste } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, ordFr, ordEn, sourceLine, clip } from "@/lib/entities/seo-text";
@@ -85,11 +86,8 @@ export const posteConfig: EntityPageConfig<D> = {
     body: ({ poste }) => <PosteFiche poste={poste} />,
   },
   drawer: {
-    kicker: ({ poste }) => {
-      const kindLabel = poste.kind === "depense" ? "Dépense" : "Recette";
-      return <>{kindLabel} · Budget {poste.year}</>;
-    },
-    title: ({ poste }) => poste.label,
+    kicker: ({ poste }, locale) => relatedT(locale)(poste.kind === "depense" ? "fx.drawer.kicker.depense" : "fx.drawer.kicker.recette", { year: poste.year }),
+    title: ({ poste }, locale) => trLabel(poste.label, locale),
     shareUrl: ({ poste, year }) =>
       `/france/paris/budget/poste/${poste.slug}${year ? `?year=${year}` : ""}`,
     shareText: ({ poste }) => {

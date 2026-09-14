@@ -103,7 +103,15 @@ describe("sufOrdinal", () => {
     expect(sufOrdinal(1, "fr")).toBe("er");
     expect(sufOrdinal(2, "fr")).toBe("ᵉ");
     expect(sufOrdinal(1, "en")).toBe("st");
-    expect(sufOrdinal(2, "en")).toBe("th");
+    expect(sufOrdinal(2, "en")).toBe("nd");
+    expect(sufOrdinal(3, "en")).toBe("rd");
+    expect(sufOrdinal(4, "en")).toBe("th");
+    expect(sufOrdinal(11, "en")).toBe("th");
+    expect(sufOrdinal(12, "en")).toBe("th");
+    expect(sufOrdinal(13, "en")).toBe("th");
+    expect(sufOrdinal(21, "en")).toBe("st");
+    expect(sufOrdinal(22, "en")).toBe("nd");
+    expect(sufOrdinal(111, "en")).toBe("th");
   });
 });
 

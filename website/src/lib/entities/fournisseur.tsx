@@ -2,6 +2,7 @@ import { FournisseurFiche } from "@/components/fusion";
 import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedInt, relatedT } from "@/lib/related-t";
 import { getCity } from "@/lib/cities";
 import { numLocale } from "@/lib/fmt";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
@@ -10,6 +11,7 @@ import { trLabel } from "@/lib/label-translate";
 import { eur, int, periodLead, cityDataDate, sourceLine, cityPortal, titleName } from "@/lib/entities/seo-text";
 import { fournisseurRelated } from "@/lib/entities/related";
 import { slugifyLabel } from "@/lib/projet-utils";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 type D = {
   fournisseur: NonNullable<ReturnType<typeof loadFournisseur>>;
@@ -104,14 +106,13 @@ export function makeFournisseurConfig(
     ),
     body: ({ fournisseur, sirene, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={locale} />
-        <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
+        <FournisseurFiche fournisseur={fournisseur} sirene={sirene} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
       </>
     ),
   },
   drawer: {
-    kicker: ({ fournisseur }) => <>Fournisseur · {fournisseur.contratCount} contrats</>,
-    title: ({ fournisseur }) => fournisseur.nom,
+    kicker: ({ fournisseur }, locale) => relatedT(locale)(fournisseur.contratCount === 1 ? "fx.drawer.kicker.fourn_1" : "fx.drawer.kicker.fourn", { n: relatedInt(fournisseur.contratCount, locale) }),
+    title: ({ fournisseur }) => displayOrgName(fournisseur.nom),
     shareUrl: ({ fournisseur }) =>
       `${base}/fournisseur/${fournisseur.siren || fournisseur.siret}`,
     shareText: ({ fournisseur }) => {
@@ -124,11 +125,10 @@ export function makeFournisseurConfig(
       return `${fournisseur.nom} a reçu ${montantStr} de la Ville de ${cityNom} via ${fournisseur.contratCount} marchés${years ? ` (${years})` : ""}`;
     },
     backHref: () => base,
-    breadcrumbLabel: ({ fournisseur }) => fournisseur.nom,
-    children: ({ fournisseur, sirene, lieuLien }) => (
+    breadcrumbLabel: ({ fournisseur }) => displayOrgName(fournisseur.nom),
+    children: ({ fournisseur, sirene, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={"fr"} />
-        <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
+        <FournisseurFiche fournisseur={fournisseur} sirene={sirene} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
       </>
     ),
   },

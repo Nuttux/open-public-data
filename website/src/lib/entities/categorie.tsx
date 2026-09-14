@@ -1,11 +1,12 @@
 import CategorieMarcheFiche from "@/components/fusion/CategorieMarcheFiche";
-import { DataLabel, DrawerKicker } from "@/components/fusion/DataLabel";
 import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
 import { categorieRelated } from "@/lib/entities/related";
+import { cap } from "@/lib/fmt";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadMarcheCategorie>> };
 
@@ -68,22 +69,22 @@ export const categorieConfig: EntityPageConfig<D> = {
   },
   related: ({ fiche }, locale) => categorieRelated(fiche, locale),
   page: {
-    header: ({ fiche }) => (
+    header: ({ fiche }, locale) => (
       <>
         <MarchesBackKicker />
-        <h1 className="fx-page-title"><DataLabel value={fiche.category} /></h1>
+        <h1 className="fx-page-title">{cap(trLabel(fiche.category, locale))}</h1>
       </>
     ),
     body: ({ fiche }) => <CategorieMarcheFiche fiche={fiche} />,
   },
   drawer: {
-    kicker: ({ fiche }) => <DrawerKicker k="categorie" year={fiche.year} />,
-    title: ({ fiche }) => <DataLabel value={fiche.category} />,
+    kicker: ({ fiche }, locale) => relatedT(locale)("fx.drawer.kicker.categorie", { year: fiche.year }),
+    title: ({ fiche }, locale) => cap(trLabel(fiche.category, locale)),
     shareUrl: ({ fiche }) => `/france/paris/marches/categorie/${fiche.slug}`,
     shareText: ({ fiche }) =>
       `${fiche.category} — ${fmtEur(fiche.total)} d'enveloppe sur ${fiche.nbContrats} contrats (Paris ${fiche.year})`,
     backHref: () => "/france/paris/marches",
-    breadcrumbLabel: ({ fiche }) => fiche.category,
+    breadcrumbLabel: ({ fiche }) => cap(fiche.category) || fiche.category,
     children: ({ fiche }) => <CategorieMarcheFiche fiche={fiche} />,
   },
 };

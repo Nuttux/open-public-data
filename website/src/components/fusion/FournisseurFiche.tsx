@@ -12,6 +12,7 @@ import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } fro
 import { useCity } from "./CityContext";
 import YearBars from "./YearBars";
 import AnneesRail, { RAIL_MIN } from "./AnneesRail";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 const CONTRATS_CAP = 8;
 
@@ -25,9 +26,12 @@ const CONTRATS_CAP = 8;
 export default function FournisseurFiche({
   fournisseur,
   sirene,
+  lieu,
 }: {
   fournisseur: FournisseurFicheType;
   sirene?: SireneCompany | null;
+  /** Carte du lieu lié à ce titulaire, posée sous le chiffre. */
+  lieu?: React.ReactNode;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -55,7 +59,10 @@ export default function FournisseurFiche({
     return (
       <V3Row key={c.numero || clean} href={c.numero ? `${basePath}/marches/contrat/${c.numero}` : null}
         label={clean.length > 110 ? clean.slice(0, 110) + "…" : clean}
-        sub={c.date ? `${t("fx.fiche.fourn.notifie_le")} ${fmtDate(c.date)}` : String(c.year)}
+        sub={[
+          c.date ? `${t("fx.fiche.fourn.notifie_le")} ${fmtDate(c.date)}` : String(c.year),
+          c.partage ? fill(t("fx.fiche.fourn.lot_partage"), { n: c.partage }) : null,
+        ].filter(Boolean).join(" · ")}
         amount={<V3Amt {...fmtEur(c.montant)} />} />
     );
   };
@@ -88,8 +95,7 @@ export default function FournisseurFiche({
             </>
           }
         >
-          {sirene.libelle_activite ? cap(sirene.libelle_activite) : (sirene.nom || fournisseur.nom)}
-          {sirene.activite_principale && <span className="fx-v3-lead-src" style={{ display: "inline", marginLeft: 8 }}>NAF {sirene.activite_principale}</span>}
+          {sirene.libelle_activite ? cap(sirene.libelle_activite) : displayOrgName(sirene.nom || fournisseur.nom)}
         </V3Lead>
       ) : (
         <p className="fx-v3-lead-src">
@@ -105,9 +111,12 @@ export default function FournisseurFiche({
           <>
             {fill(t(fournisseur.contratCount === 1 ? "fx.fiche.fourn.meta_n1" : "fx.fiche.fourn.meta_n"), { n: fournisseur.contratCount })}
             {fournisseur.yearsActive.length > 1 ? ` · ${fill(t("fx.fiche.fourn.meta_annees"), { n: fournisseur.yearsActive.length })}` : ""}
+            {fournisseur.sharedCount ? ` · ${fill(t(fournisseur.sharedCount === 1 ? "fx.fiche.fourn.meta_partage_1" : "fx.fiche.fourn.meta_partage"), { n: fournisseur.sharedCount })}` : ""}
           </>
         }
       />
+
+      {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
 
       <V3Section title={t("fx.fiche.fourn.h.contrats")} sub={t("fx.fiche.fourn.h.contrats_sub")}>
         {contrats.shown.map(ContratRow)}
@@ -130,7 +139,7 @@ export default function FournisseurFiche({
       {fournisseur.byCategory.length > 1 && (
         <V3Section title={t("fx.fiche.fourn.h.pourquoi")} sub={t("fx.fiche.fourn.h.pourquoi_sub")}>
           <FicheBreakdown
-            rows={fournisseur.byCategory.map((c) => ({ key: c.category, label: trLabel(c.category, locale), value: c.amount, href: `${basePath}/marches/categorie/${slugifyLabel(c.category)}` }))}
+            rows={fournisseur.byCategory.map((c) => ({ key: c.category, label: cap(trLabel(c.category, locale)) || trLabel(c.category, locale), value: c.amount, href: `${basePath}/marches/categorie/${slugifyLabel(c.category)}` }))}
             format={eurTxt}
           />
         </V3Section>

@@ -11,15 +11,18 @@ import { makeFmt } from "@/lib/fmt";
 import { getCity } from "@/lib/cities";
 import { relatedInt, relatedT } from "@/lib/related-t";
 import { NATURE_GROUPS, NATURE_LABELS } from "@/lib/budget-natures";
-import { canonicalBailleurSlug, getProjetNameEn, loadBudgetNature, type BudgetNatureFiche, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
+import { canonicalBailleurSlug, loadBudgetPoste, getProjetNameEn, loadBudgetNature, type BudgetNatureFiche, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import { ordEn, ordFr } from "@/lib/entities/seo-text";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
+import { POSTE_LINKS, type PosteLinkSpec } from "@/lib/budget-poste-links";
 import { assocSlug } from "@/lib/assoc-slug";
 import { lieuxVoisins, loadLieuxIndex, type LieuFicheData } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces, type MarseillePlace } from "@/lib/marseille/marseille-places-data";
+import { displayOrgName } from "@/lib/fournisseur-display";
+import { lotInfo, lotRepeatFlags } from "@/lib/marches-shape";
 
 type L = "fr" | "en";
 const FMT = { fr: makeFmt("fr"), en: makeFmt("en") };
@@ -29,8 +32,38 @@ const eur = (n: number, locale: L) => {
   return { v: c.value, u: c.unit };
 };
 
+/**
+ * « Dans le budget » rows: the Paris budget item whose hand-written link
+ * table (lib/budget-poste-links.ts) names this theme, contract category,
+ * investment chapter or place family. It is the table the budget item fiche
+ * reads to list where its money lands, read the other way; nothing is matched
+ * on words. A row appears only when the item resolves on its route with an
+ * amount, and its sub line says the scope is wider, since a budget item and
+ * a list of grants or contracts never add up.
+ */
+function budgetRows(match: (spec: PosteLinkSpec) => boolean, locale: L, max = 1): RelatedRow[] {
+  const t = relatedT(locale);
+  const out: RelatedRow[] = [];
+  for (const [slug, spec] of Object.entries(POSTE_LINKS)) {
+    if (out.length >= max) break;
+    if (!match(spec)) continue;
+    let p: BudgetPosteFiche | null = null;
+    try { p = loadBudgetPoste(slug); } catch { p = null; }
+    if (!p || p.total <= 0) continue;
+    out.push({
+      href: `/france/paris/budget/poste/${slug}`,
+      label: t("fx.related.budget.poste", { poste: trLabel(p.label, locale), year: p.year }),
+      sub: t("fx.related.budget.poste_sub"),
+      amount: eur(p.total, locale),
+      group: t("fx.related.g.budget"),
+    });
+  }
+  return out;
+}
+
 /** Bailleur: the other operators the City guarantees, then the two hubs. */
 export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
   const idx = readDataJsonOrNull<{ latestYear: number }>("hors_bilan_index.json");
   const hb = idx
     ? readDataJsonOrNull<{ year: number; top_beneficiaires: { name: string; capital_restant: number; count_emprunts: number }[] }>(
@@ -38,24 +71,23 @@ export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
       )
     : null;
   const me = canonicalBailleurSlug(decodeURIComponent(slug));
+  const peers = t("fx.related.g.other_bailleurs", { year: hb?.year ?? "" });
+  const context = t("fx.related.g.context");
   const rows: RelatedRow[] = (hb?.top_beneficiaires ?? [])
     .filter((b) => canonicalBailleurSlug(b.name) !== me)
     .slice(0, 5)
     .map((b) => ({
       href: `/france/paris/dette/bailleur/${canonicalBailleurSlug(b.name)}`,
-      label: b.name,
-      sub: locale === "en" ? `${b.count_emprunts.toLocaleString("en-GB")} loans guaranteed, end ${hb?.year}` : `${b.count_emprunts.toLocaleString("fr-FR")} emprunts garantis, fin ${hb?.year}`,
+      label: displayOrgName(b.name),
+      sub: locale === "en" ? `${b.count_emprunts.toLocaleString("en-GB")} loans guaranteed` : `${b.count_emprunts.toLocaleString("fr-FR")} emprunts garantis`,
       amount: eur(b.capital_restant, locale),
+      group: peers,
     }));
   rows.push(
-    { href: "/france/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur" },
-    { href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "Balance sheet, financial debt and every guarantee" : "Bilan, dette financière et l'ensemble des garanties" },
+    { href: "/france/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur", group: context },
+    { href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "Balance sheet, financial debt and every guarantee" : "Bilan, dette financière et l'ensemble des garanties", group: context },
   );
-  return {
-    title: locale === "en" ? "See also" : "Voir aussi",
-    sub: locale === "en" ? "The other operators the City guarantees, and the pages that put this one in context." : "Les autres bailleurs garantis par la Ville, et les pages qui situent celui-ci.",
-    rows,
-  };
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 type Patrimoine = {
@@ -67,22 +99,27 @@ type Patrimoine = {
 
 /** Debt instrument: its siblings in the same year, then the debt hub. */
 export function instrumentRelated(key: string, year: number, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
   const doc = readDataJsonOrNull<Patrimoine>(`patrimoine_structure_${year}.json`);
   if (!doc) return null;
+  const peers = t("fx.related.g.other_instruments", { year });
   const rows: RelatedRow[] = doc.structure_dette.instruments
     .filter((i) => i.key !== key)
     .map((i) => ({
       href: `/france/paris/dette/instrument/${i.key}${year ? `?year=${year}` : ""}`,
       label: trLabel(i.label, locale),
-      sub: locale === "en" ? `${Math.round(i.part * 100)}% of the financial debt at end ${year}` : `${Math.round(i.part * 100)} % de la dette financière fin ${year}`,
+      sub: locale === "en" ? `${Math.round(i.part * 100)}% of the financial debt` : `${Math.round(i.part * 100)} % de la dette financière`,
       amount: eur(i.encours, locale),
+      group: peers,
     }));
-  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "All instruments, the balance sheet and the guarantees" : "Tous les instruments, le bilan et les garanties" });
-  return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other instruments of the ${year} debt.` : `Les autres instruments de la dette ${year}.`, rows };
+  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "All instruments, the balance sheet and the guarantees" : "Tous les instruments, le bilan et les garanties", group: t("fx.related.g.context") });
+  rows.push(...budgetRows((spec) => spec.page === "dette", locale, 2));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /** Balance-sheet item: the other items on the same side, then the hub. */
 export function masseRelated(slug: string, year: number, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
   const doc = readDataJsonOrNull<Patrimoine>(`patrimoine_structure_${year}.json`);
   if (!doc) return null;
   const all = [
@@ -90,63 +127,71 @@ export function masseRelated(slug: string, year: number, locale: L): RelatedBloc
     ...doc.masses_passif.map((m) => ({ ...m, side: "passif" as const })),
   ];
   const me = all.find((m) => slugifyLabel(m.label) === slug);
+  const peers = t("fx.related.g.same_side", { year });
   const rows: RelatedRow[] = all
     .filter((m) => slugifyLabel(m.label) !== slug && (!me || m.side === me.side))
     .map((m) => ({
       href: `/france/paris/dette/masse/${slugifyLabel(m.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(m.label, locale),
-      sub: locale === "en" ? `${(m.share * 100).toFixed(1)}% of ${m.side === "actif" ? "assets" : "liabilities"}, ${year}` : `${(m.share * 100).toFixed(1).replace(".", ",")} % ${m.side === "actif" ? "de l'actif" : "du passif"}, ${year}`,
+      sub: locale === "en" ? `${(m.share * 100).toFixed(1)}% of ${m.side === "actif" ? "assets" : "liabilities"}` : `${(m.share * 100).toFixed(1).replace(".", ",")} % ${m.side === "actif" ? "de l'actif" : "du passif"}`,
       amount: eur(m.value, locale),
+      group: peers,
     }));
-  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's balance sheet and debt" : "Le bilan et la dette de la Ville de Paris", sub: locale === "en" ? "Assets, liabilities, instruments and guarantees" : "Actif, passif, instruments et garanties" });
-  return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other items on the same side of the ${year} balance sheet.` : `Les autres masses du même côté du bilan ${year}.`, rows };
+  rows.push({ href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's balance sheet and debt" : "Le bilan et la dette de la Ville de Paris", sub: locale === "en" ? "Assets, liabilities, instruments and guarantees" : "Actif, passif, instruments et garanties", group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /** Investment chapter: the other chapters of the same year, then the hub. */
 export function chapitreRelated(slug: string, year: number, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
   const trends = readDataJsonOrNull<{ years: { year: number; par_chapitre?: { label: string; depenses: number }[] }[] }>("investissement_tendances.json");
   const y = trends?.years.find((x) => x.year === year) ?? trends?.years[trends.years.length - 1];
   if (!y?.par_chapitre) return null;
+  const peers = t("fx.related.g.other_chapitres", { year: y.year });
   const rows: RelatedRow[] = y.par_chapitre
     .filter((c) => slugifyChapitre(c.label) !== slug)
     .sort((a, b) => b.depenses - a.depenses)
-    .slice(0, 6)
+    .slice(0, 5)
     .map((c) => ({
       href: `/france/paris/investissements/chapitre/${slugifyChapitre(c.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(c.label, locale),
-      sub: locale === "en" ? `Investment chapter, ${y.year}` : `Chapitre d'investissement, ${y.year}`,
       amount: eur(c.depenses, locale),
+      group: peers,
     }));
-  rows.push({ href: "/france/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets" });
-  return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other chapters of ${y.year} investment.` : `Les autres chapitres d'investissement ${y.year}.`, rows };
+  rows.push({ href: "/france/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets", group: t("fx.related.g.context") });
+  rows.push(...budgetRows((spec) => spec.chapitre === slug, locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /** Association: the theme page and its other big recipients, plus the hub. */
 export function associationRelated(asso: { name: string; theme: string | null }, city: string, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const context = t("fx.related.g.context");
   const rows: RelatedRow[] = [];
   const base = `/france/${city}/subventions`;
+  let themeRow: RelatedRow | null = null;
   if (asso.theme) {
     const slug = slugifyLabel(asso.theme);
     const fiche = loadThemeSubventions(slug, undefined, city);
     if (fiche) {
-      rows.push({
+      const peers = t("fx.related.g.same_theme", { year: fiche.year });
+      for (const b of fiche.topBeneficiaires.filter((b) => b.name !== asso.name).slice(0, 4)) {
+        rows.push({ href: `${base}/association/${assocSlug(b.name)}`, label: displayOrgName(b.name), amount: eur(b.amount, locale), group: peers });
+      }
+      themeRow = {
         href: `${base}/theme/${slug}`,
         label: locale === "en" ? `All ${trLabel(asso.theme, locale).toLowerCase()} grants, ${fiche.year}` : `Toutes les subventions ${asso.theme.toLowerCase()}, ${fiche.year}`,
         sub: locale === "en" ? `${fiche.nbBeneficiaires.toLocaleString("en-GB")} recipients that year` : `${fiche.nbBeneficiaires.toLocaleString("fr-FR")} bénéficiaires cette année-là`,
         amount: eur(fiche.total, locale),
-      });
-      for (const b of fiche.topBeneficiaires.filter((b) => b.name !== asso.name).slice(0, 4)) {
-        rows.push({
-          href: `${base}/association/${assocSlug(b.name)}`,
-          label: b.name,
-          sub: locale === "en" ? `Same theme, ${fiche.year}` : `Même thème, ${fiche.year}`,
-          amount: eur(b.amount, locale),
-        });
-      }
+        group: context,
+      };
     }
   }
-  rows.push({ href: base, label: locale === "en" ? "Who receives the City's grants" : "Qui reçoit les subventions de la Ville", sub: locale === "en" ? "Every recipient, by theme and by year" : "Tous les bénéficiaires, par thème et par année" });
-  return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? "The theme this recipient belongs to, and its other main recipients." : "Le thème de ce bénéficiaire, et ses autres principaux bénéficiaires.", rows };
+  if (themeRow) rows.push(themeRow);
+  rows.push({ href: base, label: locale === "en" ? "Who receives the City's grants" : "Qui reçoit les subventions de la Ville", sub: locale === "en" ? "Every recipient, by theme and by year" : "Tous les bénéficiaires, par thème et par année", group: context });
+  const theme = asso.theme;
+  if (city === "paris" && theme) rows.push(...budgetRows((spec) => (spec.themes ?? []).includes(theme), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /** Contract: the supplier's other contracts, its category, and the hub. */
@@ -155,13 +200,15 @@ export function contratRelated(
   city: string,
   locale: L,
 ): RelatedBlock | null {
+  const t = relatedT(locale);
+  const context = t("fx.related.g.context");
   const rows: RelatedRow[] = [];
   const base = `/france/${city}/marches`;
   const siren = (c.fournisseurSiret ?? "").replace(/\s/g, "").slice(0, 9);
   if (/^\d{9}$/.test(siren)) {
     const f = loadFournisseur(siren, city);
     if (f) {
-      for (const k of f.contrats.filter((x) => x.numero !== c.numero).sort((a, b) => b.montant - a.montant).slice(0, 4)) {
+      for (const k of f.contrats.filter((x) => x.numero !== c.numero).sort((a, b) => b.montant - a.montant).slice(0, 3)) {
         rows.push({
           href: `${base}/contrat/${encodeURIComponent(k.numero)}`,
           // Sans texte clair, le libellé brut de la source arrive tel quel à
@@ -169,15 +216,17 @@ export function contratRelated(
           // PROF.LOT1 ». Toutes les autres fiches passent par normalizeObjet ;
           // ce repli-ci l'avait oublié.
           label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || normalizeObjet(k.objet),
-          sub: locale === "en" ? `Same supplier, ${k.year}` : `Même titulaire, ${k.year}`,
+          sub: locale === "en" ? `Signed in ${k.year}` : `Signé en ${k.year}`,
           amount: eur(k.montant, locale),
+          group: t("fx.related.g.same_supplier"),
         });
       }
       rows.push({
         href: `${base}/fournisseur/${siren}`,
-        label: locale === "en" ? `Every contract of ${f.nom}` : `Tous les marchés de ${f.nom}`,
+        label: locale === "en" ? `Every contract of ${displayOrgName(f.nom)}` : `Tous les marchés de ${displayOrgName(f.nom)}`,
         sub: locale === "en" ? `${f.contratCount.toLocaleString("en-GB")} contracts with the City` : `${f.contratCount.toLocaleString("fr-FR")} marchés avec la Ville`,
         amount: eur(f.totalAmount, locale),
+        group: context,
       });
     }
   }
@@ -186,13 +235,15 @@ export function contratRelated(
       href: `${base}/categorie/${slugifyLabel(c.categorie)}`,
       label: locale === "en" ? `${trLabel(c.categorie, locale)} contracts, ${c.year}` : `Les marchés ${c.categorie.toLowerCase()}, ${c.year}`,
       sub: locale === "en" ? "The category's biggest contracts and suppliers" : "Les plus gros contrats et titulaires de la catégorie",
+      group: context,
     });
   }
-  rows.push({ href: base, label: locale === "en" ? "Public contracts of the City" : "Les marchés publics de la Ville", sub: locale === "en" ? "Every contract, by year, category and supplier" : "Tous les contrats, par année, catégorie et titulaire" });
-  return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? "The supplier's other contracts and the category this one belongs to." : "Les autres marchés du titulaire et la catégorie de celui-ci.", rows };
+  rows.push({ href: base, label: locale === "en" ? "Public contracts of the City" : "Les marchés publics de la Ville", sub: locale === "en" ? "Every contract, by year, category and supplier" : "Tous les contrats, par année, catégorie et titulaire", group: context });
+  if (city === "paris" && c.categorie) rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === slugifyLabel(c.categorie)), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
-type MarcheLite = { fournisseur_nom?: string; fournisseur_siret?: string; montant_max?: number; categorie_libelle?: string; nature?: string };
+type MarcheLite = { objet?: string; fournisseur_nom?: string; fournisseur_siret?: string; montant_max?: number; categorie_libelle?: string; nature?: string };
 
 /**
  * Supplier: the other suppliers of its main category in the year it last
@@ -217,8 +268,12 @@ export function fournisseurRelated(
       ? readDataJsonOrNull<{ data?: MarcheLite[]; marches?: MarcheLite[] }>(cityJsonPath(city, `marches-publics/marches_${year}.json`))
       : null;
     const peers = new Map<string, { name: string; amount: number }>();
-    for (const r of file?.data ?? file?.marches ?? []) {
+    const peerRows = file?.data ?? file?.marches ?? [];
+    // Un lot partagé ne range aucune entreprise parmi les pairs (voir lotInfo).
+    const peerLots = lotInfo(peerRows);
+    for (const [i, r] of peerRows.entries()) {
       if ((r.categorie_libelle || r.nature || "Autres") !== main.category) continue;
+      if (peerLots[i].holders > 1) continue;
       const siren = (r.fournisseur_siret ?? "").replace(/\s/g, "").slice(0, 9);
       if (!/^\d{9}$/.test(siren) || siren === f.siren || !r.fournisseur_nom || r.fournisseur_nom === "MARCHE MULTIATTRIBUTAIRE") continue;
       const cur = peers.get(siren) ?? { name: r.fournisseur_nom, amount: 0 };
@@ -229,9 +284,9 @@ export function fournisseurRelated(
     for (const [siren, p] of [...peers.entries()].filter(([, p]) => p.amount > 0).sort((a, b) => b[1].amount - a[1].amount).slice(0, 4)) {
       rows.push({
         href: `${base}/fournisseur/${siren}`,
-        label: p.name,
-        sub: t("fx.related.fourn.peer_sub", { cat, year }),
+        label: displayOrgName(p.name),
         amount: eur(p.amount, locale),
+        group: t("fx.related.g.same_category", { cat, year }),
       });
     }
     if (categoryHref) {
@@ -239,16 +294,14 @@ export function fournisseurRelated(
         href: categoryHref(main.category),
         label: t("fx.related.fourn.category", { cat }),
         sub: t("fx.related.fourn.category_sub"),
+        group: t("fx.related.g.context"),
       });
     }
   }
   const nom = getCity(city)?.nom ?? city;
-  rows.push({ href: base, label: t("fx.related.marches.hub", { city: nom }), sub: t("fx.related.marches.hub_sub") });
-  return {
-    title: t("fx.related.title"),
-    sub: main ? t("fx.related.fourn.block_sub", { cat: trLabel(main.category, locale).toLowerCase() }) : null,
-    rows,
-  };
+  rows.push({ href: base, label: t("fx.related.marches.hub", { city: nom }), sub: t("fx.related.marches.hub_sub"), group: t("fx.related.g.context") });
+  if (city === "paris" && main) rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === slugifyLabel(main.category)), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 type ProjetLite = { id: string; arrondissement: number; chapitre_libelle?: string; nom_projet: string; montant: number };
@@ -278,28 +331,26 @@ export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
     rows.push({
       href: `${base}/projet/${encodeURIComponent(x.id)}`,
       label: (locale === "en" ? getProjetNameEn(x.id) : null) || x.nom_projet,
-      sub: arr > 0 ? t("fx.related.projet.peer_arr_sub", { arr: ord, year: p.year }) : t("fx.related.projet.peer_chap_sub", { year: p.year }),
       amount: eur(Number(x.montant), locale),
+      group: arr > 0 ? t("fx.related.g.same_arr_year", { year: p.year }) : t("fx.related.g.same_chap_year", { year: p.year }),
     });
   }
   rows.push({
     href: `${base}/projets/${p.year}/${arr > 0 ? arr : 0}`,
     label: arr > 0 ? t("fx.related.projet.list_arr", { arr: ord, year: p.year }) : t("fx.related.projet.list_paris", { year: p.year }),
     sub: t("fx.related.projet.list_sub"),
+    group: t("fx.related.g.context"),
   });
   if (arr > 0 && loadArrondissement(arr)) {
-    rows.push({ href: `${base}/arrondissement/${arr}`, label: t("fx.related.projet.arr", { arr: ord }), sub: t("fx.related.projet.arr_sub") });
+    rows.push({ href: `${base}/arrondissement/${arr}`, label: t("fx.related.projet.arr", { arr: ord }), sub: t("fx.related.projet.arr_sub"), group: t("fx.related.g.context") });
   }
   const m57 = serviceToM57(p.chapitre);
   const chap = m57 ? loadChapitre(slugifyChapitre(m57)) : null;
   if (chap) {
-    rows.push({ href: `${base}/chapitre/${chap.slug}`, label: t("fx.related.projet.chap", { chap: trLabel(chap.label, locale).toLowerCase() }), sub: t("fx.related.projet.chap_sub", { year: chap.year }), amount: eur(chap.total, locale) });
+    rows.push({ href: `${base}/chapitre/${chap.slug}`, label: t("fx.related.projet.chap", { chap: trLabel(chap.label, locale).toLowerCase() }), sub: t("fx.related.projet.chap_sub", { year: chap.year }), amount: eur(chap.total, locale), group: t("fx.related.g.context") });
   }
-  return {
-    title: t("fx.related.title"),
-    sub: arr > 0 ? t("fx.related.projet.block_sub_arr", { arr: ord, year: p.year }) : t("fx.related.projet.block_sub_paris", { year: p.year }),
-    rows,
-  };
+  if (chap) rows.push(...budgetRows((spec) => spec.chapitre === chap.slug, locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /**
@@ -322,20 +373,17 @@ export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null
       rows.push({
         href: `${base}/lieu/${l.slug}`,
         label: l.name,
-        sub: t("fx.related.lieu.peer_sub", { arr: ord }),
+        group: t("fx.related.g.same_arr"),
         amount: (l.argent_total_eur ?? 0) > 0 ? eur(l.argent_total_eur ?? 0, locale) : null,
       });
     }
     if (loadArrondissement(arr)) {
-      rows.push({ href: `${base}/investissements/arrondissement/${arr}`, label: t("fx.related.projet.arr", { arr: ord }), sub: t("fx.related.projet.arr_sub") });
+      rows.push({ href: `${base}/investissements/arrondissement/${arr}`, label: t("fx.related.projet.arr", { arr: ord }), sub: t("fx.related.projet.arr_sub"), group: t("fx.related.g.context") });
     }
   }
-  rows.push({ href: `${base}/lieux`, label: t("fx.related.lieu.hub"), sub: t("fx.related.lieu.hub_sub") });
-  return {
-    title: t("fx.related.title"),
-    sub: arr > 0 ? t("fx.related.lieu.block_sub", { arr: ord }) : null,
-    rows,
-  };
+  rows.push({ href: `${base}/lieux`, label: t("fx.related.lieu.hub"), sub: t("fx.related.lieu.hub_sub"), group: t("fx.related.g.context") });
+  rows.push(...budgetRows((spec) => (spec.lieux ?? []).includes(lieu.famille), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /**
@@ -348,12 +396,15 @@ export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlo
   const base = "/france/paris/marches";
   const file = readDataJsonOrNull<{ data?: MarcheLite[]; marches?: MarcheLite[] }>(`marches-publics/marches_${f.year}.json`);
   const cats = new Map<string, { label: string; amount: number; n: number }>();
-  for (const r of file?.data ?? file?.marches ?? []) {
+  // Un lot gagné par plusieurs entreprises compte une fois (voir sumLots).
+  const catRows = file?.data ?? file?.marches ?? [];
+  const repeats = lotRepeatFlags(catRows);
+  for (const [i, r] of catRows.entries()) {
     const label = r.categorie_libelle || r.nature || "Autres";
     const slug = slugifyLabel(label);
     if (slug === f.slug) continue;
     const cur = cats.get(slug) ?? { label, amount: 0, n: 0 };
-    cur.amount += Number(r.montant_max ?? 0);
+    cur.amount += repeats[i] ? 0 : Number(r.montant_max ?? 0);
     cur.n += 1;
     cats.set(slug, cur);
   }
@@ -366,10 +417,12 @@ export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlo
       label: trLabel(c.label, locale),
       sub: t("fx.related.categorie.peer_sub", { n: relatedInt(c.n, locale), year: f.year }),
       amount: eur(c.amount, locale),
+      group: t("fx.related.g.other_categories", { year: f.year }),
     }));
-  rows.push({ href: `${base}/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub") });
-  rows.push({ href: base, label: t("fx.related.marches.hub", { city: "Paris" }), sub: t("fx.related.marches.hub_sub") });
-  return { title: t("fx.related.title"), sub: t("fx.related.categorie.block_sub", { year: f.year }), rows };
+  rows.push({ href: `${base}/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });
+  rows.push({ href: base, label: t("fx.related.marches.hub", { city: "Paris" }), sub: t("fx.related.marches.hub_sub"), group: t("fx.related.g.context") });
+  rows.push(...budgetRows((spec) => (spec.categories ?? []).some((x) => slugifyLabel(x) === f.slug), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /**
@@ -400,9 +453,11 @@ export function themeRelated(f: ThemeSubventionsFiche, city: string, locale: L):
       label: trLabel(x.label, locale),
       sub: t("fx.related.theme.peer_sub", { n: relatedInt(x.names.size, locale), year: f.year }),
       amount: eur(x.amount, locale),
+      group: t("fx.related.g.other_themes", { year: f.year }),
     }));
-  rows.push({ href: base, label: t("fx.related.subv.hub", { city: getCity(city)?.nom ?? city }), sub: t("fx.related.subv.hub_sub") });
-  return { title: t("fx.related.title"), sub: t("fx.related.theme.block_sub", { year: f.year }), rows };
+  rows.push({ href: base, label: t("fx.related.subv.hub", { city: getCity(city)?.nom ?? city }), sub: t("fx.related.subv.hub_sub"), group: t("fx.related.g.context") });
+  if (city === "paris") rows.push(...budgetRows((spec) => (spec.themes ?? []).includes(f.theme), locale));
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 /**
@@ -427,13 +482,13 @@ export function posteRelated(p: BudgetPosteFiche, city: string, locale: L): Rela
       rows.push({
         href: `${base}/poste/${slugifyLabel(x.label)}?year=${p.year}`,
         label: trLabel(x.label, locale),
-        sub: t(p.kind === "depense" ? "fx.related.poste.peer_dep" : "fx.related.poste.peer_rec", { year: p.year }),
         amount: eur(x.value, locale),
+        group: t("fx.related.g.other_postes", { year: p.year }),
       });
     }
   }
-  rows.push({ href: `${base}?year=${p.year}`, label: t("fx.related.poste.hub", { city: getCity(city)?.nom ?? city, year: p.year }), sub: t("fx.related.poste.hub_sub") });
-  return { title: t("fx.related.title"), sub: t(p.kind === "depense" ? "fx.related.poste.block_sub_dep" : "fx.related.poste.block_sub_rec", { year: p.year }), rows };
+  rows.push({ href: `${base}?year=${p.year}`, label: t("fx.related.poste.hub", { city: getCity(city)?.nom ?? city, year: p.year }), sub: t("fx.related.poste.hub_sub"), group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows };
 }
 
 type ArrLens = "invest" | "logement" | "garanties";
@@ -486,12 +541,12 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   ];
   const at = seq.indexOf(merged && key !== "centre" && CENTRE.includes(key) ? "centre" : key);
   const hrefOf = (k: number | "centre") => (k === "centre" ? centreHref(lens)! : arrHref(lens, k)!);
-  const out = rows.slice(0, 4);
-  if (at > 0) out.push(row(lens, hrefOf(seq[at - 1]), seq[at - 1], t("fx.related.arr.prev")));
-  if (at >= 0 && at < seq.length - 1) out.push(row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")));
+  const out = rows.slice(0, 4).map((r) => ({ ...r, group: t("fx.related.g.other_lenses") }));
+  if (at > 0) out.push({ ...row(lens, hrefOf(seq[at - 1]), seq[at - 1], t("fx.related.arr.prev")), group: t("fx.related.g.prev_next") });
+  if (at >= 0 && at < seq.length - 1) out.push({ ...row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")), group: t("fx.related.g.prev_next") });
   const hub = { invest: `${ARR_BASE}/investissements`, logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
-  out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`) });
-  return { title: t("fx.related.title"), sub: t("fx.related.arr.block_sub"), rows: out };
+  out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`), group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows: out };
 }
 
 /**
@@ -527,9 +582,9 @@ export function natureRelated(n: BudgetNatureFiche, locale: L): RelatedBlock | n
     .map((x) => ({
       href: `${base}/nature/${x.key}?year=${n.year}`,
       label: NATURE_LABELS[x.key][locale],
-      sub: t("fx.related.nature.peer_sub", { year: n.year }),
       amount: eur(x.total, locale),
+      group: t("fx.related.g.other_natures", { year: n.year }),
     }));
-  rows.push({ href: `${base}?year=${n.year}`, label: t("fx.related.poste.hub", { city: "Paris", year: n.year }), sub: t("fx.related.poste.hub_sub") });
-  return { title: t("fx.related.title"), sub: t("fx.related.nature.block_sub", { year: n.year }), rows };
+  rows.push({ href: `${base}?year=${n.year}`, label: t("fx.related.poste.hub", { city: "Paris", year: n.year }), sub: t("fx.related.poste.hub_sub"), group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows };
 }

@@ -87,11 +87,8 @@ export type EntityPageConfig<D> = {
     bodyWrapper?: "none";
   };
   drawer: {
-    /**
-     * true → le drawer lit la locale (readLocale). Les autres drawers restent
-     * FR-hardcodé comme avant le refacto — on ne rajoute pas de lecture de
-     * cookies là où il n'y en avait pas.
-     */
+    /** Unused since 2026-09-13: every drawer reads the locale. Kept optional
+     *  so the configs that still set it need no edit. */
     usesLocale?: boolean;
     kicker: (d: D, locale: EntityLocale) => ReactNode;
     title: (d: D, locale: EntityLocale) => ReactNode;
@@ -105,6 +102,23 @@ export type EntityPageConfig<D> = {
   /** Pass-through de generateStaticParams (cas lieu). */
   staticParams?: () => EntityParams[];
 };
+
+/**
+ * The SEO answer under the h1: the sentence, then its « Source : … » line in
+ * small print, as the place page already does. Both stay on the page for
+ * search engines and assistants; on screen the answer no longer pushes the
+ * fiche's number below the first screen (the project page had it at 962 px).
+ */
+function AnswerLede({ answer }: { answer: string }) {
+  const cut = answer.search(/\sSource\s?:/);
+  if (cut <= 0) return <p className="fx-page-lede fx-answer">{answer}</p>;
+  return (
+    <>
+      <p className="fx-page-lede fx-answer">{answer.slice(0, cut)}</p>
+      <p className="fx-v3-lead-src fx-answer-src">{answer.slice(cut + 1)}</p>
+    </>
+  );
+}
 
 type RouteProps = {
   params: Promise<EntityParams>;
@@ -185,7 +199,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
             >
               <div className="fx-wrap">
                 {cfg.page.header(d, locale)}
-                {seo ? <p className="fx-page-lede fx-answer">{seo.answer}</p> : null}
+                {seo ? <AnswerLede answer={seo.answer} /> : null}
                 {seo && jsonLdPath ? (
                   <PageJsonLd title={seo.title} description={seo.answer} path={jsonLdPath} locale={locale} creator={`Ville de ${cityNom}`} spatialCoverage={`${cityNom}, France`} />
                 ) : null}
@@ -225,10 +239,15 @@ export function makeEntityDrawer<D>(cfg: EntityPageConfig<D>) {
     const sp = (await props.searchParams) ?? {};
     const d = await cfg.load(params, sp);
     if (!d) return notFound();
-    const locale: EntityLocale = cfg.drawer.usesLocale
-      ? await readLocale()
-      : "fr";
+    // Every drawer follows the reader's language. Until 2026-09-13 only two
+    // configs read it and the others passed French to the header, so an
+    // English reader got « Fournisseur · 10 contrats ».
+    const locale: EntityLocale = await readLocale();
     const dr = cfg.drawer;
+    // The drawer is where in-site clicks land, so it ends like the page, on
+    // « Voir aussi ». It used to stop at the fiche body: six drawers had a
+    // single link into the rest of the site.
+    const related = cfg.related?.(d, locale, params) ?? null;
     // `display: contents` : le wrapper ne génère aucune boîte. Sans ça, Next
     // peut scroller la page d'arrière-plan vers ce div (vide, en fin de
     // document) quand il applique son scroll de navigation — notamment sur
@@ -248,6 +267,7 @@ export function makeEntityDrawer<D>(cfg: EntityPageConfig<D>) {
           breadcrumbLabel={dr.breadcrumbLabel(d, locale)}
         >
           {dr.children(d, locale)}
+          <RelatedLinks block={related} />
         </DetailDrawer>
       </div>
     );

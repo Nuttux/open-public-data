@@ -1,6 +1,7 @@
 import { GENERATED_DATA_INVENTORY as INV } from "./dataContext.generated";
 import { createScopedReader } from "../scopedRead";
 import { CHAT_SCOPES } from "../scopes";
+import { lotInfo, lotRepeatFlags, sumLots } from "../../marches-shape";
 
 // Toolset du scope « paris ». Le reader est lié au scope à la construction :
 // aucun outil d'ici ne peut atteindre les exports d'une autre ville, et aucun
@@ -54,6 +55,7 @@ type SubvTrendsFile = {
 type MarcheRow = {
   objet?: string;
   nature?: string;
+  categorie_libelle?: string;
   fournisseur_nom?: string;
   fournisseur_siret?: string | null;
   is_multiattributaire?: boolean;
@@ -260,20 +262,36 @@ export function search_beneficiaire({ query, year, limit = 12 }: { query: string
   };
 }
 
+/**
+ * Ventilation d'une année de marchés où un lot gagné par plusieurs entreprises
+ * compte une fois (voir sumLots) : le fichier de tendances publié additionne
+ * chaque titulaire. Le nombre de marchés compte, lui, chaque titulaire.
+ */
+function lotBreakdown(rows: MarcheRow[], keyOf: (r: MarcheRow) => string) {
+  const repeats = lotRepeatFlags(rows);
+  const by = new Map<string, { label: string; montant: number; count: number }>();
+  rows.forEach((r, i) => {
+    const label = keyOf(r);
+    const cur = by.get(label) ?? { label, montant: 0, count: 0 };
+    if (!repeats[i]) cur.montant += r.montant_max ?? 0;
+    cur.count += 1;
+    by.set(label, cur);
+  });
+  return [...by.values()].sort((a, b) => b.montant - a.montant);
+}
+
 export function get_marches_summary({ year, top_n = 10 }: { year: number; top_n?: number }) {
   if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.marches?.years };
   const d = loadJson<MarchesYearFile>(`marches-publics/marches_${year}.json`);
   if (!d) return { error: `Pas de marchés pour ${year}`, annees_disponibles: INV.marches?.years };
-  const trends = loadJson<MarchesTrendsFile>("marches-publics/marches_tendances.json");
-  const yTrend = trends?.years.find((y) => y.year === year);
   const top = [...d.data].sort((a, b) => (b.montant_max ?? 0) - (a.montant_max ?? 0)).slice(0, Math.min(top_n, 25));
   return {
     year,
     note: d.note ?? "montant_max = enveloppe pluriannuelle (plafond contractuel), pas une dépense annuelle",
-    enveloppe_max_totale: round0(d.enveloppe_max_totale),
+    enveloppe_max_totale: round0(sumLots(d.data)),
     nb_marches: d.nb_marches,
-    par_nature: yTrend?.par_nature?.map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count })),
-    top_categories: yTrend?.par_categorie?.slice(0, 8).map((c) => ({ label: c.label, montant: round0(c.montant), count: c.count })),
+    par_nature: lotBreakdown(d.data, (r) => r.nature || "Autres").map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count })),
+    top_categories: lotBreakdown(d.data, (r) => r.categorie_libelle || r.nature || "Autres").slice(0, 8).map((c) => ({ label: c.label, montant: round0(c.montant), count: c.count })),
     top_contrats: top.map((r) => ({
       objet: r.objet,
       nature: r.nature,
@@ -295,10 +313,11 @@ export function search_marches({ query, year, min_montant = 0, limit = 12 }: { q
   for (const y of years) {
     const d = loadJson<MarchesYearFile>(`marches-publics/marches_${y}.json`);
     if (!d) continue;
-    for (const r of d.data) {
+    const repeats = lotRepeatFlags(d.data);
+    for (const [i, r] of d.data.entries()) {
       if ((r.montant_max ?? 0) < min_montant) continue;
       if (!matchesAll(fold(`${r.objet ?? ""} ${r.fournisseur_nom ?? ""}`), toks)) continue;
-      total += r.montant_max ?? 0;
+      if (!repeats[i]) total += r.montant_max ?? 0;
       results.push({
         year: y,
         objet: r.objet,
@@ -325,12 +344,19 @@ export function get_marches_tendances() {
   if (!d) return { error: "absent" };
   return {
     note: d.note,
-    years: d.years.map((y) => ({
-      year: y.year,
-      enveloppe_totale: round0(y.enveloppe_totale),
-      nb_marches: y.nb_marches,
-      par_nature: y.par_nature?.map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count })),
-    })),
+    // Recalculé sur les lignes de chaque année quand elles sont là : le fichier
+    // de tendances additionne chaque titulaire d'un lot partagé.
+    years: d.years.map((y) => {
+      const rows = loadJson<MarchesYearFile>(`marches-publics/marches_${y.year}.json`)?.data;
+      return {
+        year: y.year,
+        enveloppe_totale: round0(rows ? sumLots(rows) : y.enveloppe_totale),
+        nb_marches: y.nb_marches,
+        par_nature: rows
+          ? lotBreakdown(rows, (r) => r.nature || "Autres").map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count }))
+          : y.par_nature?.map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count })),
+      };
+    }),
   };
 }
 
@@ -344,10 +370,13 @@ export function get_top_fournisseurs({ limit = 15, year }: { limit?: number; yea
   for (const y of years) {
     const d = loadJson<MarchesYearFile>(`marches-publics/marches_${y}.json`);
     if (!d) continue;
-    for (const r of d.data) {
+    // Un lot partagé ne se range sous aucun titulaire ; il compte une fois avec
+    // les marchés multiattributaires (voir lotInfo).
+    const lots = lotInfo(d.data);
+    for (const [i, r] of d.data.entries()) {
       const montant = r.montant_max ?? 0;
-      if (r.is_multiattributaire || fold(r.fournisseur_nom ?? "") === "marche multiattributaire") {
-        multiTotal += montant;
+      if (r.is_multiattributaire || fold(r.fournisseur_nom ?? "") === "marche multiattributaire" || lots[i].holders > 1) {
+        if (!lots[i].repeat) multiTotal += montant;
         multiNb += 1;
         continue;
       }

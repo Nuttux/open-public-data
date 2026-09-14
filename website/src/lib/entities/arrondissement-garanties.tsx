@@ -1,9 +1,11 @@
 import ArrondissementGarantiesFiche from "@/components/fusion/ArrondissementGarantiesFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { fmtBillions, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadArrondissementGaranties } from "@/lib/fusion-data";
 import { eur, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
 import { arrondissementRelated } from "@/lib/entities/related";
+import { sufOrdinal } from "@/lib/fmt";
 
 type D = NonNullable<ReturnType<typeof loadArrondissementGaranties>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -94,10 +96,9 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
     body: ({ arr, year }) => <ArrondissementGarantiesFiche arr={arr} year={year} />,
   },
   drawer: {
-    kicker: () => (
-      <span className="fx-kicker-mono">Arrondissement · garanties d'emprunt</span>
-    ),
-    title: ({ arr }) => whereFr(arr.arr),
+    kicker: ({ year }, locale) => relatedT(locale)("fx.drawer.kicker.garanties", { year }),
+    // The arrondissement titles match the investment and housing fiches (« 13ᵉ arrondissement »).
+    title: ({ arr }, locale) => (arr.arr === 0 ? "Paris Centre" : `${arr.arr}${sufOrdinal(arr.arr, locale)} arrondissement`),
     shareUrl: ({ arr, requestedYear }) =>
       `/france/paris/dette/garanties/arrondissement/${arr.arr}${requestedYear ? `?year=${requestedYear}` : ""}`,
     shareText: ({ arr, year }) =>

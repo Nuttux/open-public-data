@@ -10,6 +10,7 @@ import { trLabel } from "@/lib/label-translate";
 import { V3Foot, V3Hero, V3Lead, V3Row, V3Section } from "@/components/fiche/v3";
 import { useCity } from "./CityContext";
 import Tip from "./Tip";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 /**
  * Fiche contrat v3 (2026-09-03) — sur le kit `fiche/v3` : la phrase « quoi
@@ -27,6 +28,7 @@ export default function ContratFiche({
   ranking,
   projet,
   fournisseurHref: fournisseurHrefProp,
+  lieu,
 }: {
   contrat: ContratFicheType;
   vulgarization?: MarcheVulgarization | null;
@@ -36,6 +38,8 @@ export default function ContratFiche({
   /** Lien vers la fiche du titulaire quand elle ne suit pas le schéma des villes
    *  (communes : /fr/city/<slug>/fournisseur/<siren>) ; null = pas de fiche. */
   fournisseurHref?: string | null;
+  /** Carte du lieu concerné, posée sous le chiffre. */
+  lieu?: React.ReactNode;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -86,9 +90,25 @@ export default function ContratFiche({
   if (decp?.lieuExecution) ctx.push(`${t("fx.fiche.contrat.ctx.lieu")} ${decp.lieuExecution}`);
   if (decp?.hasConsiderationSociale) ctx.push(t("fx.fiche.contrat.tag.clauses_sociales").toLowerCase());
   if (decp?.hasConsiderationEnvironnementale) ctx.push(t("fx.fiche.contrat.tag.clauses_env").toLowerCase());
+  // « Travaux · Travaux construction » : un intitulé qu'un autre prolonge est retiré.
+  for (let i = ctx.length - 1; i >= 0; i--) {
+    const c = ctx[i].toLowerCase();
+    if (ctx.some((o, j) => j !== i && o.toLowerCase() !== c && o.toLowerCase().startsWith(c))) ctx.splice(i, 1);
+  }
 
   const quoi = vulgarization ? cap(en && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement) : null;
-  const libelleBrut = normalizeObjet(contrat.objet) !== contrat.objet || vulgarization?.objet_clair ? contrat.objet : null;
+  // Le titre du tiroir montre déjà le libellé clair ; le libellé de la source
+  // n'est redit dessous que s'il dit autre chose (il répétait souvent le titre mot pour mot).
+  const shownTitle = (en ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+  // Comparaison à plat : casse, apostrophes et espaces ignorés. Le libellé brut
+  // qui ne fait qu'ajouter une précision en fin de titre (« … à Paris 8ème »)
+  // redit encore le titre : on ne le montre pas non plus.
+  // Accents retirés aussi : le libellé clair écrit « 8e » là où la source écrit « 8ème ».
+  const flat = (x: string) => x.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’`´]/g, "'").replace(/\s+/g, " ").replace(/[\s.,;:–-]+$/u, "").trim().toLowerCase();
+  const brut = flat(contrat.objet);
+  const titre = flat(shownTitle ?? "");
+  const redit = titre.length > 0 && (brut.startsWith(titre) || titre.startsWith(brut));
+  const libelleBrut = (normalizeObjet(contrat.objet) !== contrat.objet || vulgarization?.objet_clair) && !redit ? contrat.objet : null;
 
   /* ── Concurrence ─────────────────────────────────────────────────────── */
   const offres = decp?.offresRecues ?? null;
@@ -156,6 +176,8 @@ export default function ContratFiche({
         </div>
       )}
 
+      {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
+
       {projet && (
         <V3Section title={t("fx.fiche.contrat.h.sert")} sub={t("fx.fiche.contrat.chantier.hedge_v3")}>
           <Link href={`${basePath}/investissements/projet/${projet.id}`} scroll={false} className="fx-v3-row fx-row-link" style={{ alignItems: "center", gap: 14 }}>
@@ -175,7 +197,7 @@ export default function ContratFiche({
         ) : (
           <V3Row
             href={hasFournisseurFiche ? fournisseurHref : null}
-            label={<span style={{ fontWeight: 600, color: "var(--ink)" }}>{contrat.fournisseur}</span>}
+            label={<span style={{ fontWeight: 600, color: "var(--ink)" }}>{displayOrgName(contrat.fournisseur)}</span>}
             subText={[
               fournisseurSirene?.libelle_activite ? cap(fournisseurSirene.libelle_activite) : null,
               fournisseurSirene?.commune ? `${t("fx.fiche.contrat.siege").toLowerCase()} ${fournisseurSirene.commune}${fournisseurSirene.code_postal ? ` (${fournisseurSirene.code_postal})` : ""}` : null,
