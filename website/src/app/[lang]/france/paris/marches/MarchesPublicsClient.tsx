@@ -42,11 +42,12 @@ const SCENE_CAP = 5;
  * en euros qui fait la somme du chiffre, avec un commutateur pour la découper
  * par catégorie, nombre d'offres ou entreprise (mesuré : filter_change field
  * scene_group) — en barres, ou en mosaïque avec les barres repliées dessous
- * (`variant`, comparaison du 2026-09-14) —, des lignes qui mènent aux fiches,
- * le rail des années, la recherche (le champ seul, les résultats en lignes),
- * « Comprendre » en replis, « Voir aussi » et la section suivante.
- * Deux écrans portent tout sur un téléphone ; sur ordinateur, le chiffre et la
- * scène côte à côte au premier écran (.fx-sec-grid).
+ * (`variant`, comparaison du 2026-09-14) —, le rail des années sous le chiffre,
+ * la photo d'un contrat, des lignes qui mènent aux fiches, « Comprendre » en
+ * replis, « Voir aussi », la recherche (le champ seul, les résultats en lignes)
+ * et la section suivante.
+ * Deux écrans portent tout sur un téléphone ; sur ordinateur, des bandes : chaque
+ * rangée de .fx-sec-grid ouvre sur deux titres à la même ligne (2026-09-15).
  */
 export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }: {
   idx: MarchesIndex;
@@ -215,6 +216,14 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 move={move}
                 shareTitle={shareTitle}
               />
+              {/* The number's own history sits under it, as on the fiches: a kicker, not a section title. */}
+              {series.length >= RAIL_MIN ? (
+                <div className="fx-sec-years" data-section="years">
+                  <div className="fx-page-kicker">{t("fx.sec.years")}</div>
+                  <p className="fx-v3-h2sub">{t("fx.sec.mp.years_sub")}</p>
+                  <AnneesRail rows={series} />
+                </div>
+              ) : null}
             </div>
 
             <div className="fx-sec-a-scene">
@@ -249,16 +258,17 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
               </V3Section>
             </div>
 
-            <div className="fx-sec-a-photo" data-section={photo ? "photo" : undefined}>
+            <div className="fx-sec-a-photo">
               {photo ? (
-                // Framed from the contract's side: the image and the title open the
-                // contract's fiche; the worksite has its own door into Investissements.
+                // A titled block like the others, so it faces « Les plus gros contrats »
+                // on the same line. Framed from the contract's side: the image and the
+                // title open the contract's fiche; the worksite has its own door.
+                <V3Section id="photo" title={fill(t("fx.sec.mp.photo_kicker"), { year: d.year })}>
                 <figure className="fx-sec-photo">
                   <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="fx-sec-photo-img" aria-hidden="true" tabIndex={-1}>
                     <img src={photo.photoUrl!} alt="" loading="lazy" />
                   </Link>
                   <figcaption className="fx-sec-photo-cap">
-                    <span className="k">{fill(t("fx.sec.mp.photo_kicker"), { year: d.year })}</span>
                     <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</Link>
                     {/* The project name without its programme label (« Place Saint-Augustin - Embellir votre quartier »). */}
                     <span className="s">
@@ -268,6 +278,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                     {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
                   </figcaption>
                 </figure>
+                </V3Section>
               ) : null}
             </div>
 
@@ -275,20 +286,6 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
               <V3Section id="contracts" title={fill(t("fx.sec.mp.h.contracts"), { year: d.year })}>
                 {contrats.shown.map(ContratRow)}
                 {contrats.rest.length > 0 && <V3Fold id="more-contracts" text label={t("fx.v3.voir_plus")}>{contrats.rest.map(ContratRow)}</V3Fold>}
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-years">
-              {series.length >= RAIL_MIN ? (
-                <V3Section id="years" title={t("fx.sec.years")} sub={t("fx.sec.mp.years_sub")}>
-                  <AnneesRail rows={series} />
-                </V3Section>
-              ) : null}
-            </div>
-
-            <div className="fx-sec-a-search">
-              <V3Section id="search" title={t("fx.sec.mp.h.search")}>
-                <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
               </V3Section>
             </div>
 
@@ -318,6 +315,13 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 )}
                 <Door href={`${marchesBase}/contrats`} hard title={t("fx.sec.mp.r.all")} sub={t("fx.sec.mp.r.all_sub")} />
                 <Door href={`${cityBase}/budget`} hard title={t("fx.sec.mp.r.budget")} sub={t("fx.sec.mp.r.budget_sub")} />
+              </V3Section>
+            </div>
+
+            {/* Last before the next section: where you go when the page did not answer. */}
+            <div className="fx-sec-a-search">
+              <V3Section id="search" title={t("fx.sec.mp.h.search")}>
+                <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
               </V3Section>
             </div>
 
