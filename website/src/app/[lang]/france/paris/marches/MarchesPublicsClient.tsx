@@ -253,9 +253,10 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="fx-sec-photo">
                   <img src={photo.photoUrl!} alt="" loading="lazy" />
                   <span className="fx-sec-photo-cap">
-                    <span className="k">{t("fx.sec.mp.photo_kicker")}</span>
+                    <span className="k">{fill(t("fx.sec.mp.photo_kicker"), { year: d.year })}</span>
                     <span className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</span>
-                    <span className="s">{[(locale === "en" && photo.projetNomEn) || photo.projetNom, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
+                    {/* The project name without its programme label (« Place Saint-Augustin - Embellir votre quartier »). */}
+                    <span className="s">{[((locale === "en" && photo.projetNomEn) || photo.projetNom || "").split(/\s+-\s+/)[0] || null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
                     {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
                   </span>
                 </Link>

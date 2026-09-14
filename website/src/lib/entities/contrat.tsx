@@ -19,6 +19,7 @@ import {
 } from "@/lib/fusion-data";
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { rowObjet } from "@/lib/objet-normalizer";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 /** The readable object of a contract without a clear title: title and lot, at a clause. */
 const readableObjet = (raw: string) => { const r = rowObjet(raw, 140); return [r.title, r.detail].filter(Boolean).join(" · "); };
@@ -103,18 +104,22 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     const amt = eur(c.montantMax, locale);
     const objetFr = v?.objet_clair || readableObjet(c.objet);
     const objet = locale === "en" ? (v?.objet_clair_en || objetFr) : objetFr;
-    const kind = [c.nature, c.categorie].filter(Boolean).map((x) => x.toLowerCase()).join(", ");
+    // « fournitures, fournitures courantes et services » said the same thing twice:
+    // the category alone when it starts with the nature's word.
+    const kindParts = [c.nature, c.categorie].filter(Boolean).map((x) => x.toLowerCase());
+    const kind = kindParts.length === 2 && kindParts[1].startsWith(kindParts[0].split(" ")[0]) ? kindParts[1] : kindParts.join(", ");
+    const who = c.fournisseur === "MARCHE MULTIATTRIBUTAIRE" ? (locale === "en" ? "several holders" : "plusieurs titulaires") : displayOrgName(c.fournisseur);
     const date = cityDataDate(city, "marches-publics/index.json", locale);
     const src = `DECP via ${cityPortal(city)}`;
     if (locale === "en") {
       return {
         title: `${clip(objet, 55)}: ${amt} contract (${cityNom}, ${c.year})`,
-        answer: `In ${c.year}, the City of ${cityNom} awarded contract ${c.numero}, "${objet}"${kind ? ` (${kind})` : ""}, to ${c.fournisseur} for a maximum of ${amt}. ${sourceLine("en", src, date)}`,
+        answer: `In ${c.year}, the City of ${cityNom} awarded contract ${c.numero}, "${objet}"${kind ? ` (${kind})` : ""}, to ${who} for a maximum of ${amt}. ${sourceLine("en", src, date)}`,
       };
     }
     return {
       title: `${clip(objet, 55)} : marché de ${amt} (${cityNom}, ${c.year})`,
-      answer: `En ${c.year}, la Ville de ${cityNom} a notifié à ${c.fournisseur} le marché ${c.numero}, « ${objet} »${kind ? ` (${kind})` : ""}, pour une enveloppe maximale de ${amt}. ${sourceLine("fr", src, date)}`,
+      answer: `En ${c.year}, la Ville de ${cityNom} a notifié à ${who} le marché ${c.numero}, « ${objet} »${kind ? ` (${kind})` : ""}, pour une enveloppe maximale de ${amt}. ${sourceLine("fr", src, date)}`,
     };
   },
   related: ({ contrat }, locale) => contratRelated(contrat, city, locale),

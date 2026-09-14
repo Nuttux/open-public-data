@@ -5399,7 +5399,9 @@ export type MarcheCategorieFiche = {
 /** Charge la fiche agrégée pour une catégorie de marchés publics. */
 export function loadMarcheCategorie(slug: string, requestedYear?: number): MarcheCategorieFiche | null {
   const idx = readJson<MarchesIndexRaw>("marches-publics/index.json");
-  const years = (idx.availableYears ?? []).slice().sort((a, b) => a - b);
+  // Complete years only, like the section page: the current year is still filling up.
+  const currentYearCat = new Date().getFullYear();
+  const years = (idx.availableYears ?? []).filter((y) => y < currentYearCat).sort((a, b) => a - b);
 
   // Le schéma des catégories DECP a changé entre 2024 et 2025/2026 : les
   // libellés granulaires ("entretien des espaces verts") existaient pre-2025,

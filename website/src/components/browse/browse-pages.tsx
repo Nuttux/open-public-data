@@ -178,7 +178,7 @@ export function makeFournisseursBrowse(city: string) {
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/france/${city}/marches`}
         title={q.letter ? (en ? `Suppliers starting with ${q.letter}` : `Fournisseurs, lettre ${q.letter}`) : en ? `Every supplier of the City of ${cityNom}, A to Z` : `Tous les fournisseurs de la Ville de ${cityNom}, de A à Z`}
-        intro={en ? `${intFr(list.length, "en")} companies with at least one public contract, each with its own page. Amounts are the maximum notified, not what was paid.` : `${intFr(list.length, "fr")} entreprises titulaires d'au moins un marché, chacune avec sa page. Les montants sont les plafonds notifiés, pas la dépense.`}
+        intro={en ? `${intFr(list.length, "en")} companies with at least one public contract, each with its own page. Amounts are the maximum each contract allows.` : `${intFr(list.length, "fr")} entreprises titulaires d'au moins un marché, chacune avec sa page. Les montants sont les maximums prévus par contrat.`}
         rail={rail}
         railLabel={en ? "By first letter" : "Par première lettre"}
         items={items}
@@ -247,7 +247,7 @@ export function makeContratsBrowse(city: string) {
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/france/${city}/marches`}
         title={q.year ? (en ? `Contracts notified in ${q.year}` : `Marchés notifiés en ${q.year}`) : en ? `Every public contract of the City of ${cityNom}, by year` : `Tous les marchés publics de la Ville de ${cityNom}, par année`}
-        intro={q.year ? (en ? `${intFr(n, "en")} contracts notified in ${q.year}, biggest first. Amounts are the maximum notified, not what was paid.` : `${intFr(n, "fr")} marchés notifiés en ${q.year}, du plus gros au plus petit. Les montants sont les plafonds notifiés, pas la dépense.`) : en ? "Pick a year." : "Choisissez une année."}
+        intro={q.year ? (en ? `${intFr(n, "en")} contracts notified in ${q.year}, biggest first. Amounts are the maximum each contract allows.` : `${intFr(n, "fr")} marchés notifiés en ${q.year}, du plus gros au plus petit. Les montants sont les maximums prévus par contrat.`) : en ? "Pick a year." : "Choisissez une année."}
         rail={rail}
         railLabel={en ? "By year" : "Par année"}
         items={items}

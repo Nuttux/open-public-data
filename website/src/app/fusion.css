@@ -4067,7 +4067,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Même règle sur la page d'un lieu : le descripteur en gris, les liens en ocre. */
 .theme-fusion .fx-page-kicker--links { color: var(--muted); }
 /* Kicker links are links: blue. The ocre is the colour of movement, nowhere else. */
-.theme-fusion .fx-page-kicker--links a, .theme-fusion .fx-page-kicker a { color: var(--bleu); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.theme-fusion .fx-page-kicker--links a, .theme-fusion .fx-page-kicker a, .theme-fusion a.fx-page-kicker { color: var(--bleu); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .theme-fusion .fx-page-kicker--links a:hover { color: var(--ink); }
 .theme-fusion .fx-page-kicker--links a:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-drawer-kicker-sep { color: var(--muted); }

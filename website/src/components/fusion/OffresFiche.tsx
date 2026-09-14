@@ -19,7 +19,10 @@ import { useFmt } from "@/lib/use-fmt";
  */
 export default function OffresFiche({ fiche }: { fiche: MarchesOffresFiche }) {
   const t = useT();
-  const { fmtInt, fmtCompactEur } = useFmt();
+  const fmt = useFmt();
+  const { fmtCompactEur } = fmt;
+  // A visible thousands space in running text (Inter draws the narrow one as nothing).
+  const fmtInt = (n: number) => fmt.fmtInt(n).replace(/ /g, " ");
   const { locale } = useLocale();
   const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);
