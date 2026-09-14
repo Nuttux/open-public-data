@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "@/components/LocalizedLink";
 import { usePathname } from "@/lib/navigation";
 import { citySlugFromPathname } from "@/lib/methodology";
@@ -14,6 +15,7 @@ import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 import { cutObjet, shortObjet } from "@/lib/objet-normalizer";
 import { displayOrgName } from "@/lib/fournisseur-display";
 import { isNamedTitulaire } from "@/lib/marches-shape";
@@ -23,22 +25,24 @@ import type { MarchesPageData } from "@/lib/fusion-data";
 
 type MarchesIndex = { availableYears?: number[] };
 
+/** The four ways the scene cuts the year's contracts. One chart, one switch. */
+type Group = "categorie" | "nature" | "offres" | "entreprise";
+const GROUPS: Group[] = ["categorie", "nature", "offres", "entreprise"];
+
 const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
 const CONTRATS_CAP = 5;
-const CATEGORIES_CAP = 5;
+const SCENE_CAP = 5;
 
 /**
  * La section « Contrats publics » sur la grammaire des fiches (2026-09-14) :
  * la réponse (un chiffre, sa phrase, l'année en menu, « Partager »), UNE scène
- * en euros qui fait la somme du chiffre (ce que la Ville achète, en barres qui
- * ouvrent les fiches), des lignes qui mènent aux fiches, la concurrence en
- * troisième, le rail des années, la recherche (le champ seul, les résultats en
- * lignes), « Comprendre » en replis, « Voir aussi » et la section suivante.
+ * en euros qui fait la somme du chiffre, avec un commutateur pour la découper
+ * par catégorie, nature, nombre d'offres ou entreprise (mesuré :
+ * filter_change field scene_group), des lignes qui mènent aux fiches, le rail
+ * des années, la recherche (le champ seul, les résultats en lignes),
+ * « Comprendre » en replis, « Voir aussi » et la section suivante.
  * Deux écrans portent tout sur un téléphone ; sur ordinateur, le chiffre et la
  * scène côte à côte au premier écran (.fx-sec-grid).
- *
- * Chaque bloc porte un data-section stable pour section_view / link_click ;
- * les replis un data-fold ; le menu d'année et les partages leurs événements.
  */
 export default function MarchesPublicsClient({ idx, d, doors }: {
   idx: MarchesIndex;
@@ -48,6 +52,7 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const track = useTrack();
   const { fmtInt, fmtDec, fmtCompactEur } = useFmt();
   const fmtEur = useFmtEur();
   const citySlug = citySlugFromPathname(usePathname());
@@ -59,18 +64,60 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
   const total = fmtCompactEur(d.total);
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
   const Amt = ({ n }: { n: number }) => { const f = fmtEur(n); return <span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{f.v}<span className="u">{f.u}</span></span>; };
+  const contractsCount = (n: number) => fill(t(n === 1 ? "fx.categorie.contrats_count_one" : "fx.categorie.contrats_count_many"), { n: fmtInt(n) });
+  // The source's residual labels (« Pas de CCAG » = no standard terms, « Marché »
+  // = unspecified type) say nothing to a reader: one word, « Autres ».
+  const OTHER = new Set(["Pas de CCAG", "Marché", "Autres", "Autre", "Non précisé"]);
+  const sceneLabel = (raw: string) => (OTHER.has(raw) ? t("fx.sec.mp.other") : trLabel(raw, locale));
 
-  // La scène : seulement quand le nombre d'offres est publié pour l'exercice.
+  // The scene: the same euros, four cuts. Offers are only published from 2024.
+  const [group, setGroup] = useState<Group>("categorie");
   const c = d.concurrence;
   const coveragePct = c.coverageTotal > 0 ? (c.coverageCount / c.coverageTotal) * 100 : 0;
   const hasCompetition = coveragePct >= 20 && c.coverageCount >= 50;
-  const bucketRows: BarRow[] = c.buckets.map((b) => ({
-    key: b.bucket,
-    label: t(`fx.mp.s05.bucket.${b.bucket}`),
-    value: b.count,
-    text: fmtInt(b.count),
-    tone: b.bucket === "1" ? "ink" : "blue",
-  }));
+  const sceneRows: Record<Group, BarRow[]> = {
+    categorie: d.byCategory.map((cat) => ({
+      key: cat.category,
+      label: sceneLabel(cat.category),
+      value: cat.amount,
+      text: eurTxt(cat.amount),
+      sub: contractsCount(cat.count),
+      href: hasCategorieFiche ? `${marchesBase}/categorie/${slugifyLabel(cat.category)}` : null,
+    })),
+    nature: d.byNature.map((n) => ({
+      key: n.nature,
+      label: sceneLabel(n.nature),
+      value: n.amount,
+      text: eurTxt(n.amount),
+      sub: contractsCount(n.count),
+    })),
+    offres: hasCompetition
+      ? c.buckets.map((b) => ({
+          key: b.bucket,
+          label: t(`fx.mp.s05.bucket.${b.bucket}`),
+          value: b.amount,
+          text: eurTxt(b.amount),
+          sub: contractsCount(b.count),
+        }))
+      : [],
+    entreprise: d.top10.map((ti) => ({
+      key: ti.siret || ti.name,
+      label: displayOrgName(ti.name),
+      value: ti.amount,
+      text: eurTxt(ti.amount),
+      sub: contractsCount(ti.nbContrats),
+      href: ti.siret ? `${marchesBase}/fournisseur/${encodeURIComponent(ti.siret)}` : null,
+    })),
+  };
+  const sceneFold: Partial<Record<Group, { id: string; label: string }>> = {
+    categorie: { id: "more-categories", label: fill(t("fx.sec.mp.categories_more"), { n: fmtInt(d.byCategory.length) }) },
+    entreprise: { id: "more-companies", label: t("fx.v3.voir_plus") },
+  };
+  const pickGroup = (g: Group) => {
+    if (g === group) return;
+    track("filter_change", { page: "marches-publics", field: "scene_group", value: g });
+    setGroup(g);
+  };
 
   const contrats = foldRest(d.topContrats, CONTRATS_CAP);
   const ContratRow = (x: MarchesPageData["topContrats"][number]) => {
@@ -86,23 +133,7 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
     );
   };
 
-  const categoryRows: BarRow[] = d.byCategory.map((cat) => ({
-    key: cat.category,
-    label: trLabel(cat.category, locale),
-    value: cat.amount,
-    text: eurTxt(cat.amount),
-    sub: fill(t(cat.count === 1 ? "fx.categorie.contrats_count_one" : "fx.categorie.contrats_count_many"), { n: fmtInt(cat.count) }),
-    href: hasCategorieFiche ? `${marchesBase}/categorie/${slugifyLabel(cat.category)}` : null,
-  }));
-
   const series = d.yearsSummary.filter((y) => y.total > 0).map((y) => ({ year: y.year, amount: y.total }));
-  const top = foldRest(d.top10, 5);
-  const TitulaireRow = (ti: MarchesPageData["top10"][number]) => (
-    <V3Row key={ti.siret || ti.name} href={ti.siret ? `${marchesBase}/fournisseur/${encodeURIComponent(ti.siret)}` : null}
-      label={displayOrgName(ti.name)} subText={fill(t(ti.nbContrats === 1 ? "fx.categorie.contrats_count_one" : "fx.categorie.contrats_count_many"), { n: fmtInt(ti.nbContrats) })}
-      amount={<Amt n={ti.amount} />} />
-  );
-
   const shareTitle = fill(t("fx.sec.mp.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
 
   return (
@@ -127,11 +158,29 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
             </div>
 
             <div className="fx-sec-a-scene">
-              <V3Section id="categories" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })}>
-                <div id="achats">
-                  <Bars rows={categoryRows} cap={CATEGORIES_CAP} foldId="more-categories" foldLabel={fill(t("fx.sec.mp.categories_more"), { n: fmtInt(d.byCategory.length) })} />
+              <V3Section id="scene" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })}>
+                <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.mp.g.aria")}>
+                  {GROUPS.map((g) => (
+                    <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.mp.g.${g}`)}</button>
+                  ))}
                 </div>
-                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="categories" anchor="achats" />
+                <div id="achats">
+                  {group === "offres" && hasCompetition ? (
+                    <p className="fx-sec-sentence" id="concurrence">
+                      <b>{fill(t("fx.sec.mp.conc.bold"), { single: fmtInt(c.monoCount), known: fmtInt(c.coverageCount) })}</b>
+                      {t("fx.sec.mp.conc.rest")}
+                    </p>
+                  ) : null}
+                  {group === "offres" && !hasCompetition ? (
+                    <p className="fx-sec-sentence">{t("fx.sec.mp.conc.na")}</p>
+                  ) : (
+                    <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} />
+                  )}
+                  {group === "offres" && hasCompetition && coveragePct < 95 ? (
+                    <p className="fx-v3-note">{fill(t("fx.mp.s05.note"), { n: fmtInt(c.coverageCount), total: fmtInt(c.coverageTotal), pct: fmtDec(coveragePct, 0) })}</p>
+                  ) : null}
+                </div>
+                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="achats" />
               </V3Section>
             </div>
 
@@ -140,26 +189,6 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
                 {contrats.shown.map(ContratRow)}
                 {contrats.rest.length > 0 && <V3Fold id="more-contracts" text label={t("fx.v3.voir_plus")}>{contrats.rest.map(ContratRow)}</V3Fold>}
               </V3Section>
-            </div>
-
-            <div className="fx-sec-a-conc">
-              {hasCompetition ? (
-                <V3Section id="competition" title={fill(t("fx.sec.mp.h.competition"), { year: d.year })}>
-                  <p className="fx-sec-sentence" id="concurrence">
-                    <b>{fill(t("fx.sec.mp.conc.bold"), { single: fmtInt(c.monoCount), known: fmtInt(c.coverageCount) })}</b>
-                    {t("fx.sec.mp.conc.rest")}
-                  </p>
-                  <Bars rows={bucketRows} />
-                  <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="competition" anchor="concurrence" />
-                  {coveragePct < 95 ? (
-                    <p className="fx-v3-note">{fill(t("fx.mp.s05.note"), { n: fmtInt(c.coverageCount), total: fmtInt(c.coverageTotal), pct: fmtDec(coveragePct, 0) })}</p>
-                  ) : null}
-                </V3Section>
-              ) : (
-                <V3Section id="competition" title={fill(t("fx.sec.mp.h.competition"), { year: d.year })}>
-                  <p className="fx-sec-sentence">{t("fx.sec.mp.conc.na")}</p>
-                </V3Section>
-              )}
             </div>
 
             <div className="fx-sec-a-years">
@@ -180,12 +209,6 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
               <V3Section id="understand" title={t("fx.sec.understand")}>
                 <V3Fold id="plafond" label={t("fx.sec.mp.u.plafond")}><p className="fx-v3-sentence">{t("fx.sec.mp.u.plafond_body")}</p></V3Fold>
                 <V3Fold id="single-bid" label={t("fx.sec.mp.u.single")}><p className="fx-v3-sentence">{t("fx.sec.mp.u.single_body")}</p></V3Fold>
-                {top.shown.length > 0 ? (
-                  <V3Fold id="top-suppliers" label={fill(t("fx.sec.mp.u.top"), { year: d.year })}>
-                    {top.shown.map(TitulaireRow)}
-                    {top.rest.length > 0 && <V3Fold id="more-suppliers" text label={t("fx.v3.voir_plus")}>{top.rest.map(TitulaireRow)}</V3Fold>}
-                  </V3Fold>
-                ) : null}
                 <V3Fold id="sources" label={t("fx.sec.mp.u.source")}>
                   <p className="fx-v3-sentence">{t("fx.sec.mp.u.source_body")}</p>
                   <p className="fx-v3-sentence">

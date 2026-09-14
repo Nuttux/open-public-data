@@ -34,7 +34,12 @@ const FR_STOPWORDS_LOWER = new Map<string, string>([
 // ouvrent 42 % des libellés du corpus. On ne les retire qu'en position
 // initiale, seule position où ils sont sans ambiguïté un préfixe — et le motif
 // exclut "LOT1…" (numéro de lot : information utile, à conserver).
-const SECTION_PREFIX = /^(?:SA|CSP)\s?\d+\s*[.:\-_]*\s*/i;
+// Mesuré sur 19 394 lignes 2013-2025 (2026-09-14) : CSP1-5 et SA1-4 ouvrent
+// 3 800 libellés, puis A4 (97), MGP (78), M. (55), MS_ (49), MA13 (14), MSAC
+// (10), ACBC (5) — tous des codes de gestion, jamais un mot du titre. Les
+// codes sans chiffre exigent un séparateur, pour ne pas mordre un mot
+// (« MAINTENANCE », « MSAC - » oui, « MS » suivi d'un espace non).
+const SECTION_PREFIX = /^(?:(?:SA|CSP|A|MA)\s?\d{1,2}\s*[.:\-_]*\s*|(?:MGP|MSAC|ACBC|MS|M)\s*[.:\-_]+\s*)/i;
 
 // Restauration d'accents. Les libellés arrivent en MAJUSCULES non accentuées
 // ("RENOVATION MUSEE") ; la remise en casse lisible produit "Renovation Musee".

@@ -15,6 +15,8 @@ import { fmtBrlCompact } from "@/lib/br/format";
 import { fmtUsdCompact } from "@/lib/us/format";
 import { loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
 import { assocHref } from "@/lib/assoc-slug";
+import { shortObjet } from "@/lib/objet-normalizer";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 export type BrowseItem = { href: string; label: string; sub?: string | null; amount?: { v: string; u: string } | null };
 export type LetterCount = { letter: string; count: number };
@@ -151,8 +153,9 @@ export function contratItems(city: string, year: number, locale: "fr" | "en"): B
     .sort((a, b) => (Number(b.montant_max ?? 0) || 0) - (Number(a.montant_max ?? 0) || 0))
     .map((r) => ({
       href: `/france/${city}/marches/contrat/${encodeURIComponent(r.numero_marche!)}`,
-      label: (r.objet ?? r.numero_marche!).slice(0, 120),
-      sub: [r.fournisseur_nom, locale === "en" ? `notified ${year}` : `notifié en ${year}`].filter(Boolean).join(" · "),
+      // The readable title, not the source's « SA4 - TRVX … » (same rule as the fiches).
+      label: r.objet ? shortObjet(r.objet, 120) : r.numero_marche!,
+      sub: [r.fournisseur_nom ? displayOrgName(r.fournisseur_nom) : null, locale === "en" ? `notified ${year}` : `notifié en ${year}`].filter(Boolean).join(" · "),
       amount: r.montant_max != null ? eur(Number(r.montant_max)) : null,
     }));
 }

@@ -20763,13 +20763,12 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
      faces « Voir aussi »; the next section closes at full width. */
   .theme-fusion .fx-sec-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    grid-template-areas: "hero scene" "rows conc" "rows years" "search search" "understand related" "next next" "foot foot";
+    grid-template-areas: "hero scene" "rows years" "rows search" "understand related" "next next" "foot foot";
     align-items: start;
   }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
   .theme-fusion .fx-sec-a-scene { grid-area: scene; }
   .theme-fusion .fx-sec-a-rows { grid-area: rows; }
-  .theme-fusion .fx-sec-a-conc { grid-area: conc; }
   .theme-fusion .fx-sec-a-years { grid-area: years; }
   .theme-fusion .fx-sec-a-search { grid-area: search; }
   .theme-fusion .fx-sec-a-understand { grid-area: understand; }
@@ -20798,6 +20797,13 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-share:hover { color: var(--ink); text-decoration-color: currentColor; }
 .theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
+/* The scene's grouping switch: one chart, four ways to cut it. Text, not tabs;
+   the active one is ink with a rule under it. */
+.theme-fusion .fx-sec-switch { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 10px 0 2px; }
+.theme-fusion .fx-sec-switch button { font: inherit; font-size: 13px; color: var(--muted); background: transparent; border: 0; padding: 4px 0; cursor: pointer; border-bottom: 2px solid transparent; }
+.theme-fusion .fx-sec-switch button:hover { color: var(--ink); }
+.theme-fusion .fx-sec-switch button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+.theme-fusion .fx-sec-switch button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-sec-sentence { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin: 12px 0 4px; max-width: 60ch; }
 .theme-fusion .fx-sec-sentence b { color: var(--ink); font-weight: 600; }
 .theme-fusion .fx-sec .fx-v3-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.45; max-width: 60ch; }

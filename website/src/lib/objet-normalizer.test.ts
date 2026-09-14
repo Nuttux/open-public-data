@@ -46,6 +46,16 @@ describe("normalizeObjet", () => {
     expect(normalizeObjet("CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET")).not.toMatch(/CSP5/i);
     expect(normalizeObjet("SA4.TRVX CSTRUCT PISCINE")).not.toMatch(/SA4/i);
     expect(normalizeObjet("CSP4: AC_BC - LOT 1 : TVX")).not.toMatch(/CSP4/i);
+    // The other management codes measured in the corpus (2026-09-14).
+    expect(normalizeObjet("A4: TRAVAUX D'ECLAIRAGE PUBLIC ET D'ILLUMINATION - LOT 5")).toMatch(/^Travaux/);
+    expect(normalizeObjet("MGP-AMOA")).not.toMatch(/MGP/);
+    expect(normalizeObjet("M.SUBS TRAVAUX MISE CONFORMITE FILTRATION PISCINE DIDOT")).not.toMatch(/^M\./);
+    expect(normalizeObjet("MS_MOE RELATIVE A RESTAURATION DU PRONAOS")).not.toMatch(/^MS/);
+    expect(normalizeObjet("MA13_REDACTION ET CONCEPTION GRAPHIQUE DU JOURNAL")).toMatch(/^Redaction/i);
+    expect(normalizeObjet("MSAC - FOURNITURES DE FLEURS COUPEES")).toMatch(/^Fournitures/i);
+    // A word that starts like a code is kept: no separator, no strip.
+    expect(normalizeObjet("MAINTENANCE DES ASCENSEURS DU MUSEE")).toMatch(/^Maintenance/);
+    expect(normalizeObjet("MS PROJECT LICENCES ET SUPPORT")).toMatch(/^MS /);
     // Only in leading position — a section code is only unambiguous there.
     expect(normalizeObjet("TRAVAUX SECTEUR SA4")).toMatch(/\bSA4\b/);
     // A leading lot number is information, not noise — it must survive.
