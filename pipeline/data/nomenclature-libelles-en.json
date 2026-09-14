@@ -1,5 +1,5 @@
 {
- "_note": "Traduction anglaise des libellés de nomenclature budgétaire française qui apparaissent réellement dans les fichiers par commune. La DGCL ne publie pas de version anglaise : ces traductions sont les nôtres, pas une nomenclature officielle. Clé = libellé français exact tel que produit par sync_communes_fonctionnelle.py (recomposition des fragments comprise). Le producteur échoue si un libellé n'a pas d'entrée ici, pour qu'aucun texte français ne passe silencieusement sur le site anglais.",
+ "_note": "Traduction anglaise des libellés de nomenclature budgétaire française qui apparaissent réellement dans les fichiers par commune. La DGCL ne publie pas de version anglaise : ces traductions sont les nôtres, pas une nomenclature officielle. Clé = libellé français exact tel que produit par export_communes_fonctions.py (recomposition des fragments comprise). Le producteur échoue si un libellé n'a pas d'entrée ici, pour qu'aucun texte français ne passe silencieusement sur le site anglais.",
  "_source_fr": "DGCL — instructions budgétaires et comptables M57 et M14, plan de comptes développé (data.gouv.fr, domaine public)",
  "fonctions": {
   "APA versée à l'établissement": "Home-care allowance paid to the facility",

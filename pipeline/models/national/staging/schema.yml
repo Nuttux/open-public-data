@@ -38,3 +38,20 @@ models:
     columns:
       - name: siren
         tests: [not_null, unique]
+
+  - name: stg_dgfip_nature_fonction
+    description: "Balances DGFiP nature × fonction typées - 1 ligne = 1 ligne du CSV publié (budget × fonction × compte × exercice), TOUTES collectivités (categ). Montants NUMERIC ; code_insee recomposé (métropole, Corse 2A/2B, outre-mer 971-976), NULL hors communes."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [annee, ligne]
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: ligne
+        tests: [not_null]
+      - name: categ
+        tests: [not_null]
+      - name: code_insee
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "IS NULL OR LENGTH(code_insee) = 5"

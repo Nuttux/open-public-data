@@ -22,4 +22,5 @@ sources:
         description: "Répertoire national des élus, conseillers municipaux — colonnes non sensibles seulement (commune, nom, prénom, fonction, dates)"
       - name: rei_taux
         description: "REI (DGFiP) — taux de taxe foncière votés par la commune et l'intercommunalité, 2021-2025, colonnes E12/E12VOTE/E32/B12 seulement"
-
+      - name: dgfip_balances_nature_fonction
+        description: "DGFiP — balances comptables des collectivités et EPL, présentation croisée nature-fonction. Copie fidèle du CSV publié (toutes catégories, 30 colonnes en texte) + annee, ligne (rang dans le CSV), source_fichier ; une partition par exercice. Chargé par sync_dgfip_nature_fonction.py"
