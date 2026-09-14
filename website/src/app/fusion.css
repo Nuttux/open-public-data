@@ -20810,7 +20810,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
 /* The year's one photo: a worksite behind the largest documented contract. A
    link to the contract's fiche; the caption says what, where, how much. */
-.theme-fusion .fx-sec-photo { display: block; text-decoration: none; color: var(--ink); margin: 0 0 32px; }
+.theme-fusion .fx-sec-photo { display: block; text-decoration: none; color: var(--ink); margin: 0 0 32px; padding: 0; }
 .theme-fusion .fx-sec-photo img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--rule-2); }
 .theme-fusion .fx-sec-photo-cap { display: block; padding: 10px 0 0; }
 .theme-fusion .fx-sec-photo-cap .k { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
@@ -20887,6 +20887,37 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-next .cc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 /* Les replis « Comprendre » contiennent des phrases et des lignes. */
 .theme-fusion .fx-sec .fx-v3-fold > .fx-v3-sentence { margin: 8px 0 10px; }
+/* ── Propre (2026-09-15) : le kicker en pleine largeur au-dessus de la grille,
+   les deux colonnes partent de la même ligne ; traits gris sous les titres ;
+   kickers en petites capitales de la police de texte ; coins arrondis et
+   survol sur ce qui se clique. */
+.theme-fusion .fx-sec-kicker { margin: 0 0 14px; }
+.theme-fusion .fx-sec .fx-page-kicker, .theme-fusion .fx-sec .fx-sec-photo-cap .k, .theme-fusion .fx-sec .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
+.theme-fusion .fx-sec .fx-page-kicker a { font-weight: 600; }
+.theme-fusion .fx-sec-hero { border-bottom: 0; padding-bottom: 6px; margin-bottom: 26px; }
+.theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+/* No hover on a phone: the rows keep the column's edges. */
+@media (max-width: 700px) {
+  .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { padding-inline: 0; margin-inline: 0; border-radius: 0; }
+}
+.theme-fusion .fx-sec .fx-bars-row .track i { border-radius: 3px; height: 12px; }
+.theme-fusion .fx-sec .fx-next { border: 1px solid var(--rule); border-radius: 12px; background: #fff; padding: 14px 16px; transition: border-color .12s; }
+.theme-fusion .fx-sec .fx-next:hover { border-color: var(--bleu); }
+.theme-fusion .fx-sec-photo-img { display: block; }
+.theme-fusion .fx-sec-photo img { border-radius: 10px; }
+.theme-fusion .fx-sec-photo-cap a.t { text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-sec-photo-cap a.t:hover { color: var(--bleu); }
+.theme-fusion .fx-sec-photo-cap .s a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-sec-photo-cap .s a:hover { text-decoration: underline; }
+/* La recherche : une boîte arrondie sur fond blanc, un anneau bleu au focus au
+   lieu d'un second trait noir sous le titre ; des mots à essayer en pastilles. */
+.theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding-top: 14px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { border-radius: 12px; background: #fff; border: 1px solid var(--rule); transition: border-color .12s, box-shadow .12s; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap:focus-within { border-color: var(--bleu); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bleu) 14%, transparent); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed { border: 0; background: var(--rule-2); color: var(--ink-2); padding: 6px 12px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed:hover { background: color-mix(in srgb, var(--bleu) 12%, transparent); color: var(--bleu); }
 /* La recherche sur une page de section : le champ, trois mots à essayer, et
    des lignes de fiche quand on tape. Pas de cadre, pas de cartes. */
 .theme-fusion .fx-search-wrap--fiche { border: 0; }

@@ -1942,6 +1942,8 @@ export type MarchesPageData = {
      *  mention explicite (jamais une photo générique déguisée en vraie). */
     photoKind: "reelle" | "illustration" | null;
     projetNom: string | null;
+    /** The investment project's id, for the door « voir le chantier ». */
+    projetId: string | null;
     projetNomEn: string | null;
     dateNotification: string;
     dureeJours: number;
@@ -2766,6 +2768,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
         photoCredit,
         photoKind,
         projetNom: pj?.nom ?? null,
+        projetId: pj?.id ?? null,
         projetNomEn: pj?.nomEn ?? null,
         dateNotification: r.date,
         dureeJours: r.dureeJours,

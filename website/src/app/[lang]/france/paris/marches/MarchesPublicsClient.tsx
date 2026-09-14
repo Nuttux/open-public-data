@@ -199,10 +199,11 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3" data-variant={variant}>
+          {/* Above the grid, full width: the two columns then start on the same line. */}
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.mp.kicker")}</div>
           <div className="fx-sec-grid" data-photo={photo ? "1" : "0"}>
             <div className="fx-sec-a-hero">
               <SectionHero
-                kicker={<><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.mp.kicker")}</>}
                 title={t("fx.sec.mp.title")}
                 value={total.value}
                 unit={total.unit}
@@ -250,16 +251,23 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
 
             <div className="fx-sec-a-photo" data-section={photo ? "photo" : undefined}>
               {photo ? (
-                <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="fx-sec-photo">
-                  <img src={photo.photoUrl!} alt="" loading="lazy" />
-                  <span className="fx-sec-photo-cap">
+                // Framed from the contract's side: the image and the title open the
+                // contract's fiche; the worksite has its own door into Investissements.
+                <figure className="fx-sec-photo">
+                  <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="fx-sec-photo-img" aria-hidden="true" tabIndex={-1}>
+                    <img src={photo.photoUrl!} alt="" loading="lazy" />
+                  </Link>
+                  <figcaption className="fx-sec-photo-cap">
                     <span className="k">{fill(t("fx.sec.mp.photo_kicker"), { year: d.year })}</span>
-                    <span className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</span>
+                    <Link href={`${marchesBase}/contrat/${encodeURIComponent(photo.numero)}`} scroll={false} className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</Link>
                     {/* The project name without its programme label (« Place Saint-Augustin - Embellir votre quartier »). */}
-                    <span className="s">{[((locale === "en" && photo.projetNomEn) || photo.projetNom || "").split(/\s+-\s+/)[0].replace(/^(?:EM|EE|EP|EPM|GS|CR|CM)\s?\d+[,\s]+/i, "").trim() || null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
+                    <span className="s">
+                      {[((locale === "en" && photo.projetNomEn) || photo.projetNom || "").split(/\s+-\s+/)[0].replace(/^(?:EM|EE|EP|EPM|GS|CR|CM)\s?\d+[,\s]+/i, "").trim() || null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}
+                      {photo.projetId ? <> · <Link href={`${cityBase}/investissements/projet/${encodeURIComponent(photo.projetId)}`} scroll={false}>{t("fx.sec.mp.photo_project")} ›</Link></> : null}
+                    </span>
                     {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
-                  </span>
-                </Link>
+                  </figcaption>
+                </figure>
               ) : null}
             </div>
 

@@ -29,7 +29,8 @@ export default function SectionHero({
   move,
   shareTitle,
 }: {
-  kicker: ReactNode;
+  /** Where we are; the section page renders it above the grid instead, so both columns start on the same line. */
+  kicker?: ReactNode;
   title: ReactNode;
   value: ReactNode;
   unit?: ReactNode;
@@ -53,7 +54,7 @@ export default function SectionHero({
   };
   return (
     <header className="fx-sec-hero" data-section="hero">
-      <div className="fx-page-kicker fx-page-kicker--links">{kicker}</div>
+      {kicker ? <div className="fx-page-kicker fx-page-kicker--links">{kicker}</div> : null}
       <h1>{title}</h1>
       <div className="fx-v3-hero-num tnum">
         {value}
