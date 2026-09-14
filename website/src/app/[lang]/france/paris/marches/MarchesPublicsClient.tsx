@@ -256,7 +256,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                     <span className="k">{fill(t("fx.sec.mp.photo_kicker"), { year: d.year })}</span>
                     <span className="t">{(locale === "en" && photo.labelEn) || photo.label} ›</span>
                     {/* The project name without its programme label (« Place Saint-Augustin - Embellir votre quartier »). */}
-                    <span className="s">{[((locale === "en" && photo.projetNomEn) || photo.projetNom || "").split(/\s+-\s+/)[0] || null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
+                    <span className="s">{[((locale === "en" && photo.projetNomEn) || photo.projetNom || "").split(/\s+-\s+/)[0].replace(/^(?:EM|EE|EP|EPM|GS|CR|CM)\s?\d+[,\s]+/i, "").trim() || null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}</span>
                     {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
                   </span>
                 </Link>

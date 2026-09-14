@@ -205,6 +205,29 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
   const displayed = filtered.slice(0, displayCap);
   const showResults = isLoaded && (!fiche || hasActiveSelection);
 
+  // Section page: the companies the query names come first, each with its
+  // fiche, then the contracts. Grouped by SIREN, the key the supplier route
+  // resolves; counted, not summed (a shared lot would count twice here).
+  const companies = useMemo(() => {
+    if (!fiche || !isQueryActive) return [] as { name: string; siren: string; n: number }[];
+    const exp = expandQuery(query);
+    const map = new Map<string, { name: string; siren: string; n: number }>();
+    for (const it of items) {
+      if (hideMulti && it.multiAttributaire) continue;
+      const name = (it.titulaire || "").trim();
+      if (!name || name === "MARCHE MULTIATTRIBUTAIRE" || name === "Non précisé") continue;
+      if (!matchExpanded(normSearch(name), exp).match) continue;
+      const siret = (it.titulaireSiret || "").replace(/\s/g, "");
+      const siren = /^\d{9}/.test(siret) ? siret.slice(0, 9) : "";
+      const key = siren || `name:${name.toLowerCase()}`;
+      const cur = map.get(key) ?? { name, siren, n: 0 };
+      cur.n += 1;
+      if (name.length > cur.name.length) cur.name = name;
+      map.set(key, cur);
+    }
+    return [...map.values()].sort((a, b) => b.n - a.n).slice(0, 3);
+  }, [fiche, isQueryActive, query, items, hideMulti]);
+
   const reset = () => {
     setQuery("");
     setCategory("");
@@ -242,6 +265,9 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
               setQuery(e.target.value);
             }}
           />
+          {fiche && query.length > 0 && (
+            <button type="button" className="fx-search-x" aria-label={t("fx.sec.mp.search_clear")} onClick={() => setQuery("")}>×</button>
+          )}
         </div>
         {!fiche && <div className="fx-search-filters">
           <span className="fx-search-filter-label">{t("fx.mp.search.filters")}</span>
@@ -327,7 +353,19 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
         )}
       </div>
 
-      {showResults && (
+      {showResults && fiche && (
+        <p className="fx-search-line">
+          {filtered.length === 0 && companies.length === 0
+            ? fill(t("fx.sec.mp.search_none"), { q: query.trim(), year })
+            : [
+                `« ${query.trim()} »`,
+                companies.length > 0 ? fill(t(companies.length === 1 ? "fx.sec.mp.n_companies_one" : "fx.sec.mp.n_companies"), { n: companies.length }) : null,
+                fill(t(filtered.length === 1 ? "fx.sec.mp.n_contracts_one" : "fx.sec.mp.n_contracts"), { n: new Intl.NumberFormat(locStr).format(filtered.length) }),
+                String(year),
+              ].filter(Boolean).join(" · ")}
+        </p>
+      )}
+      {showResults && !fiche && (
         <div className="fx-search-meta">
           <span>
             {contextLabel} · <b>{new Intl.NumberFormat(locStr).format(filtered.length)} {filtered.length > 1 ? t("fx.mp.search.contract_p") : t("fx.mp.search.contract_s")}</b> {filtered.length > 1 ? t("fx.mp.search.match_p") : t("fx.mp.search.match_s")}
@@ -350,8 +388,23 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
         </div>
       )}
 
-      {showResults && displayed.length > 0 && fiche ? (
+      {showResults && (displayed.length > 0 || companies.length > 0) && fiche ? (
         <div className="fx-search-rows">
+          {companies.length > 0 && (
+            <>
+              <p className="fx-search-group">{t("fx.sec.mp.search_companies")}</p>
+              {companies.map((co) => (
+                <V3Row
+                  key={co.siren || co.name}
+                  href={co.siren ? `/france/${citySlug}/marches/fournisseur/${co.siren}` : null}
+                  label={displayOrgName(co.name)}
+                  subText={fill(t(co.n === 1 ? "fx.sec.mp.company_sub_one" : "fx.sec.mp.company_sub"), { n: co.n, year })}
+                  onClick={co.siren ? () => track("search_result_click", { page: "marches-publics", entity_id: co.siren, entity_type: "fournisseur", results_count: companies.length }) : undefined}
+                />
+              ))}
+              {displayed.length > 0 && <p className="fx-search-group">{t("fx.sec.mp.search_contracts")}</p>}
+            </>
+          )}
           {displayed.map(({ it }, i) => {
             const { v, u } = fmtAmount(it.montant);
             const href = it.numeroMarche ? `/france/${citySlug}/marches/contrat/${encodeURIComponent(it.numeroMarche)}` : null;
@@ -448,7 +501,7 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
             </div>
           )}
         </div>
-      ) : showResults ? (
+      ) : showResults && !fiche ? (
         <div className="fx-search-placeholder">
           <p>{t("fx.mp.search.empty")}</p>
           <button

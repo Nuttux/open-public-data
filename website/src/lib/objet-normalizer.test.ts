@@ -27,6 +27,11 @@ describe("rowObjet — a row title and its detail, from the raw object (2025 DEC
     // The procedure label is not a lot: the detail starts with the works themselves.
     expect(m.detail).toMatch(/^Travaux de menuiseries extérieures/);
   });
+  it("drops the multi-holder framework wording too", () => {
+    const r = rowObjet("Accord-cadre multi-attributaires à marchés subséquents de travaux d’éclairage public et d’illuminations dans les 1er à 20e arrondissements - Titulaire 2");
+    expect(r.title).toMatch(/^Travaux d’éclairage public/);
+    expect(r.detail).toBeNull(); // « Titulaire 2 » names nothing
+  });
   it("keeps a short object whole", () => {
     expect(rowObjet("Transport PAM75")).toEqual({ title: "Transport PAM75", detail: null });
   });

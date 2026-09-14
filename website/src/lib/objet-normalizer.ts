@@ -339,7 +339,7 @@ export function shortObjet(raw: string, max = 110): string {
 // Formules d'appel d'offres en tête d'objet, sans information pour un lecteur.
 const BOILERPLATE: RegExp[] = [
   /^la pr[ée]sente consultation .*?ayant pour objet\s+(?:la |le |les |l’|l'|d’|d'|de |du |des |une |un )?/i,
-  /^(?:accords?[- ]cadres?|march[ée]s?(?: publics?)?)\s+(?:relatifs?|relative|ayant pour objet|portant sur|concernant|pour)\s+(?:à |a |aux |au )?(?:des |de la |de l’|de l'|du |de |le |la |les |l’|l')?/i,
+  /^(?:accords?[- ]cadres?|march[ée]s?(?: publics?)?)(?:\s+(?:mono|multi)[- ]attributaires?)?(?:\s+(?:à|a)\s+march[ée]s?\s+subs[ée]quents?)?\s+(?:relatifs?|relative|ayant pour objet|portant sur|concernant|pour|de|d’|d')\s*(?:à |a |aux |au )?(?:des |de la |de l’|de l'|du |de |le |la |les |l’|l')?/i,
   /^(?:prestations? de|fourniture et|mission de)\s+(?=\S)/i,
 ];
 
@@ -373,7 +373,7 @@ function clauseCut(s: string, max: number): string {
 }
 
 // Procedure labels that the source writes as a lot part; they name nothing.
-const LOT_NOISE: RegExp[] = [/^accords?[- ]cadres?\s+(?:à|a)\s+march[ée]s?\s+subs[ée]quents?\.?$/i, /^march[ée]s?\s+subs[ée]quents?\.?$/i, /^lot\s*\d+\s*$/i];
+const LOT_NOISE: RegExp[] = [/^accords?[- ]cadres?\s+(?:à|a)\s+march[ée]s?\s+subs[ée]quents?\.?$/i, /^march[ée]s?\s+subs[ée]quents?\.?$/i, /^lot\s*\d+\s*$/i, /^titulaires?\s*\d+\s*$/i, /^attributaires?\s*\d+\s*$/i];
 
 /**
  * A contract row on the fiche grammar: a short title (what is bought) and a

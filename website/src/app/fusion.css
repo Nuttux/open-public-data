@@ -20891,9 +20891,16 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
    des lignes de fiche quand on tape. Pas de cadre, pas de cartes. */
 .theme-fusion .fx-search-wrap--fiche { border: 0; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding: 4px 0 0; border-bottom: 0; background: transparent; }
-.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { height: 48px; border-color: var(--rule); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { height: 50px; border: 1px solid var(--rule); padding: 0 12px 0 14px; gap: 10px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap:focus-within { border-color: var(--ink); box-shadow: none; }
-.theme-fusion .fx-search-wrap--fiche .fx-search-input { font-size: 15px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-icon { width: 18px; height: 18px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input { font-family: var(--f-ui); font-weight: 400; font-size: 16px; letter-spacing: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.theme-fusion .fx-search-x { flex: none; width: 32px; height: 32px; font: inherit; font-size: 20px; line-height: 1; color: var(--muted); background: transparent; border: 0; cursor: pointer; }
+.theme-fusion .fx-search-x:hover { color: var(--ink); }
+.theme-fusion .fx-search-x:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-search-line { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+.theme-fusion .fx-search-group { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--rule-2); }
 .theme-fusion .fx-search-wrap--fiche .fx-search-filters { margin-top: 10px; gap: 8px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-filter-label { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-seeds { gap: 6px; }
