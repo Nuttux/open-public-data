@@ -39,9 +39,13 @@ export function V3Hero({ v, u, caption, meta }: { v: ReactNode; u?: ReactNode; c
   );
 }
 
-export function V3Section({ title, sub, children }: { title: ReactNode; sub?: ReactNode; children: ReactNode }) {
+/** `id` names the section for analytics (section_view, details_toggle,
+ *  link_click carry it as section_id) — a short English word, stable across
+ *  locales: "who", "years", "contracts". Rendered as data-section, not a DOM
+ *  id, so a fiche in a drawer never collides with the page's own anchors. */
+export function V3Section({ id, title, sub, children }: { id?: string; title: ReactNode; sub?: ReactNode; children: ReactNode }) {
   return (
-    <section className="fx-v3-section">
+    <section className="fx-v3-section" data-section={id}>
       <h2 className="fx-v3-h2">{title}</h2>
       {sub ? <p className="fx-v3-h2sub">{sub}</p> : null}
       <div className="fx-v3-rule" />
@@ -89,9 +93,12 @@ export function V3Row({ href, external, label, sub, subText, amount }: {
   return <Link className="fx-v3-row fx-row-link" href={href} scroll={false}>{body}</Link>;
 }
 
-export function V3Fold({ label, text, children }: { label: string; text?: boolean; children: ReactNode }) {
+/** `id` names the fold for analytics (details_toggle.fold_id): "more-contracts",
+ *  "more-years". Never derive it from the label — the label carries a count
+ *  and a locale, so it changes on every fiche. */
+export function V3Fold({ id, label, text, children }: { id?: string; label: string; text?: boolean; children: ReactNode }) {
   return (
-    <details className="fx-v3-fold">
+    <details className="fx-v3-fold" data-fold={id}>
       <summary className={text ? "text" : undefined}>{label}</summary>
       {children}
     </details>

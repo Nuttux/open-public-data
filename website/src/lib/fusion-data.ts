@@ -1903,6 +1903,21 @@ export type MarchesPageData = {
   // lazy-fetches /data/<city>/marches-publics/marches_<year>.json and shapes
   // it with lib/marches-shape (same shaping as before, shared pure module).
   yearsSummary: { year: number; total: number; count: number }[];
+  /** Les plus gros contrats de l'exercice ; un lot partagé entre plusieurs
+   *  entreprises n'apparaît qu'une fois, avec ses titulaires. */
+  topContrats: {
+    numero: string;
+    objet: string;
+    objetClair: string | null;
+    objetClairEn: string | null;
+    montant: number;
+    fournisseur: string;
+    fournisseurSiret: string;
+    titulaires: string[];
+    holders: number;
+    nature: string;
+    categorie: string;
+  }[];
   /** Scène signature : trois contrats réels de l'année, choisis par des
    *  règles fixes (jamais à la main) — le plus gros marché adossé à un
    *  chantier avec photo, le plus gros attribué sur offre unique, celui qui
@@ -2743,6 +2758,40 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     return out;
   })();
 
+  // Les plus gros contrats de l'exercice, un lot partagé = une ligne qui
+  // nomme ses titulaires (même règle que la fiche catégorie).
+  const topContrats: MarchesPageData["topContrats"] = (() => {
+    const order = marches
+      .map((m, i) => ({ m: m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string }, i }))
+      .sort((a, b) => lotAmountOf(b.m) - lotAmountOf(a.m));
+    const groups = new Map<string, { row: (typeof order)[number]["m"]; names: string[]; holders: number }>();
+    for (const { m, i } of order) {
+      const objetKey = (m.objet ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+      const key = hubLots[i].holders > 1 ? `${Math.round(lotAmountOf(m) * 100)}|${objetKey}` : `row:${i}`;
+      const g = groups.get(key) ?? { row: m, names: [], holders: hubLots[i].holders };
+      const name = (m.fournisseur_nom ?? "").trim();
+      if (name && name !== MULTI_NAME && name !== "Non précisé" && !g.names.includes(name)) g.names.push(name);
+      if (name && name !== MULTI_NAME && g.row.fournisseur_nom === MULTI_NAME) g.row = m;
+      groups.set(key, g);
+    }
+    return [...groups.values()].slice(0, 10).map(({ row: r, names, holders }) => {
+      const numero = r.numero_marche ?? "";
+      return {
+        numero,
+        objet: r.objet ?? "",
+        objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
+        objetClairEn: (numero && vulgMap[numero]?.objet_clair_en) || null,
+        montant: lotAmountOf(r),
+        fournisseur: r.fournisseur_nom ?? "Non précisé",
+        fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
+        titulaires: names,
+        holders,
+        nature: r.nature || "Autres",
+        categorie: r.categorie_libelle || r.nature || "Autres",
+      };
+    });
+  })();
+
   return {
     year: yr as number,
     availableYears: years,
@@ -2755,8 +2804,19 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     byNature,
     concurrence,
     yearsSummary,
+    topContrats,
     signature,
   };
+}
+
+/** Le dernier exercice d'investissement publié (Paris) : pour la porte
+ *  « Chantiers » des pages de section. */
+export function loadInvestLatest(): { year: number; total: number } | null {
+  const t = readJsonOrNull<{ years?: { year: string | number; depenses_hors_dette?: string | number }[] }>("investissement_tendances.json");
+  const last = (t?.years ?? []).slice().sort((a, b) => Number(a.year) - Number(b.year)).pop();
+  if (!last) return null;
+  const total = Number(last.depenses_hors_dette ?? 0);
+  return total > 0 ? { year: Number(last.year), total } : null;
 }
 
 // ─── Investissements ───────────────────────────────────────────────────────

@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "@/lib/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { hashQuery } from "@/lib/analytics-helpers";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useNumLocale } from "@/lib/use-fmt";
@@ -83,7 +84,12 @@ function SearchModalInner() {
           signal: ac.signal,
         });
         const data = await res.json();
-        setHits(data.results ?? []);
+        const results: Hit[] = data.results ?? [];
+        setHits(results);
+        // Never the text: a hash to cluster repeats, the length, and whether
+        // we had anything to offer (0 = a commune we miss or a spelling we
+        // do not match).
+        track("search_modal_query", { q_hash: await hashQuery(q), q_len: q.length, results_count: results.length });
         setActiveIdx(0);
         setSearching(false);
       } catch {
@@ -94,7 +100,7 @@ function SearchModalInner() {
       ac.abort();
       clearTimeout(id);
     };
-  }, [query, open]);
+  }, [query, open, track]);
 
   const goTo = useCallback(
     (hit: Hit) => {

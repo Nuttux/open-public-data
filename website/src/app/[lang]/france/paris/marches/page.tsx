@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadFournisseursRanking, loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
-import { getPostsForPage } from "@/lib/page-articles";
+import { loadInvestLatest, loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
 import MarchesPublicsClient from "./MarchesPublicsClient";
@@ -24,14 +23,13 @@ export default async function MarchesPublicsPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const idx = loadMarchesIndex();
   const d = loadMarchesPageData(requestedYear);
-  const ranking = loadFournisseursRanking();
-  const posts = getPostsForPage("marches-publics");
+  const invest = loadInvestLatest();
   return (
     <>
       {parisSectionJsonLd("marches", await readLocale(), requestedYear).map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <MarchesPublicsClient idx={idx} d={d} ranking={ranking} posts={posts} />
+      <MarchesPublicsClient idx={idx} d={d} doors={{ invest }} />
     </>
   );
 }

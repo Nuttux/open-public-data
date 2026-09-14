@@ -4830,6 +4830,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: #fff;
   color: var(--ink);
   outline: none;
+  max-width: 100%;
+  min-width: 0;
 }
 .theme-fusion .fx-search-filters select:focus { box-shadow: 2px 2px 0 var(--ink); }
 .theme-fusion .fx-search-range {
@@ -19565,7 +19567,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   display: flex; justify-content: space-between; gap: 12px; padding: 10px 6px;
   border-top: 1px solid var(--rule); align-items: baseline; font-size: 13.5px; color: var(--ink-2); text-decoration: none;
 }
-.theme-fusion .fx-v3-row .lbl { flex: 1; }
+.theme-fusion .fx-v3-row .lbl { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .theme-fusion .fx-v3-row .lbl.mono { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
 .theme-fusion .fx-v3-row .sub { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
 /* Le lanceur du chat est fixe au coin bas droit (48 px, 20 px de marge). Sur
@@ -20746,3 +20748,78 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-mission-progs { padding: 10px 18px 14px 32px; }
   .theme-fusion .fx-mission-prog  { grid-template-columns: 1fr; gap: 4px; padding: 8px 0; }
 }
+
+/* ─── Section en fiche (2026-09-14) ──────────────────────────────────────────
+   La page de section reprend la grammaire des fiches : la réponse, une scène,
+   des lignes, comprendre, voir aussi, la suite. Une colonne sur téléphone dans
+   l'ordre de lecture ; deux colonnes sur ordinateur, la scène à gauche et les
+   lignes à droite, sans changer l'ordre du DOM (zones de grille nommées). */
+.theme-fusion .fx-sec { max-width: 1120px; margin: 0 auto; padding: 22px 20px 60px; }
+.theme-fusion .fx-sec-grid { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 44px; }
+.theme-fusion .fx-sec-grid > div { min-width: 0; }
+@media (min-width: 960px) {
+  .theme-fusion .fx-sec-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas: "hero hero" "scene rows" "cats rows" "years search" "understand related" "understand next" "foot foot";
+  }
+  .theme-fusion .fx-sec-a-hero { grid-area: hero; }
+  .theme-fusion .fx-sec-a-scene { grid-area: scene; }
+  .theme-fusion .fx-sec-a-rows { grid-area: rows; }
+  .theme-fusion .fx-sec-a-cats { grid-area: cats; }
+  .theme-fusion .fx-sec-a-years { grid-area: years; }
+  .theme-fusion .fx-sec-a-search { grid-area: search; }
+  .theme-fusion .fx-sec-a-understand { grid-area: understand; }
+  .theme-fusion .fx-sec-a-related { grid-area: related; }
+  .theme-fusion .fx-sec-a-next { grid-area: next; }
+  .theme-fusion .fx-sec-a-foot { grid-area: foot; }
+}
+/* La réponse : là où se trouve, le titre, UN chiffre, sa phrase avec l'année en
+   menu, une ligne grise, la tendance en ocre, « Partager ». */
+.theme-fusion .fx-sec-hero { padding: 6px 0 24px; margin: 0 0 30px; border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-sec-hero .fx-page-kicker { margin-bottom: 8px; }
+.theme-fusion .fx-sec-hero h1 { font-family: var(--f-disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); letter-spacing: -.03em; line-height: 1.05; margin: 0; color: var(--ink); text-wrap: balance; }
+.theme-fusion .fx-sec-hero .fx-v3-hero-num { margin-top: 18px; }
+.theme-fusion .fx-sec-cap { font-size: 15px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
+.theme-fusion .fx-sec-cap b { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-sec-meta { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.45; max-width: 62ch; }
+.theme-fusion .fx-sec-move { font-size: 13px; color: var(--ocre); margin-top: 6px; }
+.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12.5px; color: var(--ink-2); background: transparent; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 4px 11px; margin-top: 14px; cursor: pointer; }
+.theme-fusion .fx-sec-share:hover { border-color: var(--ink); color: var(--ink); }
+.theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
+.theme-fusion .fx-sec-sentence { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin: 12px 0 4px; max-width: 60ch; }
+.theme-fusion .fx-sec-sentence b { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-sec .fx-v3-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.45; max-width: 60ch; }
+/* Les barres : le libellé et la valeur écrits sur chaque ligne, pas de légende,
+   pas d'axe. Une ligne avec un lien ouvre une fiche. */
+.theme-fusion .fx-bars { margin-top: 6px; }
+.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-bars-row:first-child { border-top: 0; }
+.theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
+.theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
+.theme-fusion .fx-bars-row.is-link:hover .lbl { color: var(--bleu); }
+.theme-fusion .fx-bars-row .sub { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.theme-fusion .fx-bars-row .track { display: block; min-width: 0; }
+.theme-fusion .fx-bars-row .track i { display: block; height: 14px; background: var(--bleu); }
+.theme-fusion .fx-bars-row .track i.ink { background: var(--ink); }
+.theme-fusion .fx-bars-row .track i.soft { background: var(--bleu-soft, #D9DCF0); }
+.theme-fusion .fx-bars-row .v { font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -.02em; white-space: nowrap; color: var(--ink); }
+.theme-fusion .fx-bars .fx-v3-fold .fx-bars-row:first-child { border-top: 1px solid var(--rule-2); }
+/* Les portes : un lien vers une section ou une page, ce qu'elle contient en une
+   ligne, et son chiffre quand elle en a un. */
+.theme-fusion .fx-door { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 10px 0; border-top: 1px solid var(--rule-2); text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-door:first-child { border-top: 0; }
+.theme-fusion .fx-door .t { font-weight: 600; font-size: 14.5px; }
+.theme-fusion .fx-door .t::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-door:hover .t { color: var(--bleu); }
+.theme-fusion .fx-door .s { grid-column: 1; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.theme-fusion .fx-door .v { grid-row: 1 / 3; grid-column: 2; font-family: var(--f-disp); font-weight: 700; font-size: 16px; letter-spacing: -.02em; white-space: nowrap; }
+.theme-fusion .fx-door .v small { font-size: .62em; color: var(--muted); font-weight: 500; margin-left: 2px; }
+.theme-fusion .fx-next { display: block; border: 1px solid var(--ink); padding: 12px 14px; margin: 0 0 40px; text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-next .ck { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.theme-fusion .fx-next .ct { display: block; font-family: var(--f-disp); font-weight: 700; font-size: 17px; letter-spacing: -.02em; margin-top: 3px; }
+.theme-fusion .fx-next .ct::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-next:hover .ct { color: var(--bleu); }
+.theme-fusion .fx-next .cc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+/* Les replis « Comprendre » contiennent des phrases et des lignes. */
+.theme-fusion .fx-sec .fx-v3-fold > .fx-v3-sentence { margin: 8px 0 10px; }
