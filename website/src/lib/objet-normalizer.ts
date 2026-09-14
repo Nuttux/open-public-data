@@ -105,6 +105,11 @@ const ABBREVIATIONS: Rule[] = [
   // quel sur la fiche. À traiter avant les règles unitaires (MA, AC).
   [/\bMA\s+SUB[_\s]?AC\b\s*:?\s*/gi, "Marché subséquent — "],
   [/\bSUB[_\s]?AC\b\s*:?\s*/gi, "marché subséquent — "],
+  // « AC travaux de … » en tête d'objet : AC = accord-cadre, sigle opaque pour
+  // un lecteur non initié. Seulement en tête et devant un type de prestation,
+  // pour ne pas toucher un « AC » qui voudrait dire autre chose.
+  [/^AC\s+(?=(?:travaux|prestations?|fournitures?|services?|maintenance|missions?)\b)/i, "Accord-cadre de "],
+  [/^AC\s+(?=entretien\b)/i, "Accord-cadre d’"],
   [/\bMISSION\s+MOE\b/gi, "Mission de maîtrise d’œuvre"],
   [/\bMOE\b/gi, "maîtrise d’œuvre"],
   [/\bMOA\b/gi, "maîtrise d’ouvrage"],
@@ -285,4 +290,41 @@ export function isObjetCryptic(raw: string): boolean {
   const hasUnderscore = /_/.test(raw);
   const hasAbbrev = /\b(TRVX|TVX|AMENAGT|GEST|PRESTAT°|HEBERG|ETS|CTR|ARRT|ACMS|CASVP)\b/.test(raw);
   return hasAbbrev || hasUnderscore || upRatio > 0.6;
+}
+
+/** Coupe un texte déjà lisible à `max` caractères, avec une ellipse. */
+export function cutObjet(text: string, max = 110): string {
+  const s = (text || "").trim();
+  return s.length <= max ? s : s.slice(0, max).trimEnd() + "…";
+}
+
+/**
+ * Intitulé de contrat pour une rangée, lisible et sans perdre ce qui le
+ * distingue. Les accords-cadres s'écrivent « Nom de l'accord-cadre - Lot » ; le
+ * nettoyage recolle ce tiret, et couper à la fin effaçait le lot, souvent la
+ * seule partie qui change d'une ligne à l'autre. On sépare donc AVANT de
+ * nettoyer, au premier tiret entouré d'espaces entre deux mots (« 9 - 10 - 11 »
+ * reste une liste), puis :
+ *   - tout tient : « Nom · Lot » ;
+ *   - lot court : début du nom coupé, lot entier ;
+ *   - lot long : il se suffit à lui-même, on le montre seul.
+ */
+export function shortObjet(raw: string, max = 110): string {
+  const text = (raw || "").trim();
+  const m = text.match(/^(.*?[^\d\s])\s+[-–]\s+([^\d\s].*)$/);
+  if (!m) return cutObjet(normalizeObjet(text), max);
+  const head = normalizeObjet(m[1]);
+  // « (1-2-3-4-6-7) » en fin de lot : la liste des arrondissements, trop longue
+  // pour une ligne ; la fiche du contrat la garde.
+  const lot = m[2]
+    .replace(/\s*\((?:\d+\s*[-,]\s*)+\d+\)\s*$/, "")
+    .split(/(?<=[^\d\s])\s+[-–]\s+(?=[^\d\s])/)
+    .map((part) => normalizeObjet(part))
+    .filter(Boolean)
+    .join(" · ");
+  if (!head || lot.length < 3) return cutObjet(normalizeObjet(text), max);
+  const joined = `${head} · ${lot}`;
+  if (joined.length <= max) return joined;
+  if (lot.length > 80) return cutObjet(lot, max);
+  return `${cutObjet(head, max - lot.length - 4)} · ${lot}`;
 }

@@ -6,6 +6,8 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useFmt } from "@/lib/use-fmt";
+import { displayPreteur } from "@/lib/preteur-display";
+import { empruntSourceHref } from "@/lib/dette-garantie-links";
 
 const EMPRUNTS_CAP = 5;
 
@@ -36,11 +38,11 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
   const emprunts = g ? foldRest(g.emprunts_top, EMPRUNTS_CAP) : null;
   const EmpruntRow = (e: NonNullable<typeof g>["emprunts_top"][number], i: number) => {
     const sub = [
-      e.preteur,
+      e.preteur ? displayPreteur(e.preteur) : null,
       e.annee_mobilisation ? fill(t("fx.fiche.bail.mobilise"), { an: e.annee_mobilisation }) : null,
       // La source dit parfois « variable » avec l'index « FIXE » : on suit l'index.
       e.taux_actuariel != null ? (() => {
-        const fixe = e.taux_type === "fixe" || (e.taux_index ?? "").toUpperCase() === "FIXE";
+        const fixe = (e.taux_type ?? "").toUpperCase() === "FIXE" || (e.taux_index ?? "").toUpperCase() === "FIXE";
         return `${fmtDec(e.taux_actuariel, 2)} % ${fixe ? t("fx.fiche.bg.fixe") : t("fx.fiche.bg.variable")}${!fixe && e.taux_index ? ` (${e.taux_index})` : ""}`;
       })() : null,
       e.duree_residuelle != null ? fill(t("fx.fiche.bail.restants"), { n: fmtDec(e.duree_residuelle, 0) }) : null,
@@ -49,7 +51,7 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
       ? `${t("fx.fiche.bg.finance")} ${e.programme.adresse}${e.programme.nb_logements ? ` (${fmtInt(e.programme.nb_logements)} ${t("fx.fiche.bg.logts")})` : ""}`
       : null;
     return (
-      <V3Row key={i} label={cap(e.objet)} subText={<>{sub}{prog ? <><br />{prog}</> : null}</>} amount={<V3Amt {...fmtAmount(e.capital_restant)} />} />
+      <V3Row key={i} external href={empruntSourceHref({ year: g!.year, beneficiaire: g!.name_raw, preteur: e.preteur, annee_mobilisation: e.annee_mobilisation, objet: e.objet })} label={cap(e.objet)} subText={<>{sub}{prog ? <><br />{prog}</> : null}</>} amount={<V3Amt {...fmtAmount(e.capital_restant)} />} />
     );
   };
 
@@ -64,13 +66,13 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
           <V3Hero
             v={fmtAmount(g.capital_restant).v} u={fmtAmount(g.capital_restant).u}
             caption={fill(t("fx.fiche.bail.hero_cap"), { year: g.year })}
-            meta={fill(t(g.count_emprunts === 1 ? "fx.fiche.bail.meta1" : "fx.fiche.bail.meta"), { n: nInt(g.count_emprunts), t: fmtDec(g.taux_moyen_pondere_pct, 2), d: fmtDec(g.duree_residuelle_moyenne_ans, 0) })}
+            meta={fill(t(g.count_emprunts === 1 ? "fx.fiche.bail.meta1" : "fx.fiche.bail.meta"), { n: nInt(g.count_emprunts), t: fmtDec(g.taux_moyen_pondere_pct, 2), d: fmtDec(g.duree_residuelle_moyenne_ans, 0), fixe: fmtInt(g.part_fixe * 100) })}
           />
 
           {g.preteurs.length > 0 && (
             <V3Section title={t("fx.fiche.bail.h.qui")} sub={t("fx.fiche.bail.h.qui_sub")}>
               <FicheBreakdown
-                rows={g.preteurs.map((p) => ({ key: p.name, label: p.name, value: p.capital_restant, meta: `${nInt(p.count_emprunts)} ${t(p.count_emprunts === 1 ? "fx.arr_log.ops_singular_emprunt" : "fx.fiche.bg.emprunts")} · ${fmtDec(p.share * 100, 0)} %` }))}
+                rows={g.preteurs.map((p) => ({ key: p.name, label: displayPreteur(p.name), value: p.capital_restant, meta: `${nInt(p.count_emprunts)} ${t(p.count_emprunts === 1 ? "fx.arr_log.ops_singular_emprunt" : "fx.fiche.bg.emprunts")} · ${fmtDec(p.share * 100, 0)} %` }))}
                 format={eurTxt}
                 cap={8}
               />

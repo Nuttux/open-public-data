@@ -6,115 +6,75 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { PARIS_POPULATION } from "@/lib/methodology";
 import { useFmt } from "@/lib/use-fmt";
+import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 
 type Props = {
   masse: PatrimoineMasse;
-  /** Année du bilan — affichée par le kicker (drawer) / header (page). */
+  /** Année du bilan. */
   year?: number;
 };
 
+const SUBITEMS_CAP = 6;
+
 /**
- * Corps de fiche d'une masse du bilan (actif/passif) — rendu par DetailDrawer
- * (route interceptée) ou par le scaffold page entière via lib/entities/masse.
- * L'ancien shell modal (backdrop, Esc, scroll-lock, bouton ×) vit désormais
- * dans DetailDrawer.
+ * Fiche masse du bilan v3 (2026-09-13), sur le kit `fiche/v3`. Avant : une
+ * ligne en mono, un bandeau KPI à quatre cellules (dont « Sous-postes : 13 »),
+ * un tableau à cinq colonnes et le montant répété dans le titre. Maintenant :
+ * ce que la masse recouvre en une phrase, UN chiffre (la valeur nette) avec
+ * la part et le montant par habitant en ligne grise, les sous-postes en
+ * rangées repliées à six, les limites en pied.
  */
-export default function MasseFiche({ masse }: Props) {
+export default function MasseFiche({ masse, year }: Props) {
   const t = useT();
   const { fmtInt, fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
 
-  const unit = masse.value >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
-  const display = masse.value >= 1e9 ? fmtBillions(masse.value) : fmtMillions(masse.value, 0);
-  const subitemsTotal = masse.subitems.reduce((s, i) => s + i.value, 0);
-  const hasAmort = masse.subitems.some((i) => i.amort > 0);
+  const amt = (n: number) => (n >= 1e9
+    ? { v: fmtBillions(n), u: t("fx.s.md_eur") }
+    : n >= 1e6 ? { v: fmtMillions(n, 0), u: t("fx.s.m_eur") } : { v: fmtInt(n), u: "€" });
+  const eurTxt = (n: number) => { const a = amt(n); return `${a.v} ${a.u}`; };
+  const hero = amt(masse.value);
+  const total = masse.subitems.reduce((s, i) => s + i.value, 0);
+  const items = foldRest(masse.subitems, SUBITEMS_CAP);
+  const lead = trLabel(masse.details, locale) || t("fx.fiche.masse.no_detail");
+  const sub = trLabel(masse.sub, locale);
+
+  const Row = (s: PatrimoineMasse["subitems"][number], i: number) => (
+    <V3Row
+      key={`${s.name}-${i}`}
+      label={trLabel(s.name, locale)}
+      subText={s.amort > 0
+        ? fill(t("fx.fiche.masse.brut_amort"), { brut: eurTxt(s.brut), amort: eurTxt(s.amort) })
+        : fill(t("fx.fiche.masse.part_of"), { pct: fmtDec(total > 0 ? (s.value / total) * 100 : 0, 1) })}
+      amount={<V3Amt {...amt(s.value)} />}
+    />
+  );
 
   return (
-    <div>
-      {masse.sub && (
-        <div className="fx-fiche-sub" style={{ marginBottom: 16 }}>
-          {trLabel(masse.sub, locale)}
-        </div>
+    <div className="fx-v3">
+      <V3Lead src={sub || undefined}>{lead}</V3Lead>
+
+      <V3Hero
+        v={hero.v} u={hero.u}
+        caption={fill(t("fx.fiche.masse.hero_cap"), { year: year ?? "" })}
+        meta={fill(t(masse.side === "actif" ? "fx.fiche.masse.meta_actif" : "fx.fiche.masse.meta_passif"), {
+          share: fmtDec(masse.share * 100, 1),
+          hab: fmtInt(masse.value / PARIS_POPULATION),
+        })}
+      />
+
+      {masse.subitems.length > 0 && (
+        <V3Section title={t("fx.fiche.masse.h.contenu")} sub={fill(t("fx.fiche.masse.h.contenu_sub"), { n: masse.subitems.length })}>
+          {items.shown.map(Row)}
+          {items.rest.length > 0 && (
+            <V3Fold text label={fill(t("fx.fiche.masse.fold"), { n: items.rest.length })}>
+              {items.rest.map((s, i) => Row(s, i + SUBITEMS_CAP))}
+            </V3Fold>
+          )}
+        </V3Section>
       )}
 
-      <div className="fx-fiche-kpis">
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.masse.valeur_nette")}</div>
-          <div className="fk-value tnum">{display}<span className="u">{unit}</span></div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{fill(t("fx.fiche.masse.part_side"), { side: masse.side })}</div>
-          <div className="fk-value tnum">{fmtDec(masse.share * 100, 1)}<span className="u">%</span></div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.masse.par_hab")}</div>
-          <div className="fk-value tnum">
-            {fmtInt(masse.value / PARIS_POPULATION)}<span className="u">€</span>
-          </div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.masse.sous_postes")}</div>
-          <div className="fk-value tnum">{masse.subitems.length}</div>
-        </div>
-      </div>
-
-      <div className="fx-fiche-body" style={{ padding: "28px 0 0" }}>
-        <h3>{t("fx.fiche.masse.recouvre")}</h3>
-        <p>{masse.details || t("fx.fiche.masse.no_detail")}</p>
-
-        {masse.subitems.length > 0 && (
-          <>
-            <h3 style={{ marginTop: 28 }}>
-              {fill(t("fx.fiche.masse.sous_postes_title"), {
-                n: masse.subitems.length,
-                s: masse.subitems.length > 1 ? "s" : "",
-              })}
-            </h3>
-            <table className="fx-fiche-table">
-              <thead>
-                <tr>
-                  <th>{t("fx.fiche.masse.col.poste")}</th>
-                  {hasAmort && <th className="num">{t("fx.fiche.masse.col.brut")}</th>}
-                  {hasAmort && <th className="num">{t("fx.fiche.masse.col.amort")}</th>}
-                  <th className="num">{t("fx.fiche.masse.col.net")}</th>
-                  <th className="num">{t("fx.fiche.masse.col.part")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {masse.subitems.map((s, i) => {
-                  const subUnit = s.value >= 1e9 ? t("fx.s.md_eur") : s.value >= 1e6 ? t("fx.s.m_eur") : "€";
-                  const subDisplay = s.value >= 1e9
-                    ? fmtBillions(s.value)
-                    : s.value >= 1e6
-                    ? fmtMillions(s.value, 0)
-                    : fmtInt(s.value);
-                  const subPct = subitemsTotal > 0 ? (s.value / subitemsTotal) * 100 : 0;
-                  return (
-                    <tr key={i}>
-                      <td>{s.name}</td>
-                      {hasAmort && (
-                        <td className="num muted tnum">
-                          {s.brut >= 1e6 ? fmtMillions(s.brut, 0) : fmtInt(s.brut)}
-                        </td>
-                      )}
-                      {hasAmort && (
-                        <td className="num muted tnum">
-                          {s.amort > 0 ? `−${fmtMillions(s.amort, 0)}` : "—"}
-                        </td>
-                      )}
-                      <td className="num tnum"><b>{subDisplay}</b> <span className="muted">{subUnit}</span></td>
-                      <td className="num muted tnum">{fmtDec(subPct, 1)} %</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </>
-        )}
-
-        <h3 style={{ marginTop: 28 }}>{t("fx.fiche.masse.limites")}</h3>
-        <p className="muted">{t("fx.fiche.masse.limites_desc")}</p>
-      </div>
+      <V3Foot>{t("fx.fiche.masse.limites_desc")}</V3Foot>
     </div>
   );
 }

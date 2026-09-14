@@ -11,10 +11,10 @@ import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useCity } from "./CityContext";
 import YearBars from "./YearBars";
-import AnneesRail from "./AnneesRail";
+import AnneesRail, { RAIL_MIN } from "./AnneesRail";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 const CONTRATS_CAP = 8;
-const YEARS_CAP = 5;
 
 /**
  * Fiche fournisseur v3 (2026-09-03) — sur le kit `fiche/v3` : une phrase
@@ -26,9 +26,12 @@ const YEARS_CAP = 5;
 export default function FournisseurFiche({
   fournisseur,
   sirene,
+  lieu,
 }: {
   fournisseur: FournisseurFicheType;
   sirene?: SireneCompany | null;
+  /** Carte du lieu lié à ce titulaire, posée sous le chiffre. */
+  lieu?: React.ReactNode;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -62,7 +65,6 @@ export default function FournisseurFiche({
   };
 
   const yearsDesc = fournisseur.byYear.slice().reverse();
-  const years = foldRest(yearsDesc, YEARS_CAP);
   const yearBars = (rows: typeof yearsDesc) => (
     <YearBars rows={rows} max={maxByYear}
       countLabel={(y) => <span className="muted">{y.count} {t(y.count === 1 ? "fx.fiche.fourn.contrat_row_one" : "fx.fiche.fourn.contrats_row")}</span>} />
@@ -90,8 +92,7 @@ export default function FournisseurFiche({
             </>
           }
         >
-          {sirene.libelle_activite ? cap(sirene.libelle_activite) : (sirene.nom || fournisseur.nom)}
-          {sirene.activite_principale && <span className="fx-v3-lead-src" style={{ display: "inline", marginLeft: 8 }}>NAF {sirene.activite_principale}</span>}
+          {sirene.libelle_activite ? cap(sirene.libelle_activite) : displayOrgName(sirene.nom || fournisseur.nom)}
         </V3Lead>
       ) : (
         <p className="fx-v3-lead-src">
@@ -111,6 +112,8 @@ export default function FournisseurFiche({
         }
       />
 
+      {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
+
       <V3Section title={t("fx.fiche.fourn.h.contrats")} sub={t("fx.fiche.fourn.h.contrats_sub")}>
         {contrats.shown.map(ContratRow)}
         {contrats.rest.length > 0 && (
@@ -120,18 +123,19 @@ export default function FournisseurFiche({
 
       {fournisseur.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.fourn.h.annees")}>
-          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))} tone="w" />
-          {yearBars(years.shown)}
-          {years.rest.length > 0 && (
-            <V3Fold text label={fill(t("fx.fiche.fourn.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>
-          )}
+          {/* Le rail porte les montants (bouts de l'axe, survol, clic) : la liste
+              année par année le redoublait. */}
+          {yearsDesc.length >= RAIL_MIN ? (
+            <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount, count: y.count }))} tone="w"
+                        countText={(r) => (r.count ? `${r.count} ${t(r.count === 1 ? "fx.fiche.fourn.contrat_row_one" : "fx.fiche.fourn.contrats_row")}` : null)} />
+          ) : yearBars(yearsDesc)}
         </V3Section>
       )}
 
       {fournisseur.byCategory.length > 1 && (
         <V3Section title={t("fx.fiche.fourn.h.pourquoi")} sub={t("fx.fiche.fourn.h.pourquoi_sub")}>
           <FicheBreakdown
-            rows={fournisseur.byCategory.map((c) => ({ key: c.category, label: trLabel(c.category, locale), value: c.amount, href: `${basePath}/marches/categorie/${slugifyLabel(c.category)}` }))}
+            rows={fournisseur.byCategory.map((c) => ({ key: c.category, label: cap(trLabel(c.category, locale)) || trLabel(c.category, locale), value: c.amount, href: `${basePath}/marches/categorie/${slugifyLabel(c.category)}` }))}
             format={eurTxt}
           />
         </V3Section>

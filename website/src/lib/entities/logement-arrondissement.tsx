@@ -1,6 +1,7 @@
 import { ArrondissementLogementFiche } from "@/components/fusion";
 import { LogementArrKicker, LogementArrBackLink } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { loadArrondissementLogement, PARIS_CENTRE_SLUG } from "@/lib/fusion-data";
 import { pct, int, ordFr, ordEn, sourceLine } from "@/lib/entities/seo-text";
 import { arrondissementRelated } from "@/lib/entities/related";
@@ -82,20 +83,12 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
     ),
   },
   drawer: {
-    kicker: ({ data }) => (
-      <span
-        style={{
-          fontFamily: "var(--f-mono)",
-          fontSize: 11,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "var(--muted)",
-        }}
-      >
-        Logement social · {data.year}
-      </span>
-    ),
-    title: ({ data }) => data.label,
+    kicker: ({ data }, locale) => relatedT(locale)("fx.drawer.kicker.arrondissement", { year: data.year }),
+    title: ({ data }, locale) => {
+      if (locale !== "en") return data.label;
+      const n = Number(data.slug);
+      return Number.isInteger(n) ? `${ordEn(n)} arrondissement` : relatedT(locale)("fx.drawer.paris_centre");
+    },
     shareUrl: ({ data }) => `/fr/city/paris/logement/arrondissement/${data.slug}`,
     backHref: () => "/fr/city/paris/logement",
     breadcrumbLabel: ({ data }) => data.label,

@@ -1,19 +1,24 @@
 import { AssociationFiche } from "@/components/fusion";
-import { AssoKicker, AssoPageHeader } from "@/components/fusion/AssoKicker";
+import { AssoPageHeader } from "@/components/fusion/AssoKicker";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { slugifyLabel } from "@/lib/projet-utils";
+import { relatedT } from "@/lib/related-t";
+import Link from "next/link";
 import { getCity } from "@/lib/cities";
 import { numLocale } from "@/lib/fmt";
 import {
   loadAssociation,
   loadSubventionVulgarization,
   loadBeneficiaireGrounded,
+  loadThemeSubventions,
 } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, periodLead, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
 import { associationRelated } from "@/lib/entities/related";
 import { assocSlug } from "@/lib/assoc-slug";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 type D = {
   asso: NonNullable<ReturnType<typeof loadAssociation>>;
@@ -77,6 +82,7 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
       return decodeURIComponent(slug ?? "") === clean ? null : `${base}/association/${clean}`;
     },
     seo: ({ asso: a }, locale) => {
+      const nom = displayOrgName(a.name);
       const amt = eur(a.totalAmount, locale);
       const theme = a.theme ? trLabel(a.theme, locale) : null;
       const date = cityDataDate(city, "subventions/index.json", locale);
@@ -87,12 +93,12 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
       if (locale === "en") {
         return {
           title: `${clip(a.name, 38)}: ${amt} in ${cityNom} city grants`,
-          answer: `${periodLead(a.yearsActive, "en")} the City of ${cityNom} paid ${amt} to ${a.name} in ${int(n, "en")} grant${n > 1 ? "s" : ""}${theme ? `, mainly in ${theme.toLowerCase()}` : ""}. ${sourceLine("en", src, date)}`,
+          answer: `${periodLead(a.yearsActive, "en")} the City of ${cityNom} paid ${amt} to ${nom} in ${int(n, "en")} grant${n > 1 ? "s" : ""}${theme ? `, mainly in ${theme.toLowerCase()}` : ""}. ${sourceLine("en", src, date)}`,
         };
       }
       return {
         title: `${clip(a.name, 38)} : ${amt} de subventions de ${cityNom}`,
-        answer: `${periodLead(a.yearsActive, "fr")} la Ville de ${cityNom} a versé ${amt} à ${a.name} en ${int(n, "fr")} subvention${n > 1 ? "s" : ""}${theme ? `, principalement en ${theme.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
+        answer: `${periodLead(a.yearsActive, "fr")} la Ville de ${cityNom} a versé ${amt} à ${nom} en ${int(n, "fr")} subvention${n > 1 ? "s" : ""}${theme ? `, principalement en ${theme.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
       };
     },
     related: ({ asso }, locale) => associationRelated(asso, city, locale),
@@ -101,20 +107,28 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
         <>
           <AssoPageHeader theme={asso.theme} />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>
-            {asso.name}
+            {displayOrgName(asso.name)}
           </h1>
         </>
       ),
       body: ({ asso, vulgarization, grounded, lieuLien }, locale) => (
         <>
-          <VoirLeLieu lien={lieuLien} locale={locale} />
-          <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
+          <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
         </>
       ),
     },
     drawer: {
-      kicker: ({ asso }) => <AssoKicker theme={asso.theme} />,
-      title: ({ asso }) => asso.name,
+      // Le thème, lien vers sa fiche quand elle existe (« Subventions › Culture »).
+      kicker: ({ asso }, locale) => {
+        const t = relatedT(locale);
+        if (!asso.theme) return t("fx.drawer.kicker.asso");
+        const label = trLabel(asso.theme, locale);
+        const slug = slugifyLabel(asso.theme);
+        return loadThemeSubventions(slug, undefined, city)
+          ? <Link href={`${base}/theme/${slug}`} scroll={false}>{label}</Link>
+          : label;
+      },
+      title: ({ asso }) => displayOrgName(asso.name),
       shareUrl: ({ asso }) => `${base}/association/${assocSlug(asso.name)}`,
       shareText: ({ asso }) => {
         const montantStr = asso.totalAmount >= 1e6
@@ -123,11 +137,10 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
         return `${asso.name} a reçu ${montantStr} de subventions de la Ville de ${cityNom}${asso.theme ? ` (${asso.theme})` : ""}`;
       },
       backHref: () => base,
-      breadcrumbLabel: ({ asso }) => asso.name,
-      children: ({ asso, vulgarization, grounded, lieuLien }) => (
+      breadcrumbLabel: ({ asso }) => displayOrgName(asso.name),
+      children: ({ asso, vulgarization, grounded, lieuLien }, locale) => (
         <>
-          <VoirLeLieu lien={lieuLien} locale={"fr"} />
-          <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
+          <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} lieu={<VoirLeLieu lien={lieuLien} locale={locale} />} />
         </>
       ),
     },

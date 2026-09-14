@@ -1,5 +1,4 @@
 import { ContratFiche } from "@/components/fusion";
-import { DrawerKicker } from "@/components/fusion/DataLabel";
 import {
   MarchesBackKicker,
   ContratLede,
@@ -7,6 +6,7 @@ import {
 } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { trLabel } from "@/lib/label-translate";
 import { getCity } from "@/lib/cities";
 import { numLocale } from "@/lib/fmt";
 import {
@@ -15,11 +15,14 @@ import {
   loadContratRanking,
   loadMarcheVulgarization,
   loadSirene,
+  loadMarcheCategorie,
 } from "@/lib/fusion-data";
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { eur, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
 import { contratRelated } from "@/lib/entities/related";
+import Link from "next/link";
+import { slugifyLabel } from "@/lib/projet-utils";
 
 type D = {
   contrat: NonNullable<ReturnType<typeof loadContrat>>;
@@ -129,8 +132,8 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     },
     body: ({ contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={locale} />
         <ContratFiche
+          lieu={<VoirLeLieu lien={lieuLien} locale={locale} />}
           contrat={contrat}
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}
@@ -141,14 +144,21 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     ),
   },
   drawer: {
-    kicker: ({ contrat }) => <DrawerKicker k="contrat" year={contrat.year} nature={contrat.nature} />,
+    // « Marchés publics › Travaux · 2025 » : la catégorie mène à sa fiche quand elle existe.
+    kicker: ({ contrat }, locale) => {
+      const cat = contrat.categorie && contrat.categorie !== "—" ? contrat.categorie : null;
+      const label = trLabel(cat ?? contrat.nature, locale);
+      const slug = cat ? slugifyLabel(cat) : "";
+      const lien = city === "paris" && slug && loadMarcheCategorie(slug, contrat.year) ? `${base}/categorie/${slug}` : null;
+      return <>{lien ? <Link href={lien} scroll={false}>{label}</Link> : label} · {contrat.year}</>;
+    },
     // Même précédence que ContratFiche (objet_clair → regex → brut). Sans le
     // repli `normalizeObjet`, l'en-tête affichait le libellé technique brut
     // ("SA4.TRVX CSTRUCT…") juste au-dessus du lead qui, lui, montrait la version
     // normalisée ("Sa4.Travaux Cstruct…") — deux titres pour un même contrat.
-    title: ({ contrat, vulgarization }) => {
-      const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
-      return label || `Marché ${contrat.numero}`;
+    title: ({ contrat, vulgarization }, locale) => {
+      const label = (locale === "en" ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+      return label || `${locale === "en" ? "Contract" : "Marché"} ${contrat.numero}`;
     },
     shareUrl: ({ contrat }) => `${base}/contrat/${contrat.numero}`,
     shareText: ({ contrat, vulgarization }) => {
@@ -160,10 +170,10 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     },
     backHref: () => base,
     breadcrumbLabel: ({ contrat }) => `Contrat ${contrat.numero}`,
-    children: ({ contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien }) => (
+    children: ({ contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien }, locale) => (
       <>
-        <VoirLeLieu lien={lieuLien} locale={"fr"} />
         <ContratFiche
+          lieu={<VoirLeLieu lien={lieuLien} locale={locale} />}
           contrat={contrat}
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}

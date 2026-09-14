@@ -8,6 +8,8 @@ import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Hero, V3Row, V3Section } from "@/components/fiche/v3";
 import { useFmt } from "@/lib/use-fmt";
+import AnneesRail, { RAIL_MIN } from "./AnneesRail";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 /**
  * Fiche arrondissement · logement social v3 (2026-09-03) — UN chiffre (les
@@ -37,9 +39,15 @@ export default function ArrondissementLogementFiche({
         meta={fill(t(data.nbOperations === 1 ? "fx.arr_log.meta1" : "fx.arr_log.meta"), { n: data.nbOperations, share: Math.round(data.shareCity), rank: `${data.rank}${sufOrdinal(data.rank, locale)}` })}
       />
 
+      {(data.series?.length ?? 0) >= RAIL_MIN && (
+        <V3Section title={t("fx.arr_log.h.annees")}>
+          <AnneesRail rows={data.series ?? []} format={(n) => `${fmtInt(n)} ${t(n === 1 ? "fx.arr_log.unit_one" : "fx.arr_log.unit")}`} />
+        </V3Section>
+      )}
+
       <V3Section title={fill(t("fx.arr_log.h.ops"), { year: data.year })}>
         {shown.map((p) => (
-          <V3Row key={p.id} label={p.adresse} subText={`${p.bailleur} · ${p.natureProgramme}`}
+          <V3Row key={p.id} label={p.adresse} subText={<>{p.bailleurHref ? <Link href={p.bailleurHref} scroll={false}>{displayOrgName(p.bailleur)}</Link> : displayOrgName(p.bailleur)} · {p.natureProgramme}</>}
             amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{fmtInt(p.nbLogements)}<span className="u">{t(p.nbLogements === 1 ? "fx.arr_log.unit_one" : "fx.arr_log.unit")}</span></span>} />
         ))}
         {remaining > 0 && (
@@ -51,7 +59,7 @@ export default function ArrondissementLogementFiche({
         <V3Section title={t("fx.arr_log.bailleurs.head")}>
           <FicheBreakdown
             rows={data.byBailleur.map((b) => ({
-              key: b.name, label: b.name, value: b.nbLogements,
+              key: b.name, label: displayOrgName(b.name), value: b.nbLogements, href: b.href ?? undefined,
               meta: `${b.nbOperations} ${b.nbOperations > 1 ? t("fx.arr_log.ops_plural") : t("fx.arr_log.ops_singular")} · ${fmtDec(data.totalLogements > 0 ? (b.nbLogements / data.totalLogements) * 100 : 0, 0)} %`,
             }))}
             format={(n) => `${fmtInt(n)} ${t(n === 1 ? "fx.arr_log.unit_one" : "fx.arr_log.unit")}`}

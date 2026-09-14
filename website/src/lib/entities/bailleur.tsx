@@ -1,6 +1,8 @@
 import { BailleurFiche } from "@/components/fusion";
 import { BailleurKickerText } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { trLabel } from "@/lib/label-translate";
+import { relatedT } from "@/lib/related-t";
 import { fmtBillions, fmtMillions } from "@/lib/fmt";
 import { loadBailleur } from "@/lib/fusion-data";
 import { eur, pct, int, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
@@ -90,13 +92,10 @@ export const bailleurConfig: EntityPageConfig<D> = {
     body: ({ bailleur }) => <BailleurFiche bailleur={bailleur} />,
   },
   drawer: {
-    kicker: ({ bailleur }) => {
-      const kicker = bailleur.type
-        ? `Bailleur · ${bailleur.type}`
-        : bailleur.garanties
-        ? "Bénéficiaire · garantie d'emprunt Ville de Paris"
-        : "Bailleur social";
-      return <span className="fx-kicker-mono">{kicker}</span>;
+    kicker: ({ bailleur }, locale) => {
+      const t = relatedT(locale);
+      if (bailleur.type) return t("fx.drawer.kicker.bailleur", { type: trLabel(bailleur.type, locale) });
+      return t(bailleur.garanties ? "fx.drawer.kicker.bailleur_garanti" : "fx.drawer.kicker.bailleur_social");
     },
     title: ({ bailleur }) => bailleur.name,
     shareUrl: ({ bailleur }) => `/fr/city/paris/dette/bailleur/${encodeURIComponent(bailleur.slug)}`,

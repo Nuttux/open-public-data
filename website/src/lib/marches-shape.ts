@@ -122,3 +122,68 @@ export function shapeAllMarches(rows: RawMarcheRow[], vulg: MarcheVulgLabels): S
     })
     .sort((a, b) => b.montant - a.montant);
 }
+
+/** The fields the shared-lot rule reads. */
+export type LotRow = {
+  objet?: string | null;
+  montant_max?: number | null;
+  montant_min?: number | null;
+  fournisseur_nom?: string | null;
+  fournisseur_siret?: string | null;
+};
+
+/**
+ * A lot won by several companies is published once per company, each row
+ * carrying the value of the whole lot. Checked 2026-09-14 on the 2020 school
+ * sports workshops: the BOAMP award notice (21-59153) values the whole
+ * framework agreement at 14.6 M€ and repeats one lot amount (14 456 000 €) on
+ * each of five holders' decisions; the Paris list shows that amount over four
+ * years (57 824 009,99 €) on each of its 19 holders' rows.
+ *
+ * Rule: same objet (case and spacing ignored) + same amount (to the cent) +
+ * at least two distinct holders = one lot. Its first row counts, the others are
+ * flagged as repeats. The same holder twice keeps both rows: two budgets can
+ * sign the same contract.
+ */
+export function lotRepeatFlags<T extends LotRow>(
+  rows: readonly T[],
+  amountOf: (r: T) => number = (r) => Number(r.montant_max ?? 0),
+): boolean[] {
+  const holdersOf = (r: T): string[] => {
+    const sirens = String(r.fournisseur_siret ?? "")
+      .split("|")
+      .map((x) => x.replace(/\s/g, ""))
+      .filter((x) => /^\d{9}/.test(x))
+      .map((x) => x.slice(0, 9));
+    if (sirens.length) return sirens;
+    const name = (r.fournisseur_nom ?? "").trim().toLowerCase();
+    return name && isNamedTitulaire(r.fournisseur_nom) ? [`name:${name}`] : [];
+  };
+  const groups = new Map<string, number[]>();
+  rows.forEach((r, i) => {
+    const objet = (r.objet ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+    const cents = Math.round(amountOf(r) * 100);
+    if (!objet || !(cents > 0)) return;
+    const key = `${cents}|${objet}`;
+    const list = groups.get(key);
+    if (list) list.push(i);
+    else groups.set(key, [i]);
+  });
+  const flags = rows.map(() => false);
+  for (const idx of groups.values()) {
+    if (idx.length < 2) continue;
+    const holders = new Set(idx.flatMap((i) => holdersOf(rows[i])));
+    if (holders.size < 2) continue;
+    for (const i of idx.slice(1)) flags[i] = true;
+  }
+  return flags;
+}
+
+/** Sum of amounts where a shared lot counts once (see lotRepeatFlags). */
+export function sumLots<T extends LotRow>(
+  rows: readonly T[],
+  amountOf: (r: T) => number = (r) => Number(r.montant_max ?? 0),
+): number {
+  const repeats = lotRepeatFlags(rows, amountOf);
+  return rows.reduce((sum, r, i) => (repeats[i] ? sum : sum + (amountOf(r) || 0)), 0);
+}

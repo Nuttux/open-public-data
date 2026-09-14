@@ -3998,7 +3998,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-drawer-kicker {
   font-family: var(--f-mono);
   font-size: 10.5px;
-  color: var(--ocre);
+  color: var(--muted);
   letter-spacing: .1em;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -4058,6 +4058,52 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--bg);
   border-color: var(--ink);
 }
+/* La ligne au-dessus du titre porte la navigation : la section mène à sa page,
+ * le parent à sa fiche quand elle existe. La marge négative agrandit la zone
+ * de clic sans déplacer la ligne. */
+.theme-fusion .fx-drawer-kicker a { color: var(--ocre); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; padding-block: 6px; margin-block: -6px; }
+.theme-fusion .fx-drawer-kicker a:hover { color: var(--ink); }
+.theme-fusion .fx-drawer-kicker a:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+/* Même règle sur la page d'un lieu : le descripteur en gris, les liens en ocre. */
+.theme-fusion .fx-page-kicker--links { color: var(--muted); }
+.theme-fusion .fx-page-kicker--links a { color: var(--ocre); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.theme-fusion .fx-page-kicker--links a:hover { color: var(--ink); }
+.theme-fusion .fx-page-kicker--links a:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-drawer-kicker-sep { color: var(--muted); }
+.theme-fusion .fx-drawer-share-icon { flex-shrink: 0; }
+/* La phrase-réponse sous le titre d'une fiche : en gris et plus petite, sa
+ * source sur une ligne à part. Elle reste pour les moteurs, sans repousser le
+ * chiffre de la fiche hors du premier écran. */
+.theme-fusion .fx-page-header--fiche .fx-answer { font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 640px; }
+.theme-fusion .fx-answer + .fx-answer-src { margin-top: 4px; font-size: 12px; }
+/* La carte « Voir le lieu » sous le chiffre de la fiche et non plus au-dessus :
+ * elle ne repousse plus le chiffre hors du premier écran. */
+.theme-fusion .fx-v3-lieu-slot { margin: -24px 0 40px; }
+.theme-fusion .fx-v3-lieu-slot:empty { display: none; }
+/* Fiche projet : le premier écran de la fiche lieu, chiffre à gauche, photo à droite. */
+.theme-fusion .fx-projet-hero .fx-v3-hero { margin: 0 0 16px; }
+.theme-fusion .fx-projet-hero-photo { min-width: 0; }
+.theme-fusion .fx-drawer-body .fx-projet-hero-photo { order: 2; }
+@media (max-width: 720px) { .theme-fusion .fx-projet-hero-photo { order: 2; } }
+/* Sous la carte des garanties : les mêmes fiches en liens simples. */
+.theme-fusion .fx-hbmap-list { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 14px 0 0; font-size: 13px; }
+.theme-fusion .fx-hbmap-list a { color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; padding-block: 6px; }
+.theme-fusion .fx-hbmap-list a:hover { text-decoration-color: currentColor; }
+.theme-fusion .fx-hbmap-list .tnum { color: var(--muted); }
+/* Les deux bouts d'une série, dits au-dessus du rail : sous l'axe, un montant
+ * plus large que sa barre semblait appartenir à la barre voisine. */
+.theme-fusion .fx-v3-years-cap { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); margin: 10px 0 0; max-width: 560px; }
+.theme-fusion .fx-v3-years-cap b { color: var(--ink); font-weight: 600; }
+/* Huit exercices ne tenaient pas dans la colonne de 270 px : la barre de 2026
+ * sortait du tiroir. Les barres rétrécissent, et dans le tiroir le chiffre et
+ * la tendance s'empilent. */
+.theme-fusion .fx-v3-trend { min-width: 0; }
+.theme-fusion .fx-drawer-body .fx-v3-herogrid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+/* Les quatre lieux voisins : deux par ligne dans le tiroir, jamais trois et un seul. */
+.theme-fusion .fx-drawer-body .fx-voisins--voisins { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* « Voir aussi » groupé : un intitulé court au-dessus de chaque groupe de rangées. */
+.theme-fusion .fx-related-group { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 20px 0 6px; }
+.theme-fusion .fx-v3-rule + .fx-related-group { margin-top: 14px; }
 
 .theme-fusion .fx-drawer-crumb {
   padding: 10px 32px;
@@ -4634,6 +4680,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-drawer-title { font-size: 17px; -webkit-line-clamp: 2; }
   .theme-fusion .fx-drawer-kicker { font-size: 9.5px; margin-bottom: 6px; }
   .theme-fusion .fx-drawer-iconbtn { font-size: 10px; padding: 0 8px; height: 30px; }
+  /* Sur téléphone, partager n'est plus que son icône : le titre garde la largeur. */
+  .theme-fusion .fx-drawer-share { min-width: 30px; }
+  .theme-fusion .fx-drawer-share-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .theme-fusion .fx-drawer-close { width: 30px; height: 30px; font-size: 20px; }
   .theme-fusion .fx-fiche-kpis { grid-template-columns: 1fr; }
   .theme-fusion .fx-fiche-prop { grid-template-columns: 1fr; gap: 2px; }
@@ -19453,13 +19502,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
  * montrait un écart qui n'existait pas. Un repère ne doit jamais déplacer la
  * donnée qu'il annote. */
 .theme-fusion .fx-v3-years > button b {
-  position: absolute; left: 22%; right: 22%; bottom: -5px; height: 2px;
-  background: var(--muted); opacity: .28;
+  position: absolute; left: 50%; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%;
+  background: var(--muted); opacity: .55;
 }
 .theme-fusion .fx-v3-years > button:hover b, .theme-fusion .fx-v3-years > button.on b { opacity: 1; background: var(--ink); }
 /* Place sous la ligne de base pour le repère, sans coller aux années. */
-.theme-fusion .fx-v3-years.clic { margin-bottom: 26px; }
-.theme-fusion .fx-v3-years.clic .yr { margin-top: 11px; }
+.theme-fusion .fx-v3-years.clic { margin-bottom: 20px; }
+.theme-fusion .fx-v3-years.clic .yr { margin-top: 5px; }
 /* L'invitation remplace le panneau tant qu'aucune année n'est ouverte : un
  * repère seul n'apprend à personne qu'il y a quelque chose à cliquer. */
 .theme-fusion .fx-v3-aide {
@@ -19469,6 +19518,22 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-years > button:hover i { filter: brightness(.85); }
 .theme-fusion .fx-v3-years > button.on i { box-shadow: inset 0 0 0 1px var(--ink); }
 .theme-fusion .fx-v3-years > button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+/* Les deux bouts de l'axe portent leur montant : sans survol ni clic, le
+ * lecteur lit d'où la série part et où elle arrive. */
+.theme-fusion .fx-v3-years .yr .yv { color: var(--ink-2); }
+/* Au survol (souris seulement : sur un téléphone le survol reste collé après
+ * un tap, et le panneau donne déjà le montant), l'année et son montant
+ * au-dessus de la barre. Aux extrémités, ancrée au bord pour ne pas déborder. */
+@media (hover: hover) {
+  .theme-fusion .fx-v3-years > [data-tip]:hover::after {
+    content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    padding: 4px 7px; background: var(--ink); color: #fff; font-family: var(--f-mono); font-size: 11px; line-height: 1.2;
+    white-space: nowrap; pointer-events: none; z-index: 3;
+  }
+  .theme-fusion .fx-v3-years > [data-tip].tl:hover::after { left: 0; transform: none; }
+  .theme-fusion .fx-v3-years > [data-tip].tr:hover::after { left: auto; right: 0; transform: none; }
+}
+.theme-fusion .fx-v3-delib .hd .ct { color: var(--muted); }
 /* Le panneau des décisions : une ligne par délibération, la référence puis le
  * titre entier de la Ville. Pas de tableau, pas d'encadré — la grammaire de la
  * fiche est une suite de lignes. */
@@ -19586,7 +19651,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-trend .t { font-size: 13.5px; color: var(--muted); }
 .theme-fusion .fx-v3-trend .t b { color: var(--ocre); font-weight: 600; font-size: 15px; }
 .theme-fusion .fx-v3-trend .bars { display: flex; align-items: flex-end; gap: 8px; height: 66px; margin-top: 14px; }
-.theme-fusion .fx-v3-trend .bars > div { flex: 0 0 32px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.theme-fusion .fx-v3-trend .bars > div { flex: 1 1 0; max-width: 32px; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .theme-fusion .fx-v3-trend .bars b { width: 100%; background: #c8ccd3; display: block; }
 .theme-fusion .fx-v3-trend .bars .vote b { background: repeating-linear-gradient(135deg, #c8ccd3 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars .now b { background: var(--ink); }

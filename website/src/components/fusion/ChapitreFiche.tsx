@@ -6,6 +6,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { fill, sufOrdinal } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { V3Amt, V3Foot, V3Hero, V3Row, V3Section } from "@/components/fiche/v3";
+import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 
 /**
  * Fiche chapitre d'investissement v3 (2026-09-03) — UN chiffre (le montant
@@ -33,6 +34,12 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         meta={fill(t("fx.fiche.chap.meta"), { share: Math.round(chap.share), rank: `${chap.rank}${sufOrdinal(chap.rank, locale)}`, n: chap.nbChapitres })}
       />
 
+      {chap.series.length >= RAIL_MIN && (
+        <V3Section title={t("fx.fiche.chap.h.annees")}>
+          <AnneesRail rows={chap.series} />
+        </V3Section>
+      )}
+
       {hasProjets && chap.topArrondissements.length > 0 && (
         <V3Section title={t("fx.fiche.chap.h.arr")}>
           {chap.topArrondissements.map((a) => (
@@ -59,6 +66,17 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
       ) : (
         <V3Section title={t("fx.fiche.chap.h.projets")}>
           <p className="fx-v3-sentence" style={{ color: "var(--muted)" }}>{fill(t("fx.fiche.chap.no_projets_body"), { year: chap.year })}</p>
+          {chap.fallback && (
+            <>
+              <p className="fx-v3-sentence">{fill(t("fx.fiche.chap.fallback"), { year: chap.fallback.year })}</p>
+              {chap.fallback.projets.map((p) => (
+                <V3Row key={p.id} href={`${basePath}/investissements/projet/${encodeURIComponent(p.id)}`}
+                  label={p.name}
+                  sub={p.arr > 0 ? `${p.arr}${sufOrdinal(p.arr, locale)}` : t("fx.fiche.chap.transverse")}
+                  amount={<V3Amt {...fmtEur(p.amount)} />} />
+              ))}
+            </>
+          )}
         </V3Section>
       )}
 

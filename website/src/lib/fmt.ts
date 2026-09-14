@@ -94,8 +94,14 @@ export const cap = (s?: string | null) =>
   s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
 
 /** Suffixe ordinal : 1er/2ᵉ… en FR, 1st/2th… en EN (sic — préserve l'existant). */
-export const sufOrdinal = (n: number, locale: string) =>
-  locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ";
+export const sufOrdinal = (n: number, locale: string): string => {
+  if (locale !== "en") return n === 1 ? "er" : "ᵉ";
+  // 11th, 12th, 13th, then 21st, 22nd, 23rd. The English branch used to
+  // return « th » for everything but 1, so fiches read « 3th recipient ».
+  const tens = Math.abs(n) % 100;
+  if (tens >= 11 && tens <= 13) return "th";
+  return ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[Math.abs(n) % 10] ?? "th";
+};
 
 /**
  * Compact euro as `{ v, u }`, locale-aware, with Md/M unit labels supplied by

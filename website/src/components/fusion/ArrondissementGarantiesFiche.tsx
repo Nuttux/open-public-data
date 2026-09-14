@@ -8,6 +8,9 @@ import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Hero, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useFmt } from "@/lib/use-fmt";
+import { displayOrgName } from "@/lib/fournisseur-display";
+import { displayPreteur } from "@/lib/preteur-display";
+import { empruntSourceHref } from "@/lib/dette-garantie-links";
 
 type Props = { arr: ArrondissementGaranties; year: number };
 const EMPRUNTS_CAP = 5;
@@ -29,9 +32,9 @@ export default function ArrondissementGarantiesFiche({ arr, year }: Props) {
   const bailleurHref = (name: string) => `${basePath}/dette/bailleur/${encodeURIComponent(slugifyBailleur(name))}`;
   const emprunts = foldRest(arr.emprunts_top, EMPRUNTS_CAP);
   const EmpruntRow = (e: (typeof arr.emprunts_top)[number], i: number) => (
-    <V3Row key={i} href={bailleurHref(e.beneficiaire)} label={cap(e.objet)}
-      subText={[e.beneficiaire, e.preteur, e.annee_mobilisation ? fill(t("fx.fiche.bail.mobilise"), { an: e.annee_mobilisation }) : null,
-        e.taux_actuariel != null ? `${fmtDec(e.taux_actuariel, 2)} % ${e.taux_type === "fixe" ? t("fx.fiche.bg.fixe") : t("fx.fiche.bg.variable")}` : null].filter(Boolean).join(" · ")}
+    <V3Row key={i} external href={empruntSourceHref({ year, beneficiaire: e.beneficiaire, preteur: e.preteur, annee_mobilisation: e.annee_mobilisation, objet: e.objet })} label={cap(e.objet)}
+      subText={[displayOrgName(e.beneficiaire), e.preteur ? displayPreteur(e.preteur) : null, e.annee_mobilisation ? fill(t("fx.fiche.bail.mobilise"), { an: e.annee_mobilisation }) : null,
+        e.taux_actuariel != null ? `${fmtDec(e.taux_actuariel, 2)} % ${(e.taux_type ?? "").toUpperCase() === "FIXE" ? t("fx.fiche.bg.fixe") : t("fx.fiche.bg.variable")}` : null].filter(Boolean).join(" · ")}
       amount={<V3Amt {...fmtAmount(e.capital_restant)} />} />
   );
 
@@ -49,7 +52,7 @@ export default function ArrondissementGarantiesFiche({ arr, year }: Props) {
         <V3Section title={t("fx.ag.h.benef")} sub={t("fx.ag.h.benef_sub")}>
           <FicheBreakdown
             cap={arr.top_beneficiaires.length}
-            rows={arr.top_beneficiaires.map((b) => ({ key: b.name, label: b.name, value: b.capital_restant, href: bailleurHref(b.name), meta: `${nInt(b.count_emprunts)} ${t(b.count_emprunts === 1 ? "fx.arr_log.ops_singular_emprunt" : "fx.fiche.bg.emprunts")} · ${fmtDec(b.share_of_arr * 100, 0)} %` }))}
+            rows={arr.top_beneficiaires.map((b) => ({ key: b.name, label: displayOrgName(b.name), value: b.capital_restant, href: bailleurHref(b.name), meta: `${nInt(b.count_emprunts)} ${t(b.count_emprunts === 1 ? "fx.arr_log.ops_singular_emprunt" : "fx.fiche.bg.emprunts")} · ${fmtDec(b.share_of_arr * 100, 0)} %` }))}
             format={eurTxt}
           />
         </V3Section>

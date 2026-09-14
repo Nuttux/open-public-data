@@ -112,6 +112,19 @@ export function lockBodyScroll() {
   body.style.overflow = "hidden";
 }
 
+/** The page offset captured by the first lock, i.e. where the reader was on
+ *  the page behind the drawer. */
+export function getLockedY(): number {
+  return lockedY;
+}
+
+/** Override the offset the last unlock restores. Closing a drawer→drawer chain
+ *  sets it back to where the reader was before the first drawer: the locks of
+ *  the intermediate drawers can capture a stale value on the way. */
+export function setLockedY(y: number) {
+  lockedY = y;
+}
+
 export function unlockBodyScroll() {
   lockCount = Math.max(0, lockCount - 1);
   if (lockCount > 0 || !prevStyles) return; // another drawer still open

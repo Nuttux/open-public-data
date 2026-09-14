@@ -3,6 +3,8 @@ import Link from "next/link";
 import LieuFiche from "@/components/fusion/LieuFiche";
 import LieuxVoisins from "@/components/fusion/LieuxVoisins";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { sufOrdinal } from "@/lib/fmt";
+import { relatedT } from "@/lib/related-t";
 import { loadLieu, loadLieuxIndex } from "@/lib/lieux-data";
 import { clip, dataDate, eur, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
 import { lieuRelated } from "@/lib/entities/related";
@@ -103,15 +105,13 @@ export const lieuConfig: EntityPageConfig<D> = {
     // Pas de section fx-page-header : la fiche lieu rend son back-link,
     // kicker et h1 directement dans le fx-fiche-wrap (layout pré-refacto).
     body: ({ lieu }, locale) => {
-      const kind = locale === "en" ? lieu.kind_en : lieu.kind_fr;
       return (
         <>
           <nav className="fx-fiche-back">
             <Link href="/fr/city/paris/lieux" className="fx-row-link">← {locale === "en" ? "All places" : "Tous les lieux"}</Link>
           </nav>
-          <div className="fx-page-kicker">
-            {kind}
-            {lieu.arrondissement > 0 ? ` · ${lieu.arrondissement}${lieu.arrondissement === 1 ? "er" : "e"}` : ""}
+          <div className="fx-page-kicker fx-page-kicker--links">
+            <LieuKicker lieu={lieu} locale={locale} />
           </div>
           <h1 className="fx-page-title" style={{ fontSize: "clamp(26px, 3.4vw, 40px)", margin: "4px 0 24px" }}>
             {lieu.name}
@@ -137,12 +137,44 @@ export const lieuConfig: EntityPageConfig<D> = {
     },
   },
   drawer: {
-    kicker: ({ lieu }) => `${lieu.kind_fr} · ${lieu.arrondissement}${lieu.arrondissement === 1 ? "er" : "e"}`,
+    // « Lieux › Culture · 1er arr. » : la famille et l'arrondissement ouvrent la
+    // page des lieux déjà filtrée. Liens durs, comme la section : la page des
+    // lieux n'est pas un tiroir.
+    kicker: ({ lieu }, locale) => <LieuKicker lieu={lieu} locale={locale} />,
     title: ({ lieu }) => lieu.name,
     shareUrl: ({ lieu }) => `/fr/city/paris/lieu/${lieu.slug}`,
     backHref: () => "/fr/city/paris/lieux",
     breadcrumbLabel: ({ lieu }) => lieu.name,
-    children: ({ lieu }) => <LieuFiche lieu={lieu} />,
+    // Même fin que la page : les lieux de la même famille, puis « Voir aussi ».
+    children: ({ lieu }) => (
+      <>
+        <LieuFiche lieu={lieu} />
+        <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
+      </>
+    ),
   },
   staticParams: lieuStaticParams,
 };
+
+/**
+ * « Culture · 1er arr. » : la famille et l'arrondissement ouvrent la page des
+ * lieux déjà filtrée. Même en-tête sur la page et dans le tiroir. Liens durs :
+ * la page des lieux n'est pas un tiroir.
+ */
+function LieuKicker({ lieu, locale }: {
+  lieu: { famille?: string | null; arrondissement: number; kind_fr: string; kind_en?: string | null };
+  locale: Parameters<typeof relatedT>[0];
+}) {
+  const t = relatedT(locale);
+  const base = "/fr/city/paris/lieux";
+  const n = lieu.arrondissement;
+  const famKey = `fx.lieux.fam.${lieu.famille}`;
+  const fam = lieu.famille ? t(famKey) : null;
+  const kind = (locale === "en" ? lieu.kind_en : lieu.kind_fr) || lieu.kind_fr;
+  return (
+    <>
+      {fam && fam !== famKey ? <a href={`${base}?famille=${encodeURIComponent(lieu.famille ?? "")}`}>{fam}</a> : kind}
+      {n > 0 ? <>{" · "}<a href={`${base}?arrondissement=${n}`}>{t("fx.drawer.kicker.arr_short", { arr: `${n}${sufOrdinal(n, locale)}` })}</a></> : null}
+    </>
+  );
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useT, useLocale } from "@/lib/localeContext";
+import { useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
 /**
@@ -13,19 +13,3 @@ export function DataLabel({ value }: { value?: string | null }) {
   return <>{trLabel(value, locale)}</>;
 }
 
-/** Localized kicker line for entity drawers (Thématique / Catégorie / Marché). */
-export function DrawerKicker({
-  k,
-  year,
-  nature,
-}: {
-  k: "theme" | "categorie" | "contrat";
-  year: number | string;
-  nature?: string | null;
-}) {
-  const t = useT();
-  const { locale } = useLocale();
-  let s = t(`fx.drawer.kicker.${k}`).replace("{year}", String(year));
-  if (nature != null) s = s.replace("{nature}", trLabel(nature, locale));
-  return <>{s}</>;
-}

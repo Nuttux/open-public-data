@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
-import { pushDrawer, popDrawer, lockBodyScroll, unlockBodyScroll } from "@/lib/drawerState";
+import { pushDrawer, popDrawer, lockBodyScroll, unlockBodyScroll, getLockedY, setLockedY } from "@/lib/drawerState";
 
 type DrawerReferrer = { url: string; label: string };
 
 const STORAGE_KEY = "fx-drawer-stack";
+/** Where the reader was on the page behind the first drawer of a chain. */
+const ORIGIN_Y_KEY = "fx-drawer-origin-y";
 
 function readStack(): DrawerReferrer[] {
   if (typeof window === "undefined") return [];
@@ -41,6 +43,32 @@ export function clearDrawerStack() {
   } catch {
     /* storage disabled */
   }
+}
+
+/**
+ * The section a French city fiche belongs to, read off its URL. It opens the
+ * line above the title as a link to the section page (« Subventions ›
+ * Association · Culture »). It replaced a « ↗ Subventions » button: ↗ says
+ * « leaves the site » everywhere on the web, and the button sat beside
+ * « ↗ Partager », which does something else entirely. `path` is set when the
+ * section page's URL differs from the fiche's segment: a place lives at
+ * /lieu/{slug}, the places page at /lieux.
+ */
+const SECTIONS: Record<string, { key: string; path?: string }> = {
+  investissements: { key: "fx.drawer.hub.invest" },
+  subventions: { key: "fx.drawer.hub.subv" },
+  marches: { key: "fx.drawer.hub.marches" },
+  dette: { key: "fx.drawer.hub.dette" },
+  logement: { key: "fx.drawer.hub.logement" },
+  budget: { key: "fx.drawer.hub.budget" },
+  lieu: { key: "fx.drawer.hub.lieux", path: "lieux" },
+};
+
+function sectionOf(shareUrl?: string): { href: string; key: string } | null {
+  const m = shareUrl?.match(/^(\/fr\/city\/[^/]+)\/([^/]+)\//);
+  if (!m) return null;
+  const s = SECTIONS[m[2]];
+  return s ? { href: `${m[1]}/${s.path ?? m[2]}`, key: s.key } : null;
 }
 
 type Props = {
@@ -92,6 +120,7 @@ export default function DetailDrawer({
   const [menuOpen, setMenuOpen] = useState(false);
   const [previous, setPrevious] = useState<DrawerReferrer | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const section = sectionOf(shareUrl);
   const openedAtRef = useRef<number>(Date.now());
   const entityType = (() => {
     if (!shareUrl) return "unknown";
@@ -134,6 +163,11 @@ export default function DetailDrawer({
     }
     const stack = readStack();
     const top = stack[stack.length - 1];
+    // First drawer of a chain: remember the page offset the lock captured, so
+    // closing the whole chain can put the reader back where they were.
+    if (!top) {
+      try { sessionStorage.setItem(ORIGIN_Y_KEY, String(getLockedY())); } catch { /* storage disabled */ }
+    }
     if (top && top.url !== shareUrl) {
       setPrevious(top);
     }
@@ -181,6 +215,7 @@ export default function DetailDrawer({
   // Covers /fr|us/city/{city}/{section}/… and /fr|us/national/{section}/….
   const hubFromShareUrl = () => {
     if (!shareUrl) return null;
+    if (section) return section.href;
     const m = shareUrl.match(/^(\/(?:fr|us)\/(?:city\/[^/]+|national)\/[^/]+)\//);
     return m ? m[1] : null;
   };
@@ -199,7 +234,44 @@ export default function DetailDrawer({
     // as "the X went back but didn't close". The "← Retour" crumb is what steps
     // back one level; the × always dismisses the whole chain.
     const inChain = Boolean(previous || parentLink);
+    const stackDepth = readStack().length;
     writeStack([]);
+
+    if (inChain && !parentLink && typeof window !== "undefined" && stackDepth > 1) {
+      // Drawer opened from another drawer: step back over every drawer entry at
+      // once. That lands on the page the reader was browsing, scrolled where
+      // they left it. Until 2026-09-13 this hard-navigated to the section page,
+      // so closing a drawer threw the reader off the page they were reading.
+      let originY = NaN;
+      try { originY = Number(sessionStorage.getItem(ORIGIN_Y_KEY)); } catch { /* storage disabled */ }
+      if (Number.isFinite(originY)) {
+        setLockedY(originY);
+        // The page behind re-renders after the back navigation lands, and the
+        // scroll lock of the intermediate drawers can leave a stale offset:
+        // restore the original one a few times while the page settles.
+        // Right after the back navigation the page behind is still short (its
+        // content re-renders), so a scrollTo lands clamped: measured 130 px for
+        // an origin at 700. Re-apply for two seconds, only once the page is tall
+        // enough, and stop as soon as the reader scrolls themselves.
+        window.addEventListener("popstate", () => {
+          const started = Date.now();
+          let stopped = false;
+          const stop = () => { stopped = true; };
+          window.addEventListener("wheel", stop, { once: true, passive: true });
+          window.addEventListener("touchstart", stop, { once: true, passive: true });
+          window.addEventListener("keydown", stop, { once: true });
+          const tick = () => {
+            if (stopped) return;
+            const room = document.documentElement.scrollHeight - window.innerHeight;
+            if (room >= originY - 2 && Math.abs(window.scrollY - originY) > 2) window.scrollTo(0, originY);
+            if (Date.now() - started < 2000) window.setTimeout(tick, 100);
+          };
+          tick();
+        }, { once: true });
+      }
+      window.history.go(-Math.min(stackDepth, Math.max(1, window.history.length - 1)));
+      return;
+    }
 
     if (inChain) {
       // Close every open drawer at once. We can't do this with the soft router:
@@ -335,47 +407,38 @@ export default function DetailDrawer({
         )}
         <header className="fx-drawer-head">
           <div className="fx-drawer-head-left">
-            {kicker && <div className="fx-drawer-kicker">{kicker}</div>}
+            {(section || kicker) && (
+              <div className="fx-drawer-kicker">
+                {section && (
+                  <>
+                    <a className="fx-drawer-section" href={section.href}>{t(section.key)}</a>
+                    {kicker ? <span className="fx-drawer-kicker-sep" aria-hidden="true"> › </span> : null}
+                  </>
+                )}
+                {kicker}
+              </div>
+            )}
             <h2 className="fx-drawer-title">{title}</h2>
           </div>
           <div className="fx-drawer-head-actions" ref={menuRef}>
-            {(() => {
-              // Bouton « ↗ Voir tous les X » — extrait dynamiquement la
-              // section du shareUrl pour pointer vers le hub correspondant.
-              // Remplace l'ancien bouton "Page entière" (peu utile : refresh
-              // suffit). Action plus utile : explorer le listing complet de
-              // l'entité une fois qu'on a peeké un cas spécifique.
-              if (!shareUrl) return null;
-              const m = shareUrl.match(/^(\/fr\/city\/[^/]+\/([^/]+))\//);
-              if (!m) return null;
-              const hubHref = m[1];
-              const section = m[2];
-              const labelKey: Record<string, string> = {
-                investissements: "fx.drawer.hub.invest",
-                subventions: "fx.drawer.hub.subv",
-                marches: "fx.drawer.hub.marches",
-                dette: "fx.drawer.hub.dette",
-                logement: "fx.drawer.hub.logement",
-                budget: "fx.drawer.hub.budget",
-              };
-              const key = labelKey[section];
-              if (!key) return null;
-              return (
-                <a className="fx-drawer-iconbtn fx-drawer-fullpage" href={hubHref}>
-                  ↗ {t(key)}
-                </a>
-              );
-            })()}
             {shareUrl && (
               <div style={{ position: "relative" }}>
                 <button
                   type="button"
-                  className="fx-drawer-iconbtn"
+                  className="fx-drawer-iconbtn fx-drawer-share"
                   onClick={onShareClick}
                   aria-label={t("fx.drawer.share_aria")}
                   aria-expanded={menuOpen}
                 >
-                  {copied ? t("fx.drawer.copied") : t("fx.drawer.share")}
+                  {copied ? t("fx.drawer.copied") : (
+                    <>
+                      <svg className="fx-drawer-share-icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M8 10V2.5M5 5.5l3-3 3 3" />
+                        <path d="M3.5 8v5.5h9V8" />
+                      </svg>
+                      <span className="fx-drawer-share-label">{t("fx.drawer.share")}</span>
+                    </>
+                  )}
                 </button>
                 {menuOpen && (
                   <div className="fx-share-menu" role="menu">

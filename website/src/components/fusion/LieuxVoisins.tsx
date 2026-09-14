@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { lieuxVoisins } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { relatedT } from "@/lib/related-t";
+import { sufOrdinal } from "@/lib/fmt";
 
 /**
  * Rebond en bas de fiche : d'autres lieux de la même famille, sinon du même
@@ -30,15 +32,18 @@ export default async function LieuxVoisins({
 }) {
   const locale = await readLocale();
   const { voisins, by } = lieuxVoisins(slug, famille, arrondissement);
+  // « Même famille » ne disait pas de quoi : le titre nomme la famille ou
+  // l'arrondissement.
+  const t = relatedT(locale);
   const titre = by === "famille"
-    ? (locale === "en" ? "Same kind" : "Même famille")
-    : (locale === "en" ? "Same district" : "Même arrondissement");
+    ? t("fx.lieux.voisins.famille", { fam: t(`fx.lieux.fam.${famille}`) })
+    : t("fx.lieux.voisins.arr", { arr: `${arrondissement}${sufOrdinal(arrondissement, locale)}` });
   if (!voisins.length) return null;
 
   return (
     <section className="fx-fiche-section">
       <div className="fx-fiche-h">{titre}</div>
-      <div className="fx-voisins">
+      <div className="fx-voisins fx-voisins--voisins">
         {voisins.map((l) => (
           <Link key={l.slug} href={`/fr/city/paris/lieu/${l.slug}`} scroll={false} className="fx-voisin">
             {l.photo ? <img src={l.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}

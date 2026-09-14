@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { normalizeObjet, isObjetCryptic } from "./objet-normalizer";
+import { normalizeObjet, isObjetCryptic, shortObjet, cutObjet } from "./objet-normalizer";
 
 describe("normalizeObjet", () => {
   it("returns empty for falsy input", () => {
@@ -91,5 +91,47 @@ describe("isObjetCryptic", () => {
 
   it("does not flag readable French sentences", () => {
     expect(isObjetCryptic("Travaux d'aménagement de cours d'écoles")).toBe(false);
+  });
+});
+
+describe("accord-cadre abbreviation", () => {
+  it("expands a leading AC before a kind of work", () => {
+    expect(normalizeObjet("AC travaux de réparation des installations")).toBe("Accord-cadre de travaux de réparation des installations");
+  });
+  it("leaves AC alone elsewhere", () => {
+    expect(normalizeObjet("Remplacement AC du bâtiment")).toContain("AC");
+  });
+});
+
+describe("shortObjet", () => {
+  const head = "Accord-cadre de travaux de réparation, amélioration et efficacité énergétique des installations de génie climatique";
+  it("keeps short titles whole", () => {
+    expect(shortObjet("Entretien des parcs")).toBe("Entretien des parcs");
+  });
+  it("separates the lot even when the whole title fits", () => {
+    expect(shortObjet("Travaux du parvis et des abords de Notre-Dame  - Aménagements extérieurs"))
+      .toBe("Travaux du parvis et des abords de Notre-Dame · Aménagements extérieurs");
+  });
+  it("keeps a short lot at the end of a long title", () => {
+    const out = shortObjet(`${head} - CVC Généraliste`);
+    expect(out.endsWith(" · CVC Généraliste")).toBe(true);
+    expect(out.length).toBeLessThanOrEqual(110);
+    expect(shortObjet(`${head} - Recherche et réparation de fuites`)).not.toBe(out);
+  });
+  it("shows a long self-sufficient lot on its own", () => {
+    const lot = "Travaux d'aménagement paysager des cours des établissements parisiens dans les arrondissements 18e, 19e et 20e";
+    expect(shortObjet(`Accord-cadre à marchés subséquents pour les travaux d'aménagement paysager des cours. - ${lot}`)).toBe(lot);
+  });
+  it("drops a trailing list of arrondissement numbers from the lot", () => {
+    expect(shortObjet(`${head} - Chaufferies gaz Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)`).endsWith(" · Chaufferies gaz Ouest")).toBe(true);
+  });
+  it("does not split lists of numbers", () => {
+    expect(shortObjet("PARIS CTR 9 - 10 - 11 - 12")).not.toContain("·");
+  });
+  it("cuts plain long titles with an ellipsis", () => {
+    const out = shortObjet("x".repeat(200));
+    expect(out.length).toBe(111);
+    expect(out.endsWith("…")).toBe(true);
+    expect(cutObjet("court")).toBe("court");
   });
 });

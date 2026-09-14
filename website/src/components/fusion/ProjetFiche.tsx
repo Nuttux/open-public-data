@@ -10,6 +10,7 @@ import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { V3Amt, V3Foot, V3Hero, V3Lead, V3Row, V3Section } from "@/components/fiche/v3";
+import { displayOrgName } from "@/lib/fournisseur-display";
 
 const TYPOLOGIE_LABELS_FR: Record<string, string> = {
   ecole: "École", college: "Collège", lycee: "Lycée", creche: "Crèche", gymnase: "Gymnase", piscine: "Piscine",
@@ -31,7 +32,7 @@ const TYPOLOGIE_LABELS_EN: Record<string, string> = {
  * ne sont plus des rangées : une phrase de prudence en pied quand la lecture
  * du PDF est jugée fragile, et la page source reste liée.
  */
-export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType; photo?: ProjetPhotoResolved }) {
+export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFicheType; photo?: ProjetPhotoResolved; lieu?: React.ReactNode }) {
   const t = useT();
   const { locale } = useLocale();
   const { basePath } = useCity();
@@ -53,25 +54,32 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
 
   return (
     <div className="fx-v3">
-      <div className="fx-fiche-thumb-wrap">
-        <ProjetThumb photo={photo?.photo} generic={photo?.generic} typologie={photo?.typologie ?? vulg?.typologie_normalisee ?? null} aspectRatio="2.2 / 1" fallbackLabel={projet.name} className="fx-fiche-thumb" />
+      {/* Le premier écran, comme la fiche lieu : le chiffre et sa phrase à
+       *  gauche, la photo à droite. Photo, phrase et chiffre s'empilaient et
+       *  le chiffre arrivait sous le premier écran (962 px sur un portable). */}
+      <div className="fx-lieu-hero fx-projet-hero">
+        <div className="fx-lieu-hero-txt">
+          <V3Hero
+            v={v} u={u}
+            caption={fill(t("fx.fiche.projet.hero_cap"), { year: projet.year })}
+            meta={
+              <>
+                {projet.arrondissement > 0 ? (
+                  <Link href={`${basePath}/investissements/arrondissement/${projet.arrondissement}`} scroll={false}>{arrTxt} {t("fx.fiche.projet.meta_arr")}</Link>
+                ) : arrTxt}
+                {projet.arrRank && projet.arrondissement > 0 ? ` · ${fill(t("fx.fiche.projet.meta_rank"), { rank: `${projet.arrRank.rank}${sufOrdinal(projet.arrRank.rank, locale)}`, total: projet.arrRank.total })}` : ""}
+                {projet.chapitre ? ` · ${trLabel(projet.chapitre, locale)}` : ""}
+              </>
+            }
+          />
+          {lead ? <V3Lead src={ctx || undefined}>{lead}</V3Lead> : ctx ? <p className="fx-v3-lead-src">{ctx}</p> : null}
+        </div>
+        <div className="fx-projet-hero-photo">
+          <ProjetThumb photo={photo?.photo} generic={photo?.generic} typologie={photo?.typologie ?? vulg?.typologie_normalisee ?? null} aspectRatio="3 / 2" fallbackLabel={projet.name} className="fx-fiche-thumb" />
+        </div>
       </div>
 
-      {lead ? <V3Lead src={ctx || undefined}>{lead}</V3Lead> : ctx ? <p className="fx-v3-lead-src">{ctx}</p> : null}
-
-      <V3Hero
-        v={v} u={u}
-        caption={fill(t("fx.fiche.projet.hero_cap"), { year: projet.year })}
-        meta={
-          <>
-            {projet.arrondissement > 0 ? (
-              <Link href={`${basePath}/investissements/arrondissement/${projet.arrondissement}`} scroll={false}>{arrTxt} {t("fx.fiche.projet.meta_arr")}</Link>
-            ) : arrTxt}
-            {projet.arrRank && projet.arrondissement > 0 ? ` · ${fill(t("fx.fiche.projet.meta_rank"), { rank: `${projet.arrRank.rank}${sufOrdinal(projet.arrRank.rank, locale)}`, total: projet.arrRank.total })}` : ""}
-            {projet.chapitre ? ` · ${trLabel(projet.chapitre, locale)}` : ""}
-          </>
-        }
-      />
+      {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
 
       {marches.length > 0 ? (
         <V3Section title={t("fx.fiche.projet.h.entreprises")} sub={t("fx.fiche.projet.h.entreprises_sub")}>
@@ -84,10 +92,13 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                m.offres_recues != null && m.offres_recues > 0 ? (m.offres_recues === 1 ? t("fx.fiche.contrat.conc.offre_one") : fill(t("fx.fiche.contrat.conc.offres_n"), { n: m.offres_recues })) : null,
               ].filter(Boolean).join(" · "),
             ];
+            // La rangée ouvre le contrat : son libellé est donc le contrat, le
+            // titulaire passe en sous-ligne. On cliquait « Bouygues » et on
+            // arrivait sur un contrat, pas sur l'entreprise.
             return (
               <V3Row key={m.numero_marche} href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
-                label={<span style={{ fontWeight: 600, color: "var(--ink)" }}>{m.fournisseur_nom || t("fx.fiche.projet.fournisseur_unknown")}</span>}
-                subText={<>{bits[0]}<br />{bits[1]}</>}
+                label={bits[0]}
+                subText={[m.fournisseur_nom ? displayOrgName(m.fournisseur_nom) : t("fx.fiche.projet.fournisseur_unknown"), bits[1]].filter(Boolean).join(" · ")}
                 amount={<V3Amt {...fmtEur(m.montant_max)} />} />
             );
           })}

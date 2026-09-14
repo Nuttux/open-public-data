@@ -40,6 +40,16 @@ export default function PlacesExplorer({
     } catch { /* pas de window (test) */ }
   }, [config.families]);
   const [areaSel, setAreaSel] = useState("");
+  // `?arrondissement=1` (ou `?area=`) pré-sélectionne la zone : c'est la cible
+  // du lien « 1er arr. » dans l'en-tête d'une fiche lieu. Une valeur qui ne
+  // correspond à aucun lieu est ignorée.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get("arrondissement") ?? params.get("area");
+      if (raw && entries.some((e) => e.areaKey === raw)) setAreaSel(raw);
+    } catch { /* pas de window (test) */ }
+  }, [entries]);
   const [sortKey, setSortKey] = useState<PlacesSort>(config.sorts[0]?.key ?? "name-asc");
   const [hovered, setHovered] = useState<string | null>(null);
 

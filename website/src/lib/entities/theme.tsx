@@ -1,7 +1,8 @@
-import { DataLabel, DrawerKicker } from "@/components/fusion/DataLabel";
+import { DataLabel } from "@/components/fusion/DataLabel";
 import { SubventionsBackKicker } from "@/components/fusion/EntityPageHeaders";
 import ThemeFiche from "@/components/fusion/ThemeFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { relatedT } from "@/lib/related-t";
 import { getCity } from "@/lib/cities";
 import { loadThemeSubventions } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
@@ -89,8 +90,8 @@ export function makeThemeConfig(city: string): EntityPageConfig<D> {
       body: ({ fiche }) => <ThemeFiche fiche={fiche} />,
     },
     drawer: {
-      kicker: ({ fiche }) => <DrawerKicker k="theme" year={fiche.year} />,
-      title: ({ fiche }) => <DataLabel value={fiche.theme} />,
+      kicker: ({ fiche }, locale) => relatedT(locale)("fx.drawer.kicker.theme", { year: fiche.year }),
+      title: ({ fiche }, locale) => trLabel(fiche.theme, locale),
       shareUrl: ({ fiche }) => `${base}/theme/${fiche.slug}`,
       shareText: ({ fiche }) =>
         `${fiche.theme} — ${fmtEur(fiche.total)} versés en ${fiche.year} à ${fiche.nbBeneficiaires} bénéficiaires par la Ville de ${cityNom}`,

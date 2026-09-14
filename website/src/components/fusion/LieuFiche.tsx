@@ -1,7 +1,7 @@
 "use client";
 
+import AnneesRail from "./AnneesRail";
 import type { ReactNode } from "react";
-import { useState } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -9,6 +9,8 @@ import { cap, fill, numLocale, seanceEn } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useCity } from "./CityContext";
 import { assocSlug } from "@/lib/assoc-slug";
+import { displayOrgName } from "@/lib/fournisseur-display";
+import { sumLots } from "@/lib/marches-shape";
 
 /**
  * Fiche « lieu » v3 (2026-09-03) — un chiffre, deux blocs.
@@ -118,7 +120,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const travauxTotal = investTotal + (lieu.mandate?.total_eur ?? 0);
   const reelTotal = subvTotal + travauxTotal;
   const marches = [...(lieu.marches ?? [])].sort((a, b) => (b.montant_max || 0) - (a.montant_max || 0));
-  const plafond = marches.reduce((a, m) => a + (m.montant_max || 0), 0);
+  // Un lot gagné par plusieurs entreprises compte une fois (voir sumLots).
+  const plafond = sumLots(marches.map((m) => ({ objet: m.objet, fournisseur_nom: m.fournisseur, montant_max: m.montant_max })));
   const nChantiers = (lieu.mandate?.operations.length ?? 0) + lieu.invest.length;
 
   const travauxSpan = minMax([
@@ -137,7 +140,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * 39,2 M€ sur 2009-2022 pendant que le chiffre de tête en excluait 4,1 :
    * deux nombres justes qui ne s'additionnent pas sous les yeux du lecteur.
    * Ce qui tombe avant le seuil est dit en une ligne, sous les graphes. */
-  const showBars = subvTotal > 0 && travauxTotal > 0;
 
   /* La fenêtre commune. Les deux flux ne commencent pas la même année : la
    * Ville publie l'investissement plus tôt que les subventions.
@@ -180,7 +182,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const subvDansFenetre = seuil ? depuisSeuil(exploitSeries) : subvTotal;
   const travauxDansFenetre = seuil ? depuisSeuil(travauxSeries) : travauxTotal;
   const heroTotal = seuil ? subvDansFenetre + travauxDansFenetre : reelTotal;
-  const barMaxF = Math.max(subvDansFenetre, travauxDansFenetre);
   const horsFenetre = seuil
     ? [
         { montant: avantSeuil(travauxSeries), label: t("fx.lieu.line.travaux").toLowerCase(),
@@ -225,82 +226,17 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * L'année est celle du VOTE, pas celle du paiement — les deux diffèrent
    * souvent d'un exercice. La légende le dit, elle ne le masque pas. */
   const delibs = lieu.delibs_par_annee || null;
-  const [ouvert, setOuvert] = useState<{ annee: number; tone: string } | null>(null);
   /* Les délibérations sont rattachées au LIEU, pas au type d'argent. Chaque
    * ligne ne montre donc que celles de son genre : sans ce tri, une subvention
-   * de fonctionnement s'affichait sous « Travaux et rénovation ». */
+   * de fonctionnement s'affichait sous « Travaux et rénovation ». Le rail est
+   * celui des fiches association, fournisseur et thème (AnneesRail), posé ici
+   * sur l'axe commun aux deux lignes. */
   const genrePour = (tone: "x" | "w") => (tone === "x" ? "subvention" : "travaux");
-  const delibsDe = (y: number, tone: "x" | "w") =>
-    (delibs?.[String(y)] || []).filter((d) => (d.genres || []).includes(genrePour(tone)));
-
-  const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
-    const dans = series.filter((r) => !axe || r.year >= axe.de);
-    if (dans.length < 3 || !axe) return null;
-    const max = Math.max(...dans.map((r) => r.value), 1);
-    const parAn = new Map(dans.map((r) => [r.year, r.value]));
-    const annees: number[] = [];
-    for (let y = axe.de; y <= axe.a; y++) annees.push(y);
-    const sel = ouvert && ouvert.tone === tone ? ouvert.annee : null;
-    const lignes = sel !== null ? delibsDe(sel, tone) : [];
-    return (
-      <>
-        <div className={`fx-v3-years ${tone} clic`}>
-          {annees.map((y, i) => {
-            const v = parAn.get(y);
-            const n = delibsDe(y, tone).length;
-            const corps = (
-              <>
-                {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
-                {n > 0 && <b aria-hidden="true" />}
-                {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
-              </>
-            );
-            const titre = v === undefined
-              ? `${y} · ${t("fx.lieu.years.non_publie")}`
-              : `${y} · ${eurTxt(v)}`;
-            // TOUTE année porte le clic, pas seulement celles qui ont une
-            // décision : le panneau donne d'abord le montant de l'exercice.
-            // Un survol ne sert à rien sur un téléphone, et obliger à déplier
-            // une liste de quinze lignes pour lire un chiffre était du travail
-            // demandé au lecteur pour rien.
-            if (v === undefined) {
-              return <div key={y} className="hors" title={titre}>{corps}</div>;
-            }
-            return (
-              <button key={y} type="button" className={sel === y ? "on" : ""}
-                      aria-expanded={sel === y} aria-label={titre}
-                      title={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
-                      onClick={() => setOuvert(sel === y ? null : { annee: y, tone })}>
-                {corps}
-              </button>
-            );
-          })}
-        </div>
-        {sel === null && <p className="fx-v3-aide">{t("fx.lieu.delib.aide")}</p>}
-        {sel !== null && (
-          <div className="fx-v3-delib">
-            <p className="hd">
-              <span className="an mono">{sel}</span>
-              <span className="mt">{eurTxt(parAn.get(sel) ?? 0)}</span>
-              {lignes.length > 0
-                ? fill(t("fx.lieu.delib.titre"), { n: lignes.length })
-                : t("fx.lieu.delib.aucune")}
-            </p>
-            {lignes.map((d) => (
-              <a key={d.reference + d.titre.slice(0, 20)} className="dl"
-                 href={d.source_url || undefined} target="_blank" rel="noopener noreferrer">
-                <span className="ref mono">{d.reference}</span>
-                <span className="ti">{d.titre}</span>
-              </a>
-            ))}
-            {lignes.length > 0 && (
-              <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
-            )}
-          </div>
-        )}
-      </>
-    );
-  };
+  const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) =>
+    axe ? (
+      <AnneesRail rows={series.map((r) => ({ year: r.year, amount: r.value }))} tone={tone}
+                  delibs={delibs} genre={genrePour(tone)} from={axe.de} to={axe.a} format={eurTxt} />
+    ) : null;
 
   /* ── Les décisions : vedettes d'abord, récentes d'abord ──────────────── */
   type Moment = LieuFicheData["moments"][number];
@@ -430,23 +366,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </div>
               <div className="s">
                 {t("fx.lieu.line.exploitant_sub")}{" "}
-                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{subv.nom_fiche} →</Link>
+                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{displayOrgName(subv.nom_fiche)} →</Link>
                 {subv.note_publique && <> {(en && subv.note_publique_en) || subv.note_publique}</>}
               </div>
               <Years series={exploitSeries} tone="x" />
-              {showBars && <div className="bar x"><div className="track"><span style={{ width: `${(subvDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(subvDansFenetre)}</i></div>}
-              {subv.rows.length > 1 && (
-                <div className="fold-wrap">
-                  <Fold label={fill(t("fx.lieu.subv_deplier"), { n: subv.rows.length })}>
-                    {subv.rows.map((r) => (
-                      <div key={r.annee} className="fx-v3-row">
-                        <span className="lbl mono">{r.annee}</span>
-                        <Eur {...fmtEur(r.montant_eur)} size={14} />
-                      </div>
-                    ))}
-                  </Fold>
-                </div>
-              )}
             </div>
           )}
 
@@ -478,7 +401,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   </div>
                 )}
                 <Years series={travauxSeries} tone="w" />
-                {showBars && <div className="bar w"><div className="track"><span style={{ width: `${(travauxDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(travauxDansFenetre)}</i></div>}
                 <div className="fold-wrap">
                   {paye && nChantiers > 0 && (
                     <Fold label={fill(t(nChantiers === 1 ? "fx.lieu.fold_chantier1" : "fx.lieu.fold_chantiers"), { n: nChantiers })}>
@@ -532,7 +454,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <div className="fold-wrap" style={{ marginTop: 4 }}>
                 {lieu.residents.map((r, i) => (
                   <Link key={i} href={`${basePath}/subventions/association/${assocSlug(r.beneficiaire)}`} scroll={false} className="fx-v3-row fx-row-link">
-                    <span className="lbl">{r.beneficiaire} <span aria-hidden="true" className="muted">→</span></span>
+                    <span className="lbl">{displayOrgName(r.beneficiaire)} <span aria-hidden="true" className="muted">→</span></span>
                     {r.montant_total > 0 && <Eur {...fmtEur(r.montant_total)} size={14} />}
                   </Link>
                 ))}

@@ -5,6 +5,7 @@ import { fill } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useFmt } from "@/lib/use-fmt";
+import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 
 type Props = {
   instrument: DetteInstrument;
@@ -12,133 +13,87 @@ type Props = {
   bondIssuances?: BondIssuance[];
 };
 
+const EMISSIONS_CAP = 6;
+
 /**
- * Corps de fiche d'un instrument de dette — rendu par DetailDrawer (route
- * interceptée) ou par le scaffold page entière via lib/entities/instrument-
- * dette. L'ancien shell modal (backdrop, Esc, scroll-lock, bouton ×) vit
- * désormais dans DetailDrawer.
+ * Fiche instrument de dette v3 (2026-09-13), sur le kit `fiche/v3` comme les
+ * autres fiches Paris. Avant : un paragraphe en mono, un bandeau KPI à quatre
+ * cellules, un tableau à cinq colonnes et le montant répété dans le titre.
+ * Maintenant : la phrase de la source, UN chiffre (l'encours) avec la part,
+ * le taux, la durée restante et la part à taux fixe en ligne grise, les
+ * emprunts obligataires en rangées repliées à six, l'explication dans un
+ * dépliant et les limites en pied.
  */
 export default function InstrumentDetteFiche({ instrument, year, bondIssuances }: Props) {
   const t = useT();
   const { fmtInt, fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
 
-  const unit = instrument.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
-  const display = instrument.encours >= 1e9
-    ? fmtBillions(instrument.encours)
-    : fmtMillions(instrument.encours, 0);
-
-  const showIssuances = instrument.key === "obligataire" && bondIssuances && bondIssuances.length > 0;
-  const sortedIssuances = showIssuances
+  const hero = instrument.encours >= 1e9
+    ? { v: fmtBillions(instrument.encours), u: t("fx.s.md_eur") }
+    : { v: fmtMillions(instrument.encours, 0), u: t("fx.s.m_eur") };
+  const issuances = instrument.key === "obligataire" && bondIssuances?.length
     ? bondIssuances.slice().sort((a, b) => b.year - a.year)
     : [];
+  const folded = foldRest(issuances, EMISSIONS_CAP);
+  const description = trLabel(instrument.description, locale);
+  const subtitle = trLabel(instrument.subtitle, locale);
+
+  const Row = (b: BondIssuance, i: number) => (
+    <V3Row
+      key={`${b.year}-${i}`}
+      label={b.label}
+      subText={[fill(t("fx.fiche.instr.emission_sub"), { year: b.year, rate: fmtDec(b.rate_pct, 2), mat: b.maturity_years }), b.meta].filter(Boolean).join(" · ")}
+      amount={<V3Amt v={fmtInt(b.amount_m_eur)} u={t("fx.s.m_eur")} />}
+    />
+  );
 
   return (
-    <div>
-      <div className="fx-fiche-sub" style={{ marginBottom: 16 }}>
-        {trLabel(instrument.subtitle, locale)} — {trLabel(instrument.description, locale)}
-      </div>
+    <div className="fx-v3">
+      {description ? <V3Lead src={subtitle || undefined}>{description}</V3Lead> : subtitle ? <p className="fx-v3-lead-src">{subtitle}</p> : null}
 
-      <div className="fx-fiche-kpis">
-        <div className="fk">
-          <div className="fk-label">{fill(t("fx.fiche.instr.encours"), { year })}</div>
-          <div className="fk-value tnum">{display}<span className="u">{unit}</span></div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.instr.taux")}</div>
-          <div className="fk-value tnum">{fmtDec(instrument.taux_moyen_pct, 1)}<span className="u">%</span></div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.instr.maturite")}</div>
-          <div className="fk-value tnum">{fmtDec(instrument.maturite_moyenne_ans, 1)}<span className="u">{t("fx.fiche.instr.maturite_unit")}</span></div>
-        </div>
-        <div className="fk">
-          <div className="fk-label">{t("fx.fiche.instr.taux_fixe")}</div>
-          <div className="fk-value tnum">{fmtInt(instrument.part_taux_fixe * 100)}<span className="u">%</span></div>
-        </div>
-      </div>
+      <V3Hero
+        v={hero.v} u={hero.u}
+        caption={fill(t("fx.fiche.instr.hero_cap"), { year })}
+        meta={fill(t("fx.fiche.instr.meta"), {
+          pct: fmtInt(instrument.part * 100),
+          taux: fmtDec(instrument.taux_moyen_pct, 1),
+          mat: fmtDec(instrument.maturite_moyenne_ans, 1),
+          fixe: fmtInt(instrument.part_taux_fixe * 100),
+        })}
+      />
 
-      <div className="fx-fiche-body" style={{ padding: "28px 0 0" }}>
-        {!showIssuances && instrument.key !== "obligataire" && (
-          <div className="fx-fiche-empty">
-            <div className="fx-fiche-empty-mark">—</div>
-            <div>
-              <b>{t("fx.fiche.instr.no_detail_title")}</b>
-              <p className="muted">
-                {fill(t("fx.fiche.instr.no_detail_desc"), { label: instrument.label.toLowerCase() })}
-              </p>
-            </div>
-          </div>
-        )}
-        {showIssuances && (
-          <>
-            <h3>{t("fx.fiche.instr.emissions")}</h3>
-            <p className="muted" style={{ fontSize: 13.5 }}>
-              {t("fx.fiche.instr.emissions_desc")}
-            </p>
-            <table className="fx-fiche-table fx-issuances">
-              <thead>
-                <tr>
-                  <th>{t("fx.fiche.instr.col.annee")}</th>
-                  <th className="num">{t("fx.fiche.instr.col.montant")}</th>
-                  <th>{t("fx.fiche.instr.col.ligne")}</th>
-                  <th className="num">{t("fx.fiche.instr.col.taux")}</th>
-                  <th className="num">{t("fx.fiche.instr.col.maturite")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sortedIssuances.map((b, i) => (
-                  <tr key={i}>
-                    <td className="tnum mono">{b.year}</td>
-                    <td className="num tnum"><b>{fmtInt(b.amount_m_eur)}</b> <span className="muted">M €</span></td>
-                    <td>
-                      <div>{b.label}</div>
-                      <div className="meta">{b.meta}</div>
-                    </td>
-                    <td className="num tnum mono">{fmtDec(b.rate_pct, 2)} %</td>
-                    <td className="num tnum mono"><b>{b.maturity_years}</b> {t("fx.fiche.instr.maturite_unit")}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>{t("fx.fiche.instr.total")}</td>
-                  <td className="num tnum">
-                    <b>{fmtInt(sortedIssuances.reduce((s, b) => s + b.amount_m_eur, 0))}</b>{" "}
-                    <span className="muted">M €</span>
-                  </td>
-                  <td colSpan={3} className="muted">
-                    {sortedIssuances.length} {fill(t("fx.fiche.instr.lignes_actives"), {
-                      s: sortedIssuances.length > 1 ? "s" : "",
-                      ss: sortedIssuances.length > 1 ? "s" : "",
-                      year,
-                    })}
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </>
-        )}
+      {issuances.length > 0 && (
+        <V3Section title={t("fx.fiche.instr.h.emissions")} sub={t("fx.fiche.instr.emissions_desc")}>
+          {folded.shown.map(Row)}
+          {folded.rest.length > 0 && (
+            <V3Fold text label={fill(t("fx.fiche.instr.fold_emissions"), { n: folded.rest.length })}>
+              {folded.rest.map((b, i) => Row(b, i + EMISSIONS_CAP))}
+            </V3Fold>
+          )}
+          <V3Foot>{fill(t("fx.fiche.instr.emissions_total"), { n: issuances.length, m: fmtInt(issuances.reduce((s, b) => s + b.amount_m_eur, 0)) })}</V3Foot>
+        </V3Section>
+      )}
 
-        <h3 style={{ marginTop: showIssuances ? 28 : 0 }}>{t("fx.fiche.instr.meaning")}</h3>
-        <p>
-          {fill(t("fx.fiche.instr.meaning_p1"), {
-            pct: fmtInt(instrument.part * 100),
-            taux: fmtDec(instrument.taux_moyen_pct, 1),
-          })}
-        </p>
-        <p>
-          {fill(t("fx.fiche.instr.meaning_p2"), { mat: fmtDec(instrument.maturite_moyenne_ans, 1) })}
-        </p>
+      {issuances.length === 0 && instrument.key !== "obligataire" && (
+        <V3Section title={t("fx.fiche.instr.h.detail")}>
+          <p className="fx-v3-sentence" style={{ color: "var(--muted)" }}>
+            {fill(t("fx.fiche.instr.no_detail_desc"), { label: trLabel(instrument.label, locale).toLowerCase() })}
+          </p>
+        </V3Section>
+      )}
 
-        <h3 style={{ marginTop: 28 }}>{t("fx.fiche.instr.limites")}</h3>
-        <p className="muted">{t("fx.fiche.instr.limites_desc")}</p>
+      <V3Fold text label={t("fx.fiche.instr.meaning")}>
+        <p className="fx-v3-sentence">{fill(t("fx.fiche.instr.meaning_p1"), { pct: fmtInt(instrument.part * 100), taux: fmtDec(instrument.taux_moyen_pct, 1) })}</p>
+        <p className="fx-v3-sentence">{fill(t("fx.fiche.instr.meaning_p2"), { mat: fmtDec(instrument.maturite_moyenne_ans, 1) })}</p>
+      </V3Fold>
 
-        <div className="fx-fiche-foot-cta">
-          <a className="fx-btn" href="/methode?tool=dette-patrimoine#outils">{t("fx.fiche.instr.methode")}</a>
-          <a className="fx-btn" href={`/data/patrimoine_structure_${year}.json`} target="_blank" rel="noopener noreferrer">{t("fx.fiche.instr.json")}</a>
-        </div>
-      </div>
+      <V3Foot>
+        {t("fx.fiche.instr.limites_desc")}{" "}
+        <a href="/methode?tool=dette-patrimoine#outils">{t("fx.fiche.instr.methode_link")}</a>
+        {" · "}
+        <a href={`/data/patrimoine_structure_${year}.json`} target="_blank" rel="noopener noreferrer">{t("fx.fiche.instr.json")}</a>
+      </V3Foot>
     </div>
   );
 }
