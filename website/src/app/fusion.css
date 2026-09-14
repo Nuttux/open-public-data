@@ -20920,8 +20920,13 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 @media (min-width: 701px) {
   .theme-fusion .fx-v3-row.fx-row-link { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
   .theme-fusion .fx-v3-row.fx-row-link:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
-  /* The scene's title sits on the number's title line, baseline to baseline. */
-  .theme-fusion .fx-sec-a-scene { padding-top: 26px; }
+}
+@media (min-width: 960px) {
+  /* The scene's title sits on the page title's line, baseline to baseline, at
+     every width: the grid aligns the two first baselines itself (the h1 is
+     fluid, so no fixed padding could follow it). Both items start in row 1;
+     Chromium, WebKit and Firefox all honour it for the multi-row scene. */
+  .theme-fusion .fx-sec-a-hero, .theme-fusion .fx-sec-a-scene { align-self: baseline; }
 }
 /* Le menu d'année : un mot en gras avec son chevron, pas un champ de formulaire ;
    l'anneau ne vient qu'au clavier. */
