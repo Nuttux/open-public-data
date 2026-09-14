@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-20T11:11:29",
   "model": "gemini-3-flash-preview",
-  "count": 1407,
+  "count": 1421,
   "items": {
     "20242024T09532": {
       "objet_clair": "Travaux d'aménagement pour mieux gérer les eaux de pluie lors de gros chantiers de voirie.",
@@ -9851,6 +9851,104 @@
       "pourquoi_ca_compte": "Une meilleure isolation permet de faire des économies d'énergie et d'améliorer le confort thermique à l'intérieur.",
       "year": 2024,
       "model": "gemini-3-flash-preview"
+    },
+    "decp-2025S01582": {
+      "objet_clair": "Stations de tri Trilib : collecte des dépôts, lavage et propreté des modules",
+      "quoi_concretement": "Le titulaire vide les stations de tri Trilib installées dans les rues, lave les modules destinés aux déchets alimentaires et ramasse les dépôts sauvages autour des stations.",
+      "pourquoi_ca_compte": "C’est ce qui rend les points de tri utilisables au quotidien : une station pleine ou sale n’est plus utilisée.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S01581": {
+      "objet_clair": "Stations de tri Trilib : fourniture, pose et maintenance technique",
+      "quoi_concretement": "Le titulaire fabrique, installe et entretient techniquement les stations de tri Trilib sur l’espace public.",
+      "pourquoi_ca_compte": "Sans stations en état, pas de tri en pied d’immeuble dans les quartiers denses.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01093": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01094": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01095": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06721": {
+      "objet_clair": "Enlèvement des voitures en stationnement illicite vers les fourrières, secteur Sud",
+      "quoi_concretement": "Le titulaire enlève les véhicules de moins de 3,5 tonnes garés illégalement dans le secteur et les transporte des préfourrières vers les fourrières.",
+      "pourquoi_ca_compte": "L’enlèvement conditionne la libération des voies, des places réservées et des pistes cyclables.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06717": {
+      "objet_clair": "Enlèvement des voitures en stationnement illicite vers les fourrières, secteur Nord",
+      "quoi_concretement": "Le titulaire enlève les véhicules de moins de 3,5 tonnes garés illégalement dans le secteur et les transporte des préfourrières vers les fourrières.",
+      "pourquoi_ca_compte": "L’enlèvement conditionne la libération des voies, des places réservées et des pistes cyclables.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S12072": {
+      "objet_clair": "Nouveau logiciel financier de la Ville, du CASVP, de la Métropole et de Paris Musées",
+      "quoi_concretement": "Le titulaire construit puis maintient le nouveau logiciel de gestion financière commun à la Ville, au Centre d’action sociale, à la Métropole du Grand Paris et à Paris Musées.",
+      "pourquoi_ca_compte": "C’est l’outil qui porte le budget, les paiements et la comptabilité de ces quatre collectivités.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03812": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03811": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03810": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03809": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03808": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025F05826": {
+      "objet_clair": "Fourniture d’électricité 100 % verte en circuit court pour les sites du groupement parisien",
+      "quoi_concretement": "Le titulaire fournit et achemine l’électricité des sites du groupement de commandes de la collectivité parisienne, en offre 100 % verte en circuit court.",
+      "pourquoi_ca_compte": "L’électricité des bâtiments municipaux est un poste de dépense qui suit les prix de marché.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
     }
   },
   "license": {

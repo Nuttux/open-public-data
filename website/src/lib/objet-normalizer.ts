@@ -333,3 +333,79 @@ export function shortObjet(raw: string, max = 110): string {
   if (lot.length > 80) return cutObjet(lot, max);
   return `${cutObjet(head, max - lot.length - 4)} · ${lot}`;
 }
+
+// ── Une ligne de contrat : un titre court, un détail ─────────────────────────
+
+// Formules d'appel d'offres en tête d'objet, sans information pour un lecteur.
+const BOILERPLATE: RegExp[] = [
+  /^la pr[ée]sente consultation .*?ayant pour objet\s+(?:la |le |les |l’|l'|d’|d'|de |du |des |une |un )?/i,
+  /^(?:accords?[- ]cadres?|march[ée]s?(?: publics?)?)\s+(?:relatifs?|relative|ayant pour objet|portant sur|concernant|pour)\s+(?:à |a |aux |au )?(?:des |de la |de l’|de l'|du |de |le |la |les |l’|l')?/i,
+  /^(?:prestations? de|fourniture et|mission de)\s+(?=\S)/i,
+];
+
+/** Drops parentheticals except a short acronym like « (Trilib) » or « (EPPM) ». */
+function dropParentheticals(s: string): string {
+  return s
+    .replace(/\s*\(([^()]*)\)/g, (m, inner: string) => (/^[\p{L}]{2,14}$/u.test(inner.trim()) ? ` (${inner.trim()})` : ""))
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/** Cuts at the last clause boundary in the second half of the window, never mid-word. */
+function clauseCut(s: string, max: number): string {
+  const t = s.replace(/[\s,;:]+$/, "");
+  if (t.length <= max) return t;
+  const head = t.slice(0, max);
+  // A clause boundary late in the window keeps the subject; an early one
+  // (« Fourniture, pose, collecte, maintenance et… ») loses it, so a plain
+  // word boundary near the end is better then.
+  const marks = [", ", " ; ", " : ", " – ", " — ", " et ", " pour ", " dans ", " sur ", " avec ", " ainsi que "];
+  let best = -1;
+  for (const mk of marks) {
+    const i = head.lastIndexOf(mk);
+    if (i >= max * 0.6 && i > best) best = i;
+  }
+  if (best < 0) {
+    const sp = head.lastIndexOf(" ");
+    best = sp > max * 0.5 ? sp : max;
+  }
+  return head.slice(0, best).replace(/[\s,;:(]+$/, "") + "…";
+}
+
+// Procedure labels that the source writes as a lot part; they name nothing.
+const LOT_NOISE: RegExp[] = [/^accords?[- ]cadres?\s+(?:à|a)\s+march[ée]s?\s+subs[ée]quents?\.?$/i, /^march[ée]s?\s+subs[ée]quents?\.?$/i, /^lot\s*\d+\s*$/i];
+
+/**
+ * A contract row on the fiche grammar: a short title (what is bought) and a
+ * detail (the lot, when the source names one). Built from the raw object:
+ * « Nom de l'accord-cadre - Lot » is split first, the tender boilerplate is
+ * dropped, long parentheticals too, and each part is cut at a clause, never
+ * mid-word. A trailing token with no space (« SIPPEREC », a purchasing group)
+ * is not a lot and is dropped.
+ */
+export function rowObjet(raw: string, max = 72, detailMax = 64): { title: string; detail: string | null } {
+  const text = (raw || "").trim();
+  const m = text.match(/^(.*?[^\d\s])\s+[-–]\s+([^\d\s].*)$/);
+  const clean = (part: string) => {
+    let s = normalizeObjet(part);
+    for (const re of BOILERPLATE) s = s.replace(re, "");
+    s = dropParentheticals(s.replace(/,?\s*en \d+ lots?,?/i, ","));
+    s = s.replace(/\s*,\s*,/g, ",").replace(/^[,\s]+/, "").trim();
+    return s ? s[0].toUpperCase() + s.slice(1) : s;
+  };
+  if (!m) return { title: clauseCut(clean(text), max), detail: null };
+  const title = clauseCut(clean(m[1]), max);
+  const lotRaw = m[2].replace(/\s*\((?:\d+\s*[-,]\s*)+\d+\)\s*$/, "").trim();
+  if (!/\s/.test(lotRaw) && lotRaw.length <= 12) return { title, detail: null };
+  // « Accord-cadre à marchés subséquents - Travaux de … » : the inner parts,
+  // minus the procedure labels, each cleaned, joined with a middle dot.
+  const lotParts = lotRaw
+    .split(/(?<=[^\d\s])\s+[-–]\s+(?=[^\d\s])/)
+    .map((p) => p.trim())
+    .filter((p) => p && !LOT_NOISE.some((re) => re.test(p)))
+    .map((p) => clean(p))
+    .filter(Boolean);
+  if (lotParts.length === 0) return { title, detail: null };
+  const detail = clauseCut(lotParts.join(" · "), detailMax);
+  return { title: title || detail, detail: title ? detail : null };
+}

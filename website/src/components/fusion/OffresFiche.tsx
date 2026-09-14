@@ -2,7 +2,7 @@
 
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";
-import { cutObjet, shortObjet } from "@/lib/objet-normalizer";
+import { cutObjet, rowObjet } from "@/lib/objet-normalizer";
 import { isNamedTitulaire } from "@/lib/marches-shape";
 import { displayOrgName } from "@/lib/fournisseur-display";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -27,15 +27,15 @@ export default function OffresFiche({ fiche }: { fiche: MarchesOffresFiche }) {
   const contrats = foldRest(fiche.topContrats, 6);
   const ContratRow = (c: MarchesOffresFiche["topContrats"][number]) => {
     const preferred = locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
-    const objet = preferred ? cutObjet(preferred) : shortObjet(c.objet || "");
+    const { title, detail } = preferred ? { title: cutObjet(preferred, 96), detail: null } : rowObjet(c.objet || "");
     const named = (c.titulaires ?? []).filter((n) => isNamedTitulaire(n)).map((n) => displayOrgName(n));
     const extra = named.length - 2;
     const who = extra > 0
       ? fill(t(extra === 1 ? "fx.categorie.titulaires_more_one" : "fx.categorie.titulaires_more"), { names: named.slice(0, 2).join(", "), n: extra })
       : named.join(", ");
     return (
-      <V3Row key={c.numero || objet} href={c.numero ? `${basePath}/marches/contrat/${encodeURIComponent(c.numero)}` : null}
-        label={objet} subText={who || t("fx.sec.mp.holder_unknown")} amount={<Amt n={c.montant} />} />
+      <V3Row key={c.numero || title} href={c.numero ? `${basePath}/marches/contrat/${encodeURIComponent(c.numero)}` : null}
+        label={title} subText={[detail, who || t("fx.sec.mp.holder_unknown")].filter(Boolean).join(" · ")} amount={<Amt n={c.montant} />} />
     );
   };
   const otherYears = fiche.years.filter((y) => y !== fiche.year);

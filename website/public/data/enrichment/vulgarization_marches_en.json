@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-01T22:53:18",
   "model": "claude-opus-4-7-in-session",
-  "count": 500,
+  "count": 514,
   "items": {
     "20242024T09532": {
       "objet_clair": "Roadway works to better manage rainwater on major street works.",
@@ -2439,6 +2439,104 @@
       "objet_clair": "Planted, cooler schoolyard fit-out at Godefroy School.",
       "quoi_concretement": "The works replace the schoolyard tarmac with natural materials and plant trees. The aim is to create a more pleasant space that stays cool during heatwaves.",
       "pourquoi_ca_compte": "Children enjoy a healthier break space better suited to heatwaves."
+    },
+    "decp-2025S01582": {
+      "objet_clair": "Trilib recycling stations: waste pickup, washing and cleaning of the modules",
+      "quoi_concretement": "The holder empties the Trilib recycling stations on the streets, washes the food-waste modules and removes illegal dumping around the stations.",
+      "pourquoi_ca_compte": "This is what keeps the recycling points usable day to day: a full or dirty station stops being used.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S01581": {
+      "objet_clair": "Trilib recycling stations: supply, installation and technical maintenance",
+      "quoi_concretement": "The holder builds, installs and technically maintains the Trilib recycling stations on public space.",
+      "pourquoi_ca_compte": "Without working stations there is no kerbside recycling in dense neighbourhoods.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01093": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01094": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01095": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06721": {
+      "objet_clair": "Towing of illegally parked cars to the pounds, southern sector",
+      "quoi_concretement": "The holder tows vehicles under 3.5 tonnes parked illegally in the sector and moves them from holding lots to the pounds.",
+      "pourquoi_ca_compte": "Towing is what frees lanes, reserved spaces and cycle paths.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06717": {
+      "objet_clair": "Towing of illegally parked cars to the pounds, northern sector",
+      "quoi_concretement": "The holder tows vehicles under 3.5 tonnes parked illegally in the sector and moves them from holding lots to the pounds.",
+      "pourquoi_ca_compte": "Towing is what frees lanes, reserved spaces and cycle paths.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S12072": {
+      "objet_clair": "New financial software for the City, CASVP, the Métropole and Paris Musées",
+      "quoi_concretement": "The holder builds and then maintains the new financial management software shared by the City, the social action centre, the Métropole du Grand Paris and Paris Musées.",
+      "pourquoi_ca_compte": "It is the tool that carries the budget, payments and accounts of these four bodies.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03812": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03811": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03810": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03809": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03808": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025F05826": {
+      "objet_clair": "Supply of 100 % green, short-circuit electricity for the Paris purchasing group’s sites",
+      "quoi_concretement": "The holder supplies and delivers electricity to the sites of the Paris purchasing group, as a 100 % green, short-circuit offer.",
+      "pourquoi_ca_compte": "Electricity for municipal buildings is a cost that follows market prices.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
     }
   },
   "license": {

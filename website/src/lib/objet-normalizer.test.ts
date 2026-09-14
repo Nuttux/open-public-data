@@ -1,5 +1,36 @@
 import { describe, expect, it } from "vitest";
-import { normalizeObjet, isObjetCryptic, shortObjet, cutObjet } from "./objet-normalizer";
+import { normalizeObjet, isObjetCryptic, shortObjet, cutObjet, rowObjet } from "./objet-normalizer";
+
+describe("rowObjet — a row title and its detail, from the raw object (2025 DECP samples)", () => {
+  const TRILIB = "Fourniture, pose, collecte, maintenance et entretien de stations de tri sur l’espace public parisien (TRILIB) - Collecte et maintenance de propreté des modules, lavage des modules déchets alimentaires et collecte des dépôts sauvages aux abords des stations";
+  it("splits the framework name from the lot and cuts each at a clause, never mid-word", () => {
+    const r = rowObjet(TRILIB);
+    expect(r.title.length).toBeLessThanOrEqual(74);
+    expect(r.title).toMatch(/stations de tri/i);
+    expect(r.title).toBe("Fourniture, pose, collecte, maintenance et entretien de stations de tri…");
+    expect(r.detail).toMatch(/^Collecte et maintenance de propreté des modules/);
+    expect(r.detail!.length).toBeLessThanOrEqual(66);
+  });
+  it("drops a long parenthetical, keeps a short acronym, and drops a trailing purchasing group", () => {
+    const r = rowObjet("Services de communications électroniques (Internet, interconnexion, données mobiles M2M, téléphonie fixe, diffusion d’information multicanale) - SIPPEREC");
+    expect(r.title).toBe("Services de communications électroniques");
+    expect(r.detail).toBeNull();
+    expect(rowObjet("Mobilier urbain (JCDecaux) - Lot 2 - Abris voyageurs").title).toMatch(/\(JCDecaux\)/);
+  });
+  it("drops the tender boilerplate", () => {
+    const r = rowObjet("La présente consultation doit permettre, à l’issue d’une procédure de dialogue compétitif, à la collectivité parisienne d’attribuer un marché ayant pour objet la mise en place et de maintenance du nouveau Système d’Informations financier de la Collectivité parisienne (Ville, CASVP, MGP et Paris Musées).");
+    expect(r.title).toMatch(/^Mise en place/);
+    expect(r.title).not.toMatch(/consultation/i);
+    const m = rowObjet("Accords-cadres relatifs à des travaux de menuiseries extérieures bois et PVC, en 3 lots, dans les bâtiments de la Ville de Paris et de l’Établissement public Paris Musées (EPPM).  - Accord-cadre à marchés subséquents - Travaux de menuiseries extérieures dans les bâtiments de la Ville de Paris, pour des surfaces supérieures à 50m² d’ouverture de baies");
+    expect(m.title).toMatch(/^Travaux de menuiseries extérieures bois et PVC/);
+    expect(m.title).not.toMatch(/en 3 lots/);
+    // The procedure label is not a lot: the detail starts with the works themselves.
+    expect(m.detail).toMatch(/^Travaux de menuiseries extérieures/);
+  });
+  it("keeps a short object whole", () => {
+    expect(rowObjet("Transport PAM75")).toEqual({ title: "Transport PAM75", detail: null });
+  });
+});
 
 describe("normalizeObjet", () => {
   it("returns empty for falsy input", () => {

@@ -2,7 +2,7 @@
 
 import Link from "@/components/LocalizedLink";
 import { useEffect, useMemo, useState } from "react";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { normalizeObjet, rowObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
@@ -356,14 +356,14 @@ export default function MarchesSearch({ citySlug, categories, natures, year, fic
             const { v, u } = fmtAmount(it.montant);
             const href = it.numeroMarche ? `/france/${citySlug}/marches/contrat/${encodeURIComponent(it.numeroMarche)}` : null;
             const preferred = locale === "en" && it.objetClairEn ? it.objetClairEn : it.objetClair;
-            const clean = preferred || normalizeObjet(it.objet);
+            const { title, detail } = preferred ? { title: preferred.length > 96 ? preferred.slice(0, 96).trimEnd() + "…" : preferred, detail: null } : rowObjet(it.objet);
             const who = it.titulaire === "MARCHE MULTIATTRIBUTAIRE" ? t("fx.mp.search.multi") : displayOrgName(it.titulaire);
             return (
               <V3Row
                 key={it.numeroMarche || i}
                 href={href}
-                label={clean.length > 110 ? clean.slice(0, 110) + "…" : clean}
-                subText={`${who} · ${fmtDate(it.date)}`}
+                label={title}
+                subText={[detail, who, fmtDate(it.date)].filter(Boolean).join(" · ")}
                 amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{v}<span className="u">{u}</span></span>}
                 onClick={href ? () => track("search_result_click", { page: "marches-publics", entity_id: it.numeroMarche, rank: i, results_count: filtered.length, nature: it.nature, category: it.categorie, montant: it.montant }) : undefined}
               />

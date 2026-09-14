@@ -20763,9 +20763,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
      faces « Voir aussi »; the next section closes at full width. */
   .theme-fusion .fx-sec-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    grid-template-areas: "hero scene" "rows years" "rows search" "understand related" "next next" "foot foot";
+    grid-template-areas: "hero scene" "understand scene" "rows years" "rows related" "search search" "next next" "foot foot";
     align-items: start;
   }
+  /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
+  .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
   .theme-fusion .fx-sec-a-scene { grid-area: scene; }
   .theme-fusion .fx-sec-a-rows { grid-area: rows; }
@@ -20792,7 +20794,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-move { font-size: 13px; color: var(--ocre); margin-top: 6px; }
 /* The kicker is a link like the others: blue, never the ocre of the movement. */
 .theme-fusion .fx-sec-hero .fx-page-kicker--links a { color: var(--bleu); }
-.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 12.5px; color: var(--bleu); background: transparent; border: 0; padding: 0; margin-top: 12px; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--bleu) 35%, transparent); }
+.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; min-height: 32px; color: var(--bleu); background: transparent; border: 0; padding: 0; margin-top: 8px; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--bleu) 35%, transparent); }
 .theme-fusion .fx-sec-hero-line .fx-sec-share { margin-top: 0; }
 .theme-fusion .fx-sec-share:hover { color: var(--ink); text-decoration-color: currentColor; }
 .theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
@@ -20815,7 +20817,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* The scene's grouping switch: one chart, four ways to cut it. Text, not tabs;
    the active one is ink with a rule under it. */
 .theme-fusion .fx-sec-switch { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 10px 0 2px; }
-.theme-fusion .fx-sec-switch button { font: inherit; font-size: 13px; color: var(--muted); background: transparent; border: 0; padding: 4px 0; cursor: pointer; border-bottom: 2px solid transparent; }
+.theme-fusion .fx-sec-switch button { font: inherit; font-size: 13.5px; color: var(--muted); background: transparent; border: 0; padding: 7px 0; min-height: 32px; cursor: pointer; border-bottom: 2px solid transparent; }
 .theme-fusion .fx-sec-switch button:hover { color: var(--ink); }
 .theme-fusion .fx-sec-switch button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
 .theme-fusion .fx-sec-switch button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
@@ -20830,13 +20832,13 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
 /* Only the rows that open a fiche look like links: ink label, the doors' chevron, blue on hover. */
 .theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
-.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: "\00a0›"; color: var(--muted); font-weight: 400; }
 .theme-fusion .fx-bars-row.is-link:hover .lbl .t { color: var(--bleu); }
 /* Phone: the label above, the bar at full width with its value at the right. */
 @media (max-width: 700px) {
   .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "lbl v" "track track"; gap: 4px 10px; padding: 8px 0; }
   .theme-fusion .fx-bars-row .lbl { grid-area: lbl; }
-  .theme-fusion .fx-bars-row .lbl .sub { display: inline; margin-left: 6px; white-space: nowrap; }
+  .theme-fusion .fx-bars-row .lbl .sub { display: block; margin-top: 1px; white-space: nowrap; }
   .theme-fusion .fx-bars-row .track { grid-area: track; }
   .theme-fusion .fx-bars-row .track i { height: 10px; }
   .theme-fusion .fx-bars-row .v { grid-area: v; }
@@ -20876,7 +20878,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-search-wrap--fiche .fx-search-filters { margin-top: 10px; gap: 8px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-filter-label { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-seeds { gap: 6px; }
-.theme-fusion .fx-search-wrap--fiche .fx-search-seed { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--bleu); background: transparent; border: 1px solid var(--rule-2); border-radius: 999px; padding: 3px 11px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed { font-family: var(--f-ui); font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--bleu); background: transparent; border: 1px solid var(--rule-2); border-radius: 999px; padding: 5px 12px; min-height: 32px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-seed:hover { border-color: var(--bleu); background: transparent; color: var(--bleu); }
 .theme-fusion .fx-search-wrap--fiche .fx-search-meta { padding: 12px 0 2px; font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); border: 0; flex-wrap: wrap; gap: 4px 16px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-placeholder { padding: 14px 0; }

@@ -1904,6 +1904,10 @@ export type MarchesPageData = {
   // lazy-fetches /data/<city>/marches-publics/marches_<year>.json and shapes
   // it with lib/marches-shape (same shaping as before, shared pure module).
   yearsSummary: { year: number; total: number; count: number }[];
+  /** The previous year when it comes from the same source as this one (the
+   *  Paris list up to 2024, DECP from 2025): the only case where a variation
+   *  means something. null across the source break. */
+  prevComparable: { year: number; total: number } | null;
   /** Les plus gros contrats de l'exercice ; un lot partagé entre plusieurs
    *  entreprises n'apparaît qu'une fois, avec ses titulaires. */
   topContrats: {
@@ -2477,6 +2481,26 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   const file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
   const marches = file.data ?? file.marches ?? [];
 
+  // The year before, only if it was published by the same source: a change
+  // of source (Paris list → DECP in 2025) changes the number of contracts.
+  const dominantSource = (rows: { _source_origin?: string }[]): string => {
+    const counts = new Map<string, number>();
+    for (const r of rows) counts.set(r._source_origin ?? "?", (counts.get(r._source_origin ?? "?") ?? 0) + 1);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "?";
+  };
+  const prevComparable = (() => {
+    const prevYear = years.filter((y) => y < yr).pop();
+    if (!prevYear) return null;
+    const prev = readJsonOrNull<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${prevYear}.json`));
+    const prevRows = (prev?.data ?? prev?.marches ?? []) as (MarcheRow & { _source_origin?: string })[];
+    if (prevRows.length === 0) return null;
+    const cur = marches as (MarcheRow & { _source_origin?: string })[];
+    const same = dominantSource(prevRows) === dominantSource(cur) && prevRows.filter((r) => (r._source_origin ?? "?") === dominantSource(cur)).length / prevRows.length >= 0.9;
+    if (!same) return null;
+    const total = sumLots(prevRows);
+    return total > 0 ? { year: prevYear, total } : null;
+  })();
+
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
   // City-aware vulgarisation cache (Paris cache for /paris, Marseille cache
   // for /marseille, etc.). Falls back to Paris cache when nothing is found,
@@ -2805,6 +2829,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     byNature,
     concurrence,
     yearsSummary,
+    prevComparable,
     topContrats,
     signature,
   };

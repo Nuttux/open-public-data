@@ -72,11 +72,11 @@ export default function SectionHero({
         )}
         {captionAfter ? <> {captionAfter}</> : null}
       </div>
+      {meta ? <div className="fx-sec-hero-meta">{meta}</div> : null}
+      {move ? <div className="fx-sec-move">{move}</div> : null}
       <div className="fx-sec-hero-line">
-        {meta ? <div className="fx-sec-hero-meta">{meta}</div> : null}
         <ShareButton label={t("fx.sec.share_number")} done={t("fx.sec.shared")} title={shareTitle} object="hero" />
       </div>
-      {move ? <div className="fx-sec-move">{move}</div> : null}
     </header>
   );
 }

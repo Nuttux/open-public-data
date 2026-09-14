@@ -17,7 +17,7 @@ import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
-import { cutObjet, shortObjet } from "@/lib/objet-normalizer";
+import { cutObjet, rowObjet } from "@/lib/objet-normalizer";
 import { displayOrgName } from "@/lib/fournisseur-display";
 import { isNamedTitulaire } from "@/lib/marches-shape";
 import { slugifyLabel } from "@/lib/projet-utils";
@@ -59,7 +59,11 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   const t = useT();
   const { locale } = useLocale();
   const track = useTrack();
-  const { fmtInt, fmtDec, fmtCompactEur } = useFmt();
+  const fmt = useFmt();
+  const { fmtDec, fmtCompactEur } = fmt;
+  // Inter draws the narrow no-break space of « 1 122 » as almost nothing: a
+  // full no-break space keeps the thousands readable in running text.
+  const fmtInt = (n: number) => fmt.fmtInt(n).replace(/ /g, " ");
   const fmtEur = useFmtEur();
   const citySlug = citySlugFromPathname(usePathname());
   const cityName = CITY_NAMES[citySlug] ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
@@ -137,18 +141,32 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   };
 
   const contrats = foldRest(d.topContrats, CONTRATS_CAP);
+  // A row: a short title (the clear title when one exists, else the object cut
+  // at a clause), then the lot and the holder on the grey line.
   const ContratRow = (x: MarchesPageData["topContrats"][number]) => {
     const preferred = locale === "en" && x.objetClairEn ? x.objetClairEn : x.objetClair;
-    const objet = preferred ? cutObjet(preferred) : shortObjet(x.objet || "");
+    const { title, detail } = preferred ? { title: cutObjet(preferred, 96), detail: null } : rowObjet(x.objet || "");
     const named = x.titulaires.filter((n) => isNamedTitulaire(n)).map((n) => displayOrgName(n));
     const who = x.holders > 1
       ? fill(t("fx.sec.mp.shared_lot"), { n: x.holders })
-      : named[0] ?? (isNamedTitulaire(x.fournisseur) ? displayOrgName(x.fournisseur) : "");
+      : named[0] ?? (isNamedTitulaire(x.fournisseur) ? displayOrgName(x.fournisseur) : t("fx.sec.mp.holder_unknown"));
     return (
-      <V3Row key={x.numero || objet} href={x.numero ? `${marchesBase}/contrat/${encodeURIComponent(x.numero)}` : null}
-        label={objet} subText={who || t("fx.sec.mp.holder_unknown")} amount={<Amt n={x.montant} />} />
+      <V3Row key={x.numero || title} href={x.numero ? `${marchesBase}/contrat/${encodeURIComponent(x.numero)}` : null}
+        label={title} subText={[detail, who].filter(Boolean).join(" · ")} amount={<Amt n={x.montant} />} />
     );
   };
+
+  // The movement under the number: the year against the one before, in ocre —
+  // only when both years come from the same source (2024 → 2025 crosses the
+  // Paris-list → DECP break, where a « − 50 % » would be the source, not the City).
+  const prevYear = d.prevComparable;
+  const move = prevYear
+    ? (() => {
+        const pct = ((d.total - prevYear.total) / prevYear.total) * 100;
+        if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prevYear.year });
+        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prevYear.year });
+      })()
+    : undefined;
 
   const series = d.yearsSummary.filter((y) => y.total > 0).map((y) => ({ year: y.year, amount: y.total }));
   const shareTitle = fill(t("fx.sec.mp.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
@@ -180,6 +198,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 year={d.year}
                 basePath={marchesBase}
                 meta={fill(t("fx.sec.mp.meta"), { n: fmtInt(d.nb), t: fmtInt(d.nbTitulaires) })}
+                move={move}
                 shareTitle={shareTitle}
               />
             </div>
