@@ -129,7 +129,7 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 966662869.1200001
+      "value": 966662869.12
     },
     {
       "source": "Budget Paris",
@@ -139,17 +139,17 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 857190826.47
+      "value": 857190826.4699999
     },
     {
       "source": "Budget Paris",
       "target": "Administration générale",
-      "value": 797758153.5200001
+      "value": 797758153.52
     },
     {
       "source": "Budget Paris",
       "target": "Économie",
-      "value": 166926270.16999996
+      "value": 166926270.17
     },
     {
       "source": "Budget Paris",
@@ -249,7 +249,7 @@
         },
         {
           "name": "Services Généraux: Autres produits divers de gestion courante-Autres",
-          "value": 27203772.27
+          "value": 27203772.270000003
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -269,7 +269,7 @@
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
-          "value": 14859368.06
+          "value": 14859368.059999999
         },
         {
           "name": "Action Sociale: Dotation versée au titre de la PCH",
@@ -317,7 +317,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 7150832.52
+          "value": 7150832.5200000005
         },
         {
           "name": "Transports: Droits de stationnement et de location sur la voie publique",
@@ -4459,7 +4459,7 @@
         ]
       },
       "Investissement": {
-        "total": 55593218.41,
+        "total": 55593218.41000001,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4609,7 +4609,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 247333419.89000008,
+        "total": 247333419.8900001,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -5212,7 +5212,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 735864292.45,
+        "total": 735864292.4499999,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5513,7 +5513,7 @@
     },
     "Administration générale": {
       "Fonctionnement": {
-        "total": 797758153.52,
+        "total": 797758153.5199999,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -5666,7 +5666,7 @@
     },
     "Économie": {
       "Fonctionnement": {
-        "total": 60314154.339999974,
+        "total": 60314154.33999998,
         "items": [
           {
             "name": "Action Économique: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -6417,7 +6417,7 @@
         ]
       },
       "Investissement": {
-        "total": 19163191.62,
+        "total": 19163191.619999997,
         "items": [
           {
             "name": "Invest. Sécurité: Subventions aux organismes publics - Etat - Bâtiments et installations",

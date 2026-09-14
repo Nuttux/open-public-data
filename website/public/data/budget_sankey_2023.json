@@ -154,7 +154,7 @@
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 951837018.6500001
+      "value": 951837018.65
     },
     {
       "source": "Budget Paris",
@@ -205,7 +205,7 @@
         },
         {
           "name": "Action Sociale: Sécurité sociale et organismes mutualistes",
-          "value": 166147975.78
+          "value": 166147975.77999997
         },
         {
           "name": "Transports: Forfait de post-stationnement",
@@ -241,7 +241,7 @@
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
-          "value": 45369202.279999994
+          "value": 45369202.28
         },
         {
           "name": "Éducation: Sécurité sociale et organismes mutualistes",
@@ -257,11 +257,11 @@
         },
         {
           "name": "Culture & Sport: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 24762367.060000002
+          "value": 24762367.06
         },
         {
           "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 24366025.869999997
+          "value": 24366025.87
         },
         {
           "name": "Action Sociale: Dotation versée au titre de la PCH",
@@ -333,7 +333,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 7469869.209999999
+          "value": 7469869.21
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
@@ -5818,7 +5818,7 @@
         ]
       },
       "Investissement": {
-        "total": 63204468.45000001,
+        "total": 63204468.45,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -5968,7 +5968,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 682690633.2500001,
+        "total": 682690633.25,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",

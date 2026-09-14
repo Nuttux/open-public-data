@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T00:31:47.954088",
+  "generated_at": "2026-09-14T18:19:31.270653",
   "datasets": {
     "budget": {
       "dataset": "budget",
@@ -44,6 +44,54 @@
       "description": "Subventions aux associations",
       "source": "OpenData Paris - Subventions associations votées",
       "years": {
+        "2010": {
+          "status": "complete",
+          "nb_subventions": 2568,
+          "nb_beneficiaires": 2568,
+          "total_montant": 964726146.8000001
+        },
+        "2011": {
+          "status": "complete",
+          "nb_subventions": 2499,
+          "nb_beneficiaires": 2499,
+          "total_montant": 949956726.6
+        },
+        "2012": {
+          "status": "complete",
+          "nb_subventions": 2451,
+          "nb_beneficiaires": 2451,
+          "total_montant": 1051562457.1499999
+        },
+        "2013": {
+          "status": "complete",
+          "nb_subventions": 3638,
+          "nb_beneficiaires": 3206,
+          "total_montant": 1265816522.23
+        },
+        "2014": {
+          "status": "complete",
+          "nb_subventions": 3501,
+          "nb_beneficiaires": 3046,
+          "total_montant": 1362113353.960001
+        },
+        "2015": {
+          "status": "complete",
+          "nb_subventions": 2864,
+          "nb_beneficiaires": 2790,
+          "total_montant": 1149891407.5600002
+        },
+        "2016": {
+          "status": "complete",
+          "nb_subventions": 3648,
+          "nb_beneficiaires": 3215,
+          "total_montant": 1260982793.3899994
+        },
+        "2017": {
+          "status": "complete",
+          "nb_subventions": 3640,
+          "nb_beneficiaires": 3220,
+          "total_montant": 1150092852.03
+        },
         "2018": {
           "status": "complete",
           "nb_subventions": 10266,
@@ -282,20 +330,26 @@
         },
         "2022": {
           "status": "complete",
-          "nb_operations": 129,
+          "nb_operations": 130,
           "total_logements": 3373,
           "pct_geolocalises": 100.0
         },
         "2023": {
           "status": "complete",
-          "nb_operations": 144,
+          "nb_operations": 143,
           "total_logements": 3035,
           "pct_geolocalises": 100.0
         },
         "2024": {
           "status": "complete",
-          "nb_operations": 101,
+          "nb_operations": 100,
           "total_logements": 2657,
+          "pct_geolocalises": 100.0
+        },
+        "2025": {
+          "status": "complete",
+          "nb_operations": 120,
+          "total_logements": 3927,
           "pct_geolocalises": 100.0
         }
       },

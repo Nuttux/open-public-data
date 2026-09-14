@@ -1,6 +1,6 @@
 {
   "year": 2017,
-  "generated_at": "2026-09-13T13:14:37.352807",
+  "generated_at": "2026-09-14T18:16:55.900926",
   "total_montant": 1150092852.03,
   "nb_beneficiaires": 3220,
   "data": [
@@ -1576,7 +1576,7 @@
       "source_thematique": "direction",
       "montant_total": 979315.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2017/dac",
+      "objet_principal": "FONCTIONNEMENT",
       "siret": "43353723000040"
     },
     {
@@ -2476,7 +2476,7 @@
       "source_thematique": "direction",
       "montant_total": 475690.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2017/dac",
+      "objet_principal": "fonctionnement",
       "siret": "34112346100046"
     },
     {
@@ -5671,7 +5671,7 @@
       "source_thematique": "direction",
       "montant_total": 120000.0,
       "nb_subventions": 2,
-      "objet_principal": "Expérimentation Territoires Zéro Chômeur-Soutien aux investissements de 13 Avenir",
+      "objet_principal": "Expérimentation Territoires Zéro Chômeur-Appui au démarrage de 13 Avenir, Entreprise à But d'Emploi",
       "siret": "82852040300019"
     },
     {
@@ -6766,7 +6766,7 @@
       "source_thematique": "direction",
       "montant_total": 95000.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement",
+      "objet_principal": "acompte 2017 - DAC",
       "siret": "39187280100041"
     },
     {
@@ -7276,7 +7276,7 @@
       "source_thematique": "direction",
       "montant_total": 85000.0,
       "nb_subventions": 2,
-      "objet_principal": "Fonctionnement/Solde de subvention 2017",
+      "objet_principal": "acompte 2017 - DAC",
       "siret": "32765797900040"
     },
     {
@@ -12841,7 +12841,7 @@
       "source_thematique": "direction",
       "montant_total": 34000.0,
       "nb_subventions": 1,
-      "objet_principal": "ILLUMATIONS",
+      "objet_principal": "ILLUMINATION 2017",
       "siret": "53499878600014"
     },
     {
@@ -21556,7 +21556,7 @@
       "source_thematique": "llm",
       "montant_total": 12700.0,
       "nb_subventions": 1,
-      "objet_principal": "Atelier Cuisine BIO",
+      "objet_principal": "aap pvi Offrir un lieu de partage et de convivialité aux seniors du quartier",
       "siret": "48978535200019"
     },
     {
@@ -22486,7 +22486,7 @@
       "source_thematique": "llm",
       "montant_total": 11500.0,
       "nb_subventions": 2,
-      "objet_principal": "Accompagnement à la dématérialisation      des tâches administratives au grand public",
+      "objet_principal": "aap pvi DROITS  accompagnement  à la dématérialisation des tâches administratives au grand public.",
       "siret": "81415159300013"
     },
     {
@@ -28621,7 +28621,7 @@
       "source_thematique": "default",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "aap pvi Lien social - Atelier réalisation d'un journal",
+      "objet_principal": "Lien social - Atelier Conversation - Porte de la Chapelle",
       "siret": "50835733200024"
     },
     {
@@ -29236,7 +29236,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "semaine du film de la Caraïbe et Outre-Mer",
+      "objet_principal": "les mardis de l'outre mer",
       "siret": "48004476700014"
     },
     {
@@ -29716,7 +29716,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "AAP PVI. CULTURE/CADRE DE VIE : Protocole d'Interprétation Créative d'un Territoired'Agglomé",
+      "objet_principal": "AAP PVI. CADRE DE VIE / CULTURE ¿ Balisage désOrienté Urbain et SenSible d¿Observateurs en Libe",
       "siret": "53798494000016"
     },
     {
@@ -30016,7 +30016,7 @@
       "source_thematique": "direction",
       "montant_total": 5500.0,
       "nb_subventions": 1,
-      "objet_principal": "LIEN SOCIAL : \"FEMMES SOUS UN AUTRE JOUR\"",
+      "objet_principal": "aap pvi LIEN SOCIAL MEDIATIONSOCIALEETCULTURELLE EN DIRECTIONDESFEMMESISOLEES DU QUARTIER POLITIQUE",
       "siret": "53044620200018"
     },
     {
@@ -34096,7 +34096,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "bloche complémentaire m18",
+      "objet_principal": "amendement bloche",
       "siret": "83121146100015"
     },
     {

@@ -139,12 +139,12 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 849575984.1700003
+      "value": 849575984.1700006
     },
     {
       "source": "Budget Paris",
       "target": "Administration générale",
-      "value": 850951809.2099998
+      "value": 850951809.2099999
     },
     {
       "source": "Budget Paris",
@@ -154,12 +154,12 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 981691291.9699996
+      "value": 981691291.9699997
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 908735884.6199996
+      "value": 908735884.6199999
     },
     {
       "source": "Budget Paris",
@@ -333,7 +333,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 6791782.999999999
+          "value": 6791783.0
         },
         {
           "name": "Action Sociale: Recouvrements sur autres redevables",
@@ -382,7 +382,7 @@
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
-          "value": 3914545.0900000003
+          "value": 3914545.09
         },
         {
           "name": "Action Économique: Revenus des immeubles",
@@ -421,7 +421,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 4245802.359999999
+          "value": 4245802.36
         },
         {
           "name": "Invest. Aménagement: Subventions (actifs non amortissables) - Autres",
@@ -4477,7 +4477,7 @@
         ]
       },
       "Investissement": {
-        "total": 48556786.71,
+        "total": 48556786.71000001,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -5080,7 +5080,7 @@
         ]
       },
       "Investissement": {
-        "total": 222096151.62,
+        "total": 222096151.61999997,
         "items": [
           {
             "name": "Invest. Culture: Constructions",
@@ -5232,7 +5232,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 736344890.8500003,
+        "total": 736344890.8500005,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5537,7 +5537,7 @@
     },
     "Administration générale": {
       "Fonctionnement": {
-        "total": 850951809.2099999,
+        "total": 850951809.21,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -5993,7 +5993,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 934330180.0099995,
+        "total": 934330180.0099996,
         "items": [
           {
             "name": "Environnement: Autres charges diverses de gestion courante - AutrES",
@@ -6143,7 +6143,7 @@
         ]
       },
       "Investissement": {
-        "total": 47361111.96000001,
+        "total": 47361111.960000016,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -6294,7 +6294,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 650548657.7099997,
+        "total": 650548657.7099999,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",

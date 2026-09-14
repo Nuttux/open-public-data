@@ -1,6 +1,6 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-13T13:14:42.030269",
+  "generated_at": "2026-09-14T18:17:02.025087",
   "total_montant": 1149891407.56,
   "nb_beneficiaires": 2790,
   "data": [
@@ -9796,7 +9796,7 @@
       "source_thematique": "direction",
       "montant_total": 35000.0,
       "nb_subventions": 1,
-      "objet_principal": "CitizenWatt.paris-Investissement 2015 DDEEES 82G",
+      "objet_principal": "CitizenWatt.paris-Fonctionnement 2015 DDEEES 199",
       "siret": "79822162800026"
     },
     {
@@ -24466,7 +24466,7 @@
       "source_thematique": "direction",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Résonances, Cartographie sonore et visuelle de la Ville de Paris",
+      "objet_principal": "Résonances",
       "siret": "51301383900024"
     },
     {
@@ -34966,7 +34966,7 @@
       "source_thematique": "default",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "ACTION CULTURELLE ET LINGUISTIQUE A DESTINATION DES MIGRANT_ES",
+      "objet_principal": "LE THÉÂTRE AU SERVICE DES ENFANTS",
       "siret": "45002852700031"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T03:18:12.864407",
+  "generated_at": "2026-09-14T18:18:24.716835",
   "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [

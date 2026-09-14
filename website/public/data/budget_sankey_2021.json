@@ -99,7 +99,7 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 1489754031.4099998
+      "value": 1489754031.41
     },
     {
       "source": "Impôts & Taxes",
@@ -154,7 +154,7 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 727648951.9599999
+      "value": 727648951.96
     },
     {
       "source": "Budget Paris",
@@ -245,7 +245,7 @@
         },
         {
           "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 36265208.46
+          "value": 36265208.45999999
         },
         {
           "name": "Action Économique: Droits de stationnement et de location sur la voie publique",
@@ -273,7 +273,7 @@
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
-          "value": 17598542.37
+          "value": 17598542.369999997
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -293,7 +293,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 10802368.690000001
+          "value": 10802368.69
         },
         {
           "name": "Services Généraux: Concession dans les cimetières (produit net)",
@@ -325,7 +325,7 @@
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
-          "value": 6225762.789999999
+          "value": 6225762.79
         },
         {
           "name": "RSA: Recouvrements des indus d’insertion et d’aide sociale - RSA- Allocations forfaitaires",
@@ -345,7 +345,7 @@
         },
         {
           "name": "Éducation: Remboursements de frais - par des tiers",
-          "value": 5023682.26
+          "value": 5023682.260000001
         },
         {
           "name": "Environnement: Mise à disposition de personnel facturée - aux autres organismes",
@@ -353,7 +353,7 @@
         },
         {
           "name": "Action Économique: Revenus des immeubles",
-          "value": 4601114.95
+          "value": 4601114.950000001
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
@@ -4605,7 +4605,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 251451078.8299999,
+        "total": 251451078.82999992,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -5057,7 +5057,7 @@
         ]
       },
       "Investissement": {
-        "total": 169784762.77999994,
+        "total": 169784762.77999997,
         "items": [
           {
             "name": "Invest. Culture: Subventions aux organismes publics - Organismes publics divers - Bâtiments et installations",
@@ -5206,7 +5206,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 733800497.7799996,
+        "total": 733800497.7799995,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5359,7 +5359,7 @@
         ]
       },
       "Investissement": {
-        "total": 130146616.20999998,
+        "total": 130146616.21,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5962,7 +5962,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 667744742.28,
+        "total": 667744742.2800001,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",

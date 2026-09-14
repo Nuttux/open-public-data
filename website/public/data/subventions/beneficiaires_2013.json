@@ -1,6 +1,6 @@
 {
   "year": 2013,
-  "generated_at": "2026-09-13T13:14:46.231988",
+  "generated_at": "2026-09-14T18:17:08.339152",
   "total_montant": 1265816522.23,
   "nb_beneficiaires": 3206,
   "data": [
@@ -33031,7 +33031,7 @@
       "source_thematique": "default",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "FETES MULTICULTURELLES",
+      "objet_principal": "ATELIERS D'EXPRESSIONS CULTURELLES EN DIRECTION DES JEUNES",
       "siret": "44304088600014"
     },
     {
@@ -41536,7 +41536,7 @@
       "source_thematique": "default",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Action Linguistique et Culturelle à Destination des Migrant-es. ex:Théâtre au Service des Mamans",
+      "objet_principal": ": LE THÉÂTRE AU SERVICE DES ENFANTS",
       "siret": "45002852700031"
     },
     {

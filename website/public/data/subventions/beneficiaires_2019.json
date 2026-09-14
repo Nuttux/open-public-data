@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-09-13T13:14:32.165438",
+  "generated_at": "2026-09-14T18:16:48.217609",
   "total_montant": 1304037463.0,
   "nb_beneficiaires": 12093,
   "data": [
@@ -1546,7 +1546,7 @@
       "source_thematique": "direction",
       "montant_total": 1019150.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "Subvention de fonctionnement 2019",
       "siret": "43353723000040"
     },
     {
@@ -2086,7 +2086,7 @@
       "source_thematique": "direction",
       "montant_total": 637000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "subvention d'aide au fonctionnement 2019",
       "siret": "35377356700014"
     },
     {
@@ -2371,7 +2371,7 @@
       "source_thematique": "direction",
       "montant_total": 478000.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "34112346100046"
     },
     {
@@ -2671,7 +2671,7 @@
       "source_thematique": "direction",
       "montant_total": 396000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2019 DAC",
+      "objet_principal": "subvention de fonctionnement de l'étoile du nord, incluant \"L'art pour grandir\".",
       "siret": "32618492600011"
     },
     {
@@ -2956,7 +2956,7 @@
       "source_thematique": "direction",
       "montant_total": 327880.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
       "siret": "39864093800021"
     },
     {
@@ -4546,7 +4546,7 @@
       "source_thematique": "pattern",
       "montant_total": 160000.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande de subvention Bureau de la musique 2019",
+      "objet_principal": "acompte de subvention 2019",
       "siret": "78434004400030"
     },
     {
@@ -5266,7 +5266,7 @@
       "source_thematique": "direction",
       "montant_total": 135000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "Art'R lieu de fabrique itinérant pour les Arts de la Rue à Paris et en Île-de-France",
       "siret": "48232562800022"
     },
     {
@@ -7486,7 +7486,7 @@
       "source_thematique": "default",
       "montant_total": 88500.0,
       "nb_subventions": 1,
-      "objet_principal": "Tenue de permanences juridiques gratuites par des bénévoles professionnels du droit et suivi de doss",
+      "objet_principal": "\"Accès au droit et santé mentale\" (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -13726,7 +13726,7 @@
       "source_thematique": "llm",
       "montant_total": 36000.0,
       "nb_subventions": 1,
-      "objet_principal": "ALLEZ LES FILLES ! PREVENTION DE LA MARGINALISATION ET DU DECROCHAGE SCOLAIRE PAR LE SPORT",
+      "objet_principal": "Parcours linguistique à visée professionnelle",
       "siret": "40292544000024"
     },
     {
@@ -25441,7 +25441,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "ATELIERS D¿ÉDUCATION AUX MÉDIAS ET PROJECTIONS-DÉBATS",
+      "objet_principal": "CPO SPV - TV CITE ROUGE - MISE EN VALEUR DE LA CITE CHAUFOURNIERS ET DE LEURS HABITANTS",
       "siret": "49981993600026"
     },
     {
@@ -31036,7 +31036,7 @@
       "source_thematique": "llm",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "3-Défilé pour la planète",
+      "objet_principal": "2-De mômes et d'Opérettes",
       "siret": "48909505900015"
     },
     {
@@ -32026,7 +32026,7 @@
       "source_thematique": "llm",
       "montant_total": 6500.0,
       "nb_subventions": 1,
-      "objet_principal": "\"A vos souhaits\" : une oeuvre participative et poétique qui vient au devant des publics",
+      "objet_principal": "\"Passages Alésia\" : Quand les murs se transforment avec la créativité de chacun",
       "siret": "52767534200010"
     },
     {
@@ -33241,7 +33241,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
+      "objet_principal": "CPO SPV Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
       "siret": "79804858300024"
     },
     {

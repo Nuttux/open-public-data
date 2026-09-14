@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-09T00:30:17.006160+00:00",
-  "updated_on_qipu_at": "2026-09-09",
+  "generated_at": "2026-09-14T18:19:39.576450+00:00",
+  "updated_on_qipu_at": "2026-09-14",
   "description": "Fraîcheur de chaque source : publié par la Ville le (portail), mis à jour sur Qipu le (ce refresh), années complètes / partielles.",
   "sources": [
     {
@@ -14,20 +14,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 25629,
       "published_by_city_at": "2025-08-26",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2019,
-        "max": 2024,
-        "complete": [
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024
-        ],
-        "partial": []
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/budget",
         "/dette-patrimoine"
@@ -44,7 +32,7 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 8598,
       "published_by_city_at": "2020-11-25",
-      "synced_at": "2026-09-08",
+      "synced_at": "2026-09-14",
       "years": null,
       "pages": [
         "/budget"
@@ -61,21 +49,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 47381,
       "published_by_city_at": "2025-08-26",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2018,
-        "max": 2024,
-        "complete": [
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024
-        ],
-        "partial": []
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/qui-recoit"
       ]
@@ -91,33 +66,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 107693,
       "published_by_city_at": "2026-07-28",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2013,
-        "max": 2025,
-        "complete": [
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "partial": [
-          {
-            "annee": 2026,
-            "n_rows": 1230,
-            "ratio": 0.178
-          }
-        ]
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/qui-recoit"
       ]
@@ -133,26 +83,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 17639,
       "published_by_city_at": "2024-05-02",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2013,
-        "max": 2024,
-        "complete": [
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024
-        ],
-        "partial": []
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/marches-publics"
       ]
@@ -168,39 +100,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 4293,
       "published_by_city_at": "2026-09-08",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2001,
-        "max": 2025,
-        "complete": [
-          2001,
-          2002,
-          2003,
-          2004,
-          2005,
-          2006,
-          2007,
-          2008,
-          2009,
-          2010,
-          2011,
-          2012,
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "partial": []
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/logement-social",
         "/investissements"
@@ -217,20 +118,8 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 147071,
       "published_by_city_at": "2026-07-01",
-      "synced_at": "2026-09-08",
-      "years": {
-        "min": 2019,
-        "max": 2024,
-        "complete": [
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024
-        ],
-        "partial": []
-      },
+      "synced_at": "2026-09-14",
+      "years": null,
       "pages": [
         "/dette-patrimoine",
         "/logement-social"
@@ -247,11 +136,26 @@
       "license_url": "http://opendatacommons.org/licenses/odbl/",
       "records_count": 7466,
       "published_by_city_at": "2019-11-28",
-      "synced_at": "2026-09-08",
+      "synced_at": "2026-09-14",
       "years": null,
       "pages": [
         "/investissements"
       ]
+    },
+    {
+      "source_id": "subventions_2013_2017",
+      "label_fr": "Subventions versées - Annexe Compte administratif 2013-2017",
+      "label_en": "Subventions versées - Annexe Compte administratif 2013-2017",
+      "dataset_title": "Subventions versées - Annexe Compte administratif 2013-2017",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/subventions-versees/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 39431,
+      "published_by_city_at": "2019-12-19",
+      "synced_at": "2026-09-14",
+      "years": null,
+      "pages": []
     }
   ],
   "license": {

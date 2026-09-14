@@ -124,7 +124,7 @@
     {
       "source": "Budget Paris",
       "target": "Action Sociale",
-      "value": 2652407127.37
+      "value": 2652407127.3700004
     },
     {
       "source": "Budget Paris",
@@ -134,7 +134,7 @@
     {
       "source": "Budget Paris",
       "target": "Culture & Sport",
-      "value": 892625773.7199994
+      "value": 892625773.7199996
     },
     {
       "source": "Budget Paris",
@@ -154,7 +154,7 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 916133859.6199995
+      "value": 916133859.6199996
     },
     {
       "source": "Budget Paris",
@@ -164,7 +164,7 @@
     {
       "source": "Budget Paris",
       "target": "Sécurité",
-      "value": 505008945.5800001
+      "value": 505008945.58000004
     },
     {
       "source": "Budget Paris",
@@ -313,7 +313,7 @@
         },
         {
           "name": "Culture & Sport: Autres produits divers de gestion courante-Autres",
-          "value": 10460438.87
+          "value": 10460438.870000001
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
@@ -337,7 +337,7 @@
         },
         {
           "name": "Action Économique: Revenus des immeubles",
-          "value": 7546731.859999999
+          "value": 7546731.86
         },
         {
           "name": "Aménagement: Autres produits divers de gestion courante-Autres",
@@ -590,7 +590,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 3978822.5100000002
+          "value": 3978822.51
         },
         {
           "name": "Invest. Social: Subventions (actifs non amortissables) - Autres",
@@ -746,7 +746,7 @@
         },
         {
           "name": "Invest. Culture: Constructions",
-          "value": 59330.7
+          "value": 59330.700000000004
         },
         {
           "name": "Invest. Services: Subventions (actifs non amortissables) - Régions",
@@ -4456,7 +4456,7 @@
         ]
       },
       "Investissement": {
-        "total": 74019378.35999998,
+        "total": 74019378.35999997,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4605,7 +4605,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 301384691.7100001,
+        "total": 301384691.71,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4905,7 +4905,7 @@
     },
     "Culture & Sport": {
       "Fonctionnement": {
-        "total": 689941659.5499995,
+        "total": 689941659.5499996,
         "items": [
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
@@ -5059,7 +5059,7 @@
         ]
       },
       "Investissement": {
-        "total": 202684114.17,
+        "total": 202684114.16999996,
         "items": [
           {
             "name": "Invest. Culture: Restauration des collections et œuvres d'art",
@@ -5965,7 +5965,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 803544065.5299995,
+        "total": 803544065.5299996,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -6561,7 +6561,7 @@
     },
     "Sécurité": {
       "Fonctionnement": {
-        "total": 480387531.3400001,
+        "total": 480387531.34000003,
         "items": [
           {
             "name": "Sécurité: Autres contributions obligatoires",
@@ -6714,7 +6714,7 @@
         ]
       },
       "Investissement": {
-        "total": 24621414.240000002,
+        "total": 24621414.24,
         "items": [
           {
             "name": "Invest. Sécurité: Subventions aux organismes publics - Etat - Bâtiments et installations",

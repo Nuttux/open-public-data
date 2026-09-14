@@ -1,6 +1,6 @@
 {
   "year": 2014,
-  "generated_at": "2026-09-13T13:14:43.963572",
+  "generated_at": "2026-09-14T18:17:05.091009",
   "total_montant": 1362113353.96,
   "nb_beneficiaires": 3046,
   "data": [
@@ -44,7 +44,7 @@
       "thematique": "Logement",
       "sous_categorie": "Office public de l'habitat - logement social",
       "source_thematique": "llm",
-      "montant_total": 75801867.83000001,
+      "montant_total": 75801867.83,
       "nb_subventions": 4,
       "objet_principal": null,
       "siret": null
@@ -74,7 +74,7 @@
       "thematique": "Logement",
       "sous_categorie": "Régie immobilière de la Ville de Paris (RIVP) - logement social (nom tronqué)",
       "source_thematique": "llm",
-      "montant_total": 56256281.370000005,
+      "montant_total": 56256281.37,
       "nb_subventions": 4,
       "objet_principal": null,
       "siret": null
@@ -104,7 +104,7 @@
       "thematique": "Non classifié",
       "sous_categorie": null,
       "source_thematique": "default",
-      "montant_total": 27533797.849999998,
+      "montant_total": 27533797.85,
       "nb_subventions": 3,
       "objet_principal": null,
       "siret": null
@@ -344,7 +344,7 @@
       "thematique": "Logement",
       "sous_categorie": "Logement social HLM",
       "source_thematique": "pattern",
-      "montant_total": 8329120.51,
+      "montant_total": 8329120.510000001,
       "nb_subventions": 3,
       "objet_principal": null,
       "siret": null
@@ -13411,7 +13411,7 @@
       "source_thematique": "llm",
       "montant_total": 28000.0,
       "nb_subventions": 2,
-      "objet_principal": "//// LA FABRIQUE SAINT-BLAISE  /// (si après dénommée FSB)",
+      "objet_principal": "/// APAZAPA // CHANTIER GRAPHIQUE ET MULTIMÉDIA  À St Blaise //",
       "siret": "42228221000018"
     },
     {
@@ -36346,7 +36346,7 @@
       "source_thematique": "direction",
       "montant_total": 2800.0,
       "nb_subventions": 1,
-      "objet_principal": "ARE Initiation à l'Origami",
+      "objet_principal": "Atelier Jeux de Société",
       "siret": "50071895200012"
     },
     {
@@ -38551,7 +38551,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Organiser des manifestations dansantes accueillants des déficients visuels et des voyants",
+      "objet_principal": "Participer au Salon Autonomic de Paris",
       "siret": "53215408500015"
     },
     {

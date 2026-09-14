@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-19T14:15:46.472858+00:00",
+  "generated_at": "2026-09-14T18:20:18.618918+00:00",
   "project": "open-data-france-484717",
   "summary": {
     "total": 19,
-    "pass": 16,
-    "warn": 3,
+    "pass": 17,
+    "warn": 2,
     "fail": 0
   },
   "thresholds": {
@@ -46,8 +46,8 @@
       "threshold": "diff < 0.01%",
       "actual": "diff = 0.0000%",
       "details": {
-        "core_total_eur": 6267446570.0,
-        "stg_total_eur": 6267446570.0
+        "core_total_eur": 18028707246.85,
+        "stg_total_eur": 18028707246.85
       },
       "sources": [
         "dbt_paris_analytics.core_subventions",
@@ -79,8 +79,8 @@
         {
           "core": "core_logements_sociaux",
           "stg": "stg_logements_sociaux",
-          "core_rows": 4173,
-          "stg_rows": 4173,
+          "core_rows": 4292,
+          "stg_rows": 4292,
           "diff_pct": 0.0
         }
       ],
@@ -95,10 +95,10 @@
       "label": "Subventions : % montants classifiés par thématique",
       "status": "pass",
       "threshold": "pass ≥ 95.0%, warn ≥ 80.0%",
-      "actual": "98.05%",
+      "actual": "95.36%",
       "details": {
-        "classified_eur": 6145349174.0,
-        "total_eur": 6267446570.0
+        "classified_eur": 17192930107.8,
+        "total_eur": 18028707246.85
       },
       "sources": [
         "dbt_paris_analytics.core_subventions"
@@ -169,10 +169,10 @@
       "label": "Unicité cle_technique dans core_subventions",
       "status": "pass",
       "threshold": "pass < 0.5% doublons",
-      "actual": "0.0000% doublons (0/38839)",
+      "actual": "0.0000% doublons (0/72722)",
       "details": {
-        "total_rows": 38839,
-        "unique_keys": 38839
+        "total_rows": 72722,
+        "unique_keys": 72722
       },
       "sources": [
         "dbt_paris_analytics.core_subventions"
@@ -199,10 +199,10 @@
       "label": "Unicité cle_technique dans core_logements_sociaux",
       "status": "pass",
       "threshold": "pass < 0.5% doublons",
-      "actual": "0.0000% doublons (0/4173)",
+      "actual": "0.0000% doublons (0/4292)",
       "details": {
-        "total_rows": 4173,
-        "unique_keys": 4173
+        "total_rows": 4292,
+        "unique_keys": 4292
       },
       "sources": [
         "dbt_paris_analytics.core_logements_sociaux"
@@ -214,10 +214,10 @@
       "label": "Paris Centre : agrégation arrondissements 1-4 → 0",
       "status": "pass",
       "threshold": "centre_rows == sum(arr 1-4)",
-      "actual": "317 rows en Paris Centre, 317 rows arr 1-4 source",
+      "actual": "330 rows en Paris Centre, 330 rows arr 1-4 source",
       "details": {
-        "centre_rows": 317,
-        "source_rows_1_4": 317
+        "centre_rows": 330,
+        "source_rows_1_4": 330
       },
       "sources": [
         "dbt_paris_analytics.core_logements_sociaux"
@@ -229,9 +229,9 @@
       "label": "CASVP : variantes de nom dédupliquées en 1 entité canonique",
       "status": "pass",
       "threshold": "variants_canonique <= 1",
-      "actual": "1 variantes source → 1 canonique(s)",
+      "actual": "3 variantes source → 1 canonique(s)",
       "details": {
-        "variants_source": 1,
+        "variants_source": 3,
         "variants_canonique": 1,
         "total_eur": 386239960.0
       },
@@ -321,13 +321,13 @@
           },
           {
             "table": "subventions_associations_votees",
-            "max_year": 2025,
-            "gap_years": 1
+            "max_year": 2026,
+            "gap_years": 0
           },
           {
             "table": "logements_sociaux_finances_a_paris",
-            "max_year": 2024,
-            "gap_years": 2
+            "max_year": 2025,
+            "gap_years": 1
           },
           {
             "table": "budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
@@ -411,47 +411,47 @@
       "label": "Tables raw : âge du dernier sync OpenData → BigQuery",
       "status": "pass",
       "threshold": "pass < 35j, warn < 90j",
-      "actual": "max 26j",
+      "actual": "max 20j",
       "details": [
         {
           "table_id": "bilan_comptable",
-          "last_mod": "2026-04-23T13:54:01.249000+00:00",
-          "age_days": 26
+          "last_mod": "2026-08-25T14:22:24.225000+00:00",
+          "age_days": 20
         },
         {
           "table_id": "budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
-          "last_mod": "2026-04-23T13:43:13.846000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:01:33.665000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
-          "last_mod": "2026-04-23T13:42:36.605000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:00:07.627000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
-          "last_mod": "2026-04-23T13:42:30.304000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T17:59:51.694000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "liste_des_marches_de_la_collectivite_parisienne",
-          "last_mod": "2026-04-23T13:43:20.263000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:01:47.350000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "logements_sociaux_finances_a_paris",
-          "last_mod": "2026-04-23T13:43:08.511000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:01:18.041000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "subventions_associations_votees",
-          "last_mod": "2026-04-23T13:43:02.649000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:01:05.012000+00:00",
+          "age_days": 0
         },
         {
           "table_id": "subventions_versees_annexe_compte_administratif_a_partir_de_2018",
-          "last_mod": "2026-04-23T13:42:45.849000+00:00",
-          "age_days": 26
+          "last_mod": "2026-09-14T18:00:26.037000+00:00",
+          "age_days": 0
         }
       ],
       "sources": [
@@ -470,27 +470,27 @@
         {
           "table": "core_budget",
           "age_days": 0,
-          "last_run": "2026-05-19"
+          "last_run": "2026-09-14"
         },
         {
           "table": "core_budget_vote",
           "age_days": 0,
-          "last_run": "2026-05-19"
+          "last_run": "2026-09-14"
         },
         {
           "table": "core_subventions",
           "age_days": 0,
-          "last_run": "2026-05-19"
+          "last_run": "2026-09-14"
         },
         {
           "table": "core_ap_projets",
           "age_days": 0,
-          "last_run": "2026-05-19"
+          "last_run": "2026-09-14"
         },
         {
           "table": "core_logements_sociaux",
           "age_days": 0,
-          "last_run": "2026-05-19"
+          "last_run": "2026-09-14"
         }
       ],
       "sources": [
@@ -501,9 +501,9 @@
       "id": "subventions_2020_2021_known_gap",
       "category": "known_limitation",
       "label": "Subventions 2020-2021 : années absentes (source dégradée)",
-      "status": "warn",
+      "status": "pass",
       "threshold": "limitation source OpenData Paris documentée",
-      "actual": "années manquantes : [2020, 2021]",
+      "actual": "couverture complète",
       "details": {
         "per_year": [
           {
@@ -511,14 +511,19 @@
             "n_rows": 12093
           },
           {
+            "annee": 2020,
+            "n_rows": 4760
+          },
+          {
+            "annee": 2021,
+            "n_rows": 4314
+          },
+          {
             "annee": 2022,
             "n_rows": 5336
           }
         ],
-        "missing": [
-          2020,
-          2021
-        ]
+        "missing": []
       },
       "sources": [
         "dbt_paris_analytics.core_subventions"
@@ -559,13 +564,5 @@
       ],
       "note": "Dataset OpenData Paris non mis à jour depuis 2019-11-28. Complété par PDF Investissements Localisés (couverture partielle)."
     }
-  ],
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
-  }
+  ]
 }

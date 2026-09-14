@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T13:15:13.692547",
+  "generated_at": "2026-09-14T18:17:51.405310",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
@@ -589,7 +589,7 @@
         },
         {
           "label": "Logement",
-          "montant": 224488856.35000002,
+          "montant": 224488856.35,
           "count": 35
         },
         {

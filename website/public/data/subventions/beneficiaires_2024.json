@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-09-13T13:14:18.473358",
+  "generated_at": "2026-09-14T18:16:29.627534",
   "total_montant": 1353488225.0,
   "nb_beneficiaires": 5948,
   "data": [
@@ -811,7 +811,7 @@
       "source_thematique": "direction",
       "montant_total": 3690072.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2024 DAC",
+      "objet_principal": "Paris Ateliers - Subvention de fonctionnement 2024",
       "siret": "31293687500094"
     },
     {
@@ -5971,7 +5971,7 @@
       "source_thematique": "direction",
       "montant_total": 123389.0,
       "nb_subventions": 1,
-      "objet_principal": "Formation certifiante : Développement Web et Mobile",
+      "objet_principal": "Formation certifiante : Technicien Supérieur Système et Réseaux",
       "siret": "82424482600064"
     },
     {
@@ -7831,7 +7831,7 @@
       "source_thematique": "direction",
       "montant_total": 86000.0,
       "nb_subventions": 1,
-      "objet_principal": "Le Théâtre de Verdure Hors-Les-Murs - Projet Culturel et artistique - Jeux Olympiques 2024",
+      "objet_principal": "Aide au fonctionnement du Théâtre de Verdure du Jardin Shakespeare",
       "siret": "45134353700036"
     },
     {
@@ -10081,7 +10081,7 @@
       "source_thematique": "direction",
       "montant_total": 60000.0,
       "nb_subventions": 1,
-      "objet_principal": "Championnat d'Europe d'Escrime Fauteuil",
+      "objet_principal": "Handisport Open Paris 2024",
       "siret": "78530731500032"
     },
     {
@@ -10321,7 +10321,7 @@
       "source_thematique": "direction",
       "montant_total": 57500.0,
       "nb_subventions": 1,
-      "objet_principal": "PREVENTION SANTE SEXUELLE ACT UP-PARIS",
+      "objet_principal": "PERMANENCE DROITS SOCIAUX ACT UP-PARIS",
       "siret": "39489556900033"
     },
     {
@@ -16561,7 +16561,7 @@
       "source_thematique": "direction",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet Formation - Adminsitrateur Systèmes, Réseaux et Cloud",
+      "objet_principal": "Projet Formation - DEVOPS",
       "siret": "88311529700011"
     },
     {
@@ -23296,7 +23296,7 @@
       "source_thematique": "llm",
       "montant_total": 16000.0,
       "nb_subventions": 1,
-      "objet_principal": "IMPACT 2024 - Parcours de femmes",
+      "objet_principal": "Le Parlement des Voix Nouvelles",
       "siret": "89203455400014"
     },
     {
@@ -30706,7 +30706,7 @@
       "source_thematique": "default",
       "montant_total": 9000.0,
       "nb_subventions": 1,
-      "objet_principal": "SALON DU LIVRE JEUNESSE SOLIDAIRE DU 18E 2024",
+      "objet_principal": "LA CARAVANE QUI PARLE",
       "siret": "79311882900019"
     },
     {
@@ -31126,7 +31126,7 @@
       "source_thematique": "direction",
       "montant_total": 9000.0,
       "nb_subventions": 1,
-      "objet_principal": "LA PISTE AU FEMININ",
+      "objet_principal": "Accompagnement d¿athlètes de haut niveau dans la perspective des Jeux Olympiques de Paris 2024",
       "siret": "83966546000011"
     },
     {
