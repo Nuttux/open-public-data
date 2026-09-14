@@ -249,10 +249,13 @@ export default function PosteFiche({ poste }: Props) {
       {natureRows.length > 1 && (
         <div className="fx-bud-forme fx-bud-forme--poste">
           <div className="h">{t("fx.poste.v3.forme")}</div>
-          <div className="stack">
+          {/* Raccourci à la souris : chaque segment a son lien jumeau dans la légende (cible
+              de 24 px au doigt et au clavier) ; le ruban garde ses proportions exactes et sort
+              de la tabulation et des lecteurs d'écran. */}
+          <div className="stack" aria-hidden="true">
             {natureRows.map((g) => g.key === "autres"
               ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
-              : <Link key={g.key} href={`/france/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
+              : <Link key={g.key} href={`/france/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false} tabIndex={-1} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
           </div>
           <div className="legend">
             {natureRows.map((g) => g.key === "autres"

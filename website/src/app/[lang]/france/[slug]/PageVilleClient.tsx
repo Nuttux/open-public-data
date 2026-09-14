@@ -742,7 +742,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           <H2 id="depenses" sub={`${t("fx.pv.nature_sub")}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
           {dep.length > 1 ? (
             <div className="fx-bud-forme fx-pv-forme">
-              <div className="stack">
+              {/* Raccourci à la souris : chaque segment mène à la ligne jumelle juste dessous
+                  (même fiche ou même dépliement), qui est la cible au doigt et au clavier. Un
+                  segment de 3 % ne peut pas mesurer 24 px sans fausser la proportion : le ruban
+                  sort de la tabulation et des lecteurs d'écran. */}
+              <div className="stack" aria-hidden="true">
                 {dep.map((x) => {
                   const pct = Math.round((x.value / data.depenses) * 100);
                   const id = `nat-expenses-${strip(x.label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
@@ -750,14 +754,14 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   const fiche = natureFiches[strip(x.label)];
                   const style = { width: `${(x.value / data.depenses) * 100}%`, background: couleurChapitre(x.label) };
                   return fiche ? (
-                    <Link key={x.label} href={`/france/${commune.slug}/nature/${fiche}`} scroll={false} style={style} title={`${strip(x.label)} · ${pct} %`} aria-label={`${strip(x.label)} · ${pct} %`} />
+                    <Link key={x.label} href={`/france/${commune.slug}/nature/${fiche}`} scroll={false} tabIndex={-1} style={style} title={`${strip(x.label)} · ${pct} %`} />
                   ) : (
                     <button
                       key={x.label}
                       type="button"
+                      tabIndex={-1}
                       style={style}
                       title={`${strip(x.label)} · ${pct} %`}
-                      aria-label={`${strip(x.label)} · ${pct} %`}
                       onClick={() => {
                         setOpenRow(openRow === key ? null : key);
                         document.getElementById(id)?.scrollIntoView({ block: "center", behavior: "smooth" });

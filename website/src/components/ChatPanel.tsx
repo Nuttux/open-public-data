@@ -130,6 +130,7 @@ function ChatPanelInner() {
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
 
   const t = useT();
   const { locale } = useLocale();
@@ -219,10 +220,21 @@ function ChatPanelInner() {
     return () => window.removeEventListener("keydown", onTab);
   }, [open]);
 
+  // Ouvert : le focus entre dans le panneau. Fermé : le panneau devient inert
+  // (ni focusable ni annoncé), le focus qu'il contenait tomberait sur <body> et
+  // Tab repartirait du haut de la page — il revient au bouton qui l'ouvre.
+  const wasOpenRef = useRef(false);
   useEffect(() => {
     if (open) {
+      wasOpenRef.current = true;
       const timer = setTimeout(() => inputRef.current?.focus(), 200);
       return () => clearTimeout(timer);
+    }
+    if (!wasOpenRef.current) return;
+    wasOpenRef.current = false;
+    const active = document.activeElement;
+    if (!active || active === document.body || panelRef.current?.contains(active)) {
+      launcherRef.current?.focus();
     }
   }, [open]);
 
@@ -555,6 +567,7 @@ function ChatPanelInner() {
       {/* Floating launcher — pill with explicit label, no ambiguity vs help chat */}
       {!open && (
         <button
+          ref={launcherRef}
           onClick={() => setOpen(true)}
           className="fx-chat-launcher group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5"
           aria-label={t("chat.launcher")}
@@ -582,13 +595,16 @@ function ChatPanelInner() {
         />
       )}
 
-      {/* Panel — light theme matching site */}
+      {/* Panel — light theme matching site. Fermé, il reste monté (animation de
+          glissement) mais inert : ses boutons et son champ sortent de l'ordre de
+          tabulation et de l'arbre d'accessibilité. aria-hidden seul les laissait
+          atteignables au clavier (audit aria-hidden-focus). */}
       <div
         ref={panelRef}
         className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-md lg:max-w-lg flex-col border-l border-neutral-200 bg-white shadow-[-12px_0_40px_rgba(0,0,0,0.10)] transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
-        aria-hidden={!open}
+        inert={!open}
         role="dialog"
         aria-label={t("chat.aria_dialog")}
       >

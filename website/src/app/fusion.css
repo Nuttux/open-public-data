@@ -19723,7 +19723,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-forme { margin-top: 26px; }
 .theme-fusion .fx-bud-forme .h { font-size: 14px; font-weight: 600; }
 .theme-fusion .fx-bud-forme .stack { display: flex; height: 14px; gap: 2px; margin: 12px 0 8px; } .theme-fusion .fx-bud-forme .stack span { display: block; height: 14px; }
-.theme-fusion .fx-bud-forme .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); }
+/* Les mots de la légende sont les cibles au doigt et au clavier (le ruban au-dessus
+   n'est qu'un raccourci à la souris) : 2 px de plus en haut et en bas portent chaque
+   ligne à 24 px, l'écart entre lignes perd ces 4 px — même rythme à l'œil. */
+.theme-fusion .fx-bud-forme .legend { display: flex; flex-wrap: wrap; gap: 2px 16px; font-size: 12.5px; color: var(--muted); }
+.theme-fusion .fx-bud-forme .legend > * { padding-block: 2px; }
 .theme-fusion .fx-bud-forme .legend b { color: var(--ink); font-weight: 600; } .theme-fusion .fx-bud-forme .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 6px; vertical-align: -1px; }
 .theme-fusion .fx-bud-forme .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
 /* Les segments et les mots de la légende sont des liens vers la fiche de nature ;
