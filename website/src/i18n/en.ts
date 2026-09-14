@@ -3919,7 +3919,7 @@ const en: Record<string, string> = {
   // CategorieMarcheFiche
   'fx.categorie.kpi.enveloppe_max': 'Max envelope {year}',
   'fx.categorie.hero_cap': 'of envelopes notified in this category in {year}',
-  'fx.categorie.hero_cap_v3': 'in contracts signed in {year} · ceilings, not spending',
+  'fx.categorie.hero_cap_v3': 'in contracts signed in {year}, at their maximum amounts',
   'fx.categorie.meta': '{share}% of the contracts signed by the City · {n} contracts · {t} suppliers',
   'fx.categorie.h.contrats': 'The largest contracts in {year}',
   'fx.categorie.h.contrats_sub': '',
@@ -4013,7 +4013,7 @@ const en: Record<string, string> = {
   'fx.sec.mp.next': 'Social housing',
   'fx.sec.mp.next_sub': 'The social housing stock and the financed operations',
   'fx.sec.mp.foot': 'Source: City of Paris and DECP. Maximum amounts of the contracts signed in the year.',
-  'fx.categorie.note': 'Ceilings, not spending. The source repeats a lot’s amount for each company that won it; it counts once here. Source: City of Paris, DECP.',
+  'fx.categorie.note': 'Maximum contract amounts. The source repeats a lot’s amount for each company that won it; it counts once here. Source: City of Paris, DECP.',
   'fx.categorie.share_of_category': '{pct} % of category',
 
   // ProjetFiche extra

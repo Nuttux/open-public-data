@@ -3916,7 +3916,7 @@ const fr: Record<string, string> = {
   // CategorieMarcheFiche
   'fx.categorie.kpi.enveloppe_max': 'Enveloppe max {year}',
   'fx.categorie.hero_cap': "d'enveloppes notifiées dans cette catégorie en {year}",
-  'fx.categorie.hero_cap_v3': 'de contrats signés en {year} · plafonds, pas la dépense',
+  'fx.categorie.hero_cap_v3': 'de contrats signés en {year}, en montants maximums',
   'fx.categorie.meta': '{share} % des contrats signés par la Ville · {n} contrats · {t} titulaires',
   'fx.categorie.h.contrats': 'Les plus gros contrats de {year}',
   'fx.categorie.h.contrats_sub': '',
@@ -4010,7 +4010,7 @@ const fr: Record<string, string> = {
   'fx.sec.mp.next': 'Logement social',
   'fx.sec.mp.next_sub': 'Le parc social et les opérations financées',
   'fx.sec.mp.foot': 'Source : Ville de Paris et DECP. Montants maximums des contrats signés dans l’année.',
-  'fx.categorie.note': 'Plafonds, pas la dépense. La source répète le montant d’un lot pour chacune des entreprises qui l’ont gagné ; il ne compte qu’une fois ici. Source : Ville de Paris, DECP.',
+  'fx.categorie.note': 'Montants maximums des contrats. La source répète le montant d’un lot pour chacune des entreprises qui l’ont gagné ; il ne compte qu’une fois ici. Source : Ville de Paris, DECP.',
   'fx.categorie.share_of_category': '{pct} % de la catégorie',
 
   // ProjetFiche extra
