@@ -202,6 +202,7 @@ jobs:
   # validation data réelle en CI.
 
   dbt-test:
+    environment: pipeline
     name: dbt test (data-quality, full BQ access)
     runs-on: ubuntu-latest
     # Jobs BQ-dependent (coût $ + minutes Actions) : lancement manuel seulement
@@ -257,6 +258,7 @@ jobs:
           dbt test --profiles-dir ~/.dbt --target prod
 
   data-quality-audit:
+    environment: pipeline
     name: data quality audit (réconciliation, complétude, freshness)
     runs-on: ubuntu-latest
     # Jobs BQ-dependent (coût $ + minutes Actions) : lancement manuel seulement

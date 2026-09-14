@@ -69,6 +69,7 @@ env:
 jobs:
   # ===========================================================================
   refresh:
+    environment: pipeline
     name: Refresh (sync → dbt → export → audit)
     runs-on: ubuntu-latest
     timeout-minutes: 120
@@ -359,6 +360,7 @@ jobs:
   # à dire ». Passe par Resend, déjà utilisé par le formulaire de signalement.
   # Sans RESEND_API_KEY : avertissement visible, le run n'échoue pas pour ça.
   notify:
+    environment: pipeline
     name: Mail du lundi
     needs: [refresh, gate-site, publish, on-failure]
     if: always()

@@ -46,6 +46,7 @@ concurrency:
 
 jobs:
   refresh:
+    environment: pipeline
     name: DECP → dbt → export → bucket
     runs-on: ubuntu-latest
     timeout-minutes: 90
@@ -167,6 +168,7 @@ jobs:
           fi
 
   notify:
+    environment: pipeline
     name: Mail en cas d'échec
     needs: [refresh, gate-site, publish]
     if: failure()

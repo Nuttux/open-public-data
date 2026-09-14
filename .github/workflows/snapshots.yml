@@ -32,6 +32,7 @@ permissions:
 
 jobs:
   snapshot:
+    environment: pipeline
     name: dbt snapshot (sources raw historisées)
     runs-on: ubuntu-latest
     timeout-minutes: 15
