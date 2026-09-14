@@ -3959,6 +3959,7 @@ const en: Record<string, string> = {
   'fx.sec.mp.conc.na': 'The number of bids received is only published from 2024.',
   'fx.sec.mp.h.contracts': 'The largest contracts in {year}',
   'fx.sec.mp.shared_lot': 'lot shared by {n} companies',
+  'fx.sec.mp.holder_unknown': 'holder not named in the source',
   'fx.sec.mp.h.categories': 'What the City buys in {year}',
   'fx.sec.mp.categories_more': 'See all {n} categories',
   'fx.sec.mp.years_sub': 'Ceilings signed each year; a shared lot counted once.',

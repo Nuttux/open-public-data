@@ -5040,7 +5040,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 .theme-fusion .fx-results-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   background-color: var(--rule);
 }
@@ -5136,7 +5136,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-result-card[data-raw] h3 { color: #3a3a36; }
 .theme-fusion .fx-result-card[data-raw] .fx-result-card-cta { color: var(--muted); }
 @media (max-width: 1000px) {
-  .theme-fusion .fx-results-grid { grid-template-columns: repeat(2, 1fr); }
+  .theme-fusion .fx-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
   .theme-fusion .fx-results-grid { grid-template-columns: 1fr; }
@@ -20768,6 +20768,8 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-sec-a-cats { grid-area: cats; }
   .theme-fusion .fx-sec-a-years { grid-area: years; }
   .theme-fusion .fx-sec-a-search { grid-area: search; }
+  /* The search shares its row with the years rail: its results read as one column. */
+  .theme-fusion .fx-sec-a-search .fx-results-grid { grid-template-columns: minmax(0, 1fr); }
   .theme-fusion .fx-sec-a-understand { grid-area: understand; }
   .theme-fusion .fx-sec-a-related { grid-area: related; }
   .theme-fusion .fx-sec-a-next { grid-area: next; }

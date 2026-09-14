@@ -81,7 +81,7 @@ export default function MarchesPublicsClient({ idx, d, doors }: {
       : named[0] ?? (isNamedTitulaire(x.fournisseur) ? displayOrgName(x.fournisseur) : "");
     return (
       <V3Row key={x.numero || objet} href={x.numero ? `${marchesBase}/contrat/${encodeURIComponent(x.numero)}` : null}
-        label={objet} subText={who || undefined} amount={<Amt n={x.montant} />} />
+        label={objet} subText={who || t("fx.sec.mp.holder_unknown")} amount={<Amt n={x.montant} />} />
     );
   };
 

@@ -3956,6 +3956,7 @@ const fr: Record<string, string> = {
   'fx.sec.mp.conc.na': 'Le nombre d’offres reçues n’est publié qu’à partir de 2024.',
   'fx.sec.mp.h.contracts': 'Les plus gros contrats de {year}',
   'fx.sec.mp.shared_lot': 'lot partagé entre {n} entreprises',
+  'fx.sec.mp.holder_unknown': 'titulaire non précisé dans la source',
   'fx.sec.mp.h.categories': 'Ce que la Ville achète en {year}',
   'fx.sec.mp.categories_more': 'Voir les {n} catégories',
   'fx.sec.mp.years_sub': 'Plafonds signés chaque année ; un lot partagé compté une fois.',
