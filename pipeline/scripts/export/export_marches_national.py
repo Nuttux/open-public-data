@@ -212,6 +212,54 @@ def _lower_word(m: re.Match) -> str:
     return w.lower()
 
 
+# Retour à la ligne devenu « n » chez le producteur (« communauxnTerrassements »,
+# « VIDÉOPROTECTION nLot 2 ») : 469 objets dans le pays, surtout des offices HLM,
+# des départements et des SPL. Un « n » seul devant une capitale n'est jamais un
+# mot ; un « n » collé ne saute que si le mot sans lui est connu du corpus et le
+# mot avec lui ne l'est pas — « MonLogement27 » reste entier.
+# Jusqu'à trois « n » d'affilée : deux retours à la ligne perdus (« 2023 nnUne réunion »).
+_N_SEUL = re.compile(r"(?:(?<=\s)|^)n{1,3}(?=[A-ZÀ-Ö])")
+_N_COLLE = re.compile(r"([^\W\d_]*?[^\W\d_n])(n{1,3})(?=[A-ZÀ-Ö])")
+
+
+# Même perte devant une minuscule (« de la communenmarché subséquent ») : règle
+# plus stricte, deux mots connus d'au moins cinq lettres de part et d'autre, et
+# le mot soudé inconnu — « fonctionnement », « questionnaire » restent entiers.
+_N_COLLE_BAS = re.compile(r"([^\W\d_]{5,})n([a-zà-ÿ]{5,})(?![^\W\d_])")
+
+
+# Après un chiffre (« accord cadre n° 23.061nfournit », « 2023nLot ») : devant une
+# capitale toujours, devant une minuscule seulement si le mot qui suit est connu
+# et le mot avec le « n » ne l'est pas (« 5nouveaux » garderait son n).
+_N_CHIFFRE = re.compile(r"(?<=\d)n([A-ZÀ-Ö][^\W\d_]{2,}|[a-zà-ÿ]{4,})(?![^\W\d_])")
+
+
+def _connu(w: str) -> bool:
+    plain = _strip_accents(w)
+    return plain in _OBJET_ACCENTS or plain in _VOCAB
+
+
+def _decolle_n(m: re.Match) -> str:
+    w, ns = m.group(1), m.group(2)
+    if _connu(w) and not _connu(w + ns):
+        return w + " "
+    return m.group(0)
+
+
+def _decolle_n_chiffre(m: re.Match) -> str:
+    r = m.group(1)
+    if r[0].isupper() or (_connu(r) and not _connu("n" + r)):
+        return " " + r
+    return m.group(0)
+
+
+def _decolle_n_bas(m: re.Match) -> str:
+    w, r = m.group(1), m.group(2)
+    if _connu(w) and _connu(r) and not _connu(w + "n") and not _connu(w + "n" + r):
+        return w + " " + r
+    return m.group(0)
+
+
 def _mostly_upper(t: str) -> bool:
     letters = [c for c in t if c.isalpha()]
     if len(letters) < 12:
@@ -234,6 +282,25 @@ def _sentence_case(t: str) -> str:
         if c.isalpha():
             return out[:i] + c.upper() + out[i + 1:]
     return out
+
+
+def _sentence_case_prefix(t: str) -> str:
+    """« PRESTATIONS DE SURVEILLANCE L'exécution débutera… » : un titre en
+    capitales suivi d'une description en casse basse. Le titre seul passe en
+    casse de phrase, la description reste telle quelle. Sans cela la page
+    affichait « pRESTATIONS DE SURVEILLANCE L'exécution… »."""
+    mots = t.split(" ")
+    n = 0
+    for w in mots:
+        if any(c.islower() for c in w):
+            break
+        n += 1
+    if n < 2 or n == len(mots):
+        return t
+    tete = " ".join(mots[:n])
+    if not _mostly_upper(tete):
+        return t
+    return _sentence_case(tete) + " " + " ".join(mots[n:])
 
 
 _PREFIXES = ("ET", "DE", "DES", "DU", "LA", "LE", "LES", "SUR", "POUR", "AUX", "EN")
@@ -308,6 +375,11 @@ def clean_objet(objet: str | None) -> str:
     recolle les mots soudés de la source, et remet en casse de phrase les objets
     écrits tout en capitales."""
     t = (objet or "").strip()
+    t = re.sub(r"[\r\n]+", " ", t)
+    t = _N_SEUL.sub("", t)
+    t = _N_COLLE.sub(_decolle_n, t)
+    t = _N_COLLE_BAS.sub(_decolle_n_bas, t)
+    t = _N_CHIFFRE.sub(_decolle_n_chiffre, t)
     # « ?uvre » = œ perdu ; « ? » isolé entre deux mots = tiret perdu.
     t = re.sub(r"(?i)\?uvre", lambda m: "ŒUVRE" if m.group(0)[1:].isupper() else "œuvre", t)
     t = re.sub(r"(?<=\S) \? (?=\S)", " - ", t)
@@ -321,7 +393,7 @@ def clean_objet(objet: str | None) -> str:
     # sinon « DERATISATION » deviendrait « DE RATISATION ».
     t = _COLLE.sub(_split_glued, t)
     t = re.sub(r"\s{2,}", " ", t).strip()
-    return _sentence_case(t)
+    return _sentence_case(t) if _mostly_upper(t) else _sentence_case_prefix(t)
 
 
 def _lot_key(r: dict) -> tuple:
@@ -406,7 +478,13 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
     top_marches = sorted(lots.values(), key=lambda g: -g["montant"])[:15]
     # Dernière année publiée, à part : la page ville parle de l'année, pas du
     # cumul depuis 2018 (domaines et fournisseurs de cette année-là).
-    last_year = max(by_year) if by_year else None
+    # L'année en cours est entamée : le bloc « Ce que la commune achète » titre
+    # sur la dernière année complète. En septembre 2026, « 1,2 M€ notifiés en
+    # 2026 · 18 marchés » faisait petit et faux ; l'année entamée reste dans
+    # by_year et dans le total.
+    annee_en_cours = datetime.now(timezone.utc).year
+    annees_completes = [y for y in by_year if y < annee_en_cours]
+    last_year = max(annees_completes) if annees_completes else (max(by_year) if by_year else None)
     ly_rows = [r for r in rows if r["annee"] and int(r["annee"]) == last_year]
     ly_cat: dict[str, dict] = defaultdict(lambda: {"montant": 0.0, "nb": 0})
     ly_titu: dict[str, dict] = defaultdict(lambda: {"montant": 0.0, "nb": 0})
