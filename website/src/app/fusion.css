@@ -20817,11 +20817,14 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
      worksites in photo and the largest ones in rows face « Où, dans Paris »;
      then « Comprendre » faces « Voir aussi ». */
   .theme-fusion .fx-sec-grid[data-layout="chantiers"] { grid-template-areas: "hero scene" "rows where" "understand related" "next next" "foot foot"; }
+  /* Subventions (2026-09-15): the number faces « Qui reçoit », the search
+     runs across, then « Comprendre » faces « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="subventions"] { grid-template-areas: "hero scene" "search search" "understand related" "next next" "foot foot"; }
   .theme-fusion .fx-sec-a-where { grid-area: where; }
   /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
   /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
-  .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
+  .theme-fusion .fx-sec-a-scene #achats, .theme-fusion .fx-sec-a-scene .fx-sec-scene-body { min-height: 400px; }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
   .theme-fusion .fx-sec-a-scene { grid-area: scene; }
   .theme-fusion .fx-sec-a-rows { grid-area: rows; }
@@ -21043,6 +21046,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* Inside a section page the map stands alone: no frame, no legend, no hover
    box — the bars under it are the readable version, with the exact numbers.
    The phone keeps its one-line hint, in the kit's face. */
+.theme-fusion .fx-sec-nuee { margin-top: 10px; }
 .theme-fusion .fx-sec-choro { margin: 10px 0 4px; }
 .theme-fusion .fx-sec-choro .fx-choropleth { display: block; margin-top: 0; }
 .theme-fusion .fx-sec-choro .fx-choropleth-map { border: 0; padding: 0; background: transparent; }

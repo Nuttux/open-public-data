@@ -12,6 +12,8 @@ import { trLabel } from "@/lib/label-translate";
 import { FicheBreakdown } from "@/components/fiche";
 import type { FicheBreakdownRow } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import { NextDoor } from "@/components/fiche/Doors";
+import { assocSlug } from "@/lib/assoc-slug";
 import YearBars from "./YearBars";
 import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 import { displayOrgName } from "@/lib/fournisseur-display";
@@ -178,13 +180,23 @@ export default function AssociationFiche({
               <>
                 {" · "}
                 <Link href={themeHref(asso.themeRank.theme)} scroll={false}>
-                  {fill(t("fx.fiche.asso.meta_rank"), { rank: `${asso.themeRank.rank}${sufOrdinal(asso.themeRank.rank, locale)}`, total: asso.themeRank.total, theme: trLabel(asso.themeRank.theme, locale) })} →
+                  {fill(t("fx.fiche.asso.meta_rank"), { rank: `${asso.themeRank.rank}${sufOrdinal(asso.themeRank.rank, locale)}`, total: asso.themeRank.total, theme: trLabel(asso.themeRank.theme, locale) })}<span aria-hidden="true" className="muted">{" ›"}</span>
                 </Link>
               </>
             )}
           </>
         }
       />
+      {/* The way up to the section, in the first screen: readers arrive here
+       *  from a search engine and leave without a second page. */}
+      {asso.section && asso.section.nbBeneficiaires > 0 ? (
+        <p className="fx-fiche-secline">
+          <Link href={`/france/${citySlug}/subventions?year=${asso.section.year}`}>
+            {fill(t("fx.fiche.asso.section_line"), { n: new Intl.NumberFormat(en ? "en-GB" : "fr-FR").format(asso.section.nbBeneficiaires), year: asso.section.year, total: eurTxt(asso.section.total) })}
+            <span aria-hidden="true" className="muted">{" ›"}</span>
+          </Link>
+        </p>
+      ) : null}
 
       {lieu ? <div className="fx-v3-lieu-slot">{lieu}</div> : null}
 
@@ -240,6 +252,19 @@ export default function AssociationFiche({
           )}
         </V3Section>
       )}
+
+      {/* The way out that is not the footer: the next recipient of the same
+       *  theme, like the next section at the foot of a page. */}
+      {asso.next ? (
+        <NextDoor
+          href={`/france/${citySlug}/subventions/association/${assocSlug(asso.next.name)}`}
+          kicker={fill(t("fx.fiche.asso.next_kicker"), { theme: trLabel(asso.next.theme, locale) })}
+          title={displayOrgName(asso.next.name)}
+          sub={fill(t("fx.fiche.asso.meta_rank"), { rank: `${asso.next.rank}${sufOrdinal(asso.next.rank, locale)}`, total: asso.next.total, theme: trLabel(asso.next.theme, locale) })}
+          value={fmtEur(asso.next.amount).v}
+          unit={fmtEur(asso.next.amount).u}
+        />
+      ) : null}
 
       <V3Foot>
         {isParis ? t("fx.fiche.asso.note") : t("fx.fiche.asso.note.generic")}{" "}
