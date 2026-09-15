@@ -68,7 +68,7 @@ const ROLE_RULES: [string, string][] = [
   [".fx-v3-sentence, .fx-pv-link", "sentence"],
   [".fx-mosaic-tile", "tile"],
   [".fx-sec-photo", "photo"],
-  [".fx-door", "door"],
+  [".fx-door, .fx-fiche-secline", "door"],
   [".fx-next", "next"],
   // The kicker sits inside the section hero: it must be matched first.
   [".fx-drawer-kicker, .fx-page-kicker", "kicker"],

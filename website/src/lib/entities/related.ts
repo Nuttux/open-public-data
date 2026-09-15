@@ -17,7 +17,7 @@ import { rowObjet } from "@/lib/objet-normalizer";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
 import { sumLots } from "@/lib/marches-shape";
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
-import { marchesDomainesOfYear, marchesYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
+import { loadInvestForYear, loadInvestLatest, marchesDomainesOfYear, marchesYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
 import { dedupMixedSources } from "@/lib/marches-dedup";
 import { domaineLabel } from "@/lib/marches-domaines";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -81,6 +81,22 @@ export function marchesSectionRow(city: string, year: number, locale: L): Relate
     label: t("fx.related.marches_section", { year }),
     sub: t("fx.related.marches_section_sub"),
     ...(total > 0 ? { amount: eur(total, locale) } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
+/** The same door for the Chantiers section: the year's investment as the
+ *  page counts it (spending net of debt repayment), the latest published
+ *  year when the fiche's year has none. */
+export function investSectionRow(year: number | null, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  const s = (year != null ? loadInvestForYear(year) : null) ?? loadInvestLatest();
+  const y = s?.year ?? year ?? new Date().getFullYear() - 1;
+  return {
+    href: `/france/paris/investissements?year=${y}`,
+    label: t("fx.related.invest_section", { year: y }),
+    sub: t("fx.related.invest_section_sub"),
+    ...(s ? { amount: eur(s.total, locale) } : {}),
     group: t("fx.related.g.context"),
   };
 }
@@ -230,7 +246,7 @@ export function chapitreRelated(slug: string, year: number, locale: L): RelatedB
       amount: eur(c.depenses, locale),
       group: peers,
     }));
-  rows.push({ href: "/france/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets", group: t("fx.related.g.context") });
+  rows.push(investSectionRow(y.year, locale));
   rows.push(...budgetRows((spec) => spec.chapitre === slug, locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }
@@ -390,7 +406,9 @@ type ProjetLite = { id: string; arrondissement: number; chapitre_libelle?: strin
 export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
   const base = "/france/paris/investissements";
-  const rows: RelatedRow[] = [];
+  // The section door first: a reader who landed here from a search engine
+  // has no other way up to « Les chantiers de la Ville en {year} ».
+  const rows: RelatedRow[] = [investSectionRow(p.year, locale)];
   const arr = p.arrondissement;
   const ord = arr > 0 ? (locale === "en" ? ordEn(arr) : ordFr(arr)) : "";
   const cohort = readDataJsonOrNull<{ data: ProjetLite[] }>(`map/investissements_complet_${p.year}.json`)
@@ -618,8 +636,12 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   const out = rows.slice(0, 4).map((r) => ({ ...r, group: t("fx.related.g.other_lenses") }));
   if (at > 0) out.push({ ...row(lens, hrefOf(seq[at - 1]), seq[at - 1], t("fx.related.arr.prev")), group: t("fx.related.g.prev_next") });
   if (at >= 0 && at < seq.length - 1) out.push({ ...row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")), group: t("fx.related.g.prev_next") });
-  const hub = { invest: `${ARR_BASE}/investissements`, logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
-  out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`), group: t("fx.related.g.context") });
+  if (lens === "invest") {
+    out.push({ ...investSectionRow(null, locale), group: t("fx.related.g.context") });
+  } else {
+    const hub = { logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
+    out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`), group: t("fx.related.g.context") });
+  }
   return { title: t("fx.related.title"), sub: null, rows: out };
 }
 

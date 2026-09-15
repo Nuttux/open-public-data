@@ -1154,6 +1154,9 @@ export type ProjetFiche = {
    *  antérieures n'étant pas des projets identifiables, elles ne sont pas
    *  comptées dans le dénominateur. */
   marchesCoverage: { matched: number; total: number; pct: number; scopeYears: [number, number] };
+  /** The section this project belongs to, for the door in the first screen:
+   *  the year's investment total and how many named projects share it. */
+  section: { year: number; total: number; nb: number } | null;
 };
 
 let _projetMarches: Record<string, ProjetMarche[]> | null = null;
@@ -1490,6 +1493,10 @@ export function loadProjet(id: string): ProjetFiche | null {
       photo: resolveProjetPhoto(r.id, r.nom_projet),
       marches: loadProjetMarches(r.id),
       marchesCoverage: loadProjetMarchesCoverage(),
+      section: (() => {
+        const s = loadInvestForYear(y);
+        return s && s.year === y ? { year: y, total: s.total, nb: cohort.data.length } : null;
+      })(),
     };
   }
   return null;
@@ -2994,6 +3001,18 @@ export function detteDoorTotal(city: string, year: number): { year: number; tota
   return total > 0 ? { year: y, total } : null;
 }
 
+/** The budget for a door: the year's spending from the budget index, the
+ *  executed account before the voted budget when both exist, the latest
+ *  year when the page's year has none. */
+export function budgetDoorTotal(city: string, year: number): { year: number; total: number; voted: boolean } | null {
+  const idx = readJsonOrNull<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
+  const rows = (idx?.summary ?? []).filter((s) => Number(s.depenses) > 0);
+  const rank = (s: BudgetIndex["summary"][number]) => (s.type_budget === "execute" ? 0 : 1);
+  const pick = (y: number) => rows.filter((s) => s.year === y).sort((a, b) => rank(a) - rank(b))[0];
+  const hit = pick(year) ?? rows.slice().sort((a, b) => b.year - a.year || rank(a) - rank(b))[0];
+  return hit ? { year: hit.year, total: Number(hit.depenses), voted: hit.type_budget === "vote" } : null;
+}
+
 /** L'investissement de l'exercice de la page quand il est publié (la porte
  *  « Chantiers » d'une page 2020 parle de 2020), sinon le dernier publié. */
 export function loadInvestForYear(year: number): { year: number; total: number } | null {
@@ -3074,6 +3093,9 @@ export type InvestissementsData = {
     nbMarches: number;
     photoUrl: string;
     photoCredit: string | null;
+    /** The normalised kind (ecole, creche, piscine…) when known: the card's
+     *  kicker says « Une école du quotidien » rather than « un équipement ». */
+    typologie: string | null;
   }[];
   geoPoints: {
     id: string;
@@ -3088,6 +3110,9 @@ export type InvestissementsData = {
     isJO: boolean;
   }[];
   yearsSummary: { year: number; total: number; horsDette: number }[];
+  /** The year before, for the movement line under the number: its total and
+   *  the chapter that explains at least a third of the change, when one does. */
+  prevMove?: { year: number; total: number; topChapitre: { label: string; delta: number } | null } | null;
 };
 
 /**
@@ -3356,8 +3381,10 @@ export function loadInvestissementsData(
     .filter((x) => x.arr > 0)
     .sort((a, b) => b.amount - a.amount);
 
+  // Only lines with an id: 55 of the 630 lines of 2020 have none (programme
+  // lines, not projects) and a row without an id linked to /projet/undefined.
   const topProjets = projets
-    .filter(hasUsableName)
+    .filter((p) => hasUsableName(p) && !!p.id)
     .slice()
     .sort((a, b) => b.montant - a.montant)
     .slice(0, 24)
@@ -3402,6 +3429,7 @@ export function loadInvestissementsData(
         nbMarches: loadProjetMarches(c.p.id).length,
         photoUrl: c.photoUrl as string,
         photoCredit: c.photoCredit,
+        typologie: c.typologie ?? null,
       };
     };
     const out: InvestissementsData["exemples"] = [];
@@ -3507,6 +3535,28 @@ export function loadInvestissementsData(
       total: y.depenses_hors_dette ?? y.depenses_total,
       horsDette: y.depenses_hors_dette,
     })),
+    prevMove: (() => {
+      const prevY = trends.years
+        .filter((y) => y.year < year && (y.depenses_hors_dette ?? y.depenses_total) > 0)
+        .sort((a, b) => b.year - a.year)[0];
+      if (!prevY) return null;
+      const prevTotal = prevY.depenses_hors_dette ?? prevY.depenses_total;
+      const cur = new Map(latest.par_chapitre.map((c) => [c.label, c.depenses]));
+      const before = new Map((prevY.par_chapitre ?? []).map((c) => [c.label, c.depenses]));
+      // The chapter named after « dont » must be a part of the movement: the
+      // same sign, at least a third of it, not more than all of it (2024:
+      // + 22 M€ in all, culture − 55 M€ and environment + 49 M€ — neither is
+      // « dont », the line stops at « + 1 % »).
+      const change = invTotal - prevTotal;
+      let top: { label: string; delta: number } | null = null;
+      for (const label of new Set([...cur.keys(), ...before.keys()])) {
+        const delta = (cur.get(label) ?? 0) - (before.get(label) ?? 0);
+        if (Math.sign(delta) !== Math.sign(change)) continue;
+        if (!top || Math.abs(delta) > Math.abs(top.delta)) top = { label, delta };
+      }
+      const part = top && Math.abs(top.delta) >= Math.abs(change) / 3 && Math.abs(top.delta) <= Math.abs(change);
+      return { year: prevY.year, total: prevTotal, topChapitre: part ? top : null };
+    })(),
   };
 }
 

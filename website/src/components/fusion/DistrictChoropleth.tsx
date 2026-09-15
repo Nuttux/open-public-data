@@ -54,6 +54,9 @@ type Props = {
   onTileClick?: (arr: number) => void;
   /** Show the top-5 ranking list in the sidebar. Defaults to true. */
   showRanking?: boolean;
+  /** The fill ramp, light to dark (5 steps). Defaults to the shared ocre ramp;
+   *  a section page whose bars are blue passes a blue one. */
+  palette?: string[];
 };
 
 /**
@@ -79,6 +82,7 @@ export default function DistrictChoropleth({
   hrefFor,
   onTileClick,
   showRanking = true,
+  palette = PALETTE,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -133,15 +137,15 @@ export default function DistrictChoropleth({
 
   const amounts = [...byCar.values()].map((v) => v.amount).sort((a, b) => a - b);
   const quantiles: number[] = [];
-  for (let i = 1; i < PALETTE.length; i++) {
-    const idx = Math.floor((i / PALETTE.length) * amounts.length);
+  for (let i = 1; i < palette.length; i++) {
+    const idx = Math.floor((i / palette.length) * amounts.length);
     quantiles.push(amounts[idx] ?? 0);
   }
   const colorFor = (amount: number): string => {
     for (let i = 0; i < quantiles.length; i++) {
-      if (amount <= quantiles[i]) return PALETTE[i];
+      if (amount <= quantiles[i]) return palette[i];
     }
-    return PALETTE[PALETTE.length - 1];
+    return palette[palette.length - 1];
   };
 
   const [hovered, setHovered] = useState<number | null>(null);
@@ -207,12 +211,12 @@ export default function DistrictChoropleth({
         <div className="fx-choropleth-legend">
           <div className="fx-choropleth-legend-label">{t("fx.choro.legend_label")}</div>
           <div className="fx-choropleth-legend-scale">
-            {PALETTE.map((c, i) => (
+            {palette.map((c, i) => (
               <div key={i} className="fx-choropleth-legend-step" style={{ background: c }}>
                 <span>
                   {i === 0
                     ? t("fx.choro.legend_low")
-                    : i === PALETTE.length - 1
+                    : i === palette.length - 1
                       ? t("fx.choro.legend_high")
                       : ""}
                 </span>

@@ -4085,6 +4085,12 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-v3-lieu-slot:empty { display: none; }
 /* Fiche projet : le premier écran de la fiche lieu, chiffre à gauche, photo à droite. */
 .theme-fusion .fx-projet-hero .fx-v3-hero { margin: 0 0 16px; }
+/* The line back up to the section, in the first screen of a project fiche:
+   the one door a reader who came from a search engine can see. */
+.theme-fusion .fx-fiche-secline { margin: -6px 0 16px; font-size: 14px; line-height: 1.4; }
+.theme-fusion .fx-fiche-secline a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-fiche-secline a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.theme-fusion .fx-fiche-secline .muted { white-space: nowrap; }
 .theme-fusion .fx-projet-hero-photo { min-width: 0; }
 .theme-fusion .fx-drawer-body .fx-projet-hero-photo { order: 2; }
 @media (max-width: 720px) { .theme-fusion .fx-projet-hero-photo { order: 2; } }
@@ -20795,6 +20801,13 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-sec-a-rail { grid-area: rail; align-self: end; }
   .theme-fusion .fx-sec-a-rail .fx-sec-years { margin-bottom: 26px; }
   .theme-fusion .fx-sec-a-table { grid-area: table; }
+  /* Chantiers (2026-09-15): the number faces the chapters; then the three
+     worksites in photo and the largest ones in rows face « Où, dans Paris »;
+     then « Comprendre » faces « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="chantiers"] { grid-template-areas: "hero scene" "rows where" "understand related" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-a-where { grid-area: where; }
+  /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
+  .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
   /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
@@ -20992,6 +21005,40 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec .fx-next { border: 1px solid var(--rule); border-radius: 12px; background: #fff; padding: 14px 16px; transition: border-color .12s; }
 .theme-fusion .fx-sec .fx-next:hover { border-color: var(--bleu); }
 .theme-fusion .fx-sec-photo-img { display: block; }
+/* « Par exemple » on Chantiers: three real worksites with a real photo, each
+   with the rule that picked it in small capitals, the name opening the fiche. */
+.theme-fusion .fx-sec-ex { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; margin-top: 16px; }
+.theme-fusion .fx-sec-ex-card { margin: 0; min-width: 0; }
+.theme-fusion .fx-sec-ex-img { display: block; }
+.theme-fusion .fx-sec-ex img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--rule-2); }
+.theme-fusion .fx-sec-ex figcaption { padding-top: 8px; }
+.theme-fusion .fx-sec-ex .k { display: block; font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.theme-fusion .fx-sec-ex .t { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--ink); text-decoration: none; }
+.theme-fusion .fx-sec-ex .t:hover { color: var(--bleu); }
+.theme-fusion .fx-sec-ex .s { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.theme-fusion .fx-sec-ex .c { display: block; font-size: 11px; color: var(--muted); margin-top: 3px; }
+/* On a phone the three cards read as rows, the photo on the left: the
+   material stays, without three screens of pictures. */
+@media (max-width: 700px) {
+  .theme-fusion .fx-sec-ex { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .theme-fusion .fx-sec-ex-card { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .theme-fusion .fx-sec-ex img { aspect-ratio: 4 / 3; }
+  .theme-fusion .fx-sec-ex figcaption { padding-top: 0; }
+  .theme-fusion .fx-sec-ex .t { font-size: 14.5px; }
+}
+/* The three photos sit under the years rail, in the number's column. */
+.theme-fusion .fx-sec-a-hero .fx-sec-years { margin-bottom: 30px; }
+/* Inside a section page the map stands alone: no frame, no legend, no hover
+   box — the bars under it are the readable version, with the exact numbers.
+   The phone keeps its one-line hint, in the kit's face. */
+.theme-fusion .fx-sec-choro { margin: 10px 0 4px; }
+.theme-fusion .fx-sec-choro .fx-choropleth { display: block; margin-top: 0; }
+.theme-fusion .fx-sec-choro .fx-choropleth-map { border: 0; padding: 0; background: transparent; }
+.theme-fusion .fx-sec-choro .fx-choropleth-sidebar { display: none; }
+.theme-fusion .fx-sec-choro .fx-choropleth-hint-mobile { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+/* The name is the touch target on a phone, not just its text. */
+.theme-fusion .fx-sec-ex .t { padding: 7px 0; margin: -7px 0; }
+.theme-fusion .fx-sec-map-wait { height: 480px; background: var(--rule-2); }
 .theme-fusion .fx-sec-photo img { border-radius: 10px; }
 .theme-fusion .fx-sec-photo-cap a.t { text-decoration: none; color: var(--ink); }
 .theme-fusion .fx-sec-photo-cap a.t:hover { color: var(--bleu); }

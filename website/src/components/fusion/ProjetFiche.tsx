@@ -72,6 +72,16 @@ export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFic
               </>
             }
           />
+          {/* The way up to the section, in the first screen: readers arrive
+           *  here from a search engine and leave without a second page. */}
+          {projet.section ? (
+            <p className="fx-fiche-secline">
+              <Link href={`${basePath}/investissements?year=${projet.section.year}`}>
+                {fill(t("fx.fiche.projet.section_line"), { n: numFmt(projet.section.nb), year: projet.section.year, total: `${fmtEur(projet.section.total).v} ${fmtEur(projet.section.total).u}` })}
+                <span aria-hidden="true" className="muted">{" ›"}</span>
+              </Link>
+            </p>
+          ) : null}
           {lead ? <V3Lead src={ctx || undefined}>{lead}</V3Lead> : ctx ? <p className="fx-v3-lead-src">{ctx}</p> : null}
         </div>
         <div className="fx-projet-hero-photo">

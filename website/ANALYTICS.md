@@ -85,7 +85,16 @@ the page's completion rate. Budget (since 2026-09-15) reads the same way:
 row opening its poste; the spending column reads by poste or by kind —
 `filter_change` `field = scene_group`, `value` = `poste` | `nature`,
 `page = budget`), `lines` (the heaviest lines, each opening its poste),
-`understand`, `related`, `next`.
+`understand`, `related`, `next`. Investissements (since 2026-09-15): `hero`,
+`years`, `scene` (the chapters, each opening its fiche), `examples` (three
+worksites in photo under the years rail; the image and the name are
+`link_click` with `role = photo`), `projects` (the largest worksites in
+rows), `where` (by
+arrondissement with the choropleth — `choropleth_click` — or the markers map —
+`filter_change` `field = where_view`, `value` = `arrondissements` | `carte`,
+`page = investissements`; the map is loaded only when asked for),
+`understand`, `related`, `next`. On a project fiche, the line under the
+figure that leads back to the section is a `link_click` with `role = door`.
 
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`
@@ -97,7 +106,8 @@ a locale.
 `year`, `cta`, `hero_meta` (the figure's grey line), `lead` (the opening
 sentence), `row` (a fiche row or a labeled bar), `sentence` (an inline "see
 all"), `foot`, `kicker` (the « Paris › Contrats publics » line), `hero`
-(anything else in a section page's head), `door` (a « Voir aussi » door),
+(anything else in a section page's head), `door` (a « Voir aussi » door, or
+the line back up to the section under a project fiche's figure),
 `next` (the next-section door), `deck` / `marquee` / `chips` (the landing
 hero's deck, the scrolling band, the chips), or a `data-block="…"` name, else
 `body`.

@@ -19,6 +19,7 @@ type Props = {
   hrefFor?: (arr: number) => string | null;
   onTileClick?: (arr: number) => void;
   showRanking?: boolean;
+  palette?: string[];
 };
 
 /**
