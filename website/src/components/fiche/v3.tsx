@@ -92,7 +92,20 @@ export function V3Row({ href, external, label, sub, subText, amount, onClick }: 
   );
   if (!href) return <div className="fx-v3-row">{body}</div>;
   if (external) return <a className="fx-v3-row fx-row-link" href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>{body}</a>;
-  return <Link className="fx-v3-row fx-row-link" href={href} scroll={false} onClick={onClick}>{body}</Link>;
+  return <Link className="fx-v3-row fx-row-link" href={href} scroll={!opensInDrawer(href)} onClick={onClick}>{body}</Link>;
+}
+
+/**
+ * Whether a link opens a fiche in the drawer over the current page, where the
+ * page must keep its scroll position. Fiches live four segments deep or more
+ * (/france/paris/marches/contrat/…, /france/paris/lieu/…, /brasil/recife/orgao/…);
+ * an article (/analyses/…) or a section page (/france/paris/logement) is a new
+ * page and opens at its top — it used to open on whatever chart sat at the
+ * same height (Daniel, 2026-09-16).
+ */
+export function opensInDrawer(href: string): boolean {
+  const path = href.split(/[?#]/)[0].replace(/^\/(fr|en|pt)(?=\/)/, "");
+  return path.split("/").filter(Boolean).length >= 4;
 }
 
 /** `id` names the fold for analytics (details_toggle.fold_id): "more-contracts",

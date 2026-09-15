@@ -1572,6 +1572,10 @@ export type BailleurFiche = {
   share?: number;
   description?: string;
   garanties?: BailleurGaranties;
+  /** All the City's guarantees at the latest year: the line up to the section. */
+  section?: { year: number; total: number; beneficiaires: number } | null;
+  /** The next landlord by guaranteed capital (after the last, the first). */
+  next?: { slug: string; name: string; capital: number; rank: number; total: number; emprunts: number } | null;
 };
 
 /**
@@ -1649,7 +1653,25 @@ export function loadBailleur(slug: string): BailleurFiche | null {
 
   if (!lsMatch && !garanties) return null;
 
+  // The section's number and the next landlord by guaranteed capital, for
+  // the first-screen line and the card at the foot of the fiche.
+  let section: BailleurFiche["section"] = null;
+  let next: BailleurFiche["next"] = null;
+  try {
+    const idx = readJson<{ latestYear: number }>("hors_bilan_index.json");
+    const hb = readJson<HorsBilanData>(`hors_bilan_${idx.latestYear}.json`);
+    section = { year: hb.year, total: hb.totals.capital_restant, beneficiaires: hb.totals.count_beneficiaires };
+    const ranked = hb.top_beneficiaires.slice().sort((a, b) => b.capital_restant - a.capital_restant);
+    const at = ranked.findIndex((b) => canonicalBailleurSlug(b.name) === target);
+    if (at >= 0 && ranked.length > 1) {
+      const n = ranked[(at + 1) % ranked.length];
+      next = { slug: canonicalBailleurSlug(n.name), name: n.name, capital: n.capital_restant, rank: ((at + 1) % ranked.length) + 1, total: hb.totals.count_beneficiaires, emprunts: n.count_emprunts };
+    }
+  } catch { /* no guarantees file */ }
+
   return {
+    section,
+    next,
     slug: target,
     name: lsMatch?.name ?? garanties?.name_raw ?? "",
     type: lsMatch?.type,
@@ -3048,6 +3070,30 @@ export function detteDoorTotal(city: string, year: number): { year: number; tota
   return total > 0 ? { year: y, total } : null;
 }
 
+/** What the debt costs in a year, from that year's budget: the interest
+ *  paid and the capital repaid (the two budget items of that name), and their
+ *  share of the year's spending. Null when the budget of that year does not
+ *  carry both items. */
+export function detteCostOfYear(city: string, year: number): { year: number; interets: number; remboursement: number; depenses: number; interetsLabel: string; remboursementLabel: string } | null {
+  const s = readJsonOrNull<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  if (!s) return null;
+  const find = (re: RegExp) => s.links.filter((l) => re.test(l.target)).sort((a, b) => b.value - a.value)[0];
+  const i = find(/^int[ée]r[êe]ts de la dette$/i);
+  const r = find(/^remboursement de la dette$/i);
+  if (!i || !r || i.value <= 0 || r.value <= 0) return null;
+  return { year, interets: i.value, remboursement: r.value, depenses: s.totals.depenses, interetsLabel: i.target, remboursementLabel: r.target };
+}
+
+/** The guarantees for a door: the capital the City still guarantees for its
+ *  landlords and operators, at the latest published off-balance-sheet year. */
+export function garantiesDoorTotal(city: string): { year: number; total: number } | null {
+  const idx = readJsonOrNull<{ latestYear?: number }>(cityJsonPath(city, "hors_bilan_index.json"));
+  if (!idx?.latestYear) return null;
+  const hb = readJsonOrNull<{ totals?: { capital_restant?: number } }>(cityJsonPath(city, `hors_bilan_${idx.latestYear}.json`));
+  const total = Number(hb?.totals?.capital_restant ?? 0);
+  return total > 0 ? { year: idx.latestYear, total } : null;
+}
+
 /** The budget for a door: the year's spending from the budget index, the
  *  executed account before the voted budget when both exist, the latest
  *  year when the page's year has none. */
@@ -3877,7 +3923,9 @@ export type PatrimoineData = {
   recettesFonctionnement: number; // base pour ratio RRF
   actifBreakdown: { label: string; value: number }[];
   passifBreakdown: { label: string; value: number }[];
-  yearsSummary: { year: number; actif: number; passif: number; dette: number; fondsPropres: number }[];
+  /** `dette` is the total debt (suppliers included); `detteFinanciere` the
+   *  banks and bonds — the headline number, which a curve must follow. */
+  yearsSummary: { year: number; actif: number; passif: number; dette: number; detteFinanciere: number; fondsPropres: number }[];
 };
 
 const BILAN_CENTRAL = "Patrimoine Paris";
@@ -3901,10 +3949,14 @@ type BilanSankeyExt = BilanSankey & {
 
 export function loadPatrimoineData(requestedYear?: number, city: string = "paris"): PatrimoineData {
   const idx = readJson<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
-  const availableYears = idx.availableYears.slice().sort((a, b) => a - b);
+  // Years whose balance sheet carries the debt: 2016 and 2018 are in the
+  // index with a financial debt of zero (the source lines are missing), and
+  // the year menu offered them as « 0 € of debt ».
+  const withDebt = idx.availableYears.filter((y) => Number(readJsonOrNull<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`))?.totals?.dettes_financieres ?? 0) > 0);
+  const availableYears = (withDebt.length > 0 ? withDebt : idx.availableYears).slice().sort((a, b) => a - b);
   const year = requestedYear && availableYears.includes(requestedYear)
     ? requestedYear
-    : idx.latestYear;
+    : availableYears.includes(idx.latestYear) ? idx.latestYear : availableYears[availableYears.length - 1];
   const bilan = readJson<BilanSankeyExt>(cityJsonPath(city, `bilan_sankey_${year}.json`));
   const central = bilanCentralFor(city);
 
@@ -3958,7 +4010,7 @@ export function loadPatrimoineData(requestedYear?: number, city: string = "paris
     : bilan.totals.dettes_financieres / 900_000_000;
 
   const yearsSummary: PatrimoineData["yearsSummary"] = [];
-  for (const y of idx.availableYears.slice().sort((a, b) => a - b)) {
+  for (const y of availableYears) {
     try {
       const f = readJson<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`));
       yearsSummary.push({
@@ -3966,6 +4018,7 @@ export function loadPatrimoineData(requestedYear?: number, city: string = "paris
         actif: f.totals.actif_net,
         passif: f.totals.passif_net,
         dette: f.totals.dette_totale,
+        detteFinanciere: f.totals.dettes_financieres,
         fondsPropres: f.totals.fonds_propres,
       });
     } catch {}
@@ -4809,6 +4862,12 @@ export type ArrondissementLogementData = {
   byBailleur: Array<{ name: string; nbLogements: number; nbOperations: number; href?: string | null }>;
   /** Logements financés dans la zone, exercice par exercice publié. */
   series?: { year: number; amount: number }[];
+  /** The section this zone belongs to, for the door in the first screen: the
+   *  year's funded homes in the city and the share of social housing. */
+  section: { year: number; financed: number; sruRatio: number; sruYear: number } | null;
+  /** The next zone by funded homes (the first one after the last): the way
+   *  out of the fiche that is not the footer. */
+  next: { slug: string; label: string; totalLogements: number; rank: number; total: number } | null;
 };
 
 /** Matches the label convention used in ParisChoropleth: arr 1-4 aggregate
@@ -4943,6 +5002,17 @@ export function loadArrondissementLogement(
 
   const zones = zoneTotals(file);
   const rank = zones.filter((z) => z.total > totalLogements).length + 1;
+  // The next zone in the same ranking (after the last, the first).
+  const ranked = zones.slice().sort((a, b) => b.total - a.total);
+  const at = ranked.findIndex((z) => z.key === slug);
+  const nextAt = at >= 0 && ranked.length > 1 ? (at + 1) % ranked.length : -1;
+  const next = nextAt >= 0 ? { slug: ranked[nextAt].key, label: labelFor(ranked[nextAt].key), totalLogements: ranked[nextAt].total, rank: nextAt + 1, total: ranked.length } : null;
+  const section = (() => {
+    try {
+      const s = loadLogementSocialData(year);
+      return { year: s.year, financed: s.nouveauxParAn, sruRatio: s.sruRatio, sruYear: s.sruYear };
+    } catch { return null; }
+  })();
 
   return {
     year,
@@ -4954,6 +5024,8 @@ export function loadArrondissementLogement(
     nbOperations,
     shareCity,
     rank,
+    section,
+    next,
     projects,
     byBailleur: buildByBailleur(projects).map((b) => ({ ...b, href: bailleurHrefFor(b.name) })),
     // Chaque exercice publié, lu dans son propre fichier : une année à zéro

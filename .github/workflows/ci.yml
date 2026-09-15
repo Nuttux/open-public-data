@@ -75,6 +75,12 @@ jobs:
         working-directory: .
         run: python3 -m compileall -q pipeline/scripts/
 
+      # Venu de data-platform-audit.yml le 2026-09-16 : il lit website/src
+      # (aucun fetch vers pipeline/cache/wip), donc il suit les PR du site.
+      - name: Frontend fetch audit
+        working-directory: .
+        run: python3 pipeline/scripts/audit/check_frontend_fetches.py --strict
+
       - name: Install dependencies
         run: npm ci
 

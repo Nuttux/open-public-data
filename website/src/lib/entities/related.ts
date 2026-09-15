@@ -17,7 +17,7 @@ import { rowObjet } from "@/lib/objet-normalizer";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
 import { sumLots } from "@/lib/marches-shape";
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
-import { loadInvestForYear, loadInvestLatest, marchesDomainesOfYear, marchesYearTotal, subventionsYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
+import { detteDoorTotal, loadInvestForYear, loadInvestLatest, loadLogementSocialData, marchesDomainesOfYear, marchesYearTotal, subventionsYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
 import { dedupMixedSources } from "@/lib/marches-dedup";
 import { domaineLabel } from "@/lib/marches-domaines";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -116,6 +116,38 @@ export function subventionsSectionRow(city: string, year: number | null, locale:
   };
 }
 
+/** The same door for the Dette section: the financial debt at the last closed balance sheet. */
+export function detteSectionRow(year: number | null, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  const s = detteDoorTotal("paris", year ?? new Date().getFullYear());
+  const y = s?.year ?? year ?? new Date().getFullYear() - 1;
+  return {
+    href: `/france/paris/dette?year=${y}`,
+    label: t("fx.related.dette_section", { year: y }),
+    sub: t("fx.related.dette_section_sub"),
+    ...(s ? { amount: eur(s.total, locale) } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
+/** The same door for the Logement section: the year's funded homes. */
+export function logementSectionRow(year: number | null, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  let s: { year: number; financed: number } | null = null;
+  try {
+    const d = loadLogementSocialData(year ?? undefined, "paris");
+    s = { year: d.year, financed: d.nouveauxParAn };
+  } catch { s = null; }
+  const y = s?.year ?? year ?? new Date().getFullYear() - 1;
+  return {
+    href: `/france/paris/logement?year=${y}`,
+    label: t("fx.related.logement_section", { year: y }),
+    sub: t("fx.related.logement_section_sub"),
+    ...(s ? { amount: { v: relatedInt(s.financed, locale), u: locale === "en" ? "homes" : "logements" } } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
 /** « Number of bids » fiche: the section door, the other bids counts of the
  *  same year (each with its fiche), the year's index. */
 export function offresRelated(f: MarchesOffresFiche, locale: L): RelatedBlock | null {
@@ -186,10 +218,7 @@ export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
       amount: eur(b.capital_restant, locale),
       group: peers,
     }));
-  rows.push(
-    { href: "/france/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur", group: context },
-    { href: "/france/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "Balance sheet, financial debt and every guarantee" : "Bilan, dette financière et l'ensemble des garanties", group: context },
-  );
+  rows.push(detteSectionRow(null, locale), { ...logementSectionRow(null, locale), group: context });
   return { title: t("fx.related.title"), sub: null, rows };
 }
 
@@ -655,9 +684,10 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   if (at >= 0 && at < seq.length - 1) out.push({ ...row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")), group: t("fx.related.g.prev_next") });
   if (lens === "invest") {
     out.push({ ...investSectionRow(null, locale), group: t("fx.related.g.context") });
+  } else if (lens === "logement") {
+    out.push({ ...logementSectionRow(null, locale), group: t("fx.related.g.context") });
   } else {
-    const hub = { logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
-    out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`), group: t("fx.related.g.context") });
+    out.push({ ...detteSectionRow(null, locale), group: t("fx.related.g.context") });
   }
   return { title: t("fx.related.title"), sub: null, rows: out };
 }
