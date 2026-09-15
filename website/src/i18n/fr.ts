@@ -4083,7 +4083,7 @@ const fr: Record<string, string> = {
   'fx.sec.subv.g.aria': 'Découpe',
   'fx.sec.subv.g.theme': 'Par thème',
   'fx.sec.subv.g.benef': 'Par bénéficiaire',
-  'fx.sec.subv.g.nuee': 'Du plus petit au plus grand',
+  'fx.sec.subv.g.nuee': 'Tous, un par un',
   'fx.sec.subv.n_benef': '{n} bénéficiaires',
   'fx.sec.subv.n_benef_one': '1 bénéficiaire',
   'fx.sec.subv.n_subv': '{n} subventions',

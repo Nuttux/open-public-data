@@ -4086,7 +4086,7 @@ const en: Record<string, string> = {
   'fx.sec.subv.g.aria': 'Cut',
   'fx.sec.subv.g.theme': 'By theme',
   'fx.sec.subv.g.benef': 'By recipient',
-  'fx.sec.subv.g.nuee': 'Smallest to largest',
+  'fx.sec.subv.g.nuee': 'All, one by one',
   'fx.sec.subv.n_benef': '{n} recipients',
   'fx.sec.subv.n_benef_one': '1 recipient',
   'fx.sec.subv.n_subv': '{n} grants',
