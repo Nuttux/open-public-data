@@ -7,7 +7,7 @@ import { loadCommuneInvestissements } from "@/lib/commune-investissements";
 import { loadCommuneMarches } from "@/lib/commune-marches";
 import { loadCommunePeers } from "@/lib/commune-peers";
 import { loadCommuneChantiers } from "@/lib/commune-chantiers";
-import { loadMaire } from "@/lib/commune-maires";
+import { loadMaire, MAIRES_HISTORY } from "@/lib/commune-maires";
 import { loadTaux, TAUX_SOURCE, type TauxCommune } from "@/lib/commune-taux";
 import { loadCommuneFonctions, FONCTIONS_SOURCE } from "@/lib/commune-fonctions";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
@@ -128,7 +128,7 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
     marchesHref: marches && marches.total.nb_marches > MARCHES_EXPLORER_MIN ? `/france/${slug}/marches` : undefined,
     peers,
     compare,
-    sources: SOURCES,
+    sources: { ...SOURCES, rne_hist: MAIRES_HISTORY },
     related,
   };
 }

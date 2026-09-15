@@ -21,7 +21,7 @@ import { displayFournisseur } from "@/lib/fournisseur-display";
 import CommunePicker from "@/components/fusion/CommunePicker";
 import type { PeerComparison } from "@/lib/commune-peers";
 import type { ChantiersData } from "@/lib/commune-chantiers";
-import { displayNomElu, type Maire } from "@/lib/commune-maires";
+import { displayNomElu, maireDepuisLabel, maireSourceLabel, type Maire, type MaireHistory } from "@/lib/commune-maires";
 import { NATURE_GROUPS } from "@/lib/budget-natures";
 
 /* Les chapitres de dépense d'une commune, rangés dans les familles de natures
@@ -92,7 +92,8 @@ export type PageVilleProps = {
   marchesHref?: string;
   peers: PeerComparison | null;
   compare: { me: CompareEntry; other: CompareEntry | null; options: { slug: string; nom: string; pop: number }[]; year: number } | null;
-  sources: { dgfip: string; ofgl: string; decp: string };
+  /** `rne_hist` : bornes d'années des versions archivées du répertoire, pour citer d'où vient « depuis 2014 au moins ». */
+  sources: { dgfip: string; ofgl: string; decp: string; rne_hist?: MaireHistory | null };
   fonctions: CommuneFonctions | null;
   fonctionsSource: { label: string; url: string; annee: number };
   /** Les fiches nature de la commune (segment d'URL par chapitre affiché), quand elles existent. */
@@ -294,6 +295,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     return s;
   };
   const router = useRouter();
+  // « · depuis 2014 au moins, réélu en 2020 et 2026 » — ou « · depuis mars 2026 » d'un maire nouveau.
+  const maireDepuis = maire ? maireDepuisLabel(maire, t, en ? "en-GB" : "fr-FR") : null;
 
   // « +305,7 % » ne se convertit pas de tête : au-delà du double on dit
   // « 4,1 fois plus qu'en 2018 », en dessous de la moitié « 2 fois moins ».
@@ -518,7 +521,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {maire?.nom ? (
             <p className="fx-pv-maire">
               {fill("fx.pv.maire", { nom: `${maire.prenom ?? ""} ${displayNomElu(maire.nom)}`.trim() })}
-              {maire.depuis ? ` ${fill("fx.pv.maire_depuis", { date: new Date(maire.depuis).toLocaleDateString(en ? "en-GB" : "fr-FR", { month: "long", year: "numeric" }) })}` : ""}
+              {maireDepuis ? ` ${maireDepuis}` : ""}
               {maire.conseillers ? ` · ${fill("fx.pv.conseillers", { n: maire.conseillers })}` : ""}
             </p>
           ) : null}
@@ -976,7 +979,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           )}
 
           <ChartSource
-            source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, maire?.nom ? t("fx.pv.src_rne") : null].filter(Boolean).join(" · ") + ` · ${year}`}
+            source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, maire?.nom ? maireSourceLabel(sources.rne_hist, t) : null].filter(Boolean).join(" · ") + ` · ${year}`}
             dataHref={sources.dgfip}
             methodAnchor="c-villes"
           />
