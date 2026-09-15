@@ -117,6 +117,17 @@ const nextConfig: NextConfig = {
         destination: 'https://www.qipu.org/fr/analyses/beneficiaires-fantomes-2020-2021-portail?utm_source=linkedin&utm_medium=social&utm_campaign=beneficiaires',
         permanent: false,
       },
+      // Page de Draguignan, envoyée en message privé (présentation par un proche).
+      {
+        source: '/draguignan',
+        destination: 'https://www.qipu.org/en/france/draguignan?utm_source=intro&utm_medium=message&utm_campaign=draguignan',
+        permanent: false,
+      },
+      {
+        source: '/fr/draguignan',
+        destination: 'https://www.qipu.org/fr/france/draguignan?utm_source=intro&utm_medium=message&utm_campaign=draguignan',
+        permanent: false,
+      },
       // Legacy hosts (fr.qipu.org, pt.qipu.org, the apex, franceopendata.org).
       // Their pages are sent on by proxy.ts, which converts the path and picks
       // the language the old host spoke in one hop. Files never reach the proxy

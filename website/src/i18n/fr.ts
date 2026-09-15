@@ -3491,7 +3491,7 @@ const fr: Record<string, string> = {
   'fx.nme.voir_annee': 'Voir les {n} autres marchés de {year}',
   'fx.nme.retour': 'La page {denom}',
   'fx.pv.maire': 'Maire : {nom}',
-  'fx.pv.maire_depuis': 'depuis {date}',
+  'fx.pv.maire_depuis': '· mandat en cours depuis {date}',
   'fx.pv.conseillers': '{n} conseillers municipaux',
   'fx.pv.chantiers_etat': 'Chantiers financés par l’État',
   'fx.pv.fonds_vert': 'aide de l’État',

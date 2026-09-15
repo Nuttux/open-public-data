@@ -3494,7 +3494,7 @@ const en: Record<string, string> = {
   'fx.nme.voir_annee': 'See the {n} other contracts of {year}',
   'fx.nme.retour': '{nom}’s page',
   'fx.pv.maire': 'Mayor: {nom}',
-  'fx.pv.maire_depuis': 'since {date}',
+  'fx.pv.maire_depuis': '· current term since {date}',
   'fx.pv.conseillers': '{n} town councillors',
   'fx.pv.chantiers_etat': 'Projects funded by the State',
   'fx.pv.fonds_vert': 'State aid',
