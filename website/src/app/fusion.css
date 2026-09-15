@@ -4095,6 +4095,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-fiche-thumbrow { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule-2); color: var(--ink); text-decoration: none; }
 .theme-fusion .fx-fiche-thumbrow .im { display: block; overflow: hidden; }
 .theme-fusion .fx-fiche-thumbrow .im img { display: block; width: 100%; }
+/* At 88 px the credit badge covers the picture: it stays on the fiche itself. */
+.theme-fusion .fx-fiche-thumbrow .im figcaption { display: none; }
 .theme-fusion .fx-fiche-thumbrow .t { display: block; font-size: 15px; font-weight: 500; line-height: 1.3; }
 .theme-fusion .fx-fiche-thumbrow .s { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 .theme-fusion .fx-fiche-thumbrow:hover .t { color: var(--bleu); }
