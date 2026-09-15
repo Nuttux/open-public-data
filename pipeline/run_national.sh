@@ -25,8 +25,9 @@
 #                qui manque ou a changé, par _national_raw (une année à la fois,
 #                ou un instantané versionné, toujours derrière une garde de
 #                volume) : DGFiP balances, balance croisée nature-fonction, OFGL
-#                consolidée, REI, Fonds vert, RNE, SIRENE. Chaque table écrite
-#                est notée ; rien de noté → arrêt.
+#                consolidée, REI, Fonds vert, RNE (état courant et versions
+#                archivées), SIRENE. Chaque table écrite est notée ; rien de
+#                noté → arrêt.
 #   2. dbt     — les modèles en aval des seules tables écrites
 #                (source:national_raw.<table>+), puis leurs tests.
 #   3. export  — les exports qui lisent ces modèles, pour toutes les communes.
@@ -75,11 +76,13 @@ step() { echo ""; echo "── $* ───────────────�
 # Cadence annuelle
 # =============================================================================
 if [[ "$CADENCE" == "annual" ]]; then
-    ALL_TABLES="dgfip_balances dgfip_balances_nature_fonction ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux sirene_unites_legales"
+    ALL_TABLES="dgfip_balances dgfip_balances_nature_fonction ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux rne_maires_historique sirene_unites_legales"
 
     step "1/5 sync : sources annuelles"
     export NATIONAL_CHANGES_FILE="$(mktemp)"
-    for loader in sync_dgfip_balances_national sync_dgfip_nature_fonction sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_sirene_unites_legales; do
+    # sync_rne_maires_historique : la liste des captures archivées est fixe dans
+    # le script ; tant qu'elle ne change pas, il ne télécharge ni n'écrit rien.
+    for loader in sync_dgfip_balances_national sync_dgfip_nature_fonction sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_rne_maires_historique sync_sirene_unites_legales; do
         echo "· $loader"
         $PYTHON "$PIPELINE_DIR/scripts/sync/$loader.py"
     done
@@ -113,6 +116,7 @@ if [[ "$CADENCE" == "annual" ]]; then
             rei_taux)                   add taux ;;
             fonds_vert)                 add chantiers ;;
             rne_conseillers_municipaux) add maires ;;
+            rne_maires_historique)      add maires ;;
             sirene_unites_legales)      add marches ;;
         esac
     done
