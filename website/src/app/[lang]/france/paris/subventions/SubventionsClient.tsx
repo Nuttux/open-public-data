@@ -77,31 +77,20 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
   const isParis = citySlug === "paris";
   const total = fmtCompactEur(d.total);
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
-  const Amt = ({ n }: { n: number }) => { const f = fmtEur(n); return <span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{f.v}<span className="u">{f.u}</span></span>; };
   const nSubv = (n: number) => fill(t(n === 1 ? "fx.sec.subv.n_subv_one" : "fx.sec.subv.n_subv"), { n: fmtInt(n) });
   const years = idx.availableYears.slice().sort((a, b) => a - b);
   const preview = new Set(idx.previewYears ?? d.yearsSummary.filter((y) => y.preview).map((y) => y.year));
 
   // The number's grey line, and the movement under it: the year against the
-  // one before (consolidated years only), naming the recipient whose own
-  // change is a part of it — same sign, a third to all of it.
+  // one before (consolidated years only). No « dont » here: grants move a lot
+  // from one year to the next, one name would say noise (Daniel, 2026-09-15).
   const meta = fill(t("fx.sec.subv.meta"), { n: fmtInt(d.nbSubventions), b: fmtInt(d.nbBeneficiaires) });
   const prev = d.yearsSummary.find((y) => y.year === d.previousYear && !y.preview && y.total > 0);
   const move = !d.isPreview && prev
     ? (() => {
         const pct = ((d.total - prev.total) / prev.total) * 100;
         if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prev.year });
-        const base0 = fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 1), year: prev.year });
-        const change = d.total - prev.total;
-        const top = [...d.movers.hausses, ...d.movers.baisses]
-          .filter((m) => m.delta !== 999)
-          .map((m) => ({ name: m.name, dAmt: m.amount - m.amount / (1 + m.delta / 100) }))
-          .filter((x) => Math.sign(x.dAmt) === Math.sign(change))
-          .sort((a, b) => Math.abs(b.dAmt) - Math.abs(a.dAmt))[0];
-        const part = top && Math.abs(top.dAmt) >= Math.abs(change) / 3 && Math.abs(top.dAmt) <= Math.abs(change);
-        return part
-          ? base0 + fill(t("fx.sec.subv.move_of_which"), { sign: top.dAmt > 0 ? "+" : "−", amount: eurTxt(Math.abs(top.dAmt)), name: displayOrgName(top.name) })
-          : base0;
+        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 1), year: prev.year });
       })()
     : undefined;
   const series = d.yearsSummary.filter((y) => y.total > 0).map((y) => ({ year: y.year, amount: y.total }));
@@ -147,15 +136,6 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
   const exKicker = (e: QuiRecoitData["exemples"][number]) =>
     e.kind === "fidele" ? fill(t("fx.sec.subv.ex.fidele"), { since: e.sinceYear ?? years[0] }) : t(`fx.sec.subv.ex.${e.kind}`);
 
-  // What moved: recipients above the noise thresholds, up and down.
-  const showMovers = !d.isPreview && d.movers.hausses.length + d.movers.baisses.length > 0;
-  const MoverRow = (m: QuiRecoitData["movers"]["hausses"][number]) => (
-    <V3Row key={m.name} href={`${base}/association/${assocSlug(m.name)}`}
-      label={displayOrgName(m.name)}
-      subText={<span className="fx-delta">{m.delta === 999 ? fill(t("fx.sec.subv.movers_new"), { prev: d.previousYear }) : fill(t(m.delta > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(m.delta), 0), year: d.previousYear })}</span>}
-      amount={<Amt n={m.amount} />} />
-  );
-
   const pp = d.personnesPhysiques;
 
   return (
@@ -164,9 +144,9 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3">
           <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.subv.kicker")}</div>
-          {/* Bands: « Ce qui a bougé » (ten rows) faces « Voir aussi » and « Comprendre »
-              stacked; without movers (a voted year), « Comprendre » faces « Voir aussi ». */}
-          <div className="fx-sec-grid" data-layout={showMovers ? "subventions" : "subventions-lite"}>
+          {/* Bands: the number faces « Qui reçoit », the search runs across, then
+              « Comprendre » faces « Voir aussi ». */}
+          <div className="fx-sec-grid" data-layout="subventions">
             <div className="fx-sec-a-hero">
               <SectionHero
                 title={t("fx.sec.subv.title")}
@@ -240,17 +220,6 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
                 <div className="fx-page-kicker">{t("fx.sec.subv.h.search")}</div>
                 <SubventionsSearch citySlug={citySlug} year={d.year} />
               </section>
-            </div>
-
-            <div className="fx-sec-a-rows">
-              {showMovers ? (
-                <V3Section id="movers" title={fill(t("fx.sec.subv.h.movers"), { prev: d.previousYear })} sub={t("fx.sec.subv.movers_sub")}>
-                  {d.movers.hausses.length > 0 ? <div className="fx-page-kicker fx-sec-movers-k">{t("fx.sec.subv.movers_up")}</div> : null}
-                  {d.movers.hausses.map(MoverRow)}
-                  {d.movers.baisses.length > 0 ? <div className="fx-page-kicker fx-sec-movers-k">{t("fx.sec.subv.movers_down")}</div> : null}
-                  {d.movers.baisses.map(MoverRow)}
-                </V3Section>
-              ) : null}
             </div>
 
             <div className="fx-sec-a-related">
