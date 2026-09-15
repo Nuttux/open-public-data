@@ -240,14 +240,18 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
               <V3Section id="scene" title={fill(t("fx.sec.bud.h.table"), { year: d.year })} sub={fill(t("fx.sec.bud.table_sub"), { span: sparkSpan })}>
                 <div id="budget-scene" className="fx-bud-cols">
                   <div className="fx-bud-col">
-                    <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eurTxt(d.depenses)}</span></h3>
-                    {hasNature ? (
-                      <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
-                        {(["poste", "nature"] as Group[]).map((g) => (
-                          <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
-                        ))}
-                      </div>
-                    ) : null}
+                    {/* The switch lives in the column head so the first rows of both columns start on the same line. */}
+                    <h3>
+                      <span>{t("fx.bud.v3.col_dep")}</span>
+                      {hasNature ? (
+                        <span className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
+                          {(["poste", "nature"] as Group[]).map((g) => (
+                            <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
+                          ))}
+                        </span>
+                      ) : null}
+                      <span className="tnum">{eurTxt(d.depenses)}</span>
+                    </h3>
                     {group === "poste"
                       ? dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} max={depMax} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)
                       : (
