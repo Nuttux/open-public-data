@@ -20940,19 +20940,22 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec .fx-bud-col h3 .tnum { font-family: var(--f-disp); font-size: 14px; letter-spacing: -.02em; text-transform: none; color: var(--ink); font-weight: 700; }
 .theme-fusion .fx-sec .fx-bud-col .fx-sec-switch { margin: 6px 0 0; }
 .theme-fusion .fx-sec .fx-bud-col .fx-sec-switch button { font-size: 13px; padding: 5px 0; min-height: 28px; }
-.theme-fusion .fx-sec .fx-bud-row { border-bottom-color: var(--rule-2); border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+.theme-fusion .fx-sec .fx-bud-row { border-bottom-color: var(--rule-2); transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-bud-row:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
 .theme-fusion .fx-sec .fx-bud-row:hover .n { color: var(--bleu); }
 .theme-fusion .fx-sec .fx-bud-row .n .sw { display: inline-block; width: 9px; height: 9px; margin-right: 8px; vertical-align: -1px; }
-.theme-fusion .fx-sec .fx-bud-row .n .sub { display: block; font-size: 12px; color: var(--muted); font-weight: 400; white-space: normal; }
-.theme-fusion .fx-sec .fx-bud-row.sep { border-top: 1px solid var(--ink-2); margin-top: 10px; padding-top: 12px; border-radius: 0 0 8px 8px; }
-.theme-fusion .fx-sec .fx-bud-row.sep .n { white-space: normal; }
+/* The share as a bar under the label, sized on the column's largest line: the
+   table reads like a chart without a block more (press-table practice). */
+.theme-fusion .fx-sec .fx-bud-row .n { position: relative; padding-bottom: 8px; }
+.theme-fusion .fx-sec .fx-bud-row .n .bar { position: absolute; left: 0; bottom: 0; height: 4px; border-radius: 2px; background: var(--bleu); }
+.theme-fusion .fx-sec .fx-bud-row.sep { border-top: 1px solid var(--ink-2); margin-top: 10px; padding-top: 12px; }
+.theme-fusion .fx-sec .fx-bud-row.sep .n .bar { background: var(--bleu-soft, #D9DCF0); }
 .theme-fusion .fx-sec .fx-bud-row.sep .fx-v3-amt, .theme-fusion .fx-sec .fx-bud-row.sep .p { color: var(--muted); }
 .theme-fusion .fx-sec .fx-bud-col .fx-sec-sentence { font-size: 13.5px; margin-top: 14px; }
 .theme-fusion .fx-sec .fx-bud-row .sp { display: inline-flex; justify-content: flex-end; }
 @media (max-width: 700px) {
   /* Phone: no curve (five pixels a bar say nothing), the label keeps the room; label, amount, share, chevron. */
-  .theme-fusion .fx-sec .fx-bud-row { grid-template-columns: minmax(0, 1fr) 80px 34px 10px; padding-inline: 0; margin-inline: 0; border-radius: 0; }
+  .theme-fusion .fx-sec .fx-bud-row { grid-template-columns: minmax(0, 1fr) 80px 34px 10px; }
   .theme-fusion .fx-sec .fx-bud-row .sp { display: none; }
   .theme-fusion .fx-sec .fx-bud-cols { gap: 34px; }
 }
@@ -20965,12 +20968,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-next .cv { grid-column: 2; grid-row: 1 / 4; font-family: var(--f-disp); font-weight: 700; font-size: 20px; letter-spacing: -.02em; white-space: nowrap; }
 .theme-fusion .fx-next .cv small { font-size: .6em; color: var(--muted); font-weight: 500; margin-left: 4px; }
 .theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
-.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+/* Rows that open a fiche light up on hover. No radius and no bleed: a rounded
+   row with a rule under it curved the rule at both ends and read as a grid
+   (Daniel, 2026-09-15). The rule stays straight, the highlight is the row. */
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
-/* No hover on a phone: the rows keep the column's edges. */
-@media (max-width: 700px) {
-  .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { padding-inline: 0; margin-inline: 0; border-radius: 0; }
-}
 .theme-fusion .fx-sec .fx-bars-row .track i { border-radius: 3px; height: 12px; }
 .theme-fusion .fx-sec .fx-next { border: 1px solid var(--rule); border-radius: 12px; background: #fff; padding: 14px 16px; transition: border-color .12s; }
 .theme-fusion .fx-sec .fx-next:hover { border-color: var(--bleu); }
@@ -20987,7 +20989,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-page-kicker, .theme-fusion .fx-drawer-kicker, .theme-fusion .fx-related-group, .theme-fusion .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
 .theme-fusion .fx-drawer-kicker { font-size: 11.5px; }
 @media (min-width: 701px) {
-  .theme-fusion .fx-v3-row.fx-row-link { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+  .theme-fusion .fx-v3-row.fx-row-link { transition: background-color .12s; }
   .theme-fusion .fx-v3-row.fx-row-link:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
 }
 @media (min-width: 960px) {

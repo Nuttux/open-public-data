@@ -142,15 +142,15 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
       </span>
     );
   };
-  type RowProps = { raw: string; value: number; total: number; href: string; missions?: { key: string; value: number }[]; swatch?: string; sub?: string; sep?: boolean; noSpark?: boolean; text?: string };
-  const Row = ({ raw, value, total: of, href, missions = [], swatch, sub, sep, noSpark, text }: RowProps) => {
+  type RowProps = { raw: string; value: number; total: number; max: number; href: string; missions?: { key: string; value: number }[]; swatch?: string; sep?: boolean; noSpark?: boolean; text?: string };
+  const Row = ({ raw, value, total: of, max, href, missions = [], swatch, sep, noSpark, text }: RowProps) => {
     const peek = missions.length ? fill(t("fx.bud.v3.peek"), { list: missions.map((m) => `${missionLabel(m.key, locale)} ${eurTxt(m.value)}`).join(" · ") }) : undefined;
     return (
       <Link href={href} scroll={false} className={`fx-bud-row${sep ? " sep" : ""}`} data-peek={peek}>
         <span className="n">
           {swatch ? <i className="sw" style={{ background: swatch }} aria-hidden="true" /> : null}
           {text ?? label(raw)}
-          {sub ? <span className="sub">{sub}</span> : null}
+          <i className="bar" style={{ width: `${Math.max(2, Math.round((value / Math.max(max, 1)) * 100))}%`, ...(swatch ? { background: swatch } : {}) }} aria-hidden="true" />
         </span>
         <span className="sp">{noSpark ? null : <Spark raw={raw} />}</span>
         <Amt n={value} />
@@ -164,8 +164,11 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
   const recRows = rec.filter((x) => x !== emprunt);
   const recNet = d.recettes - (emprunt?.value ?? 0);
   const balance = emprunt
-    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { rec: eurTxt(d.recettes), emp: eurTxt(emprunt.value), net: eurTxt(recNet) })
+    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { net: eurTxt(recNet), dep: eurTxt(d.depenses) })
     : fill(t(isVoted ? "fx.sec.bud.rec_only_vote" : "fx.sec.bud.rec_only"), { rec: eurTxt(d.recettes) });
+  const depMax = Math.max(...dep.map((x) => x.value), 1);
+  const natureMax = Math.max(...natureRows.map((g) => g.value), 1);
+  const recMax = Math.max(...rec.map((x) => x.value), 1);
 
   /* ── The heaviest lines of the year, inside the postes above: the mission
      (« RSA », « Aide sociale à l'enfance ») reads better than the M57 nature the
@@ -242,10 +245,10 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                       </div>
                     ) : null}
                     {group === "poste"
-                      ? dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)
+                      ? dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} max={depMax} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)
                       : (
                         <>
-                          {natureRows.map((g) => <Row key={g.key} raw={g.key} text={capFirst(t(`fx.bud.v3.flow.${g.key}`))} value={g.value} total={flowTotal} swatch={g.color} noSpark href={`${budgetBase}/nature/${g.key}?year=${d.year}`} />)}
+                          {natureRows.map((g) => <Row key={g.key} raw={g.key} text={capFirst(t(`fx.bud.v3.flow.${g.key}`))} value={g.value} total={flowTotal} max={natureMax} swatch={g.color} noSpark href={`${budgetBase}/nature/${g.key}?year=${d.year}`} />)}
                           {natureRest > flowTotal * 0.005 ? (
                             <div className="fx-bud-row fx-bud-row--static">
                               <span className="n"><i className="sw" style={{ background: "#c8ccd3" }} aria-hidden="true" />{capFirst(t("fx.bud.v3.flow.autres"))}</span>
@@ -258,8 +261,8 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                   </div>
                   <div className="fx-bud-col">
                     <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eurTxt(d.recettes)}</span></h3>
-                    {recRows.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)}
-                    {emprunt ? <Row raw={emprunt.label} value={emprunt.value} total={d.recettes} sub={t("fx.sec.bud.emprunt_sub")} sep href={`${budgetBase}/poste/${slugifyLabel(emprunt.label)}?year=${d.year}`} /> : null}
+                    {recRows.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} max={recMax} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)}
+                    {emprunt ? <Row raw={emprunt.label} value={emprunt.value} total={d.recettes} max={recMax} sep href={`${budgetBase}/poste/${slugifyLabel(emprunt.label)}?year=${d.year}`} /> : null}
                     <p className="fx-sec-sentence">{balance}</p>
                   </div>
                 </div>
