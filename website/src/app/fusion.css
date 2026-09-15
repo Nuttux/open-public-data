@@ -4085,6 +4085,12 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-v3-lieu-slot:empty { display: none; }
 /* Fiche projet : le premier écran de la fiche lieu, chiffre à gauche, photo à droite. */
 .theme-fusion .fx-projet-hero .fx-v3-hero { margin: 0 0 16px; }
+/* The line back up to the section, in the first screen of a project fiche:
+   the one door a reader who came from a search engine can see. */
+.theme-fusion .fx-fiche-secline { margin: -6px 0 16px; font-size: 14px; line-height: 1.4; }
+.theme-fusion .fx-fiche-secline a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-fiche-secline a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.theme-fusion .fx-fiche-secline .muted { white-space: nowrap; }
 .theme-fusion .fx-projet-hero-photo { min-width: 0; }
 .theme-fusion .fx-drawer-body .fx-projet-hero-photo { order: 2; }
 @media (max-width: 720px) { .theme-fusion .fx-projet-hero-photo { order: 2; } }

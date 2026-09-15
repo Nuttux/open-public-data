@@ -1154,6 +1154,9 @@ export type ProjetFiche = {
    *  antérieures n'étant pas des projets identifiables, elles ne sont pas
    *  comptées dans le dénominateur. */
   marchesCoverage: { matched: number; total: number; pct: number; scopeYears: [number, number] };
+  /** The section this project belongs to, for the door in the first screen:
+   *  the year's investment total and how many named projects share it. */
+  section: { year: number; total: number; nb: number } | null;
 };
 
 let _projetMarches: Record<string, ProjetMarche[]> | null = null;
@@ -1490,6 +1493,10 @@ export function loadProjet(id: string): ProjetFiche | null {
       photo: resolveProjetPhoto(r.id, r.nom_projet),
       marches: loadProjetMarches(r.id),
       marchesCoverage: loadProjetMarchesCoverage(),
+      section: (() => {
+        const s = loadInvestForYear(y);
+        return s && s.year === y ? { year: y, total: s.total, nb: cohort.data.length } : null;
+      })(),
     };
   }
   return null;

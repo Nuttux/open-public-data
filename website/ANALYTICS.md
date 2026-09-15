@@ -97,7 +97,8 @@ a locale.
 `year`, `cta`, `hero_meta` (the figure's grey line), `lead` (the opening
 sentence), `row` (a fiche row or a labeled bar), `sentence` (an inline "see
 all"), `foot`, `kicker` (the « Paris › Contrats publics » line), `hero`
-(anything else in a section page's head), `door` (a « Voir aussi » door),
+(anything else in a section page's head), `door` (a « Voir aussi » door, or
+the line back up to the section under a project fiche's figure),
 `next` (the next-section door), `deck` / `marquee` / `chips` (the landing
 hero's deck, the scrolling band, the chips), or a `data-block="…"` name, else
 `body`.
