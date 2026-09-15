@@ -28,6 +28,8 @@ const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseil
 // without a hole under the shorter block.
 const BENEF_CAP = 5;
 const ARR_CAP = 5;
+/** The instruments with a plain name and a « who lends » line. */
+const INSTRUMENT_KEYS = new Set(["obligataire", "bancaire", "divers"]);
 /** Acronyms the source writes in capitals and that stay so. */
 const KEEP_CAPS = new Set(["RIVP", "OPH", "SEM", "ICF", "CDC", "I3F", "3F", "RATP", "SNCF", "EPIC", "ESH", "HLM", "SA", "SPLA", "CASVP", "AP-HP", "APHP"]);
 /** « PARIS Habitat OPH (EPIC) » → « Paris Habitat OPH », « Trésorerie (Actif) » → « Trésorerie ». */
@@ -98,10 +100,14 @@ export default function DetteClient({ d, structure, horsBilan, posts, doors }: {
     .sort((a, b) => b.encours - a.encours)
     .map((i) => ({
       key: i.key,
-      label: trLabel(i.label, locale),
+      // A form of borrowing, named with who lends (from the instrument's own
+      // description: institutional investors, Caisse des Dépôts and banks,
+      // deposits and long-term contracts).
+      label: INSTRUMENT_KEYS.has(i.key) ? t(`fx.sec.dette.inst.${i.key}`) : trLabel(i.label, locale),
       value: i.encours,
       text: eurTxt(i.encours),
-      sub: i.taux_moyen_pct > 0 ? fill(t("fx.sec.dette.inst_sub"), { t: fmtDec(i.taux_moyen_pct, 2), m: fmtDec(i.maturite_moyenne_ans, 0) }) : undefined,
+      // One line: who lends. The rate and the maturities are on the fiche.
+      sub: INSTRUMENT_KEYS.has(i.key) ? t(`fx.sec.dette.inst.${i.key}_who`) : (i.taux_moyen_pct > 0 ? fill(t("fx.sec.dette.inst_sub"), { t: fmtDec(i.taux_moyen_pct, 2) }) : undefined),
       href: isParis ? `${base}/instrument/${i.key}?year=${d.year}` : null,
     }));
   const hasScene = instRows.length > 0;
