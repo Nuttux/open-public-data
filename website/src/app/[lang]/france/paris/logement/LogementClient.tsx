@@ -188,9 +188,15 @@ export default function LogementClient({ d, sruArr, posts, doors }: {
                       ) : null}
                     </>
                   ) : group === "attente" ? (
-                    <Bars key="attente" rows={attenteRows} cap={ARR_CAP} foldId="more-arr-attente" foldLabel={fill(t("fx.sec.log.arr_more"), { n: fmtInt(attenteRows.length) })} />
+                    <>
+                      <p className="fx-v3-note">{fill(t("fx.sec.log.attente_note"), { year: tension?.year ?? d.year })}</p>
+                      <Bars key="attente" rows={attenteRows} cap={ARR_CAP} foldId="more-arr-attente" foldLabel={fill(t("fx.sec.log.arr_more"), { n: fmtInt(attenteRows.length) })} />
+                    </>
                   ) : (
-                    <Bars key="financed" rows={financedRows} cap={ARR_CAP} foldId="more-arr" foldLabel={fill(t("fx.sec.log.arr_more"), { n: fmtInt(financedRows.length) })} />
+                    <>
+                      <p className="fx-v3-note">{fill(t("fx.sec.log.financed_note"), { year: d.year })}</p>
+                      <Bars key="financed" rows={financedRows} cap={ARR_CAP} foldId="more-arr" foldLabel={fill(t("fx.sec.log.arr_more"), { n: fmtInt(financedRows.length) })} />
+                    </>
                   )}
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="arrondissements" />
@@ -241,7 +247,7 @@ export default function LogementClient({ d, sruArr, posts, doors }: {
             <div className="fx-sec-a-related">
               <V3Section id="related" title={t("fx.sec.see_also")}>
                 {doors?.garanties ? (
-                  <Door href={`${cityBase}/dette/garanties`} hard title={t("fx.sec.log.r.garanties")} sub={fill(t("fx.sec.log.r.garanties_sub"), { year: doors.garanties.year })} value={fmtCompactEur(doors.garanties.total).value} unit={fmtCompactEur(doors.garanties.total).unit} />
+                  <Door href={`${cityBase}/dette#sec-hors-bilan`} hard title={t("fx.sec.log.r.garanties")} sub={fill(t("fx.sec.log.r.garanties_sub"), { year: doors.garanties.year })} value={fmtCompactEur(doors.garanties.total).value} unit={fmtCompactEur(doors.garanties.total).unit} />
                 ) : null}
                 {doors?.budget ? (
                   <Door href={`${cityBase}/budget?year=${doors.budget.year}`} hard title={t("fx.sec.log.r.budget")} sub={fill(t(doors.budget.voted ? "fx.sec.log.r.budget_sub_vote" : "fx.sec.log.r.budget_sub"), { year: doors.budget.year })} value={fmtCompactEur(doors.budget.total).value} unit={fmtCompactEur(doors.budget.total).unit} />
