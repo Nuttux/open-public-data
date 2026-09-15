@@ -245,8 +245,8 @@ export const GENERATED_SF_INVENTORY = {
       "paid_usd": 58189360525
     },
     "active": {
-      "n_contracts": 5128,
-      "agreed_usd": 43357164085
+      "n_contracts": 4978,
+      "agreed_usd": 42890125659
     }
   }
 } as const;

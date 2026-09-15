@@ -4,6 +4,14 @@
 export const GENERATED_DATA_INVENTORY = {
   "subventions": {
     "years": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
       2018,
       2019,
       2020,
@@ -13,6 +21,38 @@ export const GENERATED_DATA_INVENTORY = {
       2024
     ],
     "totalsByYear": {
+      "2010": {
+        "montant_total": 964726147,
+        "nb_subventions": 2557
+      },
+      "2011": {
+        "montant_total": 949956727,
+        "nb_subventions": 2459
+      },
+      "2012": {
+        "montant_total": 1051562457,
+        "nb_subventions": 2425
+      },
+      "2013": {
+        "montant_total": 1265816522,
+        "nb_subventions": 3638
+      },
+      "2014": {
+        "montant_total": 1362113354,
+        "nb_subventions": 3501
+      },
+      "2015": {
+        "montant_total": 1149891408,
+        "nb_subventions": 2864
+      },
+      "2016": {
+        "montant_total": 1260982793,
+        "nb_subventions": 3648
+      },
+      "2017": {
+        "montant_total": 1150092852,
+        "nb_subventions": 3640
+      },
       "2018": {
         "montant_total": 1241346409,
         "nb_subventions": 10266
@@ -47,14 +87,14 @@ export const GENERATED_DATA_INVENTORY = {
       "Logement",
       "Culture",
       "Éducation",
-      "Transport",
       "Économie",
+      "Administration",
+      "Non classifié",
+      "Transport",
       "Social - Petite enfance",
       "Sport",
       "Sécurité",
-      "Administration",
       "Santé",
-      "Non classifié",
       "International",
       "Environnement",
       "Autre",
@@ -81,59 +121,59 @@ export const GENERATED_DATA_INVENTORY = {
     "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
     "totalsByYear": {
       "2013": {
-        "enveloppe_max_totale": 1901057960,
+        "enveloppe_max_totale": 1819057896,
         "nb_marches": 1713
       },
       "2014": {
-        "enveloppe_max_totale": 1530498988,
+        "enveloppe_max_totale": 1326498988,
         "nb_marches": 1483
       },
       "2015": {
-        "enveloppe_max_totale": 1538504363,
+        "enveloppe_max_totale": 1472954363,
         "nb_marches": 1556
       },
       "2016": {
-        "enveloppe_max_totale": 1916840484,
+        "enveloppe_max_totale": 1633814742,
         "nb_marches": 1601
       },
       "2017": {
-        "enveloppe_max_totale": 3465550060,
+        "enveloppe_max_totale": 1998750060,
         "nb_marches": 1698
       },
       "2018": {
-        "enveloppe_max_totale": 2836151932,
+        "enveloppe_max_totale": 2833151932,
         "nb_marches": 1458
       },
       "2019": {
-        "enveloppe_max_totale": 4746809477,
-        "nb_marches": 2417
+        "enveloppe_max_totale": 2300439564,
+        "nb_marches": 1342
       },
       "2020": {
-        "enveloppe_max_totale": 5220171918,
-        "nb_marches": 2146
+        "enveloppe_max_totale": 1821184489,
+        "nb_marches": 1201
       },
       "2021": {
-        "enveloppe_max_totale": 8930973044,
-        "nb_marches": 2391
+        "enveloppe_max_totale": 5335026236,
+        "nb_marches": 1570
       },
       "2022": {
-        "enveloppe_max_totale": 6829493371,
-        "nb_marches": 2101
+        "enveloppe_max_totale": 3933543903,
+        "nb_marches": 1286
       },
       "2023": {
-        "enveloppe_max_totale": 2606892871,
-        "nb_marches": 1338
+        "enveloppe_max_totale": 2606361521,
+        "nb_marches": 1336
       },
       "2024": {
-        "enveloppe_max_totale": 3219973753,
-        "nb_marches": 1763
+        "enveloppe_max_totale": 2785142871,
+        "nb_marches": 1750
       },
       "2025": {
-        "enveloppe_max_totale": 1608151116,
+        "enveloppe_max_totale": 1606487046,
         "nb_marches": 1122
       },
       "2026": {
-        "enveloppe_max_totale": 647101025,
+        "enveloppe_max_totale": 561496025,
         "nb_marches": 266
       }
     }
@@ -256,6 +296,8 @@ export const GENERATED_DATA_INVENTORY = {
   },
   "bilan": {
     "years": [
+      2016,
+      2018,
       2019,
       2020,
       2021,
@@ -266,12 +308,25 @@ export const GENERATED_DATA_INVENTORY = {
   },
   "hors_bilan": {
     "years": [
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
       2019,
       2020,
       2021,
       2022,
       2023,
-      2024
+      2024,
+      2025
     ]
   },
   "logement_social": {
