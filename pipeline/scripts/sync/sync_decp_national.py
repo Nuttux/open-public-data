@@ -22,7 +22,7 @@ Garde-fous, dans l'ordre :
   4. volume      — la nouvelle version doit compter au moins MIN_KEEP_RATIO des
                    lignes de la table actuelle, sinon on refuse d'écraser (un
                    fichier tronqué ne vide pas le site). --force pour passer.
-  Seulement alors, la table temporaire remplace la table (bq cp -f).
+  Seulement alors, la table temporaire remplace la table (copie WRITE_TRUNCATE).
 
 Usage :
     python scripts/sync/sync_decp_national.py             # charge si nouvelle version
@@ -33,12 +33,12 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 import requests
+from google.api_core.exceptions import NotFound
+from google.cloud import bigquery
 
 PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "raw_national"
@@ -61,9 +61,21 @@ REQUIRED_COLUMNS = {
 }
 
 
-def bq(*args: str, capture: bool = False) -> str:
-    res = subprocess.run(["bq", f"--project_id={PROJECT_ID}", *args], check=True, capture_output=capture, text=True)
-    return res.stdout if capture else ""
+# Client Python plutôt que la CLI bq : en CI (Workload Identity Federation),
+# `bq show --format=json` sortait 0 avec une sortie vide (run 34954677121,
+# 2026-09-15). Le client lit les mêmes identifiants que dbt et les autres jobs.
+_client: bigquery.Client | None = None
+
+
+def client() -> bigquery.Client:
+    global _client
+    if _client is None:
+        _client = bigquery.Client(project=PROJECT_ID)
+    return _client
+
+
+def table_id(table: str) -> str:
+    return f"{PROJECT_ID}.{DATASET_ID}.{table}"
 
 
 def current_resource() -> dict:
@@ -76,12 +88,13 @@ def current_resource() -> dict:
 
 
 def table_info(table: str) -> dict | None:
+    # Seule l'absence de la table vaut None. Toute autre erreur (droits, réseau)
+    # remonte : la prendre pour « table absente » sauterait le contrôle de volume.
     try:
-        out = bq("show", "--format=json", f"{DATASET_ID}.{table}", capture=True)
-    except subprocess.CalledProcessError:
+        t = client().get_table(table_id(table))
+    except NotFound:
         return None
-    info = json.loads(out)
-    return {"rows": int(info.get("numRows", 0)), "description": info.get("description") or ""}
+    return {"rows": int(t.num_rows or 0), "description": t.description or ""}
 
 
 def fingerprint(res: dict) -> str:
@@ -121,6 +134,25 @@ def check_file(path: Path) -> int:
     return rows
 
 
+def load_parquet(path: Path, table: str) -> None:
+    job_config = bigquery.LoadJobConfig(
+        source_format=bigquery.SourceFormat.PARQUET,
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+    )
+    with open(path, "rb") as f:
+        client().load_table_from_file(f, table_id(table), job_config=job_config).result()
+
+
+def promote(src: str, dest: str, description: str) -> None:
+    """La table temporaire remplace la table, reçoit l'empreinte, puis disparaît."""
+    job_config = bigquery.CopyJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
+    client().copy_table(table_id(src), table_id(dest), job_config=job_config).result()
+    t = client().get_table(table_id(dest))
+    t.description = description
+    client().update_table(t, ["description"])
+    client().delete_table(table_id(src), not_found_ok=True)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="télécharge et contrôle, ne charge pas")
@@ -146,15 +178,13 @@ def main() -> int:
         )
 
     path = CACHE_DIR / "decp.parquet"
-    print(f"  bq load → {DATASET_ID}.{TEMP_TABLE}")
-    bq("load", "--replace", "--source_format=PARQUET", f"{DATASET_ID}.{TEMP_TABLE}", str(path))
+    print(f"  load → {DATASET_ID}.{TEMP_TABLE}")
+    load_parquet(path, TEMP_TABLE)
     loaded = table_info(TEMP_TABLE)
     if not loaded or loaded["rows"] != rows:
         raise SystemExit(f"✗ Chargement incomplet : {loaded['rows'] if loaded else 0} lignes pour {rows} dans le fichier — table temporaire laissée pour examen.")
 
-    bq("cp", "-f", f"{DATASET_ID}.{TEMP_TABLE}", f"{DATASET_ID}.{TABLE}")
-    bq("update", "--description", fingerprint(res), f"{DATASET_ID}.{TABLE}")
-    bq("rm", "-f", "-t", f"{DATASET_ID}.{TEMP_TABLE}")
+    promote(TEMP_TABLE, TABLE, fingerprint(res))
     delta = f" ({rows - before['rows']:+,} lignes)".replace(",", " ") if before else ""
     print(f"  ✓ {DATASET_ID}.{TABLE} : {rows:,} lignes{delta}".replace(",", " "))
     return 0
