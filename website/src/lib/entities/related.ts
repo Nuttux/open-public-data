@@ -17,7 +17,7 @@ import { rowObjet } from "@/lib/objet-normalizer";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
 import { sumLots } from "@/lib/marches-shape";
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
-import { loadInvestForYear, loadInvestLatest, marchesDomainesOfYear, marchesYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
+import { loadInvestForYear, loadInvestLatest, marchesDomainesOfYear, marchesYearTotal, subventionsYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
 import { dedupMixedSources } from "@/lib/marches-dedup";
 import { domaineLabel } from "@/lib/marches-domaines";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -96,6 +96,21 @@ export function investSectionRow(year: number | null, locale: L): RelatedRow {
     href: `/france/paris/investissements?year=${y}`,
     label: t("fx.related.invest_section", { year: y }),
     sub: t("fx.related.invest_section_sub"),
+    ...(s ? { amount: eur(s.total, locale) } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
+/** The same door for the Subventions section: the year's total paid, the
+ *  latest published year when the fiche's year has none. */
+export function subventionsSectionRow(city: string, year: number | null, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  const s = subventionsYearTotal(city, year ?? new Date().getFullYear());
+  const y = s?.year ?? year ?? new Date().getFullYear() - 1;
+  return {
+    href: `/france/${city}/subventions?year=${y}`,
+    label: t("fx.related.subv_section", { year: y }),
+    sub: t("fx.related.subv_section_sub"),
     ...(s ? { amount: eur(s.total, locale) } : {}),
     group: t("fx.related.g.context"),
   };
@@ -276,7 +291,9 @@ export function associationRelated(asso: { name: string; theme: string | null },
     }
   }
   if (themeRow) rows.push(themeRow);
-  rows.push({ href: base, label: locale === "en" ? "Who receives the City's grants" : "Qui reçoit les subventions de la Ville", sub: locale === "en" ? "Every recipient, by theme and by year" : "Tous les bénéficiaires, par thème et par année", group: context });
+  // The section door with the year's number: the way up for a reader who
+  // landed on the association from a search engine.
+  rows.push(subventionsSectionRow(city, null, locale));
   const theme = asso.theme;
   if (city === "paris" && theme) rows.push(...budgetRows((spec) => (spec.themes ?? []).includes(theme), locale));
   return { title: t("fx.related.title"), sub: null, rows };
@@ -547,7 +564,7 @@ export function themeRelated(f: ThemeSubventionsFiche, city: string, locale: L):
       amount: eur(x.amount, locale),
       group: t("fx.related.g.other_themes", { year: f.year }),
     }));
-  rows.push({ href: base, label: t("fx.related.subv.hub", { city: getCity(city)?.nom ?? city }), sub: t("fx.related.subv.hub_sub"), group: t("fx.related.g.context") });
+  rows.push(subventionsSectionRow(city, f.year, locale));
   if (city === "paris") rows.push(...budgetRows((spec) => (spec.themes ?? []).includes(f.theme), locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }

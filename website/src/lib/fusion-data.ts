@@ -903,6 +903,12 @@ export type AssociationFiche = {
   themeRank: { rank: number; total: number; theme: string } | null;
   /** Year-over-year swings ≥ 20% on the byYear timeline — used to annotate the chart. */
   highlights: { year: number; pct: number; kind: "up" | "down" }[];
+  /** The section this recipient belongs to, for the door in the first screen:
+   *  the latest published year, its total paid and how many recipients. */
+  section: { year: number; total: number; nbSubventions: number; nbBeneficiaires: number } | null;
+  /** The next recipient of the same theme by amount, latest year (the first
+   *  one after the last): the way out of the fiche that is not the footer. */
+  next: { name: string; amount: number; rank: number; total: number; theme: string } | null;
   /** Les délibérations du Conseil de Paris qui ont voté cet argent, par année
    *  du VOTE. Renseigné pour les bénéficiaires rattachés à un lieu, dont on a
    *  synchronisé le corpus de délibérations ; null pour les autres, et la
@@ -1002,6 +1008,7 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
   // Theme rank — where does this asso sit in its primary thematic?
   // Compare against the most recent year available in the subventions index.
   let themeRank: AssociationFiche["themeRank"] = null;
+  let next: AssociationFiche["next"] = null;
   if (theme) {
     try {
       const latestYear = idx.availableYears[0];
@@ -1013,11 +1020,26 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
       const rank = sameTheme.findIndex((b) => b.beneficiaire.toLowerCase() === targetLower) + 1;
       if (rank > 0) {
         themeRank = { rank, total: sameTheme.length, theme };
+        // The next one in the same ranking, skipping private individuals (no fiche).
+        for (let k = 1; k < sameTheme.length; k++) {
+          const at = (rank - 1 + k) % sameTheme.length;
+          const n = sameTheme[at];
+          if (n.nature_juridique === "Personnes physiques") continue;
+          next = { name: n.beneficiaire, amount: n.montant_total, rank: at + 1, total: sameTheme.length, theme };
+          break;
+        }
       }
     } catch {
       /* missing file — skip */
     }
   }
+  // The section's number for the first-screen line: the latest published year.
+  const section = (() => {
+    const s = subventionsYearTotal(city, idx.availableYears[0]);
+    if (!s) return null;
+    const f = readJsonOrNull<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${s.year}.json`));
+    return { year: s.year, total: s.total, nbSubventions: s.count, nbBeneficiaires: Number(f?.nb_beneficiaires ?? 0) };
+  })();
 
   return {
     name: canonicalName,
@@ -1033,6 +1055,8 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
     byTheme,
     themeRank,
     highlights,
+    section,
+    next,
     delibsParAnnee: delibsDuBeneficiaire(canonicalName, city),
   };
 }
