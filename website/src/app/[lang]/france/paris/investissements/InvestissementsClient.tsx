@@ -31,6 +31,8 @@ type WhereView = "arrondissements" | "carte";
 const WHERE_VIEWS: WhereView[] = ["arrondissements", "carte"];
 
 const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
+/** One hue, light to dark, ending on the site's blue (--bleu #2a3680). */
+const CHORO_BLUE = ["#e6e9f4", "#bcc3e2", "#8b96c7", "#5262a5", "#2a3680"];
 const PROJETS_CAP = 8;
 const ARR_CAP = 8;
 const EX_KIND: Record<InvestissementsData["exemples"][number]["kind"], string> = {
@@ -139,8 +141,13 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
     sub: named(a.count),
     href: enableDrilldowns ? `${invBase}/arrondissement/${a.arr}` : null,
   }));
-  const whereSub = hasNamed
-    ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pct: fmtDec(d.projetsCoveragePct, 0) })
+  // « Où » counts what sits in an arrondissement: the choropleth's total is
+  // that, not the number's line (2024: 412 of the 437, 25 are citywide).
+  const nLoc = d.byArrondissement.reduce((s, a) => s + a.count, 0);
+  const amountLoc = d.byArrondissement.reduce((s, a) => s + a.amount, 0);
+  const nTransverse = Math.max(0, d.nbProjets - nLoc);
+  const whereSub = nLoc > 0
+    ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(nLoc), amount: eurTxt(amountLoc) }) + (nTransverse > 0 ? fill(t("fx.sec.inv.where_sub_transverse"), { t: fmtInt(nTransverse) }) : "")
     : undefined;
   const whereSection = d.byArrondissement.length > 0 ? (
     <V3Section id="where" title={fill(t("fx.sec.inv.h.where"), { city: cityName })} sub={whereSub}>
@@ -158,7 +165,16 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
           <>
             {isParis ? (
               <div className="fx-sec-choro">
-                <ParisChoropleth items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))} height={300} showRanking={false} />
+                {/* The tiles open the arrondissement fiche under the city's path (the
+                    component's default href predates /france/paris). Blue ramp: on this
+                    page the bars are blue and ocre is the movement only. */}
+                <ParisChoropleth
+                  items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
+                  height={300}
+                  showRanking={false}
+                  palette={CHORO_BLUE}
+                  hrefFor={enableDrilldowns ? (arr) => `${invBase}/arrondissement/${arr === 0 ? 1 : arr}` : () => null}
+                />
               </div>
             ) : null}
             <Bars rows={arrRows} cap={ARR_CAP} foldId="more-arr" foldLabel={fill(t("fx.sec.inv.arr_more"), { n: fmtInt(d.byArrondissement.length) })} />
@@ -169,8 +185,11 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
     </V3Section>
   ) : null;
 
-  // The largest named worksites, in rows; the rest behind one fold.
-  const projets = foldRest(d.topProjets, PROJETS_CAP);
+  // The largest named worksites, in rows; the rest behind one fold. The three
+  // shown in photo above are not listed again (nothing twice on a page): the
+  // title says « the other large worksites » when they are there.
+  const exampleIds = new Set(d.exemples.map((e) => e.id));
+  const projets = foldRest(d.topProjets.filter((p) => !exampleIds.has(p.id)), PROJETS_CAP);
   const ProjetRow = (p: InvestissementsData["topProjets"][number]) => (
     <V3Row key={p.id} href={enableDrilldowns ? `${invBase}/projet/${encodeURIComponent(p.id)}` : null}
       label={(locale === "en" && p.name_en) || p.name}
@@ -178,7 +197,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
       amount={<Amt n={p.amount} />} />
   );
   const projetsSection = d.topProjets.length > 0 ? (
-    <V3Section id="projects" title={fill(t("fx.sec.inv.h.projects"), { year: d.year })}>
+    <V3Section id="projects" title={fill(t(exampleIds.size > 0 ? "fx.sec.inv.h.projects_rest" : "fx.sec.inv.h.projects"), { year: d.year })}>
       {projets.shown.map(ProjetRow)}
       {projets.rest.length > 0 && <V3Fold id="more-projects" text label={t("fx.v3.voir_plus")}>{projets.rest.map(ProjetRow)}</V3Fold>}
     </V3Section>
@@ -240,7 +259,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                           const href = `${invBase}/projet/${encodeURIComponent(e.id)}`;
                           const name = (locale === "en" && e.nameEn) || e.name;
                           return (
-                            <figure key={e.id} className="fx-sec-ex-card">
+                            <figure key={e.id} className="fx-sec-ex-card" data-block="photo">
                               <Link href={href} scroll={false} className="fx-sec-ex-img" aria-hidden="true" tabIndex={-1}>
                                 <img src={e.photoUrl} alt="" loading="lazy" />
                               </Link>

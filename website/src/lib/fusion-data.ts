@@ -3539,13 +3539,19 @@ export function loadInvestissementsData(
       const prevTotal = prevY.depenses_hors_dette ?? prevY.depenses_total;
       const cur = new Map(latest.par_chapitre.map((c) => [c.label, c.depenses]));
       const before = new Map((prevY.par_chapitre ?? []).map((c) => [c.label, c.depenses]));
+      // The chapter named after « dont » must be a part of the movement: the
+      // same sign, at least a third of it, not more than all of it (2024:
+      // + 22 M€ in all, culture − 55 M€ and environment + 49 M€ — neither is
+      // « dont », the line stops at « + 1 % »).
+      const change = invTotal - prevTotal;
       let top: { label: string; delta: number } | null = null;
       for (const label of new Set([...cur.keys(), ...before.keys()])) {
         const delta = (cur.get(label) ?? 0) - (before.get(label) ?? 0);
+        if (Math.sign(delta) !== Math.sign(change)) continue;
         if (!top || Math.abs(delta) > Math.abs(top.delta)) top = { label, delta };
       }
-      const change = invTotal - prevTotal;
-      return { year: prevY.year, total: prevTotal, topChapitre: top && Math.abs(top.delta) >= Math.abs(change) / 3 ? top : null };
+      const part = top && Math.abs(top.delta) >= Math.abs(change) / 3 && Math.abs(top.delta) <= Math.abs(change);
+      return { year: prevY.year, total: prevTotal, topChapitre: part ? top : null };
     })(),
   };
 }

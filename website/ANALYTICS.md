@@ -87,9 +87,9 @@ row opening its poste; the spending column reads by poste or by kind —
 `page = budget`), `lines` (the heaviest lines, each opening its poste),
 `understand`, `related`, `next`. Investissements (since 2026-09-15): `hero`,
 `years`, `scene` (the chapters, each opening its fiche), `examples` (three
-worksites in photo, `role = row` is not used there: the name and the image
-are plain links inside the section), `projects` (the largest worksites in
-rows), `where` (by arrondissement with the choropleth, or the markers map —
+worksites in photo; the image and the name are `link_click` with
+`role = photo`), `projects` (the other large worksites in rows), `where` (by
+arrondissement with the choropleth — `choropleth_click` — or the markers map —
 `filter_change` `field = where_view`, `value` = `arrondissements` | `carte`,
 `page = investissements`; the map is loaded only when asked for),
 `understand`, `related`, `next`. On a project fiche, the line under the
