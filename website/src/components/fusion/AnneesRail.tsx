@@ -45,9 +45,12 @@ export default function AnneesRail({
   to,
   format,
   countText,
+  current,
 }: {
   rows: RailRow[];
   tone?: "x" | "w";
+  /** L'exercice de la page : sa barre est en encre, pour se retrouver dans la série. */
+  current?: number;
   delibs?: Record<string, RailDelib[]> | null;
   /** Genre de délibération montré sous ce rail (« subvention », « travaux »). */
   genre?: string;
@@ -109,8 +112,9 @@ export default function AnneesRail({
           );
           if (r === undefined) return <div key={y} className={`hors${bord(i)}`} data-tip={titre}>{corps}</div>;
           return (
-            <button key={y} type="button" className={`${sel === y ? "on" : ""}${bord(i)}`}
+            <button key={y} type="button" className={`${sel === y ? "on" : ""}${y === current ? " cur" : ""}${bord(i)}`}
                     aria-expanded={sel === y}
+                    aria-current={y === current ? "true" : undefined}
                     aria-label={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
                     data-tip={titre}
                     onClick={() => { track("chart_element_click", { chart: "annees_rail", year: y, open: sel !== y }); setSel(sel === y ? null : y); }}>

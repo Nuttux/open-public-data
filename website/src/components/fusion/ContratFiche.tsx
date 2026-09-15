@@ -96,7 +96,10 @@ export default function ContratFiche({
     if (ctx.some((o, j) => j !== i && o.toLowerCase() !== c && o.toLowerCase().startsWith(c))) ctx.splice(i, 1);
   }
 
-  const quoi = vulgarization ? cap(en && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement) : null;
+  // A hand-written entry may carry only the clear title (the section page's
+  // top contracts, 2013-2024): then no paragraph, not a crash.
+  const quoiRaw = vulgarization ? (en && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement) : null;
+  const quoi = quoiRaw ? cap(quoiRaw) : null;
   // Le titre du tiroir montre déjà le libellé clair ; le libellé de la source
   // n'est redit dessous que s'il dit autre chose (il répétait souvent le titre mot pour mot).
   // Without a clear title, the object is cut at a clause (never mid-word) and

@@ -53,7 +53,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   idx: MarchesIndex;
   d: MarchesPageData;
   /** Numbers for the doors, loaded by the page (absent on cities without them). */
-  doors?: { invest?: { year: number; total: number } | null };
+  doors?: { invest?: { year: number; total: number } | null; next?: { total: number; year: number } | null };
   /** How the scene is drawn: labeled bars, or the mosaic with the bars folded. */
   variant?: "bars" | "mosaic";
 }) {
@@ -80,7 +80,9 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
   // The source's residual labels (« Pas de CCAG » = no standard terms, « Marché »
   // = unspecified type) say nothing to a reader: one word, « Autres ».
   const OTHER = new Set(["Pas de CCAG", "Marché", "Autres", "Autre", "Non précisé"]);
-  const sceneLabel = (raw: string) => (OTHER.has(raw) ? t("fx.sec.mp.other") : trLabel(raw, locale));
+  // The source mixes « Travaux… » and « travaux… »: a label starts with a capital.
+  const capFirst = (s: string) => (s ? s[0].toLocaleUpperCase(locale) + s.slice(1) : s);
+  const sceneLabel = (raw: string) => (OTHER.has(raw) ? t("fx.sec.mp.other") : capFirst(trLabel(raw, locale)));
 
   // The scene: the same euros, three cuts. Offers are only published from 2024.
   const [group, setGroup] = useState<Group>("categorie");
@@ -209,6 +211,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                 value={total.value}
                 unit={total.unit}
                 captionBefore={t("fx.sec.mp.cap_before")}
+                captionAfter={t("fx.sec.mp.cap_after")}
                 years={years}
                 year={d.year}
                 basePath={marchesBase}
@@ -220,7 +223,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
               {series.length >= RAIL_MIN ? (
                 <div className="fx-sec-years" data-section="years">
                   <div className="fx-page-kicker">{t("fx.sec.years")}</div>
-                  <AnneesRail rows={series} />
+                  <AnneesRail rows={series} current={d.year} />
                 </div>
               ) : null}
             </div>
@@ -257,11 +260,13 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
               </V3Section>
             </div>
 
-            {/* Right after the first screen, as a band: for whoever came with a name in mind. */}
+            {/* Right after the first screen, as a band: for whoever came with a name in
+                mind. A tool, not a chapter: its title is a kicker, not a section title. */}
             <div className="fx-sec-a-search">
-              <V3Section id="search" title={t("fx.sec.mp.h.search")}>
+              <section className="fx-v3-section fx-sec-searchblk" data-section="search">
+                <div className="fx-page-kicker">{t("fx.sec.mp.h.search")}</div>
                 <MarchesSearch fiche citySlug={citySlug} categories={d.byCategory.map((x) => x.category)} natures={d.byNature.map((n) => n.nature)} year={d.year} />
-              </V3Section>
+              </section>
             </div>
 
             <div className="fx-sec-a-photo">
@@ -325,7 +330,14 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
             </div>
 
             <div className="fx-sec-a-next">
-              <NextDoor href={`${cityBase}/logement`} kicker={t("fx.sec.next")} title={t("fx.sec.mp.next")} sub={t("fx.sec.mp.next_sub")} />
+              <NextDoor
+                href={`${cityBase}/logement`}
+                kicker={t("fx.sec.next")}
+                title={t("fx.sec.mp.next")}
+                sub={doors?.next ? fill(t("fx.sec.mp.next_sub_n"), { year: doors.next.year }) : t("fx.sec.mp.next_sub")}
+                value={doors?.next ? fmtInt(doors.next.total) : undefined}
+                unit={doors?.next ? t("fx.sec.mp.next_unit") : undefined}
+              />
             </div>
 
             <div className="fx-sec-a-foot">

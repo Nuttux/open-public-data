@@ -20900,9 +20900,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec .fx-page-kicker a { font-weight: 600; }
 .theme-fusion .fx-sec-hero { border-bottom: 0; padding-bottom: 6px; margin-bottom: 26px; }
 /* Under the number, its history: a kicker and the rail, no paragraph (the
-   counting rule lives in « Ce que mesure ce chiffre »). */
+   counting rule lives in « Ce que mesure ce chiffre »). The page's year is
+   the ink bar. */
 .theme-fusion .fx-sec-years { margin: 0 0 40px; }
 .theme-fusion .fx-sec-years .fx-page-kicker { margin-bottom: 10px; }
+.theme-fusion .fx-v3-years > button.cur i { background: var(--ink); }
+/* The search is a tool, not a chapter: a kicker above the field. */
+.theme-fusion .fx-sec-searchblk .fx-page-kicker { margin-bottom: 0; }
+.theme-fusion .fx-sec-searchblk .fx-search-wrap--fiche .fx-search-inner { padding-top: 10px; }
+/* The next section carries its number, like the doors. */
+.theme-fusion .fx-next { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 18px; align-items: center; }
+.theme-fusion .fx-next .ck, .theme-fusion .fx-next .ct, .theme-fusion .fx-next .cc { grid-column: 1; }
+.theme-fusion .fx-next .cv { grid-column: 2; grid-row: 1 / 4; font-family: var(--f-disp); font-weight: 700; font-size: 20px; letter-spacing: -.02em; white-space: nowrap; }
+.theme-fusion .fx-next .cv small { font-size: .6em; color: var(--muted); font-weight: 500; margin-left: 4px; }
 .theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }

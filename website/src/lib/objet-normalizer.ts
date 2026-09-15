@@ -39,7 +39,21 @@ const FR_STOPWORDS_LOWER = new Map<string, string>([
 // (10), ACBC (5) — tous des codes de gestion, jamais un mot du titre. Les
 // codes sans chiffre exigent un séparateur, pour ne pas mordre un mot
 // (« MAINTENANCE », « MSAC - » oui, « MS » suivi d'un espace non).
-const SECTION_PREFIX = /^(?:(?:SA|CSP|A|MA)\s?\d{1,2}\s*[.:\-_]*\s*|(?:MGP|MSAC|ACBC|MS|M)\s*[.:\-_]+\s*)/i;
+// Depuis le 2026-09-15 : les codes de procédure aussi (« AC_BC », « AC/BC »,
+// « ACMS », « MULTI-ATT. », « MULTIATTRIB ») et les couches empilées
+// (« SA4 _ACBC/MULTI-ATTRIBUTAIRES_DÉCONTAMINATION ») — la liste 2013-2023
+// en ouvre 21 % de ses 100 plus gros libellés.
+const SECTION_PREFIX = /^(?:(?:SA|CSP|A|MA)\s?\d{1,2}\s*[.:\-_/]*\s*|(?:MGP|MSAC|ACBC|AC[\s_/-]?(?:BC|MS)|MULTI[\s-]?ATT(?:RIB(?:UTAIRES?)?)?\.?|MS|M)\s*[.:\-_/]+\s*)/i;
+/** Enlève les codes en tête, couche après couche (quatre au plus). */
+function stripSectionPrefix(s: string): string {
+  let out = s;
+  for (let i = 0; i < 4; i++) {
+    const next = out.replace(SECTION_PREFIX, "").trim();
+    if (next === out) break;
+    out = next;
+  }
+  return out;
+}
 
 // Restauration d'accents. Les libellés arrivent en MAJUSCULES non accentuées
 // ("RENOVATION MUSEE") ; la remise en casse lisible produit "Renovation Musee".
@@ -245,7 +259,7 @@ export function normalizeObjet(raw: string): string {
 
   // Retire le code de section en tête avant tout le reste : il fausserait la
   // remise en casse ("SA4.TRVX" est un seul token → "Sa4.trvx").
-  s = s.replace(SECTION_PREFIX, "").trim();
+  s = stripSectionPrefix(s);
 
   // Si tout est en MAJUSCULES, passe en casse plus lisible avant substitutions.
   // Les mots courts (≤3 car.) restent MAJ par défaut (acronymes : SA3, CPV,
@@ -387,14 +401,18 @@ export function rowObjet(raw: string, max = 72, detailMax = 64): { title: string
   const text = (raw || "").trim();
   const m = text.match(/^(.*?[^\d\s])\s+[-–]\s+([^\d\s].*)$/);
   const clean = (part: string) => {
-    let s = normalizeObjet(part);
+    // « LOT 1 : Travaux… » once the codes are gone: the lot is the row's sub-line.
+    let s = normalizeObjet(part).replace(/^lot\s*\d+\s*[:.\-–]?\s*/i, "");
     for (const re of BOILERPLATE) s = s.replace(re, "");
     s = dropParentheticals(s.replace(/,?\s*en \d+ lots?,?/i, ","));
     s = s.replace(/\s*,\s*,/g, ",").replace(/^[,\s]+/, "").trim();
     return s ? s[0].toUpperCase() + s.slice(1) : s;
   };
   if (!m) return { title: clauseCut(clean(text), max), detail: null };
-  const title = clauseCut(clean(m[1]), max);
+  // « CSP4: AC_BC - LOT 1 : Travaux… » : what is left of the head is a bare
+  // code, not a title; the lot part takes its place.
+  const head = clauseCut(clean(m[1]), max);
+  const title = /[a-zà-ÿ]{4,}/i.test(head) ? head : "";
   const lotRaw = m[2].replace(/\s*\((?:\d+\s*[-,]\s*)+\d+\)\s*$/, "").trim();
   if (!/\s/.test(lotRaw) && lotRaw.length <= 12) return { title, detail: null };
   // « Accord-cadre à marchés subséquents - Travaux de … » : the inner parts,

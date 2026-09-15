@@ -181,3 +181,21 @@ describe("shortObjet", () => {
     expect(cutObjet("court")).toBe("court");
   });
 });
+
+describe("codes de procédure en tête (2026-09-15)", () => {
+  it("strips AC_BC, AC/BC, ACMS and MULTI-ATT layers, and a leading « LOT n : »", () => {
+    const r = rowObjet("CSP4: AC_BC - LOT 1 : TVX SIGNALISATION HORIZONTALE A PARIS");
+    expect(r.title).toMatch(/signalisation/i);
+    expect(r.title).not.toMatch(/^(AC|Lot)/i);
+    expect(normalizeObjet("SA4 _ACBC/MULTI-ATTRIBUTAIRES_DÉCONTAMINATION ÉQUIPEMTS VDP")).toMatch(/^D[ée]contamination/i);
+    expect(normalizeObjet("SA4/MULTI-ATT._TVX PLOMBERIE/INSTALLATIONS SANITAIRES_LOT3")).not.toMatch(/^multi/i);
+    expect(normalizeObjet("CSP5 AC/BC TVX ACCESSIBILITE TS HANDICAPS EQUIPMT PUBLICS")).not.toMatch(/^AC/);
+    expect(normalizeObjet("SA3.AC_MS.TVX RENVAT° STATIONS")).not.toMatch(/^AC/);
+  });
+  it("keeps words that merely start with those letters", () => {
+    expect(normalizeObjet("MAINTENANCE DES ASCENSEURS DES ECOLES")).toMatch(/^Maintenance/);
+    expect(normalizeObjet("ACCUEIL DES ENFANTS EN CENTRE DE LOISIRS")).toMatch(/^Accueil/);
+    expect(normalizeObjet("MULTIMEDIA POUR LES BIBLIOTHEQUES")).toMatch(/^Multim/i);
+    expect(normalizeObjet("MS N°1 LOT 3 FOURNITURE D'ELECTRICITE")).toMatch(/^MS/);
+  });
+});

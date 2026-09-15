@@ -1,5 +1,5 @@
 import { loadLieuxIndex, loadLieu } from "./lieux-data";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { normalizeObjet, rowObjet } from "@/lib/objet-normalizer";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
 import { lotRepeatFlags, sumLots, lotInfo } from "./marches-shape";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug, type OffresBucket } from "./marches-offres";
@@ -2737,7 +2737,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
       const pj = loadContratProjet(r.numero);
       const vg = vulgMap[r.numero];
       used.add(r.numero);
-      const label = vg?.objet_clair || normalizeObjet(r.objet);
+      const label = vg?.objet_clair || rowObjet(r.objet, 110).title;
       let photoUrl = pj?.photoUrl ?? null;
       let photoCredit = pj?.photoCredit ?? null;
       let photoKind: "reelle" | "illustration" | null = photoUrl ? "reelle" : null;
@@ -2775,7 +2775,11 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
       };
     };
     const out: MarchesPageData["signature"] = [];
-    const chantier = byMontant.find((r) => loadContratProjet(r.numero)?.photoUrl);
+    // A photo only when the worksite IS what the contract pays for. Checked by
+    // hand on 2019-2025 (2026-09-15): the 2021 contract buys childcare places in
+    // private nurseries, its linked project is the construction of a crèche.
+    const PHOTO_MISMATCH = new Set(["20212021S03525"]);
+    const chantier = byMontant.find((r) => !PHOTO_MISMATCH.has(r.numero) && loadContratProjet(r.numero)?.photoUrl);
     if (chantier) out.push(mkCard(chantier, "chantier"));
     const mono = byMontant.find((r) => r.offres === 1 && !used.has(r.numero));
     if (mono) out.push(mkCard(mono, "mono"));
@@ -2846,6 +2850,15 @@ export function loadInvestLatest(): { year: number; total: number } | null {
   if (!last) return null;
   const total = Number(last.depenses_hors_dette ?? 0);
   return total > 0 ? { year: Number(last.year), total } : null;
+}
+
+/** L'investissement de l'exercice de la page quand il est publié (la porte
+ *  « Chantiers » d'une page 2020 parle de 2020), sinon le dernier publié. */
+export function loadInvestForYear(year: number): { year: number; total: number } | null {
+  const t = readJsonOrNull<{ years?: { year: string | number; depenses_hors_dette?: string | number }[] }>("investissement_tendances.json");
+  const hit = (t?.years ?? []).find((y) => Number(y.year) === year);
+  const total = Number(hit?.depenses_hors_dette ?? 0);
+  return hit && total > 0 ? { year, total } : loadInvestLatest();
 }
 
 // ─── Investissements ───────────────────────────────────────────────────────

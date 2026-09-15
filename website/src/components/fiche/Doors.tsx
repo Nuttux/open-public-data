@@ -38,12 +38,18 @@ export function Door({ href, title, sub, value, unit, hard }: {
 
 /** The section that follows, with its number: the way out of a page that
  *  is not the footer. */
-export function NextDoor({ href, kicker, title, sub }: { href: string; kicker: string; title: ReactNode; sub?: ReactNode }) {
+export function NextDoor({ href, kicker, title, sub, value, unit }: { href: string; kicker: string; title: ReactNode; sub?: ReactNode; value?: ReactNode; unit?: ReactNode }) {
   return (
     <Link href={href} className="fx-next" data-section="next">
       <span className="ck">{kicker}</span>
       <span className="ct">{title}</span>
       {sub ? <span className="cc">{sub}</span> : null}
+      {value !== undefined && value !== null ? (
+        <span className="cv tnum">
+          {value}
+          {unit ? <small>{unit}</small> : null}
+        </span>
+      ) : null}
     </Link>
   );
 }
