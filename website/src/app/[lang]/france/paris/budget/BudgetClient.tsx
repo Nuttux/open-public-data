@@ -1,32 +1,30 @@
 "use client";
-
+import { useState } from "react";
 import Link from "@/components/LocalizedLink";
 import { usePathname } from "@/lib/navigation";
-// Direct imports — the barrel pulls in server-only components (ProjetThumb,
-// ProjetFiche) that fail to bundle client-side (they read node:fs via
-// fusion-data).
+import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import ChartSource from "@/components/fusion/ChartSource";
-import PageTOC from "@/components/fusion/PageTOC";
-import YearPicker from "@/components/fusion/YearPicker";
-import ExportRow from "@/components/fusion/ExportRow";
-import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
-import PageIntro from "@/components/fusion/PageIntro";
-import type { BlogPostMeta } from "@/lib/blog";
-import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
-import { slugifyLabel } from "@/lib/projet-utils";
-import { useT, useLocale, type Locale } from "@/lib/localeContext";
-import { useFmt } from "@/lib/use-fmt";
+import AnneesRail, { RAIL_MIN } from "@/components/fusion/AnneesRail";
+import SectionHero from "@/components/fiche/SectionHero";
+import ShareButton from "@/components/fiche/ShareButton";
+import Bars, { type BarRow } from "@/components/fiche/Bars";
+import { Door, NextDoor } from "@/components/fiche/Doors";
+import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import { useFmt, useFmtEur } from "@/lib/use-fmt";
+import { fill } from "@/lib/fmt";
+import { useLocale, useT, type Locale } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 import { trLabel } from "@/lib/label-translate";
-import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
-import fonctionLabels from "@/data/budget-fonction-labels.json";
+import { slugifyLabel } from "@/lib/projet-utils";
 import { NATURE_GROUPS } from "@/lib/budget-natures";
+import fonctionLabels from "@/data/budget-fonction-labels.json";
+import type { BlogPostMeta } from "@/lib/blog";
+import type { BudgetPageData } from "@/lib/fusion-data";
 
 type FonctionLabel = { fr: string; en: string; sub_fr?: string; sub_en?: string };
 const FONCTIONS: Record<string, FonctionLabel> = fonctionLabels as Record<string, FonctionLabel>;
-/** Le libellé clair d'une mission, avec les mots de la fiche de poste
- *  (`budget-fonction-labels.json`), repli sur la traduction générique. */
+/** Le libellé clair d'une mission, avec les mots de la fiche de poste. */
 function missionLabel(key: string, locale: Locale): string {
   const fl = FONCTIONS[key];
   return fl ? (locale === "en" ? fl.en : fl.fr) : trLabel(key, locale);
@@ -38,265 +36,295 @@ type BudgetIndexLite = {
   summary: { year: number; type_budget: "vote" | "execute" }[];
 };
 
+/** The three cuts of the year's budget. One chart, one switch. */
+type Group = "poste" | "nature" | "recettes";
+
+const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
+const SCENE_CAP = 6;
+const LINES_CAP = 5;
+const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
+
 type Props = {
   index: BudgetIndexLite;
   d: BudgetPageData;
-  /** Conservé pour la signature des pages appelantes ; la page v3 ne montre plus
-   *  le voté/exécuté (retiré à la demande de Daniel, 2026-09-04). */
-  voteExec: VoteExecuteData;
   posts: BlogPostMeta[];
+  /** Numbers for the doors, loaded by the page (null where the city has none). */
+  doors?: {
+    marches?: { year: number; total: number } | null;
+    subventions?: { year: number; total: number; count: number } | null;
+    invest?: { year: number; total: number } | null;
+  };
+  /** The year's largest worksite with a real photo (Paris). */
+  photo?: { year: number; id: string; nom: string; nomEn: string | null; montant: number; arrondissement: number | null; photoUrl: string; photoCredit: string | null } | null;
 };
 
-const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
-  {
-    category: "Explication",
-    title: "Vote, exécution, report : trois chiffres différents pour une même ligne budgétaire.",
-    description:
-      "Ce qu'une Ville annonce en décembre, paie sur l'année, puis reporte à l'année suivante — lecture pas-à-pas d'un même chapitre.",
-  },
-  {
-    category: "Analyse",
-    title: "Opérations pour ordre : pourquoi la moitié du budget parisien apparaît deux fois.",
-    description:
-      "Écritures internes, reversements, amortissements. Ce qui gonfle artificiellement le total, et ce que cela signifie pour comparer Paris à d'autres villes.",
-  },
-];
-
-/** Les catégories de flux du pipeline, regroupées en mots de tous les jours —
- *  la même table que le ruban de chaque fiche de poste et la fiche de nature. */
-const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
-
 /**
- * Page budget v3 (2026-09-08) — deux temps, validés en maquette avec Daniel :
- *   1. Combien : le chiffre de l'année, deux repères (par habitant, encaissé),
- *      la tendance en barres à côté (années votées hachurées). Le graphe
- *      « Évolution depuis 2019 » n'est plus une section.
- *   2. Dépenses et recettes : les deux colonnes, avec sur chaque ligne sa
- *      tendance et sa part, chaque ligne ouvrant la fiche de poste ; et une
- *      fois pour tout le budget, « sous quelle forme la Ville dépense ».
- * Puis les articles et les sources. Disparaissent : la bande de quatre
- * chiffres, la phrase « sur 100 € », le voté/exécuté, les écarts.
- * Partagée avec Marseille : population, chemins et libellés viennent de la
- * ville dans l'URL ; les blocs sans donnée (flux) ne se rendent pas.
+ * La section « Budget » sur la grammaire des fiches (2026-09-15), la même que
+ * Contrats publics : la réponse (un chiffre, sa phrase avec l'année en menu,
+ * « voté » dit dans le menu et hachuré sur le rail, la ligne grise, la
+ * tendance en ocre, « Partager », le rail des années sous le chiffre), UNE
+ * scène qui fait la somme du chiffre avec un commutateur — par poste, par
+ * nature, recettes — dont chaque barre ouvre une fiche, le chantier que paie
+ * le budget, les plus grosses lignes, « Comprendre » en replis, « Voir aussi »
+ * en portes chiffrées, la section suivante. Sur ordinateur, des bandes :
+ * chaque rangée ouvre sur deux titres à la même ligne.
+ * Partagée avec Marseille : sans nature (pas de flux), sans photo, portes
+ * selon ce que la ville publie.
  */
-export default function BudgetClient({ index, d, posts }: Props) {
+export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
   const t = useT();
-  const { fmtBillions, fmtDec, fmtInt } = useFmt();
   const { locale } = useLocale();
+  const track = useTrack();
+  const fmt = useFmt();
+  const { fmtDec, fmtCompactEur } = fmt;
+  // Inter draws the narrow no-break space of « 1 122 » as almost nothing.
+  const fmtInt = (n: number) => fmt.fmtInt(n).replace(/ /g, " ");
+  const fmtEur = useFmtEur();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
+  const cityName = CITY_NAMES[citySlug] ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
   const population = cityPopulation(citySlug);
-  const cityBasePath = `/france/${citySlug}/budget`;
+  const cityBase = `/france/${citySlug}`;
+  const budgetBase = `${cityBase}/budget`;
+  const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
+  const Amt = ({ n }: { n: number }) => { const f = fmtEur(n); return <span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{f.v}<span className="u">{f.u}</span></span>; };
+  const capFirst = (s: string) => (s ? s[0].toLocaleUpperCase(locale) + s.slice(1) : s);
+  // « Autres (D) », « Personnel (R) » : the sankey's suffix is not a word for the reader.
+  const label = (raw: string) => (raw.startsWith("Autres (") || raw.startsWith("Autre (") ? t("fx.bud.autres") : capFirst(trLabel(raw.replace(/\s\((D|R)\)$/, ""), locale)));
 
-  const fill = (key: string, vars: Record<string, string | number>) => {
-    let s = t(key);
-    for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
-    return s;
-  };
-  const eur = (n: number) => (n >= 1e9 ? `${fmtBillions(n)} ${t("fx.s.md_eur")}` : `${fmtInt(n / 1e6)} ${t("fx.s.m_eur")}`);
-  const Amt = ({ n, size = 15 }: { n: number; size?: number }) => (
-    <span className="fx-v3-amt tnum" style={{ fontSize: size }}>
-      {n >= 1e9 ? fmtBillions(n) : fmtInt(n / 1e6)}<span className="u">{n >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur")}</span>
-    </span>
-  );
-
+  /* ── The number: the year's spending, voted or executed ── */
   const yearType = index.summary.find((s) => s.year === d.year)?.type_budget ?? "execute";
   const isVoted = yearType === "vote";
-  const lastExecuted = index.summary.filter((s) => s.type_budget === "execute" && s.year < d.year).map((s) => s.year).sort((a, b) => b - a)[0];
+  const votedYears = index.votedYears ?? [];
+  const years = index.availableYears.slice().sort((a, b) => a - b);
+  const total = fmtCompactEur(d.depenses);
+  const prevYear = d.yearsSummary.filter((y) => y.year < d.year).sort((a, b) => b.year - a.year)[0];
+  const move = prevYear && prevYear.depenses > 0
+    ? (() => {
+        const pct = ((d.depenses - prevYear.depenses) / prevYear.depenses) * 100;
+        if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prevYear.year });
+        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prevYear.year });
+      })()
+    : undefined;
+  const series = d.yearsSummary.filter((y) => y.depenses > 0).map((y) => ({ year: y.year, amount: y.depenses }));
+  const provisional = d.yearsSummary.filter((y) => y.type === "vote").map((y) => y.year);
+  const shareTitle = fill(t("fx.sec.bud.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
 
-  /* ── La tendance : toutes les années publiées, la courante en noir ── */
-  const years = d.yearsSummary;
-  const maxDep = Math.max(...years.map((y) => y.depenses), 1);
-  const first = years[0];
-  const sinceFirst = first && first.year !== d.year && first.depenses > 0 ? ((d.depenses - first.depenses) / first.depenses) * 100 : null;
-  // « sur un an » = vs l'année publiée juste avant, quel que soit son statut —
-  // pas vs la dernière année complète (2022), qui faisait dire « vs 2022 » en 2024.
-  const prevYear = years.filter((y) => y.year < d.year).sort((a, b) => b.year - a.year)[0];
-  const deltaYear = prevYear && prevYear.depenses > 0 ? ((d.depenses - prevYear.depenses) / prevYear.depenses) * 100 : null;
-  const signed = (x: number) => `${x >= 0 ? "+" : "−"}${fmtDec(Math.abs(x), 1)} %`;
-
-  /* ── Les lignes : libellé, courbe, montant, part ── */
-  const Spark = ({ label }: { label: string }) => {
-    const pts = (d.series[label] ?? []).filter((p) => p.year <= d.year);
-    if (pts.length < 2) return <span />;
-    const m = Math.max(...pts.map((p) => p.value), 1);
-    return (
-      <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${eur(p.value)}`).join(" · ")}>
-        {pts.map((p) => (
-          <i key={p.year} className={`${p.year === d.year ? "now" : ""} ${p.type === "vote" ? "vote" : ""}`.trim()} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
-        ))}
-      </span>
-    );
-  };
-  // « Autres (D) », « Personnel (R) » : le suffixe de sens est un artefact du
-  // sankey (deux nœuds homonymes), pas un mot pour le lecteur.
-  const label = (raw: string) => (raw.startsWith("Autres (") || raw.startsWith("Autre (") ? t("fx.bud.autres") : trLabel(raw.replace(/\s\((D|R)\)$/, ""), locale));
-  // Au survol, la ligne dit ce qu'elle contient (trois missions, mêmes mots que
-  // la fiche) ; le chevron dit qu'elle s'ouvre. Sur écran tactile, le chevron seul.
-  const Row = ({ raw, value, total, missions = [] }: { raw: string; value: number; total: number; missions?: { key: string; value: number }[] }) => {
-    const peek = missions.length ? fill("fx.bud.v3.peek", { list: missions.map((m) => `${missionLabel(m.key, locale)} ${eur(m.value)}`).join(" · ") }) : undefined;
-    return (
-      <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row" data-peek={peek}>
-        <span className="n">{label(raw)}</span>
-        <Spark label={raw} />
-        <Amt n={value} size={14} />
-        <span className="p tnum">{Math.round((value / total) * 100)} %</span>
-        <span className="c" aria-hidden="true">›</span>
-      </Link>
-    );
-  };
-  // Une ligne sous 0,5 % du total n'apporte qu'un « 0 % » : on la tait.
+  /* ── The scene: the same euros, three cuts ── */
+  const [group, setGroup] = useState<Group>("poste");
   const dep = d.topDepenses.filter((x) => x.value / d.depenses >= 0.005);
   const rec = d.recettesBreakdown.filter((x) => x.value / d.recettes >= 0.005);
-  const sparkSpan = (() => { const ys = years.filter((y) => y.year <= d.year).map((y) => y.year); return ys.length > 1 ? `${ys[0]}–${ys[ys.length - 1]}` : String(d.year); })();
-
-  /* ── Sous quelle forme : les flux du drilldown regroupés en mots simples ── */
   const flowTotal = d.flowSplit.reduce((s, f) => s + f.value, 0);
-  const groups = FLOW_GROUPS.map((g) => ({ ...g, value: d.flowSplit.filter((f) => g.flows.includes(f.key)).reduce((s, f) => s + f.value, 0) }));
-  const grouped = groups.reduce((s, g) => s + g.value, 0);
-  const autres = flowTotal - grouped;
-  const flowRows = [...groups.filter((g) => g.value > 0), ...(autres > 0 ? [{ key: "autres", flows: [], color: "#c8ccd3", value: autres }] : [])]
-    .map((g) => ({ ...g, pct: flowTotal > 0 ? Math.round((g.value / flowTotal) * 100) : 0 }))
-    .filter((g) => g.pct >= 1);
+  const natureRows = FLOW_GROUPS
+    .map((g) => ({ ...g, value: d.flowSplit.filter((f) => g.flows.includes(f.key)).reduce((s, f) => s + f.value, 0) }))
+    .filter((g) => g.value > 0 && flowTotal > 0 && g.value / flowTotal >= 0.01)
+    .sort((a, b) => b.value - a.value);
+  const natureRest = flowTotal - natureRows.reduce((s, g) => s + g.value, 0);
+  const hasNature = natureRows.length > 1;
+  const GROUPS: Group[] = hasNature ? ["poste", "nature", "recettes"] : ["poste", "recettes"];
+  const pct = (v: number, of: number) => (of > 0 ? Math.round((v / of) * 100) : 0);
+  const sceneRows: Record<Group, BarRow[]> = {
+    poste: dep.map((x) => ({
+      key: x.label,
+      label: label(x.label),
+      value: x.value,
+      text: eurTxt(x.value),
+      sub: fill(t("fx.sec.bud.pct_dep"), { pct: pct(x.value, d.depenses) }),
+      href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
+    })),
+    nature: natureRows.map((g) => ({
+      key: g.key,
+      label: capFirst(t(`fx.bud.v3.flow.${g.key}`)),
+      value: g.value,
+      text: eurTxt(g.value),
+      sub: fill(t("fx.sec.bud.pct_dep"), { pct: pct(g.value, flowTotal) }),
+      href: `${budgetBase}/nature/${g.key}?year=${d.year}`,
+    })),
+    recettes: rec.map((x) => ({
+      key: x.label,
+      label: label(x.label),
+      value: x.value,
+      text: eurTxt(x.value),
+      sub: fill(t("fx.sec.bud.pct_rec"), { pct: pct(x.value, d.recettes) }),
+      href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
+    })),
+  };
+  const sceneFold: Partial<Record<Group, { id: string; label: string }>> = {
+    poste: { id: "more-postes", label: fill(t("fx.sec.bud.postes_more"), { n: fmtInt(dep.length) }) },
+    recettes: { id: "more-recettes", label: fill(t("fx.sec.bud.recettes_more"), { n: fmtInt(rec.length) }) },
+  };
+  const sceneFoot: Partial<Record<Group, BarRow>> = {
+    nature: natureRest > flowTotal * 0.005 ? { key: "__autres", label: capFirst(t("fx.bud.v3.flow.autres")), value: natureRest, text: eurTxt(natureRest), tone: "soft" } : undefined,
+  };
+  const pickGroup = (g: Group) => {
+    if (g === group) return;
+    track("filter_change", { page: "budget", field: "scene_group", value: g });
+    setGroup(g);
+  };
+
+  /* ── The heaviest lines of the year, inside the postes above: the mission
+     (« RSA », « Aide sociale à l'enfance ») reads better than the M57 nature the
+     line carries (« Aides aux personnes »), so the mission is the label and the
+     nature the grey line, with the poste. ── */
+  const natureName = (name: string) => {
+    // « Action Sociale: Subventions d'intervention », « RSA: Aides aux personnes » :
+    // the part before the colon is the poste or the mission, already said elsewhere.
+    const i = name.lastIndexOf(": ");
+    const raw = i > 0 && i + 2 < name.length ? name.slice(i + 2) : name;
+    return capFirst(trLabel(raw.replace(/\bhéberg\.(?=[\s,]|$)/i, "hébergement"), locale));
+  };
+  const lines = foldRest(
+    dep
+      .flatMap((x) => (x.subPostes ?? []).map((s) => ({ key: `${x.label}|${s.name}`, name: s.name, value: s.value, poste: x.label, fonction: s.fonction })))
+      .filter((l) => l.value > 0)
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 8),
+    LINES_CAP,
+  );
+  const LineRow = (l: { key: string; name: string; value: number; poste: string; fonction?: string }) => (
+    <V3Row
+      key={l.key}
+      href={`${budgetBase}/poste/${slugifyLabel(l.poste)}?year=${d.year}`}
+      label={l.fonction ? missionLabel(l.fonction, locale) : natureName(l.name)}
+      subText={[label(l.poste), l.fonction ? natureName(l.name) : null].filter(Boolean).join(" · ")}
+      amount={<Amt n={l.value} />}
+    />
+  );
+
+  const yearLabel = (y: number) => (votedYears.includes(y) ? `${y} · ${t("fx.sec.bud.voted_short")}` : String(y));
+  const photoName = photo ? ((locale === "en" && photo.nomEn) || photo.nom).split(/\s+-\s+/).join(" · ") : "";
 
   return (
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-
-      <PageTOC
-        items={[
-          { id: "sec-flux", label: t("fx.toc.flux") },
-          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
-          { id: "sec-sources", label: t("fx.toc.sources") },
-        ]}
-      />
-
-      <PageIntro
-        title={<>{t("fx.bud.title.before")}<em>{t("fx.bud.title.em")}</em>{t("fx.bud.title.after")}</>}
-        lede={t("fx.bud.lede.l1")}
-        actions={
-          <YearPicker
-            years={index.availableYears.slice().sort((a, b) => a - b)}
-            votedYears={index.votedYears ?? []}
-            current={d.year}
-            basePath={cityBasePath}
-            label={t("fx.bud.year_label")}
-          />
-        }
-      >
-        {isVoted && (
-          <p className="fx-bud-voted">
-            <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
-            {lastExecuted && <Link href={`${cityBasePath}?year=${lastExecuted}`}>{fill("fx.bud.voted_notice_cta", { year: lastExecuted })}</Link>}
-          </p>
-        )}
-      </PageIntro>
-
-      <section className="fx-section" id="sec-flux">
-        <div className="fx-wrap fx-v3 fx-bud-v3">
-
-          <div className="fx-v3-herogrid">
-            <div>
-              <div className="fx-v3-hero-num tnum">{fmtBillions(d.depenses)}<span className="u">{t("fx.s.md_eur")}</span></div>
-              <div className="fx-v3-hero-cap">{fill(isVoted ? "fx.bud.v3.cap_vote" : "fx.bud.v3.cap_exec", { year: d.year })}</div>
-              <div className="fx-v3-hero-meta">
-                {population > 0 ? `${fill("fx.bud.v3.par_hab", { n: fmtInt(d.depenses / population) })} · ` : ""}
-                {fill(isVoted ? "fx.bud.v3.recettes_vote" : "fx.bud.v3.recettes_exec", { rec: eur(d.recettes) })}
-              </div>
-            </div>
-            {years.length > 1 && (
-              <div className="fx-v3-trend">
-                <div className="t">
-                  {deltaYear != null && <b>{signed(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
-                  {sinceFirst != null && <span> · {signed(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+        <div className="fx-sec fx-v3">
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.bud.kicker")}</div>
+          <div className="fx-sec-grid" data-photo={photo ? "1" : "0"}>
+            <div className="fx-sec-a-hero">
+              <SectionHero
+                title={t("fx.sec.bud.title")}
+                value={total.value}
+                unit={total.unit}
+                captionBefore={t(isVoted ? "fx.sec.bud.cap_before_vote" : "fx.sec.bud.cap_before")}
+                captionAfter={t(isVoted ? "fx.sec.bud.cap_after_vote" : "fx.sec.bud.cap_after_exec")}
+                years={years}
+                year={d.year}
+                yearLabel={yearLabel}
+                basePath={budgetBase}
+                meta={fill(t(isVoted ? "fx.sec.bud.meta_vote" : "fx.sec.bud.meta"), { hab: population > 0 ? fmtInt(Math.round(d.depenses / population)) : "—", rec: eurTxt(d.recettes) })}
+                move={move}
+                shareTitle={shareTitle}
+              />
+              {series.length >= RAIL_MIN ? (
+                <div className="fx-sec-years" data-section="years">
+                  <div className="fx-page-kicker">{t("fx.sec.years")}</div>
+                  <AnneesRail rows={series} current={d.year} provisional={provisional} />
                 </div>
-                <div className="bars" aria-hidden="true">
-                  {years.map((y) => (
-                    <div key={y.year} className={`${y.year === d.year ? "now" : ""} ${y.type === "vote" ? "vote" : ""}`.trim()} title={`${y.year} · ${eur(y.depenses)}`}>
-                      <b style={{ height: Math.max(3, Math.round((y.depenses / maxDep) * 50)) }} />
-                      <span>{y.year}</span>
-                    </div>
+              ) : null}
+            </div>
+
+            <div className="fx-sec-a-scene">
+              <V3Section id="scene" title={fill(t("fx.sec.bud.h.scene"), { year: d.year })} sub={t("fx.sec.bud.scene_sub")}>
+                <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
+                  {GROUPS.map((g) => (
+                    <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
                   ))}
                 </div>
-              </div>
-            )}
-          </div>
-
-          <h2 className="fx-v3-h2">{t("fx.bud.v3.h2")}</h2>
-          <p className="fx-v3-h2sub">{fill("fx.bud.v3.h2sub", { span: sparkSpan })}</p>
-
-          <div className="fx-bud-cols">
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eur(d.depenses)}</span></h3>
-              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} missions={x.topMissions} />)}
-            </div>
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eur(d.recettes)}</span></h3>
-              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} missions={x.topMissions} />)}
-              {flowRows.length > 1 && (
-                <div className="fx-bud-forme">
-                  <div className="h">{t("fx.bud.v3.forme")}</div>
-                  {/* Chaque segment et chaque mot de la légende ouvrent la fiche de la nature :
-                      « les salaires, combien, et où ils vont poste par poste ». Pas de fiche pour « autres ».
-                      Le ruban est un raccourci à la souris : un segment de 2 % ne peut pas mesurer 24 px sans
-                      fausser la proportion. Chaque lien a son jumeau dans la légende, assez grand au doigt et
-                      au clavier ; le ruban sort donc de la tabulation et des lecteurs d'écran. */}
-                  <div className="stack" aria-hidden="true">
-                    {flowRows.map((g) => g.key === "autres"
-                      ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
-                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false} tabIndex={-1} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
-                  </div>
-                  <div className="legend">
-                    {flowRows.map((g) => g.key === "autres"
-                      ? <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
-                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
-                  </div>
-                  <p className="note">{fill("fx.bud.v3.forme_note", { pct: Math.round(d.flowCoveragePct) })}</p>
+                <div id="budget-scene" className="fx-sec-scene-body">
+                  {group === "recettes" ? (
+                    <p className="fx-sec-sentence"><b>{eurTxt(d.recettes)}</b> {t(isVoted ? "fx.sec.bud.rec_sentence_vote" : "fx.sec.bud.rec_sentence")}</p>
+                  ) : null}
+                  <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} footRow={sceneFoot[group]} />
+                  {group === "nature" ? <p className="fx-v3-note">{fill(t("fx.bud.v3.forme_note"), { pct: Math.round(d.flowCoveragePct) })}</p> : null}
                 </div>
-              )}
+                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="budget-scene" />
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-photo">
+              {photo ? (
+                <V3Section id="photo" title={fill(t("fx.sec.bud.h.photo"), { year: photo.year })}>
+                  <figure className="fx-sec-photo">
+                    <Link href={`${cityBase}/investissements/projet/${encodeURIComponent(photo.id)}`} scroll={false} className="fx-sec-photo-img" aria-hidden="true" tabIndex={-1}>
+                      <img src={photo.photoUrl} alt="" loading="lazy" />
+                    </Link>
+                    <figcaption className="fx-sec-photo-cap">
+                      <Link href={`${cityBase}/investissements/projet/${encodeURIComponent(photo.id)}`} scroll={false} className="t">{photoName} ›</Link>
+                      <span className="s">
+                        {[photo.arrondissement ? fill(t("fx.sec.bud.photo_arr"), { n: photo.arrondissement }) : null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}
+                        {" · "}<Link href={`${cityBase}/investissements`}>{t("fx.sec.bud.photo_all")} ›</Link>
+                      </span>
+                      {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
+                    </figcaption>
+                  </figure>
+                </V3Section>
+              ) : null}
+            </div>
+
+            <div className="fx-sec-a-rows">
+              {lines.shown.length > 0 ? (
+                <V3Section id="lines" title={fill(t("fx.sec.bud.h.lines"), { year: d.year })} sub={t("fx.sec.bud.lines_sub")}>
+                  {lines.shown.map(LineRow)}
+                  {lines.rest.length > 0 && <V3Fold id="more-lines" text label={t("fx.v3.voir_plus")}>{lines.rest.map(LineRow)}</V3Fold>}
+                </V3Section>
+              ) : null}
+            </div>
+
+            <div className="fx-sec-a-understand">
+              <V3Section id="understand" title={t("fx.sec.understand")}>
+                <V3Fold id="vote" label={t("fx.sec.bud.u.vote")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.vote_body")}</p></V3Fold>
+                <V3Fold id="mesure" label={t("fx.sec.bud.u.mesure")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.mesure_body")}</p></V3Fold>
+                <V3Fold id="sources" label={t("fx.sec.bud.u.source")}>
+                  <p className="fx-v3-sentence">{t("fx.sec.bud.u.source_body")}</p>
+                  <p className="fx-v3-sentence">
+                    <a href="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
+                    {" · "}
+                    <a href={`/api/budget/${d.year}/csv`} download={`budget-${citySlug}-${d.year}.csv`}>CSV {d.year} ↗</a>
+                    {" · "}
+                    <a href={`/data/budget_sankey_${d.year}.json`} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
+                    {" · "}
+                    <Link href="/methode?tool=budget#outils">{t("fx.s.methode_complete")}</Link>
+                  </p>
+                </V3Fold>
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-related">
+              <V3Section id="related" title={t("fx.sec.see_also")}>
+                {doors?.marches ? (
+                  <Door href={`${cityBase}/marches?year=${doors.marches.year}`} hard title={fill(t("fx.related.marches_section"), { year: doors.marches.year })} sub={t("fx.sec.bud.r.marches_sub")} value={fmtCompactEur(doors.marches.total).value} unit={fmtCompactEur(doors.marches.total).unit} />
+                ) : (
+                  <Door href={`${cityBase}/marches`} hard title={t("fx.sec.bud.r.marches")} sub={t("fx.sec.bud.r.marches_sub")} />
+                )}
+                {doors?.subventions ? (
+                  <Door href={`${cityBase}/subventions?year=${doors.subventions.year}`} hard title={fill(t("fx.sec.bud.r.subventions"), { year: doors.subventions.year })} sub={fill(t("fx.sec.bud.r.subventions_sub"), { n: fmtInt(doors.subventions.count) })} value={fmtCompactEur(doors.subventions.total).value} unit={fmtCompactEur(doors.subventions.total).unit} />
+                ) : (
+                  <Door href={`${cityBase}/subventions`} hard title={t("fx.sec.bud.r.subventions_noyear")} sub={t("fx.sec.bud.r.subventions_sub_noyear")} />
+                )}
+                <Door href={`${cityBase}/dette`} hard title={t("fx.sec.bud.r.dette")} sub={t("fx.sec.bud.r.dette_sub")} />
+                {posts.map((p) => (
+                  <V3Row key={p.slug} href={`/analyses/${p.slug}`} label={p.title} subText={t("fx.sec.bud.r.read")} />
+                ))}
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-next">
+              <NextDoor
+                href={`${cityBase}/investissements`}
+                kicker={t("fx.sec.next")}
+                title={t("fx.sec.bud.next")}
+                sub={doors?.invest ? fill(t("fx.sec.bud.next_sub_n"), { year: doors.invest.year }) : t("fx.sec.bud.next_sub")}
+                value={doors?.invest ? fmtCompactEur(doors.invest.total).value : undefined}
+                unit={doors?.invest ? fmtCompactEur(doors.invest.total).unit : undefined}
+              />
+            </div>
+
+            <div className="fx-sec-a-foot">
+              <V3Foot>{t("fx.sec.bud.foot")}</V3Foot>
             </div>
           </div>
-
-          <ChartSource
-            source={t("fx.bud.s03.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-            methodAnchor="budget"
-          />
         </div>
-      </section>
-
-      <RelatedArticles posts={posts} placeholders={BUD_PLACEHOLDERS} />
-
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <Link href="/methode#budget" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</Link>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>{t("fx.footer.source_label")}</b> : {t("fx.bud.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.bud.footer.coverage")}
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill("fx.bud.s06.export.csv", { year: d.year, status: isVoted ? t("fx.bud.s01.kpi.voted").toLowerCase() : t("fx.bud.s01.kpi.executed").toLowerCase() }),
-                primary: true,
-                href: `/api/budget/${d.year}/csv`,
-                download: `budget-${citySlug}-${d.year}.csv`,
-              },
-              {
-                label: t("fx.bud.s06.export.json"),
-                href: `/data/budget_sankey_${d.year}.json`,
-                download: `budget-${citySlug}-${d.year}.json`,
-              },
-              { label: t("fx.bud.s06.export.api"), href: undefined },
-              { label: t("fx.bud.s06.export.method"), href: "/methode?tool=budget#outils" },
-            ]}
-          />
-        </div>
-      </section>
-
       </main>
       <Footer />
     </div>

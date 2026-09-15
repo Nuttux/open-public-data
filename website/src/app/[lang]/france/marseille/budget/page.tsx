@@ -4,7 +4,8 @@ import "@/app/fusion.css";
 import {
   loadBudgetIndex,
   loadBudgetPageData,
-  type VoteExecuteData,
+  marchesDoorTotal,
+  subventionsYearTotal,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
@@ -34,22 +35,20 @@ export default async function BudgetPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const index = loadBudgetIndex("marseille");
   const d = loadBudgetPageData(requestedYear, "marseille");
-  // No voteExec data for Marseille (Paris-specific reconciliation not built yet).
-  // Empty stub matching the real shape — BudgetClient renders the EmptyState
-  // branch when rows is empty (no execution data available).
-  const voteExec: VoteExecuteData = {
-    comparisonYears: [],
-    forecastYears: [],
-    rows: [],
-    topEcarts: [],
-  };
   const posts = getPostsForPage("budget");
+  // The doors carry the numbers the city publishes; none of the rest (no photo, no investment total).
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    marches: safe(() => marchesDoorTotal("marseille", d.year)),
+    subventions: safe(() => subventionsYearTotal("marseille", d.year)),
+    invest: null,
+  };
 
   const locale = await readLocale();
   return (
     <>
       <FrHubJsonLd hub={marseilleBudgetHub()} locale={locale} />
-      <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />
+      <BudgetClient index={index} d={d} posts={posts} doors={doors} photo={null} />
     </>
   );
 }

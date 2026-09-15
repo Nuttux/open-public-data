@@ -2929,6 +2929,58 @@ export function loadInvestLatest(): { year: number; total: number } | null {
   return total > 0 ? { year: Number(last.year), total } : null;
 }
 
+/** The year's largest investment project with a real photo: the material
+ *  moment of the Budget page (« Ce que paie le budget de 2024 »). Paris only. */
+export function loadInvestPhotoOfYear(year: number): { year: number; id: string; nom: string; nomEn: string | null; montant: number; arrondissement: number | null; photoUrl: string; photoCredit: string | null } | null {
+  const f = readJsonOrNull<{ data?: Array<{ id?: string; nom_projet?: string; montant?: number; arrondissement?: number | string | null }> }>(`map/investissements_complet_${year}.json`);
+  if (!f?.data?.length) return null;
+  const photos = readJsonOrNull<{ items?: Record<string, { photo_url?: string | null; credit?: string | null }> }>("enrichment/projet_photos.json")?.items ?? {};
+  const namesEn = readJsonOrNull<Record<string, string>>("enrichment/projet_names_en.json") ?? {};
+  const best = f.data
+    .filter((p) => p.id && photos[p.id]?.photo_url)
+    .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0))[0];
+  if (!best?.id) return null;
+  const ph = photos[best.id];
+  return {
+    year,
+    id: best.id,
+    nom: best.nom_projet ?? "",
+    nomEn: typeof namesEn[best.id] === "string" ? namesEn[best.id] : null,
+    montant: Number(best.montant ?? 0),
+    arrondissement: Number(best.arrondissement) || null,
+    photoUrl: ph.photo_url!,
+    photoCredit: ph.credit ?? null,
+  };
+}
+
+/** The year's subventions total from the index, for a door; the latest
+ *  published year when the requested one is not. */
+export function subventionsYearTotal(city: string, year: number): { year: number; total: number; count: number } | null {
+  const idx = readJsonOrNull<{ totalsByYear?: Record<string, { montant_total?: number; nb_subventions?: number }>; previewYears?: number[] }>(cityJsonPath(city, "subventions/index.json"));
+  const totals = idx?.totalsByYear ?? {};
+  const preview = new Set(idx?.previewYears ?? []);
+  const pick = (y: number) => {
+    const t = totals[String(y)];
+    return t && Number(t.montant_total ?? 0) > 0 ? { year: y, total: Number(t.montant_total), count: Number(t.nb_subventions ?? 0) } : null;
+  };
+  const hit = preview.has(year) ? null : pick(year);
+  if (hit) return hit;
+  const years = Object.keys(totals).map(Number).filter((y) => Number.isFinite(y) && !preview.has(y)).sort((a, b) => b - a);
+  for (const y of years) { const p = pick(y); if (p) return p; }
+  return null;
+}
+
+/** The marchés total for a door: the year when published, else the latest complete year. */
+export function marchesDoorTotal(city: string, year: number): { year: number; total: number } | null {
+  const idx = readJsonOrNull<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
+  const currentYear = new Date().getFullYear();
+  const years = (idx?.availableYears ?? []).filter((y) => y < currentYear).sort((a, b) => a - b);
+  const y = years.includes(year) ? year : years[years.length - 1];
+  if (!y) return null;
+  const total = marchesYearTotal(city, y);
+  return total > 0 ? { year: y, total } : null;
+}
+
 /** L'investissement de l'exercice de la page quand il est publié (la porte
  *  « Chantiers » d'une page 2020 parle de 2020), sinon le dernier publié. */
 export function loadInvestForYear(year: number): { year: number; total: number } | null {

@@ -20911,6 +20911,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-years { margin: 0 0 40px; }
 .theme-fusion .fx-sec-years .fx-page-kicker { margin-bottom: 10px; }
 .theme-fusion .fx-v3-years > button.cur i { background: var(--ink); }
+/* A year not yet executed (a voted budget): hatched, in the same hue. */
+.theme-fusion .fx-v3-years > button.prov i { background: repeating-linear-gradient(135deg, var(--bleu) 0 3px, transparent 3px 5px); }
+.theme-fusion .fx-v3-years > button.cur.prov i { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, transparent 3px 5px); }
+/* The scene keeps one height whatever the cut, on every section page. */
+@media (min-width: 960px) { .theme-fusion .fx-sec-a-scene .fx-sec-scene-body { min-height: 400px; } }
 /* The search is a tool, not a chapter: a kicker above the field. */
 .theme-fusion .fx-sec-searchblk .fx-page-kicker { margin-bottom: 0; }
 .theme-fusion .fx-sec-searchblk .fx-search-wrap--fiche .fx-search-inner { padding-top: 10px; }

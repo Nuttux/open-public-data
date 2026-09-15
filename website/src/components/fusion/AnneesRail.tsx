@@ -46,11 +46,14 @@ export default function AnneesRail({
   format,
   countText,
   current,
+  provisional,
 }: {
   rows: RailRow[];
   tone?: "x" | "w";
   /** L'exercice de la page : sa barre est en encre, pour se retrouver dans la série. */
   current?: number;
+  /** Les exercices pas encore arrêtés (un budget voté, pas exécuté) : barre hachurée. */
+  provisional?: number[];
   delibs?: Record<string, RailDelib[]> | null;
   /** Genre de délibération montré sous ce rail (« subvention », « travaux »). */
   genre?: string;
@@ -112,7 +115,7 @@ export default function AnneesRail({
           );
           if (r === undefined) return <div key={y} className={`hors${bord(i)}`} data-tip={titre}>{corps}</div>;
           return (
-            <button key={y} type="button" className={`${sel === y ? "on" : ""}${y === current ? " cur" : ""}${bord(i)}`}
+            <button key={y} type="button" className={`${sel === y ? "on" : ""}${y === current ? " cur" : ""}${provisional?.includes(y) ? " prov" : ""}${bord(i)}`}
                     aria-expanded={sel === y}
                     aria-current={y === current ? "true" : undefined}
                     aria-label={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
