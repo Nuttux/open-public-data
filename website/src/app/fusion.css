@@ -20820,6 +20820,12 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   /* Subventions (2026-09-15): the number faces « Qui reçoit », the search
      runs across, then « Comprendre » faces « Voir aussi ». */
   .theme-fusion .fx-sec-grid[data-layout="subventions"] { grid-template-areas: "hero scene" "search search" "understand related" "next next" "foot foot"; }
+  /* Dette (2026-09-15): the number faces who the City owes; the guarantees
+     face what it owns; « Comprendre » faces « Voir aussi ». Without a
+     detailed balance sheet (Marseille), the number faces « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="dette"] { grid-template-areas: "hero scene" "rows second" "understand related" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-grid[data-layout="dette"] .fx-sec-a-second { grid-area: second; }
+  .theme-fusion .fx-sec-grid[data-layout="dette-lite"] { grid-template-areas: "hero related" "understand understand" "next next" "foot foot"; }
   .theme-fusion .fx-sec-a-where { grid-area: where; }
   /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
@@ -21043,10 +21049,15 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 }
 /* The three photos sit under the years rail, in the number's column. */
 .theme-fusion .fx-sec-a-hero .fx-sec-years { margin-bottom: 30px; }
+/* A years rail inside a block (the yearly cost of the debt), between the bars and the note. */
+.theme-fusion .fx-sec-years--in { margin: 22px 0 6px; }
 /* Inside a section page the map stands alone: no frame, no legend, no hover
    box — the bars under it are the readable version, with the exact numbers.
    The phone keeps its one-line hint, in the kit's face. */
 .theme-fusion .fx-sec-nuee { margin-top: 10px; }
+.theme-fusion .fx-sec-list { margin: 6px 0 0; padding-left: 20px; list-style: disc outside; font-size: 14px; line-height: 1.5; color: var(--ink); }
+.theme-fusion .fx-sec-list li + li { margin-top: 4px; }
+.theme-fusion .fx-sec-list li::marker { color: var(--muted); }
 .theme-fusion .fx-sec-choro { margin: 10px 0 4px; }
 .theme-fusion .fx-sec-choro .fx-choropleth { display: block; margin-top: 0; }
 .theme-fusion .fx-sec-choro .fx-choropleth-map { border: 0; padding: 0; background: transparent; }
