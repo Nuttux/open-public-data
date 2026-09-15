@@ -7,6 +7,7 @@ import { fill, sufOrdinal } from "@/lib/fmt";
 import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Hero, V3Row, V3Section } from "@/components/fiche/v3";
+import { NextDoor } from "@/components/fiche/Doors";
 import { useFmt } from "@/lib/use-fmt";
 import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 import { displayOrgName } from "@/lib/fournisseur-display";
@@ -38,6 +39,16 @@ export default function ArrondissementLogementFiche({
         caption={fill(t("fx.arr_log.hero_cap"), { year: data.year })}
         meta={fill(t(data.nbOperations === 1 ? "fx.arr_log.meta1" : "fx.arr_log.meta"), { n: data.nbOperations, share: Math.round(data.shareCity), rank: `${data.rank}${sufOrdinal(data.rank, locale)}` })}
       />
+      {/* The way up to the section, in the first screen: readers arrive here
+       *  from a search engine and leave without a second page. */}
+      {data.section ? (
+        <p className="fx-fiche-secline">
+          <Link href={`${basePath}/logement?year=${data.section.year}`}>
+            {fill(t("fx.arr_log.section_line"), { year: data.section.year, n: fmtInt(data.section.financed), pct: fmtDec(data.section.sruRatio, 1) })}
+            <span aria-hidden="true" className="muted">{" ›"}</span>
+          </Link>
+        </p>
+      ) : null}
 
       {(data.series?.length ?? 0) >= RAIL_MIN && (
         <V3Section title={t("fx.arr_log.h.annees")}>
@@ -67,6 +78,18 @@ export default function ArrondissementLogementFiche({
           />
         </V3Section>
       )}
+
+      {/* The way out that is not the footer: the next arrondissement by funded homes. */}
+      {data.next ? (
+        <NextDoor
+          href={`${basePath}/logement/arrondissement/${data.next.slug}`}
+          kicker={t("fx.arr_log.next_kicker")}
+          title={data.next.label}
+          sub={fill(t("fx.arr_log.next_sub"), { n: fmtInt(data.next.totalLogements), year: data.year, rank: `${data.next.rank}${sufOrdinal(data.next.rank, locale)}`, total: data.next.total })}
+          value={fmtInt(data.next.totalLogements)}
+          unit={t(data.next.totalLogements === 1 ? "fx.arr_log.unit_one" : "fx.arr_log.unit")}
+        />
+      ) : null}
     </div>
   );
 }
