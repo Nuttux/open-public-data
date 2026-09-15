@@ -1668,7 +1668,10 @@ export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"
   const yr = requestedYear && idx.availableYears.includes(requestedYear)
     ? requestedYear
     : defaultYear;
-  const prev = idx.availableYears.find((y) => y !== yr) ?? yr;
+  // The year before the page's year — not the first of the list, which made a
+  // 2019 page compare its recipients to 2024 (consolidated years only).
+  const sortedYears = idx.availableYears.slice().sort((a, b) => b - a);
+  const prev = sortedYears.find((y) => y < yr && !preview.has(y)) ?? sortedYears.find((y) => y !== yr) ?? yr;
   const ben = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${yr}.json`));
 
   // Pre-load every available year once — used for the top-10 history and the

@@ -93,7 +93,14 @@ rows), `where` (by
 arrondissement with the choropleth — `choropleth_click` — or the markers map —
 `filter_change` `field = where_view`, `value` = `arrondissements` | `carte`,
 `page = investissements`; the map is loaded only when asked for),
-`understand`, `related`, `next`. On a project fiche, the line under the
+`understand`, `related`, `next`. Subventions (since 2026-09-15): `hero`,
+`years`, `examples` (recipients in photo, `role = photo`), `scene` (by theme,
+by recipient — ten rows and « the others » — or one dot per recipient, the
+beeswarm loaded on demand: `filter_change` `field = scene_group`, `value` =
+`theme` | `benef` | `nuee`, `page = subventions`), `search` (`search_submit`,
+`search_seed_click`, `search_result_click` with `page = subventions`),
+`movers` (« Ce qui a bougé », rows opening a recipient), `understand`,
+`related`, `next`. On a project fiche, the line under the
 figure that leads back to the section is a `link_click` with `role = door`;
 the rank and the chapter in the figure's grey line are `hero_meta`; the
 similar projects are thumbnail rows (`role = row`); the « Chantier suivant »

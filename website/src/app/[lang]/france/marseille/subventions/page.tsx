@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadQuiRecoitData, loadQuiRecoitIndex } from "@/lib/fusion-data";
+import { budgetDoorTotal, loadLogementSocialData, loadQuiRecoitData, loadQuiRecoitIndex, marchesDoorTotal } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleSubventionsHub } from "@/lib/seo/sections/marseille";
-import QuiRecoitClient from "@/app/[lang]/france/paris/subventions/QuiRecoitClient";
+import SubventionsClient from "@/app/[lang]/france/paris/subventions/SubventionsClient";
 
 // POC v1 Marseille subventions — réutilise QuiRecoitClient avec data Marseille.
 // Limites POC connues (cf. memory project_marseille_v1_decisions, P3.2 option a) :
@@ -31,14 +31,19 @@ export default async function QuiRecoitPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const idx = loadQuiRecoitIndex("marseille");
   const d = loadQuiRecoitData(requestedYear, "marseille");
-  // No Marseille-specific blog posts yet — empty list filters out the
-  // RelatedArticles section (handled inside QuiRecoitClient).
-  const posts: Parameters<typeof QuiRecoitClient>[0]["posts"] = [];
+  // No Marseille-specific blog posts yet.
+  const posts: Parameters<typeof SubventionsClient>[0]["posts"] = [];
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    budget: safe(() => budgetDoorTotal("marseille", d.year)),
+    marches: safe(() => marchesDoorTotal("marseille", d.year)),
+    next: safe(() => { const l = loadLogementSocialData(undefined, "marseille"); return l.stockTotal > 0 ? { total: l.stockTotal, year: l.sruYear } : null; }),
+  };
   const locale = await readLocale();
   return (
     <>
       <FrHubJsonLd hub={marseilleSubventionsHub()} locale={locale} />
-      <QuiRecoitClient idx={idx} d={d} posts={posts} />
+      <SubventionsClient idx={idx} d={d} posts={posts} doors={doors} />
     </>
   );
 }
