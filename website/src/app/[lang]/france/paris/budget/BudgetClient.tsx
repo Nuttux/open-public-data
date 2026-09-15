@@ -8,7 +8,6 @@ import Footer from "@/components/fusion/Footer";
 import AnneesRail, { RAIL_MIN } from "@/components/fusion/AnneesRail";
 import SectionHero from "@/components/fiche/SectionHero";
 import ShareButton from "@/components/fiche/ShareButton";
-import Bars, { type BarRow } from "@/components/fiche/Bars";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
@@ -36,12 +35,11 @@ type BudgetIndexLite = {
   summary: { year: number; type_budget: "vote" | "execute" }[];
 };
 
-/** The two cuts of the year's spending. One chart, one switch. Revenue is not
- *  a cut of the same euros: it has its own block, with its own total. */
+/** The two ways to read the spending column: the City's postes, or what kind
+ *  of money it is (salaries, grants, works…). Revenue has its own column. */
 type Group = "poste" | "nature";
 
 const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
-const SCENE_CAP = 6;
 const LINES_CAP = 5;
 const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
 
@@ -58,21 +56,18 @@ type Props = {
 };
 
 /**
- * La section « Budget » sur la grammaire des fiches (2026-09-15), la même que
- * Contrats publics : la réponse (un chiffre, sa phrase avec l'année en menu,
- * « voté » dit dans le menu et hachuré sur le rail, la ligne grise, la
- * tendance en ocre, « Partager », le rail des années sous le chiffre), UNE
- * scène qui fait la somme du chiffre avec un commutateur — par poste, par
- * nature — dont chaque barre ouvre une fiche ; puis « D'où vient l'argent »,
- * les recettes toujours visibles avec leur propre total et l'emprunt séparé
- * d'un trait (Daniel, 2026-09-15 : « la plupart des gens ne lisent pas
- * 11,10 de recettes contre 11,02 de dépenses comme un excédent comptable »),
- * les plus grosses lignes, « Comprendre » en replis, « Voir aussi » en portes
- * chiffrées, la section suivante. Sur ordinateur, des bandes : chaque rangée
- * ouvre sur deux titres à la même ligne ; sur téléphone, dépenses puis
- * recettes se suivent, chaque titre portant son total.
- * Partagée avec Marseille : sans nature (pas de flux), portes selon ce que la
- * ville publie.
+ * La section « Budget » sur la grammaire des fiches (2026-09-15) : la
+ * réponse (un chiffre, sa phrase avec l'année en menu, « voté » dit dans le
+ * menu, la ligne grise, la tendance en ocre, « Partager ») avec le rail des
+ * années en face, hachuré pour les années votées ; puis le tableau que Daniel
+ * a voulu garder de la page d'avant : DÉPENSES ET RECETTES FACE À FACE, chaque
+ * ligne avec sa petite courbe, son montant, sa part et son chevron, chaque
+ * ligne ouvrant sa fiche ; la colonne des dépenses se lit par poste ou par
+ * nature ; l'emprunt est séparé d'un trait en bas des recettes, et une phrase
+ * dit l'écart en langage courant. Ensuite les plus grosses lignes,
+ * « Comprendre », « Voir aussi » en portes chiffrées, la section suivante.
+ * Partagée avec Marseille : sans nature (pas de flux), portes selon ce que
+ * la ville publie.
  */
 export default function BudgetClient({ index, d, posts, doors }: Props) {
   const t = useT();
@@ -113,9 +108,11 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
   const series = d.yearsSummary.filter((y) => y.depenses > 0).map((y) => ({ year: y.year, amount: y.depenses }));
   const provisional = d.yearsSummary.filter((y) => y.type === "vote").map((y) => y.year);
   const shareTitle = fill(t("fx.sec.bud.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
+  const yearLabel = (y: number) => (votedYears.includes(y) ? `${y} · ${t("fx.sec.bud.voted_short")}` : String(y));
 
-  /* ── The scene: the same euros, three cuts ── */
+  /* ── The table: spending and revenue face to face ── */
   const [group, setGroup] = useState<Group>("poste");
+  // A line under 0.5 % of its column only brings a « 0 % »: left out.
   const dep = d.topDepenses.filter((x) => x.value / d.depenses >= 0.005);
   const rec = d.recettesBreakdown.filter((x) => x.value / d.recettes >= 0.005);
   const flowTotal = d.flowSplit.reduce((s, f) => s + f.value, 0);
@@ -125,55 +122,50 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
     .sort((a, b) => b.value - a.value);
   const natureRest = flowTotal - natureRows.reduce((s, g) => s + g.value, 0);
   const hasNature = natureRows.length > 1;
-  const GROUPS: Group[] = hasNature ? ["poste", "nature"] : ["poste"];
-  const pct = (v: number, of: number) => (of > 0 ? Math.round((v / of) * 100) : 0);
-  const sceneRows: Record<Group, BarRow[]> = {
-    poste: dep.map((x) => ({
-      key: x.label,
-      label: label(x.label),
-      value: x.value,
-      text: eurTxt(x.value),
-      sub: fill(t("fx.sec.bud.pct_dep"), { pct: pct(x.value, d.depenses) }),
-      href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
-    })),
-    nature: natureRows.map((g) => ({
-      key: g.key,
-      label: capFirst(t(`fx.bud.v3.flow.${g.key}`)),
-      value: g.value,
-      text: eurTxt(g.value),
-      sub: fill(t("fx.sec.bud.pct_dep"), { pct: pct(g.value, flowTotal) }),
-      href: `${budgetBase}/nature/${g.key}?year=${d.year}`,
-    })),
-  };
-  const sceneFold: Partial<Record<Group, { id: string; label: string }>> = {
-    poste: { id: "more-postes", label: fill(t("fx.sec.bud.postes_more"), { n: fmtInt(dep.length) }) },
-  };
-
-  /* ── Where the money comes from: its own block, its own total; borrowing
-     set apart under a rule, because it is not income but debt to repay. ── */
-  const emprunt = rec.find((x) => /emprunt|borrow/i.test(x.label));
-  const recRow = (x: (typeof rec)[number]): BarRow => ({
-    key: x.label,
-    label: label(x.label),
-    value: x.value,
-    text: eurTxt(x.value),
-    sub: fill(t("fx.sec.bud.pct_rec"), { pct: pct(x.value, d.recettes) }),
-    href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
-  });
-  const recRows = rec.filter((x) => x !== emprunt).map(recRow);
-  const empruntRow: BarRow | undefined = emprunt ? { ...recRow(emprunt), sub: t("fx.sec.bud.emprunt_sub"), tone: "soft", separated: true } : undefined;
-  const recNet = d.recettes - (emprunt?.value ?? 0);
-  const balance = emprunt
-    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { rec: eurTxt(d.recettes), emp: eurTxt(emprunt.value), net: eurTxt(recNet) })
-    : fill(t(isVoted ? "fx.sec.bud.rec_only_vote" : "fx.sec.bud.rec_only"), { rec: eurTxt(d.recettes) });
-  const sceneFoot: Partial<Record<Group, BarRow>> = {
-    nature: natureRest > flowTotal * 0.005 ? { key: "__autres", label: capFirst(t("fx.bud.v3.flow.autres")), value: natureRest, text: eurTxt(natureRest), tone: "soft" } : undefined,
-  };
   const pickGroup = (g: Group) => {
     if (g === group) return;
     track("filter_change", { page: "budget", field: "scene_group", value: g });
     setGroup(g);
   };
+  const sparkYears = d.yearsSummary.filter((y) => y.year <= d.year).map((y) => y.year);
+  const sparkSpan = sparkYears.length > 1 ? `${sparkYears[0]}–${sparkYears[sparkYears.length - 1]}` : String(d.year);
+  /** The line's own years, tiny: grey executed, hatched voted, blue the year shown. */
+  const Spark = ({ raw }: { raw: string }) => {
+    const pts = (d.series[raw] ?? []).filter((p) => p.year <= d.year);
+    if (pts.length < 2) return <span />;
+    const m = Math.max(...pts.map((p) => p.value), 1);
+    return (
+      <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${eurTxt(p.value)}`).join(" · ")}>
+        {pts.map((p) => (
+          <i key={p.year} className={`${p.year === d.year ? "now" : ""} ${p.type === "vote" ? "vote" : ""}`.trim()} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
+        ))}
+      </span>
+    );
+  };
+  type RowProps = { raw: string; value: number; total: number; href: string; missions?: { key: string; value: number }[]; swatch?: string; sub?: string; sep?: boolean; noSpark?: boolean; text?: string };
+  const Row = ({ raw, value, total: of, href, missions = [], swatch, sub, sep, noSpark, text }: RowProps) => {
+    const peek = missions.length ? fill(t("fx.bud.v3.peek"), { list: missions.map((m) => `${missionLabel(m.key, locale)} ${eurTxt(m.value)}`).join(" · ") }) : undefined;
+    return (
+      <Link href={href} scroll={false} className={`fx-bud-row${sep ? " sep" : ""}`} data-peek={peek}>
+        <span className="n">
+          {swatch ? <i className="sw" style={{ background: swatch }} aria-hidden="true" /> : null}
+          {text ?? label(raw)}
+          {sub ? <span className="sub">{sub}</span> : null}
+        </span>
+        <span className="sp">{noSpark ? null : <Spark raw={raw} />}</span>
+        <Amt n={value} />
+        <span className="p tnum">{Math.round((value / of) * 100)} %</span>
+        <span className="c" aria-hidden="true">›</span>
+      </Link>
+    );
+  };
+  // Borrowing sits apart at the bottom of the revenue: money to repay, not income.
+  const emprunt = rec.find((x) => /emprunt|borrow/i.test(x.label));
+  const recRows = rec.filter((x) => x !== emprunt);
+  const recNet = d.recettes - (emprunt?.value ?? 0);
+  const balance = emprunt
+    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { rec: eurTxt(d.recettes), emp: eurTxt(emprunt.value), net: eurTxt(recNet) })
+    : fill(t(isVoted ? "fx.sec.bud.rec_only_vote" : "fx.sec.bud.rec_only"), { rec: eurTxt(d.recettes) });
 
   /* ── The heaviest lines of the year, inside the postes above: the mission
      (« RSA », « Aide sociale à l'enfance ») reads better than the M57 nature the
@@ -204,15 +196,13 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
     />
   );
 
-  const yearLabel = (y: number) => (votedYears.includes(y) ? `${y} · ${t("fx.sec.bud.voted_short")}` : String(y));
-
   return (
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3">
           <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.bud.kicker")}</div>
-          <div className="fx-sec-grid" data-photo="1">
+          <div className="fx-sec-grid" data-layout="budget">
             <div className="fx-sec-a-hero">
               <SectionHero
                 title={t("fx.sec.bud.title")}
@@ -228,6 +218,9 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                 move={move}
                 shareTitle={shareTitle}
               />
+            </div>
+
+            <div className="fx-sec-a-rail">
               {series.length >= RAIL_MIN ? (
                 <div className="fx-sec-years" data-section="years">
                   <div className="fx-page-kicker">{t("fx.sec.years")}</div>
@@ -236,26 +229,41 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
               ) : null}
             </div>
 
-            <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={fill(t("fx.sec.bud.h.scene"), { year: d.year })} sub={fill(t("fx.sec.bud.scene_sub"), { total: `${total.value} ${total.unit}` })}>
-                {GROUPS.length > 1 ? (
-                  <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
-                    {GROUPS.map((g) => (
-                      <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
-                    ))}
+            <div className="fx-sec-a-table">
+              <V3Section id="scene" title={fill(t("fx.sec.bud.h.table"), { year: d.year })} sub={fill(t("fx.sec.bud.table_sub"), { span: sparkSpan })}>
+                <div id="budget-scene" className="fx-bud-cols">
+                  <div className="fx-bud-col">
+                    <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eurTxt(d.depenses)}</span></h3>
+                    {hasNature ? (
+                      <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
+                        {(["poste", "nature"] as Group[]).map((g) => (
+                          <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
+                        ))}
+                      </div>
+                    ) : null}
+                    {group === "poste"
+                      ? dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)
+                      : (
+                        <>
+                          {natureRows.map((g) => <Row key={g.key} raw={g.key} text={capFirst(t(`fx.bud.v3.flow.${g.key}`))} value={g.value} total={flowTotal} swatch={g.color} noSpark href={`${budgetBase}/nature/${g.key}?year=${d.year}`} />)}
+                          {natureRest > flowTotal * 0.005 ? (
+                            <div className="fx-bud-row fx-bud-row--static">
+                              <span className="n"><i className="sw" style={{ background: "#c8ccd3" }} aria-hidden="true" />{capFirst(t("fx.bud.v3.flow.autres"))}</span>
+                              <span className="sp" /><Amt n={natureRest} /><span className="p tnum">{Math.round((natureRest / flowTotal) * 100)} %</span><span className="c" />
+                            </div>
+                          ) : null}
+                          <p className="fx-v3-note">{fill(t("fx.bud.v3.forme_note"), { pct: Math.round(d.flowCoveragePct) })}</p>
+                        </>
+                      )}
                   </div>
-                ) : null}
-                <div id="budget-scene" className="fx-sec-scene-body">
-                  <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} footRow={sceneFoot[group]} />
-                  {group === "nature" ? <p className="fx-v3-note">{fill(t("fx.bud.v3.forme_note"), { pct: Math.round(d.flowCoveragePct) })}</p> : null}
+                  <div className="fx-bud-col">
+                    <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eurTxt(d.recettes)}</span></h3>
+                    {recRows.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)}
+                    {emprunt ? <Row raw={emprunt.label} value={emprunt.value} total={d.recettes} sub={t("fx.sec.bud.emprunt_sub")} sep href={`${budgetBase}/poste/${slugifyLabel(emprunt.label)}?year=${d.year}`} /> : null}
+                    <p className="fx-sec-sentence">{balance}</p>
+                  </div>
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="budget-scene" />
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-second">
-              <V3Section id="recettes" title={fill(t("fx.sec.bud.h.recettes"), { year: d.year })} sub={balance}>
-                <Bars rows={recRows} cap={SCENE_CAP} foldId="more-recettes" foldLabel={fill(t("fx.sec.bud.recettes_more"), { n: fmtInt(recRows.length) })} footRow={empruntRow} />
               </V3Section>
             </div>
 
@@ -266,25 +274,6 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                   {lines.rest.length > 0 && <V3Fold id="more-lines" text label={t("fx.v3.voir_plus")}>{lines.rest.map(LineRow)}</V3Fold>}
                 </V3Section>
               ) : null}
-            </div>
-
-            <div className="fx-sec-a-understand">
-              <V3Section id="understand" title={t("fx.sec.understand")}>
-                <V3Fold id="vote" label={t("fx.sec.bud.u.vote")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.vote_body")}</p></V3Fold>
-                <V3Fold id="mesure" label={t("fx.sec.bud.u.mesure")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.mesure_body")}</p></V3Fold>
-                <V3Fold id="sources" label={t("fx.sec.bud.u.source")}>
-                  <p className="fx-v3-sentence">{t("fx.sec.bud.u.source_body")}</p>
-                  <p className="fx-v3-sentence">
-                    <a href="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
-                    {" · "}
-                    <a href={`/api/budget/${d.year}/csv`} download={`budget-${citySlug}-${d.year}.csv`}>CSV {d.year} ↗</a>
-                    {" · "}
-                    <a href={`/data/budget_sankey_${d.year}.json`} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
-                    {" · "}
-                    <Link href="/methode?tool=budget#outils">{t("fx.s.methode_complete")}</Link>
-                  </p>
-                </V3Fold>
-              </V3Section>
             </div>
 
             <div className="fx-sec-a-related">
@@ -303,6 +292,25 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                 {posts.map((p) => (
                   <V3Row key={p.slug} href={`/analyses/${p.slug}`} label={p.title} subText={t("fx.sec.bud.r.read")} />
                 ))}
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-understand">
+              <V3Section id="understand" title={t("fx.sec.understand")}>
+                <V3Fold id="vote" label={t("fx.sec.bud.u.vote")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.vote_body")}</p></V3Fold>
+                <V3Fold id="mesure" label={t("fx.sec.bud.u.mesure")}><p className="fx-v3-sentence">{t("fx.sec.bud.u.mesure_body")}</p></V3Fold>
+                <V3Fold id="sources" label={t("fx.sec.bud.u.source")}>
+                  <p className="fx-v3-sentence">{t("fx.sec.bud.u.source_body")}</p>
+                  <p className="fx-v3-sentence">
+                    <a href="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
+                    {" · "}
+                    <a href={`/api/budget/${d.year}/csv`} download={`budget-${citySlug}-${d.year}.csv`}>CSV {d.year} ↗</a>
+                    {" · "}
+                    <a href={`/data/budget_sankey_${d.year}.json`} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
+                    {" · "}
+                    <Link href="/methode?tool=budget#outils">{t("fx.s.methode_complete")}</Link>
+                  </p>
+                </V3Fold>
               </V3Section>
             </div>
 

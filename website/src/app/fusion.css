@@ -20784,9 +20784,17 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
     grid-template-areas: "hero scene" "search search" "photo rows" "understand related" "next next" "foot foot";
   }
   .theme-fusion .fx-sec-a-photo { grid-area: photo; }
-  /* The same slot for a second block that is not a photo (Budget: where the money comes from). */
+  /* The same slot for a second block that is not a photo. */
   .theme-fusion .fx-sec-a-second { grid-area: photo; }
   .theme-fusion .fx-sec-grid[data-photo="0"] .fx-sec-a-photo { display: none; }
+  /* Budget (2026-09-15, Daniel kept the table of the page before): the number
+     faces its years rail, then the table — spending and revenue face to face —
+     runs the full width, then the heaviest lines face « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="budget"] { grid-template-areas: "hero rail" "table table" "rows related" "understand understand" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-grid[data-layout="budget"] .fx-sec-a-hero { align-self: start; }
+  .theme-fusion .fx-sec-a-rail { grid-area: rail; align-self: end; }
+  .theme-fusion .fx-sec-a-rail .fx-sec-years { margin-bottom: 26px; }
+  .theme-fusion .fx-sec-a-table { grid-area: table; }
   /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
@@ -20924,6 +20932,30 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-v3-years > button.cur.prov i { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, transparent 3px 5px); }
 /* The scene keeps one height whatever the cut, on every section page. */
 @media (min-width: 960px) { .theme-fusion .fx-sec-a-scene .fx-sec-scene-body { min-height: 400px; } }
+/* The budget table in the kit: grey rules, small-caps column heads with the
+   column's total, rows that open a fiche (chevron at the right edge, blue on
+   hover), a colour square on the « par nature » rows, borrowing set apart. */
+.theme-fusion .fx-sec .fx-bud-cols { margin-top: 12px; gap: 44px; }
+.theme-fusion .fx-sec .fx-bud-col h3 { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 2px; align-items: baseline; }
+.theme-fusion .fx-sec .fx-bud-col h3 .tnum { font-family: var(--f-disp); font-size: 14px; letter-spacing: -.02em; text-transform: none; color: var(--ink); font-weight: 700; }
+.theme-fusion .fx-sec .fx-bud-col .fx-sec-switch { margin: 6px 0 0; }
+.theme-fusion .fx-sec .fx-bud-col .fx-sec-switch button { font-size: 13px; padding: 5px 0; min-height: 28px; }
+.theme-fusion .fx-sec .fx-bud-row { border-bottom-color: var(--rule-2); border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+.theme-fusion .fx-sec .fx-bud-row:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+.theme-fusion .fx-sec .fx-bud-row:hover .n { color: var(--bleu); }
+.theme-fusion .fx-sec .fx-bud-row .n .sw { display: inline-block; width: 9px; height: 9px; margin-right: 8px; vertical-align: -1px; }
+.theme-fusion .fx-sec .fx-bud-row .n .sub { display: block; font-size: 12px; color: var(--muted); font-weight: 400; white-space: normal; }
+.theme-fusion .fx-sec .fx-bud-row.sep { border-top: 1px solid var(--ink-2); margin-top: 10px; padding-top: 12px; border-radius: 0 0 8px 8px; }
+.theme-fusion .fx-sec .fx-bud-row.sep .n { white-space: normal; }
+.theme-fusion .fx-sec .fx-bud-row.sep .fx-v3-amt, .theme-fusion .fx-sec .fx-bud-row.sep .p { color: var(--muted); }
+.theme-fusion .fx-sec .fx-bud-col .fx-sec-sentence { font-size: 13.5px; margin-top: 14px; }
+.theme-fusion .fx-sec .fx-bud-row .sp { display: inline-flex; justify-content: flex-end; }
+@media (max-width: 700px) {
+  /* Phone: no curve (five pixels a bar say nothing), the label keeps the room; label, amount, share, chevron. */
+  .theme-fusion .fx-sec .fx-bud-row { grid-template-columns: minmax(0, 1fr) 80px 34px 10px; padding-inline: 0; margin-inline: 0; border-radius: 0; }
+  .theme-fusion .fx-sec .fx-bud-row .sp { display: none; }
+  .theme-fusion .fx-sec .fx-bud-cols { gap: 34px; }
+}
 /* The search is a tool, not a chapter: a kicker above the field. */
 .theme-fusion .fx-sec-searchblk .fx-page-kicker { margin-bottom: 0; }
 .theme-fusion .fx-sec-searchblk .fx-search-wrap--fiche .fx-search-inner { padding-top: 10px; }
