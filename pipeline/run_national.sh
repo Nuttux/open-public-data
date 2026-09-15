@@ -27,8 +27,8 @@
 #                volume) : DGFiP balances, balance croisée nature-fonction, OFGL
 #                consolidée, REI, Fonds vert, RNE, SIRENE. Chaque table écrite
 #                est notée ; rien de noté → arrêt.
-#   2. dbt     — les modèles en aval des seules tables écrites
-#                (source:national_raw.<table>+), puis leurs tests.
+#   2. dbt     — les modèles en aval des tables écrites et tout ce qu'ils
+#                lisent (@source:national_raw.<table>), puis leurs tests.
 #   3. export  — les exports qui lisent ces modèles, pour toutes les communes.
 #   4. check   — chaque manifeste neuf face à celui du dépôt.
 #   5. upload  — les dossiers de communes exportés, vers le bucket.
@@ -97,7 +97,11 @@ if [[ "$CADENCE" == "annual" ]]; then
 
     step "2/5 dbt : en aval de $CHANGED ($TARGET)"
     SELECT=""
-    for t in $CHANGED; do SELECT="$SELECT source:national_raw.$t+"; done
+    # « @source » = la source, son aval, ET tous les amonts de cet aval. Le simple
+    # « source+ » a fait tomber le premier run prod (2026-09-15) : le mart des taux
+    # fonciers, en aval de l'OFGL, lit aussi stg_rei_taux, que rien n'avait
+    # construit parce que le REI n'avait pas bougé.
+    for t in $CHANGED; do SELECT="$SELECT @source:national_raw.$t"; done
     (cd "$PIPELINE_DIR" && dbt seed --target "$TARGET" --select seed_comptes_libelles_simples seed_nomenclature_comptes)
     (cd "$PIPELINE_DIR" && dbt run --target "$TARGET" --select $SELECT)
     (cd "$PIPELINE_DIR" && dbt test --target "$TARGET" --select $SELECT)
