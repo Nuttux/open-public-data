@@ -21032,7 +21032,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* Inside a section page the choropleth's labels follow the kit: Inter small
    capitals in grey, no monospace. */
 .theme-fusion .fx-sec-choro .fx-choropleth-hint, .theme-fusion .fx-sec-choro .fx-choropleth-legend-label, .theme-fusion .fx-sec-choro .fx-choropleth-legend-bounds, .theme-fusion .fx-sec-choro .fx-choropleth-count, .theme-fusion .fx-sec-choro .fx-choropleth-arr { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .06em; color: var(--muted); }
-.theme-fusion .fx-sec-choro .fx-choropleth-legend-bounds *, .theme-fusion .fx-sec-choro .fx-choropleth-hint-mobile { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+.theme-fusion .fx-sec-choro .fx-choropleth-legend-bounds *, .theme-fusion .fx-sec-choro .fx-choropleth-legend-step span, .theme-fusion .fx-sec-choro .fx-choropleth-hint-mobile { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .04em; text-transform: none; color: var(--muted); }
 .theme-fusion .fx-sec-choro .fx-choropleth-total, .theme-fusion .fx-sec-choro .fx-choropleth-amount { font-family: var(--f-disp); }
 .theme-fusion .fx-sec-choro .fx-choropleth-tooltip { border-color: var(--rule); }
 /* No hover on a phone: the box that says « hover an arrondissement » and
