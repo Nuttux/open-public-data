@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadLogementSocialData } from "@/lib/fusion-data";
+import { budgetDoorTotal, detteDoorTotal, garantiesDoorTotal, loadLogementSocialData } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleLogementHub } from "@/lib/seo/sections/marseille";
-import LogementSocialClient from "@/app/[lang]/france/paris/logement/LogementSocialClient";
+import LogementClient from "@/app/[lang]/france/paris/logement/LogementClient";
 
 // POC v1 Marseille — réutilise LogementSocialClient Paris avec data Marseille.
 // Limites POC connues (P3.2 option a — sections disparaissent silencieusement) :
@@ -30,14 +30,20 @@ export default async function LogementSocialMarseillePage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadLogementSocialData(requestedYear, "marseille");
-  // No Marseille-specific blog posts yet — empty list filters out the
-  // RelatedArticles section (handled inside LogementSocialClient).
-  const posts: Parameters<typeof LogementSocialClient>[0]["posts"] = [];
+  // No Marseille-specific blog posts yet.
+  const posts: Parameters<typeof LogementClient>[0]["posts"] = [];
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    garanties: safe(() => garantiesDoorTotal("marseille")),
+    budget: safe(() => budgetDoorTotal("marseille", d.year)),
+    invest: null,
+    next: safe(() => detteDoorTotal("marseille", d.year)),
+  };
   const locale = await readLocale();
   return (
     <>
       <FrHubJsonLd hub={marseilleLogementHub()} locale={locale} />
-      <LogementSocialClient sruArr={null} d={d} posts={posts} />
+      <LogementClient sruArr={null} d={d} posts={posts} doors={doors} />
     </>
   );
 }

@@ -3048,6 +3048,16 @@ export function detteDoorTotal(city: string, year: number): { year: number; tota
   return total > 0 ? { year: y, total } : null;
 }
 
+/** The guarantees for a door: the capital the City still guarantees for its
+ *  landlords and operators, at the latest published off-balance-sheet year. */
+export function garantiesDoorTotal(city: string): { year: number; total: number } | null {
+  const idx = readJsonOrNull<{ latestYear?: number }>(cityJsonPath(city, "hors_bilan_index.json"));
+  if (!idx?.latestYear) return null;
+  const hb = readJsonOrNull<{ totals?: { capital_restant?: number } }>(cityJsonPath(city, `hors_bilan_${idx.latestYear}.json`));
+  const total = Number(hb?.totals?.capital_restant ?? 0);
+  return total > 0 ? { year: idx.latestYear, total } : null;
+}
+
 /** The budget for a door: the year's spending from the budget index, the
  *  executed account before the voted budget when both exist, the latest
  *  year when the page's year has none. */
@@ -4809,6 +4819,12 @@ export type ArrondissementLogementData = {
   byBailleur: Array<{ name: string; nbLogements: number; nbOperations: number; href?: string | null }>;
   /** Logements financés dans la zone, exercice par exercice publié. */
   series?: { year: number; amount: number }[];
+  /** The section this zone belongs to, for the door in the first screen: the
+   *  year's funded homes in the city and the share of social housing. */
+  section: { year: number; financed: number; sruRatio: number; sruYear: number } | null;
+  /** The next zone by funded homes (the first one after the last): the way
+   *  out of the fiche that is not the footer. */
+  next: { slug: string; label: string; totalLogements: number; rank: number; total: number } | null;
 };
 
 /** Matches the label convention used in ParisChoropleth: arr 1-4 aggregate
@@ -4943,6 +4959,17 @@ export function loadArrondissementLogement(
 
   const zones = zoneTotals(file);
   const rank = zones.filter((z) => z.total > totalLogements).length + 1;
+  // The next zone in the same ranking (after the last, the first).
+  const ranked = zones.slice().sort((a, b) => b.total - a.total);
+  const at = ranked.findIndex((z) => z.key === slug);
+  const nextAt = at >= 0 && ranked.length > 1 ? (at + 1) % ranked.length : -1;
+  const next = nextAt >= 0 ? { slug: ranked[nextAt].key, label: labelFor(ranked[nextAt].key), totalLogements: ranked[nextAt].total, rank: nextAt + 1, total: ranked.length } : null;
+  const section = (() => {
+    try {
+      const s = loadLogementSocialData(year);
+      return { year: s.year, financed: s.nouveauxParAn, sruRatio: s.sruRatio, sruYear: s.sruYear };
+    } catch { return null; }
+  })();
 
   return {
     year,
@@ -4954,6 +4981,8 @@ export function loadArrondissementLogement(
     nbOperations,
     shareCity,
     rank,
+    section,
+    next,
     projects,
     byBailleur: buildByBailleur(projects).map((b) => ({ ...b, href: bailleurHrefFor(b.name) })),
     // Chaque exercice publié, lu dans son propre fichier : une année à zéro

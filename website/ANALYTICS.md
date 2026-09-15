@@ -99,7 +99,12 @@ by recipient — ten rows and « the others » — or one dot per recipient, the
 beeswarm loaded on demand: `filter_change` `field = scene_group`, `value` =
 `theme` | `benef` | `nuee`, `page = subventions`), `search` (`search_submit`,
 `search_seed_click`, `search_result_click` with `page = subventions`),
-`understand`, `related`, `next`. On a project fiche, the line under the
+`understand`, `related`, `next`. Logement (since 2026-09-15): `hero` (the
+share of social housing), `years` (funded homes), `attente` (the waiting list,
+four rows), `scene` (the twenty arrondissements — `filter_change`
+`field = scene_group`, `value` = `part` | `financed` | `attente`,
+`page = logement`), `bailleurs` (rows opening a landlord), `understand`,
+`related`, `next`. On a project fiche, the line under the
 figure that leads back to the section is a `link_click` with `role = door`;
 the rank and the chapter in the figure's grey line are `hero_meta`; the
 similar projects are thumbnail rows (`role = row`); the « Chantier suivant »

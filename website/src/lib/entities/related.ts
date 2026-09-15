@@ -17,7 +17,7 @@ import { rowObjet } from "@/lib/objet-normalizer";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
 import { sumLots } from "@/lib/marches-shape";
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
-import { loadInvestForYear, loadInvestLatest, marchesDomainesOfYear, marchesYearTotal, subventionsYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
+import { loadInvestForYear, loadInvestLatest, loadLogementSocialData, marchesDomainesOfYear, marchesYearTotal, subventionsYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
 import { dedupMixedSources } from "@/lib/marches-dedup";
 import { domaineLabel } from "@/lib/marches-domaines";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -112,6 +112,24 @@ export function subventionsSectionRow(city: string, year: number | null, locale:
     label: t("fx.related.subv_section", { year: y }),
     sub: t("fx.related.subv_section_sub"),
     ...(s ? { amount: eur(s.total, locale) } : {}),
+    group: t("fx.related.g.context"),
+  };
+}
+
+/** The same door for the Logement section: the year's funded homes. */
+export function logementSectionRow(year: number | null, locale: L): RelatedRow {
+  const t = relatedT(locale);
+  let s: { year: number; financed: number } | null = null;
+  try {
+    const d = loadLogementSocialData(year ?? undefined, "paris");
+    s = { year: d.year, financed: d.nouveauxParAn };
+  } catch { s = null; }
+  const y = s?.year ?? year ?? new Date().getFullYear() - 1;
+  return {
+    href: `/france/paris/logement?year=${y}`,
+    label: t("fx.related.logement_section", { year: y }),
+    sub: t("fx.related.logement_section_sub"),
+    ...(s ? { amount: { v: relatedInt(s.financed, locale), u: locale === "en" ? "homes" : "logements" } } : {}),
     group: t("fx.related.g.context"),
   };
 }
@@ -655,9 +673,10 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   if (at >= 0 && at < seq.length - 1) out.push({ ...row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")), group: t("fx.related.g.prev_next") });
   if (lens === "invest") {
     out.push({ ...investSectionRow(null, locale), group: t("fx.related.g.context") });
+  } else if (lens === "logement") {
+    out.push({ ...logementSectionRow(null, locale), group: t("fx.related.g.context") });
   } else {
-    const hub = { logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
-    out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`), group: t("fx.related.g.context") });
+    out.push({ href: `${ARR_BASE}/dette`, label: t("fx.related.arr.hub_garanties"), sub: t("fx.related.arr.hub_garanties_sub"), group: t("fx.related.g.context") });
   }
   return { title: t("fx.related.title"), sub: null, rows: out };
 }
