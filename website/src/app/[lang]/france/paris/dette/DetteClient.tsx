@@ -298,7 +298,7 @@ export default function DetteClient({ d, structure, horsBilan, posts, cost, cost
                 <V3Fold id="regle" label={t("fx.sec.dette.u.regle")}>
                   <p className="fx-v3-sentence">{t("fx.sec.dette.u.regle_intro")}</p>
                   <ul className="fx-sec-list">
-                    {[1, 2, 3, 4].map((k) => <li key={k}>{t(`fx.det.s01.r${k}.h`)}</li>)}
+                    {[1, 2, 3, 4].map((k) => <li key={k}>{t(`fx.sec.dette.u.regle_${k}`)}</li>)}
                   </ul>
                 </V3Fold>
                 <V3Fold id="sources" label={t("fx.sec.dette.u.source")}>

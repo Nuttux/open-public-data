@@ -21055,8 +21055,9 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
    box — the bars under it are the readable version, with the exact numbers.
    The phone keeps its one-line hint, in the kit's face. */
 .theme-fusion .fx-sec-nuee { margin-top: 10px; }
-.theme-fusion .fx-sec-list { margin: 6px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+.theme-fusion .fx-sec-list { margin: 6px 0 0; padding-left: 20px; list-style: disc outside; font-size: 14px; line-height: 1.5; color: var(--ink); }
 .theme-fusion .fx-sec-list li + li { margin-top: 4px; }
+.theme-fusion .fx-sec-list li::marker { color: var(--muted); }
 .theme-fusion .fx-sec-choro { margin: 10px 0 4px; }
 .theme-fusion .fx-sec-choro .fx-choropleth { display: block; margin-top: 0; }
 .theme-fusion .fx-sec-choro .fx-choropleth-map { border: 0; padding: 0; background: transparent; }
