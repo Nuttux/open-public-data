@@ -94,7 +94,10 @@ arrondissement with the choropleth — `choropleth_click` — or the markers map
 `filter_change` `field = where_view`, `value` = `arrondissements` | `carte`,
 `page = investissements`; the map is loaded only when asked for),
 `understand`, `related`, `next`. On a project fiche, the line under the
-figure that leads back to the section is a `link_click` with `role = door`.
+figure that leads back to the section is a `link_click` with `role = door`;
+the rank and the chapter in the figure's grey line are `hero_meta`; the
+similar projects are thumbnail rows (`role = row`); the « Chantier suivant »
+card at the foot is `next`.
 
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`

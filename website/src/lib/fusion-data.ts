@@ -1138,7 +1138,8 @@ export type ProjetFiche = {
   typologieRank: { rank: number; total: number; typologie: string } | null;
   /** Rank parmi tous les projets du même arrondissement, même exercice. */
   arrRank: { rank: number; total: number; arr: number } | null;
-  /** Projets similaires (même typologie + top montants) — pour "voir aussi". */
+  /** Projets similaires (même typologie + top montants) — pour "voir aussi",
+   *  avec leur image : c'est la photo qui fait cliquer. */
   similaires: {
     id: string;
     name: string;
@@ -1146,7 +1147,14 @@ export type ProjetFiche = {
     montant: number;
     arrondissement: number;
     typologie: string | null;
+    photo: ProjetPhotoResolved;
   }[];
+  /** The chapter fiche this project's service maps to, when one exists:
+   *  the chapter name in the first screen is a link, not a dead word. */
+  chapitreSlug: string | null;
+  /** The next project of the same arrondissement by amount (the first one
+   *  after the last): the way out of the fiche that is not the footer. */
+  next: { id: string; name: string; name_en?: string; montant: number; arrondissement: number; rank: number; total: number } | null;
   /** Matchs projet ↔ marchés publics (rapprochement heuristique). */
   marches: ProjetMarche[];
   /** Couverture du rapprochement projet↔marchés sur les projets NOMMÉS
@@ -1435,16 +1443,25 @@ export function loadProjet(id: string): ProjetFiche | null {
       if (rank > 0) typologieRank = { rank, total: sameTypo.length, typologie };
     }
 
-    // Rank by arrondissement + same year
+    // Rank by arrondissement + same year, and the next project of the same
+    // arrondissement (after the last one, the first): the fiche's way out.
     let arrRank: ProjetFiche["arrRank"] = null;
+    let next: ProjetFiche["next"] = null;
     if (arrondissement > 0) {
       const sameArr = cohort.data
-        .filter((p) => Number(p.arrondissement) === arrondissement)
+        .filter((p) => Number(p.arrondissement) === arrondissement && p.id && hasUsableName(p))
         .slice()
         .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
       const rank = sameArr.findIndex((p) => p.id === r.id) + 1;
       if (rank > 0) arrRank = { rank, total: sameArr.length, arr: arrondissement };
+      if (rank > 0 && sameArr.length > 1) {
+        const at = rank % sameArr.length; // the one after; wraps to the first
+        const n = sameArr[at];
+        next = { id: n.id, name: n.nom_projet as string, name_en: getProjetNameEn(n.id) ?? undefined, montant: Number(n.montant ?? 0), arrondissement, rank: at + 1, total: sameArr.length };
+      }
     }
+    const m57 = serviceToM57(r.chapitre_libelle);
+    const chapitreSlug = m57 && loadChapitre(slugifyChapitre(m57)) ? slugifyChapitre(m57) : null;
 
     // Similar projects — same typologie, different id, top montants
     const similaires: ProjetFiche["similaires"] = [];
@@ -1467,6 +1484,7 @@ export function loadProjet(id: string): ProjetFiche | null {
           montant: Number(peer.montant ?? 0),
           arrondissement: Number(peer.arrondissement) || 0,
           typologie: pvv?.typologie_normalisee ?? null,
+          photo: resolveProjetPhoto(peer.id, peer.nom_projet),
         });
       }
     }
@@ -1497,6 +1515,8 @@ export function loadProjet(id: string): ProjetFiche | null {
         const s = loadInvestForYear(y);
         return s && s.year === y ? { year: y, total: s.total, nb: cohort.data.length } : null;
       })(),
+      chapitreSlug,
+      next,
     };
   }
   return null;
