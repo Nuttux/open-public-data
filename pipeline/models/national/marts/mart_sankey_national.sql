@@ -2,6 +2,7 @@
   config(
     enabled=true,
     materialized='table',
+    cluster_by=['code_insee'],
     tags=['national', 'marts']
   )
 }}

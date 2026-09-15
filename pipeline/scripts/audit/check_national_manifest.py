@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Contrôle d'un manifeste national avant l'envoi au bucket.
+Contrôle d'un manifeste national avant l'envoi au bucket (marchés, budget,
+évolution, investissements, chantiers, fonctions, taux, maires).
 
 Compare le manifeste que l'export vient d'écrire (website/src/data/…) à la
 version commitée dans le dépôt (git HEAD). Un export qui a perdu des communes ou
@@ -27,8 +28,18 @@ MAX_LOST_SHARE = 0.02
 MAX_TOTAL_DROP = 0.10
 
 
-def total(manifest: dict) -> float:
-    return sum(float(c.get("montant") or 0) for c in manifest.get("communes", {}).values())
+# Le champ qui porte l'argent, selon le manifeste : marchés et chantiers
+# (montant), investissements (depenses), fonctions (total). Budget, évolution,
+# taux et maires n'ont pas de somme : seul le nombre de communes est contrôlé.
+MONEY_FIELDS = ("montant", "depenses", "total")
+
+
+def total(manifest: dict) -> float | None:
+    values = [c for c in manifest.get("communes", {}).values() if isinstance(c, dict)]
+    for field in MONEY_FIELDS:
+        if any(field in c for c in values):
+            return sum(float(c.get(field) or 0) for c in values)
+    return None
 
 
 def main() -> int:
@@ -47,12 +58,12 @@ def main() -> int:
     lost = sorted(set(old.get("communes", {})) - set(new.get("communes", {})))
     t_old, t_new = total(old), total(new)
     print(f"  communes : {n_old} → {n_new} ({len(lost)} perdues, {n_new - n_old + len(lost)} nouvelles)")
-    print(f"  montant  : {t_old / 1e9:.2f} → {t_new / 1e9:.2f} Md€ ({(t_new - t_old) / t_old:+.1%})" if t_old else "  montant : —")
+    print(f"  montant  : {t_old / 1e9:.2f} → {t_new / 1e9:.2f} Md€ ({(t_new - t_old) / t_old:+.1%})" if t_old and t_new is not None else "  montant  : — (pas de somme dans ce manifeste)")
 
     failures = []
     if n_old and len(lost) / n_old > MAX_LOST_SHARE:
         failures.append(f"{len(lost)} communes perdues sur {n_old} (> {MAX_LOST_SHARE:.0%}), dont {', '.join(lost[:8])}")
-    if t_old and (t_old - t_new) / t_old > MAX_TOTAL_DROP:
+    if t_old and t_new is not None and (t_old - t_new) / t_old > MAX_TOTAL_DROP:
         failures.append(f"montant total en baisse de {(t_old - t_new) / t_old:.0%} (> {MAX_TOTAL_DROP:.0%})")
     if failures:
         print("✗ envoi refusé :\n  " + "\n  ".join(failures))

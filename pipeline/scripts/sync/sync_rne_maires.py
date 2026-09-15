@@ -12,8 +12,15 @@ prénom, fonction, dates de mandat et de fonction. La date de naissance, la
 catégorie socioprofessionnelle, la nationalité et le sexe ne sont jamais
 chargés, même en privé.
 
+Mise à jour automatique (2026-09-14) : le répertoire est un état courant, la
+table est donc remplacée en entier, mais seulement quand data.gouv.fr publie une
+nouvelle version (URL et date rangées dans la description), et jamais par un
+fichier qui compterait moins de 90 % des élus actuels (_national_raw).
+
 Usage :
-    python scripts/sync/sync_rne_maires.py
+    python scripts/sync/sync_rne_maires.py              # charge si nouvelle version
+    python scripts/sync/sync_rne_maires.py --dry-run    # dit s'il y a une nouvelle version
+    python scripts/sync/sync_rne_maires.py --force
 """
 from __future__ import annotations
 
@@ -23,7 +30,11 @@ import json
 import subprocess
 import sys
 import urllib.request
+import argparse
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _national_raw as NR  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "raw_national"
@@ -47,20 +58,30 @@ ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "cache" / "wip" / "national" / "rne"
 
 
-def resource_url() -> str:
+def current_resource() -> dict:
     with urllib.request.urlopen(DATASET_API, timeout=60) as r:
         d = json.load(r)
     for res in d["resources"]:
         if "conseillers-municipaux" in (res.get("title") or "").lower() or "conseiller-municipal" in (res.get("url") or ""):
-            return res["url"]
+            return {"url": res["url"], "last_modified": res.get("last_modified")}
     raise SystemExit("fichier des conseillers municipaux introuvable")
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--force", action="store_true")
+    args = ap.parse_args()
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    url = resource_url()
-    print(f"  téléchargement {url}")
-    raw = urllib.request.urlopen(url, timeout=600).read().decode("utf-8", errors="replace")
+    res = current_resource()
+    if NR.is_version_current(TABLE, res) and not args.force:
+        print(f"  = {TABLE} : version {res['last_modified']} déjà chargée — rien à faire")
+        return 0
+    print(f"→ RNE → {NR.DATASET_ID}.{TABLE} — nouvelle version {res['last_modified']}")
+    if args.dry_run:
+        return 0
+    print(f"  téléchargement {res['url']}")
+    raw = urllib.request.urlopen(res["url"], timeout=600).read().decode("utf-8", errors="replace")
     reader = csv.DictReader(io.StringIO(raw), delimiter=";")
     missing = [k for k in KEEP if k not in (reader.fieldnames or [])]
     if missing:
@@ -74,12 +95,8 @@ def main() -> int:
             w.writerow([(row.get(k) or "").strip() for k in KEEP])
             n += 1
     print(f"  {n:,} élus, {len(KEEP)} colonnes (aucune donnée sensible) → {out.name}")
-    subprocess.run(
-        ["bq", "load", "--replace", "--source_format=CSV", "--skip_leading_rows=1", "--allow_quoted_newlines",
-         f"--project_id={PROJECT_ID}", f"{DATASET_ID}.{TABLE}", str(out), BQ_SCHEMA],
-        check=True,
-    )
-    print(f"✓ {PROJECT_ID}.{DATASET_ID}.{TABLE}")
+    NR.replace_snapshot(TABLE, out, BQ_SCHEMA, version=res,
+                        load_args=("--source_format=CSV", "--skip_leading_rows=1", "--allow_quoted_newlines"), force=args.force)
     return 0
 
 

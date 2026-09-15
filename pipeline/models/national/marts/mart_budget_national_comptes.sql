@@ -2,6 +2,7 @@
   config(
     enabled=true,
     materialized='table',
+    cluster_by=['code_insee'],
     tags=['national', 'marts']
   )
 }}
@@ -12,6 +13,10 @@
   Une ligne = (commune × année × sens × groupe sankey × compte). Mêmes règles de
   sens et de périmètre que core_budget_national (budget principal, hors
   opérations d'ordre, hors cessions), au compte complet au lieu du chapitre.
+
+  Montants arrondis au centime (la balance DGFiP est tenue au centime) : en
+  FLOAT64, « total du groupe − somme des comptes gardés » laissait des restes
+  de 1e-10 € qui créaient une ligne « Autres » fantôme selon l'ordre des sommes.
 
   Libellés en français simple : seed_comptes_libelles_simples (≈230 comptes).
   On ne garde que les comptes traduits qui pèsent au moins 1 % de leur groupe ;
@@ -52,7 +57,7 @@ flows AS (
 ),
 
 par_compte AS (
-    SELECT annee, code_insee, sens_flux, sankey_group_fr, compte, SUM(montant) AS montant
+    SELECT annee, code_insee, sens_flux, sankey_group_fr, compte, ROUND(SUM(montant), 2) AS montant
     FROM flows
     WHERE sankey_group_fr IS NOT NULL
     GROUP BY 1, 2, 3, 4, 5
@@ -60,7 +65,7 @@ par_compte AS (
 ),
 
 totaux AS (
-    SELECT annee, code_insee, sens_flux, sankey_group_fr, SUM(montant) AS total_groupe
+    SELECT annee, code_insee, sens_flux, sankey_group_fr, ROUND(SUM(montant), 2) AS total_groupe
     FROM par_compte
     GROUP BY 1, 2, 3, 4
 ),
@@ -84,11 +89,11 @@ autres AS (
     SELECT
         t.annee, t.code_insee, t.sens_flux, t.sankey_group_fr,
         'autres' AS compte, 'Autres' AS libelle_fr, 'Other' AS libelle_en,
-        t.total_groupe - COALESCE(SUM(g.montant), 0) AS montant, t.total_groupe
+        ROUND(t.total_groupe - COALESCE(SUM(g.montant), 0), 2) AS montant, t.total_groupe
     FROM totaux t
     LEFT JOIN gardes g USING (annee, code_insee, sens_flux, sankey_group_fr)
     GROUP BY 1, 2, 3, 4, t.total_groupe
-    HAVING t.total_groupe - COALESCE(SUM(g.montant), 0) > 0
+    HAVING ROUND(t.total_groupe - COALESCE(SUM(g.montant), 0), 2) > 0
 )
 
 SELECT * FROM gardes

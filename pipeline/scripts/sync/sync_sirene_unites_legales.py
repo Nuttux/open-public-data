@@ -11,8 +11,11 @@ Source : INSEE, base Sirene, fichier StockUniteLegale (parquet, data.gouv.fr),
 licence ouverte. ~25 M unités légales. On ne garde que les colonnes utiles au
 site ; la table raw reste une copie fidèle de ces colonnes.
 
+Mise à jour automatique (2026-09-14) : table remplacée seulement quand l'INSEE publie un nouveau stock, garde de 90 % (_national_raw).
+
 Usage :
-    python scripts/sync/sync_sirene_unites_legales.py            # télécharge puis charge
+    python scripts/sync/sync_sirene_unites_legales.py            # nouveau stock → télécharge puis charge
+    python scripts/sync/sync_sirene_unites_legales.py --dry-run  # dit s'il y a un nouveau stock
     python scripts/sync/sync_sirene_unites_legales.py --file /tmp/stock-stockunitelegale-parquet.parquet
 """
 from __future__ import annotations
@@ -23,6 +26,9 @@ import subprocess
 import sys
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _national_raw as NR  # noqa: E402
 
 import pyarrow.parquet as pq
 import pyarrow.csv as pcsv
@@ -49,13 +55,13 @@ ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "cache" / "wip" / "national" / "sirene"
 
 
-def latest_parquet_url() -> str:
+def latest_resource() -> dict:
     with urllib.request.urlopen(DATASET_API, timeout=60) as r:
         d = json.load(r)
     for res in d["resources"]:
         t = res.get("title") or ""
         if "StockUniteLegale" in t and "Historique" not in t and res.get("format") == "parquet":
-            return res["url"]
+            return {"url": res["url"], "last_modified": res.get("last_modified")}
     raise SystemExit("StockUniteLegale parquet introuvable sur data.gouv")
 
 
@@ -82,24 +88,23 @@ def to_csv(parquet: Path) -> Path:
     return out
 
 
-def bq_load(csv_path: Path) -> None:
-    cmd = [
-        "bq", "load", "--replace", "--source_format=CSV", "--skip_leading_rows=1",
-        "--allow_quoted_newlines", f"--project_id={PROJECT_ID}",
-        f"{DATASET_ID}.{TABLE}", str(csv_path), BQ_SCHEMA,
-    ]
-    print("  bq load (replace) …")
-    subprocess.run(cmd, check=True)
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", type=Path, help="parquet StockUniteLegale déjà téléchargé")
+    ap.add_argument("--dry-run", action="store_true", help="dit s'il y a une nouvelle version, ne télécharge rien")
+    ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
-    parquet = args.file or download(latest_parquet_url())
+    res = latest_resource()
+    if NR.is_version_current(TABLE, res) and not args.force and not args.file:
+        print(f"  = {TABLE} : stock {res['last_modified']} déjà chargé — rien à faire")
+        return 0
+    print(f"→ SIRENE → {NR.DATASET_ID}.{TABLE} — nouveau stock {res['last_modified']}")
+    if args.dry_run:
+        return 0
+    parquet = args.file or download(res["url"])
     csv_path = to_csv(parquet)
-    bq_load(csv_path)
-    print(f"✓ {PROJECT_ID}.{DATASET_ID}.{TABLE}")
+    NR.replace_snapshot(TABLE, csv_path, BQ_SCHEMA, version=res,
+                        load_args=("--source_format=CSV", "--skip_leading_rows=1", "--allow_quoted_newlines"), force=args.force)
     return 0
 
 
