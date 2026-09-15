@@ -199,3 +199,11 @@ describe("codes de procédure en tête (2026-09-15)", () => {
     expect(normalizeObjet("MS N°1 LOT 3 FOURNITURE D'ELECTRICITE")).toMatch(/^MS/);
   });
 });
+
+describe("accords-cadres à bons de commande (2026-09-15)", () => {
+  it("drops the procedure formula and the « prestations de » that follows", () => {
+    const r = rowObjet("Accords-cadres à bons de commande pour des prestations de nettoyage de locaux à destination de divers établissements de la Ville - Nettoyage de locaux à destination de divers établissements de la Ville de Paris (lot 3)");
+    expect(r.title).toMatch(/^Nettoyage de locaux/);
+    expect(r.title).not.toMatch(/bons de commande/i);
+  });
+});

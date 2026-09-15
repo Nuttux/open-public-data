@@ -113,7 +113,11 @@ export function offresRelated(f: MarchesOffresFiche, locale: L): RelatedBlock | 
  *  year (each with its fiche), the year's index. */
 export function domaineRelated(f: MarchesDomaineFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
-  const rows: RelatedRow[] = [marchesSectionRow("paris", f.year, locale)];
+  // The two overview doors first, in one group; then the other domains.
+  const rows: RelatedRow[] = [
+    marchesSectionRow("paris", f.year, locale),
+    { href: `/france/paris/marches/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") },
+  ];
   const idx = readDataJsonOrNull<{ availableYears?: number[] }>(cityJsonPath("paris", "marches-publics/index.json"));
   const currentYear = new Date().getFullYear();
   const latest = Math.max(...(idx?.availableYears ?? [0]).filter((y) => y < currentYear));
@@ -126,7 +130,6 @@ export function domaineRelated(f: MarchesDomaineFiche, locale: L): RelatedBlock 
       group: t("fx.related.g.other_domaines", { year: f.year }),
     });
   }
-  rows.push({ href: `/france/paris/marches/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });
   return { title: t("fx.related.title"), sub: null, rows };
 }
 

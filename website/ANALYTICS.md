@@ -34,7 +34,7 @@ patterns below are the *logical* route, language stripped.
 | `page_city` | slug or null | which city / commune |
 | `page_family` | `budget` `subventions` `marches` `dette` `investissements` `logement` `lieux` · `payroll` `contracts` `places` `who-gets-paid` `the-city` · `contratos` `quem-recebe` … · `ville` `landing` `comparer` `chat` `analyses` or the static page's name | which register |
 | `page_kind` | `landing` `country` `city` `hub` `explorer` `fiche` `compare` `chat` `static` | what kind of page: the language hook, a country door, the city's page, a family page, a filterable list, one entity, the comparator |
-| `page_entity_type` | `association` `poste` `fournisseur` `contrat` `categorie` `projet` `lieu` `dept` `payee` `role` … or null | which kind of entity, on a fiche |
+| `page_entity_type` | `association` `poste` `fournisseur` `contrat` `categorie` `offres` `domaine` `projet` `lieu` `dept` `payee` `role` … or null | which kind of entity, on a fiche |
 | `page_pattern` | `/france/{commune}` `/france/paris/marches` `/france/paris/subventions/association/{slug}` `/usa/san-francisco/payroll/role/{slug}` … | the route with placeholders — **group by this**, never by `$pathname`, or 35 000 commune pages become 35 000 rows |
 | `page_locale` | `fr` `en` `pt` | the `<html lang>` |
 | `page_surface` | `page` `drawer` | whether the fiche was shown as a full page or as a drawer over another page |
@@ -71,11 +71,12 @@ Fiche kit sections carry short English ids stable across locales: `who`,
 `why`, `years`, `lines`, `contracts`, `loans`, `missions`, `links`,
 `related`… A **section page** (Contrats publics since 2026-09-14, the others
 as they move to the fiche grammar) reads top to bottom: `hero` (the number),
-`scene` (on Contrats publics: the year's euros cut by category, number of
-bids or company — the switch is `filter_change` with `field = scene_group`
-and `variant` = `bars` | `mosaic`, the share is `share_click` with `object =
-scene_<group>`; a bar or a tile that opens a fiche is a `link_click` with
-`role = row` or `role = tile`),
+`scene` (on Contrats publics: the year's euros cut by domain, number of
+bids or company — the switch is `filter_change` with `field = scene_group`,
+`value` = `domaine` | `offres` | `entreprise` (`categorie` until
+2026-09-15) and `variant` = `bars` | `mosaic`, the share is `share_click`
+with `object = scene_<group>`; a bar or a tile that opens a fiche is a
+`link_click` with `role = row` or `role = tile`),
 `contracts` (rows), `years` (the years rail), `search` (field only; results
 are `search_submit` / `search_result_click`), `understand` (the « Comprendre »
 folds), `related` (the doors), `next` (the next section). Reach of `next` is
@@ -84,7 +85,8 @@ the page's completion rate.
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`
 uses the row key, `Bars` folds its rest under the id it is given
-(`more-categories`). Never the label: it carries a count and a locale.
+(`more-domaines`, `more-companies`). Never the label: it carries a count and
+a locale.
 
 **Link roles.** Where the link sits: `nav`, `footer`, `crumb`, `toc`,
 `year`, `cta`, `hero_meta` (the figure's grey line), `lead` (the opening
