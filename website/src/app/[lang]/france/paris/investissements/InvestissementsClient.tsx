@@ -34,7 +34,7 @@ const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseil
 /** One hue, light to dark, ending on the site's blue (--bleu #2a3680). */
 const CHORO_BLUE = ["#e6e9f4", "#bcc3e2", "#8b96c7", "#5262a5", "#2a3680"];
 const PROJETS_CAP = 8;
-const ARR_CAP = 8;
+const ARR_CAP = 5;
 const EX_KIND: Record<InvestissementsData["exemples"][number]["kind"], string> = {
   gros: "fx.sec.inv.ex.gros",
   chantier: "fx.sec.inv.ex.chantier",
@@ -147,7 +147,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
   const amountLoc = d.byArrondissement.reduce((s, a) => s + a.amount, 0);
   const nTransverse = Math.max(0, d.nbProjets - nLoc);
   const whereSub = nLoc > 0
-    ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(nLoc), amount: eurTxt(amountLoc) }) + (nTransverse > 0 ? fill(t("fx.sec.inv.where_sub_transverse"), { t: fmtInt(nTransverse) }) : "")
+    ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(nLoc), amount: eurTxt(amountLoc) })
     : undefined;
   const whereSection = d.byArrondissement.length > 0 ? (
     <V3Section id="where" title={fill(t("fx.sec.inv.h.where"), { city: cityName })} sub={whereSub}>
@@ -170,7 +170,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                     page the bars are blue and ocre is the movement only. */}
                 <ParisChoropleth
                   items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-                  height={300}
+                  height={290}
                   showRanking={false}
                   palette={CHORO_BLUE}
                   hrefFor={enableDrilldowns ? (arr) => `${invBase}/arrondissement/${arr === 0 ? 1 : arr}` : () => null}
@@ -185,11 +185,10 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
     </V3Section>
   ) : null;
 
-  // The largest named worksites, in rows; the rest behind one fold. The three
-  // shown in photo above are not listed again (nothing twice on a page): the
-  // title says « the other large worksites » when they are there.
-  const exampleIds = new Set(d.exemples.map((e) => e.id));
-  const projets = foldRest(d.topProjets.filter((p) => !exampleIds.has(p.id)), PROJETS_CAP);
+  // The largest named worksites, in rows; the rest behind one fold. The list
+  // is complete: the largest one is also the first photo a screen above, under
+  // the kicker that says so.
+  const projets = foldRest(d.topProjets, PROJETS_CAP);
   const ProjetRow = (p: InvestissementsData["topProjets"][number]) => (
     <V3Row key={p.id} href={enableDrilldowns ? `${invBase}/projet/${encodeURIComponent(p.id)}` : null}
       label={(locale === "en" && p.name_en) || p.name}
@@ -197,9 +196,42 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
       amount={<Amt n={p.amount} />} />
   );
   const projetsSection = d.topProjets.length > 0 ? (
-    <V3Section id="projects" title={fill(t(exampleIds.size > 0 ? "fx.sec.inv.h.projects_rest" : "fx.sec.inv.h.projects"), { year: d.year })}>
+    <V3Section id="projects" title={fill(t("fx.sec.inv.h.projects"), { year: d.year })}>
       {projets.shown.map(ProjetRow)}
       {projets.rest.length > 0 && <V3Fold id="more-projects" text label={t("fx.v3.voir_plus")}>{projets.rest.map(ProjetRow)}</V3Fold>}
+    </V3Section>
+  ) : null;
+
+  // Three real worksites with a real photo, chosen by rule: the material of
+  // this section, under the years rail so the first screen holds the number,
+  // its curve and three things it built (the blank that sat there before).
+  const examplesSection = !lite && d.exemples.length > 0 ? (
+    <V3Section id="examples" title={fill(t("fx.sec.inv.h.examples"), { year: d.year })}>
+      <div className="fx-sec-ex">
+        {d.exemples.map((e) => {
+          const href = `${invBase}/projet/${encodeURIComponent(e.id)}`;
+          const name = (locale === "en" && e.nameEn) || e.name;
+          return (
+            <figure key={e.id} className="fx-sec-ex-card" data-block="photo">
+              <Link href={href} scroll={false} className="fx-sec-ex-img" aria-hidden="true" tabIndex={-1}>
+                <img src={e.photoUrl} alt="" loading="lazy" />
+              </Link>
+              <figcaption>
+                <span className="k">{t(EX_KIND[e.kind])}</span>
+                <Link href={href} scroll={false} className="t">{name} ›</Link>
+                <span className="s">
+                  {[
+                    e.arr > 0 ? arrTxt(e.arr) : t("fx.sec.inv.transverse"),
+                    eurTxt(e.amount),
+                    e.nbMarches > 0 ? fill(t(e.nbMarches === 1 ? "fx.sec.inv.n_contracts_one" : "fx.sec.inv.n_contracts"), { n: e.nbMarches }) : null,
+                  ].filter(Boolean).join(" · ")}
+                </span>
+                {e.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: e.photoCredit })}</span> : null}
+              </figcaption>
+            </figure>
+          );
+        })}
+      </div>
     </V3Section>
   ) : null;
 
@@ -232,6 +264,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                   <AnneesRail rows={series} current={d.year} />
                 </div>
               ) : null}
+              {examplesSection}
             </div>
 
             <div className="fx-sec-a-scene">
@@ -245,54 +278,20 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
               )}
             </div>
 
-            {lite ? (
-              <div className="fx-sec-a-rows">{projetsSection}</div>
-            ) : (
-              <>
-                <div className="fx-sec-a-examples">
-                  {d.exemples.length > 0 ? (
-                    // Three real worksites with a real photo, chosen by rule: the
-                    // material of this section, framed from the project's side.
-                    <V3Section id="examples" title={fill(t("fx.sec.inv.h.examples"), { year: d.year })}>
-                      <div className="fx-sec-ex">
-                        {d.exemples.map((e) => {
-                          const href = `${invBase}/projet/${encodeURIComponent(e.id)}`;
-                          const name = (locale === "en" && e.nameEn) || e.name;
-                          return (
-                            <figure key={e.id} className="fx-sec-ex-card" data-block="photo">
-                              <Link href={href} scroll={false} className="fx-sec-ex-img" aria-hidden="true" tabIndex={-1}>
-                                <img src={e.photoUrl} alt="" loading="lazy" />
-                              </Link>
-                              <figcaption>
-                                <span className="k">{t(EX_KIND[e.kind])}</span>
-                                <Link href={href} scroll={false} className="t">{name} ›</Link>
-                                <span className="s">
-                                  {[
-                                    e.arr > 0 ? arrTxt(e.arr) : t("fx.sec.inv.transverse"),
-                                    eurTxt(e.amount),
-                                    e.nbMarches > 0 ? fill(t(e.nbMarches === 1 ? "fx.sec.inv.n_contracts_one" : "fx.sec.inv.n_contracts"), { n: e.nbMarches }) : null,
-                                  ].filter(Boolean).join(" · ")}
-                                </span>
-                                {e.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: e.photoCredit })}</span> : null}
-                              </figcaption>
-                            </figure>
-                          );
-                        })}
-                      </div>
-                    </V3Section>
-                  ) : null}
-                  {projetsSection}
-                </div>
-                <div className="fx-sec-a-where">{whereSection}</div>
-              </>
-            )}
+            {/* Band 2: the largest worksites face « Où ». Without chapters (Marseille)
+                « Où » is already the scene and the rows face « Voir aussi ». */}
+            <div className="fx-sec-a-rows">{projetsSection}</div>
+            {lite ? null : <div className="fx-sec-a-where">{whereSection}</div>}
 
             <div className="fx-sec-a-understand">
               <V3Section id="understand" title={t("fx.sec.understand")}>
                 <V3Fold id="measure" label={t("fx.sec.inv.u.measure")}><p className="fx-v3-sentence">{t("fx.sec.inv.u.measure_body")}</p></V3Fold>
                 {hasNamed ? (
                   <V3Fold id="named" label={fill(t("fx.sec.inv.u.named"), { pct: fmtDec(d.projetsCoveragePct, 0) })}>
-                    <p className="fx-v3-sentence">{fill(t("fx.sec.inv.u.named_body"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pctNoGeo: fmtDec(pctNoGeo, 0) })}</p>
+                    <p className="fx-v3-sentence">
+                      {fill(t("fx.sec.inv.u.named_body"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pctNoGeo: fmtDec(pctNoGeo, 0) })}
+                      {nTransverse > 0 ? fill(t("fx.sec.inv.u.named_transverse"), { t: fmtInt(nTransverse) }) : null}
+                    </p>
                   </V3Fold>
                 ) : null}
                 <V3Fold id="sources" label={t("fx.sec.inv.u.source")}>

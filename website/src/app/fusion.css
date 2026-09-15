@@ -20804,8 +20804,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   /* Chantiers (2026-09-15): the number faces the chapters; then the three
      worksites in photo and the largest ones in rows face « Où, dans Paris »;
      then « Comprendre » faces « Voir aussi ». */
-  .theme-fusion .fx-sec-grid[data-layout="chantiers"] { grid-template-areas: "hero scene" "examples where" "understand related" "next next" "foot foot"; }
-  .theme-fusion .fx-sec-a-examples { grid-area: examples; }
+  .theme-fusion .fx-sec-grid[data-layout="chantiers"] { grid-template-areas: "hero scene" "rows where" "understand related" "next next" "foot foot"; }
   .theme-fusion .fx-sec-a-where { grid-area: where; }
   /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
@@ -21027,17 +21026,16 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-sec-ex figcaption { padding-top: 0; }
   .theme-fusion .fx-sec-ex .t { font-size: 14.5px; }
 }
-.theme-fusion .fx-sec-a-examples .fx-v3-section + .fx-v3-section { margin-top: 40px; }
-.theme-fusion .fx-sec-choro { margin: 14px 0 8px; }
-/* Inside a section page the choropleth's labels follow the kit: Inter small
-   capitals in grey, no monospace. */
-.theme-fusion .fx-sec-choro .fx-choropleth-hint, .theme-fusion .fx-sec-choro .fx-choropleth-legend-label, .theme-fusion .fx-sec-choro .fx-choropleth-legend-bounds, .theme-fusion .fx-sec-choro .fx-choropleth-count, .theme-fusion .fx-sec-choro .fx-choropleth-arr { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .06em; color: var(--muted); }
-.theme-fusion .fx-sec-choro .fx-choropleth-legend-bounds *, .theme-fusion .fx-sec-choro .fx-choropleth-legend-step span, .theme-fusion .fx-sec-choro .fx-choropleth-hint-mobile { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .04em; text-transform: none; color: var(--muted); }
-.theme-fusion .fx-sec-choro .fx-choropleth-total, .theme-fusion .fx-sec-choro .fx-choropleth-amount { font-family: var(--f-disp); }
-.theme-fusion .fx-sec-choro .fx-choropleth-tooltip { border-color: var(--rule); }
-/* No hover on a phone: the box that says « hover an arrondissement » and
-   repeats the total of the line above goes; the tiles open the fiche. */
-@media (max-width: 700px) { .theme-fusion .fx-sec-choro .fx-choropleth-tooltip { display: none; } }
+/* The three photos sit under the years rail, in the number's column. */
+.theme-fusion .fx-sec-a-hero .fx-sec-years { margin-bottom: 30px; }
+/* Inside a section page the map stands alone: no frame, no legend, no hover
+   box — the bars under it are the readable version, with the exact numbers.
+   The phone keeps its one-line hint, in the kit's face. */
+.theme-fusion .fx-sec-choro { margin: 10px 0 4px; }
+.theme-fusion .fx-sec-choro .fx-choropleth { display: block; margin-top: 0; }
+.theme-fusion .fx-sec-choro .fx-choropleth-map { border: 0; padding: 0; background: transparent; }
+.theme-fusion .fx-sec-choro .fx-choropleth-sidebar { display: none; }
+.theme-fusion .fx-sec-choro .fx-choropleth-hint-mobile { font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .04em; text-transform: none; color: var(--muted); }
 /* The name is the touch target on a phone, not just its text. */
 .theme-fusion .fx-sec-ex .t { padding: 7px 0; margin: -7px 0; }
 .theme-fusion .fx-sec-map-wait { height: 480px; background: var(--rule-2); }
