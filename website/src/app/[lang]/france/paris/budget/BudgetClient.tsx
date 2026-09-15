@@ -108,7 +108,7 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
   const series = d.yearsSummary.filter((y) => y.depenses > 0).map((y) => ({ year: y.year, amount: y.depenses }));
   const provisional = d.yearsSummary.filter((y) => y.type === "vote").map((y) => y.year);
   const shareTitle = fill(t("fx.sec.bud.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
-  const yearLabel = (y: number) => (votedYears.includes(y) ? `${y} · ${t("fx.sec.bud.voted_short")}` : String(y));
+  const yearLabel = (y: number) => `${y} · ${t(votedYears.includes(y) ? "fx.sec.bud.voted_short" : "fx.sec.bud.executed_short")}`;
 
   /* ── The table: spending and revenue face to face ── */
   const [group, setGroup] = useState<Group>("poste");
@@ -159,13 +159,11 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
       </Link>
     );
   };
-  // Borrowing sits apart at the bottom of the revenue: money to repay, not income.
+  // Borrowing sits apart at the bottom of the revenue; the column head says the
+  // revenue without it, next to the total.
   const emprunt = rec.find((x) => /emprunt|borrow/i.test(x.label));
   const recRows = rec.filter((x) => x !== emprunt);
   const recNet = d.recettes - (emprunt?.value ?? 0);
-  const balance = emprunt
-    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { net: eurTxt(recNet), dep: eurTxt(d.depenses) })
-    : fill(t(isVoted ? "fx.sec.bud.rec_only_vote" : "fx.sec.bud.rec_only"), { rec: eurTxt(d.recettes) });
   const depMax = Math.max(...dep.map((x) => x.value), 1);
   const natureMax = Math.max(...natureRows.map((g) => g.value), 1);
   const recMax = Math.max(...rec.map((x) => x.value), 1);
@@ -189,15 +187,21 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
       .slice(0, 8),
     LINES_CAP,
   );
-  const LineRow = (l: { key: string; name: string; value: number; poste: string; fonction?: string }) => (
-    <V3Row
-      key={l.key}
-      href={`${budgetBase}/poste/${slugifyLabel(l.poste)}?year=${d.year}`}
-      label={l.fonction ? missionLabel(l.fonction, locale) : natureName(l.name)}
-      subText={[label(l.poste), l.fonction ? natureName(l.name) : null].filter(Boolean).join(" · ")}
-      amount={<Amt n={l.value} />}
-    />
-  );
+  const LineRow = (l: { key: string; name: string; value: number; poste: string; fonction?: string }) => {
+    // A residual mission (« Autres transports ») says nothing: the nature then
+    // carries the line (« Contributions obligatoires ») and the poste the grey line.
+    const mission = l.fonction ? missionLabel(l.fonction, locale) : "";
+    const residual = !mission || /^(autres?|other)\b/i.test(mission);
+    return (
+      <V3Row
+        key={l.key}
+        href={`${budgetBase}/poste/${slugifyLabel(l.poste)}?year=${d.year}`}
+        label={residual ? natureName(l.name) : mission}
+        subText={[label(l.poste), residual ? null : natureName(l.name)].filter(Boolean).join(" · ")}
+        amount={<Amt n={l.value} />}
+      />
+    );
+  };
 
   return (
     <div className="theme-fusion">
@@ -248,10 +252,10 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                       ? dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} max={depMax} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)
                       : (
                         <>
-                          {natureRows.map((g) => <Row key={g.key} raw={g.key} text={capFirst(t(`fx.bud.v3.flow.${g.key}`))} value={g.value} total={flowTotal} max={natureMax} swatch={g.color} noSpark href={`${budgetBase}/nature/${g.key}?year=${d.year}`} />)}
+                          {natureRows.map((g) => <Row key={g.key} raw={g.key} text={capFirst(t(`fx.bud.v3.flow.${g.key}`))} value={g.value} total={flowTotal} max={natureMax} noSpark href={`${budgetBase}/nature/${g.key}?year=${d.year}`} />)}
                           {natureRest > flowTotal * 0.005 ? (
                             <div className="fx-bud-row fx-bud-row--static">
-                              <span className="n"><i className="sw" style={{ background: "#c8ccd3" }} aria-hidden="true" />{capFirst(t("fx.bud.v3.flow.autres"))}</span>
+                              <span className="n">{capFirst(t("fx.bud.v3.flow.autres"))}</span>
                               <span className="sp" /><Amt n={natureRest} /><span className="p tnum">{Math.round((natureRest / flowTotal) * 100)} %</span><span className="c" />
                             </div>
                           ) : null}
@@ -260,10 +264,12 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                       )}
                   </div>
                   <div className="fx-bud-col">
-                    <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eurTxt(d.recettes)}</span></h3>
+                    <h3>
+                      <span>{t("fx.bud.v3.col_rec")}</span>
+                      <span className="tnum">{eurTxt(d.recettes)}{emprunt ? <small>{fill(t("fx.sec.bud.rec_net"), { net: eurTxt(recNet) })}</small> : null}</span>
+                    </h3>
                     {recRows.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} max={recMax} missions={x.topMissions} href={`${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`} />)}
                     {emprunt ? <Row raw={emprunt.label} value={emprunt.value} total={d.recettes} max={recMax} sep href={`${budgetBase}/poste/${slugifyLabel(emprunt.label)}?year=${d.year}`} /> : null}
-                    <p className="fx-sec-sentence">{balance}</p>
                   </div>
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="budget-scene" />
@@ -281,15 +287,16 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
 
             <div className="fx-sec-a-related">
               <V3Section id="related" title={t("fx.sec.see_also")}>
+                {/* Doors are named like the sections in the menu; the year and the number sit in the grey line and at the right. */}
                 {doors?.marches ? (
-                  <Door href={`${cityBase}/marches?year=${doors.marches.year}`} hard title={fill(t("fx.related.marches_section"), { year: doors.marches.year })} sub={t("fx.sec.bud.r.marches_sub")} value={fmtCompactEur(doors.marches.total).value} unit={fmtCompactEur(doors.marches.total).unit} />
+                  <Door href={`${cityBase}/marches?year=${doors.marches.year}`} hard title={t("fx.sec.bud.r.marches")} sub={fill(t("fx.sec.bud.r.marches_sub"), { year: doors.marches.year })} value={fmtCompactEur(doors.marches.total).value} unit={fmtCompactEur(doors.marches.total).unit} />
                 ) : (
-                  <Door href={`${cityBase}/marches`} hard title={t("fx.sec.bud.r.marches")} sub={t("fx.sec.bud.r.marches_sub")} />
+                  <Door href={`${cityBase}/marches`} hard title={t("fx.sec.bud.r.marches")} sub={t("fx.sec.bud.r.marches_sub_noyear")} />
                 )}
                 {doors?.subventions ? (
-                  <Door href={`${cityBase}/subventions?year=${doors.subventions.year}`} hard title={fill(t("fx.sec.bud.r.subventions"), { year: doors.subventions.year })} sub={fill(t("fx.sec.bud.r.subventions_sub"), { n: fmtInt(doors.subventions.count) })} value={fmtCompactEur(doors.subventions.total).value} unit={fmtCompactEur(doors.subventions.total).unit} />
+                  <Door href={`${cityBase}/subventions?year=${doors.subventions.year}`} hard title={t("fx.sec.bud.r.subventions")} sub={fill(t("fx.sec.bud.r.subventions_sub"), { n: fmtInt(doors.subventions.count), year: doors.subventions.year })} value={fmtCompactEur(doors.subventions.total).value} unit={fmtCompactEur(doors.subventions.total).unit} />
                 ) : (
-                  <Door href={`${cityBase}/subventions`} hard title={t("fx.sec.bud.r.subventions_noyear")} sub={t("fx.sec.bud.r.subventions_sub_noyear")} />
+                  <Door href={`${cityBase}/subventions`} hard title={t("fx.sec.bud.r.subventions")} sub={t("fx.sec.bud.r.subventions_sub_noyear")} />
                 )}
                 <Door href={`${cityBase}/dette`} hard title={t("fx.sec.bud.r.dette")} sub={t("fx.sec.bud.r.dette_sub")} />
                 {posts.map((p) => (
