@@ -177,7 +177,12 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
     ? (() => {
         const pct = ((d.total - prevYear.total) / prevYear.total) * 100;
         if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prevYear.year });
-        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prevYear.year });
+        const base = fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prevYear.year });
+        // The domain that made the jump, when one explains at least a third of it.
+        const td = prevYear.topDomaine;
+        return td
+          ? base + fill(t("fx.sec.mp.move_of_which"), { sign: td.delta > 0 ? "+" : "−", amount: eurTxt(Math.abs(td.delta)), label: domaineLabel(td.slug, locale).toLocaleLowerCase(locale) })
+          : base;
       })()
     : undefined;
 

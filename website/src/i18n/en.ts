@@ -4017,6 +4017,7 @@ const en: Record<string, string> = {
   'fx.sec.mp.move_up': '+ {pct} % on {year}',
   'fx.sec.mp.move_down': '− {pct} % on {year}',
   'fx.sec.mp.move_flat': 'Flat on {year}',
+  'fx.sec.mp.move_of_which': ', of which {sign} {amount} in {label}',
   'fx.sec.mp.h.categories': 'What the City ordered in {year}',
   'fx.sec.mp.h.scene_sub': 'Each contract counts in the year it is signed, at its maximum amount over its whole term.',
   'fx.sec.mp.categories_more': 'See all {n} categories',

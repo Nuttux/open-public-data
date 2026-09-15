@@ -4014,6 +4014,7 @@ const fr: Record<string, string> = {
   'fx.sec.mp.move_up': '+ {pct} % sur {year}',
   'fx.sec.mp.move_down': '− {pct} % sur {year}',
   'fx.sec.mp.move_flat': 'Stable sur {year}',
+  'fx.sec.mp.move_of_which': ', dont {sign} {amount} en {label}',
   'fx.sec.mp.h.categories': 'Ce que la Ville a commandé en {year}',
   'fx.sec.mp.h.scene_sub': 'Chaque contrat compte l’année de sa signature, pour son montant maximum sur toute sa durée.',
   'fx.sec.mp.categories_more': 'Voir les {n} catégories',

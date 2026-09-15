@@ -1952,7 +1952,14 @@ export type MarchesPageData = {
   /** The previous year when it comes from the same source as this one (the
    *  Paris list up to 2024, DECP from 2025): the only case where a variation
    *  means something. null across the source break. */
-  prevComparable: { year: number; total: number } | null;
+  prevComparable: {
+    year: number;
+    total: number;
+    /** The domain that moved the most, when it explains at least a third of
+     *  the change: the movement line names it (« + 193 % sur 2020, dont
+     *  + 1,3 Md € en bâtiments… »). */
+    topDomaine?: { slug: DomaineSlug; delta: number } | null;
+  } | null;
   /** Les plus gros contrats de l'exercice ; un lot partagé entre plusieurs
    *  entreprises n'apparaît qu'une fois, avec ses titulaires. */
   topContrats: {
@@ -2676,6 +2683,18 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   const byDomaine: MarchesPageData["byDomaine"] = [...domAgg.entries()]
     .map(([slug, v]) => ({ slug, amount: v.amount, count: v.count }))
     .sort((a, b) => b.amount - a.amount);
+  // Against the comparable previous year, the domain that moved the most, when
+  // it explains at least a third of the change and moves the same way.
+  const prevComparableWithDomaine: MarchesPageData["prevComparable"] = (() => {
+    if (!prevComparable) return null;
+    const prevDom = new Map(marchesDomainesOfYear(city, prevComparable.year).map((x) => [x.slug, x.amount]));
+    const delta = total - prevComparable.total;
+    const moves: { slug: DomaineSlug; delta: number }[] = byDomaine.map((x) => ({ slug: x.slug, delta: x.amount - (prevDom.get(x.slug) ?? 0) }));
+    for (const [slug, amount] of prevDom) if (!byDomaine.some((x) => x.slug === slug)) moves.push({ slug, delta: -amount });
+    const b = moves.sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta))[0] ?? null;
+    const topDomaine = b && delta !== 0 && Math.sign(b.delta) === Math.sign(delta) && Math.abs(b.delta) >= Math.abs(delta) / 3 ? b : null;
+    return { ...prevComparable, topDomaine };
+  })();
 
   // Exclude "MARCHE MULTIATTRIBUTAIRE" from the top 10 — it's a placeholder
   // name for contracts with multiple co-attributaires, not a real fournisseur.
@@ -2893,7 +2912,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     dedup,
     concurrence,
     yearsSummary,
-    prevComparable,
+    prevComparable: prevComparableWithDomaine,
     topContrats,
     signature,
   };

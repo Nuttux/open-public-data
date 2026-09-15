@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-01T22:53:18",
   "model": "claude-opus-4-7-in-session",
-  "count": 632,
+  "count": 633,
   "items": {
     "20242024T09532": {
       "objet_clair": "Rainwater management on roadways: medium and large operations",
@@ -3009,6 +3009,10 @@
     "decp-2025T03576": {
       "objet_clair": "Rehabilitation of the Asnières sewer collector, from Concorde to Saint-Augustin (8th)",
       "year": 2025
+    },
+    "20212021T01517": {
+      "objet_clair": "Cycle lanes: traffic lights and lighting, Paris Centre and north-west",
+      "year": 2021
     }
   },
   "license": {

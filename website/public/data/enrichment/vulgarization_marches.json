@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-20T11:11:29",
   "model": "gemini-3-flash-preview",
-  "count": 1539,
+  "count": 1540,
   "items": {
     "20242024T09532": {
       "objet_clair": "Gestion des eaux pluviales sur la voirie : moyennes et grandes opérations",
@@ -10538,6 +10538,11 @@
     "decp-2025T03576": {
       "objet_clair": "Réhabilitation du collecteur d'Asnières, de la Concorde à Saint-Augustin (8e)",
       "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T01517": {
+      "objet_clair": "Aménagements cyclables : feux et éclairage, Paris Centre et nord-ouest",
+      "year": 2021,
       "model": "manuel · Claude Code en session · 2026-09-15"
     }
   },
