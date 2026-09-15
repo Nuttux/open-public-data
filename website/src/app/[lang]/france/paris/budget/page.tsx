@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 
 import {
+  detteDoorTotal,
   loadBudgetIndex,
   loadBudgetPageData,
   loadInvestForYear,
@@ -34,11 +35,13 @@ export default async function BudgetPage({
   const index = loadBudgetIndex();
   const d = loadBudgetPageData(requestedYear);
   const posts = getPostsForPage("budget");
-  // The doors carry a number: contracts, grants and the next section's investment.
+  // The doors carry a number: contracts, grants, the debt at the last closed
+  // year, and the next section's investment.
   const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
   const doors = {
     marches: safe(() => marchesDoorTotal("paris", d.year)),
     subventions: safe(() => subventionsYearTotal("paris", d.year)),
+    dette: safe(() => detteDoorTotal("paris", d.year)),
     invest: safe(() => loadInvestForYear(d.year)),
   };
 

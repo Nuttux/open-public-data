@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 
 import {
+  detteDoorTotal,
   loadBudgetIndex,
   loadBudgetPageData,
   marchesDoorTotal,
@@ -41,6 +42,7 @@ export default async function BudgetPage({
   const doors = {
     marches: safe(() => marchesDoorTotal("marseille", d.year)),
     subventions: safe(() => subventionsYearTotal("marseille", d.year)),
+    dette: safe(() => detteDoorTotal("marseille", d.year)),
     invest: null,
   };
 

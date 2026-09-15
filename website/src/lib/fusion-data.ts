@@ -2981,6 +2981,19 @@ export function marchesDoorTotal(city: string, year: number): { year: number; to
   return total > 0 ? { year: y, total } : null;
 }
 
+/** The debt for a door: the financial debt (banks and bonds, the headline of
+ *  the Dette page) at the last closed balance sheet on or before the page's
+ *  year, so a voted 2026 budget shows the debt at the end of 2024. */
+export function detteDoorTotal(city: string, year: number): { year: number; total: number } | null {
+  const idx = readJsonOrNull<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
+  const years = (idx?.availableYears ?? []).slice().sort((a, b) => a - b);
+  const y = years.filter((v) => v <= year).pop() ?? years[0];
+  if (!y) return null;
+  const bilan = readJsonOrNull<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`));
+  const total = Number(bilan?.totals?.dettes_financieres ?? 0);
+  return total > 0 ? { year: y, total } : null;
+}
+
 /** L'investissement de l'exercice de la page quand il est publié (la porte
  *  « Chantiers » d'une page 2020 parle de 2020), sinon le dernier publié. */
 export function loadInvestForYear(year: number): { year: number; total: number } | null {

@@ -52,6 +52,7 @@ type Props = {
     marches?: { year: number; total: number } | null;
     subventions?: { year: number; total: number; count: number } | null;
     invest?: { year: number; total: number } | null;
+    dette?: { year: number; total: number } | null;
   };
 };
 
@@ -302,7 +303,11 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
                 ) : (
                   <Door href={`${cityBase}/subventions`} hard title={t("fx.sec.bud.r.subventions")} sub={t("fx.sec.bud.r.subventions_sub_noyear")} />
                 )}
-                <Door href={`${cityBase}/dette`} hard title={t("fx.sec.bud.r.dette")} sub={t("fx.sec.bud.r.dette_sub")} />
+                {doors?.dette ? (
+                  <Door href={`${cityBase}/dette?year=${doors.dette.year}`} hard title={t("fx.sec.bud.r.dette")} sub={fill(t("fx.sec.bud.r.dette_sub"), { year: doors.dette.year })} value={fmtCompactEur(doors.dette.total).value} unit={fmtCompactEur(doors.dette.total).unit} />
+                ) : (
+                  <Door href={`${cityBase}/dette`} hard title={t("fx.sec.bud.r.dette")} sub={t("fx.sec.bud.r.dette_sub_noyear")} />
+                )}
                 {posts.map((p) => (
                   <V3Row key={p.slug} href={`/analyses/${p.slug}`} label={p.title} subText={t("fx.sec.bud.r.read")} />
                 ))}
