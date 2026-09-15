@@ -20953,7 +20953,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* The poste / nature switch sits in the column head, between the label and the
    total, so both columns' first rows start on the same line. */
 .theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch { display: inline-flex; gap: 12px; margin: 0 auto 0 16px; }
-.theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch button { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; padding: 0 0 2px; min-height: 0; border-bottom-width: 2px; margin-bottom: -2px; }
+.theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch button { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; line-height: inherit; padding: 0; min-height: 0; border-bottom-width: 2px; margin-bottom: -2px; }
 .theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch button[aria-pressed="true"] { color: var(--ink); }
 .theme-fusion .fx-sec .fx-bud-row { border-bottom-color: var(--rule-2); transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-bud-row:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
