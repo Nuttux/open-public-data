@@ -39,7 +39,15 @@ models:
   - name: mart_chantiers_etat_national
     description: "Projets Fonds vert dont la commune est bénéficiaire (SIREN), une ligne par projet"
   - name: mart_maires_national
-    description: "Maire (nom, prénom, depuis) et taille du conseil par commune — RNE, colonnes non sensibles"
+    description: "Maire (nom, prénom, depuis) et taille du conseil par commune — RNE, colonnes non sensibles. Depuis quand : maire_depuis_premier, maire_depuis_borne (« au moins » : la chaîne atteint la plus ancienne capture) et mandats (« 2014,2020,2026 »), par chaînage de la même personne à travers les versions archivées du répertoire (stg_rne_maires_historique)."
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "maire_nom IS NULL OR mandats IS NOT NULL"
+      - dbt_utils.expression_is_true:
+          expression: "maire_depuis IS NULL OR maire_depuis_premier <= maire_depuis"
+    columns:
+      - name: code_insee
+        tests: [not_null, unique]
 
   - name: mart_taux_fonciers_national
     description: "Taux de taxe foncière (bâti, non-bâti, part intercommunale) par commune et année, REI DGFiP, avec la médiane de strate"

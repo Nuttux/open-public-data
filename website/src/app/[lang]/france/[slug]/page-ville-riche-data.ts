@@ -15,7 +15,7 @@ import { slugifyLabel } from "@/lib/projet-utils";
 import { findCommuneByAny, listAllCommunesMeta, loadAllCommunesIndex } from "@/lib/all-communes";
 import { loadCommunePeers, type PeerComparison } from "@/lib/commune-peers";
 import { loadCommuneChantiers, type ChantiersData } from "@/lib/commune-chantiers";
-import { loadMaire, type Maire } from "@/lib/commune-maires";
+import { loadMaire, MAIRES_HISTORY, type Maire, type MaireHistory } from "@/lib/commune-maires";
 import { loadTaux } from "@/lib/commune-taux";
 import type { RelatedBlock } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry } from "./PageVilleClient";
@@ -43,6 +43,8 @@ export type PageVilleRicheProps = {
   lieux: { rows: LinkRow[]; explorerHref: string; n: number } | null;
   chantiers: ChantiersData | null;
   maire: Maire | null;
+  /** Bornes d'années des versions archivées du répertoire des élus, pour la ligne Source. */
+  maireHistory: MaireHistory | null;
   peers: PeerComparison | null;
   compare: { me: CompareEntry; other: CompareEntry | null; options: { slug: string; nom: string; pop: number }[]; year: number } | null;
   related: RelatedBlock | null;
@@ -175,6 +177,7 @@ export async function loadPageVilleRiche(city: string, requestedYear?: number, e
     lieux,
     chantiers,
     maire,
+    maireHistory: MAIRES_HISTORY,
     peers,
     compare,
     related,

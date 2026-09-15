@@ -39,6 +39,19 @@ models:
       - name: siren
         tests: [not_null, unique]
 
+  - name: stg_rne_maires_historique
+    description: "RNE, versions archivées du fichier des maires - 1 ligne = 1 maire × 1 capture (snapshot_date = date de publication du fichier). Colonnes non sensibles seulement."
+    columns:
+      - name: code_insee
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "IS NULL OR LENGTH(code_insee) = 5"
+      - name: snapshot_date
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
   - name: stg_dgfip_nature_fonction
     description: "Balances DGFiP nature × fonction typées - 1 ligne = 1 ligne du CSV publié (budget × fonction × compte × exercice), TOUTES collectivités (categ). Montants NUMERIC ; code_insee recomposé (métropole, Corse 2A/2B, outre-mer 971-976), NULL hors communes."
     tests:

@@ -11,7 +11,7 @@ import { V3Amt, V3Row } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
-import { displayNomElu } from "@/lib/commune-maires";
+import { displayNomElu, maireDepuisLabel, maireSourceLabel } from "@/lib/commune-maires";
 import type { PageVilleRicheProps, LinkRow } from "./page-ville-riche-data";
 
 /**
@@ -24,7 +24,7 @@ import type { PageVilleRicheProps, LinkRow } from "./page-ville-riche-data";
 const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute"] as const;
 
 export default function VilleRicheClient(p: PageVilleRicheProps) {
-  const { commune, budget, subventions, achats, construit, dette, lieux, maire, peers, compare, related } = p;
+  const { commune, budget, subventions, achats, construit, dette, lieux, maire, maireHistory, peers, compare, related } = p;
   const t = useT();
   const { fmtDec } = useFmt();
   const { locale } = useLocale();
@@ -37,6 +37,8 @@ export default function VilleRicheClient(p: PageVilleRicheProps) {
     for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
     return s;
   };
+  // « · depuis 2014 au moins, réélu en 2020 et 2026 » — ou « · depuis mars 2026 » d'un maire nouveau.
+  const maireDepuis = maire ? maireDepuisLabel(maire, t, tag) : null;
   const split = (eur: number): { v: string; u: string } => {
     const a = Math.abs(eur);
     if (a >= 1e9) return { v: nf({ maximumFractionDigits: 2 }).format(eur / 1e9), u: "Md€" };
@@ -154,7 +156,7 @@ export default function VilleRicheClient(p: PageVilleRicheProps) {
           {maire?.nom ? (
             <p className="fx-pv-maire">
               {fill("fx.pv.maire", { nom: `${maire.prenom ?? ""} ${displayNomElu(maire.nom)}`.trim() })}
-              {maire.depuis ? ` ${fill("fx.pv.maire_depuis", { date: new Date(maire.depuis).toLocaleDateString(tag, { month: "long", year: "numeric" }) })}` : ""}
+              {maireDepuis ? ` ${maireDepuis}` : ""}
               {maire.conseillers ? ` · ${fill("fx.pv.conseillers", { n: maire.conseillers })}` : ""}
             </p>
           ) : null}
@@ -323,7 +325,7 @@ export default function VilleRicheClient(p: PageVilleRicheProps) {
             </section>
           )}
 
-          <ChartSource source={`${t("fx.pv.riche.sources")} · ${year}`} methodAnchor="c-villes" />
+          <ChartSource source={[t("fx.pv.riche.sources"), maire?.nom ? maireSourceLabel(maireHistory, t) : null].filter(Boolean).join(" · ") + ` · ${year}`} methodAnchor="c-villes" />
           <RelatedLinks block={related} />
         </div>
       </main>

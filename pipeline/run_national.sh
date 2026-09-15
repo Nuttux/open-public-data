@@ -25,10 +25,11 @@
 #                qui manque ou a changé, par _national_raw (une année à la fois,
 #                ou un instantané versionné, toujours derrière une garde de
 #                volume) : DGFiP balances, balance croisée nature-fonction, OFGL
-#                consolidée, REI, Fonds vert, RNE, SIRENE. Chaque table écrite
-#                est notée ; rien de noté → arrêt.
-#   2. dbt     — les modèles en aval des seules tables écrites
-#                (source:national_raw.<table>+), puis leurs tests.
+#                consolidée, REI, Fonds vert, RNE (état courant et versions
+#                archivées), SIRENE. Chaque table écrite est notée ; rien de
+#                noté → arrêt.
+#   2. dbt     — les modèles en aval des tables écrites et tout ce qu'ils
+#                lisent (@source:national_raw.<table>), puis leurs tests.
 #   3. export  — les exports qui lisent ces modèles, pour toutes les communes.
 #   4. check   — chaque manifeste neuf face à celui du dépôt.
 #   5. upload  — les dossiers de communes exportés, vers le bucket.
@@ -75,11 +76,13 @@ step() { echo ""; echo "── $* ───────────────�
 # Cadence annuelle
 # =============================================================================
 if [[ "$CADENCE" == "annual" ]]; then
-    ALL_TABLES="dgfip_balances dgfip_balances_nature_fonction ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux sirene_unites_legales"
+    ALL_TABLES="dgfip_balances dgfip_balances_nature_fonction ofgl_communes rei_taux fonds_vert rne_conseillers_municipaux rne_maires_historique sirene_unites_legales"
 
     step "1/5 sync : sources annuelles"
     export NATIONAL_CHANGES_FILE="$(mktemp)"
-    for loader in sync_dgfip_balances_national sync_dgfip_nature_fonction sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_sirene_unites_legales; do
+    # sync_rne_maires_historique : la liste des captures archivées est fixe dans
+    # le script ; tant qu'elle ne change pas, il ne télécharge ni n'écrit rien.
+    for loader in sync_dgfip_balances_national sync_dgfip_nature_fonction sync_ofgl_national sync_rei_taux sync_fonds_vert sync_rne_maires sync_rne_maires_historique sync_sirene_unites_legales; do
         echo "· $loader"
         $PYTHON "$PIPELINE_DIR/scripts/sync/$loader.py"
     done
@@ -97,7 +100,12 @@ if [[ "$CADENCE" == "annual" ]]; then
 
     step "2/5 dbt : en aval de $CHANGED ($TARGET)"
     SELECT=""
-    for t in $CHANGED; do SELECT="$SELECT source:national_raw.$t+"; done
+    # « @source » = la source, son aval, ET tous les amonts de cet aval. Le simple
+    # « source+ » a fait tomber le premier run prod (2026-09-15) : le mart des taux
+    # fonciers, en aval de l'OFGL, lit aussi stg_rei_taux, que rien n'avait
+    # construit parce que le REI n'avait pas bougé. Même chose pour le mart des
+    # maires, qui lit les deux tables du RNE (état courant et versions archivées).
+    for t in $CHANGED; do SELECT="$SELECT @source:national_raw.$t"; done
     (cd "$PIPELINE_DIR" && dbt seed --target "$TARGET" --select seed_comptes_libelles_simples seed_nomenclature_comptes)
     (cd "$PIPELINE_DIR" && dbt run --target "$TARGET" --select $SELECT)
     (cd "$PIPELINE_DIR" && dbt test --target "$TARGET" --select $SELECT)
@@ -113,6 +121,7 @@ if [[ "$CADENCE" == "annual" ]]; then
             rei_taux)                   add taux ;;
             fonds_vert)                 add chantiers ;;
             rne_conseillers_municipaux) add maires ;;
+            rne_maires_historique)      add maires ;;
             sirene_unites_legales)      add marches ;;
         esac
     done
