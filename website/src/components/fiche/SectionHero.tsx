@@ -28,6 +28,7 @@ export default function SectionHero({
   meta,
   move,
   shareTitle,
+  yearLabel,
 }: {
   /** Where we are; the section page renders it above the grid instead, so both columns start on the same line. */
   kicker?: ReactNode;
@@ -44,6 +45,8 @@ export default function SectionHero({
   meta?: ReactNode;
   move?: ReactNode;
   shareTitle: string;
+  /** How a year reads in the menu, e.g. « 2025 · voté » for a budget not yet executed. */
+  yearLabel?: (y: number) => string;
 }) {
   const t = useT();
   const router = useRouter();
@@ -65,7 +68,7 @@ export default function SectionHero({
         {years.length > 1 ? (
           <select className="fx-pv-yearsel" aria-label={t("fx.sec.year_label")} value={year} onChange={(e) => onYear(e.target.value)}>
             {years.slice().sort((a, b) => b - a).map((y) => (
-              <option key={y} value={y}>{y}</option>
+              <option key={y} value={y}>{yearLabel ? yearLabel(y) : y}</option>
             ))}
           </select>
         ) : (

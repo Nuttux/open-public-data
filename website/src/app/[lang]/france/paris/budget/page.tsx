@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 
 import {
+  detteDoorTotal,
   loadBudgetIndex,
   loadBudgetPageData,
-  loadVoteExecute,
+  loadInvestForYear,
+  marchesDoorTotal,
+  subventionsYearTotal,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { readLocale } from "@/lib/seo";
@@ -31,15 +34,23 @@ export default async function BudgetPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const index = loadBudgetIndex();
   const d = loadBudgetPageData(requestedYear);
-  const voteExec = loadVoteExecute();
   const posts = getPostsForPage("budget");
+  // The doors carry a number: contracts, grants, the debt at the last closed
+  // year, and the next section's investment.
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    marches: safe(() => marchesDoorTotal("paris", d.year)),
+    subventions: safe(() => subventionsYearTotal("paris", d.year)),
+    dette: safe(() => detteDoorTotal("paris", d.year)),
+    invest: safe(() => loadInvestForYear(d.year)),
+  };
 
   return (
     <>
       {parisSectionJsonLd("budget", await readLocale(), requestedYear).map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />
+      <BudgetClient index={index} d={d} posts={posts} doors={doors} />
     </>
   );
 }

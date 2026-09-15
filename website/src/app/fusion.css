@@ -20784,7 +20784,17 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
     grid-template-areas: "hero scene" "search search" "photo rows" "understand related" "next next" "foot foot";
   }
   .theme-fusion .fx-sec-a-photo { grid-area: photo; }
+  /* The same slot for a second block that is not a photo. */
+  .theme-fusion .fx-sec-a-second { grid-area: photo; }
   .theme-fusion .fx-sec-grid[data-photo="0"] .fx-sec-a-photo { display: none; }
+  /* Budget (2026-09-15, Daniel kept the table of the page before): the number
+     faces its years rail, then the table — spending and revenue face to face —
+     runs the full width, then the heaviest lines face « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="budget"] { grid-template-areas: "hero rail" "table table" "rows related" "understand understand" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-grid[data-layout="budget"] .fx-sec-a-hero { align-self: start; }
+  .theme-fusion .fx-sec-a-rail { grid-area: rail; align-self: end; }
+  .theme-fusion .fx-sec-a-rail .fx-sec-years { margin-bottom: 26px; }
+  .theme-fusion .fx-sec-a-table { grid-area: table; }
   /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
   .theme-fusion .fx-sec-a-hero { grid-area: hero; }
@@ -20856,21 +20866,27 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* Les barres : le libellé et la valeur écrits sur chaque ligne, pas de légende,
    pas d'axe. Une ligne avec un lien ouvre une fiche. */
 .theme-fusion .fx-bars { margin-top: 6px; }
-.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto 12px; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
 .theme-fusion .fx-bars-row:first-child { border-top: 0; }
 .theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
-/* Only the rows that open a fiche look like links: ink label, the doors' chevron, blue on hover. */
+/* Only the rows that open a fiche look like links: ink label, a chevron at the
+   right edge like a list that opens, the whole row blue on hover (2026-09-15:
+   the chevron used to sit against the label, where it read as punctuation). */
 .theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
-.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: "\00a0›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-bars-row .c { color: #b4b9c2; font-size: 16px; line-height: 1; text-align: right; transition: color .15s, transform .15s; }
 .theme-fusion .fx-bars-row.is-link:hover .lbl .t { color: var(--bleu); }
-/* Phone: the label above, the bar at full width with its value at the right. */
+.theme-fusion .fx-bars-row.is-link:hover .c { color: var(--ink); transform: translateX(2px); }
+/* A row set apart from the list above it (borrowing under the revenue). */
+.theme-fusion .fx-bars-row.sep { border-top: 1px solid var(--ink-2); margin-top: 8px; padding-top: 12px; }
+/* Phone: the label above, the bar at full width, the value and the chevron at the right. */
 @media (max-width: 700px) {
-  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "lbl v" "track track"; gap: 4px 10px; padding: 8px 0; }
+  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto 12px; grid-template-areas: "lbl v c" "track track track"; gap: 4px 8px; padding: 8px 0; }
   .theme-fusion .fx-bars-row .lbl { grid-area: lbl; }
   .theme-fusion .fx-bars-row .lbl .sub { display: block; margin-top: 1px; white-space: nowrap; }
   .theme-fusion .fx-bars-row .track { grid-area: track; }
   .theme-fusion .fx-bars-row .track i { height: 10px; }
   .theme-fusion .fx-bars-row .v { grid-area: v; }
+  .theme-fusion .fx-bars-row .c { grid-area: c; }
 }
 .theme-fusion .fx-bars-row .sub { display: block; font-family: var(--f-ui); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin-top: 1px; }
 .theme-fusion .fx-bars-row .track { display: block; min-width: 0; }
@@ -20911,6 +20927,53 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-years { margin: 0 0 40px; }
 .theme-fusion .fx-sec-years .fx-page-kicker { margin-bottom: 10px; }
 .theme-fusion .fx-v3-years > button.cur i { background: var(--ink); }
+/* A year not yet executed (a voted budget): hatched, in the same hue. */
+.theme-fusion .fx-v3-years > button.prov i { background: repeating-linear-gradient(135deg, var(--bleu) 0 3px, transparent 3px 5px); }
+.theme-fusion .fx-v3-years > button.cur.prov i { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, transparent 3px 5px); }
+/* The scene keeps one height whatever the cut, on every section page. */
+@media (min-width: 960px) { .theme-fusion .fx-sec-a-scene .fx-sec-scene-body { min-height: 400px; } }
+/* The budget table in the kit: grey rules, small-caps column heads with the
+   column's total, rows that open a fiche (chevron at the right edge, blue on
+   hover), a colour square on the « par nature » rows, borrowing set apart. */
+.theme-fusion .fx-sec .fx-bud-cols { margin-top: 12px; gap: 44px; }
+.theme-fusion .fx-sec .fx-bud-col h3 { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 2px; align-items: baseline; }
+.theme-fusion .fx-sec .fx-bud-col h3 .tnum { font-family: var(--f-disp); font-size: 14px; letter-spacing: -.02em; text-transform: none; color: var(--ink); font-weight: 700; }
+.theme-fusion .fx-sec .fx-bud-col h3 .tnum small { font-family: var(--f-ui); font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--muted); margin-left: 8px; }
+/* A notch larger on a desktop screen: the data rows were at 14 px and the grey
+   lines at 12.5, small for a page read at arm's length. */
+@media (min-width: 701px) {
+  .theme-fusion .fx-sec .fx-bud-row { font-size: 15px; }
+  .theme-fusion .fx-sec .fx-bud-row .p { font-size: 11.5px; }
+  .theme-fusion .fx-sec .fx-bars-row { font-size: 14.5px; }
+  .theme-fusion .fx-sec .fx-bars-row .sub, .theme-fusion .fx-sec .fx-v3-row .sub, .theme-fusion .fx-sec .fx-v3-row .lbl .subtext, .theme-fusion .fx-sec .fx-door .s { font-size: 13px; }
+  .theme-fusion .fx-sec .fx-v3-row { font-size: 15px; }
+  .theme-fusion .fx-sec-hero-meta { font-size: 13.5px; }
+  .theme-fusion .fx-sec .fx-v3-h2sub { font-size: 14.5px; }
+}
+/* The poste / nature switch sits in the column head, between the label and the
+   total, so both columns' first rows start on the same line. */
+.theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch { display: inline-flex; gap: 12px; margin: 0 auto 0 16px; }
+.theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch button { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; line-height: inherit; padding: 0; min-height: 0; border-bottom-width: 2px; margin-bottom: -2px; }
+.theme-fusion .fx-sec .fx-bud-col h3 .fx-sec-switch button[aria-pressed="true"] { color: var(--ink); }
+.theme-fusion .fx-sec .fx-bud-row { border-bottom-color: var(--rule-2); transition: background-color .12s; }
+.theme-fusion .fx-sec .fx-bud-row:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+.theme-fusion .fx-sec .fx-bud-row:hover .n { color: var(--bleu); }
+.theme-fusion .fx-sec .fx-bud-row .n .sw { display: inline-block; width: 9px; height: 9px; margin-right: 8px; vertical-align: -1px; }
+/* The share as a bar under the label, sized on the column's largest line: the
+   table reads like a chart without a block more (press-table practice). */
+.theme-fusion .fx-sec .fx-bud-row .n { position: relative; padding-bottom: 8px; }
+.theme-fusion .fx-sec .fx-bud-row .n .bar { position: absolute; left: 0; bottom: 0; height: 4px; border-radius: 2px; background: var(--bleu); }
+.theme-fusion .fx-sec .fx-bud-row.sep { border-top: 1px solid var(--ink-2); margin-top: 10px; padding-top: 12px; }
+.theme-fusion .fx-sec .fx-bud-row.sep .n .bar { background: var(--bleu-soft, #D9DCF0); }
+.theme-fusion .fx-sec .fx-bud-row.sep .fx-v3-amt, .theme-fusion .fx-sec .fx-bud-row.sep .p { color: var(--muted); }
+.theme-fusion .fx-sec .fx-bud-col .fx-sec-sentence { font-size: 13.5px; margin-top: 14px; }
+.theme-fusion .fx-sec .fx-bud-row .sp { display: inline-flex; justify-content: flex-end; }
+@media (max-width: 700px) {
+  /* Phone: no curve (five pixels a bar say nothing), the label keeps the room; label, amount, share, chevron. */
+  .theme-fusion .fx-sec .fx-bud-row { grid-template-columns: minmax(0, 1fr) 80px 34px 10px; }
+  .theme-fusion .fx-sec .fx-bud-row .sp { display: none; }
+  .theme-fusion .fx-sec .fx-bud-cols { gap: 34px; }
+}
 /* The search is a tool, not a chapter: a kicker above the field. */
 .theme-fusion .fx-sec-searchblk .fx-page-kicker { margin-bottom: 0; }
 .theme-fusion .fx-sec-searchblk .fx-search-wrap--fiche .fx-search-inner { padding-top: 10px; }
@@ -20920,12 +20983,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-next .cv { grid-column: 2; grid-row: 1 / 4; font-family: var(--f-disp); font-weight: 700; font-size: 20px; letter-spacing: -.02em; white-space: nowrap; }
 .theme-fusion .fx-next .cv small { font-size: .6em; color: var(--muted); font-weight: 500; margin-left: 4px; }
 .theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
-.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+/* Rows that open a fiche light up on hover. No radius and no bleed: a rounded
+   row with a rule under it curved the rule at both ends and read as a grid
+   (Daniel, 2026-09-15). The rule stays straight, the highlight is the row. */
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { transition: background-color .12s; }
 .theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
-/* No hover on a phone: the rows keep the column's edges. */
-@media (max-width: 700px) {
-  .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { padding-inline: 0; margin-inline: 0; border-radius: 0; }
-}
 .theme-fusion .fx-sec .fx-bars-row .track i { border-radius: 3px; height: 12px; }
 .theme-fusion .fx-sec .fx-next { border: 1px solid var(--rule); border-radius: 12px; background: #fff; padding: 14px 16px; transition: border-color .12s; }
 .theme-fusion .fx-sec .fx-next:hover { border-color: var(--bleu); }
@@ -20942,7 +21004,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-page-kicker, .theme-fusion .fx-drawer-kicker, .theme-fusion .fx-related-group, .theme-fusion .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
 .theme-fusion .fx-drawer-kicker { font-size: 11.5px; }
 @media (min-width: 701px) {
-  .theme-fusion .fx-v3-row.fx-row-link { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+  .theme-fusion .fx-v3-row.fx-row-link { transition: background-color .12s; }
   .theme-fusion .fx-v3-row.fx-row-link:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
 }
 @media (min-width: 960px) {

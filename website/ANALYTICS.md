@@ -80,7 +80,12 @@ with `object = scene_<group>`; a bar or a tile that opens a fiche is a
 `contracts` (rows), `years` (the years rail), `search` (field only; results
 are `search_submit` / `search_result_click`), `understand` (the « Comprendre »
 folds), `related` (the doors), `next` (the next section). Reach of `next` is
-the page's completion rate.
+the page's completion rate. Budget (since 2026-09-15) reads the same way:
+`hero`, `years`, `scene` (the table: spending and revenue face to face, each
+row opening its poste; the spending column reads by poste or by kind —
+`filter_change` `field = scene_group`, `value` = `poste` | `nature`,
+`page = budget`), `lines` (the heaviest lines, each opening its poste),
+`understand`, `related`, `next`.
 
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`

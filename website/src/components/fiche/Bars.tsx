@@ -17,12 +17,16 @@ export type BarRow = {
   href?: string | null;
   /** Ink instead of blue: the one bar the sentence above is about. */
   tone?: "ink" | "blue" | "soft";
+  /** A rule above the row: it belongs to the list but not to the same kind
+   *  (borrowing under the revenue it is not). */
+  separated?: boolean;
 };
 
 /**
  * Horizontal bars with the label and the value written on each: the one
  * chart shape that reads on a phone without a legend, an axis or a hover.
- * Rows that have an href are links to fiches. Past `cap`, the rest folds
+ * Rows that have an href are links to fiches: a chevron at the right edge
+ * says so, and the whole row reacts on hover. Past `cap`, the rest folds
  * under a « Voir plus » (measured: details_toggle with `foldId`).
  */
 export default function Bars({
@@ -54,12 +58,14 @@ export default function Bars({
         </span>
         <span className="track"><i className={r.tone ?? "blue"} style={{ width: `${w}%` }} /></span>
         <span className="v tnum">{r.text}</span>
+        <span className="c" aria-hidden="true">{r.href ? "›" : ""}</span>
       </>
     );
+    const cls = `fx-bars-row${r.href ? " is-link" : ""}${r.separated ? " sep" : ""}`;
     return r.href ? (
-      <Link key={r.key} href={r.href} scroll={false} className="fx-bars-row is-link">{body}</Link>
+      <Link key={r.key} href={r.href} scroll={false} className={cls}>{body}</Link>
     ) : (
-      <div key={r.key} className="fx-bars-row">{body}</div>
+      <div key={r.key} className={cls}>{body}</div>
     );
   };
   return (
