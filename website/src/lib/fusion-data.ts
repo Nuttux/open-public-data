@@ -1,5 +1,7 @@
 import { loadLieuxIndex, loadLieu } from "./lieux-data";
-import { normalizeObjet, rowObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
+import { dedupMixedSources, type DedupRow } from "@/lib/marches-dedup";
+import { domaineOf, isDomaineSlug, type DomaineRow, type DomaineSlug } from "@/lib/marches-domaines";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
 import { lotRepeatFlags, sumLots, lotInfo } from "./marches-shape";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug, type OffresBucket } from "./marches-offres";
@@ -450,11 +452,8 @@ function loadFeaturedMarcheCategorie(): FeaturedMarcheCategorie | null {
     const years = (idx.availableYears ?? []).slice().sort((a, b) => b - a);
     for (const yr of years) {
       try {
-        const file = readJson<{
-          data?: Array<{ objet?: string; fournisseur_nom?: string; fournisseur_siret?: string; categorie_libelle?: string; nature?: string; montant_max?: number; montant_min?: number }>;
-          marches?: Array<{ objet?: string; fournisseur_nom?: string; fournisseur_siret?: string; categorie_libelle?: string; nature?: string; montant_max?: number; montant_min?: number }>;
-        }>(`marches-publics/marches_${yr}.json`);
-        const rows = file.data ?? file.marches ?? [];
+        const file = readMarchesFile(`marches-publics/marches_${yr}.json`);
+        const rows = (file.data ?? []) as Array<{ objet?: string; fournisseur_nom?: string; fournisseur_siret?: string; categorie_libelle?: string; nature?: string; montant_max?: number; montant_min?: number }>;
         const matching = rows.filter(
           (r) => (r.categorie_libelle ?? r.nature ?? "").toLowerCase() === HERO_FEATURED_CATEGORIE_LIBELLE,
         );
@@ -630,11 +629,8 @@ export function loadLandingStats(): LandingStats {
     const latestMarchesYear = marchesYears[0];
     if (latestMarchesYear) {
       const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
-      const marchesFile = readJson<{
-        data?: MarcheRow[];
-        marches?: MarcheRow[];
-      }>(`marches-publics/marches_${latestMarchesYear}.json`);
-      const rows = marchesFile.data ?? marchesFile.marches ?? [];
+      const marchesFile = readMarchesFile(`marches-publics/marches_${latestMarchesYear}.json`);
+      const rows = marchesFile.data ?? [];
       const agg = new Map<string, { name: string; siret: string; amount: number }>();
       for (const r of rows) {
         const name = (r.fournisseur_nom ?? "").trim();
@@ -1869,6 +1865,50 @@ type MarchesFile = {
   marches?: MarcheRow[];
 };
 
+type MarchesFileRead = MarchesFile & { _dedup: { dropped: number; droppedAmount: number } };
+const _marchesFileCache = new Map<string, MarchesFileRead>();
+/** A year's file with each contract counted once (lib/marches-dedup): the
+ *  page, the fiches, the indexes and the doors all read through here, so they
+ *  quote the same total. Cached per path. The single-contract lookup
+ *  (loadContrat) reads the raw file: a published twin keeps its address. */
+function readMarchesFileOrNull(path: string): MarchesFileRead | null {
+  const hit = _marchesFileCache.get(path);
+  if (hit) return hit;
+  const raw = readJsonOrNull<MarchesFile>(path);
+  if (!raw) return null;
+  const r = dedupMixedSources((raw.data ?? raw.marches ?? []) as (MarcheRow & DedupRow)[]);
+  const out: MarchesFileRead = { ...raw, data: r.rows as MarcheRow[], marches: undefined, _dedup: { dropped: r.dropped, droppedAmount: r.droppedAmount } };
+  _marchesFileCache.set(path, out);
+  return out;
+}
+function readMarchesFile(path: string): MarchesFileRead {
+  const f = readMarchesFileOrNull(path);
+  if (!f) throw new Error(`Missing data file: ${path}`);
+  return f;
+}
+
+/** The year's total as the page counts it (a shared lot once, a contract
+ *  published by both sources once): for the doors and rows that quote it. */
+export function marchesYearTotal(city: string, year: number): number {
+  const rows = readMarchesFileOrNull(cityJsonPath(city, `marches-publics/marches_${year}.json`))?.data ?? [];
+  return rows.length ? sumLots(rows) : 0;
+}
+
+/** The year's euros by Qipu domain (lib/marches-domaines), largest first. */
+export function marchesDomainesOfYear(city: string, year: number): { slug: DomaineSlug; amount: number; count: number }[] {
+  const rows = (readMarchesFileOrNull(cityJsonPath(city, `marches-publics/marches_${year}.json`))?.data ?? []) as (MarcheRow & DomaineRow)[];
+  const repeats = lotRepeatFlags(rows);
+  const agg = new Map<DomaineSlug, { amount: number; count: number }>();
+  rows.forEach((r, i) => {
+    const slug = domaineOf(r);
+    const a = agg.get(slug) ?? { amount: 0, count: 0 };
+    a.amount += repeats[i] ? 0 : Number(r.montant_max ?? 0);
+    a.count += 1;
+    agg.set(slug, a);
+  });
+  return [...agg.entries()].map(([slug, v]) => ({ slug, ...v })).sort((a, b) => b.amount - a.amount);
+}
+
 export type MarchesPageData = {
   year: number;
   availableYears: number[];
@@ -1891,6 +1931,11 @@ export type MarchesPageData = {
     topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
   }[];
   byNature: { nature: string; amount: number; count: number }[];
+  /** The same euros by Qipu domain (lib/marches-domaines): the one axis that
+   *  reads the same from 2013 to 2025 whatever the source's nomenclature. */
+  byDomaine: { slug: DomaineSlug; amount: number; count: number }[];
+  /** Contracts published by both sources in a mixed year, counted once (lib/marches-dedup). */
+  dedup: { dropped: number; amount: number };
   concurrence: {
     coverageCount: number;       // contrats avec offresRecues >= 1
     coverageTotal: number;       // contrats totaux cette année
@@ -2027,8 +2072,8 @@ export type ContratRanking = {
  */
 export function loadContratRanking(numero: string, year: number, nature: string, montant: number): ContratRanking | null {
   try {
-    const f = readJson<MarchesFile>(`marches-publics/marches_${year}.json`);
-    const rows = (f.data ?? f.marches ?? []) as (MarcheRow & { numero_marche?: string })[];
+    const f = readMarchesFile(`marches-publics/marches_${year}.json`);
+    const rows = (f.data ?? []) as (MarcheRow & { numero_marche?: string })[];
     // Un lot partagé entre plusieurs titulaires n'occupe qu'un rang.
     const repeats = lotRepeatFlags(rows);
     const lotRows = rows.filter((_, i) => !repeats[i]);
@@ -2206,8 +2251,8 @@ export function loadFournisseur(key: string, city: string = "paris"): Fournisseu
 
   for (const y of years) {
     try {
-      const f = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
-      const rows = f.data ?? f.marches ?? [];
+      const f = readMarchesFile(cityJsonPath(city, `marches-publics/marches_${y}.json`));
+      const rows = f.data ?? [];
       // La source répète le montant d'un lot pour chacune des entreprises qui
       // l'ont gagné : la fiche le garde, mais dit que le lot est partagé.
       const lots = lotInfo(rows as MarcheRow[], (x) => Number(x.montant_max ?? x.montant_min ?? 0));
@@ -2374,7 +2419,7 @@ export function loadFournisseursRanking(city: string = "paris", topN = 12): Four
   for (const y of years) {
     let file: MarchesFile;
     try {
-      file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
+      file = readMarchesFile(cityJsonPath(city, `marches-publics/marches_${y}.json`));
     } catch {
       continue;
     }
@@ -2480,8 +2525,9 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   const yr = requestedYear && years.includes(requestedYear)
     ? requestedYear
     : years[years.length - 1] ?? 2024;
-  const file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
-  const marches = file.data ?? file.marches ?? [];
+  const file = readMarchesFile(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
+  const marches = file.data ?? [];
+  const dedup = { dropped: file._dedup.dropped, amount: file._dedup.droppedAmount };
 
   // The year before, only if it was published by the same source: a change
   // of source (Paris list → DECP in 2025) changes the number of contracts.
@@ -2493,8 +2539,8 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   const prevComparable = (() => {
     const prevYear = years.filter((y) => y < yr).pop();
     if (!prevYear) return null;
-    const prev = readJsonOrNull<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${prevYear}.json`));
-    const prevRows = (prev?.data ?? prev?.marches ?? []) as (MarcheRow & { _source_origin?: string })[];
+    const prev = readMarchesFileOrNull(cityJsonPath(city, `marches-publics/marches_${prevYear}.json`));
+    const prevRows = (prev?.data ?? []) as (MarcheRow & { _source_origin?: string })[];
     if (prevRows.length === 0) return null;
     const cur = marches as (MarcheRow & { _source_origin?: string })[];
     const same = dominantSource(prevRows) === dominantSource(cur) && prevRows.filter((r) => (r._source_origin ?? "?") === dominantSource(cur)).length / prevRows.length >= 0.9;
@@ -2555,6 +2601,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   // par titulaire gardent le plafond de leurs contrats.
   const lotAmountOf = (x: MarcheRow) => Number(x.montant_max ?? x.montant_min ?? 0);
   const hubLots = lotInfo(marches as MarcheRow[], lotAmountOf);
+  const domAgg = new Map<DomaineSlug, { amount: number; count: number }>();
   for (const [rowIndex, m] of marches.entries()) {
     const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
     const v = Number(r.montant_max ?? r.montant_min ?? 0);
@@ -2620,7 +2667,15 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     nA.amount += lotV;
     nA.count += 1;
     natureAgg.set(nature, nA);
+    const dom = domaineOf(m as DomaineRow);
+    const dA = domAgg.get(dom) ?? { amount: 0, count: 0 };
+    dA.amount += lotV;
+    dA.count += 1;
+    domAgg.set(dom, dA);
   }
+  const byDomaine: MarchesPageData["byDomaine"] = [...domAgg.entries()]
+    .map(([slug, v]) => ({ slug, amount: v.amount, count: v.count }))
+    .sort((a, b) => b.amount - a.amount);
 
   // Exclude "MARCHE MULTIATTRIBUTAIRE" from the top 10 — it's a placeholder
   // name for contracts with multiple co-attributaires, not a real fournisseur.
@@ -2679,8 +2734,8 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     let yearRows: MarcheRow[] | null = y === yr ? (marches as MarcheRow[]) : null;
     if (!yearRows) {
       try {
-        const f = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
-        yearRows = (f.data ?? f.marches ?? []) as MarcheRow[];
+        const f = readMarchesFile(cityJsonPath(city, `marches-publics/marches_${y}.json`));
+        yearRows = (f.data ?? []) as MarcheRow[];
       } catch {
         yearRows = null;
       }
@@ -2834,6 +2889,8 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     top10,
     byCategory,
     byNature,
+    byDomaine,
+    dedup,
     concurrence,
     yearsSummary,
     prevComparable,
@@ -5338,8 +5395,8 @@ export function loadMarchesOffres(slug: string, requestedYear?: number): Marches
   const rowsOf = (y: number): Row[] => {
     if (!cache.has(y)) {
       try {
-        const f = readJson<MarchesFile>(`marches-publics/marches_${y}.json`);
-        cache.set(y, (f.data ?? f.marches ?? []) as Row[]);
+        const f = readMarchesFile(`marches-publics/marches_${y}.json`);
+        cache.set(y, (f.data ?? []) as Row[]);
       } catch {
         cache.set(y, []);
       }
@@ -5395,6 +5452,115 @@ export function loadMarchesOffres(slug: string, requestedYear?: number): Marches
   return { bucket, slug: offresBucketSlug(bucket), hrefSlug, year, years, total, count: matching.length, known: knownRows.length, all: rows.length, topContrats };
 }
 
+export type MarchesDomaineFiche = {
+  slug: DomaineSlug;
+  /** `proprete-dechets` for the domain's latest complete year, `proprete-dechets-2020` otherwise. */
+  hrefSlug: string;
+  year: number;
+  /** Complete years where the domain has at least one contract. */
+  years: number[];
+  total: number;
+  count: number;
+  shareOfTotalPct: number;
+  nbTitulaires: number;
+  topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
+  /** Un lot partagé entre plusieurs titulaires = une ligne ; `titulaires` les nomme. */
+  topContrats: { numero: string; titulaires: string[]; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
+  /** The domain year by year, every published year on the same axis whatever the source. */
+  series: { year: number; amount: number; count: number }[];
+};
+
+/** `/france/paris/marches/domaine/{slug}[-{year}]` — the fiche behind a bar of
+ *  the section page's scene « par domaine ». The year rides in the path. */
+export function loadMarchesDomaine(slug: string, requestedYear?: number, city: string = "paris"): MarchesDomaineFiche | null {
+  const m = slug.match(/^([a-z][a-z-]*?)(?:-(\d{4}))?$/);
+  if (!m || !isDomaineSlug(m[1])) return null;
+  const dom = m[1];
+  if (m[2]) requestedYear = Number(m[2]);
+  const idx = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
+  const currentYear = new Date().getFullYear();
+  const allYears = (idx.availableYears ?? []).filter((y) => y < currentYear).sort((a, b) => a - b);
+  type Row = MarcheRow & DomaineRow & { fournisseur_siret?: string; fournisseur_nom?: string };
+  const rowsOf = (y: number): Row[] => (readMarchesFileOrNull(cityJsonPath(city, `marches-publics/marches_${y}.json`))?.data ?? []) as Row[];
+  const series = allYears
+    .map((y) => {
+      const rows = rowsOf(y);
+      const inDom = rows.filter((r) => domaineOf(r) === dom);
+      return { year: y, amount: sumLots(inDom), count: inDom.length };
+    })
+    .filter((s) => s.count > 0);
+  const years = series.map((s) => s.year);
+  if (years.length === 0) return null;
+  const year = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
+  const rows = rowsOf(year);
+  const matching = rows.filter((r) => domaineOf(r) === dom);
+  const total = sumLots(matching);
+  const yearTotal = sumLots(rows);
+
+  // Titulaires : un lot partagé ne se range sous personne (même règle que la page).
+  const MULTI = "MARCHE MULTIATTRIBUTAIRE";
+  const lots = lotInfo(matching, (x) => Number(x.montant_max ?? x.montant_min ?? 0));
+  const tit = new Map<string, { name: string; siret: string; amount: number; nb: number }>();
+  matching.forEach((r, i) => {
+    if (lots[i].holders > 1) return;
+    const name = (r.fournisseur_nom ?? "").trim();
+    if (!name || name === MULTI || name === "Non précisé") return;
+    const siret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+    const valid = /^\d{9}/.test(siret) && !siret.includes("|");
+    const key = valid ? siret.slice(0, 9) : `name:${name.toLowerCase()}`;
+    const a = tit.get(key) ?? { name, siret: valid ? siret : "", amount: 0, nb: 0 };
+    a.amount += Number(r.montant_max ?? 0);
+    a.nb += 1;
+    if (name.length > a.name.length) a.name = name;
+    tit.set(key, a);
+  });
+  const topTitulaires = [...tit.values()].sort((a, b) => b.amount - a.amount).slice(0, 8);
+
+  // Les plus gros contrats : un lot partagé = une ligne qui nomme ses titulaires.
+  const vulg = loadMarcheVulgMap();
+  const groups = new Map<string, { row: Row; titulaires: string[] }>();
+  matching.slice().sort((a, b) => Number(b.montant_max ?? 0) - Number(a.montant_max ?? 0)).forEach((r, i) => {
+    const objetKey = (r.objet ?? "").trim().toLowerCase();
+    const key = objetKey ? `${objetKey}|${Number(r.montant_max ?? 0)}` : `row:${i}`;
+    const lot = groups.get(key) ?? { row: r, titulaires: [] };
+    const name = (r.fournisseur_nom ?? "").trim();
+    const named = Boolean(name) && name !== MULTI && name !== "Non précisé";
+    if (named && !lot.titulaires.includes(name)) lot.titulaires.push(name);
+    if (named && lot.row.fournisseur_nom === MULTI) lot.row = r;
+    groups.set(key, lot);
+  });
+  const topContrats = [...groups.values()].slice(0, 12).map(({ row: r, titulaires }) => {
+    const numero = r.numero_marche ?? "";
+    return {
+      numero,
+      titulaires,
+      objet: r.objet ?? "",
+      objetClair: (numero && vulg[numero]?.objet_clair) || null,
+      objetClairEn: (numero && vulg[numero]?.objet_clair_en) || null,
+      montant: Number(r.montant_max ?? 0),
+      fournisseur: r.fournisseur_nom ?? "Non précisé",
+      fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
+      date: r.date_notification ?? "",
+      nature: r.nature ?? "—",
+    };
+  });
+
+  const latest = years[years.length - 1];
+  return {
+    slug: dom,
+    hrefSlug: year === latest ? dom : `${dom}-${year}`,
+    year,
+    years,
+    total,
+    count: matching.length,
+    shareOfTotalPct: yearTotal > 0 ? (total / yearTotal) * 100 : 0,
+    nbTitulaires: tit.size,
+    topTitulaires,
+    topContrats,
+    series,
+  };
+}
+
 export type MarcheCategorieFiche = {
   category: string;
   slug: string;
@@ -5436,7 +5602,7 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
   for (const candidate of candidateYears) {
     let file: MarchesFile;
     try {
-      file = readJson<MarchesFile>(`marches-publics/marches_${candidate}.json`);
+      file = readMarchesFile(`marches-publics/marches_${candidate}.json`);
     } catch {
       continue;
     }
@@ -5541,7 +5707,7 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
     let list = y === yr ? rows : null;
     if (!list) {
       try {
-        const f = readJson<MarchesFile>(`marches-publics/marches_${y}.json`);
+        const f = readMarchesFile(`marches-publics/marches_${y}.json`);
         list = (f.data ?? f.marches ?? []) as typeof rows;
       } catch { list = []; }
     }

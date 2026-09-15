@@ -17,6 +17,9 @@ import { rowObjet } from "@/lib/objet-normalizer";
 import { OFFRES_BUCKETS, offresBucketOf, offresBucketSlug } from "@/lib/marches-offres";
 import { sumLots } from "@/lib/marches-shape";
 import type { MarchesOffresFiche } from "@/lib/fusion-data";
+import { marchesDomainesOfYear, marchesYearTotal, type MarchesDomaineFiche } from "@/lib/fusion-data";
+import { dedupMixedSources } from "@/lib/marches-dedup";
+import { domaineLabel } from "@/lib/marches-domaines";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import { ordEn, ordFr } from "@/lib/entities/seo-text";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
@@ -67,12 +70,12 @@ function budgetRows(match: (spec: PosteLinkSpec) => boolean, locale: L, max = 1)
 /**
  * The door back up to the section page, with the year's number: what turns a
  * fiche reached from a search engine into a visit of the section. The number
- * is the index's yearly total (a shared lot counted once, like the page).
+ * is the year's total as the page counts it (a shared lot once, a contract
+ * published by both sources once).
  */
 export function marchesSectionRow(city: string, year: number, locale: L): RelatedRow {
   const t = relatedT(locale);
-  const idx = readDataJsonOrNull<{ totalsByYear?: Record<string, { enveloppe_max_totale?: number }> }>(cityJsonPath(city, "marches-publics/index.json"));
-  const total = Number(idx?.totalsByYear?.[String(year)]?.enveloppe_max_totale ?? 0);
+  const total = marchesYearTotal(city, year);
   return {
     href: `/france/${city}/marches?year=${year}`,
     label: t("fx.related.marches_section", { year }),
@@ -88,7 +91,7 @@ export function offresRelated(f: MarchesOffresFiche, locale: L): RelatedBlock | 
   const t = relatedT(locale);
   const rows: RelatedRow[] = [marchesSectionRow("paris", f.year, locale)];
   const file = readDataJsonOrNull<{ data?: (MarcheLite & { decp_offres_recues?: number | null })[]; marches?: (MarcheLite & { decp_offres_recues?: number | null })[] }>(`marches-publics/marches_${f.year}.json`);
-  const rows0 = (file?.data ?? file?.marches ?? []).filter((r) => Number(r.decp_offres_recues ?? 0) >= 1);
+  const rows0 = dedupMixedSources(file?.data ?? file?.marches ?? []).rows.filter((r) => Number(r.decp_offres_recues ?? 0) >= 1);
   for (const b of OFFRES_BUCKETS) {
     if (b === f.bucket) continue;
     const inBucket = rows0.filter((r) => offresBucketOf(Number(r.decp_offres_recues)) === b);
@@ -100,6 +103,27 @@ export function offresRelated(f: MarchesOffresFiche, locale: L): RelatedBlock | 
       sub: t("fx.related.offres.peer_sub", { n: relatedInt(inBucket.length, locale) }),
       amount: eur(total, locale),
       group: t("fx.related.g.other_buckets", { year: f.year }),
+    });
+  }
+  rows.push({ href: `/france/paris/marches/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });
+  return { title: t("fx.related.title"), sub: null, rows };
+}
+
+/** Domain fiche: the section door, the six largest other domains of the same
+ *  year (each with its fiche), the year's index. */
+export function domaineRelated(f: MarchesDomaineFiche, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const rows: RelatedRow[] = [marchesSectionRow("paris", f.year, locale)];
+  const idx = readDataJsonOrNull<{ availableYears?: number[] }>(cityJsonPath("paris", "marches-publics/index.json"));
+  const currentYear = new Date().getFullYear();
+  const latest = Math.max(...(idx?.availableYears ?? [0]).filter((y) => y < currentYear));
+  for (const d of marchesDomainesOfYear("paris", f.year).filter((d) => d.slug !== f.slug && d.count > 0).slice(0, 6)) {
+    rows.push({
+      href: `/france/paris/marches/domaine/${d.slug}${f.year === latest ? "" : `-${f.year}`}`,
+      label: domaineLabel(d.slug, locale),
+      sub: t("fx.related.domaine.peer_sub", { n: relatedInt(d.count, locale) }),
+      amount: eur(d.amount, locale),
+      group: t("fx.related.g.other_domaines", { year: f.year }),
     });
   }
   rows.push({ href: `/france/paris/marches/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub"), group: t("fx.related.g.context") });

@@ -71,7 +71,7 @@ const LITERALS = new Set<string>([
   "france", "usa", "brasil", "national", "comparer", "compare", "chat", "c", "analyses", "analises",
   // FR families and entity words
   "budget", "subventions", "marches", "dette", "investissements", "logement", "lieux", "lieu",
-  "poste", "association", "theme", "fournisseur", "contrat", "categorie", "offres", "projet", "chapitre",
+  "poste", "association", "theme", "fournisseur", "contrat", "categorie", "offres", "domaine", "projet", "chapitre",
   "arrondissement", "bailleur", "instrument", "masse", "garanties", "stress-test",
   "comparaison", "evolution", "daily-bread", "etat", "fiscalite", "bucket", "recettes", "local",
   "agg", "region", "dept", "fonction", "nature", "marche",

@@ -17,6 +17,7 @@ import { loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
 import { assocHref } from "@/lib/assoc-slug";
 import { rowObjet } from "@/lib/objet-normalizer";
 import { displayOrgName } from "@/lib/fournisseur-display";
+import { dedupMixedSources } from "@/lib/marches-dedup";
 
 export type BrowseItem = { href: string; label: string; sub?: string | null; amount?: { v: string; u: string } | null };
 export type LetterCount = { letter: string; count: number };
@@ -125,7 +126,8 @@ export function marchesYearsAll(city: string): number[] {
 
 function marchesRows(city: string, year: number): MarcheRow[] {
   const f = readDataJsonOrNull<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${year}.json`));
-  return f?.data ?? f?.marches ?? [];
+  // A contract published by both sources in a mixed year is listed once.
+  return dedupMixedSources(f?.data ?? f?.marches ?? []).rows;
 }
 
 export function fournisseurList(city: string): { siren: string; nom: string; total: number; count: number; first: number; last: number }[] {
