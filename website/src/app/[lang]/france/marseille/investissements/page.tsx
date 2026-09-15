@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { budgetDoorTotal, loadInvestissementsData, marchesDoorTotal, subventionsYearTotal } from "@/lib/fusion-data";
+import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleInvestissementsHub } from "@/lib/seo/sections/marseille";
@@ -40,6 +41,7 @@ export default async function InvestissementsPage({
     budget: safe(() => budgetDoorTotal("marseille", d.year)),
     marches: safe(() => marchesDoorTotal("marseille", d.year)),
     next: safe(() => subventionsYearTotal("marseille", d.year)),
+    lieux: safe(() => ({ count: loadPlacesIndex().length })),
   };
   return (
     <>

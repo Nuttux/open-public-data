@@ -3093,6 +3093,9 @@ export type InvestissementsData = {
     nbMarches: number;
     photoUrl: string;
     photoCredit: string | null;
+    /** The normalised kind (ecole, creche, piscine…) when known: the card's
+     *  kicker says « Une école du quotidien » rather than « un équipement ». */
+    typologie: string | null;
   }[];
   geoPoints: {
     id: string;
@@ -3426,6 +3429,7 @@ export function loadInvestissementsData(
         nbMarches: loadProjetMarches(c.p.id).length,
         photoUrl: c.photoUrl as string,
         photoCredit: c.photoCredit,
+        typologie: c.typologie ?? null,
       };
     };
     const out: InvestissementsData["exemples"] = [];

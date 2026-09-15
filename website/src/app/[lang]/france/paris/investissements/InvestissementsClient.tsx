@@ -62,6 +62,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
     budget?: { year: number; total: number; voted: boolean } | null;
     marches?: { year: number; total: number } | null;
     next?: { year: number; total: number; count: number } | null;
+    lieux?: { count: number } | null;
   };
   /** Whether chapitre / projet / arrondissement fiches exist for this city. */
   enableDrilldowns?: boolean;
@@ -205,6 +206,11 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
   // Three real worksites with a real photo, chosen by rule: the material of
   // this section, under the years rail so the first screen holds the number,
   // its curve and three things it built (the blank that sat there before).
+  // The card's kicker names the kind when it is known: « Une école du
+  // quotidien » says what « Bruneseau Nord - 8 classes » is.
+  const QUOTIDIEN_KINDS = new Set(["ecole", "creche", "piscine", "bibliotheque", "gymnase", "college", "lycee"]);
+  const kickerOf = (e: InvestissementsData["exemples"][number]) =>
+    e.kind === "quotidien" && e.typologie && QUOTIDIEN_KINDS.has(e.typologie) ? t(`fx.sec.inv.ex.quotidien.${e.typologie}`) : t(EX_KIND[e.kind]);
   const examplesSection = !lite && d.exemples.length > 0 ? (
     <V3Section id="examples" title={fill(t("fx.sec.inv.h.examples"), { year: d.year })}>
       <div className="fx-sec-ex">
@@ -217,7 +223,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                 <img src={e.photoUrl} alt="" loading="lazy" />
               </Link>
               <figcaption>
-                <span className="k">{t(EX_KIND[e.kind])}</span>
+                <span className="k">{kickerOf(e)}</span>
                 <Link href={href} scroll={false} className="t">{name} ›</Link>
                 <span className="s">
                   {[
@@ -289,8 +295,9 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                 {hasNamed ? (
                   <V3Fold id="named" label={fill(t("fx.sec.inv.u.named"), { pct: fmtDec(d.projetsCoveragePct, 0) })}>
                     <p className="fx-v3-sentence">
-                      {fill(t("fx.sec.inv.u.named_body"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pctNoGeo: fmtDec(pctNoGeo, 0) })}
+                      {fill(t(isParis ? "fx.sec.inv.u.named_body" : "fx.sec.inv.u.named_body_city"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pct: fmtDec(d.projetsCoveragePct, 0) })}
                       {nTransverse > 0 ? fill(t("fx.sec.inv.u.named_transverse"), { t: fmtInt(nTransverse) }) : null}
+                      {hasMap && pctNoGeo >= 1 ? fill(t("fx.sec.inv.u.named_geo"), { pctNoGeo: fmtDec(pctNoGeo, 0) }) : null}
                     </p>
                   </V3Fold>
                 ) : null}
@@ -332,7 +339,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
                 ) : (
                   <Door href={`${cityBase}/marches`} hard title={t("fx.sec.inv.r.marches")} sub={t("fx.sec.inv.r.marches_sub_noyear")} />
                 )}
-                <Door href={`${cityBase}/lieux`} hard title={t("fx.sec.inv.r.lieux")} sub={t("fx.sec.inv.r.lieux_sub")} />
+                <Door href={`${cityBase}/lieux`} hard title={t("fx.sec.inv.r.lieux")} sub={t("fx.sec.inv.r.lieux_sub")} value={doors?.lieux && doors.lieux.count > 0 ? fmtInt(doors.lieux.count) : undefined} unit={doors?.lieux && doors.lieux.count > 0 ? t("fx.sec.inv.r.lieux_unit") : undefined} />
                 {enableDrilldowns ? (
                   <Door href={`${invBase}/projets`} hard title={t("fx.sec.inv.r.index")} sub={t("fx.sec.inv.r.index_sub")} />
                 ) : null}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { budgetDoorTotal, loadInvestissementsData, marchesDoorTotal, subventionsYearTotal } from "@/lib/fusion-data";
+import { loadLieuxIndex } from "@/lib/lieux-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { readLocale } from "@/lib/seo";
 import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
@@ -30,6 +31,7 @@ export default async function InvestissementsPage({
     budget: safe(() => budgetDoorTotal("paris", d.year)),
     marches: safe(() => marchesDoorTotal("paris", d.year)),
     next: safe(() => subventionsYearTotal("paris", d.year)),
+    lieux: safe(() => ({ count: loadLieuxIndex().length })),
   };
   return (
     <>
