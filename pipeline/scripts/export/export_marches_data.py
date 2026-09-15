@@ -33,67 +33,100 @@ PROJECT_ID = "open-data-france-484717"
 DATASET = marts_dataset()
 OUTPUT_DIR = data_dir() / "marches-publics"
 
-# Les enveloppes sont arrondies au centime : une somme flottante BigQuery varie
-# au 12e chiffre d'un passage à l'autre, et ce bruit publiait un « changement »
-# chaque lundi sans donnée nouvelle.
-
 # Top N catégories à garder (le reste → "Autres")
 TOP_CATEGORIES = 12
-
-# Noms que la source met à la place d'un titulaire identifié.
-_UNNAMED_TITULAIRES = {"MARCHE MULTIATTRIBUTAIRE", "Non précisé", "Non precise"}
-
-
-def lot_info(rows: list) -> list:
-    """Un lot gagné par plusieurs entreprises est publié une fois par entreprise,
-    chaque ligne portant la valeur du lot entier. Vérifié le 2026-09-14 sur les
-    ateliers sportifs des écoles 2020 : l'avis d'attribution BOAMP 21-59153
-    chiffre tout l'accord-cadre à 14,6 M€ et répète un montant de lot sur la
-    décision de chaque titulaire ; la liste de la Ville porte ce montant sur
-    quatre ans (57 824 009,99 €) sur chacune des 19 lignes.
-
-    Règle, identique à website/src/lib/marches-shape.ts (lotInfo) : même objet
-    (casse et espaces ignorés) + même montant au centime + au moins deux
-    titulaires distincts = un lot. Sa première ligne compte, les suivantes sont
-    des répétitions. Le même titulaire deux fois garde ses deux lignes.
-
-    Retourne pour chaque ligne {"repeat": bool, "holders": int}.
-    """
-    def holders_of(r):
-        sirens = [x.replace(" ", "") for x in str(r.get("fournisseur_siret") or "").split("|")]
-        sirens = [x[:9] for x in sirens if len(x) >= 9 and x[:9].isdigit()]
-        if sirens:
-            return sirens
-        name = (r.get("fournisseur_nom") or "").strip()
-        return [f"name:{name.lower()}"] if name and name not in _UNNAMED_TITULAIRES else []
-
-    groups = {}
-    for i, r in enumerate(rows):
-        objet = " ".join((r.get("objet") or "").strip().lower().split())
-        cents = round(float(r.get("montant_max") or 0) * 100)
-        if not objet or cents <= 0:
-            continue
-        groups.setdefault((cents, objet), []).append(i)
-    info = [{"repeat": False, "holders": 1} for _ in rows]
-    for idx in groups.values():
-        if len(idx) < 2:
-            continue
-        holders = {h for i in idx for h in holders_of(rows[i])}
-        if len(holders) < 2:
-            continue
-        for k, i in enumerate(idx):
-            info[i] = {"repeat": k > 0, "holders": len(holders)}
-    return info
-
-
-def sum_lots(rows: list) -> float:
-    """Somme des plafonds où un lot partagé compte une fois (voir lot_info)."""
-    info = lot_info(rows)
-    return sum(float(r.get("montant_max") or 0) for r, x in zip(rows, info) if not x["repeat"])
 
 
 def _float_or_none(v):
     return float(v) if v is not None else None
+
+
+# ── Un même contrat publié par deux sources compte une fois ──────────────────
+# Constaté le 2026-09-15 sur Paris 2024, l'exercice où la liste de la Ville
+# (lots attribués, titulaire nommé) et la DECP (accords-cadres, souvent
+# « multi-attributaire ») se recouvrent : 12 paires, 433 M€ comptés deux fois
+# sur 3,18 Md€. Les numéros diffèrent (« 20242024T00109 » côté Ville,
+# « decp-2024T00118 » côté DECP), donc la fusion par numéro ne les voit pas.
+# Même règle que website/src/lib/marches-dedup.ts (le site l'applique aussi
+# à la lecture, en filet) : une ligne DECP tombe quand une ligne de la Ville,
+# pas encore appariée, porte le même montant maximum, la même date de
+# notification (au jour) et au moins un mot significatif commun dans l'objet.
+# Appariement un pour un : trois lots de 60 M€ signés le même jour côté Ville
+# absorbent au plus trois lignes DECP.
+import re
+import unicodedata
+
+DEDUP_MIN_AMOUNT = 100_000
+
+
+def _tokens(s):
+    s = unicodedata.normalize("NFD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c)).lower()
+    return {w for w in re.split(r"[^a-z]+", s) if len(w) >= 5}
+
+
+def _is_decp(r):
+    return r.get("_source_origin") == "decp" or str(r.get("numero_marche") or "").startswith("decp-")
+
+
+def _dedup_key(r):
+    return f"{round(float(r.get('montant_max') or 0))}|{str(r.get('date_notification') or '')[:10]}"
+
+
+def dedup_mixed_sources(rows):
+    """Retourne (lignes, nb retirées, montant retiré)."""
+    has_list = any(not _is_decp(r) for r in rows)
+    has_decp = any(_is_decp(r) for r in rows)
+    if not has_list or not has_decp:
+        return rows, 0, 0.0
+    by_key = {}
+    for r in rows:
+        if not _is_decp(r):
+            by_key.setdefault(_dedup_key(r), []).append(r)
+    out, dropped, dropped_amount = [], 0, 0.0
+    for r in rows:
+        if not _is_decp(r) or float(r.get("montant_max") or 0) < DEDUP_MIN_AMOUNT:
+            out.append(r)
+            continue
+        candidates = by_key.get(_dedup_key(r), [])
+        words = _tokens(r.get("objet"))
+        i = next((k for k, c in enumerate(candidates) if _tokens(c.get("objet")) & words), -1)
+        if i == -1:
+            out.append(r)
+            continue
+        candidates.pop(i)
+        dropped += 1
+        dropped_amount += float(r.get("montant_max") or 0)
+    return out, dropped, dropped_amount
+
+
+def sum_lots(rows):
+    """Somme des plafonds où un lot partagé compte une fois : même objet (casse
+    et espaces ignorés) + même montant au centime + au moins deux titulaires
+    distincts = un lot, sa première ligne compte (website/src/lib/marches-shape.ts)."""
+    def holders(r):
+        sirens = [x.replace(" ", "")[:9] for x in str(r.get("fournisseur_siret") or "").split("|") if re.match(r"^\s*\d{9}", x)]
+        if sirens:
+            return sirens
+        name = (r.get("fournisseur_nom") or "").strip().lower()
+        return [f"name:{name}"] if name and name not in ("marche multiattributaire", "non précisé", "non precise") else []
+    groups = {}
+    for i, r in enumerate(rows):
+        objet = re.sub(r"\s+", " ", (r.get("objet") or "").strip().lower())
+        cents = round(float(r.get("montant_max") or 0) * 100)
+        if not objet or cents <= 0:
+            continue
+        groups.setdefault(f"{cents}|{objet}", []).append(i)
+    repeat = [False] * len(rows)
+    for idx in groups.values():
+        if len(idx) < 2:
+            continue
+        distinct = {h for i in idx for h in holders(rows[i])}
+        if len(distinct) < 2:
+            continue
+        for k in idx[1:]:
+            repeat[k] = True
+    return sum(float(r.get("montant_max") or 0) for i, r in enumerate(rows) if not repeat[i])
 
 
 def fetch_marches(client: bigquery.Client, year: int) -> list:
@@ -209,19 +242,22 @@ def get_filter_options(client: bigquery.Client) -> dict:
     }
 
 
-def export_index(client: bigquery.Client):
-    """Exporte l'index des données marchés publics."""
+def export_index(client: bigquery.Client, totals_from_rows: dict | None = None):
+    """Exporte l'index des données marchés publics.
+
+    Les totaux par année viennent des lignes exportées quand on les a
+    (`totals_from_rows`, un contrat publié par deux sources compté une fois,
+    un lot partagé compté une fois) : le site lit les mêmes fichiers et doit
+    afficher le même chiffre. Sinon, les marts."""
     print("  Génération de l'index...")
 
     years = get_available_years(client)
     filters = get_filter_options(client)
 
-    # Totaux par année. Le nombre de marchés vient du mart ; l'enveloppe se
-    # recalcule sur les lignes, où un lot partagé compte une fois (lot_info) :
-    # la somme SQL du mart additionne chaque titulaire.
+    # Totaux par année
     totals_by_year = {}
     query = f"""
-    SELECT annee, SUM(nb_marches) as nb
+    SELECT annee, SUM(nb_marches) as nb, SUM(enveloppe_max_totale) as total
     FROM `{PROJECT_ID}.{DATASET}.mart_marches_par_nature`
     GROUP BY annee
     ORDER BY annee DESC
@@ -229,13 +265,15 @@ def export_index(client: bigquery.Client):
     for row in client.query(query).result():
         totals_by_year[row.annee] = {
             "nb_marches": row.nb,
-            "enveloppe_max_totale": round(sum_lots(fetch_marches(client, row.annee)), 2),
+            "enveloppe_max_totale": float(row.total),
         }
+    for year, t in (totals_from_rows or {}).items():
+        totals_by_year[year] = t
 
     index = {
         "generated_at": datetime.now().isoformat(),
         "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
-        "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
+        "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles. Un contrat publié par la liste de la Ville et par la DECP compte une fois.",
         "availableYears": years,
         "totalsByYear": totals_by_year,
         "filters": filters,
@@ -253,23 +291,27 @@ def export_marches_year(client: bigquery.Client, year: int):
     """Exporte les marchés pour une année."""
     print(f"  Marchés {year}...")
 
-    data = fetch_marches(client, year)
+    data, dropped, dropped_amount = dedup_mixed_sources(fetch_marches(client, year))
     total = sum_lots(data)
 
     output = {
         "year": year,
         "generated_at": datetime.now().isoformat(),
-        "enveloppe_max_totale": round(total, 2),
+        "enveloppe_max_totale": total,
         "nb_marches": len(data),
-        "note": "montant_max = enveloppe pluriannuelle (plafond contractuel), pas une dépense annuelle.",
+        "note": "montant_max = enveloppe pluriannuelle (plafond contractuel), pas une dépense annuelle. Un lot partagé compte une fois dans le total ; un contrat publié par la liste de la Ville et par la DECP compte une fois.",
         "data": data,
     }
+    if dropped:
+        output["dedup"] = {"dropped": dropped, "dropped_amount": dropped_amount}
 
     output_file = OUTPUT_DIR / f"marches_{year}.json"
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"    → {output_file.name} ({len(data)} marchés, {total/1e6:.0f}M€ enveloppe)")
+    extra = f", {dropped} jumeaux Ville/DECP retirés ({dropped_amount/1e6:.0f}M€)" if dropped else ""
+    print(f"    → {output_file.name} ({len(data)} marchés, {total/1e6:.0f}M€ enveloppe{extra})")
+    return {"nb_marches": len(data), "enveloppe_max_totale": total}
 
 
 def export_tendances(client: bigquery.Client, years: list):
@@ -280,28 +322,25 @@ def export_tendances(client: bigquery.Client, years: list):
     for year in sorted(years):
         data = fetch_marches(client, year)
 
-        # Un lot partagé compte une fois dans les montants ; les nombres de
-        # marchés comptent chaque titulaire (voir lot_info).
-        enveloppe_totale = sum_lots(data)
+        enveloppe_totale = sum(d["montant_max"] for d in data)
         nb_marches = len(data)
-        repeats = [x["repeat"] for x in lot_info(data)]
 
         # Agrégation par nature
         by_nature = {}
-        for m, rep_lot in zip(data, repeats):
+        for m in data:
             key = m.get("nature") or "Non renseigné"
             if key not in by_nature:
                 by_nature[key] = {"label": key, "montant": 0, "count": 0}
-            by_nature[key]["montant"] += 0 if rep_lot else m["montant_max"]
+            by_nature[key]["montant"] += m["montant_max"]
             by_nature[key]["count"] += 1
 
         # Agrégation par catégorie (top N + Autres)
         by_cat_raw = {}
-        for m, rep_lot in zip(data, repeats):
+        for m in data:
             key = m.get("categorie_libelle") or "Non renseigné"
             if key not in by_cat_raw:
                 by_cat_raw[key] = {"label": key, "montant": 0, "count": 0}
-            by_cat_raw[key]["montant"] += 0 if rep_lot else m["montant_max"]
+            by_cat_raw[key]["montant"] += m["montant_max"]
             by_cat_raw[key]["count"] += 1
 
         sorted_cats = sorted(by_cat_raw.values(), key=lambda x: -x["montant"])
@@ -315,11 +354,11 @@ def export_tendances(client: bigquery.Client, years: list):
 
         # Agrégation par périmètre financier
         by_perimetre = {}
-        for m, rep_lot in zip(data, repeats):
+        for m in data:
             key = m.get("perimetre_financier") or "Non renseigné"
             if key not in by_perimetre:
                 by_perimetre[key] = {"label": key, "montant": 0, "count": 0}
-            by_perimetre[key]["montant"] += 0 if rep_lot else m["montant_max"]
+            by_perimetre[key]["montant"] += m["montant_max"]
             by_perimetre[key]["count"] += 1
 
         years_data.append({
@@ -370,16 +409,19 @@ def main():
     client = get_bigquery_client()
     log.success("Connecté", extra=PROJECT_ID)
 
-    log.section("Génération de l'index")
-    index = export_index(client)
-    years = [args.year] if args.year else index["availableYears"]
-    log.success("Index créé", extra=f"{len(years)} années disponibles")
+    years = [args.year] if args.year else get_available_years(client)
 
+    # Les années d'abord : l'index reprend leurs totaux (dédoublonnés, lots comptés une fois).
     log.section(f"Export des données ({len(years)} années)")
+    totals_from_rows = {}
     for i, year in enumerate(years, 1):
         log.progress(i, len(years), f"Année {year}")
-        export_marches_year(client, year)
+        totals_from_rows[year] = export_marches_year(client, year)
         log.success(f"Année {year}")
+
+    log.section("Génération de l'index")
+    index = export_index(client, totals_from_rows)
+    log.success("Index créé", extra=f"{len(index['availableYears'])} années disponibles")
 
     log.section("Export des tendances")
     export_tendances(client, years)

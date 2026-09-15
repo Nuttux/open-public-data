@@ -2902,7 +2902,8 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     year: yr as number,
     availableYears: years,
     total,
-    nb: file.nb_marches ?? marches.length,
+    // The rows as read (a twin published by both sources dropped), not the file's raw count.
+    nb: marches.length,
     nbTitulaires: titAgg.size,
     multiAttributaires: multi,
     top10,
