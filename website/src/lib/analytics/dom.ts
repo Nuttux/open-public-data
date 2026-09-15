@@ -64,7 +64,7 @@ const ROLE_RULES: [string, string][] = [
   [".fx-v3-hero-meta", "hero_meta"],
   [".fx-v3-lead, .fx-v3-lead-src", "lead"],
   [".fx-v3-foot", "foot"],
-  [".fx-v3-row, .fx-row-link, .fx-pv-line, .fx-bars-row", "row"],
+  [".fx-v3-row, .fx-row-link, .fx-pv-line, .fx-bars-row, .fx-fiche-thumbrow", "row"],
   [".fx-v3-sentence, .fx-pv-link", "sentence"],
   [".fx-mosaic-tile", "tile"],
   [".fx-sec-photo", "photo"],

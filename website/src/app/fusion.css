@@ -4091,6 +4091,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-fiche-secline a { color: var(--bleu); text-decoration: none; }
 .theme-fusion .fx-fiche-secline a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-fiche-secline .muted { white-space: nowrap; }
+/* Similar projects as rows with their image: the photo is what gets clicked. */
+.theme-fusion .fx-fiche-thumbrow { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule-2); color: var(--ink); text-decoration: none; }
+.theme-fusion .fx-fiche-thumbrow .im { display: block; overflow: hidden; }
+.theme-fusion .fx-fiche-thumbrow .im img { display: block; width: 100%; }
+.theme-fusion .fx-fiche-thumbrow .t { display: block; font-size: 15px; font-weight: 500; line-height: 1.3; }
+.theme-fusion .fx-fiche-thumbrow .s { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.theme-fusion .fx-fiche-thumbrow:hover .t { color: var(--bleu); }
+/* The next-worksite card at the foot of a fiche, in the kit's face. */
+.theme-fusion .fx-v3 .fx-next { margin: 10px 0 30px; }
+.theme-fusion .fx-v3 .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; font-weight: 500; }
 .theme-fusion .fx-projet-hero-photo { min-width: 0; }
 .theme-fusion .fx-drawer-body .fx-projet-hero-photo { order: 2; }
 @media (max-width: 720px) { .theme-fusion .fx-projet-hero-photo { order: 2; } }

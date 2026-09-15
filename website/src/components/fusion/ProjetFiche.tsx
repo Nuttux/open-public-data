@@ -10,6 +10,7 @@ import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { rowObjet } from "@/lib/objet-normalizer";
 import { V3Amt, V3Foot, V3Hero, V3Lead, V3Row, V3Section } from "@/components/fiche/v3";
+import { NextDoor } from "@/components/fiche/Doors";
 import { displayOrgName } from "@/lib/fournisseur-display";
 
 const TYPOLOGIE_LABELS_FR: Record<string, string> = {
@@ -67,8 +68,14 @@ export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFic
                 {projet.arrondissement > 0 ? (
                   <Link href={`${basePath}/investissements/arrondissement/${projet.arrondissement}`} scroll={false}>{arrTxt} {t("fx.fiche.projet.meta_arr")}</Link>
                 ) : arrTxt}
-                {projet.arrRank && projet.arrondissement > 0 ? ` · ${fill(t("fx.fiche.projet.meta_rank"), { rank: `${projet.arrRank.rank}${sufOrdinal(projet.arrRank.rank, locale)}`, total: projet.arrRank.total })}` : ""}
-                {projet.chapitre ? ` · ${trLabel(projet.chapitre, locale)}` : ""}
+                {/* Every word of this line that names something opens it: the rank
+                 *  the arrondissement's list of the year, the chapter its fiche. */}
+                {projet.arrRank && projet.arrondissement > 0 ? (
+                  <> · <Link href={`${basePath}/investissements/projets/${projet.year}/${projet.arrondissement}`}>{fill(t("fx.fiche.projet.meta_rank"), { rank: `${projet.arrRank.rank}${sufOrdinal(projet.arrRank.rank, locale)}`, total: projet.arrRank.total })}</Link></>
+                ) : null}
+                {projet.chapitre && projet.chapitre !== "—" ? (
+                  <> · {projet.chapitreSlug ? <Link href={`${basePath}/investissements/chapitre/${projet.chapitreSlug}`} scroll={false}>{trLabel(projet.chapitre, locale)}</Link> : trLabel(projet.chapitre, locale)}</>
+                ) : null}
               </>
             }
           />
@@ -123,14 +130,34 @@ export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFic
 
       {projet.similaires.length > 0 && typoLabel && (
         <V3Section title={fill(t("fx.fiche.projet.similaires"), { typo: typoLabel.toLowerCase(), year: projet.year })}>
-          {projet.similaires.map((s) => (
-            <V3Row key={s.id} href={`${basePath}/investissements/projet/${encodeURIComponent(s.id)}`}
-              label={en && s.name_en ? s.name_en : s.name}
-              sub={s.arrondissement > 0 ? `${s.arrondissement}${sufOrdinal(s.arrondissement, locale)}` : undefined}
-              amount={<V3Amt {...fmtEur(s.montant)} />} />
-          ))}
+          {/* Rows with their image: on this site the photos are what get clicked. */}
+          <div className="fx-fiche-thumbrows">
+            {projet.similaires.map((s) => (
+              <Link key={s.id} href={`${basePath}/investissements/projet/${encodeURIComponent(s.id)}`} scroll={false} className="fx-fiche-thumbrow">
+                <span className="im"><ProjetThumb photo={s.photo.photo} generic={s.photo.generic} typologie={s.photo.typologie ?? s.typologie} aspectRatio="4 / 3" fallbackLabel={s.name} /></span>
+                <span className="tx">
+                  <span className="t">{en && s.name_en ? s.name_en : s.name} <span aria-hidden="true" className="muted">›</span></span>
+                  {s.arrondissement > 0 ? <span className="s">{s.arrondissement}{sufOrdinal(s.arrondissement, locale)}</span> : null}
+                </span>
+                <V3Amt {...fmtEur(s.montant)} />
+              </Link>
+            ))}
+          </div>
         </V3Section>
       )}
+
+      {/* The way out that is not the footer: the next project of the same
+       *  arrondissement, like the next section at the foot of a page. */}
+      {projet.next ? (
+        <NextDoor
+          href={`${basePath}/investissements/projet/${encodeURIComponent(projet.next.id)}`}
+          kicker={fill(t("fx.fiche.projet.next_kicker"), { arr: `${projet.next.arrondissement}${sufOrdinal(projet.next.arrondissement, locale)}` })}
+          title={en && projet.next.name_en ? projet.next.name_en : projet.next.name}
+          sub={fill(t("fx.fiche.projet.meta_rank"), { rank: `${projet.next.rank}${sufOrdinal(projet.next.rank, locale)}`, total: projet.next.total })}
+          value={fmtEur(projet.next.montant).v}
+          unit={fmtEur(projet.next.montant).u}
+        />
+      ) : null}
 
       <V3Foot>
         {projet.geoLabel && <>{projet.geoLabel}{mapUrl ? " · " : ""}</>}
