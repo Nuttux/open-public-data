@@ -257,6 +257,8 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
                   {group === "offres" && hasCompetition && coveragePct < 95 ? (
                     <p className="fx-v3-note">{fill(t("fx.mp.s05.note"), { n: fmtInt(c.coverageCount), total: fmtInt(c.coverageTotal), pct: fmtDec(coveragePct, 0) })}</p>
                   ) : null}
+                  {/* The counting rule under the chart; the sub-line above invites to open a row, like every section page. */}
+                  <p className="fx-v3-note">{t("fx.sec.mp.scene_rule")}</p>
                 </div>
                 <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`scene_${group}`} anchor="achats" />
               </V3Section>
