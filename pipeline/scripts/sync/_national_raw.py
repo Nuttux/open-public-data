@@ -45,11 +45,15 @@ class GuardError(SystemExit):
 
 
 def bq(*args: str, capture: bool = False) -> str:
-    res = subprocess.run(
-        ["bq", f"--project_id={PROJECT_ID}", *args],
-        check=True, capture_output=capture, text=True,
-    )
-    return res.stdout if capture else ""
+    cmd = ["bq", f"--project_id={PROJECT_ID}", *args]
+    if not capture:
+        subprocess.run(cmd, check=True, text=True)
+        return ""
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    if res.returncode != 0:
+        # stderr conservé : c'est là que bq dit « Not found » ou « invalid_grant ».
+        raise subprocess.CalledProcessError(res.returncode, cmd, res.stdout, res.stderr)
+    return res.stdout
 
 
 def fq(table: str) -> str:
@@ -57,19 +61,33 @@ def fq(table: str) -> str:
 
 
 def table_info(table: str) -> dict | None:
+    """Seule l'absence de la table vaut None. Toute autre erreur (jeton, droits,
+    réseau) remonte : la prendre pour « table absente » sauterait la garde de
+    volume, et le run planifié du 2026-09-15 est tombé sur une réponse vide de
+    bq lue comme du JSON, sans dire pourquoi."""
     try:
         out = bq("show", "--format=json", f"{DATASET_ID}.{table}", capture=True)
-    except subprocess.CalledProcessError:
-        return None
-    info = json.loads(out[out.index("{"):])
+    except subprocess.CalledProcessError as e:
+        msg = f"{e.stderr or ''}\n{e.stdout or ''}".strip()
+        if "not found" in msg.lower():
+            return None
+        raise SystemExit(f"✗ bq show {DATASET_ID}.{table} : {msg[:400]}") from e
+    start = out.find("{")
+    if start < 0:
+        raise SystemExit(f"✗ bq show {DATASET_ID}.{table} : réponse sans JSON — {out.strip()[:200]!r}")
+    info = json.loads(out[start:])
     fields = [f["name"] for f in info.get("schema", {}).get("fields", [])]
     return {"rows": int(info.get("numRows", 0)), "description": info.get("description") or "", "fields": fields}
 
 
 def query(sql: str) -> list[dict]:
     out = bq("query", "--use_legacy_sql=false", "--format=json", "--max_rows=100000", sql, capture=True)
-    out = out[out.index("["):] if "[" in out else "[]"
-    return json.loads(out)
+    start = out.find("[")
+    if start < 0:
+        if out.strip():
+            raise SystemExit(f"✗ bq query : réponse sans JSON — {out.strip()[:200]!r}")
+        return []
+    return json.loads(out[start:])
 
 
 def rows_by_year(table: str, year_col: str) -> dict[int, int]:
