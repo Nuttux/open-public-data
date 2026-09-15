@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadInvestissementsData } from "@/lib/fusion-data";
+import { budgetDoorTotal, loadInvestissementsData, marchesDoorTotal, subventionsYearTotal } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleInvestissementsHub } from "@/lib/seo/sections/marseille";
@@ -35,10 +35,16 @@ export default async function InvestissementsPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadInvestissementsData(requestedYear, "marseille");
   const locale = await readLocale();
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    budget: safe(() => budgetDoorTotal("marseille", d.year)),
+    marches: safe(() => marchesDoorTotal("marseille", d.year)),
+    next: safe(() => subventionsYearTotal("marseille", d.year)),
+  };
   return (
     <>
       <FrHubJsonLd hub={marseilleInvestissementsHub()} locale={locale} />
-      <InvestissementsClient d={d} posts={[]} enableDrilldowns={false} />
+      <InvestissementsClient d={d} posts={[]} doors={doors} enableDrilldowns={false} />
     </>
   );
 }

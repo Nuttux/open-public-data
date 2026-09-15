@@ -1,519 +1,345 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "@/components/LocalizedLink";
 import { usePathname } from "@/lib/navigation";
+import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import SectionHead from "@/components/fusion/SectionHead";
-import ChartSource from "@/components/fusion/ChartSource";
-import AnimatedNumber from "@/components/fusion/AnimatedNumber";
-import YearPicker from "@/components/fusion/YearPicker";
-import ExportRow from "@/components/fusion/ExportRow";
-import Tip from "@/components/fusion/Tip";
-import ProjectMap from "@/components/fusion/ProjectMap";
-import ProjetThumb from "@/components/fusion/ProjetThumb";
+import AnneesRail, { RAIL_MIN } from "@/components/fusion/AnneesRail";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
-import CityChoropleth from "@/components/fusion/CityChoropleth";
-import { cityDistrictGeometry } from "@/components/fusion/city-districts";
-import BudgetTimeline from "@/components/fusion/BudgetTimeline";
-import StackedBarTheme from "@/components/fusion/StackedBarTheme";
-import PageTOC from "@/components/fusion/PageTOC";
-import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
-import PageHook from "@/components/fusion/PageHook";
-import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { FicheMore } from "@/components/fiche";
-import { fill } from "@/lib/fmt";
+import SectionHero from "@/components/fiche/SectionHero";
+import ShareButton from "@/components/fiche/ShareButton";
+import Bars, { type BarRow } from "@/components/fiche/Bars";
+import { Door, NextDoor } from "@/components/fiche/Doors";
+import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import { useFmt, useFmtEur } from "@/lib/use-fmt";
+import { fill, sufOrdinal } from "@/lib/fmt";
+import { useLocale, useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
+import { trLabel } from "@/lib/label-translate";
+import { slugifyChapitre } from "@/lib/projet-utils";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
-import { slugifyChapitre } from "@/lib/projet-utils";
-import { useT, useLocale } from "@/lib/localeContext";
-import { useFmt } from "@/lib/use-fmt";
-import { trLabel } from "@/lib/label-translate";
-import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
+// Leaflet only when someone asks for the map: one click since April on the
+// markers, so the page does not pay for it on load.
+const ProjectMap = dynamic(() => import("@/components/fusion/ProjectMap"), { ssr: false, loading: () => <div className="fx-sec-map-wait" aria-hidden="true" /> });
 
-const INV_PLACEHOLDERS: ArticlePlaceholder[] = [
-  {
-    category: "Analyse",
-    title: "Le 13ᵉ et le 17ᵉ : deux géographies d'investissement.",
-    description:
-      "ZAC Paris Rive Gauche vs Clichy-Batignolles. Deux stratégies de foncier public, deux trajectoires de livraison.",
-  },
-  {
-    category: "Explication",
-    title: "AP, CP, CA : comprendre ce que comptabilise un investissement.",
-    description:
-      "Autorisations de programme, crédits de paiement, comptes administratifs — la chaîne budgétaire d'un chantier, expliquée sans jargon.",
-  },
-];
+/** The two ways « Où » is drawn: bars by arrondissement (with the choropleth), or the markers map. */
+type WhereView = "arrondissements" | "carte";
+const WHERE_VIEWS: WhereView[] = ["arrondissements", "carte"];
 
-export default function InvestissementsClient({
-  d,
-  posts,
-  enableDrilldowns = true,
-}: {
+const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
+const PROJETS_CAP = 8;
+const ARR_CAP = 8;
+const EX_KIND: Record<InvestissementsData["exemples"][number]["kind"], string> = {
+  gros: "fx.sec.inv.ex.gros",
+  chantier: "fx.sec.inv.ex.chantier",
+  quotidien: "fx.sec.inv.ex.quotidien",
+};
+
+/**
+ * La section « Investissements » sur la grammaire des fiches (2026-09-15) :
+ * le chiffre (la dépense d'investissement de l'année, hors dette) avec son
+ * rail, UNE scène qui fait la somme du chiffre — par chapitre, vers les
+ * fiches chapitre —, puis la matière de cette section : trois chantiers en
+ * photo choisis par règle (le plus gros, le plus de contrats, un équipement
+ * du quotidien) et les plus gros chantiers en lignes, face à « Où, dans
+ * Paris » qui porte SON chiffre (les opérations nommées ne couvrent qu'une
+ * part du total) — barres par arrondissement avec la choroplèthe, la carte à
+ * marqueurs sur demande —, « Comprendre » en replis, « Voir aussi », la
+ * section suivante. Marseille partage la page : sans chapitres, la scène est
+ * « Où », sans photos ni carte.
+ */
+export default function InvestissementsClient({ d, posts, doors, enableDrilldowns = true }: {
   d: InvestissementsData;
   posts: BlogPostMeta[];
-  // Whether chapitre/projet/arrondissement drill routes exist for this city.
-  // Off (e.g. Marseille, whose investissements drill fiches aren't built yet)
-  // keeps the same page but renders those elements non-clickable — the theme
-  // bar falls back to same-page ?theme filtering, never a 404 (P3.2 option a).
+  /** Numbers for the doors, loaded by the page (absent on cities without them). */
+  doors?: {
+    budget?: { year: number; total: number; voted: boolean } | null;
+    marches?: { year: number; total: number } | null;
+    next?: { year: number; total: number; count: number } | null;
+  };
+  /** Whether chapitre / projet / arrondissement fiches exist for this city. */
   enableDrilldowns?: boolean;
 }) {
   const t = useT();
-  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const { locale } = useLocale();
-  const trL = (s: string | undefined) => trLabel(s, locale);
-  // Multi-cities awareness — derive city slug from URL so the same client
-  // can render under /fr/city/paris/... and /fr/city/marseille/... without
-  // hardcoded paths or constants. cf. project_marseille_v1_decisions.
-  const pathname = usePathname();
-  const citySlug = citySlugFromPathname(pathname);
-  const cityBasePath = `/france/${citySlug}/investissements`;
+  const track = useTrack();
+  const fmt = useFmt();
+  const { fmtDec, fmtCompactEur } = fmt;
+  // Inter draws the narrow no-break space of « 1 122 » as almost nothing.
+  const fmtInt = (n: number) => fmt.fmtInt(n).replace(/ /g, " ");
+  const fmtEur = useFmtEur();
+  const citySlug = citySlugFromPathname(usePathname());
+  const cityName = CITY_NAMES[citySlug] ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
+  const cityBase = `/france/${citySlug}`;
+  const invBase = `${cityBase}/investissements`;
   const isParis = citySlug === "paris";
-  const ytrend = d.yearsSummary;
+  const total = fmtCompactEur(d.total);
+  const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
+  const Amt = ({ n }: { n: number }) => { const f = fmtEur(n); return <span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{f.v}<span className="u">{f.u}</span></span>; };
+  const arrTxt = (n: number) => `${n}${sufOrdinal(n, locale)}`;
+  const named = (n: number) => fill(t(n === 1 ? "fx.sec.inv.n_named_one" : "fx.sec.inv.n_named"), { n: fmtInt(n) });
+  const years = d.availableYears.slice().sort((a, b) => a - b);
 
-  const arrSuf = (n: number) => (n === 1 ? t("fx.s.arr.1_suffix") : t("fx.s.arr.suffix"));
-  // Paris has both a geolocated map (ProjectMap) and a SVG choropleth wired
-  // to its 1-20 arrondissements. Non-Paris cities fall back to a simple
-  // ranking list (P3.2 option a stricte: the map+choropleth section
-  // disappears when the underlying data isn't there). The toggle is hidden
-  // for non-Paris.
-  const supportsTerritoryViews = isParis && d.geoPoints.length > 0;
-  const [territoryView, setTerritoryView] = useState<"carte" | "liste">(supportsTerritoryViews ? "carte" : "liste");
+  // The number's grey line: what the named operations weigh against it. Two
+  // measures meet here (the year's spending, the operations' voted amounts):
+  // the share is said as a share, and « Comprendre » says the difference.
+  const hasNamed = d.nbProjets > 0 && d.projetsAmount > 0;
+  const meta = hasNamed
+    ? fill(t("fx.sec.inv.meta"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pct: fmtDec(d.projetsCoveragePct, 0) })
+    : undefined;
+
+  // The movement under the number: the year against the one before, in ocre,
+  // naming the chapter that explains at least a third of the change.
+  const prev = d.yearsSummary.filter((y) => y.year < d.year && y.horsDette > 0).sort((a, b) => b.year - a.year)[0];
+  const move = prev
+    ? (() => {
+        const pct = ((d.total - prev.horsDette) / prev.horsDette) * 100;
+        if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prev.year });
+        const base = fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prev.year });
+        const tc = d.prevMove?.year === prev.year ? d.prevMove.topChapitre : null;
+        return tc
+          ? base + fill(t("fx.sec.mp.move_of_which"), { sign: tc.delta > 0 ? "+" : "−", amount: eurTxt(Math.abs(tc.delta)), label: trLabel(tc.label, locale).toLocaleLowerCase(locale) })
+          : base;
+      })()
+    : undefined;
+
+  const series = d.yearsSummary.filter((y) => y.horsDette > 0).map((y) => ({ year: y.year, amount: y.horsDette }));
+  const shareTitle = fill(t("fx.sec.inv.share_title"), { city: cityName, total: `${total.value} ${total.unit}`, year: d.year });
+
+  // The scene: the chapters, which sum to the number. Each opens its fiche.
+  const chapLabel = (label: string) => (label.toLowerCase() === "rsa" ? "RSA" : trLabel(label, locale));
+  const chapRows: BarRow[] = d.byChapitre.map((c) => ({
+    key: c.label,
+    label: chapLabel(c.label),
+    value: c.amount,
+    text: eurTxt(c.amount),
+    sub: c.count > 0 ? named(c.count) : undefined,
+    href: enableDrilldowns ? `${invBase}/chapitre/${slugifyChapitre(c.label)}` : null,
+  }));
+  // Without a chapter split (Marseille), « Où » is the scene.
+  const lite = chapRows.length === 0;
+
+  // « Où » — its own number: the named operations, by arrondissement.
+  const [where, setWhere] = useState<WhereView>("arrondissements");
+  const hasMap = isParis && d.geoPoints.length > 0;
+  const pickWhere = (v: WhereView) => {
+    if (v === where) return;
+    track("filter_change", { page: "investissements", field: "where_view", value: v });
+    setWhere(v);
+  };
+  const arrRows: BarRow[] = d.byArrondissement.map((a) => ({
+    key: String(a.arr),
+    label: fill(t("fx.sec.inv.arr_label"), { arr: arrTxt(a.arr) }),
+    value: a.amount,
+    text: eurTxt(a.amount),
+    sub: named(a.count),
+    href: enableDrilldowns ? `${invBase}/arrondissement/${a.arr}` : null,
+  }));
+  const whereSub = hasNamed
+    ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pct: fmtDec(d.projetsCoveragePct, 0) })
+    : undefined;
+  const whereSection = d.byArrondissement.length > 0 ? (
+    <V3Section id="where" title={fill(t("fx.sec.inv.h.where"), { city: cityName })} sub={whereSub}>
+      {hasMap ? (
+        <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.inv.g.aria")}>
+          {WHERE_VIEWS.map((v) => (
+            <button key={v} type="button" aria-pressed={where === v} onClick={() => pickWhere(v)}>{t(`fx.sec.inv.g.${v}`)}</button>
+          ))}
+        </div>
+      ) : null}
+      <div id="ou">
+        {where === "carte" && hasMap ? (
+          <ProjectMap points={d.geoPoints} year={d.year} height={480} />
+        ) : (
+          <>
+            {isParis ? (
+              <div className="fx-sec-choro">
+                <ParisChoropleth items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))} height={300} showRanking={false} />
+              </div>
+            ) : null}
+            <Bars rows={arrRows} cap={ARR_CAP} foldId="more-arr" foldLabel={fill(t("fx.sec.inv.arr_more"), { n: fmtInt(d.byArrondissement.length) })} />
+          </>
+        )}
+      </div>
+      <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`where_${where}`} anchor="ou" />
+    </V3Section>
+  ) : null;
+
+  // The largest named worksites, in rows; the rest behind one fold.
+  const projets = foldRest(d.topProjets, PROJETS_CAP);
+  const ProjetRow = (p: InvestissementsData["topProjets"][number]) => (
+    <V3Row key={p.id} href={enableDrilldowns ? `${invBase}/projet/${encodeURIComponent(p.id)}` : null}
+      label={(locale === "en" && p.name_en) || p.name}
+      subText={[p.arr > 0 ? arrTxt(p.arr) : t("fx.sec.inv.transverse"), p.chapitre && p.chapitre !== "—" ? chapLabel(p.chapitre) : null].filter(Boolean).join(" · ")}
+      amount={<Amt n={p.amount} />} />
+  );
+  const projetsSection = d.topProjets.length > 0 ? (
+    <V3Section id="projects" title={fill(t("fx.sec.inv.h.projects"), { year: d.year })}>
+      {projets.shown.map(ProjetRow)}
+      {projets.rest.length > 0 && <V3Fold id="more-projects" text label={t("fx.v3.voir_plus")}>{projets.rest.map(ProjetRow)}</V3Fold>}
+    </V3Section>
+  ) : null;
+
+  const pctNoGeo = d.nbProjets > 0 ? Math.max(0, 100 - d.pctGeo) : 0;
 
   return (
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-
-      <PageTOC
-        items={[
-          { id: "sec-territoire", label: t("fx.inv.s05.kind") },
-          ...(d.byChapitre.length > 0 ? [{ id: "sec-chapitre", label: t("fx.toc.chapitres") }] : []),
-          { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-projets", label: t("fx.toc.projets") },
-          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
-          { id: "sec-sources", label: t("fx.toc.sources") },
-        ]}
-      />
-
-      <PageIntro
-        title={
-          <>
-            {t("fx.inv.title.before")}
-            <em>{t("fx.inv.title.em")}</em>
-            {t("fx.inv.title.after")}
-          </>
-        }
-        lede={
-          <>
-            {fmtInt(d.nbProjets)}{t("fx.inv.lede.a.pre")}
-            <Tip label={t("fx.inv.lede.a.operations.tip")}>{t("fx.inv.lede.a.operations")}</Tip>
-            {t("fx.inv.lede.a.post")}{d.year}
-            {/* Le lede annonçait « dont 98 % géolocalisées » — vrai de
-             * l'extraction, trompeur à côté du total. Il dit maintenant ce
-             * que l'extraction pèse. */}
-            {", "}
-            <b>
-              {fill(t("fx.inv.lede.coverage"), {
-                amount: fmtMillions(d.projetsAmount, 0),
-                pct: fmtDec(d.projetsCoveragePct, 0),
-                total: fmtBillions(d.total),
-              })}
-            </b>
-            {t("fx.inv.lede.c.pre")}
-            <Tip label={t("fx.inv.lede.c.ca.tip")}>{t("fx.inv.lede.c.ca")}</Tip>
-            {t("fx.inv.lede.c.post")}
-          </>
-        }
-        actions={
-          <YearPicker
-            years={d.availableYears}
-            current={d.year}
-            basePath={cityBasePath}
-            label={t("fx.s.year_label")}
-          />
-        }
-        stats={
-          <>
-            <IntroStat
-              value={<AnimatedNumber value={d.total} format={(n) => fmtBillions(n)} />}
-              unit={t("fx.s.md_eur")}
-              label={<Tip label={t("fx.inv.s02.hero_cap.a.term.tip")}>{fill(t("fx.inv.s02.hero_label"), { year: d.year })}</Tip>}
-            />
-            <IntroStat
-              value={<AnimatedNumber value={d.nbProjets} format={(n) => fmtInt(n)} />}
-              label={<Tip label={t("fx.inv.s02.kpi.projets.tip")}>{t("fx.inv.s02.kpi.projets")}</Tip>}
-            />
-            {/* Ce qui était affiché ici, « 98 % géolocalisés », mesurait la part
-             * géolocalisée de l'extraction PDF — pas du total juste à gauche.
-             * Collé au « 2,12 Md€ », il se lisait « presque tout est sur la
-             * carte », alors que l'extraction pèse ~11 % de l'exercice. La
-             * bande porte donc la couverture réelle ; le taux de
-             * géolocalisation reste dans l'infobulle et sous la carte. */}
-            <IntroStat
-              value={<AnimatedNumber value={d.projetsCoveragePct} format={(n) => `${fmtDec(n, 0)} %`} />}
-              label={
-                <Tip
-                  label={fill(t("fx.inv.s02.kpi.couverture.tip"), {
-                    amount: fmtMillions(d.projetsAmount, 0),
-                    nb: fmtInt(d.nbProjets),
-                    total: fmtBillions(d.total),
-                    pctGeo: fmtDec(d.pctGeo, 0),
-                  })}
-                >
-                  {t("fx.inv.s02.kpi.couverture")}
-                </Tip>
-              }
-            />
-            {d.byChapitre[0] && (
-              <IntroStat
-                value={<AnimatedNumber value={d.byChapitre[0].amount} format={(n) => fmtMillions(n, 0)} />}
-                unit={t("fx.s.m_eur")}
-                label={<>{t("fx.inv.s02.kpi.top_chap")} · {trL(d.byChapitre[0].label)}</>}
+        <div className="fx-sec fx-v3">
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.inv.kicker")}</div>
+          <div className="fx-sec-grid" data-layout={lite ? undefined : "chantiers"}>
+            <div className="fx-sec-a-hero">
+              <SectionHero
+                title={t("fx.sec.inv.title")}
+                value={total.value}
+                unit={total.unit}
+                captionBefore={t("fx.sec.inv.cap_before")}
+                captionAfter={t("fx.sec.inv.cap_after")}
+                years={years}
+                year={d.year}
+                basePath={invBase}
+                meta={meta}
+                move={move}
+                shareTitle={shareTitle}
               />
-            )}
-          </>
-        }
-      />
+              {series.length >= RAIL_MIN ? (
+                <div className="fx-sec-years" data-section="years">
+                  <div className="fx-page-kicker">{t("fx.sec.years")}</div>
+                  <AnneesRail rows={series} current={d.year} />
+                </div>
+              ) : null}
+            </div>
 
-      <section className="fx-section" id="sec-territoire">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.inv.s05.title.before")}
-                <em>{t("fx.inv.s05.title.em")}</em>
-                {t("fx.inv.s05.title.after")}
-              </>
-            }
-            subtitle={
-              territoryView === "carte"
-                ? fill(t("fx.inv.s03.sub"), { n: fmtInt(d.nbGeo) })
-                : t("fx.inv.s05.sub")
-            }
-          />
-          {supportsTerritoryViews ? (
-            <>
-              <div className="fx-view-toggle" role="tablist" aria-label={t("fx.inv.s05.kind")}>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={territoryView === "carte"}
-                  className={`fx-view-toggle-btn ${territoryView === "carte" ? "is-active" : ""}`}
-                  onClick={() => setTerritoryView("carte")}
-                >
-                  {t("fx.toc.carte")}
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={territoryView === "liste"}
-                  className={`fx-view-toggle-btn ${territoryView === "liste" ? "is-active" : ""}`}
-                  onClick={() => setTerritoryView("liste")}
-                >
-                  {t("fx.toc.arrondissements")}
-                </button>
-              </div>
-              {territoryView === "carte" ? (
-                <>
-                  <ProjectMap points={d.geoPoints} year={d.year} height={620} />
-                  {/* L'ancienne note disait « 2 % des projets ne sont pas
-                   * géolocalisables … mais sont comptabilisés dans tous les
-                   * autres indicateurs ». Les deux moitiés induisaient en
-                   * erreur : les 2 % portent sur l'extraction, et les
-                   * indicateurs tirés de cette extraction (carte,
-                   * arrondissements, plus gros chantiers) ne couvrent pas le
-                   * total non plus. La note dit maintenant les deux échelles. */}
-                  <p className="fx-note">
-                    <b>{t("fx.inv.s03.note.b")}</b> :{" "}
-                    {fill(t("fx.inv.s03.note"), {
-                      amount: fmtMillions(d.projetsAmount, 0),
-                      nb: fmtInt(d.nbProjets),
-                      pct: fmtDec(d.projetsCoveragePct, 0),
-                      total: fmtBillions(d.total),
-                      pctNoGeo: fmtDec(100 - d.pctGeo, 0),
-                    })}
-                  </p>
-                  <ChartSource
-                    source={fill(t("fx.inv.s03.source.cite"), { year: d.year })}
-                    dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-                    methodAnchor="investissements"
-                  />
-                </>
-              ) : (
-                <>
-                  <ParisChoropleth
-                    items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-                    height={420}
-                  />
-                  <ChartSource
-                    source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
-                    dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-                    methodAnchor="investissements"
-                  />
-                </>
+            <div className="fx-sec-a-scene">
+              {lite ? whereSection : (
+                <V3Section id="scene" title={fill(t("fx.sec.inv.h.scene"), { year: d.year })} sub={t("fx.sec.inv.scene_sub")}>
+                  <div id="chapitres">
+                    <Bars rows={chapRows} />
+                  </div>
+                  <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="scene_chapitre" anchor="chapitres" />
+                </V3Section>
               )}
-            </>
-          ) : cityDistrictGeometry(citySlug) ? (
-            // Non-Paris city that has SVG district geometry: the universal
-            // choropleth (map + ranking sidebar). Tiles link to the district
-            // fiche only where that route exists (enableDrilldowns).
-            <>
-              <CityChoropleth
-                citySlug={citySlug}
-                items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-                height={420}
-                hrefFor={enableDrilldowns ? (arr) => `${cityBasePath}/arrondissement/${arr}` : () => null}
-              />
-              <ChartSource
-                source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
-                methodAnchor="investissements"
-              />
-            </>
-          ) : (
-            // No geometry yet: simple ranking list (P3.2 option a stricte).
-            // Source: pre-aggregated byArrondissement coming from the city loader.
-            <>
-              <ol className="fx-arr-ranking" aria-label={t("fx.toc.arrondissements")}>
-                {d.byArrondissement.map((a, i) => (
-                  <li key={a.arr} className="fx-arr-ranking-item">
-                    <span className="fx-arr-ranking-rank">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="fx-arr-ranking-label">
-                      {a.arr}
-                      {arrSuf(a.arr)} {t("fx.inv.rank.district")}
-                    </span>
-                    <span className="fx-arr-ranking-amount">
-                      {a.amount >= 1e6 ? `${fmtMillions(a.amount, 1)} M€` : `${fmtInt(a.amount / 1000)} k€`}
-                    </span>
-                    <span className="fx-arr-ranking-count">
-                      {fmtInt(a.count)} {a.count === 1 ? t("fx.inv.rank.project_one") : t("fx.inv.rank.project_many")}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-              <ChartSource
-                source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
-                methodAnchor="investissements"
-              />
-            </>
-          )}
-          {(() => {
-            const parHab = d.total / cityPopulation(citySlug);
-            const topChap = d.byChapitre[0];
-            const topAmt = topChap ? fmtMillions(topChap.amount, 0) : "";
-            const topLabel = topChap ? trL(topChap.label) : "";
-            const baseVars = {
-              year: d.year,
-              total: fmtBillions(d.total),
-              nb: fmtInt(d.nbProjets),
-              perHab: fmtInt(parHab),
-            };
-            const topPart = topChap
-              ? fill(t("fx.inv.hook.share.top"), { label: topLabel, topAmt })
-              : "";
-            return (
-              <PageHook
-                variant="card"
-                cite={fill(t(isParis ? "fx.inv.hook.cite" : "fx.inv.hook.cite.ofgl"), { year: d.year })}
-                shareText={fill(t("fx.inv.hook.share"), { ...baseVars, topPart })}
-              >
-                <span dangerouslySetInnerHTML={{ __html: fill(t("fx.inv.hook.body.intro"), baseVars) }} />
-                {topChap ? (
-                  <span dangerouslySetInnerHTML={{ __html: fill(t("fx.inv.hook.body.top"), { label: topLabel, topAmt }) }} />
+            </div>
+
+            {lite ? (
+              <div className="fx-sec-a-rows">{projetsSection}</div>
+            ) : (
+              <>
+                <div className="fx-sec-a-examples">
+                  {d.exemples.length > 0 ? (
+                    // Three real worksites with a real photo, chosen by rule: the
+                    // material of this section, framed from the project's side.
+                    <V3Section id="examples" title={fill(t("fx.sec.inv.h.examples"), { year: d.year })}>
+                      <div className="fx-sec-ex">
+                        {d.exemples.map((e) => {
+                          const href = `${invBase}/projet/${encodeURIComponent(e.id)}`;
+                          const name = (locale === "en" && e.nameEn) || e.name;
+                          return (
+                            <figure key={e.id} className="fx-sec-ex-card">
+                              <Link href={href} scroll={false} className="fx-sec-ex-img" aria-hidden="true" tabIndex={-1}>
+                                <img src={e.photoUrl} alt="" loading="lazy" />
+                              </Link>
+                              <figcaption>
+                                <span className="k">{t(EX_KIND[e.kind])}</span>
+                                <Link href={href} scroll={false} className="t">{name} ›</Link>
+                                <span className="s">
+                                  {[
+                                    e.arr > 0 ? arrTxt(e.arr) : t("fx.sec.inv.transverse"),
+                                    eurTxt(e.amount),
+                                    e.nbMarches > 0 ? fill(t(e.nbMarches === 1 ? "fx.sec.inv.n_contracts_one" : "fx.sec.inv.n_contracts"), { n: e.nbMarches }) : null,
+                                  ].filter(Boolean).join(" · ")}
+                                </span>
+                                {e.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: e.photoCredit })}</span> : null}
+                              </figcaption>
+                            </figure>
+                          );
+                        })}
+                      </div>
+                    </V3Section>
+                  ) : null}
+                  {projetsSection}
+                </div>
+                <div className="fx-sec-a-where">{whereSection}</div>
+              </>
+            )}
+
+            <div className="fx-sec-a-understand">
+              <V3Section id="understand" title={t("fx.sec.understand")}>
+                <V3Fold id="measure" label={t("fx.sec.inv.u.measure")}><p className="fx-v3-sentence">{t("fx.sec.inv.u.measure_body")}</p></V3Fold>
+                {hasNamed ? (
+                  <V3Fold id="named" label={fill(t("fx.sec.inv.u.named"), { pct: fmtDec(d.projetsCoveragePct, 0) })}>
+                    <p className="fx-v3-sentence">{fill(t("fx.sec.inv.u.named_body"), { n: fmtInt(d.nbProjets), amount: eurTxt(d.projetsAmount), pctNoGeo: fmtDec(pctNoGeo, 0) })}</p>
+                  </V3Fold>
                 ) : null}
-              </PageHook>
-            );
-          })()}
-        </div>
-      </section>
+                <V3Fold id="sources" label={t("fx.sec.inv.u.source")}>
+                  <p className="fx-v3-sentence">{t(isParis ? "fx.sec.inv.u.source_body" : "fx.sec.inv.u.source_body_city")}</p>
+                  <p className="fx-v3-sentence">
+                    {isParis ? (
+                      <>
+                        <a href="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
+                        {" · "}
+                        <a href={`/data/map/investissements_complet_${d.year}.json`} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
+                        {" · "}
+                        <a href="/data/investissement_tendances.json" target="_blank" rel="noopener noreferrer">{t("fx.sec.inv.u.trend")} ↗</a>
+                      </>
+                    ) : (
+                      <>
+                        <a href={`/data/${citySlug}/investissements/investissements_${d.year}.json`} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
+                        {" · "}
+                        <a href={`/data/${citySlug}/investissements/investissement_tendances.json`} target="_blank" rel="noopener noreferrer">{t("fx.sec.inv.u.trend")} ↗</a>
+                      </>
+                    )}
+                    {" · "}
+                    <Link href="/methode?tool=investissements#outils">{t("fx.s.methode_complete")}</Link>
+                  </p>
+                </V3Fold>
+              </V3Section>
+            </div>
 
-      {/* « Par exemple » — même grammaire que la page marchés : trois
-       * projets réels, règles fixes, photo dédiée exigée (cf. loader). */}
+            <div className="fx-sec-a-related">
+              <V3Section id="related" title={t("fx.sec.see_also")}>
+                {/* Doors are named like the sections in the menu; the year and the number sit in the grey line and at the right. */}
+                {doors?.budget ? (
+                  <Door href={`${cityBase}/budget?year=${doors.budget.year}`} hard title={t("fx.sec.inv.r.budget")} sub={fill(t(doors.budget.voted ? "fx.sec.inv.r.budget_sub_vote" : "fx.sec.inv.r.budget_sub"), { year: doors.budget.year })} value={fmtCompactEur(doors.budget.total).value} unit={fmtCompactEur(doors.budget.total).unit} />
+                ) : (
+                  <Door href={`${cityBase}/budget`} hard title={t("fx.sec.inv.r.budget")} sub={t("fx.sec.inv.r.budget_sub_noyear")} />
+                )}
+                {doors?.marches ? (
+                  <Door href={`${cityBase}/marches?year=${doors.marches.year}`} hard title={t("fx.sec.inv.r.marches")} sub={fill(t("fx.sec.inv.r.marches_sub"), { year: doors.marches.year })} value={fmtCompactEur(doors.marches.total).value} unit={fmtCompactEur(doors.marches.total).unit} />
+                ) : (
+                  <Door href={`${cityBase}/marches`} hard title={t("fx.sec.inv.r.marches")} sub={t("fx.sec.inv.r.marches_sub_noyear")} />
+                )}
+                <Door href={`${cityBase}/lieux`} hard title={t("fx.sec.inv.r.lieux")} sub={t("fx.sec.inv.r.lieux_sub")} />
+                {enableDrilldowns ? (
+                  <Door href={`${invBase}/projets`} hard title={t("fx.sec.inv.r.index")} sub={t("fx.sec.inv.r.index_sub")} />
+                ) : null}
+                {posts.map((p) => (
+                  <V3Row key={p.slug} href={`/analyses/${p.slug}`} label={p.title} subText={t("fx.sec.inv.r.read")} />
+                ))}
+              </V3Section>
+            </div>
 
-      {d.byChapitre.length > 0 && (
-      <section className="fx-section" id="sec-chapitre">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.inv.s04.title.before")}
-                <em><Tip label={t("fx.inv.classif_fonct.tip")}>{t("fx.inv.s04.title.em")}</Tip></em>
-              </>
-            }
-            subtitle={t("fx.inv.s04.sub")}
-          />
-          <StackedBarTheme
-            items={d.byChapitre.map((c) => ({ theme: c.label, amount: c.amount, count: c.count }))}
-            total={d.total}
-            concentrationTop10Pct={d.top10ProjetsPct}
-            year={d.year}
-            basePath={cityBasePath}
-            kicker={fill(t("fx.inv.s04.kicker"), { year: d.year })}
-            entityNoun={t("fx.inv.s04.entity_noun")}
-            paretoContrast={t("fx.inv.s04.pareto_contrast")}
-            hrefBuilder={
-              enableDrilldowns
-                ? (theme) => `${cityBasePath}/chapitre/${slugifyChapitre(theme)}`
-                : undefined
-            }
-          />
-          <ChartSource
-            source={fill(t("fx.inv.s02.source.cite"), { year: d.year })}
-            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : undefined}
-            methodAnchor="investissements"
-          />
-        </div>
-      </section>
-      )}
+            <div className="fx-sec-a-next">
+              <NextDoor
+                href={`${cityBase}/subventions${doors?.next ? `?year=${doors.next.year}` : ""}`}
+                kicker={t("fx.sec.next")}
+                title={t("fx.sec.inv.next")}
+                sub={doors?.next ? fill(t("fx.sec.inv.next_sub_n"), { n: fmtInt(doors.next.count), year: doors.next.year }) : t("fx.sec.inv.next_sub")}
+                value={doors?.next ? fmtCompactEur(doors.next.total).value : undefined}
+                unit={doors?.next ? fmtCompactEur(doors.next.total).unit : undefined}
+              />
+            </div>
 
-      <section className="fx-section" id="sec-evolution">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.inv.s06.title.before")}
-                <em>{fill(t("fx.inv.s06.title.em"), { y0: ytrend[0]?.year ?? d.year, year: ytrend[ytrend.length - 1]?.year ?? d.year })}</em>
-              </>
-            }
-          />
-          <BudgetTimeline
-            points={ytrend.map((y) => ({
-              year: y.year,
-              value: y.total / 1_000_000_000,
-              type: "execute" as const,
-            }))}
-            activeYear={d.year}
-          />
-          <ChartSource
-            source={t(isParis ? "fx.inv.s05.source.cite" : "fx.inv.s05.source.cite.ofgl")}
-            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"}
-            methodAnchor="investissements"
-          />
-          <p className="fx-note">
-            <b>{t("fx.inv.s06.note.b")}</b> : {t("fx.inv.s06.note")}
-          </p>
-        </div>
-      </section>
-
-
-      <section className="fx-section" id="sec-projets">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.inv.s01.title.before")}
-                <em>{t("fx.inv.s01.title.em")}</em>
-                {fill(t("fx.inv.s01.title.after"), { year: d.year })}
-              </>
-            }
-          />
-          {/* Douze cartes photo faisaient 2 122 px — 30 % de la page, le plus
-           * gros bloc, pour un top-N. Six cartes gardent la matérialité (des
-           * photos de vrais chantiers, c'est la force de cette page) et le
-           * reste passe derrière l'unique dépliant du kit, avec son compte
-           * honnête. `topProjets` en porte 24 : rien n'est tronqué en
-           * silence. */}
-          {(() => {
-            const CARDS = 6;
-            const card = (p: InvestissementsData["topProjets"][number], i: number) => {
-              const inner = (
-                <>
-                  <div className="fx-projet-card-thumb">
-                    <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
-                  </div>
-                  <div className="fx-projet-card-body">
-                    <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
-                    <div className="fx-projet-card-name">{((locale === 'en' && p.name_en) ? p.name_en : p.name ?? "—").slice(0, 90)}</div>
-                    <div className="fx-projet-card-meta">
-                      <span>
-                        {p.arr > 0
-                          ? fill(t("fx.inv.s01.arr"), { n: p.arr }) + arrSuf(p.arr)
-                          : t("fx.s.transverse")}
-                      </span>
-                      <span className="fx-projet-card-amount">
-                        {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
-                      </span>
-                    </div>
-                    <div className="fx-projet-card-chapitre">{trL(p.chapitre)}</div>
-                  </div>
-                </>
-              );
-              // Non-clickable card where the projet fiche route doesn't exist
-              // for this city yet (P3.2 option a) — never a dead 404 link.
-              return enableDrilldowns ? (
-                <Link
-                  key={p.id}
-                  href={`${cityBasePath}/projet/${encodeURIComponent(p.id)}`}
-                  className="fx-projet-card"
-                  scroll={false}
-                >
-                  {inner}
-                </Link>
-              ) : (
-                <div key={p.id} className="fx-projet-card">
-                  {inner}
-                </div>
-              );
-            };
-            const rest = d.topProjets.slice(CARDS);
-            return (
-              <>
-                <div className="fx-projet-grid">
-                  {d.topProjets.slice(0, CARDS).map((p, i) => card(p, i))}
-                </div>
-                <FicheMore count={rest.length} noun={t("fx.inv.s01.more_noun")}>
-                  <div className="fx-projet-grid">
-                    {rest.map((p, i) => card(p, i + CARDS))}
-                  </div>
-                </FicheMore>
-              </>
-            );
-          })()}
-        </div>
-      </section>
-
-      {/* Le blog après les sources — cf. QuiRecoitClient. */}
-
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <Link href="/methode#investissements" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</Link>
+            <div className="fx-sec-a-foot">
+              <V3Foot>{t(isParis ? "fx.sec.inv.foot" : "fx.sec.inv.foot_city")}</V3Foot>
+            </div>
           </div>
-          <p className="fx-footer-sources-meta">
-            <b>{t("fx.footer.source_label")}</b> : {t("fx.inv.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.inv.footer.coverage")}
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.inv.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: isParis
-                  ? `/data/map/investissements_complet_${d.year}.json`
-                  : `/data/${citySlug}/investissements/investissements_${d.year}.json`,
-              },
-              {
-                label: t("fx.inv.src.export.json"),
-                href: isParis
-                  ? `/data/map/investissements_complet_${d.year}.json`
-                  : `/data/${citySlug}/investissements/investissements_${d.year}.json`,
-              },
-              {
-                label: t("fx.inv.src.export.trend"),
-                href: isParis
-                  ? "/data/investissement_tendances.json"
-                  : `/data/${citySlug}/investissements/investissement_tendances.json`,
-              },
-              { label: t("fx.inv.src.export.method"), href: "/methode?tool=investissements#outils" },
-            ]}
-          />
         </div>
-      </section>
-
-      <RelatedArticles posts={posts} placeholders={INV_PLACEHOLDERS} />
-
       </main>
       <Footer />
     </div>

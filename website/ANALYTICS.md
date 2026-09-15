@@ -85,7 +85,15 @@ the page's completion rate. Budget (since 2026-09-15) reads the same way:
 row opening its poste; the spending column reads by poste or by kind —
 `filter_change` `field = scene_group`, `value` = `poste` | `nature`,
 `page = budget`), `lines` (the heaviest lines, each opening its poste),
-`understand`, `related`, `next`.
+`understand`, `related`, `next`. Investissements (since 2026-09-15): `hero`,
+`years`, `scene` (the chapters, each opening its fiche), `examples` (three
+worksites in photo, `role = row` is not used there: the name and the image
+are plain links inside the section), `projects` (the largest worksites in
+rows), `where` (by arrondissement with the choropleth, or the markers map —
+`filter_change` `field = where_view`, `value` = `arrondissements` | `carte`,
+`page = investissements`; the map is loaded only when asked for),
+`understand`, `related`, `next`. On a project fiche, the line under the
+figure that leads back to the section is a `link_click` with `role = door`.
 
 **Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
 from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`
