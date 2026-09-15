@@ -108,7 +108,7 @@ four rows), `scene` (the twenty arrondissements — `filter_change`
 `years`, `scene` (who the City owes, by instrument, each opening its fiche),
 `garanties` (the loans it guarantees — `filter_change`
 `field = garanties_group`, `value` = `benef` | `arr`, `page = dette`),
-`patrimoine` (the asset masses), `understand`, `related`, `next`. On a
+`cout` (interest and capital repaid in the year, each opening its budget item; the assets are a fold in `understand`), `understand`, `related`, `next`. On a
 landlord fiche, the line up to the section is `role = door`, « Emprunteur
 garanti suivant » is `next`. On a project fiche, the line under the
 figure that leads back to the section is a `link_click` with `role = door`;

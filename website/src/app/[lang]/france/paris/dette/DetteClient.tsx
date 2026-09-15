@@ -43,18 +43,26 @@ function cleanName(s: string): string {
  * (la dette financière au bilan, banques et obligations) avec la dette par
  * habitant et le mouvement, le rail de la dette financière — la courbe suit
  * le chiffre, plus la dette totale — ; UNE scène qui fait la somme du
- * chiffre : à qui la Ville doit, par instrument ; puis les emprunts qu'elle
- * garantit (par emprunteur ou par arrondissement) face à ce qu'elle possède ;
- * « Comprendre » (garantir n'est pas devoir, les deux lectures de la capacité
- * de désendettement côte à côte et sourcées, la règle d'or, les sources) face
+ * chiffre : comment la Ville emprunte, par instrument ; puis les emprunts
+ * qu'elle garantit (par emprunteur ou par arrondissement) face à ce que la
+ * dette coûte dans l'année (intérêts et capital remboursé, lus au budget de la
+ * même année). L'actif n'est plus mis en regard de la dette : on ne rembourse
+ * pas en vendant des écoles (Daniel, 2026-09-15) ; il est dans « Comprendre »
+ * (garantir n'est pas devoir, les deux lectures de la capacité de
+ * désendettement côte à côte et sourcées, ce qu'elle possède, la règle d'or,
+ * les sources) face
  * à « Voir aussi » ; la section suivante. Les villes sans bilan détaillé
  * (Marseille : l'encours OFGL) gardent le chiffre, le rail et « Comprendre ».
  */
-export default function DetteClient({ d, structure, horsBilan, posts, doors }: {
+export default function DetteClient({ d, structure, horsBilan, posts, cost, costSeries = [], doors }: {
   d: PatrimoineData;
   structure: PatrimoineStructure | null;
   horsBilan: HorsBilanData | null;
   posts: BlogPostMeta[];
+  /** What the debt costs in the page's year, from that year's budget. */
+  cost?: { year: number; interets: number; remboursement: number; depenses: number; interetsLabel: string; remboursementLabel: string } | null;
+  /** Interest plus capital repaid, year by year, for the cost block's rail. */
+  costSeries?: { year: number; amount: number }[];
   /** Numbers for the doors, loaded by the page (absent on cities without them). */
   doors?: {
     budget?: { year: number; total: number; voted: boolean } | null;
@@ -149,18 +157,33 @@ export default function DetteClient({ d, structure, horsBilan, posts, doors }: {
     ? { key: "__nonloc", label: t("fx.sec.dette.non_localised"), value: hb.non_localised.capital_restant, text: eurTxt(hb.non_localised.capital_restant), sub: nEmp(hb.non_localised.count_emprunts), tone: "soft", separated: true }
     : undefined;
 
-  // What it owns: the asset masses, which sum to the assets.
+  // What the debt costs in the year: interest and capital repaid, the two
+  // budget items of that name, each opening its fiche.
+  const costRows: BarRow[] = cost
+    ? [
+        { key: "interets", label: t("fx.sec.dette.cout.interets"), value: cost.interets, text: eurTxt(cost.interets), href: isParis ? `${cityBase}/budget/poste/${slugifyLabel(cost.interetsLabel)}?year=${cost.year}` : null },
+        { key: "remboursement", label: t("fx.sec.dette.cout.remboursement"), value: cost.remboursement, text: eurTxt(cost.remboursement), href: isParis ? `${cityBase}/budget/poste/${slugifyLabel(cost.remboursementLabel)}?year=${cost.year}` : null },
+      ].sort((a, b) => b.value - a.value)
+    : [];
+  const costTotal = cost ? cost.interets + cost.remboursement : 0;
+  const sd = structure?.structure_dette;
+  // The remaining term and the next large maturity are the same in every year's
+  // structure file (a copy of today's): said only on the latest balance sheet.
+  const isLatest = d.year === Math.max(...d.availableYears);
+  const echeance = isLatest && sd?.prochaine_echeance_lourde && sd.prochaine_echeance_lourde.montant_m_eur > 0 ? sd.prochaine_echeance_lourde : null;
+  const maturite = isLatest && sd && sd.maturite_moyenne_ans > 0 ? sd.maturite_moyenne_ans : null;
+  // The source writes the month in French: said in the reader's language.
+  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  const echeanceWhen = echeance
+    ? (() => {
+        const m = MOIS.indexOf(echeance.mois.toLowerCase());
+        return m >= 0 ? new Intl.DateTimeFormat(locale === "en" ? "en-GB" : "fr-FR", { month: "long", year: "numeric" }).format(new Date(echeance.annee, m, 1)) : `${echeance.mois} ${echeance.annee}`;
+      })()
+    : null;
+
+  // What it owns: in « Comprendre », never set against the debt.
   const hasBilan = d.fondsPropres > 0 && (structure?.masses_actif.length ?? 0) > 0;
-  const actifRows: BarRow[] = (structure?.masses_actif ?? [])
-    .slice()
-    .sort((a, b) => b.value - a.value)
-    .map((m) => ({
-      key: m.label,
-      label: cleanName(trLabel(m.label, locale)),
-      value: m.value,
-      text: eurTxt(m.value),
-      href: isParis ? `${base}/masse/${slugifyLabel(m.label)}?year=${d.year}` : null,
-    }));
+  const actifMasses = (structure?.masses_actif ?? []).slice().sort((a, b) => b.value - a.value);
 
   const crc = isParis ? crcDebtYearsFor(citySlug, d.year) : null;
   const layout = !hasScene ? "dette-lite" : "dette";
@@ -219,15 +242,31 @@ export default function DetteClient({ d, structure, horsBilan, posts, doors }: {
                       <Bars key="arr" rows={arrRows} cap={ARR_CAP} foldId="more-arr-garanties" foldLabel={fill(t("fx.sec.dette.arr_more"), { n: fmtInt(arrRows.length) })} footRow={nonLocRow} />
                     )}
                   </div>
+                  {hb.totals.annuite_totale > 0 ? (
+                    <p className="fx-v3-note">{fill(t("fx.sec.dette.garanties_annuite"), { annuite: eurTxt(hb.totals.annuite_totale) })}</p>
+                  ) : null}
                 </V3Section>
               </div>
             ) : null}
 
-            {hasBilan ? (
+            {cost && hasScene ? (
               <div className="fx-sec-a-second">
-                <V3Section id="patrimoine" title={fill(t("fx.sec.dette.h.patrimoine"), { year: d.year })} sub={fill(t("fx.sec.dette.patrimoine_sub"), { actif: eurTxt(d.actif) })}>
-                  <Bars rows={actifRows} />
-                  <p className="fx-v3-note">{fill(t("fx.sec.dette.fonds_propres"), { fp: eurTxt(d.fondsPropres) })}</p>
+                <V3Section id="cout" title={fill(t("fx.sec.dette.h.cout"), { year: cost.year })} sub={fill(t("fx.sec.dette.cout_sub"), { total: eurTxt(costTotal), pct: fmtDec((costTotal / cost.depenses) * 100, 1) })}>
+                  <Bars rows={costRows} />
+                  {costSeries.filter((y) => y.amount > 0).length >= RAIL_MIN ? (
+                    <div className="fx-sec-years fx-sec-years--in">
+                      <div className="fx-page-kicker">{t("fx.sec.years")}</div>
+                      <AnneesRail rows={costSeries.filter((y) => y.amount > 0)} current={cost.year} />
+                    </div>
+                  ) : null}
+                  {maturite != null || echeance ? (
+                    <p className="fx-v3-note">
+                      {[
+                        maturite != null ? fill(t("fx.sec.dette.cout.maturite_line"), { n: fmtDec(maturite, 0) }) : null,
+                        echeance && echeanceWhen ? fill(t("fx.sec.dette.cout.echeance_line"), { amount: eurTxt(echeance.montant_m_eur * 1e6), when: echeanceWhen }) : null,
+                      ].filter(Boolean).join(" ")}
+                    </p>
+                  ) : null}
                 </V3Section>
               </div>
             ) : null}
@@ -247,6 +286,15 @@ export default function DetteClient({ d, structure, horsBilan, posts, doors }: {
                     </p>
                   ) : null}
                 </V3Fold>
+                {hasBilan ? (
+                  <V3Fold id="patrimoine" label={t("fx.sec.dette.u.patrimoine")}>
+                    <p className="fx-v3-sentence">{fill(t("fx.sec.dette.u.patrimoine_body"), { year: d.year, actif: eurTxt(d.actif) })}</p>
+                    {actifMasses.map((m) => (
+                      <V3Row key={m.label} href={isParis ? `${base}/masse/${slugifyLabel(m.label)}?year=${d.year}` : null} label={cleanName(trLabel(m.label, locale))}
+                        amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{fmtEur(m.value).v}<span className="u">{fmtEur(m.value).u}</span></span>} />
+                    ))}
+                  </V3Fold>
+                ) : null}
                 <V3Fold id="regle" label={t("fx.sec.dette.u.regle")}>
                   <p className="fx-v3-sentence">{t("fx.sec.dette.u.regle_intro")}</p>
                   <ul className="fx-sec-list">

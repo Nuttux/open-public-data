@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { budgetDoorTotal, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
+import { budgetDoorTotal, detteCostOfYear, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { readLocale } from "@/lib/seo";
@@ -39,7 +39,7 @@ export default async function DettePage({
       {parisSectionJsonLd("dette", await readLocale(), requestedYear).map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <DetteClient d={d} structure={structure} horsBilan={horsBilan} posts={posts} doors={doors} />
+      <DetteClient d={d} structure={structure} horsBilan={horsBilan} posts={posts} cost={safe(() => detteCostOfYear("paris", d.year))} costSeries={d.availableYears.map((y) => { const c = safe(() => detteCostOfYear("paris", y)); return { year: y, amount: c ? c.interets + c.remboursement : 0 }; })} doors={doors} />
     </>
   );
 }

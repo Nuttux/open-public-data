@@ -3070,6 +3070,20 @@ export function detteDoorTotal(city: string, year: number): { year: number; tota
   return total > 0 ? { year: y, total } : null;
 }
 
+/** What the debt costs in a year, from that year's budget: the interest
+ *  paid and the capital repaid (the two budget items of that name), and their
+ *  share of the year's spending. Null when the budget of that year does not
+ *  carry both items. */
+export function detteCostOfYear(city: string, year: number): { year: number; interets: number; remboursement: number; depenses: number; interetsLabel: string; remboursementLabel: string } | null {
+  const s = readJsonOrNull<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  if (!s) return null;
+  const find = (re: RegExp) => s.links.filter((l) => re.test(l.target)).sort((a, b) => b.value - a.value)[0];
+  const i = find(/^int[ée]r[êe]ts de la dette$/i);
+  const r = find(/^remboursement de la dette$/i);
+  if (!i || !r || i.value <= 0 || r.value <= 0) return null;
+  return { year, interets: i.value, remboursement: r.value, depenses: s.totals.depenses, interetsLabel: i.target, remboursementLabel: r.target };
+}
+
 /** The guarantees for a door: the capital the City still guarantees for its
  *  landlords and operators, at the latest published off-balance-sheet year. */
 export function garantiesDoorTotal(city: string): { year: number; total: number } | null {

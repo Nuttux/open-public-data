@@ -21049,6 +21049,8 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 }
 /* The three photos sit under the years rail, in the number's column. */
 .theme-fusion .fx-sec-a-hero .fx-sec-years { margin-bottom: 30px; }
+/* A years rail inside a block (the yearly cost of the debt), between the bars and the note. */
+.theme-fusion .fx-sec-years--in { margin: 22px 0 6px; }
 /* Inside a section page the map stands alone: no frame, no legend, no hover
    box — the bars under it are the readable version, with the exact numbers.
    The phone keeps its one-line hint, in the kit's face. */

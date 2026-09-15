@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { budgetDoorTotal, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
+import { budgetDoorTotal, detteCostOfYear, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
 import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
@@ -36,7 +36,7 @@ export default async function MarseilleDettePage({
   return (
     <>
       <FrHubJsonLd hub={marseilleDetteHub()} locale={locale} />
-      <DetteClient d={d} structure={structure} horsBilan={horsBilan} posts={posts} doors={doors} />
+      <DetteClient d={d} structure={structure} horsBilan={horsBilan} posts={posts} cost={safe(() => detteCostOfYear("marseille", d.year))} costSeries={d.availableYears.map((y) => { const c = safe(() => detteCostOfYear("marseille", y)); return { year: y, amount: c ? c.interets + c.remboursement : 0 }; })} doors={doors} />
     </>
   );
 }
