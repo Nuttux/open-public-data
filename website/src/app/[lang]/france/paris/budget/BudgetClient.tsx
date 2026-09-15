@@ -36,8 +36,9 @@ type BudgetIndexLite = {
   summary: { year: number; type_budget: "vote" | "execute" }[];
 };
 
-/** The three cuts of the year's budget. One chart, one switch. */
-type Group = "poste" | "nature" | "recettes";
+/** The two cuts of the year's spending. One chart, one switch. Revenue is not
+ *  a cut of the same euros: it has its own block, with its own total. */
+type Group = "poste" | "nature";
 
 const CITY_NAMES: Record<string, string> = { paris: "Paris", marseille: "Marseille" };
 const SCENE_CAP = 6;
@@ -54,8 +55,6 @@ type Props = {
     subventions?: { year: number; total: number; count: number } | null;
     invest?: { year: number; total: number } | null;
   };
-  /** The year's largest worksite with a real photo (Paris). */
-  photo?: { year: number; id: string; nom: string; nomEn: string | null; montant: number; arrondissement: number | null; photoUrl: string; photoCredit: string | null } | null;
 };
 
 /**
@@ -64,14 +63,18 @@ type Props = {
  * « voté » dit dans le menu et hachuré sur le rail, la ligne grise, la
  * tendance en ocre, « Partager », le rail des années sous le chiffre), UNE
  * scène qui fait la somme du chiffre avec un commutateur — par poste, par
- * nature, recettes — dont chaque barre ouvre une fiche, le chantier que paie
- * le budget, les plus grosses lignes, « Comprendre » en replis, « Voir aussi »
- * en portes chiffrées, la section suivante. Sur ordinateur, des bandes :
- * chaque rangée ouvre sur deux titres à la même ligne.
- * Partagée avec Marseille : sans nature (pas de flux), sans photo, portes
- * selon ce que la ville publie.
+ * nature — dont chaque barre ouvre une fiche ; puis « D'où vient l'argent »,
+ * les recettes toujours visibles avec leur propre total et l'emprunt séparé
+ * d'un trait (Daniel, 2026-09-15 : « la plupart des gens ne lisent pas
+ * 11,10 de recettes contre 11,02 de dépenses comme un excédent comptable »),
+ * les plus grosses lignes, « Comprendre » en replis, « Voir aussi » en portes
+ * chiffrées, la section suivante. Sur ordinateur, des bandes : chaque rangée
+ * ouvre sur deux titres à la même ligne ; sur téléphone, dépenses puis
+ * recettes se suivent, chaque titre portant son total.
+ * Partagée avec Marseille : sans nature (pas de flux), portes selon ce que la
+ * ville publie.
  */
-export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
+export default function BudgetClient({ index, d, posts, doors }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const track = useTrack();
@@ -102,8 +105,9 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
   const move = prevYear && prevYear.depenses > 0
     ? (() => {
         const pct = ((d.depenses - prevYear.depenses) / prevYear.depenses) * 100;
-        if (Math.abs(pct) < 0.5) return fill(t("fx.sec.mp.move_flat"), { year: prevYear.year });
-        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 0), year: prevYear.year });
+        // One decimal: a budget moves by a few percent, unlike the contracts.
+        if (Math.abs(pct) < 0.05) return fill(t("fx.sec.mp.move_flat"), { year: prevYear.year });
+        return fill(t(pct > 0 ? "fx.sec.mp.move_up" : "fx.sec.mp.move_down"), { pct: fmtDec(Math.abs(pct), 1), year: prevYear.year });
       })()
     : undefined;
   const series = d.yearsSummary.filter((y) => y.depenses > 0).map((y) => ({ year: y.year, amount: y.depenses }));
@@ -121,7 +125,7 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
     .sort((a, b) => b.value - a.value);
   const natureRest = flowTotal - natureRows.reduce((s, g) => s + g.value, 0);
   const hasNature = natureRows.length > 1;
-  const GROUPS: Group[] = hasNature ? ["poste", "nature", "recettes"] : ["poste", "recettes"];
+  const GROUPS: Group[] = hasNature ? ["poste", "nature"] : ["poste"];
   const pct = (v: number, of: number) => (of > 0 ? Math.round((v / of) * 100) : 0);
   const sceneRows: Record<Group, BarRow[]> = {
     poste: dep.map((x) => ({
@@ -140,19 +144,28 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
       sub: fill(t("fx.sec.bud.pct_dep"), { pct: pct(g.value, flowTotal) }),
       href: `${budgetBase}/nature/${g.key}?year=${d.year}`,
     })),
-    recettes: rec.map((x) => ({
-      key: x.label,
-      label: label(x.label),
-      value: x.value,
-      text: eurTxt(x.value),
-      sub: fill(t("fx.sec.bud.pct_rec"), { pct: pct(x.value, d.recettes) }),
-      href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
-    })),
   };
   const sceneFold: Partial<Record<Group, { id: string; label: string }>> = {
     poste: { id: "more-postes", label: fill(t("fx.sec.bud.postes_more"), { n: fmtInt(dep.length) }) },
-    recettes: { id: "more-recettes", label: fill(t("fx.sec.bud.recettes_more"), { n: fmtInt(rec.length) }) },
   };
+
+  /* ── Where the money comes from: its own block, its own total; borrowing
+     set apart under a rule, because it is not income but debt to repay. ── */
+  const emprunt = rec.find((x) => /emprunt|borrow/i.test(x.label));
+  const recRow = (x: (typeof rec)[number]): BarRow => ({
+    key: x.label,
+    label: label(x.label),
+    value: x.value,
+    text: eurTxt(x.value),
+    sub: fill(t("fx.sec.bud.pct_rec"), { pct: pct(x.value, d.recettes) }),
+    href: `${budgetBase}/poste/${slugifyLabel(x.label)}?year=${d.year}`,
+  });
+  const recRows = rec.filter((x) => x !== emprunt).map(recRow);
+  const empruntRow: BarRow | undefined = emprunt ? { ...recRow(emprunt), sub: t("fx.sec.bud.emprunt_sub"), tone: "soft", separated: true } : undefined;
+  const recNet = d.recettes - (emprunt?.value ?? 0);
+  const balance = emprunt
+    ? fill(t(isVoted ? "fx.sec.bud.rec_balance_vote" : "fx.sec.bud.rec_balance"), { rec: eurTxt(d.recettes), emp: eurTxt(emprunt.value), net: eurTxt(recNet) })
+    : fill(t(isVoted ? "fx.sec.bud.rec_only_vote" : "fx.sec.bud.rec_only"), { rec: eurTxt(d.recettes) });
   const sceneFoot: Partial<Record<Group, BarRow>> = {
     nature: natureRest > flowTotal * 0.005 ? { key: "__autres", label: capFirst(t("fx.bud.v3.flow.autres")), value: natureRest, text: eurTxt(natureRest), tone: "soft" } : undefined,
   };
@@ -192,7 +205,6 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
   );
 
   const yearLabel = (y: number) => (votedYears.includes(y) ? `${y} · ${t("fx.sec.bud.voted_short")}` : String(y));
-  const photoName = photo ? ((locale === "en" && photo.nomEn) || photo.nom).split(/\s+-\s+/).join(" · ") : "";
 
   return (
     <div className="theme-fusion">
@@ -200,7 +212,7 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3">
           <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{cityName}</Link> › {t("fx.sec.bud.kicker")}</div>
-          <div className="fx-sec-grid" data-photo={photo ? "1" : "0"}>
+          <div className="fx-sec-grid" data-photo="1">
             <div className="fx-sec-a-hero">
               <SectionHero
                 title={t("fx.sec.bud.title")}
@@ -225,16 +237,15 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
             </div>
 
             <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={fill(t("fx.sec.bud.h.scene"), { year: d.year })} sub={t("fx.sec.bud.scene_sub")}>
-                <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
-                  {GROUPS.map((g) => (
-                    <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
-                  ))}
-                </div>
+              <V3Section id="scene" title={fill(t("fx.sec.bud.h.scene"), { year: d.year })} sub={fill(t("fx.sec.bud.scene_sub"), { total: `${total.value} ${total.unit}` })}>
+                {GROUPS.length > 1 ? (
+                  <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.bud.g.aria")}>
+                    {GROUPS.map((g) => (
+                      <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.bud.g.${g}`)}</button>
+                    ))}
+                  </div>
+                ) : null}
                 <div id="budget-scene" className="fx-sec-scene-body">
-                  {group === "recettes" ? (
-                    <p className="fx-sec-sentence"><b>{eurTxt(d.recettes)}</b> {t(isVoted ? "fx.sec.bud.rec_sentence_vote" : "fx.sec.bud.rec_sentence")}</p>
-                  ) : null}
                   <Bars key={group} rows={sceneRows[group]} cap={sceneFold[group] ? SCENE_CAP : undefined} foldId={sceneFold[group]?.id} foldLabel={sceneFold[group]?.label} footRow={sceneFoot[group]} />
                   {group === "nature" ? <p className="fx-v3-note">{fill(t("fx.bud.v3.forme_note"), { pct: Math.round(d.flowCoveragePct) })}</p> : null}
                 </div>
@@ -242,24 +253,10 @@ export default function BudgetClient({ index, d, posts, doors, photo }: Props) {
               </V3Section>
             </div>
 
-            <div className="fx-sec-a-photo">
-              {photo ? (
-                <V3Section id="photo" title={fill(t("fx.sec.bud.h.photo"), { year: photo.year })}>
-                  <figure className="fx-sec-photo">
-                    <Link href={`${cityBase}/investissements/projet/${encodeURIComponent(photo.id)}`} scroll={false} className="fx-sec-photo-img" aria-hidden="true" tabIndex={-1}>
-                      <img src={photo.photoUrl} alt="" loading="lazy" />
-                    </Link>
-                    <figcaption className="fx-sec-photo-cap">
-                      <Link href={`${cityBase}/investissements/projet/${encodeURIComponent(photo.id)}`} scroll={false} className="t">{photoName} ›</Link>
-                      <span className="s">
-                        {[photo.arrondissement ? fill(t("fx.sec.bud.photo_arr"), { n: photo.arrondissement }) : null, eurTxt(photo.montant)].filter(Boolean).join(" · ")}
-                        {" · "}<Link href={`${cityBase}/investissements`}>{t("fx.sec.bud.photo_all")} ›</Link>
-                      </span>
-                      {photo.photoCredit ? <span className="c">{fill(t("fx.sec.mp.photo_credit"), { credit: photo.photoCredit })}</span> : null}
-                    </figcaption>
-                  </figure>
-                </V3Section>
-              ) : null}
+            <div className="fx-sec-a-second">
+              <V3Section id="recettes" title={fill(t("fx.sec.bud.h.recettes"), { year: d.year })} sub={balance}>
+                <Bars rows={recRows} cap={SCENE_CAP} foldId="more-recettes" foldLabel={fill(t("fx.sec.bud.recettes_more"), { n: fmtInt(recRows.length) })} footRow={empruntRow} />
+              </V3Section>
             </div>
 
             <div className="fx-sec-a-rows">

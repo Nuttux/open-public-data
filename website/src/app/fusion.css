@@ -20784,6 +20784,8 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
     grid-template-areas: "hero scene" "search search" "photo rows" "understand related" "next next" "foot foot";
   }
   .theme-fusion .fx-sec-a-photo { grid-area: photo; }
+  /* The same slot for a second block that is not a photo (Budget: where the money comes from). */
+  .theme-fusion .fx-sec-a-second { grid-area: photo; }
   .theme-fusion .fx-sec-grid[data-photo="0"] .fx-sec-a-photo { display: none; }
   /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
@@ -20856,21 +20858,27 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* Les barres : le libellé et la valeur écrits sur chaque ligne, pas de légende,
    pas d'axe. Une ligne avec un lien ouvre une fiche. */
 .theme-fusion .fx-bars { margin-top: 6px; }
-.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto 12px; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
 .theme-fusion .fx-bars-row:first-child { border-top: 0; }
 .theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
-/* Only the rows that open a fiche look like links: ink label, the doors' chevron, blue on hover. */
+/* Only the rows that open a fiche look like links: ink label, a chevron at the
+   right edge like a list that opens, the whole row blue on hover (2026-09-15:
+   the chevron used to sit against the label, where it read as punctuation). */
 .theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
-.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: "\00a0›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-bars-row .c { color: #b4b9c2; font-size: 16px; line-height: 1; text-align: right; transition: color .15s, transform .15s; }
 .theme-fusion .fx-bars-row.is-link:hover .lbl .t { color: var(--bleu); }
-/* Phone: the label above, the bar at full width with its value at the right. */
+.theme-fusion .fx-bars-row.is-link:hover .c { color: var(--ink); transform: translateX(2px); }
+/* A row set apart from the list above it (borrowing under the revenue). */
+.theme-fusion .fx-bars-row.sep { border-top: 1px solid var(--ink-2); margin-top: 8px; padding-top: 12px; }
+/* Phone: the label above, the bar at full width, the value and the chevron at the right. */
 @media (max-width: 700px) {
-  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "lbl v" "track track"; gap: 4px 10px; padding: 8px 0; }
+  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto 12px; grid-template-areas: "lbl v c" "track track track"; gap: 4px 8px; padding: 8px 0; }
   .theme-fusion .fx-bars-row .lbl { grid-area: lbl; }
   .theme-fusion .fx-bars-row .lbl .sub { display: block; margin-top: 1px; white-space: nowrap; }
   .theme-fusion .fx-bars-row .track { grid-area: track; }
   .theme-fusion .fx-bars-row .track i { height: 10px; }
   .theme-fusion .fx-bars-row .v { grid-area: v; }
+  .theme-fusion .fx-bars-row .c { grid-area: c; }
 }
 .theme-fusion .fx-bars-row .sub { display: block; font-family: var(--f-ui); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin-top: 1px; }
 .theme-fusion .fx-bars-row .track { display: block; min-width: 0; }

@@ -36,7 +36,7 @@ export default async function BudgetPage({
   const index = loadBudgetIndex("marseille");
   const d = loadBudgetPageData(requestedYear, "marseille");
   const posts = getPostsForPage("budget");
-  // The doors carry the numbers the city publishes; none of the rest (no photo, no investment total).
+  // The doors carry the numbers the city publishes (no investment total yet).
   const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
   const doors = {
     marches: safe(() => marchesDoorTotal("marseille", d.year)),
@@ -48,7 +48,7 @@ export default async function BudgetPage({
   return (
     <>
       <FrHubJsonLd hub={marseilleBudgetHub()} locale={locale} />
-      <BudgetClient index={index} d={d} posts={posts} doors={doors} photo={null} />
+      <BudgetClient index={index} d={d} posts={posts} doors={doors} />
     </>
   );
 }
