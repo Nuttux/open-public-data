@@ -1572,6 +1572,10 @@ export type BailleurFiche = {
   share?: number;
   description?: string;
   garanties?: BailleurGaranties;
+  /** All the City's guarantees at the latest year: the line up to the section. */
+  section?: { year: number; total: number; beneficiaires: number } | null;
+  /** The next landlord by guaranteed capital (after the last, the first). */
+  next?: { slug: string; name: string; capital: number; rank: number; total: number; emprunts: number } | null;
 };
 
 /**
@@ -1649,7 +1653,25 @@ export function loadBailleur(slug: string): BailleurFiche | null {
 
   if (!lsMatch && !garanties) return null;
 
+  // The section's number and the next landlord by guaranteed capital, for
+  // the first-screen line and the card at the foot of the fiche.
+  let section: BailleurFiche["section"] = null;
+  let next: BailleurFiche["next"] = null;
+  try {
+    const idx = readJson<{ latestYear: number }>("hors_bilan_index.json");
+    const hb = readJson<HorsBilanData>(`hors_bilan_${idx.latestYear}.json`);
+    section = { year: hb.year, total: hb.totals.capital_restant, beneficiaires: hb.totals.count_beneficiaires };
+    const ranked = hb.top_beneficiaires.slice().sort((a, b) => b.capital_restant - a.capital_restant);
+    const at = ranked.findIndex((b) => canonicalBailleurSlug(b.name) === target);
+    if (at >= 0 && ranked.length > 1) {
+      const n = ranked[(at + 1) % ranked.length];
+      next = { slug: canonicalBailleurSlug(n.name), name: n.name, capital: n.capital_restant, rank: ((at + 1) % ranked.length) + 1, total: hb.totals.count_beneficiaires, emprunts: n.count_emprunts };
+    }
+  } catch { /* no guarantees file */ }
+
   return {
+    section,
+    next,
     slug: target,
     name: lsMatch?.name ?? garanties?.name_raw ?? "",
     type: lsMatch?.type,
@@ -3887,7 +3909,9 @@ export type PatrimoineData = {
   recettesFonctionnement: number; // base pour ratio RRF
   actifBreakdown: { label: string; value: number }[];
   passifBreakdown: { label: string; value: number }[];
-  yearsSummary: { year: number; actif: number; passif: number; dette: number; fondsPropres: number }[];
+  /** `dette` is the total debt (suppliers included); `detteFinanciere` the
+   *  banks and bonds — the headline number, which a curve must follow. */
+  yearsSummary: { year: number; actif: number; passif: number; dette: number; detteFinanciere: number; fondsPropres: number }[];
 };
 
 const BILAN_CENTRAL = "Patrimoine Paris";
@@ -3911,10 +3935,14 @@ type BilanSankeyExt = BilanSankey & {
 
 export function loadPatrimoineData(requestedYear?: number, city: string = "paris"): PatrimoineData {
   const idx = readJson<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
-  const availableYears = idx.availableYears.slice().sort((a, b) => a - b);
+  // Years whose balance sheet carries the debt: 2016 and 2018 are in the
+  // index with a financial debt of zero (the source lines are missing), and
+  // the year menu offered them as « 0 € of debt ».
+  const withDebt = idx.availableYears.filter((y) => Number(readJsonOrNull<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`))?.totals?.dettes_financieres ?? 0) > 0);
+  const availableYears = (withDebt.length > 0 ? withDebt : idx.availableYears).slice().sort((a, b) => a - b);
   const year = requestedYear && availableYears.includes(requestedYear)
     ? requestedYear
-    : idx.latestYear;
+    : availableYears.includes(idx.latestYear) ? idx.latestYear : availableYears[availableYears.length - 1];
   const bilan = readJson<BilanSankeyExt>(cityJsonPath(city, `bilan_sankey_${year}.json`));
   const central = bilanCentralFor(city);
 
@@ -3968,7 +3996,7 @@ export function loadPatrimoineData(requestedYear?: number, city: string = "paris
     : bilan.totals.dettes_financieres / 900_000_000;
 
   const yearsSummary: PatrimoineData["yearsSummary"] = [];
-  for (const y of idx.availableYears.slice().sort((a, b) => a - b)) {
+  for (const y of availableYears) {
     try {
       const f = readJson<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`));
       yearsSummary.push({
@@ -3976,6 +4004,7 @@ export function loadPatrimoineData(requestedYear?: number, city: string = "paris
         actif: f.totals.actif_net,
         passif: f.totals.passif_net,
         dette: f.totals.dette_totale,
+        detteFinanciere: f.totals.dettes_financieres,
         fondsPropres: f.totals.fonds_propres,
       });
     } catch {}

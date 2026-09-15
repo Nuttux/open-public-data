@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadPatrimoineData, loadPatrimoineStructure, loadHorsBilan, loadHorsBilanTrajectory, loadCitiesDebtSnapshot } from "@/lib/fusion-data";
+import { budgetDoorTotal, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
+import { loadLieuxIndex } from "@/lib/lieux-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { readLocale } from "@/lib/seo";
 import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
-import DettePatrimoineClient from "./DettePatrimoineClient";
+import DetteClient from "./DetteClient";
 
 export async function generateMetadata({
   searchParams,
@@ -15,7 +16,7 @@ export async function generateMetadata({
   return parisSectionMetadata("dette", yearParam(sp.year));
 }
 
-export default async function DettePatrimoinePage({
+export default async function DettePage({
   searchParams,
 }: {
   searchParams: Promise<{ year?: string }>;
@@ -25,22 +26,20 @@ export default async function DettePatrimoinePage({
   const d = loadPatrimoineData(requestedYear);
   const structure = loadPatrimoineStructure(d.year);
   const horsBilan = loadHorsBilan(d.year);
-  const horsBilanTrajectory = loadHorsBilanTrajectory(d.yearsSummary.map((y) => y.year));
-  const citiesSnapshot = loadCitiesDebtSnapshot(d.year);
   const posts = getPostsForPage("dette-patrimoine");
+  // The doors carry a number: the year's budget, the social housing stock, the places that follow.
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const doors = {
+    budget: safe(() => budgetDoorTotal("paris", d.year)),
+    logement: safe(() => { const l = loadLogementSocialData(undefined, "paris"); return l.stockTotal > 0 ? { total: l.stockTotal } : null; }),
+    next: safe(() => ({ count: loadLieuxIndex().length })),
+  };
   return (
     <>
       {parisSectionJsonLd("dette", await readLocale(), requestedYear).map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <DettePatrimoineClient
-        d={d}
-        structure={structure}
-        horsBilan={horsBilan}
-        horsBilanTrajectory={horsBilanTrajectory}
-        citiesSnapshot={citiesSnapshot}
-        posts={posts}
-      />
+      <DetteClient d={d} structure={structure} horsBilan={horsBilan} posts={posts} doors={doors} />
     </>
   );
 }

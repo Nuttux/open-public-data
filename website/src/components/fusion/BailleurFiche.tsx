@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "@/components/LocalizedLink";
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
-import { cap, fill, numLocale } from "@/lib/fmt";
+import { cap, fill, numLocale, sufOrdinal } from "@/lib/fmt";
+import { NextDoor } from "@/components/fiche/Doors";
+import { displayOrgName } from "@/lib/fournisseur-display";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
@@ -68,6 +71,16 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
             caption={fill(t("fx.fiche.bail.hero_cap"), { year: g.year })}
             meta={fill(t(g.count_emprunts === 1 ? "fx.fiche.bail.meta1" : "fx.fiche.bail.meta"), { n: nInt(g.count_emprunts), t: fmtDec(g.taux_moyen_pondere_pct, 2), d: fmtDec(g.duree_residuelle_moyenne_ans, 0), fixe: fmtInt(g.part_fixe * 100) })}
           />
+          {/* The way up to the section, in the first screen: readers arrive here
+           *  by searching the landlord's name. */}
+          {bailleur.section ? (
+            <p className="fx-fiche-secline">
+              <Link href="/france/paris/dette">
+                {fill(t("fx.fiche.bail.section_line"), { b: nInt(bailleur.section.beneficiaires), total: eurTxt(bailleur.section.total), year: bailleur.section.year })}
+                <span aria-hidden="true" className="muted">{" ›"}</span>
+              </Link>
+            </p>
+          ) : null}
 
           {g.preteurs.length > 0 && (
             <V3Section title={t("fx.fiche.bail.h.qui")} sub={t("fx.fiche.bail.h.qui_sub")}>
@@ -87,6 +100,18 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
               )}
             </V3Section>
           )}
+
+          {/* The way out that is not the footer: the next borrower by guaranteed capital. */}
+          {bailleur.next ? (
+            <NextDoor
+              href={`/france/paris/dette/bailleur/${bailleur.next.slug}`}
+              kicker={t("fx.fiche.bail.next_kicker")}
+              title={displayOrgName(bailleur.next.name)}
+              sub={fill(t("fx.fiche.bail.next_sub"), { n: nInt(bailleur.next.emprunts), rank: `${bailleur.next.rank}${sufOrdinal(bailleur.next.rank, locale)}`, total: nInt(bailleur.next.total) })}
+              value={fmtAmount(bailleur.next.capital).v}
+              unit={fmtAmount(bailleur.next.capital).u}
+            />
+          ) : null}
 
           <V3Foot>
             {g.financement && g.financement.base_logement > 0 && (

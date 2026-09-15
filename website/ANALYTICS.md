@@ -104,7 +104,13 @@ share of social housing), `years` (funded homes), `attente` (the waiting list,
 four rows), `scene` (the twenty arrondissements — `filter_change`
 `field = scene_group`, `value` = `part` | `financed` | `attente`,
 `page = logement`), `bailleurs` (rows opening a landlord), `understand`,
-`related`, `next`. On a project fiche, the line under the
+`related`, `next`. Dette (since 2026-09-15): `hero` (the financial debt),
+`years`, `scene` (who the City owes, by instrument, each opening its fiche),
+`garanties` (the loans it guarantees — `filter_change`
+`field = garanties_group`, `value` = `benef` | `arr`, `page = dette`),
+`patrimoine` (the asset masses), `understand`, `related`, `next`. On a
+landlord fiche, the line up to the section is `role = door`, « Emprunteur
+garanti suivant » is `next`. On a project fiche, the line under the
 figure that leads back to the section is a `link_click` with `role = door`;
 the rank and the chapter in the figure's grey line are `hero_meta`; the
 similar projects are thumbnail rows (`role = row`); the « Chantier suivant »
