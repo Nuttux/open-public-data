@@ -31,7 +31,7 @@ export default function RelatedLinks({ block }: { block: RelatedBlock | null | u
   if (!block || block.rows.length === 0) return null;
   return (
     <div className="fx-v3 fx-related">
-      <V3Section title={block.title} sub={block.sub ?? undefined}>
+      <V3Section id="related" title={block.title} sub={block.sub ?? undefined}>
         {block.rows.map((r, i) => (
           <Fragment key={r.href}>
             {r.group && r.group !== block.rows[i - 1]?.group ? <p className="fx-related-group">{r.group}</p> : null}

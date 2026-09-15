@@ -1,406 +1,181 @@
-# Product Analytics
+# Analytics — how the site describes itself to PostHog
 
-First-party event tracking system for [donneeslumieres.fr](https://donneeslumieres.fr). Built to understand user behavior without relying on third-party services, resistant to ad blockers, and compliant with CNIL audience measurement exemption (no consent popup required).
+PostHog (EU cloud), browser SDK only, audience-measurement mode: persistent
+first-party visitor id (365-day cookie), no identify(), no person properties,
+no banner (CNIL audience-measurement exemption; see /confidentialite). Session
+replay is opt-in; the whole thing is opt-out with one switch. The wiring is
+`src/components/AnalyticsProvider.tsx`.
 
----
+This file is the contract between the site and the weekly product routine
+that reads PostHog. Three parts: **the page grammar** (what every event knows
+about the page), **the instruments** (the events), and **how to read them**
+(the rules the routine follows). The machine-readable catalog is
+`src/lib/analytics/events.ts`; `events.test.ts` fails when the code emits an
+event the catalog does not list, or lists one the code no longer emits.
 
-## Architecture
-
-```
-Browser (client JS)                    Vercel Server (CDG1)
-┌──────────────────────┐  POST /api/ev  ┌──────────────────────────┐
-│  useAnalytics() hook │ ──────────────→│  app/api/ev/route.ts     │
-│  - visitor cookie     │  same domain   │  - validates event names  │
-│  - session ID (RAM)   │  (not blocked  │  - enriches with geo/IP   │
-│  - event buffer       │   by ad block) │  - truncates IP           │
-│  - flush every 3s     │               │  - writes to BigQuery     │
-│  - sendBeacon on exit │               └──────────────────────────┘
-└──────────────────────┘                          │
-                                                  ▼
-                                         BigQuery (EU region)
-                                         product_analytics.events
-```
-
-### Why first-party?
-
-Ad blockers block requests to `google-analytics.com`, `posthog.com`, etc. They cannot block requests to your own domain without breaking your app. The endpoint `/api/ev` is intentionally short and generic.
-
-### Client-side buffering
-
-Events are collected in an in-memory array and sent as a batch:
-- Flush every **3 seconds** if events are waiting
-- Flush immediately on **page unload** via `navigator.sendBeacon` (guaranteed delivery even when tab closes)
-- Max **50 events** per batch
-
-### Server-side processing
-
-The API route (`/api/ev`):
-- Validates each event against a known events allowlist
-- Rejects payloads >100KB or >100 events
-- Rate-limits at 30 req/min per IP (in-memory counter)
-- Enriches with Vercel headers: `x-vercel-ip-country`, `x-vercel-ip-city`
-- Truncates IP addresses (last octet zeroed for IPv4)
-- Writes to BigQuery via `@google-cloud/bigquery`
+Rule of the house (2026-09-14): **every UI change ships with its events in
+the same commit** — a fold has a `data-fold`, a section a `data-section`, a
+chart its `chart_element_click`, a door its link role. A change that cannot
+be read in PostHog the week after is not finished.
 
 ---
 
-## User Identity
+## 1. The page grammar — nine facts on every event
 
-### Visitor ID (persistent cookie)
+Every event, including `$pageview`, carries the same context, computed in the
+browser from the URL by `src/lib/analytics/page-context.ts`. The address
+grammar is `/{lang}/{country}/{place}/…` on one host (`www.qipu.org`); the
+patterns below are the *logical* route, language stripped.
 
-- Cookie: `_dl_vid` — first-party, `SameSite=Lax`, `Secure`
-- Value: `crypto.randomUUID()`
-- Max-age: **13 months** (CNIL maximum)
-- Enables: returning visitor analysis, multi-visit journeys
+| property | values | what it answers |
+|---|---|---|
+| `page_country` | `fr` `us` `br` `none` | which country's data |
+| `page_tier` | `hub` `commune` `national` `site` | a city with its own routes (paris, marseille, san-francisco, recife), one of the 35 000 communes on the shared page, a national page, or a site page |
+| `page_city` | slug or null | which city / commune |
+| `page_family` | `budget` `subventions` `marches` `dette` `investissements` `logement` `lieux` · `payroll` `contracts` `places` `who-gets-paid` `the-city` · `contratos` `quem-recebe` … · `ville` `landing` `comparer` `chat` `analyses` or the static page's name | which register |
+| `page_kind` | `landing` `country` `city` `hub` `explorer` `fiche` `compare` `chat` `static` | what kind of page: the language hook, a country door, the city's page, a family page, a filterable list, one entity, the comparator |
+| `page_entity_type` | `association` `poste` `fournisseur` `contrat` `categorie` `offres` `domaine` `projet` `lieu` `dept` `payee` `role` … or null | which kind of entity, on a fiche |
+| `page_pattern` | `/france/{commune}` `/france/paris/marches` `/france/paris/subventions/association/{slug}` `/usa/san-francisco/payroll/role/{slug}` … | the route with placeholders — **group by this**, never by `$pathname`, or 35 000 commune pages become 35 000 rows |
+| `page_locale` | `fr` `en` `pt` | the `<html lang>` |
+| `page_surface` | `page` `drawer` | whether the fiche was shown as a full page or as a drawer over another page |
 
-### Session ID (in-memory)
-
-- Generated once per tab lifetime (module-level variable)
-- Value: `crypto.randomUUID()`
-- Enables: grouping events within a single visit
+The unit test `page-context.test.ts` pins one example per route family. When
+a route is added, add a line there.
 
 ---
 
-## CNIL / GDPR Compliance
+## 2. The instruments
 
-This setup qualifies for the **CNIL audience measurement exemption** — no blocking consent popup is needed.
+### Universal — fire on every page from the markup, no per-page code
 
-| Requirement | Status |
+| event | when | own properties |
+|---|---|---|
+| `$pageview` | one per page shown, hard load **or** client navigation. Sent by us after the page context is registered (PostHog's own auto-capture is off, it fired before React knew the new page). A `?year=` change on the same path is not a pageview. | PostHog's `$current_url`, `$referrer`, `$prev_pageview_*` scroll depth |
+| `section_view` | a section's top entered the top 70 % of the viewport, once per section per pageview. The **denominator** for every "nobody opens this" question: not reached is not the same as not interesting. | `section_id`, `id_source` (`data` / `id` / `h2` / `text`), `index` |
+| `details_toggle` | a fold opened or closed | `open`, `section_id` (enclosing section), `fold_id`, `label`, `source` (`native_details` / `expandable_list`) |
+| `link_click` | any internal link. The universal "where next" event. | `href`, `to_pattern`, `to_family`, `to_kind`, `to_entity_type`, `role`, `section_id`, `in_fold`, `text` |
+| `external_link_click` | outbound, mailto, tel. `role = source` when the link cites a dataset. | `url`, `domain`, `role`, `section_id`, click coordinates |
+| `toc_click` | a jump to a section (page TOC, commune chips bar, inline anchor) | `section_id`, `surface` |
+| `cta_click` | any `[data-cta]` | `cta_id`, `section_id` |
+| `year_change` | another year picked: the YearPicker of the old hubs, the commune page's year menu, the year menu under a section page's number (`surface = menu`) | `year_from`, `year_to`, `surface` |
+| `share_click` | share / copy link: a drawer, a map, the commune headline, a section page's number or scene | `method` (`native` / `copy` / `none`), `entity_type`, `object` (`hero`, `competition`…) |
+
+**Section ids.** A section is named by, in order: `data-section` (the fiche
+kit's `<V3Section id="who">`, the commune page's `SectionFold`, a section
+page's `SectionHero` = `hero`), a DOM `id` (`sec-sources` on the old hubs,
+`depenses` / `construit` / `dette` / `achats` / `comparer` on the commune
+page), the `id` of its heading, and only then its heading text with an `h:`
+prefix (locale-dependent — fine on EN-only SF fiches, noisy elsewhere).
+
+Fiche kit sections carry short English ids stable across locales: `who`,
+`why`, `years`, `lines`, `contracts`, `loans`, `missions`, `links`,
+`related`… A **section page** (Contrats publics since 2026-09-14, the others
+as they move to the fiche grammar) reads top to bottom: `hero` (the number),
+`scene` (on Contrats publics: the year's euros cut by domain, number of
+bids or company — the switch is `filter_change` with `field = scene_group`,
+`value` = `domaine` | `offres` | `entreprise` (`categorie` until
+2026-09-15) and `variant` = `bars` | `mosaic`, the share is `share_click`
+with `object = scene_<group>`; a bar or a tile that opens a fiche is a
+`link_click` with `role = row` or `role = tile`),
+`contracts` (rows), `years` (the years rail), `search` (field only; results
+are `search_submit` / `search_result_click`), `understand` (the « Comprendre »
+folds), `related` (the doors), `next` (the next section). Reach of `next` is
+the page's completion rate.
+
+**Fold ids.** `V3Fold id="more-contracts"`, `FicheMore` (SF) derives its id
+from the noun (`more-contracts`, `smaller-departments`), `ExpandableList`
+uses the row key, `Bars` folds its rest under the id it is given
+(`more-domaines`, `more-companies`). Never the label: it carries a count and
+a locale.
+
+**Link roles.** Where the link sits: `nav`, `footer`, `crumb`, `toc`,
+`year`, `cta`, `hero_meta` (the figure's grey line), `lead` (the opening
+sentence), `row` (a fiche row or a labeled bar), `sentence` (an inline "see
+all"), `foot`, `kicker` (the « Paris › Contrats publics » line), `hero`
+(anything else in a section page's head), `door` (a « Voir aussi » door),
+`next` (the next-section door), `deck` / `marquee` / `chips` (the landing
+hero's deck, the scrolling band, the chips), or a `data-block="…"` name, else
+`body`.
+
+### Specific — one component, one question
+
+| group | events |
 |---|---|
-| Purpose strictly audience measurement | Cookie + data used only for analytics |
-| No third-party data sharing | Our own BigQuery, no external services |
-| No cross-site tracking | First-party cookie, single domain |
-| Cookie lifetime ≤ 13 months | `_dl_vid` max-age = 395 days |
-| Data retention ≤ 25 months | BigQuery partition expiry |
-| Users informed | `/confidentialite` privacy page |
-| Opt-out mechanism | Toggle on privacy page, sets `_dl_optout` cookie |
-| GPC signal respected | `navigator.globalPrivacyControl` checked |
+| drawer | `drawer_open` `drawer_close` `drawer_back` |
+| search | `search_modal_open` → `search_modal_query` (hashed text, `results_count`) → `search_modal_select` · explorers: `search_submit` (the reader's words, hashed) vs `search_seed_click` (our seed) → `search_result_click` · `results_expand` `load_more` `filter_change` `filter_reset` |
+| charts / maps | `chart_element_click` (`chart = annees_rail` with `year` and `open` when a year of the rail is tapped; the budget and explorer charts with their own ids) `choropleth_click` `map_marker_click` `stress_test_run` |
+| chrome | `nav_click` `mobile_menu_toggle` `scope_change` `lang_switch` `for_cities_view` `for_cities_read` |
+| chat | `chat_chips_shown` · `chat_question` with `origin` ∈ typed / suggestion / followup / page_chip |
+| GPU city | `city_gl_boot` `city_gl_degrade` |
 
-### Opt-out
-
-- Setting the `_dl_optout` cookie stops all tracking
-- The visitor ID cookie is deleted on opt-out
-- Users can toggle tracking on `/confidentialite`
-- Browsers sending [Global Privacy Control](https://globalprivacycontrol.org/) are automatically excluded
+Full property lists: `src/lib/analytics/events.ts`.
 
 ---
 
-## Setup
+## 3. How to read them
 
-### Environment Variables (Vercel)
-
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_ANALYTICS_ENABLED` | `true` to enable tracking. In dev, defaults to disabled unless explicitly `true`. |
-| `BIGQUERY_ANALYTICS_KEY` | Base64-encoded service account JSON with `bigquery.dataEditor` on `product_analytics` dataset |
-| `BIGQUERY_ANALYTICS_PROJECT` | BigQuery project ID (default: `open-data-france-484717`) |
-| `BIGQUERY_ANALYTICS_DATASET` | BigQuery dataset name (default: `product_analytics`) |
-
-### BigQuery Table
-
-```sql
-CREATE TABLE `open-data-france-484717.product_analytics.events` (
-  event_id STRING NOT NULL,
-  event_name STRING NOT NULL,
-  event_timestamp TIMESTAMP,
-  received_at TIMESTAMP,
-  visitor_id STRING,
-  session_id STRING,
-  page_path STRING,
-  page_tab STRING,
-  referrer STRING,
-  utm_source STRING,
-  utm_medium STRING,
-  utm_campaign STRING,
-  device_type STRING,
-  viewport_width INT64,
-  screen_width INT64,
-  user_agent STRING,
-  locale STRING,
-  country STRING,
-  city STRING,
-  ip_truncated STRING,
-  properties STRING  -- JSON string for event-specific data
-)
-PARTITION BY DATE(event_timestamp)
-CLUSTER BY event_name, page_path;
-```
-
-### Local Development
-
-In dev mode (`NODE_ENV=development`):
-- Events are logged to the browser console instead of being sent to BigQuery
-- Set `NEXT_PUBLIC_ANALYTICS_ENABLED=true` in `.env.local` to enable console logging
-- The API route logs events to the server console when no BigQuery key is configured
-
-### Key Files
-
-| File | Role |
-|---|---|
-| `src/lib/hooks/useAnalytics.ts` | Core hook: cookie, session, buffering, auto page_view/scroll_depth |
-| `src/lib/analyticsContext.tsx` | React Context providing `track()` function to all components |
-| `src/components/AnalyticsProvider.tsx` | Wrapper component, initializes analytics, placed in layout.tsx |
-| `src/app/api/ev/route.ts` | Server-side: validate, enrich, write to BigQuery |
-| `src/app/confidentialite/page.tsx` | Privacy policy page with opt-out toggle |
+1. **Group by `page_pattern`, split by `page_kind`.** Never by `$pathname`.
+2. **Reach before interest.** A fold's open rate is `details_toggle(open)` ÷
+   `section_view` of its section, on the same `page_pattern`. A fold never
+   opened but rarely reached says the page is too long; a fold reached and
+   never opened says the fold is not wanted; a fold opened a lot should open
+   by default. That is the whole point of the fold measurement (decision of
+   2026-09-09: fold first, measure, then decide).
+3. **Dead ends.** Share of `$pageview` on `page_kind = fiche` followed in the
+   session by a `link_click` (any role) or a `drawer_open`; exit pages by
+   `page_pattern`. `role = door` (the « Voir aussi » block) and `role = next`
+   tell whether the doors do their job; on a section page, `section_view` of
+   `next` ÷ `$pageview` is how many readers reach the bottom.
+4. **The reader's words vs ours.** Demand rests on `chat_question` with
+   `origin = typed`, `search_submit` and `search_modal_query` only. Clicks on
+   chips, seeds and follow-ups measure our prompts — report them apart, never
+   as "what people ask". `search_modal_query` with `results_count = 0` lists
+   communes or spellings we miss (hashed: count them, do not name them).
+5. **Bots and ourselves.** Exclude events with `$browser` null, user agents
+   naming a headless tool (Lightpanda is blocked at the SDK since 2026-09-14;
+   older rows exist), `$host` containing localhost / 127.0.0.1 / vercel.app,
+   the old-user-agent fleet (browser major version ≤ 125, direct, one
+   pageview, no `$web_vitals`), and the two distinct ids of the site's author
+   (kept as a PostHog test-account filter, not in this file). Report what was
+   excluded.
+6. **Duplicates by design.** `link_click` fires for every internal link;
+   `nav_click`, `search_result_click`, `chart_element_click` are richer
+   duplicates of some of those clicks. Count one or the other, never both.
+   `drawer_open` fires twice per opening in development (strict mode), once
+   in production.
+7. **Dates.** `since` in the catalog says when an event exists with its
+   current shape. Instrumentation history:
+   - 2026-07-16 first events (memory-only visitor id, hard-load pageviews only)
+   - 2026-09-08 persistent visitor id; pageviews on client navigation
+   - 2026-09-09 chat events from the browser (`chat_question`, `chat_chips_shown`)
+   - 2026-09-14 page grammar on every event (one-host addresses); manual
+     `$pageview`; `section_view`, `link_click` with roles, stable
+     `details_toggle` ids, `search_modal_query`, `share_click` with `object`,
+     `year_change` from the section-page menu, `chart_element_click` on the
+     years rail; Lightpanda blocked at the SDK; Contrats publics (Paris,
+     Marseille) rebuilt on the fiche grammar with its section ids.
+   Nothing before a date can be measured with the instruments that came
+   after it — say so rather than diagnosing a fixed thing.
 
 ---
 
-## Events Reference
+## Verifying locally
 
-### Automatic Events
-
-These fire without any manual instrumentation.
-
-#### `session_start`
-First event of a new tab session.
-
-| Property | Type | Description |
-|---|---|---|
-| `entry_page` | string | The first page path visited |
-
-#### `page_view`
-Fires on every route change (client-side navigation).
-
-No additional properties — `page_path` and `page_tab` are set from the URL.
-
-#### `scroll_depth`
-Fires at 25%, 50%, 75%, and 100% scroll thresholds (once per page).
-
-| Property | Type | Description |
-|---|---|---|
-| `depth_percent` | number | Threshold reached (25, 50, 75, or 100) |
+The SDK refuses to capture from a browser it takes for a bot: Playwright's
+Chromium is one (`navigator.webdriver`, the `HeadlessChrome` brand in
+`navigator.userAgentData`). Capture requests also use `fetch` keepalive,
+which Playwright's request interception does not see. So: run the dev server
+with `NEXT_PUBLIC_POSTHOG_KEY=phc_test NEXT_PUBLIC_POSTHOG_HOST=http://localhost:3099`
+pointed at a small local sink (answer JS to GETs, a flags JSON to `/flags/`,
+decode gzip on `/e/`), and hide the two bot tells with an init script. Nothing
+reaches the project.
 
 ---
 
-### Navigation Events
-
-#### `nav_click`
-User clicks a link in the navbar (desktop top bar or mobile bottom tab bar).
-
-| Property | Type | Description |
-|---|---|---|
-| `destination` | string | Target href (e.g. `/budget`) |
-| `nav_type` | string | `desktop_top` or `mobile_bottom` |
-
-**Component:** `Navbar.tsx`
-
-#### `tab_change`
-User switches tabs within a page (Budget, Patrimoine, Logements, etc.).
-
-| Property | Type | Description |
-|---|---|---|
-| `from_tab` | string | Previous tab ID |
-| `to_tab` | string | New tab ID |
-
-**Component:** `TabBar.tsx`
-
-#### `cta_click`
-User clicks a call-to-action button or card on the homepage.
-
-| Property | Type | Description |
-|---|---|---|
-| `cta` | string | CTA identifier (e.g. `hero_primary`, `question_card`) |
-| `destination` | string | Target href |
-
-**Component:** `app/page.tsx` (homepage)
-
-#### `external_link_click`
-User clicks a link leaving the site (GitHub, Open Data Paris, etc.).
-
-| Property | Type | Description |
-|---|---|---|
-| `url` | string | External URL |
-| `text` | string | Link text |
-
-**Component:** `app/page.tsx` (homepage)
-
----
-
-### Budget Visualization Events
-
-#### `sankey_node_click`
-User clicks a node or edge in the Sankey diagram (or a bar in the mobile view).
-
-| Property | Type | Description |
-|---|---|---|
-| `node` | string | Node name (e.g. "Éducation") |
-| `category` | string | `revenue` or `expense` |
-| `type` | string | `node`, `edge`, or `mobile_bar` |
-
-**Component:** `BudgetSankey.tsx`
-
-#### `sankey_drilldown`
-User clicks a bar in the drilldown panel to explore deeper.
-
-| Property | Type | Description |
-|---|---|---|
-| `item` | string | Item name clicked |
-| `level` | number | Current drilldown level (0, 1, 2...) |
-| `category` | string | `revenue` or `expense` |
-
-**Component:** `DrilldownPanel.tsx`
-
-#### `drilldown_close`
-User closes the drilldown panel.
-
-| Property | Type | Description |
-|---|---|---|
-| `title` | string | Panel title when closed |
-| `level` | number | Level at time of closing |
-
-**Component:** `DrilldownPanel.tsx`
-
-#### `view_toggle`
-User switches between visualization modes (e.g. Flux/Dépenses on Budget page).
-
-| Property | Type | Description |
-|---|---|---|
-| `view` | string | New view mode (e.g. `flux`, `depenses`) |
-| `context` | string | Page context (e.g. `budget_annuel`) |
-
-**Component:** `budget/BudgetAnnuelTab.tsx`
-
-#### `chart_click`
-User clicks a data point on the evolution chart.
-
-| Property | Type | Description |
-|---|---|---|
-| `chart` | string | Chart type (e.g. `evolution`) |
-| `year` | number | Year clicked |
-
-**Component:** `EvolutionChart.tsx`
-
-#### `donut_click`
-User clicks a slice in the nature donut chart (drill-down or back).
-
-| Property | Type | Description |
-|---|---|---|
-| `nature` | string | Nature category name |
-| `level` | number | 1 (top-level) or 2 (drilled-down) |
-| `action` | string | `drilldown` or `back` |
-
-**Component:** `NatureDonut.tsx`
-
----
-
-### Year Selection Events
-
-#### `year_change`
-User changes the selected year via the year selector dropdown or arrows.
-
-| Property | Type | Description |
-|---|---|---|
-| `from_year` | number | Previous year |
-| `to_year` | number | New year |
-
-**Component:** `YearSelector.tsx`
-
-#### `year_range_change`
-User changes the start or end year in the year range selector (Tendances tab).
-
-| Property | Type | Description |
-|---|---|---|
-| `boundary` | string | `start` or `end` |
-| `from` | number | Previous year value |
-| `to` | number | New year value |
-
-**Component:** `YearRangeSelector.tsx`
-
----
-
-### Subventions Events
-
-#### `treemap_click`
-User clicks a thematique in the subventions treemap.
-
-| Property | Type | Description |
-|---|---|---|
-| `thematique` | string | Thematique name |
-| `action` | string | `select` or `deselect` |
-
-**Component:** `SubventionsTreemap.tsx`
-
-#### `filter_change`
-User changes a filter value (subventions page or logements explorer).
-
-| Property | Type | Description |
-|---|---|---|
-| `filter` | string | Filter key (e.g. `search`, `typesOrganisme`, `direction`, `arrondissement`, `bailleur`, `annee`) |
-| `value` | string | New filter value (JSON-stringified for arrays) |
-
-**Components:** `SubventionsFilters.tsx`, `logements/LogementsExplorerTab.tsx`
-
-#### `filter_reset`
-User resets all filters to defaults.
-
-| Property | Type | Description |
-|---|---|---|
-| `context` | string | Page context (`subventions` or `logements`) |
-
-**Components:** `SubventionsFilters.tsx`, `logements/LogementsExplorerTab.tsx`
-
-#### `table_sort`
-User sorts a table column.
-
-| Property | Type | Description |
-|---|---|---|
-| `column` | string | Column name (e.g. `montant_total`, `beneficiaire`) |
-| `direction` | string | `asc` or `desc` |
-
-**Component:** `SubventionsTable.tsx`
-
-#### `table_paginate`
-User navigates between table pages.
-
-| Property | Type | Description |
-|---|---|---|
-| `direction` | string | `prev` or `next` |
-| `page` | number | Target page number |
-
-**Component:** `SubventionsTable.tsx`
-
----
-
-### Logements Events
-
-#### `map_view_toggle`
-User switches between list and map view on the logements explorer.
-
-| Property | Type | Description |
-|---|---|---|
-| `view` | string | `liste` or `carte` |
-| `context` | string | `logements` |
-
-**Component:** `logements/LogementsExplorerTab.tsx`
-
----
-
-### Glossary Events
-
-#### `glossary_open`
-User opens the glossary drawer via the navbar button.
-
-| Property | Type | Description |
-|---|---|---|
-| `trigger` | string | `navbar_button` |
-
-**Component:** `Navbar.tsx`
-
-#### `glossary_term_view`
-A specific glossary term is highlighted (opened via a GlossaryTip in the content).
-
-| Property | Type | Description |
-|---|---|---|
-| `term` | string | Term key (e.g. `epargne_brute`) |
-
-**Component:** `GlossaryDrawer.tsx`
-
-#### `glossary_section_toggle`
-User expands or collapses a glossary section accordion.
-
-| Property | Type | Description |
-|---|---|---|
-| `section` | string | Section title |
-| `action` | string | `open` or `close` |
-
-**Component:** `GlossaryDrawer.tsx`
+## Privacy notes
+
+No query text is ever sent — `search_submit` and `search_modal_query` carry a
+SHA-256 prefix and the length. Chat questions are sent (500 chars) because
+the answer quality is the product; the routine never quotes names, emails or
+phone numbers from them. Opt-out: the switch on /confidentialite sets a cookie
+on the apex domain (`_fod_analytics_optout`), read before every capture.

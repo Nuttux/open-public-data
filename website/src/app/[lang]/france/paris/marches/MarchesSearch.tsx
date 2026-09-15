@@ -2,7 +2,7 @@
 
 import Link from "@/components/LocalizedLink";
 import { useEffect, useMemo, useState } from "react";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
@@ -12,6 +12,8 @@ import { fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { useLazyMarches } from "@/lib/use-lazy-marches";
 import type { ShapedMarche } from "@/lib/marches-shape";
+import { displayOrgName } from "@/lib/fournisseur-display";
+import { V3Row } from "@/components/fiche/v3";
 
 // La liste complète n'arrive plus dans les props serveur (~700 kB de payload
 // RSC pour Paris) : elle est lazy-fetchée depuis le fichier public
@@ -24,6 +26,10 @@ type Props = {
   categories: string[];
   natures: string[];
   year: number;
+  /** On a section page in the fiche grammar: the field and three suggestions
+   *  only, results as fiche rows once something is typed, no filters (the
+   *  categories are the page's scene, the full explorer is a door away). */
+  fiche?: boolean;
 };
 
 // Référence stable pour les useMemo tant que la liste n'est pas chargée.
@@ -66,7 +72,7 @@ function titleCaseName(raw: string): string {
     .join(" ");
 }
 
-export default function MarchesSearch({ citySlug, categories, natures, year }: Props) {
+export default function MarchesSearch({ citySlug, categories, natures, year, fiche = false }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const locStr = numLocale(locale);
@@ -188,11 +194,39 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
       })
       .slice(0, Math.max(0, 7 - brands.length - themes.length));
 
+    // Section page: one brand, two themes — three words that say what a query looks like.
+    if (fiche) return [...brands.slice(0, 1), ...themes.slice(0, 2), ...computed].slice(0, 3);
     return [...brands, ...themes, ...computed];
-  }, [isLoaded, items, hayNorms, hideMulti, locale]);
+  }, [isLoaded, items, hayNorms, hideMulti, locale, fiche]);
 
-  const displayCap = hasActiveSelection ? 24 : 3;
+  // Section page: nothing until something is typed (the biggest contracts are
+  // already the page's rows), then eight rows and a door to the full explorer.
+  const displayCap = fiche ? (hasActiveSelection ? 8 : 0) : hasActiveSelection ? 24 : 3;
   const displayed = filtered.slice(0, displayCap);
+  const showResults = isLoaded && (!fiche || hasActiveSelection);
+
+  // Section page: the companies the query names come first, each with its
+  // fiche, then the contracts. Grouped by SIREN, the key the supplier route
+  // resolves; counted, not summed (a shared lot would count twice here).
+  const companies = useMemo(() => {
+    if (!fiche || !isQueryActive) return [] as { name: string; siren: string; n: number }[];
+    const exp = expandQuery(query);
+    const map = new Map<string, { name: string; siren: string; n: number }>();
+    for (const it of items) {
+      if (hideMulti && it.multiAttributaire) continue;
+      const name = (it.titulaire || "").trim();
+      if (!name || name === "MARCHE MULTIATTRIBUTAIRE" || name === "Non précisé") continue;
+      if (!matchExpanded(normSearch(name), exp).match) continue;
+      const siret = (it.titulaireSiret || "").replace(/\s/g, "");
+      const siren = /^\d{9}/.test(siret) ? siret.slice(0, 9) : "";
+      const key = siren || `name:${name.toLowerCase()}`;
+      const cur = map.get(key) ?? { name, siren, n: 0 };
+      cur.n += 1;
+      if (name.length > cur.name.length) cur.name = name;
+      map.set(key, cur);
+    }
+    return [...map.values()].sort((a, b) => b.n - a.n).slice(0, 3);
+  }, [fiche, isQueryActive, query, items, hideMulti]);
 
   const reset = () => {
     setQuery("");
@@ -210,9 +244,9 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
   })();
 
   return (
-    <div className="fx-search-wrap" ref={containerRef}>
+    <div className={fiche ? "fx-search-wrap fx-search-wrap--fiche" : "fx-search-wrap"} ref={containerRef}>
       <div className="fx-search-inner">
-        <div className="fx-search-label">{t("fx.mp.search.label")}</div>
+        {!fiche && <div className="fx-search-label">{t("fx.mp.search.label")}</div>}
         <div className="fx-search-input-wrap">
           <span className="fx-search-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -231,8 +265,11 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
               setQuery(e.target.value);
             }}
           />
+          {fiche && query.length > 0 && (
+            <button type="button" className="fx-search-x" aria-label={t("fx.sec.mp.search_clear")} onClick={() => setQuery("")}>×</button>
+          )}
         </div>
-        <div className="fx-search-filters">
+        {!fiche && <div className="fx-search-filters">
           <span className="fx-search-filter-label">{t("fx.mp.search.filters")}</span>
           <select
             value={category}
@@ -293,10 +330,10 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
               {t("fx.mp.search.reset")}
             </button>
           )}
-        </div>
+        </div>}
         {!hasActiveSelection && visibleSeeds.length > 0 && (
           <div className="fx-search-filters">
-            <span className="fx-search-filter-label">{t("fx.mp.search.seeds_label")}</span>
+            <span className="fx-search-filter-label">{t(fiche ? "fx.sec.mp.search_try" : "fx.mp.search.seeds_label")}</span>
             <div className="fx-search-seeds">
               {visibleSeeds.map((s) => (
                 <button
@@ -308,7 +345,7 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
                     setQuery(s);
                   }}
                 >
-                  « {s} »
+                  {fiche ? s : `« ${s} »`}
                 </button>
               ))}
             </div>
@@ -316,7 +353,19 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
         )}
       </div>
 
-      {isLoaded && (
+      {showResults && fiche && (
+        <p className="fx-search-line">
+          {filtered.length === 0 && companies.length === 0
+            ? fill(t("fx.sec.mp.search_none"), { q: query.trim(), year })
+            : [
+                `« ${query.trim()} »`,
+                companies.length > 0 ? fill(t(companies.length === 1 ? "fx.sec.mp.n_companies_one" : "fx.sec.mp.n_companies"), { n: companies.length }) : null,
+                fill(t(filtered.length === 1 ? "fx.sec.mp.n_contracts_one" : "fx.sec.mp.n_contracts"), { n: new Intl.NumberFormat(locStr).format(filtered.length) }),
+                String(year),
+              ].filter(Boolean).join(" · ")}
+        </p>
+      )}
+      {showResults && !fiche && (
         <div className="fx-search-meta">
           <span>
             {contextLabel} · <b>{new Intl.NumberFormat(locStr).format(filtered.length)} {filtered.length > 1 ? t("fx.mp.search.contract_p") : t("fx.mp.search.contract_s")}</b> {filtered.length > 1 ? t("fx.mp.search.match_p") : t("fx.mp.search.match_s")}
@@ -327,19 +376,60 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
 
       {/* Liste lazy-fetchée : états chargement/erreur avant la grille — même
         * langage que l'index de recherche de QuiRecoitExplorer. */}
-      {!isLoaded && loadError && (
+      {!isLoaded && loadError && (!fiche || hasActiveSelection) && (
         <div className="fx-search-placeholder">
           <p>{locale === "en" ? `Contract list failed to load: ${loadError}` : `Erreur de chargement des contrats : ${loadError}`}</p>
         </div>
       )}
 
-      {!isLoaded && !loadError && (
+      {!isLoaded && !loadError && (!fiche || hasActiveSelection) && (
         <div className="fx-search-placeholder">
           <p>{locale === "en" ? "Loading contracts…" : "Chargement des contrats…"}</p>
         </div>
       )}
 
-      {isLoaded && displayed.length > 0 ? (
+      {showResults && (displayed.length > 0 || companies.length > 0) && fiche ? (
+        <div className="fx-search-rows">
+          {companies.length > 0 && (
+            <>
+              <p className="fx-search-group">{t("fx.sec.mp.search_companies")}</p>
+              {companies.map((co) => (
+                <V3Row
+                  key={co.siren || co.name}
+                  href={co.siren ? `/france/${citySlug}/marches/fournisseur/${co.siren}` : null}
+                  label={displayOrgName(co.name)}
+                  subText={fill(t(co.n === 1 ? "fx.sec.mp.company_sub_one" : "fx.sec.mp.company_sub"), { n: co.n, year })}
+                  onClick={co.siren ? () => track("search_result_click", { page: "marches-publics", entity_id: co.siren, entity_type: "fournisseur", results_count: companies.length }) : undefined}
+                />
+              ))}
+              {displayed.length > 0 && <p className="fx-search-group">{t("fx.sec.mp.search_contracts")}</p>}
+            </>
+          )}
+          {displayed.map(({ it }, i) => {
+            const { v, u } = fmtAmount(it.montant);
+            const href = it.numeroMarche ? `/france/${citySlug}/marches/contrat/${encodeURIComponent(it.numeroMarche)}` : null;
+            const preferred = locale === "en" && it.objetClairEn ? it.objetClairEn : it.objetClair;
+            const { title, detail } = preferred ? { title: preferred.length > 96 ? preferred.slice(0, 96).trimEnd() + "…" : preferred, detail: null } : rowObjet(it.objet);
+            const who = it.titulaire === "MARCHE MULTIATTRIBUTAIRE" ? t("fx.mp.search.multi") : displayOrgName(it.titulaire);
+            return (
+              <V3Row
+                key={it.numeroMarche || i}
+                href={href}
+                label={title}
+                subText={[detail, who, fmtDate(it.date)].filter(Boolean).join(" · ")}
+                amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{v}<span className="u">{u}</span></span>}
+                onClick={href ? () => track("search_result_click", { page: "marches-publics", entity_id: it.numeroMarche, rank: i, results_count: filtered.length, nature: it.nature, category: it.categorie, montant: it.montant }) : undefined}
+              />
+            );
+          })}
+          {filtered.length > displayed.length && (
+            <p className="fx-v3-note">
+              {fill(t("fx.mp.search.overflow"), { n: filtered.length - displayed.length })}{" "}
+              <Link href={`/france/${citySlug}/marches/contrats`}>{t("fx.sec.mp.r.all")} ›</Link>
+            </p>
+          )}
+        </div>
+      ) : showResults && displayed.length > 0 ? (
         <div className="fx-results-grid">
           {displayed.map(({ it, via }, i) => {
             const { v, u } = fmtAmount(it.montant);
@@ -382,8 +472,8 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
                 </div>
                 <h3>{(() => {
                   const preferred = locale === "en" && it.objetClairEn ? it.objetClairEn : it.objetClair;
-                  const clean = preferred || normalizeObjet(it.objet);
-                  return clean.length > 90 ? clean.slice(0, 90) + "…" : clean;
+                  const clean = preferred || rowObjet(it.objet, 90).title;
+                  return clean.length > 90 ? clean.slice(0, 90).trimEnd() + "…" : clean;
                 })()}</h3>
                 {via.length > 0 && (
                   <div className="fx-result-card-via">
@@ -411,7 +501,7 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
             </div>
           )}
         </div>
-      ) : isLoaded ? (
+      ) : showResults && !fiche ? (
         <div className="fx-search-placeholder">
           <p>{t("fx.mp.search.empty")}</p>
           <button

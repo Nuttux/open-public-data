@@ -8,7 +8,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, sufOrdinal } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { V3Amt, V3Foot, V3Hero, V3Lead, V3Row, V3Section } from "@/components/fiche/v3";
 import { displayOrgName } from "@/lib/fournisseur-display";
 
@@ -85,7 +85,7 @@ export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFic
         <V3Section title={t("fx.fiche.projet.h.entreprises")} sub={t("fx.fiche.projet.h.entreprises_sub")}>
           {marches.map((m) => {
             const clair = en ? m.objet_clair_en || m.objet_clair : m.objet_clair;
-            const clean = clair || normalizeObjet(m.objet);
+            const clean = clair || rowObjet(m.objet, 96).title;
             const bits = [
               clean.length > 120 ? clean.slice(0, 120) + "…" : clean,
               [m.annee, m.label === "confirmed" ? t("fx.fiche.projet.confidence.confirmed").toLowerCase() : t("fx.fiche.projet.confidence.probable").toLowerCase(),

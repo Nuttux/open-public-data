@@ -138,3 +138,8 @@ export function unlockBodyScroll() {
   prevStyles = null;
   window.scrollTo(0, lockedY);
 }
+
+/** Synchronous read for non-React code (analytics stamps page_surface). */
+export function isDrawerOpen(): boolean {
+  return openCount > 0;
+}

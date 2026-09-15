@@ -1,45 +1,45 @@
 {
   "generated_at": "2026-05-01T22:53:18",
   "model": "claude-opus-4-7-in-session",
-  "count": 500,
+  "count": 633,
   "items": {
     "20242024T09532": {
-      "objet_clair": "Roadway works to better manage rainwater on major street works.",
+      "objet_clair": "Rainwater management on roadways: medium and large operations",
       "quoi_concretement": "Companies work on Paris streets to install water-collection and drainage systems. The aim is to modernise the network during major roadway projects.",
       "pourquoi_ca_compte": "Helps prevent street flooding and better protects the environment during storms."
     },
     "20242024T09531": {
-      "objet_clair": "Roadway works to improve rainwater management in Paris.",
+      "objet_clair": "Rainwater management on roadways",
       "quoi_concretement": "This contract funds road fit-outs to ease drainage and treatment of rainwater. Several companies work in different sectors of the capital to adapt the city to the climate.",
       "pourquoi_ca_compte": "Better water management cuts the risk of sewer overload and Seine pollution."
     },
     "20242024T11073": {
-      "objet_clair": "Renovation of pumping and local-management stations on the sewer network.",
+      "objet_clair": "Renovation of the sewer network's local control stations",
       "quoi_concretement": "Technicians renovate the technical installations that move waste water and stormwater. These stations are essential for the proper running of the city's underground network.",
       "pourquoi_ca_compte": "A modern drainage network ensures a clean city and prevents odour issues or major breakdowns."
     },
     "20242024T00128": {
-      "objet_clair": "Schoolyard fit-outs in the central districts and the 9th, 10th, 11th and 12th.",
+      "objet_clair": "Oasis schoolyards: playground works, Paris Centre and 9th-12th",
       "quoi_concretement": "The company Terideal converts school and college yards by adding vegetation and natural materials. The works create more pleasant, less hot spaces for pupils.",
       "pourquoi_ca_compte": "Children enjoy cooler summer yards and new, more natural play spaces."
     },
     "20242024T00122": {
-      "objet_clair": "Planted Oasis schoolyards in several Left Bank and West-Paris districts.",
+      "objet_clair": "Oasis schoolyards: playground works, 5th-7th and 13th-17th",
       "quoi_concretement": "Eiffage Route converts tarmacked schoolyards into green spaces with permeable floors. The project covers the 5th, 6th, 7th and 13th to 17th districts.",
       "pourquoi_ca_compte": "These yards serve as cool refuges for school children and area residents during heatwaves."
     },
     "20242024T00109": {
-      "objet_clair": "Planted schoolyard fit-outs in the 18th, 19th and 20th districts.",
+      "objet_clair": "Oasis schoolyards: playground works, 18th, 19th and 20th",
       "quoi_concretement": "Conversion works are carried out at north-east Paris schools to replace tarmac with soil and plants. The aim is to better absorb water and refresh the air.",
       "pourquoi_ca_compte": "Improves pupils' setting and helps the city adapt to climate change."
     },
     "20242024T10161": {
-      "objet_clair": "Works on gas heating systems and steam stations in municipal buildings.",
+      "objet_clair": "Gas boiler rooms and steam substations: modernisation, western sector",
       "quoi_concretement": "Several companies renovate or install boilers and district-heating equipment. The works cover many districts, from the 1st to the 9th and the 14th to the 18th.",
       "pourquoi_ca_compte": "Modern installations ensure efficient, less polluting heating in schools, town halls and gymnasiums."
     },
     "20242024T10170": {
-      "objet_clair": "Heating-installation maintenance and repair in public buildings of various districts.",
+      "objet_clair": "Gas boiler rooms and steam substations: modernisation, eastern sector",
       "quoi_concretement": "This contract ensures the proper running of gas boilers and district heating in the 5th, 10th, 11th, 12th, 13th, 19th and 20th districts. Technicians provide routine maintenance and breakdown repairs.",
       "pourquoi_ca_compte": "Regular maintenance prevents heating failures in winter at public services and schools."
     },
@@ -2439,6 +2439,580 @@
       "objet_clair": "Planted, cooler schoolyard fit-out at Godefroy School.",
       "quoi_concretement": "The works replace the schoolyard tarmac with natural materials and plant trees. The aim is to create a more pleasant space that stays cool during heatwaves.",
       "pourquoi_ca_compte": "Children enjoy a healthier break space better suited to heatwaves."
+    },
+    "decp-2025S01582": {
+      "objet_clair": "Trilib recycling stations: waste pickup, washing and cleaning of the modules",
+      "quoi_concretement": "The holder empties the Trilib recycling stations on the streets, washes the food-waste modules and removes illegal dumping around the stations.",
+      "pourquoi_ca_compte": "This is what keeps the recycling points usable day to day: a full or dirty station stops being used.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S01581": {
+      "objet_clair": "Trilib recycling stations: supply, installation and technical maintenance",
+      "quoi_concretement": "The holder builds, installs and technically maintains the Trilib recycling stations on public space.",
+      "pourquoi_ca_compte": "Without working stations there is no kerbside recycling in dense neighbourhoods.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01093": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01094": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01095": {
+      "objet_clair": "City telecoms through the Sipperec purchasing group: internet, mobile, landlines",
+      "quoi_concretement": "Sipperec, an inter-municipal body, buys for its members including Paris the internet links, site interconnection, mobile data for connected devices, landline telephony and information broadcasting.",
+      "pourquoi_ca_compte": "These networks connect the City’s services to each other and to residents; buying as a group weighs more with operators.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06721": {
+      "objet_clair": "Towing of illegally parked cars to the pounds, southern sector",
+      "quoi_concretement": "The holder tows vehicles under 3.5 tonnes parked illegally in the sector and moves them from holding lots to the pounds.",
+      "pourquoi_ca_compte": "Towing is what frees lanes, reserved spaces and cycle paths.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06717": {
+      "objet_clair": "Towing of illegally parked cars to the pounds, northern sector",
+      "quoi_concretement": "The holder tows vehicles under 3.5 tonnes parked illegally in the sector and moves them from holding lots to the pounds.",
+      "pourquoi_ca_compte": "Towing is what frees lanes, reserved spaces and cycle paths.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S12072": {
+      "objet_clair": "New financial software for the City, CASVP, the Métropole and Paris Musées",
+      "quoi_concretement": "The holder builds and then maintains the new financial management software shared by the City, the social action centre, the Métropole du Grand Paris and Paris Musées.",
+      "pourquoi_ca_compte": "It is the tool that carries the budget, payments and accounts of these four bodies.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03812": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03811": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03810": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03809": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03808": {
+      "objet_clair": "Exterior windows and doors of municipal buildings and museums, openings over 50 m²",
+      "quoi_concretement": "The holders replace or repair the exterior wooden and PVC windows and doors of municipal buildings and the City’s museums, for openings over 50 m².",
+      "pourquoi_ca_compte": "Exterior joinery weighs on heating bills and on the state of schools, gyms and museums.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025F05826": {
+      "objet_clair": "Supply of 100 % green, short-circuit electricity for the Paris purchasing group’s sites",
+      "quoi_concretement": "The holder supplies and delivers electricity to the sites of the Paris purchasing group, as a 100 % green, short-circuit offer.",
+      "pourquoi_ca_compte": "Electricity for municipal buildings is a cost that follows market prices.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "20131380010196": {
+      "objet_clair": "Household waste collection, 11th and 19th arrondissements",
+      "year": 2013
+    },
+    "20131380010199": {
+      "objet_clair": "Household waste collection, 10th and 18th arrondissements",
+      "year": 2013
+    },
+    "20131380010198": {
+      "objet_clair": "Household waste collection, 1st, 3rd, 4th and 7th arrondissements",
+      "year": 2013
+    },
+    "20131380010200": {
+      "objet_clair": "Household waste collection, 15th arrondissement",
+      "year": 2013
+    },
+    "20131380010197": {
+      "objet_clair": "Household waste collection, 13th arrondissement",
+      "year": 2013
+    },
+    "20131120011002": {
+      "objet_clair": "Maintenance and repair of lifts in municipal buildings",
+      "year": 2013
+    },
+    "20131380010284": {
+      "objet_clair": "Emptying of street litter bins",
+      "year": 2013
+    },
+    "20131130010072": {
+      "objet_clair": "Bulk fuel supply",
+      "year": 2013
+    },
+    "20131370008901": {
+      "objet_clair": "Road markings on Paris streets",
+      "year": 2013
+    },
+    "20131370008902": {
+      "objet_clair": "Road markings on Paris streets",
+      "year": 2013
+    },
+    "20141300010725": {
+      "objet_clair": "Menu design support and supply of raw foodstuffs",
+      "year": 2014
+    },
+    "20141370000173": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141370000170": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141130011790": {
+      "objet_clair": "Carriage and delivery of the City's mail across France",
+      "year": 2014
+    },
+    "20141370000168": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141370000165": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141370000167": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141370000174": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20141050000020": {
+      "objet_clair": "Installation and upkeep of IT and telephone cabling",
+      "year": 2014
+    },
+    "20141370000175": {
+      "objet_clair": "Roadway and pavement works in Paris",
+      "year": 2014
+    },
+    "20151210001262": {
+      "objet_clair": "Electricity supply and delivery",
+      "year": 2015
+    },
+    "20151370001500": {
+      "objet_clair": "Cycle lane works",
+      "year": 2015
+    },
+    "20151120014013": {
+      "objet_clair": "Printing work for the City",
+      "year": 2015
+    },
+    "20151370000679": {
+      "objet_clair": "Removal of asbestos-containing asphalt on the T3 tramway works",
+      "year": 2015
+    },
+    "20151380001521": {
+      "objet_clair": "Door-to-door glass collection",
+      "year": 2015
+    },
+    "20151100001657": {
+      "objet_clair": "Flights to the French Antilles for staff on overseas home leave",
+      "year": 2015
+    },
+    "20151380001520": {
+      "objet_clair": "Door-to-door glass collection",
+      "year": 2015
+    },
+    "20141120000093": {
+      "objet_clair": "Upkeep, repair and improvement of sewer structures",
+      "year": 2015
+    },
+    "20141120000095": {
+      "objet_clair": "Upkeep, repair and improvement of sewer structures",
+      "year": 2015
+    },
+    "20141120000096": {
+      "objet_clair": "Upkeep, repair and improvement of sewer structures",
+      "year": 2015
+    },
+    "20162370000574": {
+      "objet_clair": "PAM 75: on-demand transport for people with reduced mobility",
+      "year": 2016
+    },
+    "20161350000644": {
+      "objet_clair": "Design, supply and maintenance of the newspaper kiosks",
+      "year": 2016
+    },
+    "20161210000251": {
+      "objet_clair": "Energy performance contract: design, works and operation",
+      "year": 2016
+    },
+    "20161210001166": {
+      "objet_clair": "Paul-Appell swimming pool (14th): design, construction and maintenance",
+      "year": 2016
+    },
+    "20161210001165": {
+      "objet_clair": "Serpollet swimming pool: design, construction, operation and maintenance",
+      "year": 2016
+    },
+    "20161370000295": {
+      "objet_clair": "Asphalt surfacing of roadways inside the city limits",
+      "year": 2016
+    },
+    "20171370090079": {
+      "objet_clair": "Vehicle removal to the Louvre-Samaritaine and Charléty pounds",
+      "year": 2016
+    },
+    "20171370090080": {
+      "objet_clair": "Vehicle removal to the Pouchet and Pantin pounds",
+      "year": 2016
+    },
+    "20171370090081": {
+      "objet_clair": "Vehicle removal to the Balard and Foch pounds",
+      "year": 2016
+    },
+    "20161120000405": {
+      "objet_clair": "Asbestos removal in municipal buildings",
+      "year": 2016
+    },
+    "20171120000104": {
+      "objet_clair": "All-trades building works in local facilities of the 18th and 20th",
+      "year": 2017
+    },
+    "20171210020029": {
+      "objet_clair": "Electricity supply and delivery",
+      "year": 2017
+    },
+    "20171370000425": {
+      "objet_clair": "Road markings on Paris streets",
+      "year": 2017
+    },
+    "20171370000426": {
+      "objet_clair": "Road markings on Paris streets",
+      "year": 2017
+    },
+    "20171210001782": {
+      "objet_clair": "Carnavalet museum renovation: all-trades building works",
+      "year": 2017
+    },
+    "20171120000102": {
+      "objet_clair": "All-trades building works in municipal and office buildings",
+      "year": 2017
+    },
+    "20171120000105": {
+      "objet_clair": "All-trades works, municipal buildings in the 5th-7th, 13th-17th and outside Paris",
+      "year": 2017
+    },
+    "20171370001112": {
+      "objet_clair": "Paid-parking enforcement, 8th, 9th, 10th, 17th, 18th and 19th",
+      "year": 2017
+    },
+    "20171400010081": {
+      "objet_clair": "After-school activities and 'ateliers bleus' workshops in schools",
+      "year": 2017
+    },
+    "20171120087300": {
+      "objet_clair": "Security guarding and fire safety, one-off assignments",
+      "year": 2017
+    },
+    "20181380001459": {
+      "objet_clair": "Door-to-door waste collection, 10th and 18th arrondissements",
+      "year": 2018
+    },
+    "20181380001460": {
+      "objet_clair": "Door-to-door waste collection, 11th and 19th arrondissements",
+      "year": 2018
+    },
+    "20181380001458": {
+      "objet_clair": "Door-to-door waste collection",
+      "year": 2018
+    },
+    "20181120000410": {
+      "objet_clair": "Plumbing and sanitary installations in public facilities",
+      "year": 2018
+    },
+    "20181380001462": {
+      "objet_clair": "Door-to-door waste collection, 15th arrondissement",
+      "year": 2018
+    },
+    "20181380001461": {
+      "objet_clair": "Door-to-door waste collection, 13th arrondissement",
+      "year": 2018
+    },
+    "20181370016100": {
+      "objet_clair": "Roadway and pavement upkeep, 15th and 16th",
+      "year": 2018
+    },
+    "20181370016200": {
+      "objet_clair": "Roadway and pavement upkeep, 8th, 17th and 18th",
+      "year": 2018
+    },
+    "20181370016300": {
+      "objet_clair": "Roadway and pavement upkeep, 11th, 19th and 20th",
+      "year": 2018
+    },
+    "20181120001053": {
+      "objet_clair": "Asbestos and lead surveys",
+      "year": 2018
+    },
+    "20191120000090": {
+      "objet_clair": "Accessibility works in public facilities for all disabilities",
+      "year": 2019
+    },
+    "20191380000355": {
+      "objet_clair": "Trilib recycling stations: design and upkeep of the modules",
+      "year": 2019
+    },
+    "20191050001296": {
+      "objet_clair": "Supply of IT and office equipment",
+      "year": 2019
+    },
+    "20191400010007": {
+      "objet_clair": "Arc-en-Ciel holiday camps and school discovery trips, 2019-2023",
+      "year": 2019
+    },
+    "20191050001297": {
+      "objet_clair": "Software supply and related services",
+      "year": 2019
+    },
+    "20191020018400": {
+      "objet_clair": "Outsourced production of events in Paris",
+      "year": 2019
+    },
+    "20191210001217": {
+      "objet_clair": "Natural gas supply",
+      "year": 2019
+    },
+    "20191400010022": {
+      "objet_clair": "Arc-en-Ciel holiday camps and school discovery trips, 2019-2023",
+      "year": 2019
+    },
+    "20191400010031": {
+      "objet_clair": "Arc-en-Ciel holiday camps and school discovery trips, 2019-2023",
+      "year": 2019
+    },
+    "20191210001232": {
+      "objet_clair": "Electricity supply and delivery",
+      "year": 2019
+    },
+    "20191210000164": {
+      "objet_clair": "Design and build of the central kitchen on rue Baudricourt",
+      "year": 2019
+    },
+    "20201072410005": {
+      "objet_clair": "The Porte de la Chapelle Arena: design, construction and maintenance",
+      "year": 2020
+    },
+    "20201380000430": {
+      "objet_clair": "Austerlitz stormwater storage basin: construction of the structure",
+      "year": 2020
+    },
+    "20201410010069": {
+      "objet_clair": "Sports workshops in public primary schools",
+      "year": 2020
+    },
+    "20201410010045": {
+      "objet_clair": "Sports workshops in public primary schools",
+      "year": 2020
+    },
+    "20202020F07032": {
+      "objet_clair": "Fuel via fuel cards and related services",
+      "year": 2020
+    },
+    "20201410010099": {
+      "objet_clair": "Sports workshops in public primary schools",
+      "year": 2020
+    },
+    "20201410010073": {
+      "objet_clair": "Sports workshops in public primary schools",
+      "year": 2020
+    },
+    "20201120014043": {
+      "objet_clair": "Soil pollution studies in Paris and the Île-de-France region",
+      "year": 2020
+    },
+    "20202020T05858": {
+      "objet_clair": "Decontamination of City facilities",
+      "year": 2020
+    },
+    "20201410010095": {
+      "objet_clair": "Sports workshops in schools: traditional sports",
+      "year": 2020
+    },
+    "20202020T06241": {
+      "objet_clair": "Restoration of the entrance front of the Trinité church",
+      "year": 2020
+    },
+    "20212021T01505": {
+      "objet_clair": "Paris street lighting, illuminations and traffic lights",
+      "year": 2021
+    },
+    "20212021T09247": {
+      "objet_clair": "Roofing works on public facilities, excluding religious and historic buildings",
+      "year": 2021
+    },
+    "20202020T07870": {
+      "objet_clair": "All-trades building works in public facilities, excluding sports venues",
+      "year": 2021
+    },
+    "20212021S05373": {
+      "objet_clair": "Door-to-door household waste collection, 10th and 18th",
+      "year": 2021
+    },
+    "20212021T09249": {
+      "objet_clair": "Roofing works on the City's office buildings",
+      "year": 2021
+    },
+    "20202020T07876": {
+      "objet_clair": "All-trades building works: sports venues, activity centres and others",
+      "year": 2021
+    },
+    "20212021T09241": {
+      "objet_clair": "Roofing works on religious and historic buildings and the City's residential properties",
+      "year": 2021
+    },
+    "20202020T07873": {
+      "objet_clair": "All-trades building works: office buildings and staff premises",
+      "year": 2021
+    },
+    "20212021S05374": {
+      "objet_clair": "Door-to-door household waste collection, 11th and 19th",
+      "year": 2021
+    },
+    "20212021S05372": {
+      "objet_clair": "Door-to-door household waste collection, Paris Centre and 7th",
+      "year": 2021
+    },
+    "20212021S03525": {
+      "objet_clair": "Childcare places in private nurseries",
+      "year": 2021
+    },
+    "20222022S03627": {
+      "objet_clair": "Self-cleaning public toilets on Paris streets",
+      "year": 2022
+    },
+    "20222022S00120": {
+      "objet_clair": "Clearing and cleaning of illegal street markets",
+      "year": 2022
+    },
+    "20222022S00119": {
+      "objet_clair": "Cleaning of sites vacated by encampments",
+      "year": 2022
+    },
+    "20222022T02130": {
+      "objet_clair": "Plumbing and sanitary installation works",
+      "year": 2022
+    },
+    "20222022S09963": {
+      "objet_clair": "Paid-parking enforcement",
+      "year": 2022
+    },
+    "20222022T02755": {
+      "objet_clair": "Electrical and suspended-ceiling works in public facilities",
+      "year": 2022
+    },
+    "20222022S09964": {
+      "objet_clair": "Paid-parking enforcement, 7th to 10th and 17th to 19th",
+      "year": 2022
+    },
+    "20222022S02203": {
+      "objet_clair": "Asbestos and lead surveys on public-space structures",
+      "year": 2022
+    },
+    "decp-20222022F01858": {
+      "objet_clair": "Vehicle purchases through the UGAP central purchasing body",
+      "year": 2022
+    },
+    "20222022S09424": {
+      "objet_clair": "Street-cleaning machines with driver, 8th-10th and 15th-17th",
+      "year": 2022
+    },
+    "20222022T09106": {
+      "objet_clair": "Pavement upkeep, 8th, 17th and 18th arrondissements",
+      "year": 2022
+    },
+    "20232023F09388": {
+      "objet_clair": "Supply of 100% green electricity",
+      "year": 2023
+    },
+    "20232023T10784": {
+      "objet_clair": "Energy retrofit of 20 schools: building works",
+      "year": 2023
+    },
+    "20232023F06305": {
+      "objet_clair": "Natural gas supply",
+      "year": 2023
+    },
+    "20232023F08131": {
+      "objet_clair": "CNG and bio-CNG refuelling of vehicles",
+      "year": 2023
+    },
+    "20232023F09464": {
+      "objet_clair": "Supply of 100% green electricity",
+      "year": 2023
+    },
+    "20232023S10460": {
+      "objet_clair": "Waste-collection vehicles with drivers and loaders",
+      "year": 2023
+    },
+    "20232023F08312": {
+      "objet_clair": "Software supply and related services",
+      "year": 2023
+    },
+    "20232023T01163": {
+      "objet_clair": "Disability-access works in buildings open to the public",
+      "year": 2023
+    },
+    "20232023F09428": {
+      "objet_clair": "Supply of premium green electricity",
+      "year": 2023
+    },
+    "20232023S06216": {
+      "objet_clair": "Management of the City's printed documents",
+      "year": 2023
+    },
+    "20222022T09784": {
+      "objet_clair": "Roadway, street lighting and traffic lights at Porte de la Chapelle",
+      "year": 2023
+    },
+    "decp-2024T00118": {
+      "objet_clair": "Oasis schoolyards: playground works, 18th, 19th and 20th",
+      "year": 2024
+    },
+    "decp-2024T00123": {
+      "objet_clair": "Oasis schoolyards: playground works, 5th-7th and 13th-17th",
+      "year": 2024
+    },
+    "decp-2025T03576": {
+      "objet_clair": "Rehabilitation of the Asnières sewer collector, from Concorde to Saint-Augustin (8th)",
+      "year": 2025
+    },
+    "20212021T01517": {
+      "objet_clair": "Cycle lanes: traffic lights and lighting, Paris Centre and north-west",
+      "year": 2021
     }
   },
   "license": {

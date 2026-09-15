@@ -1,5 +1,41 @@
 import { describe, expect, it } from "vitest";
-import { normalizeObjet, isObjetCryptic, shortObjet, cutObjet } from "./objet-normalizer";
+import { normalizeObjet, isObjetCryptic, shortObjet, cutObjet, rowObjet } from "./objet-normalizer";
+
+describe("rowObjet — a row title and its detail, from the raw object (2025 DECP samples)", () => {
+  const TRILIB = "Fourniture, pose, collecte, maintenance et entretien de stations de tri sur l’espace public parisien (TRILIB) - Collecte et maintenance de propreté des modules, lavage des modules déchets alimentaires et collecte des dépôts sauvages aux abords des stations";
+  it("splits the framework name from the lot and cuts each at a clause, never mid-word", () => {
+    const r = rowObjet(TRILIB);
+    expect(r.title.length).toBeLessThanOrEqual(74);
+    expect(r.title).toMatch(/stations de tri/i);
+    expect(r.title).toBe("Fourniture, pose, collecte, maintenance et entretien de stations de tri…");
+    expect(r.detail).toMatch(/^Collecte et maintenance de propreté des modules/);
+    expect(r.detail!.length).toBeLessThanOrEqual(66);
+  });
+  it("drops a long parenthetical, keeps a short acronym, and drops a trailing purchasing group", () => {
+    const r = rowObjet("Services de communications électroniques (Internet, interconnexion, données mobiles M2M, téléphonie fixe, diffusion d’information multicanale) - SIPPEREC");
+    expect(r.title).toBe("Services de communications électroniques");
+    expect(r.detail).toBeNull();
+    expect(rowObjet("Mobilier urbain (JCDecaux) - Lot 2 - Abris voyageurs").title).toMatch(/\(JCDecaux\)/);
+  });
+  it("drops the tender boilerplate", () => {
+    const r = rowObjet("La présente consultation doit permettre, à l’issue d’une procédure de dialogue compétitif, à la collectivité parisienne d’attribuer un marché ayant pour objet la mise en place et de maintenance du nouveau Système d’Informations financier de la Collectivité parisienne (Ville, CASVP, MGP et Paris Musées).");
+    expect(r.title).toMatch(/^Mise en place/);
+    expect(r.title).not.toMatch(/consultation/i);
+    const m = rowObjet("Accords-cadres relatifs à des travaux de menuiseries extérieures bois et PVC, en 3 lots, dans les bâtiments de la Ville de Paris et de l’Établissement public Paris Musées (EPPM).  - Accord-cadre à marchés subséquents - Travaux de menuiseries extérieures dans les bâtiments de la Ville de Paris, pour des surfaces supérieures à 50m² d’ouverture de baies");
+    expect(m.title).toMatch(/^Travaux de menuiseries extérieures bois et PVC/);
+    expect(m.title).not.toMatch(/en 3 lots/);
+    // The procedure label is not a lot: the detail starts with the works themselves.
+    expect(m.detail).toMatch(/^Travaux de menuiseries extérieures/);
+  });
+  it("drops the multi-holder framework wording too", () => {
+    const r = rowObjet("Accord-cadre multi-attributaires à marchés subséquents de travaux d’éclairage public et d’illuminations dans les 1er à 20e arrondissements - Titulaire 2");
+    expect(r.title).toMatch(/^Travaux d’éclairage public/);
+    expect(r.detail).toBeNull(); // « Titulaire 2 » names nothing
+  });
+  it("keeps a short object whole", () => {
+    expect(rowObjet("Transport PAM75")).toEqual({ title: "Transport PAM75", detail: null });
+  });
+});
 
 describe("normalizeObjet", () => {
   it("returns empty for falsy input", () => {
@@ -46,6 +82,16 @@ describe("normalizeObjet", () => {
     expect(normalizeObjet("CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET")).not.toMatch(/CSP5/i);
     expect(normalizeObjet("SA4.TRVX CSTRUCT PISCINE")).not.toMatch(/SA4/i);
     expect(normalizeObjet("CSP4: AC_BC - LOT 1 : TVX")).not.toMatch(/CSP4/i);
+    // The other management codes measured in the corpus (2026-09-14).
+    expect(normalizeObjet("A4: TRAVAUX D'ECLAIRAGE PUBLIC ET D'ILLUMINATION - LOT 5")).toMatch(/^Travaux/);
+    expect(normalizeObjet("MGP-AMOA")).not.toMatch(/MGP/);
+    expect(normalizeObjet("M.SUBS TRAVAUX MISE CONFORMITE FILTRATION PISCINE DIDOT")).not.toMatch(/^M\./);
+    expect(normalizeObjet("MS_MOE RELATIVE A RESTAURATION DU PRONAOS")).not.toMatch(/^MS/);
+    expect(normalizeObjet("MA13_REDACTION ET CONCEPTION GRAPHIQUE DU JOURNAL")).toMatch(/^Redaction/i);
+    expect(normalizeObjet("MSAC - FOURNITURES DE FLEURS COUPEES")).toMatch(/^Fournitures/i);
+    // A word that starts like a code is kept: no separator, no strip.
+    expect(normalizeObjet("MAINTENANCE DES ASCENSEURS DU MUSEE")).toMatch(/^Maintenance/);
+    expect(normalizeObjet("MS PROJECT LICENCES ET SUPPORT")).toMatch(/^MS /);
     // Only in leading position — a section code is only unambiguous there.
     expect(normalizeObjet("TRAVAUX SECTEUR SA4")).toMatch(/\bSA4\b/);
     // A leading lot number is information, not noise — it must survive.
@@ -133,5 +179,31 @@ describe("shortObjet", () => {
     expect(out.length).toBe(111);
     expect(out.endsWith("…")).toBe(true);
     expect(cutObjet("court")).toBe("court");
+  });
+});
+
+describe("codes de procédure en tête (2026-09-15)", () => {
+  it("strips AC_BC, AC/BC, ACMS and MULTI-ATT layers, and a leading « LOT n : »", () => {
+    const r = rowObjet("CSP4: AC_BC - LOT 1 : TVX SIGNALISATION HORIZONTALE A PARIS");
+    expect(r.title).toMatch(/signalisation/i);
+    expect(r.title).not.toMatch(/^(AC|Lot)/i);
+    expect(normalizeObjet("SA4 _ACBC/MULTI-ATTRIBUTAIRES_DÉCONTAMINATION ÉQUIPEMTS VDP")).toMatch(/^D[ée]contamination/i);
+    expect(normalizeObjet("SA4/MULTI-ATT._TVX PLOMBERIE/INSTALLATIONS SANITAIRES_LOT3")).not.toMatch(/^multi/i);
+    expect(normalizeObjet("CSP5 AC/BC TVX ACCESSIBILITE TS HANDICAPS EQUIPMT PUBLICS")).not.toMatch(/^AC/);
+    expect(normalizeObjet("SA3.AC_MS.TVX RENVAT° STATIONS")).not.toMatch(/^AC/);
+  });
+  it("keeps words that merely start with those letters", () => {
+    expect(normalizeObjet("MAINTENANCE DES ASCENSEURS DES ECOLES")).toMatch(/^Maintenance/);
+    expect(normalizeObjet("ACCUEIL DES ENFANTS EN CENTRE DE LOISIRS")).toMatch(/^Accueil/);
+    expect(normalizeObjet("MULTIMEDIA POUR LES BIBLIOTHEQUES")).toMatch(/^Multim/i);
+    expect(normalizeObjet("MS N°1 LOT 3 FOURNITURE D'ELECTRICITE")).toMatch(/^MS/);
+  });
+});
+
+describe("accords-cadres à bons de commande (2026-09-15)", () => {
+  it("drops the procedure formula and the « prestations de » that follows", () => {
+    const r = rowObjet("Accords-cadres à bons de commande pour des prestations de nettoyage de locaux à destination de divers établissements de la Ville - Nettoyage de locaux à destination de divers établissements de la Ville de Paris (lot 3)");
+    expect(r.title).toMatch(/^Nettoyage de locaux/);
+    expect(r.title).not.toMatch(/bons de commande/i);
   });
 });

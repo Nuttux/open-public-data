@@ -34,7 +34,26 @@ const FR_STOPWORDS_LOWER = new Map<string, string>([
 // ouvrent 42 % des libellés du corpus. On ne les retire qu'en position
 // initiale, seule position où ils sont sans ambiguïté un préfixe — et le motif
 // exclut "LOT1…" (numéro de lot : information utile, à conserver).
-const SECTION_PREFIX = /^(?:SA|CSP)\s?\d+\s*[.:\-_]*\s*/i;
+// Mesuré sur 19 394 lignes 2013-2025 (2026-09-14) : CSP1-5 et SA1-4 ouvrent
+// 3 800 libellés, puis A4 (97), MGP (78), M. (55), MS_ (49), MA13 (14), MSAC
+// (10), ACBC (5) — tous des codes de gestion, jamais un mot du titre. Les
+// codes sans chiffre exigent un séparateur, pour ne pas mordre un mot
+// (« MAINTENANCE », « MSAC - » oui, « MS » suivi d'un espace non).
+// Depuis le 2026-09-15 : les codes de procédure aussi (« AC_BC », « AC/BC »,
+// « ACMS », « MULTI-ATT. », « MULTIATTRIB ») et les couches empilées
+// (« SA4 _ACBC/MULTI-ATTRIBUTAIRES_DÉCONTAMINATION ») — la liste 2013-2023
+// en ouvre 21 % de ses 100 plus gros libellés.
+const SECTION_PREFIX = /^(?:(?:SA|CSP|A|MA)\s?\d{1,2}\s*[.:\-_/]*\s*|(?:MGP|MSAC|ACBC|AC[\s_/-]?(?:BC|MS)|MULTI[\s-]?ATT(?:RIB(?:UTAIRES?)?)?\.?|MS|M)\s*[.:\-_/]+\s*)/i;
+/** Enlève les codes en tête, couche après couche (quatre au plus). */
+function stripSectionPrefix(s: string): string {
+  let out = s;
+  for (let i = 0; i < 4; i++) {
+    const next = out.replace(SECTION_PREFIX, "").trim();
+    if (next === out) break;
+    out = next;
+  }
+  return out;
+}
 
 // Restauration d'accents. Les libellés arrivent en MAJUSCULES non accentuées
 // ("RENOVATION MUSEE") ; la remise en casse lisible produit "Renovation Musee".
@@ -240,7 +259,7 @@ export function normalizeObjet(raw: string): string {
 
   // Retire le code de section en tête avant tout le reste : il fausserait la
   // remise en casse ("SA4.TRVX" est un seul token → "Sa4.trvx").
-  s = s.replace(SECTION_PREFIX, "").trim();
+  s = stripSectionPrefix(s);
 
   // Si tout est en MAJUSCULES, passe en casse plus lisible avant substitutions.
   // Les mots courts (≤3 car.) restent MAJ par défaut (acronymes : SA3, CPV,
@@ -327,4 +346,84 @@ export function shortObjet(raw: string, max = 110): string {
   if (joined.length <= max) return joined;
   if (lot.length > 80) return cutObjet(lot, max);
   return `${cutObjet(head, max - lot.length - 4)} · ${lot}`;
+}
+
+// ── Une ligne de contrat : un titre court, un détail ─────────────────────────
+
+// Formules d'appel d'offres en tête d'objet, sans information pour un lecteur.
+const BOILERPLATE: RegExp[] = [
+  /^la pr[ée]sente consultation .*?ayant pour objet\s+(?:la |le |les |l’|l'|d’|d'|de |du |des |une |un )?/i,
+  /^(?:accords?[- ]cadres?|march[ée]s?(?: publics?)?)(?:\s+(?:mono|multi)[- ]attributaires?)?(?:\s+(?:à|a)\s+(?:march[ée]s?\s+subs[ée]quents?|bons?\s+de\s+commandes?))?\s+(?:relatifs?|relative|ayant pour objet|portant sur|concernant|pour|de|d’|d')\s*(?:à |a |aux |au )?(?:des |de la |de l’|de l'|du |de |le |la |les |l’|l')?/i,
+  /^(?:prestations? de|fourniture et|mission de)\s+(?=\S)/i,
+];
+
+/** Drops parentheticals except a short acronym like « (Trilib) » or « (EPPM) ». */
+function dropParentheticals(s: string): string {
+  return s
+    .replace(/\s*\(([^()]*)\)/g, (m, inner: string) => (/^[\p{L}]{2,14}$/u.test(inner.trim()) ? ` (${inner.trim()})` : ""))
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/** Cuts at the last clause boundary in the second half of the window, never mid-word. */
+function clauseCut(s: string, max: number): string {
+  const t = s.replace(/[\s,;:]+$/, "");
+  if (t.length <= max) return t;
+  const head = t.slice(0, max);
+  // A clause boundary late in the window keeps the subject; an early one
+  // (« Fourniture, pose, collecte, maintenance et… ») loses it, so a plain
+  // word boundary near the end is better then.
+  const marks = [", ", " ; ", " : ", " – ", " — ", " et ", " pour ", " dans ", " sur ", " avec ", " ainsi que "];
+  let best = -1;
+  for (const mk of marks) {
+    const i = head.lastIndexOf(mk);
+    if (i >= max * 0.6 && i > best) best = i;
+  }
+  if (best < 0) {
+    const sp = head.lastIndexOf(" ");
+    best = sp > max * 0.5 ? sp : max;
+  }
+  return head.slice(0, best).replace(/[\s,;:(]+$/, "") + "…";
+}
+
+// Procedure labels that the source writes as a lot part; they name nothing.
+const LOT_NOISE: RegExp[] = [/^accords?[- ]cadres?\s+(?:à|a)\s+march[ée]s?\s+subs[ée]quents?\.?$/i, /^march[ée]s?\s+subs[ée]quents?\.?$/i, /^lot\s*\d+\s*$/i, /^titulaires?\s*\d+\s*$/i, /^attributaires?\s*\d+\s*$/i];
+
+/**
+ * A contract row on the fiche grammar: a short title (what is bought) and a
+ * detail (the lot, when the source names one). Built from the raw object:
+ * « Nom de l'accord-cadre - Lot » is split first, the tender boilerplate is
+ * dropped, long parentheticals too, and each part is cut at a clause, never
+ * mid-word. A trailing token with no space (« SIPPEREC », a purchasing group)
+ * is not a lot and is dropped.
+ */
+export function rowObjet(raw: string, max = 72, detailMax = 64): { title: string; detail: string | null } {
+  const text = (raw || "").trim();
+  const m = text.match(/^(.*?[^\d\s])\s+[-–]\s+([^\d\s].*)$/);
+  const clean = (part: string) => {
+    // « LOT 1 : Travaux… » once the codes are gone: the lot is the row's sub-line.
+    let s = normalizeObjet(part).replace(/^lot\s*\d+\s*[:.\-–]?\s*/i, "");
+    for (const re of BOILERPLATE) s = s.replace(re, "");
+    s = dropParentheticals(s.replace(/,?\s*en \d+ lots?,?/i, ","));
+    s = s.replace(/\s*,\s*,/g, ",").replace(/^[,\s]+/, "").trim();
+    return s ? s[0].toUpperCase() + s.slice(1) : s;
+  };
+  if (!m) return { title: clauseCut(clean(text), max), detail: null };
+  // « CSP4: AC_BC - LOT 1 : Travaux… » : what is left of the head is a bare
+  // code, not a title; the lot part takes its place.
+  const head = clauseCut(clean(m[1]), max);
+  const title = /[a-zà-ÿ]{4,}/i.test(head) ? head : "";
+  const lotRaw = m[2].replace(/\s*\((?:\d+\s*[-,]\s*)+\d+\)\s*$/, "").trim();
+  if (!/\s/.test(lotRaw) && lotRaw.length <= 12) return { title, detail: null };
+  // « Accord-cadre à marchés subséquents - Travaux de … » : the inner parts,
+  // minus the procedure labels, each cleaned, joined with a middle dot.
+  const lotParts = lotRaw
+    .split(/(?<=[^\d\s])\s+[-–]\s+(?=[^\d\s])/)
+    .map((p) => p.trim())
+    .filter((p) => p && !LOT_NOISE.some((re) => re.test(p)))
+    .map((p) => clean(p))
+    .filter(Boolean);
+  if (lotParts.length === 0) return { title, detail: null };
+  const detail = clauseCut(lotParts.join(" · "), detailMax);
+  return { title: title || detail, detail: title ? detail : null };
 }

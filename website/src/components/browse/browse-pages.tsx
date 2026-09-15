@@ -16,6 +16,7 @@ import {
   fournisseurList,
   isLetter,
   marchesYears,
+  marchesYearsAll,
   page,
   projetArrondissements,
   projetItems,
@@ -177,7 +178,7 @@ export function makeFournisseursBrowse(city: string) {
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/france/${city}/marches`}
         title={q.letter ? (en ? `Suppliers starting with ${q.letter}` : `Fournisseurs, lettre ${q.letter}`) : en ? `Every supplier of the City of ${cityNom}, A to Z` : `Tous les fournisseurs de la Ville de ${cityNom}, de A à Z`}
-        intro={en ? `${intFr(list.length, "en")} companies with at least one public contract, each with its own page. Amounts are the maximum notified, not what was paid.` : `${intFr(list.length, "fr")} entreprises titulaires d'au moins un marché, chacune avec sa page. Les montants sont les plafonds notifiés, pas la dépense.`}
+        intro={en ? `${intFr(list.length, "en")} companies with at least one public contract, each with its own page. Amounts are the maximum each contract allows.` : `${intFr(list.length, "fr")} entreprises titulaires d'au moins un marché, chacune avec sa page. Les montants sont les maximums prévus par contrat.`}
         rail={rail}
         railLabel={en ? "By first letter" : "Par première lettre"}
         items={items}
@@ -200,7 +201,8 @@ export function makeContratsBrowse(city: string) {
   const parse = (parts: string[] = []) => {
     const year = parts[0] ? Number(parts[0]) : null;
     const p = parts[1] ? Number(parts[1]) : 1;
-    if (year != null && (!Number.isInteger(year) || !marchesYears(city).includes(year))) return null;
+    // Any year with a file is an address (the current, still filling year too); the rail lists complete years only.
+    if (year != null && (!Number.isInteger(year) || !marchesYearsAll(city).includes(year))) return null;
     if (parts.length > 2 || !Number.isInteger(p) || p < 1) return null;
     return { year, p };
   };
@@ -215,8 +217,8 @@ export function makeContratsBrowse(city: string) {
       ? en ? `Public contracts notified by the City of ${cityNom} in ${q.year}${q.p > 1 ? ` (page ${q.p})` : ""}` : `Marchés publics notifiés par la Ville de ${cityNom} en ${q.year}${q.p > 1 ? ` (page ${q.p})` : ""}`
       : en ? `Every public contract of the City of ${cityNom}, year by year` : `Tous les marchés publics de la Ville de ${cityNom}, année par année`;
     const answer = en
-      ? `The contracts the City of ${cityNom} notified from ${years[years.length - 1]} to ${years[0]}, each with its own page: object, supplier, maximum amount, procedure. Source: DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`
-      : `Les marchés notifiés par la Ville de ${cityNom} de ${years[years.length - 1]} à ${years[0]}, chacun avec sa page : objet, titulaire, montant maximal, procédure. Source : DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`;
+      ? `The contracts the City of ${cityNom} notified from ${years[0]} to ${years[years.length - 1]}, each with its own page: object, supplier, maximum amount, procedure. Source: DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`
+      : `Les marchés notifiés par la Ville de ${cityNom} de ${years[0]} à ${years[years.length - 1]}, chacun avec sa page : objet, titulaire, montant maximal, procédure. Source : DECP via ${city === "paris" ? "opendata.paris.fr" : "data.gouv.fr"}.`;
     return answerMetadata({ title, answer }, path, locale);
   }
   async function Page({ params }: Props) {
@@ -245,7 +247,7 @@ export function makeContratsBrowse(city: string) {
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/france/${city}/marches`}
         title={q.year ? (en ? `Contracts notified in ${q.year}` : `Marchés notifiés en ${q.year}`) : en ? `Every public contract of the City of ${cityNom}, by year` : `Tous les marchés publics de la Ville de ${cityNom}, par année`}
-        intro={q.year ? (en ? `${intFr(n, "en")} contracts notified in ${q.year}, biggest first. Amounts are the maximum notified, not what was paid.` : `${intFr(n, "fr")} marchés notifiés en ${q.year}, du plus gros au plus petit. Les montants sont les plafonds notifiés, pas la dépense.`) : en ? "Pick a year." : "Choisissez une année."}
+        intro={q.year ? (en ? `${intFr(n, "en")} contracts notified in ${q.year}, biggest first. Amounts are the maximum each contract allows.` : `${intFr(n, "fr")} marchés notifiés en ${q.year}, du plus gros au plus petit. Les montants sont les maximums prévus par contrat.`) : en ? "Pick a year." : "Choisissez une année."}
         rail={rail}
         railLabel={en ? "By year" : "Par année"}
         items={items}

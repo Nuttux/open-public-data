@@ -3,6 +3,7 @@
 import { useLang } from "@/lib/navigation";
 
 import { localize } from "@/lib/urls";
+import { pageContext } from "@/lib/analytics/page-context";
 
 import { useRouter } from "@/lib/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -127,11 +128,9 @@ export default function DetailDrawer({
   const menuRef = useRef<HTMLDivElement | null>(null);
   const section = sectionOf(shareUrl);
   const openedAtRef = useRef<number>(Date.now());
-  const entityType = (() => {
-    if (!shareUrl) return "unknown";
-    const seg = shareUrl.split("/").filter(Boolean)[1];
-    return seg || "unknown";
-  })();
+  // The route word before the slug (association, poste, dept…). Was the 2nd
+  // path segment, which read "city" on every drawer since the URLs moved.
+  const entityType = (shareUrl && pageContext(shareUrl).page_entity_type) || "unknown";
 
   // Flag "a drawer is open" so the top nav stops highlighting the section the
   // entity URL happens to fall under (the drawer is a modal, not a page).

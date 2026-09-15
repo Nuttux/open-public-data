@@ -32,7 +32,7 @@ export function MarchesBackKicker() {
   const { basePath } = useCity();
   return (
     <div className="fx-page-kicker">
-      <Link href={`${basePath}/marches`} style={{ color: "var(--ocre)" }}>
+      <Link href={`${basePath}/marches`}>
         {t("fx.fiche.back.marches")}
       </Link>
     </div>

@@ -124,6 +124,10 @@ function ChatPanelInner() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [teaserDismissed, setTeaserDismissed] = useState(true);
+  // The teaser invites a question on arrival; once the reader scrolls into the
+  // page it only covers the content (the years rail, the search), so it goes.
+  // Not persisted: it comes back on the next page.
+  const [scrolledAway, setScrolledAway] = useState(false);
   const [view, setView] = useState<"chat" | "history">("chat");
   const [historyList, setHistoryList] = useState<ArchivedConv[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -152,6 +156,13 @@ function ChatPanelInner() {
   // Question mise en avant à côté du launcher — uniquement sur les pages de
   // données (le label parle des graphes ; la landing reste épurée : pilule seule).
   const teaser = section === "default" || TEASER_OFF.has(section) ? null : chipsFor(section, locale, scope)[0];
+  useEffect(() => {
+    setScrolledAway(false);
+    const onScroll = () => { if (window.scrollY > 480) setScrolledAway(true); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   // One `chat_chips_shown` per draw actually seen (panel open, empty state),
   // so the digest can compute click rate per chip and per position.
@@ -537,7 +548,7 @@ function ChatPanelInner() {
     <>
       {/* Teaser contextuel — une vraie question, adaptée à la page courante.
           Desktop uniquement (le mobile garde le launcher seul). */}
-      {!open && !teaserDismissed && teaser && (
+      {!open && !teaserDismissed && !scrolledAway && teaser && (
         <div className="fixed bottom-21 right-5 z-40 hidden max-w-70 items-start gap-1 md:flex">
           <button
             onClick={() => {

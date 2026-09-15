@@ -4063,12 +4063,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* La ligne au-dessus du titre porte la navigation : la section mène à sa page,
  * le parent à sa fiche quand elle existe. La marge négative agrandit la zone
  * de clic sans déplacer la ligne. */
-.theme-fusion .fx-drawer-kicker a { color: var(--ocre); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; padding-block: 6px; margin-block: -6px; }
+.theme-fusion .fx-drawer-kicker a { color: var(--bleu); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; padding-block: 6px; margin-block: -6px; }
 .theme-fusion .fx-drawer-kicker a:hover { color: var(--ink); }
 .theme-fusion .fx-drawer-kicker a:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 /* Même règle sur la page d'un lieu : le descripteur en gris, les liens en ocre. */
 .theme-fusion .fx-page-kicker--links { color: var(--muted); }
-.theme-fusion .fx-page-kicker--links a { color: var(--ocre); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* Kicker links are links: blue. The ocre is the colour of movement, nowhere else. */
+.theme-fusion .fx-page-kicker--links a, .theme-fusion .fx-page-kicker a, .theme-fusion a.fx-page-kicker { color: var(--bleu); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .theme-fusion .fx-page-kicker--links a:hover { color: var(--ink); }
 .theme-fusion .fx-page-kicker--links a:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
 .theme-fusion .fx-drawer-kicker-sep { color: var(--muted); }
@@ -4832,6 +4833,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: #fff;
   color: var(--ink);
   outline: none;
+  max-width: 100%;
+  min-width: 0;
 }
 .theme-fusion .fx-search-filters select:focus { box-shadow: 2px 2px 0 var(--ink); }
 .theme-fusion .fx-search-range {
@@ -5040,7 +5043,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 .theme-fusion .fx-results-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   background-color: var(--rule);
 }
@@ -5136,7 +5139,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-result-card[data-raw] h3 { color: #3a3a36; }
 .theme-fusion .fx-result-card[data-raw] .fx-result-card-cta { color: var(--muted); }
 @media (max-width: 1000px) {
-  .theme-fusion .fx-results-grid { grid-template-columns: repeat(2, 1fr); }
+  .theme-fusion .fx-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
   .theme-fusion .fx-results-grid { grid-template-columns: 1fr; }
@@ -19556,8 +19559,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-v3-delib .dl { grid-template-columns: 1fr; }
 }
 .theme-fusion .fx-v3-line .fold-wrap { grid-column: 1 / -1; }
+/* A fold reads like a link, in the text face (2026-09-15: the mono capitals
+   made every fiche look like a terminal). */
 .theme-fusion .fx-v3-fold > summary {
-  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+  font-family: var(--f-ui); font-size: 14px; letter-spacing: 0; text-transform: none; font-weight: 500;
   color: var(--bleu); cursor: pointer; padding: 8px 0; list-style: none;
 }
 .theme-fusion .fx-v3-fold > summary::before { content: "▸ "; }
@@ -19567,9 +19572,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   display: flex; justify-content: space-between; gap: 12px; padding: 10px 6px;
   border-top: 1px solid var(--rule); align-items: baseline; font-size: 13.5px; color: var(--ink-2); text-decoration: none;
 }
-.theme-fusion .fx-v3-row .lbl { flex: 1; }
+.theme-fusion .fx-v3-row .lbl { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .theme-fusion .fx-v3-row .lbl.mono { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
-.theme-fusion .fx-v3-row .sub { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.theme-fusion .fx-v3-row .sub { display: block; font-family: var(--f-ui); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin-top: 2px; }
 /* Le lanceur du chat est fixe au coin bas droit (48 px, 20 px de marge). Sur
  * un téléphone il recouvrait la fin de la dernière fiche : on réserve la
  * hauteur sous le contenu plutôt que de le laisser mordre sur le texte.
@@ -20752,3 +20757,233 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-mission-progs { padding: 10px 18px 14px 32px; }
   .theme-fusion .fx-mission-prog  { grid-template-columns: 1fr; gap: 4px; padding: 8px 0; }
 }
+
+/* ─── Section en fiche (2026-09-14) ──────────────────────────────────────────
+   La page de section reprend la grammaire des fiches : la réponse, une scène,
+   des lignes, comprendre, voir aussi, la suite. Une colonne sur téléphone dans
+   l'ordre de lecture ; deux colonnes sur ordinateur, la scène à gauche et les
+   lignes à droite, sans changer l'ordre du DOM (zones de grille nommées). */
+.theme-fusion .fx-sec { max-width: 1120px; margin: 0 auto; padding: 22px 20px 60px; }
+.theme-fusion .fx-sec-grid { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 44px; }
+.theme-fusion .fx-sec-grid > div { min-width: 0; }
+@media (min-width: 960px) {
+  /* Bands (2026-09-15): every row opens with two titles on the same line, the
+     grey rules drawing one line across the page. The number (with its years
+     rail under it) faces the scene; the search is a band right after, for
+     whoever came with a name in mind; the rows face « Voir aussi »; then
+     « Comprendre »; the next section closes at full width. Blank space only
+     falls under the shorter block of a band, never above a title. */
+  .theme-fusion .fx-sec-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-areas: "hero scene" "search search" "rows related" "understand understand" "next next" "foot foot";
+    align-items: start;
+  }
+  /* With the year's photo: « Ce que paie un contrat » faces « Les plus gros
+     contrats », then « Comprendre » faces « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-photo="1"] {
+    grid-template-areas: "hero scene" "search search" "photo rows" "understand related" "next next" "foot foot";
+  }
+  .theme-fusion .fx-sec-a-photo { grid-area: photo; }
+  .theme-fusion .fx-sec-grid[data-photo="0"] .fx-sec-a-photo { display: none; }
+  /* The scene keeps one height whatever the cut: the page does not jump under the switch. */
+  .theme-fusion .fx-sec-a-scene #achats { min-height: 400px; }
+  .theme-fusion .fx-sec-a-hero { grid-area: hero; }
+  .theme-fusion .fx-sec-a-scene { grid-area: scene; }
+  .theme-fusion .fx-sec-a-rows { grid-area: rows; }
+  .theme-fusion .fx-sec-a-search { grid-area: search; }
+  .theme-fusion .fx-sec-a-understand { grid-area: understand; }
+  .theme-fusion .fx-sec-a-related { grid-area: related; }
+  .theme-fusion .fx-sec-a-next { grid-area: next; }
+  .theme-fusion .fx-sec-a-foot { grid-area: foot; }
+  .theme-fusion .fx-sec-hero { border-bottom: 0; margin-bottom: 0; padding-top: 10px; }
+  .theme-fusion .fx-sec-a-search .fx-search-wrap--fiche { max-width: 720px; }
+}
+/* La réponse : là où se trouve, le titre, UN chiffre, sa phrase avec l'année en
+   menu, une ligne grise, la tendance en ocre, « Partager ». */
+.theme-fusion .fx-sec-hero { padding: 6px 0 24px; margin: 0 0 30px; border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-sec-hero .fx-page-kicker { margin-bottom: 8px; }
+.theme-fusion .fx-sec-hero h1 { font-family: var(--f-disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); letter-spacing: -.03em; line-height: 1.05; margin: 0; color: var(--ink); text-wrap: balance; }
+.theme-fusion .fx-sec-hero .fx-v3-hero-num { margin-top: 18px; }
+.theme-fusion .fx-sec-cap { font-size: 15px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
+.theme-fusion .fx-sec-cap b { color: var(--ink); font-weight: 600; }
+/* Under the caption: the grey line and « Partager » on one line, in text. */
+.theme-fusion .fx-sec-hero-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: 8px; }
+.theme-fusion .fx-sec-hero-meta { font-size: 13px; color: var(--muted); line-height: 1.45; max-width: 52ch; }
+.theme-fusion .fx-sec-move { font-size: 13px; color: var(--ocre); margin-top: 6px; }
+/* The kicker is a link like the others: blue, never the ocre of the movement. */
+.theme-fusion .fx-sec-hero .fx-page-kicker--links a { color: var(--bleu); }
+.theme-fusion .fx-sec-share { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; min-height: 32px; color: var(--bleu); background: transparent; border: 0; padding: 0; margin-top: 8px; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--bleu) 35%, transparent); }
+.theme-fusion .fx-sec-hero-line .fx-sec-share { margin-top: 0; }
+.theme-fusion .fx-sec-share:hover { color: var(--ink); text-decoration-color: currentColor; }
+.theme-fusion .fx-sec-share:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-sec .fx-v3-section { margin-bottom: 40px; }
+/* The year's one photo, in a titled block (« Ce que paie un contrat de 2025 »):
+   a worksite behind the largest documented contract. A link to the contract's
+   fiche; the caption says what, where, how much. 3:2 so the block runs as
+   tall as the five contract rows it faces. */
+.theme-fusion .fx-sec-photo { display: block; text-decoration: none; color: var(--ink); margin: 18px 0 0; padding: 0; }
+.theme-fusion .fx-sec-photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--rule-2); }
+.theme-fusion .fx-sec-photo-cap { display: block; padding: 10px 0 0; }
+.theme-fusion .fx-sec-photo-cap .t { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
+.theme-fusion .fx-sec-photo:hover .t { color: var(--bleu); }
+.theme-fusion .fx-sec-photo-cap .s { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.theme-fusion .fx-sec-photo-cap .c { display: block; font-size: 11px; color: var(--muted); margin-top: 4px; }
+/* The scene as one picture (variant « mosaïque ») : area = euros, one hue from
+   dark to light, the label and the amount on tiles big enough. */
+.theme-fusion .fx-mosaic { position: relative; width: 100%; aspect-ratio: 4 / 3; margin: 10px 0 8px; }
+@media (min-width: 700px) { .theme-fusion .fx-mosaic { aspect-ratio: 16 / 10; } }
+.theme-fusion .fx-mosaic-tile { position: absolute; display: flex; flex-direction: column; justify-content: flex-start; gap: 1px; padding: 7px 9px; box-sizing: border-box; overflow: hidden; text-decoration: none; line-height: 1.2; }
+.theme-fusion .fx-mosaic-tile.dark { color: #fff; }
+.theme-fusion .fx-mosaic-tile.light, .theme-fusion .fx-mosaic-tile.soft { color: var(--ink); }
+.theme-fusion .fx-mosaic-tile .t { font-size: 13px; font-weight: 600; overflow-wrap: break-word; }
+.theme-fusion .fx-mosaic-tile.soft .t { font-weight: 500; color: var(--ink-2); }
+.theme-fusion .fx-mosaic-tile .v { font-family: var(--f-disp); font-weight: 700; font-size: 15px; letter-spacing: -.02em; }
+.theme-fusion .fx-mosaic-tile.no-label .t { display: none; }
+.theme-fusion .fx-mosaic-tile.small .t, .theme-fusion .fx-mosaic-tile.small .v { display: none; }
+.theme-fusion a.fx-mosaic-tile .t::after { content: " ›"; font-weight: 400; opacity: .75; }
+.theme-fusion a.fx-mosaic-tile:hover { filter: brightness(1.08); }
+.theme-fusion a.fx-mosaic-tile:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+/* The scene's grouping switch: one chart, four ways to cut it. Text, not tabs;
+   the active one is ink with a rule under it. */
+.theme-fusion .fx-sec-switch { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 10px 0 2px; }
+.theme-fusion .fx-sec-switch button { font: inherit; font-size: 13.5px; color: var(--muted); background: transparent; border: 0; padding: 7px 0; min-height: 32px; cursor: pointer; border-bottom: 2px solid transparent; }
+.theme-fusion .fx-sec-switch button:hover { color: var(--ink); }
+.theme-fusion .fx-sec-switch button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+.theme-fusion .fx-sec-switch button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-sec-sentence { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin: 12px 0 4px; max-width: 60ch; }
+.theme-fusion .fx-sec-sentence b { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-sec .fx-v3-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.45; max-width: 60ch; }
+/* Les barres : le libellé et la valeur écrits sur chaque ligne, pas de légende,
+   pas d'axe. Une ligne avec un lien ouvre une fiche. */
+.theme-fusion .fx-bars { margin-top: 6px; }
+.theme-fusion .fx-bars-row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule-2); font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-bars-row:first-child { border-top: 0; }
+.theme-fusion .fx-bars-row .lbl { min-width: 0; overflow-wrap: anywhere; }
+/* Only the rows that open a fiche look like links: ink label, the doors' chevron, blue on hover. */
+.theme-fusion .fx-bars-row.is-link .lbl { color: var(--ink); font-weight: 500; }
+.theme-fusion .fx-bars-row.is-link .lbl .t::after { content: "\00a0›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-bars-row.is-link:hover .lbl .t { color: var(--bleu); }
+/* Phone: the label above, the bar at full width with its value at the right. */
+@media (max-width: 700px) {
+  .theme-fusion .fx-bars-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "lbl v" "track track"; gap: 4px 10px; padding: 8px 0; }
+  .theme-fusion .fx-bars-row .lbl { grid-area: lbl; }
+  .theme-fusion .fx-bars-row .lbl .sub { display: block; margin-top: 1px; white-space: nowrap; }
+  .theme-fusion .fx-bars-row .track { grid-area: track; }
+  .theme-fusion .fx-bars-row .track i { height: 10px; }
+  .theme-fusion .fx-bars-row .v { grid-area: v; }
+}
+.theme-fusion .fx-bars-row .sub { display: block; font-family: var(--f-ui); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin-top: 1px; }
+.theme-fusion .fx-bars-row .track { display: block; min-width: 0; }
+.theme-fusion .fx-bars-row .track i { display: block; height: 14px; background: var(--bleu); }
+.theme-fusion .fx-bars-row .track i.ink { background: var(--ink); }
+.theme-fusion .fx-bars-row .track i.soft { background: var(--bleu-soft, #D9DCF0); }
+.theme-fusion .fx-bars-row .v { font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -.02em; white-space: nowrap; color: var(--ink); }
+.theme-fusion .fx-bars .fx-v3-fold .fx-bars-row:first-child { border-top: 1px solid var(--rule-2); }
+/* Les portes : un lien vers une section ou une page, ce qu'elle contient en une
+   ligne, et son chiffre quand elle en a un. */
+.theme-fusion .fx-door { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 10px 0; border-top: 1px solid var(--rule-2); text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-door:first-child { border-top: 0; }
+.theme-fusion .fx-door .t { font-weight: 600; font-size: 14.5px; }
+.theme-fusion .fx-door .t::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-door:hover .t { color: var(--bleu); }
+.theme-fusion .fx-door .s { grid-column: 1; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.theme-fusion .fx-door .v { grid-row: 1 / 3; grid-column: 2; font-family: var(--f-disp); font-weight: 700; font-size: 16px; letter-spacing: -.02em; white-space: nowrap; }
+.theme-fusion .fx-door .v small { font-size: .62em; color: var(--muted); font-weight: 500; margin-left: 2px; }
+.theme-fusion .fx-next { display: block; border: 1px solid var(--ink); padding: 12px 14px; margin: 0 0 40px; text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-next .ck { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.theme-fusion .fx-next .ct { display: block; font-family: var(--f-disp); font-weight: 700; font-size: 17px; letter-spacing: -.02em; margin-top: 3px; }
+.theme-fusion .fx-next .ct::after { content: " ›"; color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-next:hover .ct { color: var(--bleu); }
+.theme-fusion .fx-next .cc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+/* Les replis « Comprendre » contiennent des phrases et des lignes. */
+.theme-fusion .fx-sec .fx-v3-fold > .fx-v3-sentence { margin: 8px 0 10px; }
+/* ── Propre (2026-09-15) : le kicker en pleine largeur au-dessus de la grille,
+   les deux colonnes partent de la même ligne ; traits gris sous les titres ;
+   kickers en petites capitales de la police de texte ; coins arrondis et
+   survol sur ce qui se clique. */
+.theme-fusion .fx-sec-kicker { margin: 0 0 14px; }
+.theme-fusion .fx-sec .fx-page-kicker, .theme-fusion .fx-sec .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
+.theme-fusion .fx-sec .fx-page-kicker a { font-weight: 600; }
+.theme-fusion .fx-sec-hero { border-bottom: 0; padding-bottom: 6px; margin-bottom: 26px; }
+/* Under the number, its history: a kicker and the rail, no paragraph (the
+   counting rule lives in « Ce que mesure ce chiffre »). The page's year is
+   the ink bar. */
+.theme-fusion .fx-sec-years { margin: 0 0 40px; }
+.theme-fusion .fx-sec-years .fx-page-kicker { margin-bottom: 10px; }
+.theme-fusion .fx-v3-years > button.cur i { background: var(--ink); }
+/* The search is a tool, not a chapter: a kicker above the field. */
+.theme-fusion .fx-sec-searchblk .fx-page-kicker { margin-bottom: 0; }
+.theme-fusion .fx-sec-searchblk .fx-search-wrap--fiche .fx-search-inner { padding-top: 10px; }
+/* The next section carries its number, like the doors. */
+.theme-fusion .fx-next { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 18px; align-items: center; }
+.theme-fusion .fx-next .ck, .theme-fusion .fx-next .ct, .theme-fusion .fx-next .cc { grid-column: 1; }
+.theme-fusion .fx-next .cv { grid-column: 2; grid-row: 1 / 4; font-family: var(--f-disp); font-weight: 700; font-size: 20px; letter-spacing: -.02em; white-space: nowrap; }
+.theme-fusion .fx-next .cv small { font-size: .6em; color: var(--muted); font-weight: 500; margin-left: 4px; }
+.theme-fusion .fx-sec .fx-v3-rule { background: var(--rule); margin-top: 12px; }
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+.theme-fusion .fx-sec .fx-v3-row.fx-row-link:hover, .theme-fusion .fx-sec .fx-bars-row.is-link:hover, .theme-fusion .fx-sec .fx-door:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+/* No hover on a phone: the rows keep the column's edges. */
+@media (max-width: 700px) {
+  .theme-fusion .fx-sec .fx-v3-row.fx-row-link, .theme-fusion .fx-sec .fx-bars-row.is-link, .theme-fusion .fx-sec .fx-door { padding-inline: 0; margin-inline: 0; border-radius: 0; }
+}
+.theme-fusion .fx-sec .fx-bars-row .track i { border-radius: 3px; height: 12px; }
+.theme-fusion .fx-sec .fx-next { border: 1px solid var(--rule); border-radius: 12px; background: #fff; padding: 14px 16px; transition: border-color .12s; }
+.theme-fusion .fx-sec .fx-next:hover { border-color: var(--bleu); }
+.theme-fusion .fx-sec-photo-img { display: block; }
+.theme-fusion .fx-sec-photo img { border-radius: 10px; }
+.theme-fusion .fx-sec-photo-cap a.t { text-decoration: none; color: var(--ink); }
+.theme-fusion .fx-sec-photo-cap a.t:hover { color: var(--bleu); }
+.theme-fusion .fx-sec-photo-cap .s a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-sec-photo-cap .s a:hover { text-decoration: underline; }
+/* ── Kit moderne (2026-09-15), pour toutes les fiches : traits gris sous les
+   titres, kickers et groupes en petites capitales de la police de texte,
+   survol bleu pâle sur les lignes qui ouvrent une fiche, focus visible seul. */
+.theme-fusion .fx-v3-rule { background: var(--rule); }
+.theme-fusion .fx-page-kicker, .theme-fusion .fx-drawer-kicker, .theme-fusion .fx-related-group, .theme-fusion .fx-next .ck { font-family: var(--f-ui); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--muted); }
+.theme-fusion .fx-drawer-kicker { font-size: 11.5px; }
+@media (min-width: 701px) {
+  .theme-fusion .fx-v3-row.fx-row-link { border-radius: 8px; padding-inline: 8px; margin-inline: -8px; transition: background-color .12s; }
+  .theme-fusion .fx-v3-row.fx-row-link:hover { background-color: color-mix(in srgb, var(--bleu) 6%, transparent); }
+}
+@media (min-width: 960px) {
+  /* The scene's title sits on the page title's line, baseline to baseline, at
+     every width: the grid aligns the two first baselines itself (the h1 is
+     fluid, so no fixed padding could follow it). Both items start in row 1;
+     Chromium, WebKit and Firefox all honour it for the multi-row scene. */
+  .theme-fusion .fx-sec-a-hero, .theme-fusion .fx-sec-a-scene { align-self: baseline; }
+}
+/* Le menu d'année : un mot en gras avec son chevron, pas un champ de formulaire ;
+   l'anneau ne vient qu'au clavier. */
+.theme-fusion .fx-pv-yearsel { background: #fff; border-color: var(--rule); padding: 2px 8px 2px 10px; font-weight: 600; }
+.theme-fusion .fx-pv-yearsel:focus { outline: none; }
+.theme-fusion .fx-pv-yearsel:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+/* La recherche : une boîte arrondie sur fond blanc, un anneau bleu au focus au
+   lieu d'un second trait noir sous le titre ; des mots à essayer en pastilles. */
+.theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding-top: 14px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { border-radius: 12px; background: #fff; border: 1px solid var(--rule); transition: border-color .12s, box-shadow .12s; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap:focus-within { border-color: var(--bleu); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bleu) 14%, transparent); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed { border: 0; background: var(--rule-2); color: var(--ink-2); padding: 6px 12px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed:hover { background: color-mix(in srgb, var(--bleu) 12%, transparent); color: var(--bleu); }
+/* La recherche sur une page de section : le champ, trois mots à essayer, et
+   des lignes de fiche quand on tape. Pas de cadre, pas de cartes. */
+.theme-fusion .fx-search-wrap--fiche { border: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-inner { padding: 4px 0 0; border-bottom: 0; background: transparent; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap { height: 50px; border: 1px solid var(--rule); padding: 0 12px 0 14px; gap: 10px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input-wrap:focus-within { border-color: var(--ink); box-shadow: none; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-icon { width: 18px; height: 18px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input { font-family: var(--f-ui); font-weight: 400; font-size: 16px; letter-spacing: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.theme-fusion .fx-search-x { flex: none; width: 32px; height: 32px; font: inherit; font-size: 20px; line-height: 1; color: var(--muted); background: transparent; border: 0; cursor: pointer; }
+.theme-fusion .fx-search-x:hover { color: var(--ink); }
+.theme-fusion .fx-search-x:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-search-line { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+.theme-fusion .fx-search-group { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--rule-2); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-filters { margin-top: 10px; gap: 8px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-filter-label { font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seeds { gap: 6px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed { font-family: var(--f-ui); font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--bleu); background: transparent; border: 1px solid var(--rule-2); border-radius: 999px; padding: 5px 12px; min-height: 32px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-seed:hover { border-color: var(--bleu); background: transparent; color: var(--bleu); }
+.theme-fusion .fx-search-wrap--fiche .fx-search-meta { padding: 12px 0 2px; font-family: var(--f-ui); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); border: 0; flex-wrap: wrap; gap: 4px 16px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-placeholder { padding: 14px 0; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-rows { margin-top: 4px; }
+.theme-fusion .fx-search-wrap--fiche .fx-search-rows .fx-v3-note a { color: var(--bleu); }

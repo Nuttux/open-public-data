@@ -2,6 +2,7 @@ import { GENERATED_DATA_INVENTORY as INV } from "./dataContext.generated";
 import { createScopedReader } from "../scopedRead";
 import { CHAT_SCOPES } from "../scopes";
 import { lotInfo, lotRepeatFlags, sumLots } from "../../marches-shape";
+import { dedupMixedSources } from "../../marches-dedup";
 
 // Toolset du scope « paris ». Le reader est lié au scope à la construction :
 // aucun outil d'ici ne peut atteindre les exports d'une autre ville, et aucun
@@ -282,8 +283,10 @@ function lotBreakdown(rows: MarcheRow[], keyOf: (r: MarcheRow) => string) {
 
 export function get_marches_summary({ year, top_n = 10 }: { year: number; top_n?: number }) {
   if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.marches?.years };
-  const d = loadJson<MarchesYearFile>(`marches-publics/marches_${year}.json`);
-  if (!d) return { error: `Pas de marchés pour ${year}`, annees_disponibles: INV.marches?.years };
+  const d0 = loadJson<MarchesYearFile>(`marches-publics/marches_${year}.json`);
+  if (!d0) return { error: `Pas de marchés pour ${year}`, annees_disponibles: INV.marches?.years };
+  // Same count as the page: a contract published by both sources once.
+  const d = { ...d0, data: dedupMixedSources(d0.data).rows };
   const top = [...d.data].sort((a, b) => (b.montant_max ?? 0) - (a.montant_max ?? 0)).slice(0, Math.min(top_n, 25));
   return {
     year,

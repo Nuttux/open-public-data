@@ -1,63 +1,63 @@
 {
   "generated_at": "2026-04-20T11:11:29",
   "model": "gemini-3-flash-preview",
-  "count": 1407,
+  "count": 1540,
   "items": {
     "20242024T09532": {
-      "objet_clair": "Travaux d'aménagement pour mieux gérer les eaux de pluie lors de gros chantiers de voirie.",
+      "objet_clair": "Gestion des eaux pluviales sur la voirie : moyennes et grandes opérations",
       "quoi_concretement": "Des entreprises interviennent sur les routes parisiennes pour installer des systèmes de récupération et d'évacuation de l'eau. L'objectif est de moderniser le réseau lors de travaux de voirie importants.",
       "pourquoi_ca_compte": "Cela permet d'éviter les inondations dans les rues et de mieux protéger l'environnement lors d'orages.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T09531": {
-      "objet_clair": "Travaux de voirie pour améliorer la gestion des eaux de pluie dans Paris.",
+      "objet_clair": "Gestion des eaux pluviales sur la voirie",
       "quoi_concretement": "Ce marché finance des aménagements sur la chaussée pour faciliter l'écoulement et le traitement de l'eau de pluie. Plusieurs entreprises travaillent sur différents secteurs de la capitale pour adapter la ville au climat.",
       "pourquoi_ca_compte": "Une meilleure gestion de l'eau réduit les risques de saturation des égouts et de pollution de la Seine.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T11073": {
-      "objet_clair": "Rénovation des stations de pompage et de gestion locale du réseau d'égouts.",
+      "objet_clair": "Rénovation des stations de gestion locale du réseau d'assainissement",
       "quoi_concretement": "Des techniciens rénovent les installations techniques qui permettent de faire circuler les eaux usées et pluviales. Ces stations sont essentielles pour le bon fonctionnement du réseau souterrain de la ville.",
       "pourquoi_ca_compte": "Un réseau d'assainissement moderne garantit une ville propre et évite les remontées d'odeurs ou les pannes majeures.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T00128": {
-      "objet_clair": "Aménagement de cours d'écoles dans le centre et les 9e, 10e, 11e et 12e arrondissements.",
+      "objet_clair": "Cours Oasis : aménagement des cours d'école, Paris Centre et 9e-12e",
       "quoi_concretement": "L'entreprise Terideal transforme les cours d'écoles et de collèges pour y ajouter de la végétation et des matériaux naturels. Ces travaux visent à créer des espaces plus agréables et moins chauds pour les élèves.",
       "pourquoi_ca_compte": "Les enfants bénéficient de cours plus fraîches en été et de nouveaux espaces de jeux plus naturels.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T00122": {
-      "objet_clair": "Création de cours Oasis végétalisées dans les écoles de plusieurs arrondissements de la rive gauche et de l'ouest.",
+      "objet_clair": "Cours Oasis : aménagement des cours d'école, 5e-7e et 13e-17e",
       "quoi_concretement": "Eiffage Route transforme les cours d'écoles bitumées en espaces verts avec des sols perméables. Le projet concerne les 5e, 6e, 7e et du 13e au 17e arrondissements.",
       "pourquoi_ca_compte": "Ces cours servent de refuges de fraîcheur pour les écoliers et les habitants du quartier pendant les canicules.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T00109": {
-      "objet_clair": "Aménagement de cours d'écoles végétalisées dans les 18e, 19e et 20e arrondissements.",
+      "objet_clair": "Cours Oasis : aménagement des cours d'école, 18e, 19e et 20e",
       "quoi_concretement": "Des travaux de transformation sont menés dans les écoles du nord-est parisien pour remplacer le goudron par de la terre et des plantes. L'objectif est de mieux absorber l'eau et de rafraîchir l'air.",
       "pourquoi_ca_compte": "Cela améliore le cadre de vie des élèves et aide la ville à s'adapter au réchauffement climatique.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T10161": {
-      "objet_clair": "Travaux sur les systèmes de chauffage au gaz et les stations de vapeur dans les bâtiments municipaux.",
+      "objet_clair": "Chaufferies gaz et sous-stations vapeur : modernisation, secteur ouest",
       "quoi_concretement": "Plusieurs entreprises interviennent pour rénover ou installer des chaudières et des équipements de chauffage urbain. Les travaux concernent de nombreux arrondissements, du 1er au 9e et du 14e au 18e.",
       "pourquoi_ca_compte": "Des installations modernes assurent un chauffage efficace et moins polluant dans les écoles, mairies et gymnases.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024T10170": {
-      "objet_clair": "Entretien et réparation des installations de chauffage dans les bâtiments publics de divers arrondissements.",
+      "objet_clair": "Chaufferies gaz et sous-stations vapeur : modernisation, secteur est",
       "quoi_concretement": "Ce marché assure le bon fonctionnement des chaudières à gaz et du chauffage urbain dans les 5e, 10e, 11e, 12e, 13e, 19e et 20e arrondissements. Des techniciens interviennent pour la maintenance régulière et les dépannages.",
       "pourquoi_ca_compte": "Un entretien régulier évite les pannes de chauffage en plein hiver dans les services publics et les écoles.",
       "year": 2024,
-      "model": "gemini-3-flash-preview"
+      "model": "gemini-3-flash-preview · titre manuel · Claude Code en session · 2026-09-15"
     },
     "20242024F10822": {
       "objet_clair": "Achat de carburant et cartes de paiement pour les véhicules de la Ville.",
@@ -9851,6 +9851,699 @@
       "pourquoi_ca_compte": "Une meilleure isolation permet de faire des économies d'énergie et d'améliorer le confort thermique à l'intérieur.",
       "year": 2024,
       "model": "gemini-3-flash-preview"
+    },
+    "decp-2025S01582": {
+      "objet_clair": "Stations de tri Trilib : collecte des dépôts, lavage et propreté des modules",
+      "quoi_concretement": "Le titulaire vide les stations de tri Trilib installées dans les rues, lave les modules destinés aux déchets alimentaires et ramasse les dépôts sauvages autour des stations.",
+      "pourquoi_ca_compte": "C’est ce qui rend les points de tri utilisables au quotidien : une station pleine ou sale n’est plus utilisée.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S01581": {
+      "objet_clair": "Stations de tri Trilib : fourniture, pose et maintenance technique",
+      "quoi_concretement": "Le titulaire fabrique, installe et entretient techniquement les stations de tri Trilib sur l’espace public.",
+      "pourquoi_ca_compte": "Sans stations en état, pas de tri en pied d’immeuble dans les quartiers denses.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01093": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01094": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2026S01095": {
+      "objet_clair": "Télécoms de la Ville via le groupement Sipperec : internet, mobile, téléphonie fixe",
+      "quoi_concretement": "Le Sipperec, syndicat intercommunal, achète pour ses membres dont Paris les liaisons internet, l’interconnexion des sites, les données mobiles des objets connectés, la téléphonie fixe et la diffusion d’information.",
+      "pourquoi_ca_compte": "Ces réseaux relient les services de la Ville entre eux et aux habitants ; l’achat groupé pèse plus face aux opérateurs.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06721": {
+      "objet_clair": "Enlèvement des voitures en stationnement illicite vers les fourrières, secteur Sud",
+      "quoi_concretement": "Le titulaire enlève les véhicules de moins de 3,5 tonnes garés illégalement dans le secteur et les transporte des préfourrières vers les fourrières.",
+      "pourquoi_ca_compte": "L’enlèvement conditionne la libération des voies, des places réservées et des pistes cyclables.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S06717": {
+      "objet_clair": "Enlèvement des voitures en stationnement illicite vers les fourrières, secteur Nord",
+      "quoi_concretement": "Le titulaire enlève les véhicules de moins de 3,5 tonnes garés illégalement dans le secteur et les transporte des préfourrières vers les fourrières.",
+      "pourquoi_ca_compte": "L’enlèvement conditionne la libération des voies, des places réservées et des pistes cyclables.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025S12072": {
+      "objet_clair": "Nouveau logiciel financier de la Ville, du CASVP, de la Métropole et de Paris Musées",
+      "quoi_concretement": "Le titulaire construit puis maintient le nouveau logiciel de gestion financière commun à la Ville, au Centre d’action sociale, à la Métropole du Grand Paris et à Paris Musées.",
+      "pourquoi_ca_compte": "C’est l’outil qui porte le budget, les paiements et la comptabilité de ces quatre collectivités.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03812": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03811": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03810": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03809": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025T03808": {
+      "objet_clair": "Fenêtres et portes extérieures des bâtiments municipaux et des musées, baies de plus de 50 m²",
+      "quoi_concretement": "Les titulaires remplacent ou réparent les fenêtres et portes extérieures en bois et en PVC des bâtiments municipaux et des musées de la Ville, pour les ouvertures de plus de 50 m².",
+      "pourquoi_ca_compte": "Les menuiseries extérieures pèsent sur le chauffage et l’état des écoles, gymnases et musées.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "decp-2025F05826": {
+      "objet_clair": "Fourniture d’électricité 100 % verte en circuit court pour les sites du groupement parisien",
+      "quoi_concretement": "Le titulaire fournit et achemine l’électricité des sites du groupement de commandes de la collectivité parisienne, en offre 100 % verte en circuit court.",
+      "pourquoi_ca_compte": "L’électricité des bâtiments municipaux est un poste de dépense qui suit les prix de marché.",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-14"
+    },
+    "20131380010196": {
+      "objet_clair": "Collecte des déchets ménagers, 11e et 19e arrondissements",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131380010199": {
+      "objet_clair": "Collecte des ordures ménagères, 10e et 18e arrondissements",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131380010198": {
+      "objet_clair": "Collecte des ordures ménagères, 1er, 3e, 4e et 7e arrondissements",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131380010200": {
+      "objet_clair": "Collecte des ordures ménagères, 15e arrondissement",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131380010197": {
+      "objet_clair": "Collecte des ordures ménagères, 13e arrondissement",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131120011002": {
+      "objet_clair": "Maintenance et réparation des ascenseurs des bâtiments municipaux",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131380010284": {
+      "objet_clair": "Collecte des corbeilles de rue",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131130010072": {
+      "objet_clair": "Fourniture de carburants en vrac",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131370008901": {
+      "objet_clair": "Marquage au sol des rues de Paris",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20131370008902": {
+      "objet_clair": "Marquage au sol des rues de Paris",
+      "year": 2013,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141300010725": {
+      "objet_clair": "Aide à la conception des menus et fourniture de denrées brutes",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000173": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000170": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141130011790": {
+      "objet_clair": "Acheminement et distribution du courrier de la Ville en France",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000168": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000165": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000167": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000174": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141050000020": {
+      "objet_clair": "Installation et entretien du câblage informatique et téléphonique",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141370000175": {
+      "objet_clair": "Travaux de chaussées et de trottoirs à Paris",
+      "year": 2014,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151210001262": {
+      "objet_clair": "Fourniture et acheminement d'électricité",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151370001500": {
+      "objet_clair": "Aménagement de voies cyclables",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151120014013": {
+      "objet_clair": "Travaux d'impression pour la Ville",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151370000679": {
+      "objet_clair": "Retrait des enrobés amiantés sur le chantier du tramway T3",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151380001521": {
+      "objet_clair": "Collecte du verre en porte-à-porte",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151100001657": {
+      "objet_clair": "Vols vers les Antilles pour les agents en congés bonifiés",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20151380001520": {
+      "objet_clair": "Collecte du verre en porte-à-porte",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141120000093": {
+      "objet_clair": "Entretien, réparation et amélioration des ouvrages d'assainissement",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141120000095": {
+      "objet_clair": "Entretien, réparation et amélioration des ouvrages d'assainissement",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20141120000096": {
+      "objet_clair": "Entretien, réparation et amélioration des ouvrages d'assainissement",
+      "year": 2015,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20162370000574": {
+      "objet_clair": "PAM 75 : transport à la demande des personnes à mobilité réduite",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161350000644": {
+      "objet_clair": "Conception, fourniture et maintenance des kiosques de presse",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161210000251": {
+      "objet_clair": "Contrat de performance énergétique : conception, travaux et exploitation",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161210001166": {
+      "objet_clair": "Piscine Paul-Appell (14e) : conception, construction et maintenance",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161210001165": {
+      "objet_clair": "Piscine Serpollet : conception, construction, exploitation et maintenance",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161370000295": {
+      "objet_clair": "Enrobés bitumineux des chaussées intra-muros",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370090079": {
+      "objet_clair": "Enlèvement des véhicules vers les fourrières Louvre-Samaritaine et Charléty",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370090080": {
+      "objet_clair": "Enlèvement des véhicules vers les fourrières Pouchet et Pantin",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370090081": {
+      "objet_clair": "Enlèvement des véhicules vers les fourrières Balard et Foch",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20161120000405": {
+      "objet_clair": "Désamiantage des bâtiments municipaux",
+      "year": 2016,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171120000104": {
+      "objet_clair": "Travaux tous corps d'état dans les équipements de proximité des 18e et 20e",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171210020029": {
+      "objet_clair": "Fourniture et acheminement d'électricité",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370000425": {
+      "objet_clair": "Marquage au sol des rues de Paris",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370000426": {
+      "objet_clair": "Marquage au sol des rues de Paris",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171210001782": {
+      "objet_clair": "Rénovation du musée Carnavalet : travaux de bâtiment tous corps d'état",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171120000102": {
+      "objet_clair": "Travaux tous corps d'état dans les bâtiments municipaux et tertiaires",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171120000105": {
+      "objet_clair": "Travaux tous corps d'état, bâtiments municipaux 5e-7e, 13e-17e et hors Paris",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171370001112": {
+      "objet_clair": "Contrôle du stationnement payant, 8e, 9e, 10e, 17e, 18e et 19e",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171400010081": {
+      "objet_clair": "Temps d'activités périscolaires et ateliers bleus dans les écoles",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20171120087300": {
+      "objet_clair": "Gardiennage et sécurité incendie, prestations ponctuelles",
+      "year": 2017,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181380001459": {
+      "objet_clair": "Collecte des déchets en porte-à-porte, 10e et 18e arrondissements",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181380001460": {
+      "objet_clair": "Collecte des déchets en porte-à-porte, 11e et 19e arrondissements",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181380001458": {
+      "objet_clair": "Collecte des déchets en porte-à-porte",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181120000410": {
+      "objet_clair": "Plomberie et installations sanitaires dans les équipements publics",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181380001462": {
+      "objet_clair": "Collecte des déchets en porte-à-porte, 15e arrondissement",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181380001461": {
+      "objet_clair": "Collecte des déchets en porte-à-porte, 13e arrondissement",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181370016100": {
+      "objet_clair": "Entretien des chaussées et trottoirs, 15e et 16e",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181370016200": {
+      "objet_clair": "Entretien des chaussées et trottoirs, 8e, 17e et 18e",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181370016300": {
+      "objet_clair": "Entretien des chaussées et trottoirs, 11e, 19e et 20e",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20181120001053": {
+      "objet_clair": "Diagnostics amiante et plomb",
+      "year": 2018,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191120000090": {
+      "objet_clair": "Travaux d'accessibilité des équipements publics à tous les handicaps",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191380000355": {
+      "objet_clair": "Stations de tri Trilib : conception et entretien des modules",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191050001296": {
+      "objet_clair": "Fourniture d'équipements informatiques et bureautiques",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191400010007": {
+      "objet_clair": "Vacances Arc-en-Ciel et classes de découverte des écoles, 2019-2023",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191050001297": {
+      "objet_clair": "Fourniture de logiciels et prestations associées",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191020018400": {
+      "objet_clair": "Production déléguée d'événements à Paris",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191210001217": {
+      "objet_clair": "Fourniture de gaz naturel",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191400010022": {
+      "objet_clair": "Vacances Arc-en-Ciel et classes de découverte des écoles, 2019-2023",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191400010031": {
+      "objet_clair": "Vacances Arc-en-Ciel et classes de découverte des écoles, 2019-2023",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191210001232": {
+      "objet_clair": "Fourniture et acheminement d'électricité",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20191210000164": {
+      "objet_clair": "Conception et réalisation de la cuisine centrale de la rue Baudricourt",
+      "year": 2019,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201072410005": {
+      "objet_clair": "L'Arena de la porte de la Chapelle : conception, construction et maintenance",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201380000430": {
+      "objet_clair": "Bassin de stockage des eaux d'Austerlitz : construction de l'ouvrage",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201410010069": {
+      "objet_clair": "Ateliers sportifs dans les écoles élémentaires publiques",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201410010045": {
+      "objet_clair": "Ateliers sportifs dans les écoles élémentaires publiques",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020F07032": {
+      "objet_clair": "Carburant par cartes accréditives et services annexes",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201410010099": {
+      "objet_clair": "Ateliers sportifs dans les écoles élémentaires publiques",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201410010073": {
+      "objet_clair": "Ateliers sportifs dans les écoles élémentaires publiques",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201120014043": {
+      "objet_clair": "Études des pollutions des sols à Paris et en Île-de-France",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020T05858": {
+      "objet_clair": "Décontamination des équipements de la Ville",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20201410010095": {
+      "objet_clair": "Ateliers sportifs dans les écoles : sports traditionnels",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020T06241": {
+      "objet_clair": "Restauration du massif d'entrée de l'église de la Trinité",
+      "year": 2020,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T01505": {
+      "objet_clair": "Éclairage public, illuminations et feux tricolores de Paris",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T09247": {
+      "objet_clair": "Travaux de toiture des équipements publics, hors édifices cultuels et historiques",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020T07870": {
+      "objet_clair": "Travaux tous corps d'état dans les équipements publics, hors sports",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021S05373": {
+      "objet_clair": "Collecte des déchets ménagers en porte-à-porte, 10e et 18e",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T09249": {
+      "objet_clair": "Travaux de toiture des bâtiments tertiaires de la Ville",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020T07876": {
+      "objet_clair": "Travaux tous corps d'état : équipements sportifs, centres d'animation et autres",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T09241": {
+      "objet_clair": "Travaux de toiture des édifices cultuels, historiques et des immeubles de la Ville",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20202020T07873": {
+      "objet_clair": "Travaux tous corps d'état : bâtiments tertiaires et locaux du personnel",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021S05374": {
+      "objet_clair": "Collecte des déchets ménagers en porte-à-porte, 11e et 19e",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021S05372": {
+      "objet_clair": "Collecte des déchets ménagers en porte-à-porte, Paris Centre et 7e",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021S03525": {
+      "objet_clair": "Places d'accueil de la petite enfance dans des établissements privés",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S03627": {
+      "objet_clair": "Toilettes publiques autonettoyantes sur l'espace public parisien",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S00120": {
+      "objet_clair": "Déblaiement et nettoiement des marchés à la sauvette",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S00119": {
+      "objet_clair": "Nettoiement des emplacements libérés par les campements",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022T02130": {
+      "objet_clair": "Travaux de plomberie et d'installations sanitaires",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S09963": {
+      "objet_clair": "Contrôle du stationnement payant",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022T02755": {
+      "objet_clair": "Travaux d'électricité et de faux plafonds dans les équipements publics",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S09964": {
+      "objet_clair": "Contrôle du stationnement payant, 7e au 10e et 17e au 19e",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S02203": {
+      "objet_clair": "Diagnostics amiante et plomb sur les ouvrages de l'espace public",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "decp-20222022F01858": {
+      "objet_clair": "Achat de véhicules via la centrale d'achat UGAP",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022S09424": {
+      "objet_clair": "Engins de nettoiement avec conducteur, 8e-10e et 15e-17e",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022T09106": {
+      "objet_clair": "Entretien des trottoirs, 8e, 17e et 18e arrondissements",
+      "year": 2022,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F09388": {
+      "objet_clair": "Fourniture d'électricité 100 % verte",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023T10784": {
+      "objet_clair": "Rénovation énergétique de 20 écoles : travaux de bâtiment",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F06305": {
+      "objet_clair": "Fourniture de gaz naturel",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F08131": {
+      "objet_clair": "Avitaillement des véhicules en GNC et bio-GNC",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F09464": {
+      "objet_clair": "Fourniture d'électricité 100 % verte",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023S10460": {
+      "objet_clair": "Véhicules de collecte des déchets avec chauffeurs et ripeurs",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F08312": {
+      "objet_clair": "Fourniture de logiciels et prestations annexes",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023T01163": {
+      "objet_clair": "Travaux d'accessibilité handicap dans les établissements recevant du public",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023F09428": {
+      "objet_clair": "Fourniture d'électricité verte premium",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20232023S06216": {
+      "objet_clair": "Gestion des imprimés de la Ville",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20222022T09784": {
+      "objet_clair": "Voirie, éclairage public et feux tricolores à la porte de la Chapelle",
+      "year": 2023,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "decp-2024T00118": {
+      "objet_clair": "Cours Oasis : aménagement des cours d'école, 18e, 19e et 20e",
+      "year": 2024,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "decp-2024T00123": {
+      "objet_clair": "Cours Oasis : aménagement des cours d'école, 5e-7e et 13e-17e",
+      "year": 2024,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "decp-2025T03576": {
+      "objet_clair": "Réhabilitation du collecteur d'Asnières, de la Concorde à Saint-Augustin (8e)",
+      "year": 2025,
+      "model": "manuel · Claude Code en session · 2026-09-15"
+    },
+    "20212021T01517": {
+      "objet_clair": "Aménagements cyclables : feux et éclairage, Paris Centre et nord-ouest",
+      "year": 2021,
+      "model": "manuel · Claude Code en session · 2026-09-15"
     }
   },
   "license": {

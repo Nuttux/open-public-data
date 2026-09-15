@@ -10,6 +10,8 @@
  */
 import { cityJsonPath, listDataDir, readDataJsonOrNull } from "@/lib/data/read";
 import { canonicalBailleurSlug, loadLogementSocialData } from "@/lib/fusion-data";
+import { dedupMixedSources } from "@/lib/marches-dedup";
+import { DOMAINES } from "@/lib/marches-domaines";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces } from "@/lib/marseille/marseille-places-data";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -85,7 +87,8 @@ function marchesPaths(city: string, base: string): string[] {
     const cats = new Set<string>();
     for (const y of idx.availableYears) {
       const f = readDataJsonOrNull<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
-      for (const r of f?.data ?? f?.marches ?? []) {
+      // A contract published by both sources in a mixed year has one address in the sitemap.
+      for (const r of dedupMixedSources(f?.data ?? f?.marches ?? []).rows) {
         if (r.numero_marche) numeros.add(r.numero_marche);
         const siren = (r.fournisseur_siret ?? "").replace(/\s/g, "").slice(0, 9);
         if (/^\d{9}$/.test(siren)) sirens.add(siren);
@@ -96,6 +99,8 @@ function marchesPaths(city: string, base: string): string[] {
     for (const s of sirens) out.push(`${base}/marches/fournisseur/${s}`);
     // The category fiche exists for Paris only (app/fr/city/paris/marches/categorie).
     if (city === "paris") for (const c of cats) out.push(`${base}/marches/categorie/${c}`);
+    // The domain fiches (Qipu's stable axis), latest complete year each.
+    if (city === "paris") for (const d of DOMAINES) out.push(`${base}/marches/domaine/${d.slug}`);
   });
   return out;
 }

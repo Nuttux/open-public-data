@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "@/lib/navigation";
-import { useTrack } from "@/lib/analyticsContext";
 import { useT } from "@/lib/localeContext";
 
 export type TOCItem = {
@@ -23,8 +21,6 @@ type Props = {
  */
 export default function PageTOC({ items, scrollOffset = 96 }: Props) {
   const [activeId, setActiveId] = useState<string | null>(items[0]?.id ?? null);
-  const track = useTrack();
-  const pathname = usePathname();
   const t = useT();
 
   useEffect(() => {
@@ -53,7 +49,7 @@ export default function PageTOC({ items, scrollOffset = 96 }: Props) {
     e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
-    track("toc_click", { section_id: id, page: pathname });
+    // toc_click is reported by AnalyticsProvider for every in-page anchor.
     const y = el.getBoundingClientRect().top + window.scrollY - scrollOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
     setActiveId(id);

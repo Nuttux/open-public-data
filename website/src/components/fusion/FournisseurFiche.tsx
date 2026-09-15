@@ -1,7 +1,7 @@
 "use client";
 
 import type { FournisseurFiche as FournisseurFicheType, SireneCompany } from "@/lib/fusion-data";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { rowObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
@@ -55,11 +55,12 @@ export default function FournisseurFiche({
   const contrats = foldRest(fournisseur.contrats, CONTRATS_CAP);
   const ContratRow = (c: FournisseurFicheType["contrats"][number]) => {
     const clair = locale === "en" ? c.objetClairEn || c.objetClair : c.objetClair;
-    const clean = clair || normalizeObjet(c.objet);
+    const { title, detail } = clair ? { title: clair.length > 96 ? clair.slice(0, 96).trimEnd() + "…" : clair, detail: null } : rowObjet(c.objet);
     return (
-      <V3Row key={c.numero || clean} href={c.numero ? `${basePath}/marches/contrat/${c.numero}` : null}
-        label={clean.length > 110 ? clean.slice(0, 110) + "…" : clean}
+      <V3Row key={c.numero || title} href={c.numero ? `${basePath}/marches/contrat/${c.numero}` : null}
+        label={title}
         sub={[
+          detail,
           c.date ? `${t("fx.fiche.fourn.notifie_le")} ${fmtDate(c.date)}` : String(c.year),
           c.partage ? fill(t("fx.fiche.fourn.lot_partage"), { n: c.partage }) : null,
         ].filter(Boolean).join(" · ")}

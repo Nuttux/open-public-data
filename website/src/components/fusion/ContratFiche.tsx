@@ -2,7 +2,7 @@
 
 import Link from "@/components/LocalizedLink";
 import type { ContratFiche as ContratFicheType, ContratProjetLink, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
-import { normalizeObjet } from "@/lib/objet-normalizer";
+import { normalizeObjet, rowObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
@@ -96,10 +96,16 @@ export default function ContratFiche({
     if (ctx.some((o, j) => j !== i && o.toLowerCase() !== c && o.toLowerCase().startsWith(c))) ctx.splice(i, 1);
   }
 
-  const quoi = vulgarization ? cap(en && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement) : null;
+  // A hand-written entry may carry only the clear title (the section page's
+  // top contracts, 2013-2024): then no paragraph, not a crash.
+  const quoiRaw = vulgarization ? (en && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement) : null;
+  const quoi = quoiRaw ? cap(quoiRaw) : null;
   // Le titre du tiroir montre déjà le libellé clair ; le libellé de la source
   // n'est redit dessous que s'il dit autre chose (il répétait souvent le titre mot pour mot).
-  const shownTitle = (en ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+  // Without a clear title, the object is cut at a clause (never mid-word) and
+  // the lot goes in the grey line; the raw object is shown below when it says more.
+  const rowT = rowObjet(contrat.objet, 140);
+  const shownTitle = (en ? vulgarization?.objet_clair_en : null) || vulgarization?.objet_clair || [rowT.title, rowT.detail].filter(Boolean).join(" · ");
   // Comparaison à plat : casse, apostrophes et espaces ignorés. Le libellé brut
   // qui ne fait qu'ajouter une précision en fin de titre (« … à Paris 8ème »)
   // redit encore le titre : on ne le montre pas non plus.
