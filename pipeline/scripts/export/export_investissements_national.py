@@ -64,11 +64,22 @@ def fetch(client, insees):
 def build(insee, meta, rows, now):
     if not rows:
         return None
-    latest = max(int(r["annee"]) for r in rows)
+    # La dernière année QUI A DES DÉPENSES, pas la dernière année tout court :
+    # un village qui n'investit pas chaque année (68 k€ en 2024, rien en 2025)
+    # perdait toute la section au lieu d'afficher son dernier chantier. Au
+    # chargement de 2025, 164 communes disparaissaient et 142 apparaissaient.
+    depenses_par_annee: dict[int, float] = defaultdict(float)
+    for r in rows:
+        if r["sens_flux"] == "Depense":
+            depenses_par_annee[int(r["annee"])] += r["montant"] or 0
+    annees_utiles = [y for y, m in depenses_par_annee.items() if m > 0]
+    if not annees_utiles:
+        return None
+    latest = max(annees_utiles)
     # La population de l'année affichée : prendre la première ligne venue
     # donnait selon l'ordre de BigQuery celle d'une autre année (Cherves :
     # 185 ou 178 €/hab pour la même dépense).
-    pop = next((r["population"] for r in sorted(rows, key=lambda r: -int(r["annee"])) if r["population"]), 0) or 0
+    pop = next((r["population"] for r in sorted(rows, key=lambda r: -int(r["annee"])) if int(r["annee"]) <= latest and r["population"]), 0) or 0
     dep = defaultdict(float)
     rec = defaultdict(float)
     by_year = defaultdict(lambda: {"depenses": 0.0, "recettes": 0.0})
