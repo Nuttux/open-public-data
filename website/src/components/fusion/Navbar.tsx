@@ -112,6 +112,9 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
         >
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>
+          {/* On the phone the switcher at the right is hidden: the commune's name
+              stays in the bar while the reader scrolls (2026-09-16). */}
+          {commune ? <span className="fx-brand-city">{commune.nom}</span> : null}
         </Link>
         {/* La page ville n'a pas de liens de section en haut (la barre de puces
             les porte) : on garde la cellule de la grille, mais pas un repère de

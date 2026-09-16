@@ -17,6 +17,8 @@ import {
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneBudget } from "@/lib/commune-budget";
+import { loadCommuneEvolution } from "@/lib/commune-evolution";
+import { loadTaux } from "@/lib/commune-taux";
 import { deNom } from "@/lib/nom-commune";
 import { communeAlias } from "@/lib/commune-aliases";
 
@@ -82,12 +84,28 @@ export async function generateMetadata({
       const hab = slim.pop > 0 ? Math.round(dep / slim.pop) : null;
       const fr = (n: number) => fmtEur(n, "fr");
       const en = (n: number) => fmtEur(n, "en");
+      // The title is the page's own question with its number, under 60
+      // characters (the old one ran to 90 and Google cut it before the
+      // per-inhabitant figure). The description carries the debt and the
+      // property-tax rate the page also answers.
+      const evo = await loadCommuneEvolution(slim.slug).catch(() => null);
+      const detteHab = evo?.series.length ? evo.series[evo.series.length - 1].dette_hab ?? null : null;
+      const tfb = loadTaux(slim.insee)?.tfb ?? null;
+      const rate = (x: number, l: "fr-FR" | "en-GB") => x.toLocaleString(l, { maximumFractionDigits: 2 });
+      const frBits = [
+        detteHab != null ? `dette ${Math.round(detteHab).toLocaleString("fr-FR")} € par habitant` : null,
+        tfb != null ? `taxe foncière ${rate(tfb, "fr-FR")} %` : null,
+      ].filter(Boolean).join(", ");
+      const enBits = [
+        detteHab != null ? `debt €${Math.round(detteHab).toLocaleString("en-GB")} per inhabitant` : null,
+        tfb != null ? `property tax ${rate(tfb, "en-GB")}%` : null,
+      ].filter(Boolean).join(", ");
       return buildLocaleAwareMetadata({
-        title: `Budget ${deNom(slim.nom)} : ${fr(dep)} dépensés en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""} (${slim.dep_name})`,
-        description: `${slim.nom} (${slim.dep_name}, ${slim.reg_name}) a dépensé ${fr(dep)} en ${y}${hab != null ? `, soit ${hab.toLocaleString("fr-FR")} € par habitant` : ""}, pour ${fr(rec)} de recettes. Dette, taxe foncière, investissements et marchés publics, face aux communes de sa taille. Sources : DGFiP, OFGL, DECP, comptes ${y}.`,
+        title: `Combien dépense ${slim.nom} ? ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}`,
+        description: `${slim.nom} (${slim.dep_name}) a dépensé ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}, pour ${fr(rec)} de recettes${frBits ? ` ; ${frBits}` : ""}. Ce qu'elle construit et achète, face aux communes de sa taille. Sources : DGFiP, OFGL, DECP, comptes ${y}.`,
         en: {
-          title: `${slim.nom} budget: ${en(dep)} spent in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""} (${slim.dep_name})`,
-          description: `${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spent ${en(dep)} in ${y}${hab != null ? `, or €${hab.toLocaleString("en-GB")} per inhabitant` : ""}, against ${en(rec)} in revenue. Debt, property tax, investment and public contracts, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
+          title: `How much does ${slim.nom} spend? ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}`,
+          description: `${slim.nom} (${slim.dep_name}) spent ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}, against ${en(rec)} in revenue${enBits ? `; ${enBits}` : ""}. What it builds and buys, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
         },
         path: `/france/${slug}`,
       });

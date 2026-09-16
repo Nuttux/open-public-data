@@ -21159,3 +21159,23 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-lieux-map { height: 480px; }
 @media (max-width: 768px) { .theme-fusion .fx-sec-lieux-map { height: 380px; } }
 @media (max-width: 959px) { .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-search { margin-bottom: 26px; } }
+
+/* ══ PAGE COMMUNE v3 (2026-09-16) ═══════════════════════════════════════════
+   Les puces portent le chiffre qu'elles ouvrent ; le tableau se replie à
+   quatre lignes par colonne sur téléphone ; Comparer vient juste après le
+   tableau ; l'en-tête garde le nom de la commune sur téléphone. */
+.theme-fusion .fx-pv-chips a b { font-weight: 600; margin-left: 6px; color: inherit; }
+.theme-fusion .fx-pv-ledger-more { display: none; font: inherit; font-size: 13.5px; color: var(--bleu); background: transparent; border: 0; padding: 10px 0; cursor: pointer; text-align: left; }
+.theme-fusion .fx-bud-cols + .fx-pv-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-pv-section + .fx-pv-grid { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-pv-pick--after { margin-top: 18px; }
+.theme-fusion .fx-brand-city { display: none; }
+@media (max-width: 820px) {
+  .theme-fusion .fx-bud-col[data-folded="1"] .fx-pv-row--tail { display: none; }
+  .theme-fusion .fx-pv-ledger-more { display: inline-flex; align-items: center; min-height: 40px; }
+  .theme-fusion .fx-pv-line { min-height: 32px; align-items: center; }
+  .theme-fusion .fx-brand-city { display: inline; font-size: 15px; font-weight: 500; color: var(--ink-2); margin-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42vw; }
+  .theme-fusion .fx-brand-city::before { content: "›"; color: var(--muted); margin-right: 8px; }
+}
+/* With their numbers the chips outgrow one line on desktop: they wrap (the phone keeps the scroll). */
+@media (min-width: 821px) { .theme-fusion .fx-pv-chips { flex-wrap: wrap; } }
