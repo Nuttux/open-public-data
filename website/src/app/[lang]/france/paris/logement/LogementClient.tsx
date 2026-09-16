@@ -12,6 +12,7 @@ import ShareButton from "@/components/fiche/ShareButton";
 import Bars, { type BarRow } from "@/components/fiche/Bars";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
+import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import { useFmt } from "@/lib/use-fmt";
 import { fill, sufOrdinal } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
@@ -277,6 +278,7 @@ export default function LogementClient({ d, sruArr, posts, doors }: {
             </div>
 
             <div className="fx-sec-a-foot">
+              {DATA_ALERTS_ON && isParis ? <DataAlert section="logement" /> : null}
               <V3Foot>{t(isParis ? "fx.sec.log.foot" : "fx.sec.log.foot_city")}</V3Foot>
             </div>
           </div>

@@ -12,6 +12,7 @@ import ShareButton from "@/components/fiche/ShareButton";
 import Bars, { type BarRow } from "@/components/fiche/Bars";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
+import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill, sufOrdinal } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
@@ -358,6 +359,7 @@ export default function DetteClient({ d, structure, horsBilan, posts, cost, cost
             </div>
 
             <div className="fx-sec-a-foot">
+              {DATA_ALERTS_ON && isParis ? <DataAlert section="dette" /> : null}
               <V3Foot>{t(isParis ? "fx.sec.dette.foot" : "fx.sec.dette.foot_city")}</V3Foot>
             </div>
           </div>

@@ -141,6 +141,7 @@ hero's deck, the scrolling band, the chips), or a `data-block="…"` name, else
 | charts / maps | `chart_element_click` (`chart = annees_rail` with `year` and `open` when a year of the rail is tapped; the budget and explorer charts with their own ids) `choropleth_click` `map_marker_click` `stress_test_run` |
 | chrome | `nav_click` `mobile_menu_toggle` `scope_change` `lang_switch` `for_cities_view` `for_cities_read` |
 | chat | `chat_chips_shown` · `chat_question` with `origin` ∈ typed / suggestion / followup / page_chip |
+| data alert | `alert_submit` (`section`) → `alert_sent` (`dev_mode`) or `alert_error` (`error`) on the « Prévenez-moi » block at the foot of a section page; the confirmation lands on `/abonnement?etat=confirme` (a `$pageview` with `page_pattern` `/abonnement`), so confirmed ÷ sent is the double opt-in rate |
 | GPU city | `city_gl_boot` `city_gl_degrade` |
 
 Full property lists: `src/lib/analytics/events.ts`.

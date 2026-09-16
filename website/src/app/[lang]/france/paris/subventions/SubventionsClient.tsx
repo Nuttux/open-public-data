@@ -13,6 +13,7 @@ import ShareButton from "@/components/fiche/ShareButton";
 import Bars, { type BarRow } from "@/components/fiche/Bars";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
+import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import SubventionsSearch from "./SubventionsSearch";
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill } from "@/lib/fmt";
@@ -285,6 +286,7 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
             </div>
 
             <div className="fx-sec-a-foot">
+              {DATA_ALERTS_ON && isParis ? <DataAlert section="subventions" /> : null}
               <V3Foot>{t(isParis ? "fx.sec.subv.foot" : "fx.sec.subv.foot_city")}</V3Foot>
             </div>
           </div>

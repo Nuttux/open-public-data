@@ -62,7 +62,8 @@ export type SitePage =
   | 'corrections'
   | 'signalement'
   | 'analyses'
-  | 'chat';
+  | 'chat'
+  | 'abonnement';
 
 /** Keyed by today's (French) path, which is also the legacy URL. */
 export const SITE_PAGE_SLUGS: Record<SitePage, Record<Lang, string>> = {
@@ -77,6 +78,7 @@ export const SITE_PAGE_SLUGS: Record<SitePage, Record<Lang, string>> = {
   signalement: { fr: 'signalement', en: 'report-an-error', pt: 'reportar-erro' },
   analyses: { fr: 'analyses', en: 'analyses', pt: 'analises' },
   chat: { fr: 'chat', en: 'chat', pt: 'chat' },
+  abonnement: { fr: 'abonnement', en: 'alerts', pt: 'alertas' },
 };
 
 /** Languages each site page exists in (the Portuguese versions that exist today). */
@@ -92,6 +94,7 @@ export const SITE_PAGE_LANGS: Record<SitePage, readonly Lang[]> = {
   signalement: ['fr', 'en'],
   analyses: ['fr', 'en'],
   chat: ['fr', 'en'],
+  abonnement: ['fr', 'en'],
 };
 
 const SITE_PAGES = Object.keys(SITE_PAGE_SLUGS) as SitePage[];

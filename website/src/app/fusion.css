@@ -15385,6 +15385,18 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   outline-offset: 1px;
   border-color: var(--ocre, #b8551c);
 }
+/* « Prévenez-moi quand de nouvelles données arrivent » (2026-09-16) : une
+   ligne au pied d'une section — un champ, un bouton, une phrase. */
+.theme-fusion .fx-alert { margin: 6px 0 24px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-alert-lead { display: block; font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+.theme-fusion .fx-alert-row { display: flex; gap: 8px; max-width: 520px; }
+.theme-fusion .fx-alert-row input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink, #111); }
+.theme-fusion .fx-alert-row input:focus { outline: 2px solid var(--ocre, #b8551c); outline-offset: 1px; }
+.theme-fusion .fx-alert-row .fx-btn { white-space: nowrap; }
+.theme-fusion .fx-alert-note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; max-width: 520px; line-height: 1.45; }
+.theme-fusion .fx-alert-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.theme-fusion .fx-alert-done { font-size: 15px; margin: 0; }
+@media (max-width: 480px) { .theme-fusion .fx-alert-row { flex-direction: column; } .theme-fusion .fx-alert-row .fx-btn { width: 100%; } }
 .theme-fusion .fx-honeypot {
   position: absolute;
   left: -9999px;
