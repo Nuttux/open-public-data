@@ -10,6 +10,8 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
+import { NextDoor } from "@/components/fiche/Doors";
+import { V3Hint } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
@@ -483,10 +485,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   };
   const other = compare?.other ?? null;
 
-  const H2 = ({ id, children, sub }: { id: string; children: React.ReactNode; sub?: React.ReactNode }) => (
+  const H2 = ({ id, children, sub, hint }: { id: string; children: React.ReactNode; sub?: React.ReactNode; hint?: React.ReactNode }) => (
     <>
       <h2 id={id} className="fx-v3-h2 fx-pv-h2">{children}</h2>
       {sub ? <p className="fx-v3-h2sub">{sub}</p> : null}
+      {hint ? <V3Hint>{hint}</V3Hint> : null}
     </>
   );
 
@@ -582,7 +585,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
           {/* ── The scene: « À quoi sert l'argent ? », cut by public policy or by nature. The
               invitation is the whole sub-line: a reader skims, a long sentence hides it. */}
-          <H2 id="a-quoi-sert" sub={scene === "fonction" ? t("fx.pv.fonc.h2sub") : t("fx.pv.nature_sub")}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
+          <H2 id="a-quoi-sert" hint={scene === "fonction" ? t("fx.pv.fonc.h2sub") : t("fx.pv.nature_sub")}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
           <div className="fx-sec-switch fx-pv-switch" role="group" aria-label={t("fx.pv.g.aria")}>
             {hasFonctions ? (
               <>
@@ -1006,6 +1009,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             methodAnchor="c-villes"
           />
           <RelatedLinks block={related} />
+          {/* The page's last door (2026-09-16): the reader has seen one commune;
+              Paris is where the site goes deepest, and where a town sees what
+              its own page could become. */}
+          <NextDoor href="/france/paris" kicker={t("fx.pv.next.kicker")} title={t("fx.pv.next.title")} sub={t("fx.pv.next.sub")} />
         </div>
       </main>
       <Footer />

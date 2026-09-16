@@ -43,14 +43,31 @@ export function V3Hero({ v, u, caption, meta }: { v: ReactNode; u?: ReactNode; c
  *  link_click carry it as section_id) — a short English word, stable across
  *  locales: "who", "years", "contracts". Rendered as data-section, not a DOM
  *  id, so a fiche in a drawer never collides with the page's own anchors. */
-export function V3Section({ id, title, sub, children }: { id?: string; title: ReactNode; sub?: ReactNode; children: ReactNode }) {
+export function V3Section({ id, title, sub, hint, children }: { id?: string; title: ReactNode; sub?: ReactNode; hint?: ReactNode; children: ReactNode }) {
   return (
     <section className="fx-v3-section" data-section={id}>
       <h2 className="fx-v3-h2">{title}</h2>
       {sub ? <p className="fx-v3-h2sub">{sub}</p> : null}
+      {hint ? <V3Hint>{hint}</V3Hint> : null}
       <div className="fx-v3-rule" />
       {children}
     </section>
+  );
+}
+
+/** The one line that says what the scene does when touched — « Cliquez sur une
+ *  politique pour voir le détail de ses dépenses. » Alone on its line, in ink,
+ *  with the pointer, so it is read (2026-09-16: the grey sub-line was not). */
+export function V3Hint({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <p className={className ? `fx-v3-hint ${className}` : "fx-v3-hint"}>
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6.5 8.5V2.75a1.25 1.25 0 0 1 2.5 0V7.5" />
+        <path d="M9 7.25a1.25 1.25 0 0 1 2.5 0V8" />
+        <path d="M11.5 8a1.25 1.25 0 0 1 2.5 0v3.2c0 2.1-1.7 3.8-3.8 3.8H9.2a3.8 3.8 0 0 1-3.1-1.6L3.6 10a1.2 1.2 0 0 1 1.9-1.5l1 1.2" />
+      </svg>
+      <span>{children}</span>
+    </p>
   );
 }
 

@@ -46,6 +46,21 @@ export default function SiteFooter({
         </Link>
       );
     }
+    // « Trouver votre commune » opens the search that lives on every page (2026-09-16).
+    if (l.href === "#commune") {
+      return (
+        <button
+          type="button"
+          className="fx-foot-find-btn"
+          onClick={() => {
+            track("nav_click", { href: l.href, label: l.label, surface });
+            window.dispatchEvent(new CustomEvent("fx:open-search"));
+          }}
+        >
+          {l.label}
+        </button>
+      );
+    }
     return (
       <Link href={l.href} onClick={() => track("nav_click", { href: l.href, label: l.label, surface })}>
         {l.label}
