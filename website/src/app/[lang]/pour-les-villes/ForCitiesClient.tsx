@@ -4,6 +4,8 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
+import FindCommuneButton from "@/components/fusion/FindCommuneButton";
+import Link from "@/components/LocalizedLink";
 import LocaleRefresh from "@/components/LocaleRefresh";
 import { ViewPing, DwellPing } from "@/components/AnalyticsPing";
 import type { Locale } from "@/lib/localeContext";
@@ -24,23 +26,16 @@ export async function resolveCitiesLocale(lang?: string): Promise<Locale> {
   return readSiteLocale();
 }
 
-/** The cities already online, in registry order. Proper nouns, so not translated. */
-const LIVE = [
-  { name: "Paris", href: "/france/paris" },
-  { name: "San Francisco", href: "/usa/san-francisco" },
-  { name: "Recife", href: "/brasil/recife" },
-] as const;
-
 /**
- * Three real pages on three live cities. Examples, not a feature list: what a
- * city can have depends on what it publishes, and naming the French sources
- * (DGFiP, DECP) would mean nothing to a reader in San Francisco or Recife.
- * Showing three live pages says more than any list of modules could.
+ * What a commune's page becomes with the commune's own data — each line is a
+ * real Paris page, opened from the line. Examples, never a feature list.
  */
-const EXAMPLES = [
-  { key: "ex1", city: "Paris", href: "/france/paris/budget" },
-  { key: "ex2", city: "San Francisco", href: "/usa/san-francisco/payroll" },
-  { key: "ex3", city: "Recife", href: "/brasil/recife/contratos" },
+const WITH_DATA = [
+  { key: "b1", href: "/france/paris/subventions" },
+  { key: "b2", href: "/france/paris/investissements" },
+  { key: "b3", href: "/france/paris/budget" },
+  { key: "b4", href: "/france/paris/lieux" },
+  { key: "b5", href: "/chat" },
 ] as const;
 
 export default async function ForCitiesClient({ lang }: { lang?: string }) {
@@ -62,79 +57,60 @@ export default async function ForCitiesClient({ lang }: { lang?: string }) {
         <section className="fx-page-header">
           <div className="fx-wrap">
             <div className="fx-page-kicker">{t("fx.cities.kicker")}</div>
-            <h1 className="fx-page-title">
-              {t("fx.cities.title.before")}
-              <em>{t("fx.cities.title.em")}</em>
-              {t("fx.cities.title.after")}
-            </h1>
+            <h1 className="fx-page-title">{t("fx.cities.h1")}</h1>
             <p className="fx-page-lede">{t("fx.cities.lede")}</p>
-
-            <div className="fx-cities-live">
-              <span className="fx-cities-live-label">{t("fx.cities.live.label")}</span>
-              {LIVE.map((city, i) => (
-                <span key={city.name}>
-                  {i > 0 && <span className="fx-cities-live-sep" aria-hidden="true">· </span>}
-                  <a href={city.href}>{city.name}</a>
-                </span>
-              ))}
-            </div>
+            <FindCommuneButton label={t("fx.cities.find")} cta="for_cities_find" />
           </div>
         </section>
 
-        {/* 01 — three live pages, as proof rather than promise. */}
+        {/* 01 — what every commune's page already shows. */}
         <section className="fx-section">
           <div className="fx-wrap">
-            <SectionHead
-              number="01"
-              kind={t("fx.cities.s01.kind")}
-              title={
-                <>
-                  {t("fx.cities.s01.title.before")}
-                  <em>{t("fx.cities.s01.title.em")}</em>
-                </>
-              }
-            />
-            <div className="fx-sources">
-              {EXAMPLES.map((ex) => (
-                <div key={ex.key}>
-                  <div className="n">{ex.city}</div>
-                  <h3>{t(`fx.cities.${ex.key}.h`)}</h3>
-                  <a href={ex.href}>{t("fx.cities.ex.see")} ↗</a>
-                </div>
-              ))}
-            </div>
+            <SectionHead number="01" kind={t("fx.cities.s01.kind")} title={t("fx.cities.s01.title")} />
+            <p className="fx-cities-p">{t("fx.cities.s01.p1")}</p>
+            <p className="fx-cities-p">{t("fx.cities.s01.p2")}</p>
           </div>
         </section>
 
-        {/* 02 — the ask. */}
-        <section className="fx-section" id="ecrire">
+        {/* 02 — what it becomes with the commune's data: Paris, page by page. */}
+        <section className="fx-section">
           <div className="fx-wrap">
-            <SectionHead
-              number="02"
-              kind={t("fx.cities.s02.kind")}
-              title={
-                <>
-                  {t("fx.cities.s02.title.before")}
-                  <em>{t("fx.cities.s02.title.em")}</em>
-                </>
-              }
-            />
+            <SectionHead number="02" kind={t("fx.cities.s02.kind")} title={t("fx.cities.s02.title")} />
+            <p className="fx-cities-p">
+              {t("fx.cities.s02.p1")}{" "}
+              <Link href="/france/paris" data-cta="for_cities_paris">{t("fx.cities.s02.paris")}</Link>
+              {t("fx.cities.s02.p1_after")}
+            </p>
             <ul className="fx-cities-bullets">
-              {[1, 2, 3].map((i) => (
-                <li key={i}>{t(`fx.cities.s02.b${i}`)}</li>
+              {WITH_DATA.map((b) => (
+                <li key={b.key}>
+                  <Link href={b.href} data-cta={`for_cities_${b.key}`}>{t(`fx.cities.s02.${b.key}`)}</Link>
+                </li>
               ))}
             </ul>
-            <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <p className="fx-cities-p">{t("fx.cities.s02.p2")}</p>
+          </div>
+        </section>
+
+        {/* 03 — the ask, and why we ask. */}
+        <section className="fx-section" id="ecrire">
+          <div className="fx-wrap">
+            <SectionHead number="03" kind={t("fx.cities.s03.kind")} title={t("fx.cities.s03.title")} />
+            <p className="fx-cities-p">{t("fx.cities.s03.p1")}</p>
+            <ul className="fx-cities-bullets">
+              {[1, 2, 3].map((i) => (
+                <li key={i}>{t(`fx.cities.s03.q${i}`)}</li>
+              ))}
+            </ul>
+            <p className="fx-cities-p">{t("fx.cities.s03.p2")}</p>
+            <div style={{ marginTop: 24 }}>
               <Button
                 variant="primary"
                 data-cta="city_enquiry"
-                href={`mailto:daniel@qipu.org?subject=${encodeURIComponent(
-                  locale === "pt" ? "Cidade" : locale === "en" ? "City" : "Ville",
-                )}`}
+                href={`mailto:daniel@qipu.org?subject=${encodeURIComponent(locale === "en" ? "Town" : "Commune")}`}
               >
-                {t("fx.cities.s02.btn")}
+                {t("fx.cities.s03.btn")}
               </Button>
-              <Button href="/methode" data-cta="for_cities_method">{t("fx.cities.s02.btn2")}</Button>
             </div>
           </div>
         </section>
