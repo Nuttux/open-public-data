@@ -180,8 +180,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-overlay-nav .fx-overlay-scope-tag { margin: 22px 0 4px; }
 .theme-fusion .fx-overlay-nav a.fx-overlay-on { color: var(--bleu); }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 26px; height: 26px; flex: none; }
-/* « Chercher une commune » is the longest entry of the phone menu: one size down so it holds on one line. */
-.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search { font-size: 26px; }
+
 .theme-fusion .fx-foot-find-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-foot-find-btn:hover { color: var(--bleu); }
 .theme-fusion .fx-link-on {
@@ -21286,3 +21285,10 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-lieux-arr { display: grid; gap: 6px; max-width: 320px; }
 .theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink); min-height: 40px; }
 .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-find { max-width: 760px; }
+
+/* Last in the file on purpose: the overlay's own rules above set 30 px on this button.
+   In the phone menu the search is a field, not a giant menu line (2026-09-16:
+   « x huge et cringe »): a bordered box with the magnifier, in body type, above the entries. */
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search { font-family: var(--f-ui); font-size: 17px; font-weight: 500; letter-spacing: 0; gap: 12px; min-height: 52px; padding: 0 16px; margin-bottom: 18px; border: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--bg); color: var(--ink-2); }
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 20px; height: 20px; }
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:hover, .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:active { color: var(--ink); box-shadow: 0 0 0 2px var(--bleu); }
