@@ -11,7 +11,7 @@ import type { PlaceEntry, PlacesConfig } from "@/components/places/types";
 /** Familles de lieu — la taxonomie vient du seed (colonne `famille`). Palette
  *  validée par scripts/validate_palette.js du skill dataviz sur #fafaf7 : rouge
  *  et bleu de la marque, pire écart adjacent ΔE 14,4 en deutéranopie. */
-const FAMILLES: { key: string; color: string; i18n: string }[] = [
+export const FAMILLES: { key: string; color: string; i18n: string }[] = [
   { key: "sport", color: "#1e45e4", i18n: "fx.lieux.fam.sport" },
   { key: "vert", color: "#1baf7a", i18n: "fx.lieux.fam.vert" },
   { key: "culture", color: "#c12323", i18n: "fx.lieux.fam.culture" },
@@ -32,23 +32,11 @@ const fmtArgent = (v: number, nl: string) =>
 
 const arrLabel = (n: number) => `${n}${n === 1 ? "er" : "e"}`;
 
-/**
- * Adaptateur Paris → explorateur de lieux partagé. On mappe `LieuIndexEntry`
- * vers le modèle neutre `PlaceEntry` et on branche la config (carte de Paris,
- * rayon ∝ argent, « autour de moi »). Toute la mécanique carte+liste vit dans
- * `components/places`.
- */
-export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
-  const t = useT();
-  const nl = useNumLocale();
+type T = (key: string) => string;
 
-  // On est sur la LISTE : aucune chaîne de drill-down en cours. On vide la pile
-  // pour qu'une fiche ouverte d'ici n'affiche pas de pastille « ← Retour ».
-  useEffect(() => { clearDrawerStack(); }, []);
-
-  const entries = useMemo<PlaceEntry[]>(
-    () =>
-      lieux.map((l) => {
+/** `LieuIndexEntry` → the neutral `PlaceEntry` of the shared explorer. */
+export function buildPlaceEntries(lieux: LieuIndexEntry[], t: T, nl: string): PlaceEntry[] {
+  return lieux.map((l) => {
         const argent = l.argent_total_eur ?? 0;
         return {
           slug: l.slug,
@@ -65,12 +53,12 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
           statTone: argent > 0 ? "money" : "accent",
           tooltipStat: argent >= 1e6 ? ` · ${fmtArgent(argent, nl)}` : "",
         };
-      }),
-    [lieux, t, nl],
-  );
+      });
+}
 
-  const config = useMemo<PlacesConfig>(
-    () => ({
+/** The Paris map: framing, families and their colours, strings. */
+export function buildPlacesConfig(t: T, nl: string): PlacesConfig {
+  return ({
       families: FAMILLES.map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
       hrefFor: (slug) => `/france/paris/lieu/${slug}`,
       bounds: PARIS_BOUNDS,
@@ -106,9 +94,26 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
         geoNone: (nom, km) => t("fx.lieux.geo_aucun").replace("{nom}", nom).replace("{km}", km),
         geoOutOfZone: (km) => t("fx.lieux.geo_hors_zone").replace("{km}", km),
       },
-    }),
-    [t, nl],
-  );
+    });
+}
+
+/**
+ * Adaptateur Paris → explorateur de lieux partagé. On mappe `LieuIndexEntry`
+ * vers le modèle neutre `PlaceEntry` et on branche la config (carte de Paris,
+ * rayon ∝ argent, « autour de moi »). Toute la mécanique carte+liste vit dans
+ * `components/places`.
+ */
+export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
+  const t = useT();
+  const nl = useNumLocale();
+
+  // On est sur la LISTE : aucune chaîne de drill-down en cours. On vide la pile
+  // pour qu'une fiche ouverte d'ici n'affiche pas de pastille « ← Retour ».
+  useEffect(() => { clearDrawerStack(); }, []);
+
+  const entries = useMemo<PlaceEntry[]>(() => buildPlaceEntries(lieux, t, nl), [lieux, t, nl]);
+
+  const config = useMemo<PlacesConfig>(() => buildPlacesConfig(t, nl), [t, nl]);
 
   return <PlacesExplorer entries={entries} config={config} />;
 }

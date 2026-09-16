@@ -99,7 +99,11 @@ function Fold({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
+export default function LieuFiche({ lieu, section }: {
+  lieu: LieuFicheData;
+  /** The section's two numbers, for the line up to it under the number (2026-09-16). */
+  section?: { count: number; total: number } | null;
+}) {
   const t = useT();
   const { locale } = useLocale();
   const { basePath } = useCity();
@@ -112,6 +116,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1000), u: "k €" };
   };
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
+  const nInt = (n: number) => Number(n).toLocaleString(numLocale(locale));
 
   /* ── L'argent : versé/payé d'un côté, plafonds de contrats de l'autre ── */
   const subv = lieu.subventions_exploitant;
@@ -343,6 +348,16 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           )}
         </div>
       )}
+      {/* The way up to the section, in the first screen: readers arrive here
+       *  from a search engine on the place's name. */}
+      {section ? (
+        <p className="fx-fiche-secline">
+          <Link href={`${basePath}/lieux`}>
+            {fill(t("fx.fiche.lieu.section_line"), { n: nInt(section.count), total: eurTxt(section.total) })}
+            <span aria-hidden="true" className="muted">{" ›"}</span>
+          </Link>
+        </p>
+      ) : null}
       {reelTotal === 0 && plafond === 0 && lieu.residents.length === 0 && (
         <p className="fx-v3-foot" style={{ margin: "20px 0 32px" }}>{t("fx.lieu.argent_absent")}</p>
       )}
@@ -540,6 +555,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           </div>
         </section>
       )}
+
     </div>
   );
 }

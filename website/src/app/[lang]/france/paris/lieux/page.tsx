@@ -1,69 +1,40 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-
-import { Navbar, Footer } from "@/components/fusion";
-import LieuxExplorer from "@/components/fusion/LieuxExplorer";
-import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { loadLieuxIndex } from "@/lib/lieux-data";
+import LieuxClient from "./LieuxClient";
+import { loadLieuxIndex, loadLieuxSection } from "@/lib/lieux-data";
+import { budgetDoorTotal, loadInvestLatest, subventionsYearTotal } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { parisSectionJsonLd, parisSectionMetadata } from "@/lib/seo/sections/paris";
-import { numLocale } from "@/lib/fmt";
 
 export async function generateMetadata(): Promise<Metadata> {
   return parisSectionMetadata("lieux");
 }
 
-export default async function LieuxPage() {
+/**
+ * Lieux, on the section grammar (2026-09-16). The address can carry a family
+ * or an arrondissement (?famille=culture, ?arrondissement=18): the fiche
+ * kickers and the scene rows link here, the list opens filtered.
+ */
+export default async function LieuxPage({ searchParams }: { searchParams: Promise<{ famille?: string; arrondissement?: string }> }) {
+  const sp = await searchParams;
   const lieux = loadLieuxIndex();
+  const section = loadLieuxSection();
   const locale = await readLocale();
-  const argentTotal = lieux.reduce((sum, l) => sum + (l.argent_total_eur ?? 0), 0);
-  const plusAncien = lieux.reduce<number | null>(
-    (min, l) => (l.depuis && (min === null || l.depuis < min) ? l.depuis : min),
-    null,
-  );
-  const fmtM = (n: number) => (n / 1e6).toLocaleString(numLocale(locale), { maximumFractionDigits: 0 });
-
+  // The doors carry a number: the latest investment year, the latest subsidies year, the budget of the next section.
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const thisYear = new Date().getFullYear();
+  const doors = {
+    invest: safe(() => loadInvestLatest()),
+    subventions: safe(() => subventionsYearTotal("paris", thisYear)),
+    next: safe(() => budgetDoorTotal("paris", thisYear)),
+  };
+  const arr = sp.arrondissement ? Number(sp.arrondissement) : null;
   return (
-    <div className="theme-fusion">
+    <>
       {parisSectionJsonLd("lieux", locale).map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <Navbar />
-      <main id="main-content" tabIndex={-1}>
-        <PageIntro
-          title={locale === "en" ? "Places" : "Lieux"}
-          lede={
-            locale === "en"
-              ? "Pools, theatres, parks: for each place, what the Conseil de Paris decided, what the municipal bulletin recorded, what the City pays — every fact linked to its source."
-              : "Piscines, théâtres, parcs : pour chaque lieu, ce que le Conseil de Paris a décidé, ce que le Bulletin municipal a consigné, ce que la Ville paie — chaque fait relié à sa source."
-          }
-          stats={
-            <>
-              <IntroStat value={lieux.length} label={locale === "en" ? "places" : "lieux"} />
-              {argentTotal > 0 && (
-                <IntroStat
-                  value={fmtM(argentTotal)}
-                  unit="M€"
-                  label={locale === "en" ? "public money identified" : "d’argent public identifié"}
-                />
-              )}
-              {plusAncien && (
-                <IntroStat
-                  value={plusAncien}
-                  label={locale === "en" ? "archives since" : "archives depuis"}
-                />
-              )}
-            </>
-          }
-        />
-
-        <section className="fx-section">
-          <div className="fx-wrap">
-            <LieuxExplorer lieux={lieux} />
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+      <LieuxClient lieux={lieux} section={section} doors={doors} initial={{ famille: sp.famille ?? null, arr: arr != null && Number.isFinite(arr) ? arr : null }} />
+    </>
   );
 }
