@@ -1109,6 +1109,10 @@ const fr: Record<string, string> = {
   'fx.nav.close': 'Fermer',
   'fx.nav.lang_aria': 'Langue / Language',
   'fx.toc.aria': 'Navigation dans la page',
+  'fx.nav.link.commune': 'Chercher une commune',
+  'fx.nav.link.paris': 'Paris',
+  'fx.nav.link.cities': 'Pour les mairies',
+  'fx.nav.place_aria': 'Sections de ce lieu',
   'fx.nav.link.home': 'Accueil',
   'fx.nav.link.budget_france': 'Budget',
   'fx.nav.link.daily_bread': 'Ma contribution',
@@ -1118,7 +1122,7 @@ const fr: Record<string, string> = {
   'fx.nav.link.invest': 'Investissements',
   'fx.nav.link.logement': 'Logement social',
   'fx.nav.link.dette': 'Dette',
-  'fx.nav.link.analyses': 'Explications',
+  'fx.nav.link.analyses': 'Comprendre',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
   'fx.scope.heading': 'Collectivité',
@@ -1175,7 +1179,7 @@ const fr: Record<string, string> = {
   'fx.foot.link.invest': 'Investissements',
   'fx.foot.link.logement': 'Logement social',
   'fx.foot.link.dette': 'Dette et patrimoine',
-  'fx.foot.link.analyses': 'Explications',
+  'fx.foot.link.analyses': 'Comprendre',
   'fx.foot.link.methode': 'Méthode',
   'fx.foot.link.api': 'API',
   'fx.foot.link.github': 'GitHub ↗',
@@ -1196,7 +1200,7 @@ const fr: Record<string, string> = {
   'fx.foot.col.compare': 'Les deux communes',
   'fx.foot.col.legal': 'Légal & données',
   'fx.foot.mission': 'L’argent public, rendu lisible. Projet indépendant, open source.',
-  'fx.foot.find_city': 'Trouver votre ville →',
+  'fx.foot.find_city': 'Trouver votre commune',
 
   // ── Landing page ────────────────────────────────────────────────────────────
   'fx.land.h1.before': 'Où va ',
@@ -1270,9 +1274,9 @@ const fr: Record<string, string> = {
   'fx.land.chips.subv': "Subventions",
   'fx.land.chips.subv_desc': "Les bénéficiaires et leurs montants.",
   'fx.land.chips.marches': "Marchés publics",
-  'fx.land.chips.marches_desc': "Toutes les entreprises payées par la Ville.",
+  'fx.land.chips.marches_desc': "Les contrats signés et leurs fournisseurs, en montants maximums.",
   'fx.land.chips.dette': "Dette",
-  'fx.land.chips.dette_desc': "Ce que la Ville possède, ce qu'elle doit.",
+  'fx.land.chips.dette_desc': "Ce que la dette coûte chaque année, et à qui la Ville doit.",
   'fx.land.chips.logement': "Logement social",
   'fx.land.chips.logement_desc': "Les opérations financées et leurs bailleurs.",
   // Inside section
@@ -2950,7 +2954,7 @@ const fr: Record<string, string> = {
   'fx.contact.btn.home': "Retour à l'accueil",
 
   // ── Pour les villes (page /pour-les-villes + bloc de clôture) ─────────────
-  'fx.foot.link.cities': 'Pour les villes',
+  'fx.foot.link.cities': 'Pour les mairies',
 
   'fx.contact.c4.n': 'Villes',
   'fx.contact.c4.h': 'Votre ville',
@@ -3708,6 +3712,9 @@ const fr: Record<string, string> = {
   'fx.pv.g.depenses': 'Dépenses',
   'fx.pv.g.recettes': 'Recettes',
   'fx.pv.h.autres': 'Chantiers, achats, impôts, dette',
+  'fx.pv.next.kicker': 'Et ailleurs sur Qipu',
+  'fx.pv.next.title': 'Paris, en détail',
+  'fx.pv.next.sub': 'Budget, subventions, contrats, chantiers, logement, dette, lieux : la ville la plus documentée du site.',
   'fx.pv.row.taxe': 'Taxe foncière',
   'fx.pv.row.dette': 'Dette',
   'fx.pv.row.construit': 'Ce qu’elle construit',

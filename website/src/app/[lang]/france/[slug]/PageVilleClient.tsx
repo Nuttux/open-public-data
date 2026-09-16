@@ -10,6 +10,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
+import { NextDoor } from "@/components/fiche/Doors";
 import { V3Hint } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { deNom, nomDistinct } from "@/lib/nom-commune";
@@ -1008,6 +1009,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             methodAnchor="c-villes"
           />
           <RelatedLinks block={related} />
+          {/* The page's last door (2026-09-16): the reader has seen one commune;
+              Paris is where the site goes deepest, and where a town sees what
+              its own page could become. */}
+          <NextDoor href="/france/paris" kicker={t("fx.pv.next.kicker")} title={t("fx.pv.next.title")} sub={t("fx.pv.next.sub")} />
         </div>
       </main>
       <Footer />
