@@ -21291,6 +21291,9 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 /* Last in the file on purpose: the overlay's own rules above set 30 px on this button.
    In the phone menu the search is a field, not a giant menu line (2026-09-16:
    « x huge et cringe »): a bordered box with the magnifier, in body type, above the entries. */
-.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search { font-family: var(--f-ui); font-size: 17px; font-weight: 500; letter-spacing: 0; gap: 12px; min-height: 52px; padding: 0 16px; margin-bottom: 18px; border: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--bg); color: var(--ink-2); }
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search { font-family: var(--f-ui); font-size: 17px; font-weight: 500; letter-spacing: 0; gap: 12px; min-height: 50px; padding: 0 14px; margin-bottom: 18px; border: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 6px; background: var(--bg-cool, #f6f4ed); color: var(--ink-2); }
+/* The menu's content sits at the top, whatever the number of entries: the
+   field is in the same place on every page, and on the first open. */
+.theme-fusion .fx-overlay-nav { justify-content: flex-start; padding-top: 22px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 20px; height: 20px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:hover, .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:active { color: var(--ink); box-shadow: 0 0 0 2px var(--bleu); }
