@@ -19,14 +19,28 @@ import { associationUniqueNames, countByLetter, fournisseurList, marchesYears, p
 import { assocSlug } from "@/lib/assoc-slug";
 
 type SubvIndex = { availableYears: number[] };
-type SubvBen = { data: { beneficiaire: string; nature_juridique?: string | null }[] };
+type SubvBen = { data: { beneficiaire: string; nature_juridique?: string | null; montant_total?: number | null }[] };
+
+/**
+ * What the sitemap lists (2026-09-16). Search Console counted 257 157 addresses
+ * « discovered, not indexed »: the sitemaps offered 210 000 pages to a site
+ * Google crawls a few hundred times a day, so it explored none of the long
+ * tail and few of the commune pages that bring 63 % of the impressions. The
+ * sitemap now names what deserves the crawl; the rest stays served and
+ * reachable by links, it is only no longer announced.
+ *   - an association is listed from 100 000 € received over the published years;
+ *   - a contract from 1 M€ of ceiling; a supplier from 1 M€ of ceilings signed.
+ */
+export const SUBV_LISTED_MIN = 100_000;
+export const CONTRAT_LISTED_MIN = 1_000_000;
+export const FOURNISSEUR_LISTED_MIN = 1_000_000;
 
 /** Private individuals receive grants too; their pages are noindex and never listed. */
 const PRIVATE_INDIVIDUAL = "Personnes physiques";
 type Treemap = { data: { thematique?: string; name?: string; theme?: string }[] };
 type MarchesIndex = { availableYears: number[] };
 type MarchesFile = { data?: MarcheRow[]; marches?: MarcheRow[] };
-type MarcheRow = { numero_marche?: string; fournisseur_siret?: string; categorie_libelle?: string };
+type MarcheRow = { numero_marche?: string; fournisseur_siret?: string; categorie_libelle?: string; montant_max?: number };
 type Sankey = { nodes: { name: string; category?: string }[]; links: { source: string; target: string }[] };
 type BudgetIndex = { latestYear?: number; availableYears?: number[] };
 type InvTrends = { years: { year: number; par_chapitre?: { label?: string; chapitre?: string }[] }[] };
@@ -57,12 +71,12 @@ function subventionPaths(city: string, base: string): string[] {
   guarded(out, () => {
     const idx = readDataJsonOrNull<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
     if (!idx) return;
-    const names = new Set<string>();
+    const totals = new Map<string, number>();
     const themes = new Set<string>();
     for (const y of idx.availableYears) {
       const f = readDataJsonOrNull<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       for (const r of f?.data ?? []) {
-        if (r.beneficiaire && r.nature_juridique !== PRIVATE_INDIVIDUAL) names.add(r.beneficiaire);
+        if (r.beneficiaire && r.nature_juridique !== PRIVATE_INDIVIDUAL) totals.set(r.beneficiaire, (totals.get(r.beneficiaire) ?? 0) + Number(r.montant_total ?? 0));
       }
       const t = readDataJsonOrNull<Treemap>(cityJsonPath(city, `subventions/treemap_${y}.json`));
       for (const r of t?.data ?? []) {
@@ -70,7 +84,7 @@ function subventionPaths(city: string, base: string): string[] {
         if (label) themes.add(slugifyLabel(label));
       }
     }
-    for (const n of names) out.push(`${base}/subventions/association/${assocSlug(n)}`);
+    for (const [n, total] of totals) if (total >= SUBV_LISTED_MIN) out.push(`${base}/subventions/association/${assocSlug(n)}`);
     for (const s of themes) out.push(`${base}/subventions/theme/${s}`);
   });
   return out;
@@ -83,20 +97,21 @@ function marchesPaths(city: string, base: string): string[] {
     const idx = readDataJsonOrNull<MarchesIndex>(cityJsonPath(city, "marches-publics/index.json"));
     if (!idx) return;
     const numeros = new Set<string>();
-    const sirens = new Set<string>();
+    const sirens = new Map<string, number>();
     const cats = new Set<string>();
     for (const y of idx.availableYears) {
       const f = readDataJsonOrNull<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
       // A contract published by both sources in a mixed year has one address in the sitemap.
       for (const r of dedupMixedSources(f?.data ?? f?.marches ?? []).rows) {
-        if (r.numero_marche) numeros.add(r.numero_marche);
+        const montant = Number(r.montant_max ?? 0);
+        if (r.numero_marche && montant >= CONTRAT_LISTED_MIN) numeros.add(r.numero_marche);
         const siren = (r.fournisseur_siret ?? "").replace(/\s/g, "").slice(0, 9);
-        if (/^\d{9}$/.test(siren)) sirens.add(siren);
+        if (/^\d{9}$/.test(siren)) sirens.set(siren, (sirens.get(siren) ?? 0) + montant);
         if (r.categorie_libelle) cats.add(slugifyLabel(r.categorie_libelle));
       }
     }
     for (const n of numeros) out.push(`${base}/marches/contrat/${encodeURIComponent(n)}`);
-    for (const s of sirens) out.push(`${base}/marches/fournisseur/${s}`);
+    for (const [s, total] of sirens) if (total >= FOURNISSEUR_LISTED_MIN) out.push(`${base}/marches/fournisseur/${s}`);
     // The category fiche exists for Paris only (app/fr/city/paris/marches/categorie).
     if (city === "paris") for (const c of cats) out.push(`${base}/marches/categorie/${c}`);
     // The domain fiches (Qipu's stable axis), latest complete year each.
