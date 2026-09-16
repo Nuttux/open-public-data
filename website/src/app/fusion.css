@@ -4082,12 +4082,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* La carte « Voir le lieu » sous le chiffre de la fiche et non plus au-dessus :
  * elle ne repousse plus le chiffre hors du premier écran. */
 .theme-fusion .fx-v3-lieu-slot { margin: -24px 0 40px; }
+/* The place card pulls itself up under the number; after the section line it
+   would sit on top of it (2026-09-16). */
+.theme-fusion .fx-fiche-secline + .fx-v3-lieu-slot { margin-top: 0; }
 .theme-fusion .fx-v3-lieu-slot:empty { display: none; }
 /* Fiche projet : le premier écran de la fiche lieu, chiffre à gauche, photo à droite. */
 .theme-fusion .fx-projet-hero .fx-v3-hero { margin: 0 0 16px; }
 /* The line back up to the section, in the first screen of a project fiche:
    the one door a reader who came from a search engine can see. */
-.theme-fusion .fx-fiche-secline { margin: -6px 0 16px; font-size: 14px; line-height: 1.4; }
+.theme-fusion .fx-fiche-secline { margin: -2px 0 26px; font-size: 14px; line-height: 1.4; }
 .theme-fusion .fx-fiche-secline a { color: var(--bleu); text-decoration: none; }
 .theme-fusion .fx-fiche-secline a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-fiche-secline .muted { white-space: nowrap; }
@@ -15430,6 +15433,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 /* SRU deviation bars */
 .fx-sru-row:hover { background: var(--bg-hover); }
+@media (max-width: 768px) { .fx-sru-row { padding-top: 8px !important; padding-bottom: 8px !important; } }
 .fx-sru-row:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: 1px; }
 
 /* Carte des lieux — hauteur responsive : 560px en desktop est un piège sur
@@ -20784,6 +20788,12 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec { max-width: 1120px; margin: 0 auto; padding: 22px 20px 60px; }
 .theme-fusion .fx-sec-grid { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 44px; }
 .theme-fusion .fx-sec-grid > div { min-width: 0; }
+@media (max-width: 959px) {
+  .theme-fusion .fx-sec-a-understand { order: 1; }
+  .theme-fusion .fx-sec-a-related { order: 2; }
+  .theme-fusion .fx-sec-a-next { order: 3; }
+  .theme-fusion .fx-sec-a-foot { order: 4; }
+}
 @media (min-width: 960px) {
   /* Bands (2026-09-15): every row opens with two titles on the same line, the
      grey rules drawing one line across the page. The number (with its years

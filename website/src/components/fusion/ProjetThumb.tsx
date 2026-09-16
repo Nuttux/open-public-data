@@ -3,6 +3,8 @@
 import type { GenericPhotoEntry, ProjetPhotoDecision } from "@/lib/projet-utils";
 import { guessTypologieFromName } from "@/lib/projet-utils";
 import { ProjetPictogram } from "./ProjetPictograms";
+import NextImage from "next/image";
+import { isOptimizablePhoto } from "@/lib/photo-optimize";
 
 type Props = {
   /** Photo pré-résolue côté server (decision + url + credit). */
@@ -21,6 +23,8 @@ type Props = {
   width?: number;
   height?: number;
   aspectRatio?: string;
+  /** What width the picture is drawn at, for the resizer (CSS `sizes`). */
+  sizes?: string;
   className?: string;
   fallbackLabel?: string;
 };
@@ -41,6 +45,7 @@ export default function ProjetThumb({
   width,
   height,
   aspectRatio = "16 / 9",
+  sizes = "(max-width: 760px) 100vw, 480px",
   className,
   fallbackLabel,
 }: Props) {
@@ -55,12 +60,7 @@ export default function ProjetThumb({
   if (photo?.decision === "photo_dediee" && photo.photo_url) {
     return (
       <figure className={className} style={{ ...frame, margin: 0, position: "relative", overflow: "hidden" }}>
-        <img
-          src={photo.photo_url}
-          alt={fallbackLabel ?? "Illustration du projet"}
-          loading="lazy"
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
+        <Picture src={photo.photo_url} alt={fallbackLabel ?? "Illustration du projet"} sizes={sizes} />
         {photo.credit && (
           <figcaption
             style={{
@@ -85,12 +85,7 @@ export default function ProjetThumb({
   if (wantGeneric && generic?.url) {
     return (
       <figure className={className} style={{ ...frame, margin: 0, position: "relative", overflow: "hidden" }}>
-        <img
-          src={generic.url}
-          alt={`Illustration générique ${generic.label.toLowerCase()}`}
-          loading="lazy"
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "saturate(0.85)" }}
-        />
+        <Picture src={generic.url} alt={`Illustration générique ${generic.label.toLowerCase()}`} sizes={sizes} style={{ filter: "saturate(0.85)" }} />
         <figcaption
           style={{
             position: "absolute", top: 8, left: 8,
@@ -135,6 +130,19 @@ export default function ProjetThumb({
       <ProjetPictogram typologie={typologie} size={pictoSize} />
     </div>
   );
+}
+
+/**
+ * The picture itself: resized by Next when its host is declared (the City's
+ * CDN, Wikimedia…), a plain lazy <img> otherwise, so an unknown host still
+ * shows its photo.
+ */
+function Picture({ src, alt, sizes, style }: { src: string; alt: string; sizes: string; style?: React.CSSProperties }) {
+  const common: React.CSSProperties = { width: "100%", height: "100%", objectFit: "cover", display: "block", ...style };
+  if (isOptimizablePhoto(src)) {
+    return <NextImage src={src} alt={alt} fill sizes={sizes} style={common} unoptimized={false} />;
+  }
+  return <img src={src} alt={alt} loading="lazy" decoding="async" style={common} />;
 }
 
 function stripHtml(s: string): string {

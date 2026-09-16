@@ -197,7 +197,7 @@ export function domaineRelated(f: MarchesDomaineFiche, locale: L): RelatedBlock 
 }
 
 /** Bailleur: the other operators the City guarantees, then the two hubs. */
-export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
+export function bailleurRelated(slug: string, locale: L, hasSectionLine = false): RelatedBlock | null {
   const t = relatedT(locale);
   const idx = readDataJsonOrNull<{ latestYear: number }>("hors_bilan_index.json");
   const hb = idx
@@ -218,7 +218,9 @@ export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
       amount: eur(b.capital_restant, locale),
       group: peers,
     }));
-  rows.push(detteSectionRow(null, locale), { ...logementSectionRow(null, locale), group: context });
+  // The debt door only when the fiche's first screen does not already carry it.
+  if (!hasSectionLine) rows.push(detteSectionRow(null, locale));
+  rows.push({ ...logementSectionRow(null, locale), group: context });
   return { title: t("fx.related.title"), sub: null, rows };
 }
 
@@ -296,7 +298,7 @@ export function chapitreRelated(slug: string, year: number, locale: L): RelatedB
 }
 
 /** Association: the theme page and its other big recipients, plus the hub. */
-export function associationRelated(asso: { name: string; theme: string | null }, city: string, locale: L): RelatedBlock | null {
+export function associationRelated(asso: { name: string; theme: string | null; section?: unknown }, city: string, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
   const context = t("fx.related.g.context");
   const rows: RelatedRow[] = [];
@@ -320,9 +322,8 @@ export function associationRelated(asso: { name: string; theme: string | null },
     }
   }
   if (themeRow) rows.push(themeRow);
-  // The section door with the year's number: the way up for a reader who
-  // landed on the association from a search engine.
-  rows.push(subventionsSectionRow(city, null, locale));
+  // Only when the fiche has no section line in its first screen.
+  if (!asso.section) rows.push(subventionsSectionRow(city, null, locale));
   const theme = asso.theme;
   if (city === "paris" && theme) rows.push(...budgetRows((spec) => (spec.themes ?? []).includes(theme), locale));
   return { title: t("fx.related.title"), sub: null, rows };
@@ -452,9 +453,9 @@ type ProjetLite = { id: string; arrondissement: number; chapitre_libelle?: strin
 export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
   const t = relatedT(locale);
   const base = "/france/paris/investissements";
-  // The section door first: a reader who landed here from a search engine
-  // has no other way up to « Les chantiers de la Ville en {year} ».
-  const rows: RelatedRow[] = [investSectionRow(p.year, locale)];
+  // The way up sits in the first screen (the line under the number). Only a
+  // fiche without that line repeats it here — never both (2026-09-16).
+  const rows: RelatedRow[] = p.section ? [] : [investSectionRow(p.year, locale)];
   const arr = p.arrondissement;
   const ord = arr > 0 ? (locale === "en" ? ordEn(arr) : ordFr(arr)) : "";
   const cohort = readDataJsonOrNull<{ data: ProjetLite[] }>(`map/investissements_complet_${p.year}.json`)
@@ -653,7 +654,7 @@ function centreHref(lens: ArrLens): string | null {
  * is resolved through the loader of its route — the three lenses do not cover
  * the same arrondissements (Paris Centre is merged in two of them).
  */
-export function arrondissementRelated(lens: ArrLens, key: number | "centre", locale: L): RelatedBlock | null {
+export function arrondissementRelated(lens: ArrLens, key: number | "centre", locale: L, hasSectionLine = false): RelatedBlock | null {
   const t = relatedT(locale);
   const where = (k: number | "centre") => (k === "centre" ? t("fx.related.arr.centre") : t("fx.related.arr.where", { arr: locale === "en" ? ordEn(k) : ordFr(k) }));
   const row = (l: ArrLens, href: string, k: number | "centre", sub?: string): RelatedRow => ({ href, label: t(`fx.related.arr.${l}`, { where: where(k) }), sub: sub ?? t(`fx.related.arr.${l}_sub`) });
@@ -682,12 +683,14 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   const out = rows.slice(0, 4).map((r) => ({ ...r, group: t("fx.related.g.other_lenses") }));
   if (at > 0) out.push({ ...row(lens, hrefOf(seq[at - 1]), seq[at - 1], t("fx.related.arr.prev")), group: t("fx.related.g.prev_next") });
   if (at >= 0 && at < seq.length - 1) out.push({ ...row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")), group: t("fx.related.g.prev_next") });
-  if (lens === "invest") {
-    out.push({ ...investSectionRow(null, locale), group: t("fx.related.g.context") });
-  } else if (lens === "logement") {
-    out.push({ ...logementSectionRow(null, locale), group: t("fx.related.g.context") });
-  } else {
-    out.push({ ...detteSectionRow(null, locale), group: t("fx.related.g.context") });
+  if (!hasSectionLine) {
+    if (lens === "invest") {
+      out.push({ ...investSectionRow(null, locale), group: t("fx.related.g.context") });
+    } else if (lens === "logement") {
+      out.push({ ...logementSectionRow(null, locale), group: t("fx.related.g.context") });
+    } else {
+      out.push({ ...detteSectionRow(null, locale), group: t("fx.related.g.context") });
+    }
   }
   return { title: t("fx.related.title"), sub: null, rows: out };
 }

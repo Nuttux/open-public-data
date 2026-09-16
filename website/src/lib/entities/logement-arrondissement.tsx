@@ -1,5 +1,5 @@
 import { ArrondissementLogementFiche } from "@/components/fusion";
-import { LogementArrKicker, LogementArrBackLink } from "@/components/fusion/EntityPageHeaders";
+import { LogementArrKicker } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { relatedT } from "@/lib/related-t";
 import { loadArrondissementLogement, PARIS_CENTRE_SLUG } from "@/lib/fusion-data";
@@ -62,7 +62,7 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
     answer: `${d.label} : en ${d.year}, la Ville de Paris y a financé ${int(n, "fr")} logements sociaux (${int(d.nbOperations, "fr")} opérations), soit ${share} de sa production de l'année (${ordFr(d.rank)} arrondissement). ${sourceLine("fr", "opendata.paris.fr (logements sociaux financés)", null)}`,
   };
   },
-  related: ({ data }, locale) => arrondissementRelated("logement", data.slug === PARIS_CENTRE_SLUG ? "centre" : Number(data.slug), locale),
+  related: ({ data }, locale) => arrondissementRelated("logement", data.slug === PARIS_CENTRE_SLUG ? "centre" : Number(data.slug), locale, data.section != null),
   page: {
     header: ({ data }) => (
       <>
@@ -70,7 +70,6 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
           <LogementArrKicker year={data.year} />
         </div>
         <h1 className="fx-page-title">{data.label}</h1>
-        <LogementArrBackLink />
       </>
     ),
     bodyWrapper: "none",

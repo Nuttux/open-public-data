@@ -118,7 +118,33 @@ const TEASER_DISMISS_KEY = "open-public-data:chat:teaser-dismissed";
 
 function ChatPanelInner() {
   const [open, setOpen] = useState(false);
+  const [launcherHidden, setLauncherHidden] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
+
+  // Reading beats asking: scrolling down hides the floating launcher, scrolling
+  // up (or coming back to the top) brings it back. Nothing moves while the
+  // panel is open, and a reader who does not scroll keeps it in sight.
+  useEffect(() => {
+    let last = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const y = window.scrollY;
+        const down = y > last + 8;
+        const up = y < last - 8;
+        if (down && y > 220) setLauncherHidden(true);
+        else if (up || y <= 220) setLauncherHidden(false);
+        last = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
   const [hydrated, setHydrated] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -580,9 +606,11 @@ function ChatPanelInner() {
         <button
           ref={launcherRef}
           onClick={() => setOpen(true)}
-          className="fx-chat-launcher group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5"
+          className={`fx-chat-launcher group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition duration-200 md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5 ${launcherHidden ? "pointer-events-none opacity-0" : "opacity-100"}`}
           aria-label={t("chat.launcher")}
           title={t("chat.launcher")}
+          aria-hidden={launcherHidden}
+          tabIndex={launcherHidden ? -1 : undefined}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />

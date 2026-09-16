@@ -43,7 +43,7 @@ export default function TopProjetsGrid<T extends TopProjetGridItem>({
             className="fx-arr-top-item"
           >
             <div className="fx-arr-top-thumb">
-              <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
+              <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" sizes="(max-width: 760px) 100vw, 340px" fallbackLabel={p.name} />
             </div>
             <div className="fx-arr-top-meta">
               <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>

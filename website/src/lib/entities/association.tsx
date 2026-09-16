@@ -92,12 +92,12 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
         : (locale === "en" ? `${cityPortal(city)} (grants paid by the City of ${cityNom})` : `${cityPortal(city)} (subventions versées par la Ville de ${cityNom})`);
       if (locale === "en") {
         return {
-          title: `${clip(a.name, 38)}: ${amt} in ${cityNom} city grants`,
+          title: `${clip(displayOrgName(a.name), 38)}: ${amt} in ${cityNom} city grants`,
           answer: `${periodLead(a.yearsActive, "en")} the City of ${cityNom} paid ${amt} to ${nom} in ${int(n, "en")} grant${n > 1 ? "s" : ""}${theme ? `, mainly in ${theme.toLowerCase()}` : ""}. ${sourceLine("en", src, date)}`,
         };
       }
       return {
-        title: `${clip(a.name, 38)} : ${amt} de subventions de ${cityNom}`,
+        title: `${clip(displayOrgName(a.name), 38)} : ${amt} de subventions de ${cityNom}`,
         answer: `${periodLead(a.yearsActive, "fr")} la Ville de ${cityNom} a versé ${amt} à ${nom} en ${int(n, "fr")} subvention${n > 1 ? "s" : ""}${theme ? `, principalement en ${theme.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
       };
     },

@@ -4345,6 +4345,20 @@ export function loadHorsBilan(year: number, city: string = "paris"): HorsBilanDa
   }
 }
 
+/**
+ * The guarantees at their own latest year (2026-09-16).
+ *
+ * Guaranteed debt follows its own calendar: the City publishes it in the
+ * spring that follows, so at the end of 2024 balance sheet the guarantees are
+ * already those of the end of 2025. Reading them at the balance sheet's year
+ * made the Dette page say 12,28 Md € where the Logement door, the landlord
+ * fiches and the arrondissement fiches all said 12,97 Md €. One number.
+ */
+export function loadHorsBilanLatest(city: string = "paris"): HorsBilanData | null {
+  const idx = readJsonOrNull<{ latestYear?: number }>(cityJsonPath(city, "hors_bilan_index.json"));
+  return idx?.latestYear ? loadHorsBilan(idx.latestYear, city) : null;
+}
+
 export type ArrondissementGaranties = HorsBilanData["by_arrondissement"][number];
 
 export type ArrondissementGarantiesFicheData = {

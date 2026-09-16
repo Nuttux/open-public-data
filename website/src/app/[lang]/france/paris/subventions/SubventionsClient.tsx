@@ -58,7 +58,6 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
   /** Numbers for the doors, loaded by the page (absent on cities without them). */
   doors?: {
     budget?: { year: number; total: number; voted: boolean } | null;
-    marches?: { year: number; total: number } | null;
     next?: { year: number; total: number } | null;
   };
 }) {
@@ -230,11 +229,6 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
                 ) : (
                   <Door href={`${cityBase}/budget`} hard title={t("fx.sec.subv.r.budget")} sub={t("fx.sec.subv.r.budget_sub_noyear")} />
                 )}
-                {doors?.marches ? (
-                  <Door href={`${cityBase}/marches?year=${doors.marches.year}`} hard title={t("fx.sec.subv.r.marches")} sub={fill(t("fx.sec.subv.r.marches_sub"), { year: doors.marches.year })} value={fmtCompactEur(doors.marches.total).value} unit={fmtCompactEur(doors.marches.total).unit} />
-                ) : (
-                  <Door href={`${cityBase}/marches`} hard title={t("fx.sec.subv.r.marches")} sub={t("fx.sec.subv.r.marches_sub_noyear")} />
-                )}
                 <Door href={`${base}/associations`} hard title={t("fx.sec.subv.r.index")} sub={t("fx.sec.subv.r.index_sub")} value={fmtInt(d.nbBeneficiaires)} unit={t("fx.sec.subv.n_benef").replace("{n} ", "")} />
                 {posts.map((p) => (
                   <V3Row key={p.slug} href={`/analyses/${p.slug}`} label={p.title} subText={t("fx.sec.subv.r.read")} />
@@ -281,12 +275,12 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
 
             <div className="fx-sec-a-next">
               <NextDoor
-                href={`${cityBase}/logement`}
+                href={doors?.next ? `${cityBase}/marches?year=${doors.next.year}` : `${cityBase}/marches`}
                 kicker={t("fx.sec.next")}
                 title={t("fx.sec.subv.next")}
                 sub={doors?.next ? fill(t("fx.sec.subv.next_sub_n"), { year: doors.next.year }) : t("fx.sec.subv.next_sub")}
-                value={doors?.next ? fmtInt(doors.next.total) : undefined}
-                unit={doors?.next ? t("fx.sec.subv.next_unit") : undefined}
+                value={doors?.next ? fmtCompactEur(doors.next.total).value : undefined}
+                unit={doors?.next ? fmtCompactEur(doors.next.total).unit : undefined}
               />
             </div>
 

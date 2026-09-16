@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "@/components/LocalizedLink";
+import NextImage from "next/image";
+import { isOptimizablePhoto } from "@/lib/photo-optimize";
 import { useT } from "@/lib/localeContext";
 
 /** Carte « Par exemple » — le langage visuel des hero cards de la landing
@@ -43,7 +45,11 @@ export default function ExempleCards({ items }: { items: ExempleCardItem[] }) {
         <Link key={it.href} className="fx-hero-deck-card fx-hero-deck-card-photo" href={it.href} scroll={false}>
           {it.photoUrl && (
             <figure className="fx-hero-deck-photo">
-              <img src={it.photoUrl} alt="" loading="lazy" width={1200} height={675} />
+              {isOptimizablePhoto(it.photoUrl) ? (
+                <NextImage src={it.photoUrl} alt="" width={1200} height={675} sizes="(max-width: 760px) 100vw, 380px" style={{ width: "100%", height: "auto" }} />
+              ) : (
+                <img src={it.photoUrl} alt="" loading="lazy" decoding="async" width={1200} height={675} />
+              )}
               {(it.photoIllustration || it.photoCredit) && (
                 <figcaption className="fx-hero-deck-photo-credit">
                   {it.photoIllustration ? t("fx.exemples.illustration") : `© ${it.photoCredit}`}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { budgetDoorTotal, detteCostOfYear, loadHorsBilan, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
+import { budgetDoorTotal, detteCostOfYear, loadHorsBilan, loadHorsBilanLatest, loadLogementSocialData, loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { readLocale } from "@/lib/seo";
@@ -25,7 +25,9 @@ export default async function DettePage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadPatrimoineData(requestedYear);
   const structure = loadPatrimoineStructure(d.year);
-  const horsBilan = loadHorsBilan(d.year);
+  // Guarantees carry their own year (the City publishes them later): the page,
+  // the doors and the landlord fiches then all show the same number.
+  const horsBilan = loadHorsBilanLatest("paris") ?? loadHorsBilan(d.year);
   const posts = getPostsForPage("dette-patrimoine");
   // The doors carry a number: the year's budget, the social housing stock, the places that follow.
   const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };

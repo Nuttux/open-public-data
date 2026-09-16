@@ -109,7 +109,12 @@ export default function AssociationFiche({
         {grounded!.sources.map((src, i) => {
           const s = typeof src === "string" ? { title: src } : src;
           const label = s.title || s.url || "";
-          const href = s.url || (label.includes(".") ? `https://${label.replace(/^https?:\/\//, "")}` : undefined);
+          // Google's grounding links expire (21 of them in the enrichment
+          // file, dead 404s on 2026-09-16): we cite the site by its domain
+          // instead — never a link that does not open.
+          const expiring = !!s.url && /vertexaisearch\.cloud\.google\.com/.test(s.url);
+          const fromLabel = label.includes(".") && !label.includes(" ") ? `https://${label.replace(/^https?:\/\//, "")}` : undefined;
+          const href = expiring ? fromLabel : s.url || fromLabel;
           return (
             <span key={i}>
               {i > 0 ? ", " : ""}
