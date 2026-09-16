@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "@/components/LocalizedLink";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import "@/app/fusion.css";
 
 import { Navbar, Footer, BlogTimeBars } from "@/components/fusion";
-import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+import { getAllPostSlugs, getAllPostsForReview, getPostBySlug } from "@/lib/blog";
+import { localize } from "@/lib/urls";
 import { readLocale } from "@/lib/seo";
 import { alternatesFor } from "@/lib/site-locale";
 import { numLocale } from "@/lib/fmt";
@@ -79,7 +80,12 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
   const { slug } = await params;
   const locale = await readLocale();
   const post = getPostBySlug(slug, locale);
-  if (!post) return notFound();
+  if (!post) {
+    // A note taken offline keeps its readers: Google still shows a few of the
+    // September removals (28 impressions for one), so they lead to the list.
+    if (getAllPostsForReview().some((p) => p.slug === slug)) redirect(localize("/analyses", locale));
+    return notFound();
+  }
 
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;

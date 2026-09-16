@@ -291,17 +291,21 @@ function entityEntries(list: () => string[]): () => Entry[] {
  * submitted keep their content. (The ids were renumbered once, on 2026-09-13,
  * when the three hosts became one.)
  */
+/**
+ * 2026-09-16: the sitemap says what deserves the crawl (lib/seo/entity-paths.ts).
+ * Out of it, still served and linked: the San Francisco and Recife fiches (the
+ * countries are paused), the commune × politique and commune × nature pages,
+ * the commune contract fiches (CONTRATS). Back in when they earn their crawl.
+ */
 const FAMILIES: Array<() => Entry[]> = [
   mainEntries,
   communeEntries,
-  entityEntries(sfEntityPaths),
   entityEntries(frEntityPaths),
-  entityEntries(brEntityPaths),
-  entityEntries(fonctionPaths), // commune × politique publique
-  entityEntries(naturePaths), // commune × forme de dépense
   entityEntries(communeMarchesPaths), // explorateur des marchés d'une commune
   entityEntries(comparePilotPaths), // comparaisons du pilote (lib/compare-pairs.ts)
 ];
+// Kept for the day they come back; unused for now.
+void sfEntityPaths; void brEntityPaths; void fonctionPaths; void naturePaths;
 
 const _families = new Map<number, Entry[]>();
 function family(i: number): Entry[] {
@@ -331,7 +335,8 @@ function layout(): Array<[number, number]> {
     const chunks = Math.ceil(family(i).length / CHUNK_SIZE);
     for (let c = 0; c < chunks; c++) out.push([i, c]);
   });
-  for (let k = 0; k < contratsSitemapSegments(); k++) out.push([CONTRATS, k]);
+  // The commune contract segments are not announced for now (see FAMILIES).
+  void contratsSitemapSegments;
   return out;
 }
 
