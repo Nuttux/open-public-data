@@ -165,7 +165,8 @@ export function franceFooterModel(
     wordmark: `${t("chrome.wordmark")}.`,
     mission: t("fx.foot.mission"),
     cities: cityRail(),
-    findCity: { href: "/", label: t("fx.foot.find_city") },
+    // "#commune" : the footer renders it as a button that opens the search (SiteFooter).
+    findCity: { href: "#commune", label: t("fx.foot.find_city") },
     placeHeading,
     sections,
     projectHeading: t("fx.foot.col.project"),

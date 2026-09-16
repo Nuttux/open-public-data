@@ -102,6 +102,16 @@ export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
   ];
 }
 
+// The site bar (2026-09-16): the same four entries on every French page —
+// « Votre commune » (the search, rendered as a button by the bar), Paris, the
+// explainers, the page for towns. The place's own sections live in a row under
+// the bar (citySectionLinks / communeSectionLinks), never in it.
+export const SITE_NAV_LINKS: NavLink[] = [
+  { href: "/france/paris", labelKey: "fx.nav.link.paris" },
+  { href: "/analyses", labelKey: "fx.nav.link.analyses" },
+  { href: "/pour-les-villes", labelKey: "fx.nav.link.cities" },
+];
+
 // Hrefs that should match exactly (not startsWith) for the active state.
 // `/` would otherwise match every page.
 export const EXACT_MATCH_HREFS = new Set<string>(["/"]);
