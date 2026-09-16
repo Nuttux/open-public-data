@@ -13,6 +13,7 @@ import Bars, { type BarRow } from "@/components/fiche/Bars";
 import Mosaic from "@/components/fiche/Mosaic";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
@@ -348,6 +349,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
             </div>
 
             <div className="fx-sec-a-foot">
+              {DATA_ALERTS_ON && citySlug === "paris" ? <DataAlert section="marches" /> : null}
               <V3Foot>{t("fx.sec.mp.foot")}</V3Foot>
             </div>
           </div>

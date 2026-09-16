@@ -90,6 +90,9 @@ export default async function ConfidentialitePage() {
               {hostAfter}
             </p>
 
+            <h2 id="alertes">{t('privacy.alert.title')}</h2>
+            <p>{t('privacy.alert.text')}</p>
+
             <h2>{t('privacy.rights.title')}</h2>
             <p>{t('privacy.rights.text')}</p>
             <p>

@@ -10,6 +10,7 @@ import SectionHero from "@/components/fiche/SectionHero";
 import ShareButton from "@/components/fiche/ShareButton";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import { useFmt, useFmtEur } from "@/lib/use-fmt";
 import { fill } from "@/lib/fmt";
 import { useLocale, useT, type Locale } from "@/lib/localeContext";
@@ -345,6 +346,7 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
             </div>
 
             <div className="fx-sec-a-foot">
+              {DATA_ALERTS_ON && citySlug === "paris" ? <DataAlert section="budget" /> : null}
               <V3Foot>{t("fx.sec.bud.foot")}</V3Foot>
             </div>
           </div>

@@ -126,6 +126,9 @@ export const EVENTS: Record<string, EventSpec> = {
   // ── chat ──
   chat_chips_shown: { desc: "One draw of suggestion chips actually seen (panel open, empty state).", props: { scope: "", section: "", locale: "", chips: "[{id, pos, family}]" }, by: "ChatPanel", since: "2026-09-09", group: "chat" },
   chat_question: { desc: "One per answer, sent when the stream ends. origin = typed is organic demand; suggestion / followup / page_chip measure our prompts.", props: { scope: "", origin: "typed | suggestion | followup | page_chip", locale: "", question: "text (500 chars)", turn: "", tools: "", n_tool_calls: "0 = answered without data", answer_chars: "", error: "", aborted: "", duration_ms: "", page: "", chip_id: "suggestion only", chip_pos: "0-3 | teaser", chip_family: "" }, by: "ChatPanel", since: "2026-09-09", group: "chat" },
+  alert_submit: { desc: "The « Prévenez-moi » block at the foot of a section page was submitted (before the server answers).", props: { section: "budget | marches | investissements | subventions | logement | dette" }, by: "DataAlert", since: "2026-09-16", group: "chrome" },
+  alert_sent: { desc: "The confirmation mail left (or, off production, was accepted in test mode). Confirmed ÷ sent = the double opt-in rate, read on /abonnement pageviews.", props: { section: "", dev_mode: "true off production: nothing was sent" }, by: "DataAlert", since: "2026-09-16", group: "chrome" },
+  alert_error: { desc: "The block could not send: bad address, service not configured, network.", props: { section: "", error: "invalid_email | not_configured | send_failed | network | unknown" }, by: "DataAlert", since: "2026-09-16", group: "chrome" },
 
   // ── GPU city ──
   city_gl_boot: { desc: "The 3D city (SF the-city) finished booting.", props: { backend: "webgpu | webgl", "…": "device facts" }, by: "CityGLMap", since: "2026-09-01", group: "gpu" },

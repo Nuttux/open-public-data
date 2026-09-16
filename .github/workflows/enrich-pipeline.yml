@@ -411,3 +411,15 @@ jobs:
           else
             echo "✓ mail envoyé à $MAIL_TO"
           fi
+
+      # Les abonnés de l'alerte données (« Prévenez-moi », 2026-09-16) : un seul
+      # broadcast Resend, seulement quand une publication a ajouté une année à
+      # un index. Sans RESEND_AUDIENCE_ID : avertissement, pas d'échec.
+      - name: Prévenir les abonnés
+        if: needs.refresh.outputs.changed == 'true' && needs.publish.result == 'success'
+        env:
+          SUMMARY_PATH: /tmp/refresh-summary.md
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
+          ALERTS_EMAIL_FROM: ${{ vars.ALERTS_EMAIL_FROM || 'Qipu <alertes@qipu.org>' }}
+        run: python pipeline/scripts/audit/send_data_news.py
