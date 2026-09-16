@@ -121,11 +121,18 @@ export function titleName(s: string, max = 38): string {
   return clip(displayFournisseur(s), max);
 }
 
-/** Clip a data label for a title without cutting a word in half. */
+/** Clip a data label for a title without cutting a word in half. A title that
+ *  ended on a hanging « de la » read as a mistake (« …, de la… : marché de
+ *  10,2 M€ »), so trailing joining words go with the ellipsis. */
 export function clip(s: string, max = 70): string {
   const t = s.trim();
   if (t.length <= max) return t;
   const cut = t.slice(0, max);
   const at = cut.lastIndexOf(" ");
-  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s,;:–-]+$/u, "")}…`;
+  const kept = at > max * 0.6 ? cut.slice(0, at) : cut;
+  const trimmed = kept
+    .replace(/[\s,;:–-]+$/u, "")
+    .replace(/(?:\s+(?:de|du|des|d’|d'|la|le|les|l’|l'|et|à|au|aux|en|pour|par|sur|avec|un|une))+$/iu, "")
+    .replace(/[\s,;:–-]+$/u, "");
+  return `${trimmed || kept}…`;
 }

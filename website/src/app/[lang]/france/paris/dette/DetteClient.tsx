@@ -319,6 +319,12 @@ export default function DetteClient({ d, structure, horsBilan, posts, cost, cost
                     )}
                     <a href={cityDataUrl(citySlug, `bilan_sankey_${d.year}.json`)} target="_blank" rel="noopener noreferrer">JSON {d.year} ↗</a>
                     {" · "}
+                    {hb ? (
+                      <>
+                        <a href={cityDataUrl(citySlug, `hors_bilan_${hb.year}.json`)} target="_blank" rel="noopener noreferrer">{locale === "en" ? "Guarantees" : "Garanties"} {hb.year} ↗</a>
+                        {" · "}
+                      </>
+                    ) : null}
                     <Link href="/methode?tool=dette-patrimoine#outils">{t("fx.s.methode_complete")}</Link>
                   </p>
                 </V3Fold>

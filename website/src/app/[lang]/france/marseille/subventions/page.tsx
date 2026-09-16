@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { budgetDoorTotal, loadLogementSocialData, loadQuiRecoitData, loadQuiRecoitIndex, marchesDoorTotal } from "@/lib/fusion-data";
+import { budgetDoorTotal, loadQuiRecoitData, loadQuiRecoitIndex, marchesDoorTotal } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleSubventionsHub } from "@/lib/seo/sections/marseille";
@@ -36,8 +36,7 @@ export default async function QuiRecoitPage({
   const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
   const doors = {
     budget: safe(() => budgetDoorTotal("marseille", d.year)),
-    marches: safe(() => marchesDoorTotal("marseille", d.year)),
-    next: safe(() => { const l = loadLogementSocialData(undefined, "marseille"); return l.stockTotal > 0 ? { total: l.stockTotal, year: l.sruYear } : null; }),
+    next: safe(() => marchesDoorTotal("marseille", d.year)),
   };
   const locale = await readLocale();
   return (

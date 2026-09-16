@@ -134,7 +134,7 @@ export default function ProjetFiche({ projet, photo, lieu }: { projet: ProjetFic
           <div className="fx-fiche-thumbrows">
             {projet.similaires.map((s) => (
               <Link key={s.id} href={`${basePath}/investissements/projet/${encodeURIComponent(s.id)}`} scroll={false} className="fx-fiche-thumbrow">
-                <span className="im"><ProjetThumb photo={s.photo.photo} generic={s.photo.generic} typologie={s.photo.typologie ?? s.typologie} aspectRatio="4 / 3" fallbackLabel={s.name} /></span>
+                <span className="im"><ProjetThumb photo={s.photo.photo} generic={s.photo.generic} typologie={s.photo.typologie ?? s.typologie} aspectRatio="4 / 3" sizes="88px" fallbackLabel={s.name} /></span>
                 <span className="tx">
                   <span className="t">{en && s.name_en ? s.name_en : s.name} <span aria-hidden="true" className="muted">›</span></span>
                   {s.arrondissement > 0 ? <span className="s">{s.arrondissement}{sufOrdinal(s.arrondissement, locale)}</span> : null}

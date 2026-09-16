@@ -1,3 +1,4 @@
+import { OPTIMIZABLE_PHOTO_HOSTS } from "./src/lib/photo-optimize";
 import type { NextConfig } from 'next';
 import tracingIncludes from './tracing-includes.json';
 
@@ -53,6 +54,12 @@ const nextConfig: NextConfig = {
    * after adding a loader, a route or a data directory. No excludes: an
    * exclude beats an include.
    */
+  // Remote photos we may resize (see lib/photo-optimize.ts). The City's CDN
+  // has one size only: without this, a 88 px thumbnail downloads 1,1 Mo.
+  images: {
+    remotePatterns: OPTIMIZABLE_PHOTO_HOSTS.map((hostname) => ({ protocol: "https" as const, hostname })),
+    minimumCacheTTL: 2592000,
+  },
   outputFileTracingIncludes: tracingIncludes.includes,
 
   // Edge cache for every HTML page (lib/site-locale.ts: nothing is personal —

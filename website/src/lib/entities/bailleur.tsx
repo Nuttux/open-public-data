@@ -77,7 +77,7 @@ export const bailleurConfig: EntityPageConfig<D> = {
     answer: `Fin ${g.year}, la Ville de Paris garantit ${amt} d'emprunts de ${b.name} (${int(n, "fr")} emprunt${n > 1 ? "s" : ""}, ${taux} de taux moyen, ${dur} ans restants). ${sourceLine("fr", "opendata.paris.fr (dette garantie)", date)}`,
   };
   },
-  related: ({ bailleur: b }, locale) => bailleurRelated(b.slug, locale),
+  related: ({ bailleur: b }, locale) => bailleurRelated(b.slug, locale, b.section != null),
   page: {
     header: ({ bailleur }) => (
       <>
