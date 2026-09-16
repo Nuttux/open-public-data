@@ -1277,9 +1277,9 @@ const en: Record<string, string> = {
   'fx.land.chips.subv': "Grants",
   'fx.land.chips.subv_desc': "Recipients and their amounts.",
   'fx.land.chips.marches': "Public contracts",
-  'fx.land.chips.marches_desc': "Every company paid by the City.",
+  'fx.land.chips.marches_desc': "Signed contracts and their suppliers, in ceiling amounts.",
   'fx.land.chips.dette': "Debt",
-  'fx.land.chips.dette_desc': "What the City owns, what it owes.",
+  'fx.land.chips.dette_desc': "What the debt costs each year, and who the City owes.",
   'fx.land.chips.logement': "Social housing",
   'fx.land.chips.logement_desc': "Funded operations and their social landlords.",
   // Inside section

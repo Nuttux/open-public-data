@@ -1274,9 +1274,9 @@ const fr: Record<string, string> = {
   'fx.land.chips.subv': "Subventions",
   'fx.land.chips.subv_desc': "Les bénéficiaires et leurs montants.",
   'fx.land.chips.marches': "Marchés publics",
-  'fx.land.chips.marches_desc': "Toutes les entreprises payées par la Ville.",
+  'fx.land.chips.marches_desc': "Les contrats signés et leurs fournisseurs, en montants maximums.",
   'fx.land.chips.dette': "Dette",
-  'fx.land.chips.dette_desc': "Ce que la Ville possède, ce qu'elle doit.",
+  'fx.land.chips.dette_desc': "Ce que la dette coûte chaque année, et à qui la Ville doit.",
   'fx.land.chips.logement': "Logement social",
   'fx.land.chips.logement_desc': "Les opérations financées et leurs bailleurs.",
   // Inside section
