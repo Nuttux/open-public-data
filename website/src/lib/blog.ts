@@ -31,6 +31,7 @@ export interface BlogPost {
   description_en?: string;
   category_en?: string;
   tags_en?: string[];
+  featured?: boolean;
 }
 
 export interface BlogPostMeta {
@@ -44,6 +45,8 @@ export interface BlogPostMeta {
   category?: string;
   hidden?: boolean;
   published: boolean;
+  /** Opens the list of explainers whatever its date (« on a retrouvé 2,3 Md€ », 2026-09-16). */
+  featured?: boolean;
   readingTime: string;
   title_en?: string;
   description_en?: string;
@@ -86,6 +89,7 @@ function parseMDXFile(fileName: string): BlogPost {
     category: typeof data.category === "string" ? data.category : undefined,
     hidden: data.hidden === true,
     published: data.published === true,
+    featured: data.featured === true,
     readingTime: stats.text,
     content,
     title_en: typeof data.title_en === "string" ? data.title_en : undefined,

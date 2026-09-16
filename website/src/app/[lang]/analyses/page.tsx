@@ -53,7 +53,8 @@ function inferCategory(tags?: string[], categoryMeta?: string): string {
 
 export default function AnalysesPage() {
   if (!ANALYSES_PUBLIC) notFound();
-  const rawPosts = getAllPosts();
+  // The featured explainer opens the list; the others keep their date order.
+  const rawPosts = [...getAllPosts()].sort((a, b) => Number(b.featured === true) - Number(a.featured === true));
   const posts = rawPosts.map((p) => ({
     ...p,
     category: inferCategory(p.tags, p.category),
