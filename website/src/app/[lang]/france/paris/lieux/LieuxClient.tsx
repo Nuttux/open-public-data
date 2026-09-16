@@ -193,8 +193,42 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
               ) : null}
             </div>
 
-            {/* The way in: a name, a family, an arrondissement. Filters, never rankings. */}
-            <div className="fx-sec-a-scene">
+            <div className="fx-sec-a-rows">
+              <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(t("fx.sec.lieux.rows_sub"), { since: sinceTxt })}>
+                <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.lieux.g.aria")}>
+                  {VIEWS.map((v) => (
+                    <button key={v} type="button" aria-pressed={view === v} onClick={() => pickView(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>
+                  ))}
+                </div>
+                <div id="lieux">
+                  {view === "carte" ? (
+                    <div className="fx-sec-lieux-map">
+                      <PlacesMap entries={entries} config={config} visibleSlugs={visibleSlugs} hovered={hovered} onHover={setHovered} />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="fx-sec-thumbrows">
+                        {shownAll.length === 0 ? <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.search_none"), { q })}</p> : shownAll.map(Row)}
+                      </div>
+                      {rest.length > 0 ? (
+                        <V3Fold id="more-lieux" label={fill(t("fx.sec.lieux.rows_more"), { n: fmtInt(rest.length) })}>
+                          <div className="fx-sec-thumbrows">{rest.map(Row)}</div>
+                        </V3Fold>
+                      ) : null}
+                    </>
+                  )}
+                </div>
+                {isFiltered ? (
+                  <p className="fx-v3-note"><Link href={base}>{t("fx.sec.lieux.rows_all")}</Link></p>
+                ) : noMoney > 0 ? (
+                  <p className="fx-v3-note">{fill(t("fx.sec.lieux.no_money_note"), { n: fmtInt(noMoney) })}</p>
+                ) : null}
+                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`lieux_${view}`} anchor="lieux" />
+              </V3Section>
+            </div>
+
+            {/* The way in, under the list (Daniel, 16/09): a name, a family, an arrondissement. Filters, never rankings. */}
+            <div className="fx-sec-a-find">
               <V3Section id="find" title={t("fx.sec.lieux.h.find")} sub={t("fx.sec.lieux.find_sub")}>
                 <div className="fx-search-wrap fx-search-wrap--fiche fx-sec-lieux-search">
                   <div className="fx-search-inner">
@@ -235,40 +269,6 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
                     </select>
                   </label>
                 </div>
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-rows">
-              <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(t("fx.sec.lieux.rows_sub"), { since: sinceTxt })}>
-                <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.lieux.g.aria")}>
-                  {VIEWS.map((v) => (
-                    <button key={v} type="button" aria-pressed={view === v} onClick={() => pickView(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>
-                  ))}
-                </div>
-                <div id="lieux">
-                  {view === "carte" ? (
-                    <div className="fx-sec-lieux-map">
-                      <PlacesMap entries={entries} config={config} visibleSlugs={visibleSlugs} hovered={hovered} onHover={setHovered} />
-                    </div>
-                  ) : (
-                    <>
-                      <div className="fx-sec-thumbrows">
-                        {shownAll.length === 0 ? <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.search_none"), { q })}</p> : shownAll.map(Row)}
-                      </div>
-                      {rest.length > 0 ? (
-                        <V3Fold id="more-lieux" label={fill(t("fx.sec.lieux.rows_more"), { n: fmtInt(rest.length) })}>
-                          <div className="fx-sec-thumbrows">{rest.map(Row)}</div>
-                        </V3Fold>
-                      ) : null}
-                    </>
-                  )}
-                </div>
-                {isFiltered ? (
-                  <p className="fx-v3-note"><Link href={base}>{t("fx.sec.lieux.rows_all")}</Link></p>
-                ) : noMoney > 0 ? (
-                  <p className="fx-v3-note">{fill(t("fx.sec.lieux.no_money_note"), { n: fmtInt(noMoney) })}</p>
-                ) : null}
-                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`lieux_${view}`} anchor="lieux" />
               </V3Section>
             </div>
 
