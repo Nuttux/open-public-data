@@ -101,10 +101,10 @@ export async function generateMetadata({
         tfb != null ? `property tax ${rate(tfb, "en-GB")}%` : null,
       ].filter(Boolean).join(", ");
       return buildLocaleAwareMetadata({
-        title: `Combien dépense ${slim.nom} ? ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}`,
+        title: `Budget ${deNom(slim.nom)} : ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}`,
         description: `${slim.nom} (${slim.dep_name}) a dépensé ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}, pour ${fr(rec)} de recettes${frBits ? ` ; ${frBits}` : ""}. Ce qu'elle construit et achète, face aux communes de sa taille. Sources : DGFiP, OFGL, DECP, comptes ${y}.`,
         en: {
-          title: `How much does ${slim.nom} spend? ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}`,
+          title: `${slim.nom} budget: ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}`,
           description: `${slim.nom} (${slim.dep_name}) spent ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}, against ${en(rec)} in revenue${enBits ? `; ${enBits}` : ""}. What it builds and buys, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
         },
         path: `/france/${slug}`,

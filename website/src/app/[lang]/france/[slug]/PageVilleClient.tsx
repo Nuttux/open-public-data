@@ -452,6 +452,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const evoFirst = evolution?.series[0] ?? null;
   const detteDelta = evoLast?.dette_hab != null && evoFirst?.dette_hab && evoFirst.year !== evoLast.year ? ((evoLast.dette_hab - evoFirst.dette_hab) / evoFirst.dette_hab) * 100 : null;
   const detteMedian = peers?.rows.find((r) => r.key === "encours_dette")?.median ?? null;
+  const depHabMedian = peers?.rows.find((r) => r.key === "depenses_totales")?.median ?? null;
   const capacite = evoLast?.capacite_desendettement ?? null;
   const capaciteWords = (n: number) => {
     const r = Math.round(n * 2) / 2;
@@ -565,7 +566,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </div>
               )}
               <div className="fx-v3-hero-meta">
-                {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: int.format(perHab) })} · ` : ""}
+                {/* « Est-ce beaucoup ? » answered in the first line, in numbers: the same figure for towns of its size (2026-09-16). */}
+                {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: int.format(perHab) })}${depHabMedian != null ? ` · ${fill("fx.pv.strate_hab", { n: int.format(Math.round(depHabMedian)) })}` : ""} · ` : ""}
                 {fill("fx.bud.v3.recettes_exec", { rec: euro(data.recettes) })}
                 {` · ${t("fx.natbud.solde").toLowerCase()} ${euro(data.solde, true)}`}
               </div>
@@ -955,7 +957,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               /marches renvoie ici en dessous). */}
           {marches && (
             <Reveal>{(revealed) => (<>
-              <H2 id="achats">{t("fx.pv.achats")}</H2>
+              <H2 id="achats" sub={marches.top_marches.length > 1 ? t("fx.pv.achats_sub") : undefined}>{t("fx.pv.achats")}</H2>
               <SecNum {...split(ly ? ly.montant : marches.total.montant)} n={ly ? ly.montant : marches.total.montant} fmt={(x) => split(x).v} revealed={revealed} />
               <p className="fx-pv-l1">
                 {ly
