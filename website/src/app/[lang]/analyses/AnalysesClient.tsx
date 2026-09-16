@@ -113,7 +113,8 @@ export default function AnalysesClient({
 
   const hero = filtered[0];
   const rest = filtered.slice(1);
-  const lastPublished = posts[0];
+  // The most recent by date, whichever opens the list.
+  const lastPublished = posts.length ? posts.reduce((m, p) => (new Date(p.date) > new Date(m.date) ? p : m), posts[0]) : undefined;
 
   return (
     <>
