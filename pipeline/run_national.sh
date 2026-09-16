@@ -19,8 +19,12 @@
 #                Jamais de suppression : une commune absente d'un export garde
 #                ses fichiers.
 #
-# Cadence annuelle (--cadence=annual, branchée le 2026-09-14) : les sources que
-# leurs producteurs publient une fois l'an ou au fil de l'eau.
+# Cadence annuelle (--cadence=annual) : les sources que leurs producteurs
+# publient une fois l'an ou au fil de l'eau. EN LOCAL SEULEMENT depuis le
+# 2026-09-16 (retirée de national-refresh.yml) : quand une source a bougé, la
+# reconstruction et l'export des 35 000 communes prennent trois heures, que
+# GitHub facture à la minute. Une à trois fois par an, à la main, puis les
+# manifestes (website/src/data/communes-*.json) partent en PR.
 #   1. sync    — chaque chargeur compare la source à sa table et ne charge que ce
 #                qui manque ou a changé, par _national_raw (une année à la fois,
 #                ou un instantané versionné, toujours derrière une garde de
@@ -39,7 +43,7 @@
 #   ./run_national.sh --cadence=weekly --target=dev     # datasets dbt_paris_dev_${DBT_USER:-local}_national_*
 #   ./run_national.sh --cadence=weekly --no-upload      # tout sauf l'envoi au bucket
 #   ./run_national.sh --cadence=weekly --force          # même si la DECP n'a pas changé
-#   ./run_national.sh --cadence=annual                  # sources annuelles, seulement ce qui a bougé
+#   ./run_national.sh --cadence=annual                  # sources annuelles (en local), seulement ce qui a bougé
 #   ./run_national.sh --cadence=annual --force          # reconstruit et exporte tout, même sans nouveauté
 # =============================================================================
 set -euo pipefail
