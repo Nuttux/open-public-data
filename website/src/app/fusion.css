@@ -18939,8 +18939,18 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   content: "—";
   position: absolute;
   left: 0;
-  color: var(--ocre);
+  color: var(--muted);
 }
+.theme-fusion .fx-cities-bullets a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-2, #cfcdc4); text-underline-offset: 3px; }
+.theme-fusion .fx-cities-bullets a:hover { text-decoration-color: var(--ink); }
+/* « Pour les mairies » (2026-09-16): plain paragraphs, and a search field that
+   is a button — it opens the commune search every page carries. */
+.theme-fusion .fx-cities-p { font-family: var(--f-ui); font-size: 16px; line-height: 1.55; color: var(--ink); max-width: 62ch; margin: 14px 0 0; }
+.theme-fusion .fx-cities-p a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-2, #cfcdc4); text-underline-offset: 3px; }
+.theme-fusion .fx-cities-p a:hover { text-decoration-color: var(--ink); }
+.theme-fusion .fx-cities-find { display: inline-flex; align-items: center; gap: 12px; width: min(100%, 440px); min-height: 52px; margin-top: 26px; padding: 0 18px; border: 1px solid var(--ink); background: var(--bg); font: inherit; font-family: var(--f-ui); font-size: 16px; color: var(--ink-2); cursor: text; text-align: left; }
+.theme-fusion .fx-cities-find svg { width: 20px; height: 20px; flex: none; color: var(--ink); }
+.theme-fusion .fx-cities-find:hover, .theme-fusion .fx-cities-find:focus-visible { color: var(--ink); box-shadow: 0 0 0 2px var(--bleu); outline: 0; }
 
 /* ══ THE CENTURY SCRUB ═════════════════════════════════════════════════════
    Daniel: *"i find it ugly with the blue bar and dot uh so old looking"*. It
