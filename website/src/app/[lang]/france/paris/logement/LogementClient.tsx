@@ -158,7 +158,7 @@ export default function LogementClient({ d, sruArr, posts, doors }: {
             </div>
 
             <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={t("fx.sec.log.h.scene")} sub={t("fx.sec.log.scene_sub")}>
+              <V3Section id="scene" title={t("fx.sec.log.h.scene")} hint={t("fx.sec.log.scene_sub")}>
                 {groups.length > 1 ? (
                   <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.log.g.aria")}>
                     {groups.map((g) => (

@@ -239,7 +239,7 @@ export default function BudgetClient({ index, d, posts, doors }: Props) {
             </div>
 
             <div className="fx-sec-a-table">
-              <V3Section id="scene" title={fill(t("fx.sec.bud.h.table"), { year: d.year })} sub={fill(t("fx.sec.bud.table_sub"), { span: sparkSpan })}>
+              <V3Section id="scene" title={fill(t("fx.sec.bud.h.table"), { year: d.year })} sub={fill(t("fx.sec.bud.table_sub"), { span: sparkSpan })} hint={t("fx.sec.bud.table_hint")}>
                 <div id="budget-scene" className="fx-bud-cols">
                   <div className="fx-bud-col">
                     {/* The switch lives in the column head so the first rows of both columns start on the same line. */}

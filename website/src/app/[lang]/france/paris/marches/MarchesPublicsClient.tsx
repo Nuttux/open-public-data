@@ -232,7 +232,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
             </div>
 
             <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })} sub={t("fx.sec.mp.h.scene_sub")}>
+              <V3Section id="scene" title={fill(t("fx.sec.mp.h.categories"), { year: d.year })} hint={t("fx.sec.mp.h.scene_sub")}>
                 <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.mp.g.aria")}>
                   {GROUPS.map((g) => (
                     <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.mp.g.${g}`)}</button>

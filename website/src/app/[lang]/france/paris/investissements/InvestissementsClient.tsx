@@ -152,7 +152,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
     ? fill(t("fx.sec.inv.where_sub"), { n: fmtInt(nLoc), amount: eurTxt(amountLoc) })
     : undefined;
   const whereSection = d.byArrondissement.length > 0 ? (
-    <V3Section id="where" title={fill(t("fx.sec.inv.h.where"), { city: cityName })} sub={whereSub}>
+    <V3Section id="where" title={fill(t("fx.sec.inv.h.where"), { city: cityName })} sub={whereSub} hint={t("fx.sec.inv.where_hint")}>
       {hasMap ? (
         <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.inv.g.aria")}>
           {WHERE_VIEWS.map((v) => (
@@ -276,7 +276,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
 
             <div className="fx-sec-a-scene">
               {lite ? whereSection : (
-                <V3Section id="scene" title={fill(t("fx.sec.inv.h.scene"), { year: d.year })} sub={t("fx.sec.inv.scene_sub")}>
+                <V3Section id="scene" title={fill(t("fx.sec.inv.h.scene"), { year: d.year })} hint={t("fx.sec.inv.scene_sub")}>
                   <div id="chapitres">
                     <Bars rows={chapRows} />
                   </div>
