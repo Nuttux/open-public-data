@@ -192,6 +192,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
           France's national pages. Desktop only — the phone menu carries it. */}
       {placeLinks.length > 0 ? (
         <nav className="fx-subnav" aria-label={placeName ?? t("fx.nav.place_aria")}>
+          {placeName ? <span className="fx-subnav-tag" aria-hidden="true">{placeName}</span> : null}
           {placeLinks.map((l) => (
             <Link
               key={l.href}

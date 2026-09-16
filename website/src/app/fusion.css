@@ -166,10 +166,12 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-link-search svg { width: 15px; height: 15px; flex: none; }
 /* The place row under the bar: the sections of Paris (or of a commune's
    sub-pages, or France's pages). Quiet, one line, underline on the current one. */
-.theme-fusion .fx-subnav { display: flex; align-items: stretch; height: 42px; padding: 0 24px; border-bottom: 1px solid var(--rule); background: var(--bg); overflow-x: auto; scrollbar-width: none; }
+.theme-fusion .fx-subnav { display: flex; align-items: stretch; height: 42px; padding: 0 24px; border-bottom: 1px solid var(--rule); background: color-mix(in srgb, var(--ink) 3%, var(--bg)); overflow-x: auto; scrollbar-width: none; }
+/* The row opens with the place's name: these are Paris's sections, not a second site menu. */
+.theme-fusion .fx-subnav-tag { display: flex; align-items: center; margin-right: 14px; padding-right: 14px; border-right: 1px solid var(--rule); font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 .theme-fusion .fx-subnav::-webkit-scrollbar { display: none; }
 .theme-fusion .fx-sublink { display: flex; align-items: center; padding: 0 14px; margin-bottom: -1px; font-family: var(--f-ui); font-size: 13px; font-weight: 500; color: var(--ink-2); white-space: nowrap; border-bottom: 2px solid transparent; }
-.theme-fusion .fx-sublink:first-child { padding-left: 0; }
+.theme-fusion .fx-subnav-tag + .fx-sublink, .theme-fusion .fx-sublink:first-child { padding-left: 0; }
 .theme-fusion .fx-sublink:hover { color: var(--ink); }
 .theme-fusion .fx-sublink-on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
 @media (max-width: 980px) { .theme-fusion .fx-subnav { display: none; } }
@@ -178,6 +180,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-overlay-nav .fx-overlay-scope-tag { margin: 22px 0 4px; }
 .theme-fusion .fx-overlay-nav a.fx-overlay-on { color: var(--bleu); }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 26px; height: 26px; flex: none; }
+/* « Chercher une commune » is the longest entry of the phone menu: one size down so it holds on one line. */
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search { font-size: 26px; }
 .theme-fusion .fx-foot-find-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-foot-find-btn:hover { color: var(--bleu); }
 .theme-fusion .fx-link-on {

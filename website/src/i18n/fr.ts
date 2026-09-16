@@ -1109,7 +1109,7 @@ const fr: Record<string, string> = {
   'fx.nav.close': 'Fermer',
   'fx.nav.lang_aria': 'Langue / Language',
   'fx.toc.aria': 'Navigation dans la page',
-  'fx.nav.link.commune': 'Votre commune',
+  'fx.nav.link.commune': 'Chercher une commune',
   'fx.nav.link.paris': 'Paris',
   'fx.nav.link.cities': 'Pour les mairies',
   'fx.nav.place_aria': 'Sections de ce lieu',
