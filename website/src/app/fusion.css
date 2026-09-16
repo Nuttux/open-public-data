@@ -20860,8 +20860,8 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   /* Lieux (2026-09-16): the number faces the families; the search runs across;
      the places where the City paid the most face « Où, dans Paris »; then
      « Comprendre » faces « Voir aussi ». */
-  .theme-fusion .fx-sec-grid[data-layout="lieux"] { grid-template-areas: "hero scene" "search search" "rows where" "understand related" "next next" "foot foot"; }
-  .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-search { margin-bottom: 30px; }
+  .theme-fusion .fx-sec-grid[data-layout="lieux"] { grid-template-areas: "hero rows" "find find" "understand related" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-a-find { grid-area: find; }
   .theme-fusion .fx-sec-a-where { grid-area: where; }
   /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
@@ -21225,3 +21225,17 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-pv-row2 { padding: 16px 0 18px; }
   .theme-fusion .fx-pv-row2-num b { font-size: 26px; }
 }
+
+/* Lieux (2026-09-16): the way in — a field, the five families as filter chips
+   with their count, an arrondissement menu. Filters, never rankings. */
+.theme-fusion .fx-sec-lieux-search { margin: 0 0 18px; }
+.theme-fusion .fx-sec-lieux-filters { display: grid; gap: 14px; }
+.theme-fusion .fx-sec-lieux-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.theme-fusion .fx-sec-lieux-chips a { font-size: 13.5px; line-height: 1.3; color: var(--ink-2); text-decoration: none; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 6px 12px; min-height: 32px; display: inline-flex; align-items: center; gap: 6px; }
+.theme-fusion .fx-sec-lieux-chips a b { font-weight: 500; color: var(--muted); }
+.theme-fusion .fx-sec-lieux-chips a:hover { border-color: var(--ink); color: var(--ink); }
+.theme-fusion .fx-sec-lieux-chips a.is-on { background: var(--ink); border-color: var(--ink); color: var(--paper, #fafaf7); }
+.theme-fusion .fx-sec-lieux-chips a.is-on b { color: inherit; opacity: .8; }
+.theme-fusion .fx-sec-lieux-arr { display: grid; gap: 6px; max-width: 320px; }
+.theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink); min-height: 40px; }
+.theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-find { max-width: 760px; }
