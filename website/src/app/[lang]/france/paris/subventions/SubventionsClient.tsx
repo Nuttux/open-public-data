@@ -192,7 +192,7 @@ export default function SubventionsClient({ idx, d, posts, doors }: {
             </div>
 
             <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={fill(t("fx.sec.subv.h.scene"), { year: d.year })} sub={t("fx.sec.subv.scene_sub")}>
+              <V3Section id="scene" title={fill(t("fx.sec.subv.h.scene"), { year: d.year })} hint={t("fx.sec.subv.scene_sub")}>
                 <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.subv.g.aria")}>
                   {groups.map((g) => (
                     <button key={g} type="button" aria-pressed={group === g} onClick={() => pickGroup(g)}>{t(`fx.sec.subv.g.${g}`)}</button>
