@@ -290,3 +290,102 @@ export function lieuForMarche(numero: string): LieuLien | null {
   }
   return _marcheCache.get(numero) ?? null;
 }
+
+// ── The section (2026-09-16) ────────────────────────────────────────────────
+
+export type LieuxSection = {
+  /** Places in the index, and those with a published amount. */
+  count: number;
+  withMoney: number;
+  /** The number of the page: each place's amount (paid when published, contract ceilings otherwise), summed. */
+  total: number;
+  /** The common window every amount is counted from (2010). */
+  since: number;
+  /** Last year with money really paid. */
+  lastYear: number;
+  /** Oldest bulletin archive across the places (1882). */
+  oldestArchive: number | null;
+  families: { key: string; count: number; amount: number }[];
+  arrondissements: { arr: number; count: number; amount: number }[];
+  /** What was really paid, year by year: grants to the operator and works settled, from the window on. */
+  series: { year: number; amount: number }[];
+};
+
+let _sectionCache: LieuxSection | null = null;
+
+/**
+ * Everything the Lieux section page says, computed once from the index and
+ * the 225 fiche files (the year rail needs each place's paid-per-year).
+ */
+export function loadLieuxSection(): LieuxSection {
+  if (_sectionCache) return _sectionCache;
+  const idx = loadLieuxIndex();
+  const seuils = idx.map((l) => l.seuil_commun ?? 0).filter((s) => s > 0);
+  const since = seuils.length ? Math.min(...seuils) : 2010;
+  const families = new Map<string, { key: string; count: number; amount: number }>();
+  const arrs = new Map<number, { arr: number; count: number; amount: number }>();
+  const years = new Map<number, number>();
+  let total = 0;
+  let withMoney = 0;
+  let oldestArchive: number | null = null;
+  for (const l of idx) {
+    const v = l.argent_total_eur ?? 0;
+    total += v;
+    if (v > 0) withMoney += 1;
+    if (l.depuis && (oldestArchive === null || l.depuis < oldestArchive)) oldestArchive = l.depuis;
+    const f = families.get(l.famille) ?? { key: l.famille, count: 0, amount: 0 };
+    f.count += 1; f.amount += v; families.set(l.famille, f);
+    if (l.arrondissement > 0) {
+      const a = arrs.get(l.arrondissement) ?? { arr: l.arrondissement, count: 0, amount: 0 };
+      a.count += 1; a.amount += v; arrs.set(l.arrondissement, a);
+    }
+    const fiche = loadLieu(l.slug);
+    if (!fiche) continue;
+    const from = fiche.seuil_commun ?? since;
+    for (const [y, m] of Object.entries(fiche.mandate?.par_annee ?? {})) {
+      const yy = Number(y); const amt = Number(m);
+      if (yy >= from && amt > 0) years.set(yy, (years.get(yy) ?? 0) + amt);
+    }
+    for (const r of fiche.subventions_exploitant?.rows ?? []) {
+      const yy = Number(r.annee); const amt = Number(r.montant_eur);
+      if (yy >= from && amt > 0) years.set(yy, (years.get(yy) ?? 0) + amt);
+    }
+  }
+  const series = [...years.entries()].sort((a, b) => a[0] - b[0]).map(([year, amount]) => ({ year, amount }));
+  _sectionCache = {
+    count: idx.length,
+    withMoney,
+    total,
+    since,
+    lastYear: series.length ? series[series.length - 1].year : new Date().getFullYear() - 1,
+    oldestArchive,
+    families: [...families.values()],
+    arrondissements: [...arrs.values()].sort((a, b) => a.arr - b.arr),
+    series,
+  };
+  return _sectionCache;
+}
+
+/** The two numbers a fiche needs for its line up to the section. */
+export function lieuxSectionSummary(): { count: number; total: number } {
+  const s = loadLieuxSection();
+  return { count: s.count, total: s.total };
+}
+
+export type LieuSuivant = { slug: string; name: string; famille: string; arrondissement: number; amount: number; rank: number; total: number };
+
+/**
+ * The next place of the same family by amount (wrapping to the first): the
+ * door at the foot of a fiche, like « Chantier suivant » on a worksite.
+ */
+export function lieuSuivant(slug: string): LieuSuivant | null {
+  const me = loadLieuxIndex().find((l) => l.slug === slug);
+  if (!me) return null;
+  const fam = loadLieuxIndex()
+    .filter((l) => l.famille === me.famille)
+    .sort((a, b) => (b.argent_total_eur ?? 0) - (a.argent_total_eur ?? 0) || a.name.localeCompare(b.name, "fr"));
+  if (fam.length < 2) return null;
+  const i = fam.findIndex((l) => l.slug === slug);
+  const n = fam[(i + 1) % fam.length];
+  return { slug: n.slug, name: n.name, famille: n.famille, arrondissement: n.arrondissement, amount: n.argent_total_eur ?? 0, rank: ((i + 1) % fam.length) + 1, total: fam.length };
+}

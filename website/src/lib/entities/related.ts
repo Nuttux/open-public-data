@@ -497,7 +497,7 @@ export function projetRelated(p: ProjetFiche, locale: L): RelatedBlock | null {
  * above does not already show (most City money first), the arrondissement's
  * investment fiche, and the map of every place.
  */
-export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null {
+export function lieuRelated(lieu: LieuFicheData, locale: L, hasSectionLine = false): RelatedBlock | null {
   const t = relatedT(locale);
   const base = "/france/paris";
   const rows: RelatedRow[] = [];
@@ -520,7 +520,8 @@ export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null
       rows.push({ href: `${base}/investissements/arrondissement/${arr}`, label: t("fx.related.projet.arr", { arr: ord }), sub: t("fx.related.projet.arr_sub"), group: t("fx.related.g.context") });
     }
   }
-  rows.push({ href: `${base}/lieux`, label: t("fx.related.lieu.hub"), sub: t("fx.related.lieu.hub_sub"), group: t("fx.related.g.context") });
+  // The way up sits in the first screen when the fiche has its section line; never both.
+  if (!hasSectionLine) rows.push({ href: `${base}/lieux`, label: t("fx.related.lieu.hub"), sub: t("fx.related.lieu.hub_sub"), group: t("fx.related.g.context") });
   rows.push(...budgetRows((spec) => (spec.lieux ?? []).includes(lieu.famille), locale));
   return { title: t("fx.related.title"), sub: null, rows };
 }

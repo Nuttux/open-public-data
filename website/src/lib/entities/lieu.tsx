@@ -2,15 +2,16 @@ import Link from "@/components/LocalizedLink";
 
 import LieuFiche from "@/components/fusion/LieuFiche";
 import LieuxVoisins from "@/components/fusion/LieuxVoisins";
+import LieuNextDoor from "@/components/fusion/LieuNextDoor";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { sufOrdinal } from "@/lib/fmt";
 import { relatedT } from "@/lib/related-t";
 import { localize } from "@/lib/urls";
-import { loadLieu, loadLieuxIndex } from "@/lib/lieux-data";
+import { loadLieu, loadLieuxIndex, lieuSuivant, lieuxSectionSummary, type LieuSuivant } from "@/lib/lieux-data";
 import { clip, dataDate, eur, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
 import { lieuRelated } from "@/lib/entities/related";
 
-type D = { lieu: NonNullable<ReturnType<typeof loadLieu>> };
+type D = { lieu: NonNullable<ReturnType<typeof loadLieu>>; section: { count: number; total: number } | null; next: LieuSuivant | null };
 
 export function lieuStaticParams(): { slug: string }[] {
   return loadLieuxIndex().map((l) => ({ slug: l.slug }));
@@ -81,7 +82,8 @@ export const lieuConfig: EntityPageConfig<D> = {
   load: ({ slug }) => {
     const lieu = loadLieu(slug);
     if (!lieu) return null;
-    return { lieu };
+    const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+    return { lieu, section: safe(() => lieuxSectionSummary()), next: safe(() => lieuSuivant(slug)) };
   },
   notFoundMetadata: (locale) => ({
     title: locale === "en" ? "Place not found — Qipu" : "Lieu introuvable — Qipu",
@@ -101,16 +103,18 @@ export const lieuConfig: EntityPageConfig<D> = {
     };
   },
   seo: ({ lieu }, locale) => lieuAnswer(lieu, locale),
-  related: ({ lieu }, locale) => lieuRelated(lieu, locale),
+  related: ({ lieu, section }, locale) => lieuRelated(lieu, locale, !!section),
   page: {
     // Pas de section fx-page-header : la fiche lieu rend son back-link,
     // kicker et h1 directement dans le fx-fiche-wrap (layout pré-refacto).
-    body: ({ lieu }, locale) => {
+    body: ({ lieu, section, next }, locale) => {
       return (
         <>
-          <nav className="fx-fiche-back">
-            <Link href="/france/paris/lieux" className="fx-row-link">← {locale === "en" ? "All places" : "Tous les lieux"}</Link>
-          </nav>
+          {!section ? (
+            <nav className="fx-fiche-back">
+              <Link href="/france/paris/lieux" className="fx-row-link">← {locale === "en" ? "All places" : "Tous les lieux"}</Link>
+            </nav>
+          ) : null}
           <div className="fx-page-kicker fx-page-kicker--links">
             <LieuKicker lieu={lieu} locale={locale} />
           </div>
@@ -131,8 +135,9 @@ export const lieuConfig: EntityPageConfig<D> = {
               </>
             );
           })()}
-          <LieuFiche lieu={lieu} />
+          <LieuFiche lieu={lieu} section={section} />
           <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
+          <LieuNextDoor next={next} />
         </>
       );
     },
@@ -147,10 +152,11 @@ export const lieuConfig: EntityPageConfig<D> = {
     backHref: () => "/france/paris/lieux",
     breadcrumbLabel: ({ lieu }) => lieu.name,
     // Même fin que la page : les lieux de la même famille, puis « Voir aussi ».
-    children: ({ lieu }) => (
+    children: ({ lieu, section, next }) => (
       <>
-        <LieuFiche lieu={lieu} />
+        <LieuFiche lieu={lieu} section={section} />
         <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
+          <LieuNextDoor next={next} />
       </>
     ),
   },

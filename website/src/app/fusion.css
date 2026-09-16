@@ -20848,6 +20848,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-sec-grid[data-layout="dette"] { grid-template-areas: "hero scene" "rows second" "understand related" "next next" "foot foot"; }
   .theme-fusion .fx-sec-grid[data-layout="dette"] .fx-sec-a-second { grid-area: second; }
   .theme-fusion .fx-sec-grid[data-layout="dette-lite"] { grid-template-areas: "hero related" "understand understand" "next next" "foot foot"; }
+  /* Lieux (2026-09-16): the number faces the families; the search runs across;
+     the places where the City paid the most face « Où, dans Paris »; then
+     « Comprendre » faces « Voir aussi ». */
+  .theme-fusion .fx-sec-grid[data-layout="lieux"] { grid-template-areas: "hero scene" "search search" "rows where" "understand related" "next next" "foot foot"; }
+  .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-search { margin-bottom: 30px; }
   .theme-fusion .fx-sec-a-where { grid-area: where; }
   /* « Où » keeps one height whatever the view: the page does not jump under the switch. */
   .theme-fusion .fx-sec-a-where #ou { min-height: 480px; }
@@ -21145,3 +21150,12 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-search-wrap--fiche .fx-search-placeholder { padding: 14px 0; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-rows { margin-top: 4px; }
 .theme-fusion .fx-search-wrap--fiche .fx-search-rows .fx-v3-note a { color: var(--bleu); }
+
+/* Lieux section (2026-09-16): rows with their photo, on the fiche's thumb-row grammar. */
+.theme-fusion .fx-sec-thumbrows .fx-fiche-thumbrow .im { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--rule-2); }
+.theme-fusion .fx-sec-thumbrows .fx-fiche-thumbrow .im img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.theme-fusion .fx-sec-thumbrows .fx-fiche-thumbrow .im .fx-sec-thumb-empty { display: block; width: 100%; height: 100%; background: var(--rule-2); }
+.theme-fusion .fx-sec-thumbrows .fx-fiche-thumbrow .fx-v3-amt.muted { color: var(--muted); }
+.theme-fusion .fx-sec-lieux-map { height: 480px; }
+@media (max-width: 768px) { .theme-fusion .fx-sec-lieux-map { height: 380px; } }
+@media (max-width: 959px) { .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-search { margin-bottom: 26px; } }
