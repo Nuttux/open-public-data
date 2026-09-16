@@ -3754,7 +3754,7 @@ const en: Record<string, string> = {
   'fx.pv.tous_marches': 'All the town’s contracts ({n})',
   'fx.pv.annees_publiees': 'Years published by the town: {years}.',
   'fx.pv.annees_ecartees': 'Years set aside, amounts out of scale: {years}.',
-  'fx.pv.comparer': 'Is that a lot? Compare with another town',
+  'fx.pv.comparer': 'Compare with a neighbouring town',
   'fx.pv.nature_h2': 'What does the town pay, what does it receive?',
   'fx.pv.chip_vs': 'vs {nom}',
   'fx.pv.ledger_more': 'Show the {n} other lines',

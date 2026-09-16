@@ -3751,7 +3751,7 @@ const fr: Record<string, string> = {
   'fx.pv.tous_marches': 'Tous les marchés de la commune ({n})',
   'fx.pv.annees_publiees': 'Années publiées par la commune : {years}.',
   'fx.pv.annees_ecartees': 'Années écartées, montants hors d’échelle : {years}.',
-  'fx.pv.comparer': 'Est-ce beaucoup ? Comparer avec une commune',
+  'fx.pv.comparer': 'Comparer avec une commune voisine',
   'fx.pv.nature_h2': 'Que paie la commune, que reçoit-elle ?',
   'fx.pv.chip_vs': 'vs {nom}',
   'fx.pv.ledger_more': 'Voir les {n} autres lignes',
