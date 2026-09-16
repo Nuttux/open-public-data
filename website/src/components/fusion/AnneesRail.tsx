@@ -5,6 +5,7 @@ import { useTrack } from "@/lib/analyticsContext";
 import { useFmtEur } from "@/lib/use-fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill } from "@/lib/fmt";
+import { V3Hint } from "@/components/fiche/v3";
 
 export type RailRow = { year: number; amount: number; count?: number };
 export type RailDelib = { reference: string; titre: string; genres?: string[]; seance?: string | null; source_url?: string | null };
@@ -126,7 +127,7 @@ export default function AnneesRail({
           );
         })}
       </div>
-      {sel === null && <p className="fx-v3-aide">{t(aDesDelibs ? "fx.lieu.delib.aide" : "fx.v3.years.aide")}</p>}
+      {sel === null && <V3Hint className="fx-v3-aide">{t(aDesDelibs ? "fx.lieu.delib.aide" : "fx.v3.years.aide")}</V3Hint>}
       {sel !== null && (
         <div className="fx-v3-delib">
           <p className="hd">

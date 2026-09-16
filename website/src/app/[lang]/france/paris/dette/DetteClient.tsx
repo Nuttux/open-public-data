@@ -219,7 +219,7 @@ export default function DetteClient({ d, structure, horsBilan, posts, cost, cost
 
             {hasScene ? (
               <div className="fx-sec-a-scene">
-                <V3Section id="scene" title={fill(t("fx.sec.dette.h.scene"), { year: d.year })} sub={t("fx.sec.dette.scene_sub")}>
+                <V3Section id="scene" title={fill(t("fx.sec.dette.h.scene"), { year: d.year })} hint={t("fx.sec.dette.scene_sub")}>
                   <div id="instruments">
                     <Bars rows={instRows} />
                   </div>
