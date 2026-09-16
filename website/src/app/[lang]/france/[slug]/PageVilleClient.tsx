@@ -448,7 +448,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   };
 
   /* ── 5. Ce que la commune achète ── */
-  const ly = marches?.last_year && marches.last_year.year ? marches.last_year : null;
+  // The last year speaks for the commune only when it holds a few contracts: Clermont's
+  // DECP stops in 2023 with one contract, and « 1,2 M€ · un seul marché » read as an
+  // error. Under five, the row says the whole published span instead (2026-09-16).
+  const ly = marches?.last_year && marches.last_year.year && marches.last_year.nb_marches >= 5 ? marches.last_year : null;
   const mTitu = (ly?.top_titulaires ?? marches?.top_titulaires ?? []).slice(0, 5);
   const mYears = (marches?.by_year ?? []).map((y) => y.year);
   const ecartees = marches?.total.annees_ecartees ?? [];
@@ -892,15 +895,14 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               </div>
             )}
             {marches && (() => {
-              const foot = (
-                <>
-                  {marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
-                  <p className="fx-v3-foot">
-                    {marches.coverage_note}
-                    {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
-                    {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
-                  </p>
-                </>
+              // The door to every contract stays in the page; the coverage note sits with the table.
+              const more = marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null;
+              const note = (
+                <p className="fx-v3-foot">
+                  {marches.coverage_note}
+                  {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
+                  {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
+                </p>
               );
               const f0 = mTitu[0];
               const nom0 = f0 ? (f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom)) : null;
@@ -930,7 +932,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   ) : null}
                   {marches.top_marches.length > 1 ? (
                     <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
-                      <summary><span>{fill("fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
+                      <summary><span>{fill(nTop >= marches.total.nb_marches ? "fx.pv.fold.achats_all" : "fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
                       <div className="fx-pv-fold-body">
                         <div className="fx-pv-top5">
                           {marches.top_marches.slice(0, 5).map((m, i) => (
@@ -946,10 +948,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                             </div>
                           ))}
                         </div>
-                        {foot}
+                        {note}
                       </div>
                     </details>
-                  ) : foot}
+                  ) : note}
+                  {more}
                 </div>
               );
             })()}

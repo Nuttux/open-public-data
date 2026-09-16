@@ -20394,7 +20394,8 @@ a.fx-pv-fonc-row:hover { background: var(--bg-hover); }
 a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-pv-fonc-row:hover { background: transparent; }
 .theme-fusion .fx-pv-fonc-row .n { white-space: normal; }
-.theme-fusion .fx-pv-fonc-row .dont { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.theme-fusion .fx-pv-fonc-row .dont { display: none; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.theme-fusion .fx-pv-fonc-row.open .dont { display: block; }
 .theme-fusion .fx-pv-fonc-row .bar { display: block; height: 9px; background: rgba(10, 10, 10, .07); }
 .theme-fusion .fx-pv-fonc-row .bar i { display: block; height: 9px; background: var(--bleu); }
 /* Le non ventilé est de l'argent réel mais sans politique : même barre, hachurée,
@@ -20438,7 +20439,14 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   /* Les lignes sans comparaison (reversé, non ventilé) : la barre passe dessous
      et l'explication, que la colonne étroite écrasait, reprend toute la largeur. */
   .theme-fusion .fx-pv-fonc-row > .bar { grid-column: 1 / -1; grid-row: 2; }
-  .theme-fusion .fx-pv-fonc-row .dont { display: block; }
+  .theme-fusion .fx-pv-fonc-row.open .dont { display: block; }
+  /* On the phone the band and its three-line legend go: « plus qu'ailleurs (20 %) »
+     under the numbers says it in words (2026-09-16). The reversé / non ventilé rows
+     lose their near-empty hatched bar too. */
+  .theme-fusion .fx-pv-fonc-legende { display: none; }
+  .theme-fusion .fx-pv-fonc-row > .bande { display: none; }
+  .theme-fusion .fx-pv-fonc-row > .bar { display: none; }
+  .theme-fusion .fx-pv-fonc-row > .ecart { padding-top: 2px; }
 }
 
 /* ── Mobile, suite de l'audit (2026-09-13) ─────────────────────────────── */
@@ -21191,6 +21199,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-pv-switch-sep { width: 1px; height: 18px; background: var(--rule); align-self: center; }
 .theme-fusion .fx-bud-cols--one { grid-template-columns: minmax(0, 720px); }
 .theme-fusion .fx-pv-autres { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-pv-autres > .fx-v3-h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 /* Une rangée = un libellé, le chiffre et sa ligne, une ou deux lignes de plus,
    puis un lien qui dit ce qu'il ouvre. Tout se lit sans cliquer ; seul le
    tableau est derrière le lien (2026-09-16). */

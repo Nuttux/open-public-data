@@ -3713,6 +3713,7 @@ const fr: Record<string, string> = {
   'fx.pv.row.construit': 'Ce qu’elle construit',
   'fx.pv.fold.construit': 'Voir le financement et les dépenses',
   'fx.pv.fold.dette': 'Voir l’évolution depuis {y}',
+  'fx.pv.fold.achats_all': 'Voir les {n} marchés',
   'fx.pv.fold.achats': 'Voir les {n} plus gros marchés',
   'fx.pv.row.achats': 'Ce qu’elle achète',
   'fx.pv.strate_hab': '{n} € dans les communes de sa taille',

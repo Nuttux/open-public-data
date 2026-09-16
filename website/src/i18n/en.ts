@@ -3716,6 +3716,7 @@ const en: Record<string, string> = {
   'fx.pv.row.construit': 'What it builds',
   'fx.pv.fold.construit': 'See the funding and the spending',
   'fx.pv.fold.dette': 'See the trend since {y}',
+  'fx.pv.fold.achats_all': 'See the {n} contracts',
   'fx.pv.fold.achats': 'See the {n} largest contracts',
   'fx.pv.row.achats': 'What it buys',
   'fx.pv.strate_hab': '€{n} in towns of its size',
