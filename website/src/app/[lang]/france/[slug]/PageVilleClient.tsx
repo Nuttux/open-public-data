@@ -491,10 +491,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const toc = [
     { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
     ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer"), value: other ? fill("fx.pv.chip_vs", { nom: nomDistinct(other) }) : undefined }] : []),
-    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)} %` }] : []),
-    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette"), value: `${int.format(Math.round(evoLast.dette_hab ?? 0))} €/hab` }] : []),
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit"), value: euro(invYear.total.depenses) }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats"), value: euro(ly ? ly.montant : marches.total.montant) }] : []),
+    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)} %` }] : []),
+    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette"), value: `${int.format(Math.round(evoLast.dette_hab ?? 0))} €/hab` }] : []),
   ];
 
   return (
@@ -848,149 +848,153 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             </>)}</Reveal>
           )}
 
-          {/* ── The other numbers, as rows that open (2026-09-16): a label, the number, one
-              line to place it, a chevron. What each held before lives inside. */}
+          {/* ── The other numbers (2026-09-16): four rows, the concrete first — works,
+              purchases, then taxes, debt. Each row shows its number and its two lines
+              without a click; what needs a table sits behind a link that says what it opens. */}
           <section className="fx-pv-section fx-pv-autres">
-            <H2 id="autres" sub={t("fx.pv.autres_sub")}>{t("fx.pv.h.autres")}</H2>
-            {taxeFonciere && taxeFonciere.tfb != null && (
-              <details className="fx-pv-fold" id="taxe-fonciere" open={openFolds.has("taxe-fonciere")} onToggle={(e) => toggleFold("taxe-fonciere", (e.currentTarget as HTMLDetailsElement).open)}>
-                <summary>
-                  <span className="l">{t("fx.pv.row.taxe")}</span>
-                  <span className="v tnum">{tfRate(taxeFonciere.tfb ?? 0)}<small>%</small></span>
-                  <span className="s">{taxeFonciere.mediane != null ? fill("fx.pv.row.taxe_sub", { med: tfRate(taxeFonciere.mediane), year: taxeFonciere.annee }) : fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}</span>
-                  <span className="chev" aria-hidden="true" />
-                </summary>
-                <div className="fx-pv-fold-body">
-              <p className="fx-pv-l1">
-                {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}
-                {tfChanged
-                  ? ` · ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up_short" : "fx.pv.tf.down_short", { y: tfHist[0].year })}`
-                  : tfHist.length > 1 ? ` · ${fill("fx.pv.tf.stable_short", { y: tfHist[0].year })}` : ""}
-              </p>
-              {taxeFonciere.mediane != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.l2", { med: tfRate(taxeFonciere.mediane) })}</p> : null}
-              {tfProduit != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}</p> : null}
+            <H2 id="autres">{t("fx.pv.h.autres")}</H2>
+            {invYear && invYear.total.depenses > 0 && (
+              <div className="fx-pv-row2" id="construit">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.construit")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{split(invYear.total.depenses).v}<small>{split(invYear.total.depenses).u}</small></b>
+                  <span>{fill("fx.pv.construit_l1", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</span>
+                </p>
+                {(equipement || (invDelta != null && invPrev)) ? (
+                  <p className="fx-pv-l2">
+                    {equipement ? fill("fx.pv.construit_equip", { n: euro(equipement) }) : ""}
+                    {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
+                  </p>
+                ) : null}
+                {/* Les pages /investissements et /evolution ont été supprimées en
+                    septembre 2026 — elles redirigent vers l'ancre de cette rangée. Le
+                    contenu revient donc ICI, en deux colonnes sobres, derrière un lien. */}
+                <details className="fx-pv-fold" data-fold="construit" open={openFolds.has("construit")} onToggle={(e) => toggleFold("construit", (e.currentTarget as HTMLDetailsElement).open)}>
+                  <summary><span>{t("fx.pv.fold.construit")}</span><span className="chev" aria-hidden="true" /></summary>
+                  <div className="fx-pv-fold-body">
+                    <div className="fx-pv-two">
+                      <div>
+                        <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
+                        {invYear.financement_par_groupe.map((g) => (
+                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                        ))}
+                      </div>
+                      <div>
+                        <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
+                        {invYear.depenses_par_groupe.map((g) => (
+                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
+                  </div>
+                </details>
+              </div>
+            )}
+            {marches && (() => {
+              const foot = (
+                <>
+                  {marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
+                  <p className="fx-v3-foot">
+                    {marches.coverage_note}
+                    {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
+                    {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
+                  </p>
+                </>
+              );
+              const f0 = mTitu[0];
+              const nom0 = f0 ? (f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom)) : null;
+              const objet0 = f0 && "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
+              const href0 = f0 && !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
+              const nTop = Math.min(5, marches.top_marches.length);
+              return (
+                <div className="fx-pv-row2" id="achats">
+                  <h3 className="fx-pv-row2-l">{t("fx.pv.row.achats")}</h3>
+                  <p className="fx-pv-row2-num">
+                    <b className="tnum">{split(ly ? ly.montant : marches.total.montant).v}<small>{split(ly ? ly.montant : marches.total.montant).u}</small></b>
+                    <span>
+                      {ly
+                        ? fill(ly.nb_marches === 1 ? "fx.pv.achats_l1_one" : "fx.pv.achats_l1", { year: ly.year as number, nb: int.format(ly.nb_marches) })
+                        : mYears.length === 1
+                          ? fill(marches.total.nb_marches === 1 ? "fx.pv.achats_l1_one" : "fx.pv.achats_l1", { year: mYears[0], nb: int.format(marches.total.nb_marches) })
+                          : fill("fx.pv.achats_l1_cumul", { nb: int.format(marches.total.nb_marches), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
+                    </span>
+                  </p>
+                  {f0 ? (
+                    <p className="fx-pv-l2">
+                      {t("fx.pv.achats_l2")}
+                      {href0 ? <Link href={href0} className="fx-pv-nm">{nom0}</Link> : nom0}
+                      {`, ${euro(f0.montant)}`}
+                      {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
+                    </p>
+                  ) : null}
+                  {marches.top_marches.length > 1 ? (
+                    <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
+                      <summary><span>{fill("fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
+                      <div className="fx-pv-fold-body">
+                        <div className="fx-pv-top5">
+                          {marches.top_marches.slice(0, 5).map((m, i) => (
+                            <div key={i} className="fx-pv-line">
+                              <span>
+                                {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
+                                <span className="fx-pv-sub2">
+                                  {m.siren && m.titulaire ? <Link href={`/france/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
+                                  {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
+                                </span>
+                              </span>
+                              <Amt n={m.montant} />
+                            </div>
+                          ))}
+                        </div>
+                        {foot}
+                      </div>
+                    </details>
+                  ) : foot}
                 </div>
-              </details>
+              );
+            })()}
+            {taxeFonciere && taxeFonciere.tfb != null && (
+              <div className="fx-pv-row2" id="taxe-fonciere">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.taxe")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{tfRate(taxeFonciere.tfb ?? 0)}<small>%</small></b>
+                  <span>
+                    {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}
+                    {tfChanged
+                      ? ` · ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up_short" : "fx.pv.tf.down_short", { y: tfHist[0].year })}`
+                      : tfHist.length > 1 ? ` · ${fill("fx.pv.tf.stable_short", { y: tfHist[0].year })}` : ""}
+                  </span>
+                </p>
+                {taxeFonciere.mediane != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.l2", { med: tfRate(taxeFonciere.mediane) })}</p> : null}
+                {tfProduit != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}</p> : null}
+              </div>
             )}
             {evoLast && evoLast.dette != null && (
-              <details className="fx-pv-fold" id="dette" open={openFolds.has("dette")} onToggle={(e) => toggleFold("dette", (e.currentTarget as HTMLDetailsElement).open)}>
-                <summary>
-                  <span className="l">{t("fx.pv.row.dette")}</span>
-                  <span className="v tnum">{int.format(Math.round(evoLast.dette_hab ?? 0))}<small>€/hab</small></span>
-                  <span className="s">{detteMedian != null ? fill("fx.pv.row.dette_sub", { year: evoLast.year, med: int.format(Math.round(detteMedian)) }) : fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette ?? 0) })}</span>
-                  <span className="chev" aria-hidden="true" />
-                </summary>
-                <div className="fx-pv-fold-body">
-              <p className="fx-pv-l1">{fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette ?? 0) })}</p>
-              {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
-                <p className="fx-pv-l2">
-                  {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
-                  {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${deltaWords(detteDelta, evoFirst.year) ?? `${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}`}` : ""}
+              <div className="fx-pv-row2" id="dette">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.dette")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{int.format(Math.round(evoLast.dette_hab ?? 0))}<small>€</small></b>
+                  <span>{fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette ?? 0) })}</span>
                 </p>
-              ) : null}
-              {capacite != null && capacite > 0 ? <p className="fx-pv-l2">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
-              {evolution && evolution.series.length > 1 ? (
-                <div className="fx-v3-trend fx-pv-trend-fold">
-                  <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
-                </div>
-              ) : null}
-              <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
-                </div>
-              </details>
-            )}
-            {invYear && invYear.total.depenses > 0 && (
-              <details className="fx-pv-fold" id="construit" open={openFolds.has("construit")} onToggle={(e) => toggleFold("construit", (e.currentTarget as HTMLDetailsElement).open)}>
-                <summary>
-                  <span className="l">{t("fx.pv.row.construit")}</span>
-                  <span className="v tnum">{split(invYear.total.depenses).v}<small>{split(invYear.total.depenses).u}</small></span>
-                  <span className="s">{fill("fx.pv.row.construit_sub", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</span>
-                  <span className="chev" aria-hidden="true" />
-                </summary>
-                <div className="fx-pv-fold-body">
-              <p className="fx-pv-l1">{fill("fx.pv.construit_l1", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</p>
-              {(equipement || (invDelta != null && invPrev)) ? (
-                <p className="fx-pv-l2">
-                  {equipement ? fill("fx.pv.construit_equip", { n: euro(equipement) }) : ""}
-                  {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
-                </p>
-              ) : null}
-              {/* Les pages /investissements et /evolution ont été supprimées en
-                  septembre 2026 — elles redirigent vers l'ancre de cette section.
-                  Y envoyer un lien renvoyait le lecteur là où il était déjà. Le
-                  contenu revient donc ICI, en deux colonnes sobres. */}
-              <div className="fx-pv-two">
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
-                  {invYear.financement_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
-                  ))}
-                </div>
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
-                  {invYear.depenses_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
-                  ))}
-                </div>
-              </div>
-              <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
-                </div>
-              </details>
-            )}
-            {marches && (
-              <details className="fx-pv-fold" id="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
-                <summary>
-                  <span className="l">{t("fx.pv.row.achats")}</span>
-                  <span className="v tnum">{split(ly ? ly.montant : marches.total.montant).v}<small>{split(ly ? ly.montant : marches.total.montant).u}</small></span>
-                  <span className="s">{ly ? fill("fx.pv.row.achats_sub", { nb: int.format(ly.nb_marches), year: ly.year as number }) : fill("fx.pv.row.achats_sub_cumul", { nb: int.format(marches.total.nb_marches) })}</span>
-                  <span className="chev" aria-hidden="true" />
-                </summary>
-                <div className="fx-pv-fold-body">
-              <p className="fx-pv-l1">
-                {ly
-                  ? fill("fx.pv.achats_l1", { year: ly.year as number, nb: int.format(ly.nb_marches) })
-                  : mYears.length === 1
-                    ? fill("fx.pv.achats_l1", { year: mYears[0], nb: int.format(marches.total.nb_marches) })
-                    : fill("fx.pv.achats_l1_cumul", { nb: int.format(marches.total.nb_marches), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
-              </p>
-              {mTitu[0] ? (() => {
-                const f0 = mTitu[0];
-                const nom0 = f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom);
-                const objet0 = "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
-                const href0 = !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
-                return (
+                {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
                   <p className="fx-pv-l2">
-                    {t("fx.pv.achats_l2")}
-                    {href0 ? <Link href={href0} className="fx-pv-nm">{nom0}</Link> : nom0}
-                    {`, ${euro(f0.montant)}`}
-                    {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
+                    {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
+                    {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${deltaWords(detteDelta, evoFirst.year) ?? `${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}`}` : ""}
                   </p>
-                );
-              })() : null}
-              {marches.top_marches.length > 1 && (
-                <div className="fx-pv-top5">
-                  <div className="fx-pv-colhead"><span>{fill("fx.pv.plus_gros", { n: Math.min(5, marches.top_marches.length) })}</span><span /></div>
-                  {marches.top_marches.slice(0, 5).map((m, i) => (
-                    <div key={i} className="fx-pv-line">
-                      <span>
-                        {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
-                        <span className="fx-pv-sub2">
-                          {m.siren && m.titulaire ? <Link href={`/france/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
-                          {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
-                        </span>
-                      </span>
-                      <Amt n={m.montant} />
+                ) : null}
+                {capacite != null && capacite > 0 ? <p className="fx-pv-l2">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
+                {evolution && evolution.series.length > 1 && evoFirst ? (
+                  <details className="fx-pv-fold" data-fold="dette" open={openFolds.has("dette")} onToggle={(e) => toggleFold("dette", (e.currentTarget as HTMLDetailsElement).open)}>
+                    <summary><span>{fill("fx.pv.fold.dette", { y: evoFirst.year })}</span><span className="chev" aria-hidden="true" /></summary>
+                    <div className="fx-pv-fold-body">
+                      <div className="fx-v3-trend fx-pv-trend-fold">
+                        <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
+                      </div>
+                      <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
                     </div>
-                  ))}
-                </div>
-              )}
-              {marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
-              <p className="fx-v3-foot">
-                {marches.coverage_note}
-                {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
-                {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
-              </p>
-                </div>
-              </details>
+                  </details>
+                ) : <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>}
+              </div>
             )}
           </section>
           <ChartSource
