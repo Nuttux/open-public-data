@@ -105,14 +105,17 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   return (
     <>
       <header className="fx-nav">
-        <Link
-          href={commune ? `/france/${commune.slug}` : "/"}
-          className="fx-brand"
-          onClick={() => trackNav(commune ? `/france/${commune.slug}` : "/", "fx.nav.brand", "brand")}
-        >
-          <BrandMark />
-          <span>{t("fx.nav.brand")}</span>
-        </Link>
+        {/* The mark always leads home: on a commune page it used to link to the
+            commune itself, and nobody left the page (2026-09-16). On the phone the
+            switcher at the right is hidden, so the commune's name sits next to the
+            mark and stays the link to its own page while the reader scrolls. */}
+        <div className="fx-brand">
+          <Link href="/" className="fx-brand-home" onClick={() => trackNav("/", "fx.nav.brand", "brand")}>
+            <BrandMark />
+            <span>{t("fx.nav.brand")}</span>
+          </Link>
+          {commune ? <Link href={`/france/${commune.slug}`} className="fx-brand-city" onClick={() => trackNav(`/france/${commune.slug}`, "fx.nav.brand_city", "brand")}>{commune.nom}</Link> : null}
+        </div>
         {/* La page ville n'a pas de liens de section en haut (la barre de puces
             les porte) : on garde la cellule de la grille, mais pas un repère de
             navigation annoncé et vide. */}

@@ -4,13 +4,14 @@ import Link from "@/components/LocalizedLink";
 import { useRouter } from "@/lib/navigation";
 import { useEffect, useMemo, useRef, useState, useTransition, type ReactNode } from "react";
 import { useCountUp } from "@/lib/use-count-up";
+import { useTrack } from "@/lib/analyticsContext";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { useT, useLocale } from "@/lib/localeContext";
-import { aNom, deNom, nomDistinct } from "@/lib/nom-commune";
+import { deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { makeFmt } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
@@ -22,21 +23,9 @@ import CommunePicker from "@/components/fusion/CommunePicker";
 import type { PeerComparison } from "@/lib/commune-peers";
 import type { ChantiersData } from "@/lib/commune-chantiers";
 import { displayNomElu, maireDepuisLabel, maireSourceLabel, type Maire, type MaireHistory } from "@/lib/commune-maires";
-import { NATURE_GROUPS } from "@/lib/budget-natures";
 
 /* Les chapitres de dépense d'une commune, rangés dans les familles de natures
    du site pour en prendre la couleur. Un chapitre inconnu tombe en gris. */
-const COULEUR_NATURE: Record<string, string> = Object.fromEntries(NATURE_GROUPS.map((g) => [g.key, g.color]));
-function couleurChapitre(label: string): string {
-  const l = label.toLowerCase();
-  if (l.includes("personnel")) return COULEUR_NATURE.salaires;
-  if (l.includes("équipement") || l.includes("equipement") || l.includes("immobilis")) return COULEUR_NATURE.chantiers;
-  if (l.includes("gestion courante") || l.includes("subvention")) return COULEUR_NATURE.subventions;
-  if (l.includes("achats") || l.includes("charges externes")) return COULEUR_NATURE.achats;
-  if (l.includes("emprunt") || l.includes("dette") || l.includes("financi")) return COULEUR_NATURE.dette;
-  if (l.includes("impôt") || l.includes("impot") || l.includes("taxe") || l.includes("reversement") || l.includes("atténuation")) return COULEUR_NATURE.reverses;
-  return COULEUR_NATURE.autres;
-}
 
 /**
  * La page ville (bloc 2 de l'architecture multi-villes, 2026-09-09) — l'entrée
@@ -186,14 +175,6 @@ function CountUp({ value, fmt, revealed = true, duration = 600 }: { value: numbe
 }
 
 /** Le grand chiffre d'une section. Avec `n` et `fmt`, il compte. */
-function SecNum({ v, u, n, fmt, revealed }: { v: string; u: string; n?: number; fmt?: (x: number) => string; revealed?: boolean }) {
-  return (
-    <div className="fx-pv-secnum tnum">
-      {n != null && fmt ? <CountUp value={n} fmt={fmt} revealed={revealed} /> : v}
-      <span className="u">{u}</span>
-    </div>
-  );
-}
 
 /**
  * Une section qui glisse en place quand on la voit — 28 px depuis le bas,
@@ -210,7 +191,7 @@ function Reveal({ children }: { children: (revealed: boolean) => ReactNode }) {
   return <section ref={ref} className={`fx-pv-section${armed ? " fx-reveal" : ""}${revealed ? " is-revealed" : ""}`}>{children(revealed)}</section>;
 }
 
-function SectionChips({ items, label }: { items: { id: string; label: string }[]; label: string }) {
+function SectionChips({ items, label, onPick }: { items: { id: string; label: string; value?: string }[]; label: string; onPick?: (id: string) => void }) {
   const [active, setActive] = useState(items[0]?.id ?? "");
   const barRef = useRef<HTMLElement | null>(null);
 
@@ -247,8 +228,8 @@ function SectionChips({ items, label }: { items: { id: string; label: string }[]
   return (
     <nav className="fx-pv-chips" aria-label={label} ref={barRef}>
       {items.map((s) => (
-        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "location" : undefined}>
-          {s.label}
+        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "location" : undefined} onClick={() => onPick?.(s.id)}>
+          {s.label}{s.value ? <b className="tnum">{s.value}</b> : null}
         </a>
       ))}
     </nav>
@@ -283,10 +264,11 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   );
 }
 
-export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, fonctions, fonctionsSource, natureFiches, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, fonctions, natureFiches, marchesHref, peers, compare, sources, related }: PageVilleProps) {
   const { locale: pageLocale } = useLocale();
   const isEn = pageLocale === "en";
   const t = useT();
+  const track = useTrack();
   const { euro, split, int, signedPct, locale } = useFmt();
   const en = locale === "en";
   const fill = (key: string, vars: Record<string, string | number>) => {
@@ -342,6 +324,17 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const evoYear = evolution?.series.find((p) => p.year === year) ?? null;
   const strip = (l: string) => l.replace(/\s\((D|R)\)$/, "");
   const [openRow, setOpenRow] = useState<string | null>(null);
+  // One scene, two ways to cut it (2026-09-16): by public policy when the
+  // commune has that axis, by nature of spending otherwise — and, by nature,
+  // one column at a time. The four other numbers are rows that open.
+  const hasFonctions = !!fonctions && fonctions.fonctions.length >= 3;
+  const [scene, setScene] = useState<"fonction" | "nature">(hasFonctions ? "fonction" : "nature");
+  const [side, setSide] = useState<"expenses" | "revenue">("expenses");
+  const [openFolds, setOpenFolds] = useState<Set<string>>(() => new Set());
+  const toggleFold = (id: string, open: boolean) => setOpenFolds((prev) => { const n = new Set(prev); if (open) n.add(id); else n.delete(id); return n; });
+  // On the phone the two columns showed fourteen lines before the first section: four each, the rest on demand.
+  const [ledgerOpen, setLedgerOpen] = useState(false);
+  const LEDGER_CAP = 4;
   // Les deux compartiments sans fiche — reversé, non ventilé — se déplient sur
   // place. Les politiques, elles, mènent à leur fiche : une seule règle sur la
   // page, un clic ouvre la fiche quand elle existe, sinon déplie.
@@ -377,7 +370,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
       </span>
     );
   };
-  const Row = ({ side, label, value, total }: { side: "expenses" | "revenue"; label: string; value: number; total: number }) => {
+  const Row = ({ side, label, value, total, tail = false }: { side: "expenses" | "revenue"; label: string; value: number; total: number; tail?: boolean }) => {
     const items = comptesFor(side, label);
     const key = `${side}:${label}`;
     const open = openRow === key;
@@ -385,11 +378,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     const canOpen = items.length > 0;
     const id = `nat-${side}-${strip(label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
     const fiche = side === "expenses" ? natureFiches[strip(label)] : undefined;
-    const swatch = side === "expenses" ? <i className="sw" style={{ background: couleurChapitre(label) }} aria-hidden="true" /> : null;
+    const swatch = null;
     // La même règle que partout : la fiche quand elle existe, sinon le dépliement.
     if (fiche) {
       return (
-        <Link href={`/france/${commune.slug}/nature/${fiche}`} id={id} className="fx-bud-row fx-pv-row fx-pv-row--fiche" scroll={false} prefetch={false}>
+        <Link href={`/france/${commune.slug}/nature/${fiche}`} id={id} className={`fx-bud-row fx-pv-row fx-pv-row--fiche${tail ? " fx-pv-row--tail" : ""}`} scroll={false} prefetch={false}>
           {/* Même chevron que les lignes qui déplient : les deux gestes mènent au
               détail, le lecteur n'a pas à savoir lequel ouvre une page. */}
           <span className="n">{swatch}{strip(label)}<span className="chev" aria-hidden="true">▸</span>{sub ? <span className="dont">{sub}</span> : null}</span>
@@ -404,7 +397,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
         <button
           type="button"
           id={id}
-          className={`fx-bud-row fx-pv-row${canOpen ? "" : " fx-bud-row--static"}${open ? " open" : ""}`}
+          className={`fx-bud-row fx-pv-row${canOpen ? "" : " fx-bud-row--static"}${open ? " open" : ""}${tail ? " fx-pv-row--tail" : ""}`}
           onClick={() => canOpen && setOpenRow(open ? null : key)}
           aria-expanded={canOpen ? open : undefined}
           disabled={!canOpen}
@@ -434,9 +427,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   };
   const dep = data.topDepenses.filter((x) => x.value / data.depenses >= 0.005);
   const rec = data.recettesBreakdown.filter((x) => x.value / data.recettes >= 0.005);
-  const hasSeries = Object.values(data.series).some((s) => s.length > 1);
-  const spanYears = years.filter((y) => y.year <= year).map((y) => y.year);
-  const span = spanYears.length > 1 ? `${spanYears[0]}–${spanYears[spanYears.length - 1]}` : String(year);
 
   /* ── 3. Ce que la commune construit ── */
   const invYear = invest && invest.year === year ? invest : invest;
@@ -449,6 +439,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const evoFirst = evolution?.series[0] ?? null;
   const detteDelta = evoLast?.dette_hab != null && evoFirst?.dette_hab && evoFirst.year !== evoLast.year ? ((evoLast.dette_hab - evoFirst.dette_hab) / evoFirst.dette_hab) * 100 : null;
   const detteMedian = peers?.rows.find((r) => r.key === "encours_dette")?.median ?? null;
+  const depHabMedian = peers?.rows.find((r) => r.key === "depenses_totales")?.median ?? null;
   const capacite = evoLast?.capacite_desendettement ?? null;
   const capaciteWords = (n: number) => {
     const r = Math.round(n * 2) / 2;
@@ -457,7 +448,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   };
 
   /* ── 5. Ce que la commune achète ── */
-  const ly = marches?.last_year && marches.last_year.year ? marches.last_year : null;
+  // The last year speaks for the commune only when it holds a few contracts: Clermont's
+  // DECP stops in 2023 with one contract, and « 1,2 M€ · un seul marché » read as an
+  // error. Under five, the row says the whole published span instead (2026-09-16).
+  const ly = marches?.last_year && marches.last_year.year && marches.last_year.nb_marches >= 5 ? marches.last_year : null;
   const mTitu = (ly?.top_titulaires ?? marches?.top_titulaires ?? []).slice(0, 5);
   const mYears = (marches?.by_year ?? []).map((y) => y.year);
   const ecartees = marches?.total.annees_ecartees ?? [];
@@ -496,14 +490,14 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     </>
   );
 
+  // The chips are the page's doors: each carries the number it opens; a chip on a row opens the row (2026-09-16).
   const toc = [
-    ...(fonctions && fonctions.fonctions.length >= 3 ? [{ id: "a-quoi-sert", label: t("fx.pv.toc.fonc") }] : []),
-    { id: "depenses", label: t("fx.pv.toc.depenses") },
-    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe") }] : []),
-    ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
-    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette") }] : []),
-    ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats") }] : []),
-    ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer") }] : []),
+    { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
+    ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer"), value: other ? fill("fx.pv.chip_vs", { nom: nomDistinct(other) }) : undefined }] : []),
+    ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit"), value: euro(invYear.total.depenses) }] : []),
+    ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats"), value: euro(ly ? ly.montant : marches.total.montant) }] : []),
+    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)} %` }] : []),
+    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette"), value: `${int.format(Math.round(evoLast.dette_hab ?? 0))} €/hab` }] : []),
   ];
 
   return (
@@ -561,7 +555,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </div>
               )}
               <div className="fx-v3-hero-meta">
-                {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: int.format(perHab) })} · ` : ""}
+                {/* « Est-ce beaucoup ? » answered in the first line, in numbers: the same figure for towns of its size (2026-09-16). */}
+                {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: int.format(perHab) })}${depHabMedian != null ? ` · ${fill("fx.pv.strate_hab", { n: int.format(Math.round(depHabMedian)) })}` : ""} · ` : ""}
                 {fill("fx.bud.v3.recettes_exec", { rec: euro(data.recettes) })}
                 {` · ${t("fx.natbud.solde").toLowerCase()} ${euro(data.solde, true)}`}
               </div>
@@ -583,15 +578,33 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             )}
           </div>
 
-          <SectionChips items={toc} label={t("fx.pv.chips_aria")} />
+          <SectionChips items={toc} label={t("fx.pv.chips_aria")} onPick={(id) => { if (["taxe-fonciere", "dette", "construit", "achats"].includes(id)) toggleFold(id, true); }} />
 
+          {/* ── The scene: « À quoi sert l'argent ? », cut by public policy or by nature. The
+              invitation is the whole sub-line: a reader skims, a long sentence hides it. */}
+          <H2 id="a-quoi-sert" sub={scene === "fonction" ? t("fx.pv.fonc.h2sub") : t("fx.pv.nature_sub")}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
+          <div className="fx-sec-switch fx-pv-switch" role="group" aria-label={t("fx.pv.g.aria")}>
+            {hasFonctions ? (
+              <>
+                <button type="button" aria-pressed={scene === "fonction"} onClick={() => { if (scene !== "fonction") { track("filter_change", { page: "commune", field: "scene_group", value: "fonction" }); setScene("fonction"); } }}>{t("fx.pv.g.fonction")}</button>
+                <button type="button" aria-pressed={scene === "nature"} onClick={() => { if (scene !== "nature") { track("filter_change", { page: "commune", field: "scene_group", value: "nature" }); setScene("nature"); } }}>{t("fx.pv.g.nature")}</button>
+                <span className="fx-pv-switch-sep" aria-hidden="true" />
+              </>
+            ) : null}
+            {scene === "nature" ? (
+              <>
+                <button type="button" aria-pressed={side === "expenses"} onClick={() => { if (side !== "expenses") { track("filter_change", { page: "commune", field: "ledger_side", value: "expenses" }); setSide("expenses"); } }}>{t("fx.pv.g.depenses")}</button>
+                <button type="button" aria-pressed={side === "revenue"} onClick={() => { if (side !== "revenue") { track("filter_change", { page: "commune", field: "ledger_side", value: "revenue" }); setSide("revenue"); } }}>{t("fx.pv.g.recettes")}</button>
+              </>
+            ) : null}
+          </div>
           {/* 2a. À quoi sert l'argent — ventilation par fonction (DGFiP).
               Liste ouverte, même grammaire que « par nature » juste au-dessus :
               un libellé, une barre, un montant, une part. Les parts se calculent
               sur le ventilé, pas sur le total : la rubrique 01 (dette, fiscalité,
               opérations générales) n'appartient à aucune politique et fait sa
               propre ligne, en bas, sans pourcentage. */}
-          {fonctions && fonctions.fonctions.length >= 3 && (() => {
+          {scene === "fonction" && fonctions && fonctions.fonctions.length >= 3 && (() => {
             const parts = fonctions.fonctions;
             const nvd = fonctions.non_ventile_detail;
             const revd = fonctions.reversement_detail;
@@ -617,7 +630,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
             return (
               <section className="fx-pv-fonc">
-                <H2 id="a-quoi-sert" sub={fill("fx.pv.fonc.h2sub", { year: fonctionsSource.annee })}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
                 {cg && cg.ecart_pct != null && fonctions.strate ? (
                   /* Le NIVEAU se dit une fois. Sans cette phrase, le lecteur
                      attribuerait aux choix de la commune ce qui n'est que son
@@ -742,186 +754,35 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           })()}
 
           {/* 2. Dépenses et recettes */}
-          <H2 id="depenses" sub={`${t("fx.pv.nature_sub")}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
-          {dep.length > 1 ? (
-            <div className="fx-bud-forme fx-pv-forme">
-              {/* Raccourci à la souris : chaque segment mène à la ligne jumelle juste dessous
-                  (même fiche ou même dépliement), qui est la cible au doigt et au clavier. Un
-                  segment de 3 % ne peut pas mesurer 24 px sans fausser la proportion : le ruban
-                  sort de la tabulation et des lecteurs d'écran. */}
-              <div className="stack" aria-hidden="true">
-                {dep.map((x) => {
-                  const pct = Math.round((x.value / data.depenses) * 100);
-                  const id = `nat-expenses-${strip(x.label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
-                  const key = `expenses:${x.label}`;
-                  const fiche = natureFiches[strip(x.label)];
-                  const style = { width: `${(x.value / data.depenses) * 100}%`, background: couleurChapitre(x.label) };
-                  return fiche ? (
-                    <Link key={x.label} href={`/france/${commune.slug}/nature/${fiche}`} scroll={false} tabIndex={-1} style={style} title={`${strip(x.label)} · ${pct} %`} />
-                  ) : (
-                    <button
-                      key={x.label}
-                      type="button"
-                      tabIndex={-1}
-                      style={style}
-                      title={`${strip(x.label)} · ${pct} %`}
-                      onClick={() => {
-                        setOpenRow(openRow === key ? null : key);
-                        document.getElementById(id)?.scrollIntoView({ block: "center", behavior: "smooth" });
-                      }}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          ) : null}
-          <div className="fx-bud-cols">
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
-              {dep.map((x) => <Row key={x.label} side="expenses" label={x.label} value={x.value} total={data.depenses} />)}
-            </div>
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{euro(data.recettes)}</span></h3>
-              {rec.map((x) => <Row key={x.label} side="revenue" label={x.label} value={x.value} total={data.recettes} />)}
-            </div>
-          </div>
-          {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
-              de s'étaler sur une colonne vide à droite. */}
-          <div className="fx-pv-grid">
-          {/* Chaque section est une preview — le chiffre, deux lignes — et un
-              lien vers sa page. Plus de repli : personne ne le cliquait, et le
-              contenu qu'il cachait a déjà sa propre adresse. */}
-
-          {/* 2b. Taxe foncière — pas de page dédiée : le produit encaissé reste en ligne. */}
-          {taxeFonciere && taxeFonciere.tfb != null && (
-            <Reveal>{(revealed) => (<>
-              <H2 id="taxe-fonciere">{fill("fx.pv.tf.h2", { nom: commune.nom, anom: aNom(commune.nom) })}</H2>
-              <SecNum v={tfRate(taxeFonciere.tfb ?? 0)} u="%" n={taxeFonciere.tfb ?? 0} fmt={tfRate} revealed={revealed} />
-              <p className="fx-pv-l1">
-                {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}
-                {tfChanged
-                  ? ` · ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up_short" : "fx.pv.tf.down_short", { y: tfHist[0].year })}`
-                  : tfHist.length > 1 ? ` · ${fill("fx.pv.tf.stable_short", { y: tfHist[0].year })}` : ""}
-              </p>
-              {taxeFonciere.mediane != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.l2", { med: tfRate(taxeFonciere.mediane) })}</p> : null}
-              {tfProduit != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}</p> : null}
-            </>)}</Reveal>
-          )}
-
-          {/* 3. Ce que la commune construit → la page investissements */}
-          {invYear && invYear.total.depenses > 0 && (
-            <Reveal>{(revealed) => (<>
-              <H2 id="construit">{t("fx.pv.construit")}</H2>
-              <SecNum {...split(invYear.total.depenses)} n={invYear.total.depenses} fmt={(x) => split(x).v} revealed={revealed} />
-              <p className="fx-pv-l1">{fill("fx.pv.construit_l1", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</p>
-              {(equipement || (invDelta != null && invPrev)) ? (
-                <p className="fx-pv-l2">
-                  {equipement ? fill("fx.pv.construit_equip", { n: euro(equipement) }) : ""}
-                  {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
-                </p>
-              ) : null}
-              {/* Les pages /investissements et /evolution ont été supprimées en
-                  septembre 2026 — elles redirigent vers l'ancre de cette section.
-                  Y envoyer un lien renvoyait le lecteur là où il était déjà. Le
-                  contenu revient donc ICI, en deux colonnes sobres. */}
-              <div className="fx-pv-two">
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
-                  {invYear.financement_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
-                  ))}
+          {scene === "nature" ? (
+            <div className="fx-bud-cols fx-bud-cols--one">
+              {side === "expenses" ? (
+                <div className="fx-bud-col" data-folded={ledgerOpen ? undefined : "1"}>
+                  <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
+                  {dep.map((x, i) => <Row key={x.label} side="expenses" label={x.label} value={x.value} total={data.depenses} tail={i >= LEDGER_CAP} />)}
+                  {dep.length > LEDGER_CAP + 1 ? (
+                    <button type="button" className="fx-pv-ledger-more" onClick={() => setLedgerOpen((o) => !o)} aria-expanded={ledgerOpen}>
+                      {ledgerOpen ? t("fx.pv.ledger_less") : fill("fx.pv.ledger_more", { n: dep.length - LEDGER_CAP })}
+                    </button>
+                  ) : null}
                 </div>
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
-                  {invYear.depenses_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
-                  ))}
-                </div>
-              </div>
-              <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
-            </>)}</Reveal>
-          )}
-
-          {/* 4. La dette → la page évolution */}
-          {evoLast && evoLast.dette != null && (
-            <Reveal>{(revealed) => (<>
-              <H2 id="dette">{t("fx.pv.dette")}</H2>
-              <SecNum v={int.format(evoLast.dette_hab ?? 0)} u="€" n={evoLast.dette_hab ?? 0} fmt={(x) => int.format(Math.round(x))} revealed={revealed} />
-              <p className="fx-pv-l1">{fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette ?? 0) })}</p>
-              {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
-                <p className="fx-pv-l2">
-                  {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
-                  {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${deltaWords(detteDelta, evoFirst.year) ?? `${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}`}` : ""}
-                </p>
-              ) : null}
-              {capacite != null && capacite > 0 ? <p className="fx-pv-l2">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
-              {evolution && evolution.series.length > 1 ? (
-                <div className="fx-v3-trend fx-pv-trend-fold">
-                  <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
-                </div>
-              ) : null}
-              <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
-            </>)}</Reveal>
-          )}
-
-          {/* 5. Ce que la commune achète — les cinq plus gros marchés en ligne,
-              l'explorateur quand il existe (au-delà de 50 marchés, la page
-              /marches renvoie ici en dessous). */}
-          {marches && (
-            <Reveal>{(revealed) => (<>
-              <H2 id="achats">{t("fx.pv.achats")}</H2>
-              <SecNum {...split(ly ? ly.montant : marches.total.montant)} n={ly ? ly.montant : marches.total.montant} fmt={(x) => split(x).v} revealed={revealed} />
-              <p className="fx-pv-l1">
-                {ly
-                  ? fill("fx.pv.achats_l1", { year: ly.year as number, nb: int.format(ly.nb_marches) })
-                  : mYears.length === 1
-                    ? fill("fx.pv.achats_l1", { year: mYears[0], nb: int.format(marches.total.nb_marches) })
-                    : fill("fx.pv.achats_l1_cumul", { nb: int.format(marches.total.nb_marches), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
-              </p>
-              {mTitu[0] ? (() => {
-                const f0 = mTitu[0];
-                const nom0 = f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom);
-                const objet0 = "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
-                const href0 = !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
-                return (
-                  <p className="fx-pv-l2">
-                    {t("fx.pv.achats_l2")}
-                    {href0 ? <Link href={href0} className="fx-pv-nm">{nom0}</Link> : nom0}
-                    {`, ${euro(f0.montant)}`}
-                    {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
-                  </p>
-                );
-              })() : null}
-              {marches.top_marches.length > 1 && (
-                <div className="fx-pv-top5">
-                  <div className="fx-pv-colhead"><span>{fill("fx.pv.plus_gros", { n: Math.min(5, marches.top_marches.length) })}</span><span /></div>
-                  {marches.top_marches.slice(0, 5).map((m, i) => (
-                    <div key={i} className="fx-pv-line">
-                      <span>
-                        {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
-                        <span className="fx-pv-sub2">
-                          {m.siren && m.titulaire ? <Link href={`/france/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
-                          {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
-                        </span>
-                      </span>
-                      <Amt n={m.montant} />
-                    </div>
-                  ))}
+              ) : (
+                <div className="fx-bud-col" data-folded={ledgerOpen ? undefined : "1"}>
+                  <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{euro(data.recettes)}</span></h3>
+                  {rec.map((x, i) => <Row key={x.label} side="revenue" label={x.label} value={x.value} total={data.recettes} tail={i >= LEDGER_CAP} />)}
+                  {rec.length > LEDGER_CAP + 1 ? (
+                    <button type="button" className="fx-pv-ledger-more" onClick={() => setLedgerOpen((o) => !o)} aria-expanded={ledgerOpen}>
+                      {ledgerOpen ? t("fx.pv.ledger_less") : fill("fx.pv.ledger_more", { n: rec.length - LEDGER_CAP })}
+                    </button>
+                  ) : null}
                 </div>
               )}
-              {marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
-              <p className="fx-v3-foot">
-                {marches.coverage_note}
-                {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
-                {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
-              </p>
-            </>)}</Reveal>
-          )}
-          </div>
-
-          {/* 6. Comparer — hors de la grille, en pleine largeur, visible d'emblée
-              avec une voisine choisie par défaut : c'est le mécanisme le plus
-              engageant de la page, un <select> vide ne donnait envie à personne. */}
+            </div>
+          ) : null}
+          {/* 3. Comparer — right after the ledger (2026-09-16): « est-ce beaucoup ? »
+              is the reader's third question, and the comparison is the one thing
+              on the page they can do and send. A neighbour is chosen by default;
+              the picker sits under the bars, once the reader has seen them. */}
           {compare && (
             <Reveal>{() => (<>
               <H2 id="comparer">{t("fx.pv.comparer")}</H2>
@@ -929,17 +790,16 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 <span className="fx-pv-pick-now">
                   {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
                 </span>
-                <CommunePicker
+                {!other ? <CommunePicker
                   label={t("fx.pv.changer")}
                   exclude={commune.slug}
-                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
+                  current={null}
                   suggestions={compare.options
-                    .filter((o) => o.slug !== other?.slug)
                     .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
                     .slice(0, 6)
                     .map((o) => ({ ...o, dep_name: commune.dep_name }))}
                   onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
-                />
+                /> : null}
               </div>
               {other ? (
                 <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
@@ -971,6 +831,19 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
                     </div>
                   ) : null}
+                  <div className="fx-pv-pick fx-pv-pick--after">
+                    <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
+                  suggestions={compare.options
+                    .filter((o) => o.slug !== other?.slug)
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                />
+                  </div>
                   <p className="fx-pv-more"><Link className="fx-pv-link" href={`/france/comparer/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
                   <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
                 </div>
@@ -978,6 +851,155 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             </>)}</Reveal>
           )}
 
+          {/* ── The other numbers (2026-09-16): four rows, the concrete first — works,
+              purchases, then taxes, debt. Each row shows its number and its two lines
+              without a click; what needs a table sits behind a link that says what it opens. */}
+          <section className="fx-pv-section fx-pv-autres">
+            <H2 id="autres">{t("fx.pv.h.autres")}</H2>
+            {invYear && invYear.total.depenses > 0 && (
+              <div className="fx-pv-row2" id="construit">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.construit")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{split(invYear.total.depenses).v}<small>{split(invYear.total.depenses).u}</small></b>
+                  <span>{fill("fx.pv.construit_l1", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</span>
+                </p>
+                {(equipement || (invDelta != null && invPrev)) ? (
+                  <p className="fx-pv-l2">
+                    {equipement ? fill("fx.pv.construit_equip", { n: euro(equipement) }) : ""}
+                    {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
+                  </p>
+                ) : null}
+                {/* Les pages /investissements et /evolution ont été supprimées en
+                    septembre 2026 — elles redirigent vers l'ancre de cette rangée. Le
+                    contenu revient donc ICI, en deux colonnes sobres, derrière un lien. */}
+                <details className="fx-pv-fold" data-fold="construit" open={openFolds.has("construit")} onToggle={(e) => toggleFold("construit", (e.currentTarget as HTMLDetailsElement).open)}>
+                  <summary><span>{t("fx.pv.fold.construit")}</span><span className="chev" aria-hidden="true" /></summary>
+                  <div className="fx-pv-fold-body">
+                    <div className="fx-pv-two">
+                      <div>
+                        <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
+                        {invYear.financement_par_groupe.map((g) => (
+                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                        ))}
+                      </div>
+                      <div>
+                        <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
+                        {invYear.depenses_par_groupe.map((g) => (
+                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
+                  </div>
+                </details>
+              </div>
+            )}
+            {marches && (() => {
+              // The door to every contract stays in the page; the coverage note sits with the table.
+              const more = marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null;
+              const note = (
+                <p className="fx-v3-foot">
+                  {marches.coverage_note}
+                  {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
+                  {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
+                </p>
+              );
+              const f0 = mTitu[0];
+              const nom0 = f0 ? (f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom)) : null;
+              const objet0 = f0 && "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
+              const href0 = f0 && !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
+              const nTop = Math.min(5, marches.top_marches.length);
+              return (
+                <div className="fx-pv-row2" id="achats">
+                  <h3 className="fx-pv-row2-l">{t("fx.pv.row.achats")}</h3>
+                  <p className="fx-pv-row2-num">
+                    <b className="tnum">{split(ly ? ly.montant : marches.total.montant).v}<small>{split(ly ? ly.montant : marches.total.montant).u}</small></b>
+                    <span>
+                      {ly
+                        ? fill(ly.nb_marches === 1 ? "fx.pv.achats_l1_one" : "fx.pv.achats_l1", { year: ly.year as number, nb: int.format(ly.nb_marches) })
+                        : mYears.length === 1
+                          ? fill(marches.total.nb_marches === 1 ? "fx.pv.achats_l1_one" : "fx.pv.achats_l1", { year: mYears[0], nb: int.format(marches.total.nb_marches) })
+                          : fill("fx.pv.achats_l1_cumul", { nb: int.format(marches.total.nb_marches), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
+                    </span>
+                  </p>
+                  {f0 ? (
+                    <p className="fx-pv-l2">
+                      {t("fx.pv.achats_l2")}
+                      {href0 ? <Link href={href0} className="fx-pv-nm">{nom0}</Link> : nom0}
+                      {`, ${euro(f0.montant)}`}
+                      {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
+                    </p>
+                  ) : null}
+                  {marches.top_marches.length > 1 ? (
+                    <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
+                      <summary><span>{fill(nTop >= marches.total.nb_marches ? "fx.pv.fold.achats_all" : "fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
+                      <div className="fx-pv-fold-body">
+                        <div className="fx-pv-top5">
+                          {marches.top_marches.slice(0, 5).map((m, i) => (
+                            <div key={i} className="fx-pv-line">
+                              <span>
+                                {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
+                                <span className="fx-pv-sub2">
+                                  {m.siren && m.titulaire ? <Link href={`/france/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
+                                  {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
+                                </span>
+                              </span>
+                              <Amt n={m.montant} />
+                            </div>
+                          ))}
+                        </div>
+                        {note}
+                      </div>
+                    </details>
+                  ) : note}
+                  {more}
+                </div>
+              );
+            })()}
+            {taxeFonciere && taxeFonciere.tfb != null && (
+              <div className="fx-pv-row2" id="taxe-fonciere">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.taxe")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{tfRate(taxeFonciere.tfb ?? 0)}<small>%</small></b>
+                  <span>
+                    {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}
+                    {tfChanged
+                      ? ` · ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up_short" : "fx.pv.tf.down_short", { y: tfHist[0].year })}`
+                      : tfHist.length > 1 ? ` · ${fill("fx.pv.tf.stable_short", { y: tfHist[0].year })}` : ""}
+                  </span>
+                </p>
+                {taxeFonciere.mediane != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.l2", { med: tfRate(taxeFonciere.mediane) })}</p> : null}
+                {tfProduit != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}</p> : null}
+              </div>
+            )}
+            {evoLast && evoLast.dette != null && (
+              <div className="fx-pv-row2" id="dette">
+                <h3 className="fx-pv-row2-l">{t("fx.pv.row.dette")}</h3>
+                <p className="fx-pv-row2-num">
+                  <b className="tnum">{int.format(Math.round(evoLast.dette_hab ?? 0))}<small>€</small></b>
+                  <span>{fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette ?? 0) })}</span>
+                </p>
+                {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
+                  <p className="fx-pv-l2">
+                    {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
+                    {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${deltaWords(detteDelta, evoFirst.year) ?? `${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}`}` : ""}
+                  </p>
+                ) : null}
+                {capacite != null && capacite > 0 ? <p className="fx-pv-l2">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
+                {evolution && evolution.series.length > 1 && evoFirst ? (
+                  <details className="fx-pv-fold" data-fold="dette" open={openFolds.has("dette")} onToggle={(e) => toggleFold("dette", (e.currentTarget as HTMLDetailsElement).open)}>
+                    <summary><span>{fill("fx.pv.fold.dette", { y: evoFirst.year })}</span><span className="chev" aria-hidden="true" /></summary>
+                    <div className="fx-pv-fold-body">
+                      <div className="fx-v3-trend fx-pv-trend-fold">
+                        <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
+                      </div>
+                      <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
+                    </div>
+                  </details>
+                ) : <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>}
+              </div>
+            )}
+          </section>
           <ChartSource
             source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, maire?.nom ? maireSourceLabel(sources.rne_hist, t) : null].filter(Boolean).join(" · ") + ` · ${year}`}
             dataHref={sources.dgfip}
