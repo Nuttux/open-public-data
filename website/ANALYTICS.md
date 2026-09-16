@@ -123,16 +123,16 @@ uses the row key, `Bars` folds its rest under the id it is given
 a locale.
 
 Lieux (2026-09-16, the section grammar): `hero` (the number, the year rail of
-what was really paid), `scene` (the five families as bars — a row is a hard link
-to the list filtered, `link_click` with `role = row` and the family in `href`),
-`search` (the field: `search_submit` with the hashed words and `results_count`,
-`search_seed_click`, `search_result_click` on a row while a query is typed),
-`rows` (the places where the City paid the most, thumbnail rows, the rest in
-the fold `more-lieux`), `where` (`filter_change` `field = where_view`, `value`
-= `arrondissements` | `carte`; the choropleth tiles and the bars are hard links
-to the list filtered by arrondissement), `understand`, `related`, `next`. On a
-place fiche, the line up to the section is `role = door`, « Lieu suivant » is
-`role = next`.
+what was really paid), `find` (the field: `search_submit` with the hashed
+words and `results_count`, `search_seed_click`; the family chips are hard
+links to the list filtered — `link_click` with the family in `href`; the
+arrondissement menu is `filter_change` `field = arrondissement`), `rows` (the
+places where the City paid the most, thumbnail rows, the rest in the fold
+`more-lieux`; `filter_change` `field = where_view`, `value` = `liste` |
+`carte`; `search_result_click` on a row while a query is typed), `understand`,
+`related`, `next`. No ranking by family or arrondissement: the 225 places are
+a selection. On a place fiche, the line up to the section is `role = door`,
+« Lieu suivant » is `role = next`.
 
 **Link roles.** Where the link sits: `nav`, `footer`, `crumb`, `toc`,
 `year`, `cta`, `hero_meta` (the figure's grey line), `lead` (the opening

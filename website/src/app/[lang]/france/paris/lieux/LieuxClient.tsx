@@ -7,15 +7,14 @@ import Link from "@/components/LocalizedLink";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import AnneesRail, { RAIL_MIN } from "@/components/fusion/AnneesRail";
-import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import SectionHero from "@/components/fiche/SectionHero";
 import ShareButton from "@/components/fiche/ShareButton";
-import Bars, { type BarRow } from "@/components/fiche/Bars";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Amt, V3Fold, V3Foot, V3Section } from "@/components/fiche/v3";
 import DataAlert, { DATA_ALERTS_ON } from "@/components/fusion/DataAlert";
 import { FAMILLES, buildPlaceEntries, buildPlacesConfig } from "@/components/fusion/LieuxExplorer";
 import { clearDrawerStack } from "@/components/fusion/DetailDrawer";
+import { useRouter } from "@/lib/navigation";
 import { useFmt, useFmtEur, useNumLocale } from "@/lib/use-fmt";
 import { fill, sufOrdinal } from "@/lib/fmt";
 import { useLocale, useT } from "@/lib/localeContext";
@@ -26,14 +25,11 @@ import type { LieuIndexEntry, LieuxSection } from "@/lib/lieux-data";
 
 const PlacesMap = dynamic(() => import("@/components/places/PlacesMap"), { ssr: false, loading: () => <div className="fx-sec-map-wait" aria-hidden="true" /> });
 
-/** Blue ramp of the choropleth: on a section page the bars are blue, ocre is the movement only. */
-const CHORO_BLUE = ["#e6e9f4", "#bcc3e2", "#8b96c7", "#5262a5", "#2a3680"];
 const ROWS_CAP = 8;
 const ROWS_CAP_FILTERED = 12;
-const ARR_CAP = 5;
 const SEEDS = ["Châtelet", "Parc Monceau", "Piscine Pontoise", "Halle Pajol"];
-const WHERE_VIEWS = ["arrondissements", "carte"] as const;
-type WhereView = (typeof WHERE_VIEWS)[number];
+const VIEWS = ["liste", "carte"] as const;
+type View = (typeof VIEWS)[number];
 
 export type LieuxDoors = {
   invest?: { year: number; total: number } | null;
@@ -43,12 +39,14 @@ export type LieuxDoors = {
 
 /**
  * The Lieux section on the fiche grammar (2026-09-16). The number (what the
- * City paid or signed for 225 places since 2010), the year rail of what was
- * really paid, one scene (the five families), the search band, the places
- * where the City paid the most (rows with their photo, the rest folded), where
- * in Paris (arrondissements, the map behind the switch), Comprendre, Voir
- * aussi, the next section. The explorer of before (map first, 225 cards) is
- * what the phone paid 28 screens and 18 Mo for.
+ * City paid or signed for 225 places since 2010) and the year rail of what
+ * was really paid; then the way in — a name, a family, an arrondissement;
+ * then the places where the City paid the most, with their photo, the map
+ * behind a switch; Comprendre, Voir aussi, the next section.
+ *
+ * No ranking by family or by arrondissement: the 225 places are our own
+ * selection, and a sum over a selection ranks the selection, not Paris
+ * (Daniel, 2026-09-16). Families and arrondissements are filters.
  */
 export default function LieuxClient({ lieux, section, doors, initial }: {
   lieux: LieuIndexEntry[];
@@ -65,6 +63,7 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   const nl = useNumLocale();
   const track = useTrack();
   const trackDebounced = useDebouncedTrack(700);
+  const router = useRouter();
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
   const arrTxt = (n: number) => `${n}${sufOrdinal(n, locale)}`;
   const famLabel = (key: string) => t(FAMILLES.find((f) => f.key === key)?.i18n ?? key);
@@ -81,6 +80,15 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   const q = query.trim();
   const active = q.length >= 2;
   const qNorm = normSearch(q);
+  const hrefWith = (next: { famille?: string | null; arr?: number | null }) => {
+    const f = next.famille === undefined ? famille : next.famille;
+    const a = next.arr === undefined ? arr : next.arr;
+    const sp = new URLSearchParams();
+    if (f) sp.set("famille", f);
+    if (a) sp.set("arrondissement", String(a));
+    const s = sp.toString();
+    return `${base}${s ? `?${s}` : ""}#lieux`;
+  };
 
   const byAmount = (a: LieuIndexEntry, b: LieuIndexEntry) => (b.argent_total_eur ?? 0) - (a.argent_total_eur ?? 0) || a.name.localeCompare(b.name, "fr");
   const filtered = useMemo(() => {
@@ -110,45 +118,22 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   const shareTitle = fill(t("fx.sec.lieux.share_title"), { total: eurTxt(section.total), n: fmtInt(section.count) });
   const series = section.series.map((s) => ({ year: s.year, amount: s.amount }));
 
-  // ── The scene: the five families, each a hard link to the list filtered ──
-  const famRows: BarRow[] = section.families
-    .slice()
-    .sort((a, b) => b.amount - a.amount)
-    .map((f) => ({
-      key: f.key,
-      label: famLabel(f.key),
-      value: f.amount,
-      text: eurTxt(f.amount),
-      sub: fill(t("fx.sec.lieux.fam_n"), { n: fmtInt(f.count) }),
-      href: `${base}?famille=${f.key}#lieux`,
-      tone: famille === f.key ? "ink" : undefined,
-    }));
+  // ── Families and arrondissements: filters, with how many places each holds ──
+  const famCount = (key: string) => section.families.find((f) => f.key === key)?.count ?? 0;
+  const arrs = section.arrondissements.slice().sort((a, b) => a.arr - b.arr);
 
-  // ── Where: the arrondissements (choropleth + bars), the map behind the switch ──
-  const [where, setWhere] = useState<WhereView>("arrondissements");
-  const pickWhere = (v: WhereView) => {
-    if (v === where) return;
+  // ── The list, or the map ──
+  const [view, setView] = useState<View>("liste");
+  const pickView = (v: View) => {
+    if (v === view) return;
     track("filter_change", { page: "lieux", field: "where_view", value: v });
-    setWhere(v);
+    setView(v);
   };
-  const arrSorted = section.arrondissements.slice().sort((a, b) => b.amount - a.amount);
-  const arrRows: BarRow[] = arrSorted.map((a) => ({
-    key: String(a.arr),
-    label: fill(t("fx.sec.lieux.arr_label"), { arr: arrTxt(a.arr) }),
-    value: a.amount,
-    text: eurTxt(a.amount),
-    sub: fill(t("fx.sec.lieux.fam_n"), { n: fmtInt(a.count) }),
-    href: `${base}?arrondissement=${a.arr}#lieux`,
-    tone: arr === a.arr ? "ink" : undefined,
-  }));
-  const nLoc = section.arrondissements.reduce((s, a) => s + a.count, 0);
-  const amountLoc = section.arrondissements.reduce((s, a) => s + a.amount, 0);
   const [hovered, setHovered] = useState<string | null>(null);
   const entries = useMemo(() => buildPlaceEntries(lieux, t, nl), [lieux, t, nl]);
   const config = useMemo(() => buildPlacesConfig(t, nl), [t, nl]);
   const visibleSlugs = useMemo(() => new Set(filtered.map((l) => l.slug)), [filtered]);
 
-  // ── The rows: the places where the City paid the most, photo first ──
   const cap = isFiltered ? ROWS_CAP_FILTERED : ROWS_CAP;
   const shown = filtered.slice(0, cap);
   const rest = filtered.length - shown.length >= 2 ? filtered.slice(cap) : [];
@@ -156,11 +141,13 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   const noMoney = section.count - section.withMoney;
   const rowsTitle = active
     ? fill(t("fx.sec.lieux.h.rows_q"), { n: fmtInt(filtered.length), q })
-    : famille
-      ? fill(t("fx.sec.lieux.h.rows_fam"), { fam: famLabel(famille), n: fmtInt(filtered.length) })
-      : arr
-        ? fill(t("fx.sec.lieux.h.rows_arr"), { arr: arrTxt(arr), n: fmtInt(filtered.length) })
-        : t("fx.sec.lieux.h.rows");
+    : famille && arr
+      ? fill(t("fx.sec.lieux.h.rows_fam_arr"), { fam: famLabel(famille), arr: arrTxt(arr), n: fmtInt(filtered.length) })
+      : famille
+        ? fill(t("fx.sec.lieux.h.rows_fam"), { fam: famLabel(famille), n: fmtInt(filtered.length) })
+        : arr
+          ? fill(t("fx.sec.lieux.h.rows_arr"), { arr: arrTxt(arr), n: fmtInt(filtered.length) })
+          : t("fx.sec.lieux.h.rows");
   const Row = (l: LieuIndexEntry) => {
     const amount = l.argent_total_eur ?? 0;
     return (
@@ -206,85 +193,82 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
               ) : null}
             </div>
 
-            <div className="fx-sec-a-scene">
-              <V3Section id="scene" title={t("fx.sec.lieux.h.scene")} sub={t("fx.sec.lieux.scene_sub")}>
-                <div className="fx-sec-scene-body" id="familles">
-                  <Bars rows={famRows} />
-                </div>
-                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="familles" anchor="familles" />
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-search" data-section="search">
-              <div className="fx-page-kicker">{t("fx.sec.lieux.search_kicker")}</div>
-              <div className="fx-search-wrap fx-search-wrap--fiche">
-                <div className="fx-search-inner">
-                  <div className="fx-search-input-wrap">
-                    <span className="fx-search-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
-                    </span>
-                    <input className="fx-search-input" type="search" placeholder={t("fx.sec.lieux.search_placeholder")} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t("fx.sec.lieux.search_kicker")} />
-                    {query.length > 0 && (
-                      <button type="button" className="fx-search-x" aria-label={t("fx.sec.mp.search_clear")} onClick={() => setQuery("")}>×</button>
-                    )}
-                  </div>
-                  {!active && (
-                    <div className="fx-search-seeds">
-                      {SEEDS.filter((s) => lieux.some((l) => normSearch(l.name).includes(normSearch(s)))).slice(0, 3).map((s) => (
-                        <button key={s} type="button" className="fx-search-seed" onClick={() => { track("search_seed_click", { page: "lieux", seed: s }); setQuery(s); }}>{s}</button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
             <div className="fx-sec-a-rows">
               <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(t("fx.sec.lieux.rows_sub"), { since: sinceTxt })}>
-                <div id="lieux" className="fx-sec-thumbrows">
-                  {shownAll.length === 0 ? <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.search_none"), { q })}</p> : shownAll.map(Row)}
-                </div>
-                {rest.length > 0 ? (
-                  <V3Fold id="more-lieux" label={fill(t("fx.sec.lieux.rows_more"), { n: fmtInt(rest.length) })}>
-                    <div className="fx-sec-thumbrows">{rest.map(Row)}</div>
-                  </V3Fold>
-                ) : null}
-                {isFiltered ? (
-                  <p className="fx-v3-note"><Link href={base}>{t("fx.sec.lieux.rows_all")}</Link></p>
-                ) : noMoney > 0 ? (
-                  <p className="fx-v3-note">{fill(t("fx.sec.lieux.no_money_note"), { n: fmtInt(noMoney) })}</p>
-                ) : null}
-              </V3Section>
-            </div>
-
-            <div className="fx-sec-a-where">
-              <V3Section id="where" title={t("fx.sec.lieux.h.where")} sub={fill(t("fx.sec.lieux.where_sub"), { n: fmtInt(nLoc), amount: eurTxt(amountLoc) })}>
                 <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.lieux.g.aria")}>
-                  {WHERE_VIEWS.map((v) => (
-                    <button key={v} type="button" aria-pressed={where === v} onClick={() => pickWhere(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>
+                  {VIEWS.map((v) => (
+                    <button key={v} type="button" aria-pressed={view === v} onClick={() => pickView(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>
                   ))}
                 </div>
-                <div id="ou">
-                  {where === "carte" ? (
+                <div id="lieux">
+                  {view === "carte" ? (
                     <div className="fx-sec-lieux-map">
                       <PlacesMap entries={entries} config={config} visibleSlugs={visibleSlugs} hovered={hovered} onHover={setHovered} />
                     </div>
                   ) : (
                     <>
-                      <div className="fx-sec-choro">
-                        <ParisChoropleth
-                          items={section.arrondissements.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-                          height={290}
-                          showRanking={false}
-                          palette={CHORO_BLUE}
-                          hrefFor={(n) => `${base}?arrondissement=${n === 0 ? 1 : n}#lieux`}
-                        />
+                      <div className="fx-sec-thumbrows">
+                        {shownAll.length === 0 ? <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.search_none"), { q })}</p> : shownAll.map(Row)}
                       </div>
-                      <Bars rows={arrRows} cap={ARR_CAP} foldId="more-arr" foldLabel={fill(t("fx.sec.lieux.arr_more"), { n: fmtInt(arrRows.length) })} />
+                      {rest.length > 0 ? (
+                        <V3Fold id="more-lieux" label={fill(t("fx.sec.lieux.rows_more"), { n: fmtInt(rest.length) })}>
+                          <div className="fx-sec-thumbrows">{rest.map(Row)}</div>
+                        </V3Fold>
+                      ) : null}
                     </>
                   )}
                 </div>
-                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`where_${where}`} anchor="ou" />
+                {isFiltered ? (
+                  <p className="fx-v3-note"><Link href={base}>{t("fx.sec.lieux.rows_all")}</Link></p>
+                ) : noMoney > 0 ? (
+                  <p className="fx-v3-note">{fill(t("fx.sec.lieux.no_money_note"), { n: fmtInt(noMoney) })}</p>
+                ) : null}
+                <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object={`lieux_${view}`} anchor="lieux" />
+              </V3Section>
+            </div>
+
+            {/* The way in, under the list (Daniel, 16/09): a name, a family, an arrondissement. Filters, never rankings. */}
+            <div className="fx-sec-a-find">
+              <V3Section id="find" title={t("fx.sec.lieux.h.find")} sub={t("fx.sec.lieux.find_sub")}>
+                <div className="fx-search-wrap fx-search-wrap--fiche fx-sec-lieux-search">
+                  <div className="fx-search-inner">
+                    <div className="fx-search-input-wrap">
+                      <span className="fx-search-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+                      </span>
+                      <input className="fx-search-input" type="search" placeholder={t("fx.sec.lieux.search_placeholder")} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t("fx.sec.lieux.h.find")} />
+                      {query.length > 0 && (
+                        <button type="button" className="fx-search-x" aria-label={t("fx.sec.mp.search_clear")} onClick={() => setQuery("")}>×</button>
+                      )}
+                    </div>
+                    {!active && (
+                      <div className="fx-search-seeds">
+                        {SEEDS.filter((s) => lieux.some((l) => normSearch(l.name).includes(normSearch(s)))).slice(0, 3).map((s) => (
+                          <button key={s} type="button" className="fx-search-seed" onClick={() => { track("search_seed_click", { page: "lieux", seed: s }); setQuery(s); }}>{s}</button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="fx-sec-lieux-filters">
+                  <div>
+                    <div className="fx-page-kicker">{t("fx.sec.lieux.by_family")}</div>
+                    <div className="fx-sec-lieux-chips" role="group" aria-label={t("fx.sec.lieux.by_family")}>
+                      {FAMILLES.map((f) => (
+                        <Link key={f.key} href={hrefWith({ famille: famille === f.key ? null : f.key })} className={famille === f.key ? "is-on" : ""} aria-pressed={famille === f.key}>
+                          {t(f.i18n)} <b className="tnum">{fmtInt(famCount(f.key))}</b>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <label className="fx-sec-lieux-arr">
+                    <span className="fx-page-kicker">{t("fx.sec.lieux.by_arr")}</span>
+                    <select value={arr ?? ""} onChange={(e) => { const v = e.target.value ? Number(e.target.value) : null; track("filter_change", { page: "lieux", field: "arrondissement", value: v ?? "all" }); router.push(hrefWith({ arr: v }), { scroll: false }); }}>
+                      <option value="">{t("fx.sec.lieux.arr_all")}</option>
+                      {arrs.map((a) => <option key={a.arr} value={a.arr}>{fill(t("fx.sec.lieux.arr_label"), { arr: arrTxt(a.arr) })} · {fmtInt(a.count)}</option>)}
+                    </select>
+                  </label>
+                </div>
               </V3Section>
             </div>
 
