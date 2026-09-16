@@ -1111,7 +1111,7 @@ const en: Record<string, string> = {
   'fx.toc.aria': 'Page navigation',
   'fx.nav.link.commune': 'Your town',
   'fx.nav.link.paris': 'Paris',
-  'fx.nav.link.cities': 'For towns',
+  'fx.nav.link.cities': 'For town halls',
   'fx.nav.place_aria': 'Sections of this place',
   'fx.nav.link.home': 'Home',
   'fx.nav.link.budget_france': 'Budget',
@@ -2957,7 +2957,7 @@ const en: Record<string, string> = {
   'fx.contact.btn.home': "Back to home",
 
   // ── For cities (/pour-les-villes page + landing closing block) ────────────
-  'fx.foot.link.cities': 'For cities',
+  'fx.foot.link.cities': 'For town halls',
 
   'fx.contact.c4.n': 'Cities',
   'fx.contact.c4.h': 'Your city',

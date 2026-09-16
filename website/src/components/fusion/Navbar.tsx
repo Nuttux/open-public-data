@@ -166,6 +166,11 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
         </nav>
         <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
+        {/* On the phone the bar folds to the mark and the menu; the search stays
+            one tap away, and the menu button says its name (2026-09-16). */}
+        <button type="button" className="fx-nav-search" aria-label={t("fx.nav.link.commune")} onClick={() => openSearch("nav")}>
+          {searchIcon}
+        </button>
         <button
           type="button"
           className="fx-menu-btn"
@@ -180,6 +185,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             <line x1="4" y1="8" x2="20" y2="8" />
             <line x1="4" y1="16" x2="20" y2="16" />
           </svg>
+          <span className="fx-menu-btn-l">{t("fx.nav.menu_aria")}</span>
         </button>
       </header>
       {/* The place's own row: Paris's seven sections, a commune sub-page's anchors,

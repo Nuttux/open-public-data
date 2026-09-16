@@ -1111,7 +1111,7 @@ const fr: Record<string, string> = {
   'fx.toc.aria': 'Navigation dans la page',
   'fx.nav.link.commune': 'Votre commune',
   'fx.nav.link.paris': 'Paris',
-  'fx.nav.link.cities': 'Pour les villes',
+  'fx.nav.link.cities': 'Pour les mairies',
   'fx.nav.place_aria': 'Sections de ce lieu',
   'fx.nav.link.home': 'Accueil',
   'fx.nav.link.budget_france': 'Budget',
@@ -1122,7 +1122,7 @@ const fr: Record<string, string> = {
   'fx.nav.link.invest': 'Investissements',
   'fx.nav.link.logement': 'Logement social',
   'fx.nav.link.dette': 'Dette',
-  'fx.nav.link.analyses': 'Explications',
+  'fx.nav.link.analyses': 'Comprendre',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
   'fx.scope.heading': 'Collectivité',
@@ -1179,7 +1179,7 @@ const fr: Record<string, string> = {
   'fx.foot.link.invest': 'Investissements',
   'fx.foot.link.logement': 'Logement social',
   'fx.foot.link.dette': 'Dette et patrimoine',
-  'fx.foot.link.analyses': 'Explications',
+  'fx.foot.link.analyses': 'Comprendre',
   'fx.foot.link.methode': 'Méthode',
   'fx.foot.link.api': 'API',
   'fx.foot.link.github': 'GitHub ↗',
@@ -2954,7 +2954,7 @@ const fr: Record<string, string> = {
   'fx.contact.btn.home': "Retour à l'accueil",
 
   // ── Pour les villes (page /pour-les-villes + bloc de clôture) ─────────────
-  'fx.foot.link.cities': 'Pour les villes',
+  'fx.foot.link.cities': 'Pour les mairies',
 
   'fx.contact.c4.n': 'Villes',
   'fx.contact.c4.h': 'Votre ville',
