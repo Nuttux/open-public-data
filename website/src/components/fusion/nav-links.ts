@@ -106,8 +106,12 @@ export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
 // « Votre commune » (the search, rendered as a button by the bar), Paris, the
 // explainers, the page for towns. The place's own sections live in a row under
 // the bar (citySectionLinks / communeSectionLinks), never in it.
+// The first entry is the country's home (2026-09-18) : the hub that carries
+// the search and puts the documented city forward. It used to be Paris, which
+// read as "the site is about Paris" ; the country's name read as the State's
+// accounts. « Accueil » says what it is.
 export const SITE_NAV_LINKS: NavLink[] = [
-  { href: "/france/paris", labelKey: "fx.nav.link.paris" },
+  { href: "/france", labelKey: "fx.nav.link.home" },
   { href: "/analyses", labelKey: "fx.nav.link.analyses" },
   { href: "/pour-les-villes", labelKey: "fx.nav.link.cities" },
 ];

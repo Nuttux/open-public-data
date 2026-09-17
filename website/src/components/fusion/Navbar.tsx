@@ -125,11 +125,12 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand" | "subnav") => {
     track("nav_click", { href, label: labelKey, surface, from: pathname });
   };
-  // « Paris » is lit on every Paris page and on the home (Paris's showcase);
-  // the other site entries light on their own tree; a drawer lights nothing.
+  // « Accueil » is lit on the hub alone (every French page starts with
+  // /france) ; the other site entries light on their own tree ; a drawer
+  // lights nothing.
   const siteActive = (href: string) => {
     if (drawerOpen) return false;
-    if (href === "/france/paris") return pathname === "/" || frPlace(pathname) === "paris";
+    if (href === "/france") return pathname === "/france";
     return pathname.startsWith(href);
   };
   const openSearch = (surface: "nav" | "overlay") => {
@@ -147,12 +148,13 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   return (
     <>
       <header className="fx-nav">
-        {/* The mark always leads home: on a commune page it used to link to the
-            commune itself, and nobody left the page (2026-09-16). On the phone the
-            switcher at the right is hidden, so the commune's name sits next to the
-            mark and stays the link to its own page while the reader scrolls. */}
+        {/* The mark always leads home, and home is the country's hub, where
+            « Accueil » leads too (2026-09-18). On a commune page it used to link to
+            the commune itself, and nobody left the page (2026-09-16). On the phone
+            the switcher at the right is hidden, so the commune's name sits next to
+            the mark and stays the link to its own page while the reader scrolls. */}
         <div className="fx-brand">
-          <Link href="/" className="fx-brand-home" onClick={() => trackNav("/", "fx.nav.brand", "brand")}>
+          <Link href="/france" className="fx-brand-home" onClick={() => trackNav("/france", "fx.nav.brand", "brand")}>
             <BrandMark />
             <span>{t("fx.nav.brand")}</span>
           </Link>
