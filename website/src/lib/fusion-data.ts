@@ -3005,6 +3005,17 @@ export function loadInvestLatest(): { year: number; total: number } | null {
   return total > 0 ? { year: Number(last.year), total } : null;
 }
 
+/** Same door for a city with its own investment series (Marseille : the
+ *  years the Ville's accounts report, `investissements/investissement_tendances.json`). */
+export function loadInvestLatestCity(city: string): { year: number; total: number } | null {
+  if (city === "paris") return loadInvestLatest();
+  const t = readJsonOrNull<{ years?: { year: string | number; depenses_hors_dette?: string | number }[] }>(cityJsonPath(city, "investissements/investissement_tendances.json"));
+  const last = (t?.years ?? []).slice().sort((a, b) => Number(a.year) - Number(b.year)).pop();
+  if (!last) return null;
+  const total = Number(last.depenses_hors_dette ?? 0);
+  return total > 0 ? { year: Number(last.year), total } : null;
+}
+
 /** The year's largest investment project with a real photo: the material
  *  moment of the Budget page (« Ce que paie le budget de 2024 »). Paris only. */
 export function loadInvestPhotoOfYear(year: number): { year: number; id: string; nom: string; nomEn: string | null; montant: number; arrondissement: number | null; photoUrl: string; photoCredit: string | null } | null {
