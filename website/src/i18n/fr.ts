@@ -7004,6 +7004,7 @@ const fr: Record<string, string> = {
   'fx.nme3.fournisseurs_more': 'Les {n} autres fournisseurs',
   'fx.nme3.u.montant': 'Ce que compte un marché',
   'fx.nme3.u.montant_body': 'Le montant d’un marché est le maximum prévu sur toute sa durée, souvent plusieurs années : ce n’est pas ce que la commune dépense dans l’année. Les lots d’un même marché sont regroupés.',
+  'fx.decp.coverage': 'Marchés de plus de 40 000 € HT déclarés à la notification (DECP) : montants des contrats, pas les paiements. Les plus petits marchés ne sont pas publiés ; les montants manifestement erronés sont écartés.',
   'fx.nme3.u.source': 'D’où viennent ces chiffres',
   'fx.nme3.r.commune': 'Combien dépense {nom}',
   'fx.nme3.r.commune_sub': 'Le budget, à quoi il sert, face aux communes voisines.',

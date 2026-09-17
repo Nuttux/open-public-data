@@ -50,8 +50,8 @@ export async function generateMetadata({ params }: { params: Promise<{ a: string
       title: `${A.nom} face à ${B.nom} : ${fr(va)} contre ${fr(vb)} dépensés par habitant (${year})`,
       description: `En ${year}, ${A.nom} (${A.dep_name}) a dépensé ${fr(va)} par habitant, ${B.nom} (${B.dep_name}) ${fr(vb)}. Côte à côte, par habitant : recettes, personnel, impôts locaux, dette, épargne. Source : OFGL, comptes ${year}.`,
       en: {
-        title: `${A.nom} vs ${B.nom}: ${en(va)} vs ${en(vb)} spent per inhabitant (${year})`,
-        description: `In ${year}, ${A.nom} (${A.dep_name}) spent ${en(va)} per inhabitant, ${B.nom} (${B.dep_name}) ${en(vb)}. Side by side, per inhabitant: revenue, staff, local taxes, debt, savings. Source: OFGL, ${year} accounts.`,
+        title: `${A.nom} vs ${B.nom}: ${en(va)} vs ${en(vb)} spent per resident (${year})`,
+        description: `In ${year}, ${A.nom} (${A.dep_name}) spent ${en(va)} per resident, ${B.nom} (${B.dep_name}) ${en(vb)}. Side by side, per resident: revenue, staff, local taxes, debt, savings. Source: OFGL, ${year} accounts.`,
       },
       path: `/france/comparer/${pair[0]}/${pair[1]}`,
     });
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: { params: Promise<{ a: string
     title: `${A.nom} face à ${B.nom} : dépenses, dette et impôts par habitant`,
     description: `Deux communes côte à côte, par habitant : dépenses, recettes, personnel, impôts locaux, dette, épargne. Comptes OFGL.`,
     en: {
-      title: `${A.nom} versus ${B.nom}: spending, debt and taxes per inhabitant`,
-      description: `Two towns side by side, per inhabitant: spending, revenue, staff, local taxes, debt, savings. OFGL accounts.`,
+      title: `${A.nom} versus ${B.nom}: spending, debt and taxes per resident`,
+      description: `Two towns side by side, per resident: spending, revenue, staff, local taxes, debt, savings. OFGL accounts.`,
     },
     path,
   });

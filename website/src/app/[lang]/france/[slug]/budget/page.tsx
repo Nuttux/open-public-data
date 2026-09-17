@@ -101,7 +101,7 @@ export default async function CommuneBudgetPage({
     .map((c) => ({
       href: `/france/${c.slug}/budget`,
       label: en ? `Budget of ${c.nom}` : `Budget de ${c.nom}`,
-      sub: en ? `${c.pop.toLocaleString("en-GB")} inhabitants, ${c.dep_name}` : `${c.pop.toLocaleString("fr-FR")} habitants, ${c.dep_name}`,
+      sub: en ? `${c.pop.toLocaleString("en-GB")} residents, ${c.dep_name}` : `${c.pop.toLocaleString("fr-FR")} habitants, ${c.dep_name}`,
     }));
   const related: RelatedBlock = {
     title: en ? "See also" : "Voir aussi",

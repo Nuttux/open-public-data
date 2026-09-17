@@ -70,7 +70,8 @@ export default function AnneesRail({
   const { locale } = useLocale();
   const [sel, setSel] = useState<number | null>(null);
   const track = useTrack();
-  const eur = format ?? ((n: number) => { const { v, u } = fmtEur(n); return `${v} ${u}`; });
+  // Inline, English writes the euro first (« €64.4M in 2018 ») ; French keeps « 64,4 M€ ».
+  const eur = format ?? ((n: number) => { const { v, u } = fmtEur(n); return locale === "en" ? `€${v}${u.replace("€", "")}` : `${v} ${u}`; });
   const pts = rows.filter((r) => Number.isFinite(r.year) && (from == null || r.year >= from) && (to == null || r.year <= to));
   if (pts.length < RAIL_MIN) return null;
   const de = from ?? Math.min(...pts.map((r) => r.year));

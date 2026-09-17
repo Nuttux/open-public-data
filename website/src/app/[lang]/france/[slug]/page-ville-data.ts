@@ -103,7 +103,7 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
     .map((c) => ({
       href: `/france/${c.slug}`,
       label: en ? `How much does ${c.nom} spend?` : `Combien dépense ${c.nom} ?`,
-      sub: en ? `${c.pop.toLocaleString("en-GB")} inhabitants, ${c.dep_name}` : `${c.pop.toLocaleString("fr-FR")} habitants, ${c.dep_name}`,
+      sub: en ? `${c.pop.toLocaleString("en-GB")} residents, ${c.dep_name}` : `${c.pop.toLocaleString("fr-FR")} habitants, ${c.dep_name}`,
     }));
   const related: RelatedBlock | null = neighbours.length
     ? {

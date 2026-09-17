@@ -33,9 +33,9 @@ export default async function CityLayout({
   params,
 }: {
   children: ReactNode;
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const sections = sectionsForCommune(slug);
   const nom = findCommuneByAny(slug)?.nom ?? getCityOrNull(slug)?.nom ?? null;
   // Only scope the chrome when the commune actually has national pages AND a
@@ -60,10 +60,12 @@ export default async function CityLayout({
   const schemas = nom
     ? [
         datasetJsonLd({
-          name: `${label} — finances locales`,
-          description: `Budget, dette et fiscalité de la commune de ${label}, à partir des comptes publiés par la DGFiP et harmonisés par l'OFGL.`,
+          name: lang === "en" ? `${label} — local finances` : `${label} — finances locales`,
+          description: lang === "en"
+            ? `Budget, debt and taxes of ${label}, from the accounts published by the DGFiP and harmonised by the OFGL.`
+            : `Budget, dette et fiscalité de la commune de ${label}, à partir des comptes publiés par la DGFiP et harmonisés par l'OFGL.`,
           path: `/france/${slug}`,
-          keywords: ["budget communal", "finances locales", "dette", "fiscalité", label],
+          keywords: lang === "en" ? ["town budget", "local finances", "debt", "taxes", label] : ["budget communal", "finances locales", "dette", "fiscalité", label],
           spatialCoverage: where,
           creator: "DGFiP / OFGL",
           license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",

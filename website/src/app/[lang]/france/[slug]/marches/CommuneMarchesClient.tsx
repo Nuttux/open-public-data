@@ -12,6 +12,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { deNom } from "@/lib/nom-commune";
 import type { FournisseursData, MarchesData } from "@/lib/commune-marches";
 import { displayFournisseur } from "@/lib/fournisseur-display";
+import { decpCategory } from "@/lib/decp-category";
 
 type CommuneMeta = { slug: string; nom: string; dep_name: string; reg_name: string; pop: number };
 
@@ -33,14 +34,19 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
     for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
     return s;
   };
+  const U = en ? { b: "€B", m: "€M", k: "€k", u: "€" } : { b: "Md€", m: "M€", k: "k€", u: "€" };
   const split = (eur: number): { v: string; u: string } => {
     const a = Math.abs(eur);
-    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: "Md€" };
-    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: "M€" };
-    if (a >= 1e3) return { v: int.format(eur / 1e3), u: "k€" };
-    return { v: int.format(eur), u: "€" };
+    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: U.b };
+    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: U.m };
+    if (a >= 1e3) return { v: int.format(eur / 1e3), u: U.k };
+    return { v: int.format(eur), u: U.u };
   };
-  const euro = (eur: number) => { const { v, u } = split(eur); return `${v} ${u}`; };
+  // Inline, English writes « €4.85B » ; French « 4,85 Md€ ».
+  const euro = (eur: number) => { const { v, u } = split(eur); return en ? `€${v}${u.replace("€", "")}` : `${v} ${u}`; };
+  // The coverage note is a constant of the exporter (COVERAGE_NOTE in
+  // export_marches_national.py), written in French : English says it in English.
+  const note = en ? t("fx.decp.coverage") : data.coverage_note;
   const denom = en ? commune.nom : deNom(commune.nom);
   const base = `/france/${commune.slug}`;
 
@@ -63,10 +69,10 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
   const total = split(tot?.montant ?? 0);
   const cats: BarRow[] = data.by_category.map((c) => ({
     key: c.categorie,
-    label: c.categorie.replace(/ & /g, en ? " and " : " et "),
+    label: decpCategory(c.categorie, locale),
     value: c.montant,
     text: euro(c.montant),
-    sub: c.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: c.nb }),
+    sub: c.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: int.format(c.nb) }),
   }));
   const fourn = (fournisseurs?.fournisseurs ?? []).slice().sort((a, b) => b.montant - a.montant);
   const { shown: fournShown, rest: fournRest } = foldRest(fourn, 8);
@@ -102,7 +108,7 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
               {series.length >= RAIL_MIN ? (
                 <div className="fx-sec-years" data-section="years">
                   <div className="fx-page-kicker">{t("fx.sec.years")}</div>
-                  <AnneesRail rows={series} current={year} />
+                  <AnneesRail rows={series} current={year} format={euro} />
                 </div>
               ) : null}
             </div>
@@ -123,10 +129,10 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
               {fourn.length > 0 ? (
                 <V3Section id="fournisseurs" title={fill("fx.nme3.h.fournisseurs", { y0, y1 })} sub={t("fx.nme3.fournisseurs_sub")} hint={t("fx.v3.rows.aide")}>
                   {fournShown.map((f) => (
-                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: f.nb })} amount={<V3Amt {...split(f.montant)} />} />
+                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: int.format(f.nb) })} amount={<V3Amt {...split(f.montant)} />} />
                   ))}
                   {fournRest.length > 0 ? <V3Fold id="more-fourn" text label={fill("fx.nme3.fournisseurs_more", { n: fournRest.length })}>{fournRest.map((f) => (
-                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: f.nb })} amount={<V3Amt {...split(f.montant)} />} />
+                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: int.format(f.nb) })} amount={<V3Amt {...split(f.montant)} />} />
                   ))}</V3Fold> : null}
                 </V3Section>
               ) : null}
@@ -136,7 +142,7 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
               <V3Section id="understand" title={t("fx.sec.understand")}>
                 <V3Fold id="montant" label={t("fx.nme3.u.montant")}><p className="fx-v3-sentence">{t("fx.nme3.u.montant_body")}</p></V3Fold>
                 <V3Fold id="source" label={t("fx.nme3.u.source")}>
-                  <p className="fx-v3-sentence">{data.coverage_note}{data.total.annees_ecartees?.length ? ` ${fill("fx.pv.annees_ecartees", { years: data.total.annees_ecartees.join(", ") })}` : ""}</p>
+                  <p className="fx-v3-sentence">{note}{data.total.annees_ecartees?.length ? ` ${fill("fx.pv.annees_ecartees", { years: data.total.annees_ecartees.join(", ") })}` : ""}</p>
                   <p className="fx-v3-sentence"><a href={sourceUrl} target="_blank" rel="noopener noreferrer">{t("fx.natmar.source")} ↗</a></p>
                 </V3Fold>
               </V3Section>
@@ -153,7 +159,7 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
             </div>
 
             <div className="fx-sec-a-foot">
-              <V3Foot>{data.coverage_note}</V3Foot>
+              <V3Foot>{note}</V3Foot>
             </div>
           </div>
         </div>

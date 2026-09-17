@@ -7,6 +7,8 @@ import ChartSource from "@/components/fusion/ChartSource";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom, deNom } from "@/lib/nom-commune";
+import { decpCategory } from "@/lib/decp-category";
+import { trLabel } from "@/lib/label-translate";
 import type { FournisseurLocal } from "@/lib/commune-marches";
 
 type Props = {
@@ -32,21 +34,24 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
     for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
     return s;
   };
+  // English columns write « €M », « €k » ; French « M€ », « k€ ».
+  const U = en ? { b: "€B", m: "€M", k: "€k", u: "€" } : { b: "Md€", m: "M€", k: "k€", u: "€" };
   const split = (eur: number): { v: string; u: string } => {
     const a = Math.abs(eur);
-    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: "Md€" };
-    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: "M€" };
-    if (a >= 1e3) return { v: int.format(eur / 1e3), u: "k€" };
-    return { v: int.format(eur), u: "€" };
+    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: U.b };
+    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: U.m };
+    if (a >= 1e3) return { v: int.format(eur / 1e3), u: U.k };
+    return { v: int.format(eur), u: U.u };
   };
-  const euro = (eur: number) => { const { v, u } = split(eur); return `${v} ${u}`; };
+  // Inline, English writes « €584M » ; French « 584 M€ ».
+  const euro = (eur: number) => { const { v, u } = split(eur); return en ? `€${v}${u.replace("€", "")}` : `${v} ${u}`; };
   const hero = split(f.montant);
   const share = totalCommune && totalCommune > 0 ? Math.round((f.montant / totalCommune) * 100) : null;
   const { shown, rest } = foldRest(f.marches, 8);
-  const cats = Array.from(new Set(f.marches.map((m) => m.categorie).filter(Boolean))) as string[];
+  const cats = Array.from(new Set(f.marches.map((m) => m.categorie).filter(Boolean))).map((c) => decpCategory(c as string, locale));
   const domaine = cats.length === 1 ? cats[0] : cats.length > 1 ? `${cats[0]}, ${cats[1]}${cats.length > 2 ? "…" : ""}` : null;
   const ligne = (m: FournisseurLocal["marches"][number]) =>
-    [m.annee, m.duree_mois ? fill("fx.fl.mois", { n: m.duree_mois }) : null, m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null, m.procedure].filter(Boolean).join(" · ");
+    [m.annee, m.duree_mois ? fill("fx.fl.mois", { n: m.duree_mois }) : null, m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null, trLabel(m.procedure, locale)].filter(Boolean).join(" · ");
 
   const body = (
     <>
@@ -67,7 +72,7 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
                 ))}
               </V3Fold>
             )}
-            <V3Foot>{coverageNote}</V3Foot>
+            <V3Foot>{en ? t("fx.decp.coverage") : coverageNote}</V3Foot>
           </V3Section>
 
           {f.national && f.national.communes > 1 && (
