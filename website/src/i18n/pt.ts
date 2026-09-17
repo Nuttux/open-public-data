@@ -49,6 +49,7 @@ const pt: Record<string, string> = {
   "fx.v3.voir_plus": "Ver mais",
   "fx.s.methode_complete": "Método completo desta página →",
   "fx.nav.link.paris": "Paris",
+  "fx.nav.link.home": "Início",
   "fx.nav.link.analyses": "Entender",
   "fx.nav.link.cities": "Para prefeituras",
   "fx.nav.menu_aria": "Menu",
