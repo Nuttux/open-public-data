@@ -7362,6 +7362,15 @@ const en: Record<string, string> = {
   'fx.sec.lieux.rows_aide': 'Click a place to open its page.',
   'us.sf.wgp3.scene_hint_kind': 'Click a kind of payee to keep only those in the list below.',
   'br.recife.partial_note_voted': '{ano}, hatched: the budget the Câmara voted (initial appropriation), {dot}; paid {mes}, {pago}.',
+
+  // The five-line comparison and its verdicts (2026-09-18)
+  'fx.pv.kpi.share_personnel': 'Staff costs, share of spending',
+  'fx.pv.vs.more': '+{p}% vs {nom}',
+  'fx.pv.vs.less': '−{p}% vs {nom}',
+  'fx.pv.vs.same': 'like {nom}',
+  'fx.pv.vs.strate_more': '+{p}% vs towns its size',
+  'fx.pv.vs.strate_less': '−{p}% vs towns its size',
+  'fx.pv.vs.strate_same': 'like towns its size',
 };
 
 export default en;
