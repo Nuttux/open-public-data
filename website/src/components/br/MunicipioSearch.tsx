@@ -13,7 +13,7 @@ type Hit = { slug: string; nome: string; uf: string; pop: number | null };
  * Escape work ; « belem pa » narrows to a state. The CommunePicker's markup
  * (fx-picker), so it looks like the commune comparator's field.
  */
-export default function MunicipioSearch({ placeholder, label }: { placeholder: string; label: string }) {
+export default function MunicipioSearch({ placeholder, label, hrefFor }: { placeholder: string; label: string; /** Where a pick leads ; the município's page by default. */ hrefFor?: (slug: string) => string }) {
   const t = useT();
   const { locale } = useLocale();
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function MunicipioSearch({ placeholder, label }: { placeholder: s
 
   const go = (h: Hit) => {
     track("search_result_click", { page: "brasil", entity_name: h.nome, q: q.trim() });
-    router.push(`/brasil/${h.slug}`);
+    router.push(hrefFor ? hrefFor(h.slug) : `/brasil/${h.slug}`);
   };
   const listId = `${id}-list`;
   const show = open && q.trim().length >= 2;

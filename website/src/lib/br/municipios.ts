@@ -21,6 +21,9 @@ export type MunicipioMeta = {
   hab: number | null;
   /** A state capital. */
   cap?: boolean;
+  /** Net revenue of the latest year that has one (SICONFI Anexo I-C), and that year. */
+  rec?: number;
+  rec_ano?: number;
 };
 
 type Manifest = { generated_at: string; source: string; municipios: Record<string, MunicipioMeta> };
