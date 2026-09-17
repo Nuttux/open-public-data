@@ -19,7 +19,7 @@ import {
 } from "./nav-links";
 import { getPlace } from "@/lib/places";
 import { useCommuneNav, type CommuneNav } from "@/components/CommuneNavContext";
-import { useT } from "@/lib/localeContext";
+import { useT, useTRaw } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDrawerOpen } from "@/lib/drawerState";
 
@@ -58,6 +58,15 @@ function placeNameForPath(pathname: string, commune: CommuneNav | null, france: 
   return place ? (getPlace(place)?.name ?? place) : null;
 }
 
+// Where the place row's first entry leads: the place's own hub (2026-09-17,
+// the row became tabs and the mono tag became the link to the place).
+function placeHomeForPath(pathname: string, commune: CommuneNav | null): string {
+  if (isFranceScope(pathname)) return "/france";
+  if (commune) return `/france/${commune.slug}`;
+  const place = pathname === "/" ? "paris" : frPlace(pathname);
+  return place ? `/france/${place}` : "/";
+}
+
 // The registry slug of the current France scope, for the unified switcher.
 // France's routing is irregular (Paris = root URLs + homepage),
 // so we resolve it here rather than by registry path matching.
@@ -81,9 +90,13 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const siteLinks = SITE_NAV_LINKS.filter((l) => l.href !== "/analyses" || cityHasAnalyses("paris"));
   const placeLinks = placeLinksForPath(scope, commune);
   const placeName = placeNameForPath(scope, commune, "France");
+  const placeHome = placeHomeForPath(scope, commune);
   const frSlug = currentFrSlug(scope);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
+  // The site bar names Paris on every page : the city rewrite of t() must not
+  // turn « Paris » into « Lyon » on Lyon's pages (it did, 2026-09-17).
+  const tRaw = useTRaw();
   const track = useTrack();
 
   useEffect(() => {
@@ -147,12 +160,9 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
         </div>
         {/* The site bar (2026-09-16): the same four entries everywhere, so a reader
             who lands mid-site sees in one glance that there are other communes,
-            Paris in depth, explainers, a page for towns. */}
+            Paris in depth, explainers, a page for towns. The search closes the
+            bar at the right, where the eye looks for it (2026-09-17). */}
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
-          <button type="button" className="fx-link fx-link-search" onClick={() => openSearch("nav")}>
-            {searchIcon}
-            <span>{t("fx.nav.link.commune")}</span>
-          </button>
           {siteLinks.map((l) => (
             <Link
               key={l.href}
@@ -160,9 +170,15 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
               className={siteActive(l.href) ? "fx-link fx-link-on" : "fx-link"}
               onClick={() => trackNav(l.href, l.labelKey, "nav")}
             >
-              {t(l.labelKey)}
+              {tRaw(l.labelKey)}
             </Link>
           ))}
+          {/* The search sits at the right of the bar, as a field (2026-09-17):
+              the first case after the mark read as the site's first section. */}
+          <button type="button" className="fx-link fx-link-search" onClick={() => openSearch("nav")}>
+            {searchIcon}
+            <span>{t("fx.nav.link.commune")}</span>
+          </button>
         </nav>
         <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
@@ -192,7 +208,9 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
           France's national pages. Desktop only — the phone menu carries it. */}
       {placeLinks.length > 0 ? (
         <nav className="fx-subnav" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          {placeName ? <span className="fx-subnav-tag" aria-hidden="true">{placeName}</span> : null}
+          {placeName ? (
+            <Link href={placeHome} className="fx-subnav-place" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
+          ) : null}
           {placeLinks.map((l) => (
             <Link
               key={l.href}
@@ -239,7 +257,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
               className={siteActive(l.href) ? "fx-overlay-on" : undefined}
               onClick={() => trackNav(l.href, l.labelKey, "overlay")}
             >
-              {t(l.labelKey)}
+              {tRaw(l.labelKey)}
             </Link>
           ))}
           {placeLinks.length > 0 ? (
