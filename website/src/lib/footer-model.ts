@@ -136,12 +136,17 @@ export function franceFooterModel(
   // footer → index → letter or year → page. Only for the cities that have
   // the underlying sections (Paris and Marseille today).
   if (!place && !commune && (citySlug === "paris" || citySlug === "marseille")) {
-    sections.push(
-      { href: `/france/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") },
-      { href: `/france/${citySlug}/marches/fournisseurs`, label: t("fx.foot.link.idx_fourn") },
-      { href: `/france/${citySlug}/marches/contrats`, label: t("fx.foot.link.idx_contrats") },
-    );
-    if (citySlug === "paris") sections.push({ href: "/france/paris/investissements/projets", label: t("fx.foot.link.idx_projets") });
+    sections.push({ href: `/france/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") });
+    // Marseille's contracts now read the national DECP file (2026-09-17) ;
+    // the Ville's own supplier and contract lists stop in 2020, so the
+    // footer no longer announces them.
+    if (citySlug === "paris") {
+      sections.push(
+        { href: "/france/paris/marches/fournisseurs", label: t("fx.foot.link.idx_fourn") },
+        { href: "/france/paris/marches/contrats", label: t("fx.foot.link.idx_contrats") },
+        { href: "/france/paris/investissements/projets", label: t("fx.foot.link.idx_projets") },
+      );
+    }
   }
 
   const project: FooterLink[] = [

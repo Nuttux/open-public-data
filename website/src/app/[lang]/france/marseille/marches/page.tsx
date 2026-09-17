@@ -1,37 +1,42 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import "@/app/fusion.css";
-import { loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
-import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
-import { marseilleMarchesHub } from "@/lib/seo/sections/marseille";
-import MarchesPublicsClient from "@/app/[lang]/france/paris/marches/MarchesPublicsClient";
 
-// POC v1 Marseille marches — réutilise MarchesPublicsClient avec data Marseille.
-// Le client dérive la ville de l'URL (CityProvider) : liste, filtres, année et
-// fiches contrat/fournisseur restent dans /fr/city/marseille (routes créées).
-// Limites POC connues :
-//   - Une seule année (2020) — Marseille SCDL Ville n'expose que 2020
-//   - Pas d'enrichissement DECP (pas de offresRecues, pas de procédure normalisée)
-//   - Backfill DECP national 2021+ = phase 2 (voir index.json note)
+import { findCommuneByAny } from "@/lib/all-communes";
+import { getCommuneCapabilities } from "@/lib/commune-capabilities";
+import { loadCommuneFournisseurs, loadCommuneMarches } from "@/lib/commune-marches";
+import CommuneMarchesClient from "@/app/[lang]/france/[slug]/marches/CommuneMarchesClient";
+import { communeMarchesMetadata, DECP_SOURCE_URL } from "@/app/[lang]/france/[slug]/marches/marches-metadata";
+
+// Marseille marchés (2026-09-17) : the same explorer as every commune, on the
+// national DECP file (2020 to today), at the address the city already had.
+// The Ville's own file on data.gouv.fr stops in 2020 ; its contract and
+// supplier pages under marches/contrat and marches/fournisseur stay reachable
+// by their addresses.
+
+export const dynamic = "force-dynamic";
+
+const SLUG = "marseille";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata(hubMetadataInput(marseilleMarchesHub()));
+  const commune = findCommuneByAny(SLUG);
+  return communeMarchesMetadata(SLUG, commune?.nom ?? "Marseille");
 }
 
-export default async function MarchesPublicsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ year?: string }>;
-}) {
-  const sp = await searchParams;
-  const requestedYear = sp.year ? Number(sp.year) : undefined;
-  const idx = loadMarchesIndex("marseille");
-  const d = loadMarchesPageData(requestedYear, "marseille");
-  const locale = await readLocale();
+export default async function MarseilleMarchesPage() {
+  const caps = getCommuneCapabilities(SLUG);
+  if (!caps.marches) notFound();
+  const commune = findCommuneByAny(SLUG);
+  if (!commune) notFound();
+  const data = await loadCommuneMarches(SLUG);
+  if (!data) notFound();
+  const fournisseurs = await loadCommuneFournisseurs(SLUG);
   return (
-    <>
-      <FrHubJsonLd hub={marseilleMarchesHub()} locale={locale} />
-      <MarchesPublicsClient idx={idx} d={d} />
-    </>
+    <CommuneMarchesClient
+      commune={{ slug: SLUG, nom: commune.nom, dep_name: commune.dep_name, reg_name: commune.reg_name, pop: commune.pop }}
+      data={data}
+      fournisseurs={fournisseurs}
+      sourceUrl={DECP_SOURCE_URL}
+    />
   );
 }
