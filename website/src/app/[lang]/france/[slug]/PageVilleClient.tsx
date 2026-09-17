@@ -540,9 +540,9 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     );
   };
 
-  const H2 = ({ id, children, sub, hint }: { id: string; children: React.ReactNode; sub?: React.ReactNode; hint?: React.ReactNode }) => (
+  const H2 = ({ id, children, sub, hint, main }: { id: string; children: React.ReactNode; sub?: React.ReactNode; hint?: React.ReactNode; main?: boolean }) => (
     <>
-      <h2 id={id} className="fx-v3-h2 fx-pv-h2">{children}</h2>
+      <h2 id={id} className={main ? "fx-v3-h2 fx-pv-h2 fx-pv-h2--main" : "fx-v3-h2 fx-pv-h2"}>{children}</h2>
       {sub ? <p className="fx-v3-h2sub">{sub}</p> : null}
       {hint ? <V3Hint>{hint}</V3Hint> : null}
     </>
@@ -646,7 +646,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               picked. The picker sits under the bars, once the reader has seen them. */}
           {compare && (
             <Reveal>{() => (<>
-              <H2 id="comparer">{t("fx.pv.comparer")}</H2>
+              <H2 id="comparer" main>{t("fx.pv.comparer")}</H2>
               <div className="fx-pv-pick">
                 <span className="fx-pv-pick-now">
                   {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}

@@ -20329,6 +20329,8 @@ a.fx-pv-row--fiche:hover .n { text-decoration: underline; text-underline-offset:
 .theme-fusion .fx-pv-l2 .fx-pv-nm { color: var(--ink); }
 /* Le chiffre est le titre de la section ; le H2 passe en second, gris. */
 .theme-fusion .fx-pv-section .fx-v3-h2 { color: var(--muted); font-size: 20px; }
+/* The comparison is the page's second section (2026-09-18) : its heading reads like the others, not like a sub-heading. */
+.theme-fusion .fx-pv-section .fx-v3-h2.fx-pv-h2--main { color: var(--ink); font-size: 24px; }
 /* Le repli : fermé par défaut, bleu comme tout ce qui s'ouvre, contenu dans
    le HTML (details) pour les moteurs. */
 .theme-fusion .fx-pv-fold { margin-top: 16px; }
