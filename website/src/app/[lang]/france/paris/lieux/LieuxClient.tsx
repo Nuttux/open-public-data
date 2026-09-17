@@ -291,7 +291,7 @@ export default function LieuxClient({ lieux, section, doors, initial, city = PAR
           </div>
 
           <div className="fx-sec-a-rows">
-            <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(k("fx.sec.lieux.rows_sub"), heroVars)}>
+            <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(k("fx.sec.lieux.rows_sub"), heroVars)} hint={t("fx.sec.lieux.rows_aide")}>
               <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.lieux.g.aria")}>
                 {VIEWS.map((v) => (
                   <button key={v} type="button" aria-pressed={view === v} onClick={() => pickView(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>

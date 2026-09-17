@@ -159,7 +159,7 @@ export default function ContratosClient({ d, series, doors }: {
           </div>
 
           <div className="fx-sec-a-search">
-            <V3Section id="rows" title={rowsTitle} sub={active ? undefined : t("br.recife.ct3.rows_sub")}>
+            <V3Section id="rows" title={rowsTitle} sub={active ? undefined : t("br.recife.ct3.rows_sub")} hint={t("fx.v3.rows.aide")}>
               {shownAll.length === 0 ? <p className="fx-v3-sentence">{fill(t("br.recife.ct3.search_none"), { q })}</p> : shownAll.map(Row)}
               {rest.length > 0 ? <V3Fold id="more-rows" text label={fill(t("br.recife.ct3.rows_more"), { n: fmtInt(rest.length) })}>{rest.map(Row)}</V3Fold> : null}
             </V3Section>

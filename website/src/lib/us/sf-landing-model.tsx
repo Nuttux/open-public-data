@@ -356,9 +356,7 @@ export function buildSfLandingModel(): LandingModel {
       bg: { viewBox: "0 0 200 140", paths: [SF_OUTLINE] },
       headline: (
         <>
-          Where does <em>public money</em>{" "}
-          <br />
-          go in <PlaceSwitcher variant="h1" currentSlug="sf" />?
+          Where does <em>public money</em>{" "}go in <PlaceSwitcher variant="h1" currentSlug="sf" />?
         </>
       ),
     },

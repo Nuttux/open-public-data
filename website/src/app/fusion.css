@@ -5725,6 +5725,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.04em;
   margin: 0 0 28px;
   max-width: 1100px;
+  /* EN and PT wrap by themselves (no <br>) : two lines of even length. */
+  text-wrap: balance;
 }
 .theme-fusion .fx-hero h1 em { font-style: italic; font-weight: 600; color: var(--bleu); }
 /* EN : « Where does public money » à 120px fait ~1320px, plus large que le
@@ -5739,6 +5741,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     font-size: clamp(44px, 8vw, 96px);
   }
 }
+/* EN and PT put no space before « ? » : the switcher's chevron hugs it. */
+.theme-fusion .fx-hero h1:lang(en) .fx-scope-h1,
+.theme-fusion .fx-hero h1:lang(pt) .fx-scope-h1 { margin-right: -.1em; }
 .theme-fusion .fx-hero h1 b { font-weight: 700; color: var(--rouge); }
 .theme-fusion .fx-hero .fx-lede {
   font-family: var(--f-ui);
@@ -19855,6 +19860,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px 80px 34px 10px; font-size: 13.5px; }
   .theme-fusion .fx-bud-spark { width: 44px; }
 }
+.theme-fusion button.fx-bud-row { width: 100%; text-align: left; font: inherit; background: none; border: 0; border-bottom: 1px solid var(--rule); cursor: pointer; }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
 /* ══ FICHE D'UNE POLITIQUE PUBLIQUE ════════════════════════════════════════
@@ -21312,7 +21318,7 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-lieux-chips a.is-on { background: var(--ink); border-color: var(--ink); color: var(--paper, #fafaf7); }
 .theme-fusion .fx-sec-lieux-chips a.is-on b { color: inherit; opacity: .8; }
 .theme-fusion .fx-sec-lieux-arr { display: grid; gap: 6px; max-width: 320px; }
-.theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink); min-height: 40px; }
+.theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: #fff; color: var(--ink); min-height: 40px; }
 .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-find { max-width: 760px; }
 /* Payees (SF, 2026-09-18) : two menus and a checkbox on one line, under the search. */
 .theme-fusion .fx-sec-wgp-filters { grid-template-columns: repeat(auto-fit, minmax(200px, max-content)); align-items: end; margin-top: 4px; }

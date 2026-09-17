@@ -6972,6 +6972,11 @@ const fr: Record<string, string> = {
   'br.cmp.foot': 'Source : SICONFI, Trésor national (DCA, annexes I-C et I-E) ; population IBGE. Par habitant, année {y}.',
   'br.cmp.pick_b': 'Choisir le second município',
   'br.cmp.pick_b_sub': 'Tapez son nom ; les municípios de taille proche sont sur la page de {a}.',
+
+  // Une aide « Cliquez sur… » sur chaque liste qui ouvre une fiche (2026-09-18).
+  'fx.v3.rows.aide': 'Cliquez sur une ligne pour ouvrir sa fiche.',
+  'fx.sec.lieux.rows_aide': 'Cliquez sur un lieu pour ouvrir sa fiche.',
+  'us.sf.wgp3.scene_hint_kind': 'Cliquez sur un type de bénéficiaire pour ne garder que ceux-là dans la liste.',
   'br.recife.partial_note_voted': '{ano}, hachuré : le budget voté par la Câmara (dotation initiale), {dot} ; payé de {mes}, {pago}.',
 };
 

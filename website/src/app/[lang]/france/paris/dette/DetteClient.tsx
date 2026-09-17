@@ -230,7 +230,7 @@ export default function DetteClient({ d, structure, horsBilan, posts, cost, cost
 
             {hb ? (
               <div className="fx-sec-a-rows">
-                <V3Section id="garanties" title={t("fx.sec.dette.h.garanties")} sub={fill(t("fx.sec.dette.garanties_sub"), { total: eurTxt(hb.totals.capital_restant), year: hb.year, n: fmtInt(hb.totals.count_emprunts), b: fmtInt(hb.totals.count_beneficiaires) })}>
+                <V3Section id="garanties" hint={t("fx.v3.rows.aide")} title={t("fx.sec.dette.h.garanties")} sub={fill(t("fx.sec.dette.garanties_sub"), { total: eurTxt(hb.totals.capital_restant), year: hb.year, n: fmtInt(hb.totals.count_emprunts), b: fmtInt(hb.totals.count_beneficiaires) })}>
                   <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.dette.g.aria")}>
                     {(["benef", "arr"] as GarGroup[]).map((g) => (
                       <button key={g} type="button" aria-pressed={gar === g} onClick={() => pickGar(g)}>{t(`fx.sec.dette.g.${g}`)}</button>

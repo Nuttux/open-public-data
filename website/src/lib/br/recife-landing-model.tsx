@@ -39,7 +39,7 @@ type S = {
 
 const STRINGS: Record<"pt" | "en", S> = {
   pt: {
-    headline: <>Para onde vai o <em>dinheiro público</em>{" "}<br />de <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
+    headline: <>Para onde vai o <em>dinheiro público</em>{" "}de <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
     scalePer: "por habitante, por mês",
     scaleDelta: (v, y) => `≈ ${v} por ano · orçamento executado de ${y}`,
     deck: {
@@ -56,7 +56,7 @@ const STRINGS: Record<"pt" | "en", S> = {
     ativos: "ativos", concluidas: "licitações",
   },
   en: {
-    headline: <>Where does <em>public money</em>{" "}<br />go in <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
+    headline: <>Where does <em>public money</em>{" "}go in <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
     scalePer: "per resident, per month",
     scaleDelta: (v, y) => `≈ ${v} per year · ${y} executed budget`,
     deck: {
