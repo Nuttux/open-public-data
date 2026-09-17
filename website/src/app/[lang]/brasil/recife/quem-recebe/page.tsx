@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { loadQuemRecebe } from "@/lib/br/recife-data";
-import QuemRecebeClient from "./QuemRecebeClient";
+import { loadBudget, loadContratos, loadQuemRecebe } from "@/lib/br/recife-data";
+import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
+import QuemRecebeClient, { type RecifeQrDoors } from "./QuemRecebeClient";
 import { sectionAlternates } from "@/lib/seo/page-answer";
 import { recifeLocale } from "@/lib/br/recife-locale";
 
@@ -16,5 +17,17 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RecifeQuemRecebePage() {
   const d = loadQuemRecebe();
-  return <QuemRecebeClient d={d} />;
+  // The doors carry the other sections' figures (See also, next section).
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const bud = safe(() => loadBudget());
+  const budYear = bud ? (bud.partial_year ? bud.partial_year.ano - 1 : bud.ano_mais_recente) : null;
+  const budAno = bud && budYear ? bud.anos.find((a) => a.ano === budYear) : null;
+  const ct = safe(() => loadContratos());
+  const pl = safe(() => loadEnrichedPlacesFile());
+  const doors: RecifeQrDoors = {
+    budget: budAno ? { total: budAno.total_pago, year: budAno.ano } : null,
+    contratos: ct ? { ativos: ct.headline.n_ativos, valor: ct.headline.valor_ativo_total } : null,
+    lugares: pl ? { n: pl.places.length, total: pl.places.reduce((s, x) => s + (x.obras_total ?? 0), 0) } : null,
+  };
+  return <QuemRecebeClient d={d} doors={doors} />;
 }

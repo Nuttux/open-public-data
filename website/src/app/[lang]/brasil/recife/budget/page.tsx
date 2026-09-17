@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { loadBudget } from "@/lib/br/recife-data";
-import BudgetClient from "./BudgetClient";
+import { loadBudget, loadContratos, loadQuemRecebe } from "@/lib/br/recife-data";
+import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
+import BudgetClient, { type RecifeBudgetDoors } from "./BudgetClient";
 import { sectionAlternates } from "@/lib/seo/page-answer";
 import { recifeLocale } from "@/lib/br/recife-locale";
 
@@ -22,5 +23,15 @@ export default async function RecifeBudgetPage({
   const d = loadBudget();
   const sp = await searchParams;
   const ano = sp.year ? parseInt(sp.year, 10) : undefined;
-  return <BudgetClient d={d} ano={ano} />;
+  // The doors carry the other sections' figures (See also, next section).
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const qr = safe(() => loadQuemRecebe());
+  const ct = safe(() => loadContratos());
+  const pl = safe(() => loadEnrichedPlacesFile());
+  const doors: RecifeBudgetDoors = {
+    quem: qr ? { total: qr.headline.total_pago, n: qr.headline.n_organizacoes, y0: Math.min(...qr.anos_disponiveis), y1: Math.max(...qr.anos_disponiveis) } : null,
+    contratos: ct ? { ativos: ct.headline.n_ativos, valor: ct.headline.valor_ativo_total } : null,
+    lugares: pl ? { n: pl.places.length, total: pl.places.reduce((s, x) => s + (x.obras_total ?? 0), 0) } : null,
+  };
+  return <BudgetClient d={d} ano={ano} doors={doors} />;
 }
