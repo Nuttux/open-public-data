@@ -33,6 +33,10 @@ export default function RegistryChrome({
   const t = useT();
   // The site entries name Paris itself : the raw string, never rewritten.
   const tRaw = useTRaw();
+  // In Brazil the first entry of the bar is the country's own hub (the 5 569
+  // municípios and their search), not Paris : from Recife or from any
+  // município, the way to the other cities is the first link (2026-09-18).
+  const siteLinks = country === "br" ? [{ href: "/brasil", labelKey: "br.hub.kicker" }, ...SITE_NAV_LINKS.slice(1)] : SITE_NAV_LINKS;
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -68,7 +72,7 @@ export default function RegistryChrome({
           </Link>
         </div>
         <nav className="fx-links" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {SITE_NAV_LINKS.map((l) => (
+          {siteLinks.map((l) => (
             <Link key={l.href} href={l.href} className="fx-link">
               {tRaw(l.labelKey)}
             </Link>
@@ -118,7 +122,7 @@ export default function RegistryChrome({
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {SITE_NAV_LINKS.map((l) => (
+          {siteLinks.map((l) => (
             <Link key={l.href} href={l.href}>
               {tRaw(l.labelKey)}
             </Link>
