@@ -1,31 +1,53 @@
-import { readSiteLocale } from "@/lib/seo";
 import type { Metadata } from "next";
-import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
-import LugaresClient from "./LugaresClient";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import "@/app/fusion.css";
+
+import LieuxClient from "@/app/[lang]/france/paris/lieux/LieuxClient";
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import { loadRecifeLieux, recifeLugaresAnswer } from "@/lib/br/recife-lieux-section";
+import { RECIFE_LIEUX } from "@/lib/br/recife-lieux";
+import { loadBudget, loadContratos, loadQuemRecebe } from "@/lib/br/recife-data";
 import { recifeLocale } from "@/lib/br/recife-locale";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import type { LieuxDoor, LieuxDoors } from "@/lib/lieux-doors";
 
-const META_PT = { title: "Recife — Lugares", description: "As unidades de saúde, escolas, equipamentos culturais e esportivos e praças da Prefeitura do Recife, no mapa — dos dados abertos da cidade." };
-const META_EN = { title: "Recife — Places", description: "Recife's health units, schools, cultural and sports facilities and squares, on the map, from the city's open data." };
+const PATH = "/brasil/recife/lugares";
 
-// Portuguese on pt.qipu.org, English on www — with the canonical and hreflang
-// of the host answering (lib/site-locale.ts).
+// Recife's Lugares on the section grammar (2026-09-18) : the Paris client,
+// fed by the City's directory of facilities and the works contracts naming
+// them. Portuguese on pt.qipu.org, English on www.
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN: META_PT), ...sectionAlternates("/brasil/recife/lugares", locale) };
+  return answerMetadata(recifeLugaresAnswer(loadRecifeLieux(), locale), PATH, locale);
 }
 
-export default async function LugaresPage() {
-  const locale: "pt" | "en" = (await readSiteLocale()) === "en" ? "en" : "pt";
-  const f = loadEnrichedPlacesFile();
+export default async function LugaresPage({ searchParams }: { searchParams: Promise<{ familia?: string; bairro?: string }> }) {
+  const sp = await searchParams;
+  const locale = await recifeLocale();
+  const r = loadRecifeLieux();
+  const a = recifeLugaresAnswer(r, locale);
+  const nl = locale === "en" ? "en-US" : "pt-BR";
+  // The doors carry the other sections' figures (See also, next section).
+  const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
+  const ct = safe(() => loadContratos());
+  const qr = safe(() => loadQuemRecebe());
+  const bud = safe(() => loadBudget());
+  const complete = bud ? bud.anos_disponiveis.filter((y) => bud.curva_mensal.some((c) => c.ano === y && c.mes === 12)) : [];
+  const budYear = complete.length ? Math.max(...complete) : bud ? Math.max(...bud.anos_disponiveis) : null;
+  const budTotal = bud && budYear ? bud.anos.find((x) => x.ano === budYear)?.total_pago ?? null : null;
+  const doors: LieuxDoors = {
+    related: ([
+      ct ? { href: `${RECIFE_LIEUX.hub}/contratos`, title: "fx.sec.lieux.r.contratos", sub: "fx.sec.lieux.r.contratos_sub", vars: { n: ct.headline.n_ativos.toLocaleString(nl) }, amount: ct.headline.valor_ativo_total } : null,
+      qr ? { href: `${RECIFE_LIEUX.hub}/quem-recebe`, title: "fx.sec.lieux.r.quem", sub: "fx.sec.lieux.r.quem_sub", vars: { n: qr.headline.n_organizacoes.toLocaleString(nl), y0: Math.min(...qr.anos_disponiveis), y1: Math.max(...qr.anos_disponiveis) }, amount: qr.headline.total_pago } : null,
+    ] as (LieuxDoor | null)[]).filter((d): d is LieuxDoor => d !== null),
+    next: budYear && budTotal != null
+      ? { href: `${RECIFE_LIEUX.hub}/budget?year=${budYear}`, title: "fx.sec.lieux.next_orc", sub: "fx.sec.lieux.next_orc_sub", vars: { year: budYear }, amount: budTotal }
+      : { href: `${RECIFE_LIEUX.hub}/budget`, title: "fx.sec.lieux.next_orc", sub: "fx.sec.lieux.next_orc_sub_noyear" },
+  };
+  const city = { ...RECIFE_LIEUX, sources: [{ label: "dados.recife.pe.gov.br", href: r.source.source_url ?? RECIFE_LIEUX.sources[0].href }] };
   return (
-    <LugaresClient
-      places={f.places}
-      locale={locale}
-      count={f.count}
-      familias={f.familias}
-      source={f.source}
-      perimeter={f.perimeter}
-    />
+    <>
+      <PageJsonLd title={a.title} description={a.answer} path={PATH} locale={locale} dateModified={r.generatedAt} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" keywords={["Recife", "equipamentos públicos", "obras", "escolas", "praças", "unidades de saúde"]} />
+      <LieuxClient lieux={r.lieux} section={r.section} doors={doors} city={city} initial={{ famille: sp.familia ?? null, area: sp.bairro ?? null }} />
+    </>
   );
 }

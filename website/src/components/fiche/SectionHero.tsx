@@ -38,6 +38,7 @@ export default function SectionHero({
   /** « de plafonds signés en » */
   captionBefore: ReactNode;
   captionAfter?: ReactNode;
+  /** Empty when the number has no year (San Francisco's places : contract payments with no year on file). */
   years: number[];
   year: number;
   /** Logical path the year menu navigates to, e.g. /france/paris/marches */
@@ -64,8 +65,8 @@ export default function SectionHero({
         {unit ? <span className="u">{unit}</span> : null}
       </div>
       <div className="fx-sec-cap">
-        {captionBefore}{" "}
-        {years.length > 1 ? (
+        {captionBefore}{years.length > 0 ? " " : null}
+        {years.length === 0 ? null : years.length > 1 ? (
           <select className="fx-pv-yearsel" aria-label={t("fx.sec.year_label")} value={year} onChange={(e) => onYear(e.target.value)}>
             {years.slice().sort((a, b) => b - a).map((y) => (
               <option key={y} value={y}>{yearLabel ? yearLabel(y) : y}</option>

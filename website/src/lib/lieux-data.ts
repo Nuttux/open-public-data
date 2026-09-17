@@ -180,6 +180,10 @@ export type LieuIndexEntry = {
   engage_eur?: number;
   depuis?: number | null;
   photo: string | null;
+  /** Another way to cut a city than the arrondissement (Recife : the bairro ;
+   *  San Francisco : the owning department). Key for the address, label for the eye. */
+  areaKey?: string;
+  areaLabel?: string;
 };
 
 function readJson<T>(file: string): T | null {
@@ -307,6 +311,8 @@ export type LieuxSection = {
   oldestArchive: number | null;
   families: { key: string; count: number; amount: number }[];
   arrondissements: { arr: number; count: number; amount: number }[];
+  /** The areas of a city without arrondissements (bairros, departments), sorted for the menu. */
+  areas?: { key: string; label: string; count: number; amount: number }[];
   /** What was really paid, year by year: grants to the operator and works settled, from the window on. */
   series: { year: number; amount: number }[];
 };

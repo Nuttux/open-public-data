@@ -27,8 +27,8 @@ export function fmtCompactEur(n: number): { value: string; unit: string } {
   return { value: fmtInt(n), unit: "€" };
 }
 
-/** "fr" | "en" → Intl locale string used everywhere for number formatting. */
-export const numLocale = (locale: string) => (locale === "en" ? "en-GB" : "fr-FR");
+/** "fr" | "en" | "pt" → Intl locale string used everywhere for number formatting. */
+export const numLocale = (locale: string) => (locale === "en" ? "en-GB" : locale === "pt" ? "pt-BR" : "fr-FR");
 
 export type Fmt = {
   fmtInt: (n: number) => string;
