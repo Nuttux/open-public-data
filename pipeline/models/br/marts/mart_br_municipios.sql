@@ -49,6 +49,6 @@ SELECT
     r.receita_ano,
     r.receita_recente,
     SAFE_DIVIDE(r.receita_recente, m.populacao) AS receita_hab
-FROM {{ ref('stg_br_municipios') }} m
+FROM {{ ref('core_br_municipios') }} m
 JOIN agg a USING (id_municipio)
 LEFT JOIN rec r USING (id_municipio)
