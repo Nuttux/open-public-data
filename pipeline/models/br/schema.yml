@@ -172,6 +172,13 @@ models:
         tests: [not_null, unique]
       - name: slug
         tests: [not_null, unique]
+  - name: core_br_municipios
+    description: "The municípios directory the marts join on (core layer over stg_br_municipios)."
+    columns:
+      - name: id_municipio
+        tests: [not_null, unique]
+      - name: slug
+        tests: [not_null, unique]
   - name: core_br_municipio_despesas
     description: "Despesas por função e subfunção × município × ano, pago / empenhado / liquidado."
   - name: stg_br_siconfi_receitas
