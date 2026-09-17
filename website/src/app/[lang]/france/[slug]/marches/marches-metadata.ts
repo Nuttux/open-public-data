@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { marchesManifestEntry } from "@/lib/commune-marches";
 import { deNom } from "@/lib/nom-commune";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
+import type { FrHub } from "@/lib/seo/sections/national";
 
 /** The DECP file every commune explorer cites (data.gouv.fr, consolidated). */
 export const DECP_SOURCE_URL =
@@ -49,4 +50,38 @@ export function communeMarchesMetadata(slug: string, nom: string): Promise<Metad
     },
     path,
   });
+}
+
+/**
+ * The same page as a hub for the JSON-LD (BreadcrumbList + Dataset) the other
+ * section pages carry (2026-09-18) : Qipu › commune › Marchés publics, the
+ * answer in both languages, the DECP file as the dataset.
+ */
+export function communeMarchesHub(slug: string, nom: string): FrHub {
+  const path = `/france/${slug}/marches`;
+  const m = marchesManifestEntry(slug);
+  const years = m && m.years.length ? m.years.slice().sort((a, b) => a - b) : [];
+  const recent = years.length > 0 && years[years.length - 1] >= new Date().getFullYear() - 2;
+  const nbFr = m ? m.nb.toLocaleString("fr-FR") : "";
+  const nbEn = m ? m.nb.toLocaleString("en-GB") : "";
+  const fr = recent && m
+    ? { title: `Marchés publics ${deNom(nom)} : ${nbFr} marchés`, description: `${nom} a notifié ${nbFr} marchés publics de ${years[0]} à ${years[years.length - 1]} : fournisseurs, domaines et montants, année par année. Source : DECP consolidé (data.gouv.fr).` }
+    : { title: `Les marchés publics ${deNom(nom)}`, description: `Montants, fournisseurs et domaines des marchés publics ${deNom(nom)}. Source : DECP consolidé (data.gouv.fr).` };
+  const en = recent && m
+    ? { title: `${nom} public contracts: ${nbEn} awarded`, description: `${nom} awarded ${nbEn} public contracts from ${years[0]} to ${years[years.length - 1]}: suppliers, categories and amounts, year by year. Source: consolidated DECP (data.gouv.fr).` }
+    : { title: `The public contracts of ${nom}`, description: `Amounts, suppliers and categories of ${nom}'s public contracts. Source: consolidated DECP (data.gouv.fr).` };
+  return {
+    path,
+    fr,
+    en,
+    parents: [{ fr: nom, en: nom, path: `/france/${slug}` }],
+    crumb: { fr: "Marchés publics", en: "Public contracts" },
+    dataset: {
+      creator: "data.gouv.fr — Données essentielles de la commande publique (DECP), consolidées",
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+      spatialCoverage: nom,
+      temporalCoverage: years.length ? `${years[0]}/${years[years.length - 1]}` : undefined,
+      keywords: ["marchés publics", "commande publique", "DECP", nom],
+    },
+  };
 }
