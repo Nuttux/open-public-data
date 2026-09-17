@@ -7156,6 +7156,8 @@ const fr: Record<string, string> = {
   "fr.hub.r.contrib_sub": "Où vont les prélèvements sur un salaire.",
   "fr.hub.r.comparer": "Comparer les villes",
   "fr.hub.r.comparer_sub": "Plusieurs villes côte à côte.",
+  "fr.hub.r.analyses": "Explications",
+  "fr.hub.r.analyses_sub": "Les chiffres, racontés.",
   "fr.hub.r.sf": "Budget, contrats, paie et lieux, en anglais",
   "fr.hub.r.brasil": "Brésil",
   "fr.hub.r.brasil_sub": "Recife en détail et chaque município, en portugais",

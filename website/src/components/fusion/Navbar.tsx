@@ -13,7 +13,6 @@ import {
   SITE_NAV_LINKS,
   citySectionLinks,
   communeSectionLinks,
-  cityHasAnalyses,
   EXACT_MATCH_HREFS,
   type NavLink,
 } from "./nav-links";
@@ -87,7 +86,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const pathname = usePathname() ?? "/";
   const commune = useCommuneNav();
   const scope = scopePath ?? pathname;
-  const siteLinks = SITE_NAV_LINKS.filter((l) => l.href !== "/analyses" || cityHasAnalyses("paris"));
+  const siteLinks = SITE_NAV_LINKS;
   const placeLinks = placeLinksForPath(scope, commune);
   const placeName = placeNameForPath(scope, commune, "France");
   const placeHome = placeHomeForPath(scope, commune);

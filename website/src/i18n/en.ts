@@ -7561,6 +7561,8 @@ const en: Record<string, string> = {
   "fr.hub.r.contrib_sub": "Where the deductions on a salary go.",
   "fr.hub.r.comparer": "Compare cities",
   "fr.hub.r.comparer_sub": "Several cities side by side.",
+  "fr.hub.r.analyses": "Explainers",
+  "fr.hub.r.analyses_sub": "Articles on the numbers behind the pages.",
   "fr.hub.r.sf": "Budget, contracts, payroll and places",
   "fr.hub.r.brasil": "Brazil",
   "fr.hub.r.brasil_sub": "Recife in detail and every município, in Portuguese",

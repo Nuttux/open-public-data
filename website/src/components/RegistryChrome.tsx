@@ -9,7 +9,6 @@ import { useDrawerOpen } from "@/lib/drawerState";
 import BrandMark from "./fusion/BrandMark";
 import PlaceSwitcher from "./PlaceSwitcher";
 import MunicipioSearch from "./br/MunicipioSearch";
-import { SITE_NAV_LINKS } from "./fusion/nav-links";
 
 /**
  * ONE registry-driven chrome for any country outside France (ADR-0010 D2),
@@ -39,7 +38,7 @@ export default function RegistryChrome({
   // the United States San Francisco until a US hub exists. The mark leads
   // there too.
   const homeHref = country === "br" ? "/brasil" : country === "us" ? "/usa/san-francisco" : "/france";
-  const siteLinks = [{ href: homeHref, labelKey: "fx.nav.link.home" }, ...SITE_NAV_LINKS.slice(1)];
+  const siteLinks = [{ href: homeHref, labelKey: "fx.nav.link.home" }];
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -145,9 +144,11 @@ export default function RegistryChrome({
           {place && placeLinks.length > 0 ? (
             <>
               <span className="fx-overlay-scope-tag">{placeName}</span>
+              {/* The place's own landing, named like the first tab of the desktop row :
+                  « Início » here read as a second country home (2026-09-18). */}
               {place.hub ? (
                 <Link href={placeHome} className={pathname === placeHome ? "fx-overlay-place fx-overlay-on" : "fx-overlay-place"}>
-                  {t("chrome.home")}
+                  {placeName}
                 </Link>
               ) : null}
               {placeLinks.map((l) => (
