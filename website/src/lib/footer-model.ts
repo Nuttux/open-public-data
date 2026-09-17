@@ -192,7 +192,7 @@ export function registryFooterModel(
   // A município page (2026-09-18, /brasil/<slug>) belongs to no registered
   // place : the footer names the country, points to Recife, and credits
   // SICONFI rather than Recife's portal.
-  const municipio = country === "br" && !currentPlace(pathname) && /^\/brasil\/[^/]+$/.test(pathname);
+  const municipio = country === "br" && !currentPlace(pathname);
   const place = municipio ? undefined : (currentPlace(pathname) ?? placesForCountry(country)[0]);
   const placeHeading = municipio ? t("br.mun.kicker_root") : (place?.name ?? (place ? t(place.labelKey) : ""));
 

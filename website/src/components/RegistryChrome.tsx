@@ -36,13 +36,9 @@ export default function RegistryChrome({
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // The country root (/brasil, /usa) renders its first place's page and keeps
-  // its tabs ; any other path outside the registry (a município page) gets
-  // the site bar alone, no borrowed row.
-  const countryRoot = places[0] ? `/${places[0].path.split("/")[1]}` : null;
-  const place =
-    places.find((p) => pathname === p.path || pathname.startsWith(`${p.path}/`)) ??
-    (countryRoot && pathname === countryRoot ? places[0] : undefined);
+  // A path outside every registered place (the country hub, a município
+  // page) gets the site bar alone : no borrowed tabs row.
+  const place = places.find((p) => pathname === p.path || pathname.startsWith(`${p.path}/`));
   const placeName = place ? (place.name ?? t(place.labelKey)) : null;
   const placeHome = place?.path ?? "/";
   const placeLinks = place

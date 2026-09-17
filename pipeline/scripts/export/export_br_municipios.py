@@ -131,6 +131,7 @@ def main() -> int:
         manifest[m["slug"]] = {
             "id": mid, "nome": m["nome"], "uf": m["sigla_uf"], "pop": m.get("populacao"),
             "anos": anos_disp, "pago": payload["anos"][-1]["total_pago"], "hab": round(_f(m["pago_hab"])) if m.get("pago_hab") else None,
+            **({"cap": True} if m.get("capital_uf") else {}),
         }
 
     cur, years = None, {}

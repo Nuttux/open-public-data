@@ -19,6 +19,8 @@ export type MunicipioMeta = {
   anos: number[];
   pago: number;
   hab: number | null;
+  /** A state capital. */
+  cap?: boolean;
 };
 
 type Manifest = { generated_at: string; source: string; municipios: Record<string, MunicipioMeta> };
@@ -26,6 +28,11 @@ const M = manifest as Manifest;
 
 const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const PREFIX = "br-municipios";
+
+/** When the manifest was generated : the pages' date for the sitemap. */
+export function brMunicipiosGeneratedAt(): string {
+  return M.generated_at;
+}
 
 export function findMunicipio(slug: string): (MunicipioMeta & { slug: string }) | null {
   const m = M.municipios[slug];

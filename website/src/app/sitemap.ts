@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { brMunicipiosGeneratedAt, listMunicipios } from '@/lib/br/municipios';
 import { ANALYSES_PUBLIC } from '@/lib/analyses-visibility';
 import { LANGS, SITE_ORIGIN, isIndexable, langOf, localize } from '@/lib/urls';
 import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } from '@/lib/seo/entity-paths';
@@ -42,6 +43,7 @@ export const dynamic = 'force-dynamic';
 const MAIN_ROUTES = [
   { path: '/', priority: 1.0 },
   { path: '/france/paris', priority: 0.95 },
+  { path: '/brasil', priority: 0.8 }, // 2026-09-18 : the Brazil hub, every município behind its field
   { path: '/france/paris/budget', priority: 0.9 },
   { path: '/france/paris/subventions', priority: 0.9 },
   { path: '/france/paris/investissements', priority: 0.9 },
@@ -272,6 +274,30 @@ function communeEntries(): Entry[] {
   );
 }
 
+/** Every Brazilian município (2026-09-18), Portuguese address only : the
+ *  manifest's date is the page's date, the priority follows the population. */
+function brMunicipioEntries(): Entry[] {
+  let list: ReturnType<typeof listMunicipios>;
+  let stamp: string;
+  try {
+    list = listMunicipios();
+    stamp = brMunicipiosGeneratedAt();
+  } catch {
+    return [];
+  }
+  const lastModified = stamp ? new Date(stamp) : undefined;
+  return toEntries(
+    list
+      .filter((m) => m.slug !== 'recife-pe')
+      .map((m) => ({
+        path: `/brasil/${m.slug}`,
+        lastModified,
+        changeFrequency: 'yearly' as const,
+        priority: (m.pop ?? 0) > 200000 ? 0.4 : (m.pop ?? 0) > 20000 ? 0.3 : 0.2,
+      })),
+  );
+}
+
 function entityEntries(list: () => string[]): () => Entry[] {
   return () => {
     let paths: string[];
@@ -303,6 +329,7 @@ const FAMILIES: Array<() => Entry[]> = [
   entityEntries(frEntityPaths),
   entityEntries(communeMarchesPaths), // explorateur des marchés d'une commune
   entityEntries(comparePilotPaths), // comparaisons du pilote (lib/compare-pairs.ts)
+  brMunicipioEntries, // 2026-09-18 : the 5 569 municípios, in Portuguese
 ];
 // Kept for the day they come back; unused for now.
 void sfEntityPaths; void brEntityPaths; void fonctionPaths; void naturePaths;
