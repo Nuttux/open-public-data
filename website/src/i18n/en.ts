@@ -4021,6 +4021,13 @@ const en: Record<string, string> = {
   'fx.sec.years': 'Year by year',
   // ── Places section (2026-09-16), on the section grammar
   'fx.sec.lieux.kicker': 'Places',
+  'fx.sec.lieux.meta_city': '{m} places with an amount · {f} families',
+  'fx.sec.lieux.years_note_city': 'Grants paid to the place’s operator, year by year.',
+  'fx.sec.lieux.rows_sub_city': 'From {since} to {last}: the grants paid to each place’s operator.',
+  'fx.sec.lieux.u.what_body_city': '{n} places everyone knows, chosen by us: museums, libraries, parks, the stadium, monuments. It is a first selection, and it grows.',
+  'fx.sec.lieux.u.paid_body_city': 'A place’s amount is what the City paid its operator in grants, according to the files it publishes. Works and contracts are not counted.',
+  'fx.sec.lieux.u.source_body_city': 'The grants paid by the City, published on data.gouv.fr, 2017 to 2022; each place’s page cites the lines that concern it. Photos come from Wikimedia Commons, under a free licence, with their credit.',
+  'fx.sec.lieux.foot_city': 'Source: City of Marseille (grants paid, data.gouv.fr); photos Wikimedia Commons. Amounts counted from {since}.',
   'fx.sec.lieux.title': 'The City’s places',
   'fx.sec.lieux.cap_before': 'of public money identified in {n} places, from {since} to',
   'fx.sec.lieux.meta': '{m} places with an amount · 5 families · archives since {y}',

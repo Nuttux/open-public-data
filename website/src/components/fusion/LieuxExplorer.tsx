@@ -56,12 +56,13 @@ export function buildPlaceEntries(lieux: LieuIndexEntry[], t: T, nl: string): Pl
       });
 }
 
-/** The Paris map: framing, families and their colours, strings. */
-export function buildPlacesConfig(t: T, nl: string): PlacesConfig {
+/** The Paris map: framing, families and their colours, strings. Another city
+ *  passes its own framing and fiche addresses (Marseille, 2026-09-17). */
+export function buildPlacesConfig(t: T, nl: string, city?: { bounds: [[number, number], [number, number]]; hrefFor: (slug: string) => string }): PlacesConfig {
   return ({
       families: FAMILLES.map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
-      hrefFor: (slug) => `/france/paris/lieu/${slug}`,
-      bounds: PARIS_BOUNDS,
+      hrefFor: city?.hrefFor ?? ((slug) => `/france/paris/lieu/${slug}`),
+      bounds: city?.bounds ?? PARIS_BOUNDS,
       clampToBounds: true,
       minZoom: 11,
       maxZoom: 17,

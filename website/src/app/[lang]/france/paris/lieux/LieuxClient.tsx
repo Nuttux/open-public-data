@@ -27,7 +27,33 @@ const PlacesMap = dynamic(() => import("@/components/places/PlacesMap"), { ssr: 
 
 const ROWS_CAP = 8;
 const ROWS_CAP_FILTERED = 12;
-const SEEDS = ["Châtelet", "Parc Monceau", "Piscine Pontoise", "Halle Pajol"];
+/** What differs from one city to the next on this page (2026-09-17, Marseille
+ *  on the same client) : addresses, seeds, the arrondissement bound, whether
+ *  the money comes with an archive (Paris's bulletin) and the source lines. */
+export type LieuxCity = {
+  slug: string;
+  base: string;
+  name: string;
+  seeds: string[];
+  arrMax: number;
+  /** Paris : the bulletin archive since 1882, works and contracts counted. Marseille : grants only. */
+  archive: boolean;
+  bounds?: [[number, number], [number, number]];
+  sources: { label: string; href: string }[];
+  json: string;
+};
+export const PARIS_LIEUX: LieuxCity = {
+  slug: "paris",
+  base: "/france/paris",
+  name: "Paris",
+  seeds: ["Châtelet", "Parc Monceau", "Piscine Pontoise", "Halle Pajol"],
+  arrMax: 20,
+  archive: true,
+  sources: [
+    { label: "opendata.paris.fr", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/" },
+  ],
+  json: "/data/lieux/index.json",
+};
 const VIEWS = ["liste", "carte"] as const;
 type View = (typeof VIEWS)[number];
 
@@ -48,10 +74,11 @@ export type LieuxDoors = {
  * selection, and a sum over a selection ranks the selection, not Paris
  * (Daniel, 2026-09-16). Families and arrondissements are filters.
  */
-export default function LieuxClient({ lieux, section, doors, initial }: {
+export default function LieuxClient({ lieux, section, doors, initial, city = PARIS_LIEUX }: {
   lieux: LieuIndexEntry[];
   section: LieuxSection;
   doors?: LieuxDoors;
+  city?: LieuxCity;
   /** From the address: ?famille=culture, ?arrondissement=18 (the fiche kickers link here). */
   initial?: { famille?: string | null; arr?: number | null };
 }) {
@@ -67,15 +94,17 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
   const arrTxt = (n: number) => `${n}${sufOrdinal(n, locale)}`;
   const famLabel = (key: string) => t(FAMILLES.find((f) => f.key === key)?.i18n ?? key);
-  const cityBase = "/france/paris";
+  const cityBase = city.base;
   const base = `${cityBase}/lieux`;
+  // Marseille : grants to the operator only, no archive : its own lines.
+  const k = (key: string) => t(city.archive ? key : `${key}_city`);
 
   // On the list: no drill-down chain in progress.
   useEffect(() => { clearDrawerStack(); }, []);
 
   // ── Filters: a family or an arrondissement from the address, a name typed. ──
   const famille = initial?.famille && FAMILLES.some((f) => f.key === initial.famille) ? initial.famille : null;
-  const arr = initial?.arr && initial.arr > 0 && initial.arr <= 20 ? initial.arr : null;
+  const arr = initial?.arr && initial.arr > 0 && initial.arr <= city.arrMax ? initial.arr : null;
   const [query, setQuery] = useState("");
   const q = query.trim();
   const active = q.length >= 2;
@@ -131,10 +160,12 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
   };
   const [hovered, setHovered] = useState<string | null>(null);
   const entries = useMemo(() => buildPlaceEntries(lieux, t, nl), [lieux, t, nl]);
-  const config = useMemo(() => buildPlacesConfig(t, nl), [t, nl]);
+  const config = useMemo(() => buildPlacesConfig(t, nl, city.bounds ? { bounds: city.bounds, hrefFor: (slug) => `${city.base}/lieu/${slug}` } : undefined), [t, nl, city]);
   const visibleSlugs = useMemo(() => new Set(filtered.map((l) => l.slug)), [filtered]);
 
-  const cap = isFiltered ? ROWS_CAP_FILTERED : ROWS_CAP;
+  // A small selection with few amounts (Marseille : 3 of 12) shows the places
+  // with money, and folds the rest ; the heading says « where the City paid most ».
+  const cap = isFiltered ? ROWS_CAP_FILTERED : section.withMoney > 0 && section.withMoney < ROWS_CAP ? Math.max(section.withMoney, 3) : ROWS_CAP;
   const shown = filtered.slice(0, cap);
   const rest = filtered.length - shown.length >= 2 ? filtered.slice(cap) : [];
   const shownAll = rest.length === 0 ? filtered : shown;
@@ -170,7 +201,7 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <div className="fx-sec fx-v3">
-          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>Paris</Link> › {t("fx.sec.lieux.kicker")}</div>
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={cityBase}>{city.name}</Link> › {t("fx.sec.lieux.kicker")}</div>
           <div className="fx-sec-grid" data-layout="lieux">
             <div className="fx-sec-a-hero">
               <SectionHero
@@ -181,20 +212,20 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
                 years={[section.lastYear]}
                 year={section.lastYear}
                 basePath={base}
-                meta={fill(t("fx.sec.lieux.meta"), { m: fmtInt(section.withMoney), y: section.oldestArchive ? String(section.oldestArchive) : "1882" })}
+                meta={city.archive ? fill(t("fx.sec.lieux.meta"), { m: fmtInt(section.withMoney), y: section.oldestArchive ? String(section.oldestArchive) : "1882" }) : fill(t("fx.sec.lieux.meta_city"), { m: fmtInt(section.withMoney), f: fmtInt(section.families.length) })}
                 shareTitle={shareTitle}
               />
               {series.length >= RAIL_MIN ? (
                 <div className="fx-sec-years" data-section="years">
                   <div className="fx-page-kicker">{t("fx.sec.lieux.years_kicker")}</div>
                   <AnneesRail rows={series} current={section.lastYear} format={eurTxt} />
-                  <p className="fx-v3-note">{t("fx.sec.lieux.years_note")}</p>
+                  <p className="fx-v3-note">{k("fx.sec.lieux.years_note")}</p>
                 </div>
               ) : null}
             </div>
 
             <div className="fx-sec-a-rows">
-              <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(t("fx.sec.lieux.rows_sub"), { since: sinceTxt })}>
+              <V3Section id="rows" title={rowsTitle} sub={isFiltered ? undefined : fill(k("fx.sec.lieux.rows_sub"), { since: sinceTxt, last: String(section.lastYear) })}>
                 <div className="fx-sec-switch" role="group" aria-label={t("fx.sec.lieux.g.aria")}>
                   {VIEWS.map((v) => (
                     <button key={v} type="button" aria-pressed={view === v} onClick={() => pickView(v)}>{t(`fx.sec.lieux.g.${v}`)}</button>
@@ -243,7 +274,7 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
                     </div>
                     {!active && (
                       <div className="fx-search-seeds">
-                        {SEEDS.filter((s) => lieux.some((l) => normSearch(l.name).includes(normSearch(s)))).slice(0, 3).map((s) => (
+                        {city.seeds.filter((s) => lieux.some((l) => normSearch(l.name).includes(normSearch(s)))).slice(0, 3).map((s) => (
                           <button key={s} type="button" className="fx-search-seed" onClick={() => { track("search_seed_click", { page: "lieux", seed: s }); setQuery(s); }}>{s}</button>
                         ))}
                       </div>
@@ -275,19 +306,21 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
             <div className="fx-sec-a-understand">
               <V3Section id="understand" title={t("fx.sec.understand")}>
                 <V3Fold id="what" label={t("fx.sec.lieux.u.what")}>
-                  <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.u.what_body"), { n: fmtInt(section.count) })}</p>
+                  <p className="fx-v3-sentence">{fill(k("fx.sec.lieux.u.what_body"), { n: fmtInt(section.count) })}</p>
                 </V3Fold>
                 <V3Fold id="paid" label={t("fx.sec.lieux.u.paid")}>
-                  <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.u.paid_body"), { n: fmtInt(noMoney) })}</p>
+                  <p className="fx-v3-sentence">{fill(k("fx.sec.lieux.u.paid_body"), { n: fmtInt(noMoney) })}</p>
                 </V3Fold>
                 <V3Fold id="sources" label={t("fx.sec.lieux.u.source")}>
-                  <p className="fx-v3-sentence">{fill(t("fx.sec.lieux.u.source_body"), { y: section.oldestArchive ? String(section.oldestArchive) : "1882" })}</p>
+                  <p className="fx-v3-sentence">{fill(k("fx.sec.lieux.u.source_body"), { y: section.oldestArchive ? String(section.oldestArchive) : "1882" })}</p>
                   <p className="fx-v3-sentence">
-                    <a href="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
-                    {" · "}
-                    <a href="https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&query=arkPress%20all%20%22cb343512457_date%22" target="_blank" rel="noopener noreferrer">{en ? "Municipal bulletin (Gallica)" : "Bulletin municipal (Gallica)"} ↗</a>
-                    {" · "}
-                    <a href="/data/lieux/index.json" target="_blank" rel="noopener noreferrer">JSON ↗</a>
+                    {city.sources.map((src) => (
+                      <span key={src.href}><a href={src.href} target="_blank" rel="noopener noreferrer">{src.label} ↗</a>{" · "}</span>
+                    ))}
+                    {city.archive ? (
+                      <><a href="https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&query=arkPress%20all%20%22cb343512457_date%22" target="_blank" rel="noopener noreferrer">{en ? "Municipal bulletin (Gallica) ↗" : "Bulletin municipal (Gallica) ↗"}</a>{" · "}</>
+                    ) : null}
+                    <a href={city.json} target="_blank" rel="noopener noreferrer">JSON ↗</a>
                     {" · "}
                     <Link href="/methode#outils">{t("fx.s.methode_complete")}</Link>
                   </p>
@@ -322,8 +355,8 @@ export default function LieuxClient({ lieux, section, doors, initial }: {
             </div>
 
             <div className="fx-sec-a-foot">
-              {DATA_ALERTS_ON ? <DataAlert section="lieux" /> : null}
-              <V3Foot>{fill(t("fx.sec.lieux.foot"), { since: sinceTxt })}</V3Foot>
+              {DATA_ALERTS_ON && city.slug === "paris" ? <DataAlert section="lieux" /> : null}
+              <V3Foot>{fill(k("fx.sec.lieux.foot"), { since: sinceTxt })}</V3Foot>
             </div>
           </div>
         </div>

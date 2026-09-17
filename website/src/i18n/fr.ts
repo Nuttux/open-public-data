@@ -4018,6 +4018,13 @@ const fr: Record<string, string> = {
   'fx.sec.years': 'Année par année',
   // ── Section Lieux (2026-09-16), sur la grammaire des sections
   'fx.sec.lieux.kicker': 'Lieux',
+  'fx.sec.lieux.meta_city': '{m} lieux avec un montant · {f} familles',
+  'fx.sec.lieux.years_note_city': 'Subventions versées à l’exploitant du lieu, année par année.',
+  'fx.sec.lieux.rows_sub_city': 'De {since} à {last} : les subventions versées à l’exploitant de chaque lieu.',
+  'fx.sec.lieux.u.what_body_city': '{n} lieux que tout le monde connaît, choisis par nous : musées, bibliothèques, parcs, le stade, des monuments. C’est une première sélection, elle grandit.',
+  'fx.sec.lieux.u.paid_body_city': 'Le montant d’un lieu est ce que la Ville a versé à son exploitant en subventions, d’après les fichiers qu’elle publie. Les travaux et les contrats ne sont pas comptés.',
+  'fx.sec.lieux.u.source_body_city': 'Les subventions versées par la Ville, publiées sur data.gouv.fr, de 2017 à 2022 ; la fiche de chaque lieu cite les lignes qui le concernent. Les photos viennent de Wikimedia Commons, sous licence libre, avec leur crédit.',
+  'fx.sec.lieux.foot_city': 'Source : Ville de Marseille (subventions versées, data.gouv.fr) ; photos Wikimedia Commons. Montants comptés depuis {since}.',
   'fx.sec.lieux.title': 'Les lieux de la Ville',
   'fx.sec.lieux.cap_before': 'd’argent public identifiés dans {n} lieux, de {since} à',
   'fx.sec.lieux.meta': '{m} lieux avec un montant · 5 familles · archives depuis {y}',
