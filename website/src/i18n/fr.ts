@@ -6977,6 +6977,7 @@ const fr: Record<string, string> = {
   'fx.v3.rows.aide': 'Cliquez sur une ligne pour ouvrir sa fiche.',
   'fx.sec.lieux.rows_aide': 'Cliquez sur un lieu pour ouvrir sa fiche.',
   'us.sf.wgp3.scene_hint_kind': 'Cliquez sur un type de bénéficiaire pour ne garder que ceux-là dans la liste.',
+  'br.recife.partial_note_voted': '{ano}, hachuré : le budget voté par la Câmara (dotation initiale), {dot} ; payé de {mes}, {pago}.',
 };
 
 export default fr;

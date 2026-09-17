@@ -651,6 +651,7 @@ const pt: Record<string, string> = {
   // Uma ajuda « Clique… » em cada lista que abre uma página (2026-09-18).
   "fx.v3.rows.aide": "Clique numa linha para abrir a sua página.",
   "fx.sec.lieux.rows_aide": "Clique num lugar para abrir a sua página.",
+  "br.recife.partial_note_voted": "{ano}, hachurado: o orçamento votado pela Câmara (dotação inicial), {dot}; pago de {mes}, {pago}.",
 };
 
 export default pt;

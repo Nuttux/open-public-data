@@ -212,6 +212,9 @@ def fetch_population():
 def build_budget(client, log):
     funcao = rows(client, "mart_br_recife_budget_funcao")
     mensal = rows(client, "mart_br_recife_budget_mensal", "ORDER BY ano, mes")
+    # The voted budget (dotação inicial = the LOA) and the updated one, per
+    # ano × função (2026-09-18) : the unfinished year's rail bar.
+    dotacao = rows(client, "mart_br_recife_budget_dotacao")
     if not funcao:
         raise RuntimeError("mart_br_recife_budget_funcao is empty")
     src = source_block(funcao[0])
@@ -237,17 +240,33 @@ def build_budget(client, log):
         per_ano[a]["pago"] += _f(r["pago"]) or 0
         per_ano[a]["empenhado"] += _f(r["empenhado"]) or 0
 
+    dot_ano = {a: {"inicial": 0.0, "atualizada": 0.0} for a in anos}
+    for r in dotacao:
+        a = r["ano"]
+        if a not in per_ano:
+            continue
+        ini, atu = _f(r["dotacao_inicial"]) or 0, _f(r["dotacao_atualizada"]) or 0
+        dot_ano[a]["inicial"] += ini
+        dot_ano[a]["atualizada"] += atu
+        node = per_ano[a]["funcoes"].get(r["funcao"])
+        if node is not None:
+            node["dotacao_inicial"] = round(node.get("dotacao_inicial", 0.0) + ini, 2)
+
     anos_payload = []
     for a in anos:
         funcoes = sorted(per_ano[a]["funcoes"].values(), key=lambda x: -x["pago"])
         for fn in funcoes:
             fn["subfuncoes"] = sorted(fn["subfuncoes"], key=lambda x: -x["pago"])[:8]
-        anos_payload.append({
+        payload = {
             "ano": a,
             "total_pago": round(per_ano[a]["pago"], 2),
             "total_empenhado": round(per_ano[a]["empenhado"], 2),
             "funcoes": funcoes,
-        })
+        }
+        if dot_ano[a]["inicial"] > 0:
+            payload["dotacao_inicial"] = round(dot_ano[a]["inicial"], 2)
+            payload["dotacao_atualizada"] = round(dot_ano[a]["atualizada"], 2)
+        anos_payload.append(payload)
 
     curva = [{
         "ano": r["ano"], "mes": r["mes"],
@@ -967,8 +986,15 @@ def write_json(name, payload, log):
 
 
 def main():
+    import argparse
+    global DATASET
+    ap = argparse.ArgumentParser(description="Export Recife marts to website/public/data/br/recife/")
+    ap.add_argument("--dataset", default=DATASET, help="marts dataset (dbt_br_marts, or dbt_br_dev_local_marts after a --target dev build)")
+    ap.add_argument("--only", choices=["budget"], help="write one file only (budget.json)")
+    args = ap.parse_args()
+    DATASET = args.dataset
     log = Logger("export_br_recife")
-    log.header("Export Recife (dbt_br_marts) → website/public/data/br/recife/")
+    log.header(f"Export Recife ({DATASET}) → website/public/data/br/recife/")
     client = bigquery.Client(project=PROJECT_ID)
 
     # Single source of truth for the incomplete current year — attached to every
@@ -981,6 +1007,8 @@ def main():
     budget = build_budget(client, log)
     budget["partial_year"] = partial_year
     write_json("budget.json", budget, log)
+    if args.only == "budget":
+        return
 
     log.section("quem_recebe")
     qr, recipients, search, temas = build_quem_recebe(client, log)

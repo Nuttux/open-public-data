@@ -143,6 +143,13 @@ models:
     description: "Empenhado / liquidado / pago per ano × mês (months 1–12) from core_br_recife_funcional, with funcional provenance."
   - name: mart_br_recife_budget_funcao
     description: "Empenhado / liquidado / pago and line count per ano × função × subfunção from core_br_recife_funcional, with each row's share of the year's pago and provenance."
+  - name: mart_br_recife_budget_dotacao
+    description: "The voted budget (dotação inicial, the LOA) and the updated one per ano × função from core_br_recife_funcional, with provenance. The year rail of the budget page shows the voted amount for the unfinished year."
+    columns:
+      - name: ano
+        tests: [not_null]
+      - name: funcao
+        tests: [not_null]
   - name: mart_br_recife_places
     description: "Published civic places: core_br_recife_places columns plus the fixed portal source name/URL and unit."
   - name: mart_br_recife_quem_recebe
@@ -167,6 +174,13 @@ models:
         tests: [not_null]
   - name: stg_br_municipios
     description: "The municípios directory with the latest population and the site slug."
+    columns:
+      - name: id_municipio
+        tests: [not_null, unique]
+      - name: slug
+        tests: [not_null, unique]
+  - name: core_br_municipios
+    description: "The municípios directory the marts join on (core layer over stg_br_municipios)."
     columns:
       - name: id_municipio
         tests: [not_null, unique]

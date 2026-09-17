@@ -73,12 +73,21 @@ export default function RegistryChrome({
             <span>{t("chrome.wordmark")}</span>
           </Link>
         </div>
-        <nav className="fx-links" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {siteLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="fx-link">
-              {tRaw(l.labelKey)}
-            </Link>
-          ))}
+        {/* One row (2026-09-18) : the place's name (or the country, on its hub and
+            its municípios) leads to the hub, the chevron switches place, then the
+            place's sections. « Início » / « Home » live in the phone menu. */}
+        <nav className="fx-placebar" aria-label={t(`${country}.chrome.nav_aria`)}>
+          <Link href={place ? placeHome : homeHref} className="fx-placebar-name">{placeName ?? t(`chrome.country.${country}`)}</Link>
+          <PlaceSwitcher variant="chev" />
+          {place && placeLinks.length > 0 ? (
+            <div className="fx-placebar-tabs">
+              {placeLinks.map((l) => (
+                <Link key={l.href} href={l.href} className={isActive(l.href) ? "fx-sublink fx-sublink-on" : "fx-sublink"}>
+                  {t(l.labelKey)}
+                </Link>
+              ))}
+            </div>
+          ) : null}
         </nav>
         {/* Brazil has 5 569 município pages : the field to find one sits in the
             bar, where France puts « Chercher une commune » (2026-09-18). */}
@@ -87,7 +96,6 @@ export default function RegistryChrome({
             <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
           </div>
         ) : null}
-        <PlaceSwitcher variant="nav" />
         {trailing}
         <button
           type="button"
@@ -103,18 +111,6 @@ export default function RegistryChrome({
           <span className="fx-menu-btn-l">{t("fx.nav.menu_aria")}</span>
         </button>
       </header>
-      {/* The place's own row : its sections as tabs, its name leading to its hub. Desktop only. */}
-      {place && placeLinks.length > 0 ? (
-        <nav className="fx-subnav" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          <Link href={placeHome} className="fx-subnav-place">{placeName}</Link>
-          {placeLinks.map((l) => (
-            <Link key={l.href} href={l.href} className={isActive(l.href) ? "fx-sublink fx-sublink-on" : "fx-sublink"}>
-              {t(l.labelKey)}
-            </Link>
-          ))}
-        </nav>
-      ) : null}
-
       <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
           <div className="fx-overlay-brand"><BrandMark /><span>{t("chrome.wordmark")}</span></div>

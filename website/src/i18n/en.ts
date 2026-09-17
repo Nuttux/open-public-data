@@ -7361,6 +7361,7 @@ const en: Record<string, string> = {
   'fx.v3.rows.aide': 'Click a line to open its page.',
   'fx.sec.lieux.rows_aide': 'Click a place to open its page.',
   'us.sf.wgp3.scene_hint_kind': 'Click a kind of payee to keep only those in the list below.',
+  'br.recife.partial_note_voted': '{ano}, hatched: the budget the Câmara voted (initial appropriation), {dot}; paid {mes}, {pago}.',
 };
 
 export default en;
