@@ -34,10 +34,15 @@ export default function RegistryChrome({
   const t = useT();
   // The site entries name Paris itself : the raw string, never rewritten.
   const tRaw = useTRaw();
-  // In Brazil the first entry of the bar is the country's own hub (the 5 569
-  // municípios and their search), not Paris : from Recife or from any
-  // município, the way to the other cities is the first link (2026-09-18).
-  const siteLinks = country === "br" ? [{ href: "/brasil", labelKey: "br.hub.kicker" }, ...SITE_NAV_LINKS.slice(1)] : SITE_NAV_LINKS;
+  // Outside France the first entry of the bar is the country, not Paris : in
+  // Brazil its hub (the 5 569 municípios and their search), in the United
+  // States the federal page — from Recife, a município or San Francisco, the
+  // way to the rest of the country is the first link (2026-09-18).
+  const siteLinks = country === "br"
+    ? [{ href: "/brasil", labelKey: "br.hub.kicker" }, ...SITE_NAV_LINKS.slice(1)]
+    : country === "us"
+      ? [{ href: "/usa/national", labelKey: "chrome.country.us" }, ...SITE_NAV_LINKS.slice(1)]
+      : SITE_NAV_LINKS;
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 

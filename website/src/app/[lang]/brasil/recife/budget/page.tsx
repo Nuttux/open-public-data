@@ -3,6 +3,7 @@ import { loadBudget, loadContratos, loadQuemRecebe } from "@/lib/br/recife-data"
 import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
 import BudgetClient, { type RecifeBudgetDoors } from "./BudgetClient";
 import { sectionAlternates } from "@/lib/seo/page-answer";
+import { fmtBrlCompact } from "@/lib/br/format";
 import { recifeLocale } from "@/lib/br/recife-locale";
 
 const META_PT = { title: "Recife — Orçamento", description: "A despesa municipal executada do Recife, por função (saúde, educação, urbanismo), ano a ano — direto dos dados abertos da Prefeitura." };
@@ -12,7 +13,13 @@ const META_EN = { title: "Recife — Budget", description: "Recife's executed mu
 // of the host answering (lib/site-locale.ts).
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN : META_PT), ...sectionAlternates("/brasil/recife/budget", locale) };
+  // The title carries the number the page opens on : the last complete year, paid.
+  const d = loadBudget();
+  const complete = d.anos_disponiveis.filter((y) => d.curva_mensal.some((c) => c.ano === y && c.mes === 12));
+  const y = complete.length ? Math.max(...complete) : d.ano_mais_recente;
+  const total = fmtBrlCompact(d.anos.find((a) => a.ano === y)?.total_pago ?? 0);
+  const title = locale === "en" ? `Recife budget ${y}: ${total} paid`: `Orçamento do Recife ${y}: ${total} pagos`;
+  return { ...(locale === "en" ? META_EN: META_PT), title, ...sectionAlternates("/brasil/recife/budget", locale) };
 }
 
 export default async function RecifeBudgetPage({

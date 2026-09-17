@@ -3,6 +3,7 @@ import { loadBudget, loadContratos, loadQuemRecebe, type ContratoItem } from "@/
 import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
 import ContratosClient, { type RecifeCtDoors } from "./ContratosClient";
 import { sectionAlternates } from "@/lib/seo/page-answer";
+import { fmtBrlCompact, fmtInt } from "@/lib/br/format";
 import { recifeLocale } from "@/lib/br/recife-locale";
 
 const META_PT = { title: "Recife — Contratos", description: "Cada contrato administrativo da Prefeitura do Recife: objeto, fornecedor, valor e vigência, mais o contexto das licitações — dos dados abertos da cidade." };
@@ -12,7 +13,11 @@ const META_EN = { title: "Recife — Contracts", description: "Every administrat
 // of the host answering (lib/site-locale.ts).
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN : META_PT), ...sectionAlternates("/brasil/recife/contratos", locale) };
+  const h = loadContratos().headline;
+  const title = locale === "en"
+    ? `Recife contracts: ${fmtBrlCompact(h.valor_ativo_total)} in force across ${fmtInt(h.n_ativos)} contracts`
+    : `Contratos do Recife: ${fmtBrlCompact(h.valor_ativo_total)} em vigor em ${fmtInt(h.n_ativos)} contratos`;
+  return { ...(locale === "en" ? META_EN: META_PT), title, ...sectionAlternates("/brasil/recife/contratos", locale) };
 }
 
 const hasValue = (c: ContratoItem) => c.valor != null && c.valor > 0 && !c.valor_suspeito;

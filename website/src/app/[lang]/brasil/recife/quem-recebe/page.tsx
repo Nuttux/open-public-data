@@ -3,6 +3,7 @@ import { loadBudget, loadContratos, loadQuemRecebe } from "@/lib/br/recife-data"
 import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
 import QuemRecebeClient, { type RecifeQrDoors } from "./QuemRecebeClient";
 import { sectionAlternates } from "@/lib/seo/page-answer";
+import { fmtBrlCompact, fmtInt } from "@/lib/br/format";
 import { recifeLocale } from "@/lib/br/recife-locale";
 
 const META_PT = { title: "Recife — Quem recebe", description: "As organizações que recebem dinheiro da Prefeitura do Recife e as subvenções a entidades sem fins lucrativos. Apenas pessoas jurídicas (CNPJ)." };
@@ -12,7 +13,13 @@ const META_EN = { title: "Recife — Who gets paid", description: "The organisat
 // of the host answering (lib/site-locale.ts).
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN : META_PT), ...sectionAlternates("/brasil/recife/quem-recebe", locale) };
+  const d = loadQuemRecebe();
+  const h = d.headline;
+  const y0 = Math.min(...d.anos_disponiveis), y1 = Math.max(...d.anos_disponiveis);
+  const title = locale === "en"
+    ? `Who Recife pays: ${fmtBrlCompact(h.total_pago)} to ${fmtInt(h.n_organizacoes)} organisations, ${y0} to ${y1}`
+    : `Quem recebe dinheiro do Recife: ${fmtBrlCompact(h.total_pago)} pagos a ${fmtInt(h.n_organizacoes)} organizações, ${y0} a ${y1}`;
+  return { ...(locale === "en" ? META_EN: META_PT), title, ...sectionAlternates("/brasil/recife/quem-recebe", locale) };
 }
 
 export default function RecifeQuemRecebePage() {
