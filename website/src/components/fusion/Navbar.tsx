@@ -58,13 +58,6 @@ function placeNameForPath(pathname: string, commune: CommuneNav | null, france: 
 }
 
 
-// Where the place's name leads : its own page.
-function placeHomeForPath(pathname: string, commune: CommuneNav | null): string {
-  if (isFranceScope(pathname)) return "/france";
-  if (commune) return `/france/${commune.slug}`;
-  const place = pathname === "/" ? "paris" : frPlace(pathname);
-  return place ? `/france/${place}` : "/france";
-}
 
 // The registry slug of the current France scope, for the unified switcher.
 // France's routing is irregular (Paris = root URLs + homepage),
@@ -89,7 +82,6 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const siteLinks = SITE_NAV_LINKS;
   const placeLinks = placeLinksForPath(scope, commune);
   const placeName = placeNameForPath(scope, commune, "France");
-  const placeHome = placeHomeForPath(scope, commune);
   const frSlug = currentFrSlug(scope);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
@@ -128,7 +120,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   // starts with /france) ; a drawer lights nothing.
   const siteActive = (href: string) => {
     if (drawerOpen) return false;
-    if (href === "/france") return pathname === "/france";
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
   const openSearch = (surface: "nav" | "overlay") => {
@@ -152,7 +144,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             the switcher at the right is hidden, so the commune's name sits next to
             the mark and stays the link to its own page while the reader scrolls. */}
         <div className="fx-brand">
-          <Link href="/france" className="fx-brand-home" onClick={() => trackNav("/france", "fx.nav.brand", "brand")}>
+          <Link href="/" className="fx-brand-home" onClick={() => trackNav("/", "fx.nav.brand", "brand")}>
             <BrandMark />
             <span>{t("fx.nav.brand")}</span>
           </Link>
@@ -168,11 +160,6 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             explainers, the page for town halls) live in the phone menu and on the
             hub ; the mark is home. The search closes the row at the right. */}
         <nav className="fx-placebar" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          {/* The place's name heads its tabs and leads to its page ; the switcher
-              sits at the right of the bar, where Daniel liked it (18/09). */}
-          {placeName ? (
-            <Link href={placeHome} className="fx-placebar-name" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
-          ) : null}
           {placeLinks.length > 0 ? (
             <div className="fx-placebar-tabs">
               {placeLinks.map((l) => (
