@@ -647,6 +647,7 @@ const pt: Record<string, string> = {
   "br.cmp.foot": "Fonte: SICONFI, Tesouro Nacional (DCA, Anexos I-C e I-E); população IBGE. Por habitante, ano {y}.",
   "br.cmp.pick_b": "Escolha o segundo município",
   "br.cmp.pick_b_sub": "Digite o nome; os municípios de tamanho parecido estão na página de {a}.",
+  "br.recife.partial_note_voted": "{ano}, hachurado: o orçamento votado pela Câmara (dotação inicial), {dot}; pago de {mes}, {pago}.",
 };
 
 export default pt;

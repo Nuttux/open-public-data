@@ -31,12 +31,18 @@ export type BudgetFuncao = {
   codigo: string | null;
   pago: number;
   empenhado: number;
+  /** What the Câmara voted for the function (LOA), Recife only (2026-09-18). */
+  dotacao_inicial?: number;
   subfuncoes: BudgetSubfuncao[];
 };
 export type BudgetAno = {
   ano: number;
   total_pago: number;
   total_empenhado: number;
+  /** The voted budget (dotação inicial, the LOA) and the one after
+   *  supplementary credits ; Recife only, absent for the municípios. */
+  dotacao_inicial?: number;
+  dotacao_atualizada?: number;
   funcoes: BudgetFuncao[];
 };
 export type Populacao = { populacao: number; ano: number; source: string; source_url: string };
