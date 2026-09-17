@@ -7110,6 +7110,7 @@ const fr: Record<string, string> = {
   'fx.homonymes.h1': '{nom} : laquelle ?',
   'fx.homonymes.lead': '{n} communes portent ce nom. Population : OFGL.',
   'fx.homonymes.hab': 'hab.',
+  'br.hub.find_h': 'Chercher un município',
 };
 
 export default fr;

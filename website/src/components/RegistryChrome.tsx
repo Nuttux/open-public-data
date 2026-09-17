@@ -8,6 +8,7 @@ import { placesForCountry, orderedModules, type Place } from "@/lib/places";
 import { useDrawerOpen } from "@/lib/drawerState";
 import BrandMark from "./fusion/BrandMark";
 import PlaceSwitcher from "./PlaceSwitcher";
+import MunicipioSearch from "./br/MunicipioSearch";
 import { SITE_NAV_LINKS } from "./fusion/nav-links";
 
 /**
@@ -78,6 +79,13 @@ export default function RegistryChrome({
             </Link>
           ))}
         </nav>
+        {/* Brazil has 5 569 município pages : the field to find one sits in the
+            bar, where France puts « Chercher une commune » (2026-09-18). */}
+        {country === "br" ? (
+          <div className="fx-nav-picker">
+            <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
+          </div>
+        ) : null}
         <PlaceSwitcher variant="nav" />
         {trailing}
         <button
@@ -122,6 +130,11 @@ export default function RegistryChrome({
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t(`${country}.chrome.nav_aria`)}>
+          {country === "br" ? (
+            <div className="fx-overlay-picker">
+              <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
+            </div>
+          ) : null}
           {siteLinks.map((l) => (
             <Link key={l.href} href={l.href}>
               {tRaw(l.labelKey)}
