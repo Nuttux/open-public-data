@@ -7095,7 +7095,7 @@ const en: Record<string, string> = {
   'br.recife.qr.col_org': 'Organisation',
   'br.recife.qr.col_pago': 'Paid',
   'br.recife.qr.col_orgao': 'Main agency',
-  'br.recife.qr.badge_subv': 'subsidy',
+  'br.recife.qr.badge_subv': 'grant',
   'br.recife.qr.privacy': 'Individuals (CPF) are never listed or searchable.',
   'br.recife.qr.results': '{n} organisations',
   'br.recife.qr.no_results': 'No organisation found.',
