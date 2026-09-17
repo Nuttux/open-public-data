@@ -160,22 +160,22 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   white-space: nowrap;
 }
 .theme-fusion .fx-link:hover { background: var(--ink); color: var(--bg); }
-/* The site bar's search entry is a button dressed as a link (2026-09-16). */
-.theme-fusion button.fx-link-search { gap: 8px; background: transparent; border: 0; border-right: 1px solid var(--rule); font: inherit; font-family: var(--f-ui); font-size: 13.5px; font-weight: 500; color: var(--ink-2); cursor: pointer; }
-.theme-fusion button.fx-link-search:hover { background: var(--ink); color: var(--bg); }
+/* The site bar's search: a field at the right of the links (2026-09-17),
+   the shape people scan for, the same as the phone menu's field. */
+.theme-fusion button.fx-link-search { flex: none; gap: 8px; align-self: center; height: 32px; margin: 0 12px 0 auto; padding: 0 12px 0 10px; background: transparent; border: 1px solid var(--rule); border-radius: 4px; font: inherit; font-family: var(--f-ui); font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; transition: border-color .12s, color .12s; }
+.theme-fusion button.fx-link-search:hover { background: transparent; border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-link-search svg { width: 15px; height: 15px; flex: none; }
-/* The place row under the bar: the sections of Paris (or of a commune's
-   sub-pages, or France's pages). Quiet, one line, underline on the current one. */
-/* The place row under the bar (2026-09-16, v5): the sections as pills, the same
-   pills as the sticky chips of a commune page — one family, and they read as
-   clickable. Paper background, no tint; the place's name opens the row. */
-.theme-fusion .fx-subnav { display: flex; align-items: center; gap: 8px; padding: 9px 24px; border-bottom: 1px solid var(--rule); background: var(--bg); overflow-x: auto; scrollbar-width: none; }
+/* The place row under the bar (2026-09-17, v6): tabs. The place's name in
+   bold opens the row and leads to its hub ; the sections are plain text, the
+   current one bold with a 2 px rule resting on the row's bottom rule. Paper
+   background, no tint, no pills : the site's own language, a rule and text. */
+.theme-fusion .fx-subnav { display: flex; align-items: stretch; gap: 0; height: 40px; padding: 0 24px; border-bottom: 1px solid var(--rule); background: var(--bg); overflow-x: auto; scrollbar-width: none; }
 .theme-fusion .fx-subnav::-webkit-scrollbar { display: none; }
-.theme-fusion .fx-subnav-tag { flex: none; margin-right: 6px; padding-right: 14px; border-right: 1px solid var(--rule); font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; line-height: 28px; }
-.theme-fusion .fx-sublink { flex: none; font-family: var(--f-ui); font-size: 13.5px; line-height: 1.3; font-weight: 500; color: var(--ink-2); text-decoration: none; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 5px 12px; white-space: nowrap; transition: border-color .12s, color .12s; }
-.theme-fusion .fx-sublink:hover { border-color: var(--ink); color: var(--ink); }
-.theme-fusion .fx-sublink-on { background: var(--ink); border-color: var(--ink); color: var(--paper, #fafaf7); font-weight: 600; }
-.theme-fusion .fx-sublink-on:hover { color: var(--paper, #fafaf7); }
+.theme-fusion .fx-subnav-place { flex: none; display: flex; align-items: center; padding: 0 16px 0 0; margin-right: 6px; border-right: 1px solid var(--rule); font-family: var(--f-disp); font-size: 14px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.theme-fusion .fx-subnav-place:hover { color: var(--bleu); }
+.theme-fusion .fx-sublink { flex: none; display: flex; align-items: center; padding: 0 12px; font-family: var(--f-ui); font-size: 13.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .12s, border-color .12s; }
+.theme-fusion .fx-sublink:hover { color: var(--ink); }
+.theme-fusion .fx-sublink-on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
 @media (max-width: 980px) { .theme-fusion .fx-subnav { display: none; } }
 /* The phone menu: the four site entries, then the place's sections, smaller. */
 .theme-fusion .fx-overlay-nav a.fx-overlay-place { font-size: 21px; padding: 7px 0; font-weight: 500; }

@@ -161,12 +161,17 @@ interface LocaleContextValue {
   locale: Locale;
   setLocale: (l: Locale) => void;
   t: (key: string) => string;
+  /** The string as written, without the city rewrite : for what names Paris
+   *  itself on another city's page (the site bar's « Paris », the commune
+   *  page's door to Paris). */
+  tRaw: (key: string) => string;
 }
 
 const LocaleContext = createContext<LocaleContextValue>({
   locale: 'fr',
   setLocale: () => {},
   t: (key) => key,
+  tRaw: (key) => key,
 });
 
 export function LocaleProvider({
@@ -213,16 +218,17 @@ function LocaleProviderInner({
   const pathname = usePathname();
   const citySlug = detectCityFromPath(pathname);
 
+  const tRaw = useCallback((key: string): string => dict[key] ?? frDict[key] ?? key, [dict, frDict]);
   const t = useCallback(
     (key: string): string => {
-      const raw = dict[key] ?? frDict[key] ?? key;
+      const raw = tRaw(key);
       return citySlug && citySlug !== 'paris' ? rewriteForCity(raw, citySlug) : raw;
     },
-    [dict, frDict, citySlug],
+    [tRaw, citySlug],
   );
 
   return (
-    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+    <LocaleContext.Provider value={{ locale, setLocale, t, tRaw }}>
       {children}
     </LocaleContext.Provider>
   );
@@ -234,6 +240,11 @@ export function useLocale() {
 
 export function useT() {
   return useContext(LocaleContext).t;
+}
+
+/** The translation without the city rewrite (see LocaleContextValue.tRaw). */
+export function useTRaw() {
+  return useContext(LocaleContext).tRaw;
 }
 
 /**
@@ -271,7 +282,7 @@ function ForcedLocaleInner({
   );
   const setLocale = useCallback(() => {}, []);
   return (
-    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+    <LocaleContext.Provider value={{ locale, setLocale, t, tRaw: t }}>
       {children}
     </LocaleContext.Provider>
   );

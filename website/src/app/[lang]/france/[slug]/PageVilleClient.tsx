@@ -12,7 +12,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { NextDoor } from "@/components/fiche/Doors";
 import { V3Hint } from "@/components/fiche/v3";
-import { useT, useLocale } from "@/lib/localeContext";
+import { useT, useLocale, useTRaw } from "@/lib/localeContext";
 import { deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { makeFmt } from "@/lib/fmt";
@@ -270,6 +270,9 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const { locale: pageLocale } = useLocale();
   const isEn = pageLocale === "en";
   const t = useT();
+  // The door to Paris names Paris : without the city rewrite of t(), which
+  // read « Lyon, en détail » on Lyon's page (2026-09-17).
+  const tRaw = useTRaw();
   const track = useTrack();
   const { euro, split, int, signedPct, locale } = useFmt();
   const en = locale === "en";
@@ -1012,7 +1015,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {/* The page's last door (2026-09-16): the reader has seen one commune;
               Paris is where the site goes deepest, and where a town sees what
               its own page could become. */}
-          <NextDoor href="/france/paris" kicker={t("fx.pv.next.kicker")} title={t("fx.pv.next.title")} sub={t("fx.pv.next.sub")} />
+          <NextDoor href="/france/paris" kicker={tRaw("fx.pv.next.kicker")} title={tRaw("fx.pv.next.title")} sub={tRaw("fx.pv.next.sub")} />
         </div>
       </main>
       <Footer />
