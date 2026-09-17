@@ -154,3 +154,32 @@ models:
     columns:
       - name: orgao
         tests: [not_null]
+
+  # ---------------------------------------------------------------------------
+  # Every município (2026-09-18): SICONFI through Base dos Dados.
+  # ---------------------------------------------------------------------------
+  - name: stg_br_siconfi_despesas_funcao
+    description: "SICONFI DCA Anexo I-E, every município, 2017+, three stages, coded contas only."
+    columns:
+      - name: ano
+        tests: [not_null]
+      - name: id_municipio
+        tests: [not_null]
+  - name: stg_br_municipios
+    description: "The municípios directory with the latest population and the site slug."
+    columns:
+      - name: id_municipio
+        tests: [not_null, unique]
+      - name: slug
+        tests: [not_null, unique]
+  - name: core_br_municipio_despesas
+    description: "Despesas por função e subfunção × município × ano, pago / empenhado / liquidado."
+  - name: mart_br_municipio_budget
+    description: "Budget page rows of every município (função, subfunção, totals flagged)."
+  - name: mart_br_municipios
+    description: "One row per município : identity, population, yearly totals, latest pago per inhabitant."
+    columns:
+      - name: id_municipio
+        tests: [not_null, unique]
+      - name: slug
+        tests: [not_null, unique]
