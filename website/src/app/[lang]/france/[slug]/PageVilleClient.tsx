@@ -2,7 +2,7 @@
 
 import Link from "@/components/LocalizedLink";
 import { useRouter } from "@/lib/navigation";
-import { useEffect, useMemo, useRef, useState, useTransition, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, useTransition, type ReactNode } from "react";
 import { useCountUp } from "@/lib/use-count-up";
 import { useTrack } from "@/lib/analyticsContext";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
@@ -92,7 +92,18 @@ export type PageVilleProps = {
   related?: RelatedBlock | null;
 };
 
-const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute"] as const;
+// The comparison's five lines (2026-09-18, Daniel : « on devrait comparer quelles
+// métriques ? ») : what the commune spends for me, what I pay (and the rate),
+// what I owe, how the town hall runs. Per resident, except the staff share.
+// Investment per resident would be the fifth ; the national index has no such
+// column yet.
+const CMP_ROWS = [
+  { key: "depenses_totales", kind: "hab", labelKey: "fx.cmp2.kpi.depenses_totales" },
+  { key: "impots_locaux", kind: "hab", labelKey: "fx.cmp2.kpi.impots_locaux" },
+  { key: "encours_dette", kind: "hab", labelKey: "fx.cmp2.kpi.encours_dette" },
+  { key: "frais_personnel", kind: "share", labelKey: "fx.pv.kpi.share_personnel" },
+] as const;
+type CmpRow = (typeof CMP_ROWS)[number];
 
 function useFmt() {
   const { locale } = useLocale();
@@ -487,6 +498,47 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     return `/france/${commune.slug}?${sp.toString()}`;
   };
   const other = compare?.other ?? null;
+  // The verdicts of the comparison : against the neighbour, against the towns of
+  // the same size (the strata median of the national index). Under 5 % apart
+  // reads as « like ».
+  const pctDiff = (a: number, b: number) => (Math.abs(b) < 1 ? null : ((a - b) / Math.abs(b)) * 100);
+  const verdictVs = (a: number, b: number, nom: string) => {
+    const pd = pctDiff(a, b);
+    if (pd == null) return null;
+    const r = Math.round(Math.abs(pd));
+    return r < 5 ? fill("fx.pv.vs.same", { nom }) : fill(pd > 0 ? "fx.pv.vs.more" : "fx.pv.vs.less", { p: int.format(r), nom });
+  };
+  const verdictStrate = (pd: number) => {
+    const r = Math.round(Math.abs(pd));
+    return r < 5 ? t("fx.pv.vs.strate_same") : fill(pd > 0 ? "fx.pv.vs.strate_more" : "fx.pv.vs.strate_less", { p: int.format(r) });
+  };
+  const cmpVal = (e: CompareEntry, row: CmpRow): number | null =>
+    row.kind === "share"
+      ? (e.kpis.frais_personnel != null && e.kpis.depenses_totales ? (e.kpis.frais_personnel / e.kpis.depenses_totales) * 100 : null)
+      : (e.kpis[row.key] ?? null);
+  const cmpRow = (row: CmpRow) => {
+    if (!compare) return null;
+    const a = cmpVal(compare.me, row);
+    const b = other ? cmpVal(other, row) : null;
+    const max = Math.max(Math.abs(a ?? 0), Math.abs(b ?? 0), 1);
+    const peer = row.kind === "hab" ? peers?.rows.find((r) => r.key === row.key) ?? null : null;
+    const fmtV = (v: number | null) => (v == null ? "—" : row.kind === "share" ? `${int.format(Math.round(v))} %` : `${int.format(Math.round(v))} €`);
+    const vsNeighbour = other && a != null && b != null ? verdictVs(a, b, nomDistinct(other)) : null;
+    const vsStrate = peer && peer.deltaPct != null ? verdictStrate(peer.deltaPct) : null;
+    return (
+      <div className="row">
+        <span className="lab">{t(row.labelKey)}</span>
+        <div className="track">
+          <span className="a" style={{ width: `${(Math.abs(a ?? 0) / max) * 100}%` }} />
+          {other ? <span className="b" style={{ width: `${(Math.abs(b ?? 0) / max) * 100}%` }} /> : null}
+        </div>
+        <span className="val tnum">
+          <span><b>{fmtV(a)}</b>{other ? <> · {fmtV(b)}</> : null}{row.kind === "hab" ? <> {t("fx.pv.par_hab")}</> : null}</span>
+          {vsNeighbour || vsStrate ? <span className="fx-pv-vs-verdict">{vsNeighbour}{vsNeighbour && vsStrate ? " · " : ""}{vsStrate}</span> : null}
+        </span>
+      </div>
+    );
+  };
 
   const H2 = ({ id, children, sub, hint }: { id: string; children: React.ReactNode; sub?: React.ReactNode; hint?: React.ReactNode }) => (
     <>
@@ -498,8 +550,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
   // The chips are the page's doors: each carries the number it opens; a chip on a row opens the row (2026-09-16).
   const toc = [
-    { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
     ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer"), value: other ? fill("fx.pv.chip_vs", { nom: nomDistinct(other) }) : undefined }] : []),
+    { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit"), value: euro(invYear.total.depenses) }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats"), value: euro(ly ? ly.montant : marches.total.montant) }] : []),
     ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)} %` }] : []),
@@ -585,6 +637,72 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           </div>
 
           <SectionChips items={toc} label={t("fx.pv.chips_aria")} onPick={(id) => { if (["taxe-fonciere", "dette", "construit", "achats"].includes(id)) toggleFold(id, true); }} />
+
+          {/* 2. Comparer — right under the number (2026-09-18) : « est-ce beaucoup ? »
+              is the reader's second question, the neighbours are what they scroll
+              for, and a neighbour is the most clicked link of the site. Five lines,
+              each with its verdict against the neighbour and against the towns of
+              the same size ; the strata verdicts show even before a neighbour is
+              picked. The picker sits under the bars, once the reader has seen them. */}
+          {compare && (
+            <Reveal>{() => (<>
+              <H2 id="comparer">{t("fx.pv.comparer")}</H2>
+              <div className="fx-pv-pick">
+                <span className="fx-pv-pick-now">
+                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
+                </span>
+                {!other ? <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={null}
+                  suggestions={compare.options
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                /> : null}
+              </div>
+              <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
+                {other ? <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div> : null}
+                {CMP_ROWS.map((row, i) => (
+                  <Fragment key={row.key}>
+                    {cmpRow(row)}
+                    {i === 1 && other && compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
+                      <div className="row">
+                        <span className="lab">{t("fx.pv.kpi_tfb")}</span>
+                        <div className="track">
+                          <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                          <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                        </div>
+                        <span className="val tnum">
+                          <span><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
+                          <span className="fx-pv-vs-verdict">{verdictVs(compare.me.taux.tfb, other.taux.tfb, nomDistinct(other))}</span>
+                        </span>
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))}
+                {other ? (<>
+                  <div className="fx-pv-pick fx-pv-pick--after">
+                    <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
+                  suggestions={compare.options
+                    .filter((o) => o.slug !== other?.slug)
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                />
+                  </div>
+                  <p className="fx-pv-more"><Link className="fx-pv-link" href={`/france/comparer/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
+                </>) : null}
+                <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
+              </div>
+            </>)}</Reveal>
+          )}
+
 
           {/* ── The scene: « À quoi sert l'argent ? », cut by public policy or by nature. The
               invitation is the whole sub-line: a reader skims, a long sentence hides it. */}
@@ -785,78 +903,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               )}
             </div>
           ) : null}
-          {/* 3. Comparer — right after the ledger (2026-09-16): « est-ce beaucoup ? »
-              is the reader's third question, and the comparison is the one thing
-              on the page they can do and send. A neighbour is chosen by default;
-              the picker sits under the bars, once the reader has seen them. */}
-          {compare && (
-            <Reveal>{() => (<>
-              <H2 id="comparer">{t("fx.pv.comparer")}</H2>
-              <div className="fx-pv-pick">
-                <span className="fx-pv-pick-now">
-                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
-                </span>
-                {!other ? <CommunePicker
-                  label={t("fx.pv.changer")}
-                  exclude={commune.slug}
-                  current={null}
-                  suggestions={compare.options
-                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
-                    .slice(0, 6)
-                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
-                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
-                /> : null}
-              </div>
-              {other ? (
-                <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
-                  <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div>
-                  {COMPARE_KEYS.map((k) => {
-                    const a = compare.me.kpis[k];
-                    const b = other.kpis[k];
-                    const max = Math.max(Math.abs(a ?? 0), Math.abs(b ?? 0), 1);
-                    return (
-                      <div key={k} className="row">
-                        <span className="lab">{t(`fx.cmp2.kpi.${k}`)}</span>
-                        <div className="track">
-                          <span className="a" style={{ width: `${(Math.abs(a ?? 0) / max) * 100}%` }} />
-                          <span className="b" style={{ width: `${(Math.abs(b ?? 0) / max) * 100}%` }} />
-                        </div>
-                        <span className="val tnum">
-                          <b>{a != null ? int.format(Math.round(a)) : "—"} €</b> · {b != null ? int.format(Math.round(b)) : "—"} € {t("fx.pv.par_hab")}
-                        </span>
-                      </div>
-                    );
-                  })}
-                  {compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
-                    <div className="row">
-                      <span className="lab">{t("fx.pv.kpi_tfb")}</span>
-                      <div className="track">
-                        <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                        <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                      </div>
-                      <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
-                    </div>
-                  ) : null}
-                  <div className="fx-pv-pick fx-pv-pick--after">
-                    <CommunePicker
-                  label={t("fx.pv.changer")}
-                  exclude={commune.slug}
-                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
-                  suggestions={compare.options
-                    .filter((o) => o.slug !== other?.slug)
-                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
-                    .slice(0, 6)
-                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
-                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
-                />
-                  </div>
-                  <p className="fx-pv-more"><Link className="fx-pv-link" href={`/france/comparer/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
-                  <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
-                </div>
-              ) : null}
-            </>)}</Reveal>
-          )}
-
           {/* ── The other numbers (2026-09-16): four rows, the concrete first — works,
               purchases, then taxes, debt. Each row shows its number and its two lines
               without a click; what needs a table sits behind a link that says what it opens. */}

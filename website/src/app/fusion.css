@@ -20354,17 +20354,21 @@ a.fx-pv-row--fiche:hover .n { text-decoration: underline; text-underline-offset:
 .theme-fusion .fx-pv-vs .legend i { display: inline-block; width: 14px; height: 6px; vertical-align: middle; margin-right: 6px; }
 .theme-fusion .fx-pv-vs .legend i.a, .theme-fusion .fx-pv-vs .track .a { background: var(--ink); }
 .theme-fusion .fx-pv-vs .legend i.b, .theme-fusion .fx-pv-vs .track .b { background: #c8ccd3; }
-.theme-fusion .fx-pv-vs .row { display: grid; grid-template-columns: 170px 1fr 250px; gap: 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-pv-vs .row { display: grid; grid-template-columns: 170px 1fr 290px; gap: 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); }
 .theme-fusion .fx-pv-vs .lab { font-size: 13.5px; }
 .theme-fusion .fx-pv-vs .track { display: flex; flex-direction: column; gap: 3px; }
 .theme-fusion .fx-pv-vs .track span { display: block; height: 7px; }
 .theme-fusion .fx-pv-vs .val { text-align: right; font-size: 13px; color: var(--ink-2); }
 .theme-fusion .fx-pv-vs .val b { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-pv-vs .val { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+/* The verdict under the numbers : against the neighbour, against the towns of the same size (2026-09-18). */
+.theme-fusion .fx-pv-vs-verdict { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .03em; color: var(--ink-2); text-align: right; }
 @media (max-width: 700px) {
   .theme-fusion .fx-pv-two { grid-template-columns: 1fr; gap: 26px; }
   .theme-fusion .fx-pv-dettegrid { grid-template-columns: 1fr; }
   .theme-fusion .fx-pv-vs .row { grid-template-columns: 1fr; gap: 6px; }
-  .theme-fusion .fx-pv-vs .val { text-align: left; }
+  .theme-fusion .fx-pv-vs .val { text-align: left; align-items: flex-start; }
+  .theme-fusion .fx-pv-vs-verdict { text-align: left; }
 }
 .theme-fusion .fx-pv-link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-2, #cfcdc4); text-underline-offset: 3px; }
 .theme-fusion .fx-pv-link:hover { text-decoration-color: var(--ink); }
