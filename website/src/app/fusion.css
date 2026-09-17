@@ -104,8 +104,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   border-bottom: 1px solid var(--ink);
   height: 52px;
   display: grid;
-  /* mark | the place and its sections | search | language | (phone) menu */
-  grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+  /* mark | the place and its sections | search | place switcher | language | (phone) menu */
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto auto;
   align-items: stretch;
   /* note: pas de transition/will-change ici — ils créent un nouveau stacking
    * context qui peut casser position:sticky sur Safari in-app browsers
@@ -180,7 +180,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
    chevron that switches place, then its sections as tabs. The tabs scroll
    sideways in their own box so the switcher's menu is never clipped. */
 .theme-fusion .fx-placebar { display: flex; align-items: stretch; min-width: 0; }
-.theme-fusion .fx-placebar-name { flex: none; display: flex; align-items: center; padding: 0 2px 0 18px; font-family: var(--f-disp); font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.theme-fusion .fx-placebar-name { flex: none; display: flex; align-items: center; padding: 0 14px 0 18px; margin-right: 6px; border-right: 1px solid var(--rule); font-family: var(--f-disp); font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
 .theme-fusion .fx-placebar-name:hover { color: var(--bleu); }
 .theme-fusion .fx-placebar .fx-scope-wrap { display: flex; align-items: stretch; margin-right: 6px; border-right: 1px solid var(--rule); }
 .theme-fusion .fx-placebar .fx-scope-only { padding: 0 10px 0 4px; gap: 0; background: transparent; border: 0; color: var(--ink-2); font-size: 11px; cursor: pointer; }
@@ -534,12 +534,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* En dessous, la marque seule ne suffit plus à garder la rangée lisible :
  * on bascule sur le menu en plein écran. */
 @media (max-width: 980px) {
-  .theme-fusion .fx-nav { grid-template-columns: 1fr auto auto; }
+  /* mark | place switcher | search | menu : the switcher stays in the phone bar (2026-09-18). */
+  .theme-fusion .fx-nav { grid-template-columns: 1fr auto auto auto; }
   .theme-fusion .fx-nav-search { display: flex; }
   .theme-fusion .fx-links,
-  .theme-fusion .fx-scope-wrap:has(.fx-scope-nav),
-  .theme-fusion .fx-scope-nav,
   .theme-fusion .fx-nav > .fx-lang { display: none; }
+  .theme-fusion .fx-scope-nav { padding: 0 10px; font-size: 12px; }
+  /* The menu takes the width of the phone under the bar, instead of hanging off its trigger. */
+  .theme-fusion .fx-scope-wrap:has(.fx-scope-nav) .fx-scope-menu { position: fixed; left: 12px; right: 12px; top: 60px; min-width: 0; width: auto; }
   .theme-fusion .fx-menu-btn { display: flex; }
   /* Le burger libère toute la barre : on redonne du corps à la marque
    * (le texte rétréci à 15px en ≤1180 n'a plus lieu d'être ici). */
@@ -551,12 +553,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 @media (max-width: 768px) {
-  .theme-fusion .fx-nav { grid-template-columns: 1fr auto auto; }
+  /* mark | place switcher | search | menu : the switcher stays in the phone bar (2026-09-18). */
+  .theme-fusion .fx-nav { grid-template-columns: 1fr auto auto auto; }
   .theme-fusion .fx-nav-search { display: flex; }
   .theme-fusion .fx-links,
-  .theme-fusion .fx-scope-wrap:has(.fx-scope-nav),
-  .theme-fusion .fx-scope-nav,
   .theme-fusion .fx-nav > .fx-lang { display: none; }
+  .theme-fusion .fx-scope-nav { padding: 0 10px; font-size: 12px; }
+  /* The menu takes the width of the phone under the bar, instead of hanging off its trigger. */
+  .theme-fusion .fx-scope-wrap:has(.fx-scope-nav) .fx-scope-menu { position: fixed; left: 12px; right: 12px; top: 60px; min-width: 0; width: auto; }
   .theme-fusion .fx-menu-btn { display: flex; }
   .theme-fusion .fx-overlay-nav { padding: 14px 26px; }
   .theme-fusion .fx-overlay-nav a { font-size: 23px; padding: 8px 0; }

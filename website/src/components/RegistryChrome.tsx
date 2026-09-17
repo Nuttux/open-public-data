@@ -77,7 +77,7 @@ export default function RegistryChrome({
             its municípios) leads to the hub, the chevron switches place, then the
             place's sections. « Início » / « Home » live in the phone menu. */}
         <nav className="fx-placebar" aria-label={t(`${country}.chrome.nav_aria`)}>
-          <PlaceSwitcher variant="place" label={placeName ?? t(`chrome.country.${country}`)} />
+          <Link href={place ? placeHome : homeHref} className="fx-placebar-name">{placeName ?? t(`chrome.country.${country}`)}</Link>
           {place && placeLinks.length > 0 ? (
             <div className="fx-placebar-tabs">
               {placeLinks.map((l) => (
@@ -95,6 +95,7 @@ export default function RegistryChrome({
             <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
           </div>
         ) : null}
+        <PlaceSwitcher variant="nav" label={placeName ?? t(`chrome.country.${country}`)} />
         {trailing}
         <button
           type="button"
