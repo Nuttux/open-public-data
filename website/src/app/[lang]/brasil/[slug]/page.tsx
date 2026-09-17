@@ -43,7 +43,7 @@ export default async function MunicipioPage({ params, searchParams }: { params: 
     <BudgetClient
       d={d}
       ano={ano}
-      city={{ slug, name: `${m.nome} (${m.uf})`, shortName: m.nome, base: `/brasil/${slug}`, hub: "/brasil", drawers: false, peers }}
+      city={{ slug, name: `${m.nome} (${m.uf})`, shortName: m.nome, base: `/brasil/${slug}`, hub: "/brasil", drawers: true, peers }}
     />
   );
 }

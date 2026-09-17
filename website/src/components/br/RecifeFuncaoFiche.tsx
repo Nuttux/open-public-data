@@ -20,7 +20,7 @@ function titleCase(s: string) {
  * the br-municipal analog of fusion/PosteFiche. Built from shared primitives
  * (FicheKpis + BarRow + FicheYearBars) so it stays BRL-correct.
  */
-export default function RecifeFuncaoFiche({ f }: { f: FuncaoDetail }) {
+export default function RecifeFuncaoFiche({ f, perimeter }: { f: FuncaoDetail; perimeter?: string }) {
   const t = useT();
   const { locale } = useLocale();
   const subItems: BarRowItem[] = f.subfuncoes
@@ -59,7 +59,7 @@ export default function RecifeFuncaoFiche({ f }: { f: FuncaoDetail }) {
 
       <footer className="fx-fiche-sources">
         <p className="fx-footer-sources-meta">
-          {t("br.recife.budget.perimeter")}{" "}
+          {perimeter ?? t("br.recife.budget.perimeter")}{" "}
           {f.source.source_url && (
             <a href={f.source.source_url} target="_blank" rel="noopener noreferrer">{t("br.recife.source")} ↗</a>
           )}

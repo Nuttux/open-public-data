@@ -71,10 +71,16 @@ export type FuncaoDetail = {
   partial_year?: PartialYear;
 };
 
-/** Función detail for the budget drilldown drawer — computed from budget.json. */
+/** Função detail for the budget drilldown drawer — computed from budget.json. */
 export function loadFuncao(slug: string, ano?: number): FuncaoDetail | null {
-  const d = loadBudget();
-  const year = ano ?? d.ano_mais_recente;
+  return funcaoFromBudget(loadBudget(), slug, ano);
+}
+
+/** The same detail from any BudgetData : Recife's file, or a município's
+ *  SICONFI file (2026-09-18). A partial year is never the default. */
+export function funcaoFromBudget(d: BudgetData, slug: string, ano?: number): FuncaoDetail | null {
+  const complete = d.anos_disponiveis.filter((y) => !d.partial_year || y !== d.partial_year.ano);
+  const year = ano ?? (complete.length ? Math.max(...complete) : d.ano_mais_recente);
   const anoData = d.anos.find((a) => a.ano === year) ?? d.anos[d.anos.length - 1];
   if (!anoData) return null;
   const f = anoData.funcoes.find((x) => funcaoSlug(x.funcao) === slug);
