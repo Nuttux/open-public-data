@@ -640,8 +640,11 @@ function ChatPanelInner() {
           atteignables au clavier (audit aria-hidden-focus). */}
       <div
         ref={panelRef}
-        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-md lg:max-w-lg flex-col border-l border-neutral-200 bg-white shadow-[-12px_0_40px_rgba(0,0,0,0.10)] transition-transform duration-300 ease-out ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-md lg:max-w-lg flex-col border-l border-neutral-200 bg-white transition-transform duration-300 ease-out ${
+          // The shadow only when open : closed, the panel sits just off the right
+          // edge and its 40 px shadow fell back onto every page as a grey band
+          // (it « cut » the home's scrolling strip on desktop, 2026-09-18).
+          open ? "translate-x-0 shadow-[-12px_0_40px_rgba(0,0,0,0.10)]" : "translate-x-full shadow-none"
         }`}
         inert={!open}
         role="dialog"

@@ -2994,7 +2994,7 @@ const en: Record<string, string> = {
   'fx.cities.s03.q1': "what do you do today when a resident, a journalist or a councillor asks where the money goes?",
   'fx.cities.s03.q2': "what would you want your town’s page to show?",
   'fx.cities.s03.q3': "what do you have, in your files, that nobody sees?",
-  'fx.cities.s03.p2': "Write to daniel@qipu.org with the name of the town. We reply after looking at its page.",
+  'fx.cities.s03.p2': "Write to daniel@qipu.org with the name of the town.",
   'fx.cities.s03.btn': "Email daniel@qipu.org",
   'fx.contact.s02.kind': "Report",
   'fx.contact.s02.title.before': "Spotted an ",

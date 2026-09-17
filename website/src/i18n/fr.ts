@@ -2991,7 +2991,7 @@ const fr: Record<string, string> = {
   'fx.cities.s03.q1': "que faites-vous aujourd’hui quand un habitant, un journaliste ou un conseiller demande où va l’argent ?",
   'fx.cities.s03.q2': "que voudriez-vous que la page de votre commune montre ?",
   'fx.cities.s03.q3': "qu’avez-vous, dans vos fichiers, que personne ne voit ?",
-  'fx.cities.s03.p2': "Écrivez à daniel@qipu.org avec le nom de la commune. Nous répondons après avoir regardé sa page.",
+  'fx.cities.s03.p2': "Écrivez à daniel@qipu.org avec le nom de la commune.",
   'fx.cities.s03.btn': "Écrire à daniel@qipu.org",
   'fx.contact.s02.kind': "Signaler",
   'fx.contact.s02.title.before': "Vous voyez une ",
