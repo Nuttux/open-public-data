@@ -13,7 +13,7 @@ const META_EN = { title: "Where does public money go in Recife?", description: "
 // of the host answering (lib/site-locale.ts).
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN : META_PT), ...sectionAlternates("/brasil/recife", locale) };
+  return { ...(locale === "en" ? META_EN: META_PT), ...sectionAlternates("/brasil/recife", locale) };
 }
 
 export default async function RecifeHubPage() {

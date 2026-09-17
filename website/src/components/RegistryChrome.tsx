@@ -8,7 +8,7 @@ import { placesForCountry, orderedModules, type Place } from "@/lib/places";
 import { useDrawerOpen } from "@/lib/drawerState";
 import BrandMark from "./fusion/BrandMark";
 import PlaceSwitcher from "./PlaceSwitcher";
-import { SITE_NAV_LINKS } from "./fusion/nav-links";
+import MunicipioSearch from "./br/MunicipioSearch";
 
 /**
  * ONE registry-driven chrome for any country outside France (ADR-0010 D2),
@@ -33,6 +33,12 @@ export default function RegistryChrome({
   const t = useT();
   // The site entries name Paris itself : the raw string, never rewritten.
   const tRaw = useTRaw();
+  // The first entry of the bar is « Accueil », the country's home (2026-09-18) :
+  // in Brazil its hub (the 5 569 municípios, their search, Recife forward), in
+  // the United States San Francisco until a US hub exists. The mark leads
+  // there too.
+  const homeHref = country === "br" ? "/brasil" : country === "us" ? "/usa/san-francisco" : "/france";
+  const siteLinks = [{ href: homeHref, labelKey: "fx.nav.link.home" }];
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -62,18 +68,25 @@ export default function RegistryChrome({
     <>
       <header className="fx-nav">
         <div className="fx-brand">
-          <Link href="/" className="fx-brand-home">
+          <Link href={homeHref} className="fx-brand-home">
             <BrandMark />
             <span>{t("chrome.wordmark")}</span>
           </Link>
         </div>
         <nav className="fx-links" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {SITE_NAV_LINKS.map((l) => (
+          {siteLinks.map((l) => (
             <Link key={l.href} href={l.href} className="fx-link">
               {tRaw(l.labelKey)}
             </Link>
           ))}
         </nav>
+        {/* Brazil has 5 569 município pages : the field to find one sits in the
+            bar, where France puts « Chercher une commune » (2026-09-18). */}
+        {country === "br" ? (
+          <div className="fx-nav-picker">
+            <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
+          </div>
+        ) : null}
         <PlaceSwitcher variant="nav" />
         {trailing}
         <button
@@ -118,7 +131,12 @@ export default function RegistryChrome({
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {SITE_NAV_LINKS.map((l) => (
+          {country === "br" ? (
+            <div className="fx-overlay-picker">
+              <MunicipioSearch placeholder={t("br.hub.find_ph")} label={t("br.hub.find_h")} />
+            </div>
+          ) : null}
+          {siteLinks.map((l) => (
             <Link key={l.href} href={l.href}>
               {tRaw(l.labelKey)}
             </Link>
@@ -126,9 +144,11 @@ export default function RegistryChrome({
           {place && placeLinks.length > 0 ? (
             <>
               <span className="fx-overlay-scope-tag">{placeName}</span>
+              {/* The place's own landing, named like the first tab of the desktop row :
+                  « Início » here read as a second country home (2026-09-18). */}
               {place.hub ? (
                 <Link href={placeHome} className={pathname === placeHome ? "fx-overlay-place fx-overlay-on" : "fx-overlay-place"}>
-                  {t("chrome.home")}
+                  {placeName}
                 </Link>
               ) : null}
               {placeLinks.map((l) => (

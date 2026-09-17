@@ -125,6 +125,18 @@ export default function PlaceSwitcher({
                   <span className="fx-sm-tag">35 000+</span>
                 </button>
               )}
+              {/* Brazil : the 5 569 município pages sit behind the country hub and its search (2026-09-18). */}
+              {g.country === "br" && (
+                <Link
+                  className="fx-sm-item fx-sm-action"
+                  href="/brasil"
+                  role="menuitem"
+                  onClick={() => setOpen(false)}
+                >
+                  <span>{t("br.hub.find_h")}</span>
+                  <span className="fx-sm-tag">5 500+</span>
+                </Link>
+              )}
               {g.places.map((p) => {
                 const href = switchTarget(p)!;
                 const isActive = activeSlug === p.slug;

@@ -75,7 +75,8 @@ export default function SectionHero({
         ) : (
           <b>{year}</b>
         )}
-        {captionAfter ? <> {captionAfter}</> : null}
+        {/* A caption that opens on punctuation (", budget voté") sits against the year ; a word gets its space. */}
+        {captionAfter ? (typeof captionAfter === "string" && /^[,.;:)]/.test(captionAfter) ? captionAfter : <> {captionAfter}</>) : null}
       </div>
       {meta ? <div className="fx-sec-hero-meta">{meta}</div> : null}
       {move ? <div className="fx-sec-move">{move}</div> : null}

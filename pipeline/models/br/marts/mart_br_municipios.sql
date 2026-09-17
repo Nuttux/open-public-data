@@ -18,6 +18,17 @@ agg AS (
         ARRAY_AGG(pago ORDER BY ano DESC LIMIT 1)[OFFSET(0)] AS pago_recente
     FROM tot
     GROUP BY 1
+),
+-- The net revenue (gross minus the deductions) of the latest year that has
+-- one, from the revenue side (2026-09-18).
+rec AS (
+    SELECT
+        id_municipio,
+        ARRAY_AGG(ano ORDER BY ano DESC LIMIT 1)[OFFSET(0)] AS receita_ano,
+        ARRAY_AGG(liquida ORDER BY ano DESC LIMIT 1)[OFFSET(0)] AS receita_recente
+    FROM {{ ref('core_br_municipio_receitas') }}
+    WHERE nivel = 0 AND liquida > 0
+    GROUP BY 1
 )
 
 SELECT
@@ -34,6 +45,10 @@ SELECT
     a.ano_mais_recente,
     a.ano_inicio,
     a.pago_recente,
-    SAFE_DIVIDE(a.pago_recente, m.populacao) AS pago_hab
+    SAFE_DIVIDE(a.pago_recente, m.populacao) AS pago_hab,
+    r.receita_ano,
+    r.receita_recente,
+    SAFE_DIVIDE(r.receita_recente, m.populacao) AS receita_hab
 FROM {{ ref('stg_br_municipios') }} m
 JOIN agg a USING (id_municipio)
+LEFT JOIN rec r USING (id_municipio)

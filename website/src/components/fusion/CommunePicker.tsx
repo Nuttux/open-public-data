@@ -26,6 +26,7 @@ export default function CommunePicker({
   suggestions,
   onPick,
   label,
+  suggestHeading,
 }: {
   current: CommuneChoice | null;
   /** La commune de la page : on ne la compare pas à elle-même. */
@@ -33,6 +34,9 @@ export default function CommunePicker({
   suggestions: CommuneChoice[];
   onPick: (c: CommuneChoice) => void;
   label: string;
+  /** The heading over `suggestions` when the field is empty ; the commune page's
+   *  « Même département, taille proche » by default. */
+  suggestHeading?: string;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -95,7 +99,7 @@ export default function CommunePicker({
       : list.length
         ? t("fx.pick.results")
         : t("fx.pick.empty")
-    : t("fx.pick.suggest");
+    : suggestHeading ?? t("fx.pick.suggest");
 
   return (
     <div className={`fx-picker${open ? " open" : ""}`}>

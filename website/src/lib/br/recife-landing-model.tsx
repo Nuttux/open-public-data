@@ -39,7 +39,7 @@ type S = {
 
 const STRINGS: Record<"pt" | "en", S> = {
   pt: {
-    headline: <>Para onde vai o <em>dinheiro público</em><br />de <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
+    headline: <>Para onde vai o <em>dinheiro público</em>{" "}<br />de <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
     scalePer: "por habitante, por mês",
     scaleDelta: (v, y) => `≈ ${v} por ano · orçamento executado de ${y}`,
     deck: {
@@ -48,7 +48,7 @@ const STRINGS: Record<"pt" | "en", S> = {
       ct_k: "Um contrato", ct_cta: "Ver o contrato",
       subv_k: "Maior subvenção", subv_meta: "Entidade de saúde · subvenção", subv_cta: "Ver a entidade",
     },
-    chips_h: <>Explore os <em>dados</em></>,
+    chips_h: <>Explore <em>cada seção</em>.</>,
     chip_orc: "Orçamento", chip_orc_d: "Despesa executada por função, ano a ano.",
     chip_qr: "Quem recebe", chip_qr_d: "Organizações pagas e subvenções.",
     chip_ct: "Contratos", chip_ct_d: "Contratos e licitações da cidade.",
@@ -56,7 +56,7 @@ const STRINGS: Record<"pt" | "en", S> = {
     ativos: "ativos", concluidas: "licitações",
   },
   en: {
-    headline: <>Where does <em>public money</em><br />go in <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
+    headline: <>Where does <em>public money</em>{" "}<br />go in <PlaceSwitcher variant="h1" currentSlug="recife" />?</>,
     scalePer: "per resident, per month",
     scaleDelta: (v, y) => `≈ ${v} per year · ${y} executed budget`,
     deck: {
@@ -65,7 +65,7 @@ const STRINGS: Record<"pt" | "en", S> = {
       ct_k: "One contract", ct_cta: "See the contract",
       subv_k: "Largest subsidy", subv_meta: "Health institution · subsidy", subv_cta: "See the institution",
     },
-    chips_h: <>Explore the <em>data</em></>,
+    chips_h: <>Explore <em>every section</em>.</>,
     chip_orc: "Budget", chip_orc_d: "Executed spending by function, year by year.",
     chip_qr: "Who's paid", chip_qr_d: "Paid organisations and subsidies.",
     chip_ct: "Contracts", chip_ct_d: "City contracts and tenders.",

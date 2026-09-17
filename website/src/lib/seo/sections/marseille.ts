@@ -22,6 +22,7 @@ import {
 import { readDataJsonOrNull } from "@/lib/data/read";
 import { cityPopulation } from "@/lib/methodology";
 import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
+import { marseilleLieuxSection } from "@/lib/marseille/marseille-lieux-section";
 import { day, longDate, mEur, num, pct, type FrHub, type Lang } from "./national";
 
 const BASE = "/france/marseille";
@@ -240,18 +241,21 @@ export function marseilleLieuxHub(): FrHub {
   const date = genAt("fr/marseille/places.json");
   const arrFr = nbArr > 0 ? ` dans ${num(nbArr, "fr")} arrondissement${nbArr > 1 ? "s" : ""}` : "";
   const arrEn = nbArr > 0 ? ` across ${num(nbArr, "en")} district${nbArr > 1 ? "s" : ""}` : "";
+  // The money the page opens on (the same total as its hero).
+  const total = marseilleLieuxSection(places).total;
+  const money = (lang: Lang) => (total > 0 ? mEur(total, lang) : "");
   return {
     path: `${BASE}/lieux`,
     parents: PARENTS,
     crumb: { fr: "Lieux", en: "Places" },
     fr: {
-      title: `Lieux publics de Marseille : ${num(places.length, "fr")} lieux`,
+      title: `Lieux de Marseille : ${num(places.length, "fr")} lieux${money("fr") ? `, ${money("fr")} d'argent public` : ""}`,
       description:
         `${num(places.length, "fr")} lieux publics et patrimoniaux de Marseille (musées, bibliothèques, parcs, stade, monuments) cartographiés${arrFr}, ` +
         `chacun avec une photo sous licence libre et une note factuelle. Sélection Qipu, photos Wikimedia Commons${asOf(date, "fr")}.`,
     },
     en: {
-      title: `Public places in Marseille: ${num(places.length, "en")} places`,
+      title: `Marseille places: ${num(places.length, "en")}${money("en") ? `, ${money("en")} of public money` : ""}`,
       description:
         `${num(places.length, "en")} public and heritage places in Marseille (museums, libraries, parks, the stadium, monuments) mapped${arrEn}, ` +
         `each with a free-licence photo and a short factual note. Selection by Qipu, photos from Wikimedia Commons${asOf(date, "en")}.`,
@@ -371,14 +375,14 @@ export function marseilleSubventionsHub(): FrHub {
   return {
     ...base,
     fr: {
-      title: isRecent(d.year) ? `Subventions de Marseille ${d.year} : ${mEur(d.total, "fr")} versés` : "Subventions de la Ville de Marseille",
+      title: `Subventions de Marseille ${d.year} : ${mEur(d.total, "fr")} versés`,
       description:
         `En ${d.year}, la Ville de Marseille a versé ${mEur(d.total, "fr")} à travers ${num(d.nbSubventions, "fr")} subventions` +
         `${d.nbBeneficiaires > 0 ? ` à ${num(d.nbBeneficiaires, "fr")} bénéficiaires` : ""} ; qui reçoit, combien, par thématique. ` +
         `Source : data.gouv.fr, jeux SCDL de la Ville${asOf(date, "fr")}.`,
     },
     en: {
-      title: isRecent(d.year) ? `Marseille city grants ${d.year}: ${mEur(d.total, "en")} paid` : "Ville de Marseille grants",
+      title: `Marseille city grants ${d.year}: ${mEur(d.total, "en")} paid`,
       description:
         `In ${d.year}, the Ville de Marseille paid ${mEur(d.total, "en")} through ${num(d.nbSubventions, "en")} grants` +
         `${d.nbBeneficiaires > 0 ? ` to ${num(d.nbBeneficiaires, "en")} recipients` : ""}; who receives, how much, by theme. ` +
