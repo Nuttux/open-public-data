@@ -34,10 +34,15 @@ const arrLabel = (n: number) => `${n}${n === 1 ? "er" : "e"}`;
 
 type T = (key: string) => string;
 
-/** `LieuIndexEntry` → the neutral `PlaceEntry` of the shared explorer. */
-export function buildPlaceEntries(lieux: LieuIndexEntry[], t: T, nl: string): PlaceEntry[] {
+/** `LieuIndexEntry` → the neutral `PlaceEntry` of the shared explorer. A city
+ *  in another currency passes its own money formatter ; a city cut by bairro
+ *  or by department carries `areaKey` / `areaLabel` on each row. */
+export function buildPlaceEntries(lieux: LieuIndexEntry[], t: T, nl: string, opts?: { fmtMoney?: (n: number) => string }): PlaceEntry[] {
+  const money = opts?.fmtMoney ?? ((n: number) => fmtArgent(n, nl));
   return lieux.map((l) => {
         const argent = l.argent_total_eur ?? 0;
+        const areaKey = l.areaKey ?? (l.arrondissement > 0 ? String(l.arrondissement) : "");
+        const areaLabel = l.areaLabel ?? (l.arrondissement > 0 ? arrLabel(l.arrondissement) : "");
         return {
           slug: l.slug,
           name: l.name,
@@ -46,25 +51,39 @@ export function buildPlaceEntries(lieux: LieuIndexEntry[], t: T, nl: string): Pl
           lon: l.lon,
           photo: l.photo,
           familyKey: l.famille,
-          areaKey: l.arrondissement > 0 ? String(l.arrondissement) : "",
-          areaLabel: l.arrondissement > 0 ? arrLabel(l.arrondissement) : "",
+          areaKey,
+          areaLabel,
           metric: argent,
-          stat: argent > 0 ? fmtArgent(argent, nl) : l.depuis ? `${t("fx.lieux.card_depuis")} ${l.depuis}` : "",
+          stat: argent > 0 ? money(argent) : l.depuis ? `${t("fx.lieux.card_depuis")} ${l.depuis}` : "",
           statTone: argent > 0 ? "money" : "accent",
-          tooltipStat: argent >= 1e6 ? ` · ${fmtArgent(argent, nl)}` : "",
+          tooltipStat: argent >= 1e6 ? ` · ${money(argent)}` : "",
         };
       });
 }
 
+export type PlacesCityConfig = {
+  bounds: [[number, number], [number, number]];
+  hrefFor: (slug: string) => string;
+  /** Paris's five families by default ; Recife and San Francisco have their own. */
+  families?: { key: string; color: string; i18n: string }[];
+  /** « Arrondissement » by default ; « Bairro », « Department ». */
+  areaLabel?: string;
+  areaSort?: "numeric" | "alpha";
+  /** Paris clamps panning to the city ; San Francisco pans freely (Hetch Hetchy). */
+  clampToBounds?: boolean;
+  minZoom?: number;
+};
+
 /** The Paris map: framing, families and their colours, strings. Another city
- *  passes its own framing and fiche addresses (Marseille, 2026-09-17). */
-export function buildPlacesConfig(t: T, nl: string, city?: { bounds: [[number, number], [number, number]]; hrefFor: (slug: string) => string }): PlacesConfig {
+ *  passes its own framing, families, area and fiche addresses (Marseille
+ *  2026-09-17, Recife and San Francisco 2026-09-18). */
+export function buildPlacesConfig(t: T, nl: string, city?: PlacesCityConfig): PlacesConfig {
   return ({
-      families: FAMILLES.map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
+      families: (city?.families ?? FAMILLES).map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
       hrefFor: city?.hrefFor ?? ((slug) => `/france/paris/lieu/${slug}`),
       bounds: city?.bounds ?? PARIS_BOUNDS,
-      clampToBounds: true,
-      minZoom: 11,
+      clampToBounds: city?.clampToBounds ?? true,
+      minZoom: city?.minZoom ?? 11,
       maxZoom: 17,
       radiusByMetric: true,
       nearMe: false,
@@ -72,12 +91,12 @@ export function buildPlacesConfig(t: T, nl: string, city?: { bounds: [[number, n
         { key: "metric-desc", label: t("fx.lieux.sort.montant") },
         { key: "name-asc", label: t("fx.lieux.sort.nom") },
       ],
-      areaSort: "numeric",
+      areaSort: city?.areaSort ?? "numeric",
       locale: nl,
       strings: {
         searchPlaceholder: t("fx.lieux.search"),
         sortLabel: t("fx.lieux.sort_label"),
-        areaLabel: t("fx.lieux.area_label"),
+        areaLabel: city?.areaLabel ?? t("fx.lieux.area_label"),
         areaAll: t("fx.lieux.area_all"),
         count: (n) => t("fx.lieux.count").replace("{n}", String(n)),
         empty: t("fx.lieux.empty"),

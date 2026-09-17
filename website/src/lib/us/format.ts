@@ -37,6 +37,17 @@ export function fmtUsdCompact(n: number): string {
   return fmtUsd(n);
 }
 
+/** Compact dollars as `{ v, u }` for the fiche kit (V3Amt, SectionHero) :
+ *  $887.7 + M, $2.1 + B — the same tiers as fmtUsdCompact, the unit apart. */
+export function fmtUsdAmt(n: number): { v: string; u: string } {
+  const sign = n < 0 ? MINUS : "";
+  const abs = Math.abs(n);
+  if (abs >= 1e12) return { v: `${sign}$${nfDec(2).format(abs / 1e12)}`, u: "T" };
+  if (abs >= 1e9) return { v: `${sign}$${nfDec(1).format(abs / 1e9)}`, u: "B" };
+  if (abs >= 1e6) return { v: `${sign}$${nfDec(1).format(abs / 1e6)}`, u: "M" };
+  return { v: fmtUsd(n), u: "" };
+}
+
 /**
  * Billions for ranked bar rows — one shared unit so rows stay comparable:
  * $2,196B · $75B · $6.3B (1 decimal only under $10B).

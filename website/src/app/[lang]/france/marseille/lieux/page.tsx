@@ -5,6 +5,7 @@ import LieuxClient, { type LieuxCity } from "@/app/[lang]/france/paris/lieux/Lie
 import { marseilleLieuxIndex, marseilleLieuxSection } from "@/lib/marseille/marseille-lieux-section";
 import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { budgetDoorTotal, loadInvestLatestCity, subventionsYearTotal } from "@/lib/fusion-data";
+import { frLieuxDoors } from "@/lib/lieux-doors";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
 import { marseilleLieuxHub } from "@/lib/seo/sections/marseille";
@@ -15,11 +16,16 @@ import { marseilleLieuxHub } from "@/lib/seo/sections/marseille";
 
 const MARSEILLE_LIEUX: LieuxCity = {
   slug: "marseille",
-  base: "/france/marseille",
   name: "Marseille",
+  hub: "/france/marseille",
+  section: "/france/marseille/lieux",
+  fiche: "/france/marseille/lieu",
   seeds: ["MuCEM", "Friche", "Vieux-Port"],
-  arrMax: 16,
-  archive: false,
+  currency: "EUR",
+  // Grants to the place's operator only, no archive.
+  money: "grants",
+  area: { kind: "arr", param: "arrondissement", max: 16 },
+  familyParam: "famille",
   // The commune, sea to hills ; the 12 places sit in its centre and north.
   bounds: [[43.21, 5.32], [43.36, 5.48]],
   sources: [
@@ -27,6 +33,7 @@ const MARSEILLE_LIEUX: LieuxCity = {
     { label: "Wikimedia Commons", href: "https://commons.wikimedia.org/" },
   ],
   json: "/data/fr/marseille/places.json",
+  chrome: "site",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,16 +48,15 @@ export default async function LieuxPage({ searchParams }: { searchParams: Promis
   const locale = await readLocale();
   const safe = <T,>(f: () => T): T | null => { try { return f(); } catch { return null; } };
   const thisYear = new Date().getFullYear();
-  const doors = {
+  const doors = frLieuxDoors("/france/marseille", {
     invest: safe(() => loadInvestLatestCity("marseille")),
     subventions: safe(() => subventionsYearTotal("marseille", thisYear)),
     next: safe(() => budgetDoorTotal("marseille", thisYear)),
-  };
-  const arr = sp.arrondissement ? Number(sp.arrondissement) : null;
+  });
   return (
     <>
       <FrHubJsonLd hub={marseilleLieuxHub()} locale={locale} />
-      <LieuxClient lieux={lieux} section={section} doors={doors} city={MARSEILLE_LIEUX} initial={{ famille: sp.famille ?? null, arr: arr != null && Number.isFinite(arr) ? arr : null }} />
+      <LieuxClient lieux={lieux} section={section} doors={doors} city={MARSEILLE_LIEUX} initial={{ famille: sp.famille ?? null, area: sp.arrondissement ?? null }} />
     </>
   );
 }
