@@ -40,6 +40,13 @@ export type BudgetAno = {
   funcoes: BudgetFuncao[];
 };
 export type Populacao = { populacao: number; ano: number; source: string; source_url: string };
+/** The revenue side of a município (SICONFI Anexo I-C, 2026-09-18) : the
+ *  total and the origens, gross and net of the deductions (FUNDEB, the
+ *  constitutional transfers, the others). Municípios only ; Recife's own
+ *  budget file has none. */
+export type ReceitaDetalhe = { detalhe: string; codigo: string; liquida: number };
+export type ReceitaOrigem = { origem: string; codigo: string; liquida: number; bruta: number; detalhes: ReceitaDetalhe[] };
+export type ReceitaAno = { ano: number; bruta: number; deducoes: number; fundeb: number; liquida: number; origens: ReceitaOrigem[] };
 export type BudgetData = {
   generated_at: string;
   source: SourceBlock;
@@ -51,6 +58,7 @@ export type BudgetData = {
   anos: BudgetAno[];
   curva_mensal: { ano: number; mes: number; pago: number; empenhado: number }[];
   partial_year?: PartialYear;
+  receitas?: ReceitaAno[];
 };
 
 export function loadBudget(): BudgetData {

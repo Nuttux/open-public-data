@@ -96,6 +96,8 @@ sources:
     tables:
       - name: br_siconfi_despesas_funcao
         description: "DCA Anexo I-E — despesas por função e subfunção × estágio (empenhadas, liquidadas, pagas), one row per ano × município × conta, 2017+. id_conta_bd = '3.FF.SSS' (FF função, SSS subfunção, 000 = the função's total, 3.00.000 = the total)."
+      - name: br_siconfi_receitas
+        description: "DCA Anexo I-C — receitas orçamentárias × estágio (brutas realizadas, deduções FUNDEB / transferências constitucionais / outras), coded rows only (id_conta_bd, 18 characters, the standard chart), one row per ano × município × estágio × conta, 2017+. '1.0.0.0.0.00.00.00' = the total exceto intraorçamentárias."
       - name: br_bd_municipios
         description: "The 5 570 municípios: IBGE code, name, UF, regions (Base dos Dados directory)."
       - name: br_ibge_populacao
