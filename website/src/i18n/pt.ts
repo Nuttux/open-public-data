@@ -34,6 +34,12 @@ const pt: Record<string, string> = {
   // Chrome de registro compartilhado (marca Qipu constante · seletor)
   "chrome.wordmark": "Qipu",
   "chrome.home": "Início",
+  // A barra do site (2026-09-17) : as mesmas entradas em todas as páginas.
+  "fx.nav.link.paris": "Paris",
+  "fx.nav.link.analyses": "Entender",
+  "fx.nav.link.cities": "Para prefeituras",
+  "fx.nav.menu_aria": "Menu",
+  "fx.nav.place_aria": "Seções deste lugar",
   "chrome.country.fr": "França",
   "chrome.country.us": "Estados Unidos",
   "chrome.country.br": "Brasil",
