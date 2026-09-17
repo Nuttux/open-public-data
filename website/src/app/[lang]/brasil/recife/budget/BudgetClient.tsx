@@ -64,7 +64,11 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
   const perCap = pop ? anoData.total_pago / pop : null;
   const restos = anoData.total_empenhado - anoData.total_pago;
   const pj = d.partial_year;
-  const series = d.anos.map((a) => ({ year: a.ano, amount: a.total_pago })).sort((a, b) => a.year - b.year);
+  // The unfinished year shows what was voted (dotação inicial, the LOA),
+  // hatched, instead of a few months of payments (Daniel, 18/09) ; the note
+  // under the rail says both. Closed years show what was paid.
+  const votedYear = pj ? d.anos.find((a) => a.ano === pj.ano && (a.dotacao_inicial ?? 0) > 0) ?? null : null;
+  const series = d.anos.map((a) => ({ year: a.ano, amount: votedYear && a.ano === votedYear.ano ? votedYear.dotacao_inicial! : a.total_pago })).sort((a, b) => a.year - b.year);
   const total = brl(anoData.total_pago);
   const shareTitle = fill(t("br.recife.bud3.share_title"), { total: fmtBrlCompact(anoData.total_pago), y: year });
   // The revenue side (municípios, SICONFI Anexo I-C) : the origens of the
@@ -118,7 +122,13 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
               <div className="fx-sec-years" data-section="years">
                 <div className="fx-page-kicker">{t("fx.sec.years")}</div>
                 <AnneesRail rows={series} current={year} provisional={pj ? [pj.ano] : undefined} format={fmtBrlCompact} />
-                {pj ? <p className="fx-v3-note">{fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) })}</p> : null}
+                {pj ? (
+                  <p className="fx-v3-note">
+                    {votedYear
+                      ? fill(t("br.recife.partial_note_voted"), { ano: pj.ano, dot: fmtBrlCompact(votedYear.dotacao_inicial!), pago: fmtBrlCompact(votedYear.total_pago), mes: mesRange(pj.ate_mes, locale) })
+                      : fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) })}
+                  </p>
+                ) : null}
               </div>
             ) : null}
           </div>

@@ -6972,6 +6972,7 @@ const fr: Record<string, string> = {
   'br.cmp.foot': 'Source : SICONFI, Trésor national (DCA, annexes I-C et I-E) ; population IBGE. Par habitant, année {y}.',
   'br.cmp.pick_b': 'Choisir le second município',
   'br.cmp.pick_b_sub': 'Tapez son nom ; les municípios de taille proche sont sur la page de {a}.',
+  'br.recife.partial_note_voted': '{ano}, hachuré : le budget voté par la Câmara (dotation initiale), {dot} ; payé de {mes}, {pago}.',
 };
 
 export default fr;
