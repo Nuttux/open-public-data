@@ -1,6 +1,8 @@
 import { permanentRedirectLocalized } from "@/lib/redirect-server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { readLocale } from "@/lib/seo";
+import { FrHubJsonLd } from "@/lib/seo/sections/national";
 import { MARCHES_EXPLORER_MIN } from "../page-ville-data";
 import { marchesManifestCount } from "@/lib/commune-marches";
 import "@/app/fusion.css";
@@ -10,7 +12,7 @@ import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneFournisseurs, loadCommuneMarches } from "@/lib/commune-marches";
 import CommuneMarchesClient from "./CommuneMarchesClient";
-import { communeMarchesMetadata, DECP_SOURCE_URL } from "./marches-metadata";
+import { communeMarchesHub, communeMarchesMetadata, DECP_SOURCE_URL } from "./marches-metadata";
 
 // Per-request data (private bucket) + the locale cookie → render dynamically,
 // never statically prerendered (avoids the static→dynamic cookies error).
@@ -52,7 +54,10 @@ export default async function CommuneMarchesPage({
   if (!data) notFound();
   const fournisseurs = await loadCommuneFournisseurs(slug);
 
+  const locale = await readLocale();
   return (
+    <>
+    <FrHubJsonLd hub={communeMarchesHub(slug, commune.nom)} locale={locale} />
     <CommuneMarchesClient
       commune={{
         slug,
@@ -65,5 +70,6 @@ export default async function CommuneMarchesPage({
       fournisseurs={fournisseurs}
       sourceUrl={DECP_SOURCE_URL}
     />
+    </>
   );
 }

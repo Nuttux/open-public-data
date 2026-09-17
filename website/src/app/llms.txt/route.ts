@@ -88,8 +88,9 @@ and Brazil's hubs exist too.
   record, and every neighbourhood and street of the city map.
 - [Recife](${u}/pt/brasil/recife): orçamento, ${counted(recifeContracts, 'contratos')},
   quem recebe, and ${counted(recifePlaces, 'lugares')}. In Portuguese.
-- [Marseille](${u}/fr/france/marseille): budget, grants, public contracts,
-  investments, debt, social housing, places.
+- [Marseille](${u}/fr/france/marseille): the City's voted budget, grants (2017-2022),
+  investments, debt, social housing, 12 places with what the City paid each,
+  and its public contracts from the national DECP file (2020 onwards).
 
 ## France, nationally
 
@@ -99,9 +100,13 @@ and Brazil's hubs exist too.
   per day.
 - [Debt](${u}/fr/france/dette) · [Taxation](${u}/fr/france/fiscalite) ·
   [The State](${u}/fr/france/etat)
-- **Every French commune** has a budget page at \`${u}/fr/france/{commune-slug}\` —
+- **Every French commune** has a page at \`${u}/fr/france/{commune-slug}\` —
   ${counted(allCommunes, 'of them')}, built from the accounts published by the
-  DGFiP and harmonised by the OFGL. Example: [Lille](${u}/fr/france/lille).
+  DGFiP and harmonised by the OFGL. It answers « Combien dépense {commune} ? »:
+  spending per inhabitant against communes of the same size, what the money is
+  for (by public policy), a comparison with a neighbour, what the commune
+  builds and buys, its property-tax rate, its debt, its mayor.
+  Example: [Lille](${u}/fr/france/lille).
 ${policyLine}
   - \`${u}/fr/france/{commune-slug}/fonction/{policy}\` — e.g. \`enseignement-formation\`, education and training
   - \`${u}/fr/france/{commune-slug}/nature/{form}\` — e.g. \`salaires\`, staff pay
@@ -111,6 +116,10 @@ ${policyLine}
 - [Compare communes](${u}/comparer)
 
 ## Paris sections
+
+Every section follows the same grammar: the figure and its sentence, a year
+rail, a scene to click, the lines that weigh most, « Comprendre » (understand),
+« Voir aussi » (see also) with the neighbouring sections' figures, and a source line.
 
 - [Budget](${u}/fr/france/paris/budget) ·
   [Grants](${u}/fr/france/paris/subventions) ·

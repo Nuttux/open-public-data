@@ -207,6 +207,8 @@ export function buildParisLandingModel(
         <>
           {t("fx.land.h1.before")}
           <em>{t("fx.land.h1.em")}</em>
+          {/* A space before the break : without it a crawler reads « publicà Paris ». */}
+          {" "}
           <br />
           {t("fx.land.h1.mid")}
           <PlaceSwitcher variant="h1" currentSlug="paris" />
