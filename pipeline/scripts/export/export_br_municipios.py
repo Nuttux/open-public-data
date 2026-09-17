@@ -39,11 +39,12 @@ MANIFEST = ROOT / "website" / "src" / "data" / "br-municipios-manifest.json"
 BUCKET = "gs://qipu-communes-budget/br-municipios"
 
 SOURCE_PIPELINE = (
-    "basedosdados.br_me_siconfi.municipio_despesas_funcao → stg_br_siconfi_despesas_funcao → "
-    "core_br_municipio_despesas → mart_br_municipio_budget / mart_br_municipios → export_br_municipios.py"
+    "basedosdados.br_me_siconfi.municipio_despesas_funcao + municipio_receitas_orcamentarias → "
+    "stg_br_siconfi_despesas_funcao / stg_br_siconfi_receitas → core_br_municipio_despesas / core_br_municipio_receitas → "
+    "mart_br_municipio_budget / mart_br_municipio_receitas / mart_br_municipios → export_br_municipios.py"
 )
 SOURCE = {
-    "name": "SICONFI — Tesouro Nacional (DCA, Anexo I-E)",
+    "name": "SICONFI — Tesouro Nacional (DCA, Anexos I-C e I-E)",
     "portal": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
     "license": "Dados abertos do Tesouro Nacional",
     "source_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/consulta_finbra/finbra_list.jsf",
@@ -53,7 +54,8 @@ SOURCE = {
 POP_SOURCE = {"source": "IBGE — estimativas de população", "source_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html"}
 PERIMETER = (
     "Despesas orçamentárias pagas pelo município, exceto intraorçamentárias, por função e subfunção "
-    "de governo, tal como declaradas ao Tesouro Nacional (DCA)."
+    "de governo, e receitas orçamentárias realizadas, líquidas das deduções (FUNDEB, transferências "
+    "constitucionais, outras), por origem, tal como declaradas ao Tesouro Nacional (DCA)."
 )
 
 
@@ -92,6 +94,44 @@ def main() -> int:
       {where}
       ORDER BY id_municipio, ano, funcao_codigo, subfuncao_codigo
     """
+    # ── The revenue side (2026-09-18) : total, origens and their detail, net of deductions ──
+    qr = f"""
+      SELECT id_municipio, ano, id_conta_bd, conta, nivel, origem_codigo, detalhe_codigo, bruta, deducao_fundeb, deducoes, liquida
+      FROM `{PROJECT_ID}.{dataset}.mart_br_municipio_receitas`
+      {where}
+      ORDER BY id_municipio, ano, id_conta_bd
+    """
+    receitas = defaultdict(lambda: defaultdict(lambda: {"total": None, "origens": {}}))
+    for r in client.query(qr).result(page_size=50000):
+        y = receitas[r["id_municipio"]][r["ano"]]
+        row = {"bruta": _f(r["bruta"]) or 0.0, "fundeb": _f(r["deducao_fundeb"]) or 0.0, "deducoes": _f(r["deducoes"]) or 0.0, "liquida": _f(r["liquida"]) or 0.0}
+        if r["nivel"] == 0:
+            y["total"] = row
+        elif r["nivel"] == 2:
+            o = y["origens"].setdefault(r["origem_codigo"], {"origem": r["conta"], "codigo": r["origem_codigo"], "detalhes": {}})
+            o.update(row)
+        elif r["nivel"] == 3:
+            o = y["origens"].setdefault(r["origem_codigo"], {"origem": None, "codigo": r["origem_codigo"], "detalhes": {}})
+            o["detalhes"][r["detalhe_codigo"]] = {"detalhe": r["conta"], "codigo": r["detalhe_codigo"], "liquida": row["liquida"]}
+    log.info(f"revenue rows read for {len(receitas)} municípios")
+
+    def receitas_of(mid):
+        out = []
+        for ano in sorted(receitas.get(mid, {})):
+            y = receitas[mid][ano]
+            tot = y["total"]
+            if not tot or tot["liquida"] <= 0:
+                continue
+            origens = []
+            for o in y["origens"].values():
+                if o.get("liquida") is None or o["liquida"] <= 0 or not o.get("origem"):
+                    continue
+                dets = sorted((d for d in o["detalhes"].values() if d["liquida"] > 0), key=lambda d: -d["liquida"])
+                origens.append({"origem": o["origem"], "codigo": o["codigo"], "liquida": o["liquida"], "bruta": o["bruta"], "detalhes": dets})
+            origens.sort(key=lambda o: -o["liquida"])
+            out.append({"ano": ano, "bruta": tot["bruta"], "deducoes": tot["deducoes"], "fundeb": tot["fundeb"], "liquida": tot["liquida"], "origens": origens})
+        return out
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = {}
     n_files = 0
@@ -125,6 +165,7 @@ def main() -> int:
             "anos": [a for a in anos if a["total_pago"] > 0],
             "curva_mensal": [],
             "partial_year": None,
+            "receitas": receitas_of(mid),
         }
         (OUT_DIR / f"{mid}.json").write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         n_files += 1
@@ -132,6 +173,7 @@ def main() -> int:
             "id": mid, "nome": m["nome"], "uf": m["sigla_uf"], "pop": m.get("populacao"),
             "anos": anos_disp, "pago": payload["anos"][-1]["total_pago"], "hab": round(_f(m["pago_hab"])) if m.get("pago_hab") else None,
             **({"cap": True} if m.get("capital_uf") else {}),
+            **({"rec": _f(m["receita_recente"]), "rec_ano": m["receita_ano"]} if m.get("receita_recente") else {}),
         }
 
     cur, years = None, {}
