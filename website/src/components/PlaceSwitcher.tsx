@@ -35,7 +35,8 @@ export default function PlaceSwitcher({
   variant = "nav",
   currentSlug,
 }: {
-  variant?: "nav" | "overlay" | "h1";
+  /** `chev` : the chevron alone, next to the place's name written as a link (the one-row bar, 2026-09-18). */
+  variant?: "nav" | "overlay" | "h1" | "chev";
   currentSlug?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -90,6 +91,7 @@ export default function PlaceSwitcher({
 
   const triggerClass =
     variant === "h1" ? "fx-scope fx-scope-h1" :
+    variant === "chev" ? "fx-scope fx-scope-only" :
     variant === "overlay" ? "fx-scope fx-scope-overlay" :
     "fx-scope fx-scope-nav";
 
@@ -103,7 +105,7 @@ export default function PlaceSwitcher({
         aria-label={t("chrome.switch.aria")}
         onClick={() => setOpen((v) => !v)}
       >
-        <span>{triggerLabel}</span>
+        {variant === "chev" ? null : <span>{triggerLabel}</span>}
         <span className="fx-scope-chev" aria-hidden="true">▾</span>
       </button>
       {open && (

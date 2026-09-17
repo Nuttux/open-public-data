@@ -124,9 +124,8 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand" | "subnav") => {
     track("nav_click", { href, label: labelKey, surface, from: pathname });
   };
-  // « Accueil » is lit on the hub alone (every French page starts with
-  // /france) ; the other site entries light on their own tree ; a drawer
-  // lights nothing.
+  // « Accueil » lights on the hub alone in the phone menu (every French path
+  // starts with /france) ; a drawer lights nothing.
   const siteActive = (href: string) => {
     if (drawerOpen) return false;
     if (href === "/france") return pathname === "/france";
@@ -163,25 +162,37 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             who lands mid-site sees in one glance that there are other communes,
             Paris in depth, explainers, a page for towns. The search closes the
             bar at the right, where the eye looks for it (2026-09-17). */}
+        {/* One row (2026-09-18, Daniel : « le Paris et les détails en haut, plus
+            petit ») : the place's name leads to its hub, the chevron switches
+            place, then the place's sections. The site's entries (Accueil, the
+            explainers, the page for town halls) live in the phone menu and on the
+            hub ; the mark is home. The search closes the row at the right. */}
+        <nav className="fx-placebar" aria-label={placeName ?? t("fx.nav.place_aria")}>
+          {placeName ? (
+            <Link href={placeHome} className="fx-placebar-name" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
+          ) : null}
+          <PlaceSwitcher variant="chev" currentSlug={frSlug} />
+          {placeLinks.length > 0 ? (
+            <div className="fx-placebar-tabs">
+              {placeLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={isActive(l.href) ? "fx-sublink fx-sublink-on" : "fx-sublink"}
+                  onClick={() => trackNav(l.href, l.labelKey, "subnav")}
+                >
+                  {t(l.labelKey)}
+                </Link>
+              ))}
+            </div>
+          ) : null}
+        </nav>
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
-          {siteLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={siteActive(l.href) ? "fx-link fx-link-on" : "fx-link"}
-              onClick={() => trackNav(l.href, l.labelKey, "nav")}
-            >
-              {tRaw(l.labelKey)}
-            </Link>
-          ))}
-          {/* The search sits at the right of the bar, as a field (2026-09-17):
-              the first case after the mark read as the site's first section. */}
           <button type="button" className="fx-link fx-link-search" onClick={() => openSearch("nav")}>
             {searchIcon}
             <span>{t("fx.nav.link.commune")}</span>
           </button>
         </nav>
-        <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         {/* On the phone the bar folds to the mark and the menu; the search stays
             one tap away, and the menu button says its name (2026-09-16). */}
@@ -205,26 +216,6 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
           <span className="fx-menu-btn-l">{t("fx.nav.menu_aria")}</span>
         </button>
       </header>
-      {/* The place's own row: Paris's seven sections, a commune sub-page's anchors,
-          France's national pages. Desktop only — the phone menu carries it. */}
-      {placeLinks.length > 0 ? (
-        <nav className="fx-subnav" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          {placeName ? (
-            <Link href={placeHome} className="fx-subnav-place" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
-          ) : null}
-          {placeLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={isActive(l.href) ? "fx-sublink fx-sublink-on" : "fx-sublink"}
-              onClick={() => trackNav(l.href, l.labelKey, "subnav")}
-            >
-              {t(l.labelKey)}
-            </Link>
-          ))}
-        </nav>
-      ) : null}
-
       <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
           <div className="fx-overlay-brand">
