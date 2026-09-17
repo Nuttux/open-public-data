@@ -116,7 +116,7 @@ export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
 // sign on every page. Both keep their doors on the hub, in the closing band
 // of the landings and in the footer.
 export const SITE_NAV_LINKS: NavLink[] = [
-  { href: "/france", labelKey: "fx.nav.link.home" },
+  { href: "/", labelKey: "fx.nav.link.home" },
 ];
 
 // Hrefs that should match exactly (not startsWith) for the active state.

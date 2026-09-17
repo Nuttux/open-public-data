@@ -193,7 +193,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-placebar .fx-scope-place .fx-scope-chev { font-size: 10px; color: var(--ink-2); margin: 0; }
 /* The menu hangs under the name, narrow, so it covers as little of the page as it can. */
 .theme-fusion .fx-placebar .fx-scope-menu { left: 0; right: auto; width: 300px; min-width: 0; top: calc(100% + 6px); }
-.theme-fusion .fx-placebar-tabs { display: flex; align-items: stretch; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.theme-fusion .fx-placebar-tabs { display: flex; align-items: stretch; min-width: 0; overflow-x: auto; scrollbar-width: none; padding-left: 8px; }
 .theme-fusion .fx-placebar-tabs::-webkit-scrollbar { display: none; }
 .theme-fusion .fx-sublink { flex: none; display: flex; align-items: center; padding: 0 11px; font-family: var(--f-ui); font-size: 13.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .12s, border-color .12s; }
 .theme-fusion .fx-sublink:hover { color: var(--ink); }
