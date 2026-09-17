@@ -58,6 +58,14 @@ function placeNameForPath(pathname: string, commune: CommuneNav | null, france: 
 }
 
 
+// Where the place's name leads : its own page.
+function placeHomeForPath(pathname: string, commune: CommuneNav | null): string {
+  if (isFranceScope(pathname)) return "/france";
+  if (commune) return `/france/${commune.slug}`;
+  const place = pathname === "/" ? "paris" : frPlace(pathname);
+  return place ? `/france/${place}` : "/france";
+}
+
 // The registry slug of the current France scope, for the unified switcher.
 // France's routing is irregular (Paris = root URLs + homepage),
 // so we resolve it here rather than by registry path matching.
@@ -81,6 +89,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const siteLinks = SITE_NAV_LINKS;
   const placeLinks = placeLinksForPath(scope, commune);
   const placeName = placeNameForPath(scope, commune, "France");
+  const placeHome = placeHomeForPath(scope, commune);
   const frSlug = currentFrSlug(scope);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
@@ -159,10 +168,11 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             explainers, the page for town halls) live in the phone menu and on the
             hub ; the mark is home. The search closes the row at the right. */}
         <nav className="fx-placebar" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          {/* The name and the chevron are one button : clicking « Paris » opens the
-              menu (Daniel, 18/09 : « on ne peut pas cliquer sur la ville »). The
-              place's own page is the ticked entry of the menu and the breadcrumb. */}
-          <PlaceSwitcher variant="place" label={placeName ?? undefined} currentSlug={frSlug} />
+          {/* The place's name heads its tabs and leads to its page ; the switcher
+              sits at the right of the bar, where Daniel liked it (18/09). */}
+          {placeName ? (
+            <Link href={placeHome} className="fx-placebar-name" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
+          ) : null}
           {placeLinks.length > 0 ? (
             <div className="fx-placebar-tabs">
               {placeLinks.map((l) => (
@@ -184,6 +194,7 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             <span>{t("fx.nav.link.commune")}</span>
           </button>
         </nav>
+        <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         {/* On the phone the bar folds to the mark and the menu; the search stays
             one tap away, and the menu button says its name (2026-09-16). */}
