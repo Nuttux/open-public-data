@@ -3,19 +3,22 @@
 import Link from "@/components/LocalizedLink";
 import { usePathname } from "@/lib/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { useT } from "@/lib/localeContext";
+import { useT, useTRaw } from "@/lib/localeContext";
 import { placesForCountry, orderedModules, type Place } from "@/lib/places";
 import { useDrawerOpen } from "@/lib/drawerState";
 import BrandMark from "./fusion/BrandMark";
 import PlaceSwitcher from "./PlaceSwitcher";
+import { SITE_NAV_LINKS } from "./fusion/nav-links";
 
 /**
- * ONE registry-driven chrome for any country (ADR-0010 D2). Renders the shared
- * fx-nav / fx-brand / fx-links / fx-overlay markup:
- *   • constant Qipu wordmark + BrandMark (the brand is invariant across places);
- *   • nav row = the CURRENT place's registry modules (so it changes per city);
- *   • the unified PlaceSwitcher (country → city) on the right.
- * The `trailing` slot holds any extra control (e.g. Recife's PT/EN toggle).
+ * ONE registry-driven chrome for any country outside France (ADR-0010 D2),
+ * on the site bar the French pages got on 2026-09-16 and 17 : the mark leads
+ * home ; the site's three entries (Paris, explainers, town halls) ; the place
+ * switcher and, for Recife, the language toggle at the right ; under the bar,
+ * the place's sections as tabs, its name in bold leading to its hub. No
+ * « Find a town » here : the search knows French communes only. The phone
+ * folds to the mark and « Menu » ; the menu carries the site entries, then
+ * the place's home and sections.
  *   <RegistryChrome country="br" trailing={<LangToggle/>} />
  *   <RegistryChrome country="us" />
  */
@@ -28,20 +31,18 @@ export default function RegistryChrome({
 }) {
   const places = placesForCountry(country);
   const t = useT();
+  // The site entries name Paris itself : the raw string, never rewritten.
+  const tRaw = useTRaw();
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const place =
     places.find((p) => pathname === p.path || pathname.startsWith(`${p.path}/`)) ?? places[0];
-  // A hub place gets a "Home" link to its landing first (parity with Paris's
-  // "Accueil"), then its section modules.
-  const navLinks = place
-    ? [
-        ...(place.hub ? [{ href: place.path, labelKey: "chrome.home", exact: true }] : []),
-        ...orderedModules(place).map((m) => ({ href: `${place.path}/${m.slug}`, labelKey: m.labelKey, exact: false })),
-      ]
+  const placeName = place ? (place.name ?? t(place.labelKey)) : null;
+  const placeHome = place?.path ?? "/";
+  const placeLinks = place
+    ? orderedModules(place).map((m) => ({ href: `${place.path}/${m.slug}`, labelKey: m.labelKey }))
     : [];
-  const brandHref = place?.path ?? "/";
 
   useEffect(() => {
     if (menuOpen) {
@@ -52,22 +53,23 @@ export default function RegistryChrome({
   useEffect(() => setMenuOpen(false), [pathname]);
 
   const drawerOpen = useDrawerOpen();
-  const isActive = (href: string, exact?: boolean) =>
-    // A drawer is a modal over the current page — don't light up whatever
-    // section the entity URL falls under.
-    !drawerOpen && (exact ? pathname === href : pathname.startsWith(href));
+  // A drawer is a modal over the current page — don't light up whatever
+  // section the entity URL falls under.
+  const isActive = (href: string) => !drawerOpen && pathname.startsWith(href);
 
   return (
     <>
       <header className="fx-nav">
-        <Link href={brandHref} className="fx-brand">
-          <BrandMark />
-          <span>{t("chrome.wordmark")}</span>
-        </Link>
+        <div className="fx-brand">
+          <Link href="/" className="fx-brand-home">
+            <BrandMark />
+            <span>{t("chrome.wordmark")}</span>
+          </Link>
+        </div>
         <nav className="fx-links" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className={isActive(l.href, l.exact) ? "fx-link fx-link-on" : "fx-link"}>
-              {t(l.labelKey)}
+          {SITE_NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className="fx-link">
+              {tRaw(l.labelKey)}
             </Link>
           ))}
         </nav>
@@ -76,7 +78,7 @@ export default function RegistryChrome({
         <button
           type="button"
           className="fx-menu-btn"
-          aria-label={t(`${country}.chrome.menu_aria`)}
+          aria-label={t("fx.nav.menu_aria")}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
@@ -84,8 +86,20 @@ export default function RegistryChrome({
             <line x1="4" y1="8" x2="20" y2="8" />
             <line x1="4" y1="16" x2="20" y2="16" />
           </svg>
+          <span className="fx-menu-btn-l">{t("fx.nav.menu_aria")}</span>
         </button>
       </header>
+      {/* The place's own row : its sections as tabs, its name leading to its hub. Desktop only. */}
+      {place && placeLinks.length > 0 ? (
+        <nav className="fx-subnav" aria-label={placeName ?? t("fx.nav.place_aria")}>
+          <Link href={placeHome} className="fx-subnav-place">{placeName}</Link>
+          {placeLinks.map((l) => (
+            <Link key={l.href} href={l.href} className={isActive(l.href) ? "fx-sublink fx-sublink-on" : "fx-sublink"}>
+              {t(l.labelKey)}
+            </Link>
+          ))}
+        </nav>
+      ) : null}
 
       <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
@@ -103,11 +117,26 @@ export default function RegistryChrome({
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {navLinks.map((l) => (
+          {SITE_NAV_LINKS.map((l) => (
             <Link key={l.href} href={l.href}>
-              {t(l.labelKey)}
+              {tRaw(l.labelKey)}
             </Link>
           ))}
+          {place && placeLinks.length > 0 ? (
+            <>
+              <span className="fx-overlay-scope-tag">{placeName}</span>
+              {place.hub ? (
+                <Link href={placeHome} className={pathname === placeHome ? "fx-overlay-place fx-overlay-on" : "fx-overlay-place"}>
+                  {t("chrome.home")}
+                </Link>
+              ) : null}
+              {placeLinks.map((l) => (
+                <Link key={l.href} href={l.href} className={isActive(l.href) ? "fx-overlay-place fx-overlay-on" : "fx-overlay-place"}>
+                  {t(l.labelKey)}
+                </Link>
+              ))}
+            </>
+          ) : null}
         </nav>
         <div className="fx-overlay-foot">
           <div className="fx-overlay-foot-left">
