@@ -211,13 +211,13 @@ function marches(year?: number): ParisSectionSeo {
   return {
     path: PATH("marches"),
     fr: {
-      title: `Marchés publics de Paris ${d.year} : ${int(d.nb, "fr")} contrats`,
+      title: `Marchés publics de Paris ${d.year} : ${amount(d.total, "fr")}, ${int(d.nb, "fr")} contrats`,
       answer:
         `En ${d.year}, la Ville de Paris a notifié ${int(d.nb, "fr")} marchés publics à ${int(d.nbTitulaires, "fr")} titulaires distincts, pour ${amount(d.total, "fr")} au total : ce sont les montants maximum prévus sur toute la durée des contrats, pas ce qui est dépensé dans l'année. ` +
         sourceLine("fr", "données essentielles de la commande publique (DECP), Ville de Paris (opendata.paris.fr)", iso),
     },
     en: {
-      title: `Paris public contracts ${d.year}: ${int(d.nb, "en")} awarded`,
+      title: `Paris public contracts ${d.year}: ${amount(d.total, "en")}, ${int(d.nb, "en")} awarded`,
       answer:
         `In ${d.year}, the City of Paris awarded ${int(d.nb, "en")} public contracts to ${int(d.nbTitulaires, "en")} distinct holders, worth up to ${amount(d.total, "en")} in total: the maximum each contract allows over its whole life, not what is spent in the year. ` +
         sourceLine("en", "essential public procurement data (DECP), City of Paris (opendata.paris.fr)", iso),

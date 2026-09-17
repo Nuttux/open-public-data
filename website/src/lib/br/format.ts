@@ -30,6 +30,7 @@ export function fmtBrlCompact(n: number | null | undefined): string {
   if (n == null) return "—";
   const sign = n < 0 ? MINUS : "";
   const abs = Math.abs(n);
+  if (abs >= 1e12) return `${sign}R$${NB}${nfDec(2).format(abs / 1e12)}${NB}tri`;
   if (abs >= 1e9) return `${sign}R$${NB}${nfDec(1).format(abs / 1e9)}${NB}bi`;
   if (abs >= 1e6) return `${sign}R$${NB}${nfDec(abs >= 1e8 ? 0 : 1).format(abs / 1e6)}${NB}mi`;
   if (abs >= 1e3) return `${sign}R$${NB}${nfDec(0).format(abs / 1e3)}${NB}mil`;
@@ -45,7 +46,8 @@ export function fmtBrlDeck(n: number | null | undefined): string {
   const sign = n < 0 ? MINUS : "";
   const abs = Math.abs(n);
   let val: number, unit: string;
-  if (abs >= 1e9) { val = abs / 1e9; unit = "bi"; }
+  if (abs >= 1e12) { val = abs / 1e12; unit = "tri"; }
+  else if (abs >= 1e9) { val = abs / 1e9; unit = "bi"; }
   else if (abs >= 1e6) { val = abs / 1e6; unit = "mi"; }
   else if (abs >= 1e3) { val = abs / 1e3; unit = "mil"; }
   else return fmtBrl(n);
@@ -58,6 +60,7 @@ export function fmtBrlDeck(n: number | null | undefined): string {
  *  number is shown in full). Mirrors Paris's value + separate `unit` split. */
 export function brlMagnitude(n: number | null | undefined): string {
   const abs = Math.abs(n ?? 0);
+  if (abs >= 1e12) return "tri";
   if (abs >= 1e9) return "bi";
   if (abs >= 1e6) return "mi";
   if (abs >= 1e3) return "mil";
@@ -71,6 +74,7 @@ export function fmtBrlCompactNum(n: number | null | undefined): string {
   if (n == null) return "—";
   const sign = n < 0 ? MINUS : "";
   const abs = Math.abs(n);
+  if (abs >= 1e12) return `${sign}R$${NB}${nfDec(2).format(abs / 1e12)}`;
   if (abs >= 1e9) return `${sign}R$${NB}${nfDec(2).format(abs / 1e9)}`;
   if (abs >= 1e6) return `${sign}R$${NB}${nfDec(1).format(abs / 1e6)}`;
   if (abs >= 1e3) return `${sign}R$${NB}${nfDec(0).format(abs / 1e3)}`;

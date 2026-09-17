@@ -12,7 +12,7 @@ const META_EN = { title: "Recife — Places", description: "Recife's health unit
 // of the host answering (lib/site-locale.ts).
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await recifeLocale();
-  return { ...(locale === "en" ? META_EN : META_PT), ...sectionAlternates("/brasil/recife/lugares", locale) };
+  return { ...(locale === "en" ? META_EN: META_PT), ...sectionAlternates("/brasil/recife/lugares", locale) };
 }
 
 export default async function LugaresPage() {

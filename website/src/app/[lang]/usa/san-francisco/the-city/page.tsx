@@ -33,7 +33,7 @@ import { theCityPageData } from "./data";
  * `PLAN.md` §0 rule 2 and `engine-is-city-free.test.ts`.
  */
 const BASE_METADATA: Metadata = {
-  title: "San Francisco — The city, drawn from its own record",
+  title: "San Francisco: the city, drawn from its own records",
   description:
     "San Francisco drawn from the record the city publishes: every building at the height the city measured, and for every block what the Board of Supervisors decided there, linked to the page of the scan.",
 };

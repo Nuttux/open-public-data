@@ -201,6 +201,8 @@ export function registryFooterModel(
     : municipio
       ? [{ href: "/brasil/recife", label: "Recife" }]
       : [];
+  // Brazil : the 5 569 municípios sit behind the country hub and its search.
+  if (country === "br") sections.push({ href: "/brasil", label: t("br.hub.find_h") });
 
   // Project column — invariant GitHub/Contact, plus a Sources link where the
   // place actually ships one (SF). No méthode/analyses under US/BR yet: those
