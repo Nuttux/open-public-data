@@ -123,6 +123,20 @@ const pt: Record<string, string> = {
 
   // ---- budget page --------------------------------------------------------
   "br.recife.budget.kicker": "Orçamento executado",
+  // Todo município (2026-09-18) : a página do orçamento de Recife para os 5 570
+  "br.mun.kicker_root": "Brasil",
+  "br.mun.lines_sub": "As maiores subfunções, dentro das funções acima.",
+  "fx.foot.credit.br_municipios": "© {year} Qipu · Dados: SICONFI, Tesouro Nacional (DCA) ; população IBGE — dados abertos",
+  "br.mun.title": "O orçamento de {nome}",
+  "br.mun.peers_h": "Municípios de tamanho parecido em {uf}",
+  "br.mun.peers_sub": "Despesa paga por habitante no último ano publicado. Cada um abre a sua página.",
+  "br.mun.peers_hab": "{pop} habitantes · {y}",
+  "br.mun.per_hab": "/hab.",
+  "br.mun.next_title": "Recife, em detalhe",
+  "br.mun.next_sub": "Orçamento, quem recebe, contratos, lugares : a cidade mais documentada do site.",
+  "br.mun.u.fonte_body": "Das contas anuais (DCA) que cada município declara ao Tesouro Nacional no SICONFI, função por função. A população vem de {pop}.",
+  "br.mun.foot": "Fonte : SICONFI, Tesouro Nacional (DCA, Anexo I-E), despesas pagas exceto intraorçamentárias ; população {pop}.",
+  "fx.pv.next.kicker": "E mais no Qipu",
   // O orçamento na gramática das seções (2026-09-17)
   "br.recife.bud3.title": "O orçamento da Prefeitura",
   "br.recife.bud3.cap_before": "pagos em",

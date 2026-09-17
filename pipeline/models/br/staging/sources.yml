@@ -80,3 +80,23 @@ sources:
           matched to facilities by distinctive-name mention in the objeto
           (scripts/enrich/build_recife_place_obras.py). LEFT-joined onto places;
           evidence surfaced on the fiche. Not "total spent", only obra-mentions.
+
+  # ---------------------------------------------------------------------------
+  # Brazil, every município (2026-09-18): SICONFI (Tesouro Nacional) through
+  # the Base dos Dados public mirror, copied into raw (EU) by
+  # scripts/sync/sync_br_siconfi.py — BigQuery cannot read across regions
+  # (basedosdados is in US, our datasets in EU). Three filtered copies:
+  # DCA Anexo I-E 2017+ (three stages, coded contas), the municípios
+  # directory, and the IBGE population estimates.
+  # ---------------------------------------------------------------------------
+  - name: br_siconfi_raw
+    description: "SICONFI DCA annual accounts for the 5 570 municípios, IBGE directory and population — copies of the Base dos Dados mirror (basedosdados.br_me_siconfi, br_bd_diretorios_brasil, br_ibge_populacao)"
+    database: open-data-france-484717
+    schema: raw
+    tables:
+      - name: br_siconfi_despesas_funcao
+        description: "DCA Anexo I-E — despesas por função e subfunção × estágio (empenhadas, liquidadas, pagas), one row per ano × município × conta, 2017+. id_conta_bd = '3.FF.SSS' (FF função, SSS subfunção, 000 = the função's total, 3.00.000 = the total)."
+      - name: br_bd_municipios
+        description: "The 5 570 municípios: IBGE code, name, UF, regions (Base dos Dados directory)."
+      - name: br_ibge_populacao
+        description: "IBGE population estimates per município and year, 2017+."

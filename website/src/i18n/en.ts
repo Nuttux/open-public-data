@@ -6985,6 +6985,19 @@ const en: Record<string, string> = {
 
   'br.recife.budget.kicker': 'Executed budget',
   'br.recife.budget.title': "Where Recife's money goes",
+  // Every município (2026-09-18): Recife's budget page for the 5,570
+  'br.mun.kicker_root': 'Brazil',
+  'br.mun.lines_sub': 'The largest sub-functions, inside the functions above.',
+  'fx.foot.credit.br_municipios': '© {year} Qipu · Data: SICONFI, National Treasury (DCA); population IBGE — open data',
+  'br.mun.title': "{nome}'s budget",
+  'br.mun.peers_h': 'Municípios of a similar size in {uf}',
+  'br.mun.peers_sub': 'Spending paid per resident in the latest published year. Each opens its page.',
+  'br.mun.peers_hab': '{pop} residents · {y}',
+  'br.mun.per_hab': '/res.',
+  'br.mun.next_title': 'Recife, in detail',
+  'br.mun.next_sub': 'Budget, who receives, contracts, places: the most documented city on the site.',
+  'br.mun.u.fonte_body': 'From the annual accounts (DCA) every município files with the National Treasury on SICONFI, function by function. Population comes from {pop}.',
+  'br.mun.foot': 'Source: SICONFI, National Treasury (DCA, Anexo I-E), spending paid excluding intra-budget transfers; population {pop}.',
   // The budget on the section grammar (2026-09-17)
   'br.recife.bud3.title': "The City's budget",
   'br.recife.bud3.cap_before': 'paid in',

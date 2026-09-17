@@ -189,12 +189,18 @@ export function registryFooterModel(
   t: T,
   year: number,
 ): FooterModel {
-  const place = currentPlace(pathname) ?? placesForCountry(country)[0];
-  const placeHeading = place?.name ?? (place ? t(place.labelKey) : "");
+  // A município page (2026-09-18, /brasil/<slug>) belongs to no registered
+  // place : the footer names the country, points to Recife, and credits
+  // SICONFI rather than Recife's portal.
+  const municipio = country === "br" && !currentPlace(pathname) && /^\/brasil\/[^/]+$/.test(pathname);
+  const place = municipio ? undefined : (currentPlace(pathname) ?? placesForCountry(country)[0]);
+  const placeHeading = municipio ? t("br.mun.kicker_root") : (place?.name ?? (place ? t(place.labelKey) : ""));
 
   const sections: FooterLink[] = place
     ? orderedModules(place).map((m) => ({ href: `${place.path}/${m.slug}`, label: t(m.labelKey) }))
-    : [];
+    : municipio
+      ? [{ href: "/brasil/recife", label: "Recife" }]
+      : [];
 
   // Project column — invariant GitHub/Contact, plus a Sources link where the
   // place actually ships one (SF). No méthode/analyses under US/BR yet: those
@@ -214,7 +220,7 @@ export function registryFooterModel(
     { href: "/signalement", label: t("fx.foot.legal.signaler") },
   ];
 
-  const creditKey = country === "us" ? "fx.foot.credit.sf" : country === "br" ? "fx.foot.credit.recife" : "fx.foot.license";
+  const creditKey = country === "us" ? "fx.foot.credit.sf" : country === "br" ? (municipio ? "fx.foot.credit.br_municipios" : "fx.foot.credit.recife") : "fx.foot.license";
 
   return {
     wordmark: `${t("chrome.wordmark")}.`,

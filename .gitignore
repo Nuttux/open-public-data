@@ -105,3 +105,6 @@ pipeline/data/sf_bos/items_merged.jsonl
 
 # rendered tile pyramids (website/scripts/render-city-tiles.mjs) — hundreds of MB, served from storage, never committed
 website/public/tiles/
+
+# Brazil, every município : the export lands here before the bucket (174 MB of JSON)
+pipeline/data/br_municipios/
