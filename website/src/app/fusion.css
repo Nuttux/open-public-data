@@ -21296,6 +21296,10 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-lieux-arr { display: grid; gap: 6px; max-width: 320px; }
 .theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink); min-height: 40px; }
 .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-find { max-width: 760px; }
+/* Payees (SF, 2026-09-18) : two menus and a checkbox on one line, under the search. */
+.theme-fusion .fx-sec-wgp-filters { grid-template-columns: repeat(auto-fit, minmax(200px, max-content)); align-items: end; margin-top: 4px; }
+.theme-fusion .fx-sec-wgp-check { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); min-height: 40px; cursor: pointer; }
+.theme-fusion .fx-link-btn { font: inherit; color: var(--bleu); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 /* Two municípios side by side (Brazil, 2026-09-18) : a label, two bars on one scale, two amounts. */
 .theme-fusion .fx-cmp { margin-top: 12px; }
 .theme-fusion .fx-cmp-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule-2); font-size: 14px; }
