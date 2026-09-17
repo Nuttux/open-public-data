@@ -29,7 +29,7 @@ const CITY_SECTIONS: Record<string, { section: string; labelKey: string }[]> = {
   paris: PARIS_SECTIONS,
   // Marseille v1 — only the finalised verticals. investissements / logement /
   // dette are built but still WIP, so they're kept off the nav for now.
-  marseille: [LIEUX, BUDGET, SUBVENTIONS, MARCHES],
+  marseille: [LIEUX, BUDGET, INVEST, SUBVENTIONS, MARCHES, LOGEMENT, DETTE],
 };
 
 // The finalised section links for a city — the SINGLE source shared by the top
