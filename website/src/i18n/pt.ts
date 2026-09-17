@@ -647,6 +647,10 @@ const pt: Record<string, string> = {
   "br.cmp.foot": "Fonte: SICONFI, Tesouro Nacional (DCA, Anexos I-C e I-E); população IBGE. Por habitante, ano {y}.",
   "br.cmp.pick_b": "Escolha o segundo município",
   "br.cmp.pick_b_sub": "Digite o nome; os municípios de tamanho parecido estão na página de {a}.",
+
+  // Uma ajuda « Clique… » em cada lista que abre uma página (2026-09-18).
+  "fx.v3.rows.aide": "Clique numa linha para abrir a sua página.",
+  "fx.sec.lieux.rows_aide": "Clique num lugar para abrir a sua página.",
 };
 
 export default pt;

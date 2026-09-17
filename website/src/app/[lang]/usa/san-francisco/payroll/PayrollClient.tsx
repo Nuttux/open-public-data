@@ -281,7 +281,7 @@ export default function PayrollClient({ fy, years, byYear, byDept, distribution,
           </div>
 
           <div className="fx-sec-a-search">
-            <V3Section id="overtime" title={fill(t("us.sf.pay3.h.ot"), { ot: fmtUsdCompact(otYear.overtime_usd), y: fy, share: fmtShare(otYear.ot_share_of_comp) })} sub={fill(t("us.sf.pay3.ot_sub"), { share0: fmtShare(otFirst.ot_share_of_comp), y0: otFirst.fiscal_year })}>
+            <V3Section id="overtime" hint={t("fx.v3.rows.aide")} title={fill(t("us.sf.pay3.h.ot"), { ot: fmtUsdCompact(otYear.overtime_usd), y: fy, share: fmtShare(otYear.ot_share_of_comp) })} sub={fill(t("us.sf.pay3.ot_sub"), { share0: fmtShare(otFirst.ot_share_of_comp), y0: otFirst.fiscal_year })}>
               <div className="fx-bud-cols fx-bud-cols--one">
                 <div className="fx-bud-col">
                   {otDepts.map(({ d, p }) => (

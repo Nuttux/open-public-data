@@ -134,7 +134,7 @@ export default function QuemRecebeClient({ d, doors }: { d: QuemRecebeData; door
           </div>
 
           <div className="fx-sec-a-search">
-            <V3Section id="rows" title={rowsTitle} sub={active ? undefined : t("br.recife.qr3.rows_sub")}>
+            <V3Section id="rows" title={rowsTitle} sub={active ? undefined : t("br.recife.qr3.rows_sub")} hint={t("fx.v3.rows.aide")}>
               {shownAll.length === 0 ? <p className="fx-v3-sentence">{t("br.recife.qr.no_results")}</p> : shownAll.map(Row)}
               {rest.length > 0 ? <V3Fold id="more-rows" text label={fill(t("br.recife.qr3.rows_more"), { n: fmtInt(rest.length) })}>{rest.map(Row)}</V3Fold> : null}
               {!active ? <p className="fx-v3-note">{fill(t("br.recife.qr.top_footer"), { pct: Math.round(h.concentracao_top10 * 100) })}</p> : null}

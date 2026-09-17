@@ -100,7 +100,9 @@ export default function PayeesClient({ d }: { d: SfPayeesPageData }) {
   const relatedTxt = tot.related_share_of_total != null ? fill(t("us.sf.wgp3.meta_related"), { v: fmtUsdCompact(tot.related_govt_units_usd), pct: fmtShare(tot.related_share_of_total) }) : null;
 
   /* ── The scene : where the money went, one total re-cut three ways ── */
-  const [lens, setLens] = useState<Lens>("department");
+  // Who is paid comes first (2026-09-18) : the department lens is the paying side,
+  // a budget view ; the kinds of payee answer the page's question.
+  const [lens, setLens] = useState<Lens>("kind");
   const pickLens = (l: Lens) => {
     if (l === lens) return;
     track("filter_change", { page: "who-gets-paid", field: "lens", value: l });
@@ -260,7 +262,7 @@ export default function PayeesClient({ d }: { d: SfPayeesPageData }) {
 
           <div className="fx-sec-a-scene">
             {bk ? (
-              <V3Section id="scene" title={fill(t("us.sf.wgp3.h.scene"), { y: fy })} sub={fill(t("us.sf.wgp3.scene_sub"), { total: fmtUsdCompact(bk.totalUsd) })} hint={lens === "department" ? t("us.sf.wgp3.scene_hint") : undefined}>
+              <V3Section id="scene" title={fill(t("us.sf.wgp3.h.scene"), { y: fy })} sub={fill(t("us.sf.wgp3.scene_sub"), { total: fmtUsdCompact(bk.totalUsd) })} hint={lens === "department" ? t("us.sf.wgp3.scene_hint") : lens === "kind" ? t("us.sf.wgp3.scene_hint_kind") : undefined}>
                 <div id="wgp-scene" className="fx-bud-cols fx-bud-cols--one">
                   <div className="fx-bud-col">
                     <h3>
@@ -273,6 +275,12 @@ export default function PayeesClient({ d }: { d: SfPayeesPageData }) {
                     </h3>
                     {lensRows.map((r) => {
                       const href = lens === "department" ? d.deptHrefs[r.key] ?? null : null;
+                      // A kind of payee keeps only those in the list below.
+                      const onKind = lens === "kind" && KINDS.includes(r.key) ? () => {
+                        track("filter_change", { page: "who-gets-paid", field: "kind", value: r.key, from: "scene" });
+                        setKind(r.key);
+                        document.querySelector('[data-section="rows"]')?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      } : null;
                       const body = (
                         <>
                           <span className="n">
@@ -282,10 +290,10 @@ export default function PayeesClient({ d }: { d: SfPayeesPageData }) {
                           <span className="sp" />
                           <Amt n={r.usd} />
                           <span className="p tnum">{Math.round(r.shareOfFy * 100)} %</span>
-                          <span className="c" aria-hidden="true">{href ? "›" : ""}</span>
+                          <span className="c" aria-hidden="true">{href || onKind ? "›" : ""}</span>
                         </>
                       );
-                      return href ? <Link key={r.key} href={href} scroll={false} className="fx-bud-row">{body}</Link> : <div key={r.key} className="fx-bud-row fx-bud-row--static">{body}</div>;
+                      return href ? <Link key={r.key} href={href} scroll={false} className="fx-bud-row">{body}</Link> : onKind ? <button key={r.key} type="button" className="fx-bud-row" onClick={onKind}>{body}</button> : <div key={r.key} className="fx-bud-row fx-bud-row--static">{body}</div>;
                     })}
                   </div>
                 </div>
@@ -308,7 +316,7 @@ export default function PayeesClient({ d }: { d: SfPayeesPageData }) {
               </V3Section>
             ) : null}
 
-            <V3Section id="rows" title={rowsTitle} sub={hasText ? undefined : t("us.sf.wgp3.rows_sub")}>
+            <V3Section id="rows" title={rowsTitle} sub={hasText ? undefined : t("us.sf.wgp3.rows_sub")} hint={t("fx.v3.rows.aide")}>
               <div className="fx-search-wrap fx-search-wrap--fiche fx-sec-lieux-search">
                 <div className="fx-search-inner">
                   <div className="fx-search-input-wrap">

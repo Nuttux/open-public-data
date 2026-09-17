@@ -299,7 +299,7 @@ export default function MarchesPublicsClient({ idx, d, doors, variant = "bars" }
             </div>
 
             <div className="fx-sec-a-rows">
-              <V3Section id="contracts" title={fill(t("fx.sec.mp.h.contracts"), { year: d.year })}>
+              <V3Section id="contracts" title={fill(t("fx.sec.mp.h.contracts"), { year: d.year })} hint={t("fx.v3.rows.aide")}>
                 {contrats.shown.map(ContratRow)}
                 {contrats.rest.length > 0 && <V3Fold id="more-contracts" text label={t("fx.v3.voir_plus")}>{contrats.rest.map(ContratRow)}</V3Fold>}
               </V3Section>

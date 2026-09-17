@@ -198,7 +198,7 @@ export default function InvestissementsClient({ d, posts, doors, enableDrilldown
       amount={<Amt n={p.amount} />} />
   );
   const projetsSection = d.topProjets.length > 0 ? (
-    <V3Section id="projects" title={fill(t("fx.sec.inv.h.projects"), { year: d.year })}>
+    <V3Section id="projects" title={fill(t("fx.sec.inv.h.projects"), { year: d.year })} hint={t("fx.v3.rows.aide")}>
       {projets.shown.map(ProjetRow)}
       {projets.rest.length > 0 && <V3Fold id="more-projects" text label={t("fx.v3.voir_plus")}>{projets.rest.map(ProjetRow)}</V3Fold>}
     </V3Section>

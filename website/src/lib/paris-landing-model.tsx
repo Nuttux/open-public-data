@@ -207,9 +207,12 @@ export function buildParisLandingModel(
         <>
           {t("fx.land.h1.before")}
           <em>{t("fx.land.h1.em")}</em>
-          {/* A space before the break : without it a crawler reads « publicà Paris ». */}
+          {/* A space before the break : without it a crawler reads « publicà Paris ».
+              The break itself is French only : « Où va l'argent public » fits one
+              line at 120px ; « Where does public money » does not below 1240px, and a
+              forced break then made three lines. English wraps by itself, balanced. */}
           {" "}
-          <br />
+          {isEn ? null : <br />}
           {t("fx.land.h1.mid")}
           <PlaceSwitcher variant="h1" currentSlug="paris" />
           {t("fx.land.h1.after")}

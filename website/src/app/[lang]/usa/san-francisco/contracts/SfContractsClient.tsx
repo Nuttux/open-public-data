@@ -264,7 +264,7 @@ export default function SfContractsClient({ overview, active, primes, deptBars, 
           </div>
 
           <div className="fx-sec-a-search">
-            <V3Section id="rows" title={rowsTitle} sub={filtersOn ? undefined : fill(t("us.sf.ct3.rows_sub"), { n: int.format(active.n_rows) })}>
+            <V3Section id="rows" title={rowsTitle} sub={filtersOn ? undefined : fill(t("us.sf.ct3.rows_sub"), { n: int.format(active.n_rows) })} hint={t("fx.v3.rows.aide")}>
               <div className="fx-search-wrap fx-search-wrap--fiche fx-sec-lieux-search">
                 <div className="fx-search-inner">
                   <div className="fx-search-input-wrap">
