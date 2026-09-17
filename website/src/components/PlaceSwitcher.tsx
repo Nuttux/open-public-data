@@ -33,10 +33,13 @@ import {
  */
 export default function PlaceSwitcher({
   variant = "nav",
+  label: labelProp,
   currentSlug,
 }: {
   /** `chev` : the chevron alone, next to the place's name written as a link (the one-row bar, 2026-09-18). */
-  variant?: "nav" | "overlay" | "h1" | "chev";
+  variant?: "nav" | "overlay" | "h1" | "chev" | "place";
+  /** The trigger's text when the caller knows the place's name better (the bar's « Paris ▾ », the hub's « France ▾ »). */
+  label?: string;
   currentSlug?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -92,6 +95,7 @@ export default function PlaceSwitcher({
   const triggerClass =
     variant === "h1" ? "fx-scope fx-scope-h1" :
     variant === "chev" ? "fx-scope fx-scope-only" :
+    variant === "place" ? "fx-scope fx-scope-place" :
     variant === "overlay" ? "fx-scope fx-scope-overlay" :
     "fx-scope fx-scope-nav";
 
@@ -105,7 +109,7 @@ export default function PlaceSwitcher({
         aria-label={t("chrome.switch.aria")}
         onClick={() => setOpen((v) => !v)}
       >
-        {variant === "chev" ? null : <span>{triggerLabel}</span>}
+        {variant === "chev" ? null : <span>{labelProp ?? triggerLabel}</span>}
         <span className="fx-scope-chev" aria-hidden="true">▾</span>
       </button>
       {open && (
@@ -126,6 +130,14 @@ export default function PlaceSwitcher({
                   <span>{t("fx.scope.search_all_cta")}</span>
                   <span className="fx-sm-tag">35 000+</span>
                 </button>
+              )}
+              {/* A commune of the national tail is not in the registry : its own page
+                  is the ticked entry, as Paris is on Paris's pages (2026-09-18). */}
+              {g.country === "fr" && commune && !active && (
+                <Link className="fx-sm-item fx-sm-active" href={`/france/${commune.slug}`} role="menuitem" onClick={() => setOpen(false)}>
+                  <span>{commune.nom}</span>
+                  <span className="fx-sm-check" aria-hidden="true">✓</span>
+                </Link>
               )}
               {/* Brazil : the 5 569 município pages sit behind the country hub and its search (2026-09-18). */}
               {g.country === "br" && (

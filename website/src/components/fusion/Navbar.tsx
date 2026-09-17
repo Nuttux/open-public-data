@@ -57,14 +57,6 @@ function placeNameForPath(pathname: string, commune: CommuneNav | null, france: 
   return place ? (getPlace(place)?.name ?? place) : null;
 }
 
-// Where the place row's first entry leads: the place's own hub (2026-09-17,
-// the row became tabs and the mono tag became the link to the place).
-function placeHomeForPath(pathname: string, commune: CommuneNav | null): string {
-  if (isFranceScope(pathname)) return "/france";
-  if (commune) return `/france/${commune.slug}`;
-  const place = pathname === "/" ? "paris" : frPlace(pathname);
-  return place ? `/france/${place}` : "/";
-}
 
 // The registry slug of the current France scope, for the unified switcher.
 // France's routing is irregular (Paris = root URLs + homepage),
@@ -89,7 +81,6 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const siteLinks = SITE_NAV_LINKS;
   const placeLinks = placeLinksForPath(scope, commune);
   const placeName = placeNameForPath(scope, commune, "France");
-  const placeHome = placeHomeForPath(scope, commune);
   const frSlug = currentFrSlug(scope);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
@@ -168,10 +159,10 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             explainers, the page for town halls) live in the phone menu and on the
             hub ; the mark is home. The search closes the row at the right. */}
         <nav className="fx-placebar" aria-label={placeName ?? t("fx.nav.place_aria")}>
-          {placeName ? (
-            <Link href={placeHome} className="fx-placebar-name" onClick={() => trackNav(placeHome, "fx.nav.place_aria", "subnav")}>{placeName}</Link>
-          ) : null}
-          <PlaceSwitcher variant="chev" currentSlug={frSlug} />
+          {/* The name and the chevron are one button : clicking « Paris » opens the
+              menu (Daniel, 18/09 : « on ne peut pas cliquer sur la ville »). The
+              place's own page is the ticked entry of the menu and the breadcrumb. */}
+          <PlaceSwitcher variant="place" label={placeName ?? undefined} currentSlug={frSlug} />
           {placeLinks.length > 0 ? (
             <div className="fx-placebar-tabs">
               {placeLinks.map((l) => (
