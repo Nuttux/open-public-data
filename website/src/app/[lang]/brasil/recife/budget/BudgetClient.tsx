@@ -6,6 +6,7 @@ import SectionHero from "@/components/fiche/SectionHero";
 import ShareButton from "@/components/fiche/ShareButton";
 import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Amt, V3Fold, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
+import MunicipioSearch from "@/components/br/MunicipioSearch";
 import { useT, useLocale } from "@/lib/localeContext";
 import type { BudgetData } from "@/lib/br/recife-data";
 import { fmtBrl, fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fill, funcaoSlug, mesRange, titleCasePt, fmtInt } from "@/lib/br/format";
@@ -66,6 +67,12 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
   const series = d.anos.map((a) => ({ year: a.ano, amount: a.total_pago })).sort((a, b) => a.year - b.year);
   const total = brl(anoData.total_pago);
   const shareTitle = fill(t("br.recife.bud3.share_title"), { total: fmtBrlCompact(anoData.total_pago), y: year });
+  // The revenue side (municípios, SICONFI Anexo I-C) : the origens of the
+  // year, net of the deductions, face to face with the functions.
+  const rec = city ? d.receitas?.find((r) => r.ano === year) ?? null : null;
+  const recOrigens = rec ? rec.origens.filter((o) => o.liquida > 0) : [];
+  const recMax = recOrigens[0]?.liquida ?? 1;
+  const recRest = rec ? Math.max(0, rec.liquida - recOrigens.reduce((s, o) => s + o.liquida, 0)) : 0;
   const max = funcoes[0]?.pago ?? 1;
   const movePctTxt = movePct == null ? null : `${movePct > 0 ? "+" : movePct < 0 ? "−" : ""}${Math.abs(movePct).toLocaleString(locale === "en" ? "en-US" : "pt-BR", { maximumFractionDigits: 1 })} %`;
 
@@ -100,7 +107,7 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
               years={shownYears}
               year={year}
               basePath={BASE}
-              meta={[perCap != null ? fill(t("br.recife.bud3.meta_hab"), { v: fmtBrl(Math.round(perCap)) }) : null, fill(t("br.recife.bud3.meta_emp"), { v: fmtBrlCompact(anoData.total_empenhado) }), restos > 0 ? fill(t("br.recife.bud3.meta_restos"), { v: fmtBrlCompact(restos) }) : null].filter(Boolean).join(" · ")}
+              meta={[perCap != null ? fill(t("br.recife.bud3.meta_hab"), { v: fmtBrl(Math.round(perCap)) }) : null, rec ? fill(t("br.mun.meta_rec"), { v: fmtBrlCompact(rec.liquida) }) : fill(t("br.recife.bud3.meta_emp"), { v: fmtBrlCompact(anoData.total_empenhado) }), restos > 0 && !rec ? fill(t("br.recife.bud3.meta_restos"), { v: fmtBrlCompact(restos) }) : null].filter(Boolean).join(" · ")}
               move={movePctTxt && prev ? fill(t("br.recife.bud3.move"), { pct: movePctTxt, y: prev.ano }) : undefined}
               shareTitle={shareTitle}
             />
@@ -117,8 +124,8 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
           </div>
 
           <div className="fx-sec-a-table">
-            <V3Section id="scene" title={t("br.recife.budget.funcao_h")} sub={fill(t("br.recife.bud3.scene_sub"), { y: year, n: fmtInt(funcoes.length) })} hint={drawers ? t("br.recife.bud3.scene_hint") : undefined}>
-              <div id="budget-scene" className="fx-bud-cols fx-bud-cols--one">
+            <V3Section id="scene" title={rec ? fill(t("br.mun.h.table"), { y: year }) : t("br.recife.budget.funcao_h")} sub={fill(t("br.recife.bud3.scene_sub"), { y: year, n: fmtInt(funcoes.length) })} hint={drawers ? t("br.recife.bud3.scene_hint") : undefined}>
+              <div id="budget-scene" className={rec ? "fx-bud-cols" : "fx-bud-cols fx-bud-cols--one"}>
                 <div className="fx-bud-col">
                   <h3>
                     <span>{t("br.recife.bud3.col_pago")}</span>
@@ -145,6 +152,33 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
                     );
                   })}
                 </div>
+                {rec ? (
+                  <div className="fx-bud-col">
+                    <h3>
+                      <span>{t("br.mun.col_rec")}</span>
+                      <span className="tnum">{fmtBrlCompact(rec.liquida)}</span>
+                    </h3>
+                    {recOrigens.map((o) => (
+                      <div key={o.codigo} className="fx-bud-row fx-bud-row--static" data-peek={o.detalhes.length ? o.detalhes.slice(0, 4).map((x) => `${titleCasePt(x.detalhe)} ${fmtBrlCompact(x.liquida)}`).join(" · ") : undefined}>
+                        <span className="n">
+                          {titleCasePt(o.origem)}
+                          <i className="bar" style={{ width: `${Math.max(2, Math.round((o.liquida / recMax) * 100))}%` }} aria-hidden="true" />
+                        </span>
+                        <span className="sp" />
+                        <Amt n={o.liquida} />
+                        <span className="p tnum">{Math.round((o.liquida / rec.liquida) * 100)} %</span>
+                        <span className="c" />
+                      </div>
+                    ))}
+                    {recRest > rec.liquida * 0.005 ? (
+                      <div className="fx-bud-row fx-bud-row--static">
+                        <span className="n">{t("br.mun.rec_other")}</span>
+                        <span className="sp" /><Amt n={recRest} /><span className="p tnum">{Math.round((recRest / rec.liquida) * 100)} %</span><span className="c" />
+                      </div>
+                    ) : null}
+                    <p className="fx-v3-note">{fill(t("br.mun.rec_note"), { ded: fmtBrlCompact(rec.deducoes), fundeb: fmtBrlCompact(rec.fundeb), bruta: fmtBrlCompact(rec.bruta) })}</p>
+                  </div>
+                ) : null}
               </div>
               <ShareButton label={t("fx.sec.share_chart")} done={t("fx.sec.shared")} title={shareTitle} object="scene_funcao" anchor="budget-scene" />
             </V3Section>
@@ -164,8 +198,12 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
               city.peers && city.peers.length > 0 ? (
                 <V3Section id="related" title={fill(t("br.mun.peers_h"), { uf: city.peers[0].uf })} sub={t("br.mun.peers_sub")}>
                   {city.peers.map((p) => (
-                    <V3Row key={p.slug} href={`/brasil/${p.slug}`} label={p.nome} subText={fill(t("br.mun.peers_hab"), { pop: int.format(p.pop), y: p.ano })} amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{fmtBrl(Math.round(p.hab))}<span className="u">{t("br.mun.per_hab")}</span></span>} />
+                    <V3Row key={p.slug} href={`/brasil/comparar?a=${city.slug}&b=${p.slug}`} label={p.nome} subText={fill(t("br.mun.peers_hab"), { pop: int.format(p.pop), y: p.ano })} amount={<span className="fx-v3-amt tnum" style={{ fontSize: 14 }}>{fmtBrl(Math.round(p.hab))}<span className="u">{t("br.mun.per_hab")}</span></span>} />
                   ))}
+                  <p className="fx-v3-note">{t("br.mun.peers_compare_note")}</p>
+                  <div className="fx-sec-lieux-search" style={{ marginTop: 14 }}>
+                    <MunicipioSearch placeholder={t("br.mun.compare_ph")} label={t("br.mun.compare_h")} hrefFor={(slug) => `/brasil/comparar?a=${city.slug}&b=${slug}`} />
+                  </div>
                 </V3Section>
               ) : null
             ) : (
@@ -194,6 +232,9 @@ export default function BudgetClient({ d, ano, doors, city }: { d: BudgetData; a
               <V3Fold id="pago" label={t("br.recife.bud3.u.pago")}><p className="fx-v3-sentence">{t("br.recife.bud3.u.pago_body")}</p></V3Fold>
               {pj ? (
                 <V3Fold id="parcial" label={t("br.recife.bud3.u.parcial")}><p className="fx-v3-sentence">{fill(t("br.recife.bud3.u.parcial_body"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) })}</p></V3Fold>
+              ) : null}
+              {rec ? (
+                <V3Fold id="receita" label={t("br.mun.u.rec")}><p className="fx-v3-sentence">{fill(t("br.mun.u.rec_body"), { y: year, rec: fmtBrlCompact(rec.liquida), pago: fmtBrlCompact(anoData.total_pago), fundeb: fmtBrlCompact(rec.fundeb) })}</p></V3Fold>
               ) : null}
               <V3Fold id="sources" label={t("br.recife.bud3.u.fonte")}>
                 <p className="fx-v3-sentence">{fill(t(city ? "br.mun.u.fonte_body" : "br.recife.bud3.u.fonte_body"), { pop: d.populacao?.source ?? "IBGE" })}</p>

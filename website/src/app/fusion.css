@@ -165,6 +165,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion button.fx-link-search { flex: none; gap: 8px; align-self: center; height: 32px; margin: 0 12px 0 auto; padding: 0 12px 0 10px; background: transparent; border: 1px solid var(--rule); border-radius: 4px; font: inherit; font-family: var(--f-ui); font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; transition: border-color .12s, color .12s; }
 .theme-fusion button.fx-link-search:hover { background: transparent; border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-link-search svg { width: 15px; height: 15px; flex: none; }
+/* Brazil : the município field in the bar, the size of France's search button (2026-09-18). */
+.theme-fusion .fx-nav-picker { display: flex; align-items: center; align-self: center; margin: 0 12px 0 auto; }
+.theme-fusion .fx-nav-picker .fx-picker { flex: none; width: 232px; max-width: none; }
+.theme-fusion .fx-nav-picker .fx-picker input { min-height: 32px; padding: 0 10px 0 30px; font-size: 13px; font-weight: 500; background-color: transparent; border: 1px solid var(--rule); border-radius: 4px; background-position: 9px center; background-size: 14px; }
+.theme-fusion .fx-nav-picker .fx-picker input:hover { border-color: var(--ink); }
+.theme-fusion .fx-nav-picker .fx-picker-pop { width: 340px; right: auto; }
+.theme-fusion .fx-overlay-picker { padding: 4px 0 14px; }
+.theme-fusion .fx-overlay-picker .fx-picker { max-width: none; flex-basis: auto; }
+@media (max-width: 980px) { .theme-fusion .fx-nav-picker { display: none; } }
 /* The place row under the bar (2026-09-17, v6): tabs. The place's name in
    bold opens the row and leads to its hub ; the sections are plain text, the
    current one bold with a 2 px rule resting on the row's bottom rule. Paper
@@ -21287,6 +21296,23 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-sec-lieux-arr { display: grid; gap: 6px; max-width: 320px; }
 .theme-fusion .fx-sec-lieux-arr select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule, #d4cfc1); border-radius: 0; background: var(--cream, #faf9f5); color: var(--ink); min-height: 40px; }
 .theme-fusion .fx-sec-grid[data-layout="lieux"] .fx-sec-a-find { max-width: 760px; }
+/* Two municípios side by side (Brazil, 2026-09-18) : a label, two bars on one scale, two amounts. */
+.theme-fusion .fx-cmp { margin-top: 12px; }
+.theme-fusion .fx-cmp-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule-2); font-size: 14px; }
+.theme-fusion .fx-cmp-row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.theme-fusion .fx-cmp-row--strong { font-weight: 600; }
+.theme-fusion .fx-cmp-row--head { border-bottom: 1px solid var(--ink); align-items: end; }
+.theme-fusion .fx-cmp-head { display: grid; gap: 2px; }
+.theme-fusion .fx-cmp-head a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.theme-fusion .fx-cmp-head small { color: var(--muted); font-size: 12px; }
+.theme-fusion .fx-cmp-cell { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.theme-fusion .fx-cmp-cell .bar { display: block; height: 6px; background: var(--bleu); opacity: .85; }
+.theme-fusion .fx-cmp-cell .fx-v3-amt { text-align: right; white-space: nowrap; }
+@media (max-width: 640px) {
+  .theme-fusion .fx-cmp-row { grid-template-columns: 1fr; gap: 6px; }
+  .theme-fusion .fx-cmp-row--head { grid-template-columns: 1fr 1fr; }
+  .theme-fusion .fx-cmp-row--head .n { display: none; }
+}
 
 /* Last in the file on purpose: the overlay's own rules above set 30 px on this button.
    In the phone menu the search is a field, not a giant menu line (2026-09-16:

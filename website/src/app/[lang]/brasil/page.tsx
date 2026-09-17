@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const meta =
     locale === "en"
       ? { title: `Brazil: where public money goes in each of ${n} municípios`, description: `Every Brazilian município has its page: what it spent in ${d.year} (${fmtBrlCompact(d.totalPago)} in all), function by function, per resident, against municípios of the same size. Recife in detail. Source: SICONFI, National Treasury.` }
-      : { title: `Brasil : para onde vai o dinheiro público de cada um dos ${n} municípios`, description: `Cada município brasileiro tem a sua página : o que gastou em ${d.year} (${fmtBrlCompact(d.totalPago)} no total), função por função, por habitante, frente aos municípios do mesmo tamanho. Recife em detalhe. Fonte : SICONFI, Tesouro Nacional.` };
+      : { title: `Brasil: para onde vai o dinheiro público de cada um dos ${n} municípios`, description: `Cada município brasileiro tem a sua página: o que gastou em ${d.year} (${fmtBrlCompact(d.totalPago)} no total), função por função, por habitante, frente aos municípios do mesmo tamanho. Recife em detalhe. Fonte: SICONFI, Tesouro Nacional.` };
   return { ...meta, ...sectionAlternates("/brasil", locale) };
 }
 

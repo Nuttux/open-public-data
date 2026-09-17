@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const meta =
     locale === "en"
       ? { title: `${m.nome} (${m.uf}) budget: ${total} paid in ${y}`, description: `What the município of ${m.nome} (${m.uf}) spent in ${y}, function by function, year by year${hab}. Source: SICONFI, Tesouro Nacional.` }
-      : { title: `Orçamento de ${m.nome} (${m.uf}) : ${total} pagos em ${y}`, description: `O que o município de ${m.nome} (${m.uf}) gastou em ${y}, função por função, ano a ano${hab}. Fonte : SICONFI, Tesouro Nacional.` };
+      : { title: `Orçamento de ${m.nome} (${m.uf}): ${total} pagos em ${y}`, description: `O que o município de ${m.nome} (${m.uf}) gastou em ${y}, função por função, ano a ano${hab}. Fonte: SICONFI, Tesouro Nacional.` };
   return { ...meta, ...sectionAlternates(`/brasil/${slug}`, locale) };
 }
 

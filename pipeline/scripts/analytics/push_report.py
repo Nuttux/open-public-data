@@ -21,7 +21,7 @@ Usage :
 Key : POSTHOG_PERSONAL_API_KEY in website/.env.local (never printed).
 """
 from __future__ import annotations
-import argparse, json, math, re, statistics, sys, urllib.request
+import argparse, json, math, os, re, statistics, sys, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -36,17 +36,27 @@ ACTIVE = ("details_toggle", "drawer_open", "link_click", "nav_click", "toc_click
 
 
 def env() -> dict[str, str]:
-    out = {}
-    for line in (ROOT / "website/.env.local").read_text().splitlines():
-        if "=" in line and not line.strip().startswith("#"):
-            k, v = line.split("=", 1)
-            out[k.strip()] = v.strip().strip('"').strip("'")
+    """website/.env.local on Daniel's machine ; the process environment on a
+    cloud routine (POSTHOG_PERSONAL_API_KEY, POSTHOG_HOST), which wins."""
+    out: dict[str, str] = {}
+    f = ROOT / "website/.env.local"
+    if f.exists():
+        for line in f.read_text().splitlines():
+            if "=" in line and not line.strip().startswith("#"):
+                k, v = line.split("=", 1)
+                out[k.strip()] = v.strip().strip('"').strip("'")
+    # The routines name the key POSTHOG_API_KEY, sometimes pasted with its own
+    # `NAME=` prefix : both spellings, the prefix stripped.
+    for k, target in (("POSTHOG_PERSONAL_API_KEY", "POSTHOG_PERSONAL_API_KEY"), ("POSTHOG_API_KEY", "POSTHOG_PERSONAL_API_KEY"), ("POSTHOG_HOST", "POSTHOG_HOST")):
+        v = os.environ.get(k, "").strip()
+        if v:
+            out[target] = v.split("=", 1)[1] if v.startswith(f"{k}=") else v
     return out
 
 
 def hogql(sql: str) -> list[dict]:
     e = env()
-    key = e.get("POSTHOG_PERSONAL_API_KEY") or sys.exit("POSTHOG_PERSONAL_API_KEY missing in website/.env.local")
+    key = e.get("POSTHOG_PERSONAL_API_KEY") or sys.exit("POSTHOG_PERSONAL_API_KEY missing (website/.env.local or the environment)")
     host = e.get("POSTHOG_HOST") or "https://eu.posthog.com"
     req = urllib.request.Request(f"{host}/api/projects/@current/query/", method="POST",
                                  data=json.dumps({"query": {"kind": "HogQLQuery", "query": sql}}).encode(),
