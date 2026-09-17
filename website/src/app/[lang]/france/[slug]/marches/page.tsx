@@ -30,10 +30,14 @@ export async function generateMetadata({
 
 export default async function CommuneMarchesPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ year?: string }>;
 }) {
   const { slug } = await params;
+  const sp = await searchParams;
+  const year = sp.year && /^\d{4}$/.test(sp.year) ? Number(sp.year) : undefined;
   // Bloc 2 (2026-09-09) : l'explorateur ne reste que quand la section de la
   // page ville déborde (plus de 50 marchés) ; sinon l'ancre suffit.
   if (!hasDedicatedRoutes(slug)) {
@@ -69,6 +73,7 @@ export default async function CommuneMarchesPage({
       data={data}
       fournisseurs={fournisseurs}
       sourceUrl={DECP_SOURCE_URL}
+      year={year}
     />
     </>
   );

@@ -1,9 +1,12 @@
 "use client";
 
-import Link from "@/components/LocalizedLink";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import ChartSource from "@/components/fusion/ChartSource";
+import Link from "@/components/LocalizedLink";
+import AnneesRail, { RAIL_MIN } from "@/components/fusion/AnneesRail";
+import SectionHero from "@/components/fiche/SectionHero";
+import Bars, { type BarRow } from "@/components/fiche/Bars";
+import { Door, NextDoor } from "@/components/fiche/Doors";
 import { V3Amt, V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { deNom } from "@/lib/nom-commune";
@@ -13,12 +16,13 @@ import { displayFournisseur } from "@/lib/fournisseur-display";
 type CommuneMeta = { slug: string; nom: string; dep_name: string; reg_name: string; pop: number };
 
 /**
- * L'explorateur marchés d'une commune nationale (bloc 3, 2026-09-10) : la
- * page à part quand la section « ce que la commune achète » déborde (plus de
- * 50 marchés). Tous les marchés, année par année, chaque fournisseur ouvre sa
- * fiche locale. Grammaire v3, plus de cartes KPI.
+ * The public contracts of a commune (and of Marseille), on the section
+ * grammar (2026-09-18) : the year's number and its rail, what the commune
+ * buys by category, the largest contracts of the year, the suppliers,
+ * Understand, See also, the commune's page next. The explorer by year it
+ * replaces lost its readers in eleven seconds and shifted while loading.
  */
-export default function CommuneMarchesClient({ commune, data, fournisseurs, sourceUrl }: { commune: CommuneMeta; data: MarchesData; fournisseurs: FournisseursData | null; sourceUrl: string }) {
+export default function CommuneMarchesClient({ commune, data, fournisseurs, sourceUrl, year: requested }: { commune: CommuneMeta; data: MarchesData; fournisseurs: FournisseursData | null; sourceUrl: string; year?: number }) {
   const t = useT();
   const { locale } = useLocale();
   const en = locale === "en";
@@ -37,71 +41,121 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
     return { v: int.format(eur), u: "€" };
   };
   const euro = (eur: number) => { const { v, u } = split(eur); return `${v} ${u}`; };
+  const denom = en ? commune.nom : deNom(commune.nom);
+  const base = `/france/${commune.slug}`;
 
-  // Tous les marchés, à plat, depuis les fiches fournisseurs (lots regroupés) ;
-  // les entrepreneurs individuels n'y sont pas : on complète avec le total.
+  // Every contract, flat, from the supplier files (lots grouped) ; the year of
+  // the page comes from the address, else the last year published.
   type Row = { objet: string; montant: number; annee: number | null; siren: string; nom: string; nb_lots: number; slug?: string };
   const rows: Row[] = [];
   for (const f of fournisseurs?.fournisseurs ?? []) {
     for (const m of f.marches) rows.push({ objet: m.objet, montant: m.montant, annee: m.annee, siren: f.siren, nom: displayFournisseur(f.nom), nb_lots: m.nb_lots, slug: m.slug });
   }
-  const years = Array.from(new Set(rows.map((r) => r.annee).filter((y): y is number => y != null))).sort((a, b) => b - a);
-  const y0 = data.by_year[0]?.year ?? "";
-  const y1 = data.by_year[data.by_year.length - 1]?.year ?? "";
-  const topFourn = (fournisseurs?.fournisseurs ?? []).slice(0, 8);
+  const byYear = data.by_year.slice().sort((a, b) => a.year - b.year);
+  const years = byYear.map((b) => b.year);
+  const year = requested && years.includes(requested) ? requested : years[years.length - 1];
+  const tot = byYear.find((b) => b.year === year);
+  const y0 = years[0] ?? "";
+  const y1 = years[years.length - 1] ?? "";
+  const ofYear = rows.filter((r) => r.annee === year).sort((a, b) => b.montant - a.montant);
+  const { shown, rest } = foldRest(ofYear, 10);
+  const series = byYear.map((b) => ({ year: b.year, amount: b.montant, count: b.nb }));
+  const total = split(tot?.montant ?? 0);
+  const cats: BarRow[] = data.by_category.map((c) => ({
+    key: c.categorie,
+    label: c.categorie.replace(/ & /g, en ? " and " : " et "),
+    value: c.montant,
+    text: euro(c.montant),
+    sub: c.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: c.nb }),
+  }));
+  const fourn = (fournisseurs?.fournisseurs ?? []).slice().sort((a, b) => b.montant - a.montant);
+  const { shown: fournShown, rest: fournRest } = foldRest(fourn, 8);
+  const rowOf = (r: Row, i: number) => (
+    <V3Row key={`${r.slug ?? r.siren}-${i}`} href={r.slug ? `${base}/marche/${r.slug}` : `${base}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
+  );
 
   return (
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-pv" style={{ paddingTop: 48, paddingBottom: 48 }}>
-          <p className="fx-pv-kicker"><Link href={`/france/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.nme.retour", { nom: commune.nom, denom: deNom(commune.nom) })}</Link> · {commune.dep_name}</p>
-          <h1 className="fx-pv-title">{fill("fx.nme.title", { nom: commune.nom, denom: deNom(commune.nom) })}</h1>
-          <p className="fx-v3-lead">{fill("fx.nme.lede", { nb: int.format(data.total.nb_marches), y0, y1, montant: euro(data.total.montant) })}</p>
-
-          <div className="fx-pv-two" style={{ marginTop: 24 }}>
-            <div>
-              <div className="fx-pv-colhead"><span>{t("fx.pv.domaines")}</span><span className="tnum">{y0}–{y1}</span></div>
-              {data.by_category.slice(0, 8).map((c) => (
-                <div key={c.categorie} className="fx-pv-line"><span>{c.categorie.replace(/ & /g, en ? " and " : " et ")}<span className="fx-pv-sub2">{(c.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: c.nb }))}</span></span><V3Amt {...split(c.montant)} /></div>
-              ))}
+        <div className="fx-sec fx-v3">
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links">
+            <Link href={base}>{commune.nom}</Link> › {t("fx.nme3.kicker")}
+          </div>
+          <div className="fx-sec-grid" data-layout="budget">
+            <div className="fx-sec-a-hero">
+              <SectionHero
+                title={fill("fx.nme.title", { nom: commune.nom, denom })}
+                value={total.v}
+                unit={total.u}
+                captionBefore={t("fx.nme3.cap_before")}
+                captionAfter={t("fx.nme3.cap_after")}
+                years={years}
+                year={year}
+                basePath={`${base}/marches`}
+                meta={fill("fx.nme3.meta", { nb: int.format(tot?.nb ?? 0), year, total: euro(data.total.montant), y0, y1 })}
+                shareTitle={fill("fx.nme3.share", { nom: commune.nom, denom, total: euro(tot?.montant ?? 0), year })}
+              />
             </div>
-            <div>
-              <div className="fx-pv-colhead"><span>{t("fx.pv.fournisseurs")}</span><span className="tnum">{fill("fx.pv.top_n", { n: topFourn.length })}</span></div>
-              {topFourn.map((f) => (
-                <Link key={f.siren} href={`/france/${commune.slug}/fournisseur/${f.siren}`} className="fx-pv-line fx-pv-linerow">
-                  <span>{displayFournisseur(f.nom)}<span className="muted" aria-hidden="true"> →</span><span className="fx-pv-sub2">{(f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: f.nb }))}</span></span>
-                  <V3Amt {...split(f.montant)} />
-                </Link>
-              ))}
+
+            <div className="fx-sec-a-rail">
+              {series.length >= RAIL_MIN ? (
+                <div className="fx-sec-years" data-section="years">
+                  <div className="fx-page-kicker">{t("fx.sec.years")}</div>
+                  <AnneesRail rows={series} current={year} />
+                </div>
+              ) : null}
+            </div>
+
+            <div className="fx-sec-a-table">
+              <V3Section id="scene" title={fill("fx.nme3.h.domaines", { y0, y1 })} sub={t("fx.nme3.domaines_sub")}>
+                <Bars rows={cats} cap={8} foldId="domaines" foldLabel={fill("fx.nme3.domaines_more", { n: Math.max(cats.length - 8, 0) })} />
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-rows">
+              {ofYear.length > 0 ? (
+                <V3Section id="rows" title={fill("fx.nme3.h.rows", { year })} hint={t("fx.v3.rows.aide")}>
+                  {shown.map(rowOf)}
+                  {rest.length > 0 ? <V3Fold id="more-rows" text label={fill("fx.nme3.rows_more", { n: rest.length, year })}>{rest.map((r, i) => rowOf(r, i + shown.length))}</V3Fold> : null}
+                </V3Section>
+              ) : null}
+              {fourn.length > 0 ? (
+                <V3Section id="fournisseurs" title={fill("fx.nme3.h.fournisseurs", { y0, y1 })} sub={t("fx.nme3.fournisseurs_sub")} hint={t("fx.v3.rows.aide")}>
+                  {fournShown.map((f) => (
+                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: f.nb })} amount={<V3Amt {...split(f.montant)} />} />
+                  ))}
+                  {fournRest.length > 0 ? <V3Fold id="more-fourn" text label={fill("fx.nme3.fournisseurs_more", { n: fournRest.length })}>{fournRest.map((f) => (
+                    <V3Row key={f.siren} href={`${base}/fournisseur/${f.siren}`} label={displayFournisseur(f.nom)} sub={f.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: f.nb })} amount={<V3Amt {...split(f.montant)} />} />
+                  ))}</V3Fold> : null}
+                </V3Section>
+              ) : null}
+            </div>
+
+            <div className="fx-sec-a-understand">
+              <V3Section id="understand" title={t("fx.sec.understand")}>
+                <V3Fold id="montant" label={t("fx.nme3.u.montant")}><p className="fx-v3-sentence">{t("fx.nme3.u.montant_body")}</p></V3Fold>
+                <V3Fold id="source" label={t("fx.nme3.u.source")}>
+                  <p className="fx-v3-sentence">{data.coverage_note}{data.total.annees_ecartees?.length ? ` ${fill("fx.pv.annees_ecartees", { years: data.total.annees_ecartees.join(", ") })}` : ""}</p>
+                  <p className="fx-v3-sentence"><a href={sourceUrl} target="_blank" rel="noopener noreferrer">{t("fx.natmar.source")} ↗</a></p>
+                </V3Fold>
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-related">
+              <V3Section id="related" title={t("fx.sec.see_also")}>
+                <Door href={base} hard title={fill("fx.nme3.r.commune", { nom: commune.nom })} sub={t("fx.nme3.r.commune_sub")} />
+              </V3Section>
+            </div>
+
+            <div className="fx-sec-a-next">
+              <NextDoor href={base} kicker={t("fx.pv.next.kicker")} title={fill("fx.nme3.next_title", { nom: commune.nom, denom })} sub={t("fx.nme3.next_sub")} />
+            </div>
+
+            <div className="fx-sec-a-foot">
+              <V3Foot>{data.coverage_note}</V3Foot>
             </div>
           </div>
-
-          {years.map((y) => {
-            const ofYear = rows.filter((r) => r.annee === y).sort((a, b) => b.montant - a.montant);
-            const tot = data.by_year.find((b) => b.year === y);
-            const { shown, rest } = foldRest(ofYear, 10);
-            return (
-              <V3Section key={y} title={fill("fx.nme.year_h", { year: y, nb: int.format(tot?.nb ?? ofYear.length), montant: euro(tot?.montant ?? ofYear.reduce((s, r) => s + r.montant, 0)) })}>
-                {shown.map((r, i) => (
-                  <V3Row key={i} href={r.slug ? `/france/${commune.slug}/marche/${r.slug}` : `/france/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
-                ))}
-                {rest.length > 0 && (
-                  <V3Fold label={fill("fx.nme.voir_annee", { n: rest.length, year: y })} text>
-                    {rest.map((r, i) => (
-                      <V3Row key={i} href={r.slug ? `/france/${commune.slug}/marche/${r.slug}` : `/france/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
-                    ))}
-                  </V3Fold>
-                )}
-              </V3Section>
-            );
-          })}
-
-          <V3Foot>
-            {data.coverage_note}
-            {data.total.annees_ecartees?.length ? ` ${fill("fx.pv.annees_ecartees", { years: data.total.annees_ecartees.join(", ") })}` : ""}
-          </V3Foot>
-          <ChartSource source={t("fx.natmar.source")} dataHref={sourceUrl} methodAnchor="c-villes" />
         </div>
       </main>
       <Footer />

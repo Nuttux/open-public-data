@@ -960,7 +960,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               const nom0 = f0 ? (f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom)) : null;
               const objet0 = f0 && "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
               const href0 = f0 && !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
-              const nTop = Math.min(5, marches.top_marches.length);
               return (
                 <div className="fx-pv-row2" id="achats">
                   <h3 className="fx-pv-row2-l">{t("fx.pv.row.achats")}</h3>
@@ -982,13 +981,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
                     </p>
                   ) : null}
-                  {marches.top_marches.length > 1 ? (
-                    <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
-                      <summary><span>{fill(nTop >= marches.total.nb_marches ? "fx.pv.fold.achats_all" : "fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
-                      <div className="fx-pv-fold-body">
-                        <div className="fx-pv-top5">
-                          {marches.top_marches.slice(0, 5).map((m, i) => (
-                            <div key={i} className="fx-pv-line">
+                  {marches.top_marches.length > 0 ? (() => {
+                    // The three largest are always there (readers opened the fold to see
+                    // them, 2026-09-18) ; the fourth and fifth fold.
+                    const rowOf = (m: (typeof marches.top_marches)[number], i: number) => (
+                      <div key={i} className="fx-pv-line">
                               <span>
                                 {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
                                 <span className="fx-pv-sub2">
@@ -998,12 +995,24 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                               </span>
                               <Amt n={m.montant} />
                             </div>
-                          ))}
-                        </div>
-                        {note}
-                      </div>
-                    </details>
-                  ) : note}
+                    );
+                    const head = marches.top_marches.slice(0, 3);
+                    const tail = marches.top_marches.slice(3, 5);
+                    return (
+                      <>
+                        <div className="fx-pv-top5">{head.map(rowOf)}</div>
+                        {tail.length > 0 ? (
+                          <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
+                            <summary><span>{fill("fx.pv.fold.achats_rest", { n: tail.length })}</span><span className="chev" aria-hidden="true" /></summary>
+                            <div className="fx-pv-fold-body">
+                              <div className="fx-pv-top5">{tail.map((m, i) => rowOf(m, i + 3))}</div>
+                              {note}
+                            </div>
+                          </details>
+                        ) : note}
+                      </>
+                    );
+                  })() : note}
                   {more}
                 </div>
               );

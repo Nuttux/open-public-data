@@ -7371,6 +7371,29 @@ const en: Record<string, string> = {
   'fx.pv.vs.strate_more': '+{p}% vs towns its size',
   'fx.pv.vs.strate_less': '−{p}% vs towns its size',
   'fx.pv.vs.strate_same': 'like towns its size',
+
+  // A town's contracts on the section grammar (2026-09-18)
+  'fx.nme3.kicker': 'Public contracts',
+  'fx.nme3.cap_before': 'in public contracts awarded in',
+  'fx.nme3.cap_after': ', maximum amounts',
+  'fx.nme3.meta': '{nb} contracts in {year} · {total} from {y0} to {y1}',
+  'fx.nme3.share': '{nom} public contracts: {total} in {year}',
+  'fx.nme3.h.domaines': 'What the town buys, {y0}–{y1}',
+  'fx.nme3.domaines_sub': 'By category, amounts added over the period.',
+  'fx.nme3.domaines_more': 'The {n} other categories',
+  'fx.nme3.h.rows': 'The largest contracts of {year}',
+  'fx.nme3.rows_more': 'The {n} other contracts of {year}',
+  'fx.nme3.h.fournisseurs': 'The suppliers, {y0}–{y1}',
+  'fx.nme3.fournisseurs_sub': 'Those awarded the most over the period. Each opens its page.',
+  'fx.nme3.fournisseurs_more': 'The {n} other suppliers',
+  'fx.nme3.u.montant': 'What a contract counts',
+  'fx.nme3.u.montant_body': 'A contract’s amount is the maximum allowed over its whole term, often several years: it is not what the town spends in the year. The lots of one contract are grouped.',
+  'fx.nme3.u.source': 'Where these numbers come from',
+  'fx.nme3.r.commune': 'How much {nom} spends',
+  'fx.nme3.r.commune_sub': 'The budget, what it pays for, against neighbouring towns.',
+  'fx.nme3.next_title': '{nom}’s page',
+  'fx.nme3.next_sub': 'How much it spends, on what, against its neighbours.',
+  'fx.pv.fold.achats_rest': 'The {n} other large contracts',
 };
 
 export default en;
