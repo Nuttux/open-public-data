@@ -42,7 +42,7 @@ export const BIG_CITIES: Record<Country, readonly string[]> = {
 /** France's national sections, which sit directly under the country. */
 export const FRANCE_NATIONAL_SECTIONS: readonly string[] = [
   'budget',
-  'daily-bread',
+  'simulateur-prelevements',
   'dette',
   'etat',
   'fiscalite',

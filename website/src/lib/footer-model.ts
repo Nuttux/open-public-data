@@ -112,7 +112,7 @@ export function franceFooterModel(
         { href: "/fr/national/etat", label: t("fx.scope.france.etat") },
         { href: "/fr/national/dette", label: t("fx.scope.france.dette") },
         { href: "/fr/national/fiscalite", label: t("fx.scope.france.fiscalite") },
-        { href: "/fr/national/daily-bread", label: t("fx.nav.link.daily_bread") },
+        { href: "/france/simulateur-prelevements", label: t("fx.nav.link.daily_bread") },
       ],
     };
   }

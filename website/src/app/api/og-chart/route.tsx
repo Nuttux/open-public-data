@@ -265,12 +265,12 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         { label: "Collectivités locales (S1313)", value: `${fmtBn(s13)} Md€`, share: s13 / tot },
       ];
       return renderTopBars({
-        slug: "/daily-bread · composition",
+        slug: "/simulateur · composition",
         kicker: `Dépenses publiques France · ${apu.year ?? ""}`,
         title: `${fmtBn(tot)} Md€ — qui dépense quoi ?`,
         rows,
         sourceText: "Source Eurostat · gov_10a_main",
-        urlText: "qipu.org/fr/france/daily-bread",
+        urlText: "qipu.org/fr/france/simulateur-prelevements",
       });
     }
     case "fr-fiscalite-categories": {
