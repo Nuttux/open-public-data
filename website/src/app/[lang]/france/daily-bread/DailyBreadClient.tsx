@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
+import SectionChips from "@/components/fiche/SectionChips";
 import { numLocale, fill } from "@/lib/fmt";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
@@ -1714,6 +1715,26 @@ export default function DailyBreadClient({
           </div>
         </section>
 
+        {/* ── Sommaire : les quatre blocs de la page et leur chiffre.
+             Même geste que la page commune : on voit la structure sans
+             scroller, et chaque puce y emmène. ── */}
+        {totalPerCapitaMonthly > 0 && (
+          <div className="theme-fusion db-toc">
+            <div className="db-panel-wrap">
+              <SectionChips
+                label={t("db.toc.label")}
+                items={[
+                  { id: "db-disp", label: t("db.toc.disp") },
+                  { id: "db-secu", label: t("db.secu.name"), value: `${fmtEur(secuMonthly, locale, 0)} €` },
+                  { id: "db-etat", label: t("db.etat.name"), value: `${fmtEur(etatMonthly, locale, 0)} €` },
+                  { id: "db-local", label: t("db.local.chip"), value: `${fmtEur(localMonthly, locale, 0)} €` },
+                  { id: "db-methode", label: t("db.toc.methode") },
+                ]}
+              />
+            </div>
+          </div>
+        )}
+
         {/* ── PANNEAU 2 — DISPATCH ── */}
         {totalPerCapitaMonthly > 0 && (
           <section id="db-disp" className="db-panel db-p-disp">
@@ -1887,6 +1908,7 @@ export default function DailyBreadClient({
         {/* ── PANNEAU 3 — Zoom Sécu ── */}
         {assoBranches.length > 0 && (
           <section
+            id="db-secu"
             ref={panel3Ref}
             className={`db-panel db-p-zoom db-panel-fade${panel3Revealed ? " is-revealed" : ""}`}
           >
@@ -1909,7 +1931,7 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{t("db.secu.name")}</p>
+                  <h2 className="db-p-zoom-name">{t("db.secu.name")}</h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1314Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -1918,7 +1940,10 @@ export default function DailyBreadClient({
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.secu.deck1"))}</p>
-                    <p>{t("db.secu.deck2")}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{t("db.secu.deck2")}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.secu.source")}
                     </p>
@@ -1957,6 +1982,7 @@ export default function DailyBreadClient({
         {/* ── PANNEAU 4 — Zoom État ── */}
         {stateBuckets.length > 0 && etatShare && (
           <section
+            id="db-etat"
             ref={panel4Ref}
             className={`db-panel db-p-zoom db-p-zoom-l db-panel-fade${panel4Revealed ? " is-revealed" : ""}`}
           >
@@ -1976,7 +2002,7 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{t("db.etat.name")}</p>
+                  <h2 className="db-p-zoom-name">{t("db.etat.name")}</h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1311Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -1985,7 +2011,10 @@ export default function DailyBreadClient({
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.etat.deck1"))}</p>
-                    <p>{t("db.etat.deck2")}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{t("db.etat.deck2")}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.etat.source")}
                     </p>
@@ -2020,6 +2049,8 @@ export default function DailyBreadClient({
                     });
                   })()}
                   color="c-etat"
+                  cap={6}
+                  foldLabel={t("db.zoom.bars_more")}
                   locale={locale}
                   clickableUrls={etatTopUrls}
                   profileQuery={profileQuery}
@@ -2070,6 +2101,7 @@ export default function DailyBreadClient({
           return (
           <section
             ref={panel5Ref}
+            id="db-local"
             className={`db-panel db-p-zoom db-panel-fade${panel5Revealed ? " is-revealed" : ""}`}
           >
             <div className="db-panel-wrap">
@@ -2088,11 +2120,11 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">
+                  <h2 className="db-p-zoom-name">
                     {locale === "en"
                       ? "Local authorities (national average)"
                       : "Collectivités locales (moyenne nationale)"}
-                  </p>
+                  </h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1313Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -2140,6 +2172,8 @@ export default function DailyBreadClient({
                     };
                   })}
                   color="c-local"
+                  cap={6}
+                  foldLabel={t("db.zoom.bars_more")}
                   locale={locale}
                   // Bloc communal reste passif (le DeepDive juste en dessous
                   // ouvre les 9 fonctions cliquables). Dept et Région ouvrent
@@ -2297,6 +2331,7 @@ export default function DailyBreadClient({
          * avec sources cliquables (URSSAF / CGI / INSEE / Eurostat /
          * PLF / PLFSS / OFGL / DREES). */}
         <section
+          id="db-methode"
           ref={panel7Ref}
           className={`db-panel db-p-method db-panel-fade${panel7Revealed ? " is-revealed" : ""}`}
           style={{ minHeight: "auto", padding: "60px 0 100px", background: "var(--p-paper)" }}
@@ -2316,7 +2351,6 @@ export default function DailyBreadClient({
               {/* 01 — Comment on calcule tes prélèvements */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">01</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.hypotheses")}
                   </span>
@@ -2347,7 +2381,6 @@ export default function DailyBreadClient({
               {/* 02 — Ce qui n'est pas dans le calcul */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">02</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.exclusions")}
                   </span>
@@ -2367,7 +2400,6 @@ export default function DailyBreadClient({
               {/* 03 — D'où viennent les données nationales */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">03</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.sources")}
                   </span>
@@ -2407,7 +2439,6 @@ export default function DailyBreadClient({
               {/* 04 — Périmètre Sécu / État / Local */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">04</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.perimetre")}
                   </span>
@@ -2430,7 +2461,6 @@ export default function DailyBreadClient({
               {/* 05 — Pourquoi un calcul perso et pas exact */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">05</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.pourquoi_perso")}
                   </span>
@@ -2449,7 +2479,6 @@ export default function DailyBreadClient({
                   une synthèse forcée. */}
               <details className="db-p-method-faq">
                 <summary className="db-p-method-faq-summary">
-                  <span className="db-p-method-faq-num">06</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.limites")}
                   </span>
@@ -2501,6 +2530,8 @@ function BarList({
   locale,
   clickableUrls,
   profileQuery,
+  cap,
+  foldLabel,
 }: {
   items: Array<{
     key?: string;
@@ -2522,6 +2553,9 @@ function BarList({
    *  €/mois projetés (lead + sub-rows). Sans ça, les pages drawer reçoivent
    *  un `searchParams` vide et `personalMonthlyLabel` est null. */
   profileQuery?: string;
+  /** Au-delà de ce nombre de lignes, le reste passe dans un repli nommé. */
+  cap?: number;
+  foldLabel?: string;
 }) {
   const max = Math.max(...items.map((i) => i.share), 0.01);
   const appendProfile = (u: string): string => {
@@ -2529,9 +2563,9 @@ function BarList({
     const sep = u.includes("?") ? "&" : "?";
     return `${u}${sep}${profileQuery}`;
   };
-  return (
-    <div className="db-p-zoom-bars">
-      {items.map((item, i) => {
+  const head = cap && items.length > cap + 1 ? items.slice(0, cap) : items;
+  const tail = cap && items.length > cap + 1 ? items.slice(cap) : [];
+  const row = (item: (typeof items)[number], i: number) => {
         const pct = (item.share / max) * 100;
         const rawUrl = item.key ? clickableUrls?.get(item.key) : undefined;
         const url = rawUrl ? appendProfile(rawUrl) : undefined;
@@ -2600,7 +2634,16 @@ function BarList({
             {inner}
           </div>
         );
-      })}
+  };
+  return (
+    <div className="db-p-zoom-bars">
+      {head.map(row)}
+      {tail.length > 0 ? (
+        <details className="db-zoom-fold db-bars-fold">
+          <summary>{(foldLabel ?? "").replace("{n}", String(tail.length))}</summary>
+          <div className="db-p-zoom-bars">{tail.map((it, i) => row(it, i + head.length))}</div>
+        </details>
+      ) : null}
     </div>
   );
 }

@@ -44,7 +44,6 @@ const MAIN_ROUTES = [
   { path: '/', priority: 1.0 },
   { path: '/france/paris', priority: 0.95 },
   { path: '/brasil', priority: 0.8 }, // 2026-09-18 : the Brazil hub, every município behind its field
-  { path: '/france', priority: 0.8 }, // 2026-09-18 : the France hub, every commune behind its field
   { path: '/france/paris/budget', priority: 0.9 },
   { path: '/france/paris/subventions', priority: 0.9 },
   { path: '/france/paris/investissements', priority: 0.9 },

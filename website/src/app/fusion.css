@@ -21368,3 +21368,31 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-overlay-nav { justify-content: flex-start; padding-top: 22px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 20px; height: 20px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:hover, .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:active { color: var(--ink); box-shadow: 0 0 0 2px var(--bleu); }
+
+/* ── « Ma contribution » sur la grammaire (maquette 2026-09-18) ───────────
+   Le sommaire sous le héros : les mêmes puces que la page commune, dans la
+   largeur des panneaux de la page. Et le repli qui met la prose sous les
+   barres au lieu de la faire lire d'abord. */
+.theme-fusion.db-toc {
+  background: var(--p-paper, #fafaf7);
+  border-bottom: 1px solid rgba(15, 23, 42, .1);
+  padding: 14px 0 16px;
+  position: sticky;
+  top: 52px;
+  z-index: 40;
+}
+.theme-fusion.db-toc .fx-pv-chips { margin: 0; }
+.db-zoom-fold { margin-top: 10px; }
+.db-zoom-fold > summary {
+  cursor: pointer;
+  font: 500 13px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #475569);
+  list-style: none;
+}
+.db-zoom-fold > summary::-webkit-details-marker { display: none; }
+.db-zoom-fold > summary::after { content: " ↓"; }
+.db-zoom-fold[open] > summary::after { content: " ↑"; }
+.db-zoom-fold > summary:hover { color: var(--p-ink, #0f172a); }
+.db-zoom-fold > p { margin-top: 8px; }

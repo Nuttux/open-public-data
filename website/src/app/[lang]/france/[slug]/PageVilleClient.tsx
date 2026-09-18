@@ -10,9 +10,10 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
-import { NextDoor } from "@/components/fiche/Doors";
-import { V3Hint } from "@/components/fiche/v3";
+import { Door, NextDoor } from "@/components/fiche/Doors";
+import { V3Hint, V3Section } from "@/components/fiche/v3";
 import { useT, useLocale, useTRaw } from "@/lib/localeContext";
+import SectionChips from "@/components/fiche/SectionChips";
 import { deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { makeFmt } from "@/lib/fmt";
@@ -253,51 +254,6 @@ function Reveal({ children }: { children: (revealed: boolean) => ReactNode }) {
   const [armed, setArmed] = useState(false);
   useEffect(() => { setArmed(true); }, []);
   return <section ref={ref} className={`fx-pv-section${armed ? " fx-reveal" : ""}${revealed ? " is-revealed" : ""}`}>{children(revealed)}</section>;
-}
-
-function SectionChips({ items, label, onPick }: { items: { id: string; label: string; value?: string }[]; label: string; onPick?: (id: string) => void }) {
-  const [active, setActive] = useState(items[0]?.id ?? "");
-  const barRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const targets = items.map((i) => document.getElementById(i.id)).filter((el): el is HTMLElement => Boolean(el));
-    if (!targets.length) return;
-    // La section active = la dernière dont le titre est passé sous la barre.
-    const pick = () => {
-      let current = targets[0].id;
-      for (const el of targets) {
-        if (el.getBoundingClientRect().top <= 140) current = el.id;
-      }
-      setActive(current);
-    };
-    pick();
-    window.addEventListener("scroll", pick, { passive: true });
-    window.addEventListener("resize", pick);
-    return () => {
-      window.removeEventListener("scroll", pick);
-      window.removeEventListener("resize", pick);
-    };
-  }, [items]);
-
-  useEffect(() => {
-    const bar = barRef.current;
-    const chip = bar?.querySelector<HTMLAnchorElement>(`a[href="#${active}"]`);
-    if (!bar || !chip) return;
-    const cl = chip.offsetLeft;
-    const cr = cl + chip.offsetWidth;
-    if (cl < bar.scrollLeft + 8) bar.scrollTo({ left: Math.max(0, cl - 16), behavior: "smooth" });
-    else if (cr > bar.scrollLeft + bar.clientWidth - 8) bar.scrollTo({ left: cr - bar.clientWidth + 16, behavior: "smooth" });
-  }, [active]);
-
-  return (
-    <nav className="fx-pv-chips" aria-label={label} ref={barRef}>
-      {items.map((s) => (
-        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "location" : undefined} onClick={() => onPick?.(s.id)}>
-          {s.label}{s.value ? <b className="tnum">{s.value}</b> : null}
-        </a>
-      ))}
-    </nav>
-  );
 }
 
 function ShareButton({ label, title, done }: { label: string; title: string; done: string }) {
@@ -1119,6 +1075,22 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             methodAnchor="c-villes"
           />
           <RelatedLinks block={related} />
+          {/* La porte manquante (maquette 2026-09-18) : le lecteur vient de
+              voir ce que sa commune dépense ; « Ma contribution » est la seule
+              page qui répond à « et moi, je paie combien ». Elle s'ouvre sur
+              cette commune. */}
+          {perHab > 0 ? (
+            <div className="fx-v3 fx-related">
+              <V3Section id="vous" title={t("fx.pv.vous.h2")}>
+                <Door
+                  hard
+                  href={`/france/daily-bread?c=${commune.slug}`}
+                  title={t("fx.pv.vous.title")}
+                  sub={fill("fx.pv.vous.sub", { nom: commune.nom, n: int.format(perHab) })}
+                />
+              </V3Section>
+            </div>
+          ) : null}
           {/* The page's last door (2026-09-16): the reader has seen one commune;
               Paris is where the site goes deepest, and where a town sees what
               its own page could become. */}
