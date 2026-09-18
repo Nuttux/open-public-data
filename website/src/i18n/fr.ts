@@ -6978,6 +6978,15 @@ const fr: Record<string, string> = {
   'fx.sec.lieux.rows_aide': 'Cliquez sur un lieu pour ouvrir sa fiche.',
   'us.sf.wgp3.scene_hint_kind': 'Cliquez sur un type de bénéficiaire pour ne garder que ceux-là dans la liste.',
   'br.recife.partial_note_voted': '{ano}, hachuré : le budget voté par la Câmara (dotation initiale), {dot} ; payé de {mes}, {pago}.',
+
+  // La comparaison en cinq lignes, avec ses verdicts (2026-09-18)
+  'fx.pv.kpi.share_personnel': 'Frais de personnel, part des dépenses',
+  'fx.pv.vs.more': '+{p} % que {nom}',
+  'fx.pv.vs.less': '−{p} % que {nom}',
+  'fx.pv.vs.same': 'comme {nom}',
+  'fx.pv.vs.strate_more': '+{p} % que les communes de sa taille',
+  'fx.pv.vs.strate_less': '−{p} % que les communes de sa taille',
+  'fx.pv.vs.strate_same': 'comme les communes de sa taille',
 };
 
 export default fr;
