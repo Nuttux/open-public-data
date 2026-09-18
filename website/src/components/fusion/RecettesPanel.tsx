@@ -89,19 +89,13 @@ export default function RecettesPanel({ data, locale, t }: Props) {
     const sortedItems = [...institution.items].sort(
       (a, b) => b.annual_eur - a.annual_eur,
     );
-    return (
-      <div className={`fx-recettes-card fx-recettes-card-${color}`}>
-        <div className="fx-recettes-card-head">
-          <h3 className="fx-recettes-card-name">{label}</h3>
-          <p className="fx-recettes-card-total tnum">
-            {fmtBnEur(institution.annual_eur, locale)}
-            <span className="fx-recettes-card-total-unit">
-              /{locale === "en" ? "yr" : "an"}
-            </span>
-          </p>
-        </div>
-        <ul className="fx-recettes-card-items">
-          {sortedItems.map((item) => {
+    // Les six plus grosses lignes tiennent la page ; le reste se déplie
+    // (2026-09-18 : sur téléphone les trois cartes empilaient 25 lignes,
+    // la TVA à 102 Md€ pesait autant que le PFU à 9,5).
+    const CAP = 6;
+    const headItems = sortedItems.length > CAP + 1 ? sortedItems.slice(0, CAP) : sortedItems;
+    const tailItems = sortedItems.length > CAP + 1 ? sortedItems.slice(CAP) : [];
+    const renderItem = (item: RecetteInstitution["items"][number]) => {
             const itemLabel =
               locale === "en" ? item.label_en : item.label_fr;
             const share =
@@ -147,8 +141,30 @@ export default function RecettesPanel({ data, locale, t }: Props) {
                 </Link>
               </li>
             );
-          })}
+    };
+
+    return (
+      <div className={`fx-recettes-card fx-recettes-card-${color}`}>
+        <div className="fx-recettes-card-head">
+          <h3 className="fx-recettes-card-name">{label}</h3>
+          <p className="fx-recettes-card-total tnum">
+            {fmtBnEur(institution.annual_eur, locale)}
+            <span className="fx-recettes-card-total-unit">
+              /{locale === "en" ? "yr" : "an"}
+            </span>
+          </p>
+        </div>
+        <ul className="fx-recettes-card-items">
+          {headItems.map(renderItem)}
         </ul>
+        {tailItems.length > 0 ? (
+          <details className="fx-recettes-fold">
+            <summary>
+              {(locale === "en" ? "The {n} other lines" : "Les {n} autres lignes").replace("{n}", String(tailItems.length))}
+            </summary>
+            <ul className="fx-recettes-card-items">{tailItems.map(renderItem)}</ul>
+          </details>
+        ) : null}
       </div>
     );
   };

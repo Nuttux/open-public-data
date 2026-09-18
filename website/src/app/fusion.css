@@ -21415,3 +21415,81 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   margin-bottom: 12px;
   border-bottom: 1px solid rgba(15, 23, 42, .12);
 }
+
+/* ── La carte des dépenses, en liste sur téléphone (2026-09-18) ──────────
+   Le treemap SVG est dessiné en `preserveAspectRatio: none` : sous 800 px il
+   s'écrase, les cellules tombent à 40 px de large et les libellés se coupent
+   en plein mot. La liste de tuiles dit la même chose, lisible. */
+.fx-budget-treemap > svg { display: block; }
+.fx-budget-tiles { display: none; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 800px) {
+  .fx-budget-treemap > svg { display: none; }
+  .fx-budget-tiles { display: block; }
+}
+.fx-budget-tiles li + li { border-top: 1px solid rgba(15, 23, 42, .1); }
+.fx-budget-tile {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 0 17px;
+  text-decoration: none;
+  color: inherit;
+}
+.fx-budget-tile-bar {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  height: 5px;
+  border-radius: 1px;
+}
+.fx-budget-tile-n { font-size: 15px; line-height: 1.3; font-weight: 500; }
+.fx-budget-tile-v { font-size: 15px; font-weight: 600; white-space: nowrap; }
+.fx-budget-tile-v small { display: block; font-weight: 400; font-size: 11px; color: var(--muted, #64748b); text-align: right; }
+.fx-budget-tile:hover .fx-budget-tile-n { text-decoration: underline; }
+
+/* Le repli des recettes : les six plus grosses lignes restent, le reste
+   s'ouvre (2026-09-18). Même écriture que les autres replis du site. */
+.fx-recettes-fold > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 0 2px;
+  font: 500 12px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted, #64748b);
+}
+.fx-recettes-fold > summary::-webkit-details-marker { display: none; }
+.fx-recettes-fold > summary::after { content: " ↓"; }
+.fx-recettes-fold[open] > summary::after { content: " ↑"; }
+.fx-recettes-fold > summary:hover { color: var(--ink, #0f172a); }
+/* Le montant de la carte ne casse plus son unité sur une deuxième ligne
+   (« 289,0 Md€/an » rejetait « Md€/an » sous le nombre à 390 px). */
+.theme-fusion .fx-recettes-card-total { white-space: nowrap; }
+/* Le montant du déficit ne casse plus « Md€ » sur une deuxième ligne. */
+.theme-fusion .fx-recettes-deficit-val { white-space: nowrap; }
+.fx-budget-tiles-fold { display: none; }
+@media (max-width: 800px) { .fx-budget-tiles-fold { display: block; } }
+.fx-budget-tiles-fold > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 0 4px;
+  font: 500 12px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted, #64748b);
+}
+.fx-budget-tiles-fold > summary::-webkit-details-marker { display: none; }
+.fx-budget-tiles-fold > summary::after { content: " ↓"; }
+.fx-budget-tiles-fold[open] > summary::after { content: " ↑"; }
+.fx-budget-tiles-fold .fx-budget-tiles--rest { display: block; }
+/* Sur téléphone, le libellé du déficit et son montant s'empilent : côte à
+   côte, le montant insécable écrasait le libellé à un mot par ligne. */
+@media (max-width: 800px) {
+  .theme-fusion .fx-recettes-deficit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

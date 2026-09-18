@@ -215,6 +215,9 @@ function fmtPctOfTotal(share: number, locale: "fr" | "en"): string {
 
 // ─── Component ────────────────────────────────────────────────────────────
 
+/** Sur téléphone, la liste montre les dix plus gros postes ; le reste s'ouvre. */
+const TILE_CAP = 10;
+
 export default function BudgetTreemap({
   data,
   height = 640,
@@ -248,7 +251,6 @@ export default function BudgetTreemap({
             ? "Carte proportionnelle des dépenses publiques françaises"
             : "Proportional map of French public expenditure"
         }
-        style={{ display: "block" }}
       >
         {tiles.map(({ item, rect }) => {
           // Un padding interne pour les bordures blanches "stack" feel.
@@ -324,6 +326,55 @@ export default function BudgetTreemap({
           );
         })}
       </svg>
+      {/* Téléphone : la carte devient une liste de tuiles (2026-09-18, Daniel :
+          « c'est pas le bordel sur mobile cette page ? »). À 390 px les cellules
+          font 40 px de large, leur texte 6 points et les libellés sont coupés en
+          plein mot. Même geste que la carte de San Francisco. Une tuile = une
+          ligne, sa barre proportionnelle, son montant, sa part ; le lien est le
+          même que la cellule. */}
+      <ul className="fx-budget-tiles">
+        {tiles.slice(0, TILE_CAP).map(({ item }) => (
+          <li key={item.id}>
+            <Link href={item.href} scroll={false} className="fx-budget-tile" aria-label={`${item.fullLabel} · ${fmtBnEur(item.value, locale)}`}>
+              <span
+                aria-hidden="true"
+                className="fx-budget-tile-bar"
+                style={{ width: `${Math.max(2, (item.value / maxValue) * 100)}%`, background: fillFor(item.group, item.value, maxValue) }}
+              />
+              <span className="fx-budget-tile-n">{item.shortLabel}</span>
+              <span className="fx-budget-tile-v tnum">
+                {fmtBnEur(item.value, locale)}
+                <small>{fmtPctOfTotal(item.shareOfTotal, locale)}</small>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {tiles.length > TILE_CAP + 1 ? (
+        <details className="fx-budget-tiles-fold">
+          <summary>
+            {(locale === "en" ? "The {n} other blocks" : "Les {n} autres postes").replace("{n}", String(tiles.length - TILE_CAP))}
+          </summary>
+          <ul className="fx-budget-tiles fx-budget-tiles--rest">
+            {tiles.slice(TILE_CAP).map(({ item }) => (
+              <li key={item.id}>
+                <Link href={item.href} scroll={false} className="fx-budget-tile" aria-label={`${item.fullLabel} · ${fmtBnEur(item.value, locale)}`}>
+                  <span
+                    aria-hidden="true"
+                    className="fx-budget-tile-bar"
+                    style={{ width: `${Math.max(2, (item.value / maxValue) * 100)}%`, background: fillFor(item.group, item.value, maxValue) }}
+                  />
+                  <span className="fx-budget-tile-n">{item.shortLabel}</span>
+                  <span className="fx-budget-tile-v tnum">
+                    {fmtBnEur(item.value, locale)}
+                    <small>{fmtPctOfTotal(item.shareOfTotal, locale)}</small>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
       {hovered && (
         <div
           aria-hidden="true"
