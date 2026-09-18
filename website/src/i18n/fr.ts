@@ -5077,6 +5077,7 @@ const fr: Record<string, string> = {
   'db.zoom.bars_more': 'Les {n} autres lignes',
   'db.bars.legend_left': 'Moyenne par habitant, par mois',
   'db.bars.legend_right': 'Total national · part',
+  'db.method.open': 'Ouvrir la méthode, les sources et les limites',
   'db.zoom.fold': 'En détail',
   'db.local.kind': 'Échelon local',
   'db.local.num': 'Collectivités locales — {monthly} €/mois/habitant',

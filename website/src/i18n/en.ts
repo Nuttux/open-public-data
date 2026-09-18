@@ -5073,6 +5073,7 @@ const en: Record<string, string> = {
   'db.zoom.bars_more': 'The {n} other lines',
   'db.bars.legend_left': 'Average per resident, per month',
   'db.bars.legend_right': 'National total · share',
+  'db.method.open': 'Open the method, sources and limits',
   'db.zoom.fold': 'In detail',
   'db.local.kind': 'Local level',
   'db.local.num': 'Local authorities — €{monthly}/month/resident',

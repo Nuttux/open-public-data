@@ -1082,23 +1082,6 @@ export default function DailyBreadClient({
         <Navbar />
       </div>
       <main id="main-content" tabIndex={-1}>
-        {/* ── PANNEAU 0 — ONBOARDING (post user-testing fix) ── */}
-        {/* Bloc d'intro pédagogique pour clarifier ce qu'on propose dès
-            l'arrivée sur la page : profil personnalisable → contribution
-            mensuelle → drilldown des dépenses. Sans ça, l'utilisateur
-            arrivait sur §01 sans comprendre que les valeurs étaient
-            éditables ni la promesse de la page. */}
-        <section className="db-panel db-p-onboarding">
-          <div className="db-panel-wrap db-p-onboarding-wrap">
-            <p className="db-p-onboarding-kicker">
-              {t("db.hero.onboarding.kicker")}
-            </p>
-            <h1 className="db-p-onboarding-title">
-              {t("db.hero.onboarding.title")}
-            </h1>
-          </div>
-        </section>
-
         {/* ── PANNEAU 1 — HERO ÉDITABLE (fusion §00 + §01) ── */}
         {/* Le hero fusionné NYT-style : les paramètres du calcul (salaire,
             parts, commune) sont des spans cliquables intégrés DANS la phrase
@@ -1112,8 +1095,16 @@ export default function DailyBreadClient({
         >
           <div className="db-panel-wrap db-p-hero-wrap">
 
+            {/* Le titre de la page, dans le héros : plus de panneau d'intro
+                séparé (2026-09-18). Surtitre, titre, invite, puis la phrase. */}
+            <div className="db-p-hero-head">
+              <p className="db-p-onboarding-kicker">{t("db.hero.onboarding.kicker")}</p>
+              <h1 className="db-p-onboarding-title">{t("db.hero.onboarding.title")}</h1>
+              <V3Hint>{t("db.hero.onboarding.hint")}</V3Hint>
+            </div>
+
             {/* Phrase éditable principale — les inputs sont DANS le texte */}
-            <h1 className="db-p-hero-text">
+            <p className="db-p-hero-text">
               {activeSources.length === 1 && activeSources[0] === "salaire" ? (
                 <>
                   {t("db.hero.editable.prefix_salaire")}{" "}
@@ -1223,10 +1214,7 @@ export default function DailyBreadClient({
               {/* Phrase éditable s'arrête sur les inputs — le climax (chiffre
                   + tagline "financent chaque mois...") vit en aside-droite
                   pour éviter la duplication avec le big number. */}
-            </h1>
-            {/* La seule consigne de la page, celle du site, sous la phrase :
-                le soulignement ocre dit déjà que les valeurs se changent. */}
-            <V3Hint>{t("db.hero.onboarding.hint")}</V3Hint>
+            </p>
 
             {/* Aside : big number + composition compacte */}
             <div className="db-p-hero-aside">
@@ -2068,18 +2056,13 @@ export default function DailyBreadClient({
                           ),
                       )}
                     </p>
-                    <p>{renderTagged(t("db.local.deck2"))}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{renderTagged(t("db.local.deck2"))}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.local.source")}
                     </p>
-                    {commune && (
-                      <Link
-                        href={`/france/${commune.slug}`}
-                        className="db-local-cta"
-                      >
-                        {t("db.local.cta").replace("{city}", commune.nom)} →
-                      </Link>
-                    )}
                   </div>
                 </div>
 
@@ -2110,103 +2093,7 @@ export default function DailyBreadClient({
               </div>
 
                                                         {/* MACRO → MICRO : pour Paris (et plus tard d'autres villes du portail détaillé), passerelle vers les pages où l'on peut voir QUI reçoit quel euro. */}
-              {commune?.slug === "paris" && (
-                <div className="db-macro-to-micro">
-                  <div className="db-macro-to-micro-head">
-                    <p className="db-macro-to-micro-eyebrow">
-                      {t("db.macro_micro.eyebrow")}
-                    </p>
-                    <h3 className="db-macro-to-micro-title">
-                      {renderTagged(t("db.macro_micro.title"), {
-                        em: {
-                          fontFamily: "var(--pf-serif)",
-                          fontStyle: "italic",
-                          fontWeight: 400,
-                          color: "var(--p-local)",
-                        },
-                      })}
-                    </h3>
-                    <p className="db-macro-to-micro-deck">
-                      {t("db.macro_micro.deck")}
-                    </p>
-                  </div>
-                  <div className="db-macro-to-micro-grid">
-                    <Link
-                      href="/france/paris/budget"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.budget.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.budget.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/subventions"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.qui_recoit.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.qui_recoit.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/marches"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.marches.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.marches.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/investissements"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.investissements.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.investissements.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/logement"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.logement.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.logement.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/dette"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.dette.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.dette.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
-              {commune && commune.slug !== "paris" && (
+              {commune && (
                 <div className="db-macro-to-micro db-macro-to-micro-other">
                   <p className="db-macro-to-micro-eyebrow">
                     {t("db.macro_micro.eyebrow")}
@@ -2302,6 +2189,8 @@ export default function DailyBreadClient({
             </div>
 
 
+            <details className="db-p-method-all">
+              <summary>{t("db.method.open")}</summary>
             <div className="db-p-method-faq">
               {/* 01 — Comment on calcule tes prélèvements */}
               <details className="db-p-method-faq-item">
@@ -2456,6 +2345,7 @@ export default function DailyBreadClient({
                 </div>
               </details>
             </div>
+            </details>
 
             <div className="db-p-method-foot">
               <Link

@@ -21528,3 +21528,41 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   margin-top: 2px;
   color: var(--p-accent);
 }
+
+/* Le titre de la page vit dans le héros depuis que le panneau d'intro a
+   disparu (2026-09-18) : il occupe la rangée du haut de la grille. */
+.theme-db-scrolly .db-p-hero-head { grid-area: num; }
+.theme-db-scrolly .db-p-hero-head .db-p-onboarding-kicker { margin: 0 0 6px; }
+.theme-db-scrolly .db-p-hero-head .db-p-onboarding-title { margin: 0 0 10px; }
+.theme-db-scrolly .db-p-hero-head > .fx-v3-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--p-ink);
+  max-width: 60ch;
+}
+.theme-db-scrolly .db-p-hero-head > .fx-v3-hint svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--p-accent);
+}
+/* Méthode : un seul dépliant qui porte les six thèmes. */
+.theme-db-scrolly .db-p-method-all > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 0 4px;
+  font: 500 13px/1.4 var(--pf-mono, ui-monospace, monospace);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #475569);
+}
+.theme-db-scrolly .db-p-method-all > summary::-webkit-details-marker { display: none; }
+.theme-db-scrolly .db-p-method-all > summary::after { content: " ↓"; }
+.theme-db-scrolly .db-p-method-all[open] > summary::after { content: " ↑"; }
+.theme-db-scrolly .db-p-method-all > summary:hover { color: var(--p-ink); }
