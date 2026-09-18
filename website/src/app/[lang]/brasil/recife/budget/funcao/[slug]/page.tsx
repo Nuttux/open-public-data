@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { titleCasePt } from "@/lib/br/format";
+import { NextDoor } from "@/components/fiche/Doors";
+import SectionHero from "@/components/fiche/SectionHero";
+import {brlMagnitude, fmtBrlCompactNum, titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { loadFuncao } from "@/lib/br/recife-data";
@@ -30,19 +32,47 @@ export default async function FuncaoPage({
   const sp = await searchParams;
   const f = loadFuncao(slug, sp.year ? parseInt(sp.year, 10) : undefined);
   if (!f) notFound();
+  const en = locale === "en";
+  const a = funcaoAnswer(f, locale);
   return (
-    <main className="fx-wrap" style={{ paddingBottom: 64 }}>
-      <div className="fx-page-header fx-page-header--fiche">
-        <Link href="/brasil/recife/budget" className="fx-page-kicker" style={{ textDecoration: "none" }}>
-          ← Recife · Orçamento
-        </Link>
-        <h1 className="fx-page-title">{titleCasePt(f.funcao)}</h1>
-        <p className="fx-page-lede fx-answer">{funcaoAnswer(f, locale).answer}</p>
-        <PageJsonLd title={funcaoAnswer(f, locale).title} description={funcaoAnswer(f, locale).answer} path={`/brasil/recife/budget/funcao/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
-      </div>
-      <div className="fx-fiche fx-fiche-shell">
-        <RecifeFuncaoFiche f={f} />
-        <RelatedLinks block={funcaoRelated(f, locale)} />
+    <main id="main-content" tabIndex={-1}>
+      <div className="fx-sec fx-v3">
+        <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links">
+          <Link href="/brasil/recife">Recife</Link> › <Link href="/brasil/recife/budget">{en ? "Budget" : "Orçamento"}</Link>
+        </div>
+        <div className="fx-sec-grid" data-layout="subventions">
+          <div className="fx-sec-a-hero">
+            <SectionHero
+              title={titleCasePt(f.funcao)}
+              value={fmtBrlCompactNum(f.total_pago)}
+              unit={brlMagnitude(f.total_pago)}
+              captionBefore={en ? "paid by the city in" : "pagos pela Prefeitura em"}
+              captionAfter=""
+              years={[f.ano]}
+              year={f.ano}
+              basePath={`/brasil/recife/budget/funcao/${slug}`}
+              meta={a.answer}
+              shareTitle={a.title}
+            />
+            <PageJsonLd title={a.title} description={a.answer} path={`/brasil/recife/budget/funcao/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
+          </div>
+          <div className="fx-sec-a-scene">
+            <div className="fx-fiche fx-fiche-shell">
+              <RecifeFuncaoFiche f={f} />
+            </div>
+          </div>
+          <div className="fx-sec-a-related">
+            <RelatedLinks block={funcaoRelated(f, locale)} />
+          </div>
+          <div className="fx-sec-a-next">
+            <NextDoor
+              href="/brasil/recife/budget"
+              kicker={en ? "Budget" : "Orçamento"}
+              title={en ? "The whole budget of Recife" : "Todo o orçamento do Recife"}
+              sub={en ? "Spending and revenue, function by function." : "Despesas e receitas, função por função."}
+            />
+          </div>
+        </div>
       </div>
     </main>
   );
