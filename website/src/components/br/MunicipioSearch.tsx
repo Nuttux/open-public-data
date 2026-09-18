@@ -3,6 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import { useRouter } from "@/lib/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
+import { fill } from "@/lib/fmt";
 import { useTrack } from "@/lib/analyticsContext";
 
 type Hit = { slug: string; nome: string; uf: string; pop: number | null };
@@ -26,6 +27,17 @@ export default function MunicipioSearch({ placeholder, label, hrefFor }: { place
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
 
+  // Les plus peuplés, chargés une fois : cliquer le champ ouvrait le vide, et
+  // on ne pouvait pas deviner qu'il fallait taper deux lettres (2026-09-18).
+  const [top, setTop] = useState<Hit[]>([]);
+  const [nbTotal, setNbTotal] = useState(0);
+  useEffect(() => {
+    fetch("/api/search-municipios?top=1")
+      .then((r) => r.json())
+      .then((d: { results: Hit[]; total?: number }) => { setTop(d.results ?? []); setNbTotal(d.total ?? 0); })
+      .catch(() => {});
+  }, []);
+
   useEffect(() => {
     const typed = q.trim();
     if (typed.length < 2) { setHits([]); setTotal(0); return; }
@@ -44,7 +56,12 @@ export default function MunicipioSearch({ placeholder, label, hrefFor }: { place
     router.push(hrefFor ? hrefFor(h.slug) : `/brasil/${h.slug}`);
   };
   const listId = `${id}-list`;
-  const show = open && q.trim().length >= 2;
+  const tape = q.trim().length >= 2;
+  const show = open && (tape || top.length > 0);
+  const lignes = tape ? hits : top;
+  const entete = tape
+    ? (hits.length === 0 ? t("br.hub.find_none") : `${int.format(total > hits.length ? total : hits.length)} ${t("br.hub.find_n")}`)
+    : fill(t("br.hub.find_top"), { n: int.format(nbTotal) });
 
   return (
     <div className="fx-picker">
@@ -65,15 +82,15 @@ export default function MunicipioSearch({ placeholder, label, hrefFor }: { place
         onKeyDown={(e) => {
           if (e.key === "ArrowDown") { e.preventDefault(); setOpen(true); setActive((a) => Math.min(a + 1, Math.max(hits.length - 1, 0))); }
           else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
-          else if (e.key === "Enter") { if (show && hits[active]) { e.preventDefault(); go(hits[active]); } }
+          else if (e.key === "Enter") { if (show && lignes[active]) { e.preventDefault(); go(lignes[active]); } }
           else if (e.key === "Escape") { setOpen(false); setQ(""); }
         }}
       />
       {show ? (
         <div className="fx-picker-pop">
-          <p className="fx-picker-h" aria-live="polite">{hits.length === 0 ? t("br.hub.find_none") : total > hits.length ? `${int.format(total)} ${t("br.hub.find_n")}` : `${hits.length} ${t("br.hub.find_n")}`}</p>
+          <p className="fx-picker-h" aria-live="polite">{entete}</p>
           <ul id={listId} role="listbox">
-            {hits.map((h, i) => (
+            {lignes.map((h, i) => (
               <li key={h.slug} id={`${id}-${i}`} role="option" aria-selected={i === active} className={i === active ? "on" : ""} onMouseDown={(e) => e.preventDefault()} onMouseEnter={() => setActive(i)} onClick={() => go(h)}>
                 <span className="nom">{h.nome} ({h.uf})</span>
                 <span className="meta">{h.pop ? `${int.format(h.pop)} ${t("br.hub.hab")}` : ""}</span>

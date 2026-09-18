@@ -125,7 +125,10 @@ export const PLACES: Place[] = [
     country: "fr",
     scale: "city",
     path: "/france/paris",
-    switchHref: "/",
+    // Pas de switchHref vers la racine : la racine suit la langue, et en
+    // portugais elle mène à Recife — cliquer « Paris » depuis Recife y
+    // ramenait (2026-09-18). Paris s'ouvre comme toute autre ville, à sa page,
+    // dans une langue qu'elle parle.
     labelKey: "chrome.place.paris",
     name: "Paris",
     schemaFamily: "fr-commune",
