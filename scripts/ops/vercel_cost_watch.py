@@ -88,6 +88,21 @@ def builds(token: str, team: str, start: datetime, end: datetime) -> tuple[int, 
     return prod, len(deployments) - prod
 
 
+def whose_token(token: str, team: str) -> str:
+    """Why the bill could not be read: a valid token on a team without costs answers
+    404 costs_not_found, which is what a token scoped to the wrong team looks like."""
+    try:
+        user = json.loads(get("/v2/user", {}, token)).get("user", {}).get("username", "?")
+        teams = [(t.get("slug"), t.get("id")) for t in json.loads(get("/v2/teams", {"limit": "50"}, token)).get("teams", [])]
+    except urllib.error.HTTPError as err:
+        return f"::error::the token cannot even name its owner ({err.code}): revoked, expired or mistyped."
+    seen = ", ".join(slug for slug, _ in teams) or "none"
+    if team not in [tid for _, tid in teams]:
+        return (f"::error::the token belongs to {user} and sees these teams: {seen}. It does not see {team}. "
+                "Create it again with the scope set to the team that pays the bill.")
+    return f"::error::the token belongs to {user} and does see the team ({seen}); the billing API still refused."
+
+
 def compose(day: str, cost: float, usual: float, week: float, services: dict[str, float], prod: int, preview: int, why: str) -> dict:
     money = lambda v: f"${v:,.2f}"
     top = sorted(services.items(), key=lambda kv: -kv[1])[:4]
@@ -148,7 +163,8 @@ def main() -> int:
         total, by_service = daily_costs(token, team, start - timedelta(days=7), end)
         prod, preview = builds(token, team, start, end)
     except urllib.error.HTTPError as err:
-        print(f"::error::Vercel API answered {err.code} on {err.url.split('?')[0]}")
+        print(f"::error::Vercel API answered {err.code} on {err.url.split('?')[0]}: {err.read().decode(errors='replace')[:200]}")
+        print(whose_token(token, team))
         return 1
 
     day = start.strftime("%Y-%m-%d")
