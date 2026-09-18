@@ -12,7 +12,13 @@ import RelatedLinks, { type RelatedBlock, type RelatedRow } from "@/components/f
 import { brlMagnitude, fmtBrlCompactNum, titleCasePt, fmtBrlCompact } from "@/lib/br/format";
 import PageJsonLd from "@/components/seo/PageJsonLd";
 
-/** « Veja também »: the works contracts on this place and the other places of its neighbourhood. */
+
+/** Un objet de contrat dans une rangée : coupé au mot, jamais en plein milieu. */
+function clipObjeto(s: string, n: number): string {
+  return s.length > n ? `${s.slice(0, n).replace(/\s+\S*$/, "")}…` : s;
+}
+
+/** « Ver também »: the works contracts on this place and the other places of its neighbourhood. */
 function lugarRelated(p: PlaceIndexEntry, slug: string, locale: "pt" | "en"): RelatedBlock {
   const en = locale === "en";
   const rows: RelatedRow[] = [];
@@ -20,18 +26,18 @@ function lugarRelated(p: PlaceIndexEntry, slug: string, locale: "pt" | "en"): Re
   for (const o of (obras?.contratos ?? []).slice().sort((a, b) => (b.valor ?? 0) - (a.valor ?? 0)).slice(0, 5)) {
     rows.push({
       href: `/brasil/recife/contratos/${encodeURIComponent(o.contrato_id)}`,
-      label: o.objeto ? (o.objeto.length > 90 ? `${o.objeto.slice(0, 90)}…` : o.objeto) : `${en ? "Contract" : "Contrato"} ${o.numero}`,
+      label: o.objeto ? clipObjeto(titleCasePt(o.objeto), 90) : `${en ? "Contract" : "Contrato"} ${o.numero}`,
       sub: en ? `Works contract${o.ano ? `, ${o.ano}` : ""}` : `Contrato de obra${o.ano ? `, ${o.ano}` : ""}`,
       amount: o.valor != null ? { v: fmtBrlCompact(o.valor), u: "" } : null,
     });
   }
   if (p.bairro) {
     for (const q of loadPlacesIndex().filter((q) => q.bairro === p.bairro && q.slug !== slug).slice(0, 5)) {
-      rows.push({ href: `/brasil/recife/lugares/${q.slug}`, label: q.nome, sub: en ? `${q.tipo ?? q.familia}, ${q.bairro}` : `${q.tipo ?? q.familia}, ${q.bairro}` });
+      rows.push({ href: `/brasil/recife/lugares/${q.slug}`, label: titleCasePt(q.nome), sub: `${titleCasePt(q.tipo ?? q.familia)}, ${titleCasePt(q.bairro ?? "")}` });
     }
   }
   rows.push({ href: "/brasil/recife/lugares", label: en ? "Every place in Recife" : "Todos os lugares do Recife", sub: en ? "Health units, schools, culture, sport and squares, on the map" : "Unidades de saúde, escolas, cultura, esporte e praças, no mapa" });
-  return { title: en ? "See also" : "Veja também", sub: en ? "The works contracted here, and the other places of the same neighbourhood." : "As obras contratadas aqui, e os outros lugares do mesmo bairro.", rows };
+  return { title: en ? "See also" : "Ver também", sub: en ? "The works contracted here, and the other places of the same neighbourhood." : "As obras contratadas aqui, e os outros lugares do mesmo bairro.", rows };
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

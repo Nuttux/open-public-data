@@ -67,7 +67,7 @@ export function recipientRelated(rec: RecipientDetail, locale: RecifeLocale): Re
     const n = tema ? 2 : 4;
     for (const s of orgao.top_suppliers.filter((s) => !seen.has(s.cnpj) && s.pago > 0 && loadRecipient(s.cnpj)).slice(0, n)) {
       seen.add(s.cnpj);
-      rows.push({ href: `${BASE}/quem-recebe/${s.cnpj}`, label: s.nome, sub: t("br.recife.related.same_orgao", { orgao: titleCasePt(orgao.orgao) }), amount: brl(s.pago) });
+      rows.push({ href: `${BASE}/quem-recebe/${s.cnpj}`, label: titleCasePt(s.nome), sub: t("br.recife.related.same_orgao", { orgao: titleCasePt(orgao.orgao) }), amount: brl(s.pago) });
     }
   }
   rows.push({ href: `${BASE}/quem-recebe`, label: t("br.recife.related.hub_quem"), sub: t("br.recife.related.hub_quem_sub") });
