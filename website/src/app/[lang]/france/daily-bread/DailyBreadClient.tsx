@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
+import { V3Hint } from "@/components/fiche/v3";
 import SectionChips from "@/components/fiche/SectionChips";
 import { numLocale, fill } from "@/lib/fmt";
 import { useCountUp } from "@/lib/use-count-up";
@@ -1074,13 +1075,6 @@ export default function DailyBreadClient({
   // déjà ces 3 paramètres. Le bandeau "01 · PROFIL" (db-panel-num) suffit pour
   // le numérotage de section.
 
-  const presetActiveKey = useMemo(() => {
-    // Le preset n'est "actif" que si l'utilisateur est uniquement en mode salaire.
-    if (activeSources.length !== 1 || activeSources[0] !== "salaire") return undefined;
-    const found = PRESETS.find((p) => p.net === salaireMonthly);
-    return found?.key;
-  }, [salaireMonthly, activeSources]);
-
   // ─── Render ────────────────────────────────────────────────────────
   return (
     <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
@@ -1102,9 +1096,6 @@ export default function DailyBreadClient({
             <h1 className="db-p-onboarding-title">
               {t("db.hero.onboarding.title")}
             </h1>
-            <p className="db-p-onboarding-hint">
-              {renderTagged(t("db.hero.onboarding.hint"))}
-            </p>
           </div>
         </section>
 
@@ -1120,39 +1111,6 @@ export default function DailyBreadClient({
           className="db-panel db-p-hero db-p-hero-edit"
         >
           <div className="db-panel-wrap db-p-hero-wrap">
-            {/* numéro de section */}
-            <p className="db-panel-num db-p-hero-num-top">
-              {t("db.hero.num")}
-            </p>
-
-            {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
-            <div className="db-p-hero-cta-area">
-              {salaireMonthly > 0 && (
-                <button
-                  type="button"
-                  className="db-p-hero-cta-affine"
-                  data-state={
-                    isLoadingOpenFisca
-                      ? "loading"
-                      : openFiscaResult
-                        ? "active"
-                        : openFiscaError
-                          ? "error"
-                          : "idle"
-                  }
-                  onClick={requestOpenFiscaCalc}
-                  disabled={isLoadingOpenFisca || !!openFiscaResult}
-                  title={t("db.openfisca.note")}
-                >
-                  {isLoadingOpenFisca
-                    ? t("db.openfisca.button.loading")
-                    : openFiscaResult
-                      ? t("db.openfisca.button.active")
-                      : t("db.openfisca.button.idle")}{" "}
-                  →
-                </button>
-              )}
-            </div>
 
             {/* Phrase éditable principale — les inputs sont DANS le texte */}
             <h1 className="db-p-hero-text">
@@ -1266,6 +1224,9 @@ export default function DailyBreadClient({
                   + tagline "financent chaque mois...") vit en aside-droite
                   pour éviter la duplication avec le big number. */}
             </h1>
+            {/* La seule consigne de la page, celle du site, sous la phrase :
+                le soulignement ocre dit déjà que les valeurs se changent. */}
+            <V3Hint>{t("db.hero.onboarding.hint")}</V3Hint>
 
             {/* Aside : big number + composition compacte */}
             <div className="db-p-hero-aside">
@@ -1347,9 +1308,6 @@ export default function DailyBreadClient({
                 if (segments.length > 0 && total > 0) {
                   return (
                     <div className="db-p-hero-compo">
-                      <p className="db-p-hero-compo-label">
-                        {t("db.hero.meta_label_compo")}
-                      </p>
                       <div
                         className="db-p-hero-compo-bar"
                         role="img"
@@ -1391,9 +1349,6 @@ export default function DailyBreadClient({
                 if (activeSources.length > 1) {
                   return (
                     <div className="db-p-hero-compo">
-                      <p className="db-p-hero-compo-label">
-                        {t("db.hero.meta_label_compo")}
-                      </p>
                       <p className="db-p-hero-compo-multi tnum">
                         {breakdownSalaire.total > 0 && (
                           <>
@@ -1451,35 +1406,6 @@ export default function DailyBreadClient({
                 return null;
               })()}
 
-              {/* Presets rapides salaire — chips inline juste sous l'aside.
-                  Visibles uniquement quand le mode est "salaire pur" pour ne
-                  pas créer d'ambiguïté ("appliquer SMIC" remplace les autres
-                  sources actives). */}
-              {(activeSources.length === 0 ||
-                (activeSources.length === 1 &&
-                  activeSources[0] === "salaire")) && (
-                <div className="db-p-hero-presets">
-                  <span className="db-p-hero-presets-label">
-                    {t("db.calc.presets_label")}
-                  </span>
-                  {PRESETS.map((p) => (
-                    <button
-                      key={p.key}
-                      type="button"
-                      className={`db-p-hero-preset${
-                        presetActiveKey === p.key ? " is-active" : ""
-                      }`}
-                      onClick={() => setSalaireMonthly(p.net)}
-                      title={t(`db.calc.preset.${p.key}`)}
-                    >
-                      {/* Fix 6 : label court pour tenir sur une ligne en desktop ;
-                          la version longue (avec le montant) reste dans le picker
-                          EditableNumber et dans l'attr title pour le hover. */}
-                      {t(`db.calc.preset_short.${p.key}`)}
-                    </button>
-                  ))}
-                </div>
-              )}
 
               {/* CTA discret sous les presets (côté droit) qui équilibre
                   visuellement la colonne et pousse le lecteur vers §02 sans
@@ -2346,6 +2272,35 @@ export default function DailyBreadClient({
               })}
             </h2>
             <p className="db-p-method-deck">{t("db.method.intro")}</p>
+            {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
+            <div className="db-p-hero-cta-area db-method-cta">
+              {salaireMonthly > 0 && (
+                <button
+                  type="button"
+                  className="db-p-hero-cta-affine"
+                  data-state={
+                    isLoadingOpenFisca
+                      ? "loading"
+                      : openFiscaResult
+                        ? "active"
+                        : openFiscaError
+                          ? "error"
+                          : "idle"
+                  }
+                  onClick={requestOpenFiscaCalc}
+                  disabled={isLoadingOpenFisca || !!openFiscaResult}
+                  title={t("db.openfisca.note")}
+                >
+                  {isLoadingOpenFisca
+                    ? t("db.openfisca.button.loading")
+                    : openFiscaResult
+                      ? t("db.openfisca.button.active")
+                      : t("db.openfisca.button.idle")}{" "}
+                  →
+                </button>
+              )}
+            </div>
+
 
             <div className="db-p-method-faq">
               {/* 01 — Comment on calcule tes prélèvements */}

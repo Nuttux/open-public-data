@@ -21493,3 +21493,38 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
     gap: 4px;
   }
 }
+
+/* OpenFisca descend dans Méthode : c'est un réglage de précision, pas
+   l'action principale de la page (2026-09-18). Il y reprend une place de
+   bouton dans le flux, pas d'ancrage en haut à droite du héros. */
+.theme-db-scrolly .db-method-cta {
+  position: static;
+  margin: 14px 0 6px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* La ligne « Cliquez sur… » du héros occupe la rangée du haut, à la place
+   du numéro de section retiré (2026-09-18). Sans ça elle tombait dans une
+   colonne auto et l'icône passait au-dessus du texte. */
+.theme-db-scrolly .db-p-hero-wrap > .fx-v3-hint {
+  grid-area: num;
+  margin: 0 0 2px;
+  /* Les règles du kit sont préfixées `.theme-fusion` ; cette page vit sous
+     `.theme-db-scrolly`, donc la ligne se remet en flex ici. */
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--p-ink);
+  max-width: 60ch;
+}
+.theme-db-scrolly .db-p-hero-wrap > .fx-v3-hint svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--p-accent);
+}
