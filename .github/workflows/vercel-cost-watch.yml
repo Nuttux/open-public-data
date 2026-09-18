@@ -1,0 +1,57 @@
+name: Vercel cost watch
+
+# Once a day: read yesterday's Vercel usage and mail Daniel if it jumped.
+# Silent on a normal day. Red when it cannot read the bill, so a broken watch
+# is never mistaken for a quiet one. Logic and thresholds:
+# scripts/ops/vercel_cost_watch.py.
+#
+# Needs the secret VERCEL_TOKEN in the `pipeline` environment (a Vercel token
+# scoped to the team, any member can read the bill). RESEND_API_KEY is the one
+# the Monday refresh mail already uses.
+#
+# About one minute of runner a day.
+
+on:
+  schedule:
+    # A Vercel billing day closes at 07:00 UTC; three hours let the figures settle.
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Send the mail even if there is no jump (to test delivery)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vercel-cost-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: Yesterday's bill
+    environment: pipeline
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout (the script only)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: scripts/ops
+
+      - name: Read the bill, mail on a jump
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID || 'team_nFJfjJHi2K0E7G3478uzNvdW' }}
+          VERCEL_TEAM_SLUG: ${{ vars.VERCEL_TEAM_SLUG || 'nuttuxs-projects' }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MAIL_TO: ${{ vars.REFRESH_EMAIL_TO || 'daniel@qipu.org' }}
+          MAIL_FROM: ${{ vars.REFRESH_EMAIL_FROM || 'Qipu watch <onboarding@resend.dev>' }}
+          COST_ALERT_DAILY_USD: ${{ vars.COST_ALERT_DAILY_USD || '8' }}
+          COST_ALERT_RATIO: ${{ vars.COST_ALERT_RATIO || '2.5' }}
+          COST_ALERT_FLOOR_USD: ${{ vars.COST_ALERT_FLOOR_USD || '3' }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+        run: python3 scripts/ops/vercel_cost_watch.py
