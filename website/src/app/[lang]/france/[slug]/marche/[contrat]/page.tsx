@@ -14,10 +14,12 @@ import { contratIndexable } from "@/lib/contrat-indexable";
  */
 export const dynamic = "force-dynamic";
 
-const court = (n: number, en: boolean) =>
-  n >= 1e6
-    ? `${(n / 1e6).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} M€`
-    : `${Math.round(n / 1e3).toLocaleString(en ? "en-GB" : "fr-FR")} k€`;
+const court = (n: number, en: boolean) => {
+  const tag = en ? "en-GB" : "fr-FR";
+  if (n >= 1e6) { const v = (n / 1e6).toLocaleString(tag, { maximumFractionDigits: 1 }); return en ? `€${v}M` : `${v} M€`; }
+  const v = Math.round(n / 1e3).toLocaleString(tag);
+  return en ? `€${v}k` : `${v} k€`;
+};
 
 const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n).replace(/\s+\S*$/, "")}…` : s);
 

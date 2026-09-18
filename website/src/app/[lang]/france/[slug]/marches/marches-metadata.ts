@@ -35,9 +35,13 @@ export function communeMarchesMetadata(slug: string, nom: string): Promise<Metad
   // Même arrondi que l'en-tête (CommuneMarchesClient, split()).
   const amount = (tag: string) => {
     const a = Math.abs(m.montant);
-    if (a >= 1e9) return `${(m.montant / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 })} Md€`;
-    if (a >= 1e6) return `${(m.montant / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 })} M€`;
-    return `${Math.round(m.montant / 1e3).toLocaleString(tag)} k€`;
+    // English writes the euro first and its unit after (« €4.85B ») ; French
+    // keeps « 4,85 Md€ ». Same rounding as the page header (split()).
+    const en = tag === "en-GB";
+    if (a >= 1e9) { const v = (m.montant / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }); return en ? `€${v}B` : `${v} Md€`; }
+    if (a >= 1e6) { const v = (m.montant / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }); return en ? `€${v}M` : `${v} M€`; }
+    const v = Math.round(m.montant / 1e3).toLocaleString(tag);
+    return en ? `€${v}k` : `${v} k€`;
   };
   const nbFr = m.nb.toLocaleString("fr-FR");
   const nbEn = m.nb.toLocaleString("en-GB");

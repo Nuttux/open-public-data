@@ -9,6 +9,7 @@ import { CityProvider } from "@/components/fusion/CityContext";
 import { V3Amt, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom, deNom } from "@/lib/nom-commune";
+import { decpCategory } from "@/lib/decp-category";
 import type { ContratFiche as ContratFicheType } from "@/lib/fusion-data";
 import type { ContratLocal } from "./load";
 
@@ -35,12 +36,14 @@ export default function ContratCommuneClient({ commune, c, autres, coverageNote,
     for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
     return s;
   };
+  // English columns write « €M », « €k » ; French « M€ », « k€ ».
+  const U = en ? { b: "€B", m: "€M", k: "€k", u: "€" } : { b: "Md€", m: "M€", k: "k€", u: "€" };
   const split = (eur: number): { v: string; u: string } => {
     const a = Math.abs(eur);
-    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: "Md€" };
-    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: "M€" };
-    if (a >= 1e3) return { v: int.format(eur / 1e3), u: "k€" };
-    return { v: int.format(eur), u: "€" };
+    if (a >= 1e9) return { v: (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }), u: U.b };
+    if (a >= 1e6) return { v: (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 }), u: U.m };
+    if (a >= 1e3) return { v: int.format(eur / 1e3), u: U.k };
+    return { v: int.format(eur), u: U.u };
   };
   const date = (iso: string | null) => {
     if (!iso) return null;
@@ -64,7 +67,7 @@ export default function ContratCommuneClient({ commune, c, autres, coverageNote,
     numero: "",
     objet: c.objet,
     nature: c.nature ? c.nature.charAt(0) + c.nature.slice(1).toLowerCase() : "",
-    categorie: c.categorie ? c.categorie.replace(/ & /g, en ? " and " : " et ") : "—",
+    categorie: c.categorie ? decpCategory(c.categorie, locale) : "—",
     fournisseur: c.titulaire ?? "—",
     fournisseurSiret: c.siren ?? "",
     multiAttributaire: false,
@@ -151,7 +154,7 @@ export default function ContratCommuneClient({ commune, c, autres, coverageNote,
       <div className="fx-cc-tous">
         <V3Row href={`/france/${commune.slug}#achats`} label={fill("fx.cc.tous", { nom: commune.nom, denom: deNom(commune.nom) })} />
       </div>
-      <V3Foot>{coverageNote}</V3Foot>
+      <V3Foot>{en ? t("fx.decp.coverage") : coverageNote}</V3Foot>
       <ChartSource source={t("fx.natmar.source")} dataHref={sourceUrl} methodAnchor="c-villes" />
     </>
   );

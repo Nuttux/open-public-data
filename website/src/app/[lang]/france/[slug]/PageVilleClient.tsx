@@ -97,6 +97,46 @@ export type PageVilleProps = {
 // what I owe, how the town hall runs. Per resident, except the staff share.
 // Investment per resident would be the fifth ; the national index has no such
 // column yet.
+// The accounts' chapters (M57) and the investment groups, in English : the
+// source writes them in French for every commune, and the English page read
+// them in French until 2026-09-18. A label not listed stays as the source has it.
+const NAT_EN: Record<string, string> = {
+  "Charges de personnel": "Staff costs",
+  "Achats et charges externes": "Purchases and outside services",
+  "Charges de gestion courante": "Day-to-day management",
+  "Charges financières": "Interest on debt",
+  "Charges exceptionnelles": "Exceptional costs",
+  "Impôts et taxes (charges)": "Taxes paid",
+  "Atténuations de produits": "Revenue passed on",
+  "Dotations aux amortissements": "Depreciation",
+  "Autres charges": "Other costs",
+  "Impôts et taxes": "Taxes",
+  "Dotations et subventions": "State grants and subsidies",
+  "Dotations, subventions et participations": "State grants and subsidies",
+  "Produits des services": "Fees for services",
+  "Produits des services et du domaine": "Fees for services and property",
+  "Autres produits": "Other revenue",
+  "Autres produits de gestion courante": "Other day-to-day revenue",
+  "Produits exceptionnels": "Exceptional revenue",
+  "Atténuations de charges": "Cost refunds",
+  "Produits financiers": "Financial income",
+  "Résultat reporté": "Carried-over result",
+  "Dépenses d'équipement": "Equipment and works",
+  "Dépenses d’équipement": "Equipment and works",
+  "Emprunts et dettes": "Loans and debt",
+  "Dotations et fonds propres": "Grants and own funds",
+  "Subventions d'investissement": "Investment grants",
+  "Subventions d’investissement": "Investment grants",
+  "Autres immobilisations financières": "Other financial assets",
+  "Participations financières": "Financial holdings",
+  "Immobilisations": "Fixed assets",
+  "Remboursement d'emprunts": "Loan repayments",
+  "Remboursement d’emprunts": "Loan repayments",
+  "Opérations pour compte de tiers": "Operations on behalf of others",
+  "Excédent de fonctionnement capitalisé": "Capitalised operating surplus",
+  "FCTVA": "VAT compensation fund",
+};
+
 const CMP_ROWS = [
   { key: "depenses_totales", kind: "hab", labelKey: "fx.cmp2.kpi.depenses_totales" },
   { key: "impots_locaux", kind: "hab", labelKey: "fx.cmp2.kpi.impots_locaux" },
@@ -110,28 +150,39 @@ function useFmt() {
   const tag = locale === "en" ? "en-GB" : "fr-FR";
   const nf = (o: Intl.NumberFormatOptions) => new Intl.NumberFormat(tag, o);
   const int = nf({ maximumFractionDigits: 0 });
+  const en = locale === "en";
+  // English writes the euro before the number and its unit after (« €232k »,
+  // « €1.12B ») ; French keeps « 232 k€ ». The columns' units follow the site's
+  // English convention (« €k », « €M », « €B »).
+  const U = en ? { b: "€B", m: "€M", k: "€k", u: "€" } : { b: "Md€", m: "M€", k: "k€", u: "€" };
+  // A signed English amount keeps its sign in front of the euro (« −€71k »).
+  const inline = (v: string, u: "b" | "m" | "k" | "u") => {
+    if (!en) return `${v}\u00a0${U[u]}`;
+    const m = /^([+\-−])(.*)$/.exec(v);
+    return m ? `${m[1]}€${m[2]}${{ b: "B", m: "M", k: "k", u: "" }[u]}` : `€${v}${{ b: "B", m: "M", k: "k", u: "" }[u]}`;
+  };
   const euro = (eur: number, signed = false): string => {
     const abs = Math.abs(eur);
     const sign = signed ? { signDisplay: "exceptZero" as const } : {};
-    if (abs >= 1e9) return nf({ maximumFractionDigits: 2, minimumFractionDigits: 2, ...sign }).format(eur / 1e9) + "\u00a0Md€";
-    if (abs >= 1e6) return nf({ maximumFractionDigits: 1, ...sign }).format(eur / 1e6) + "\u00a0M€";
-    if (abs >= 1e3) return nf({ maximumFractionDigits: 0, ...sign }).format(eur / 1e3) + "\u00a0k€";
-    return nf({ maximumFractionDigits: 0, ...sign }).format(eur) + "\u00a0€";
+    if (abs >= 1e9) return inline(nf({ maximumFractionDigits: 2, minimumFractionDigits: 2, ...sign }).format(eur / 1e9), "b");
+    if (abs >= 1e6) return inline(nf({ maximumFractionDigits: 1, ...sign }).format(eur / 1e6), "m");
+    if (abs >= 1e3) return inline(nf({ maximumFractionDigits: 0, ...sign }).format(eur / 1e3), "k");
+    return inline(nf({ maximumFractionDigits: 0, ...sign }).format(eur), "u");
   };
   /** Montant découpé en (valeur, unité) pour les colonnes. */
   const split = (eur: number): { v: string; u: string } => {
     const abs = Math.abs(eur);
-    if (abs >= 1e9) return { v: nf({ maximumFractionDigits: 2 }).format(eur / 1e9), u: "Md€" };
-    if (abs >= 1e6) return { v: nf({ maximumFractionDigits: abs >= 1e8 ? 0 : 1 }).format(eur / 1e6), u: "M€" };
+    if (abs >= 1e9) return { v: nf({ maximumFractionDigits: 2 }).format(eur / 1e9), u: U.b };
+    if (abs >= 1e6) return { v: nf({ maximumFractionDigits: abs >= 1e8 ? 0 : 1 }).format(eur / 1e6), u: U.m };
     if (abs >= 1e3) {
       // 999 500 € arrondi au millier donne « 1000 k€ », qui se lit mal et qu'on
       // n'écrit jamais : au-delà du millier de milliers, on passe en M€.
-      if (Math.round(abs / 1e3) >= 1000) return { v: nf({ maximumFractionDigits: 1 }).format(eur / 1e6), u: "M€" };
-      return { v: int.format(eur / 1e3), u: "k€" };
+      if (Math.round(abs / 1e3) >= 1000) return { v: nf({ maximumFractionDigits: 1 }).format(eur / 1e6), u: U.m };
+      return { v: int.format(eur / 1e3), u: U.k };
     }
-    return { v: int.format(eur), u: "€" };
+    return { v: int.format(eur), u: U.u };
   };
-  const signedPct = (x: number) => `${x >= 0 ? "+" : "−"}${makeFmt(locale).fmtDec(Math.abs(x), 1)} %`;
+  const signedPct = (x: number) => `${x >= 0 ? "+" : "−"}${makeFmt(locale).fmtDec(Math.abs(x), 1)}${en ? "%" : " %"}`;
   return { euro, split, int, signedPct, locale };
 }
 
@@ -386,6 +437,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
       </span>
     );
   };
+  const natLabel = (l: string) => (isEn ? (NAT_EN[l] ?? l) : l);
   const Row = ({ side, label, value, total, tail = false }: { side: "expenses" | "revenue"; label: string; value: number; total: number; tail?: boolean }) => {
     const items = comptesFor(side, label);
     const key = `${side}:${label}`;
@@ -401,10 +453,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
         <Link href={`/france/${commune.slug}/nature/${fiche}`} id={id} className={`fx-bud-row fx-pv-row fx-pv-row--fiche${tail ? " fx-pv-row--tail" : ""}`} scroll={false} prefetch={false}>
           {/* Même chevron que les lignes qui déplient : les deux gestes mènent au
               détail, le lecteur n'a pas à savoir lequel ouvre une page. */}
-          <span className="n">{swatch}{strip(label)}<span className="chev" aria-hidden="true">▸</span>{sub ? <span className="dont">{sub}</span> : null}</span>
+          <span className="n">{swatch}{natLabel(strip(label))}<span className="chev" aria-hidden="true">▸</span>{sub ? <span className="dont">{sub}</span> : null}</span>
           <Spark label={label} />
           <Amt n={value} />
-          <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+          <span className="p tnum">{Math.round((value / total) * 100)}{en ? "%" : " %"}</span>
         </Link>
       );
     }
@@ -419,13 +471,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           disabled={!canOpen}
         >
           <span className="n">
-            {swatch}{strip(label)}
+            {swatch}{natLabel(strip(label))}
             {canOpen ? <span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span> : null}
             {sub ? <span className="dont">{sub}</span> : null}
           </span>
           <Spark label={label} />
           <Amt n={value} />
-          <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+          <span className="p tnum">{Math.round((value / total) * 100)}{en ? "%" : " %"}</span>
         </button>
         {open ? (
           <div className="fx-pv-drill">
@@ -522,7 +574,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     const b = other ? cmpVal(other, row) : null;
     const max = Math.max(Math.abs(a ?? 0), Math.abs(b ?? 0), 1);
     const peer = row.kind === "hab" ? peers?.rows.find((r) => r.key === row.key) ?? null : null;
-    const fmtV = (v: number | null) => (v == null ? "—" : row.kind === "share" ? `${int.format(Math.round(v))} %` : `${int.format(Math.round(v))} €`);
+    const fmtV = (v: number | null) => (v == null ? "—" : row.kind === "share" ? `${int.format(Math.round(v))}${en ? "%" : " %"}` : en ? `€${int.format(Math.round(v))}` : `${int.format(Math.round(v))} €`);
     const vsNeighbour = other && a != null && b != null ? verdictVs(a, b, nomDistinct(other)) : null;
     const vsStrate = peer && peer.deltaPct != null ? verdictStrate(peer.deltaPct) : null;
     return (
@@ -554,8 +606,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit"), value: euro(invYear.total.depenses) }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats"), value: euro(ly ? ly.montant : marches.total.montant) }] : []),
-    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)} %` }] : []),
-    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette"), value: `${int.format(Math.round(evoLast.dette_hab ?? 0))} €/hab` }] : []),
+    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)}${isEn ? "%" : " %"}` }] : []),
+    ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette"), value: isEn ? `€${int.format(Math.round(evoLast.dette_hab ?? 0))}/resident` : `${int.format(Math.round(evoLast.dette_hab ?? 0))} €/hab` }] : []),
   ];
 
   return (
@@ -675,7 +727,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                           <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
                         </div>
                         <span className="val tnum">
-                          <span><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
+                          <span><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"}</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"} {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
                           <span className="fx-pv-vs-verdict">{verdictVs(compare.me.taux.tfb, other.taux.tfb, nomDistinct(other))}</span>
                         </span>
                       </div>
@@ -931,13 +983,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <div>
                         <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
                         {invYear.financement_par_groupe.map((g) => (
-                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                          <div key={g.groupe} className="fx-pv-line"><span>{natLabel(g.groupe)}</span><Amt n={g.montant} size={13} /></div>
                         ))}
                       </div>
                       <div>
                         <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
                         {invYear.depenses_par_groupe.map((g) => (
-                          <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                          <div key={g.groupe} className="fx-pv-line"><span>{natLabel(g.groupe)}</span><Amt n={g.montant} size={13} /></div>
                         ))}
                       </div>
                     </div>
@@ -951,7 +1003,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               const more = marchesHref ? <p className="fx-pv-more"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null;
               const note = (
                 <p className="fx-v3-foot">
-                  {marches.coverage_note}
+                  {isEn ? t("fx.decp.coverage") : marches.coverage_note}
                   {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
                   {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
                 </p>
@@ -960,7 +1012,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               const nom0 = f0 ? (f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom)) : null;
               const objet0 = f0 && "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
               const href0 = f0 && !f0.personne_physique && f0.siren ? `/france/${commune.slug}/fournisseur/${f0.siren}` : null;
-              const nTop = Math.min(5, marches.top_marches.length);
               return (
                 <div className="fx-pv-row2" id="achats">
                   <h3 className="fx-pv-row2-l">{t("fx.pv.row.achats")}</h3>
@@ -982,13 +1033,11 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
                     </p>
                   ) : null}
-                  {marches.top_marches.length > 1 ? (
-                    <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
-                      <summary><span>{fill(nTop >= marches.total.nb_marches ? "fx.pv.fold.achats_all" : "fx.pv.fold.achats", { n: nTop })}</span><span className="chev" aria-hidden="true" /></summary>
-                      <div className="fx-pv-fold-body">
-                        <div className="fx-pv-top5">
-                          {marches.top_marches.slice(0, 5).map((m, i) => (
-                            <div key={i} className="fx-pv-line">
+                  {marches.top_marches.length > 0 ? (() => {
+                    // The three largest are always there (readers opened the fold to see
+                    // them, 2026-09-18) ; the fourth and fifth fold.
+                    const rowOf = (m: (typeof marches.top_marches)[number], i: number) => (
+                      <div key={i} className="fx-pv-line">
                               <span>
                                 {m.slug ? <Link href={`/france/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
                                 <span className="fx-pv-sub2">
@@ -998,12 +1047,24 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                               </span>
                               <Amt n={m.montant} />
                             </div>
-                          ))}
-                        </div>
-                        {note}
-                      </div>
-                    </details>
-                  ) : note}
+                    );
+                    const head = marches.top_marches.slice(0, 3);
+                    const tail = marches.top_marches.slice(3, 5);
+                    return (
+                      <>
+                        <div className="fx-pv-top5">{head.map(rowOf)}</div>
+                        {tail.length > 0 ? (
+                          <details className="fx-pv-fold" data-fold="achats" open={openFolds.has("achats")} onToggle={(e) => toggleFold("achats", (e.currentTarget as HTMLDetailsElement).open)}>
+                            <summary><span>{fill("fx.pv.fold.achats_rest", { n: tail.length })}</span><span className="chev" aria-hidden="true" /></summary>
+                            <div className="fx-pv-fold-body">
+                              <div className="fx-pv-top5">{tail.map((m, i) => rowOf(m, i + 3))}</div>
+                              {note}
+                            </div>
+                          </details>
+                        ) : note}
+                      </>
+                    );
+                  })() : note}
                   {more}
                 </div>
               );

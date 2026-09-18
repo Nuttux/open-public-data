@@ -8,7 +8,8 @@ import { findCommuneByAny, loadAllCommunesYear } from "@/lib/all-communes";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Qipu — finances de la commune";
+// One static alt for both languages : the route cannot vary it per lang.
+export const alt = "Qipu — finances de la commune · town finances";
 
 const fmtFr = (n: number) => n.toLocaleString("fr-FR");
 const fmtBnFr = (n: number) =>

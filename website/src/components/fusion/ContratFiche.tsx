@@ -85,8 +85,8 @@ export default function ContratFiche({
   const natureLabel = trLabel(contrat.nature, locale);
   if (natureLabel) ctx.push(natureLabel);
   if (contrat.categorie && contrat.categorie !== "—" && contrat.categorie.toLowerCase() !== contrat.nature.toLowerCase()) ctx.push(trLabel(contrat.categorie, locale));
-  if (decp?.ccag && decp.ccag !== contrat.categorie) ctx.push(decp.ccag);
-  if (decp?.cpvFamille && decp.cpvFamille !== decp.ccag && !ctx.some((c) => c.toLowerCase() === decp.cpvFamille!.toLowerCase())) ctx.push(decp.cpvFamille);
+  if (decp?.ccag && decp.ccag !== contrat.categorie) ctx.push(trLabel(decp.ccag, locale));
+  if (decp?.cpvFamille && decp.cpvFamille !== decp.ccag && !ctx.some((c) => c.toLowerCase() === decp.cpvFamille!.toLowerCase())) ctx.push(trLabel(decp.cpvFamille, locale));
   if (decp?.lieuExecution) ctx.push(`${t("fx.fiche.contrat.ctx.lieu")} ${decp.lieuExecution}`);
   if (decp?.hasConsiderationSociale) ctx.push(t("fx.fiche.contrat.tag.clauses_sociales").toLowerCase());
   if (decp?.hasConsiderationEnvironnementale) ctx.push(t("fx.fiche.contrat.tag.clauses_env").toLowerCase());

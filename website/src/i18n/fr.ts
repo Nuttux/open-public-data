@@ -6987,6 +6987,30 @@ const fr: Record<string, string> = {
   'fx.pv.vs.strate_more': '+{p} % que les communes de sa taille',
   'fx.pv.vs.strate_less': '−{p} % que les communes de sa taille',
   'fx.pv.vs.strate_same': 'comme les communes de sa taille',
+
+  // Les marchés d'une commune sur la grammaire des sections (2026-09-18)
+  'fx.nme3.kicker': 'Marchés publics',
+  'fx.nme3.cap_before': 'de marchés publics notifiés en',
+  'fx.nme3.cap_after': ', en montants maximums',
+  'fx.nme3.meta': '{nb} marchés en {year} · {total} de {y0} à {y1}',
+  'fx.nme3.share': 'Marchés publics {denom} : {total} en {year}',
+  'fx.nme3.h.domaines': 'Ce que la commune achète, {y0}–{y1}',
+  'fx.nme3.domaines_sub': 'Par domaine, montants cumulés sur la période.',
+  'fx.nme3.domaines_more': 'Les {n} autres domaines',
+  'fx.nme3.h.rows': 'Les plus gros marchés de {year}',
+  'fx.nme3.rows_more': 'Les {n} autres marchés de {year}',
+  'fx.nme3.h.fournisseurs': 'Les fournisseurs, {y0}–{y1}',
+  'fx.nme3.fournisseurs_sub': 'Ceux qui ont reçu le plus de marchés sur la période. Chacun ouvre sa fiche.',
+  'fx.nme3.fournisseurs_more': 'Les {n} autres fournisseurs',
+  'fx.nme3.u.montant': 'Ce que compte un marché',
+  'fx.nme3.u.montant_body': 'Le montant d’un marché est le maximum prévu sur toute sa durée, souvent plusieurs années : ce n’est pas ce que la commune dépense dans l’année. Les lots d’un même marché sont regroupés.',
+  'fx.decp.coverage': 'Marchés de plus de 40 000 € HT déclarés à la notification (DECP) : montants des contrats, pas les paiements. Les plus petits marchés ne sont pas publiés ; les montants manifestement erronés sont écartés.',
+  'fx.nme3.u.source': 'D’où viennent ces chiffres',
+  'fx.nme3.r.commune': 'Combien dépense {nom}',
+  'fx.nme3.r.commune_sub': 'Le budget, à quoi il sert, face aux communes voisines.',
+  'fx.nme3.next_title': 'La page {denom}',
+  'fx.nme3.next_sub': 'Combien elle dépense, à quoi, face aux voisines.',
+  'fx.pv.fold.achats_rest': 'Les {n} autres gros marchés',
 };
 
 export default fr;

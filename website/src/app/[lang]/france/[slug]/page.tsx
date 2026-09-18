@@ -25,11 +25,13 @@ import { communeAlias } from "@/lib/commune-aliases";
 /** « 213,9 M€ », « 386 k€ » — les mêmes unités que la page, pour le titre. */
 function fmtEur(eur: number, locale: "fr" | "en"): string {
   const tag = locale === "en" ? "en-GB" : "fr-FR";
+  const en = locale === "en";
   const a = Math.abs(eur);
-  if (a >= 1e9) return `${(eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 })} Md€`;
-  if (a >= 1e6) return `${(eur / 1e6).toLocaleString(tag, { maximumFractionDigits: 1 })} M€`;
-  if (a >= 1e3) return `${Math.round(eur / 1e3).toLocaleString(tag)} k€`;
-  return `${Math.round(eur).toLocaleString(tag)} €`;
+  // English writes the euro before the number (« €232k », « €1.12B »).
+  if (a >= 1e9) { const v = (eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 }); return en ? `€${v}B` : `${v} Md€`; }
+  if (a >= 1e6) { const v = (eur / 1e6).toLocaleString(tag, { maximumFractionDigits: 1 }); return en ? `€${v}M` : `${v} M€`; }
+  if (a >= 1e3) { const v = Math.round(eur / 1e3).toLocaleString(tag); return en ? `€${v}k` : `${v} k€`; }
+  const v = Math.round(eur).toLocaleString(tag); return en ? `€${v}` : `${v} €`;
 }
 import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
@@ -97,15 +99,15 @@ export async function generateMetadata({
         tfb != null ? `taxe foncière ${rate(tfb, "fr-FR")} %` : null,
       ].filter(Boolean).join(", ");
       const enBits = [
-        detteHab != null ? `debt €${Math.round(detteHab).toLocaleString("en-GB")} per inhabitant` : null,
+        detteHab != null ? `debt €${Math.round(detteHab).toLocaleString("en-GB")} per resident` : null,
         tfb != null ? `property tax ${rate(tfb, "en-GB")}%` : null,
       ].filter(Boolean).join(", ");
       return buildLocaleAwareMetadata({
         title: `Budget ${deNom(slim.nom)} : ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}`,
         description: `${slim.nom} (${slim.dep_name}) a dépensé ${fr(dep)} en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""}, pour ${fr(rec)} de recettes${frBits ? ` ; ${frBits}` : ""}. Ce qu'elle construit et achète, face aux communes de sa taille. Sources : DGFiP, OFGL, DECP, comptes ${y}.`,
         en: {
-          title: `${slim.nom} budget: ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}`,
-          description: `${slim.nom} (${slim.dep_name}) spent ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""}, against ${en(rec)} in revenue${enBits ? `; ${enBits}` : ""}. What it builds and buys, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
+          title: `${slim.nom} budget: ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per resident` : ""}`,
+          description: `${slim.nom} (${slim.dep_name}) spent ${en(dep)} in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per resident` : ""}, against ${en(rec)} in revenue${enBits ? `; ${enBits}` : ""}. What it builds and buys, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
         },
         path: `/france/${slug}`,
       });

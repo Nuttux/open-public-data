@@ -9,6 +9,28 @@ import type { Locale } from "./localeContext";
 import { DATA_LABELS_EN, normalizeDataKey } from "@/i18n/dataLabels";
 
 const EN: Record<string, string> = {
+  // ── CCAG : le cahier des clauses général dont relève le marché ────────────
+  "Fournitures courantes et services": "Supplies and services",
+  "Prestations intellectuelles": "Professional services",
+  "Marchés industriels": "Industrial contracts",
+  "Techniques de l’information et de la communication": "Information and communication technology",
+  "Maîtrise d’œuvre": "Project management",
+  // ── Procédures de passation (DECP) ────────────────────────────────────────
+  // The award procedure as the DECP writes it, in plain English : the reader
+  // of a contract fiche wants to know whether there was a competition.
+  "Procédure adaptée": "Simplified procedure",
+  "Appel d'offres ouvert": "Open tender",
+  "Appel d’offres ouvert": "Open tender",
+  "Appel d'offres restreint": "Restricted tender",
+  "Appel d’offres restreint": "Restricted tender",
+  "Procédure négociée avec mise en concurrence préalable": "Negotiated, with prior competition",
+  "Marché négocié sans publicité ni mise en concurrence préalable": "Negotiated, no advert or competition",
+  "Marché public négocié sans publicité ni mise en concurrence préalable": "Negotiated, no advert or competition",
+  "Dialogue compétitif": "Competitive dialogue",
+  "Procédure avec négociation": "Procedure with negotiation",
+  "Concours": "Design contest",
+  "Partenariat d'innovation": "Innovation partnership",
+  "Partenariat d’innovation": "Innovation partnership",
   // ── Subvention thematiques ────────────────────────────────────────────────
   "Social": "Social services",
   "Social - Solidarité": "Social – Solidarity",

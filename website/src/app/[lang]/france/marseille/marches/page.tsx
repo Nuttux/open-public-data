@@ -25,7 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return communeMarchesMetadata(SLUG, commune?.nom ?? "Marseille");
 }
 
-export default async function MarseilleMarchesPage() {
+export default async function MarseilleMarchesPage({ searchParams }: { searchParams: Promise<{ year?: string }> }) {
+  const sp = await searchParams;
+  const year = sp.year && /^\d{4}$/.test(sp.year) ? Number(sp.year) : undefined;
   const caps = getCommuneCapabilities(SLUG);
   if (!caps.marches) notFound();
   const commune = findCommuneByAny(SLUG);
@@ -42,6 +44,7 @@ export default async function MarseilleMarchesPage() {
       data={data}
       fournisseurs={fournisseurs}
       sourceUrl={DECP_SOURCE_URL}
+      year={year}
     />
     </>
   );

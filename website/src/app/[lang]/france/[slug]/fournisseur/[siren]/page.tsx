@@ -18,12 +18,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const r = await loadFournisseurLocal(slug, siren);
   if (!r) notFound();
   const nom = r.f.nom;
-  const m = r.f.montant >= 1e6 ? `${(r.f.montant / 1e6).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} M€` : `${Math.round(r.f.montant / 1e3).toLocaleString("fr-FR")} k€`;
+  // « 154 M€ » in French, « €154M » in English : the same figure, each
+  // language's own way of writing it.
+  const amount = (tag: string) => {
+    const en = tag === "en-GB";
+    if (r.f.montant >= 1e6) { const v = (r.f.montant / 1e6).toLocaleString(tag, { maximumFractionDigits: 1 }); return en ? `€${v}M` : `${v} M€`; }
+    const v = Math.round(r.f.montant / 1e3).toLocaleString(tag);
+    return en ? `€${v}k` : `${v} k€`;
+  };
+  const m = amount("fr-FR");
   return buildLocaleAwareMetadata({
     title: `${nom} à ${r.commune.nom} : ${r.f.nb} marchés publics, ${m}`,
     description: `Ce que ${nom} fait pour la commune de ${r.commune.nom} : les marchés publics notifiés, objets, montants et années. Source DECP.`,
     en: {
-      title: `${nom} in ${r.commune.nom}: ${r.f.nb} public contracts, ${m}`,
+      title: `${nom} in ${r.commune.nom}: ${r.f.nb} public contracts, ${amount("en-GB")}`,
       description: `What ${nom} does for the town of ${r.commune.nom}: the public contracts awarded, subjects, amounts and years. Source: DECP.`,
     },
     path: `/france/${slug}/fournisseur/${siren}`,
