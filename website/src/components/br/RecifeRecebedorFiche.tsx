@@ -19,9 +19,12 @@ import { fmtBrlCompact, fmtCnpj, fmtInt, hasValor, titleCasePt, fill, slugTema, 
 export default function RecifeRecebedorFiche({
   rec,
   source,
+  headlineInHero = false,
 }: {
   rec: RecipientDetail;
   source: SourceBlock;
+  /** La page porte déjà le total dans son héros : la fiche ne le répète pas. */
+  headlineInHero?: boolean;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -56,9 +59,13 @@ export default function RecifeRecebedorFiche({
 
       <FicheKpis
         items={[
-          contratosOnly
-            ? { label: t("br.recife.rec.contratado_total"), value: fmtBrlCompact(rec.total_contratado ?? 0) }
-            : { label: t("br.recife.rec.paid_total"), value: fmtBrlCompact(rec.total_pago) },
+          // Le total vit dans le héros de la page depuis le 18/09 : le répéter
+          // ici donnait deux arrondis du même nombre sur le même écran.
+          ...(headlineInHero
+            ? []
+            : [contratosOnly
+              ? { label: t("br.recife.rec.contratado_total"), value: fmtBrlCompact(rec.total_contratado ?? 0) }
+              : { label: t("br.recife.rec.paid_total"), value: fmtBrlCompact(rec.total_pago) }]),
           ...(rec.is_subvencao
             ? [{ label: t("br.recife.qr.badge_subv"), value: fmtBrlCompact(rec.subvencao_pago) }]
             : []),

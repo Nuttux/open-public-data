@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { NextDoor } from "@/components/fiche/Doors";
+import SectionHero from "@/components/fiche/SectionHero";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { loadPlace, loadPlaceObras, loadPlacesIndex, type PlaceIndexEntry } from "@/lib/br/recife-places-data";
@@ -7,7 +9,7 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import { lugarAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import RelatedLinks, { type RelatedBlock, type RelatedRow } from "@/components/fiche/RelatedLinks";
-import { titleCasePt, fmtBrlCompact } from "@/lib/br/format";
+import { brlMagnitude, fmtBrlCompactNum, titleCasePt, fmtBrlCompact } from "@/lib/br/format";
 import PageJsonLd from "@/components/seo/PageJsonLd";
 
 /** « Veja também »: the works contracts on this place and the other places of its neighbourhood. */
@@ -46,19 +48,48 @@ export default async function LugarPage({ params }: { params: Promise<{ slug: st
   const p = loadPlace(slug);
   if (!p) notFound();
   const { source, ...place } = p;
+  const en = locale === "en";
+  const answer = lugarAnswer(p, locale);
+  const obras = loadPlaceObras(slug);
+  const totalObras = (obras?.contratos ?? []).reduce((acc, o) => acc + (o.valor ?? 0), 0);
   return (
-    <main className="fx-wrap" style={{ paddingBottom: 64 }}>
-      <div className="fx-page-header fx-page-header--fiche">
-        <Link href="/brasil/recife/lugares" className="fx-page-kicker" style={{ textDecoration: "none" }}>
-          ← Recife · Lugares
-        </Link>
-        <h1 className="fx-page-title">{titleCasePt(p.nome)}</h1>
-        <p className="fx-page-lede fx-answer">{lugarAnswer(p, locale).answer}</p>
-        <PageJsonLd title={lugarAnswer(p, locale).title} description={lugarAnswer(p, locale).answer} path={`/brasil/recife/lugares/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
-      </div>
-      <div className="fx-fiche fx-fiche-shell">
-        <RecifeLugarFiche place={place} source={source} obras={loadPlaceObras(slug)} />
-        <RelatedLinks block={lugarRelated(p, slug, locale)} />
+    <main id="main-content" tabIndex={-1}>
+      <div className="fx-sec fx-v3">
+        <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links">
+          <Link href="/brasil/recife">Recife</Link> › <Link href="/brasil/recife/lugares">{en ? "Places" : "Lugares"}</Link>
+        </div>
+        <div className="fx-sec-grid" data-layout="subventions">
+          <div className="fx-sec-a-hero">
+            <SectionHero
+              title={titleCasePt(p.nome)}
+              value={fmtBrlCompactNum(totalObras)}
+              unit={brlMagnitude(totalObras)}
+              captionBefore={en ? "in works contracted here" : "em obras contratadas aqui"}
+              years={[]}
+              year={0}
+              basePath={`/brasil/recife/lugares/${slug}`}
+              meta={answer.answer}
+              shareTitle={answer.title}
+            />
+            <PageJsonLd title={answer.title} description={answer.answer} path={`/brasil/recife/lugares/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
+          </div>
+          <div className="fx-sec-a-scene">
+            <div className="fx-fiche fx-fiche-shell">
+              <RecifeLugarFiche place={place} source={source} obras={obras} headlineInHero />
+            </div>
+          </div>
+          <div className="fx-sec-a-related">
+            <RelatedLinks block={lugarRelated(p, slug, locale)} />
+          </div>
+          <div className="fx-sec-a-next">
+            <NextDoor
+              href="/brasil/recife/lugares"
+              kicker={en ? "Places" : "Lugares"}
+              title={en ? "Every place the city builds on" : "Todos os lugares onde a Prefeitura contrata"}
+              sub={en ? "Schools, clinics, squares: the works identified, one by one." : "Escolas, unidades de saúde, praças: as obras identificadas, uma a uma."}
+            />
+          </div>
+        </div>
       </div>
     </main>
   );

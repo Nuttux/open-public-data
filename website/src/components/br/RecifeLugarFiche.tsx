@@ -17,10 +17,12 @@ function titleCase(s: string) {
 /** Civic-place fiche — identity/geo (Phase 1). Money-per-place is a later
  *  contract-crosswalk enrichment. Composed from the neutral fiche primitives. */
 export default function RecifeLugarFiche({
-  place, source, obras,
+  place, source, obras, headlineInHero = false,
 }: {
   place: PlaceIndexEntry;
   source: PlacesSource;
+  /** La page porte déjà le total des obras dans son héros (2026-09-18). */
+  headlineInHero?: boolean;
   obras?: PlaceObras | null;
 }) {
   const t = useT();
@@ -79,7 +81,7 @@ export default function RecifeLugarFiche({
           {obras!.obras_total > 0 && (
             <FicheKpis
               items={[
-                { label: t("br.recife.lugares.obras_total"), value: fmtBrlCompact(obras!.obras_total) },
+                ...(headlineInHero ? [] : [{ label: t("br.recife.lugares.obras_total"), value: fmtBrlCompact(obras!.obras_total) }]),
                 { label: t("br.recife.lugares.obras_n"), value: fmtInt(obras!.n_obras) },
               ]}
             />

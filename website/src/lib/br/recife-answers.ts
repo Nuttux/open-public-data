@@ -53,14 +53,14 @@ export function recipientAnswer(
   if (locale === "en") {
     return {
       title: `${clip(titleCasePt(r.nome), 38)}: ${amt} paid by Recife`,
-      answer: `${lead("en", first, last)} the Prefeitura do Recife paid ${amt} to ${r.nome}${org ? `, mostly through ${org}` : ""}${
+      answer: `${lead("en", first, last)} the Prefeitura do Recife paid ${amt} to ${titleCasePt(r.nome)}${org ? `, mostly through ${org}` : ""}${
         r.n_contratos > 0 ? `, with ${n("contract", r.n_contratos)} on file` : ""
       }. ${src("en", r.source)}`.trim(),
     };
   }
   return {
     title: `${clip(titleCasePt(r.nome), 38)}: ${amt} da Prefeitura do Recife`,
-    answer: `${lead("pt", first, last)} a Prefeitura do Recife pagou ${amt} a ${r.nome}${org ? `, principalmente pelo órgão ${org}` : ""}${
+    answer: `${lead("pt", first, last)} a Prefeitura do Recife pagou ${amt} a ${titleCasePt(r.nome)}${org ? `, principalmente pelo órgão ${org}` : ""}${
       r.n_contratos > 0 ? `, em ${n("contrato", r.n_contratos, "pt")}` : ""
     }. ${src("pt", r.source)}`.trim(),
   };
@@ -170,7 +170,7 @@ export function contratoAnswer(
   const ref = c.numero ?? (locale === "en" ? "no number" : "sem número");
   const amt = c.valor != null ? fmtBrlCompact(c.valor) : null;
   const org = c.orgao ? titleCasePt(c.orgao) : null;
-  const obj = c.objeto ? c.objeto.trim().replace(/\.$/u, "") : null;
+  const obj = c.objeto ? titleCasePt(c.objeto.trim().replace(/\.$/u, "")) : null;
   // « ADESAO A ATA DE RP N. 070/2023 PE. N. 022/2023 » : une référence de
   // procédure, pas un objet. Le titre prend alors le fournisseur, ce qu'on cherche.
   const objTitle = obj && (obj.match(/\d/g) ?? []).length < 6 ? obj : null;
@@ -178,14 +178,14 @@ export function contratoAnswer(
   if (locale === "en") {
     return {
       title: objTitle ? `${clip(objTitle, 55)}: ${amt ? `${amt} ` : ""}contract (Recife${c.ano ? `, ${c.ano}` : ""})` : who ? `Recife contract with ${who}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}` : `Recife contract ${ref}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
-      answer: `${c.ano ? `In ${c.ano}, ` : ""}the City of Recife${org ? ` (${org})` : ""} signed contract ${ref}${c.fornecedor ? ` with ${c.fornecedor}` : ""}${amt ? ` for ${amt}` : ""} by ${titleCasePt(c.modalidade).toLowerCase()}${
+      answer: `${c.ano ? `In ${c.ano}, ` : ""}the City of Recife${org ? ` (${org})` : ""} signed contract ${ref}${c.fornecedor ? ` with ${titleCasePt(c.fornecedor)}` : ""}${amt ? ` for ${amt}` : ""} by ${titleCasePt(c.modalidade).toLowerCase()}${
         obj ? `: ${obj}` : ""
       }. ${c.is_ativo ? "Still in force. " : ""}${src("en", source)}`,
     };
   }
   return {
     title: objTitle ? `${clip(objTitle, 55)}: contrato${amt ? ` de ${amt}` : ""} (Recife${c.ano ? `, ${c.ano}` : ""})` : who ? `Contrato do Recife com ${who}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}` : `Contrato ${ref} do Recife${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
-    answer: `${c.ano ? `Em ${c.ano}, ` : ""}a Prefeitura do Recife${org ? ` (${org})` : ""} firmou o contrato ${ref}${c.fornecedor ? ` com ${c.fornecedor}` : ""}${amt ? ` no valor de ${amt}` : ""} por ${titleCasePt(c.modalidade).toLowerCase()}${
+    answer: `${c.ano ? `Em ${c.ano}, ` : ""}a Prefeitura do Recife${org ? ` (${org})` : ""} firmou o contrato ${ref}${c.fornecedor ? ` com ${titleCasePt(c.fornecedor)}` : ""}${amt ? ` no valor de ${amt}` : ""} por ${titleCasePt(c.modalidade).toLowerCase()}${
       obj ? `: ${obj}` : ""
     }. ${c.is_ativo ? "Ainda vigente. " : ""}${src("pt", source)}`,
   };
