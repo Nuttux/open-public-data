@@ -5595,7 +5595,7 @@ const en: Record<string, string> = {
   'budget.section.secu.header_right': '€/year · ASSO share',
   // ─ Revenue panel (§02bis — Where does the money come from?) ─
   'budget.recettes.kicker': 'WHERE DOES THE MONEY COME FROM',
-  'budget.recettes.title': 'Public revenue.',
+  'budget.recettes.title': 'Public revenue',
   'budget.recettes.subtitle': 'French public administrations collect about {total}/year: social contributions for the Social Security system, VAT and direct taxes for central government, local taxes and grants for local authorities. The gap with expenditure ({depenses}) is bridged by borrowing, which feeds the public debt.',
   'budget.recettes.deficit.eyebrow': 'PUBLIC DEFICIT',
   'budget.recettes.deficit.label': 'Borrowing to bridge revenue / spending gap',

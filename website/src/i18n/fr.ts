@@ -5601,7 +5601,7 @@ const fr: Record<string, string> = {
   'budget.section.secu.header_right': '€/an · part ASSO',
   // ─ Recettes (panneau §02bis — D'où vient l'argent ?) ─
   'budget.recettes.kicker': 'D\'OÙ VIENT L\'ARGENT',
-  'budget.recettes.title': 'Les recettes publiques.',
+  'budget.recettes.title': 'Les recettes publiques',
   'budget.recettes.subtitle': 'Les administrations publiques françaises encaissent environ {total}/an : cotisations sociales pour la Sécurité sociale, TVA et impôts directs pour l\'État, fiscalité locale et dotations pour les collectivités. L\'écart avec les dépenses ({depenses}) est comblé par l\'emprunt, qui alimente la dette publique.',
   'budget.recettes.deficit.eyebrow': 'DÉFICIT PUBLIC',
   'budget.recettes.deficit.label': 'Emprunt pour combler l\'écart recettes / dépenses',
