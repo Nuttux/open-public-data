@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { loadFuncao } from "@/lib/br/recife-data";
@@ -35,7 +36,7 @@ export default async function FuncaoPage({
         <Link href="/brasil/recife/budget" className="fx-page-kicker" style={{ textDecoration: "none" }}>
           ← Recife · Orçamento
         </Link>
-        <h1 className="fx-page-title">{f.funcao}</h1>
+        <h1 className="fx-page-title">{titleCasePt(f.funcao)}</h1>
         <p className="fx-page-lede fx-answer">{funcaoAnswer(f, locale).answer}</p>
         <PageJsonLd title={funcaoAnswer(f, locale).title} description={funcaoAnswer(f, locale).answer} path={`/brasil/recife/budget/funcao/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>

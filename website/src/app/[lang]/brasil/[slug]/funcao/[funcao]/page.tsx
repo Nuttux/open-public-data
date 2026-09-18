@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
@@ -48,7 +49,7 @@ export default async function MunicipioFuncaoPage({ params, searchParams }: { pa
         <Link href={`/brasil/${slug}`} className="fx-page-kicker" style={{ textDecoration: "none" }}>
           ← {d.municipio.nome} ({d.municipio.uf}) · {locale === "en" ? "Budget" : "Orçamento"}
         </Link>
-        <h1 className="fx-page-title">{f.funcao}</h1>
+        <h1 className="fx-page-title">{titleCasePt(f.funcao)}</h1>
         <p className="fx-page-lede fx-answer">{a.answer}</p>
         <PageJsonLd title={a.title} description={a.answer} path={`/brasil/${slug}/funcao/${funcao}`} locale={locale} creator="Tesouro Nacional (SICONFI)" />
       </div>

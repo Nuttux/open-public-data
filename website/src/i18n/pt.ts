@@ -523,7 +523,7 @@ const pt: Record<string, string> = {
   "privacy.replay.off": "Desativada — você pode nos ajudar a encontrar bugs e atritos de uso autorizando a gravação anônima da sua sessão. O que você digita é mascarado, sem compartilhamento com terceiros, hospedagem na UE, retenção de 30 dias.",
 
   // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
-  "br.recife.related.title": "Veja também",
+  "br.recife.related.title": "Ver também",
   "br.recife.related.recipient_sub": "Os outros grandes recebedores do mesmo tema e do mesmo órgão pagador.",
   "br.recife.related.tema": "Tema: {tema}",
   "br.recife.related.tema_sub": "{n} organizações recebedoras",
@@ -648,6 +648,8 @@ const pt: Record<string, string> = {
   "br.cmp.u.how": "Como ler esta comparação",
   "br.cmp.u.how_body": "Os valores são a despesa paga (e a receita realizada líquida) dividida pela população estimada pelo IBGE, no mesmo ano para os dois. Uma função ausente de um lado é uma função que esse município não declarou nesse ano, não um zero. Municípios de tamanhos muito diferentes têm estruturas diferentes: comparar dois de população próxima diz mais.",
   "br.cmp.foot": "Fonte: SICONFI, Tesouro Nacional (DCA, Anexos I-C e I-E); população IBGE. Por habitante, ano {y}.",
+  "br.cmp.pick_a": "Comparar dois municípios",
+  "br.cmp.pick_a_sub": "Escolha o primeiro município; o segundo vem na tela seguinte.",
   "br.cmp.pick_b": "Escolha o segundo município",
   "br.cmp.pick_b_sub": "Digite o nome; os municípios de tamanho parecido estão na página de {a}.",
 

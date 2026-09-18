@@ -103,6 +103,26 @@ export function hasValor(n: number | null | undefined): boolean {
 const ROMAN = /^m*(c[md]|d?c{0,3})(x[cl]|l?x{0,3})(i[xv]|v?i{0,3})$/;
 const TITLE_SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "as", "os",
   "ao", "aos", "à", "às", "em", "no", "na", "nos", "nas", "para", "por", "com", "sem", "sob"]);
+/** Sigles et formes juridiques qui restent en capitales : la casse de titre
+ *  écrivait « P.r.m. Serviços » et « Banco do Brasil S/a ». Un jeton reste tel
+ *  quel s'il porte un point (P.R.M.), une barre (S/A), un chiffre, s'il est
+ *  connu, ou s'il est court et sans voyelle (CNPJ, LTDA reste dans la liste). */
+const SIGLAS_PT = new Set(["SA", "S/A", "LTDA", "EIRELI", "ME", "EPP", "MEI", "SPE", "CIA", "EPC", "SS",
+  "CNPJ", "CPF", "SUS", "IBGE", "INSS", "FGTS", "PIB", "UFPE", "UPE", "IFPE", "SESC", "SENAC", "SENAI", "SEBRAE",
+  "BNDES", "CELPE", "COMPESA", "CTTU", "EMLURB", "URB", "CDU", "CSU", "UPA", "USF", "UBS", "ONG", "OSC", "OS",
+  "PE", "PCR", "PMR", "TCE", "TJPE", "MPPE", "DPE", "CREA", "CRM", "OAB", "IPSEP", "RPA", "COP", "GTI", "TI"]);
+
+function keepsCaps(w: string): boolean {
+  const core = w.replace(/[^A-Za-zÀ-ÿ0-9./]/g, "");
+  if (!core) return false;
+  if (SIGLAS_PT.has(core.toLocaleUpperCase("pt-BR"))) return true;
+  if (core !== core.toLocaleUpperCase("pt-BR")) return false;
+  if (/\d/.test(core)) return true;
+  if (/\./.test(core) && core.replace(/\./g, "").length <= 5) return true;
+  if (core.includes("/") && core.length <= 5) return true;
+  return core.length <= 4 && !/[AEIOUÁÉÍÓÚÂÊÔÃÕÀ]/.test(core);
+}
+
 /** De-shout an ALL-CAPS administrative string to Title Case (pt-BR), keeping
  *  connectives lowercase: "CONTRATAÇÃO DE EMPRESA" → "Contratação de Empresa".
  *  A cosmetic mitigation only — it de-shouts, it does not plain-language the
@@ -113,11 +133,17 @@ export function titleCasePt(s: string | null | undefined): string {
   const letters = s.replace(/[^A-Za-zÀ-ÿ]/g, "");
   const upper = letters.replace(/[^A-ZÀ-Þ]/g, "");
   if (!letters || upper.length / letters.length < 0.7) return s; // already mixed-case
-  return s.toLocaleLowerCase("pt-BR").split(/\s+/)
-    .map((w, i) => (i > 0 && TITLE_SMALL.has(w)) ? w
+  return s.split(/\s+/)
+    .map((w, i) => {
+      if (keepsCaps(w)) return w;
+      const low = w.toLocaleLowerCase("pt-BR");
+      if (i > 0 && TITLE_SMALL.has(low)) return low;
       // Roman numerals keep their capitals: "PAPA JOAO XXIII" → "Papa Joao XXIII".
-      : w.length > 1 && ROMAN.test(w) ? w.toLocaleUpperCase("pt-BR")
-      : w ? w[0].toLocaleUpperCase("pt-BR") + w.slice(1) : w)
+      if (low.length > 1 && ROMAN.test(low)) return w.toLocaleUpperCase("pt-BR");
+      // La première LETTRE, pas le premier caractère : « (PREPARO » donnait
+      // « (preparo » parce que la parenthèse absorbait la capitale.
+      return low.replace(/\p{L}/u, (c) => c.toLocaleUpperCase("pt-BR"));
+    })
     .join(" ");
 }
 

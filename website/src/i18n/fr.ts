@@ -6948,6 +6948,8 @@ const fr: Record<string, string> = {
   'br.cmp.u.how': 'Comment lire cette comparaison',
   'br.cmp.u.how_body': 'Les montants sont les dépenses payées (et les recettes réalisées nettes) divisées par la population estimée par l’IBGE, la même année pour les deux. Une fonction absente d’un côté est une fonction que ce município n’a pas déclarée cette année-là, pas un zéro. Deux municípios de population proche se comparent mieux.',
   'br.cmp.foot': 'Source : SICONFI, Trésor national (DCA, annexes I-C et I-E) ; population IBGE. Par habitant, année {y}.',
+  'br.cmp.pick_a': 'Comparer deux municípios',
+  'br.cmp.pick_a_sub': 'Choisissez le premier município ; le second vient à l\'écran suivant.',
   'br.cmp.pick_b': 'Choisir le second município',
   'br.cmp.pick_b_sub': 'Tapez son nom ; les municípios de taille proche sont sur la page de {a}.',
 

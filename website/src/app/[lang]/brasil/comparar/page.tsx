@@ -40,7 +40,12 @@ function side(m: NonNullable<ReturnType<typeof findMunicipio>>, d: BudgetData, y
 export default async function CompararPage({ searchParams }: { searchParams: Promise<{ a?: string; b?: string }> }) {
   const sp = await searchParams;
   const a = sp.a ? findMunicipio(sp.a) : null;
-  if (!a) notFound();
+  // Sans município, la page est le champ qui en choisit un — elle répondait 404
+  // (2026-09-18), alors que son équivalent français montre un sélecteur.
+  if (!a) {
+    const empty = { nome: "", slug: "", uf: "", pop: 0, funcoes: [] } as unknown as CmpSide;
+    return <CompararClient d={{ a: empty, b: empty, year: 0 }} pickFirst />;
+  }
   const b = sp.b ? findMunicipio(sp.b) : null;
   const da = await loadMunicipioBudget(a.id);
   if (!da) notFound();

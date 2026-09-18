@@ -42,6 +42,8 @@ export default function RegistryChrome({
   const siteLinks = [{ href: homeHref, labelKey: "fx.nav.link.home" }];
   const pathname = usePathname() ?? places[0]?.path ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  // La loupe du téléphone ouvre le menu puis met le curseur dans le champ.
+  const [focusSearch, setFocusSearch] = useState(false);
 
   // A path outside every registered place (the country hub, a município
   // page) gets the site bar alone : no borrowed tabs row.
@@ -59,6 +61,14 @@ export default function RegistryChrome({
     }
   }, [menuOpen]);
   useEffect(() => setMenuOpen(false), [pathname]);
+  useEffect(() => {
+    if (!menuOpen || !focusSearch) return;
+    const id = window.setTimeout(() => {
+      document.querySelector<HTMLInputElement>(".fx-overlay-picker input")?.focus();
+      setFocusSearch(false);
+    }, 60);
+    return () => window.clearTimeout(id);
+  }, [menuOpen, focusSearch]);
 
   const drawerOpen = useDrawerOpen();
   // A drawer is a modal over the current page — don't light up whatever
@@ -99,6 +109,23 @@ export default function RegistryChrome({
         ) : null}
         <PlaceSwitcher variant="nav" label={placeName ?? t(`chrome.country.${country}`)} />
         {trailing}
+        {/* Sur téléphone, le champ de la barre est masqué sous 980 px : la loupe
+            ouvre le menu et donne le focus au champ qui s'y trouve déjà. Sans
+            elle, une page município n'offrait plus aucune recherche
+            (2026-09-18), alors que la barre française garde la sienne. */}
+        {country === "br" ? (
+          <button
+            type="button"
+            className="fx-nav-search"
+            aria-label={t("br.hub.find_h")}
+            onClick={() => { setMenuOpen(true); setFocusSearch(true); }}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="20" y1="20" x2="16.5" y2="16.5" />
+            </svg>
+          </button>
+        ) : null}
         <button
           type="button"
           className="fx-menu-btn"

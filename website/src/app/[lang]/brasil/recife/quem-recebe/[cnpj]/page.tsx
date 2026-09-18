@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { loadRecipient } from "@/lib/br/recife-data";
@@ -34,7 +35,7 @@ export default async function RecebedorPage({ params }: { params: Promise<{ cnpj
         <Link href="/brasil/recife/quem-recebe" className="fx-page-kicker" style={{ textDecoration: "none" }}>
           ← Recife · Quem recebe
         </Link>
-        <h1 className="fx-page-title">{rec.nome}</h1>
+        <h1 className="fx-page-title">{titleCasePt(rec.nome)}</h1>
         <p className="fx-page-lede fx-answer">{recipientAnswer(rec, locale).answer}</p>
         <PageJsonLd title={recipientAnswer(rec, locale).title} description={recipientAnswer(rec, locale).answer} path={`/brasil/recife/quem-recebe/${cnpj}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>

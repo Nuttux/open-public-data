@@ -58,7 +58,7 @@ export function recipientRelated(rec: RecipientDetail, locale: RecifeLocale): Re
     });
     for (const r of tema.top_recebedores.filter((r) => !seen.has(r.cnpj) && r.total_pago > 0 && loadRecipient(r.cnpj)).slice(0, 2)) {
       seen.add(r.cnpj);
-      rows.push({ href: `${BASE}/quem-recebe/${r.cnpj}`, label: r.nome, sub: t("br.recife.related.same_tema"), amount: brl(r.total_pago) });
+      rows.push({ href: `${BASE}/quem-recebe/${r.cnpj}`, label: titleCasePt(r.nome), sub: t("br.recife.related.same_tema"), amount: brl(r.total_pago) });
     }
   }
   const main = (rec.by_orgao ?? []).find((o) => o.slug && loadOrgao(o.slug));
