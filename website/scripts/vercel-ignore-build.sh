@@ -13,11 +13,14 @@
 
 set -u
 
-# A manual lever: "[skip deploy]" in the commit message. Safe by construction,
-# the next build still compares against the last deployed commit.
-case "${VERCEL_GIT_COMMIT_MESSAGE:-}" in
+# A manual lever: "[skip deploy]" in the SUBJECT line of the commit. Safe by
+# construction, the next build still compares against the last deployed commit.
+# Subject only: the commit that introduced this script described the token in
+# its body and cancelled its own preview.
+subject="$(printf '%s' "${VERCEL_GIT_COMMIT_MESSAGE:-}" | head -n 1)"
+case "$subject" in
   *"[skip deploy]"*)
-    echo "ignore-build: [skip deploy] in the commit message, skipping."
+    echo "ignore-build: [skip deploy] in the commit subject, skipping."
     exit 0
     ;;
 esac
