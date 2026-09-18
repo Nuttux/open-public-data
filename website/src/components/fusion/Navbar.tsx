@@ -26,7 +26,7 @@ import { useDrawerOpen } from "@/lib/drawerState";
 // /france/comparer…) or the Daily Bread tool under a city.
 function isFranceScope(pathname: string): boolean {
   const s = scopeOf(pathname);
-  return s?.country === "france" && (s.place === null || s.section === "daily-bread");
+  return s?.country === "france" && (s.place === null || s.section === "simulateur-prelevements");
 }
 
 /** The French city or commune a path is about, if any. */
@@ -148,7 +148,6 @@ export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
             <BrandMark />
             <span>{t("fx.nav.brand")}</span>
           </Link>
-          {commune ? <Link href={`/france/${commune.slug}`} className="fx-brand-city" onClick={() => trackNav(`/france/${commune.slug}`, "fx.nav.brand_city", "brand")}>{commune.nom}</Link> : null}
         </div>
         {/* The site bar (2026-09-16): the same four entries everywhere, so a reader
             who lands mid-site sees in one glance that there are other communes,

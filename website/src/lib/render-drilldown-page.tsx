@@ -71,7 +71,7 @@ const VALID_BUCKETS = new Set<BucketKey>(["secu", "etat", "local"]);
 export type DrilldownVoice = "perso" | "impersonal";
 
 export type DrilldownBasePath =
-  | "/france/daily-bread"
+  | "/france/simulateur-prelevements"
   | "/france/budget";
 
 export type DrilldownKind =
@@ -115,7 +115,7 @@ function shellVoice(voice: DrilldownVoice): DrilldownShellVoice {
 /**
  * Rend une page drill-down (drawer ou standalone) en factorisant la totalité
  * de la logique commune. À utiliser depuis chaque `page.tsx` sous
- * `/france/daily-bread/...` et `/france/budget/...` — voir
+ * `/france/simulateur-prelevements/...` et `/france/budget/...` — voir
  * `app/.../page.tsx` pour les call sites.
  */
 export async function renderDrilldownPage(

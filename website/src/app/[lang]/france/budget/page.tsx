@@ -524,7 +524,7 @@ export default async function FranceBudgetPage({
             subtitle={t("budget.cta.daily_bread.body")}
           />
           <Link
-            href={profileQs ? `/france/daily-bread?${profileQs}` : "/france/daily-bread"}
+            href={profileQs ? `/france/simulateur-prelevements?${profileQs}` : "/france/simulateur-prelevements"}
             className="fx-btn fx-btn-primary"
             style={{ marginTop: 8 }}
           >

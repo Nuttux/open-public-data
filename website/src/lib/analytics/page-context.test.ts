@@ -29,7 +29,7 @@ const cases: [string, Partial<ReturnType<typeof pageContext>>][] = [
   ["/fr/france/marseille/subventions/theme/culture", { page_tier: "hub", page_city: "marseille", page_kind: "fiche", page_entity_type: "theme" }],
   ["/fr/france/budget", { page_country: "fr", page_tier: "national", page_city: null, page_family: "budget", page_kind: "hub", page_pattern: "/france/budget" }],
   ["/fr/france/budget/bucket/local/dept/93", { page_tier: "national", page_kind: "fiche", page_entity_type: "dept", page_pattern: "/france/budget/bucket/local/dept/{n}" }],
-  ["/fr/france/daily-bread/bucket/local", { page_family: "daily-bread", page_kind: "hub" }],
+  ["/fr/france/simulateur-prelevements/bucket/local", { page_family: "simulateur-prelevements", page_kind: "hub" }],
   ["/fr/france/dette", { page_tier: "national", page_family: "dette", page_kind: "hub" }],
   ["/en/usa/san-francisco", { page_country: "us", page_tier: "hub", page_city: "san-francisco", page_kind: "city", page_pattern: "/usa/san-francisco" }],
   ["/en/usa/san-francisco/payroll/role/nurse", { page_kind: "fiche", page_entity_type: "role", page_pattern: "/usa/san-francisco/payroll/role/{slug}" }],
