@@ -149,7 +149,7 @@ hero's deck, the scrolling band, the chips), or a `data-block="…"` name, else
 | group | events |
 |---|---|
 | drawer | `drawer_open` `drawer_close` `drawer_back` |
-| search | `search_modal_open` → `search_modal_query` (hashed text, `results_count`) → `search_modal_select` · explorers: `search_submit` (the reader's words, hashed) vs `search_seed_click` (our seed) → `search_result_click` · `results_expand` `load_more` `filter_change` `filter_reset` |
+| search | `search_modal_open` → `search_modal_query` (hashed text, `results_count`) → `search_modal_select` · explorers: `search_submit` (the reader's words, hashed) vs `search_seed_click` (our seed) → `search_result_click` · `load_more` `filter_change` `filter_reset` |
 | charts / maps | `chart_element_click` (`chart = annees_rail` with `year` and `open` when a year of the rail is tapped; the budget and explorer charts with their own ids) `choropleth_click` `map_marker_click` `stress_test_run` |
 | chrome | `nav_click` `mobile_menu_toggle` `scope_change` `lang_switch` `for_cities_view` `for_cities_read` |
 | chat | `chat_chips_shown` · `chat_question` with `origin` ∈ typed / suggestion / followup / page_chip |
