@@ -295,7 +295,7 @@ export function nationalDailyBreadHub(): FrHub {
   const db = loadDailyBread();
   const irYear = db?.fiscal_constants?.ir?.date_reference?.slice(0, 4);
   return {
-    path: "/france/daily-bread",
+    path: "/france/simulateur-prelevements",
     parents: [],
     crumb: { fr: "Daily Bread", en: "Daily Bread" },
     fr: {

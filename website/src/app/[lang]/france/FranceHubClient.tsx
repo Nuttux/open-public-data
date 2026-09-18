@@ -108,7 +108,7 @@ export default function FranceHubClient({ d }: { d: FranceHubData }) {
           <div className="fx-sec-a-related">
             <V3Section id="related" title={t("fx.sec.see_also")}>
               <V3Row href="/france/budget" label={t("fr.hub.r.etat")} subText={t("fr.hub.r.etat_sub")} />
-              <V3Row href="/france/daily-bread" label={t("fr.hub.r.contrib")} subText={t("fr.hub.r.contrib_sub")} />
+              <V3Row href="/france/simulateur-prelevements" label={t("fr.hub.r.contrib")} subText={t("fr.hub.r.contrib_sub")} />
               <V3Row href="/france/comparer" label={t("fr.hub.r.comparer")} subText={t("fr.hub.r.comparer_sub")} />
               <V3Row href="/analyses" label={t("fr.hub.r.analyses")} subText={t("fr.hub.r.analyses_sub")} />
               <V3Row href="/usa/san-francisco" label="San Francisco" subText={t("fr.hub.r.sf")} />

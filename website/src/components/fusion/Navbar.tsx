@@ -26,7 +26,7 @@ import { useDrawerOpen } from "@/lib/drawerState";
 // /france/comparer…) or the Daily Bread tool under a city.
 function isFranceScope(pathname: string): boolean {
   const s = scopeOf(pathname);
-  return s?.country === "france" && (s.place === null || s.section === "daily-bread");
+  return s?.country === "france" && (s.place === null || s.section === "simulateur-prelevements");
 }
 
 /** The French city or commune a path is about, if any. */

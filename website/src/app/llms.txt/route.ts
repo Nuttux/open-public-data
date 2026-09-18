@@ -96,7 +96,7 @@ and Brazil's hubs exist too.
 
 - [State budget](${u}/fr/france/budget): where national revenue comes from and
   where it goes.
-- [Daily bread](${u}/fr/france/daily-bread): the same money seen per inhabitant,
+- [Daily bread](${u}/fr/france/simulateur-prelevements): the same money seen per inhabitant,
   per day.
 - [Debt](${u}/fr/france/dette) · [Taxation](${u}/fr/france/fiscalite) ·
   [The State](${u}/fr/france/etat)

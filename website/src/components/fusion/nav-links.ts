@@ -10,7 +10,7 @@ export type NavLink = {
 export const NATIONAL_NAV_LINKS: NavLink[] = [
   { href: "/",                          labelKey: "fx.nav.link.home" },
   { href: "/france/budget",             labelKey: "fx.nav.link.budget_france" },
-  { href: "/france/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
+  { href: "/france/simulateur-prelevements",   labelKey: "fx.nav.link.daily_bread" },
 ];
 
 const LIEUX = { section: "lieux", labelKey: "fx.nav.link.lieux" };
