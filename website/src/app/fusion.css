@@ -14047,7 +14047,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   cursor: pointer;
   list-style: none;
   display: grid;
-  grid-template-columns: 48px 1fr auto;
+  /* Deux colonnes depuis que les numéros 01-06 sont partis (18/09/2026) : la
+     question tenait dans la colonne de 48 px et se cassait mot par mot. */
+  grid-template-columns: 1fr auto;
   align-items: baseline;
   gap: 16px;
   padding: 22px 0;
@@ -14098,7 +14100,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 
 .theme-db-scrolly .db-p-method-faq-body {
-  padding: 0 0 28px 64px;
+  /* Plus de retrait de 64 px : la colonne des numéros n'existe plus. */
+  padding: 0 0 28px;
   font-family: var(--pf-serif);
   font-size: 16px;
   line-height: 1.6;
@@ -14174,14 +14177,14 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-db-scrolly .db-p-method-q { font-size: 36px; }
   .theme-db-scrolly .db-p-method-deck { font-size: 17px; }
   .theme-db-scrolly .db-p-method-faq-item summary {
-    grid-template-columns: 36px 1fr 24px;
+    grid-template-columns: 1fr 24px;
     gap: 12px;
     padding: 18px 0;
     font-size: 18px;
   }
   .theme-db-scrolly .db-p-method-faq-num { font-size: 11px; }
   .theme-db-scrolly .db-p-method-faq-body {
-    padding: 0 0 22px 48px;
+    padding: 0 0 22px;
     font-size: 15px;
   }
 }

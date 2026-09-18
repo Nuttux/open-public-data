@@ -5152,7 +5152,7 @@ const fr: Record<string, string> = {
   // ─ Méthode (refonte 2026-05 — anciennement §08 Caveats, ancien §06 COFOG retiré) ─
   'db.method.num': 'Méthode',
   'db.method.title': 'Comment ce calcul est fait,\n{em}ses sources, ses limites.{/em}',
-  'db.method.intro': "Ton estimation repose sur les barèmes officiels (URSSAF, CGI, DGFiP) appliqués à un profil simplifié. Voici ce qui entre dans le calcul, ce qui n'y est pas, et d'où viennent les chiffres.",
+  'db.method.intro': "Votre estimation repose sur les barèmes officiels (URSSAF, CGI, DGFiP) appliqués à un profil simplifié. Voici ce qui entre dans le calcul, ce qui n'y est pas, et d'où viennent les chiffres.",
   // Questions (résumés visibles)
   'db.method.q.hypotheses': 'Comment on calcule vos prélèvements',
   'db.method.q.exclusions': "Ce qui n'est pas dans le calcul",
@@ -5162,8 +5162,8 @@ const fr: Record<string, string> = {
   'db.method.q.comparaison': "Comparaison avec d'autres outils",
   'db.method.q.limites': "Limites éditoriales : ce que la page ne dit pas",
   // 01 — Hypothèses
-  'db.method.body.hypotheses.intro': "Chaque source de revenu (salaire, pension, capital, micro-entrepreneur) suit ses propres règles. Le total que tu vois additionne les quatre.",
-  'db.method.body.hypotheses.salarie': "Salarié privé : cotisations salariées hors CSG ≈ 12,5 % du brut + CSG/CRDS ≈ 9,7 % (URSSAF 2024) → ratio brut/net ≈ 1,29. Cotisations patronales (~42 % du brut) sont signalées séparément — elles font partie du coût employeur, pas de ton net.",
+  'db.method.body.hypotheses.intro': "Chaque source de revenu (salaire, pension, capital, micro-entrepreneur) suit ses propres règles. Le total que vous voyez additionne les quatre.",
+  'db.method.body.hypotheses.salarie': "Salarié privé : cotisations salariées hors CSG ≈ 12,5 % du brut + CSG/CRDS ≈ 9,7 % (URSSAF 2024) → ratio brut/net ≈ 1,29. Cotisations patronales (~42 % du brut) sont signalées séparément — elles font partie du coût employeur, pas de votre net.",
   'db.method.body.hypotheses.pension': "Pension : taux CSG variable (0 % / 3,8 % / 6,6 % / 8,3 %) selon RFR (DGFiP barème 2025). On applique le taux moyen pondéré pour le profil par défaut.",
   'db.method.body.hypotheses.capital': "Revenus du capital : PFU 30 % par défaut (12,8 % IR + 17,2 % prélèvements sociaux), CGI art. 200 A. Option barème progressif non simulée.",
   'db.method.body.hypotheses.indep': "Micro-entrepreneur : cotisations URSSAF selon activité — vente (~12,3 %), services BIC (~21,2 %), services BNC (~21,1 %). Versement libératoire IR non appliqué par défaut.",
@@ -5172,10 +5172,10 @@ const fr: Record<string, string> = {
   'db.method.body.hypotheses.tf': "Taxe foncière (proxy commune) : impôts locaux par habitant × 0,4 (part TF + TH résidences secondaires) × 2,2 (taille moyenne d'un ménage). Approximation pour propriétaires occupants moyens.",
   'db.method.body.hypotheses.srcs_label': 'Sources',
   // 02 — Exclusions
-  'db.method.body.exclusions.intro': "Pour rester lisible, le calcul ignore plusieurs flux qui peuvent matériellement changer ton total réel — dans les deux sens.",
+  'db.method.body.exclusions.intro': "Pour rester lisible, le calcul ignore plusieurs flux qui peuvent matériellement changer votre total réel — dans les deux sens.",
   'db.method.body.exclusions.credits': "Réductions et crédits d'impôt : CIR / R&D, garde d'enfant, dons, frais réels, emploi à domicile. Peuvent réduire l'IR effectif de plusieurs centaines à milliers d'euros.",
-  'db.method.body.exclusions.rfr': "IR consolidé sur RFR multi-sources : si tu cumules salaire + capital + indépendant, l'IR réel est calculé sur la somme (RFR), pas source par source. Le calcul perso ici additionne quatre IR séparés — approximation acceptable pour profils simples, à reconsidérer pour cumuls importants.",
-  'db.method.body.exclusions.prestations': "Prestations sociales reçues (RSA, APL, AAH, allocations familiales, prime d'activité…) : pas soustraites du total. Le calcul montre ce que tu paies, pas ton solde net avec l'État.",
+  'db.method.body.exclusions.rfr': "IR consolidé sur RFR multi-sources : si vous cumulez salaire + capital + indépendant, l'IR réel est calculé sur la somme (RFR), pas source par source. Le calcul perso ici additionne quatre IR séparés — approximation acceptable pour profils simples, à reconsidérer pour cumuls importants.",
+  'db.method.body.exclusions.prestations': "Prestations sociales reçues (RSA, APL, AAH, allocations familiales, prime d'activité…) : pas soustraites du total. Le calcul montre ce que vous payez, pas votre solde net avec l'État.",
   'db.method.body.exclusions.local_grain': "Détail nature × fonction au niveau collectivités : OFGL publie soit nature soit fonctionnelle, pas le croisé fin par commune. Le drilldown local s'arrête au niveau bloc communal / département / région.",
   // 03 — Sources
   'db.method.body.sources.intro': "Toutes les valeurs proviennent de sources publiques officielles — barèmes pour le calcul perso, comptes nationaux pour la ventilation Sécu / État / Local.",
@@ -5189,9 +5189,9 @@ const fr: Record<string, string> = {
   'db.method.body.sources.drees': "Comptes santé, décomposition médecine de ville / hôpital / médicaments.",
   // 04 — Périmètre
   'db.method.body.perimetre.intro': "Les Administrations Publiques (APU) se décomposent en trois sous-secteurs comptables. Daily Bread utilise une vue CAUSALE : chaque impôt va à l'affectataire LÉGAL réel, pas une répartition proportionnelle. (Pour la vue proportionnelle Eurostat, voir Budget Explorer /fr/national/budget.)",
-  'db.method.body.perimetre.s1311': "S1311 État central + ODAC ≈ 676 Md€/an — ministères, opérateurs, charge de la dette. Tu y contribues via {b}ton IR{/b} + {b}45 % de ta TVA{/b} (part nette État, PLF V&M tome I).",
-  'db.method.body.perimetre.s1313': "S1313 APUL collectivités ≈ 334 Md€/an — communes, EPCI, départements, régions. Tu y contribues via {b}ta TF{/b} (si propriétaire) + {b}24 % de ta TVA{/b} (compensation TH/CVAE).",
-  'db.method.body.perimetre.s1314': "S1314 ASSO Sécurité sociale ≈ 798 Md€/an — CNAM, CNAV, CAF, Unédic, AT-MP. Tu y contribues via {b}tes cotisations sociales{/b} + {b}ta CSG/CRDS{/b} + {b}31 % de ta TVA{/b} (TVA affectée Sécu) + {b}prélèvements sociaux capital (17,2 %){/b}.",
+  'db.method.body.perimetre.s1311': "S1311 État central + ODAC ≈ 676 Md€/an — ministères, opérateurs, charge de la dette. Vous y contribuez via {b}votre IR{/b} + {b}45 % de votre TVA{/b} (part nette État, PLF V&M tome I).",
+  'db.method.body.perimetre.s1313': "S1313 APUL collectivités ≈ 334 Md€/an — communes, EPCI, départements, régions. Vous y contribuez via {b}votre TF{/b} (si propriétaire) + {b}24 % de votre TVA{/b} (compensation TH/CVAE).",
+  'db.method.body.perimetre.s1314': "S1314 ASSO Sécurité sociale ≈ 798 Md€/an — CNAM, CNAV, CAF, Unédic, AT-MP. Vous y contribuez via {b}vos cotisations sociales{/b} + {b}votre CSG/CRDS{/b} + {b}31 % de votre TVA{/b} (TVA affectée Sécu) + {b}prélèvements sociaux capital (17,2 %){/b}.",
   'db.method.body.perimetre.caveat_label': "Vue causale vs proportionnelle :",
   'db.method.body.perimetre.caveat_229': "Daily Bread mappe chaque euro d'impôt à son affectataire réel (cotisations → Sécu, IR → État, TVA → 3 caisses selon PLF). Budget Explorer (/fr/national/budget) garde la vue proportionnelle Eurostat S13 (44/37/18) qui montre la part de chaque sous-secteur dans la DÉPENSE publique totale. Les deux sont utiles : causale pour « où va MA contribution », proportionnelle pour « comment se répartit la dépense publique nationale ».",
   // 05 — Pourquoi perso
@@ -5199,20 +5199,20 @@ const fr: Record<string, string> = {
   'db.method.body.pourquoi_perso.p2': "Daily Bread est volontairement simplifié, pour rester accessible sans login fiscal et sans saisie de RFR détaillé. L'objectif : donner un ordre de grandeur lisible et un drilldown profond, pas remplacer impots.gouv.fr.",
   'db.method.body.pourquoi_perso.p3': "Pour le profil salarié, un bouton « Affiner avec OpenFisca » dans le hero éditable lance le calcul exact via l'API publique — utile pour comparer l'estimation MVP à la valeur officielle.",
   // 06 — Comparaison
-  'db.method.body.comparaison.intro': "Selon ce que tu cherches, un autre outil officiel sera plus adapté — voici les principaux.",
+  'db.method.body.comparaison.intro': "Selon ce que vous cherchez, un autre outil officiel sera plus adapté — voici les principaux.",
   'db.method.body.comparaison.impots': "le simulateur officiel DGFiP. Fiable, exhaustif, calcule l'IR exact mais ne ventile pas où va l'argent.",
   'db.method.body.comparaison.openfisca': "le moteur officiel exposé en API. Exhaustif (toutes prestations + impôts), peu lisible pour le grand public.",
   'db.method.body.comparaison.bercy': "explication officielle de la dépense publique, par mission. Pédagogique, mais pas personnalisé.",
   'db.method.body.comparaison.db': "Daily Bread (cette page) — calcul perso narratif + drilldown profond Sécu / État / Collectivités. Approximation assumée, transparente sur ses limites.",
 
   // 07 — Limites éditoriales
-  'db.method.body.limites.intro': "Daily Bread chiffre deux choses : ta contribution salariale directe (cotisations + CSG + IR + TVA) et la dépense publique par habitant. La page ne tente pas de répondre à 'où va MON euro' — la question n'a pas de réponse simple, et toute tentative de soustraction 'tu paies X / tu reçois Y' est philosophiquement bancale.",
-  'db.method.body.limites.patrimoine_title': "Ta contribution réelle dépend de ton patrimoine",
-  'db.method.body.limites.patrimoine_body': "Ce calcul ne saisit que le revenu salarial. Selon ta situation, tu peux contribuer beaucoup plus à des postes spécifiques : taxe foncière (~39 Md€/an, ménages propriétaires), droits de succession et donation (~18 Md€/an, héritiers), PFU sur capital (~9 Md€/an, dividendes et plus-values mobilières), CSG sur capital (~20 Md€/an), plus-values immobilières et fonciers, IS si tu diriges une société. Un foyer riche en patrimoine paie nettement plus que ce que la phrase éditable ci-dessus suggère.",
+  'db.method.body.limites.intro': "Cette page chiffre deux choses : votre contribution salariale directe (cotisations + CSG + IR + TVA) et la dépense publique par habitant. La page ne tente pas de répondre à 'où va MON euro' — la question n'a pas de réponse simple, et toute tentative de soustraction « vous payez X, vous recevez Y » est philosophiquement bancale.",
+  'db.method.body.limites.patrimoine_title': "Votre contribution réelle dépend de votre patrimoine",
+  'db.method.body.limites.patrimoine_body': "Ce calcul ne saisit que le revenu salarial. Selon votre situation, vous pouvez contribuer beaucoup plus à des postes spécifiques : taxe foncière (~39 Md€/an, ménages propriétaires), droits de succession et donation (~18 Md€/an, héritiers), PFU sur capital (~9 Md€/an, dividendes et plus-values mobilières), CSG sur capital (~20 Md€/an), plus-values immobilières et fonciers, IS si vous dirigez une société. Un foyer riche en patrimoine paie nettement plus que ce que la phrase éditable ci-dessus suggère.",
   'db.method.body.limites.nonmarchand_title': "Les biens publics non-marchands sont difficiles à évaluer",
-  'db.method.body.limites.nonmarchand_body': "La dépense publique inclut beaucoup de biens collectifs non-rivaux (route, parc, défense, justice, éclairage public, recherche fondamentale) qui ne se 'consomment' pas comme un bien marchand. La valeur individuelle qu'on en tire ne se chiffre pas. Comparer 'ce que tu paies' à 'ce que la France dépense par habitant' ne traduit pas un rapport service rendu/contribution — c'est juste une mise en perspective de la SCALE.",
+  'db.method.body.limites.nonmarchand_body': "La dépense publique inclut beaucoup de biens collectifs non-rivaux (route, parc, défense, justice, éclairage public, recherche fondamentale) qui ne se 'consomment' pas comme un bien marchand. La valeur individuelle qu'on en tire ne se chiffre pas. Comparer « ce que vous payez » à « ce que la France dépense par habitant » ne traduit pas un rapport service rendu/contribution — c'est juste une mise en perspective des ordres de grandeur.",
   'db.method.body.limites.collectif_title': "La dépense publique est mutualisée et redistributive par construction",
-  'db.method.body.limites.collectif_body': "La Sécu c'est de l'assurance santé/retraite/chômage : tu paies aujourd'hui, tu reçois quand tu en as besoin (et inversement). L'école finance les enfants des autres autant que les tiens. Les retraites sont financées par les actifs pour les retraités d'aujourd'hui. Le cadrage individuel 'mes 856 € contre 2 215 €' rate cette dimension collective : on ne paie pas pour 'recevoir en proportion', on paie pour qu'un système existe.",
+  'db.method.body.limites.collectif_body': "La Sécu c'est de l'assurance santé/retraite/chômage : vous payez aujourd'hui, vous recevez quand vous en avez besoin (et inversement). L'école finance les enfants des autres autant que les vôtres. Les retraites sont financées par les actifs pour les retraités d'aujourd'hui. Le cadrage individuel « mes 856 € contre 2 215 € » rate cette dimension collective : on ne paie pas pour 'recevoir en proportion', on paie pour qu'un système existe.",
 
   // ─ Deep-dives "À l'intérieur de…" (sous chaque panneau Zoom) ─
   'db.deepdive.eyebrow': "À l'intérieur de",
