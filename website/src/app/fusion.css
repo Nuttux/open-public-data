@@ -14047,7 +14047,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   cursor: pointer;
   list-style: none;
   display: grid;
-  grid-template-columns: 48px 1fr auto;
+  /* Deux colonnes depuis que les numéros 01-06 sont partis (18/09/2026) : la
+     question tenait dans la colonne de 48 px et se cassait mot par mot. */
+  grid-template-columns: 1fr auto;
   align-items: baseline;
   gap: 16px;
   padding: 22px 0;
@@ -14098,7 +14100,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 
 .theme-db-scrolly .db-p-method-faq-body {
-  padding: 0 0 28px 64px;
+  /* Plus de retrait de 64 px : la colonne des numéros n'existe plus. */
+  padding: 0 0 28px;
   font-family: var(--pf-serif);
   font-size: 16px;
   line-height: 1.6;
@@ -14174,14 +14177,14 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-db-scrolly .db-p-method-q { font-size: 36px; }
   .theme-db-scrolly .db-p-method-deck { font-size: 17px; }
   .theme-db-scrolly .db-p-method-faq-item summary {
-    grid-template-columns: 36px 1fr 24px;
+    grid-template-columns: 1fr 24px;
     gap: 12px;
     padding: 18px 0;
     font-size: 18px;
   }
   .theme-db-scrolly .db-p-method-faq-num { font-size: 11px; }
   .theme-db-scrolly .db-p-method-faq-body {
-    padding: 0 0 22px 48px;
+    padding: 0 0 22px;
     font-size: 15px;
   }
 }
@@ -21368,3 +21371,198 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-overlay-nav { justify-content: flex-start; padding-top: 22px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search svg { width: 20px; height: 20px; }
 .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:hover, .theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:active { color: var(--ink); box-shadow: 0 0 0 2px var(--bleu); }
+
+/* ── « Ma contribution » sur la grammaire (maquette 2026-09-18) ───────────
+   Le sommaire sous le héros : les mêmes puces que la page commune, dans la
+   largeur des panneaux de la page. Et le repli qui met la prose sous les
+   barres au lieu de la faire lire d'abord. */
+.theme-fusion.db-toc {
+  background: var(--p-paper, #fafaf7);
+  border-bottom: 1px solid rgba(15, 23, 42, .1);
+  padding: 14px 0 16px;
+  position: sticky;
+  top: 52px;
+  z-index: 40;
+}
+.theme-fusion.db-toc .fx-pv-chips { margin: 0; }
+.db-zoom-fold { margin-top: 10px; }
+.db-zoom-fold > summary {
+  cursor: pointer;
+  font: 500 13px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #475569);
+  list-style: none;
+}
+.db-zoom-fold > summary::-webkit-details-marker { display: none; }
+.db-zoom-fold > summary::after { content: " ↓"; }
+.db-zoom-fold[open] > summary::after { content: " ↑"; }
+.db-zoom-fold > summary:hover { color: var(--p-ink, #0f172a); }
+.db-zoom-fold > p { margin-top: 8px; }
+
+/* Les colonnes des barres portent enfin leur nom : à gauche une moyenne par
+   habitant, à droite le total national. « 222 € » se lisait comme « ce que je
+   paie » (Daniel, 18/09/2026). */
+.db-bars-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font: 500 11px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #64748b);
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, .12);
+}
+
+/* ── La carte des dépenses, en liste sur téléphone (2026-09-18) ──────────
+   Le treemap SVG est dessiné en `preserveAspectRatio: none` : sous 800 px il
+   s'écrase, les cellules tombent à 40 px de large et les libellés se coupent
+   en plein mot. La liste de tuiles dit la même chose, lisible. */
+.fx-budget-treemap > svg { display: block; }
+.fx-budget-tiles { display: none; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 800px) {
+  .fx-budget-treemap > svg { display: none; }
+  .fx-budget-tiles { display: block; }
+}
+.fx-budget-tiles li + li { border-top: 1px solid rgba(15, 23, 42, .1); }
+.fx-budget-tile {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 0 17px;
+  text-decoration: none;
+  color: inherit;
+}
+.fx-budget-tile-bar {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  height: 5px;
+  border-radius: 1px;
+}
+.fx-budget-tile-n { font-size: 15px; line-height: 1.3; font-weight: 500; }
+.fx-budget-tile-v { font-size: 15px; font-weight: 600; white-space: nowrap; }
+.fx-budget-tile-v small { display: block; font-weight: 400; font-size: 11px; color: var(--muted, #64748b); text-align: right; }
+.fx-budget-tile:hover .fx-budget-tile-n { text-decoration: underline; }
+
+/* Le repli des recettes : les six plus grosses lignes restent, le reste
+   s'ouvre (2026-09-18). Même écriture que les autres replis du site. */
+.fx-recettes-fold > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 0 2px;
+  font: 500 12px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted, #64748b);
+}
+.fx-recettes-fold > summary::-webkit-details-marker { display: none; }
+.fx-recettes-fold > summary::after { content: " ↓"; }
+.fx-recettes-fold[open] > summary::after { content: " ↑"; }
+.fx-recettes-fold > summary:hover { color: var(--ink, #0f172a); }
+/* Le montant de la carte ne casse plus son unité sur une deuxième ligne
+   (« 289,0 Md€/an » rejetait « Md€/an » sous le nombre à 390 px). */
+.theme-fusion .fx-recettes-card-total { white-space: nowrap; }
+/* Le montant du déficit ne casse plus « Md€ » sur une deuxième ligne. */
+.theme-fusion .fx-recettes-deficit-val { white-space: nowrap; }
+.fx-budget-tiles-fold { display: none; }
+@media (max-width: 800px) { .fx-budget-tiles-fold { display: block; } }
+.fx-budget-tiles-fold > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 0 4px;
+  font: 500 12px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted, #64748b);
+}
+.fx-budget-tiles-fold > summary::-webkit-details-marker { display: none; }
+.fx-budget-tiles-fold > summary::after { content: " ↓"; }
+.fx-budget-tiles-fold[open] > summary::after { content: " ↑"; }
+.fx-budget-tiles-fold .fx-budget-tiles--rest { display: block; }
+/* Sur téléphone, le libellé du déficit et son montant s'empilent : côte à
+   côte, le montant insécable écrasait le libellé à un mot par ligne. */
+@media (max-width: 800px) {
+  .theme-fusion .fx-recettes-deficit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* OpenFisca descend dans Méthode : c'est un réglage de précision, pas
+   l'action principale de la page (2026-09-18). Il y reprend une place de
+   bouton dans le flux, pas d'ancrage en haut à droite du héros. */
+.theme-db-scrolly .db-method-cta {
+  position: static;
+  margin: 14px 0 6px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* La ligne « Cliquez sur… » du héros occupe la rangée du haut, à la place
+   du numéro de section retiré (2026-09-18). Sans ça elle tombait dans une
+   colonne auto et l'icône passait au-dessus du texte. */
+.theme-db-scrolly .db-p-hero-wrap > .fx-v3-hint {
+  grid-area: num;
+  margin: 0 0 2px;
+  /* Les règles du kit sont préfixées `.theme-fusion` ; cette page vit sous
+     `.theme-db-scrolly`, donc la ligne se remet en flex ici. */
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--p-ink);
+  max-width: 60ch;
+}
+.theme-db-scrolly .db-p-hero-wrap > .fx-v3-hint svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--p-accent);
+}
+
+/* Le titre de la page vit dans le héros depuis que le panneau d'intro a
+   disparu (2026-09-18) : il occupe la rangée du haut de la grille. */
+.theme-db-scrolly .db-p-hero-head { grid-area: num; }
+.theme-db-scrolly .db-p-hero-head .db-p-onboarding-kicker { margin: 0 0 6px; }
+.theme-db-scrolly .db-p-hero-head .db-p-onboarding-title { margin: 0 0 10px; }
+.theme-db-scrolly .db-p-hero-head > .fx-v3-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--p-ink);
+  max-width: 60ch;
+}
+.theme-db-scrolly .db-p-hero-head > .fx-v3-hint svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--p-accent);
+}
+/* Méthode : un seul dépliant qui porte les six thèmes. */
+.theme-db-scrolly .db-p-method-all > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 0 4px;
+  font: 500 13px/1.4 var(--pf-mono, ui-monospace, monospace);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #475569);
+}
+.theme-db-scrolly .db-p-method-all > summary::-webkit-details-marker { display: none; }
+.theme-db-scrolly .db-p-method-all > summary::after { content: " ↓"; }
+.theme-db-scrolly .db-p-method-all[open] > summary::after { content: " ↑"; }
+.theme-db-scrolly .db-p-method-all > summary:hover { color: var(--p-ink); }

@@ -10,9 +10,10 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
-import { NextDoor } from "@/components/fiche/Doors";
-import { V3Hint } from "@/components/fiche/v3";
+import { Door, NextDoor } from "@/components/fiche/Doors";
+import { V3Hint, V3Section } from "@/components/fiche/v3";
 import { useT, useLocale, useTRaw } from "@/lib/localeContext";
+import SectionChips from "@/components/fiche/SectionChips";
 import { deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { makeFmt } from "@/lib/fmt";
@@ -253,51 +254,6 @@ function Reveal({ children }: { children: (revealed: boolean) => ReactNode }) {
   const [armed, setArmed] = useState(false);
   useEffect(() => { setArmed(true); }, []);
   return <section ref={ref} className={`fx-pv-section${armed ? " fx-reveal" : ""}${revealed ? " is-revealed" : ""}`}>{children(revealed)}</section>;
-}
-
-function SectionChips({ items, label, onPick }: { items: { id: string; label: string; value?: string }[]; label: string; onPick?: (id: string) => void }) {
-  const [active, setActive] = useState(items[0]?.id ?? "");
-  const barRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const targets = items.map((i) => document.getElementById(i.id)).filter((el): el is HTMLElement => Boolean(el));
-    if (!targets.length) return;
-    // La section active = la dernière dont le titre est passé sous la barre.
-    const pick = () => {
-      let current = targets[0].id;
-      for (const el of targets) {
-        if (el.getBoundingClientRect().top <= 140) current = el.id;
-      }
-      setActive(current);
-    };
-    pick();
-    window.addEventListener("scroll", pick, { passive: true });
-    window.addEventListener("resize", pick);
-    return () => {
-      window.removeEventListener("scroll", pick);
-      window.removeEventListener("resize", pick);
-    };
-  }, [items]);
-
-  useEffect(() => {
-    const bar = barRef.current;
-    const chip = bar?.querySelector<HTMLAnchorElement>(`a[href="#${active}"]`);
-    if (!bar || !chip) return;
-    const cl = chip.offsetLeft;
-    const cr = cl + chip.offsetWidth;
-    if (cl < bar.scrollLeft + 8) bar.scrollTo({ left: Math.max(0, cl - 16), behavior: "smooth" });
-    else if (cr > bar.scrollLeft + bar.clientWidth - 8) bar.scrollTo({ left: cr - bar.clientWidth + 16, behavior: "smooth" });
-  }, [active]);
-
-  return (
-    <nav className="fx-pv-chips" aria-label={label} ref={barRef}>
-      {items.map((s) => (
-        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "location" : undefined} onClick={() => onPick?.(s.id)}>
-          {s.label}{s.value ? <b className="tnum">{s.value}</b> : null}
-        </a>
-      ))}
-    </nav>
-  );
 }
 
 function ShareButton({ label, title, done }: { label: string; title: string; done: string }) {
@@ -602,8 +558,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
   // The chips are the page's doors: each carries the number it opens; a chip on a row opens the row (2026-09-16).
   const toc = [
-    ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer"), value: other ? fill("fx.pv.chip_vs", { nom: nomDistinct(other) }) : undefined }] : []),
     { id: "a-quoi-sert", label: t("fx.pv.toc.fonc"), value: euro(data.depenses) },
+    ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer"), value: other ? fill("fx.pv.chip_vs", { nom: nomDistinct(other) }) : undefined }] : []),
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit"), value: euro(invYear.total.depenses) }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats"), value: euro(ly ? ly.montant : marches.total.montant) }] : []),
     ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe"), value: `${tfRate(taxeFonciere.tfb)}${isEn ? "%" : " %"}` }] : []),
@@ -690,70 +646,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
           <SectionChips items={toc} label={t("fx.pv.chips_aria")} onPick={(id) => { if (["taxe-fonciere", "dette", "construit", "achats"].includes(id)) toggleFold(id, true); }} />
 
-          {/* 2. Comparer — right under the number (2026-09-18) : « est-ce beaucoup ? »
-              is the reader's second question, the neighbours are what they scroll
-              for, and a neighbour is the most clicked link of the site. Five lines,
-              each with its verdict against the neighbour and against the towns of
-              the same size ; the strata verdicts show even before a neighbour is
-              picked. The picker sits under the bars, once the reader has seen them. */}
-          {compare && (
-            <Reveal>{() => (<>
-              <H2 id="comparer" main>{t("fx.pv.comparer")}</H2>
-              <div className="fx-pv-pick">
-                <span className="fx-pv-pick-now">
-                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
-                </span>
-                {!other ? <CommunePicker
-                  label={t("fx.pv.changer")}
-                  exclude={commune.slug}
-                  current={null}
-                  suggestions={compare.options
-                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
-                    .slice(0, 6)
-                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
-                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
-                /> : null}
-              </div>
-              <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
-                {other ? <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div> : null}
-                {CMP_ROWS.map((row, i) => (
-                  <Fragment key={row.key}>
-                    {cmpRow(row)}
-                    {i === 1 && other && compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
-                      <div className="row">
-                        <span className="lab">{t("fx.pv.kpi_tfb")}</span>
-                        <div className="track">
-                          <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                          <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                        </div>
-                        <span className="val tnum">
-                          <span><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"}</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"} {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
-                          <span className="fx-pv-vs-verdict">{verdictVs(compare.me.taux.tfb, other.taux.tfb, nomDistinct(other))}</span>
-                        </span>
-                      </div>
-                    ) : null}
-                  </Fragment>
-                ))}
-                {other ? (<>
-                  <div className="fx-pv-pick fx-pv-pick--after">
-                    <CommunePicker
-                  label={t("fx.pv.changer")}
-                  exclude={commune.slug}
-                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
-                  suggestions={compare.options
-                    .filter((o) => o.slug !== other?.slug)
-                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
-                    .slice(0, 6)
-                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
-                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
-                />
-                  </div>
-                  <p className="fx-pv-more"><Link className="fx-pv-link" href={`/france/comparer/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
-                </>) : null}
-                <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
-              </div>
-            </>)}</Reveal>
-          )}
 
 
           {/* ── The scene: « À quoi sert l'argent ? », cut by public policy or by nature. The
@@ -955,6 +847,69 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               )}
             </div>
           ) : null}
+          {/* ── Comparer, après la scène (2026-09-18, Daniel : « pourquoi comparer
+              au-dessus de À quoi sert l'argent ? ») : on dit d'abord ce que la
+              commune fait de son argent, on compare ensuite. Cinq lignes, un
+              verdict face à la voisine et un face aux communes de même taille. */}
+          {compare && (
+            <Reveal>{() => (<>
+              <H2 id="comparer">{t("fx.pv.comparer")}</H2>
+              <div className="fx-pv-pick">
+                <span className="fx-pv-pick-now">
+                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
+                </span>
+                {!other ? <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={null}
+                  suggestions={compare.options
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                /> : null}
+              </div>
+              <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
+                {other ? <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div> : null}
+                {CMP_ROWS.map((row, i) => (
+                  <Fragment key={row.key}>
+                    {cmpRow(row)}
+                    {i === 1 && other && compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
+                      <div className="row">
+                        <span className="lab">{t("fx.pv.kpi_tfb")}</span>
+                        <div className="track">
+                          <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                          <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                        </div>
+                        <span className="val tnum">
+                          <span><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"}</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })}{en ? "%" : " %"} {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
+                          <span className="fx-pv-vs-verdict">{verdictVs(compare.me.taux.tfb, other.taux.tfb, nomDistinct(other))}</span>
+                        </span>
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))}
+                {other ? (<>
+                  <div className="fx-pv-pick fx-pv-pick--after">
+                    <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
+                  suggestions={compare.options
+                    .filter((o) => o.slug !== other?.slug)
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                />
+                  </div>
+                  <p className="fx-pv-more"><Link className="fx-pv-link" href={`/france/comparer/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
+                </>) : null}
+                <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
+              </div>
+            </>)}</Reveal>
+          )}
+
           {/* ── The other numbers (2026-09-16): four rows, the concrete first — works,
               purchases, then taxes, debt. Each row shows its number and its two lines
               without a click; what needs a table sits behind a link that says what it opens. */}
@@ -1119,6 +1074,22 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             methodAnchor="c-villes"
           />
           <RelatedLinks block={related} />
+          {/* La porte manquante (maquette 2026-09-18) : le lecteur vient de
+              voir ce que sa commune dépense ; « Ma contribution » est la seule
+              page qui répond à « et moi, je paie combien ». Elle s'ouvre sur
+              cette commune. */}
+          {perHab > 0 ? (
+            <div className="fx-v3 fx-related">
+              <V3Section id="vous" title={t("fx.pv.vous.h2")}>
+                <Door
+                  hard
+                  href={`/france/simulateur-prelevements?c=${commune.slug}`}
+                  title={t("fx.pv.vous.title")}
+                  sub={t("fx.pv.vous.sub")}
+                />
+              </V3Section>
+            </div>
+          ) : null}
           {/* The page's last door (2026-09-16): the reader has seen one commune;
               Paris is where the site goes deepest, and where a town sees what
               its own page could become. */}

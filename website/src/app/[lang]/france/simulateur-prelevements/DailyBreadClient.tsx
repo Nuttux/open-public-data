@@ -5,6 +5,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
+import { V3Hint } from "@/components/fiche/v3";
+import SectionChips from "@/components/fiche/SectionChips";
 import { numLocale, fill } from "@/lib/fmt";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
@@ -1073,13 +1075,6 @@ export default function DailyBreadClient({
   // déjà ces 3 paramètres. Le bandeau "01 · PROFIL" (db-panel-num) suffit pour
   // le numérotage de section.
 
-  const presetActiveKey = useMemo(() => {
-    // Le preset n'est "actif" que si l'utilisateur est uniquement en mode salaire.
-    if (activeSources.length !== 1 || activeSources[0] !== "salaire") return undefined;
-    const found = PRESETS.find((p) => p.net === salaireMonthly);
-    return found?.key;
-  }, [salaireMonthly, activeSources]);
-
   // ─── Render ────────────────────────────────────────────────────────
   return (
     <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
@@ -1087,26 +1082,6 @@ export default function DailyBreadClient({
         <Navbar />
       </div>
       <main id="main-content" tabIndex={-1}>
-        {/* ── PANNEAU 0 — ONBOARDING (post user-testing fix) ── */}
-        {/* Bloc d'intro pédagogique pour clarifier ce qu'on propose dès
-            l'arrivée sur la page : profil personnalisable → contribution
-            mensuelle → drilldown des dépenses. Sans ça, l'utilisateur
-            arrivait sur §01 sans comprendre que les valeurs étaient
-            éditables ni la promesse de la page. */}
-        <section className="db-panel db-p-onboarding">
-          <div className="db-panel-wrap db-p-onboarding-wrap">
-            <p className="db-p-onboarding-kicker">
-              {t("db.hero.onboarding.kicker")}
-            </p>
-            <h1 className="db-p-onboarding-title">
-              {t("db.hero.onboarding.title")}
-            </h1>
-            <p className="db-p-onboarding-hint">
-              {renderTagged(t("db.hero.onboarding.hint"))}
-            </p>
-          </div>
-        </section>
-
         {/* ── PANNEAU 1 — HERO ÉDITABLE (fusion §00 + §01) ── */}
         {/* Le hero fusionné NYT-style : les paramètres du calcul (salaire,
             parts, commune) sont des spans cliquables intégrés DANS la phrase
@@ -1119,42 +1094,17 @@ export default function DailyBreadClient({
           className="db-panel db-p-hero db-p-hero-edit"
         >
           <div className="db-panel-wrap db-p-hero-wrap">
-            {/* numéro de section */}
-            <p className="db-panel-num db-p-hero-num-top">
-              {t("db.hero.num")}
-            </p>
 
-            {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
-            <div className="db-p-hero-cta-area">
-              {salaireMonthly > 0 && (
-                <button
-                  type="button"
-                  className="db-p-hero-cta-affine"
-                  data-state={
-                    isLoadingOpenFisca
-                      ? "loading"
-                      : openFiscaResult
-                        ? "active"
-                        : openFiscaError
-                          ? "error"
-                          : "idle"
-                  }
-                  onClick={requestOpenFiscaCalc}
-                  disabled={isLoadingOpenFisca || !!openFiscaResult}
-                  title={t("db.openfisca.note")}
-                >
-                  {isLoadingOpenFisca
-                    ? t("db.openfisca.button.loading")
-                    : openFiscaResult
-                      ? t("db.openfisca.button.active")
-                      : t("db.openfisca.button.idle")}{" "}
-                  →
-                </button>
-              )}
+            {/* Le titre de la page, dans le héros : plus de panneau d'intro
+                séparé (2026-09-18). Surtitre, titre, invite, puis la phrase. */}
+            <div className="db-p-hero-head">
+              <p className="db-p-onboarding-kicker">{t("db.hero.onboarding.kicker")}</p>
+              <h1 className="db-p-onboarding-title">{t("db.hero.onboarding.title")}</h1>
+              <V3Hint>{t("db.hero.onboarding.hint")}</V3Hint>
             </div>
 
             {/* Phrase éditable principale — les inputs sont DANS le texte */}
-            <h1 className="db-p-hero-text">
+            <p className="db-p-hero-text">
               {activeSources.length === 1 && activeSources[0] === "salaire" ? (
                 <>
                   {t("db.hero.editable.prefix_salaire")}{" "}
@@ -1264,7 +1214,7 @@ export default function DailyBreadClient({
               {/* Phrase éditable s'arrête sur les inputs — le climax (chiffre
                   + tagline "financent chaque mois...") vit en aside-droite
                   pour éviter la duplication avec le big number. */}
-            </h1>
+            </p>
 
             {/* Aside : big number + composition compacte */}
             <div className="db-p-hero-aside">
@@ -1346,9 +1296,6 @@ export default function DailyBreadClient({
                 if (segments.length > 0 && total > 0) {
                   return (
                     <div className="db-p-hero-compo">
-                      <p className="db-p-hero-compo-label">
-                        {t("db.hero.meta_label_compo")}
-                      </p>
                       <div
                         className="db-p-hero-compo-bar"
                         role="img"
@@ -1390,9 +1337,6 @@ export default function DailyBreadClient({
                 if (activeSources.length > 1) {
                   return (
                     <div className="db-p-hero-compo">
-                      <p className="db-p-hero-compo-label">
-                        {t("db.hero.meta_label_compo")}
-                      </p>
                       <p className="db-p-hero-compo-multi tnum">
                         {breakdownSalaire.total > 0 && (
                           <>
@@ -1450,35 +1394,6 @@ export default function DailyBreadClient({
                 return null;
               })()}
 
-              {/* Presets rapides salaire — chips inline juste sous l'aside.
-                  Visibles uniquement quand le mode est "salaire pur" pour ne
-                  pas créer d'ambiguïté ("appliquer SMIC" remplace les autres
-                  sources actives). */}
-              {(activeSources.length === 0 ||
-                (activeSources.length === 1 &&
-                  activeSources[0] === "salaire")) && (
-                <div className="db-p-hero-presets">
-                  <span className="db-p-hero-presets-label">
-                    {t("db.calc.presets_label")}
-                  </span>
-                  {PRESETS.map((p) => (
-                    <button
-                      key={p.key}
-                      type="button"
-                      className={`db-p-hero-preset${
-                        presetActiveKey === p.key ? " is-active" : ""
-                      }`}
-                      onClick={() => setSalaireMonthly(p.net)}
-                      title={t(`db.calc.preset.${p.key}`)}
-                    >
-                      {/* Fix 6 : label court pour tenir sur une ligne en desktop ;
-                          la version longue (avec le montant) reste dans le picker
-                          EditableNumber et dans l'attr title pour le hover. */}
-                      {t(`db.calc.preset_short.${p.key}`)}
-                    </button>
-                  ))}
-                </div>
-              )}
 
               {/* CTA discret sous les presets (côté droit) qui équilibre
                   visuellement la colonne et pousse le lecteur vers §02 sans
@@ -1714,6 +1629,26 @@ export default function DailyBreadClient({
           </div>
         </section>
 
+        {/* ── Sommaire : les quatre blocs de la page et leur chiffre.
+             Même geste que la page commune : on voit la structure sans
+             scroller, et chaque puce y emmène. ── */}
+        {totalPerCapitaMonthly > 0 && (
+          <div className="theme-fusion db-toc">
+            <div className="db-panel-wrap">
+              <SectionChips
+                label={t("db.toc.label")}
+                items={[
+                  { id: "db-disp", label: t("db.toc.disp") },
+                  { id: "db-secu", label: t("db.secu.name"), value: `${fmtEur(secuMonthly, locale, 0)} €` },
+                  { id: "db-etat", label: t("db.etat.name"), value: `${fmtEur(etatMonthly, locale, 0)} €` },
+                  { id: "db-local", label: t("db.local.chip"), value: `${fmtEur(localMonthly, locale, 0)} €` },
+                  { id: "db-methode", label: t("db.toc.methode") },
+                ]}
+              />
+            </div>
+          </div>
+        )}
+
         {/* ── PANNEAU 2 — DISPATCH ── */}
         {totalPerCapitaMonthly > 0 && (
           <section id="db-disp" className="db-panel db-p-disp">
@@ -1887,6 +1822,7 @@ export default function DailyBreadClient({
         {/* ── PANNEAU 3 — Zoom Sécu ── */}
         {assoBranches.length > 0 && (
           <section
+            id="db-secu"
             ref={panel3Ref}
             className={`db-panel db-p-zoom db-panel-fade${panel3Revealed ? " is-revealed" : ""}`}
           >
@@ -1909,7 +1845,7 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{t("db.secu.name")}</p>
+                  <h2 className="db-p-zoom-name">{t("db.secu.name")}</h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1314Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -1918,7 +1854,10 @@ export default function DailyBreadClient({
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.secu.deck1"))}</p>
-                    <p>{t("db.secu.deck2")}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{t("db.secu.deck2")}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.secu.source")}
                     </p>
@@ -1957,6 +1896,7 @@ export default function DailyBreadClient({
         {/* ── PANNEAU 4 — Zoom État ── */}
         {stateBuckets.length > 0 && etatShare && (
           <section
+            id="db-etat"
             ref={panel4Ref}
             className={`db-panel db-p-zoom db-p-zoom-l db-panel-fade${panel4Revealed ? " is-revealed" : ""}`}
           >
@@ -1976,7 +1916,7 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{t("db.etat.name")}</p>
+                  <h2 className="db-p-zoom-name">{t("db.etat.name")}</h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1311Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -1985,7 +1925,10 @@ export default function DailyBreadClient({
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.etat.deck1"))}</p>
-                    <p>{t("db.etat.deck2")}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{t("db.etat.deck2")}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.etat.source")}
                     </p>
@@ -2020,6 +1963,8 @@ export default function DailyBreadClient({
                     });
                   })()}
                   color="c-etat"
+                  cap={6}
+                  foldLabel={t("db.zoom.bars_more")}
                   locale={locale}
                   clickableUrls={etatTopUrls}
                   profileQuery={profileQuery}
@@ -2070,6 +2015,7 @@ export default function DailyBreadClient({
           return (
           <section
             ref={panel5Ref}
+            id="db-local"
             className={`db-panel db-p-zoom db-panel-fade${panel5Revealed ? " is-revealed" : ""}`}
           >
             <div className="db-panel-wrap">
@@ -2088,11 +2034,11 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">
+                  <h2 className="db-p-zoom-name">
                     {locale === "en"
                       ? "Local authorities (national average)"
                       : "Collectivités locales (moyenne nationale)"}
-                  </p>
+                  </h2>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1313Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
@@ -2110,18 +2056,13 @@ export default function DailyBreadClient({
                           ),
                       )}
                     </p>
-                    <p>{renderTagged(t("db.local.deck2"))}</p>
+                    <details className="db-zoom-fold">
+                      <summary>{t("db.zoom.fold")}</summary>
+                      <p>{renderTagged(t("db.local.deck2"))}</p>
+                    </details>
                     <p className="db-p-zoom-source">
                       {t("db.local.source")}
                     </p>
-                    {commune && (
-                      <Link
-                        href={`/france/${commune.slug}`}
-                        className="db-local-cta"
-                      >
-                        {t("db.local.cta").replace("{city}", commune.nom)} →
-                      </Link>
-                    )}
                   </div>
                 </div>
 
@@ -2140,6 +2081,8 @@ export default function DailyBreadClient({
                     };
                   })}
                   color="c-local"
+                  cap={6}
+                  foldLabel={t("db.zoom.bars_more")}
                   locale={locale}
                   // Bloc communal reste passif (le DeepDive juste en dessous
                   // ouvre les 9 fonctions cliquables). Dept et Région ouvrent
@@ -2150,103 +2093,7 @@ export default function DailyBreadClient({
               </div>
 
                                                         {/* MACRO → MICRO : pour Paris (et plus tard d'autres villes du portail détaillé), passerelle vers les pages où l'on peut voir QUI reçoit quel euro. */}
-              {commune?.slug === "paris" && (
-                <div className="db-macro-to-micro">
-                  <div className="db-macro-to-micro-head">
-                    <p className="db-macro-to-micro-eyebrow">
-                      {t("db.macro_micro.eyebrow")}
-                    </p>
-                    <h3 className="db-macro-to-micro-title">
-                      {renderTagged(t("db.macro_micro.title"), {
-                        em: {
-                          fontFamily: "var(--pf-serif)",
-                          fontStyle: "italic",
-                          fontWeight: 400,
-                          color: "var(--p-local)",
-                        },
-                      })}
-                    </h3>
-                    <p className="db-macro-to-micro-deck">
-                      {t("db.macro_micro.deck")}
-                    </p>
-                  </div>
-                  <div className="db-macro-to-micro-grid">
-                    <Link
-                      href="/france/paris/budget"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.budget.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.budget.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/subventions"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.qui_recoit.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.qui_recoit.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/marches"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.marches.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.marches.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/investissements"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.investissements.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.investissements.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/logement"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.logement.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.logement.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                    <Link
-                      href="/france/paris/dette"
-                      className="db-macro-to-micro-card"
-                    >
-                      <span className="db-macro-to-micro-card-label">
-                        {t("db.macro_micro.card.dette.label")}
-                      </span>
-                      <span className="db-macro-to-micro-card-title">
-                        {t("db.macro_micro.card.dette.title")}
-                      </span>
-                      <span className="db-macro-to-micro-card-arrow">→</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
-              {commune && commune.slug !== "paris" && (
+              {commune && (
                 <div className="db-macro-to-micro db-macro-to-micro-other">
                   <p className="db-macro-to-micro-eyebrow">
                     {t("db.macro_micro.eyebrow")}
@@ -2297,6 +2144,7 @@ export default function DailyBreadClient({
          * avec sources cliquables (URSSAF / CGI / INSEE / Eurostat /
          * PLF / PLFSS / OFGL / DREES). */}
         <section
+          id="db-methode"
           ref={panel7Ref}
           className={`db-panel db-p-method db-panel-fade${panel7Revealed ? " is-revealed" : ""}`}
           style={{ minHeight: "auto", padding: "60px 0 100px", background: "var(--p-paper)" }}
@@ -2311,12 +2159,42 @@ export default function DailyBreadClient({
               })}
             </h2>
             <p className="db-p-method-deck">{t("db.method.intro")}</p>
+            {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
+            <div className="db-p-hero-cta-area db-method-cta">
+              {salaireMonthly > 0 && (
+                <button
+                  type="button"
+                  className="db-p-hero-cta-affine"
+                  data-state={
+                    isLoadingOpenFisca
+                      ? "loading"
+                      : openFiscaResult
+                        ? "active"
+                        : openFiscaError
+                          ? "error"
+                          : "idle"
+                  }
+                  onClick={requestOpenFiscaCalc}
+                  disabled={isLoadingOpenFisca || !!openFiscaResult}
+                  title={t("db.openfisca.note")}
+                >
+                  {isLoadingOpenFisca
+                    ? t("db.openfisca.button.loading")
+                    : openFiscaResult
+                      ? t("db.openfisca.button.active")
+                      : t("db.openfisca.button.idle")}{" "}
+                  →
+                </button>
+              )}
+            </div>
 
+
+            <details className="db-p-method-all">
+              <summary>{t("db.method.open")}</summary>
             <div className="db-p-method-faq">
               {/* 01 — Comment on calcule tes prélèvements */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">01</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.hypotheses")}
                   </span>
@@ -2347,7 +2225,6 @@ export default function DailyBreadClient({
               {/* 02 — Ce qui n'est pas dans le calcul */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">02</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.exclusions")}
                   </span>
@@ -2367,7 +2244,6 @@ export default function DailyBreadClient({
               {/* 03 — D'où viennent les données nationales */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">03</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.sources")}
                   </span>
@@ -2407,7 +2283,6 @@ export default function DailyBreadClient({
               {/* 04 — Périmètre Sécu / État / Local */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">04</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.perimetre")}
                   </span>
@@ -2430,7 +2305,6 @@ export default function DailyBreadClient({
               {/* 05 — Pourquoi un calcul perso et pas exact */}
               <details className="db-p-method-faq-item">
                 <summary>
-                  <span className="db-p-method-faq-num">05</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.pourquoi_perso")}
                   </span>
@@ -2449,7 +2323,6 @@ export default function DailyBreadClient({
                   une synthèse forcée. */}
               <details className="db-p-method-faq">
                 <summary className="db-p-method-faq-summary">
-                  <span className="db-p-method-faq-num">06</span>
                   <span className="db-p-method-faq-q">
                     {t("db.method.q.limites")}
                   </span>
@@ -2472,6 +2345,7 @@ export default function DailyBreadClient({
                 </div>
               </details>
             </div>
+            </details>
 
             <div className="db-p-method-foot">
               <Link
@@ -2501,6 +2375,8 @@ function BarList({
   locale,
   clickableUrls,
   profileQuery,
+  cap,
+  foldLabel,
 }: {
   items: Array<{
     key?: string;
@@ -2522,6 +2398,9 @@ function BarList({
    *  €/mois projetés (lead + sub-rows). Sans ça, les pages drawer reçoivent
    *  un `searchParams` vide et `personalMonthlyLabel` est null. */
   profileQuery?: string;
+  /** Au-delà de ce nombre de lignes, le reste passe dans un repli nommé. */
+  cap?: number;
+  foldLabel?: string;
 }) {
   const max = Math.max(...items.map((i) => i.share), 0.01);
   const appendProfile = (u: string): string => {
@@ -2529,9 +2408,10 @@ function BarList({
     const sep = u.includes("?") ? "&" : "?";
     return `${u}${sep}${profileQuery}`;
   };
-  return (
-    <div className="db-p-zoom-bars">
-      {items.map((item, i) => {
+  const tLeg = useT();
+  const head = cap && items.length > cap + 1 ? items.slice(0, cap) : items;
+  const tail = cap && items.length > cap + 1 ? items.slice(cap) : [];
+  const row = (item: (typeof items)[number], i: number) => {
         const pct = (item.share / max) * 100;
         const rawUrl = item.key ? clickableUrls?.get(item.key) : undefined;
         const url = rawUrl ? appendProfile(rawUrl) : undefined;
@@ -2600,7 +2480,20 @@ function BarList({
             {inner}
           </div>
         );
-      })}
+  };
+  return (
+    <div className="db-p-zoom-bars">
+      <div className="db-bars-legend">
+        <span>{tLeg("db.bars.legend_left")}</span>
+        <span>{tLeg("db.bars.legend_right")}</span>
+      </div>
+      {head.map(row)}
+      {tail.length > 0 ? (
+        <details className="db-zoom-fold db-bars-fold">
+          <summary>{(foldLabel ?? "").replace("{n}", String(tail.length))}</summary>
+          <div className="db-p-zoom-bars">{tail.map((it, i) => row(it, i + head.length))}</div>
+        </details>
+      ) : null}
     </div>
   );
 }

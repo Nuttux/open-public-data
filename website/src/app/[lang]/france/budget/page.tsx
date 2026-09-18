@@ -20,6 +20,10 @@ import { loadDrilldown } from "@/lib/budget-drilldown";
 import { loadRecettesApu } from "@/lib/recettes-apu";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
 import { RecettesPanel } from "@/components/fusion";
+import SectionHero from "@/components/fiche/SectionHero";
+import SectionChips from "@/components/fiche/SectionChips";
+import { V3Hint } from "@/components/fiche/v3";
+import { Door, NextDoor } from "@/components/fiche/Doors";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput, nationalBudgetHub } from "@/lib/seo/sections/national";
 import {
@@ -339,103 +343,56 @@ export default async function FranceBudgetPage({
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 
-      {/* §01 — HERO impersonnel ──────────────────────────────────────── */}
-      <section className="fx-page-header">
+      {/* §01 — Le héros de la grammaire (refonte 2026-09-18) : le chiffre
+          porte son unité, sa légende et son partage, comme sur toutes les
+          sections du site. Le compteur animé et la glose restent. */}
+      <div className="fx-sec fx-v3 fx-sec--plain">
         <div className="fx-wrap">
-          <p className="fx-page-kicker">{t("budget.page.kicker")}</p>
-          <h1 className="fx-page-title">
-            <em>{t("budget.hero.title")}</em>
-          </h1>
-          <p
-            className="tnum"
-            style={{
-              fontFamily: "'Inter Tight', Inter, sans-serif",
-              fontSize: "clamp(72px, 12vw, 160px)",
-              lineHeight: 0.9,
-              letterSpacing: "-0.04em",
-              fontWeight: 700,
-              margin: "8px 0 18px",
-              color: "var(--ink)",
-            }}
-          >
-            {/* Count-up déclenché au scroll-in (one-shot, easeOutCubic 1200ms).
-                Cohérence avec le hero Daily Bread §01 qui anime le total
-                €/mois au mount via `useCountUp`. `BnEurCountUp` est une
-                variante server-friendly (le format est résolu client-side
-                à partir de `locale` + `mode`) — `CountUpOnReveal` exige
-                une fonction `format` qui ne traverse pas la frontière RSC. */}
-            <BnEurCountUp
-              value={totalMd}
-              locale={locale}
-              mode="rawMd"
-              durationMs={1200}
-              threshold={0.2}
-            />
-            <span
-              style={{
-                fontSize: "0.22em",
-                marginLeft: "0.32em",
-                fontWeight: 500,
-                color: "var(--muted)",
-                letterSpacing: 0,
-                whiteSpace: "nowrap",
-              }}
-            >
-              {t("budget.hero.amount_unit")}
-            </span>
-            {/* Caption forcée en bloc sur mobile (sinon "publiques (S13)"
-                wrap seul sous "administrations" → fragmente une expression
-                INSEE inviolable). Sur desktop, reste inline à droite. */}
-            <span
-              className="fx-budget-hero-caption"
-              style={{
-                fontSize: "0.16em",
-                marginLeft: "0.5em",
-                fontWeight: 500,
-                color: "var(--muted)",
-                letterSpacing: 0,
-              }}
-            >
-              {glossify(t("budget.hero.amount_caption"), locale)}
-            </span>
-          </p>
-          <p className="fx-page-lede" style={{ maxWidth: 820 }}>
-            {glossify(t("budget.hero.subtitle", { year: yearRef }), locale)}
-          </p>
-          <p
-            style={{
-              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-              fontSize: 12,
-              color: "var(--muted)",
-              letterSpacing: "0.04em",
-              marginTop: 14,
-              maxWidth: 820,
-            }}
-          >
-            {t("budget.hero.source")}
-          </p>
+          <SectionHero
+            kicker={t("budget.page.kicker")}
+            title={t("budget.hero.title")}
+            value={<BnEurCountUp value={totalMd} locale={locale} mode="rawMd" durationMs={1200} threshold={0.2} />}
+            unit={t("budget.hero.amount_unit")}
+            captionBefore={t("budget.hero.cap_before")}
+            captionAfter={t("budget.hero.cap_after")}
+            years={[Number(yearRef)]}
+            year={Number(yearRef)}
+            basePath="/france/budget"
+            meta={glossify(t("budget.hero.subtitle", { year: yearRef }), locale)}
+            shareTitle={`${t("budget.hero.title")} : ${totalMd.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 0 })} ${t("budget.hero.amount_unit")}`}
+          />
+          <SectionChips
+            label={t("budget.toc.label")}
+            items={[
+              { id: "recettes", label: t("budget.toc.recettes") },
+              { id: "depenses", label: t("budget.toc.depenses") },
+              { id: "missions", label: t("budget.toc.missions") },
+              { id: "contribution", label: t("budget.toc.contribution") },
+            ]}
+          />
         </div>
-      </section>
+      </div>
 
       {/* §02 — RECETTES "d'où vient l'argent" ──────────────────────── */}
       {(() => {
         const recettes = loadRecettesApu();
         if (!recettes) return null;
         return (
-          <RevealOnScroll>
+          <RevealOnScroll id="recettes">
             <RecettesPanel data={recettes} locale={locale} t={t} />
           </RevealOnScroll>
         );
       })()}
 
       {/* §03 — TREEMAP ──────────────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section">
+      <RevealOnScroll className="fx-section" id="depenses">
         <div className="fx-wrap">
           <SectionHead
             kind={t("budget.section.treemap.kind")}
             title={t("budget.section.treemap.title")}
             subtitle={t("budget.section.treemap.subtitle")}
           />
+          <V3Hint>{t("budget.hint.treemap")}</V3Hint>
           {/* Légende */}
           <div
             style={{
@@ -474,13 +431,14 @@ export default async function FranceBudgetPage({
 
       {/* §04 — GRANDES MISSIONS (thème × niveaux de gouvernement) ────── */}
       {crossCuttingThemes.length > 0 && (
-        <RevealOnScroll className="fx-section">
+        <RevealOnScroll className="fx-section" id="missions">
           <div className="fx-wrap">
             <SectionHead
               kind={t("budget.cross_cutting.section.eyebrow")}
               title={t("budget.cross_cutting.section.title")}
               subtitle={t("budget.cross_cutting.section.intro")}
             />
+            <V3Hint>{t("budget.hint.missions")}</V3Hint>
             <div className="fx-cct-legend">
               {[
                 { c: "#2a3680", label: t("budget.section.treemap.legend.secu") },
@@ -515,23 +473,24 @@ export default async function FranceBudgetPage({
         </RevealOnScroll>
       )}
 
-      {/* §08 — CTA Daily Bread ─────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section fx-section-cta-warm">
-        <div className="fx-wrap" style={{ maxWidth: 820 }}>
-          <SectionHead
-            kind={t("budget.cta.daily_bread.kind")}
-            title={t("budget.cta.daily_bread.title")}
-            subtitle={t("budget.cta.daily_bread.body")}
-          />
-          <Link
+      {/* §08 — Voir aussi, en portes (refonte 2026-09-18) : la grammaire des
+          sections ferme sur des portes chiffrées, pas sur un bouton d'appel. */}
+      <RevealOnScroll className="fx-section" id="contribution">
+        <div className="fx-wrap fx-v3">
+          <h2 className="fx-v3-h2">{t("budget.see_also")}</h2>
+          <Door
+            hard
             href={profileQs ? `/france/simulateur-prelevements?${profileQs}` : "/france/simulateur-prelevements"}
-            className="fx-btn fx-btn-primary"
-            style={{ marginTop: 8 }}
-          >
-            {t("budget.cta.daily_bread.button")}
-          </Link>
+            title={t("budget.door.contribution")}
+            sub={t("budget.door.contribution_sub")}
+          />
+          <Door hard href="/france/comparer" title={t("budget.door.communes")} sub={t("budget.door.communes_sub")} />
         </div>
       </RevealOnScroll>
+
+      <div className="fx-wrap fx-v3">
+        <NextDoor href="/france/paris" kicker={t("budget.next.kicker")} title={t("budget.next.title")} sub={t("budget.next.sub")} />
+      </div>
 
       {/* §09 — SOURCES ─────────────────────────────────────────────── */}
       <section className="fx-footer-sources">

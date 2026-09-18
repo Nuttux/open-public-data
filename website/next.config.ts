@@ -212,6 +212,9 @@ const nextConfig: NextConfig = {
       // Legacy URL-scheme catch-all (ADR-0010) — keep LAST so the more specific
       // sources above (e.g. /ville/paris/daily-bread) win. /fr/city/…, /us/…,
       // /br/… and /france/… are converted by proxy.ts.
+      // Le hub France a vécu une journée (18/09/2026) : Daniel n'en voulait
+      // pas. Son adresse mène à la vitrine, dans la langue demandée.
+      { source: '/:lang(fr|en)/france', destination: '/:lang', permanent: true },
       { source: '/ville/:path*', destination: '/fr/france/:path*', permanent: true },
     ];
   },
