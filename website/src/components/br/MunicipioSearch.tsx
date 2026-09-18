@@ -5,6 +5,7 @@ import { useRouter } from "@/lib/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
 import { fill } from "@/lib/fmt";
 import { useTrack } from "@/lib/analyticsContext";
+import { searchQueryProps } from "@/lib/analytics-helpers";
 
 type Hit = { slug: string; nome: string; uf: string; pop: number | null };
 
@@ -45,14 +46,28 @@ export default function MunicipioSearch({ placeholder, label, hrefFor }: { place
     const h = setTimeout(() => {
       fetch(`/api/search-municipios?q=${encodeURIComponent(typed)}`, { signal: ctrl.signal })
         .then((r) => r.json())
-        .then((d: { results: Hit[]; total?: number }) => { setHits(d.results ?? []); setTotal(d.total ?? 0); setActive(0); })
+        .then(async (d: { results: Hit[]; total?: number }) => {
+          const res = d.results ?? [];
+          setHits(res); setTotal(d.total ?? 0); setActive(0);
+          // Ce que les gens cherchent, et surtout ce qu'ils cherchent en vain :
+          // results_count à zéro est le signal qui manquait (2026-09-18).
+          track("search_query", await searchQueryProps(typed, d.total ?? res.length, "br_municipios"));
+        })
         .catch(() => {});
     }, 120);
     return () => { clearTimeout(h); ctrl.abort(); };
-  }, [q]);
+  }, [q, track]);
 
   const go = (h: Hit) => {
-    track("search_result_click", { page: "brasil", entity_name: h.nome, q: q.trim() });
+    // Le texte tapé ne part pas en clair : la fenêtre française envoie une
+    // empreinte, ce champ envoyait la frappe (2026-09-18). Même grammaire ici.
+    track("search_result_click", {
+      corpus: "br_municipios",
+      entity_name: h.nome,
+      q_len: q.trim().length,
+      rank: lignes.indexOf(h) + 1,
+      top: !tape,
+    });
     router.push(hrefFor ? hrefFor(h.slug) : `/brasil/${h.slug}`);
   };
   const listId = `${id}-list`;
@@ -76,7 +91,10 @@ export default function MunicipioSearch({ placeholder, label, hrefFor }: { place
         aria-controls={listId}
         aria-autocomplete="list"
         value={q}
-        onFocus={() => setOpen(true)}
+        onFocus={() => {
+          setOpen(true);
+          track("search_open", { corpus: "br_municipios", surface: "champ" });
+        }}
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onChange={(e) => { setQ(e.target.value); setOpen(true); }}
         onKeyDown={(e) => {
