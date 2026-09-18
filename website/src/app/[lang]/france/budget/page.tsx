@@ -480,7 +480,7 @@ export default async function FranceBudgetPage({
           <h2 className="fx-v3-h2">{t("budget.see_also")}</h2>
           <Door
             hard
-            href={profileQs ? `/france/daily-bread?${profileQs}` : "/france/daily-bread"}
+            href={profileQs ? `/france/simulateur-prelevements?${profileQs}` : "/france/simulateur-prelevements"}
             title={t("budget.door.contribution")}
             sub={t("budget.door.contribution_sub")}
           />

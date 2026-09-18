@@ -1083,7 +1083,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               <V3Section id="vous" title={t("fx.pv.vous.h2")}>
                 <Door
                   hard
-                  href={`/france/daily-bread?c=${commune.slug}`}
+                  href={`/france/simulateur-prelevements?c=${commune.slug}`}
                   title={t("fx.pv.vous.title")}
                   sub={t("fx.pv.vous.sub")}
                 />

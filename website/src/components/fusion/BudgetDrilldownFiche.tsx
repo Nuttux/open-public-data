@@ -87,7 +87,7 @@ type Mode =
  * "Voix" éditoriale du drawer — détermine quelles colonnes (€/mois,
  * Md€/an, %) on affiche dans les sub-rows et les cards d'aggregation.
  *
- * - "perso" (/fr/city/<slug>/daily-bread) : on parle à L'utilisateur, on
+ * - "perso" (/france/simulateur-prelevements) : on parle à L'utilisateur, on
  *   n'affiche QUE €/mois. Le Md€ est trop abstrait, le % redondant avec
  *   le lead header.
  * - "impersonal" (/fr/national/budget) sans profil : on affiche QUE Md€/an
@@ -98,12 +98,12 @@ type Mode =
  * Le % reste TOUJOURS visible dans le lead header — c'est l'info de
  * contexte parent ("39% PART DE SÉCURITÉ SOCIALE").
  *
- * Inféré depuis `basePath` : section daily-bread → perso, sinon impersonal.
+ * Inféré depuis `basePath` : section simulateur → perso, sinon impersonal.
  */
 type Voice = "perso" | "impersonal";
 
 function inferVoice(basePath: string): Voice {
-  return basePath.includes("daily-bread") ? "perso" : "impersonal";
+  return basePath.includes("simulateur-prelevements") ? "perso" : "impersonal";
 }
 
 /**
@@ -142,7 +142,7 @@ type LegacyProps = {
   breadcrumb?: DrilldownBreadcrumbCrumb[];
   /** Query string profil à propager aux liens enfants (level3/level4/agg). */
   profileQuery?: string;
-  /** Préfixe URL pour les liens enfants — par défaut /fr/national/daily-bread.
+  /** Préfixe URL pour les liens enfants — par défaut /france/simulateur-prelevements.
    *  Ex: "/france/budget" pour le drawer Budget Explorer. */
   basePath?: string;
   /** Asides éditoriaux ("Chiffres à retenir") — i18n keys, le composant
@@ -255,7 +255,7 @@ export default function BudgetDrilldownFiche(props: Props) {
   const flocale: "fr" | "en" = locale === "en" ? "en" : "fr";
   const { bucket, bucketKey, isStub, amounts, breadcrumb, profileQuery } =
     props;
-  const basePath = props.basePath ?? "/france/daily-bread";
+  const basePath = props.basePath ?? "/france/simulateur-prelevements";
   const editorialAsides = props.editorialAsides;
   const voice: Voice = inferVoice(basePath);
   const hasProfile = (amounts?.parentPersonalMonthlyEur ?? null) !== null;

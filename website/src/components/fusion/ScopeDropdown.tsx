@@ -34,7 +34,7 @@ function sectionFromParisPath(pathname: string): string | null {
 // Extract section from /fr/city/[city]/[section]/... pathname.
 function sectionFromVillePath(pathname: string): string | null {
   const s = scopeOf(pathname);
-  return s?.country === "france" && s.place && s.section && s.section !== "daily-bread" ? s.section : null;
+  return s?.country === "france" && s.place && s.section && s.section !== "simulateur-prelevements" ? s.section : null;
 }
 
 type Variant = "nav" | "h1" | "overlay";
@@ -78,7 +78,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
   // National scope: any /fr/national/* page or the Daily Bread tool (national).
   const scope = scopeOf(pathname);
   const isOnFrance =
-    scope?.country === "france" && (scope.place === null || scope.section === "daily-bread");
+    scope?.country === "france" && (scope.place === null || scope.section === "simulateur-prelevements");
   // /france/[city] AND /france/[city]/<sub>, so the label stays right on rich
   // subpages (e.g. /france/marseille/budget).
   const cityMatch =

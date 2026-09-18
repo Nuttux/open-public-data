@@ -73,7 +73,7 @@ const LITERALS = new Set<string>([
   "budget", "subventions", "marches", "dette", "investissements", "logement", "lieux", "lieu",
   "poste", "association", "theme", "fournisseur", "contrat", "categorie", "offres", "domaine", "projet", "chapitre",
   "arrondissement", "bailleur", "instrument", "masse", "garanties", "stress-test",
-  "comparaison", "evolution", "daily-bread", "etat", "fiscalite", "bucket", "recettes", "local",
+  "comparaison", "evolution", "simulateur-prelevements", "daily-bread", "etat", "fiscalite", "bucket", "recettes", "local",
   "agg", "region", "dept", "fonction", "nature", "marche",
   // US
   "san-francisco", "payroll", "contracts", "places", "place", "who-gets-paid", "the-city", "records", "sources",

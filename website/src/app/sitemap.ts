@@ -50,7 +50,7 @@ const MAIN_ROUTES = [
   { path: '/france/paris/dette', priority: 0.8 },
   { path: '/france/paris/marches', priority: 0.8 },
   { path: '/france/paris/logement', priority: 0.8 },
-  { path: '/france/daily-bread', priority: 0.9 },
+  { path: '/france/simulateur-prelevements', priority: 0.9 },
   { path: '/france/dette', priority: 0.8 },
   { path: '/france/fiscalite', priority: 0.8 },
   { path: '/france/etat', priority: 0.8 },

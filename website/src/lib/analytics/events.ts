@@ -103,7 +103,6 @@ export const EVENTS: Record<string, EventSpec> = {
   search_submit: { desc: "A typed search in an explorer (marchés, subventions, SF contracts). Organic demand.", props: { page: "explorer id", q_hash: "hashed text", results_count: "", "len, word_count, has_digit": "query shape" }, by: "explorers", since: "2026-07-16", group: "search" },
   search_seed_click: { desc: "One of OUR suggested searches clicked. Prompt performance, not demand.", props: { page: "", seed: "the seed text" }, by: "explorers", since: "2026-07-16", group: "search" },
   search_result_click: { desc: "A result row of an explorer was opened.", props: { page: "", entity_id: "", entity_name: "", rank: "", theme: "" }, by: "explorers", since: "2026-07-16", group: "search" },
-  results_expand: { desc: "'Show all results' in an explorer.", props: { page: "", results_count: "" }, by: "explorers", since: "2026-07-16", group: "explorer" },
   load_more: { desc: "Next page of a long list.", props: { page: "", visible_before: "", visible_after: "" }, by: "QuiRecoitExplorer", since: "2026-07-16", group: "explorer" },
   filter_change: { desc: "A filter changed in an explorer or on the investments map.", props: { page: "", field: "", value: "" }, by: "explorers, ProjectMap", since: "2026-07-16", group: "explorer" },
   filter_reset: { desc: "All explorer filters cleared at once.", props: { page: "", source: "button | empty_state | stress_test" }, by: "explorers", since: "2026-07-16", group: "explorer" },

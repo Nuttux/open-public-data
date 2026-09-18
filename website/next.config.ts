@@ -185,10 +185,23 @@ const nextConfig: NextConfig = {
       { source: '/logement-social', destination: '/fr/france/paris/logement', permanent: true },
       { source: '/logement-social/:path*', destination: '/fr/france/paris/logement/:path*', permanent: true },
       { source: '/logements', destination: '/fr/france/paris/logement', permanent: true },
-      { source: '/daily-bread', destination: '/fr/france/daily-bread', permanent: true },
-      { source: '/daily-bread/:path*', destination: '/fr/france/daily-bread/:path*', permanent: true },
-      { source: '/ville/paris/daily-bread', destination: '/fr/france/daily-bread', permanent: true },
-      { source: '/ville/paris/daily-bread/:path*', destination: '/fr/france/daily-bread/:path*', permanent: true },
+      // Le simulateur s'appelait /daily-bread jusqu'au 2026-09-18. Les trois
+      // adresses d'avant mènent au nouveau slug, la dernière étant celle qui a
+      // vécu le plus longtemps (/fr/france/daily-bread) et qui est indexée.
+      { source: '/daily-bread', destination: '/fr/france/simulateur-prelevements', permanent: true },
+      { source: '/daily-bread/:path*', destination: '/fr/france/simulateur-prelevements/:path*', permanent: true },
+      { source: '/ville/paris/daily-bread', destination: '/fr/france/simulateur-prelevements', permanent: true },
+      { source: '/ville/paris/daily-bread/:path*', destination: '/fr/france/simulateur-prelevements/:path*', permanent: true },
+      { source: '/:lang(fr|en)/france/daily-bread', destination: '/:lang/france/simulateur-prelevements', permanent: true },
+      { source: '/:lang(fr|en)/france/daily-bread/:path*', destination: '/:lang/france/simulateur-prelevements/:path*', permanent: true },
+      { source: '/france/daily-bread', destination: '/fr/france/simulateur-prelevements', permanent: true },
+      { source: '/france/daily-bread/:path*', destination: '/fr/france/simulateur-prelevements/:path*', permanent: true },
+      // /france/simulateur n'a vécu qu'une heure sur une branche, mais je l'ai
+      // donné à la main dans la journée : on le rattrape aussi.
+      { source: '/:lang(fr|en)/france/simulateur', destination: '/:lang/france/simulateur-prelevements', permanent: true },
+      { source: '/:lang(fr|en)/france/simulateur/:path*', destination: '/:lang/france/simulateur-prelevements/:path*', permanent: true },
+      { source: '/france/simulateur', destination: '/fr/france/simulateur-prelevements', permanent: true },
+      { source: '/france/simulateur/:path*', destination: '/fr/france/simulateur-prelevements/:path*', permanent: true },
       { source: '/ville/paris', destination: '/fr/france/paris', permanent: true },
       { source: '/c/paris', destination: '/fr/france/paris', permanent: true },
       { source: '/c/:slug', destination: '/fr/france/:slug', permanent: true },
