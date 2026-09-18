@@ -89,18 +89,29 @@ def builds(token: str, team: str, start: datetime, end: datetime) -> tuple[int, 
 
 
 def whose_token(token: str, team: str) -> str:
-    """Why the bill could not be read: a valid token on a team without costs answers
-    404 costs_not_found, which is what a token scoped to the wrong team looks like."""
+    """Why the bill could not be read. The billing endpoint answers for the team the
+    TOKEN is scoped to, whatever teamId asks for, so a token made for the wrong team
+    fails here and nowhere else: `Plan not found` when that team has no paid plan,
+    `costs_not_found` when it has one but no usage."""
+    hint = ("Create the token again at https://vercel.com/account/settings/tokens with its "
+            "scope set to the team that pays the bill, then: gh secret set VERCEL_TOKEN --env pipeline")
     try:
         user = json.loads(get("/v2/user", {}, token)).get("user", {}).get("username", "?")
-        teams = [(t.get("slug"), t.get("id")) for t in json.loads(get("/v2/teams", {"limit": "50"}, token)).get("teams", [])]
     except urllib.error.HTTPError as err:
-        return f"::error::the token cannot even name its owner ({err.code}): revoked, expired or mistyped."
+        if err.code == 403:
+            return f"::error::the token was refused outright (403): revoked, expired or mistyped. {hint}"
+        # A token scoped to one team cannot speak for a user at all.
+        return (f"::error::the token has no user behind it ({err.code} on /v2/user), so it is scoped to a single "
+                f"team, and that team is not {team}. {hint}")
+    try:
+        teams = [(t.get("slug"), t.get("id")) for t in json.loads(get("/v2/teams", {"limit": "50"}, token)).get("teams", [])]
+    except urllib.error.HTTPError:
+        return f"::error::the token belongs to {user} but cannot list teams. {hint}"
     seen = ", ".join(slug for slug, _ in teams) or "none"
     if team not in [tid for _, tid in teams]:
-        return (f"::error::the token belongs to {user} and sees these teams: {seen}. It does not see {team}. "
-                "Create it again with the scope set to the team that pays the bill.")
-    return f"::error::the token belongs to {user} and does see the team ({seen}); the billing API still refused."
+        return f"::error::the token belongs to {user} and sees these teams: {seen}. It does not see {team}. {hint}"
+    return (f"::error::the token belongs to {user} and does see the team ({seen}), yet the billing API refused. "
+            "Check that VERCEL_TEAM_ID names the team that pays.")
 
 
 def compose(day: str, cost: float, usual: float, week: float, services: dict[str, float], prod: int, preview: int, why: str) -> dict:
