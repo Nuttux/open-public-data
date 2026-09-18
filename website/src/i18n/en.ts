@@ -6758,6 +6758,8 @@ const en: Record<string, string> = {
   'br.hub.find_h': 'Find a município',
   'br.hub.find_sub': 'By name; the state code after it helps with homonyms (“belém pa”).',
   'br.hub.find_ph': 'Olinda, Caruaru, São Paulo…',
+  'br.chrome.find_ph': 'Find a município…',
+  'br.hub.find_top': 'The largest, out of {n} municípios — type two letters to search',
   'br.hub.find_note': 'The numbers come from the annual accounts every município files with the National Treasury (SICONFI).',
   'br.hub.find_none': 'No município by that name.',
   'br.hub.find_n': 'municípios',

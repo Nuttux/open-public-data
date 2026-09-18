@@ -222,8 +222,10 @@ reaches the project.
 
 ## Privacy notes
 
-No query text is ever sent — `search_submit` and `search_modal_query` carry a
-SHA-256 prefix and the length. Chat questions are sent (500 chars) because
+No query text is ever sent — `search_submit`, `search_modal_query` and
+`search_query` carry a SHA-256 prefix and the length, built in one place
+(`searchQueryProps`, lib/analytics-helpers.ts) so no surface can drift. The
+Brazil field sent the raw keystrokes until 2026-09-18. Chat questions are sent (500 chars) because
 the answer quality is the product; the routine never quotes names, emails or
 phone numbers from them. Opt-out: the switch on /confidentialite sets a cookie
 on the apex domain (`_fod_analytics_optout`), read before every capture.

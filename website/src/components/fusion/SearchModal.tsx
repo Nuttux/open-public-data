@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "@/lib/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { hashQuery } from "@/lib/analytics-helpers";
+import { searchQueryProps } from "@/lib/analytics-helpers";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useNumLocale } from "@/lib/use-fmt";
@@ -63,7 +63,7 @@ function SearchModalInner() {
       return;
     }
     const id = setTimeout(() => inputRef.current?.focus(), 60);
-    track("search_modal_open", {});
+    track("search_modal_open", { corpus: "fr_communes" });
     return () => clearTimeout(id);
   }, [open, track]);
 
@@ -89,7 +89,13 @@ function SearchModalInner() {
         // Never the text: a hash to cluster repeats, the length, and whether
         // we had anything to offer (0 = a commune we miss or a spelling we
         // do not match).
-        track("search_modal_query", { q_hash: await hashQuery(q), q_len: q.length, results_count: results.length });
+        //
+        // L'empreinte se calcule AVANT l'appel et son échec est rattrapé : tant
+        // qu'elle était attendue à l'intérieur de track(), l'événement pouvait
+        // disparaître sans bruit — et il n'est jamais arrivé à PostHog depuis
+        // le premier jour de mesure, alors que les ouvertures et les
+        // sélections, elles, passaient (constaté le 2026-09-18).
+        track("search_modal_query", await searchQueryProps(q, results.length, "fr_communes"));
         setActiveIdx(0);
         setSearching(false);
       } catch {
@@ -104,13 +110,13 @@ function SearchModalInner() {
 
   const goTo = useCallback(
     (hit: Hit) => {
-      track("search_modal_select", { slug: hit.slug, insee: hit.insee });
+      track("search_modal_select", { slug: hit.slug, insee: hit.insee, corpus: "fr_communes", rank: hits.indexOf(hit) + 1 });
       // Every place, Paris included, lives at /france/<slug> (lib/urls.ts).
       const target = `/france/${hit.slug}`;
       router.push(target);
       setOpen(false);
     },
-    [router, track],
+    [router, track, hits],
   );
 
   const onKeyInput = (e: React.KeyboardEvent<HTMLInputElement>) => {

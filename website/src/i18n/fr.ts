@@ -6892,6 +6892,8 @@ const fr: Record<string, string> = {
   'fx.homonymes.lead': '{n} communes portent ce nom. Population : OFGL.',
   'fx.homonymes.hab': 'hab.',
   'br.hub.find_h': 'Chercher un município',
+  'br.chrome.find_ph': 'Chercher un município…',
+  'br.hub.find_top': 'Les plus peuplés, sur {n} municípios — tapez deux lettres pour chercher',
 
   // Le hub France (2026-09-18) : le même squelette que le hub Brésil.
   "fr.hub.kicker": "France",

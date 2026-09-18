@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { listMunicipios } from "@/lib/br/municipios";
 
 const MAX_RESULTS = 12;
+const TOP_RESULTS = 6;
 
 /** Accent-insensitive search over the 5 570 municípios (the manifest), the
  *  same scoring as /api/search-communes : exact name, then prefix, then word,
@@ -13,6 +14,15 @@ function norm(s: string): string {
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const qRaw = (url.searchParams.get("q") || "").trim();
+  // Champ vide : les plus peuplés, pour que cliquer la recherche montre
+  // quelque chose au lieu du vide (2026-09-18). Mêmes données, même forme.
+  if (url.searchParams.get("top") && qRaw.length < 2) {
+    const top = [...listMunicipios()]
+      .sort((a, b) => (b.pop ?? 0) - (a.pop ?? 0))
+      .slice(0, TOP_RESULTS)
+      .map(({ slug, nome, uf, pop }) => ({ slug, nome, uf, pop: pop ?? null }));
+    return NextResponse.json({ q: "", results: top, total: listMunicipios().length, top: true });
+  }
   if (qRaw.length < 2) return NextResponse.json({ q: qRaw, results: [] });
   let q = norm(qRaw);
   // A trailing state code narrows : « belem pa ».
