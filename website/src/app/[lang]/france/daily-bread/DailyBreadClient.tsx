@@ -2563,6 +2563,7 @@ function BarList({
     const sep = u.includes("?") ? "&" : "?";
     return `${u}${sep}${profileQuery}`;
   };
+  const tLeg = useT();
   const head = cap && items.length > cap + 1 ? items.slice(0, cap) : items;
   const tail = cap && items.length > cap + 1 ? items.slice(cap) : [];
   const row = (item: (typeof items)[number], i: number) => {
@@ -2637,6 +2638,10 @@ function BarList({
   };
   return (
     <div className="db-p-zoom-bars">
+      <div className="db-bars-legend">
+        <span>{tLeg("db.bars.legend_left")}</span>
+        <span>{tLeg("db.bars.legend_right")}</span>
+      </div>
       {head.map(row)}
       {tail.length > 0 ? (
         <details className="db-zoom-fold db-bars-fold">

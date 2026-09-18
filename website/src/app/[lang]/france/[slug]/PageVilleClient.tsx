@@ -1086,7 +1086,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   hard
                   href={`/france/daily-bread?c=${commune.slug}`}
                   title={t("fx.pv.vous.title")}
-                  sub={fill("fx.pv.vous.sub", { nom: commune.nom, n: int.format(perHab) })}
+                  sub={t("fx.pv.vous.sub")}
                 />
               </V3Section>
             </div>

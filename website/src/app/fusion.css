@@ -21396,3 +21396,19 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .db-zoom-fold[open] > summary::after { content: " ↑"; }
 .db-zoom-fold > summary:hover { color: var(--p-ink, #0f172a); }
 .db-zoom-fold > p { margin-top: 8px; }
+
+/* Les colonnes des barres portent enfin leur nom : à gauche une moyenne par
+   habitant, à droite le total national. « 222 € » se lisait comme « ce que je
+   paie » (Daniel, 18/09/2026). */
+.db-bars-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font: 500 11px/1.4 var(--f-mono, ui-monospace, monospace);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--p-ink-soft, #64748b);
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, .12);
+}
