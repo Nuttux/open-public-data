@@ -54,6 +54,32 @@ export async function hashQuery(q: string): Promise<string> {
     .join('');
 }
 
+/**
+ * Les propriétés d'une recherche, pour toutes les surfaces (fenêtre France,
+ * champ Brésil). Jamais le texte tapé : une empreinte pour regrouper les
+ * répétitions, la longueur, et le nombre de résultats — zéro résultat est le
+ * signal qui dit ce qu'on ne sait pas trouver.
+ *
+ * Ne jette jamais. Tant que le hachage était attendu DANS l'appel qui envoie
+ * l'événement, son échec faisait disparaître l'événement sans bruit :
+ * search_modal_query n'est jamais arrivé à PostHog depuis le premier jour de
+ * mesure, alors que les ouvertures et les sélections passaient (2026-09-18).
+ */
+export async function searchQueryProps(
+  q: string,
+  resultsCount: number,
+  corpus: string,
+): Promise<{ q_hash: string; q_len: number; results_count: number; corpus: string }> {
+  const typed = q.trim();
+  let q_hash = "";
+  try {
+    q_hash = await hashQuery(typed);
+  } catch {
+    q_hash = "";
+  }
+  return { q_hash, q_len: typed.length, results_count: resultsCount, corpus };
+}
+
 export function queryShape(q: string): {
   len: number;
   word_count: number;
