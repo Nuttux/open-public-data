@@ -218,6 +218,13 @@ pointed at a small local sink (answer JS to GETs, a flags JSON to `/flags/`,
 decode gzip on `/e/`), and hide the two bot tells with an init script. Nothing
 reaches the project.
 
+A dev server never sends to the real project, whatever key it has
+(`lib/analytics/send-guard.ts`): on localhost, `*.localhost` or an IP, capture
+starts only when `NEXT_PUBLIC_POSTHOG_HOST` is itself local — the sink above.
+The default `/ingest` is refused there, because the dev server proxies it to
+PostHog. Before this guard, 229 local page views reached the project between
+11 and 22 September 2026, most of them passing as people.
+
 ---
 
 ## Privacy notes
