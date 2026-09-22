@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { NextDoor } from "@/components/fiche/Doors";
+import SectionHero from "@/components/fiche/SectionHero";
+import {brlMagnitude, fmtBrlCompactNum, titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
@@ -42,19 +45,46 @@ export default async function MunicipioFuncaoPage({ params, searchParams }: { pa
   if (!f) notFound();
   const locale = await recifeLocale();
   const a = municipioFuncaoAnswer(f, d.municipio, locale);
+  const en = locale === "en";
   return (
-    <main className="fx-wrap" style={{ paddingBottom: 64 }}>
-      <div className="fx-page-header fx-page-header--fiche">
-        <Link href={`/brasil/${slug}`} className="fx-page-kicker" style={{ textDecoration: "none" }}>
-          ← {d.municipio.nome} ({d.municipio.uf}) · {locale === "en" ? "Budget" : "Orçamento"}
-        </Link>
-        <h1 className="fx-page-title">{f.funcao}</h1>
-        <p className="fx-page-lede fx-answer">{a.answer}</p>
-        <PageJsonLd title={a.title} description={a.answer} path={`/brasil/${slug}/funcao/${funcao}`} locale={locale} creator="Tesouro Nacional (SICONFI)" />
-      </div>
-      <div className="fx-fiche fx-fiche-shell">
-        <RecifeFuncaoFiche f={f} perimeter={municipioPerimeter[locale]} />
-        <RelatedLinks block={municipioFuncaoRelated(d, f, locale)} />
+    <main id="main-content" tabIndex={-1}>
+      <div className="fx-sec fx-v3">
+        <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links">
+          <Link href="/brasil">{en ? "Brazil" : "Brasil"}</Link> › <Link href={`/brasil/${slug}`}>{d.municipio.nome} ({d.municipio.uf})</Link>
+        </div>
+        <div className="fx-sec-grid" data-layout="subventions">
+          <div className="fx-sec-a-hero">
+            <SectionHero
+              title={titleCasePt(f.funcao)}
+              value={fmtBrlCompactNum(f.total_pago)}
+              unit={brlMagnitude(f.total_pago)}
+              captionBefore={en ? `spent by ${d.municipio.nome} in` : `pagos por ${d.municipio.nome} em`}
+              captionAfter=""
+              years={[f.ano]}
+              year={f.ano}
+              basePath={`/brasil/${slug}/funcao/${funcao}`}
+              meta={a.answer}
+              shareTitle={a.title}
+            />
+            <PageJsonLd title={a.title} description={a.answer} path={`/brasil/${slug}/funcao/${funcao}`} locale={locale} creator="Tesouro Nacional (SICONFI)" />
+          </div>
+          <div className="fx-sec-a-scene">
+            <div className="fx-fiche fx-fiche-shell">
+              <RecifeFuncaoFiche f={f} perimeter={municipioPerimeter[locale]} />
+            </div>
+          </div>
+          <div className="fx-sec-a-related">
+            <RelatedLinks block={municipioFuncaoRelated(d, f, locale)} />
+          </div>
+          <div className="fx-sec-a-next">
+            <NextDoor
+              href={`/brasil/${slug}`}
+              kicker={en ? "Back to the município" : "De volta ao município"}
+              title={en ? `The whole budget of ${d.municipio.nome}` : `Todo o orçamento de ${d.municipio.nome}`}
+              sub={en ? "Spending and revenue, function by function." : "Despesas e receitas, função por função."}
+            />
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/localeContext";
 import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { loadBudget, loadQuemRecebe, loadContratos, funcaoSlug } from "@/lib/br/recife-data";
 import { loadPlace } from "@/lib/br/recife-places-data";
-import { fmtBrl, fmtBrlCompact, fmtBrlDeck, fmtInt } from "@/lib/br/format";
+import { titleCasePt, fmtBrl, fmtBrlCompact, fmtBrlDeck, fmtInt } from "@/lib/br/format";
 import { landingClosing } from "@/lib/landing-closing";
 
 const BASE = "/brasil/recife";
@@ -15,11 +15,7 @@ function truncate(s: string, n: number) {
   return (sp > n * 0.6 ? cut.slice(0, sp) : cut).trimEnd() + "…";
 }
 
-const SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "ao", "aos", "à", "às", "em", "para", "com"]);
-function titleCase(s: string) {
-  return s.toLocaleLowerCase("pt-BR").split(/\s+/)
-    .map((w, i) => (i > 0 && SMALL.has(w)) ? w : w ? w[0].toLocaleUpperCase("pt-BR") + w.slice(1) : w).join(" ");
-}
+const titleCase = titleCasePt;
 
 type S = {
   headline: React.ReactNode;
@@ -93,7 +89,7 @@ export function buildRecifeLandingModel(locale: Locale): LandingModel {
     label: titleCase(f.funcao), amount: fmtBrlCompact(f.pago),
   }));
   const recItems: MarqueeItem[] = qr.top_recebedores.slice(0, 10).map((r) => ({
-    href: `${BASE}/quem-recebe/${r.cnpj}`, label: r.nome, amount: fmtBrlCompact(r.total_pago),
+    href: `${BASE}/quem-recebe/${r.cnpj}`, label: titleCase(r.nome), amount: fmtBrlCompact(r.total_pago),
   }));
   const marquee = interleave([funcaoItems, recItems]);
 

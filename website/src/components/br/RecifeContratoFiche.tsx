@@ -47,9 +47,12 @@ function classifyModalidade(m: string): {
 export default function RecifeContratoFiche({
   c,
   source,
+  headlineInHero = false,
 }: {
   c: ContratoItem;
   source: SourceBlock;
+  /** La page porte déjà l'objet et le montant dans son héros (2026-09-18). */
+  headlineInHero?: boolean;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -89,7 +92,7 @@ export default function RecifeContratoFiche({
         {c.is_ativo && <span className="fx-sm-tag">{t("br.recife.ct.badge_ativo")}</span>}
       </div>
 
-      {c.objeto && (
+      {c.objeto && !headlineInHero && (
         <div className="fx-fiche-lead">
           <p className="fx-fiche-lead-main">{titleCasePt(c.objeto)}</p>
         </div>
@@ -117,12 +120,16 @@ export default function RecifeContratoFiche({
 
       <FicheKpis
         items={[
-          {
-            label: t("br.recife.contrato.valor"),
-            value: hasValor(c.valor)
-              ? fmtBrlCompact(c.valor)
-              : t(valorSuspeito ? "br.recife.contrato.valor_retido" : "br.recife.contrato.sem_valor"),
-          },
+          // Le montant vit dans le héros : deux arrondis du même nombre sur le
+          // même écran, c'est une de trop (2026-09-18).
+          ...(headlineInHero && hasValor(c.valor)
+            ? []
+            : [{
+              label: t("br.recife.contrato.valor"),
+              value: hasValor(c.valor)
+                ? fmtBrlCompact(c.valor)
+                : t(valorSuspeito ? "br.recife.contrato.valor_retido" : "br.recife.contrato.sem_valor"),
+            }]),
           {
             label: t("br.recife.contrato.fornecedor"),
             value: c.is_org
@@ -131,7 +138,7 @@ export default function RecifeContratoFiche({
                   : titleCasePt(c.fornecedor))
               : t("br.recife.ct.pessoa_fisica"),
           },
-          { label: t("br.recife.contrato.situacao"), value: c.situacao ?? "—" },
+          { label: t("br.recife.contrato.situacao"), value: titleCasePt(c.situacao ?? "") || "—" },
         ]}
       />
 

@@ -28,9 +28,30 @@ export type CmpData = { a: CmpSide; b: CmpSide; year: number };
 
 const CITY = "/brasil";
 
-export default function CompararClient({ d, pickOnly = false }: { d: CmpData; /** The second município is not chosen yet : the page is the field. */ pickOnly?: boolean }) {
+export default function CompararClient({ d, pickOnly = false, pickFirst = false }: { d: CmpData; /** The second município is not chosen yet : the page is the field. */ pickOnly?: boolean; /** No município at all : the page is the first field (2026-09-18, l'adresse nue répondait 404). */ pickFirst?: boolean }) {
   const t = useT();
   const { locale } = useLocale();
+  if (pickFirst) {
+    return (
+      <main id="main-content" tabIndex={-1}>
+        <div className="fx-sec fx-v3">
+          <div className="fx-sec-kicker fx-page-kicker fx-page-kicker--links"><Link href={CITY}>{t("br.mun.kicker_root")}</Link> › {t("br.cmp.kicker")}</div>
+          <div className="fx-sec-grid" data-layout="dette-lite">
+            <div className="fx-sec-a-hero">
+              <header className="fx-sec-hero" data-section="hero">
+                <h1>{t("br.cmp.pick_a")}</h1>
+                <p className="fx-sec-cap">{t("br.cmp.pick_a_sub")}</p>
+              </header>
+              <div className="fx-sec-lieux-search">
+                <MunicipioSearch placeholder={t("br.mun.compare_ph")} label={t("br.mun.compare_h")} hrefFor={(slug) => `${CITY}/comparar?a=${slug}`} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   const int = new Intl.NumberFormat(locale === "en" ? "en-US" : "pt-BR", { maximumFractionDigits: 0 });
   const perHab = (v: number | null, side: CmpSide) => (v == null || !side.pop ? null : v / side.pop);
   const names = new Map<string, string>();

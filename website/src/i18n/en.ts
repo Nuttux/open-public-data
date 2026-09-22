@@ -7332,6 +7332,8 @@ const en: Record<string, string> = {
   'br.cmp.u.how': 'How to read this comparison',
   'br.cmp.u.how_body': 'The amounts are the spending paid (and the net revenue realised) divided by the population IBGE estimates, in the same year for both. A function missing on one side is one that município did not declare that year, not a zero. Municípios of very different sizes have different structures: two of similar population say more.',
   'br.cmp.foot': 'Source: SICONFI, National Treasury (DCA, Annexes I-C and I-E); population IBGE. Per resident, year {y}.',
+  'br.cmp.pick_a': 'Compare two municípios',
+  'br.cmp.pick_a_sub': 'Pick the first município; the second comes on the next screen.',
   'br.cmp.pick_b': 'Pick the second município',
   'br.cmp.pick_b_sub': 'Type its name; the municípios of similar size are on {a}’s page.',
 

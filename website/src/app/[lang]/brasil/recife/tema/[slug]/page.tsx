@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { titleCasePt } from "@/lib/br/format";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { loadTema } from "@/lib/br/recife-data";
@@ -30,7 +31,7 @@ export default async function TemaPage({ params }: { params: Promise<{ slug: str
         <Link href="/brasil/recife/quem-recebe" className="fx-page-kicker" style={{ textDecoration: "none" }}>
           ← Recife · Tema
         </Link>
-        <h1 className="fx-page-title">{tm.tema}</h1>
+        <h1 className="fx-page-title">{titleCasePt(tm.tema)}</h1>
         <p className="fx-page-lede fx-answer">{temaAnswer(tm, locale).answer}</p>
         <PageJsonLd title={temaAnswer(tm, locale).title} description={temaAnswer(tm, locale).answer} path={`/brasil/recife/tema/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
