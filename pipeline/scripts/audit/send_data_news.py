@@ -5,7 +5,7 @@ Prévenir les abonnés qu'il y a du neuf (2026-09-16).
 Lu par le job `notify` de enrich-pipeline.yml, après le mail du lundi, quand le
 refresh a PUBLIÉ de nouvelles données. Compose un message court à partir du
 résumé produit par summarize_data_diff.py (quels index ont gagné une année),
-puis l'envoie à l'audience Resend en un seul broadcast — c'est Resend qui
+puis l'envoie au segment Resend (l'ancienne « audience ») en un seul broadcast — c'est Resend qui
 porte le lien de désinscription ({{{RESEND_UNSUBSCRIBE_URL}}}).
 
 Rien n'est envoyé :
@@ -130,7 +130,7 @@ def main() -> int:
         print("::warning::RESEND_API_KEY ou RESEND_AUDIENCE_ID absent : abonnés non prévenus.")
         return 0
     sender = env("ALERTS_EMAIL_FROM", "Qipu <alertes@qipu.org>")
-    code, created = resend("/broadcasts", {"audience_id": audience, "from": sender, "subject": subject, "text": text, "html": body, "name": subject}, key)
+    code, created = resend("/broadcasts", {"segment_id": audience, "from": sender, "subject": subject, "text": text, "html": body, "name": subject}, key)
     if code != 200 and code != 201 or not created.get("id"):
         print(f"::warning::Resend a répondu {code} à la création du broadcast : {created}")
         return 0
