@@ -8,6 +8,7 @@ import { getClickCoords } from '@/lib/analytics-helpers';
 import { pageContext } from '@/lib/analytics/page-context';
 import { foldIdFor, isSourceLink, linkRole, sectionIdFor } from '@/lib/analytics/dom';
 import { isDrawerOpen } from '@/lib/drawerState';
+import { analyticsAllowed, isLocalHostname } from '@/lib/analytics/send-guard';
 
 const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 // Default to the same-origin reverse proxy (see next.config rewrites) so ad
@@ -67,7 +68,7 @@ const OPTOUT_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // one year, like the visitor 
 /** `www.qipu.org` → `qipu.org`; null on localhost / an IP (host-only cookie). */
 function apexDomain(): string | null {
   const h = window.location.hostname;
-  if (h === 'localhost' || h.endsWith('.localhost') || /^[\d.]+$/.test(h)) return null;
+  if (isLocalHostname(h)) return null;
   const parts = h.split('.');
   return parts.length >= 2 ? parts.slice(-2).join('.') : null;
 }
@@ -117,6 +118,7 @@ function hasReplayOptIn(): boolean {
 
 function initPostHog() {
   if (initialized || typeof window === 'undefined' || !POSTHOG_KEY) return;
+  if (!analyticsAllowed(window.location.hostname, POSTHOG_HOST)) return;
   if (isOptedOut()) return;
   initialized = true;
 
@@ -159,6 +161,7 @@ function currentContext(): Record<string, unknown> {
 
 function track(eventName: string, properties: Record<string, unknown> = {}) {
   if (typeof window === 'undefined' || !POSTHOG_KEY || isOptedOut()) return;
+  if (!analyticsAllowed(window.location.hostname, POSTHOG_HOST)) return;
   if (!initialized) initPostHog();
   if (!initialized) return;
   posthog.capture(eventName, { ...currentContext(), ...properties });

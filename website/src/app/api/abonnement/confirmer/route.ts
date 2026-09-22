@@ -26,7 +26,9 @@ export async function GET(req: Request) {
 
   try {
     const resend = new Resend(cfg.apiKey);
-    const res = await resend.contacts.create({ audienceId: cfg.audienceId, email: v.email, unsubscribed: false });
+    // Resend renamed audiences to segments (SDK 6: `audienceId` is deprecated,
+    // the documented form adds the new contact to a segment).
+    const res = await resend.contacts.create({ email: v.email, unsubscribed: false, segments: [{ id: cfg.audienceId }] });
     // An address already on the list is not an error: the reader clicked twice.
     if (res.error && !/already|exists|duplicate/i.test(res.error.message ?? "")) {
       console.error("[abonnement] resend.contacts.create error:", res.error);

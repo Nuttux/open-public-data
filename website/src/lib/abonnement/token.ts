@@ -8,7 +8,8 @@
  *
  * Env:
  *   RESEND_API_KEY        already used by /api/contact and /api/signalement
- *   RESEND_AUDIENCE_ID    the audience « Qipu — nouvelles données »
+ *   RESEND_AUDIENCE_ID    the ID of the segment « Qipu — nouvelles données »
+ *                         (Resend's « audiences » are now « segments »; the name stayed)
  *   ALERTS_EMAIL_FROM     a sender on a verified domain (alertes@qipu.org);
  *                         falls back to SIGNALEMENT_EMAIL_FROM
  *   ALERTS_SECRET         signs the links; falls back to the API key
