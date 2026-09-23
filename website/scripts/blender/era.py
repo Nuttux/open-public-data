@@ -769,7 +769,14 @@ def pick(mix, r):
 def freeway_year(name, x, y):
     if not name: return None
     if name.startswith('I-80'): return 1936
-    if name.startswith('I-280'): return 1964 if y < -1100 else 1969
+    if name.startswith('I-280'):
+        # north of 16th Street (y 732) the freeway is purple on the 1973
+        # photorevision of the 1:24,000 San Francisco North sheet and absent
+        # from the 1968 one (history/masks/usgs1968_ink, usgs1973_ink); it
+        # 'reached 3rd Street' by 1973 (Kurumi, via gribblenation) — 1972
+        # [convention between the two revisions]. The export draws only
+        # today's King Street end (1990s), not the Brannan end of 1975-97.
+        return 1964 if y < -1100 else (1969 if y < 732 else 1972)
     if name.startswith('HWY 101'):
         if y > 4300: return 1936 if x < -1300 else None       # Doyle Drive / surface Marina approach
         if y > 1000 and x < 2700: return 1959                  # the Central Freeway
