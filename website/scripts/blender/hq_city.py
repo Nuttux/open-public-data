@@ -132,8 +132,10 @@ def ground(x, y):
     # generator raises on it and the chunk loop skips it)
     h_ = bvh_t.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
     return h_[0].z if h_[0] else None
-def ground0(x, y):
-    g_ = ground(x, y); return 0.0 if g_ is None else g_
+def ground0(x, y, _ground=ground):
+    # bound to THIS ground: the sea's slice runs with ground = ground0, and a
+    # ground0 reading the global name then called itself (RecursionError, 1960)
+    g_ = _ground(x, y); return 0.0 if g_ is None else g_
 # the land around the city (Daly City, Marin): the engine's surround, so the
 # terrain does not end in a cliff at the county line
 SP_, SC_ = array.array('f'), array.array('f')
