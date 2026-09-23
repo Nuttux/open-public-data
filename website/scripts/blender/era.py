@@ -1703,6 +1703,9 @@ def canopy_stands(x, y, era, all_recs, kd, radius=60.0):
     nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), radius)]
     if not nb: nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), 2.2 * radius)]   # a plaza's middle
     if not nb: return True
-    # by built area, not by count: one hall of 1981 outweighs three sheds
-    a = [(_ring_area(b['ring']) if len(b['ring']) > 2 else 50.0, (b['year'] or 0) <= era) for b in nb]
+    # by built area, not by count: one hall of 1981 outweighs three sheds;
+    # an undated record says nothing either way (Yerba Buena Gardens' trees
+    # stood in 1890 on the strength of one undated shed, e06)
+    a = [(_ring_area(b['ring']) if len(b['ring']) > 2 else 50.0, b['year'] <= era) for b in nb if b['year']]
+    if not a: return True
     return sum(w for w, old in a if old) >= 0.5 * sum(w for w, _ in a)
