@@ -12,7 +12,10 @@ label="$1"; shift
 # the long city loop steps back a moment between frames, so a waiter that
 # still polls the old way (no ticket) gets its turn too
 case "$label" in city*) sleep 8;; esac
-me="$Q/$(date +%s)$(printf '%06d' $$)_$$"
+# the city pass goes first (ticket 0…, the rest 1…); since the city loop steps
+# back 8 s between frames, exactly one other job runs between two city frames
+case "$label" in city*) pri=0;; *) pri=1;; esac
+me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
 trap 'rm -f "$me"' EXIT INT TERM
 while :; do

@@ -1,6 +1,6 @@
 """Cut the path-traced level-7 frames into the site's tile pyramid.
 
-python3 tiles_build.py <frames_dir> <out_dir> [--upload gs://qipu-tiles/us/sf/city/render]
+python3 tiles_build.py <frames_dir>[,<older_dir>…] <out_dir> [--upload gs://qipu-tiles/us/sf/city/render]
 
 The frames are hq_city.py MODE=pyramid output: f_z7_<i>_<j>.png, 5120 x 3072
 device px each, an 8 x 8 grid over the level-7 canvas (40960 x 24576). Each is
@@ -27,13 +27,17 @@ band = lambda z: (lambda k: 0 if k < 1.826 else 1 if k < 5.77 else 2)(2 ** (z - 
 
 os.makedirs(OUT, exist_ok=True)
 graded = os.path.join(OUT, '_graded'); os.makedirs(graded, exist_ok=True)
+# several passes, newest first: a frame comes from the newest pass that has it
+src = {}
+for fr in reversed(FR.split(',')):
+    for fn in os.listdir(fr):
+        if fn.startswith('f_z7_') and fn.endswith('.png'): src[fn] = os.path.join(fr, fn)
 made = set()
-for fn in sorted(os.listdir(FR)):
-    if not (fn.startswith('f_z7_') and fn.endswith('.png')): continue
+for fn in sorted(src):
     i, j = (int(v) for v in fn[5:-4].split('_'))
     g = os.path.join(graded, fn)
-    if not os.path.exists(g) or os.path.getmtime(g) < os.path.getmtime(os.path.join(FR, fn)):
-        subprocess.run(['python3', os.path.join(HERE, 'grade.py'), os.path.join(FR, fn), g, '40', '12'], check=True)
+    if not os.path.exists(g) or os.path.getmtime(g) < os.path.getmtime(src[fn]):
+        subprocess.run(['python3', os.path.join(HERE, 'grade.py'), src[fn], g, '40', '12'], check=True)
     im = Image.open(g).convert('RGB')
     for ty in range(FH // T):
         for tx in range(FW // T):

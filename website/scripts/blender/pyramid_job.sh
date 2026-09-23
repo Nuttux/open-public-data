@@ -5,7 +5,9 @@ W=/Users/daniel/code/qipu-render-work; Q=/Users/daniel/code/opd-render/website/s
 # the scripts come from a FROZEN snapshot (SNAP): every frame of one pass must
 # be drawn by the same code, or the frames disagree at their seams
 B=${SNAP:?set SNAP to a snapshot of the scripts}
-R=$W/pyramid/z7; mkdir -p $R; cd $W
+# OUT: a new pass writes to its own folder; tiles_build.py takes each frame
+# from the newest pass that has it, so the site has no hole while it runs
+R=${OUT:-$W/pyramid/z7}; mkdir -p $R; cd $W
 SPP=${SPP:-20}
 ORDER=$(python3 -c "
 fr=[(i,j) for j in range(8) for i in range(8)]
