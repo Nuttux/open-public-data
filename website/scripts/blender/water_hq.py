@@ -9,8 +9,9 @@ surface), coloured by kind: Lake Merced blue-green, the Golden Gate Park
 lakes olive, the lagoon at the Palace of Fine Arts green, the tidal creeks
 the bay's own grey-green.
 sea_depth(C): the render's sea material gets its colour from the depth
-under it (USGS 3DEP topobathy where the tiles reach, 2 m): sand-green in the
-shallows, dark teal over the flats, navy in the Golden Gate's channel.
+under it (bathy_8m.npy from tools/bathy.py: USGS 3DEP topobathy, its
+hydro-flattened lidar patches filled from the measured bottom): olive-grey
+over the flats, teal over the shoals, navy in the Golden Gate's channel.
 """
 import json, math, os
 import numpy as np
@@ -58,40 +59,53 @@ def lakes(C):
         n += 1
     return n
 
-def sea_depth(C, res=8.0):
+BATHY = '/Users/daniel/code/qipu-render-work/landmarks/bathy_8m.npy'     # tools/bathy.py (3DEP, flattened patches filled)
+
+def _depth_image(bpy, ox, oy, w_, h_):
+    """the depth under the sea on the mask's frame, as a float image (R =
+    sqrt(depth / 120 m), more resolution in the shallows); None if no data"""
+    if os.path.exists(BATHY):
+        dep = np.load(BATHY).astype(np.float32)                 # row 0 = north
+        ny, nx = dep.shape
+    else:
+        import lm_dem
+        if not lm_dem.available(): return None
+        res = 8.0; nx, ny = int(w_ / res), int(h_ / res)
+        X, Y = np.meshgrid(ox + (np.arange(nx) + 0.5) * res, oy + h_ - (np.arange(ny) + 0.5) * res)
+        Z = lm_dem.sample_arr(X, Y)
+        dep = np.where(np.isnan(Z), 40.0, np.clip(-Z, 0.0, 120.0)).astype(np.float32)
+    v = np.sqrt(np.clip(dep / 120.0, 0, 1)).astype(np.float32)[::-1]     # bpy rows start at the bottom
+    im = bpy.data.images.new('lm_depth', nx, ny, alpha=False, float_buffer=True)
+    px = np.zeros((ny, nx, 4), np.float32); px[..., 0] = v; px[..., 3] = 1.0
+    im.pixels.foreach_set(px.ravel()); im.colorspace_settings.name = 'Non-Color'
+    return im
+
+# the water's own colour (under the sky it reflects) by depth, sqrt(depth / 120 m):
+# the bay is turbid — olive-grey over the flats and along the shore, teal
+# over the shoals, the navy-teal the render had before only in the deep
+# channel of the Golden Gate and offshore
+DEPTH_STOPS = [(0.0, (0.070, 0.074, 0.052)), (0.10, (0.040, 0.060, 0.050)), (0.20, (0.020, 0.045, 0.046)),
+               (0.32, (0.010, 0.030, 0.038)), (0.50, (0.006, 0.021, 0.031)), (1.0, (0.003, 0.012, 0.024))]
+
+def sea_depth(C):
     """recolour the render's 'sea' material by the depth under the water"""
     bpy = C.bpy
     m = bpy.data.materials.get('sea')
     if m is None: return False
     nt = m.node_tree
-    img = next((n for n in nt.nodes if n.type == 'TEX_IMAGE'), None)
     mp = next((n for n in nt.nodes if n.type == 'MAPPING'), None)
     wat = next((n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED' and n.inputs['Roughness'].default_value < 0.1), None)
-    if img is None or mp is None or wat is None: return False
-    import lm_dem
-    if not lm_dem.available(): return False
+    if mp is None or wat is None: return False
     # the mask's own frame: Location = (-ox/w, -oy/h), Scale = (1/w, 1/h)
     sx, sy = mp.inputs['Scale'].default_value[0], mp.inputs['Scale'].default_value[1]
     lx, ly = mp.inputs['Location'].default_value[0], mp.inputs['Location'].default_value[1]
     w_, h_ = 1.0 / sx, 1.0 / sy; ox, oy = -lx * w_, -ly * h_
-    nx, ny = int(w_ / res), int(h_ / res)
-    if nx * ny > 6e6: res = math.sqrt(w_ * h_ / 6e6); nx, ny = int(w_ / res), int(h_ / res)
-    X, Y = np.meshgrid(ox + (np.arange(nx) + 0.5) * res, oy + (np.arange(ny) + 0.5) * res)
-    Z = lm_dem.sample_arr(X, Y)
-    depth = np.where(np.isnan(Z), 40.0, np.clip(-Z, 0.0, 120.0)).astype(np.float32)
-    # a gentle blur so the colour flows (3 passes of a 3x3 box)
-    for _ in range(3):
-        p = np.pad(depth, 1, mode='edge')
-        depth = (p[:-2, :-2] + p[:-2, 1:-1] + p[:-2, 2:] + p[1:-1, :-2] + p[1:-1, 1:-1] + p[1:-1, 2:] + p[2:, :-2] + p[2:, 1:-1] + p[2:, 2:]) / 9
-    v = np.sqrt(np.clip(depth / 120.0, 0, 1)).astype(np.float32)          # more resolution in the shallows
-    im = bpy.data.images.new('lm_depth', nx, ny, alpha=False, float_buffer=True)
-    px = np.zeros((ny, nx, 4), np.float32); px[..., 0] = v; px[..., 3] = 1.0
-    im.pixels.foreach_set(px.ravel()); im.colorspace_settings.name = 'Non-Color'
-    tn = nt.nodes.new('ShaderNodeTexImage'); tn.image = im; tn.extension = 'EXTEND'; tn.interpolation = 'Linear'
+    im = _depth_image(bpy, ox, oy, w_, h_)
+    if im is None: return False
+    tn = nt.nodes.new('ShaderNodeTexImage'); tn.image = im; tn.extension = 'EXTEND'; tn.interpolation = 'Cubic'
     nt.links.new(mp.outputs[0], tn.inputs['Vector'])
     ramp = nt.nodes.new('ShaderNodeValToRGB'); cr = ramp.color_ramp
-    stops = [(0.0, (0.105, 0.105, 0.075)), (0.09, (0.045, 0.075, 0.060)), (0.18, (0.020, 0.050, 0.050)),
-             (0.30, (0.010, 0.032, 0.040)), (0.50, (0.006, 0.022, 0.032)), (1.0, (0.003, 0.012, 0.024))]
+    stops = DEPTH_STOPS
     cr.elements[0].position, cr.elements[0].color = stops[0][0], (*stops[0][1], 1)
     cr.elements[1].position, cr.elements[1].color = stops[-1][0], (*stops[-1][1], 1)
     for pos, col in stops[1:-1]:
@@ -99,3 +113,79 @@ def sea_depth(C, res=8.0):
     nt.links.new(tn.outputs['Color'], ramp.inputs['Fac'])
     nt.links.new(ramp.outputs['Color'], wat.inputs['Base Color'])
     return True
+
+# ── piers and docks ──────────────────────────────────────────────────────────
+PIERS_JSON = '/Users/daniel/code/qipu-render-work/landmarks/piers.json'
+try:
+    from terrain_hq import PIER_Z                  # the plateau terrain_hq stands the sheds on
+except Exception:
+    PIER_Z = 2.3
+DECK = hexc('#8e8a82'); DECK_SIDE = hexc('#3e3a35'); FLOAT = hexc('#8b8272')
+
+def _inside(x, y, r):
+    ins = False
+    for i in range(len(r)):
+        (x1, y1), (x2, y2) = r[i], r[(i + 1) % len(r)]
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / ((y2 - y1) or 1e-12) + x1: ins = not ins
+    return ins
+
+def piers(C):
+    """the piers' decks and the marinas' docks (OpenStreetMap man_made=pier,
+    piers.json from lm_prep.py), and the aprons round the pier sheds that
+    terrain_hq stood on a plateau (d['_piers']). The ground under a pier is
+    3DEP's (which has the decks in it) and takes the ground's lawn and dry
+    grass; a deck is concrete. A fixed deck: a slab at the ground's level
+    inside it (its median, never under a spike more than a metre over it),
+    dark sides down into the water (the piles in shadow). A float: 0.55 m
+    over the water, weathered timber. Returns the number built."""
+    K, tg = C.K, C.tg
+    bx0, by0, bx1, by1 = C.box
+    def near(pts, pad=200.0):
+        xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
+        return not (max(xs) < bx0 - pad or min(xs) > bx1 + pad or max(ys) < by0 - pad or min(ys) > by1 + pad)
+    def deck_z(r):
+        xs = [p[0] for p in r]; ys = [p[1] for p in r]
+        s = []
+        st = max(2.0, min(max(xs) - min(xs), max(ys) - min(ys)) / 12)
+        x = min(xs) + st / 2
+        while x < max(xs) and len(s) < 400:
+            y = min(ys) + st / 2
+            while y < max(ys):
+                if _inside(x, y, r): s.append(tg(x, y))
+                y += st
+            x += st
+        if not s: s = [tg(*p) for p in r]
+        s = np.array(s, float); med = float(np.median(s))
+        return float(np.clip(min(s.max(), med + 1.0) + 0.10, PIER_Z + 0.1, 6.5))
+    n = 0
+    decks = []
+    if os.path.exists(PIERS_JSON):
+        for p in json.load(open(PIERS_JSON))['piers']:
+            pts = p.get('ring') or p.get('line')
+            if not near(pts): continue
+            if p['kind'] in ('deck', 'float'):
+                decks.append((p['kind'], [tuple(q) for q in p['ring']]))
+            else:
+                # a dock or a finger: a plank strip along the line, over water only
+                L_ = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts, pts[1:]))
+                mid = pts[len(pts) // 2]
+                if tg(*mid) > 1.0: continue                    # on land or on a deck the ground already has
+                fl = p['kind'] == 'float_line' or L_ < 80.0
+                z = 0.55 if fl else 2.4
+                w = p['width']
+                for a, b in zip(pts, pts[1:]):
+                    if math.hypot(b[0] - a[0], b[1] - a[1]) < 0.2: continue
+                    K.beam('lm_matte', (a[0], a[1], z - 0.2), (b[0], b[1], z - 0.2), w, 0.4, FLOAT if fl else DECK)
+                    if not fl: K.beam('lm_matte', (a[0], a[1], (z - 1.6) / 2), (b[0], b[1], (z - 1.6) / 2), w * 0.85, z + 1.2, DECK_SIDE, caps=False)
+                n += 1
+    for r in (C.d.get('_piers') or []) if isinstance(C.d, dict) else []:
+        if near(r): decks.append(('apron', [tuple(q) for q in r]))
+    for kind, r in decks:
+        if len(r) < 3: continue
+        if kind == 'float':
+            K.prism('lm_matte', r, -0.3, 0.55, FLOAT); n += 1; continue
+        z = deck_z(r)
+        K.prism('lm_matte', r, -1.5, z - 0.02, DECK_SIDE, top=False)
+        K.face_holes('sidewalk', r, [], z, DECK)
+        n += 1
+    return n

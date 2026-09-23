@@ -1,31 +1,31 @@
 #!/bin/sh
-# ONE BLENDER AT A TIME, FIRST COME FIRST SERVED. Every render on this Mac:
-#   sh gpuq.sh <label> <command...>
-# Three Blender scenes loaded at once took ~40 GB of the 48 and the system
-# killed them (2026-09-23). A waiter takes a numbered ticket; the lock (a
-# directory: mkdir is atomic) goes to the oldest live ticket, so a loop that
-# asks again the instant it lets go (the city frames) cannot starve the short
-# tests waiting behind it. Dead owners and dead tickets are cleared.
+# THE GPU QUEUE. Every render on this Mac:   sh gpuq.sh <label> <command...>
+# ONE Blender at a time, and only when the Mac really has the memory free.
+# 2026-09-24 00:10: the laptop crashed out of memory. Two renders had been let
+# run together on estimates read from their labels (an era test labelled
+# "history …" was counted 10 GB and took 21), while other sessions' dev servers
+# held ~30 GB. So: one slot, and a MEASURED gate — a job starts only when free +
+# inactive + purgeable memory is at least GPU_NEED GB (24). memguard.sh stops
+# the biggest render if memory still runs out.
+# Order: tickets, quick tests first (0…), long city renders after (1…); the
+# oldest ticket goes first.
 W=/Users/daniel/code/qipu-render-work
 L=$W/.gpu.lock; Q=$W/.gpu.queue; mkdir -p "$Q"
 label="$1"; shift
-# the long city loop steps back a moment between frames, so a waiter that
-# still polls the old way (no ticket) gets its turn too
 case "$label" in city*) sleep 8;; esac
-# the city pass goes first (ticket 0…, the rest 1…); since the city loop steps
-# back 8 s between frames, exactly one other job runs between two city frames
-case "$label" in city*) pri=0;; *) pri=1;; esac
+case "$label" in city*) pri=1;; *) pri=0;; esac
+NEED=${GPU_NEED:-24}
 me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
 trap 'rm -f "$me"' EXIT INT TERM
+avail() { vm_stat | awk '/Pages free/ {f=$3} /Pages inactive/ {i=$3} /Pages purgeable/ {p=$3} /Pages speculative/ {s=$3} END {printf "%d", (f+i+p+s)*16384/1e9}'; }
 while :; do
-  for t in "$Q"/*; do                       # clear tickets whose waiter is gone
-    p=${t##*_}; [ -f "$t" ] && ! kill -0 "$p" 2>/dev/null && rm -f "$t"
+  for t in "$Q"/*; do p=${t##*_}; [ -f "$t" ] && ! kill -0 "$p" 2>/dev/null && rm -f "$t"; done
+  for X in "$L" "$W/.gpu.lock2"; do        # a dead owner frees its slot
+    o=$(cat "$X/pid" 2>/dev/null); [ -n "$o" ] && ! kill -0 "$o" 2>/dev/null && rm -rf "$X"
   done
   first=$(ls "$Q" | sort | head -1)
-  if [ "$Q/$first" = "$me" ] && mkdir "$L" 2>/dev/null; then break; fi
-  owner=$(cat "$L/pid" 2>/dev/null)
-  if [ -n "$owner" ] && ! kill -0 "$owner" 2>/dev/null; then rm -rf "$L"; fi
+  if [ "$Q/$first" = "$me" ] && [ ! -d "$W/.gpu.lock2" ] && [ "$(avail)" -ge "$NEED" ] && mkdir "$L" 2>/dev/null; then break; fi
   sleep 3
 done
 rm -f "$me"

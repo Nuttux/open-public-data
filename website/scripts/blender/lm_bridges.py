@@ -144,12 +144,16 @@ def golden_gate(C):
         # south anchorage (OSM footprint, v ~ -460 .. -560)
         g_a = min(tg(*P(0, -470)[:2]), tg(*P(0, -550)[:2]))
         block(-21.5, 21.5, -560, -462, g_a - 2, gg_road(-470) - 1.2, CONC)
-        block(-19.0, 19.0, -548, -474, gg_road(-470) - 1.2, gg_road(-470) + 3.0, CONC)
+        # the cable housings stand either side of the roadway, never over it
+        # (a block across the whole width sat on the deck, 2026-09-23)
+        for sg in (-1, 1):
+            block(min(sg * 14.4, sg * 19.0), max(sg * 14.4, sg * 19.0), -548, -474, gg_road(-470) - 1.2, gg_road(-470) + 3.0, CONC)
         # north anchorage at the end of the Marin side span
         vn = L + SIDE
         g_n = tg(*P(0, vn + 20)[:2])
         block(-22.0, 22.0, vn - 8, vn + 62, min(g_n, 20) - 2, gg_road(vn) - 1.2, CONC)
-        block(-19.0, 19.0, vn - 4, vn + 50, gg_road(vn) - 1.2, gg_road(vn) + 3.0, CONC)
+        for sg in (-1, 1):
+            block(min(sg * 14.4, sg * 19.0), max(sg * 14.4, sg * 19.0), vn - 4, vn + 50, gg_road(vn) - 1.2, gg_road(vn) + 3.0, CONC)
         pylon(vn - 2.0, gg_road(vn) + 14.0)
 
     # ── the towers ──
@@ -235,7 +239,18 @@ def golden_gate(C):
         _deck_surface(K, P, vA, -560.0 if False else vA, vB, gg_road, 14.0)
         # approaches: the south viaduct over the anchorage and the bluff to the
         # toll plaza, the north one over the Lime Point valley
-        _viaduct(C, K, P, -900.0, vA, gg_road, 14.0, ORANGE)
+        # south of the anchorage the viaduct bends east to the toll plaza (OSM
+        # ways 537838948 / 595194543, bridge=yes to ~ v -670: their mid-line
+        # below); a straight deck ran on over the bluff. The deck is sheared
+        # along the bend, not turned: 11 % narrower at its end, unseen at 37 cm
+        BEND = [(-480.0, 0.0), (-537.0, 4.3), (-562.0, 9.8), (-590.0, 18.5), (-616.0, 31.0), (-644.0, 45.0), (-670.0, 59.4), (-700.0, 76.0)]
+        def uc(v):
+            if v >= BEND[0][0]: return 0.0
+            for (va_, ua), (vb_, ub) in zip(BEND, BEND[1:]):
+                if vb_ <= v <= va_: return ua + (ub - ua) * (v - va_) / (vb_ - va_)
+            return BEND[-1][1] + (v - BEND[-1][0]) * (BEND[-1][1] - BEND[-2][1]) / (BEND[-1][0] - BEND[-2][0])
+        P2 = lambda u, v, z=0.0: P(u + uc(v), v, z)
+        _viaduct(C, K, P2, -690.0, vA, gg_road, 14.0, ORANGE)
         _viaduct(C, K, P, vB, L + SIDE + 200.0, gg_road, 14.0, ORANGE)
         # the Fort Point arch (between S1 and S2, over the fort)
         va, vb = -SIDE - 6.0, -455.0 + 6.0

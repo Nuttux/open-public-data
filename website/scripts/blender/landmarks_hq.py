@@ -32,8 +32,8 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry'}
-WATER_ENABLED = set()           # 'lakes', 'sea_depth' once validated
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate'}
+WATER_ENABLED = set()           # 'lakes', 'piers', 'sea_depth' once validated
 
 class Region:
     """where the engine's crude stand-in is cleared: a polygon, or a
@@ -154,7 +154,11 @@ def _registry():
                  note='as the rotunda', replaces=True),
     ]
     every = os.environ.get('LM_ALL') == '1'
-    return [l for l in L if l.regions and (every or l.key in ENABLED)]
+    return [l for l in L if l.regions and (every or l.key in ENABLED or l.key in _extra())]
+
+def _extra():
+    # LM_KEYS=a,b: build these too (the landmarks agent's A/B tests, one model at a time)
+    return {k for k in os.environ.get('LM_KEYS', '').split(',') if k}
 class Ctx:
     pass
 
@@ -300,12 +304,15 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         except Exception as ex:
             traceback.print_exc(); log(f'landmarks_hq: {lm.key} failed: {ex}')
     every = os.environ.get('LM_ALL') == '1'
+    WATER_ENABLED_ = WATER_ENABLED | _extra()
     try:
         import water_hq
         mats['lm_lake'] = water_hq._mat(bpy)
-        if every or 'lakes' in WATER_ENABLED:
+        if every or 'lakes' in WATER_ENABLED_:
             nl = water_hq.lakes(C); log(f'landmarks_hq: {nl} lakes and ponds')
-        if every or 'sea_depth' in WATER_ENABLED:
+        if every or 'piers' in WATER_ENABLED_:
+            npr = water_hq.piers(C); log(f'landmarks_hq: {npr} pier decks and docks')
+        if every or 'sea_depth' in WATER_ENABLED_:
             if water_hq.sea_depth(C): log('landmarks_hq: sea coloured by depth')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: water failed', ex)

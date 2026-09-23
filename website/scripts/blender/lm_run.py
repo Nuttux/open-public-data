@@ -25,6 +25,16 @@ if os.environ.get('LM_PROF') == '1':
     src, n_ = re.subn(r"(\n( +))t1 = time\.time\(\); bpy\.ops\.render\.render\(write_still=True\)(?=\n\2log\(f'frame)",
                       r"\1import lm_prof; lm_prof.variants(bpy, sc, log, fn); sys.exit(0)", src, count=1)
     assert n_ == 1, 'pyramid render line not found'
+# probing: LM_PROBE='u,v;...' logs what the camera sees at those frame pixels, no render (lm_probe.py)
+if os.environ.get('LM_PROBE'):
+    import re
+    src, n_ = re.subn(r"(\n( +))t1 = time\.time\(\); bpy\.ops\.render\.render\(write_still=True\)(?=\n\2log\(f'frame)",
+                      r"\1import lm_probe; lm_probe.probe(bpy, sc, log, os.environ['LM_PROBE']); sys.exit(0)", src, count=1)
+    assert n_ == 1, 'pyramid render line not found'
+# LM_PCT=25: render at that per cent of the frame (a level-5 look at a level-7 frame's cost of path tracing)
+if os.environ.get('LM_PCT'):
+    a_ = "sc.cycles.samples = SPP\n"; assert a_ in src, 'samples line not found'
+    src = src.replace(a_, a_ + f"sc.render.resolution_percentage = {int(os.environ['LM_PCT'])}\n", 1)
 os.environ.setdefault('LM_ALL', '1')                 # the landmarks agent's tests see every model
 g = {'__name__': '__main__', '__file__': path}
 exec(compile(src, path, 'exec'), g)

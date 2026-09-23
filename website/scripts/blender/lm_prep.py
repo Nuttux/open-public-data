@@ -131,6 +131,33 @@ def water():
               open(os.path.join(W, 'water.json'), 'w'))
     print('water bodies', len(out))
 
+# piers and docks: OpenStreetMap man_made=pier (piers2_osm.json). Closed
+# ways are decks (fixed piers) or floats; open ways are docks and fingers, a
+# width across (OSM gives none: 2.4 m for a marina finger, 3.5 m otherwise)
+def piers():
+    p = os.path.join(W, 'piers2_osm.json')
+    if not os.path.exists(p): return
+    out = []
+    for e in json.load(open(p))['elements']:
+        g = e.get('geometry') or []
+        if len(g) < 2: continue
+        t = e.get('tags', {})
+        if t.get('ruined') == 'yes' or t.get('disused') == 'yes' and t.get('floating') != 'yes': continue
+        pts = [(round(X(q['lon']), 2), round(Y(q['lat']), 2)) for q in g]
+        closed = len(g) > 3 and g[0] == g[-1]
+        fl = t.get('floating') == 'yes'
+        if closed:
+            r = pts[:-1]
+            a = 0.5 * abs(sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r))))
+            if a < 12: continue
+            out.append(dict(id=e['id'], name=t.get('name'), kind='float' if fl else 'deck', ring=r, area=round(a)))
+        else:
+            out.append(dict(id=e['id'], name=t.get('name'), kind='float_line' if fl else 'line', line=pts,
+                            width=float(t.get('width', 0) or 0) or (2.4 if fl else 3.5)))
+    json.dump(dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors): man_made=pier within San Francisco', piers=out),
+              open(os.path.join(W, 'piers.json'), 'w'))
+    print('piers', len(out))
+
 def main():
     els = load_osm()
     out, skip = {}, {}
@@ -156,6 +183,7 @@ def main():
         print(key, [(b['gid'], round(b['h'], 1)) for b in recs])
     out['alcatraz'] = alcatraz()
     water()
+    piers()
     json.dump(out, open(os.path.join(W, 'footprints.json'), 'w'))
     import landmarks_hq
     skip = {k: v for k, v in skip.items() if k in landmarks_hq.ENABLED}
