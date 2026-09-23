@@ -197,7 +197,17 @@ def sand_look(m):
     rp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(nz.outputs['Fac'], rp.inputs[0])
     # linear albedo of dry dune sand, Ocean Beach buff (display ~0.50/0.43/0.33 .. 0.62/0.54/0.42)
     rp.color_ramp.elements[0].color = (0.21, 0.16, 0.09, 1); rp.color_ramp.elements[1].color = (0.34, 0.26, 0.15, 1)
-    nt.links.new(rp.outputs[0], mx.inputs[7]); nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
+    nt.links.new(rp.outputs[0], mx.inputs[7])
+    # the dune scrub: dark clumps of lupine and coyote brush over ~12 % of the
+    # sand, as the 1938 frames show (Ryker frame 148) — a tone, not geometry
+    sn = nt.nodes.new('ShaderNodeTexNoise'); sn.inputs['Scale'].default_value = 0.045; sn.inputs['Detail'].default_value = 6; sn.inputs['Roughness'].default_value = 0.62
+    nt.links.new(geo.outputs['Position'], sn.inputs['Vector'])
+    sr = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(sn.outputs['Fac'], sr.inputs[0])
+    sr.color_ramp.elements[0].position = 0.60; sr.color_ramp.elements[0].color = (0, 0, 0, 1)
+    sr.color_ramp.elements[1].position = 0.66; sr.color_ramp.elements[1].color = (1, 1, 1, 1)
+    sm = nt.nodes.new('ShaderNodeMix'); sm.data_type = 'RGBA'; nt.links.new(sr.outputs[0], sm.inputs[0])
+    nt.links.new(mx.outputs[2], sm.inputs[6]); sm.inputs[7].default_value = (0.035, 0.045, 0.022, 1)
+    nt.links.new(sm.outputs[2], pr.inputs['Base Color'])
     wv = nt.nodes.new('ShaderNodeTexWave'); wv.wave_type = 'BANDS'; wv.inputs['Scale'].default_value = 9.0
     wv.inputs['Distortion'].default_value = 6.0; wv.inputs['Detail'].default_value = 3
     mp_ = nt.nodes.new('ShaderNodeMapping'); mp_.inputs['Rotation'].default_value = (0, 0, math.radians(-20)); mp_.inputs['Scale'].default_value = (0.25, 0.25, 0.25)
@@ -838,6 +848,13 @@ def sea():
         ob = bpy.data.objects.new('sea', me); sc.collection.objects.link(ob); me.materials.append(mat_)
     log('sea')
 sea()
+# 1915: the Exposition (era.build_ppie; the palaces' smoked ivory is the PPIE's own words)
+if ERA is not None:
+    EA.build_ppie(bpy, ERA, ground, {'ivory': simple('ppie_ivory', (0.80, 0.76, 0.66), rough=0.75),
+                                     'roof': simple('ppie_roof', (0.62, 0.42, 0.30), rough=0.8),
+                                     'dome': simple('ppie_dome', (0.36, 0.52, 0.44), rough=0.5),
+                                     'jewel': simple('ppie_jewel', (0.85, 0.80, 0.70), rough=0.05, metal=0.6, spec=1.0),
+                                     'glassh': simple('ppie_glass', (0.70, 0.74, 0.72), rough=0.08, spec=0.9)}, log)
 # the structures the record has lost (era.STRUCTURES: the freeways that came down)
 if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():

@@ -120,9 +120,33 @@ def _treasure_island(x, y):
     return y > 6000 and 5000 < x < 7200 and _in_ring(x, y, coast_rings()[1])
 
 
+# The 1895 shoreline where it has moved since, read off the USGS 1:62,500 San
+# Francisco sheet of 1895 (public domain, georeferenced; its NAD27 datum
+# shift to this map's frame MEASURED by topo_extract.py: -90 m east, +130 m
+# north, the offset that best lays its building ink on the footprints the
+# record dates before 1895). Traced by eye on topo_view.py's gridded
+# resampling (history/refs/_topo1895_marina_zoom.png, _topo1895_missionbay.png),
+# about +-20 m.
+#  · Harbor View cove (the Marina): its shore reached south to about
+#    Chestnut Street between Scott and Divisadero; 'filling proceeded
+#    gradually from the late 1860s to 1912, when major hydraulic filling was
+#    done for the PPIE' (USGS, The Marina District ... geology, history).
+#  · Mission Bay's last open water, inside the rail causeway west of today's
+#    UCSF campus; the filling 'lasted from approximately 1860 to 1910'
+#    (FoundSF 'Mission Bay').
+HARBOR_VIEW_1895 = [(-1100, 5104), (-732, 5032), (-620, 4912), (-572, 4816), (-540, 4720), (-492, 4640),
+                    (-380, 4616), (-268, 4611), (-204, 4624), (-76, 4664), (20, 4720), (52, 4768), (164, 4832),
+                    (212, 4912), (292, 5008), (340, 5072), (340, 5700), (-1100, 5700)]
+MISSION_BAY_1895 = [(3712, 1280), (3808, 1424), (3904, 1472), (4032, 1456), (4144, 1408), (4160, 1280), (4160, 960),
+                    (4144, 768), (4096, 640), (4048, 672), (4000, 768), (3904, 896), (3808, 992), (3776, 1088), (3712, 1152)]
+
 MADE_LAND = [
     ('treasure_island', 1937, _treasure_island,
      'Army Corps of Engineers, 11 Feb 1936 - 24 Aug 1937 (Wikipedia; Treasure Island Museum)'),
+    ('harbor_view_cove', 1912, lambda x, y: _in_ring(x, y, HARBOR_VIEW_1895),
+     'USGS 1895 sheet; filled for the PPIE by 1912 (USGS Marina District paper)'),
+    ('mission_bay', 1910, lambda x, y: _in_ring(x, y, MISSION_BAY_1895),
+     'USGS 1895 sheet; filled by about 1910 (FoundSF Mission Bay)'),
 ]
 
 
@@ -646,13 +670,56 @@ def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
 # private lines the Board's minutes date (base/rail-history.json: its `year`
 # and `ended`, on today's centrelines). CONVENTION: the rolling stock drawn on
 # them (a car every ~300 m; cable cars and period streetcars as simple bodies).
+# The lost cable network (Wikipedia 'San Francisco cable car system': eight
+# companies, twenty-three lines opened 1873-1890; most converted to electric
+# streetcars after the 1906 fire). Each line runs on the named street between
+# two cross streets, laid on the published straight label stretches
+# (city_data.line_between). SOURCED: street, termini, opening year; the
+# cable phase ends 1906 unless a later end is named. CONVENTION: after 1906 the
+# converted lines are drawn as streetcar track until 1945 (the Market Street
+# Railway passed to Muni in 1944 and its lines went to buses in the years after).
+CABLE_LINES = [
+    # street, from, to, opened, cable ended, company
+    ('CLAY ST', 'KEARNY ST', 'VAN NESS AVE', 1873, 1942, 'Clay Street Hill Railroad (to Van Ness 1877; Sacramento-Clay line to 1942)'),
+    ('SUTTER ST', 'SANSOME ST', 'PRESIDIO AVE', 1877, 1906, 'Sutter Street Railway'),
+    ('LARKIN ST', 'BUSH ST', 'HAYES ST', 1877, 1906, 'Sutter Street Railway, Larkin branch'),
+    ('CALIFORNIA ST', 'VAN NESS AVE', 'PRESIDIO AVE', 1878, 1951, 'California Street Cable Railroad (west of Van Ness)'),
+    ('GEARY ST', 'KEARNY ST', 'VAN NESS AVE', 1880, 1912, 'Geary Street, Park & Ocean Railway'),
+    ('GEARY BLVD', 'VAN NESS AVE', 'PRESIDIO AVE', 1880, 1912, 'Geary Street, Park & Ocean Railway'),
+    ('UNION ST', 'COLUMBUS AVE', 'STEINER ST', 1882, 1906, 'Presidio & Ferries Railway'),
+    ('MARKET ST', 'STEUART ST', 'CASTRO ST', 1883, 1906, 'Market Street Cable Railway'),
+    ('HAIGHT ST', 'MARKET ST', 'STANYAN ST', 1883, 1906, 'Market Street Cable Railway, Haight branch'),
+    ('VALENCIA ST', 'MARKET ST', '28TH ST', 1883, 1906, 'Market Street Cable Railway, Valencia branch'),
+    ('MCALLISTER ST', 'MARKET ST', 'BAKER ST', 1884, 1906, 'Market Street Cable Railway, McAllister branch'),
+    ('HAYES ST', 'MARKET ST', 'STANYAN ST', 1886, 1906, 'Market Street Cable Railway, Hayes branch'),
+    ('CASTRO ST', 'MARKET ST', '26TH ST', 1887, 1941, 'Market Street Cable Railway, Castro branch'),
+    ('JACKSON ST', 'POWELL ST', 'STEINER ST', 1888, 1956, 'Ferries & Cliff House Railway, Washington-Jackson'),
+    ('WASHINGTON ST', 'POWELL ST', 'STEINER ST', 1888, 1956, 'Ferries & Cliff House Railway, Washington-Jackson'),
+    ('HOWARD ST', 'STEUART ST', '11TH ST', 1889, 1906, 'Omnibus Railroad & Cable Company'),
+]
+_CABLE_GEOM = None
+
+
 def rails(era):
     """[(x0, y0, x1, y1, kind)] of the lines running in the year shown"""
     if era is None: return []
     out = []
+    global _CABLE_GEOM
+    if _CABLE_GEOM is None:
+        import city_data
+        _CABLE_GEOM = [(city_data.line_between(st, a, b), y0, y1) for st, a, b, y0, y1, _ in CABLE_LINES]
+    for g, y0, y1 in _CABLE_GEOM:
+        if not g or era < y0: continue
+        kind = 'cable' if era < y1 else ('streetcar' if (y1 == 1906 and era < 1945) else None)
+        if kind is None: continue
+        (ax, ay), (bx, by) = g
+        n = max(1, int(((bx - ax) ** 2 + (by - ay) ** 2) ** 0.5 / 60))
+        for i in range(n):
+            out.append((ax + (bx - ax) * i / n, ay + (by - ay) * i / n, ax + (bx - ax) * (i + 1) / n, ay + (by - ay) * (i + 1) / n, kind))
     r = json.load(open(f'{CITY}/base/rail.json'))
     for x0, y0, x1, y1, kind, yr in r['segs']:
         if kind == 'cable' and era < 1878: continue
+        if kind == 'streetcar' and era < 1906: continue      # Market Street ran cable until the fire
         if yr <= era: out.append((x0, y0, x1, y1, kind))
     h = json.load(open(f'{CITY}/base/rail-history.json'))
     for rt in h['routes']:
@@ -719,3 +786,116 @@ def build_rails(bpy, era, box, street_z, rail_mat, slot_mat, body_mats, log=prin
         me.materials.append(body_mats[kind if kind in body_mats else 'streetcar'])
         ob = bpy.data.objects.new(f'tram{i}', me); bpy.context.scene.collection.objects.link(ob)
     log('rails', len(segs), 'segments,', len(cars), 'cars on them')
+
+
+# ── 1915: the Panama-Pacific International Exposition ───────────────────────
+# SOURCED (PPIE 'Condensed Facts', 1914-15, archive.org condensedfactsco00panarich,
+# history/refs/ppie_condensed_facts.txt; Wikipedia 'Tower of Jewels (PPIE)'):
+#  · the Tower of Jewels, 433-435 ft, a 'circular, seven-storied tower covering an
+#    acre of ground at the base', on the south line of the main group, over the
+#    avenue north to the Court of the Universe, at 37.80373 N 122.4419 W —
+#    which is exactly on Scott Street's published centreline, at Beach Street;
+#  · the main group, 'a great walled city' of eight palaces with facades 65 ft
+#    high (areas in sq ft: Agriculture 328,633, Transportation 314,000, Mines
+#    252,000, Liberal Arts 251,300, Food Products 236,690, Manufactures 234,000,
+#    Varied Industries 219,000, Education 205,100) round three courts — the
+#    Court of the Universe (700 x 900 ft) in the middle, Four Seasons west,
+#    Abundance east;
+#  · Machinery to the east, 968 x 368 ft; Fine Arts to the west on its lagoon;
+#    in the South Garden Horticulture, glass, 672 x 320 ft, dome 160 ft, and
+#    Festival Hall (57,400 sq ft), domed;
+#  · the palaces 'of a soft, cold, gray tint, a kind of smoked ivory' under
+#    Jules Guerin's single colour scheme, doorways vividly coloured.
+# CONVENTION: the exact outlines — the group is laid out as a 900 x 315 m walled
+# rectangle on the Scott Street axis (its area matches the eight palaces' sum
+# plus the courts), turned to the Marina's street grid (Scott Street runs
+# 9.1 degrees west of north); palaces as blocks with a clerestory and a minor
+# dome each; roofs and domes in muted terracotta and verdigris.
+PPIE_YEARS = (1915, 1915)          # open 20 Feb - 4 Dec 1915; torn down in 1916 but Fine Arts
+
+
+def build_ppie(bpy, era, ground, mats, log=print):
+    if era is None or not (PPIE_YEARS[0] <= era <= PPIE_YEARS[1]): return
+    import math
+    from mathutils import Vector
+    T = Vector((-343.0, 4868.0, 0.0))                       # the Tower of Jewels
+    N = Vector((-0.1587, 0.9873, 0.0)); Ee = Vector((N.y, -N.x, 0.0))   # the grid's north and east
+    zb = ground(T.x, T.y) or 3.0
+    def W(u, v, z=0.0):                                       # local metres east/north of the tower
+        p = T + Ee * u + N * v; return Vector((p.x, p.y, zb + z))
+    parts = {k: ([], []) for k in mats}
+    def box(mat, u0, v0, u1, v1, z0, z1):
+        V, F = parts[mat]; k = len(V)
+        P = [W(u0, v0, z0), W(u1, v0, z0), W(u1, v1, z0), W(u0, v1, z0), W(u0, v0, z1), W(u1, v0, z1), W(u1, v1, z1), W(u0, v1, z1)]
+        V.extend(tuple(p) for p in P)
+        for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)): F.append(tuple(k + i for i in f))
+    def dome(mat, u, v, z0, r, h, seg=16, rings=6):
+        V, F = parts[mat]; base = len(V)
+        for j in range(rings + 1):
+            a = (j / rings) * math.pi / 2
+            for i in range(seg):
+                t = 2 * math.pi * i / seg
+                p = W(u + math.cos(t) * r * math.cos(a), v + math.sin(t) * r * math.cos(a), z0 + h * math.sin(a))
+                V.append(tuple(p))
+        for j in range(rings):
+            for i in range(seg):
+                a0 = base + j * seg + i; a1 = base + j * seg + (i + 1) % seg
+                F.append((a0, a1, a1 + seg, a0 + seg))
+    H = 19.8                                                  # 65 ft facades
+    # the walled city: 900 x 315 m from the tower's line north; courts cut out
+    U0, U1, V0, V1 = -450.0, 450.0, 12.0, 327.0
+    courts = [(-137, 137, 40, 327), (-420 + 120, -420 + 230, 120, 230), (190, 300, 120, 230)]
+    # eight palace blocks: two rows, four columns, minus the courts
+    cols = [(-450, -285), (-285, -137), (137, 285), (285, 450)]
+    rows = [(V0, 170), (170, V1)]
+    for (u0, u1) in cols:
+        for (v0, v1) in rows:
+            # carve the block round any court it touches (by splitting in thirds)
+            pieces = [(u0, v0, u1, v1)]
+            for (cu0, cu1, cv0, cv1) in courts:
+                nxt = []
+                for (a, b_, c, d_) in pieces:
+                    if cu1 <= a or cu0 >= c or cv1 <= b_ or cv0 >= d_: nxt.append((a, b_, c, d_)); continue
+                    if a < cu0: nxt.append((a, b_, cu0, d_))
+                    if c > cu1: nxt.append((cu1, b_, c, d_))
+                    if b_ < cv0: nxt.append((max(a, cu0), b_, min(c, cu1), cv0))
+                    if d_ > cv1: nxt.append((max(a, cu0), cv1, min(c, cu1), d_))
+                pieces = nxt
+            for (a, b_, c, d_) in pieces:
+                if c - a < 4 or d_ - b_ < 4: continue
+                box('ivory', a, b_, c, d_, -1.0, H)
+                box('ivory', a - 0.6, b_ - 0.6, c + 0.6, d_ + 0.6, H - 1.2, H)          # the cornice
+                if c - a > 30 and d_ - b_ > 30:                                          # clerestory roof
+                    box('roof', a + 8, b_ + 8, c - 8, d_ - 8, H, H + 6.0)
+            uc, vc = (u0 + u1) / 2, (v0 + v1) / 2
+            dome('dome', uc, vc, H + 6.0, 11.0, 12.0)
+    # the Tower of Jewels: seven stepped tiers on an acre (63.6 m square) base
+    tiers = [(31.8, 0.0, 38.0), (24.0, 38.0, 58.0), (19.0, 58.0, 76.0), (15.5, 76.0, 92.0),
+             (12.0, 92.0, 106.0), (9.0, 106.0, 118.0), (6.0, 118.0, 126.0)]
+    for r, z0, z1 in tiers:
+        box('ivory', -r, -r, r, r, z0 - (1.0 if z0 == 0 else 0.0), z1)
+        box('jewel', -r - 0.3, -r - 0.3, r + 0.3, r + 0.3, z1 - 1.6, z1 - 0.6)            # the band of Novagems
+    dome('jewel', 0.0, 0.0, 126.0, 4.5, 6.5)
+    box('ivory', -9.0, -33.0, 9.0, 33.0, -1.0, 0.0)                                     # the arch's floor
+    # Machinery, east: 968 x 368 ft (295 x 112 m), three naves
+    box('ivory', 480, 110, 775, 222, -1.0, 24.0); box('roof', 486, 116, 769, 216, 24.0, 33.0)
+    # South Garden: Horticulture (glass, 205 x 98 m, dome 160 ft = 49 m) west, Festival Hall east
+    box('glassh', -352, -150, -147, -52, -1.0, 15.0); box('glassh', -300, -140, -199, -62, 15.0, 24.0)
+    dome('glassh', -250, -101, 24.0, 26.0, 25.0, 20, 8)
+    box('ivory', 160, -140, 240, -64, -1.0, 17.0); dome('dome', 200, -102, 17.0, 24.0, 22.0, 20, 8)
+    objs = []
+    for k, (V, F) in parts.items():
+        if not F: continue
+        me = bpy.data.meshes.new('ppie_' + k); me.from_pydata(V, [], F); me.update()
+        ob = bpy.data.objects.new('ppie_' + k, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mats[k]); objs.append(ob)
+    log('PPIE 1915 built:', sum(len(F) for V, F in parts.values()), 'faces')
+    return objs
+
+
+def ppie_footprint(x, y):
+    """inside the fairground's built area (buildings of later years are not
+    there in 1915, the ground is the fair's)"""
+    from mathutils import Vector
+    d = Vector((x + 343.0, y - 4868.0, 0.0)); N = Vector((-0.1587, 0.9873, 0.0)); Ee = Vector((N.y, -N.x, 0.0))
+    u, v = d.dot(Ee), d.dot(N)
+    return -460 <= u <= 790 and -160 <= v <= 340

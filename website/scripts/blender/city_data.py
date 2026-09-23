@@ -131,3 +131,99 @@ def freeway_points(step=10.0):
                         pts.append((xs[j] + (xs[j + 1] - xs[j]) * a, ys[j] + (ys[j + 1] - ys[j]) * a, name))
             k += n
     return pts
+
+
+_LINES = None
+
+
+def named_lines():
+    """{name: [polyline, ...]} of the published centrelines (classes 0-4)"""
+    global _LINES
+    if _LINES is None:
+        names = street_names(); _LINES = {}
+        for f in ('base/street-lines.qc', 'strt/street-lines-2.qc'):
+            _, d = qc.read(f'{CITY}/{f}')
+            k = 0
+            for i in range(len(d['fid'])):
+                n = int(d['len'][i]); nm = int(d['nm'][i])
+                if nm < len(names):
+                    _LINES.setdefault(names[nm], []).append(list(zip(d['x'][k:k + n].tolist(), d['y'][k:k + n].tolist())))
+                k += n
+    return _LINES
+
+
+def street_between(name, a, b):
+    """the centreline of street `name` between its crossings with streets `a`
+    and `b` (nearest approach of the two centrelines), as a list of polylines;
+    [] when a name is not published"""
+    L = named_lines()
+    if name not in L or a not in L or b not in L: return []
+    segs = [(p, q) for pl in L[name] for p, q in zip(pl, pl[1:])]
+
+    def cross(other):
+        best = (1e18, None)
+        for pl in L[other]:
+            for x, y in pl:
+                for (p, q) in segs:
+                    dx, dy = q[0] - p[0], q[1] - p[1]; ll = dx * dx + dy * dy or 1e-9
+                    t = max(0.0, min(1.0, ((x - p[0]) * dx + (y - p[1]) * dy) / ll))
+                    cx, cy = p[0] + dx * t, p[1] + dy * t
+                    d = (cx - x) ** 2 + (cy - y) ** 2
+                    if d < best[0]: best = (d, (cx, cy))
+        return best
+    da, pa = cross(a); db, pb = cross(b)
+    if pa is None or pb is None or da > 40 ** 2 or db > 40 ** 2: return []
+    ax, ay = pb[0] - pa[0], pb[1] - pa[1]; ln = (ax * ax + ay * ay) ** 0.5 or 1.0
+    ux, uy = ax / ln, ay / ln
+    out = []
+    for (p, q) in segs:
+        tp = (p[0] - pa[0]) * ux + (p[1] - pa[1]) * uy; tq = (q[0] - pa[0]) * ux + (q[1] - pa[1]) * uy
+        # keep the pieces whose projection lies between the two crossings
+        # and which run close to the chord (a street can bend, not double back)
+        if max(tp, tq) < -2 or min(tp, tq) > ln + 2: continue
+        lo, hi = max(0.0, min(tp, tq)), min(ln, max(tp, tq))
+        if hi - lo < 0.5: continue
+        def at(t):
+            s = (t - tp) / (tq - tp) if tq != tp else 0.0
+            return (p[0] + (q[0] - p[0]) * s, p[1] + (q[1] - p[1]) * s)
+        out.append([at(lo), at(hi)])
+    return out
+
+
+_LABELS = None
+
+
+def street_line(name):
+    """a named street as the one straight stretch the label chunks publish
+    (base/street-labels, strt/street-labels-2: centre, unit direction,
+    length): ((x, y), (dx, dy), length) or None"""
+    global _LABELS
+    if _LABELS is None:
+        names = street_names(); _LABELS = {}
+        for f in ('base/street-labels.qc', 'strt/street-labels-2.qc'):
+            _, d = qc.read(f'{CITY}/{f}')
+            for i in range(len(d['nm'])):
+                nm = int(d['nm'][i])
+                if nm >= len(names): continue
+                rec = ((float(d['x'][i]), float(d['y'][i])), (int(d['dx'][i]) / 10000, int(d['dy'][i]) / 10000), float(d['len'][i]))
+                if names[nm] not in _LABELS or rec[2] > _LABELS[names[nm]][2]: _LABELS[names[nm]] = rec
+    return _LABELS.get(name)
+
+
+def line_between(name, a, b):
+    """street `name` between its crossings with streets a and b, on the
+    published straight stretches: [(x0, y0), (x1, y1)] or None"""
+    s = street_line(name)
+    if s is None: return None
+    (cx, cy), (dx, dy), _ = s
+
+    def meet(other):
+        o = street_line(other)
+        if o is None: return None
+        (ox, oy), (ex, ey), _ = o
+        den = dx * ey - dy * ex
+        if abs(den) < 1e-6: return None
+        t = ((ox - cx) * ey - (oy - cy) * ex) / den
+        return (cx + dx * t, cy + dy * t)
+    pa, pb = meet(a), meet(b)
+    return [pa, pb] if pa and pb else None
