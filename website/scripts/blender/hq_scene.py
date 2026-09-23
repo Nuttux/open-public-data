@@ -1296,6 +1296,12 @@ if ERA is not None:
                                      'water': simple('lost_water', (0.05, 0.28, 0.32), rough=0.05, spec=0.6),
                                      'house': simple('lost_house', (0.86, 0.82, 0.74), rough=0.8), 'glassroof': M['glass']},
                   (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
+# the piers the waterfront has lost (era.build_piers, off the 1:24,000 sheets)
+if ERA is not None:
+    EA.build_piers(bpy, ERA, {'deck': simple('pier_deck', (0.36, 0.34, 0.31), rough=0.85),
+                              'wall': M.get('concrete_struct') or M['concrete'],
+                              'roof': simple('pier_roof', (0.30, 0.30, 0.30), rough=0.7)},
+                   (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():
     """open water over made land not yet made (era.MADE_LAND)"""
     if ERA is None: return

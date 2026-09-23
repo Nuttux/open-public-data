@@ -1709,3 +1709,67 @@ def canopy_stands(x, y, era, all_recs, kd, radius=60.0):
     a = [(_ring_area(b['ring']) if len(b['ring']) > 2 else 50.0, b['year'] <= era) for b in nb if b['year']]
     if not a: return True
     return sum(w for w, old in a if old) >= 0.5 * sum(w for w, _ in a)
+
+
+# ── the piers the waterfront has lost (pier_extract.py) ─────────────────────
+# SOURCED: the USGS 1:24,000 sheets draw every pier and its shed in black; what
+# they draw over today's water is a pier since removed (pier_extract.py,
+# history/masks/piers.json: oriented rectangles per edition). The Port's
+# register nomination lists them: Piers 14-46 south of the Ferry Building,
+# 'gone by 1983' for most, Pier 24 removed 2004, 34 in 2001, 46 by 2001; the
+# ferry slips mostly removed in the mid-1960s (Port of SF NRHP nomination,
+# Section 8, 'Lost Features'). Each edition speaks for its window (TOPO24);
+# 1925-43 take the 1947 edition (the Harbor Commission's finger piers south of
+# the Ferry Building were built from 1909 into the 1930s — which stood in a
+# given year before 1947 is not drawn apart: CONVENTION). Dropped: the Bay
+# Bridge's deck (drawn in ink over the water along its line) and the sheets'
+# southern edge. The deck at 3 m on its piles, a shed 3 m in from its edges,
+# 11 m high: CONVENTION.
+_PIERS = None
+BAY_BRIDGE_LINE = ((4150.0, 2860.0), (6100.0, 5200.0))
+
+
+def _seg_dist(x, y, a, b):
+    ax, ay = a; bx, by = b; dx, dy = bx - ax, by - ay
+    t = max(0.0, min(1.0, ((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy)))
+    return math.hypot(x - ax - t * dx, y - ay - t * dy)
+
+
+def piers(era):
+    """[(cx, cy, ang_deg, L, W)] of the lost piers standing in the year shown"""
+    global _PIERS
+    if era is None or era < 1925 or era >= 1986: return []
+    if _PIERS is None:
+        p = os.path.join(TOPO_DIR, 'piers.json')
+        _PIERS = json.load(open(p)) if os.path.exists(p) else {}
+    ep = 'usgs1947' if era < 1944 else topo_sheet(era)
+    out = []
+    for cx, cy, ang, L, W in _PIERS.get(ep, []):
+        if cy < -5800 or L > 420: continue                              # the sheet's edge; a bridge span
+        if _seg_dist(cx, cy, *BAY_BRIDGE_LINE) < 90: continue
+        out.append((cx, cy, ang, L, W))
+    return out
+
+
+def build_piers(bpy, era, mats, box=None, log=print):
+    ps = [p for p in piers(era) if box is None or (box[0] - 400 <= p[0] <= box[2] + 400 and box[1] - 400 <= p[1] <= box[3] + 400)]
+    if not ps: return
+    parts = {'deck': ([], []), 'wall': ([], []), 'roof': ([], [])}
+
+    def box6(key, cx, cy, ang, L, W, z0, z1):
+        V, F = parts[key]
+        a = math.radians(ang); ux, uy = math.cos(a), math.sin(a); vx, vy = -uy, ux
+        q = [(cx + s * ux * L / 2 + t * vx * W / 2, cy + s * uy * L / 2 + t * vy * W / 2) for s, t in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+        k = len(V); V.extend([(x, y, z0) for x, y in q] + [(x, y, z1) for x, y in q])
+        F.extend([(k, k + 3, k + 2, k + 1), (k + 4, k + 5, k + 6, k + 7), (k, k + 1, k + 5, k + 4), (k + 1, k + 2, k + 6, k + 5),
+                  (k + 2, k + 3, k + 7, k + 6), (k + 3, k, k + 4, k + 7)])
+    for cx, cy, ang, L, W in ps:
+        box6('deck', cx, cy, ang, L, W, -0.5, 3.0)
+        if L > 40 and W > 24:
+            box6('wall', cx, cy, ang, L - 6, W - 6, 3.0, 11.0)
+            box6('roof', cx, cy, ang, L - 6.4, W - 6.4, 11.0, 11.6)
+    for key, (V, F) in parts.items():
+        if not F: continue
+        me = bpy.data.meshes.new('lost_piers_' + key); me.from_pydata(V, [], F); me.update()
+        ob = bpy.data.objects.new('lost_piers_' + key, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mats[key])
+    log('lost piers standing:', len(ps))
