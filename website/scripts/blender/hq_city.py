@@ -192,35 +192,40 @@ if ERA is not None:
         return _sgc[k_]
     log('open land', round(sum(OL.open) / len(OL.open), 3), 'sand', round(sum(OL.sand) / len(OL.sand), 3))
     # the ground of open land that is not dune sand: summer-dry grass (the
-    # hills and the unbuilt ground of the period), through the ground and lawn
-    # materials, as hq_scene does (the city pass had kept it green)
-    _om = bpy.data.images.new('openmask', OL.W, OL.H, float_buffer=True)
-    _px = [0.0] * (4 * OL.W * OL.H)
-    for k_ in range(OL.W * OL.H):
-        _px[4 * k_] = OL.open[k_] * (1.0 - OL.sand[k_]) * (1.0 - OL.park[k_]); _px[4 * k_ + 3] = 1.0
-    _om.pixels.foreach_set(_px); _om.colorspace_settings.name = 'Non-Color'
-    for _mn in ('ground', 'lawn'):
-        _lt = bpy.data.materials[_mn].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
-        _src = _lp.inputs['Base Color'].links[0].from_socket
-        _g = _lt.nodes.new('ShaderNodeNewGeometry'); _mp = _lt.nodes.new('ShaderNodeMapping'); _mp.vector_type = 'POINT'
-        _mp.inputs['Location'].default_value = (-OL.x0 / (OL.W * OL.res), -OL.y0 / (OL.H * OL.res), 0)
-        _mp.inputs['Scale'].default_value = (1 / (OL.W * OL.res), 1 / (OL.H * OL.res), 1)
-        _lt.links.new(_g.outputs['Position'], _mp.inputs[0])
-        # CLIP: beyond the raster (the surround, Marin) nothing is dried
-        _ti = _lt.nodes.new('ShaderNodeTexImage'); _ti.image = _om; _ti.extension = 'CLIP'; _lt.links.new(_mp.outputs[0], _ti.inputs[0])
-        _sp = _lt.nodes.new('ShaderNodeSeparateColor'); _lt.links.new(_ti.outputs['Color'], _sp.inputs[0])
-        _bw = _lt.nodes.new('ShaderNodeRGBToBW'); _lt.links.new(_src, _bw.inputs[0])
-        _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
-        _dry.inputs[6].default_value = (0.62, 0.40, 0.13, 1)          # golden, the dry-season grass
-        _lt.links.new(_bw.outputs[0], _dry.inputs[7])
-        _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_sp.outputs[0], _mx.inputs[0])
-        _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])
-        _lt.links.new(_mx.outputs[2], _lp.inputs['Base Color'])
+    # hills and the unbuilt ground of the period), as hq_scene does. A colour
+    # attribute on the terrain (OpenDry), read by the ground material: an
+    # image mask sampled nothing in the city pass (e04, 2026-09-24)
+    import numpy as _np
+    _tm = terrain.data; _nv = len(_tm.vertices)
+    _co0 = _np.empty(_nv * 3, _np.float32); _tm.vertices.foreach_get('co', _co0); _co0 = _co0.reshape(-1, 3)
+    _dk = _np.zeros(_nv, _np.float32)
+    for k_ in range(_nv):
+        x_, y_ = float(_co0[k_, 0]), float(_co0[k_, 1])
+        o_ = OL.at(x_, y_)
+        if o_ > 0: _dk[k_] = o_ * (1.0 - OL.sand_at(x_, y_)) * (1.0 - OL.at(x_, y_, OL.park))
+    _ca = _tm.color_attributes.new('OpenDry', 'FLOAT_COLOR', 'POINT')
+    _ca.data.foreach_set('color', _np.repeat(_dk, 4).tolist())
+    _lt = bpy.data.materials['ground'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
+    _src = _lp.inputs['Base Color'].links[0].from_socket
+    _at = _lt.nodes.new('ShaderNodeAttribute'); _at.attribute_name = 'OpenDry'
+    _bw = _lt.nodes.new('ShaderNodeRGBToBW'); _lt.links.new(_src, _bw.inputs[0])
+    # the grass's own light and shade, lifted to straw (a lawn's luminance is
+    # ~0.17: x3.2 makes the golden (0.62, 0.40, 0.13) a linear ~(0.33, 0.22,
+    # 0.07), California's summer-dry grass; the plain multiply read as mud)
+    _bk = _lt.nodes.new('ShaderNodeMath'); _bk.operation = 'MULTIPLY'; _bk.inputs[1].default_value = float(E('DRY_K', 3.2))
+    _lt.links.new(_bw.outputs[0], _bk.inputs[0])
+    _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
+    _dry.inputs[6].default_value = (0.62, 0.40, 0.13, 1)          # golden, the dry-season grass
+    _lt.links.new(_bk.outputs[0], _dry.inputs[7])
+    _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_at.outputs['Fac'], _mx.inputs[0])
+    _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])
+    _lt.links.new(_mx.outputs[2], _lp.inputs['Base Color'])
+    log('open land dried:', int((_dk > 0.5).sum()), 'of', _nv, 'terrain vertices')
     # the lots of buildings not yet built: parking or bare earth, not lawn (era.vacant_lots)
     LOTS = EA.vacant_lots(_allb, {b['gid'] for b in recs}, ERA, open_at, CBOX) if E('LOTS', '1') == '1' else []
     LI = EA.LotIndex(LOTS)
     EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.35)), rough_add=0.2),
-                                     'dirt': ph_mat('dry_ground_rocks', 6.0, name='lot_dirt', value=float(E('LOT_DV', 0.9)))}, log)
+                                     'dirt': ph_mat('withered_grass', 5.0, name='lot_dirt', value=float(E('LOT_DV', 0.85)))}, log)
 else:
     LOTS, LI = [], None
     def open_at(x, y, grid=None): return 0.0
@@ -256,6 +261,18 @@ for m in d['meshes']:
                 if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
+_PAVE2 = None
+if ERA is not None and EA.pavement(ERA, 0, 0) in ('basalt', 'dirt'):
+    # before 1910 the paving changes with the place (era.pavement): the
+    # materials slice gave the whole city one, from the scene's centre
+    _PAVE2 = {'basalt': bpy.data.materials.get('basalt') or ph_mat('cobblestone_floor_05', 2.2, value=0.62, name='basalt'),
+              'dirt': bpy.data.materials.get('dirt') or ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')}
+    _sm = streets.data; _sm.materials.clear(); _sm.materials.append(_PAVE2['dirt']); _sm.materials.append(_PAVE2['basalt'])
+    import numpy as _np
+    _cen = _np.empty(len(_sm.polygons) * 3, _np.float32); _sm.polygons.foreach_get('center', _cen); _cen = _cen.reshape(-1, 3)
+    _mi = [1 if EA.pavement(ERA, float(c_[0]), float(c_[1])) == 'basalt' else 0 for c_ in _cen]
+    _sm.polygons.foreach_set('material_index', _mi); _sm.update()
+    log('streets paved with basalt block', sum(_mi), 'of', len(_mi), 'faces; earth elsewhere')
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
 for i in range(0, len(MP), 3):
     h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
@@ -285,6 +302,12 @@ for a, b, outv in SE:
     k = len(Ps); Ps += [tuple(a), tuple(b), tuple(b + up), tuple(a + up)]; Fs.append((k, k+1, k+2, k+3))
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
+if _PAVE2 is not None:
+    # no concrete footway where the carriageway was graded earth (CONVENTION:
+    # plank and earth walks beyond the paved core before 1910)
+    me.materials.append(_PAVE2['dirt'])
+    _mi = [1 if EA.pavement(ERA, float(f_.center.x), float(f_.center.y)) == 'dirt' else 0 for f_ in me.polygons]
+    me.polygons.foreach_set('material_index', _mi); me.update()
 log('street edges', len(SE))
 if ERA is not None and E('SMOOTH_OPEN', '1') == '1':
     # OPEN LAND ON THE LAND'S OWN SHAPE: today's ground carries the city's cut
