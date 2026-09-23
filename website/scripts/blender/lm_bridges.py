@@ -372,10 +372,20 @@ BAY_SADDLE = 156.5
 BAY_CAB = 10.05                      # cable planes, half of 66 ft
 BAY_TRUSS = 9.1
 
-_BAY_ROAD = [(-760, 36.0), (-560, 48.0), (-357.6, 56.0), (0.0, 63.5), (352.5, 70.0), (705.1, 66.0), (1084.6, 63.5),
+# west of the W1 cable bent the approach comes down to Rincon Hill, where OSM
+# ends its bridge ways (v -622 / -666) and I-80 runs on the hill (3DEP 23-25 m
+# on the axis at v -690..-740): ~ 9 % from W1, linear (the smoothstep below
+# would flatten it at every point); it ran on at 36 m and stopped in mid-air
+_BAY_APPROACH = [(-760.0, 25.0), (-700.0, 25.5), (-560.0, 38.0), (-357.6, 56.0)]
+_BAY_ROAD = [(-357.6, 56.0), (0.0, 63.5), (352.5, 70.0), (705.1, 66.0), (1084.6, 63.5),
              (1463.5, 66.0), (1816.0, 70.0), (2168.8, 63.5), (2542.3, 57.0), (2700.0, 54.0)]
 def bay_road(v):
     """top of the upper deck, m above MHW (smooth through the control points)"""
+    if v < _BAY_APPROACH[-1][0]:
+        A = _BAY_APPROACH
+        if v <= A[0][0]: return A[0][1]
+        for (a, za), (b, zb) in zip(A, A[1:]):
+            if v <= b: return za + (zb - za) * (v - a) / (b - a)
     P = _BAY_ROAD
     if v <= P[0][0]: return P[0][1]
     for (a, za), (b, zb) in zip(P, P[1:]):
@@ -388,7 +398,11 @@ def bay_cable(v):
     T = BAY_TOWERS
     def para(va, za, vb, zb, sag):
         t = (v - va) / (vb - va); return za + (zb - za) * t - 4 * sag * t * (1 - t)
-    if v < BAY_W1: return bay_road(BAY_W1) + 3.0 + (v - BAY_W1) * 0.08
+    if v < BAY_W1:
+        # from the W1 cable bent straight down into the San Francisco anchorage
+        # (its top: bay_road(-560) - BAY_TRUSS - 0.5, see bay_bridge)
+        za, zb = bay_road(BAY_W1) + 3.0, bay_road(-560.0) - BAY_TRUSS
+        return za + (zb - za) * (BAY_W1 - v) / (BAY_W1 + 560.0)
     if v < T[0]: return para(BAY_W1, bay_road(BAY_W1) + 3.0, T[0], BAY_SADDLE, 9.0)
     if v < T[1]: return para(T[0], BAY_SADDLE, T[1], BAY_SADDLE, BAY_SADDLE - bay_road(352.5) - 2.8)
     if v < BAY_W4: return para(T[1], BAY_SADDLE, BAY_W4, bay_road(BAY_W4) + 7.0, 9.0)
@@ -445,7 +459,16 @@ def bay_bridge(C):
                 if zt - zb < 0.8: continue
                 K.cyl(paint, P(sgn * BAY_CAB, v, zb), P(sgn * BAY_CAB, v, zt), 0.07, SILVER, n=4, smooth=False)
         # the double-deck stiffening truss, W1 to the Yerba Buena anchorage
-        _bay_truss(K, P, BAY_W1 - 330.0, BAY_YBA + 150.0, paint)
+        _bay_truss(K, P, -655.0, BAY_YBA + 150.0, paint)
+        # the landing on Rincon Hill: an abutment from the truss's end into the
+        # hill, the upper deck on it
+        g = min(tg(*P(u, v)[:2]) for u in (-11.0, 11.0) for v in (-655.0, -700.0))
+        K.box('concrete', F, -11.0, 11.0, -705.0, -655.0, g - 1.0, bay_road(-680.0) - 0.35, CONC)
+        V_, Fc_ = [], []
+        for i, v in enumerate((-705.0, -690.0, -672.0, -655.0)):
+            V_ += [P(-9.2, v, bay_road(v)), P(9.2, v, bay_road(v))]
+            if i: Fc_.append((2 * i - 2, 2 * i - 1, 2 * i + 1, 2 * i))
+        K.mesh('asphalt', V_, Fc_, ASPH)
     # the Yerba Buena tunnel's west portal, the viaduct's end
     vp = 2668.0; g = tg(*P(0, vp)[:2])
     zt = bay_road(vp)
