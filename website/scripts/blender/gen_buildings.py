@@ -263,7 +263,12 @@ class Wall:
             # the proportions stay the record's, the modelling stops there
             if kind == 'door': self.rect('door', u0, u1, z0, z1, 0.02, body); return
             self.rect('shopglass' if kind == 'shop' else 'glass', u0, u1, z0, z1, 0.03, (1, 1, 1))
-            if LOD >= 2: return
+            if LOD >= 2:
+                # the casing and sill as one painted quad behind the pane: at
+                # 37 cm a pixel a window is a dark pane in a light frame, and
+                # a painted front reads as windows, not as a coloured box
+                if kind != 'shop' and trim is not None: self.rect('trim', u0 - 0.13, u1 + 0.13, z0 - 0.12, z1 + 0.15, 0.015, trim)
+                return
             self.box('trim', u0 - 0.1, u1 + 0.1, z0 - 0.08, z0, 0.0, 0.08, trim)
             self.box('trim', u0 - 0.1, u1 + 0.1, z1, z1 + 0.12, 0.0, 0.05, trim)
             return
@@ -433,7 +438,7 @@ def building(b, ground, out):
     us = [Vector((x, y, 0)).dot(ax_u) for x, y in ring]
     vs = [Vector((x, y, 0)).dot(ax_v) for x, y in ring]
     umin, umax = min(us), max(us); uc = (umin + umax) / 2; hw = (umax - umin) / 2
-    pitch = math.radians(LM.get('pitch') or {'vic': 44, 'med': 24, 'sunset': 26}.get(style if style == 'vic' else sub, 28))
+    pitch = math.radians(LM.get('pitch') or {'vic': 50, 'med': 24, 'sunset': 26}.get(style if style == 'vic' else sub, 28))
     rise = min(hw * math.tan(pitch), 0.55 * (top - zg)) if roof == 'gable' else 0.0
     eave = top - rise
     if roof == 'gable':
@@ -516,6 +521,8 @@ def building(b, ground, out):
             holes = facade(w, i == f0 or role == 1, b, rng, ctx)
         w.wall_with_holes(wall_mat, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], body)
         # corner boards (wood) or quoins (stucco blocks) and a water table
+        if role != 2 and LOD >= 2 and wall_mat == 'siding':
+            w.rect('trim', 0.0, 0.2, first - raised, eave, 0.03, trim); w.rect('trim', w.L - 0.2, w.L, first - raised, eave, 0.03, trim)
         if role != 2 and LOD < 2:
             if wall_mat == 'siding':
                 w.box('trim', 0.0, 0.16, first - raised, eave, 0.0, 0.05, trim)
@@ -568,7 +575,7 @@ def building(b, ground, out):
     # ── cornice on the street wall ──
     wf = walls[f0]
     if roof == 'flat':
-        proj = {'vic': 0.6, 'stucco': 0.35, 'block': 0.5, 'midcentury': 0.2}[style]
+        proj = {'vic': 0.75, 'stucco': 0.4, 'block': 0.5, 'midcentury': 0.2}[style]
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof
         if style == 'vic': wf.rect('siding', 0.0, wf.L, top, ctop, 0.0, body)
         if sub == 'med':
@@ -641,6 +648,7 @@ def building(b, ground, out):
             d0 = Vector((cx, cy, deck + 0.12)) - ax_u * 1.6 - ax_v * 1.6
             out.box3('deck', d0, ax_u * 3.2, ax_v * 3.2, Vector((0, 0, 0.12)), (0.62, 0.48, 0.34))
             for (du, dv, lu, lv) in ((0, 0, 3.2, 0.05), (0, 3.15, 3.2, 0.05), (0, 0, 0.05, 3.2), (3.15, 0, 0.05, 3.2)):
+                if LOD >= 1: continue
                 out.box3('metal', d0 + ax_u * du + ax_v * dv + Vector((0, 0, 1.12)), ax_u * lu, ax_v * lv, Vector((0, 0, 0.05)), (0.15, 0.15, 0.16))
                 for k in range(5):
                     t_ = k / 4
@@ -813,7 +821,8 @@ def rear_deck(w, u0, first, zg, trim, rng):
 
 
 TILE_TINTS = [(1.0, 1.0, 1.0), (0.94, 0.88, 0.84), (1.0, 0.92, 0.82), (0.86, 0.80, 0.78), (0.97, 0.84, 0.74)]
-SHINGLE_TINTS = [(1.0, 1.0, 1.02), (0.92, 0.95, 1.05), (1.12, 1.0, 0.88), (0.95, 1.03, 0.95), (1.18, 0.92, 0.82), (0.85, 0.85, 0.88)]
+SHINGLE_TINTS = [(0.80, 0.80, 0.82), (0.80, 0.80, 0.82), (0.95, 0.94, 0.95), (1.28, 1.02, 0.80), (1.18, 0.98, 0.84), (0.92, 1.0, 1.14),
+                 (1.45, 0.86, 0.72), (0.92, 1.10, 0.92)]
 FLAT_TINTS = [(1.0, 1.0, 1.0), (1.55, 1.55, 1.52), (1.25, 1.18, 1.05), (0.8, 0.8, 0.82), (1.4, 1.42, 1.45)]
 
 def roof_colour(b, rng, flat=False):
@@ -898,22 +907,74 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
     big = area > 120 or storeys >= 4 or style == 'block'
     # the stair (and lift) penthouse, in the building's own wall and paint
     if storeys >= 10 and area > 250:
-        # a tower's mechanical penthouse: a good share of the roof, louvred
-        base_ = None
-        for tier in range(2 if storeys >= 20 else 1):
-            if tier == 0:
-                f_ = 0.55 * rng.uniform(0.8, 1.1); wu, wv = (umax - umin) * f_, (vmax - vmin) * f_
-                s_ = spot(wu, wv, tries=40, pad=0.8)
-                if not s_: break
-                z0 = deck; h_ = rng.uniform(4.5, 7.0); base_ = (s_, wu, wv, h_)
-            else:                                   # a smaller tier on top of the first
-                (b0, bwu, bwv, bh) = base_; wu, wv = bwu * 0.55, bwv * 0.55
-                s_ = (b0[0] + (bwu - wu) * rng.uniform(0.2, 0.8), b0[1] + (bwv - wv) * rng.uniform(0.2, 0.8))
-                z0 = deck + bh; h_ = rng.uniform(3.0, 4.5)
-            box(wall_mat or 'concrete', s_[0], s_[1], wu, wv, z0, h_, body)
-            box('metal', s_[0] - 0.03, s_[1] - 0.03, wu + 0.06, wv + 0.06, z0 + h_ * 0.35, h_ * 0.4, (0.22, 0.23, 0.24))
-            out.poly('roof_flat', [at(s_[0] + 0.05, s_[1] + 0.05, z0 + h_ + 0.02), at(s_[0] + wu - 0.05, s_[1] + 0.05, z0 + h_ + 0.02),
-                                   at(s_[0] + wu - 0.05, s_[1] + wv - 0.05, z0 + h_ + 0.02), at(s_[0] + 0.05, s_[1] + wv - 0.05, z0 + h_ + 0.02)], rc)
+        # A TOWER'S TOP, one of four kinds (every tower wore the same stepped
+        # box, centred, before: the loudest repeat of the downtown frame):
+        # a penthouse off-centre, of louvres or of the tower's own wall; an
+        # open louvred screen round the cooling towers, their fans seen from
+        # above; a bare roof with a stair house and its units; a setback
+        # crown, a smaller storey or three with its windows (the 1980s)
+        yr = b['year'] or 1970; eu, ev = umax - umin, vmax - vmin; fh_ = c.get('fh', 3.6)
+        k_ = rng.random(); pc = 0.3 if 1978 <= yr <= 1996 else 0.08
+        kind = 'crown' if k_ < pc else 'screen' if k_ < pc + 0.3 else 'bare' if k_ < pc + 0.5 else 'house'
+        louvre = rng.choice(((0.16, 0.165, 0.17), (0.30, 0.31, 0.31), (0.46, 0.46, 0.45), (0.24, 0.21, 0.18)))
+        def cap(u0, v0, wu, wv, z):
+            out.poly('roof_flat', [at(u0 + 0.05, v0 + 0.05, z + 0.02), at(u0 + wu - 0.05, v0 + 0.05, z + 0.02),
+                                   at(u0 + wu - 0.05, v0 + wv - 0.05, z + 0.02), at(u0 + 0.05, v0 + wv - 0.05, z + 0.02)], rc)
+        def cooling(u0, v0, wu, wv, z):
+            # cooling tower cells in a row, a fan shroud on each: dark discs from above
+            n_ = max(1, int(wu / 3.2)); cw = wu / n_
+            box('equip', u0, v0, wu, wv, z, 2.6, (0.66, 0.67, 0.66))
+            for k in range(n_):
+                cyl('metal', u0 + cw * (k + 0.5), v0 + wv / 2, z + 2.6, 0.45, min(cw, wv) * 0.4, (0.10, 0.10, 0.11), 12)
+        def house(u0, v0, wu, wv, z, h_, own):
+            if own: box(wall_mat or 'concrete', u0, v0, wu, wv, z, h_, body)
+            else: box('metal', u0, v0, wu, wv, z, h_, louvre)
+            if own: box('metal', u0 - 0.03, v0 - 0.03, wu + 0.06, wv + 0.06, z + h_ * 0.3, h_ * 0.45, louvre)
+            cap(u0, v0, wu, wv, z + h_)
+        if kind == 'crown':
+            f_ = rng.uniform(0.6, 0.8); wu, wv = eu * f_, ev * f_
+            s_ = spot(wu, wv, tries=40, pad=0.8)
+            if s_:
+                ns = rng.choice((1, 2, 2, 3)); h_ = fh_ * ns
+                box(wall_mat or 'concrete', s_[0], s_[1], wu, wv, deck, h_, body)
+                gc_ = c.get('gcol') or (0.22, 0.24, 0.26, 0.3)
+                for f in range(ns):
+                    box('curtain_wall', s_[0] - 0.03, s_[1] - 0.03, wu + 0.06, wv + 0.06, deck + f * fh_ + fh_ * 0.28, fh_ * 0.5, gc_)
+                cap(s_[0], s_[1], wu, wv, deck + h_)
+                # and on the crown, a small penthouse of louvres
+                pu, pv = wu * rng.uniform(0.35, 0.55), wv * rng.uniform(0.35, 0.55)
+                house(s_[0] + (wu - pu) * rng.uniform(0.2, 0.8), s_[1] + (wv - pv) * rng.uniform(0.2, 0.8), pu, pv, deck + h_ + 0.05, rng.uniform(3.0, 4.5), False)
+        elif kind == 'screen':
+            wu, wv = eu * rng.uniform(0.45, 0.7), ev * rng.uniform(0.4, 0.65)
+            s_ = spot(wu, wv, tries=40, pad=0.8)
+            if s_:
+                hs = rng.uniform(3.6, 5.0); t_ = 0.18; u0, v0 = s_
+                for (a_, b_, cu, cv) in ((u0, v0, wu, t_), (u0, v0 + wv - t_, wu, t_), (u0, v0, t_, wv), (u0 + wu - t_, v0, t_, wv)):
+                    box('metal', a_, b_, cu, cv, deck, hs, louvre)
+                # inside: the cooling towers along one side, units and a roof deck of gravel
+                cw_ = wu - 1.2; cv_ = min(wv * 0.42, 4.2)
+                if cw_ > 2.5: cooling(u0 + 0.6, v0 + wv - 0.6 - cv_, cw_, cv_, deck)
+                for k in range(rng.randint(1, 3)):
+                    eu_, ev_ = rng.uniform(1.6, 2.6), rng.uniform(1.2, 1.8)
+                    if wv - cv_ - 1.8 > ev_ and wu - 1.2 > eu_:
+                        box('equip', u0 + 0.6 + rng.uniform(0, wu - 1.2 - eu_), v0 + 0.6 + rng.uniform(0, wv - cv_ - 1.8 - ev_), eu_, ev_, deck, rng.uniform(1.0, 1.6), (0.74, 0.74, 0.71))
+                # the stair and lift house beside it, in the tower's wall
+                su, sv = rng.uniform(4.0, 6.5), rng.uniform(3.5, 5.0); q_ = spot(su, sv, tries=30, pad=0.6)
+                if q_: house(q_[0], q_[1], su, sv, deck, rng.uniform(3.2, 4.2), True)
+        elif kind == 'bare':
+            su, sv = rng.uniform(4.0, 7.0), rng.uniform(3.5, 5.5); q_ = spot(su, sv, tries=30, pad=0.8)
+            if q_: house(q_[0], q_[1], su, sv, deck, rng.uniform(3.2, 4.5), True)
+            cu, cv = rng.uniform(5.0, 9.0), rng.uniform(2.8, 3.6); q_ = spot(cu, cv, tries=30, pad=0.8)
+            if q_: cooling(q_[0], q_[1], cu, cv, deck)
+        else:   # a penthouse, off-centre, one tier (two now and then on the tallest)
+            f_ = rng.uniform(0.35, 0.62); wu, wv = eu * f_ * rng.uniform(0.8, 1.2), ev * f_ * rng.uniform(0.8, 1.2)
+            s_ = spot(wu, wv, tries=40, pad=0.8)
+            if s_:
+                own = rng.random() < 0.55; h_ = rng.uniform(4.5, 7.0)
+                house(s_[0], s_[1], wu, wv, deck, h_, own)
+                if storeys >= 25 and rng.random() < 0.35:
+                    pu, pv = wu * 0.55, wv * 0.55
+                    house(s_[0] + (wu - pu) * rng.uniform(0.2, 0.8), s_[1] + (wv - pv) * rng.uniform(0.2, 0.8), pu, pv, deck + h_, rng.uniform(3.0, 4.5), own)
     elif big and area > 90 and rng.random() < 0.8:
         wu, wv = rng.uniform(2.4, 3.6), rng.uniform(2.2, 3.2)
         if storeys >= 6: wu, wv = wu * 1.3, wv * 1.4
@@ -1129,8 +1190,9 @@ def facade(w, is_front, b, rng, c):
                 if sub == 'modern' and is_front and f > 0 and j % 2 == 0 and LOD == 0:
                     w.box('concrete', u0 - 0.3, min(L - 0.2, u1 + gap + 0.3), z0 - sill - 0.15, z0 - sill, 0.0, 1.2, (0.8, 0.8, 0.78))
                     w.box('metal', u0 - 0.3, min(L - 0.2, u1 + gap + 0.3), z0 - sill, z0 - sill + 1.0, 1.15, 1.2, (0.12, 0.12, 0.13))
-        if (style == 'vic' or sub == 'edwardian') and is_front and f > 0 and LOD < 2:
-            w.box('trim', 0.0, L, first + f * fh - 0.06, first + f * fh + 0.12, 0.0, 0.06, trim)
+        if (style == 'vic' or sub == 'edwardian') and is_front and f > 0:
+            if LOD < 2: w.box('trim', 0.0, L, first + f * fh - 0.06, first + f * fh + 0.12, 0.0, 0.06, trim)
+            else: w.rect('trim', 0.0, L, first + f * fh - 0.1, first + f * fh + 0.16, 0.035, trim)
     # a fire escape down the front of a pre-war apartment house
     if is_front and sub == 'apartment' and 1906 <= (b['year'] or 1950) < 1950 and nfl >= 3 and L > 8 and LOD < 2 and rng.random() < 0.55:
         free = [(0.6, L - 0.6)]

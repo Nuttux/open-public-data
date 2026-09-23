@@ -154,6 +154,18 @@ class Kit:
             from mathutils.geometry import tessellate_polygon
         except ImportError:
             self.face(mat, [(p[0], p[1], z) for p in outer], col); return
+        # holes the tessellator cannot take: slivers, and a hole inside another
+        # hole (an islet's pond — OSM has one in the Palace of Fine Arts
+        # lagoon): with them it dropped whole fans of the face (2026-09-24)
+        def _ar(q): return 0.5 * abs(sum(q[i][0] * q[(i + 1) % len(q)][1] - q[(i + 1) % len(q)][0] * q[i][1] for i in range(len(q))))
+        def _pin(x, y, q):
+            ins = False
+            for i in range(len(q)):
+                (x1, y1), (x2, y2) = q[i][:2], q[(i + 1) % len(q)][:2]
+                if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / ((y2 - y1) or 1e-12) + x1: ins = not ins
+            return ins
+        hs = [h for h in holes if len(h) >= 3 and _ar(h) > 4.0]
+        holes = [h for h in hs if not any(o is not h and _pin(h[0][0], h[0][1], o) for o in hs)]
         loops = [[Vector((p[0], p[1], z)) for p in outer]] + [[Vector((p[0], p[1], z)) for p in h] for h in holes]
         tris = tessellate_polygon(loops)
         pts = [p for l in loops for p in l]

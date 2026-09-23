@@ -454,6 +454,480 @@ def green_lawn(m, dry=False):
     nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
 green_lawn(M['lawn'])
 
+# ── the open ground: hills in late September ─────────────────────────────────
+# What the city stands on between its buildings and streets, for the district
+# scene and the city pass alike (hq_city runs this block): hill_ground(d, box)
+# is the terrain's material. It reads two maps made here from the scene:
+#   A (0.5–3 m a pixel): R = a published park ring (the engine's park wash,
+#     'ground-detail'), G = within a few metres of a building (a yard);
+#   B (4–8 m): R = topographic position (ridge > 0.5 > hollow, over 30 m),
+#     G = how hilly the ground is over 40 m, degrees / 20 (a park on a hill is grassland,
+#     not lawn: Twin Peaks, Corona Heights, Bernal Hill average 17–31°, the
+#     watered parks — Dolores, Alamo Square, Duboce — under 8°).
+# Open ground is cured annual grass, golden; coyote brush in dark clumped
+# patches, more on the north faces and in the hollows; Franciscan chert
+# showing on the steepest faces and the ridges. Lawn green only on the parks
+# the engine publishes, and only where they are not hillside. The engine's
+# own ground colour is NOT used: it carries its baked hillshade, and its
+# 40 m cells drew the camouflage polygons.
+def _box_mean(a, r):
+    """mean over a (2r+1)² window, edges held (cumulative sums, numpy only)"""
+    import numpy as np
+    if r < 1: return a
+    for ax in (0, 1):
+        pw = [(0, 0), (0, 0)]; pw[ax] = (r + 1, r)
+        c = np.cumsum(np.pad(a, pw, mode='edge'), ax, dtype=np.float64)
+        n = a.shape[ax]
+        a = ((c.take(range(2 * r + 1, 2 * r + 1 + n), ax) - c.take(range(0, n), ax)) / (2 * r + 1)).astype(np.float32)
+    return a
+
+def _fill_tris(T, x0, y0, res, nx, ny, out):
+    """T (n,3,2): set out[j, i] = 1 at every pixel centre inside a triangle"""
+    import numpy as np
+    X, Y = T[:, :, 0], T[:, :, 1]
+    i0 = np.clip(np.ceil((X.min(1) - x0) / res - 0.5), 0, nx).astype(np.int64); i1 = np.clip(np.floor((X.max(1) - x0) / res - 0.5), -1, nx - 1).astype(np.int64)
+    j0 = np.clip(np.ceil((Y.min(1) - y0) / res - 0.5), 0, ny).astype(np.int64); j1 = np.clip(np.floor((Y.max(1) - y0) / res - 0.5), -1, ny - 1).astype(np.int64)
+    w = i1 - i0 + 1; h = j1 - j0 + 1; ok = (w > 0) & (h > 0)
+    def inside(s, I, J, m):
+        px = x0 + (I + 0.5) * res; py = y0 + (J + 0.5) * res
+        ax_, ay_, bx_, by_, cx_, cy_ = X[s, 0, None], Y[s, 0, None], X[s, 1, None], Y[s, 1, None], X[s, 2, None], Y[s, 2, None]
+        e1 = (bx_ - ax_) * (py - ay_) - (by_ - ay_) * (px - ax_)
+        e2 = (cx_ - bx_) * (py - by_) - (cy_ - by_) * (px - bx_)
+        e3 = (ax_ - cx_) * (py - cy_) - (ay_ - cy_) * (px - cx_)
+        m &= ((e1 >= 0) & (e2 >= 0) & (e3 >= 0)) | ((e1 <= 0) & (e2 <= 0) & (e3 <= 0))
+        out[J[m], I[m]] = 1.0
+    # small triangles in batches, by stencil size (next power of two per axis)
+    idx = np.nonzero(ok & (w * h <= 65536))[0]
+    if len(idx):
+        bw = 1 << np.ceil(np.log2(np.maximum(w[idx], 1))).astype(np.int64); bh = 1 << np.ceil(np.log2(np.maximum(h[idx], 1))).astype(np.int64)
+        for sw, sh in set(zip(bw.tolist(), bh.tolist())):
+            sel = idx[(bw == sw) & (bh == sh)]; per = max(1, int(2e6 // (sw * sh)))
+            di, dj = np.meshgrid(np.arange(sw), np.arange(sh)); di = di.ravel(); dj = dj.ravel()
+            for c0 in range(0, len(sel), per):
+                s = sel[c0:c0 + per]
+                I = i0[s, None] + di[None, :]; J = j0[s, None] + dj[None, :]
+                inside(s, I, J, (I <= i1[s, None]) & (J <= j1[s, None]))
+    # a long sliver across a park: one at a time, in bands of rows
+    for t in np.nonzero(ok & (w * h > 65536))[0]:
+        s = np.array([t]); cols = np.arange(i0[t], i1[t] + 1)
+        blk = max(1, int(1e6 // len(cols)))
+        for jb in range(j0[t], j1[t] + 1, blk):
+            J, I = np.meshgrid(np.arange(jb, min(jb + blk, j1[t] + 1)), cols, indexing='ij')
+            I = I.reshape(1, -1); J = J.reshape(1, -1)
+            inside(s, I, J, np.ones_like(I, bool))
+    return out
+
+_GM = {}      # ground_maps' arrays, for hill_brush
+
+def _vn_hash(ix, iy, seed):
+    """a hash of integer lattice points to [0, 1): the same everywhere, always"""
+    import numpy as np
+    h = (np.asarray(ix, np.int64) * 374761393 + np.asarray(iy, np.int64) * 668265263 + seed * 2147483647) & 0xFFFFFFFF
+    h = ((h ^ (h >> 13)) * 1274126177) & 0xFFFFFFFF
+    return ((h ^ (h >> 16)) & 0xFFFFFF).astype(np.float32) / float(0xFFFFFF)
+
+def _fbm(X, Y, scale, octaves, seed, gain=0.5):
+    """smooth value noise summed over octaves, a pure function of the world
+    position: every frame's region computes the same field, so tiles meet"""
+    import numpy as np
+    t = np.zeros(X.shape, np.float32); amp = 1.0; norm = 0.0; sc_ = scale
+    for o in range(octaves):
+        x = X / sc_; y = Y / sc_; ix = np.floor(x); iy = np.floor(y)
+        fx = (x - ix).astype(np.float32); fy = (y - iy).astype(np.float32); ix = ix.astype(np.int64); iy = iy.astype(np.int64)
+        sx = fx * fx * (3 - 2 * fx); sy = fy * fy * (3 - 2 * fy); sd = seed + o * 17
+        a = _vn_hash(ix, iy, sd); b_ = _vn_hash(ix + 1, iy, sd); c = _vn_hash(ix, iy + 1, sd); d_ = _vn_hash(ix + 1, iy + 1, sd)
+        t += amp * ((a + (b_ - a) * sx) * (1 - sy) + (c + (d_ - c) * sx) * sy); norm += amp; amp *= gain; sc_ /= 2.03
+    return t / norm
+
+def _ss(e0, e1, x):
+    import numpy as np
+    t = np.clip((x - e0) / (e1 - e0), 0.0, 1.0); return t * t * (3 - 2 * t)
+
+def _bilerp(A_, x0, y0, st, X, Y):
+    """A_ sampled at cell centres x0 + (i + 0.5) st, bilinear, edges held"""
+    import numpy as np
+    u = np.clip((X - x0) / st - 0.5, 0, A_.shape[1] - 1.001); v = np.clip((Y - y0) / st - 0.5, 0, A_.shape[0] - 1.001)
+    i = u.astype(np.int64); j = v.astype(np.int64); fu = (u - i).astype(np.float32); fv = (v - j).astype(np.float32)
+    return (A_[j, i] * (1 - fu) + A_[j, i + 1] * fu) * (1 - fv) + (A_[j + 1, i] * (1 - fu) + A_[j + 1, i + 1] * fu) * fv
+
+BRUSH_T = 0.568     # the patch threshold on the 38 m field: about a third of neutral ground
+
+def ground_maps(d, box=None, pad=300.0):
+    """the two maps hill_ground reads (see above): (imgA, frameA, imgB, frameB),
+    a frame being (x0, y0, width, height) in metres"""
+    import numpy as np, base64
+    import terrain_hq as _th
+    f_ = lambda s: np.frombuffer(base64.b64decode(s), np.float32)
+    if box is None:
+        tp = np.concatenate([f_(m['pos']) for m in d['meshes'] if m['layer'] == 'terrain' and not m.get('instanced')]).reshape(-1, 3)
+        x0, y0, x1, y1 = float(tp[:, 0].min()), float(tp[:, 1].min()), float(tp[:, 0].max()), float(tp[:, 1].max())
+    else:
+        x0, y0, x1, y1 = box[0] - pad, box[1] - pad, box[2] + pad, box[3] + pad
+    res = max(0.5, max(x1 - x0, y1 - y0) / 4000.0)
+    nx, ny = int(math.ceil((x1 - x0) / res)), int(math.ceil((y1 - y0) / res))
+    park = np.zeros((ny, nx), np.float32)
+    for m in d['meshes']:
+        if m['layer'] != 'ground-detail' or m.get('instanced'): continue
+        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue     # piers' plates and shadows, lakes
+        c = f_(m['col'])
+        if not len(c) or c[2] > 0.8: continue                 # white: paved paths, not a park
+        T = f_(m['pos']).reshape(-1, 3, 3)[:, :, :2].astype(np.float64)
+        T = T[(T[:, :, 0].max(1) > x0) & (T[:, :, 0].min(1) < x1) & (T[:, :, 1].max(1) > y0) & (T[:, :, 1].min(1) < y1)]
+        _fill_tris(T, x0, y0, res, nx, ny, park)
+    # yards: every building's outline sampled at the map's pixel, grown 7 m;
+    # a house's yard is a garden, a warehouse's, a shop's or an office's is
+    # paved (SoMa's lots read as lawns, 2026-09-24)
+    nearH = np.zeros((ny, nx), np.float32); nearP = np.zeros((ny, nx), np.float32)
+    try:
+        EH, EP = ([], []), ([], [])
+        for b_ in city_data.buildings(x0, y0, x1, y1):
+            r_ = b_['ring']
+            if len(r_) < 2: continue
+            paved_ = b_['ty'] in ('RETAIL', 'OFFICE', 'INDUSTRIAL', 'GARAGE') or b_['use'] in ('retail', 'office', 'industrial')
+            E_ = EP if paved_ else EH
+            E_[0].extend(r_); E_[1].extend(r_[1:] + r_[:1])
+        for (E0, E1), tgt in ((EH, nearH), (EP, nearP)):
+            if not E0: continue
+            E0 = np.asarray(E0, np.float64); E1 = np.asarray(E1, np.float64)
+            n_ = np.maximum(1, np.ceil(np.hypot(*(E1 - E0).T) / res)).astype(np.int64) + 1
+            k_ = np.repeat(np.arange(len(n_)), n_); t_ = (np.arange(n_.sum()) - np.repeat(np.cumsum(n_) - n_, n_)) / np.repeat(n_ - 1, n_)
+            P_ = E0[k_] + (E1[k_] - E0[k_]) * t_[:, None]
+            ii = ((P_[:, 0] - x0) / res).astype(np.int64); jj = ((P_[:, 1] - y0) / res).astype(np.int64)
+            ok = (ii >= 0) & (ii < nx) & (jj >= 0) & (jj < ny); tgt[jj[ok], ii[ok]] = 1.0
+            del E0, E1, n_, k_, t_, P_, ii, jj, ok
+    except Exception as ex:
+        print('ground_maps: no buildings for the yards:', ex)
+    nearH = (_box_mean(nearH, int(round(7.0 / res))) > 1e-6).astype(np.float32)
+    nearP = (_box_mean(nearP, int(round(9.0 / res))) > 1e-6).astype(np.float32)
+    yard = np.clip(_box_mean(np.maximum(nearH, nearP), int(round(2.0 / res))), 0, 1)
+    paved = np.clip(_box_mean(nearP * (1.0 - 0.6 * nearH), int(round(3.0 / res))), 0, 1)
+    del nearH, nearP
+    # B: the land's form, on a coarser grid from the true ground
+    st = max(4.0, max(x1 - x0, y1 - y0) / 2000.0)
+    mx_, my_ = int(math.ceil((x1 - x0) / st)) + 1, int(math.ceil((y1 - y0) / st)) + 1
+    X, Y = np.meshgrid(x0 + (np.arange(mx_) + 0.5) * st, y0 + (np.arange(my_) + 0.5) * st)
+    Z = np.nan_to_num(_th.true_ground(X, Y).astype(np.float32))
+    tpi = Z - _box_mean(Z, int(round(30.0 / st)))
+    gy, gx = np.gradient(Z, st)
+    slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
+    hilly = _box_mean(slope, int(round(40.0 / st)))
+    # the engine's own word on green ground (its land cover: watered grounds
+    # round the housing blocks, school fields), blurred over ~25 m so its
+    # 40 m cells never show: it only chooses, on flat open ground outside the
+    # parks, between kept grounds and a dry lot
+    egs = np.zeros((my_, mx_), np.float64); egn = np.zeros((my_, mx_), np.float64)
+    for m in d['meshes']:
+        if m['layer'] != 'terrain' or m.get('instanced') or not m.get('col'): continue
+        P_ = f_(m['pos']).reshape(-1, 3); K_ = f_(m['col']).reshape(-1, 3)
+        ii = ((P_[:, 0] - x0) / st).astype(np.int64); jj = ((P_[:, 1] - y0) / st).astype(np.int64)
+        ok = (ii >= 0) & (ii < mx_) & (jj >= 0) & (jj < my_)
+        np.add.at(egs, (jj[ok], ii[ok]), np.clip((K_[ok, 1] - K_[ok, 0]) * 10.0, 0, 1)); np.add.at(egn, (jj[ok], ii[ok]), 1.0)
+    r_ = int(round(12.0 / st))
+    eg = (_box_mean(_box_mean(egs.astype(np.float32), r_), r_) / np.maximum(_box_mean(_box_mean(egn.astype(np.float32), r_), r_), 1e-3)).astype(np.float32)
+    # C: the coyote brush's patches at ~1.2 m, a pure function of the world
+    # position (a frame's region box must not move a bush: the tiles meet): a
+    # 38 m field, pushed up on the north faces and in the hollows, down on
+    # the ridges and the south faces. hill_ground darkens the ground under
+    # it, hill_brush plants the bushes on it.
+    rb = max(1.2, res)
+    cx_, cy_ = int(math.ceil((x1 - x0) / rb)), int(math.ceil((y1 - y0) / rb))
+    XB, YB = np.meshgrid(x0 + (np.arange(cx_) + 0.5) * rb, y0 + (np.arange(cy_) + 0.5) * rb)
+    north = (-gy / np.sqrt(1 + gx * gx + gy * gy)).astype(np.float32)
+    tpin = np.clip(0.5 + tpi / 10.0, 0, 1)
+    nb_, tb_ = _bilerp(north, x0, y0, st, XB, YB), _bilerp(tpin, x0, y0, st, XB, YB)
+    bias = 0.22 * _ss(0.03, 0.32, nb_) + 0.20 * _ss(0.5, 0.22, tb_) - 0.14 * _ss(0.55, 0.8, tb_) - 0.08 * _ss(0.03, 0.32, -nb_)
+    del nb_, tb_
+    brush = _ss(BRUSH_T - 0.006, BRUSH_T + 0.006, _fbm(XB, YB, 38.0, 5, 11, gain=0.62) + bias).astype(np.float32)
+    del XB, YB
+    _GM.clear(); _GM.update(x0=x0, y0=y0, res=res, park=park, yard=yard, st=st, hilly=hilly, slope=slope, rb=rb, brush=brush, bias=bias.astype(np.float32))
+    def img(name, R, G, ext, B_=None):
+        # 8-bit (a float image of the park mask alone was 360 MB, and Cycles
+        # keeps its own copy: the Mac fell over at 00:10, 2026-09-24)
+        h_, w_ = R.shape
+        im = bpy.data.images.new(name, w_, h_, alpha=False, float_buffer=False)
+        im.colorspace_settings.name = 'Non-Color'
+        px = np.empty((h_, w_, 4), np.float32); px[..., 0] = R; px[..., 1] = G; px[..., 2] = 0.0 if B_ is None else B_; px[..., 3] = 1.0
+        im.pixels.foreach_set(px.ravel()); del px; im.update()
+        return im
+    A = img('ground_A', park, yard, 'CLIP', paved)
+    B = img('ground_B', np.clip(0.5 + tpi / 10.0, 0, 1), np.clip(hilly / 20.0, 0, 1), 'EXTEND', np.clip(eg, 0, 1))
+    C = img('ground_C', brush, np.clip(bias + 0.5, 0, 1), 'CLIP')
+    log(f'ground maps: {nx}x{ny} at {res:.2f} m (park {park.mean() * 100:.1f}%, yard {yard.mean() * 100:.0f}%), form {mx_}x{my_} at {st:g} m')
+    return A, (x0, y0, nx * res, ny * res), B, (x0, y0, mx_ * st, my_ * st), C, (x0, y0, cx_ * rb, cy_ * rb)
+
+def hill_ground(d, box=None, name='ground', geom=None):
+    """the terrain's material (see the maps above): the 'lawn' material copied
+    (so the district's mown stripes come along) and the hills built round it.
+    geom (default: env BRUSH, on): the brush is planted as bushes by
+    hill_brush, and the ground only darkens under it; off, the shader alone
+    draws the clumps, their shadows and the lone bushes"""
+    if geom is None: geom = os.environ.get('BRUSH', '1') == '1'
+    A, fa, B, fb, C, fc = ground_maps(d, box)
+    m = bpy.data.materials['lawn'].copy(); m.name = name; nt = m.node_tree
+    pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    lawn = pr.inputs['Base Color'].links[0].from_socket
+    lawn_n = pr.inputs['Normal'].links[0].from_socket if pr.inputs['Normal'].links else None
+    b = NB.__new__(NB); b.m = m; b.nt = nt; b.pr = pr
+    geo = b.n('ShaderNodeNewGeometry'); b.pos = geo.outputs['Position']
+    def sample(im, fr, ext, vec=None):
+        mp = b.n('ShaderNodeMapping'); b.put(mp.inputs['Vector'], vec or b.pos)
+        mp.inputs['Scale'].default_value = (1 / fr[2], 1 / fr[3], 0.0); mp.inputs['Location'].default_value = (-fr[0] / fr[2], -fr[1] / fr[3], 0.0)
+        t_ = b.n('ShaderNodeTexImage', extension=ext, interpolation='Linear'); t_.image = im
+        b.put(t_.inputs['Vector'], mp.outputs[0])
+        s_ = b.n('ShaderNodeSeparateColor'); b.put(s_.inputs[0], t_.outputs['Color']); return s_.outputs
+    sa = sample(A, fa, 'CLIP'); sb_ = sample(B, fb, 'EXTEND')
+    park, yard, paved, tpi, hilly, eg = sa[0], sa[1], sa[2], sb_[0], sb_[1], sb_[2]
+    nn = b.n('ShaderNodeSeparateXYZ'); b.put(nn.inputs[0], geo.outputs['Normal'])
+    nz, north = nn.outputs[2], nn.outputs[1]                     # +y is north
+    slope = b.math('SUBTRACT', 1.0, nz)                          # 1 - cos: 0.03 at 14°, 0.13 at 30°, 0.23 at 40°
+    nf = b.ramp(north, 0.0, 1.0, 0.03, 0.32)                     # a north face
+    sf = b.ramp(b.math('MULTIPLY', north, -1.0), 0.0, 1.0, 0.03, 0.32)
+    hollow = b.ramp(tpi, 0.0, 1.0, 0.5, 0.22); ridge = b.ramp(tpi, 0.0, 1.0, 0.55, 0.8)
+    def cramp(f, stops):
+        n_ = b.n('ShaderNodeValToRGB'); el = n_.color_ramp.elements
+        while len(el) < len(stops): el.new(0.5)
+        for e_, (p_, c_) in zip(el, stops): e_.position = p_; e_.color = (*c_, 1.0)
+        b.put(n_.inputs[0], f); return n_.outputs[0]
+    # cured grass: tawny to straw over 40–60 m, a 12 m mottle, darker in the
+    # swales, the scan's blades; the colour is deep: under the warm low sun a
+    # pale straw reads as sand
+    g = cramp(b.noise(1 / 55.0, 3.0, rough=0.55), [(0.28, (0.23, 0.135, 0.040)), (0.5, (0.38, 0.24, 0.068)), (0.72, (0.50, 0.335, 0.108))])
+    g = b.mix(b.math('MULTIPLY', nf, 0.55), g, (0.17, 0.135, 0.050))           # north faces: duller, olive
+    g = b.mix(b.math('MULTIPLY', sf, 0.30), g, (0.46, 0.31, 0.10))            # south faces: bleached straw
+    g = b.mix(b.math('MULTIPLY', hollow, 0.5), g, (0.16, 0.14, 0.05))        # swales hold a little green
+    g = b.mix(b.ramp(b.noise(1 / 12.0, 4.0, rough=0.6), 0.0, 1.0, 0.25, 0.75), g, (0.70, 0.66, 0.62), 'MULTIPLY')
+    # tussocks and bare soil between them, 1–4 m: strong enough to survive the
+    # denoiser (at 0.25 the slopes rendered as smooth felt)
+    g = b.mix(b.ramp(b.noise(1 / 3.0, 3.0, rough=0.6), 0.0, 0.5, 0.3, 0.8), g, (0.74, 0.72, 0.70), 'MULTIPLY')
+    g = b.mix(b.ramp(b.noise(1 / 1.3, 2.0), 0.0, 0.35, 0.45, 0.75), g, (1.25, 1.2, 1.1), 'MULTIPLY')
+    tx = b.img(PHT('withered_grass', 'diff'), b.vmap(1 / 2.6, rot=0.4), proj='FLAT')
+    g = b.mix(0.6, g, b.mix(1.0, g, b.mix(1.0, tx, (1 / 0.43, 1 / 0.309, 1 / 0.206), 'MULTIPLY'), 'MULTIPLY'))
+    # coyote brush: patches with a crisp, scalloped edge (a 35–45 m noise,
+    # biased to the north faces and the hollows, away from the ridges), and
+    # single bushes; inside, irregular clumps of 2–4 m, domed, dark gaps.
+    # The low sun (from 215°) throws each clump's shadow north-east over the
+    # next: the height field is read again a few metres toward the sun, and
+    # where it stands higher there, this point is in its shadow
+    bias = b.math('ADD', b.math('MULTIPLY', nf, 0.22), b.math('MULTIPLY', hollow, 0.20))
+    bias = b.math('SUBTRACT', bias, b.math('ADD', b.math('MULTIPLY', ridge, 0.14), b.math('MULTIPLY', sf, 0.08)))
+    _az = math.radians(215.0); toS = (math.sin(_az), math.cos(_az))
+    def brush(dist):
+        vec = b.pos if dist == 0 else b.vmap(1.0, loc=(toS[0] * dist, toS[1] * dist, 0.0))
+        wv = b.n('ShaderNodeVectorMath', operation='ADD'); b.put(wv.inputs[0], vec); b.put(wv.inputs[1], b.noise(1 / 6.0, 2.0, vec=vec, out='Color'))
+        dome = b.ramp(b.noise(1 / 2.6, 2.0, vec=wv.outputs[0], rough=0.45), 0.0, 1.0, 0.40, 0.62)
+        patch = sample(C, fc, 'CLIP', vec)[0]                    # ground_maps' field (hill_brush plants on it)
+        if geom: return patch, None, dome, wv
+        cell = b.n('ShaderNodeTexVoronoi'); cell.inputs['Scale'].default_value = 1 / 6.0; b.put(cell.inputs['Vector'], vec)
+        lone = b.math('MULTIPLY', b.math('GREATER_THAN', b.math('ADD', b.bw(cell.outputs['Color']), b.math('MULTIPLY', bias, 0.5)), 0.92),
+                      b.ramp(cell.outputs['Distance'], 1.0, 0.0, 0.22, 0.28))
+        scrub = b.math('MAXIMUM', patch, lone)
+        # a bush's height: the patch's clumps domed, a lone bush a dome of its own
+        ht = b.math('MAXIMUM', b.math('MULTIPLY', patch, b.math('ADD', 0.45, b.math('MULTIPLY', dome, 0.55))),
+                    b.math('MULTIPLY', lone, b.ramp(cell.outputs['Distance'], 1.0, 0.45, 0.0, 0.26)))
+        return scrub, ht, dome, wv
+    scrub, ht0, dome, wv = brush(0.0)
+    if not geom:
+        _, ht1, _, _ = brush(1.4)
+        _, ht2, _, _ = brush(3.0)
+        cast = b.math('MAXIMUM', b.ramp(b.math('SUBTRACT', ht1, ht0), 0.0, 1.0, 0.10, 0.35),
+                      b.math('MULTIPLY', b.ramp(b.math('SUBTRACT', ht2, ht0), 0.0, 1.0, 0.25, 0.55), 0.8))
+    cl = b.n('ShaderNodeTexVoronoi'); cl.inputs['Scale'].default_value = 1 / 3.0; b.put(cl.inputs['Vector'], wv.outputs[0])
+    sc_ = cramp(b.math('ADD', b.math('MULTIPLY', dome, 0.7), b.math('MULTIPLY', b.bw(cl.outputs['Color']), 0.3)),
+                [(0.0, (0.030, 0.027, 0.009)), (0.4, (0.080, 0.078, 0.024)), (1.0, (0.19, 0.17, 0.050))])
+    # rock: Franciscan chert on the steepest faces (≈30–42°) and the crests —
+    # broken blocks a couple of metres across with grass between them (a
+    # solid patch read as a stain), rust-brown weathering to buff, dark joints
+    rk = b.math('ADD', b.math('MULTIPLY', b.ramp(slope, 0.0, 1.0, 0.13, 0.26), 0.75), b.math('MULTIPLY', ridge, 0.25))
+    rk = b.math('ADD', rk, b.math('MULTIPLY', b.math('SUBTRACT', b.noise(1 / 22.0, 3.0), 0.5), 0.6))
+    blk = b.n('ShaderNodeTexVoronoi'); blk.inputs['Scale'].default_value = 1 / 3.2; b.put(blk.inputs['Vector'], b.vmap((1.0, 1.0, 2.0)))
+    joint = b.voronoi(1 / 3.2, vec=b.vmap((1.0, 1.0, 2.0)), feature='DISTANCE_TO_EDGE')
+    core = b.ramp(rk, 0.0, 1.0, 0.60, 0.80)
+    rock = b.math('MULTIPLY', b.ramp(rk, 0.0, 1.0, 0.58, 0.62),
+                  b.ramp(b.math('SUBTRACT', b.bw(blk.outputs['Color']), b.math('ADD', 0.22, b.math('MULTIPLY', core, 0.7))), 1.0, 0.0, -0.03, 0.03))
+    rc = cramp(b.math('ADD', b.math('MULTIPLY', b.noise(1 / 16.0, 3.0), 0.7), b.math('MULTIPLY', b.bw(blk.outputs['Color']), 0.3)),
+               [(0.3, (0.19, 0.105, 0.065)), (0.55, (0.29, 0.20, 0.14)), (0.8, (0.37, 0.31, 0.24))])
+    rt = b.bw(b.img(PHT('aerial_rocks_02', 'diff'), b.vmap(1 / 9.0, rot=1.1), proj='FLAT'))
+    rc = b.mix(1.0, rc, b.math('ADD', 0.85, b.math('MULTIPLY', rt, 1.1)), 'MULTIPLY')
+    rc = b.mix(b.math('MULTIPLY', b.ramp(joint, 1.0, 0.0, 0.012, 0.035), 0.7), rc, (0.07, 0.05, 0.04))
+    hill = b.mix(rock, g, rc)
+    scrub = b.math('MULTIPLY', scrub, b.math('SUBTRACT', 1.0, rock))
+    hill = b.mix(scrub, hill, sc_)
+    if not geom: hill = b.mix(b.math('MULTIPLY', cast, 0.62), hill, (0.0, 0.0, 0.0), 'MULTIPLY')
+    # yards: a garden — deep green lawn and shrubs, dry patches, a patio here and there
+    garden = b.mix(1.0, lawn, (0.62, 0.72, 0.50), 'MULTIPLY')
+    yd = b.mix(b.ramp(b.noise(1 / 7.0, 3.0), 0.0, 1.0, 0.58, 0.70), garden, b.mix(0.5, g, garden))
+    yd = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(31.7, 12.3, 0))), 0.0, 1.0, 0.56, 0.60), yd, (0.035, 0.05, 0.018))
+    yd = b.mix(b.ramp(b.noise(1 / 6.0, 2.0, vec=b.vmap(1.0, loc=(-9.1, 44.2, 0))), 0.0, 1.0, 0.68, 0.70), yd, (0.30, 0.29, 0.26))
+    # a paved yard: old concrete and asphalt in pours of different age, oil
+    # stains, weeds in the cracks, a planted strip now and then
+    pv = cramp(b.noise(1 / 14.0, 3.0, vec=b.vmap(1.0, loc=(5.5, 71.0, 0))), [(0.35, (0.13, 0.125, 0.12)), (0.5, (0.21, 0.205, 0.19)), (0.65, (0.29, 0.28, 0.26))])
+    pv = b.mix(b.ramp(b.noise(1 / 2.5, 3.0), 0.0, 0.45, 0.62, 0.72), pv, (0.07, 0.068, 0.065))
+    pv = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-3.3, 8.8, 0))), 0.0, 0.8, 0.66, 0.70), pv, b.mix(0.5, g, garden))
+    yd = b.mix(b.ramp(paved, 0.0, 1.0, 0.3, 0.7), yd, pv)
+    # the park lawn, where the park is not hillside (a wavy line where it
+    # turns): watered, a deeper green than the lime the scan turns into here
+    jit = b.math('MULTIPLY', b.math('SUBTRACT', b.noise(1 / 14.0, 3.0), 0.5), 0.12)
+    wild = b.ramp(b.math('ADD', hilly, jit), 0.0, 1.0, 0.47, 0.67)            # a park over ≈ 9.5–13.5°
+    lawnf = b.math('MULTIPLY', park, b.math('SUBTRACT', 1.0, wild))
+    yardf = b.math('MULTIPLY', yard, b.math('SUBTRACT', 1.0, park))
+    # open ground that is flat (under ≈ 5–8°) and no park is a city lot — a
+    # schoolyard, a vacant lot, a church's ground: weedy dry grass and paving,
+    # not a hillside
+    lotf = b.math('MULTIPLY', b.math('SUBTRACT', 1.0, b.math('MAXIMUM', park, yard)), b.ramp(b.math('ADD', hilly, jit), 1.0, 0.0, 0.25, 0.40))
+    # (a dry lot: weedy grass, paving in a few broad soft patches — at 9 m and
+    # a hard edge they read as camouflage; where the engine says green, the
+    # kept grounds of a housing block or a school: a garden's green)
+    lot = b.mix(b.ramp(b.noise(1 / 16.0, 3.0, vec=b.vmap(1.0, loc=(17.3, -5.1, 0))), 0.0, 0.8, 0.60, 0.72), b.mix(0.35, yd, g), (0.24, 0.23, 0.21))
+    lot = b.mix(b.ramp(eg, 0.0, 1.0, 0.18, 0.5), lot, yd)
+    # the watered lawn in late September: a tired green, yellower in broad
+    # patches, worn to earth here and there, a gang mower's 4 m stripes
+    # (the scan's green, a little of its saturation taken off and warmed: the
+    # watered-lime carpet was the loudest thing in a city frame)
+    tired = b.mix(b.ramp(b.noise(1 / 32.0, 3.0), 0.0, 1.0, 0.35, 0.7), (0.78, 0.84, 0.56), (0.98, 0.88, 0.50))
+    lw = b.mix(1.0, lawn, tired, 'MULTIPLY')
+    hs_ = b.n('ShaderNodeHueSaturation'); b.put(hs_.inputs['Color'], lw)
+    hs_.inputs['Hue'].default_value = 0.49; hs_.inputs['Saturation'].default_value = 0.9; lw = hs_.outputs[0]
+    spx = b.n('ShaderNodeSeparateXYZ'); b.put(spx.inputs[0], b.pos)
+    uu = b.math('ADD', b.math('MULTIPLY', spx.outputs[0], math.cos(0.14)), b.math('MULTIPLY', spx.outputs[1], math.sin(0.14)))
+    stripe = b.ramp(b.math('SINE', b.math('MULTIPLY', uu, math.pi / 4.0)), 0.0, 1.0, -0.3, 0.3)
+    lw = b.mix(1.0, lw, b.math('ADD', 0.97, b.math('MULTIPLY', stripe, 0.06)), 'MULTIPLY')
+    # dry where the sprinklers miss: soft drifts where the green turns to
+    # straw (a tint of the lawn itself, not a paler colour laid over it: that
+    # greyed the whole park), never a hard blot (hard earth blots at 11 m read
+    # as camouflage); bare earth only in the middle of the driest of them
+    dry = b.ramp(b.noise(1 / 18.0, 3.0, vec=b.vmap(1.0, loc=(-23.0, 7.7, 0))), 0.0, 0.8, 0.52, 0.78)
+    lw = b.mix(dry, lw, b.mix(1.0, lw, (1.45, 1.08, 0.55), 'MULTIPLY'))
+    bare = b.math('MULTIPLY', b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(4.1, -8.3, 0))), 0.0, 1.0, 0.58, 0.70), b.ramp(dry, 0.0, 0.7, 0.35, 0.6))
+    lw = b.mix(bare, lw, (0.105, 0.085, 0.05))
+    c = b.mix(yardf, hill, yd)
+    c = b.mix(lotf, c, lot)
+    c = b.mix(lawnf, c, lw)
+    b.put(pr.inputs['Base Color'], c)
+    # relief: the brush's domes, the rock's blocks and the grass's tussocks
+    # catch the low sun
+    wildf = b.math('SUBTRACT', 1.0, b.math('MAXIMUM', b.math('MAXIMUM', lawnf, yardf), lotf))
+    rh = b.math('ADD', b.math('MULTIPLY', b.bw(blk.outputs['Color']), 0.35), b.ramp(joint, 0.0, 0.3, 0.0, 0.08))
+    h_ = b.math('ADD', b.math('MULTIPLY', b.math('MULTIPLY', scrub, dome), 0.7), b.math('MULTIPLY', rock, rh))
+    h_ = b.math('ADD', h_, b.math('MULTIPLY', b.noise(1 / 1.6, 3.0), 0.12))
+    b.put(pr.inputs['Normal'], b.bump(b.math('MULTIPLY', h_, wildf), 1.0, 0.6, normal=lawn_n))
+    b.put(pr.inputs['Roughness'], b.math('SUBTRACT', 0.95, b.math('MULTIPLY', rock, 0.12)))
+    pr.inputs['Specular IOR Level'].default_value = 0.35
+    return m
+
+def _brush_protos():
+    """the Poly Haven shrubs (shrub_02, shrub_04), ONE PROTO PER BUSH (their
+    LOD collections hold four bushes side by side), at LOD1, foot at the
+    origin, as [(collection, (dx, dy, dz))]; the leaves tinted to coyote
+    brush: a dark olive, a sage now and then (the instance's own random),
+    matte, little light through them"""
+    out = []
+    for asset in ('shrub_02', 'shrub_04'):
+        path = glob.glob(f'{PH}/{asset}/*.blend')[0]
+        with bpy.data.libraries.load(path, link=False) as (src, dst):
+            dst.collections = [c for c in src.collections if c == f'{asset}_LOD1'] or [c for c in src.collections if c.endswith('LOD1')] or src.collections[:1]
+        c = dst.collections[0]
+        for o in [o for o in c.all_objects if o.type == 'MESH']:
+            mn = Vector((1e9, 1e9, 1e9)); mx = Vector((-1e9, -1e9, -1e9)); vs_ = o.data.vertices
+            for i_ in range(0, len(vs_), 3):
+                p = o.matrix_world @ vs_[i_].co
+                mn = Vector((min(mn.x, p.x), min(mn.y, p.y), min(mn.z, p.z))); mx = Vector((max(mx.x, p.x), max(mx.y, p.y), max(mx.z, p.z)))
+            for sl in o.material_slots:
+                m = sl.material
+                if m is None or m.get('brush_tint'): continue
+                m['brush_tint'] = 1; nt = m.node_tree
+                grp = next((n for n in nt.nodes if n.type == 'GROUP' and 'Diffuse' in n.inputs), None)
+                if grp is None or not grp.inputs['Diffuse'].links: continue
+                src_ = grp.inputs['Diffuse'].links[0].from_socket
+                oi = nt.nodes.new('ShaderNodeObjectInfo')
+                hs = nt.nodes.new('ShaderNodeHueSaturation'); nt.links.new(src_, hs.inputs['Color'])
+                hs.inputs['Hue'].default_value = 0.47; hs.inputs['Saturation'].default_value = 0.85
+                mv = nt.nodes.new('ShaderNodeMapRange'); nt.links.new(oi.outputs['Random'], mv.inputs[0])
+                mv.inputs[3].default_value = 0.30; mv.inputs[4].default_value = 0.52; nt.links.new(mv.outputs[0], hs.inputs['Value'])
+                nt.links.new(hs.outputs['Color'], grp.inputs['Diffuse'])
+                if 'Translucency' in grp.inputs and grp.inputs['Translucency'].links:
+                    tl = grp.inputs['Translucency'].links[0].from_socket
+                    mt = nt.nodes.new('ShaderNodeMath'); mt.operation = 'MULTIPLY'; mt.inputs[1].default_value = 0.3
+                    nt.links.new(tl, mt.inputs[0]); nt.links.new(mt.outputs[0], grp.inputs['Translucency'])
+                if 'Rough' in grp.inputs:
+                    for l_ in list(grp.inputs['Rough'].links): nt.links.remove(l_)
+                    grp.inputs['Rough'].default_value = (0.9, 0.9, 0.9, 1.0) if hasattr(grp.inputs['Rough'].default_value, '__len__') else 0.9
+            one = bpy.data.collections.new(f'{o.name}_one'); one.objects.link(o)
+            one.instance_offset = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
+            out.append((one, (mx.x - mn.x, mx.y - mn.y, mx.z - mn.z)))
+    return out
+
+def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4), ('paths', 1.4)), seed=5):
+    """THE BUSHES of the brush patches that hill_ground's field draws, and lone
+    bushes out in the grass: points on a 2 m lattice fixed in the world (a
+    frame's region never moves one), only on wild ground (no lawn, yard, lot,
+    rock face), off the streets and paths; low lumpy domes, instanced.
+    Call after the streets exist. Returns the number planted."""
+    import numpy as np
+    if not _GM: return 0
+    g = _GM; x0, y0 = g['x0'], g['y0']
+    bx0, by0, bx1, by1 = box if box is not None else (x0, y0, x0 + g['park'].shape[1] * g['res'], y0 + g['park'].shape[0] * g['res'])
+    cs = 2.0
+    I, J = np.meshgrid(np.arange(math.floor(bx0 / cs), math.ceil(bx1 / cs)), np.arange(math.floor(by0 / cs), math.ceil(by1 / cs)))
+    I = I.ravel(); J = J.ravel()
+    h = [_vn_hash(I, J, seed * 100 + k) for k in range(6)]
+    X = (I + 0.15 + 0.7 * h[0]) * cs; Y = (J + 0.15 + 0.7 * h[1]) * cs
+    def at(a, res_):
+        i = np.clip(((X - x0) / res_).astype(np.int64), 0, a.shape[1] - 1); j = np.clip(((Y - y0) / res_).astype(np.int64), 0, a.shape[0] - 1)
+        return a[j, i]
+    br = at(g['brush'], g['rb']); bias = at(g['bias'], g['rb'])
+    park = at(g['park'], g['res']); yard = at(g['yard'], g['res'])
+    hl = at(g['hilly'], g['st']) / 20.0; sl = at(g['slope'], g['st'])
+    lawnf = park * (1 - _ss(0.47, 0.67, hl)); yardf = yard * (1 - park); lotf = (1 - np.maximum(park, yard)) * (1 - _ss(0.25, 0.40, hl))
+    wild = 1 - np.maximum(np.maximum(lawnf, yardf), lotf)
+    ok = (wild > 0.8) & (sl < 34.0)
+    dense = ok & (br > 0.5)
+    lone = ok & (br < 0.2) & (h[2] < 0.010 * (1 + 3 * np.clip(bias, 0, 1)))
+    sel = np.nonzero(dense | lone)[0]
+    W = np.where(dense, 2.8 + 1.8 * h[3], 2.4 + 1.4 * h[3]); H = np.where(dense, 1.0 + 0.7 * h[4] + 0.4 * h[3], 1.2 + 1.0 * h[4])
+    bvs = []
+    for nm, dist in avoid:
+        ob = bpy.data.objects.get(nm)
+        if ob is not None and ob.type == 'MESH' and len(ob.data.polygons): bvs.append((BVHTree.FromObject(ob, bpy.context.evaluated_depsgraph_get()), dist))
+    pts = []
+    for q in sel.tolist():
+        x, y = float(X[q]), float(Y[q])
+        z = ground_fn(x, y)
+        if z is None or z < 2.5: continue
+        p_ = Vector((x, y, z))
+        if any(bv.find_nearest(p_, dd + 0.5 * float(W[q]))[0] is not None for bv, dd in bvs): continue
+        pts.append((x, y, z, float(W[q]), float(W[q]) * (0.8 + 0.4 * float(h[5][q])), float(H[q]), float(h[5][q]) * 6.283, int(h[4][q] * 7.999)))
+    _GM.clear()                                             # the maps' arrays: done with
+    if not pts: return 0
+    protos = _brush_protos()
+    root = bpy.data.collections.new('brush_protos')
+    for c, _ in protos: root.children.link(c)
+    # a point's scale in the proto's own units: W across, H tall
+    pts = [(x, y, z, w / protos[k % len(protos)][1][0], w2 / protos[k % len(protos)][1][1], h / protos[k % len(protos)][1][2], r_, k % len(protos))
+           for (x, y, z, w, w2, h, r_, k) in pts]
+    me = bpy.data.meshes.new('brush'); me.vertices.add(len(pts))
+    me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
+    at_ = me.attributes.new('sc', 'FLOAT_VECTOR', 'POINT'); at_.data.foreach_set('vector', [v for p in pts for v in p[3:6]])
+    at_ = me.attributes.new('r', 'FLOAT', 'POINT'); at_.data.foreach_set('value', [p[6] for p in pts])
+    at_ = me.attributes.new('kind', 'INT', 'POINT'); at_.data.foreach_set('value', [p[7] for p in pts])
+    ob = bpy.data.objects.new('brush', me); bpy.context.scene.collection.objects.link(ob)
+    ng = bpy.data.node_groups.new('brush', 'GeometryNodeTree')
+    ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
+    ng.interface.new_socket('Geometry', in_out='OUTPUT', socket_type='NodeSocketGeometry')
+    n = ng.nodes; lk = ng.links.new
+    gi = n.new('NodeGroupInput'); go = n.new('NodeGroupOutput')
+    ci = n.new('GeometryNodeCollectionInfo'); ci.inputs['Collection'].default_value = root
+    ci.inputs['Separate Children'].default_value = True; ci.inputs['Reset Children'].default_value = True
+    def attr(nm, tp):
+        a_ = n.new('GeometryNodeInputNamedAttribute'); a_.data_type = tp; a_.inputs['Name'].default_value = nm; return a_.outputs[0]
+    rot = n.new('ShaderNodeCombineXYZ'); lk(attr('r', 'FLOAT'), rot.inputs[2])
+    ii = n.new('GeometryNodeInstanceOnPoints'); lk(gi.outputs[0], ii.inputs['Points']); lk(ci.outputs[0], ii.inputs['Instance'])
+    ii.inputs['Pick Instance'].default_value = True; lk(attr('kind', 'INT'), ii.inputs['Instance Index'])
+    lk(rot.outputs[0], ii.inputs['Rotation']); lk(attr('sc', 'FLOAT_VECTOR'), ii.inputs['Scale'])
+    lk(ii.outputs[0], go.inputs[0])
+    ob.modifiers.new('brush', 'NODES').node_group = ng
+    log(f'brush: {len(pts)} bushes ({int(dense.sum())} patch and {int(lone.sum())} lone places, before the streets)')
+    return len(pts)
+
 # ── terrain ──────────────────────────────────────────────────────────────────
 log('terrain')
 def park_lawn(m):
@@ -486,7 +960,8 @@ if E('ERA'):
     for i in range(0, len(TP), 3):
         # made land not yet made (era.MADE_LAND): the shoal under the water
         if _EA0.water_then(TP[i], TP[i+1], _EA0.era_from_env(E('ERA'))): TP[i+2] = -4.0
-terrain = mesh_from('terrain', TP, M['lawn'], smooth=True, weld=0.05)
+M['ground'] = hill_ground(d, (bx0, by0, bx1, by1))           # golden hills, parks, yards (above)
+terrain = mesh_from('terrain', TP, M['ground'], smooth=True, weld=0.05)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
     hit = bvh_t.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
@@ -579,6 +1054,12 @@ for m in d['meshes']:
                     # no paint where the street itself is not yet built
                     if ERA is None or street_stands((p[a] + p[a+3] + p[a+6]) / 3, (p[a+1] + p[a+4] + p[a+7]) / 3): MP.extend(p[a:a+9])
     if m['layer'] == 'ground-detail':
+        # the engine's overlays are not all ground: pier plates (opacity 0.2),
+        # their drop shadows (0.35), the lakes (opaque blue) and their glaze
+        # (0.42) all carry white vertex colours and were paved grey here —
+        # the lakes come from landmarks_hq (water_hq.lakes); the green lawns
+        # (0.46) are hill_ground's park map
+        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue
         c = f32(m['col'])
         if c and c[2] > 0.8: DP.extend(f32(m['pos']))          # the white pieces: paved paths
 def lift(P, dz):
@@ -599,6 +1080,7 @@ if len(DP):
         cx_ = sum(DP[t*9+k*3] for k in range(3)) / 3; cy_ = sum(DP[t*9+k*3+1] for k in range(3)) / 3
         if sb.ray_cast(Vector((cx_, cy_, 2000)), Vector((0, 0, -1)))[0] is None: keep.extend(DP[t*9:t*9+9])
     if len(keep): mesh_from('paths', keep, M['path'])
+if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, (bx0, by0, bx1, by1))
 
 def street_edges():
     bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()

@@ -143,7 +143,7 @@ if ERA is not None:
         if _wc.get(k_): TP[i+2] = -0.7
         elif k_ in _bank: TP[i+2] = min(TP[i+2], 0.35)
     log('terrain under the water of the year:', sum(1 for v in _wc.values() if v), 'vertices; bank', len(_bank))
-terrain = mesh_from('terrain', TP, ground_mat(), smooth=True, weld=0.05, cols=TC)
+terrain = mesh_from('terrain', TP, hill_ground(d, BOX), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
     # None off the terrain: a building there is outside the city (the
@@ -284,7 +284,7 @@ if len(MP): mesh_from('markings', MP, M['paint'])
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
-if len(DL): mesh_from('lawns', DL, M['lawn'])
+pass   # the parks: painted by hill_ground (hq_scene's materials block)
 
 bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()
 SE = []
@@ -356,6 +356,7 @@ if ERA is not None and len(streets.data.polygons):
     _rs = '\n'.join(l[4:] if l.startswith('    ') else l for l in _rs.split('\n'))
     bx0, by0, bx1, by1 = CBOX
     exec(_rs + "\n                   simple('cableslot', (0.02, 0.02, 0.02), rough=0.9), _bm, log)".replace('\n                   ', '\n               '))
+if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, BOX)
 
 # ── landmarks the engine models by hand (Coit Tower, the Transamerica...) ──
 HP, HC = array.array('f'), array.array('f')
@@ -587,6 +588,18 @@ car_colls = []
 for i, me_ in enumerate(CARS):
     c = bpy.data.collections.new(f'carp{i}'); o = bpy.data.objects.new(f'carp{i}', me_); c.objects.link(o); car_colls.append(c)
 cpts = []; r = random.Random(21)
+# a car parks where there is a door to park at: the building walls, sampled
+# every 8 m; a curb with no wall within 18 m is a park drive, a hill road, a
+# freeway's edge (Twin Peaks Boulevard was a traffic jam)
+_fp = []
+for b_ in recs:
+    rg_ = b_['ring']
+    for q_ in range(len(rg_)):
+        x0_, y0_ = rg_[q_]; x1_, y1_ = rg_[(q_ + 1) % len(rg_)]; n_ = max(1, int(math.hypot(x1_ - x0_, y1_ - y0_) / 8.0))
+        _fp.extend((x0_ + (x1_ - x0_) * t_ / n_, y0_ + (y1_ - y0_) * t_ / n_, 0.0) for t_ in range(n_))
+kdw = KDTree(max(1, len(_fp)))
+for i_, q_ in enumerate(_fp): kdw.insert(q_, i_)
+kdw.balance()
 for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
@@ -596,6 +609,7 @@ for a, b, outv in SE:
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
         if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
+        if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue      # a car parks near a door
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
 # the parking lots of the year, their stalls filled by their own draws
 for L_ in LOTS:
