@@ -27,7 +27,7 @@ from mathutils.geometry import tessellate_polygon
 # or concrete) · storefront glass · awning
 MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'door',
         'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck',
-        'ash', 'soot')
+        'ash', 'soot', 'solar')
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
@@ -157,6 +157,12 @@ def standin(b):
     ring = b['ring']
     area = abs(sum(ring[i][0] * ring[(i + 1) % len(ring)][1] - ring[(i + 1) % len(ring)][0] * ring[i][1] for i in range(len(ring)))) / 2
     b = dict(b)
+    if b.get('nb_h') is not None:
+        # a lost building outside the fire (era.infill): its neighbours' period and height
+        b['year'] = b['nb_year']; b['h'] = max(4.0, b['nb_h'] * r.uniform(0.85, 1.12))
+        b['st'] = max(1, round(b['h'] / 3.6)); b['shop'] = False
+        b['ty'] = 'FLATS' if b['h'] < 16 else 'APARTMENT' if b['h'] < 24 else 'OFFICE'
+        return b
     downtown = b.get('core', False)
     if area > 700 or (downtown and area > 350 and r.random() < 0.5):
         # the brick commercial block: Italianate, three to six storeys
@@ -405,6 +411,14 @@ def building(b, ground, out):
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
+    # 'modernised': the mid-century remodel that stripped a Victorian's
+    # millwork and covered its siding in stucco or asbestos shingle
+    # (era.TABLE `strip`; sanfranciscostory.com 'Victorian Comeback II')
+    stripped = (style == 'vic' and ERA is not None and not b.get('standin')
+                and random.Random(b['gid'] * 211 + 9).random() < EA.P('strip', ERA))
+    if stripped:
+        wall_mat = 'stucco'
+        body, trim, accent = random.Random(b['gid'] * 5 + 1).choice(PALE_1915 + GREY_1945)
     if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
     if style == 'block':
         yr = b['year'] or 1960
@@ -419,7 +433,7 @@ def building(b, ground, out):
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
     fh = max(2.6, (eave - first) / nfl)
     if first + fh > eave: first = zg + 0.3; fh = max(2.4, (eave - first) / nfl)
-    hood = {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
+    hood = None if stripped else {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
     bay_kind = {'italianate': 'slant', 'stick': 'square', 'queen': rng.choice(('slant', 'square')),
                 'edwardian': 'square', 'med': 'square' if rng.random() < 0.4 else None,
                 'sunset': 'box'}.get(sub)
@@ -447,10 +461,10 @@ def building(b, ground, out):
             if (ua - uc) * (ub - uc) < 0: pts.insert(1, w.L * (uc - ua) / (ub - ua))
             tops = [rz(w.P(u, 0)) for u in pts]
             if max(tops) > eave + 0.05:
-                gmat = 'shingle' if (i == f0 and style == 'vic') else wall_mat
+                gmat = 'shingle' if (i == f0 and style == 'vic' and not stripped) else wall_mat
                 gp = [w.P(0.0, eave), w.P(w.L, eave)] + [w.P(u, t) for u, t in list(zip(pts, tops))[::-1]]
                 out.poly(gmat, gp, accent if gmat == 'shingle' else body)
-                if i == f0 and style == 'vic':
+                if i == f0 and style == 'vic' and not stripped:
                     w.box('trim', -0.25, w.L + 0.25, eave - 0.1, eave + 0.18, 0.0, 0.35, trim)
                     apex = max(tops); um = pts[1] if len(pts) == 3 else w.L / 2
                     if apex - eave > 2.2:
@@ -491,7 +505,7 @@ def building(b, ground, out):
         elif style != 'midcentury':
             wf.box('trim', -0.1, wf.L + 0.1, ctop - 0.45, ctop, 0.0, proj, trim)
             wf.box('trim', -0.05, wf.L + 0.05, ctop - 0.62, ctop - 0.45, 0.0, proj * 0.5, trim)
-            if (style == 'vic' or sub == 'edwardian') and LOD < 2:
+            if (style == 'vic' or sub == 'edwardian') and LOD < 2 and not stripped:
                 for uu in frange(0.2, wf.L - 0.2, 0.7 if sub == 'italianate' else 1.0):   # brackets
                     wf.box('trim', uu - 0.07, uu + 0.07, ctop - 1.15, ctop - 0.45, 0.0, proj * 0.8, trim)
                 # dentils under the cornice
@@ -650,6 +664,15 @@ def roof_colour(b, rng, flat=False):
     # the measured aerial roof tone (paintIdx, 32 steps dark→light) sets the
     # lightness; the hue is a convention (shingle or membrane), per building
     # (colours are squared into linear by emit(): these are display values)
+    if ERA is not None and ERA < 1935 and not flat:
+        # before composition shingle: split redwood and cedar shingles,
+        # weathered silver-brown (CONVENTION on the tone; the aerial's tone
+        # is today's roof, not the period's)
+        w_ = rng.uniform(0.40, 0.56)
+        return (w_ * 1.08, w_ * 0.98, w_ * 0.86)
+    if ERA is not None and ERA < 1950 and flat:
+        # tar and gravel, darker before the white and grey membranes
+        w_ = rng.uniform(0.42, 0.62); return (w_, w_, w_ * 0.97)
     t = b.get('paint', 16) / 31.0
     k = 0.70 + 0.5 * t + rng.uniform(-0.05, 0.05)
     tint = rng.choice(FLAT_TINTS if flat else SHINGLE_TINTS)
@@ -670,6 +693,14 @@ def roof_kit(ring, deck, top, b, rng, out):
     if rng.random() < 0.4:
         px, py = cx + rng.uniform(-2, 2), cy + rng.uniform(-2, 2)
         out.box3('glass', Vector((px, py, deck)), X * 1.2, Y * 0.9, Z * 0.35, (1, 1, 1))
+    # rooftop solar, by the decade table's share (era.TABLE `solar`: GoSolarSF
+    # counts); drawn on house-sized flat roofs, rows of tilted panels
+    sh = EA.P('solar', ERA) if ERA is not None else EA.TABLE[2020]['solar']
+    if sh > 0 and 40 < area < 600 and random.Random(b['gid'] * 53 + 11).random() < sh * 2.5:
+        nr = int(min(4, max(1, (area ** 0.5) / 4)))
+        for rr in range(nr):
+            o = Vector((cx - 2.6, cy - 2.0 + rr * 1.3, deck + 0.15))
+            out.poly('solar', [o, o + X * 5.2, o + X * 5.2 + Y * 1.0 + Z * 0.35, o + Y * 1.0 + Z * 0.35], (1, 1, 1))
 
 
 def facade(w, is_front, b, rng, c):

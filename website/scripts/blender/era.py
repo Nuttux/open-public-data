@@ -265,6 +265,12 @@ def yard_sand(era):
 #            CONVENTION within those sourced ends.
 #  marks     painted lines and crosswalks: none before 1950 (the zebra and
 #            lane paint the export carries is today's). CONVENTION.
+#  strip     share of Victorians 'modernised': in the 1930s and again in the
+#            1950s contractors stripped the millwork and covered the siding in
+#            stucco or asbestos shingle; restoration from the 1970s (San
+#            Francisco Victoriana founded 1972) — sanfranciscostory.com
+#            'Victorian Comeback II'; OpenSFHistory 'Victorian to Spanish';
+#            CS Monitor 1980. SOURCED direction, CONVENTION shares.
 #  solar     share of flat roofs carrying solar panels: ~200 applications
 #            before 2008, 3,070 systems by April 2014, ~6,000 incentivised by
 #            GoSolarSF since 2008 (SFPUC; Vote Solar) — over ~166,000
@@ -272,40 +278,40 @@ def yard_sand(era):
 TABLE = {
     1890: dict(trees=0.03, cars=0.0, fleet={}, carcol='black',
                paint=dict(stone=0.35, poly=0.60, pale=0.05), paint2=dict(pale=1.0),
-               lamp='gas', marks=0.0, solar=0.0),
+               lamp='gas', marks=0.0, solar=0.0, strip=0.0),
     1906: dict(trees=0.04, cars=0.0, fleet={}, carcol='black',
                paint=dict(stone=0.25, poly=0.55, pale=0.20), paint2=dict(pale=1.0),
-               lamp='gas', marks=0.0, solar=0.0),
+               lamp='gas', marks=0.0, solar=0.0, strip=0.0),
     1915: dict(trees=0.06, cars=0.08, fleet=dict(t20=1.0), carcol='black',
                paint=dict(stone=0.10, poly=0.35, pale=0.45, grey=0.10), paint2=dict(pale=0.8, today=0.2),
-               lamp='electrolier', marks=0.0, solar=0.0),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.0),
     1938: dict(trees=0.10, cars=0.25, fleet=dict(t20=0.25, r30=0.75), carcol='dark30',
                paint=dict(poly=0.10, pale=0.45, grey=0.45), paint2=dict(pale=0.5, grey=0.1, today=0.4),
-               lamp='electrolier', marks=0.0, solar=0.0),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.12),
     1950: dict(trees=0.16, cars=0.40, fleet=dict(r30=0.75, f50=0.25), carcol='post45',
                paint=dict(pale=0.30, grey=0.70), paint2=dict(pale=0.4, grey=0.3, today=0.3),
-               lamp='electrolier', marks=1.0, solar=0.0),
+               lamp='electrolier', marks=1.0, solar=0.0, strip=0.25),
     1960: dict(trees=0.20, cars=0.50, fleet=dict(r30=0.15, f50=0.60, l60=0.25), carcol='pastel50',
                paint=dict(pale=0.28, grey=0.72), paint2=dict(pale=0.3, grey=0.3, today=0.4),
-               lamp='cobra', marks=1.0, solar=0.0),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.32),
     1970: dict(trees=0.28, cars=0.58, fleet=dict(f50=0.20, l60=0.80), carcol='bright60',
                paint=dict(pale=0.25, grey=0.60, color=0.15), paint2=dict(pale=0.2, grey=0.2, today=0.6),
-               lamp='cobra', marks=1.0, solar=0.0),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.32),
     1980: dict(trees=0.36, cars=0.62, fleet=dict(l60=0.55, b80=0.45), carcol='earth70',
                paint=dict(pale=0.25, grey=0.40, color=0.35), paint2=dict(pale=0.1, grey=0.1, today=0.8),
-               lamp='cobra', marks=1.0, solar=0.0),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.26),
     1990: dict(trees=0.55, cars=0.62, fleet=dict(l60=0.15, b80=0.70, mod=0.15), carcol='mix80',
                paint=dict(pale=0.20, grey=0.25, color=0.55), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.0),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.2),
     2000: dict(trees=0.72, cars=0.62, fleet=dict(b80=0.40, mod=0.60), carcol='green90',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.0),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.16),
     2010: dict(trees=0.86, cars=0.62, fleet=dict(b80=0.10, mod=0.90), carcol='silver00',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.006),
+               lamp='cobra', marks=1.0, solar=0.006, strip=0.13),
     2020: dict(trees=1.00, cars=0.62, fleet=dict(mod=1.0), carcol='today',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.04),
+               lamp='cobra', marks=1.0, solar=0.04, strip=0.1),
 }
 
 # the fleet's paint, display RGB with weights (see `carcol` above)
@@ -401,6 +407,48 @@ def freeway_year(name, x, y):
         if y > 1000 and x < 2700: return 1959                  # the Central Freeway
         return 1953 if y > -1100 else 1957                     # the Bayshore
     return None
+
+
+# ── structures the record has lost: the freeways that came down ─────────────
+# The export draws today's roads; these stood and were removed. Paths in world
+# metres, laid on today's DataSF centrelines (3psu-pn9h, via base/street-lines
+# and strt/street-lines-2): the Embarcadero Freeway on THE EMBARCADERO from
+# Mission Street to Broadway and its approach from the Bay Bridge near First
+# Street; the Central Freeway between Octavia and Laguna (midway, from the
+# Octavia and Laguna centrelines) from Market to Fell, then curving north-east
+# to Franklin at Golden Gate Avenue. SOURCED dates:
+#   Embarcadero Freeway (SR 480): opened 5 Feb 1959, double-decked; closed by
+#     the 1989 Loma Prieta earthquake; demolition began 27 Feb 1991
+#     (Wikipedia 'California State Route 480').
+#   Central Freeway north of Market: opened April 1959, double-decked
+#     between Octavia and Laguna; north of Fell removed 1992; upper deck
+#     north of Mission removed late 1996; the lower deck to Fell removed 2003;
+#     Octavia Boulevard opened 9 Sep 2005 (Wikipedia 'Central Freeway').
+# The section (deck heights, width, bent spacing) is a CONVENTION for a
+# 1950s California double-deck viaduct: decks at ~7.5 m and ~14 m, 16 m wide,
+# bents every 24 m.
+STRUCTURES = [
+    dict(k='embarcadero_fwy', kind='viaduct2', y0=1959, y1=1991, w=16.0,
+         path=[(3880, 2930), (3960, 3040), (4040, 3170), (4110, 3330), (4140, 3470), (4128, 3611),
+               (4004, 3759), (3937, 3810), (3884, 3853), (3836, 3906), (3793, 3989), (3749, 4084),
+               (3693, 4141), (3600, 4275), (3549, 4368)]),
+    dict(k='central_fwy_fell', kind='viaduct2', y0=1959, y1=2003, deck1_until=1996, w=16.0,
+         path=[(1262, 1318), (1222, 1372), (1195, 1440), (1178, 1540), (1160, 1640), (1143, 1740)]),
+    dict(k='central_fwy_north', kind='viaduct2', y0=1959, y1=1992, w=14.0,
+         path=[(1143, 1740), (1136, 1830), (1150, 1930), (1190, 2040), (1250, 2150), (1320, 2260), (1400, 2318)]),
+]
+
+
+def structures(era):
+    """the lost structures standing in the year shown, with their decks"""
+    if era is None: return []
+    out = []
+    for st in STRUCTURES:
+        if st['y0'] <= era < st['y1']:
+            decks = [7.5, 14.0]
+            if st.get('deck1_until') and era >= st['deck1_until']: decks = [7.5]
+            out.append(dict(st, decks=decks))
+    return out
 
 
 # ── street trees, cars, paving ──────────────────────────────────────────────
@@ -507,3 +555,167 @@ def hero_mesh_stands(pos, era):
     if era is None: return True
     xs, ys = pos[0::3], pos[1::3]
     return landmark_stands((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, era)
+
+
+def build_structures(bpy, era, ground, mat, box=None, log=print):
+    """the lost viaducts as geometry: each deck a slab with parapets, carried
+    on two-column bents; deck heights follow the ground, smoothed over ±40 m"""
+    from mathutils import Vector
+    V, F = [], []
+
+    def box3(o, a, b, c):
+        p = [o, o + a, o + a + b, o + b, o + c, o + a + c, o + a + b + c, o + b + c]
+        k = len(V); V.extend(tuple(q) for q in p)
+        for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)):
+            F.append(tuple(k + i for i in f))
+    for st in structures(era):
+        path = [Vector((x, y, 0)) for x, y in st['path']]
+        if box is not None and not any(box[0] - 300 <= p.x <= box[2] + 300 and box[1] - 300 <= p.y <= box[3] + 300 for p in path):
+            continue
+        # resample every 2 m
+        P = []
+        for a, b in zip(path, path[1:]):
+            n = max(1, int((b - a).length / 2.0))
+            P += [a + (b - a) * (i / n) for i in range(n)]
+        P.append(path[-1])
+        g = [ground(p.x, p.y) or 0.0 for p in P]
+        gs = [sum(g[max(0, i - 20):i + 21]) / len(g[max(0, i - 20):i + 21]) for i in range(len(g))]
+        hw = st['w'] / 2
+        for dz in st['decks']:
+            for i in range(len(P) - 1):
+                a, b = P[i], P[i + 1]; t = (b - a).normalized(); n_ = Vector((-t.y, t.x, 0))
+                za, zb = gs[i] + dz, gs[i + 1] + dz
+                A, B = Vector((a.x, a.y, za)), Vector((b.x, b.y, zb))
+                # the slab, 1.2 m deep
+                for (s0, s1, z0, z1) in ((-hw, hw, -1.2, 0.0), (-hw, -hw + 0.4, 0.0, 1.0), (hw - 0.4, hw, 0.0, 1.0)):
+                    q = [A + n_ * s0 + Vector((0, 0, z0)), B + n_ * s0 + Vector((0, 0, z0)), B + n_ * s1 + Vector((0, 0, z0)), A + n_ * s1 + Vector((0, 0, z0))]
+                    k = len(V); top = [x + Vector((0, 0, z1 - z0)) for x in q]; V.extend(tuple(x) for x in q + top)
+                    for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)):
+                        F.append(tuple(k + j for j in f))
+        # bents every 24 m: two columns and a cap beam under each deck
+        for i in range(0, len(P) - 1, 12):
+            a = P[i]; t = (P[min(i + 1, len(P) - 1)] - P[max(i - 1, 0)]).normalized(); n_ = Vector((-t.y, t.x, 0))
+            top = gs[i] + max(st['decks']) - 1.2
+            for side in (-1, 1):
+                c = a + n_ * side * (hw - 2.0)
+                box3(Vector((c.x - 0.6, c.y - 0.6, g[i] - 0.5)), Vector((1.2, 0, 0)), Vector((0, 1.2, 0)), Vector((0, 0, top - g[i] + 0.5)))
+            for dz in st['decks']:
+                o = a - n_ * hw + Vector((0, 0, gs[i] + dz - 2.4)) - t * 0.8
+                box3(o, n_ * st['w'], t * 1.6, Vector((0, 0, 1.2)))
+        log('lost structure standing:', st['k'], 'decks', st['decks'])
+    if not F: return None
+    me = bpy.data.meshes.new('lost_structures'); me.from_pydata(V, [], F); me.update()
+    ob = bpy.data.objects.new('lost_structures', me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mat)
+    return ob
+
+
+def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
+    """the buildings the record has lost outside the fire: a record dated
+    after the year shown that REPLACED something — it is 25+ years younger
+    than its neighbourhood, and 60 %+ of the buildings within 80 m already
+    stood — gets a stand-in of its neighbours' period and height on its
+    footprint. CONVENTION, and the reasoning is the record's own: a street
+    whose buildings date from the 1900s was not empty in 1950 where a 1970
+    building stands today. Returns the stand-in records to add."""
+    if era is None: return []
+    from mathutils.kdtree import KDTree
+    kd = KDTree(max(1, len(all_recs)))
+    for i, b in enumerate(all_recs): kd.insert((b['cx'], b['cy'], 0), i)
+    kd.balance()
+    out = []
+    for b in all_recs:
+        if b['gid'] in placed_gids or water_then(b['cx'], b['cy'], era): continue
+        y = b['year'] or 0
+        if y <= era: continue
+        nb = [all_recs[i] for _, i, _ in kd.find_range((b['cx'], b['cy'], 0), radius) if all_recs[i]['gid'] != b['gid']]
+        old = [n for n in nb if (n['year'] or 0) and n['year'] <= era]
+        if len(nb) < 6 or len(old) / len(nb) < share_min: continue
+        yrs = sorted(n['year'] for n in old); med = yrs[len(yrs) // 2]
+        if y - med < gap_min: continue
+        hs = sorted(n['h'] for n in old); b = dict(b)
+        b['standin'] = True; b['nb_year'] = med; b['nb_h'] = hs[len(hs) // 2]
+        out.append(b)
+    return out
+
+
+# ── the rails of the year: cable, streetcar, metro ──────────────────────────
+# SOURCED: today's lines (DataSF 9exe-acju Muni Simple Routes, base/rail.json)
+# each carry the year the Board is recorded paying to build them
+# (pipeline/seeds/sf_rail_opened.json; 0 = older than the record: the cable
+# lines — California Street 1878, Powell 1888 — and Market Street); the torn-up
+# private lines the Board's minutes date (base/rail-history.json: its `year`
+# and `ended`, on today's centrelines). CONVENTION: the rolling stock drawn on
+# them (a car every ~300 m; cable cars and period streetcars as simple bodies).
+def rails(era):
+    """[(x0, y0, x1, y1, kind)] of the lines running in the year shown"""
+    if era is None: return []
+    out = []
+    r = json.load(open(f'{CITY}/base/rail.json'))
+    for x0, y0, x1, y1, kind, yr in r['segs']:
+        if kind == 'cable' and era < 1878: continue
+        if yr <= era: out.append((x0, y0, x1, y1, kind))
+    h = json.load(open(f'{CITY}/base/rail-history.json'))
+    for rt in h['routes']:
+        if (rt['year'] or 0) > era or (rt['ended'] and era >= rt['ended']): continue
+        for ln in rt['lines']:
+            for (a, b) in zip(ln, ln[1:]): out.append((a[0], a[1], b[0], b[1], rt['kind']))
+    return out
+
+
+def build_rails(bpy, era, box, street_z, rail_mat, slot_mat, body_mats, log=print, seed=5):
+    """steel rails at standard gauge on the street, the cable slot between
+    them, and the cars of the period running on them. street_z(x, y) -> the
+    street surface height or None."""
+    import random
+    from mathutils import Vector
+    segs = [s for s in rails(era) if box[0] - 20 <= (s[0] + s[2]) / 2 <= box[2] + 20 and box[1] - 20 <= (s[1] + s[3]) / 2 <= box[3] + 20]
+    if not segs: return
+    RV, RF, SV, SF = [], [], [], []
+    def strip(V, F, a, b, n, off, w, dz):
+        za, zb = street_z(a.x + n.x * off, a.y + n.y * off), street_z(b.x + n.x * off, b.y + n.y * off)
+        if za is None or zb is None: return
+        p = [a + n * (off - w / 2), b + n * (off - w / 2), b + n * (off + w / 2), a + n * (off + w / 2)]
+        zz = [za, zb, zb, za]
+        k = len(V); V.extend((q.x, q.y, z + dz) for q, z in zip(p, zz)); F.append((k, k + 1, k + 2, k + 3))
+    cars = []
+    rnd = random.Random(seed)
+    for x0, y0, x1, y1, kind in segs:
+        a, b = Vector((x0, y0, 0)), Vector((x1, y1, 0))
+        L = (b - a).length
+        if L < 0.5: continue
+        t = (b - a) / L; n = Vector((-t.y, t.x, 0))
+        steps = max(1, int(L / 4.0))
+        for i in range(steps):
+            p0, p1 = a + (b - a) * (i / steps), a + (b - a) * ((i + 1) / steps)
+            for tr in ((-1.9, 1.9) if kind != 'cable' else (-1.7, 1.7)):      # two tracks, one each way
+                for g in (-0.7175, 0.7175):
+                    strip(RV, RF, p0, p1, n, tr + g, 0.08, 0.035)
+                if kind == 'cable': strip(SV, SF, p0, p1, n, tr, 0.035, 0.03)
+        # the period's rolling stock, about one car every 300 m of line
+        if rnd.random() < L / 300.0:
+            u = rnd.uniform(0.2, 0.8); c = a + (b - a) * u
+            tr = rnd.choice((-1.9, 1.9)); c = c + n * tr
+            z = street_z(c.x, c.y)
+            if z is not None and box[0] <= c.x <= box[2] and box[1] <= c.y <= box[3]:
+                cars.append((c, t if tr > 0 else -t, kind))
+    for nm, V, F, m in (('rails', RV, RF, rail_mat), ('cableslot', SV, SF, slot_mat)):
+        if not F: continue
+        me = bpy.data.meshes.new(nm); me.from_pydata(V, [], F); me.update()
+        ob = bpy.data.objects.new(nm, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(m)
+    # the cars: body, clerestory roof, a darker band of windows
+    for i, (c, t, kind) in enumerate(cars):
+        Lc, Wc, Hc = ((8.3, 2.4, 3.1) if kind == 'cable' else (14.0, 2.6, 3.3) if era >= 1912 else (9.5, 2.4, 3.2))
+        z = street_z(c.x, c.y) + 0.35
+        n = Vector((-t.y, t.x, 0))
+        V, F = [], []
+        def bx(o, a_, b_, c_):
+            p = [o, o + a_, o + a_ + b_, o + b_, o + c_, o + a_ + c_, o + a_ + b_ + c_, o + b_ + c_]
+            k = len(V); V.extend(tuple(q) for q in p)
+            for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)): F.append(tuple(k + j for j in f))
+        o = Vector((c.x, c.y, z)) - t * Lc / 2 - n * Wc / 2
+        bx(o, t * Lc, n * Wc, Vector((0, 0, Hc - 0.5)))
+        bx(o + t * 0.8 + n * 0.35 + Vector((0, 0, Hc - 0.5)), t * (Lc - 1.6), n * (Wc - 0.7), Vector((0, 0, 0.45)))
+        me = bpy.data.meshes.new(f'tram{i}'); me.from_pydata(V, [], F); me.update()
+        me.materials.append(body_mats[kind if kind in body_mats else 'streetcar'])
+        ob = bpy.data.objects.new(f'tram{i}', me); bpy.context.scene.collection.objects.link(ob)
+    log('rails', len(segs), 'segments,', len(cars), 'cars on them')

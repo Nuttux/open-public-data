@@ -118,8 +118,11 @@ if len(SP_):
 # ── the year shown: the records that stood, open land, the streets of the day ──
 log('buildings: records')
 HG = city_data.hero_gids()
-recs = [b for b in (EA.place_record(b, ERA) for b in city_data.buildings(-9000, -9000, 9000, 9000)
-                    if in_box(b['cx'], b['cy']) and b['gid'] not in HG) if b]
+_allb = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80) and b['gid'] not in HG]
+recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
+if ERA is not None and E('INFILL', '1') == '1':
+    _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
+    log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 CBOX = BOX or d['box']
@@ -190,6 +193,12 @@ for a, b, outv in SE:
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 log('street edges', len(SE))
+if ERA is not None and len(streets.data.polygons):
+    # the rails of the year and the cars on them (hq_scene's block)
+    _rs = _HQSRC[_HQSRC.index("    _rb = BVHTree.FromObject(streets"):_HQSRC.index("                   simple('cableslot'")]
+    _rs = '\n'.join(l[4:] if l.startswith('    ') else l for l in _rs.split('\n'))
+    bx0, by0, bx1, by1 = CBOX
+    exec(_rs + "\n                   simple('cableslot', (0.02, 0.02, 0.02), rough=0.9), _bm, log)".replace('\n                   ', '\n               '))
 
 # ── landmarks the engine models by hand (Coit Tower, the Transamerica...) ──
 HP, HC = array.array('f'), array.array('f')

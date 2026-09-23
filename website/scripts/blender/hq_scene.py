@@ -156,6 +156,8 @@ M['shingle'] = ph_mat('white_planks_clean', 2.4, tint=True, name='shingle', valu
 M['stucco'] = ph_mat('white_stucco', 3.0, tint=True, name='stucco', value=1.15)
 M['brick'] = ph_mat('red_brick_plaster_patch_02', 3.0, tint=True, name='brick', tint_k=0.5)
 M['concrete'] = ph_mat('grey_plaster', 3.0, tint=True, name='concrete_wall')
+M['concrete_struct'] = ph_mat('concrete_pavement', 4.0, name='concrete_struct', value=0.85)
+M['solar'] = simple('solar', (0.02, 0.03, 0.06), rough=0.15, spec=0.8)
 M['glass'] = glass_mat()
 M['door'] = simple('door', None, rough=0.4, attr=True)
 M['roof_shingle'] = ph_mat('grey_roof_01', 3.2, tint=True, name='roof_shingle', lift=0.0)
@@ -258,7 +260,11 @@ HG = city_data.hero_gids()
 # the city as it stood: a building shows from its recorded year (a record with
 # no year is taken as standing); inside the 1906 burned district, before the
 # fire, today's footprints carry the lost city's stand-ins (gen_buildings)
-recs = [b for b in (EA.place_record(b, ERA) for b in city_data.buildings(bx0, by0, bx1, by1) if b['gid'] not in HG) if b]
+_allb = [b for b in city_data.buildings(bx0 - 80, by0 - 80, bx1 + 80, by1 + 80) if b['gid'] not in HG]
+recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
+if ERA is not None and E('INFILL', '1') == '1':
+    _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
+    log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
 OPEN = None; SAND = None; OPAD = 80.0
 if ERA is not None:
     _OL = EA.OpenLand(recs, (bx0, by0, bx1, by1), float(E('OPEN_RES', 2.0)), ground, OPAD)
@@ -347,6 +353,20 @@ for a, b, outv in SE:
     k = len(Ps); Ps += [a + up, b + up, fb, fa]; Fs.append((k, k+1, k+2, k+3))
     k = len(Ps); Ps += [a, b, b + up, a + up]; Fs.append((k, k+1, k+2, k+3))
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata([tuple(p) for p in Ps], [], Fs); me.update()
+# the rails of the year and the cars on them (era.rails: DataSF 9exe-acju with
+# the Board's build years, and the torn-up lines of rail-history.json)
+if ERA is not None and len(streets.data.polygons):
+    _rb = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
+    def _street_z(x, y):
+        h_ = _rb.ray_cast(Vector((x, y, 3000)), Vector((0, 0, -1)))
+        return h_[0].z if h_[0] else None
+    # CONVENTION on liveries: cable cars maroon, streetcars dark green before
+    # 1945, Muni light rail silver-grey from the 1980s Boeing and Breda cars
+    _bm = {'cable': simple('cablecar', (0.36, 0.07, 0.07), rough=0.45),
+           'streetcar': simple('streetcar', (0.14, 0.24, 0.17) if ERA < 1945 else (0.62, 0.55, 0.32), rough=0.45),
+           'metro': simple('lrv', (0.14, 0.24, 0.17) if ERA < 1945 else (0.62, 0.55, 0.32) if ERA < 1980 else (0.66, 0.67, 0.68), rough=0.4)}
+    EA.build_rails(bpy, ERA, (bx0, by0, bx1, by1), _street_z, simple('railsteel', (0.55, 0.55, 0.56), rough=0.25, metal=1.0),
+                   simple('cableslot', (0.02, 0.02, 0.02), rough=0.9), _bm, log)
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 
 # ── buildings ────────────────────────────────────────────────────────────────
@@ -818,6 +838,8 @@ def sea():
         ob = bpy.data.objects.new('sea', me); sc.collection.objects.link(ob); me.materials.append(mat_)
     log('sea')
 sea()
+# the structures the record has lost (era.STRUCTURES: the freeways that came down)
+if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():
     """open water over made land not yet made (era.MADE_LAND)"""
     if ERA is None: return
