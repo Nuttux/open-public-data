@@ -428,12 +428,19 @@ def _surround(d, log, ext, step=20.0, box=None):
         X, Y = np.meshgrid(xs, ys)
         Z = lm_dem.sample_arr(X, Y)
         C = raster(SPp, SCc, x0, y0, st, nx, ny)
-        C[np.isnan(C[..., 0])] = (0.77, 0.67, 0.42)
+        # land = where the engine's surround has a triangle. 3DEP tiles that
+        # reach into the bay read ~0 m over open water, and "above -2 m" alone
+        # laid flat khaki slabs on the bay, cut square at the tile edges
+        # (seen from level 5, 2026-09-23): a cell is land if the engine says
+        # so, or if it clearly rises
+        land = ~np.isnan(C[..., 0])
+        C[~land] = (0.77, 0.67, 0.42)
         Zs = np.nan_to_num(Z, nan=-50.0)
         zmax = np.maximum.reduce([Zs[:-1, :-1], Zs[:-1, 1:], Zs[1:, 1:], Zs[1:, :-1]])
+        cland = land[:-1, :-1] | land[:-1, 1:] | land[1:, 1:] | land[1:, :-1]
         CX, CY = np.meshgrid((xs[:-1] + xs[1:]) / 2, (ys[:-1] + ys[1:]) / 2)
         inside_city = (CX > ext[0] + st) & (CX < ext[2] - st) & (CY > ext[1] + st) & (CY < ext[3] - st)
-        keep = (zmax > -2.0) & ~inside_city
+        keep = (((zmax > -2.0) & cland) | (zmax > 3.0)) & ~inside_city
         if near is not None:
             nb = (CX > near[0]) & (CX < near[2]) & (CY > near[1]) & (CY < near[3])
             keep &= nb if st == step else ~nb
