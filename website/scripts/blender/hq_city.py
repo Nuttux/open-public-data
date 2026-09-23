@@ -205,8 +205,8 @@ HP, HC = array.array('f'), array.array('f')
 for m in d['meshes']:
     # heroes only: the engine's 'caps' crown generic towers the generator now models itself
     if m['layer'] == 'heroes' and not m.get('instanced'):
-        _p = f32(m['pos'])
-        if EA.hero_mesh_stands(_p, ERA): HP.extend(_p); HC.extend(f32(m['col']))
+        _f = EA.hero_mesh_filter(f32(m['pos']), f32(m['col']), ERA)
+        if _f is not None: HP.extend(_f[0]); HC.extend(_f[1])
 if len(HP):
     ho = mesh_from('landmarks', HP, None, cols=HC)
     lm = simple('landmark', (0.8, 0.8, 0.8), rough=0.6)

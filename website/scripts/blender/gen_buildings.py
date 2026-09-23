@@ -609,22 +609,30 @@ def ruin(b, ground, out):
         for k in range(1 if rng.random() < 0.6 else 2):
             px, py = cx + rng.uniform(-2.5, 2.5), cy + rng.uniform(-2.5, 2.5)
             hc = rng.uniform(5.0, max(5.5, b['h'] * 0.95))
-            out.box3('chimney', Vector((px - 0.35, py - 0.45, zg)), X * 0.7, Y * 0.9, Z * hc, (1, 1, 1))
+            out.box3('soot', Vector((px - 0.35, py - 0.45, zg)), X * 0.7, Y * 0.9, Z * hc, (0.46, 0.30, 0.24))
         return
     # the shell: every wall a slab 0.4 m thick, its top broken in 2 m runs
     top = zg + max(4.0, b['h']); keep = 1.0 if b.get('ruin') == 'shell' else rng.uniform(0.55, 1.0)
     walls = [Wall(ring[i], ring[(i + 1) % n], out) for i in range(n)]
     storey = 4.0
+    # scorched brick, sooted almost black, or a grey stone front
+    wc = rng.choice(((0.42, 0.28, 0.22), (0.30, 0.22, 0.19), (0.22, 0.19, 0.17), (0.52, 0.49, 0.45)))
     for w in walls:
         if w.L < 0.3: continue
-        for u0 in frange(0.0, w.L, 2.0)[:-1]:
-            u1 = min(w.L, u0 + max(0.3, w.L / max(1, round(w.L / 2.0))))
-            ht = zg + (top - zg) * keep * (rng.uniform(0.55, 1.0) if keep < 1.0 else 1.0)
-            w.box('soot', u0, u1, zfoot, ht, -0.4, 0.0, (0.34, 0.28, 0.24))
+        u0 = 0.0
+        while u0 < w.L - 0.05:
+            u1 = min(w.L, u0 + rng.uniform(1.2, 3.6))
+            if keep < 1.0:
+                f = rng.random()
+                ht = zg + (top - zg) * keep * (rng.uniform(0.05, 0.25) if f < 0.18 else rng.uniform(0.45, 1.0))
+            else:
+                ht = top
+            w.box('soot', u0, u1, zfoot, ht, -0.4, 0.0, tuple(c * rng.uniform(0.85, 1.1) for c in wc))
             # the window openings: black, open through the wall to the sky
             for zf in frange(zg + 1.2, ht - 2.2, storey)[:-1] if ht - zg > 4 else []:
                 if u1 - u0 > 1.2:
                     w.rect('soot', u0 + 0.35, u1 - 0.35, zf, zf + 2.0, 0.02, (0.03, 0.03, 0.03))
+            u0 = u1
 
 
 def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):

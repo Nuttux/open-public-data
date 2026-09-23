@@ -14,6 +14,22 @@ standing TODAY with the assessor's year built. A building shows from its year
 on. What stood and was since demolished is not in it — the two places that
 matters most are handled here: the 1906 burned district (DataSF ff3a-iqhv,
 shipped in base/coast.qc) and the Outside Lands before their build-out.
+
+USE: env ERA=<year> on hq_scene.py / hq_city.py (unset = today's rules, as
+before). Any year works; the decade table interpolates. Other env:
+  INFILL=0      no stand-ins for lost buildings outside the fire
+  OPEN_RES      open-land raster, m (hq_scene 2, hq_city 8)
+  DUNE_RES      dune mesh grid, m (hq_scene 2, hq_city 10)
+  TOPO_DIR      folder of the USGS sheet masks (topo_extract.py output)
+What each year changes, in order of the scripts: landmarks and bridges (and
+their towers under construction), made land still water, the 1906 fire
+(stand-ins before, ruins in 1906, the rebuild after), lost buildings
+elsewhere (neighbours' period, the USGS sheets' built-up blocks), open land
+(dunes west, dry grass east, parks planted), streets (their record year,
+freeway openings), paving, markings, lamps, rails and cable cars, cars
+(shapes and colours), street trees (DataSF planting years), paint, stripped
+Victorians, roofs, rooftop solar, the lost freeways, the Mission Bay yards,
+the 1915 Exposition. Sources: history/CHECKPOINTS.md in qipu-render-work.
 """
 import math, os, json
 
@@ -248,7 +264,10 @@ def dune_height(x, y, noise):
     warp = noise.noise(Vector((u / 260.0, v / 150.0, 1.7))) * 1.6 + noise.noise(Vector((u / 90.0, v / 60.0, 5.3))) * 0.35
     ph = (u / L + warp) % 1.0
     Hc = 2.0 + 7.0 * (noise.noise(Vector((x / 380.0, y / 380.0, 4.1))) * 0.5 + 0.5)   # crest height
-    Hc *= 0.55 + 0.45 * (noise.noise(Vector((u / 120.0, v / 220.0, 0.3))) * 0.5 + 0.5)
+    # crests break along their length into crescents (the barchanoid ridges
+    # of a coastal dune field), not endless walls
+    br = noise.noise(Vector((u / 150.0, v / 75.0, 0.3))) * 0.5 + 0.5
+    br = min(1.0, max(0.0, (br - 0.32) / 0.3)); Hc *= 0.2 + 0.8 * br * br * (3 - 2 * br)
     lee = min(0.3, Hc / 0.65 / L)                            # the slip face's share of the wavelength
     prof = (ph / (1 - lee)) ** 1.25 if ph < 1 - lee else (1.0 - ph) / lee
     swell = 2.5 * (noise.noise(Vector((x / 180.0, y / 180.0, 2.3))) * 0.5 + 0.5)
@@ -665,6 +684,50 @@ def hero_mesh_stands(pos, era):
     if era is None: return True
     xs, ys = pos[0::3], pos[1::3]
     return landmark_stands((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, era)
+
+
+# The two bridges rose tower first. SOURCED: Golden Gate — construction began
+# 5 Jan 1933, the north tower raised in 1934, the south tower completed in
+# 1935, footwalk and main cables 1935-36, roadway 19 Jan - 19 Apr 1937, open
+# 27 May 1937 (goldengate.org 'Construction'; U Chicago 'Building the Golden
+# Gate Bridge'). Bay Bridge — begun 9 July 1933, open 12 Nov 1936, its towers
+# standing through 1934-35 (U Chicago 'Building the San Francisco-Oakland Bay
+# Bridge'). Tower positions: base/bridge.qc (tx, ty). CONVENTION: the cables
+# are not drawn apart from the finished bridge.
+BRIDGE_TOWERS = {'ggbridge': [(-3507.4, 5998.3), (-3621.8, 7297.7)],
+                 'baybridge': [(4607.2, 3439.4), (5060.5, 3974.6), (5544.2, 4545.8), (5997.4, 5081.0)]}
+
+
+def bridge_towers_standing(key, era):
+    """the towers of a bridge standing in a year before it opened ([] = none)"""
+    T = BRIDGE_TOWERS[key]
+    if key == 'ggbridge':
+        if era < 1934: return []
+        return [T[1]] if era == 1934 else T                 # north tower 1934, both from 1935
+    if era < 1934: return []
+    return T
+
+
+def hero_mesh_filter(pos, col, era):
+    """(pos, col) of a hero mesh as it stood in the year shown, or None: a
+    bridge under construction keeps only its towers' own triangles"""
+    if era is None: return pos, col
+    xs, ys = pos[0::3], pos[1::3]
+    L = landmark_for((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
+    if L is None or L[3] <= era: return pos, col
+    if L[0] not in BRIDGE_TOWERS: return None
+    towers = bridge_towers_standing(L[0], era)
+    if not towers: return None
+    import array
+    P, C = array.array('f'), array.array('f')
+    for t in range(len(pos) // 9):
+        a = t * 9
+        cx = (pos[a] + pos[a + 3] + pos[a + 6]) / 3; cy = (pos[a + 1] + pos[a + 4] + pos[a + 7]) / 3
+        zs = (pos[a + 2], pos[a + 5], pos[a + 8])
+        if max(zs) - min(zs) < 2.5: continue                  # decks and cable runs are flat; tower legs are not
+        if any((cx - tx) ** 2 + (cy - ty) ** 2 < 24.0 ** 2 for tx, ty in towers):
+            P.extend(pos[a:a + 9]); C.extend(col[a:a + 9])
+    return (P, C) if len(P) else None
 
 
 def build_structures(bpy, era, ground, mat, box=None, log=print):

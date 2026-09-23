@@ -414,9 +414,10 @@ for m in d['meshes']:
     if m['layer'] == 'heroes' and not m.get('instanced'):
         _p = f32(m['pos'])
         _cx = (min(_p[0::3]) + max(_p[0::3])) / 2; _cy = (min(_p[1::3]) + max(_p[1::3])) / 2
-        if not EA.landmark_stands(_cx, _cy, ERA):
+        _f = EA.hero_mesh_filter(_p, f32(m['col']), ERA)
+        if _f is None:
             log('landmark not yet built:', EA.landmark_for(_cx, _cy)[0]); continue
-        _HP.extend(_p); _HC.extend(f32(m['col']))
+        _HP.extend(_f[0]); _HC.extend(_f[1])
 if len(_HP):
     _nv = len(_HP) // 3
     _me = bpy.data.meshes.new('landmarks'); _me.from_pydata([(_HP[i*3], _HP[i*3+1], _HP[i*3+2]) for i in range(_nv)], [], [(t*3, t*3+1, t*3+2) for t in range(_nv // 3)])
