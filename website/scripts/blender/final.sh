@@ -1,7 +1,7 @@
 #!/bin/sh
 # Final delivery: every location at 4800x3000, then before/after and progress sheets,
 # all copied to ~/Downloads/qipu-renders/final/.   sh final.sh [spp]
-S=/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/2af8a356-3125-4a36-ad95-180e17e79d3a/scratchpad/blender
+S=/Users/daniel/code/qipu-render-work
 B=/Users/daniel/code/opd-render/website/scripts/blender
 R="$S/rounds/final"; SPP="${1:-192}"; mkdir -p "$R"; D=~/Downloads/qipu-renders/final; mkdir -p "$D"
 cd "$S"

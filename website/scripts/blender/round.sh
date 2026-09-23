@@ -1,7 +1,7 @@
 #!/bin/sh
 # One evaluation round: all six locations at 2400x1500, then two review sheets.
 #   sh round.sh <round-name> [spp]
-S=/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/2af8a356-3125-4a36-ad95-180e17e79d3a/scratchpad/blender
+S=/Users/daniel/code/qipu-render-work
 R="$S/rounds/$1"; SPP="${2:-64}"; mkdir -p "$R"
 B=/Users/daniel/code/opd-render/website/scripts/blender/build_render.py
 cd "$S"

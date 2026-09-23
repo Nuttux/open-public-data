@@ -2,7 +2,7 @@
 usage: python3 variants.py <outdir> <w> <h> <spp> <locs,comma> '<json list of env dicts>'"""
 import sys, json, os, subprocess
 from PIL import Image, ImageDraw
-S = '/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/2af8a356-3125-4a36-ad95-180e17e79d3a/scratchpad/blender'
+S = '/Users/daniel/code/qipu-render-work'
 B = '/Users/daniel/code/opd-render/website/scripts/blender'
 out, W, H, spp, locs, vs = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], sys.argv[5].split(','), json.loads(sys.argv[6])
 os.makedirs(out, exist_ok=True); tiles = []

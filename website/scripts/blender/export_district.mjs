@@ -24,7 +24,7 @@ await p.evaluate(([X, Y, H, STEP]) => {
 await p.waitForTimeout(8000);
 await p.screenshot({ path: `${out}/current.png` });
 
-const res = await p.evaluate(async ([X, Y, H]) => {
+const res = await p.evaluate(async ([X, Y, H, SKIP]) => {
   const e = globalThis.__cityGL;
   const st = (() => { try { let s; e.scene.traverse(o => { const m = o.material; const r = m && (m.userData?.rise); if (r && !s) s = r.state(); }); return s; } catch { return null; } })();
   const b64 = (ta) => { const u = new Uint8Array(ta.buffer, ta.byteOffset, ta.byteLength); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
@@ -54,6 +54,7 @@ const res = await p.evaluate(async ([X, Y, H]) => {
     if (!o.isMesh) return;
     const layer = o.name || o.parent?.name || '';
     if (/^(fire|block-tint|theme-mark|mark-hot)/.test(layer)) return;
+    if (SKIP.includes(layer)) return;
     if (!o.visible && !/^trees|^street-detail|^street-markings/.test(layer)) return;
     const g = o.geometry, m = Array.isArray(o.material) ? o.material[0] : o.material;
     const P = g.attributes.position; if (!P) return;
@@ -113,7 +114,7 @@ const res = await p.evaluate(async ([X, Y, H]) => {
   const f = [ix*qw+iw*-qx+iy*-qz-iz*-qy, iy*qw+iw*-qy+iz*-qx-ix*-qz, iz*qw+iw*-qz+ix*-qy-iy*-qx];
   const sun = []; e.scene.traverse(o => { if (o.isDirectionalLight) sun.push({ pos: o.position.toArray(), tgt: o.target.position.toArray(), color: o.color.toArray(), intensity: o.intensity }); });
   return { box: [x0, y0, x1, y1], state: st, camForwardThree: f, camForward: [f[0], f[2], f[1]], sun, meshes, trees, textures };
-}, [X, Y, H]);
+}, [X, Y, H, (process.env.SKIP || '').split(',').filter(Boolean)]);
 for (const [id, t] of Object.entries(res.textures)) { fs.writeFileSync(`${out}/${id}.png`, Buffer.from(t.png.split(',')[1], 'base64')); delete t.png; }
 fs.writeFileSync(`${out}/scene.json`, JSON.stringify(res));
 const agg = {}; for (const m of res.meshes) { agg[m.layer] = (agg[m.layer] || 0) + (m.nv || m.inst?.length || 0); }
