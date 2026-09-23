@@ -122,7 +122,7 @@ TP, TC = array.array('f'), array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos'])); TC.extend(f32(m['col']))
 for i in range(2, len(TP), 3): TP[i] *= 0.5
-terrain = mesh_from('terrain', TP, ground_mat(), smooth=True, weld=0.05, cols=TC)
+terrain = mesh_from('terrain', TP, hill_ground(d, BOX), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
     # None off the terrain: a building there is outside the city (the
@@ -172,7 +172,7 @@ if len(MP): mesh_from('markings', MP, M['paint'])
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
-if len(DL): mesh_from('lawns', DL, M['lawn'])
+pass   # the parks: painted by hill_ground (hq_scene's materials block)
 
 bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()
 SE = []
@@ -194,6 +194,7 @@ for a, b, outv in SE:
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 log('street edges', len(SE))
+if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, BOX)
 
 # ── landmarks the engine models by hand (Coit Tower, the Transamerica...) ──
 HP, HC = array.array('f'), array.array('f')
@@ -396,6 +397,18 @@ car_colls = []
 for i, me_ in enumerate(CARS):
     c = bpy.data.collections.new(f'carp{i}'); o = bpy.data.objects.new(f'carp{i}', me_); c.objects.link(o); car_colls.append(c)
 cpts = []; r = random.Random(21)
+# a car parks where there is a door to park at: the building walls, sampled
+# every 8 m; a curb with no wall within 18 m is a park drive, a hill road, a
+# freeway's edge (Twin Peaks Boulevard was a traffic jam)
+_fp = []
+for b_ in recs:
+    rg_ = b_['ring']
+    for q_ in range(len(rg_)):
+        x0_, y0_ = rg_[q_]; x1_, y1_ = rg_[(q_ + 1) % len(rg_)]; n_ = max(1, int(math.hypot(x1_ - x0_, y1_ - y0_) / 8.0))
+        _fp.extend((x0_ + (x1_ - x0_) * t_ / n_, y0_ + (y1_ - y0_) * t_ / n_, 0.0) for t_ in range(n_))
+kdw = KDTree(max(1, len(_fp)))
+for i_, q_ in enumerate(_fp): kdw.insert(q_, i_)
+kdw.balance()
 for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
@@ -405,6 +418,7 @@ for a, b, outv in SE:
         if r.random() > occ: continue
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if not in_box(p.x, p.y): continue
+        if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), r.randrange(len(car_colls))))
 instancer('cars', cpts, car_colls)
 
