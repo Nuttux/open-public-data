@@ -260,6 +260,11 @@ def facade_var(name, look):
     streak = math_node(nt, 'MULTIPLY', below, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', streak_n.outputs['Fac'], 0.35, clamp=True), 0.55))
     ws_ = nt.nodes.new('ShaderNodeMix'); ws_.data_type = 'RGBA'; ws_.blend_type = 'MULTIPLY'; L(nt, streak, ws_.inputs[0]); L(nt, wallc, ws_.inputs[6]); ws_.inputs[7].default_value = (0.62, 0.60, 0.58, 1)
     wallc = ws_.outputs[2]
+    # the first metre of a wall is dirtier: splash, soil, bikes and bins
+    gb = nt.nodes.new('ShaderNodeTexNoise'); gb.inputs['Scale'].default_value = 1.2; gb.inputs['Detail'].default_value = 6; L(nt, geo.outputs['Position'], gb.inputs['Vector'])
+    base_g = math_node(nt, 'MULTIPLY', math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', 1.0, math_node(nt, 'DIVIDE', above_foot, 1.3, clamp=True)), wall_), math_node(nt, 'ADD', 0.4, math_node(nt, 'MULTIPLY', gb.outputs['Fac'], 0.6)))
+    bg_ = nt.nodes.new('ShaderNodeMix'); bg_.data_type = 'RGBA'; bg_.blend_type = 'MULTIPLY'; L(nt, math_node(nt, 'MULTIPLY', base_g, 0.8), bg_.inputs[0]); L(nt, wallc, bg_.inputs[6]); bg_.inputs[7].default_value = (0.55, 0.52, 0.48, 1)
+    wallc = bg_.outputs[2]
     wall = principled(nt, wallc, rough=0.82, spec=0.35)
     gl = mix_rgb(nt, r_gl, (0.035, 0.045, 0.055, 1), (0.10, 0.11, 0.115, 1))
     cell = nt.nodes.new('ShaderNodeCombineXYZ'); L(nt, math_node(nt, 'FLOOR', uc), cell.inputs[0]); L(nt, math_node(nt, 'FLOOR', vc), cell.inputs[1]); L(nt, r_pal, cell.inputs[2])
@@ -271,6 +276,11 @@ def facade_var(name, look):
     tint = nt.nodes.new('ShaderNodeValToRGB'); tint.color_ramp.interpolation = 'CONSTANT'
     set_ramp(tint.color_ramp, [(0.20, 0.26, 0.30), (0.26, 0.30, 0.28), (0.30, 0.28, 0.24), (0.18, 0.20, 0.24), (0.32, 0.36, 0.40)])
     L(nt, r_gl, tint.inputs[0])
+    # the reveal: a pane sits 15 cm back, so its top fifth is in the lintel's shadow
+    wtop = math_node(nt, 'GREATER_THAN', vf, math_node(nt, 'ADD', 0.55, math_node(nt, 'MULTIPLY', wh, 0.55)))
+    rv = nt.nodes.new('ShaderNodeMix'); rv.data_type = 'RGBA'; rv.blend_type = 'MULTIPLY'; L(nt, math_node(nt, 'MULTIPLY', wtop, 0.75), rv.inputs[0])
+    L(nt, glc, rv.inputs[6]); rv.inputs[7].default_value = (0.25, 0.25, 0.27, 1)
+    glass.inputs['Base Color'].links and nt.links.remove(glass.inputs['Base Color'].links[0]); L(nt, rv.outputs[2], glass.inputs['Base Color'])
     tglass = principled(nt, mix_rgb(nt, math_node(nt, 'MULTIPLY', wn.outputs['Value'], 0.25), tint.outputs[0], (0.5, 0.52, 0.55, 1)),
                         rough=math_node(nt, 'ADD', 0.01, math_node(nt, 'MULTIPLY', wn.outputs['Value'], 0.04)), spec=1.0, metal=0.6)
     mirror = math_node(nt, 'MULTIPLY', tower, math_node(nt, 'GREATER_THAN', kind, 0.5))
@@ -321,6 +331,39 @@ def facade_var(name, look):
     for sh in (wall, glass): L(nt, bmp.outputs[0], sh.inputs['Normal'])
     return m
 
+def lawn_color(nt, geo, stripes=1.0):
+    """grass seen from 300 m: a field of greens at three scales, mowing stripes
+    on kept lawns, thinner and browner under trees (the canopy's own ambient
+    occlusion says where), and never one flat paint"""
+    n_a = nt.nodes.new('ShaderNodeTexNoise'); n_a.inputs['Scale'].default_value = 0.03; n_a.inputs['Detail'].default_value = 5; L(nt, geo.outputs['Position'], n_a.inputs['Vector'])
+    n_b = nt.nodes.new('ShaderNodeTexNoise'); n_b.inputs['Scale'].default_value = 0.22; n_b.inputs['Detail'].default_value = 8; L(nt, geo.outputs['Position'], n_b.inputs['Vector'])
+    n_c = nt.nodes.new('ShaderNodeTexNoise'); n_c.inputs['Scale'].default_value = 1.6; n_c.inputs['Detail'].default_value = 10; L(nt, geo.outputs['Position'], n_c.inputs['Vector'])
+    c = mix_rgb(nt, n_a.outputs['Fac'], (0.055, 0.150, 0.030, 1), (0.115, 0.215, 0.045, 1))
+    # clumps a little yellower, a little bluer
+    c = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', n_b.outputs['Fac'], 0.55), 2.2, clamp=True), c, (0.16, 0.20, 0.06, 1))
+    c = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', 0.42, n_b.outputs['Fac']), 2.2, clamp=True), c, (0.05, 0.13, 0.05, 1))
+    # mowing stripes, 4.5 m wide, along the city grid
+    sep = nt.nodes.new('ShaderNodeSeparateXYZ'); L(nt, geo.outputs['Position'], sep.inputs[0])
+    band = math_node(nt, 'GREATER_THAN', math_node(nt, 'FRACT', math_node(nt, 'DIVIDE', sep.outputs[1], 9.0)), 0.5)
+    lighter = nt.nodes.new('ShaderNodeMix'); lighter.data_type = 'RGBA'; lighter.blend_type = 'MULTIPLY'
+    L(nt, band if stripes == 1.0 else math_node(nt, 'MULTIPLY', band, stripes), lighter.inputs[0]); L(nt, c, lighter.inputs[6]); lighter.inputs[7].default_value = (1.22, 1.20, 1.05, 1)
+    c = lighter.outputs[2]
+    # under a canopy: thin grass and bare soil where the sky is mostly hidden
+    ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.inputs['Distance'].default_value = 7.0; ao.samples = 8
+    under = math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', 0.75, ao.outputs['AO']), 2.0, clamp=True)
+    soil = mix_rgb(nt, n_c.outputs['Fac'], (0.10, 0.08, 0.05, 1), (0.17, 0.13, 0.08, 1))
+    c = mix_rgb(nt, math_node(nt, 'MULTIPLY', under, math_node(nt, 'ADD', 0.35, math_node(nt, 'MULTIPLY', n_c.outputs['Fac'], 0.5))), c, soil)
+    return c, n_c.outputs['Fac']
+
+def grass_bsdf(nt, c, grain):
+    p = principled(nt, c, rough=0.9, spec=0.25)
+    # grass is velvet: a sheen at grazing angles, the sun catching the blades
+    p.inputs['Sheen Weight'].default_value = 0.3; p.inputs['Sheen Roughness'].default_value = 0.45
+    p.inputs['Sheen Tint'].default_value = (0.75, 0.9, 0.55, 1)
+    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = 0.35; bm.inputs['Distance'].default_value = 0.05
+    L(nt, grain, bm.inputs['Height']); L(nt, bm.outputs[0], p.inputs['Normal'])
+    return p
+
 def ground_mat(name, texpath=None):
     """lawn where the engine's baked ground map is green, dry golden grass
     where it is tan (San Francisco's hills from June to November), soil and
@@ -335,30 +378,50 @@ def ground_mat(name, texpath=None):
         low = vcol(nt)
     sp = nt.nodes.new('ShaderNodeSeparateColor'); L(nt, low, sp.inputs[0])
     greenness = math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', sp.outputs[1], sp.outputs[0]), 8.0, clamp=True)
-    sn = nt.nodes.new('ShaderNodeSeparateXYZ'); L(nt, geo.outputs['True Normal'], sn.inputs[0])
+    # the SMOOTH normal: the true one is per triangle, and every 13 m facet of
+    # the elevation mesh showed as a lighter or darker plate
+    sn = nt.nodes.new('ShaderNodeSeparateXYZ'); L(nt, geo.outputs['Normal'], sn.inputs[0])
     steep = math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', 0.985, sn.outputs[2]), 12.0, clamp=True)
     lawnness = math_node(nt, 'MULTIPLY', greenness, math_node(nt, 'SUBTRACT', 1.0, math_node(nt, 'MULTIPLY', steep, 0.6)))
     n1 = nt.nodes.new('ShaderNodeTexNoise'); n1.inputs['Scale'].default_value = 0.04; n1.inputs['Detail'].default_value = 6; L(nt, geo.outputs['Position'], n1.inputs['Vector'])
     n2 = nt.nodes.new('ShaderNodeTexNoise'); n2.inputs['Scale'].default_value = 0.6; n2.inputs['Detail'].default_value = 10; L(nt, geo.outputs['Position'], n2.inputs['Vector'])
-    lawn = mix_rgb(nt, n1.outputs['Fac'], (0.06, 0.16, 0.03, 1), (0.13, 0.24, 0.05, 1))
-    dry = mix_rgb(nt, n1.outputs['Fac'], (0.42, 0.30, 0.13, 1), (0.60, 0.47, 0.24, 1))
-    scrub = (0.13, 0.15, 0.06, 1)
-    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', n2.outputs['Fac'], 0.55), 4.0, clamp=True), dry, scrub)
+    # stripes only on flat ground; a green slope is meadow, not a mown lawn
+    flat0 = math_node(nt, 'SUBTRACT', 1.0, math_node(nt, 'MULTIPLY', steep, 3.0, clamp=True))
+    lawn, grain = lawn_color(nt, geo, stripes=flat0)
+    meadow = mix_rgb(nt, n2.outputs['Fac'], (0.17, 0.21, 0.07, 1), (0.40, 0.35, 0.16, 1))
+    meadow = mix_rgb(nt, math_node(nt, 'MULTIPLY', n1.outputs['Fac'], 0.6), meadow, (0.30, 0.30, 0.12, 1))
+    lawn = mix_rgb(nt, math_node(nt, 'SUBTRACT', 1.0, flat0), lawn, meadow)
+    # ── THE HILLS: straw grass, shaped by the ground itself ──
+    # hollows hold water (greener, olive), crowns dry out (paler straw),
+    # steep faces break into chert and soil, and brush runs in patches
+    dry = mix_rgb(nt, n1.outputs['Fac'], (0.40, 0.29, 0.13, 1), (0.58, 0.45, 0.23, 1))
+    pt = math_node(nt, 'SUBTRACT', geo.outputs['Pointiness'], 0.5)
+    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', pt, -9.0, clamp=True), dry, (0.21, 0.22, 0.09, 1))
+    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', pt, 7.0, clamp=True), dry, (0.68, 0.56, 0.32, 1))
+    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', n2.outputs['Fac'], 0.56), 4.0, clamp=True), dry, (0.11, 0.13, 0.05, 1))
+    nr = nt.nodes.new('ShaderNodeTexNoise'); nr.inputs['Scale'].default_value = 0.08; nr.inputs['Detail'].default_value = 8; nr.inputs['Roughness'].default_value = 0.65
+    L(nt, geo.outputs['Position'], nr.inputs['Vector'])
+    rock = math_node(nt, 'MULTIPLY', math_node(nt, 'GREATER_THAN', math_node(nt, 'ADD', nr.outputs['Fac'], math_node(nt, 'MULTIPLY', steep, 0.25)), 0.74), steep)
+    rockc = mix_rgb(nt, n2.outputs['Fac'], (0.30, 0.26, 0.23, 1), (0.47, 0.42, 0.37, 1))
+    dry = mix_rgb(nt, rock, dry, rockc)
     # flat ground that is not a park is a backyard: patches of lawn and of
     # paving, never the golden grass of a hillside
     n3 = nt.nodes.new('ShaderNodeTexNoise'); n3.inputs['Scale'].default_value = 0.09; n3.inputs['Detail'].default_value = 4; L(nt, geo.outputs['Position'], n3.inputs['Vector'])
     flat_ = math_node(nt, 'SUBTRACT', 1.0, steep)
     yard_lawn = math_node(nt, 'MULTIPLY', math_node(nt, 'GREATER_THAN', n3.outputs['Fac'], 0.40), flat_)
     paving = mix_rgb(nt, n2.outputs['Fac'], (0.22, 0.21, 0.19, 1), (0.30, 0.28, 0.25, 1))
-    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', flat_, math_node(nt, 'SUBTRACT', 1.0, yard_lawn)), dry, paving)
+    # paving belongs to backyards: never where the engine's map says green
+    not_green = math_node(nt, 'SUBTRACT', 1.0, math_node(nt, 'MULTIPLY', greenness, 3.0, clamp=True))
+    dry = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'MULTIPLY', flat_, math_node(nt, 'SUBTRACT', 1.0, yard_lawn)), not_green), dry, paving)
     lawnness = math_node(nt, 'MAXIMUM', lawnness, yard_lawn)
     c = mix_rgb(nt, lawnness, dry, lawn)
-    # mowing stripes and wear, faint, on the lawns
-    wear = math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', n2.outputs['Fac'], 0.4), 0.5, clamp=True)
-    c = mix_rgb(nt, math_node(nt, 'MULTIPLY', wear, 0.12), c, (0.25, 0.26, 0.12, 1))
-    p = principled(nt, c, rough=0.95, spec=0.2)
-    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = 0.4; bm.inputs['Distance'].default_value = 0.3
-    L(nt, n2.outputs['Fac'], bm.inputs['Height']); L(nt, bm.outputs[0], p.inputs['Normal'])
+    p = grass_bsdf(nt, c, grain)
+    # the hill's own relief below the DEM's 13 m: swells and runnels by bump
+    hb = nt.nodes.new('ShaderNodeTexNoise'); hb.inputs['Scale'].default_value = 0.12; hb.inputs['Detail'].default_value = 6; L(nt, geo.outputs['Position'], hb.inputs['Vector'])
+    hbump = nt.nodes.new('ShaderNodeBump'); hbump.inputs['Strength'].default_value = 0.6; hbump.inputs['Distance'].default_value = 1.2
+    L(nt, math_node(nt, 'ADD', math_node(nt, 'MULTIPLY', hb.outputs['Fac'], steep), math_node(nt, 'MULTIPLY', rock, 0.4)), hbump.inputs['Height'])
+    L(nt, p.inputs['Normal'].links[0].from_socket, hbump.inputs['Normal'])
+    L(nt, hbump.outputs[0], p.inputs['Normal'])
     L(nt, p.outputs[0], o.inputs[0]); return m
 
 def sidewalk_mat():
@@ -415,11 +478,9 @@ def detail_mat():
     white = math_node(nt, 'GREATER_THAN', sep.outputs[2], 0.8)
     n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 0.5; n.inputs['Detail'].default_value = 10; L(nt, geo.outputs['Position'], n.inputs['Vector'])
     conc = mix_rgb(nt, n.outputs['Fac'], (0.24, 0.235, 0.22, 1), (0.40, 0.39, 0.36, 1))
-    n2 = nt.nodes.new('ShaderNodeTexNoise'); n2.inputs['Scale'].default_value = 0.12; n2.inputs['Detail'].default_value = 8; L(nt, geo.outputs['Position'], n2.inputs['Vector'])
-    lawn = mix_rgb(nt, math_node(nt, 'MULTIPLY', math_node(nt, 'SUBTRACT', n2.outputs['Fac'], 0.3), 1.6, clamp=True), (0.09, 0.19, 0.05, 1), (0.20, 0.27, 0.09, 1))
-    lawn = mix_rgb(nt, math_node(nt, 'MULTIPLY', n.outputs['Fac'], 0.25), lawn, (0.30, 0.30, 0.14, 1))
+    lawn, grain = lawn_color(nt, geo)
     c = mix_rgb(nt, white, lawn, conc)
-    p = principled(nt, c, rough=0.92, spec=0.25)
+    p = grass_bsdf(nt, c, grain)
     bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = 0.3; bm.inputs['Distance'].default_value = 0.05
     L(nt, n.outputs['Fac'], bm.inputs['Height']); L(nt, bm.outputs[0], p.inputs['Normal'])
     L(nt, p.outputs[0], o.inputs[0]); return m
@@ -482,7 +543,7 @@ def foliage_mat(look):
     L(nt, p.outputs[0], o.inputs[0]); return m
 
 # ── geometry ────────────────────────────────────────────────────────────
-def build(name, pos, col, material, zscale=1.0, zoff=0.0, cen=None, uv=None, smooth=False):
+def build(name, pos, col, material, zscale=1.0, zoff=0.0, cen=None, uv=None, smooth=False, jit=1.0):
     nv = len(pos) // 3
     me = bpy.data.meshes.new(name)
     me.vertices.add(nv)
@@ -509,7 +570,7 @@ def build(name, pos, col, material, zscale=1.0, zoff=0.0, cen=None, uv=None, smo
         # centimetres along the face's own normal puts one of them on top
         ln = math.sqrt(nx*nx + ny*ny + nz*nz)
         if ln > 0 and not smooth:
-            j = (0.01 + 0.05 * (((t * 2654435761) & 0xffff) / 65535.0)) / ln
+            j = jit * (0.01 + 0.05 * (((t * 2654435761) & 0xffff) / 65535.0)) / ln
             for k in range(3):
                 pos[a+k*3] += nx*j; pos[a+k*3+1] += ny*j; pos[a+k*3+2] += nz*j
     me.vertices.foreach_set('co', pos)
@@ -750,7 +811,10 @@ for (key, lay, zs, zo), (P, C, E, U) in groups.items():
             (P, C, E), (Pf, Cf, Ef) = split_flat(P, C, E)
             if len(Pf): FLAT_ROOFS.append(build(f'{lay}.{key}.flat', Pf, Cf, mats[key], zs, zo, Ef))
     if key == 'ground' and U: key = 'ground_tex'
-    build(f'{lay}.{key}', P, C, mats[key], zs, zo, E, U or None, smooth=lay.startswith('terrain'))
+    # the ground's own pieces overlap flat: a 6 cm step there casts a visible
+    # line in a low sun, so they are separated by millimetres, not centimetres
+    build(f'{lay}.{key}', P, C, mats[key], zs, zo, E, U or None, smooth=lay.startswith('terrain'),
+          jit=0.2 if lay in ('ground-detail', 'terrain', 'terrain.a') else 1.0)
 for ob in FLAT_ROOFS:
     parapet(ob); print('parapets on', ob.name, len(ob.data.polygons))
 # ── THE SEA: one sheet just above sea-level ground, cut by the water mask ──
@@ -795,8 +859,8 @@ def bay_proto():
     bc = bpy.data.collections.new('bay'); sc.collection.children.link(bc); bc.objects.link(ob)
     return bc
 
-def bay_scatter(obj, bc):
-    ng = bpy.data.node_groups.new('bays', 'GeometryNodeTree')
+def bay_scatter(obj, bc, bh_min=6.5, bh_max=16.0, z_off=3.0, top_margin=1.1, max_h=7.0, density=0.12, dist_min=5.5, share=1.0, seed=31, h_div=1.0, tag='bays'):
+    ng = bpy.data.node_groups.new(tag, 'GeometryNodeTree')
     ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
     ng.interface.new_socket('Geometry', in_out='OUTPUT', socket_type='NodeSocketGeometry')
     n = ng.nodes; lk = ng.links.new
@@ -816,16 +880,24 @@ def bay_scatter(obj, bc):
         c_ = n.new('FunctionNodeCompare'); c_.data_type = 'FLOAT'; c_.operation = op; lk(val, c_.inputs[0]); c_.inputs[1].default_value = k; return c_.outputs[0]
     nrm = n.new('GeometryNodeInputNormal'); ns = n.new('ShaderNodeSeparateXYZ'); lk(nrm.outputs[0], ns.inputs[0])
     vertical = cmp(mth('ABSOLUTE', ns.outputs[2]), 'LESS_THAN', 0.08)
-    house = band(cmp(attr('bh'), 'LESS_THAN', 16.0), cmp(attr('bh'), 'GREATER_THAN', 6.5))
+    house = band(cmp(attr('bh'), 'LESS_THAN', bh_max), cmp(attr('bh'), 'GREATER_THAN', bh_min))
+    # one draw per building (the centroid as its ID): only `share` of them take part
+    ca = n.new('GeometryNodeInputNamedAttribute'); ca.data_type = 'FLOAT_VECTOR'; ca.inputs['Name'].default_value = 'cen'
+    cs = n.new('ShaderNodeSeparateXYZ'); lk(ca.outputs[0], cs.inputs[0])
+    idf = mth('ADD', mth('MULTIPLY', mth('FLOOR', mth('MULTIPLY', cs.outputs[0], 0.5)), 7919.0), mth('FLOOR', mth('MULTIPLY', cs.outputs[1], 0.5)))
+    idi = n.new('FunctionNodeFloatToInt'); lk(idf, idi.inputs[0])
+    rvb = n.new('FunctionNodeRandomValue'); rvb.data_type = 'FLOAT'; rvb.inputs['Seed'].default_value = seed; lk(idi.outputs[0], rvb.inputs['ID'])
+    live = [x for x in rvb.inputs if x.name in ('Min', 'Max') and x.type == 'VALUE']; live[0].default_value = 0; live[1].default_value = 1
+    house = band(house, cmp([o for o in rvb.outputs if o.type == 'VALUE'][0], 'LESS_THAN', share))
     dist = n.new('GeometryNodeDistributePointsOnFaces'); dist.distribute_method = 'POISSON'
     lk(gi.outputs[0], dist.inputs['Mesh']); lk(band(vertical, house), dist.inputs['Selection'])
-    dist.inputs['Density Max'].default_value = 0.12; dist.inputs['Distance Min'].default_value = 5.5; dist.inputs['Seed'].default_value = 31
+    dist.inputs['Density Max'].default_value = density; dist.inputs['Distance Min'].default_value = dist_min; dist.inputs['Seed'].default_value = seed
     # the normal, captured at each point as the distribution sampled it
     dn = dist.outputs['Normal']; dns = n.new('ShaderNodeSeparateXYZ'); lk(dn, dns.inputs[0])
     # sit the point at the first floor, and measure the bay's height
     foot, top = attr('bfoot'), attr('btop')
-    z0 = mth('ADD', foot, 3.0)
-    hgt = mth('MINIMUM', mth('SUBTRACT', mth('SUBTRACT', top, 1.1), z0), 7.0)
+    z0 = mth('ADD', foot, z_off)
+    hgt = mth('MINIMUM', mth('SUBTRACT', mth('SUBTRACT', top, top_margin), z0), max_h)
     pos = n.new('GeometryNodeInputPosition'); ps = n.new('ShaderNodeSeparateXYZ'); lk(pos.outputs[0], ps.inputs[0])
     np_ = n.new('ShaderNodeCombineXYZ'); lk(ps.outputs[0], np_.inputs[0]); lk(ps.outputs[1], np_.inputs[1]); lk(z0, np_.inputs[2])
     # the point's own normal, stored before anything moves it
@@ -848,7 +920,7 @@ def bay_scatter(obj, bc):
     bns = n.new('ShaderNodeSeparateXYZ'); lk(bn.outputs[0], bns.inputs[0])
     yaw = mth('ARCTAN2', mth('MULTIPLY', bns.outputs[0], -1.0), bns.outputs[1])
     rot = n.new('ShaderNodeCombineXYZ'); lk(yaw, rot.inputs[2])
-    scl = n.new('ShaderNodeCombineXYZ'); scl.inputs[0].default_value = 1.0; scl.inputs[1].default_value = 1.0; lk(bh_.outputs[0], scl.inputs[2])
+    scl = n.new('ShaderNodeCombineXYZ'); scl.inputs[0].default_value = 1.0; scl.inputs[1].default_value = 1.0; lk(mth('DIVIDE', bh_.outputs[0], h_div), scl.inputs[2])
     ci = n.new('GeometryNodeCollectionInfo'); ci.inputs['Collection'].default_value = bc
     ci.inputs['Separate Children'].default_value = True; ci.inputs['Reset Children'].default_value = True
     ii = n.new('GeometryNodeInstanceOnPoints'); lk(dl.outputs[0], ii.inputs['Points']); lk(ci.outputs[0], ii.inputs['Instance'])
@@ -857,13 +929,43 @@ def bay_scatter(obj, bc):
     # realized, so the house's own attributes (cen, bh, Col…) reach the shader
     rl = n.new('GeometryNodeRealizeInstances'); lk(ii.outputs[0], rl.inputs[0])
     j = n.new('GeometryNodeJoinGeometry'); lk(gi.outputs[0], j.inputs[0]); lk(rl.outputs[0], j.inputs[0]); lk(j.outputs[0], go.inputs[0])
-    obj.modifiers.new('bays', 'NODES').node_group = ng
+    obj.modifiers.new(tag, 'NODES').node_group = ng
+
+def fire_escape_proto(floors=5, fh=3.0):
+    # black steel: a slatted platform at each floor and a stair between them
+    steel = bpy.data.materials.new('fire_escape'); steel.use_nodes = True
+    b_ = steel.node_tree.nodes['Principled BSDF']; b_.inputs['Base Color'].default_value = (0.035, 0.035, 0.038, 1)
+    b_.inputs['Roughness'].default_value = 0.5; b_.inputs['Metallic'].default_value = 0.6
+    V, F = [], []
+    def box(x0, y0, z0, x1, y1, z1):
+        k = len(V)
+        V.extend([(x0, y0, z0), (x1, y0, z0), (x1, y1, z0), (x0, y1, z0), (x0, y0, z1), (x1, y0, z1), (x1, y1, z1), (x0, y1, z1)])
+        F.extend([(k, k+1, k+2, k+3), (k+4, k+7, k+6, k+5), (k, k+4, k+5, k+1), (k+1, k+5, k+6, k+2), (k+2, k+6, k+7, k+3), (k+3, k+7, k+4, k)])
+    for f in range(floors):
+        z = f * fh
+        box(-1.9, 0.05, z, 1.9, 1.05, z + 0.08)                     # platform
+        box(-1.9, 1.0, z + 0.08, 1.9, 1.05, z + 1.0)                # railing
+        for x in (-1.9, 1.85): box(x, 0.05, z + 0.08, x + 0.05, 1.05, z + 1.0)
+        if f < floors - 1:                                           # stair to the next floor
+            for st in range(8):
+                t = st / 8
+                box(-1.6 + t * 2.6, 0.2, z + 0.08 + t * fh, -1.3 + t * 2.6, 0.9, z + 0.14 + t * fh)
+    me = bpy.data.meshes.new('fire_escape'); me.from_pydata(V, [], F); me.update()
+    for v in me.vertices: v.co.z /= floors * fh                      # one unit tall: scaled to the wall
+    ob = bpy.data.objects.new('fire_escape', me); me.materials.append(steel)
+    fc = bpy.data.collections.new('fire_escape'); sc.collection.children.link(fc); fc.objects.link(ob)
+    return fc
 
 if os.environ.get('BAYS', '1') == '1' and LOOK == 'photo':
-    _bc = bay_proto()
+    _bc = bay_proto(); _fc = fire_escape_proto()
     for o in list(sc.objects):
-        if o.name == 'buildings.fac': bay_scatter(o, _bc)
-    for o in _bc.objects: o.location.z -= 9000
+        if o.name == 'buildings.fac':
+            bay_scatter(o, _bc)                                       # houses: one or two floors of bay
+            bay_scatter(o, _bc, bh_min=16.0, bh_max=32.0, max_h=24.0, density=0.08, dist_min=6.5,
+                        share=0.6, seed=37, tag='bays_apts')          # apartments: bays stacked up the front
+            bay_scatter(o, _fc, bh_min=12.0, bh_max=32.0, z_off=3.6, top_margin=0.6, max_h=24.0,
+                        density=0.03, dist_min=14.0, share=0.4, seed=43, tag='fire_escapes')
+    for o in list(_bc.objects) + list(_fc.objects): o.location.z -= 9000
 
 # ── ROOFTOP LIFE: a Geometry Nodes scatter over every flat roof ─────────────
 # The record gives footprints and heights, not what stands on a roof. What
@@ -1348,7 +1450,17 @@ def yard_scatter(obj, yc, covers):
     rk = n.new('FunctionNodeRandomValue'); rk.data_type = 'FLOAT'; rk.inputs['Seed'].default_value = 41
     live = [x for x in rk.inputs if x.name in ('Min', 'Max') and x.type == 'VALUE']; live[0].default_value = 0; live[1].default_value = 1
     thin = n.new('FunctionNodeCompare'); thin.data_type = 'FLOAT'; thin.operation = 'GREATER_THAN'; lk([o for o in rk.outputs if o.type == 'VALUE'][0], thin.inputs[0]); thin.inputs[1].default_value = 0.10
-    drop_far = n.new('FunctionNodeBooleanMath'); drop_far.operation = 'AND'; lk(far.outputs[0], drop_far.inputs[0]); lk(thin.outputs[0], drop_far.inputs[1])
+    # on a hillside away from houses, brush grows in patches: kept wherever a
+    # broad noise says so and the ground slopes, on top of the thin scatter
+    dnz = n.new('ShaderNodeSeparateXYZ'); lk(dist.outputs['Normal'], dnz.inputs[0])
+    sloped = n.new('FunctionNodeCompare'); sloped.data_type = 'FLOAT'; sloped.operation = 'LESS_THAN'; lk(dnz.outputs[2], sloped.inputs[0]); sloped.inputs[1].default_value = 0.992
+    pn = n.new('GeometryNodeInputPosition'); bn_ = n.new('ShaderNodeTexNoise'); bn_.inputs['Scale'].default_value = 0.025; bn_.inputs['Detail'].default_value = 3
+    lk(pn.outputs[0], bn_.inputs['Vector'])
+    patch = n.new('FunctionNodeCompare'); patch.data_type = 'FLOAT'; patch.operation = 'GREATER_THAN'; lk(bn_.outputs['Fac'], patch.inputs[0]); patch.inputs[1].default_value = 0.53
+    brush = n.new('FunctionNodeBooleanMath'); brush.operation = 'AND'; lk(sloped.outputs[0], brush.inputs[0]); lk(patch.outputs[0], brush.inputs[1])
+    nb_ = n.new('FunctionNodeBooleanMath'); nb_.operation = 'NOT'; lk(brush.outputs[0], nb_.inputs[0])
+    thin2 = n.new('FunctionNodeBooleanMath'); thin2.operation = 'AND'; lk(thin.outputs[0], thin2.inputs[0]); lk(nb_.outputs[0], thin2.inputs[1])
+    drop_far = n.new('FunctionNodeBooleanMath'); drop_far.operation = 'AND'; lk(far.outputs[0], drop_far.inputs[0]); lk(thin2.outputs[0], drop_far.inputs[1])
     drop = n.new('FunctionNodeBooleanMath'); drop.operation = 'OR'; lk(rc.outputs['Is Hit'], drop.inputs[0]); lk(drop_far.outputs[0], drop.inputs[1])
     # the engine's ground runs on under the bay at 0 m: nothing grows there
     pz = n.new('GeometryNodeInputPosition'); pzs = n.new('ShaderNodeSeparateXYZ'); lk(pz.outputs[0], pzs.inputs[0])
