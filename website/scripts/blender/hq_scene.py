@@ -166,6 +166,8 @@ M['shopglass'] = glass_mat()
 M['awning'] = simple('awning', None, rough=0.7, attr=True)
 M['curtain'] = simple('curtain', (0.62, 0.58, 0.50), rough=0.9)
 M['asphalt'] = ph_mat('asphalt_02', 5.0, value=0.55)
+if E('ERA') and int(E('ERA')) < 1950:
+    M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
 M['sidewalk'] = ph_mat('concrete_pavement', 3.6, value=0.95)
 M['lawn'] = ph_mat('leafy_grass', 3.0, name='lawn')
 M['paint'] = ph_mat('asphalt_02', 5.0, name='paint')
@@ -270,7 +272,12 @@ ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.m
 # ── buildings ────────────────────────────────────────────────────────────────
 log('buildings: reading records')
 HG = city_data.hero_gids()
-recs = [b for b in city_data.buildings(bx0, by0, bx1, by1) if b['gid'] not in HG]
+ERA = int(E('ERA')) if E('ERA') else None
+G.ERA = ERA
+# the city as it stood: a building shows from its recorded year (a record with
+# no year is taken as standing; what was demolished before today is not in
+# the record at all, so an old checkpoint is today's survivors, not all it had)
+recs = [b for b in city_data.buildings(bx0, by0, bx1, by1) if b['gid'] not in HG and (ERA is None or (b['year'] or 0) <= ERA)]
 # the landmarks themselves: the engine's own hand-built forms, in their colours
 _HP, _HC = array.array('f'), array.array('f')
 for m in d['meshes']:
@@ -360,6 +367,9 @@ for t in d['trees']:
         zz = ground(x, y)
         crown = max(3.0, 2.4 * sxz)
         far = kd.find((x, y, 0))[2] > 28 if len(recs) else True
+        if ERA is not None and not far:
+            keep_p = 0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0
+            if rnd.random() > keep_p: continue
         (park_pts if far else street_pts).append((x, y, zz, crown, rnd.uniform(0, 6.283)))
 HERO_XY = [float(v) for v in E('HERO_FROM').split(',')[:2]] if E('HERO_FROM') else None
 def place_trees(name, pts, kinds, seed):
@@ -484,7 +494,7 @@ if E('PROPS', '1') == '1':
             o.location = q; o.scale = (s2, s2, s2); root.objects.link(o)
     log('lamps', k)
 
-if E('CARS', '1') == '1':
+if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
     log('cars')
     def car_mesh(name, L, Wd, prof):
         """a car from its side profile: (x, z) points around the silhouette,
@@ -524,6 +534,8 @@ if E('CARS', '1') == '1':
     pn = paint.node_tree; pb = pn.nodes['Principled BSDF']; ai = pn.nodes.new('ShaderNodeObjectInfo')
     ramp = pn.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.interpolation = 'CONSTANT'
     CC = [(0.85, 0.85, 0.84), (0.02, 0.02, 0.025), (0.45, 0.46, 0.48), (0.18, 0.19, 0.21), (0.85, 0.85, 0.84), (0.05, 0.10, 0.28), (0.40, 0.04, 0.04), (0.02, 0.02, 0.025), (0.55, 0.50, 0.40)]
+    if ERA is not None and ERA < 1960:
+        CC = [(0.02, 0.02, 0.02), (0.02, 0.02, 0.02), (0.08, 0.10, 0.08), (0.12, 0.10, 0.08), (0.30, 0.30, 0.28), (0.05, 0.06, 0.10), (0.02, 0.02, 0.02), (0.22, 0.18, 0.12)]
     el = ramp.color_ramp.elements
     el[0].position = 0; el[0].color = (*[c ** 2.2 for c in CC[0]], 1)
     for i in range(1, len(CC)): e_ = el.new(i / len(CC)); e_.color = (*[c ** 2.2 for c in CC[i]], 1)
@@ -542,8 +554,9 @@ if E('CARS', '1') == '1':
         v = b - a; L_ = v.length
         if L_ < 7: continue
         ang = math.atan2(v.y, v.x)
+        occ = 0.62 if (ERA is None or ERA >= 1970) else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
         for i in range(int((L_ - 3) // 6.2)):
-            if r.random() > 0.62: continue
+            if r.random() > occ: continue
             p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
             if not in_box(p.x, p.y): continue
             o = bpy.data.objects.new(f'pcar{k}', CARS[r.randrange(len(CARS))]); sc.collection.objects.link(o)

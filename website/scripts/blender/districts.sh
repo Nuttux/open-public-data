@@ -2,7 +2,7 @@
 # Full-resolution modelled close-ups of several districts, one after another.
 S=/Users/daniel/code/qipu-render-work
 B=/Users/daniel/code/opd-render/website/scripts/blender
-R="$S/hq/$1"; SPP="${2:-160}"; mkdir -p "$R"; cd "$S"
+R="$S/final/$1"; SPP="${2:-160}"; mkdir -p "$R"; cd "$S"
 run() { # name scene box tx ty ortho
   env BOX="$3" CAM=map TX="$4" TY="$5" ORTHO="$6" blender -b -P "$B/hq_scene.py" -- "$2" "$R/$1.png" "$SPP" 6000 3750 > "$R/$1.log" 2>&1
   python3 "$B/grade.py" "$R/$1.png" "$R/$1.g.png" 60 18

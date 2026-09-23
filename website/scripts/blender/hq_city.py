@@ -29,6 +29,8 @@ def in_box(x, y, pad=0.0):
 def f32(b):
     a = array.array('f'); a.frombytes(base64.b64decode(b)); return a
 
+ERA = int(E('ERA')) if E('ERA') else None
+G.ERA = ERA
 # the materials are hq_scene.py's own, run from its source so the two never drift
 _HQSRC = open(os.path.join(HERE, 'hq_scene.py')).read()
 exec(_HQSRC[_HQSRC.index('# ── materials'):_HQSRC.index('# ── terrain')])
@@ -94,8 +96,20 @@ for i in range(2, len(TP), 3): TP[i] *= 0.5
 terrain = mesh_from('terrain', TP, ground_mat(), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
+    # None off the terrain: a building there is outside the city (the
+    # generator raises on it and the chunk loop skips it)
     h_ = bvh_t.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
-    return h_[0].z if h_[0] else 0.0
+    return h_[0].z if h_[0] else None
+def ground0(x, y):
+    g_ = ground(x, y); return 0.0 if g_ is None else g_
+# the land around the city (Daly City, Marin): the engine's surround, so the
+# terrain does not end in a cliff at the county line
+SP_, SC_ = array.array('f'), array.array('f')
+for m in d['meshes']:
+    if m['layer'] == 'surround' and not m.get('instanced'): SP_.extend(f32(m['pos'])); SC_.extend(f32(m['col']))
+if len(SP_):
+    for i in range(2, len(SP_), 3): SP_[i] = SP_[i] * 0.5 - 0.3
+    mesh_from('surround', SP_, bpy.data.materials['ground'], smooth=True, cols=SC_)
 
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
@@ -136,7 +150,7 @@ Ps, Fs = [], []
 for a, b, outv in SE:
     up = Vector((0, 0, 0.15))
     fa, fb = a + outv * 3.0, b + outv * 3.0
-    fa.z = max(ground(fa.x, fa.y) + 0.06, a.z - 0.45); fb.z = max(ground(fb.x, fb.y) + 0.06, b.z - 0.45)
+    fa.z = max(ground0(fa.x, fa.y) + 0.06, a.z - 0.45); fb.z = max(ground0(fb.x, fb.y) + 0.06, b.z - 0.45)
     k = len(Ps); Ps += [tuple(a + up), tuple(b + up), tuple(fb), tuple(fa)]; Fs.append((k, k+1, k+2, k+3))
     k = len(Ps); Ps += [tuple(a), tuple(b), tuple(b + up), tuple(a + up)]; Fs.append((k, k+1, k+2, k+3))
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
@@ -159,7 +173,8 @@ if len(HP):
 G.LOD = int(E('LOD', 2))
 log('buildings: records')
 HG = city_data.hero_gids()
-recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG]
+recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG
+        and (ERA is None or (b['year'] or 0) <= ERA)]
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 recs.sort(key=lambda b: (int(b['cx'] // 700), int(b['cy'] // 700)))
@@ -224,13 +239,18 @@ protos = [c for c, _ in STREET + PARK]; widths = [w for _, w in STREET + PARK]
 pts = []; seen = set(); r = random.Random(3)
 for t in d['trees']:
     for (x, y, z, sxz, sy, rot, *_rest) in t['inst']:
-        k = (round(x), round(y))
+        # the engine lists a tree once per zoom band, a few centimetres apart
+        k = (round(x / 2.5), round(y / 2.5))
         if k in seen or not in_box(x, y, 50): continue
         seen.add(k)
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
+        if ERA is not None and not park:
+            if r.random() > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         kind = (5 + r.randrange(4)) if park else r.randrange(5)
         crown = max(3.0, 2.4 * sxz)
-        pts.append((x, y, ground(x, y) - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+        gz_ = ground(x, y)
+        if gz_ is None: continue
+        pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
 instancer('trees', pts, protos)
 
 # ── parked cars along every curb ─────────────────────────────────────────────
@@ -246,8 +266,9 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
+    occ = 0.62 if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
     for i in range(int((L_ - 3) // 6.2)):
-        if r.random() > 0.62: continue
+        if r.random() > occ: continue
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if not in_box(p.x, p.y): continue
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), r.randrange(len(car_colls))))
@@ -256,13 +277,21 @@ instancer('cars', cpts, car_colls)
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
 exec(_ss)
+# open water beyond the mask's own sheet, so the frame never runs into the void
+_oc = simple('ocean', (0.006, 0.026, 0.040), rough=0.06, spec=0.5)
+_on = _oc.node_tree; _og = _on.nodes.new('ShaderNodeNewGeometry'); _ow = _on.nodes.new('ShaderNodeTexNoise')
+_ow.inputs['Scale'].default_value = 0.04; _ow.inputs['Detail'].default_value = 8; _on.links.new(_og.outputs['Position'], _ow.inputs['Vector'])
+_ob_ = _on.nodes.new('ShaderNodeBump'); _ob_.inputs['Strength'].default_value = 0.4; _on.links.new(_ow.outputs['Fac'], _ob_.inputs['Height'])
+_on.links.new(_ob_.outputs[0], _on.nodes['Principled BSDF'].inputs['Normal'])
+_g = 60000; _me = bpy.data.meshes.new('ocean'); _me.from_pydata([(-_g, -_g, -0.5), (_g, -_g, -0.5), (_g, _g, -0.5), (-_g, _g, -0.5)], [], [(0, 1, 2, 3)])
+_oo = bpy.data.objects.new('ocean', _me); sc.collection.objects.link(_oo); _me.materials.append(_oc)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
 cam_d = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_d); sc.collection.objects.link(cam); sc.camera = cam
 tx, ty = float(E('TX', 197)), float(E('TY', 1190))
 cam_d.type = 'ORTHO'; cam_d.ortho_scale = float(E('ORTHO', 13600)); cam_d.clip_start = 1; cam_d.clip_end = 40000
-cam.location = Vector((tx, ty, ground(tx, ty))) - fwd * 15000
+cam.location = Vector((tx, ty, ground0(tx, ty))) - fwd * 15000
 cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)

@@ -46,6 +46,38 @@ BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68
 
 
 LOD = 0          # 0: every opening modelled · 1: flat framed panes (city-wide)
+ERA = None       # the year shown; None = today. Changes paint, not form.
+
+# ── paint by period (the documented history of SF house colour) ─────────────
+# up to 1905: the Victorian palette proper — deep earth tones, several per
+# house (olive, ochre, Indian red, bronze green, umber); 1906-1929 the classical
+# revival whites and creams; 1930-1959 the war-surplus greys and whites that
+# covered most Victorians; 1960-1989 the colorist movement starting in the
+# Haight and Western Addition, a minority of houses repainted in brights;
+# after that, today's mix.
+VIC_1890 = [((0.42, 0.40, 0.26), (0.62, 0.52, 0.34), (0.45, 0.16, 0.12)),
+            ((0.55, 0.42, 0.26), (0.36, 0.30, 0.20), (0.24, 0.30, 0.20)),
+            ((0.46, 0.22, 0.16), (0.72, 0.62, 0.44), (0.20, 0.26, 0.18)),
+            ((0.30, 0.34, 0.24), (0.64, 0.56, 0.38), (0.48, 0.20, 0.14)),
+            ((0.62, 0.54, 0.40), (0.34, 0.26, 0.18), (0.40, 0.14, 0.10)),
+            ((0.50, 0.46, 0.38), (0.26, 0.28, 0.22), (0.56, 0.36, 0.16))]
+PALE_1915 = [((0.93, 0.91, 0.86), (0.97, 0.96, 0.93), (0.30, 0.32, 0.30)),
+             ((0.88, 0.85, 0.76), (0.96, 0.95, 0.90), (0.36, 0.30, 0.22)),
+             ((0.80, 0.80, 0.76), (0.95, 0.94, 0.90), (0.28, 0.30, 0.34))]
+GREY_1945 = [((0.62, 0.64, 0.66), (0.90, 0.90, 0.88), (0.30, 0.32, 0.34)),
+             ((0.74, 0.75, 0.75), (0.93, 0.93, 0.91), (0.24, 0.26, 0.28)),
+             ((0.52, 0.55, 0.58), (0.86, 0.86, 0.84), (0.20, 0.22, 0.26)),
+             ((0.90, 0.89, 0.86), (0.96, 0.96, 0.94), (0.40, 0.40, 0.40))]
+
+def era_paint(rng, style):
+    """(body, trim, accent) for the period shown, or None for today's rules"""
+    if ERA is None or ERA >= 1990: return None
+    if ERA <= 1905: return rng.choice(VIC_1890) if style == 'vic' else rng.choice(PALE_1915)
+    if ERA < 1930: return rng.choice(PALE_1915 + VIC_1890[:2]) if style == 'vic' else rng.choice(PALE_1915)
+    if ERA < 1960: return rng.choice(GREY_1945 + PALE_1915)
+    # 1960-1989: the colorists repaint about one Victorian in four
+    if style == 'vic' and rng.random() < 0.25 + (ERA - 1960) / 30 * 0.35: return None
+    return rng.choice(GREY_1945 + PALE_1915)
 
 
 class Out:
@@ -264,6 +296,7 @@ def building(b, ground, out):
         def rz(p): return top
 
     # ── colours ──
+    ep = era_paint(random.Random(b['gid'] * 31 + 7), style)
     if style == 'vic':
         body, trim, accent = rng.choice(VIC)
     elif style in ('stucco', 'midcentury'):
@@ -272,6 +305,7 @@ def building(b, ground, out):
         if sub == 'edwardian' and rng.random() < 0.3: body, trim, accent = rng.choice(VIC)
     else:
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
+    if ep is not None: body, trim, accent = ep
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
     if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
     if style == 'block':
