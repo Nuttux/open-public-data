@@ -228,7 +228,7 @@ def road_mat():
     f = b.ramp(b.noise(0.035, 3.0), 0.0, 1.0, 0.42, 0.58)
     c = b.mix(f, ca, cb)
     fine = b.img(PHT('asphalt_02', 'diff'), b.vmap(1 / 3.0, rot=0.7))
-    c = b.mix(0.35, c, fine, 'OVERLAY')
+    c = b.mix(0.5, c, fine, 'OVERLAY')
     hs = b.n('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = 0.55; hs.inputs['Value'].default_value = 0.62
     b.put(hs.inputs['Color'], c); c = hs.outputs[0]
     # resurfaced stretches: fresh (darker, cooler) and old (lighter, warmer)
@@ -242,8 +242,14 @@ def road_mat():
     edge = b.voronoi(0.28, vec=warp.outputs[0], feature='DISTANCE_TO_EDGE')
     snake = b.math('MULTIPLY', b.math('LESS_THAN', edge, 0.008), b.math('GREATER_THAN', b.noise(0.05, 2.0), 0.6))
     c = b.mix(b.math('MULTIPLY', snake, 0.8), c, (0.008, 0.008, 0.009))
+    # manhole and utility covers: one in every 25 m cell, where it falls on the street
+    mh = b.voronoi(1 / 25.0)
+    cover = b.math('LESS_THAN', mh, 0.34 / 25.0)
+    rim = b.math('MULTIPLY', cover, b.math('GREATER_THAN', mh, 0.28 / 25.0))
+    c = b.mix(cover, c, (0.028, 0.027, 0.025)); c = b.mix(rim, c, (0.07, 0.068, 0.064))
     b.put(b.pr.inputs['Base Color'], c)
-    b.put(b.pr.inputs['Roughness'], 0.86)
+    b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
+    b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(fine), 0.35, 0.01))
     return b.m
 
@@ -475,8 +481,9 @@ for i, (a, b, outv) in enumerate(SE):
     L_ = (b - a).length; s0 = _r.uniform(0, 1.5)
     for j, (u_, v_) in enumerate(((s0, 0.0), (s0 + L_, 0.0), (s0 + L_, 3.0), (s0, 3.0))): _uv.data[i * 8 + j].uv = (u_, v_)
     for j, (u_, v_) in enumerate(((s0, -0.16), (s0 + L_, -0.16), (s0 + L_, 0.0), (s0, 0.0))): _uv.data[i * 8 + 4 + j].uv = (u_, v_)
-    q = _r.random()
-    col = (0.60, 0.07, 0.05, 1.0) if q < 0.10 else (0.85, 0.62, 0.08, 1.0) if q < 0.14 else (0.9, 0.9, 0.88, 1.0) if q < 0.16 else (1, 1, 1, 0.0)
+    # painted curbs belong to the short runs by the corners, rarely mid-block
+    q = _r.random() * (1.0 if L_ < 14 else 6.0)
+    col = (0.60, 0.07, 0.05, 1.0) if q < 0.28 else (0.85, 0.62, 0.08, 1.0) if q < 0.36 else (0.9, 0.9, 0.88, 1.0) if q < 0.40 else (1, 1, 1, 0.0)
     _cc += [*col, *col]
 _sc.data.foreach_set('color', _cc)
 me.update()

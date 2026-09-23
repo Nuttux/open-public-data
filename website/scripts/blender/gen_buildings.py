@@ -386,12 +386,19 @@ def building(b, ground, out):
                         w.box('glass', um - 0.4, um + 0.4, eave + 0.5, eave + 1.5, 0.02, 0.05, (1, 1, 1))
                         w.box('trim', um - 0.5, um + 0.5, eave + 0.4, eave + 0.5, 0.0, 0.1, trim)
                         w.box('trim', um - 0.5, um + 0.5, eave + 1.5, eave + 1.62, 0.0, 0.1, trim)
-                        # a sunburst of boards fanning from the attic window's head
-                        for k in range(7 if LOD < 2 else 0):
-                            ang = math.radians(20 + k * 23.3)
-                            ex, ez = um + math.cos(ang) * 1.3, eave + 1.62 + math.sin(ang) * 0.9
-                            if ez < rz(w.P(ex, 0)) - 0.15:
-                                w.box('trim', min(um, ex) - 0.03, max(um, ex) + 0.03, eave + 1.62, max(eave + 1.7, ez), 0.0, 0.02, trim)
+                        # a sunburst: thin boards fanning from the attic window's head,
+                        # each one a slim strip in the gable plane, stopped short of the rake
+                        zc = eave + 1.62
+                        for k in range(9 if LOD < 2 else 0):
+                            ang = math.radians(12 + k * 19.5)
+                            ca, sa = math.cos(ang), math.sin(ang)
+                            L_ = 1.25
+                            while L_ > 0.4 and zc + sa * L_ > rz(w.P(um + ca * L_, 0)) - 0.25: L_ -= 0.1
+                            if L_ <= 0.4: continue
+                            r0, hw_ = 0.55, 0.035
+                            p0 = (um + ca * r0, zc + sa * r0); p1 = (um + ca * L_, zc + sa * L_)
+                            out.poly('trim', [w.P(p0[0] + sa * hw_, p0[1] - ca * hw_, 0.03), w.P(p1[0] + sa * hw_, p1[1] - ca * hw_, 0.03),
+                                              w.P(p1[0] - sa * hw_, p1[1] + ca * hw_, 0.03), w.P(p0[0] - sa * hw_, p0[1] + ca * hw_, 0.03)], trim)
         else:
             w.rect(wall_mat, 0.0, w.L, eave, top + 0.05, 0.0, body)
         # the back of a house: a wooden deck and stair down to the yard
