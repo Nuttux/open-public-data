@@ -43,9 +43,12 @@ for fn in sorted(os.listdir(FR)):
             made.add((X, Y))
     print('frame', i, j, flush=True)
 
-have = {ZTOP: made}
+# `full`: tiles with no hole. A tile whose four children all exist can still
+# be half empty (a child at the edge of the rendered area), and saving it
+# without alpha would paint that half black.
+have, full = {ZTOP: made}, {ZTOP: made}
 for z in range(ZTOP - 1, -1, -1):
-    up = have[z + 1]; cur = set()
+    up = have[z + 1]; cur = set(); full[z] = set()
     for (X, Y) in {(x // 2, y // 2) for x, y in up}:
         tile = Image.new('RGBA', (T, T), (0, 0, 0, 0))
         for dx in (0, 1):
@@ -54,7 +57,8 @@ for z in range(ZTOP - 1, -1, -1):
                 src = Image.open(os.path.join(OUT, str(z + 1), str(2 * X + dx), f'{2 * Y + dy}.webp')).convert('RGBA')
                 tile.paste(src.resize((T // 2, T // 2), Image.LANCZOS), (dx * T // 2, dy * T // 2))
         d = os.path.join(OUT, str(z), str(X)); os.makedirs(d, exist_ok=True)
-        opaque = all((2 * X + dx, 2 * Y + dy) in up for dx in (0, 1) for dy in (0, 1))
+        opaque = all((2 * X + dx, 2 * Y + dy) in full[z + 1] for dx in (0, 1) for dy in (0, 1))
+        if opaque: full[z].add((X, Y))
         (tile.convert('RGB') if opaque else tile).save(os.path.join(d, f'{Y}.webp'), 'WEBP', quality=80, method=5)
         cur.add((X, Y))
     have[z] = cur
