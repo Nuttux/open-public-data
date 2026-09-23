@@ -317,6 +317,19 @@ _on.links.new(_ob_.outputs[0], _on.nodes['Principled BSDF'].inputs['Normal'])
 _g = 60000; _me = bpy.data.meshes.new('ocean'); _me.from_pydata([(-_g, -_g, -0.5), (_g, -_g, -0.5), (_g, _g, -0.5), (-_g, _g, -0.5)], [], [(0, 1, 2, 3)])
 _oo = bpy.data.objects.new('ocean', _me); sc.collection.objects.link(_oo); _me.materials.append(_oc)
 
+# ── LANDMARKS, TERRAIN AND WATER DETAIL (landmarks_hq.py, owned by the
+#    landmarks agent): called once the scene stands, before camera and light.
+#    build(bpy, scene, mats, ground, box, scene_json, log, era) may add objects,
+#    replace the engine's crude 'landmarks' mesh piece by piece, refine the
+#    terrain, the shore and the water. Missing module = nothing happens.
+if os.environ.get('LANDMARKS', '1') == '1':
+    try:
+        import landmarks_hq
+    except ModuleNotFoundError:
+        landmarks_hq = None
+    if landmarks_hq is not None:
+        landmarks_hq.build(bpy, sc, M, ground0, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
 cam_d = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_d); sc.collection.objects.link(cam); sc.camera = cam
