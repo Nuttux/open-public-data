@@ -69,7 +69,29 @@ for ep in ('usgs1947', 'usgs1956', 'usgs1968', 'usgs1973', 'usgs1980'):
         if best is None: continue
         sgn, d = best; d += 6.0                                          # into the bulkhead
         keep.append([round(cx + sgn * ux * d / 2, 1), round(cy + sgn * uy * d / 2, 1), ang, round(L + d, 1), Wd])
-    rects = keep
+    # a pier carried back along a skewed axis can cross its neighbour: of
+    # two that overlap by a quarter of the smaller, the larger stays
+    def poly(r):
+        cx, cy, ang, L, Wd = r; a_ = math.radians(ang); ux, uy = math.cos(a_), math.sin(a_); vx, vy = -uy, ux
+        return [(cx + s * ux * L / 2 + t * vx * Wd / 2, cy + s * uy * L / 2 + t * vy * Wd / 2) for s, t in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+    def inside(x, y, P):
+        c = False
+        for i in range(4):
+            (x1, y1), (x2, y2) = P[i], P[(i + 1) % 4]
+            if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): c = not c
+        return c
+    def overlap(r1, r2):
+        P2 = poly(r2); cx, cy, ang, L, Wd = r1; a_ = math.radians(ang); ux, uy = math.cos(a_), math.sin(a_); vx, vy = -uy, ux
+        n = 0; tot = 0
+        for i in range(12):
+            for j in range(4):
+                u = (i + 0.5) / 12 - 0.5; v = (j + 0.5) / 4 - 0.5; tot += 1
+                n += inside(cx + u * L * ux + v * Wd * vx, cy + u * L * uy + v * Wd * vy, P2)
+        return n / tot
+    keep.sort(key=lambda r: -r[3] * r[4]); rects = []
+    for r in keep:
+        if any(overlap(r, q) > 0.25 for q in rects): continue
+        rects.append(r)
     out[ep] = rects
     print(ep, len(rects), 'piers', round(sum(r[3] * r[4] for r in rects) / 1e4, 1), 'ha')
 json.dump(out, open(f'{M}/piers.json', 'w'))
