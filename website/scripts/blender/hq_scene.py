@@ -1281,6 +1281,14 @@ if ERA is not None and OPEN is not None:
                    simple('ballast', (0.20, 0.18, 0.16), rough=0.95), log)
 # the structures the record has lost (era.STRUCTURES: the freeways that came down)
 if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
+# the stadiums, pools, halls and terminals since torn down (era_lost.LOST)
+if ERA is not None:
+    EA.build_lost(bpy, ERA, ground, {'field': M['lawn'], 'stands': simple('lost_stands', (0.62, 0.61, 0.58), rough=0.8),
+                                     'wall': M.get('concrete_struct') or M['concrete'], 'roof': simple('lost_roof', (0.42, 0.42, 0.43), rough=0.5, metal=0.5),
+                                     'deck': simple('lost_deck', (0.74, 0.72, 0.68), rough=0.85), 'basin': simple('lost_basin', (0.55, 0.60, 0.62), rough=0.8),
+                                     'water': simple('lost_water', (0.05, 0.28, 0.32), rough=0.05, spec=0.6),
+                                     'house': simple('lost_house', (0.86, 0.82, 0.74), rough=0.8), 'glassroof': M['glass']},
+                  (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():
     """open water over made land not yet made (era.MADE_LAND)"""
     if ERA is None: return

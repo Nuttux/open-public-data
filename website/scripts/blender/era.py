@@ -1043,6 +1043,15 @@ def build_structures(bpy, era, ground, mat, box=None, log=print):
     return ob
 
 
+def build_lost(bpy, era, ground, mats, box=None, log=print):
+    """the lost stadiums, pools, halls and terminals of the year (era_lost)"""
+    if era is None: return []
+    import era_lost as L
+    P, names = L.build(when(era), ground, box)
+    if names: log('lost structures standing:', ', '.join(names))
+    return L.emit(bpy, P, mats)
+
+
 def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
     """the buildings the record has lost outside the fire: a record dated
     after the year shown that REPLACED something — it is 25+ years younger

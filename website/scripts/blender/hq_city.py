@@ -291,6 +291,10 @@ def instancer(name, pts, protos):
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     for nm, k, tp in (('s', 3, 'FLOAT'), ('r', 4, 'FLOAT'), ('kind', 5, 'INT')):
         at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', [p[k] for p in pts])
+    # a stable id by place: the instances' random (tree tint, car paint) then
+    # stays with the place from one year of the film to the next
+    at = me.attributes.new('id', 'INT', 'POINT')
+    at.data.foreach_set('value', [int(EA.hash01(p[0], p[1], 31) * 2147483000) for p in pts])
     ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob)
     ng = bpy.data.node_groups.new(name, 'GeometryNodeTree')
     ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
