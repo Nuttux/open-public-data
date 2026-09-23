@@ -213,7 +213,9 @@ HG = city_data.hero_gids()
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
 _sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
-if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
+if _sk:     # a landmark replaces its footprints only once it's built (ERA None = today)
+    _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
+    HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
 recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG
         and (ERA is None or (b['year'] or 0) <= ERA)]
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
