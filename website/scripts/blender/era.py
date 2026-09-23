@@ -38,6 +38,61 @@ CITY = '/Users/daniel/code/opd-render/website/public/data/us/sf/city'
 # the checkpoints the film cuts between (history/CHECKPOINTS.md)
 CHECKPOINTS = (1890, 1906, 1915, 1938, 1955, 1975, None)
 
+def era_from_env(v):
+    """ERA=1972, or ERA=1972.5 for the film's in-between frames (a year and a
+    fraction: 1906.29 is 18 April 1906). Integers stay integers."""
+    if not v: return None
+    f = float(v)
+    return int(f) if f == int(f) else f
+
+
+# SOURCED: the earthquake and fire began 18 April 1906 (day 108 of the year);
+# the fire burned to 21 April (sfmuseum.org; FoundSF).
+FIRE = 1906 + 107 / 365.0
+
+
+# ── the in-between: buildings under construction ────────────────────────────
+# The record's year is the year a building was completed (DataSF wv5m-vpq2,
+# year_property_built). A tall building stood as a site, then a rising frame
+# with the cladding following, for some years before it. SOURCED examples:
+# Transamerica Pyramid 260 m, built 1969-72; 555 California (Bank of America
+# Center) 237 m, 1966-69; Salesforce Tower 326 m, 2013-18, topped out April
+# 2017 (Wikipedia pages of each). CONVENTION: the duration grows with the
+# height, 0.8 year + 1 year per 120 m, capped at 3; buildings under 25 m
+# simply appear in their year.
+RISE_MIN_H = 25.0
+
+
+def rise_years(h):
+    return min(3.0, 0.8 + h / 120.0)
+
+
+def rising(b, era):
+    """the share of its construction a record's building had reached in the
+    year shown (0..1), or None when it was not under construction then"""
+    y = b.get('year')
+    if era is None or not y or b.get('h', 0) < RISE_MIN_H: return None
+    t0 = y - rise_years(b['h'])
+    if era <= t0 or era >= y: return None
+    return (era - t0) / (y - t0)
+
+
+def construction_stage(f):
+    """(frame height share, cladding height share) at construction share f:
+    excavation and foundations for the first 15 %, the frame rising to the
+    top by 80 %, the cladding a few floors behind it. CONVENTION."""
+    fr = min(1.0, max(0.0, (f - 0.15) / 0.65))
+    cl = min(1.0, max(0.0, (f - 0.30) / 0.65))
+    return fr, cl
+
+
+def hash01(x, y, salt=0):
+    """a fixed number in [0, 1) for a place — for gates that must not change
+    from one year to the next (a street tree kept, a car parked in a slot)"""
+    k = (int(round(x * 2)) * 73856093) ^ (int(round(y * 2)) * 19349663) ^ (salt * 83492791)
+    return ((k * 2654435761) & 0xffffffff) / 4294967296.0
+
+
 # ── landmarks drawn by hand (the scene's 'heroes' layer) ────────────────────
 # The engine's heroes come as separate meshes, not tagged by name: each is
 # matched to its landmark by where it stands (world metres, the bbox centre
@@ -60,6 +115,79 @@ LANDMARKS = [
     ('internetarchive', -2954, 2484, 1923, 'Fourth Church of Christ, Scientist (now Internet Archive) 1923 (heroes.json roll 1922 + 1923 BoS permit)'),
     ('transamerica', 3100, 3916, 1972, 'Transamerica Pyramid completed 1972 (DataSF 5kya-mfst)'),
 ]
+
+
+# ── landmark sites: what the generator draws on a landmark's own footprint ──
+# landmarks_hq models the landmark itself (and dates it); its DataSF footprint
+# is skipped (skip_gids.json). Before the landmark, the site held what these
+# entries say: the landmark going up (`build`: start, completion — a record
+# flagged 'rise'), and older buildings the record has lost (`before`).
+LM_SKIP = '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json'
+LM_FOOTPRINTS = '/Users/daniel/code/qipu-render-work/landmarks/footprints.json'
+LANDMARK_SITES = {
+    # SOURCED: Wikipedia 'Transamerica Pyramid' — construction from December
+    # 1969, first tenants in summer 1972, 260 m; the Montgomery Block, built
+    # 1853 on the site, 'demolished in 1959 and replaced by a parking lot'
+    # (Wikipedia 'Montgomery Block': four storeys; it survived the 1906 fire).
+    # The block's form on the pyramid's footprint is a CONVENTION.
+    'transamerica': dict(build=(1969.92, 1972.0), h=260.0,
+                         before=[dict(y0=1853, y1=1959.5, name='Montgomery Block', h=17.0, st=4, wall='brick',
+                                      ty='OFFICE', shop=True, year=1853, fire_survivor=True)]),
+    # SOURCED: Wikipedia 'Salesforce Tower' — ceremonial groundbreaking 27
+    # March 2013, topped out April 2017, first tenants 8 January 2018; 326 m,
+    # roof 296 m. Not in the DataSF footprints: its OSM outline (ODbL, the
+    # landmarks agent's footprints.json).
+    # (landmarks_hq shows the finished tower from 2017, its topping out)
+    'salesforce': dict(build=(2013.24, 2017.0), h=296.0, ring_from='salesforce'),
+}
+_LMG = None
+
+
+def landmark_gids():
+    """{gid: landmark key} of the footprints landmarks_hq replaces"""
+    global _LMG
+    if _LMG is None:
+        _LMG = {}
+        for q in (os.path.join(os.path.dirname(os.path.abspath(__file__)), 'skip_gids.json'), LM_SKIP):
+            if os.path.exists(q):
+                for k, gs in json.load(open(q))['by_landmark'].items():
+                    for g in gs: _LMG[int(g)] = k
+                break
+    return _LMG
+
+
+def landmark_sites(all_records, era):
+    """the records to draw on landmark sites in the year shown (see
+    LANDMARK_SITES): the landmark under construction, or what stood before"""
+    if era is None: return []
+    t = when(era); out = []
+    by_key = {}
+    lg = landmark_gids()
+    for b in all_records:
+        k = lg.get(b['gid'])
+        if k: by_key.setdefault(k, []).append(b)
+    for k, st in LANDMARK_SITES.items():
+        recs = [dict(b) for b in by_key.get(k, [])]
+        if not recs and st.get('ring_from') and os.path.exists(LM_FOOTPRINTS):
+            f = json.load(open(LM_FOOTPRINTS)).get(st['ring_from'])
+            if f and f.get('outer'):
+                r = [tuple(p) for p in f['outer'][0]]
+                if len(r) > 3 and r[0] == r[-1]: r = r[:-1]
+                recs = [dict(gid=900000000 + len(k) * 1000 + sum(map(ord, k)), ring=r, cx=sum(p[0] for p in r) / len(r),
+                             cy=sum(p[1] for p in r) / len(r), h=st['h'], year=int(st['build'][1]), use='office', st=0,
+                             ty='OFFICE', shop=False, roles=[1] * len(r), paint=16)]
+        if not recs: continue
+        b0, b1 = st.get('build', (None, None))
+        if b0 is not None and b0 <= t < b1:
+            for b in recs:
+                b['h'] = st.get('h', b['h']); b['year'] = int(b1); b['rise'] = (t - b0) / (b1 - b0); out.append(b)
+            continue
+        for bf in st.get('before', []):
+            if bf['y0'] <= t < bf['y1']:
+                for b in recs:
+                    b.update({kk: v for kk, v in bf.items() if kk in ('h', 'st', 'wall', 'ty', 'shop', 'year')})
+                    out.append(b)
+    return out
 
 
 def landmark_for(cx, cy):
@@ -174,29 +302,64 @@ def water_then(x, y, era):
     return any(era < yr and test(x, y) for _, yr, test, _ in MADE_LAND)
 
 
+# an integer year is the film's checkpoint for that year: its middle, except
+# 1906, whose checkpoint is the ruins as George R. Lawrence photographed them
+# from his kites on 28 May 1906 (history/CHECKPOINTS.md)
+CHECKPOINT_DATE = {1906: 1906 + 147 / 365.0}
+
+
+def when(era):
+    """the moment a year stands for (a float year)"""
+    if era is None or isinstance(era, float): return era
+    return CHECKPOINT_DATE.get(era, era + 0.5)
+
+
+def _u(gid, salt):
+    return (((int(gid) * 2654435761) ^ (salt * 40503)) % 1000) / 1000.0
+
+
 def place_record(b, era):
     """what the year shown makes of one building record: None (not built yet,
     or under water), or the record — flagged 'standin' (the lost city before
-    the fire, gen_buildings.standin) and/or 'ruin' ('shell' for a survivor,
-    'burned' for a stand-in) inside the 1906 burned district."""
+    the fire, gen_buildings.standin), 'ruin' ('shell' for a survivor,
+    'burned' for a stand-in) inside the 1906 burned district, 'rebuild' (the
+    post-fire city since replaced), or 'rise' (under construction, 0..1).
+    Every flag follows the time continuously (a float year works), and each
+    lot's own thresholds are fixed, so a lot changes once and stays changed."""
     if era is None: return b
     if water_then(b['cx'], b['cy'], era): return None
+    t = when(era)
     y = b['year'] or 0
-    if era == 1906 and burned(b['cx'], b['cy']):
-        # the weeks after the fire: what stood is a ruin; what the record dates
-        # later stands for the lost building, as its ruin
-        if y <= 1905: b['ruin'] = 'shell'
-        else: b['standin'] = True; b['ruin'] = 'burned'; b['core'] = in_core(b['cx'], b['cy'])
-        return b
-    if y <= era: return b
-    if era < 1906 and burned(b['cx'], b['cy']):
+    fire = burned(b['cx'], b['cy'])
+    if fire and t < FIRE:
+        if y <= era: return b
         b['standin'] = True; b['core'] = in_core(b['cx'], b['cy']); return b
-    if 1906 < era < 1930 and burned(b['cx'], b['cy']):
-        # the rebuilt city since replaced: a lot the record fills later held a
-        # post-fire building with the rebuild's own odds (rebuild_share)
-        if ((b['gid'] * 2654435761) % 1000) / 1000.0 < rebuild_share(era):
-            b['standin'] = True; b['rebuild'] = True; b['core'] = in_core(b['cx'], b['cy']); return b
+    if fire and t < 1930:
+        if y <= 1905:
+            # a survivor inside the ring: a gutted shell until it was
+            # restored (CONVENTION: within 0.3-2.5 years)
+            if t < FIRE + 0.3 + 2.2 * _u(b['gid'], 3): b['ruin'] = 'shell'
+            return b
+        if y <= era: return b
+        f_ = rising(b, t)
+        if f_ is not None: b['rise'] = f_; return b
+        # the lot of a building since replaced: its post-fire building with
+        # the rebuild's odds, else the ruin until the rubble was cleared,
+        # else a vacant lot
+        b['core'] = in_core(b['cx'], b['cy']); b['standin'] = True
+        if _u(b['gid'], 0) < rebuild_share(t): b['rebuild'] = True; return b
+        if _u(b['gid'], 1) < rubble_share(t): b['ruin'] = 'burned'; return b
+        return None
+    if y <= era: return b
+    f_ = rising(b, t)                       # the record's own building, going up
+    if f_ is not None: b['rise'] = f_; return b
     return None
+
+
+def ash_ground(era):
+    """the burned district's ground is ash and rubble, from the fire until
+    the rubble was cleared (rubble_share)"""
+    return era is not None and FIRE <= when(era) < 1908.5
 
 
 def rebuild_share(era):
@@ -205,10 +368,20 @@ def rebuild_share(era):
     constructed'; 'by 1910 the city was mostly rebuilt'; nearly complete by
     1915 (FoundSF 'Rebuilding San Francisco After the 1906 Quake'; California
     Historical Society). The curve between those points is a CONVENTION."""
-    pts = [(1906, 0.0), (1907, 0.35), (1908, 0.6), (1909, 0.8), (1910, 0.9), (1915, 0.97), (1930, 1.0)]
+    pts = [(FIRE, 0.0), (1906.45, 0.0), (1907, 0.35), (1908, 0.6), (1909, 0.8), (1910, 0.9), (1915, 0.97), (1930, 1.0)]
+    if era < pts[0][0]: return 0.0
     for (a, va), (b_, vb) in zip(pts, pts[1:]):
         if a <= era <= b_: return va + (vb - va) * (era - a) / (b_ - a)
     return 1.0
+
+
+def rubble_share(era):
+    """share of the burned lots (not yet rebuilt) still holding their ruin:
+    all of them through the summer of 1906, none by mid-1908. CONVENTION
+    (the debris was carted to the bay shore and the fill of the Marina and
+    Mission Bay over 1906-08; FoundSF 'Rebuilding San Francisco')."""
+    if era < 1906.6: return 1.0
+    return max(0.0, 1.0 - (era - 1906.6) / 1.9)
 
 
 def in_core(x, y):

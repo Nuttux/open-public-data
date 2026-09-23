@@ -378,7 +378,7 @@ if E('ERA'):
     # the carriageway of the period (era.pavement: basalt block in the old
     # core before 1910, graded earth beyond it, early concrete to 1950)
     import era as _EA
-    _pv = _EA.pavement(int(E('ERA')), (d['box'][0] + d['box'][2]) / 2, (d['box'][1] + d['box'][3]) / 2)
+    _pv = _EA.pavement(_EA.era_from_env(E('ERA')), (d['box'][0] + d['box'][2]) / 2, (d['box'][1] + d['box'][3]) / 2)
     if _pv == 'basalt': M['asphalt'] = ph_mat('cobblestone_floor_05', 2.2, value=0.62, name='basalt')
     elif _pv == 'dirt': M['asphalt'] = ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')
     elif _pv == 'oldpave': M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave')
@@ -480,7 +480,7 @@ if E('ERA'):
     import era as _EA0
     for i in range(0, len(TP), 3):
         # made land not yet made (era.MADE_LAND): the shoal under the water
-        if _EA0.water_then(TP[i], TP[i+1], int(E('ERA'))): TP[i+2] = -4.0
+        if _EA0.water_then(TP[i], TP[i+1], _EA0.era_from_env(E('ERA'))): TP[i+2] = -4.0
 terrain = mesh_from('terrain', TP, M['lawn'], smooth=True, weld=0.05)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
@@ -489,7 +489,7 @@ def ground(x, y):
 
 # ── the year shown: what stood, and the ground where nothing stood yet ──────
 import era as EA
-ERA = int(E('ERA')) if E('ERA') else None
+ERA = EA.era_from_env(E('ERA'))
 G.ERA = ERA
 log('buildings: reading records')
 HG = city_data.hero_gids()
@@ -499,8 +499,10 @@ if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() f
 # the city as it stood: a building shows from its recorded year (a record with
 # no year is taken as standing); inside the 1906 burned district, before the
 # fire, today's footprints carry the lost city's stand-ins (gen_buildings)
-_allb = [b for b in city_data.buildings(bx0 - 80, by0 - 80, bx1 + 80, by1 + 80) if b['gid'] not in HG]
+_allb0 = city_data.buildings(bx0 - 80, by0 - 80, bx1 + 80, by1 + 80)
+_allb = [b for b in _allb0 if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
+recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
 if ERA is not None and E('INFILL', '1') == '1':
     _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
     log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
@@ -729,7 +731,7 @@ for m in FAR_MESHES:
                 y_ = _allr[i_]['year'] if dd_ < 25 else None
                 # a later building beyond the modelled box is not drawn at all
                 # (its stand-in is only modelled inside the box)
-                _far_ok[k_] = (y_ or 0) <= ERA and not EA.water_then(k_[0], k_[1], ERA) and not (ERA == 1906 and EA.burned(*k_))
+                _far_ok[k_] = (y_ or 0) <= ERA and not EA.water_then(k_[0], k_[1], ERA) and not (EA.ash_ground(ERA) and EA.burned(*k_))
             if not _far_ok[k_]: continue
         FP.extend(p[t*9:t*9+9]); FC.extend(c[t*9:t*9+9])
 if E('FAR_GROUND'):
@@ -812,23 +814,25 @@ for t in d['trees']:
                 if py_ > ERA: continue
                 crown *= min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7)
                 crown = max(1.6, crown)
-            elif not far and rnd.random() > EA.street_tree_keep(ERA): continue
+            elif not far and EA.hash01(x, y, 11) > EA.street_tree_keep(ERA): continue
             # no tree on open land that was not yet planted: dunes and grazing ground
-            if open_at(x, y) > 0.5 and _OL.at(x, y, _OL.park) < 0.5 and rnd.random() > 0.04: continue
+            if open_at(x, y) > 0.5 and _OL.at(x, y, _OL.park) < 0.5 and EA.hash01(x, y, 12) > 0.04: continue
             if EA.water_then(x, y, ERA): continue
-            if 1906 <= ERA <= 1908 and EA.burned(x, y): continue
+            if EA.ash_ground(ERA) and EA.burned(x, y): continue
             if EA.PPIE_YEARS[0] <= ERA <= EA.PPIE_YEARS[1] and EA.ppie_footprint(x, y): continue
-        (park_pts if far else street_pts).append((x, y, zz, crown, rnd.uniform(0, 6.283)))
+        # every draw of a tree hangs on its place, so the same tree keeps its
+        # kind, size and turn from one year to the next (the film does not flicker)
+        (park_pts if far else street_pts).append((x, y, zz, crown, EA.hash01(x, y, 13) * 6.283))
 HERO_XY = [float(v) for v in E('HERO_FROM').split(',')[:2]] if E('HERO_FROM') else None
 def place_trees(name, pts, kinds, seed):
     root = bpy.data.collections.new(f'{name}_set'); sc.collection.children.link(root)
     r = random.Random(seed)
     for i, (x, y, z, crown, rot) in enumerate(pts):
         if HERO_XY and math.hypot(x - HERO_XY[0], y - HERO_XY[1]) < crown * 0.6 + 4: continue
-        c, dims = kinds[r.randrange(len(kinds))]
-        s = crown / max(0.5, max(dims[0], dims[1])) * r.uniform(0.85, 1.15)
+        c, dims = kinds[int(EA.hash01(x, y, 14) * len(kinds))]
+        s = crown / max(0.5, max(dims[0], dims[1])) * (0.85 + 0.3 * EA.hash01(x, y, 15))
         o = bpy.data.objects.new(f'{name}{i}', None); o.instance_type = 'COLLECTION'; o.instance_collection = c
-        o.location = (x, y, z - 0.1); o.scale = (s, s, s * r.uniform(0.9, 1.1)); o.rotation_euler.z = rot
+        o.location = (x, y, z - 0.1); o.scale = (s, s, s * (0.9 + 0.2 * EA.hash01(x, y, 16))); o.rotation_euler.z = rot
         root.objects.link(o)
     log(name, len(pts))
 place_trees('st_tree', street_pts, TREE_STREET, 5)
@@ -1134,9 +1138,9 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
             me = car_mesh(f'car_{fam}{j_}', L_, W_, pf)
             for mm in (paint, cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
             CARS.append(me); CAR_W.append(share / len(kinds))
-    def car_pick(r):
-        if ERA is None: return r.randrange(len(CARS))
-        u = r.random() * sum(CAR_W); acc = 0.0
+    def car_pick(u):
+        """the body in a kerb slot, from the slot's own number u in [0, 1)"""
+        u = u * sum(CAR_W); acc = 0.0
         for i_, w_ in enumerate(CAR_W):
             acc += w_
             if u < acc: return i_
@@ -1151,16 +1155,19 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         # never quite in line: a few centimetres off the curb, a degree askew
         fwd_ = math.atan2(outv.x, -outv.y)
         for i in range(int((L_ - 3) // 6.2)):
-            if r.random() > occ: continue
-            p = a + v * ((1.5 + 3.1 + i * 6.2 + r.uniform(-0.5, 0.5)) / L_) - outv * r.uniform(1.08, 1.3)
+            # every draw hangs on the kerb slot itself, so a slot keeps its car
+            # (or its gap) from one year of the film to the next
+            s0 = a + v * ((1.5 + 3.1 + i * 6.2) / L_)
+            if EA.hash01(s0.x, s0.y, 21) > occ: continue
+            p = a + v * ((1.5 + 3.1 + i * 6.2 + EA.hash01(s0.x, s0.y, 22) - 0.5) / L_) - outv * (1.08 + 0.22 * EA.hash01(s0.x, s0.y, 23))
             if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
-            o = bpy.data.objects.new(f'pcar{k}', CARS[car_pick(r)]); sc.collection.objects.link(o)
-            o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = fwd_ + math.radians(r.uniform(-1.5, 1.5)); k += 1
+            o = bpy.data.objects.new(f'pcar_{round(s0.x * 2)}_{round(s0.y * 2)}', CARS[car_pick(EA.hash01(s0.x, s0.y, 24))]); sc.collection.objects.link(o)
+            o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = fwd_ + math.radians(3.0 * EA.hash01(s0.x, s0.y, 25) - 1.5); k += 1
     log('cars', k)
 
 # ── open land: dunes where the Outside Lands were still sand; ash in 1906 ──
 _YS = EA.yard_sand(ERA)
-_ASH = ERA is not None and 1906 <= ERA <= 1908        # the burned district's ground until the rubble was cleared
+_ASH = ERA is not None and EA.ash_ground(ERA)       # the burned district's ground until the rubble was cleared
 if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH):
     log('open ground')
     import mathutils.noise as _nz
@@ -1310,7 +1317,7 @@ if os.environ.get('LANDMARKS', '1') == '1':
     except ModuleNotFoundError:
         landmarks_hq = None
     if landmarks_hq is not None:
-        landmarks_hq.build(bpy, sc, M, ground, (bx0, by0, bx1, by1), d, log, (int(E('ERA')) if E('ERA') else None))
+        landmarks_hq.build(bpy, sc, M, ground, (bx0, by0, bx1, by1), d, log, EA.era_from_env(E('ERA')))
 
 # ── camera and light ─────────────────────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

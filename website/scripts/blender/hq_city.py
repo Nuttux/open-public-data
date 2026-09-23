@@ -56,7 +56,7 @@ import terrain_hq; terrain_hq.correct_scene(d, log, box=BOX, sd=SD)
 def f32(b):
     a = array.array('f'); a.frombytes(base64.b64decode(b)); return a
 
-ERA = int(E('ERA')) if E('ERA') else None
+ERA = EA.era_from_env(E('ERA'))
 G.ERA = ERA
 # the materials are hq_scene.py's own, run from its source so the two never drift
 _HQSRC = open(os.path.join(HERE, 'hq_scene.py')).read()
@@ -150,8 +150,10 @@ HG = city_data.hero_gids()
 # a pass reads the copy frozen in its snapshot, a test the live one)
 _sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
 if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
-_allb = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80) and b['gid'] not in HG]
+_allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80)]
+_allb = [b for b in _allb0 if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
+recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
 if ERA is not None and E('INFILL', '1') == '1':
     _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
     log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
@@ -336,13 +338,13 @@ for t in d['trees']:
             if py_ is not None:
                 if py_ > ERA: continue
                 crown = max(1.6, crown * min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7))
-            elif not park and r.random() > EA.street_tree_keep(ERA): continue
-            if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and r.random() > 0.04: continue
+            elif not park and EA.hash01(x, y, 11) > EA.street_tree_keep(ERA): continue
+            if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and EA.hash01(x, y, 12) > 0.04: continue
             if EA.water_then(x, y, ERA): continue
-        kind = (5 + r.randrange(4)) if park else r.randrange(5)
+        kind = (5 + int(EA.hash01(x, y, 14) * 4)) if park else int(EA.hash01(x, y, 14) * 5)   # by place: no flicker between years
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+        pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
 instancer('trees', pts, protos)
 
 # ── parked cars along every curb ─────────────────────────────────────────────
@@ -360,10 +362,10 @@ for a, b, outv in SE:
     ang = math.atan2(v.y, v.x)
     occ = EA.car_occupancy(ERA)
     for i in range(int((L_ - 3) // 6.2)):
-        if r.random() > occ: continue
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
+        if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
         if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
-        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), car_pick(r)))
+        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
 instancer('cars', cpts, car_colls)
 
 # ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
@@ -434,6 +436,7 @@ if E('MODE') == 'pyramid':
     up = Vector((0, KY, ZT)).normalized(); fw_ = Vector((0, ZT, -KY)).normalized()
     cam_d.ortho_scale = (FW / 2) / sz / KX                           # metres across the frame
     sc.render.resolution_x, sc.render.resolution_y = FW, FH
+    sc.render.resolution_percentage = int(E('PCT', 100))          # tests: the same frame, smaller
     sc.render.use_border = False; sc.render.use_persistent_data = True
     rot = Matrix((Vector((1, 0, 0)), up, -fw_)).transposed().to_euler()
     log(f'pyramid level {Z}: canvas {cw}x{ch}, {nfx}x{nfy} frames of {FW}x{FH}, {1 / (sz * 2 * KX) * 100:.1f} cm/px')

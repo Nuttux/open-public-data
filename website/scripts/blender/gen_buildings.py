@@ -375,6 +375,7 @@ def substyle(b, style, rng):
 
 def building(b, ground, out):
     """b: record from city_data.buildings; ground(x, y) -> z"""
+    if b.get('rise') is not None: return construction(b, ground, out)
     if b.get('standin') and not b.get('_lot'):
         # the lost city stood on lots, not on today's merged footprints
         for sb in split_lots(b):
@@ -470,6 +471,7 @@ def building(b, ground, out):
     if style == 'block':
         yr = b['year'] or 1960
         wall_mat = 'brick' if (yr < 1935 and rng.random() < 0.55) else ('stucco' if yr < 1960 else 'concrete')
+    if b.get('wall'): wall_mat = b['wall']            # a named lost building's own wall (era.LANDMARK_SITES)
 
     # ── floors ──
     raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
@@ -643,6 +645,75 @@ def building(b, ground, out):
                 for k in range(5):
                     t_ = k / 4
                     out.box3('metal', d0 + ax_u * (du + lu * t_ * (lu > 1)) + ax_v * (dv + lv * t_ * (lv > 1)) + Vector((0, 0, 0.12)), ax_u * 0.05, ax_v * 0.05, Vector((0, 0, 1.0)), (0.15, 0.15, 0.16))
+
+
+def construction(b, ground, out):
+    """a building going up (era.rising, era.construction_stage): the site and
+    its foundation, then the frame — floor slabs on columns round a core that
+    leads it — rising to the record's height, the cladding a few floors
+    behind, a tower crane on the core. CONVENTION on the form (the period's
+    usual sequence); the footprint, height and completion year are the
+    record's. Steel frames before 1960, concrete frames after (CONVENTION)."""
+    rng = random.Random(b['gid'] * 613 + 5)
+    ring, _ = ring_ccw([tuple(p) for p in b['ring']])
+    n = len(ring)
+    if n < 3: return
+    zs = [ground(x, y) for x, y in ring]; zg = sum(zs) / n; zfoot = min(zs) - 0.6
+    fr, cl = EA.construction_stage(b['rise'])
+    H = max(4.0, b['h']); hf = H * fr; hc = min(hf - 8.0, H * cl) if fr > 0 else 0.0
+    cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
+    X, Y, Z = Vector((1, 0, 0)), Vector((0, 1, 0)), Vector((0, 0, 1))
+    yr = b.get('year') or 1970
+    steel = yr < 1960
+    fcol = (0.42, 0.30, 0.22) if steel else (0.62, 0.61, 0.58)          # red-primed steel / raw concrete
+    # the site: excavated ground, the foundation mat
+    pts = [Vector((x, y, zg + 0.05)) for x, y in offset_ring(ring, -0.2)]
+    for t in tessellate_polygon([pts]): out.poly('concrete', [pts[k] for k in t], (0.46, 0.42, 0.36) if fr <= 0 else (0.58, 0.57, 0.54))
+    # a site fence along the lot line
+    for i in range(n):
+        a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
+        out.poly('metal', [a_, c_, c_ + Z * (zg - zfoot + 2.4), a_ + Z * (zg - zfoot + 2.4)], (0.30, 0.34, 0.30))
+    if hf > 0.5:
+        inner = offset_ring(ring, -0.6)
+        fh = 3.9 if b['h'] > 30 else 3.4
+        z = zg + fh
+        while z <= zg + hf + 0.01:
+            P0 = [Vector((x, y, z - 0.3)) for x, y in inner]; P1 = [Vector((x, y, z)) for x, y in inner]
+            for t in tessellate_polygon([P1]): out.poly('concrete', [P1[k] for k in t], fcol)
+            for i in range(len(inner)):
+                j = (i + 1) % len(inner)
+                out.poly('concrete', [P0[i], P0[j], P1[j], P1[i]], tuple(c * 0.8 for c in fcol))
+            z += fh
+        # columns along the edge, every ~8 m
+        for i in range(len(inner)):
+            A, C = Vector((*inner[i], 0)), Vector((*inner[(i + 1) % len(inner)], 0))
+            L_ = (C - A).length
+            for k in range(max(1, int(L_ / 8.0))):
+                q = A + (C - A) * (k / max(1, int(L_ / 8.0)))
+                out.box3('concrete', Vector((q.x - 0.4, q.y - 0.4, zg)), X * 0.8, Y * 0.8, Z * hf, fcol)
+        # the core, a storey or two ahead of the floors
+        area = abs(sum(ring[i][0] * ring[(i + 1) % n][1] - ring[(i + 1) % n][0] * ring[i][1] for i in range(n))) / 2
+        cs = max(5.0, min(16.0, math.sqrt(area) * 0.3))
+        out.box3('concrete', Vector((cx - cs / 2, cy - cs / 2, zg)), X * cs, Y * cs, Z * min(H, hf + 6.0), (0.66, 0.65, 0.62))
+        # the cladding, following the frame
+        if hc > 1.0:
+            gcol = rng.choice(GLASS_TINTS) if yr >= 1985 else rng.choice(STONE)
+            mat = 'curtain_wall' if yr >= 1985 else 'concrete'
+            for i in range(n):
+                a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
+                out.poly(mat, [a_, c_, c_ + Z * (zg - zfoot + hc), a_ + Z * (zg - zfoot + hc)], gcol)
+    # the tower crane: a lattice mast (drawn solid) past the frame, a jib
+    # and a counter-jib, in the usual yellow (CONVENTION)
+    if b['h'] >= 25 and b['rise'] < 0.97:
+        top = zg + max(hf, 0.0) + 14.0
+        ccol = (0.86, 0.66, 0.10)
+        mx, my = cx + rng.uniform(-3, 3), cy + rng.uniform(-3, 3)
+        out.box3('metal', Vector((mx - 0.9, my - 0.9, zg)), X * 1.8, Y * 1.8, Z * (top - zg), ccol)
+        ang = rng.uniform(0, 2 * math.pi); u = Vector((math.cos(ang), math.sin(ang), 0)); v = Vector((-u.y, u.x, 0))
+        o = Vector((mx, my, top)) - u * 14.0 - v * 0.7
+        out.box3('metal', o, u * (14.0 + min(60.0, 25 + b['h'] * 0.15)), v * 1.4, Z * 1.6, ccol)
+        out.box3('concrete', Vector((mx, my, top - 2.0)) - u * 13.0 - v * 1.2, u * 5.0, v * 2.4, Z * 2.0, (0.55, 0.55, 0.53))    # counterweights
+        out.box3('metal', Vector((mx - 1.0, my - 1.0, top + 1.6)), X * 2.0, Y * 2.0, Z * 5.0, ccol)                           # the apex
 
 
 def ruin(b, ground, out):
