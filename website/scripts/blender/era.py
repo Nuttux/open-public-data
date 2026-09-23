@@ -982,6 +982,16 @@ SHORE62 = [('shore1895', 1906), ('shore1915', 1930), ('shore1939', 1944)]
 
 
 def shore62_water(x, y, era):
+    # the fill year of each cell (shore_combine.py: between two sheets the
+    # made land advances from the old shore outward — CONVENTION), else the
+    # epoch masks as they stand
+    t = _topo_load('shorefill')
+    if t is not None:
+        meta, a = t
+        i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+        if not (0 <= i < meta['w'] and 0 <= j < meta['h']): return False
+        v = round(a[j, i, 0] * 255) * 256 + round(a[j, i, 1] * 255)
+        return v > 0 and when(era) < 1800 + v
     name = next((n for n, until in SHORE62 if era < until), None)
     if name is None: return False
     t = _topo_load(name)

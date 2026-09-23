@@ -218,7 +218,7 @@ if ERA is not None:
     _bk = _lt.nodes.new('ShaderNodeMath'); _bk.operation = 'MULTIPLY'; _bk.inputs[1].default_value = float(E('DRY_K', 3.2))
     _lt.links.new(_bw.outputs[0], _bk.inputs[0])
     _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
-    _dry.inputs[6].default_value = (0.62, 0.40, 0.13, 1)          # golden, the dry-season grass
+    _dry.inputs[6].default_value = (0.56, 0.45, 0.19, 1)          # straw with olive: the dry-season grass (the first golden read peach, e11)
     _lt.links.new(_bk.outputs[0], _dry.inputs[7])
     _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_at.outputs['Fac'], _mx.inputs[0])
     _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])

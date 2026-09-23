@@ -1303,18 +1303,29 @@ if ERA is not None:
                               'roof': simple('pier_roof', (0.30, 0.30, 0.30), rough=0.7)},
                    (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():
-    """open water over made land not yet made (era.MADE_LAND)"""
+    """open water over made land not yet made (era.MADE_LAND): a 12 m grid,
+    its shore cells cut again at 4 m (the 12 m steps read as stairs at the
+    city's 37 cm-1.5 m a pixel), over the region only"""
     if ERA is None: return
-    sb_ = d['box']; st_ = 12.0; V_, F_ = [], []
-    x_ = sb_[0] - 400
-    while x_ < sb_[2] + 400:
-        y_ = sb_[1] - 400
-        while y_ < sb_[3] + 400:
-            if EA.water_then(x_ + st_ / 2, y_ + st_ / 2, ERA):
-                k_ = len(V_); V_ += [(x_, y_, 0.12), (x_ + st_, y_, 0.12), (x_ + st_, y_ + st_, 0.12), (x_, y_ + st_, 0.12)]
-                F_.append((k_, k_ + 1, k_ + 2, k_ + 3))
-            y_ += st_
-        x_ += st_
+    sb_ = d['box']
+    if 'bx0' in globals(): sb_ = [max(sb_[0], bx0 - 400), max(sb_[1], by0 - 400), min(sb_[2], bx1 + 400), min(sb_[3], by1 + 400)]
+    st_ = 12.0; V_, F_ = [], []
+    nx_ = int((sb_[2] - sb_[0] + 800) / st_) + 1; ny_ = int((sb_[3] - sb_[1] + 800) / st_) + 1
+    X0_, Y0_ = sb_[0] - 400, sb_[1] - 400
+    wet = [[EA.water_then(X0_ + (i + 0.5) * st_, Y0_ + (j + 0.5) * st_, ERA) for j in range(ny_)] for i in range(nx_)]
+    def quad(x_, y_, s_):
+        k_ = len(V_); V_.extend([(x_, y_, 0.12), (x_ + s_, y_, 0.12), (x_ + s_, y_ + s_, 0.12), (x_, y_ + s_, 0.12)])
+        F_.append((k_, k_ + 1, k_ + 2, k_ + 3))
+    for i in range(nx_):
+        for j in range(ny_):
+            nb = [wet[a][b] for a in (i - 1, i, i + 1) for b in (j - 1, j, j + 1) if 0 <= a < nx_ and 0 <= b < ny_]
+            x_, y_ = X0_ + i * st_, Y0_ + j * st_
+            if all(nb):
+                quad(x_, y_, st_)
+            elif any(nb):                                   # a shore cell: at 4 m
+                for a in range(3):
+                    for b in range(3):
+                        if EA.water_then(x_ + (a + 0.5) * 4.0, y_ + (b + 0.5) * 4.0, ERA): quad(x_ + a * 4.0, y_ + b * 4.0, 4.0)
     if not F_: return
     m_ = simple('histwater', (0.006, 0.026, 0.040), rough=0.05, spec=0.5)
     nt_ = m_.node_tree; g_ = nt_.nodes.new('ShaderNodeNewGeometry'); w_ = nt_.nodes.new('ShaderNodeTexNoise')

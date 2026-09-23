@@ -61,6 +61,31 @@ for name, w, src in (('shore1939', w39, 'San Mateo 1:62,500 1939 (USGS 301595) +
                'note': 'R water then over today\'s land (sm_water.py per sheet, sm_combine.py), B = speaks here'}, open(f'{M}/{name}.json', 'w'), indent=1)
     print(name, int(w.sum()), 'px', round(w.sum() * 16 / 1e6, 2), 'km2')
 
+# THE FILL YEAR: between two sheets the made land did not appear at once. A
+# cell water on the earlier sheet and land on the later one is filled at a
+# year between their surveys, the fill advancing from the earlier shore
+# outward (each body of new land at its own pace: year = a + (b - a) * its
+# distance from the old shore / the body's greatest). CONVENTION. Written as
+# shorefill.png: R,G = the year - 1800 as a 16-bit number (R high byte), B = speaks.
+steps = [(1895.0, w95), (1915.0, w15), (1939.0, w39), (1946.0, load('usgs1947_chg', d=M))]
+fill = np.zeros(GX.shape, np.float32)
+for (ya, wa), (yb, wb) in zip(steps, steps[1:]):
+    T = wa & ~wb
+    if not T.any(): continue
+    dist = ndimage.distance_transform_edt(wa)                 # from the earlier shore
+    lab, n = ndimage.label(T)
+    mx = ndimage.maximum(dist, lab, range(1, n + 1)); mn = ndimage.minimum(dist, lab, range(1, n + 1))
+    mxa = np.concatenate([[1.0], mx]); mna = np.concatenate([[0.0], mn])
+    f = (dist - mna[lab]) / np.maximum(1.0, mxa[lab] - mna[lab])
+    fill[T] = (ya + (yb - ya) * np.clip(f, 0, 1))[T]
+fill[steps[-1][1] & w95] = 1944.0                              # still bay in 1946: the 1:24,000 sheets take over
+v = np.where(fill > 0, np.round(fill - 1800.0), 0).astype(np.uint16)
+rgb = np.zeros((NY, NX, 3), np.uint8); rgb[..., 0] = v >> 8; rgb[..., 1] = v & 255; rgb[..., 2] = 255
+Image.fromarray(rgb).save(f'{M}/shorefill.png')
+json.dump({'x0': x0, 'y1': y1, 'res': res, 'w': NX, 'h': NY, 'note': 'fill year - 1800 = R*256 + G (0 = land in 1895), B = speaks'},
+          open(f'{M}/shorefill.json', 'w'), indent=1)
+print('shorefill', int((fill > 0).sum()), 'px; years', [int((np.abs(fill - y) < 0.5).sum()) for y in (1895, 1915, 1939, 1944)])
+
 # the north shore of 1895 west of Van Ness (the Presidio shore, the Crissy
 # marsh, Harbor View cove): its own grid
 x0, y0, x1, y1 = -3600.0, 3800.0, 1600.0, 6200.0
