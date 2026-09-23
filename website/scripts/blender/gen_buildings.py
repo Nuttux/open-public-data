@@ -164,6 +164,15 @@ def standin(b):
         b['ty'] = 'FLATS' if b['h'] < 16 else 'APARTMENT' if b['h'] < 24 else 'OFFICE'
         return b
     downtown = b.get('core', False)
+    if b.get('rebuild'):
+        # the post-fire rebuild, 1906-1915: brick and terracotta commercial
+        # blocks downtown, Edwardian flats beyond (their record style)
+        if downtown or area > 700:
+            b['ty'] = 'OFFICE'; b['shop'] = True; b['st'] = r.choice((3, 4, 5, 6, 7) if downtown else (2, 3, 4)); b['h'] = b['st'] * 4.0
+        else:
+            b['ty'] = 'FLATS'; b['st'] = r.choice((2, 3, 3)); b['h'] = b['st'] * 3.4 + 1.0; b['shop'] = r.random() < 0.3
+        b['year'] = r.choice((1907, 1908, 1909, 1911, 1913))
+        return b
     if area > 700 or (downtown and area > 350 and r.random() < 0.5):
         # the brick commercial block: Italianate, three to six storeys
         b['ty'] = 'OFFICE'; b['shop'] = True; b['st'] = r.choice((3, 4, 4, 5, 6) if downtown else (2, 3, 3, 4)); b['h'] = b['st'] * 4.2
@@ -585,7 +594,7 @@ def ruin(b, ground, out):
     zs = [ground(x, y) for x, y in ring]; zg = sum(zs) / n; zfoot = min(zs) - 0.6
     cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
     frame = b['ty'] in ('HOUSE', 'FLATS', 'APARTMENT', 'UNCLASSED') and b['h'] < 16 and b.get('ruin') != 'shell'
-    ash_c = (0.30, 0.29, 0.27)
+    ash_c = (0.62, 0.58, 0.54)          # multiplies the burned-ground scan (dark already)
     # the floor of the ruin: ash and fallen brick
     inner = offset_ring(ring, -0.3)
     hz = zg + (rng.uniform(0.4, 1.3) if frame else rng.uniform(0.6, 2.0))
@@ -684,12 +693,16 @@ def roof_kit(ring, deck, top, b, rng, out):
     cx = sum(p[0] for p in ring) / len(ring); cy = sum(p[1] for p in ring) / len(ring)
     area = abs(sum(ring[i][0] * ring[(i + 1) % len(ring)][1] - ring[(i + 1) % len(ring)][0] * ring[i][1] for i in range(len(ring)))) / 2
     X, Y, Z = Vector((1, 0, 0)), Vector((0, 1, 0)), Vector((0, 0, 1))
-    if area > 120 and rng.random() < 0.7:
+    if area > 120 and rng.random() < (0.7 if (ERA is None or ERA >= 1930) else 0.12):
         s = rng.uniform(2.2, 3.2)
         out.box3('stucco', Vector((cx - s / 2, cy - s / 2, deck)), X * s, Y * s, Z * rng.uniform(2.2, 2.8), (0.82, 0.80, 0.76))
+    old_ = ERA is not None and ERA < 1930
     for k in range(int(min(6, area / 60))):
         px, py = cx + rng.uniform(-3, 3), cy + rng.uniform(-3, 3)
-        out.box3('metal', Vector((px, py, deck)), X * 0.5, Y * 0.5, Z * 0.6, (0.6, 0.6, 0.62))
+        if old_:   # brick chimneys on the old flat roofs, not vents
+            out.box3('chimney', Vector((px, py, deck)), X * 0.6, Y * 0.8, Z * rng.uniform(1.2, 2.0), (1, 1, 1))
+        else:
+            out.box3('metal', Vector((px, py, deck)), X * 0.5, Y * 0.5, Z * 0.6, (0.6, 0.6, 0.62))
     if rng.random() < 0.4:
         px, py = cx + rng.uniform(-2, 2), cy + rng.uniform(-2, 2)
         out.box3('glass', Vector((px, py, deck)), X * 1.2, Y * 0.9, Z * 0.35, (1, 1, 1))

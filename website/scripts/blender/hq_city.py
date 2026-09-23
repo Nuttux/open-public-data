@@ -338,7 +338,12 @@ if ERA is not None:
 
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
+# the era blocks of that slice read the box and the open-land raster by name
+bx0, by0, bx1, by1 = CBOX
+OPEN = OL.open if ERA is not None else None
+_ground_keep = ground; ground = ground0
 exec(_ss)
+ground = _ground_keep
 # open water beyond the mask's own sheet, so the frame never runs into the void
 _oc = simple('ocean', (0.006, 0.026, 0.040), rough=0.06, spec=0.5)
 _on = _oc.node_tree; _og = _on.nodes.new('ShaderNodeNewGeometry'); _ow = _on.nodes.new('ShaderNodeTexNoise')

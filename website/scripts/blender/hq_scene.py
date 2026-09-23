@@ -74,6 +74,12 @@ def ph_mat(asset, tile, tint=False, rot=0.0, name=None, rough_add=0.0, tint_k=1.
         s_ = pr.inputs['Base Color'].links[0].from_socket
         hv = nt.nodes.new('ShaderNodeHueSaturation'); hv.inputs['Value'].default_value = value
         nt.links.new(s_, hv.inputs['Color']); nt.links.new(hv.outputs['Color'], pr.inputs['Base Color'])
+    if rough_add:
+        rl = pr.inputs['Roughness'].links
+        ad = nt.nodes.new('ShaderNodeMath'); ad.operation = 'ADD'; ad.use_clamp = True; ad.inputs[1].default_value = rough_add
+        if rl: nt.links.new(rl[0].from_socket, ad.inputs[0])
+        else: ad.inputs[0].default_value = pr.inputs['Roughness'].default_value
+        nt.links.new(ad.outputs[0], pr.inputs['Roughness'])
     # drop true displacement: bump from the normal map is what reads at 4 cm a pixel
     out = next(n for n in nt.nodes if n.type == 'OUTPUT_MATERIAL')
     for l in list(out.inputs['Displacement'].links): nt.links.remove(l)
@@ -177,9 +183,9 @@ if E('ERA'):
     elif _pv == 'dirt': M['asphalt'] = ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')
     elif _pv == 'oldpave': M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave')
 # open ground of the period: dune sand, and ash for the burned city of 1906
-M['sand'] = ph_mat('aerial_sand', 24.0, name='sand', value=1.0)
+M['sand'] = ph_mat('aerial_sand', 55.0, name='sand', value=1.0)
 # 1906: ash and scorched brick (burned_ground_01, CC0)
-M['ash'] = ph_mat('burned_ground_01', 3.0, tint=True, name='ash', tint_k=0.6)
+M['ash'] = ph_mat('burned_ground_01', 9.0, tint=True, name='ash', tint_k=1.0, rough_add=0.35)
 M['soot'] = ph_mat('red_brick_plaster_patch_02', 3.0, tint=True, name='soot', tint_k=1.0)
 def sand_look(m):
     """dune sand: Ocean Beach's pale buff, wind ripples a few centimetres
@@ -206,7 +212,7 @@ def sand_look(m):
     sr.color_ramp.elements[0].position = 0.60; sr.color_ramp.elements[0].color = (0, 0, 0, 1)
     sr.color_ramp.elements[1].position = 0.66; sr.color_ramp.elements[1].color = (1, 1, 1, 1)
     sm = nt.nodes.new('ShaderNodeMix'); sm.data_type = 'RGBA'; nt.links.new(sr.outputs[0], sm.inputs[0])
-    nt.links.new(mx.outputs[2], sm.inputs[6]); sm.inputs[7].default_value = (0.035, 0.045, 0.022, 1)
+    nt.links.new(mx.outputs[2], sm.inputs[6]); sm.inputs[7].default_value = (0.045, 0.040, 0.016, 1)
     nt.links.new(sm.outputs[2], pr.inputs['Base Color'])
     wv = nt.nodes.new('ShaderNodeTexWave'); wv.wave_type = 'BANDS'; wv.inputs['Scale'].default_value = 9.0
     wv.inputs['Distortion'].default_value = 6.0; wv.inputs['Detail'].default_value = 3
@@ -281,6 +287,28 @@ if ERA is not None:
     OPEN, SAND, ox0, oy0 = _OL.open, _OL.sand, _OL.x0, _OL.y0
     def open_at(x, y, grid=None): return _OL.at(x, y, grid)
     log('open land', round(sum(OPEN) / len(OPEN), 3), 'sand', round(sum(SAND) / len(SAND), 3))
+    # the ground of open land that is not dune sand: summer-dry grass (the
+    # hills and vacant lots of the period), through the lawn material
+    _om = bpy.data.images.new('openmask', _OL.W, _OL.H, float_buffer=True)
+    _px = [0.0] * (4 * _OL.W * _OL.H)
+    for k_ in range(_OL.W * _OL.H):
+        _px[4 * k_] = OPEN[k_] * (1.0 - SAND[k_]); _px[4 * k_ + 3] = 1.0
+    _om.pixels.foreach_set(_px); _om.colorspace_settings.name = 'Non-Color'
+    _lt = M['lawn'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
+    _src = _lp.inputs['Base Color'].links[0].from_socket
+    _g = _lt.nodes.new('ShaderNodeNewGeometry'); _mp = _lt.nodes.new('ShaderNodeMapping'); _mp.vector_type = 'POINT'
+    _mp.inputs['Location'].default_value = (-_OL.x0 / (_OL.W * _OL.res), -_OL.y0 / (_OL.H * _OL.res), 0)
+    _mp.inputs['Scale'].default_value = (1 / (_OL.W * _OL.res), 1 / (_OL.H * _OL.res), 1)
+    _lt.links.new(_g.outputs['Position'], _mp.inputs[0])
+    _ti = _lt.nodes.new('ShaderNodeTexImage'); _ti.image = _om; _ti.extension = 'EXTEND'; _lt.links.new(_mp.outputs[0], _ti.inputs[0])
+    _sp = _lt.nodes.new('ShaderNodeSeparateColor'); _lt.links.new(_ti.outputs['Color'], _sp.inputs[0])
+    _bw = _lt.nodes.new('ShaderNodeRGBToBW'); _lt.links.new(_src, _bw.inputs[0])
+    _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
+    _dry.inputs[6].default_value = (0.62, 0.40, 0.13, 1)          # golden, the dry-season grass
+    _lt.links.new(_bw.outputs[0], _dry.inputs[7])
+    _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_sp.outputs[0], _mx.inputs[0])
+    _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])
+    _lt.links.new(_mx.outputs[2], _lp.inputs['Base Color'])
 else:
     def open_at(x, y, grid=None): return 0.0
 
@@ -518,6 +546,8 @@ for t in d['trees']:
             # no tree on open land that was not yet planted: dunes and grazing ground
             if open_at(x, y) > 0.5 and rnd.random() > 0.04: continue
             if EA.water_then(x, y, ERA): continue
+            if 1906 <= ERA <= 1908 and EA.burned(x, y): continue
+            if EA.PPIE_YEARS[0] <= ERA <= EA.PPIE_YEARS[1] and EA.ppie_footprint(x, y): continue
         (park_pts if far else street_pts).append((x, y, zz, crown, rnd.uniform(0, 6.283)))
 HERO_XY = [float(v) for v in E('HERO_FROM').split(',')[:2]] if E('HERO_FROM') else None
 def place_trees(name, pts, kinds, seed):
@@ -711,8 +741,8 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
     # clear-coat is a 1980s finish; the lacquer and enamel before it, weathered
     # at the kerb, mirrored the sky far less (CONVENTION)
     _old = ERA is not None and ERA < 1980
-    pb.inputs['Coat Weight'].default_value = 0.25 if _old else 1.0
-    if _old: pb.inputs['Roughness'].default_value = 0.42
+    pb.inputs['Coat Weight'].default_value = 0.0 if _old else 1.0
+    if _old: pb.inputs['Roughness'].default_value = 0.5; pb.inputs['Specular IOR Level'].default_value = 0.35
     cglass = simple('carglass', (0.02, 0.025, 0.03), rough=0.02, spec=1.0)
     tyre = simple('tyre', (0.02, 0.02, 0.02), rough=0.8)
     lamp_m = simple('carlamp', (0.9, 0.88, 0.8), rough=0.1, spec=1.0)
@@ -780,6 +810,12 @@ if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH
         for i in range(nx_):
             x_, y_ = ox0 + i * DRES, oy0 + j * DRES
             g_ = ground(x_, y_)
+            _s0 = open_at(x_, y_, SAND)
+            if _s0 > 0.05:
+                # open dunes stand on the land's own shape, not on today's
+                # graded streets: the ground under them smoothed over ~50 m
+                _gs = (g_ + ground(x_ + 25, y_) + ground(x_ - 25, y_) + ground(x_, y_ + 25) + ground(x_, y_ - 25)) / 5.0
+                g_ = g_ + (_gs - g_) * _s0
             on_street = s_bvh is not None and s_bvh.ray_cast(Vector((x_, y_, g_ + 50)), Vector((0, 0, -1)), 60)[0] is not None
             s_ = open_at(x_, y_, SAND)
             cov_ = 0.0 if on_street else max(s_, _YS if EA.is_dune_ground(x_, y_, g_) else 0.0)
@@ -854,7 +890,13 @@ if ERA is not None:
                                      'roof': simple('ppie_roof', (0.62, 0.42, 0.30), rough=0.8),
                                      'dome': simple('ppie_dome', (0.36, 0.52, 0.44), rough=0.5),
                                      'jewel': simple('ppie_jewel', (0.85, 0.80, 0.70), rough=0.05, metal=0.6, spec=1.0),
-                                     'glassh': simple('ppie_glass', (0.70, 0.74, 0.72), rough=0.08, spec=0.9)}, log)
+                                     'glassh': simple('ppie_glass', (0.70, 0.74, 0.72), rough=0.08, spec=0.9),
+                                     'shadow': simple('ppie_shadow', (0.03, 0.03, 0.035), rough=0.9),
+                                     'garden': simple('ppie_garden', (0.16, 0.30, 0.10), rough=0.9)}, log)
+# the Mission Bay rail yards, 1910-1998 (era.build_yards)
+if ERA is not None and OPEN is not None:
+    EA.build_yards(bpy, ERA, (bx0, by0, bx1, by1), ground, open_at, simple('yardrail', (0.45, 0.42, 0.40), rough=0.35, metal=0.9),
+                   simple('ballast', (0.20, 0.18, 0.16), rough=0.95), log)
 # the structures the record has lost (era.STRUCTURES: the freeways that came down)
 if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
 def hist_water():

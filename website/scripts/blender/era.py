@@ -173,7 +173,24 @@ def place_record(b, era):
     if y <= era: return b
     if era < 1906 and burned(b['cx'], b['cy']):
         b['standin'] = True; b['core'] = in_core(b['cx'], b['cy']); return b
+    if 1906 < era < 1930 and burned(b['cx'], b['cy']):
+        # the rebuilt city since replaced: a lot the record fills later held a
+        # post-fire building with the rebuild's own odds (rebuild_share)
+        if ((b['gid'] * 2654435761) % 1000) / 1000.0 < rebuild_share(era):
+            b['standin'] = True; b['rebuild'] = True; b['core'] = in_core(b['cx'], b['cy']); return b
     return None
+
+
+def rebuild_share(era):
+    """share of the burned district rebuilt by a year. SOURCED: more than
+    25,000 buildings destroyed; 'by 1909, more than 20,000 buildings had been
+    constructed'; 'by 1910 the city was mostly rebuilt'; nearly complete by
+    1915 (FoundSF 'Rebuilding San Francisco After the 1906 Quake'; California
+    Historical Society). The curve between those points is a CONVENTION."""
+    pts = [(1906, 0.0), (1907, 0.35), (1908, 0.6), (1909, 0.8), (1910, 0.9), (1915, 0.97), (1930, 1.0)]
+    for (a, va), (b_, vb) in zip(pts, pts[1:]):
+        if a <= era <= b_: return va + (vb - va) * (era - a) / (b_ - a)
+    return 1.0
 
 
 def in_core(x, y):
@@ -217,22 +234,23 @@ def streets_graded(era):
 
 def dune_height(x, y, noise):
     """dune relief in metres. CONVENTION shaped on the record of the place:
-    the prevailing wind is from the WNW off the ocean, so the ridges lie
-    across it (NNE-SSW) and march inland; heights of a few metres to ~10 m
-    (SF Standard 2023: 'huge dunes' south of the park in 1904)."""
-    # rotate into the wind frame: u along the wind (from WNW), v across
-    a = math.radians(-20.0)
-    u = x * math.cos(a) - y * math.sin(a); v = x * math.sin(a) + y * math.cos(a)
+    the prevailing wind is from the WNW off the ocean, so transverse ridges
+    lie across it (NNE-SSW) and march inland — a long windward slope, a crest,
+    and a slip face at sand's angle of repose (~33 deg) on the lee (ESE) side,
+    as the 1938 frames show them; crests a few metres to ~9 m ('huge dunes'
+    south of the park in 1904, SF Standard 2023)."""
     from mathutils import Vector
-    # transverse ridges: a skewed wave along u, broken up along v
-    w = noise.noise(Vector((u / 140.0, v / 260.0, 0.3))) * 0.5 + 0.5
-    ph = (u / 55.0 + noise.noise(Vector((u / 300.0, v / 180.0, 1.7))) * 2.2) % 1.0
-    ridge = ph ** 2.2 if ph < 0.8 else (1.0 - ph) / 0.2 * 0.8 ** 2.2   # gentle windward, steep lee
-    big = noise.noise(Vector((x / 420.0, y / 420.0, 4.1))) * 0.5 + 0.5
-    # broad swells under the ridges, as the 1938 frames show them
-    swell = noise.noise(Vector((x / 160.0, y / 160.0, 2.3))) * 0.5 + 0.5
-    return max(0.2, 0.6 + 4.5 * swell + 12.0 * big * (0.35 + 0.65 * w) * ridge
-               + 0.8 * noise.noise(Vector((x / 40.0, y / 40.0, 9.0))))
+    a = math.radians(-20.0)                                  # the wind: from the WNW
+    u = x * math.cos(a) - y * math.sin(a); v = x * math.sin(a) + y * math.cos(a)
+    L = 70.0                                                 # crest spacing
+    warp = noise.noise(Vector((u / 260.0, v / 150.0, 1.7))) * 1.6 + noise.noise(Vector((u / 90.0, v / 60.0, 5.3))) * 0.35
+    ph = (u / L + warp) % 1.0
+    Hc = 2.0 + 7.0 * (noise.noise(Vector((x / 380.0, y / 380.0, 4.1))) * 0.5 + 0.5)   # crest height
+    Hc *= 0.55 + 0.45 * (noise.noise(Vector((u / 120.0, v / 220.0, 0.3))) * 0.5 + 0.5)
+    lee = min(0.3, Hc / 0.65 / L)                            # the slip face's share of the wavelength
+    prof = (ph / (1 - lee)) ** 1.25 if ph < 1 - lee else (1.0 - ph) / lee
+    swell = 2.5 * (noise.noise(Vector((x / 180.0, y / 180.0, 2.3))) * 0.5 + 0.5)
+    return max(0.2, 0.4 + swell + Hc * prof)
 
 
 def yard_sand(era):
@@ -707,10 +725,12 @@ def rails(era):
     global _CABLE_GEOM
     if _CABLE_GEOM is None:
         import city_data
-        _CABLE_GEOM = [(city_data.line_between(st, a, b), y0, y1) for st, a, b, y0, y1, _ in CABLE_LINES]
-    for g, y0, y1 in _CABLE_GEOM:
+        _CABLE_GEOM = [(city_data.line_between(st, a, b), y0, y1, st == 'MARKET ST') for st, a, b, y0, y1, _ in CABLE_LINES]
+    for g, y0, y1, st_is_market in _CABLE_GEOM:
         if not g or era < y0: continue
-        kind = 'cable' if era < y1 else ('streetcar' if (y1 == 1906 and era < 1945) else None)
+        # after the fire a converted line runs as streetcar track, except on
+        # Market Street, whose later track is today's line (rail.json)
+        kind = 'cable' if era < y1 else ('streetcar' if (y1 == 1906 and era < 1945 and not st_is_market) else None)
         if kind is None: continue
         (ax, ay), (bx, by) = g
         n = max(1, int(((bx - ax) ** 2 + (by - ay) ** 2) ** 0.5 / 60))
@@ -876,7 +896,18 @@ def build_ppie(bpy, era, ground, mats, log=print):
         box('ivory', -r, -r, r, r, z0 - (1.0 if z0 == 0 else 0.0), z1)
         box('jewel', -r - 0.3, -r - 0.3, r + 0.3, r + 0.3, z1 - 1.6, z1 - 0.6)            # the band of Novagems
     dome('jewel', 0.0, 0.0, 126.0, 4.5, 6.5)
-    box('ivory', -9.0, -33.0, 9.0, 33.0, -1.0, 0.0)                                     # the arch's floor
+    # the arch through the base (the gateway to the Court of the Universe): a
+    # deep shadowed opening on the south and north faces
+    box('shadow', -9.0, -32.2, 9.0, -31.6, 0.0, 30.0); box('shadow', -9.0, 31.6, 9.0, 32.2, 0.0, 30.0)
+    # the Court of the Universe: its sunken garden, and a peristyle round it
+    # (CONVENTION: a 12 m arcade on the court's 900 x 700 ft ellipse)
+    for i in range(72):
+        t0, t1 = 2 * math.pi * i / 72, 2 * math.pi * (i + 0.72) / 72
+        cu, cv = 0.0, 40 + 107
+        a0 = (cu + 128 * math.cos(t0), cv + 100 * math.sin(t0)); a1 = (cu + 128 * math.cos(t1), cv + 100 * math.sin(t1))
+        if abs(a0[0]) < 14 and a0[1] < cv: continue                   # the tower's avenue comes in here
+        box('ivory', min(a0[0], a1[0]) - 1, min(a0[1], a1[1]) - 1, max(a0[0], a1[0]) + 1, max(a0[1], a1[1]) + 1, -1.0, 12.0)
+    box('garden', -95, 70, 95, 225, -1.0, 0.25)
     # Machinery, east: 968 x 368 ft (295 x 112 m), three naves
     box('ivory', 480, 110, 775, 222, -1.0, 24.0); box('roof', 486, 116, 769, 216, 24.0, 33.0)
     # South Garden: Horticulture (glass, 205 x 98 m, dome 160 ft = 49 m) west, Festival Hall east
@@ -899,3 +930,47 @@ def ppie_footprint(x, y):
     d = Vector((x + 343.0, y - 4868.0, 0.0)); N = Vector((-0.1587, 0.9873, 0.0)); Ee = Vector((N.y, -N.x, 0.0))
     u, v = d.dot(Ee), d.dot(N)
     return -460 <= u <= 790 and -160 <= v <= 340
+
+
+# ── the Mission Bay rail yards ──────────────────────────────────────────────
+# SOURCED: most of the 303 acres of Mission Bay 'had long been a railyard of
+# the Southern Pacific Railroad Company', passed to Catellus; the Mission Bay
+# North and South redevelopment plans were approved in November 1998 (OCII
+# 'Mission Bay South'; Wikipedia 'Mission Bay, San Francisco'). The yard is
+# drawn on the district between Townsend, Third Street, Mariposa and Seventh
+# (corners from the published street stretches) from the end of the filling
+# (1910) to the plan (1998), wherever no building of the year stands: tracks
+# every 4.6 m parallel to Townsend Street on a ballast bed. CONVENTION: the
+# track layout.
+MISSION_BAY_YARD = [(4180, 2296), (4327, 481), (4047, 460), (3781, 729), (3199, 1316)]
+YARD_YEARS = (1910, 1998)
+
+
+def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print):
+    if era is None or not (YARD_YEARS[0] <= era < YARD_YEARS[1]): return
+    from mathutils import Vector
+    d = Vector((-0.7074, -0.7068, 0)); n = Vector((-d.y, d.x, 0))
+    RV, RF, BV, BF = [], [], [], []
+    xs = [p[0] for p in MISSION_BAY_YARD]; ys = [p[1] for p in MISSION_BAY_YARD]
+    c = Vector((sum(xs) / len(xs), sum(ys) / len(ys), 0))
+    ntr = 0
+    for k in range(-260, 261):
+        off = k * 4.6
+        for s in range(-200, 201):
+            p0 = c + n * off + d * (s * 3.0); p1 = p0 + d * 3.0
+            m = (p0 + p1) / 2
+            if not (box[0] - 10 <= m.x <= box[2] + 10 and box[1] - 10 <= m.y <= box[3] + 10): continue
+            if not _in_ring(m.x, m.y, MISSION_BAY_YARD) or open_at(m.x, m.y) < 0.3: continue
+            z0, z1 = ground(p0.x, p0.y), ground(p1.x, p1.y)
+            if z0 is None or z1 is None: continue
+            for (w, V, F, dz) in ((1.6, BV, BF, 0.06), (0.04, RV, RF, 0.16)):
+                for g in ((0.0,) if V is BV else (-0.7175, 0.7175)):
+                    q = [p0 + n * (g - w), p1 + n * (g - w), p1 + n * (g + w), p0 + n * (g + w)]
+                    zz = [z0, z1, z1, z0]; kk = len(V)
+                    V.extend((a.x, a.y, z + dz) for a, z in zip(q, zz)); F.append((kk, kk + 1, kk + 2, kk + 3))
+            ntr += 1
+    for nm, V, F, m in (('yard_ballast', BV, BF, ballast_mat), ('yard_rails', RV, RF, rail_mat)):
+        if not F: continue
+        me = bpy.data.meshes.new(nm); me.from_pydata(V, [], F); me.update()
+        ob = bpy.data.objects.new(nm, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(m)
+    if ntr: log('Mission Bay yard: track pieces', ntr)
