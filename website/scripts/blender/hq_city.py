@@ -411,7 +411,7 @@ instancer('cars', cpts, car_colls)
 
 # ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
 if ERA is not None:
-    bx0, by0, bx1, by1 = CBOX; OPAD = 80.0; ox0, oy0 = OL.x0, OL.y0; SAND = OL.sand
+    bx0, by0, bx1, by1 = CBOX; OPAD = 80.0; ox0, oy0 = OL.x0, OL.y0; SAND = OL.sand; OPEN = OL.open
     if 'DUNE_RES' not in os.environ: os.environ['DUNE_RES'] = '10.0'
     _ds = _HQSRC[_HQSRC.index("# ── open land: dunes where the Outside Lands"):_HQSRC.index("# ── the sea: the water mask")]
     _g = dict(globals()); _g['ground'] = ground0; exec(_ds, _g)

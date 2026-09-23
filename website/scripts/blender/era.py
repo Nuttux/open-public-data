@@ -199,10 +199,18 @@ def landmark_for(cx, cy):
     return best if bd < 400 ** 2 else None
 
 
+# years a landmark did not stand after it first did. SOURCED: the Palace of
+# Fine Arts 'was completely demolished' in 1964 and rebuilt in concrete
+# 1964-67 (Wikipedia 'Palace of Fine Arts').
+LANDMARK_GAPS = {'pofa': (1964.0, 1967.0)}
+
+
 def landmark_stands(cx, cy, era):
     if era is None: return True
     L = landmark_for(cx, cy)
-    return L is None or L[3] <= era
+    if L is None: return True
+    g = LANDMARK_GAPS.get(L[0])
+    return L[3] <= era and not (g and g[0] <= era < g[1])
 
 
 # ── the 1906 burned district (DataSF ff3a-iqhv, via base/coast.qc) ───────────
@@ -297,9 +305,16 @@ MADE_LAND = [
 
 
 def water_then(x, y, era):
-    """True where the year shown had open water over today's made land"""
+    """True where the year shown had open water over today's made land: the
+    hand-traced fills (MADE_LAND), and from 1944 the bay on the 1:24,000
+    sheets — except under a lost structure standing then (its ground was
+    made for it: Candlestick Park stood on fill from 1960)"""
     if era is None: return False
-    return any(era < yr and test(x, y) for _, yr, test, _ in MADE_LAND)
+    if any(era < yr and test(x, y) for _, yr, test, _ in MADE_LAND): return True
+    if era >= 1944 and topo_water_then(x, y, era):
+        import era_lost
+        return not era_lost.on_land(x, y, when(era))
+    return False
 
 
 # an integer year is the film's checkpoint for that year: its middle, except
@@ -763,13 +778,22 @@ STRUCTURES = [
 ]
 
 
+# the Transbay Terminal's loop: the Key System's train loop from 1939, bus
+# ramps from 1959, torn down with the terminal by Sep 2011 (DPR record
+# 3720001; Wikipedia 'San Francisco Transbay Terminal'). Its line TRACED on
+# the USGS 1:24,000 San Francisco North sheet of 1956 (history/refs/usgs24k;
+# +-20 m); one deck at 7.5 m, 10 m wide: CONVENTION.
+STRUCTURES.append(dict(k='transbay_loop', kind='viaduct1', y0=1939.04, y1=2011.0, w=10.0, decks=[7.5],
+                       path=[(3760, 3342), (3814, 3378), (3880, 3386), (3928, 3366), (3958, 3312), (3962, 3252), (3940, 3192), (3886, 3144), (3808, 3096), (3748, 3054), (3714, 3000), (3702, 2928), (3706, 2832)]))
+
+
 def structures(era):
     """the lost structures standing in the year shown, with their decks"""
     if era is None: return []
     out = []
     for st in STRUCTURES:
         if st['y0'] <= era < st['y1']:
-            decks = [7.5, 14.0]
+            decks = list(st.get('decks', [7.5, 14.0]))
             if st.get('deck1_until') and era >= st['deck1_until']: decks = [7.5]
             out.append(dict(st, decks=decks))
     return out
@@ -834,33 +858,73 @@ TOPO_DIR = os.environ.get('TOPO_DIR', '/Users/daniel/code/qipu-render-work/histo
 _TOPO = {}
 
 
+# The 1:24,000 sheets of 1946-1980 (topo24_extract.py, topo24_change.py):
+# their urban tint says where the city was built up; their water, where the
+# bay still was. Each speaks for the years round its aerial photographs
+# (history/CHECKPOINTS.md, 'The USGS 1:24,000 sheets'): (mask, photo year,
+# first and last year it speaks for).
+TOPO24 = [('usgs1947', 1946, 1944, 1951), ('usgs1956', 1956, 1952, 1961), ('usgs1968', 1968, 1962, 1970),
+          ('usgs1973', 1973, 1971, 1976), ('usgs1980', 1980, 1977, 1985)]
+
+
 def topo_sheet(era):
-    """which sheet speaks for a year: 1895 up to the fire, 1915 to 1930"""
-    if era is None or era >= 1930: return None
-    return 'usgs1895' if era < 1906 else 'usgs1915'
+    """which sheet speaks for a year: the 1:62,500 of 1895 up to the fire,
+    of 1915 to 1930; then the 1:24,000 epochs in their windows; else none"""
+    if era is None: return None
+    if era < 1906: return 'usgs1895'
+    if era < 1930: return 'usgs1915'
+    for name, _, a, b in TOPO24:
+        if a <= era < b + 1: return name
+    return None
 
 
-def topo_built(x, y, era):
-    """the sheet's building-ink density at a point (0..1), or 0 when no sheet
-    speaks for the year or the point is off the sheet"""
-    name = topo_sheet(era)
-    if name is None: return 0.0
-    if name not in _TOPO:
+def topo_survey(name):
+    return {'usgs1895': 1893, 'usgs1915': 1915}.get(name) or next((p for n, p, _, _ in TOPO24 if n == name), None)
+
+
+def _topo_load(name, suffix=''):
+    key = name + suffix
+    if key not in _TOPO:
         try:
             import bpy, numpy as np
             meta = json.load(open(f'{TOPO_DIR}/{name}.json'))
-            img = bpy.data.images.load(f'{TOPO_DIR}/{name}.png'); img.colorspace_settings.name = 'Non-Color'
+            img = bpy.data.images.load(f'{TOPO_DIR}/{name}{suffix}.png'); img.colorspace_settings.name = 'Non-Color'
             a = np.empty(img.size[0] * img.size[1] * 4, np.float32); img.pixels.foreach_get(a)
             a = a.reshape(img.size[1], img.size[0], 4)[::-1]           # top row first, as the PNG
-            _TOPO[name] = (meta, a)
+            _TOPO[key] = (meta, a)
         except Exception as ex:
-            print('topo sheet unavailable', name, ex); _TOPO[name] = None
-    t = _TOPO[name]
+            print('topo sheet unavailable', key, ex); _TOPO[key] = None
+    return _TOPO[key]
+
+
+def topo_built(x, y, era):
+    """how built up the period's sheet says a point was (0..1): the 1:62,500
+    sheets' building-ink density; the 1:24,000 sheets' urban tint (its share
+    over ~40 m, read from 0.4 — contour lines stay under it — to full at 0.6);
+    0 when no sheet speaks for the year or the point is off the sheet"""
+    name = topo_sheet(era)
+    if name is None: return 0.0
+    t = _topo_load(name)
     if t is None: return 0.0
     meta, a = t
     i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
     if not (0 <= i < meta['w'] and 0 <= j < meta['h']) or a[j, i, 2] < 0.5: return 0.0
-    return float(a[j, i, 1])
+    v = float(a[j, i, 1])
+    if name.startswith('usgs') and name not in ('usgs1895', 'usgs1915'):
+        v = min(1.0, max(0.0, (v - 0.4) / 0.2))
+    return v
+
+
+def topo_water_then(x, y, era):
+    """the 1:24,000 sheet of the year draws the bay where today is land
+    (topo24_change.py: joined to the open water, 12 m in from its edge)"""
+    name = topo_sheet(era)
+    if name is None or name in ('usgs1895', 'usgs1915'): return False
+    t = _topo_load(name, '_chg')
+    if t is None: return False
+    meta, a = t
+    i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+    return 0 <= i < meta['w'] and 0 <= j < meta['h'] and a[j, i, 0] > 0.5
 
 
 class OpenLand:
@@ -975,7 +1039,10 @@ def hero_mesh_filter(pos, col, era):
     if era is None: return pos, col
     xs, ys = pos[0::3], pos[1::3]
     L = landmark_for((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
-    if L is None or L[3] <= era: return pos, col
+    if L is None: return pos, col
+    g = LANDMARK_GAPS.get(L[0])
+    if g and g[0] <= era < g[1]: return None
+    if L[3] <= era: return pos, col
     if L[0] not in BRIDGE_TOWERS: return None
     towers = bridge_towers_standing(L[0], era)
     if not towers: return None
@@ -1074,6 +1141,11 @@ def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
         old = [n for n in nb if (n['year'] or 0) and n['year'] <= era]
         tb = topo_built(b['cx'], b['cy'], era)
         sheet_says = tb > 0.3 and not burned(b['cx'], b['cy'])
+        if sheet_says and era >= 1930:
+            # the 1:24,000 tint marks whole blocks: it says a lot held a lost
+            # building only for a record built well after the survey
+            # (CONVENTION: 5 years), not for one that filled a vacant lot then
+            sheet_says = y > topo_survey(topo_sheet(era)) + 5
         if not sheet_says:
             if len(nb) < 6 or len(old) / len(nb) < share_min: continue
         yrs = sorted(n['year'] for n in old)
