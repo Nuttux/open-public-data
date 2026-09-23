@@ -46,6 +46,12 @@ if E('MODE') == 'pyramid' and ONLY and BOX is None:
 def in_box(x, y, pad=0.0):
     return BOX is None or (BOX[0] - pad <= x <= BOX[2] + pad and BOX[1] - pad <= y <= BOX[3] + pad)
 
+# THE TRUE GROUND. The engine's terrain is squeezed north-south 1.2649x (its
+# 3DEP request asked a square image of a bbox that is not square in degrees):
+# at Coit Tower it reads 0 m, the hill drawn 700 m south. terrain_hq rebuilds
+# the ground from 3DEP and moves what stands on it (terrain_hq.py, landmarks agent).
+import terrain_hq; terrain_hq.correct_scene(d, log, box=BOX, sd=SD)
+
 def f32(b):
     a = array.array('f'); a.frombytes(base64.b64decode(b)); return a
 
@@ -204,6 +210,10 @@ if len(HP):
 G.LOD = int(E('LOD', 2))
 log('buildings: records')
 HG = city_data.hero_gids()
+# and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
+# a pass reads the copy frozen in its snapshot, a test the live one)
+_sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
+if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
 recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG
         and (ERA is None or (b['year'] or 0) <= ERA)]
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
