@@ -33,6 +33,7 @@ from lm_kit import Frame
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
 ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry'}
+WATER_ENABLED = set()           # 'lakes', 'sea_depth' once validated
 
 class Region:
     """where the engine's crude stand-in is cleared: a polygon, or a
@@ -70,6 +71,10 @@ class Landmark:
         # construction stages are the builder's business: it gets the year
         if era is None: return self.gone is None
         return (self.gone is None or era < self.gone)
+    def complete(self, era):
+        """built (opened) by `era` and not yet gone — when it replaces the
+        generator's buildings on its site"""
+        return self.stands(era) and (era is None or era >= self.built)
 
 def _registry():
     import lm_bridges as B, lm_civic as V
@@ -85,6 +90,7 @@ def _registry():
                 r = [(cx + (x - cx) * (1 + grow), cy + (y - cy) * (1 + grow)) for x, y in r]
             out.append(Region(ring=r))
         return out
+    def circ(c, r, n=16): return [(c[0] + r * math.cos(6.2832 * k / n), c[1] + r * math.sin(6.2832 * k / n)) for k in range(n)]
     def ds(key, gid):
         f = V.FP().get(key) or {}
         return [Region(ring=[tuple(p) for p in d['ring']]) for d in f.get('datasf', []) if d['gid'] == gid]
@@ -96,6 +102,9 @@ def _registry():
         Landmark('baybridge', 'San Francisco-Oakland Bay Bridge (west spans)', 1936, None, B.bay_bridge,
                  [Region(frame=bay, uv=(-60, 60, -800, 2900))], pad=2500.0,
                  note='construction 1933-36, opened 12 Nov 1936; the east span: cantilever 1936-2013, self-anchored suspension from Sep 2013'),
+        Landmark('sas', 'Bay Bridge east span (self-anchored suspension)', 2013, None, B.sas,
+                 [Region(ring=[(6420, 5580), (7500, 6300), (7400, 6500), (6380, 5680)])], pad=2500.0,
+                 note='opened 2 Sept 2013; the 1936 cantilever east span it replaced was taken down 2013-17'),
         Landmark('salesforce', 'Salesforce Tower', 2018, None, V.salesforce, ol('salesforce'), pad=3000.0,
                  note='topped out 2017, opened 2018; absent from the DataSF footprints the city is built from'),
         Landmark('transit_center', 'Salesforce Transit Center and Park', 2018, None, V.transit_center, ol('transit_center'), pad=600.0,
@@ -123,6 +132,22 @@ def _registry():
         Landmark('oracle', 'Oracle Park', 2000, None, V.oracle, ds('oracle', 143280), pad=1000.0,
                  note='opened April 2000 as Pacific Bell Park', replaces=True),
         Landmark('chase', 'Chase Center', 2019, None, V.chase, ol('chase', 0.02), pad=800.0, note='opened Sept 2019'),
+        Landmark('dutchmill', 'Dutch Windmill', 1903, None, V.dutchmill, [Region(ring=circ(V.WINDMILLS['dutchmill'][:2], 14))], pad=800.0,
+                 note='built 1902-03, restored 1981; the sails turned until the 1930s'),
+        Landmark('murphymill', 'Murphy Windmill', 1908, None, V.murphymill, [Region(ring=circ(V.WINDMILLS['murphymill'][:2], 16))], pad=800.0,
+                 note='built 1905-08, sails restored 2011-12'),
+        Landmark('davidson', 'Mount Davidson cross', 1934, None, V.davidson_cross, [Region(ring=circ(V.DAVIDSON, 10))], pad=1500.0,
+                 note='dedicated Easter 1934 (earlier wooden crosses from 1923)'),
+        Landmark('fortpoint', 'Fort Point', 1861, None, V.fortpoint, ol('fortpoint', 0.02), pad=800.0,
+                 note='built 1853-61; lighthouse on top 1864-1934', replaces=True),
+        Landmark('dewey', 'Dewey Monument, Union Square', 1903, None, V.dewey, [Region(ring=circ(V.DEWEY, 5))], pad=700.0,
+                 note='dedicated 1903 (Union Square rebuilt over its garage 1942 and 2002)'),
+        Landmark('tea_pagoda', 'Japanese Tea Garden pagoda', 1915, None, V.tea_pagoda, [Region(ring=circ(V.PAGODA, 6))], pad=500.0,
+                 note='built for the 1915 PPIE, moved to the garden'),
+        Landmark('calacademy', 'California Academy of Sciences', 2008, None, V.calacademy, ds('calacademy', 32880), pad=800.0,
+                 note='opened Sept 2008; the old Academy buildings (1916-2004) stood on the site', replaces=True),
+        Landmark('lombard', 'Lombard Street (crooked block)', 1922, None, V.lombard, ol('lombard'), pad=600.0,
+                 note='the switchbacks built 1922; brick-paved'),
         Landmark('pofa', 'Palace of Fine Arts rotunda', 1915, None, V.pofa, ol('pofa', 0.05), pad=1000.0,
                  note='1915 Panama-Pacific Exposition; demolished and recast in concrete 1964-67 (the history pass may hide it 1964-66)'),
         Landmark('pofa_colonnade', 'Palace of Fine Arts colonnades', 1915, None, V.pofa_colonnade, ol('pofa_colonnade', 0.02), pad=800.0,
@@ -228,6 +253,20 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         C.tg = lambda x, y: float(terrain_hq.true_ground(np.array([x]), np.array([y]))[0])
     else:
         C.tg = lambda x, y: float(ground(x, y) or 0.0)
+    # the top of the street surface (Lombard's switchbacks lie on it)
+    C.street_z = C.tg
+    try:
+        from mathutils import Vector
+        from mathutils.bvhtree import BVHTree
+        so = sc.objects.get('streets')
+        if so is not None and len(so.data.polygons):
+            _sb = BVHTree.FromObject(so, bpy.context.evaluated_depsgraph_get())
+            def _sz(x, y, _sb=_sb):
+                h = _sb.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))
+                return h[0].z if h[0] is not None else C.tg(x, y)
+            C.street_z = _sz
+    except Exception as ex:
+        log('landmarks_hq: no street surface', ex)
     try: L = _registry()
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: registry failed', ex); return
@@ -239,7 +278,9 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         clear += lm.regions
         if lm.stands(era):
             todo.append(lm)
-            if lm.replaces: gen += lm.regions
+            # the generator's buildings under it go only once the landmark is
+            # built: in 1960 the Transbay Terminal's site keeps its buildings
+            if lm.replaces and lm.complete(era): gen += lm.regions
     try:
         nc = _clear(bpy, sc, clear, log)
         if nc: log(f'landmarks_hq: cleared {nc} faces of the engine stand-ins')
@@ -258,6 +299,16 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
             lm.builder(C); done.append(f'{lm.key}({C.K.nf - nf})')
         except Exception as ex:
             traceback.print_exc(); log(f'landmarks_hq: {lm.key} failed: {ex}')
+    every = os.environ.get('LM_ALL') == '1'
+    try:
+        import water_hq
+        mats['lm_lake'] = water_hq._mat(bpy)
+        if every or 'lakes' in WATER_ENABLED:
+            nl = water_hq.lakes(C); log(f'landmarks_hq: {nl} lakes and ponds')
+        if every or 'sea_depth' in WATER_ENABLED:
+            if water_hq.sea_depth(C): log('landmarks_hq: sea coloured by depth')
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: water failed', ex)
     objs = C.K.emit(bpy, sc, mats, name='lm')
     try: nt = _plant(C)
     except Exception as ex:

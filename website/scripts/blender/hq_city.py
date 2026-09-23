@@ -149,7 +149,9 @@ HG = city_data.hero_gids()
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
 _sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
-if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
+if _sk:     # a landmark replaces its footprints only once it's built (ERA None = today)
+    _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
+    HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
 _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80)]
 _allb = [b for b in _allb0 if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
@@ -281,7 +283,7 @@ def load_collection(asset):
             p = o.matrix_world @ v.co
             mn = Vector((min(mn.x, p.x), min(mn.y, p.y), min(mn.z, p.z))); mx = Vector((max(mx.x, p.x), max(mx.y, p.y), max(mx.z, p.z)))
     c.instance_offset = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
-    return c, max(mx.x - mn.x, mx.y - mn.y)
+    return c, max(mx.x - mn.x, mx.y - mn.y), mx.z - mn.z
 
 def instancer(name, pts, protos):
     """pts: (x, y, z, scale, rot, kind); protos: collections, one per kind"""
@@ -317,7 +319,14 @@ log('trees')
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
 STREET = [load_collection(a) for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree')]
 PARK = [load_collection(a) for a in ('pine_tree_01', 'fir_tree_01', 'island_tree_02', 'island_tree_01')]
-protos = [c for c, _ in STREET + PARK]; widths = [w for _, w in STREET + PARK]
+protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
+log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, heights)])
+# A proto is scaled to the crown's WIDTH, but not past a height: a narrow pine
+# scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
+# crowns stand at most 1.4 widths tall, pines and firs 2.
+TALL = [1.4] * 5 + [2.0, 2.0, 1.4, 1.4]
+def tree_scale(kind, crown):
+    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
 _TKD = None
 if ERA is not None:
@@ -363,10 +372,10 @@ for t in d['trees']:
         # (every draw by place: a tree keeps its kind, size and turn from one
         # year of the film to the next)
         u_ = EA.hash01(x, y, 14)
-        kind = (7 + int(EA.hash01(x, y, 17) * 2) if u_ < 0.6 else 5 if u_ < 0.9 else 6) if park else int(u_ * 5)
+        kind = (7 + int(EA.hash01(x, y, 17) * 2) if u_ < 0.8 else 5) if park else int(u_ * 5)
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
+        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
 # register already has a tree there
@@ -381,10 +390,11 @@ for (x, y, z, rad, *_rest) in MASS:
         if EA.water_then(x, y, ERA): continue
     gz_ = ground(x, y)
     if gz_ is None: continue
-    kind = 7 + int(EA.hash01(x, y, 17) * 2) if EA.hash01(x, y, 14) < 0.65 else 5
-    crown = max(4.0, 2.0 * rad)
+    # canopy: crowns a little wider than the disc, so a mass reads as one clump
+    kind = 7 + int(EA.hash01(x, y, 17) * 2) if EA.hash01(x, y, 14) < 0.85 else 5
+    crown = max(4.0, 2.5 * rad)
     seen.add((round(x / 2.5), round(y / 2.5)))
-    pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
+    pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
 
@@ -456,10 +466,6 @@ tx, ty = float(E('TX', 197)), float(E('TY', 1190))
 cam_d.type = 'ORTHO'; cam_d.ortho_scale = float(E('ORTHO', 13600)); cam_d.clip_start = 1; cam_d.clip_end = 40000
 cam.location = Vector((tx, ty, ground0(tx, ty))) - fwd * 15000
 cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
-# THE CITY'S LIGHT (look tests of 2026-09-23 on Alamo, Dolores, downtown):
-# the sun at 30 deg, not 24, more sky fill and +0.35 exposure. Still golden
-# hour, but the streets come out of the dark the live site was compared against.
-for k_, v_ in (('SUN_EL', '30'), ('SKY_K', '0.52'), ('EXPO', '0.65')): os.environ.setdefault(k_, v_)
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)
 sc.cycles.samples = SPP

@@ -506,3 +506,98 @@ def _bay_truss(K, P, va, vb, paint):
             V += [P(sgn * 9.3, v, z), P(sgn * 9.3, v, z + 1.1)]
             if i: Fc.append((2 * i - 2, 2 * i, 2 * i + 1, 2 * i - 1))
         K.mesh('lm_paint', V, Fc, SILVER)
+
+
+# ── the Bay Bridge east span: the self-anchored suspension span (2013) ───────
+# OSM (ODbL): the tower at (6996.1, 6152.1), 160 m; the span's deck marks run
+# from (6879, 6065) to (7337, 6397) — 565 m, the published back span (180 m)
+# plus main span (385 m). Published (Caltrans, T.Y. Lin / Moffatt & Nichol):
+# a single tower of four pentagonal steel legs joined by shear links, 525 ft;
+# twin orthotropic box-girder decks; one main cable looped round the west end
+# and anchored into the deck at the east end; white. The skyway beyond: twin
+# concrete box girders descending on paired piers towards Oakland.
+SAS_A = (6862.0, 6052.0)
+SAS_B = (7346.0, 6403.0)
+SAS_T = (6996.1, 6152.1)
+SAS_WHITE = hexc('#dfe0dd')
+SAS_CONC = hexc('#c9c4b8')
+
+def sas(C):
+    if C.era is not None and C.era < 2013: return
+    K, tg = C.K, C.tg
+    ax, ay = SAS_A; bx, by = SAS_B
+    L = math.hypot(bx - ax, by - ay); ang = math.atan2(by - ay, bx - ax)
+    F = Frame(ax, ay, ang - math.pi / 2)          # u across (south = +u?), v along from A to B
+    P = F.P
+    vt = F.uv(*SAS_T)[1]; ut = F.uv(*SAS_T)[0]
+    ZD = 49.0                                       # deck level (top)
+    def road(v): return ZD - 0.004 * max(0.0, v - vt)
+    # the two decks (box girders), a gap between them for the tower
+    for (u0, u1) in ((-34.0, -9.0), (9.0, 34.0)):
+        V, Fc = [], []
+        n = 60
+        for i in range(n + 1):
+            v = -40.0 + (L + 80.0) * i / n; z = road(v)
+            V += [P(u0, v, z), P(u1, v, z), P(u1, v, z - 5.5), P(u0, v, z - 5.5)]
+            if i:
+                a, b = 4 * (i - 1), 4 * i
+                Fc += [(a, a + 1, b + 1, b), (a + 1, a + 2, b + 2, b + 1), (a + 2, a + 3, b + 3, b + 2), (a + 3, a, b, b + 3)]
+        K.mesh('lm_paint', V, Fc, SAS_WHITE)
+        # the road surface a hair above, lane lines
+        K.face('asphalt', [P(u0 + 1.0, -40.0, road(-40.0) + 0.02), P(u1 - 1.0, -40.0, road(-40.0) + 0.02), P(u1 - 1.0, L + 40.0, road(L + 40.0) + 0.02), P(u0 + 1.0, L + 40.0, road(L + 40.0) + 0.02)], ASPH)
+    # the tower: four pentagonal legs round the centre, shear links between
+    for (du, dv) in ((-3.0, -3.0), (3.0, -3.0), (3.0, 3.0), (-3.0, 3.0)):
+        cx_, cy_ = P(ut + du, vt + dv)[:2]
+        ring = []
+        for k in range(5):
+            a = 2 * math.pi * k / 5 + math.atan2(dv, du)
+            ring.append((cx_ + 2.7 * math.cos(a), cy_ + 2.7 * math.sin(a)))
+        K.prism('lm_paint', ring, -3.0, 158.0, SAS_WHITE)
+    for z in range(20, 150, 14):
+        for (a, b) in (((-3.0, -3.0), (3.0, -3.0)), ((-3.0, 3.0), (3.0, 3.0)), ((-3.0, -3.0), (-3.0, 3.0)), ((3.0, -3.0), (3.0, 3.0))):
+            K.beam('lm_paint', P(ut + a[0], vt + a[1], z), P(ut + b[0], vt + b[1], z), 0.9, 1.4, SAS_WHITE)
+    K.box('lm_paint', Frame(*P(ut, vt)[:2], ang - math.pi / 2), -6.5, 6.5, -6.5, 6.5, 158.0, 160.0, SAS_WHITE)
+    K.box('concrete', Frame(*P(ut, vt)[:2], ang - math.pi / 2), -14.0, 14.0, -12.0, 12.0, -4.0, 8.0, SAS_CONC)
+    # the cable: two strands from the east end up over the tower and down to
+    # the west end, where it loops under the deck
+    def cable_z(v):
+        if v >= vt:
+            t = (v - vt) / (L - vt); return 158.0 + (road(L) + 2.0 - 158.0) * t - 4 * 34.0 * t * (1 - t)
+        t = (vt - v) / vt; return 158.0 + (road(0) + 2.0 - 158.0) * t - 4 * 12.0 * t * (1 - t)
+    for sgn in (-1, 1):
+        pts = []
+        for i in range(81):
+            v = L * i / 80
+            uc = ut + sgn * (1.5 + 7.5 * min(1.0, abs(v - vt) / 60.0))
+            pts.append(P(uc, v, cable_z(v)))
+        K.tube('lm_paint', pts, 0.4, SAS_WHITE, n=8)
+        for i in range(1, 80):
+            v = L * i / 80
+            if abs(v - vt) < 12: continue
+            uc = ut + sgn * (1.5 + 7.5 * min(1.0, abs(v - vt) / 60.0))
+            zt = cable_z(v); zb = road(v)
+            if zt - zb > 1.0: K.cyl('lm_paint', P(uc, v, zb), P(uc, v, zt), 0.08, SAS_WHITE, n=4, smooth=False)
+    K.tube('lm_paint', [P(ut + 9.0 * math.cos(math.pi * k / 12), -6.0 * math.sin(math.pi * k / 12), road(0) - 3.0) for k in range(13)], 0.4, SAS_WHITE, n=8)
+    # piers at the ends, the skyway on to the east, the transition to the tunnel
+    for v in (0.0, L):
+        for u in (-21.5, 21.5):
+            K.box('concrete', Frame(*P(u, v)[:2], ang - math.pi / 2), -4.0, 4.0, -3.0, 3.0, -4.0, road(v) - 5.5, SAS_CONC)
+    for k in range(1, 12):
+        v = L + 160.0 * k; z = road(L) - 0.022 * (v - L)
+        if z < 12: break
+        for (u0, u1) in ((-34.0, -9.0), (9.0, 34.0)):
+            va, vb = v - 160.0, v
+            za, zb = road(L) - 0.022 * (va - L), z
+            K.loft('concrete', [[P(u0, va, za), P(u1, va, za), P(u1, va, za - 4.5), P(u0, va, za - 4.5)],
+                                 [P(u0, vb, zb), P(u1, vb, zb), P(u1, vb, zb - 4.5), P(u0, vb, zb - 4.5)]], SAS_CONC, cap_top=False)
+            K.face('asphalt', [P(u0 + 1.0, va, za + 0.02), P(u1 - 1.0, va, za + 0.02), P(u1 - 1.0, vb, zb + 0.02), P(u0 + 1.0, vb, zb + 0.02)], ASPH)
+            uc = (u0 + u1) / 2
+            K.box('concrete', Frame(*P(uc, vb)[:2], ang - math.pi / 2), -3.5, 3.5, -2.5, 2.5, -4.0, zb - 4.5, SAS_CONC)
+    # the transition from the Yerba Buena tunnel's east portal
+    ex, ey = 6448.0, 5622.0
+    E0 = F.uv(ex, ey)
+    for (u0, u1) in ((-34.0, -9.0), (9.0, 34.0)):
+        pts0 = [P(u0, -40.0, road(-40.0)), P(u1, -40.0, road(-40.0))]
+        uu0, uu1 = E0[0] + (u0 + 34.0) * 0.4 - 11.0, E0[0] + (u1 + 34.0) * 0.4 - 11.0
+        pts1 = [P(uu0, E0[1], 52.0), P(uu1, E0[1], 52.0)]
+        K.face('lm_paint', [pts1[0], pts1[1], pts0[1], pts0[0]], SAS_CONC)

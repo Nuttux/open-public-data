@@ -1163,3 +1163,246 @@ def chase(C):
         K.prism('lm_paint', ro, z, z + 0.35, hexc('#f1f1ee'), top=False)
     K.face('roof_flat', [(x, y, g + H) for x, y in r], hexc('#dcdcd8'))
     K.prism('lm_paint', [(cx + (x - cx) * 0.55, cy + (y - cy) * 0.55) for x, y in r], g + H, g + H + 2.2, hexc('#b9bbbc'))
+
+# ── the Golden Gate Park windmills ───────────────────────────────────────────
+WINDMILLS = {
+    # key: (x, y, tower top, tower base radius, top radius, axle height, sail radius, facing azimuth deg)
+    'dutchmill': (-6285.0, 1163.0, 16.5, 6.4, 4.2, 18.6, 15.5, 270.0),
+    'murphymill': (-6221.0, 556.0, 22.0, 7.4, 4.9, 25.2, 17.4, 262.0),
+}
+SHINGLE = hexc('#6f5840')
+SAIL = hexc('#e8e2d2')
+
+def windmill(C, key):
+    """THE DUTCH WINDMILL (1903) and THE MURPHY WINDMILL (1908) at the ocean
+    end of Golden Gate Park, built to pump the park's irrigation water:
+    octagonal smock towers shingled in wood on a masonry base, a turning cap,
+    four lattice sails facing the sea wind — 102 ft (31 m) across on the
+    Dutch mill, 114 ft (35 m) on the Murphy mill (restored 2011-12)."""
+    x, y, top, r0, r1, axz, sr, az = WINDMILLS[key]
+    g = C.tg(x, y); K = C.K
+    if C.era is not None and C.era < (1903 if key == 'dutchmill' else 1908): return
+    K.lathe('concrete', x, y, g, [(r0 + 0.6, -0.5), (r0 + 0.6, 2.8), (r0 + 0.2, 3.2)], hexc('#8d8577'), n=8, smooth=False, cap=False, ang0=math.pi / 8)
+    K.lathe('lm_matte', x, y, g, [(r0, 3.2), (r1, top)], SHINGLE, n=8, smooth=False, cap=False, ang0=math.pi / 8)
+    # the reefing stage (gallery) a third of the way up
+    zs = 3.2 + (top - 3.2) * 0.3; rs = r0 + (r1 - r0) * 0.3
+    K.lathe('lm_matte', x, y, g, [(rs + 1.8, zs), (rs + 1.8, zs + 0.35), (rs, zs + 0.35)], hexc('#5a4632'), n=8, smooth=False, cap=False, ang0=math.pi / 8)
+    # the cap: a boat-shaped roof, turned to the wind
+    a = math.radians(90.0 - az)                    # azimuth -> math angle
+    fwd = (math.cos(a), math.sin(a))
+    K.lathe('lm_matte', x, y, g, [(r1 + 0.4, top), (r1 + 0.2, top + 1.0), (r1 * 0.55, top + 3.4), (0.3, top + 4.6), (0.0, top + 4.6)], hexc('#4b3a2c'), n=12)
+    hub = (x + fwd[0] * (r1 + 1.2), y + fwd[1] * (r1 + 1.2), g + axz)
+    K.cyl('lm_paint', (x, y, g + axz), hub, 0.45, hexc('#3b3027'), n=8)
+    side = (-fwd[1], fwd[0])
+    for k in range(4):
+        th = math.radians(30.0 + 90.0 * k)
+        d = (side[0] * math.cos(th), side[1] * math.cos(th), math.sin(th))
+        tip = (hub[0] + d[0] * sr, hub[1] + d[1] * sr, hub[2] + d[2] * sr)
+        K.beam('lm_paint', hub, tip, 0.45, 0.45, SAIL, up=(fwd[0], fwd[1], 0))
+        # the lattice: two rails and bars across, on the trailing side
+        pd = (side[0] * math.cos(th + math.pi / 2), side[1] * math.cos(th + math.pi / 2), math.sin(th + math.pi / 2))
+        w = sr * 0.14
+        r_in, r_out = sr * 0.18, sr
+        a0 = (hub[0] + d[0] * r_in + pd[0] * w, hub[1] + d[1] * r_in + pd[1] * w, hub[2] + d[2] * r_in + pd[2] * w)
+        a1 = (hub[0] + d[0] * r_out + pd[0] * w, hub[1] + d[1] * r_out + pd[1] * w, hub[2] + d[2] * r_out + pd[2] * w)
+        K.beam('lm_paint', a0, a1, 0.18, 0.18, SAIL, up=(fwd[0], fwd[1], 0))
+        for j in range(9):
+            t = r_in + (r_out - r_in) * j / 8
+            p0 = (hub[0] + d[0] * t, hub[1] + d[1] * t, hub[2] + d[2] * t)
+            p1 = (p0[0] + pd[0] * w, p0[1] + pd[1] * w, p0[2] + pd[2] * w)
+            K.beam('lm_paint', p0, p1, 0.12, 0.12, SAIL, up=(fwd[0], fwd[1], 0))
+
+def dutchmill(C): windmill(C, 'dutchmill')
+def murphymill(C): windmill(C, 'murphymill')
+
+# ── Mount Davidson cross ─────────────────────────────────────────────────────
+DAVIDSON = (-1476.0, -2411.0)          # OSM node 633021134
+
+def davidson_cross(C):
+    """THE MOUNT DAVIDSON CROSS (1934): 103 ft (31.4 m) of concrete on the
+    city's highest summit (928 ft), among the eucalyptus."""
+    if C.era is not None and C.era < 1934: return
+    x, y = DAVIDSON
+    g = C.tg(x, y); K = C.K
+    fr = Frame(x, y, math.radians(9.0), g)
+    col = hexc('#d4cfc4')
+    K.box('concrete', fr, -2.4, 2.4, -2.4, 2.4, -1.0, 2.0, hexc('#b6b0a4'))
+    K.box('concrete', fr, -1.6, 1.6, -1.6, 1.6, 2.0, 31.4, col)
+    K.box('concrete', fr, -6.2, 6.2, -1.45, 1.45, 20.8, 23.8, col)
+
+# ── Fort Point ───────────────────────────────────────────────────────────────
+def fortpoint(C):
+    """FORT POINT (1853-61): a three-tier brick casemate fort on the point
+    under the Golden Gate Bridge's south arch, a parade ground in the middle,
+    the barbette tier on top with the 1864 lighthouse (a small iron tower)."""
+    if C.era is not None and C.era < 1861: return
+    f = FP().get('fortpoint')
+    if not f: return
+    r = _clean([tuple(p) for p in f['outer'][0]])
+    holes = [_clean([tuple(p) for p in h]) for h in f['inner'] if len(h) > 4]
+    cx, cy = centroid(r)
+    g = max(min(C.tg(*p) for p in r), 1.0)
+    K = C.K
+    BR = hexc('#94634c'); BR_D = hexc('#744a38')
+    H = 15.0
+    K.prism('brick', r, g - 2.0, g + H, BR, top=False)
+    K.face_holes('lm_matte', r, holes, g + H, hexc('#8a8378'))
+    K.prism('brick', r, g + H, g + H + 1.4, BR_D, top=False)
+    for h in holes:
+        K.prism('brick', h[::-1], g, g + H + 1.4, BR, top=False)
+        K.face('path', [(x, y, g + 0.05) for x, y in h], (1, 1, 1, 1))
+    # the casemates: three tiers of arched gun ports on the outer walls
+    n = len(r)
+    a2 = sum(r[i][0] * r[(i + 1) % n][1] - r[(i + 1) % n][0] * r[i][1] for i in range(n))
+    for i in range(n):
+        (x1, y1), (x2, y2) = r[i], r[(i + 1) % n]
+        L = math.hypot(x2 - x1, y2 - y1)
+        if L < 6: continue
+        dx, dy = (x2 - x1) / L, (y2 - y1) / L
+        nx, ny = (dy, -dx) if a2 > 0 else (-dy, dx)
+        m = int(L / 4.2)
+        for k in range(m):
+            t = (k + 0.5) * L / m
+            for z0 in (2.0, 6.6, 11.0):
+                pts = [(x1 + dx * (t - 0.6) + nx * 0.06, y1 + dy * (t - 0.6) + ny * 0.06, g + z0)]
+                pts.append((x1 + dx * (t + 0.6) + nx * 0.06, y1 + dy * (t + 0.6) + ny * 0.06, g + z0))
+                for j in range(5):
+                    th = math.pi * j / 4
+                    pts.append((x1 + dx * (t + 0.6 * math.cos(th)) + nx * 0.06, y1 + dy * (t + 0.6 * math.cos(th)) + ny * 0.06, g + z0 + 1.6 + 0.6 * math.sin(th)))
+                pts = pts[:2] + pts[2:]
+                K.face('lm_steel', [pts[0], pts[1]] + pts[2:], hexc('#1d1a18'))
+    # the lighthouse on the barbette tier
+    lx, ly = -3458.0, 5626.0
+    K.lathe('lm_paint', lx, ly, g + H, [(1.6, 0.0), (0.9, 6.0), (1.1, 6.0), (1.1, 7.8), (0.4, 8.8), (0.0, 8.8)], hexc('#e9e5dc'), n=6, smooth=False)
+
+# ── Union Square: the Dewey Monument ─────────────────────────────────────────
+DEWEY = (2684.0, 3115.0)
+
+def dewey(C):
+    """THE DEWEY MONUMENT (Robert Aitken, 1903) in the middle of Union Square:
+    a 97 ft (29.6 m) granite Corinthian column on a stepped base, the bronze
+    Victory on top holding a trident and a wreath."""
+    if C.era is not None and C.era < 1903: return
+    x, y = DEWEY; g = C.tg(x, y); K = C.K
+    GR = hexc('#d9d4c8')
+    fr = Frame(x, y, math.radians(9.0), g)
+    K.box('concrete', fr, -4.0, 4.0, -4.0, 4.0, -0.5, 1.0, GR)
+    K.box('concrete', fr, -2.6, 2.6, -2.6, 2.6, 1.0, 5.2, GR)
+    K.box('concrete', fr, -2.9, 2.9, -2.9, 2.9, 5.2, 5.8, hexc('#c4bfb3'))
+    K.lathe('concrete', x, y, g, [(1.25, 5.8), (1.05, 24.6), (1.5, 25.8), (1.6, 26.6), (0.9, 26.8)], GR, n=16)
+    K.lathe('lm_steel', x, y, g, [(0.8, 26.8), (0.9, 27.4), (0.45, 28.6), (0.5, 29.2), (0.25, 29.9), (0.0, 29.9)], hexc('#3b4a44'), n=8)
+    K.cyl('lm_steel', (x, y, g + 27.5), (x + 0.3, y, g + 31.0), 0.06, hexc('#3b4a44'), n=4)
+
+# ── the Japanese Tea Garden pagoda ───────────────────────────────────────────
+PAGODA = (-2851.5, 1125.5)             # OSM way 34221099
+
+def tea_pagoda(C):
+    """THE PAGODA OF THE JAPANESE TEA GARDEN (from the 1915 exposition, moved
+    to the garden that year): five tiers, vermilion posts and eaves under dark
+    tiled roofs, about 13 m."""
+    if C.era is not None and C.era < 1915: return
+    x, y = PAGODA; g = C.tg(x, y); K = C.K
+    RED = hexc('#b43a24'); ROOF = hexc('#2f3130')
+    z = 0.0; s = 3.3
+    for k in range(5):
+        h = 2.4 if k == 0 else 1.7
+        fr = Frame(x, y, math.radians(9.0), g)
+        K.box('lm_paint', fr, -s, s, -s, s, z, z + h, RED)
+        e = s + 1.5; zr = z + h
+        pts = [fr.P(-e, -e, zr - 0.35), fr.P(e, -e, zr - 0.35), fr.P(e, e, zr - 0.35), fr.P(-e, e, zr - 0.35)]
+        top = [fr.P(-s * 0.7, -s * 0.7, zr + 0.55), fr.P(s * 0.7, -s * 0.7, zr + 0.55), fr.P(s * 0.7, s * 0.7, zr + 0.55), fr.P(-s * 0.7, s * 0.7, zr + 0.55)]
+        K.loft('roof_tile', [pts, top], ROOF)
+        z = zr + 0.55; s *= 0.86
+    K.cyl('lm_gold', (x, y, g + z), (x, y, g + z + 2.6), 0.18, (1, 1, 1, 1), n=6)
+
+# ── California Academy of Sciences ───────────────────────────────────────────
+def calacademy(C):
+    """CALIFORNIA ACADEMY OF SCIENCES (Renzo Piano, 2008): a glass box under a
+    2.5-acre living roof of native plants that rolls over seven hills — the two
+    largest over the planetarium and the rainforest sphere — pierced by round
+    skylights; a glass-and-photovoltaic canopy runs out round the edge. The
+    outline is OpenStreetMap's (height 11 m)."""
+    if C.era is not None and C.era < 2008: return
+    rs = outer('calacademy')
+    if not rs: return
+    r = _clean(rs[0]); cx, cy = centroid(r); ang = orient(r)
+    fr0 = Frame(cx, cy, ang)
+    u0, u1, v0, v1 = extent(r, fr0)
+    g = min(C.tg(*p) for p in r); K = C.K
+    F = Frame(cx, cy, ang, g)
+    H = 11.0
+    hills = [(-37.0, 2.0, 21.0, 10.5), (37.0, 2.0, 21.0, 10.0), (-68.0, 30.0, 11.0, 4.5), (-68.0, -30.0, 11.0, 4.5),
+             (68.0, 30.0, 11.0, 4.5), (68.0, -30.0, 11.0, 4.5), (0.0, 38.0, 11.0, 4.0)]
+    def zroof(u, v):
+        z = 0.0
+        for (hu, hv, hr, hh) in hills:
+            d2 = ((u - hu) ** 2 + (v - hv) ** 2) / (hr * hr)
+            if d2 < 1.0: z = max(z, hh * (1 - d2) ** 1.4)
+        return H + 0.4 + z
+    K.prism('lm_steel', [(cx + (x - cx) * 0.98, cy + (y - cy) * 0.98) for x, y in r], g - 0.5, g + H, hexc('#2b3137'), top=False)
+    step = 3.0
+    nu = int((u1 - u0) / step); nv = int((v1 - v0) / step)
+    for i in range(nu):
+        for j in range(nv):
+            ua, ub = u0 + i * (u1 - u0) / nu, u0 + (i + 1) * (u1 - u0) / nu
+            va, vb = v0 + j * (v1 - v0) / nv, v0 + (j + 1) * (v1 - v0) / nv
+            um, vm = (ua + ub) / 2, (va + vb) / 2
+            if abs(um) < 12 and abs(vm) < 16:                                    # the piazza's glass roof
+                K.face('lm_glasshouse', [F.P(ua, va, H + 0.5), F.P(ub, va, H + 0.5), F.P(ub, vb, H + 0.5), F.P(ua, vb, H + 0.5)], (1, 1, 1, 1))
+                continue
+            K.face('lawn', [F.P(ua, va, zroof(ua, va)), F.P(ub, va, zroof(ub, va)), F.P(ub, vb, zroof(ub, vb)), F.P(ua, vb, zroof(ua, vb))], (1, 1, 1, 1))
+    # the round skylights on the hills
+    rnd = np.random.default_rng(3)
+    for (hu, hv, hr, hh) in hills:
+        for k in range(int(hr * 1.2)):
+            a = rnd.uniform(0, 2 * math.pi); rr = hr * math.sqrt(rnd.uniform(0.02, 0.7))
+            u, v = hu + rr * math.cos(a), hv + rr * math.sin(a)
+            p = F.P(u, v, zroof(u, v) + 0.25)
+            K.disc('lm_paint', p[0], p[1], p[2], 1.0, hexc('#d8dbdc'), n=10)
+            K.disc('lm_steel', p[0], p[1], p[2] + 0.03, 0.72, hexc('#1c2228'), n=10)
+    # the canopy all round
+    ro = [(cx + (x - cx) * 1.06, cy + (y - cy) * 1.06) for x, y in r]
+    n = len(r)
+    for i in range(n):
+        j = (i + 1) % n
+        K.face('lm_paint', [(r[i][0], r[i][1], g + H + 0.35), (r[j][0], r[j][1], g + H + 0.35), (ro[j][0], ro[j][1], g + H + 0.35), (ro[i][0], ro[i][1], g + H + 0.35)], hexc('#c9cdd0'))
+        K.face('lm_paint', [(ro[j][0], ro[j][1], g + H + 0.35), (ro[i][0], ro[i][1], g + H + 0.35), (ro[i][0], ro[i][1], g + H - 0.3), (ro[j][0], ro[j][1], g + H - 0.3)], hexc('#9ea3a7'))
+
+# ── Lombard Street, the crooked block ────────────────────────────────────────
+def lombard(C):
+    """LOMBARD STREET between Hyde and Leavenworth (1922): eight hairpin turns
+    of red brick down a 27 % slope, the switchbacks planted with hedges and
+    hydrangeas, stairs down both sides. The road is OpenStreetMap's centreline
+    (157 nodes); it lies on the street surface the scene already has."""
+    if C.era is not None and C.era < 1922: return
+    rs = outer('lombard')
+    if not rs: return
+    cl = rs[0]
+    K = C.K; sz = getattr(C, 'street_z', C.tg)
+    a, b = cl[0], cl[-1]
+    L = math.hypot(b[0] - a[0], b[1] - a[1]); d = ((b[0] - a[0]) / L, (b[1] - a[1]) / L); nrm = (-d[1], d[0])
+    HALF = 9.6
+    # the garden over the whole right of way, in cells, hedge and bloom
+    n = int(L / 2.0); m = int(2 * HALF / 2.0)
+    rnd = np.random.default_rng(5)
+    for i in range(n):
+        for j in range(m):
+            t0, t1 = L * i / n, L * (i + 1) / n; s0, s1 = -HALF + 2 * HALF * j / m, -HALF + 2 * HALF * (j + 1) / m
+            pts = []
+            for (t, s_) in ((t0, s0), (t1, s0), (t1, s1), (t0, s1)):
+                x, y = a[0] + d[0] * t + nrm[0] * s_, a[1] + d[1] * t + nrm[1] * s_
+                pts.append((x, y, sz(x, y) + (0.08 if abs(s_) > HALF - 2.4 else 0.45)))
+            edge = abs((s0 + s1) / 2) > HALF - 2.4
+            col = hexc('#a7a39a') if edge else (hexc('#c2477a') if rnd.random() < 0.18 else hexc('#b83a4e') if rnd.random() < 0.08 else hexc('#2f4a26') if rnd.random() < 0.6 else hexc('#3d5a2c'))
+            K.face('lm_matte', pts, col)
+    # the brick road along the switchbacks, a curb each side
+    pts = [tuple(p) for p in cl]
+    for k in range(len(pts) - 1):
+        (x1, y1), (x2, y2) = pts[k], pts[k + 1]
+        Ls = math.hypot(x2 - x1, y2 - y1)
+        if Ls < 1e-3: continue
+        ox, oy = -(y2 - y1) / Ls * 2.9, (x2 - x1) / Ls * 2.9
+        z1, z2 = sz(x1, y1) + 0.5, sz(x2, y2) + 0.5
+        K.face('lm_matte', [(x1 - ox, y1 - oy, z1), (x2 - ox, y2 - oy, z2), (x2 + ox, y2 + oy, z2), (x1 + ox, y1 + oy, z1)], hexc('#8c3a2b'))
+        for sgn in (-1, 1):
+            K.face('lm_matte', [(x1 + sgn * ox, y1 + sgn * oy, z1), (x2 + sgn * ox, y2 + sgn * oy, z2), (x2 + sgn * ox * 1.08, y2 + sgn * oy * 1.08, z2 + 0.15), (x1 + sgn * ox * 1.08, y1 + sgn * oy * 1.08, z1 + 0.15)], hexc('#b3ada2'))
