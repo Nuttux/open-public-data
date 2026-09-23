@@ -27,7 +27,7 @@ from mathutils.geometry import tessellate_polygon
 # or concrete) · storefront glass · awning
 MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'door',
         'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck',
-        'equip', 'solar')
+        'equip', 'solar', 'curtain_wall')
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
@@ -43,6 +43,10 @@ VIC = [((0.46, 0.55, 0.42), (0.93, 0.90, 0.80), (0.45, 0.12, 0.14)),
        ((0.80, 0.84, 0.70), (0.98, 0.97, 0.93), (0.30, 0.30, 0.34))]
 STUCCO = [(0.95, 0.93, 0.88), (0.94, 0.86, 0.66), (0.90, 0.80, 0.66), (0.80, 0.86, 0.78), (0.94, 0.80, 0.76),
           (0.76, 0.84, 0.92), (0.96, 0.95, 0.93), (0.86, 0.74, 0.62), (0.93, 0.89, 0.72), (0.98, 0.97, 0.95)]
+STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86, 0.82), (0.52, 0.50, 0.48), (0.80, 0.74, 0.64)]
+# curtain-wall glass (display colour, and in alpha how mirror-like the coating is)
+GLASS_TINTS = [(0.28, 0.40, 0.44, 0.15), (0.30, 0.32, 0.35, 0.1), (0.40, 0.33, 0.25, 0.35), (0.66, 0.68, 0.70, 0.75),
+               (0.15, 0.17, 0.19, 0.25), (0.26, 0.36, 0.50, 0.3), (0.36, 0.46, 0.44, 0.2)]
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
 BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66)]
 
@@ -86,7 +90,7 @@ LANDMARK = {
     58527: dict(paint=((0.95, 0.80, 0.68), (0.98, 0.96, 0.92), (0.12, 0.36, 0.42))),
     58525: dict(paint=((0.64, 0.75, 0.82), (0.98, 0.97, 0.95), (0.76, 0.58, 0.22))),
 }
-for _g in LANDMARK: LANDMARK[_g].update(sub='queen', roof='gable', pitch=52, bay='slant', bay_left=True, turret=False)
+for _g in LANDMARK: LANDMARK[_g].update(sub='queen', roof='gable', pitch=52, bay='slant', bay_left=True, turret=False, face=(-1.0, 0.0))
 
 
 def era_paint(rng, style):
@@ -281,14 +285,21 @@ def building(b, ground, out):
     style = style_of(b)
     top = zg + max(3.0, b['h'])
     storeys = b['st'] or max(1, round(b['h'] / 3.4))
+    # a storey count its height cannot hold (a 70 m tower "of 2 storeys"):
+    # the record's height wins, at a storey of 3.9 m (3.6 m for a house)
+    if b['h'] / storeys > 5.5: storeys = max(storeys, round(b['h'] / (3.9 if style == 'block' else 3.6)))
     walls = [Wall(ring[i], ring[(i + 1) % n], out) for i in range(n)]
     fronts = [i for i in range(n) if roles[i] == 1 and walls[i].L > 2.0]
     if not fronts:                         # no front measured: the longest non-party edge
         cand = [i for i in range(n) if roles[i] != 2] or list(range(n))
         fronts = [max(cand, key=lambda i: walls[i].L)]
     f0 = max(fronts, key=lambda i: walls[i].L)
-
     LM = LANDMARK.get(b['gid'], {})
+    if LM.get('face'):                      # a landmark row faces where it is known to face
+        fx, fy = LM['face']
+        f0 = max((i for i in range(n) if walls[i].L > 2.0), key=lambda i: walls[i].n.x * fx + walls[i].n.y * fy)
+        fronts = [f0]; roles = [1 if i == f0 else (2 if roles[i] == 1 else roles[i]) for i in range(n)]
+
     sub = substyle(b, style, rng)
     if LM: style, sub = 'vic', LM['sub']
     corner = sum(1 for i in range(n) if roles[i] in (1, 3) and walls[i].L > 3.0) >= 2
@@ -330,6 +341,10 @@ def building(b, ground, out):
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
     if LM and ERA is None: body, trim, accent = LM['paint']
+    # paint that must still read at a distance: the painted styles a little
+    # richer, more so at the city's scale where a front is a few pixels
+    if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
+        body = saturate(body, 1.18 if LOD == 0 else 1.5)
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
     if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
     if style == 'block':
@@ -352,8 +367,22 @@ def building(b, ground, out):
     # the pre-war apartment house: bays stacked up the front, a fire escape
     yr_ = b['year'] or 1950
     if sub == 'apartment' and 1900 <= yr_ < 1945 and storeys >= 3 and rng.random() < 0.88: bay_kind = rng.choice(('square', 'slant', 'square'))
+    # the office tower's skin, by its decade: punched stone (pre-war), ribbon
+    # windows, glass between piers, or a curtain wall of tinted glass
+    fsys = None; gcol = None
+    if style == 'block' and (sub == 'tower' or (sub == 'commercial' and b['h'] > 18)):
+        trng = random.Random(b['gid'] * 131 + 5); u_ = trng.random(); yr = b['year'] or 1960
+        if yr < 1935: fsys = None
+        elif yr < 1965: fsys = 'ribbon' if u_ < 0.55 else None
+        elif yr < 1990: fsys = 'piers' if u_ < 0.4 else ('ribbon' if u_ < 0.7 else 'curtain')
+        else: fsys = 'curtain' if u_ < 0.7 else 'piers'
+        if fsys:
+            wall_mat = 'concrete'; body = trng.choice(STONE); gcol = trng.choice(GLASS_TINTS)
+        elif wall_mat == 'brick' and trng.random() < 0.5:
+            wall_mat = 'concrete'; body = trng.choice(STONE)
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
-               accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'))
+               accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
+               fsys=fsys, gcol=gcol)
 
     # ── walls ──
     for i, w in enumerate(walls):
@@ -378,7 +407,7 @@ def building(b, ground, out):
             if max(tops) > eave + 0.05:
                 gmat = 'shingle' if (i == f0 and style == 'vic') else wall_mat
                 gp = [w.P(0.0, eave), w.P(w.L, eave)] + [w.P(u, t) for u, t in list(zip(pts, tops))[::-1]]
-                out.poly(gmat, gp, accent if gmat == 'shingle' else body)
+                out.poly(gmat, gp, (mix(body, accent, 0.18) if LM else accent) if gmat == 'shingle' else body)
                 if i == f0 and style == 'vic':
                     w.box('trim', -0.25, w.L + 0.25, eave - 0.1, eave + 0.18, 0.0, 0.35, trim)
                     apex = max(tops); um = pts[1] if len(pts) == 3 else w.L / 2
@@ -556,16 +585,17 @@ def flat_roof(b, rng, ax_u):
     which the roof_flat material decodes"""
     t = b.get('paint', 16) / 31.0
     u = rng.random()
-    if t >= 0.78: kind = 2 if u < 0.7 else 3
-    elif t >= 0.55: kind = 3 if u < 0.4 else 1
-    elif t >= 0.30: kind = 1 if u < 0.6 else 0
-    else: kind = 0 if u < 0.5 else 1
-    k = 0.80 + 0.35 * t + rng.uniform(-0.05, 0.05)
-    base = {0: rng.choice(((0.50, 0.48, 0.45), (0.46, 0.46, 0.46), (0.55, 0.50, 0.44))),
-            1: rng.choice(((0.60, 0.60, 0.58), (0.52, 0.56, 0.52), (0.62, 0.58, 0.52), (0.50, 0.52, 0.56))),
-            2: rng.choice(((0.93, 0.93, 0.91), (0.88, 0.89, 0.88), (0.90, 0.88, 0.84))),
-            3: rng.choice(((0.80, 0.81, 0.82), (0.74, 0.75, 0.77)))}[kind]
-    if kind >= 2: k = 0.92 + 0.08 * t
+    # white only for the lightest; most roofs are the greys of cap sheet and gravel
+    if t >= 0.85: kind = 2 if u < 0.45 else (3 if u < 0.7 else 1)
+    elif t >= 0.60: kind = 1 if u < 0.55 else (3 if u < 0.75 else 0)
+    elif t >= 0.30: kind = 1 if u < 0.5 else 0
+    else: kind = 0 if u < 0.6 else 1
+    k = 0.70 + 0.35 * t + rng.uniform(-0.06, 0.06)
+    base = {0: rng.choice(((0.50, 0.48, 0.45), (0.44, 0.44, 0.44), (0.55, 0.50, 0.44), (0.38, 0.37, 0.36))),
+            1: rng.choice(((0.60, 0.60, 0.58), (0.52, 0.56, 0.52), (0.62, 0.58, 0.52), (0.50, 0.52, 0.56), (0.45, 0.45, 0.46), (0.58, 0.52, 0.46))),
+            2: rng.choice(((0.86, 0.86, 0.84), (0.80, 0.81, 0.80), (0.84, 0.82, 0.78))),
+            3: rng.choice(((0.72, 0.73, 0.74), (0.66, 0.67, 0.69)))}[kind]
+    if kind >= 2: k = 0.90 + 0.08 * t
     turn = (math.degrees(math.atan2(ax_u.y, ax_u.x)) % 90.0) / 90.0
     return (*[min(1.0, c * k) for c in base], (kind + 0.1 + 0.8 * turn) / 4.0)
 
@@ -610,7 +640,24 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
     house = style in ('vic', 'stucco', 'midcentury')
     big = area > 120 or storeys >= 4 or style == 'block'
     # the stair (and lift) penthouse, in the building's own wall and paint
-    if big and area > 90 and rng.random() < 0.8:
+    if storeys >= 10 and area > 250:
+        # a tower's mechanical penthouse: a good share of the roof, louvred
+        base_ = None
+        for tier in range(2 if storeys >= 20 else 1):
+            if tier == 0:
+                f_ = 0.55 * rng.uniform(0.8, 1.1); wu, wv = (umax - umin) * f_, (vmax - vmin) * f_
+                s_ = spot(wu, wv, tries=40, pad=0.8)
+                if not s_: break
+                z0 = deck; h_ = rng.uniform(4.5, 7.0); base_ = (s_, wu, wv, h_)
+            else:                                   # a smaller tier on top of the first
+                (b0, bwu, bwv, bh) = base_; wu, wv = bwu * 0.55, bwv * 0.55
+                s_ = (b0[0] + (bwu - wu) * rng.uniform(0.2, 0.8), b0[1] + (bwv - wv) * rng.uniform(0.2, 0.8))
+                z0 = deck + bh; h_ = rng.uniform(3.0, 4.5)
+            box(wall_mat or 'concrete', s_[0], s_[1], wu, wv, z0, h_, body)
+            box('metal', s_[0] - 0.03, s_[1] - 0.03, wu + 0.06, wv + 0.06, z0 + h_ * 0.35, h_ * 0.4, (0.22, 0.23, 0.24))
+            out.poly('roof_flat', [at(s_[0] + 0.05, s_[1] + 0.05, z0 + h_ + 0.02), at(s_[0] + wu - 0.05, s_[1] + 0.05, z0 + h_ + 0.02),
+                                   at(s_[0] + wu - 0.05, s_[1] + wv - 0.05, z0 + h_ + 0.02), at(s_[0] + 0.05, s_[1] + wv - 0.05, z0 + h_ + 0.02)], rc)
+    elif big and area > 90 and rng.random() < 0.8:
         wu, wv = rng.uniform(2.4, 3.6), rng.uniform(2.2, 3.2)
         if storeys >= 6: wu, wv = wu * 1.3, wv * 1.4
         s_ = spot(wu, wv)
@@ -704,6 +751,8 @@ def facade(w, is_front, b, rng, c):
     returns the openings (u0, u1, z0, z1) cut through the wall"""
     holes = []; L = w.L
     style, sub = c['style'], c['sub']
+    if c.get('fsys'):
+        tower_skin(w, is_front, b, rng, c); return holes
     first, fh, nfl, eave, zg = c['first'], c['fh'], c['nfl'], c['eave'], c['zg']
     trim, body, accent = c['trim'], c['body'], c['accent']
     # window proportions by era: tall Victorian sashes, squarer later
@@ -833,6 +882,50 @@ def facade(w, is_front, b, rng, c):
     return holes
 
 
+def tower_skin(w, is_front, b, rng, c):
+    """the skin of an office building on one wall: 'ribbon' — a band of
+    glass on every floor between stone spandrels; 'piers' — glass strips
+    between projecting stone piers, floor lines across; 'curtain' — tinted
+    glass the whole height, mullions and floor lines over it. The lobby at
+    the street is glass in every case."""
+    L = w.L; zg, first, fh, nfl, eave = c['zg'], c['first'], c['fh'], c['nfl'], c['eave']
+    body, gcol, fsys, wm = c['body'], c['gcol'], c['fsys'], c['wall_mat']
+    dark = (0.10, 0.10, 0.11)
+    if L < 1.5: return
+    # the lobby
+    w.rect('shopglass', 0.3, L - 0.3, zg + 0.2, first + fh - 0.4, 0.03, (1, 1, 1))
+    top = eave - 0.6
+    if fsys == 'ribbon':
+        for f in range(1, nfl):
+            z0 = first + f * fh + 0.8; z1 = first + (f + 1) * fh - 0.3
+            if z1 > top: break
+            w.rect('curtain_wall', 0.25, L - 0.25, z0, z1, 0.03, gcol)
+            if LOD < 2:
+                for uu in frange(0.25, L - 0.25, 1.5): w.box('metal', uu - 0.03, uu + 0.03, z0, z1, 0.03, 0.08, dark)
+    elif fsys == 'piers':
+        s_ = L / max(1, round(L / rng.choice((1.5, 2.2, 3.0)))); pw = min(0.5, s_ * 0.3)
+        k = 0; uu = 0.0
+        while uu < L + 1e-3:
+            w.box(wm, max(0.0, uu - pw / 2), min(L, uu + pw / 2), first + fh - 0.4, top, 0.0, 0.32, body)
+            if uu + s_ <= L + 1e-3:
+                w.rect('curtain_wall', uu + pw / 2, uu + s_ - pw / 2, first + fh - 0.4, top, 0.02, gcol)
+            uu += s_
+        if LOD < 2:
+            for f in range(1, nfl):
+                z = first + f * fh
+                if z > top: break
+                w.box(wm, 0.0, L, z - 0.3, z + 0.35, 0.0, 0.14, body)
+    else:  # curtain
+        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, gcol)
+        step = 1.5 if LOD < 2 else 3.0
+        for uu in frange(0.0, L, step): w.box('metal', uu - 0.035, uu + 0.035, first + fh - 0.4, top, 0.02, 0.12, dark)
+        for f in range(1, nfl + 1):
+            z = first + f * fh
+            if z > top: break
+            w.box('metal', 0.0, L, z - 0.05, z + 0.05, 0.02, 0.10, dark)
+        w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.25, body)          # the crown band
+
+
 def fire_escape(w, u0, u1, first, fh, nfl, eave, rng):
     """black steel platforms at each floor from the second, rails, and the
     stairs running down between them"""
@@ -868,6 +961,12 @@ def cut(spans, hu, pad):
 
 
 def mix(a, b, t): return tuple(x * (1 - t) + y * t for x, y in zip(a, b))
+
+
+def saturate(c, k):
+    import colorsys
+    h, l_, s_ = colorsys.rgb_to_hls(*c[:3])
+    return colorsys.hls_to_rgb(h, l_, min(1.0, s_ * k))
 
 
 def bay(w, u0, u1, z0, z1, c, rng, kind):

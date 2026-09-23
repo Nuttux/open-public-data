@@ -9,7 +9,8 @@ env: same as hq_scene.py, plus
   CROPS=name:x0,y0,x1,y1;…  crops in PIXELS of the W x H frame (y from the top)
 """
 import os, sys, time
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.environ.get('HQ_DIR') or os.path.dirname(os.path.abspath(__file__))
+if os.environ.get('HQ_DIR'): sys.path.insert(0, HERE)          # a snapshot of the scripts, for a 'before'
 src = open(os.path.join(HERE, 'hq_scene.py')).read()
 src = src.replace("t1 = time.time(); bpy.ops.render.render(write_still=True)", "t1 = time.time()")
 src = src.replace("if E('SAVE_BLEND'):", "if False:")
@@ -22,7 +23,7 @@ if ov and ov != '0':
     sc.render.use_border = False; sc.render.resolution_x, sc.render.resolution_y = ow, oh
     sc.render.filepath = f'{OUT}_ov.png'; t = time.time(); bpy.ops.render.render(write_still=True)
     log(f'overview {ow}x{oh} {time.time() - t:.1f}s')
-for spec in [c for c in E('CROPS', '').split(';') if c]:
+for spec in [c for c in E('CROPS', '').split(';') if c.strip()]:
     name, box = spec.split(':'); x0, y0, x1, y1 = [float(v) for v in box.split(',')]
     sc.render.resolution_x, sc.render.resolution_y = W, H
     sc.render.use_border = True; sc.render.use_crop_to_border = True

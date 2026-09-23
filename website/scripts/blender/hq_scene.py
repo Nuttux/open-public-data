@@ -286,8 +286,8 @@ def roof_flat_mat():
     dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.ramp(b.noise(0.07, 4.0), 0.0, 0.3, 0.45, 0.8), light))
     c = b.mix(b.math('MINIMUM', dirt, 0.85), c, (0.10, 0.09, 0.075), 'MULTIPLY')
     b.put(b.pr.inputs['Base Color'], c)
-    b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.9, b.math('MULTIPLY', eq(3), 0.45)))
-    b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', eq(3), 0.55))
+    b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.9, b.math('MULTIPLY', eq(3), 0.35)))
+    b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', eq(3), 0.35))
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(b.mix(eq(0), bit, grav)), 0.4, 0.02))
     return b.m
 M['roof_flat'] = roof_flat_mat()
@@ -301,6 +301,24 @@ def solar_mat():
     b.put(pr.inputs['Base Color'], b.mix(b.math('LESS_THAN', g_, 0.03), (0.010, 0.014, 0.032), (0.06, 0.07, 0.09)))
     return b.m
 M['solar'] = solar_mat()
+def curtain_wall_mat():
+    """tinted curtain-wall glass: the tint from the face colour, how mirror-
+    like the coating is from its alpha; every panel (1.5 m by a floor) a
+    hair out of plane, so the reflections break panel by panel as they do
+    on a real tower"""
+    b = NB('curtain_wall'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
+    b.put(b.pr.inputs['Base Color'], at.outputs['Color'])
+    b.put(b.pr.inputs['Metallic'], at.outputs['Alpha']); b.pr.inputs['Roughness'].default_value = 0.035
+    b.pr.inputs['Specular IOR Level'].default_value = 0.8; b.pr.inputs['Coat Weight'].default_value = 0.3
+    snap = b.n('ShaderNodeVectorMath', operation='SNAP'); b.put(snap.inputs[0], b.pos); snap.inputs[1].default_value = (1.5, 1.5, 3.9)
+    wn = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wn.inputs['Vector'], snap.outputs[0])
+    off = b.n('ShaderNodeVectorMath', operation='SUBTRACT'); b.put(off.inputs[0], wn.outputs['Color']); off.inputs[1].default_value = (0.5, 0.5, 0.5)
+    sc_ = b.n('ShaderNodeVectorMath', operation='SCALE'); b.put(sc_.inputs[0], off.outputs[0]); sc_.inputs['Scale'].default_value = 0.035
+    geo = b.n('ShaderNodeNewGeometry'); ad = b.n('ShaderNodeVectorMath', operation='ADD'); b.put(ad.inputs[0], geo.outputs['Normal']); b.put(ad.inputs[1], sc_.outputs[0])
+    nz = b.n('ShaderNodeVectorMath', operation='NORMALIZE'); b.put(nz.inputs[0], ad.outputs[0])
+    b.put(b.pr.inputs['Normal'], nz.outputs[0])
+    return b.m
+M['curtain_wall'] = curtain_wall_mat()
 def weather(m, k=1.0, streaks=1.0):
     """weathering over a wall's paint: rain streaks down the face, grime in
     the corners and under every ledge (ambient occlusion), a slow unevenness
@@ -481,9 +499,9 @@ for i, (a, b, outv) in enumerate(SE):
     L_ = (b - a).length; s0 = _r.uniform(0, 1.5)
     for j, (u_, v_) in enumerate(((s0, 0.0), (s0 + L_, 0.0), (s0 + L_, 3.0), (s0, 3.0))): _uv.data[i * 8 + j].uv = (u_, v_)
     for j, (u_, v_) in enumerate(((s0, -0.16), (s0 + L_, -0.16), (s0 + L_, 0.0), (s0, 0.0))): _uv.data[i * 8 + 4 + j].uv = (u_, v_)
-    # painted curbs belong to the short runs by the corners, rarely mid-block
-    q = _r.random() * (1.0 if L_ < 14 else 6.0)
-    col = (0.60, 0.07, 0.05, 1.0) if q < 0.28 else (0.85, 0.62, 0.08, 1.0) if q < 0.36 else (0.9, 0.9, 0.88, 1.0) if q < 0.40 else (1, 1, 1, 0.0)
+    # (painted curbs: the street edges come in arbitrary pieces, so a painted
+    # run could not be kept to the few metres by a corner — left unpainted)
+    col = (1, 1, 1, 0.0)
     _cc += [*col, *col]
 _sc.data.foreach_set('color', _cc)
 me.update()
@@ -494,6 +512,7 @@ log('buildings: reading records')
 HG = city_data.hero_gids()
 ERA = int(E('ERA')) if E('ERA') else None
 G.ERA = ERA
+G.LOD = int(E('LOD', 0))
 # the city as it stood: a building shows from its recorded year (a record with
 # no year is taken as standing; what was demolished before today is not in
 # the record at all, so an old checkpoint is today's survivors, not all it had)
@@ -942,6 +961,19 @@ def sea():
         ob = bpy.data.objects.new('sea', me); sc.collection.objects.link(ob); me.materials.append(mat_)
     log('sea')
 sea()
+
+# ── LANDMARKS, TERRAIN AND WATER DETAIL (landmarks_hq.py, owned by the
+#    landmarks agent): called once the scene stands, before camera and light.
+#    build(bpy, scene, mats, ground, box, scene_json, log, era) may add objects,
+#    replace the engine's crude 'landmarks' mesh piece by piece, refine the
+#    terrain, the shore and the water. Missing module = nothing happens.
+if os.environ.get('LANDMARKS', '1') == '1':
+    try:
+        import landmarks_hq
+    except ModuleNotFoundError:
+        landmarks_hq = None
+    if landmarks_hq is not None:
+        landmarks_hq.build(bpy, sc, M, ground, (bx0, by0, bx1, by1), d, log, (int(E('ERA')) if E('ERA') else None))
 
 # ── camera and light ─────────────────────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
