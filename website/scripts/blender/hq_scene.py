@@ -166,8 +166,46 @@ M['shopglass'] = glass_mat()
 M['awning'] = simple('awning', None, rough=0.7, attr=True)
 M['curtain'] = simple('curtain', (0.62, 0.58, 0.50), rough=0.9)
 M['asphalt'] = ph_mat('asphalt_02', 5.0, value=0.55)
-if E('ERA') and int(E('ERA')) < 1950:
-    M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
+if E('ERA'):
+    # the carriageway of the period (era.pavement: basalt block in the old
+    # core before 1910, graded earth beyond it, early concrete to 1950)
+    import era as _EA
+    _pv = _EA.pavement(int(E('ERA')), (d['box'][0] + d['box'][2]) / 2, (d['box'][1] + d['box'][3]) / 2)
+    if _pv == 'basalt': M['asphalt'] = ph_mat('cobblestone_floor_05', 2.2, value=0.62, name='basalt')
+    elif _pv == 'dirt': M['asphalt'] = ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')
+    elif _pv == 'oldpave': M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave')
+# open ground of the period: dune sand, and ash for the burned city of 1906
+M['sand'] = ph_mat('aerial_sand', 24.0, name='sand', value=1.0)
+# 1906: ash and scorched brick (burned_ground_01, CC0)
+M['ash'] = ph_mat('burned_ground_01', 3.0, tint=True, name='ash', tint_k=0.6)
+M['soot'] = ph_mat('red_brick_plaster_patch_02', 3.0, tint=True, name='soot', tint_k=1.0)
+def sand_look(m):
+    """dune sand: Ocean Beach's pale buff, wind ripples a few centimetres
+    apart across the wind, broad tonal drift so a dune field is not a tile"""
+    nt = m.node_tree; pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    src_ = pr.inputs['Base Color'].links[0].from_socket
+    geo = nt.nodes.new('ShaderNodeNewGeometry')
+    nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 0.02; nz.inputs['Detail'].default_value = 5
+    nt.links.new(geo.outputs['Position'], nz.inputs['Vector'])
+    # the scan's own grain as a grey detail map; the colour is set below
+    hs = nt.nodes.new('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = 0.0; hs.inputs['Value'].default_value = 1.6
+    nt.links.new(src_, hs.inputs['Color'])
+    mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MULTIPLY'; mx.inputs[0].default_value = 1.0
+    nt.links.new(hs.outputs['Color'], mx.inputs[6])
+    rp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(nz.outputs['Fac'], rp.inputs[0])
+    # linear albedo of dry dune sand, Ocean Beach buff (display ~0.50/0.43/0.33 .. 0.62/0.54/0.42)
+    rp.color_ramp.elements[0].color = (0.21, 0.16, 0.09, 1); rp.color_ramp.elements[1].color = (0.34, 0.26, 0.15, 1)
+    nt.links.new(rp.outputs[0], mx.inputs[7]); nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
+    wv = nt.nodes.new('ShaderNodeTexWave'); wv.wave_type = 'BANDS'; wv.inputs['Scale'].default_value = 9.0
+    wv.inputs['Distortion'].default_value = 6.0; wv.inputs['Detail'].default_value = 3
+    mp_ = nt.nodes.new('ShaderNodeMapping'); mp_.inputs['Rotation'].default_value = (0, 0, math.radians(-20)); mp_.inputs['Scale'].default_value = (0.25, 0.25, 0.25)
+    nt.links.new(geo.outputs['Position'], mp_.inputs[0]); nt.links.new(mp_.outputs[0], wv.inputs['Vector'])
+    bm_ = nt.nodes.new('ShaderNodeBump'); bm_.inputs['Strength'].default_value = 0.25; bm_.inputs['Distance'].default_value = 0.02
+    nt.links.new(wv.outputs['Fac'], bm_.inputs['Height'])
+    if pr.inputs['Normal'].links: nt.links.new(pr.inputs['Normal'].links[0].from_socket, bm_.inputs['Normal'])
+    nt.links.new(bm_.outputs[0], pr.inputs['Normal'])
+    pr.inputs['Roughness'].default_value = 0.9
+sand_look(M['sand'])
 M['sidewalk'] = ph_mat('concrete_pavement', 3.6, value=0.95)
 M['lawn'] = ph_mat('leafy_grass', 3.0, name='lawn')
 M['paint'] = ph_mat('asphalt_02', 5.0, name='paint')
@@ -200,19 +238,60 @@ TP = array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos']))
 for i in range(2, len(TP), 3): TP[i] *= 0.5                     # the export's ground is at zex 2
+if E('ERA'):
+    import era as _EA0
+    for i in range(0, len(TP), 3):
+        # made land not yet made (era.MADE_LAND): the shoal under the water
+        if _EA0.water_then(TP[i], TP[i+1], int(E('ERA'))): TP[i+2] = -4.0
 terrain = mesh_from('terrain', TP, M['lawn'], smooth=True, weld=0.05)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
     hit = bvh_t.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
     return hit[0].z if hit[0] else 0.0
 
+# ── the year shown: what stood, and the ground where nothing stood yet ──────
+import era as EA
+ERA = int(E('ERA')) if E('ERA') else None
+G.ERA = ERA
+log('buildings: reading records')
+HG = city_data.hero_gids()
+# the city as it stood: a building shows from its recorded year (a record with
+# no year is taken as standing); inside the 1906 burned district, before the
+# fire, today's footprints carry the lost city's stand-ins (gen_buildings)
+recs = [b for b in (EA.place_record(b, ERA) for b in city_data.buildings(bx0, by0, bx1, by1) if b['gid'] not in HG) if b]
+OPEN = None; SAND = None; OPAD = 80.0
+if ERA is not None:
+    _OL = EA.OpenLand(recs, (bx0, by0, bx1, by1), float(E('OPEN_RES', 2.0)), ground, OPAD)
+    OPEN, SAND, ox0, oy0 = _OL.open, _OL.sand, _OL.x0, _OL.y0
+    def open_at(x, y, grid=None): return _OL.at(x, y, grid)
+    log('open land', round(sum(OPEN) / len(OPEN), 3), 'sand', round(sum(SAND) / len(SAND), 3))
+else:
+    def open_at(x, y, grid=None): return 0.0
+
+# ── which street surfaces stood in the year shown (era.StreetGate) ────────
+if ERA is not None:
+    _SG = EA.StreetGate((bx0, by0, bx1, by1), ERA, open_at, OPAD)
+    street_stands = _SG.stands
+else:
+    def street_stands(x, y): return True
+
 # ── streets, markings, sidewalks ─────────────────────────────────────────────
 log('streets')
 SP, MP, DP = array.array('f'), array.array('f'), array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
-    if m['layer'] == 'streets': SP.extend(f32(m['pos']))
-    if m['layer'] == 'street-markings':
+    if m['layer'] == 'streets':
+        p_ = f32(m['pos'])
+        if ERA is not None:
+            q_ = array.array('f'); nd_ = 0
+            for t in range(len(p_) // 9):
+                a = t * 9
+                if street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
+                else: nd_ += 1
+            p_ = q_; log('street triangles not yet built', nd_)
+        SP.extend(p_)
+    if m['layer'] == 'street-markings' and (ERA is None or EA.P('marks', ERA) >= 0.5):
+        # era.TABLE `marks`: today's paint, from 1950 on
         p = f32(m['pos']); ar = []
         for t in range(0, len(p) // 9, max(1, len(p) // 9 // 300)):
             a = t * 9; ar.append(abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2)
@@ -261,6 +340,7 @@ SE = street_edges()
 Ps, Fs = [], []
 for a, b, outv in SE:
     up = Vector((0, 0, 0.15))
+    if open_at((a.x + b.x) / 2 + outv.x * 1.5, (a.y + b.y) / 2 + outv.y * 1.5) > 0.5: continue   # no kerb along open land
     # the far edge of the pavement follows the ground, never floats over it
     fa, fb = a + outv * 3.0, b + outv * 3.0
     fa.z = max(ground(fa.x, fa.y) + 0.06, a.z + 0.15 - 0.6); fb.z = max(ground(fb.x, fb.y) + 0.06, b.z + 0.15 - 0.6)
@@ -270,18 +350,15 @@ me = bpy.data.meshes.new('sidewalks'); me.from_pydata([tuple(p) for p in Ps], []
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 
 # ── buildings ────────────────────────────────────────────────────────────────
-log('buildings: reading records')
-HG = city_data.hero_gids()
-ERA = int(E('ERA')) if E('ERA') else None
-G.ERA = ERA
-# the city as it stood: a building shows from its recorded year (a record with
-# no year is taken as standing; what was demolished before today is not in
-# the record at all, so an old checkpoint is today's survivors, not all it had)
-recs = [b for b in city_data.buildings(bx0, by0, bx1, by1) if b['gid'] not in HG and (ERA is None or (b['year'] or 0) <= ERA)]
 # the landmarks themselves: the engine's own hand-built forms, in their colours
 _HP, _HC = array.array('f'), array.array('f')
 for m in d['meshes']:
-    if m['layer'] == 'heroes' and not m.get('instanced'): _HP.extend(f32(m['pos'])); _HC.extend(f32(m['col']))
+    if m['layer'] == 'heroes' and not m.get('instanced'):
+        _p = f32(m['pos'])
+        _cx = (min(_p[0::3]) + max(_p[0::3])) / 2; _cy = (min(_p[1::3]) + max(_p[1::3])) / 2
+        if not EA.landmark_stands(_cx, _cy, ERA):
+            log('landmark not yet built:', EA.landmark_for(_cx, _cy)[0]); continue
+        _HP.extend(_p); _HC.extend(f32(m['col']))
 if len(_HP):
     _nv = len(_HP) // 3
     _me = bpy.data.meshes.new('landmarks'); _me.from_pydata([(_HP[i*3], _HP[i*3+1], _HP[i*3+2]) for i in range(_nv)], [], [(t*3, t*3+1, t*3+2) for t in range(_nv // 3)])
@@ -302,11 +379,30 @@ FP, FC = array.array('f'), array.array('f')
 FAR_MESHES = list(d['meshes'])
 for extra in [x for x in E('FAR_SCENES', '').split(',') if x]:
     FAR_MESHES += json.load(open(os.path.join(os.path.dirname(os.path.abspath(SD)), extra, 'scene.json')))['meshes']
+_FAR_KD = None
+if ERA is not None:
+    # the engine's far massing carries no year: each piece takes the year of
+    # the record whose footprint centre it was drawn round
+    from mathutils.kdtree import KDTree as _KD2
+    _sb = d['box']; _allr = city_data.buildings(_sb[0] - 600, _sb[1] - 600, _sb[2] + 600, _sb[3] + 600)
+    _FAR_KD = _KD2(max(1, len(_allr)))
+    for i_, b_ in enumerate(_allr): _FAR_KD.insert((b_['cx'], b_['cy'], 0), i_)
+    _FAR_KD.balance()
+    _far_ok = {}
 for m in FAR_MESHES:
     if m['layer'] != 'buildings' or m.get('instanced') or not m.get('cen'): continue
     p, c, e = f32(m['pos']), f32(m['col']), f32(m['cen'])
     for t in range(len(p) // 9):
         if in_box(e[t*6], e[t*6+1], 4): continue
+        if _FAR_KD is not None:
+            k_ = (round(e[t*6], 1), round(e[t*6+1], 1))
+            if k_ not in _far_ok:
+                co_, i_, dd_ = _FAR_KD.find((e[t*6], e[t*6+1], 0))
+                y_ = _allr[i_]['year'] if dd_ < 25 else None
+                # a later building beyond the modelled box is not drawn at all
+                # (its stand-in is only modelled inside the box)
+                _far_ok[k_] = (y_ or 0) <= ERA and not EA.water_then(k_[0], k_[1], ERA) and not (ERA == 1906 and EA.burned(*k_))
+            if not _far_ok[k_]: continue
         FP.extend(p[t*9:t*9+9]); FC.extend(c[t*9:t*9+9])
 if E('FAR_GROUND'):
     # a plain ground under the distant city, so the horizon is land, not void
@@ -356,9 +452,20 @@ for c, _ in TREE_STREET + TREE_PARK:
     if c.name in sc.collection.children: sc.collection.children.unlink(c)
 # the recorded trees: street trees on the sidewalks, the rest (parks, yards) as park trees
 from mathutils.kdtree import KDTree
-kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
+# a tree is a street/yard tree when a building's wall is near it, a park tree
+# when none is (ring vertices, not centres: downtown footprints are big)
+_rp = [p for b in recs for p in b['ring']]
+kd = KDTree(max(1, len(_rp))); [kd.insert((p[0], p[1], 0), i) for i, p in enumerate(_rp)]; kd.balance()
 park_pts, street_pts = [], []
 seen = set(); rnd = random.Random(3)
+_TKD = None
+if ERA is not None:
+    _tl = city_data.trees(bx0 - 50, by0 - 50, bx1 + 50, by1 + 50)
+    if _tl:
+        _TKD = KDTree(len(_tl)); _TY = [t_[2] for t_ in _tl]
+        for i_, t_ in enumerate(_tl): _TKD.insert((t_[0], t_[1], 0), i_)
+        _TKD.balance()
+    log('published street trees', len(_tl), 'dated', sum(1 for t_ in _tl if t_[2]))
 for t in d['trees']:
     for (x, y, z, sxz, sy, rot, r_, g_, b_) in t['inst']:
         k = (round(x), round(y))
@@ -366,10 +473,21 @@ for t in d['trees']:
         seen.add(k)
         zz = ground(x, y)
         crown = max(3.0, 2.4 * sxz)
-        far = kd.find((x, y, 0))[2] > 28 if len(recs) else True
-        if ERA is not None and not far:
-            keep_p = 0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0
-            if rnd.random() > keep_p: continue
+        far = kd.find((x, y, 0))[2] > 28 if len(_rp) else True
+        if ERA is not None:
+            # a street tree the DataSF Street Tree List dates stands from its
+            # planting year, its crown grown in proportion to its age then;
+            # an undated one by the decade table's share (era.TABLE `trees`)
+            pt_ = _TKD.find((x, y, 0)) if _TKD else None
+            py_ = _TY[pt_[1]] if (pt_ and pt_[2] < 2.5) else None
+            if py_ is not None:
+                if py_ > ERA: continue
+                crown *= min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7)
+                crown = max(1.6, crown)
+            elif not far and rnd.random() > EA.street_tree_keep(ERA): continue
+            # no tree on open land that was not yet planted: dunes and grazing ground
+            if open_at(x, y) > 0.5 and rnd.random() > 0.04: continue
+            if EA.water_then(x, y, ERA): continue
         (park_pts if far else street_pts).append((x, y, zz, crown, rnd.uniform(0, 6.283)))
 HERO_XY = [float(v) for v in E('HERO_FROM').split(',')[:2]] if E('HERO_FROM') else None
 def place_trees(name, pts, kinds, seed):
@@ -477,17 +595,34 @@ if E('PROPS', '1') == '1':
     LAMP = load_collection('street_lamp_01'); HYD = load_collection('fire_hydrant')
     for c, _ in (LAMP, HYD):
         if c.name in sc.collection.children: sc.collection.children.unlink(c)
+    _lk = EA.P('lamp', ERA) if ERA is not None else 'cobra'
+    if _lk in ('gas', 'electrolier'):
+        # the period's lamp standard, built here (era.TABLE `lamp`): a gas
+        # lantern on a 3.3 m cast-iron post, or an ornamental electric
+        # standard with a globe (Market Street's 'Path of Gold', 1916)
+        _pb = bmesh.new()
+        def _cyl(r0, r1, z0, z1, seg=10):
+            g_ = bmesh.ops.create_cone(_pb, cap_ends=True, segments=seg, radius1=r0, radius2=r1, depth=z1 - z0)
+            for v in g_['verts']: v.co.z += (z0 + z1) / 2
+        if _lk == 'gas':
+            _cyl(0.14, 0.09, 0.0, 0.5); _cyl(0.06, 0.05, 0.5, 3.0); _cyl(0.12, 0.2, 3.0, 3.1, 4); _cyl(0.2, 0.14, 3.1, 3.55, 4); _cyl(0.2, 0.02, 3.55, 3.8, 4)
+        else:
+            _cyl(0.2, 0.14, 0.0, 0.8); _cyl(0.08, 0.07, 0.8, 4.2); _cyl(0.12, 0.12, 4.2, 4.35); _cyl(0.28, 0.28, 4.35, 4.9, 16)
+        _lme = bpy.data.meshes.new('periodlamp'); _pb.to_mesh(_lme); _pb.free()
+        _lme.materials.append(simple('lampiron', (0.05, 0.06, 0.05), rough=0.5, metal=0.6))
+        _lc = bpy.data.collections.new('periodlamp_c'); _lc.objects.link(bpy.data.objects.new('periodlamp', _lme))
+        LAMP = (_lc, (0.4, 0.4, 5.2))       # scale 1 below: 5.2 / 5.2
     root = bpy.data.collections.new('props'); sc.collection.children.link(root)
     acc = 0.0; k = 0
     for a, b, outv in SE:
         L_ = (b - a).length; acc += L_
         if acc < 32 or L_ < 4: continue
         acc = 0.0; p = (a + b) / 2 + outv * 0.5; p.z = a.z + 0.15
-        if not in_box(p.x, p.y): continue
+        if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
         s = 5.2 / max(1.0, LAMP[1][2])
         o = bpy.data.objects.new(f'lamp{k}', None); o.instance_type = 'COLLECTION'; o.instance_collection = LAMP[0]
         o.location = p; o.scale = (s, s, s); o.rotation_euler.z = math.atan2(-outv.x, outv.y); root.objects.link(o); k += 1
-        if k % 3 == 0:
+        if k % 3 == 0 and (ERA is None or ERA >= 1910):
             q = p + (b - a).normalized() * 3.0
             s2 = 0.8 / max(0.2, HYD[1][2])
             o = bpy.data.objects.new(f'hyd{k}', None); o.instance_type = 'COLLECTION'; o.instance_collection = HYD[0]
@@ -533,35 +668,109 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
     paint = simple('carpaint', (0.5, 0.5, 0.5), rough=0.2, attr=False)
     pn = paint.node_tree; pb = pn.nodes['Principled BSDF']; ai = pn.nodes.new('ShaderNodeObjectInfo')
     ramp = pn.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.interpolation = 'CONSTANT'
-    CC = [(0.85, 0.85, 0.84), (0.02, 0.02, 0.025), (0.45, 0.46, 0.48), (0.18, 0.19, 0.21), (0.85, 0.85, 0.84), (0.05, 0.10, 0.28), (0.40, 0.04, 0.04), (0.02, 0.02, 0.025), (0.55, 0.50, 0.40)]
-    if ERA is not None and ERA < 1960:
-        CC = [(0.02, 0.02, 0.02), (0.02, 0.02, 0.02), (0.08, 0.10, 0.08), (0.12, 0.10, 0.08), (0.30, 0.30, 0.28), (0.05, 0.06, 0.10), (0.02, 0.02, 0.02), (0.22, 0.18, 0.12)]
+    # the kerb's paint by year (era.TABLE `carcol`, sourced there): a
+    # constant ramp whose steps are as wide as each colour's share
+    _cw = EA.car_colours(ERA); _ct = sum(w for _, w in _cw)
+    CC = [c for c, _ in _cw]; CCP = []
+    _acc = 0.0
+    for c, w in _cw: CCP.append(_acc / _ct); _acc += w
     el = ramp.color_ramp.elements
     el[0].position = 0; el[0].color = (*[c ** 2.2 for c in CC[0]], 1)
-    for i in range(1, len(CC)): e_ = el.new(i / len(CC)); e_.color = (*[c ** 2.2 for c in CC[i]], 1)
-    pn.links.new(ai.outputs['Random'], ramp.inputs[0]); pn.links.new(ramp.outputs[0], pb.inputs['Base Color']); pb.inputs['Coat Weight'].default_value = 1.0
+    for i in range(1, len(CC)): e_ = el.new(CCP[i]); e_.color = (*[c ** 2.2 for c in CC[i]], 1)
+    pn.links.new(ai.outputs['Random'], ramp.inputs[0]); pn.links.new(ramp.outputs[0], pb.inputs['Base Color'])
+    # clear-coat is a 1980s finish; the lacquer and enamel before it, weathered
+    # at the kerb, mirrored the sky far less (CONVENTION)
+    _old = ERA is not None and ERA < 1980
+    pb.inputs['Coat Weight'].default_value = 0.25 if _old else 1.0
+    if _old: pb.inputs['Roughness'].default_value = 0.42
     cglass = simple('carglass', (0.02, 0.025, 0.03), rough=0.02, spec=1.0)
     tyre = simple('tyre', (0.02, 0.02, 0.02), rough=0.8)
     lamp_m = simple('carlamp', (0.9, 0.88, 0.8), rough=0.1, spec=1.0)
-    CARS = []
-    for i, (L_, W_, pf) in enumerate(((4.6, 1.8, SEDAN), (4.7, 1.9, SUV), (4.1, 1.76, HATCH), (5.0, 1.95, VAN), (4.5, 1.8, SEDAN), (4.3, 1.78, HATCH))):
-        prof_belt = 0.98 if pf in (SEDAN, HATCH) else 1.1
-        me = car_mesh(f'car{i}', L_, W_, pf)
-        for mm in (paint, cglass, tyre, lamp_m): me.materials.append(mm)
-        CARS.append(me)
+    # the fleet's body shapes by decade (era.TABLE `fleet`): side profiles
+    # of each period's typical car, extruded like today's. CONVENTION on the
+    # shapes: t20 the tall 1910s-20s body, r30 the rounded 1930s-40s, f50 the
+    # long low 1950s, l60 the long flat 1960s-70s, b80 the boxy 1980s.
+    T20 = [(-1, 0.40), (1, 0.40), (1.0, 0.95), (0.62, 1.00), (0.45, 1.02), (0.36, 1.85), (-0.80, 1.90), (-0.95, 1.80), (-1.0, 1.0)]
+    R30 = [(-1, 0.36), (1, 0.36), (1.0, 0.78), (0.88, 0.98), (0.40, 1.06), (0.22, 1.58), (-0.32, 1.62), (-0.78, 1.30), (-1.0, 0.85)]
+    F50 = [(-1, 0.32), (1, 0.32), (1.0, 0.76), (0.95, 0.88), (0.46, 0.92), (0.26, 1.40), (-0.36, 1.42), (-0.56, 0.96), (-0.98, 0.98), (-1.0, 0.80)]
+    L60 = [(-1, 0.30), (1, 0.30), (1.0, 0.74), (0.98, 0.84), (0.46, 0.88), (0.22, 1.34), (-0.40, 1.36), (-0.62, 0.90), (-1.0, 0.88), (-1.0, 0.74)]
+    B80 = [(-1, 0.30), (1, 0.30), (1.0, 0.74), (0.97, 0.86), (0.50, 0.92), (0.26, 1.36), (-0.50, 1.38), (-0.72, 0.96), (-1.0, 0.92), (-1.0, 0.74)]
+    FAMS = {'t20': [(3.9, 1.68, T20, 1.05)], 'r30': [(4.7, 1.80, R30, 1.08)], 'f50': [(5.3, 2.0, F50, 0.94)],
+            'l60': [(5.4, 2.0, L60, 0.90), (4.8, 1.85, L60, 0.90)], 'b80': [(4.5, 1.72, B80, 0.94)],
+            'mod': [(4.6, 1.8, SEDAN, 0.98), (4.7, 1.9, SUV, 1.1), (4.1, 1.76, HATCH, 0.98), (5.0, 1.95, VAN, 1.1), (4.5, 1.8, SEDAN, 0.98), (4.3, 1.78, HATCH, 0.98)]}
+    _fleet = EA.P('fleet', ERA) if ERA is not None else {'mod': 1.0}
+    CARS, CAR_W = [], []
+    for fam, share in sorted(_fleet.items()):
+        for j_, (L_, W_, pf, belt_) in enumerate(FAMS[fam]):
+            prof_belt = belt_
+            me = car_mesh(f'car_{fam}{j_}', L_, W_, pf)
+            for mm in (paint, cglass, tyre, lamp_m): me.materials.append(mm)
+            CARS.append(me); CAR_W.append(share / len(FAMS[fam]))
+    def car_pick(r):
+        u = r.random() * sum(CAR_W); acc = 0.0
+        for i_, w_ in enumerate(CAR_W):
+            acc += w_
+            if u < acc: return i_
+        return len(CAR_W) - 1
     r = random.Random(21); k = 0
     for a, b, outv in SE:
         v = b - a; L_ = v.length
         if L_ < 7: continue
         ang = math.atan2(v.y, v.x)
-        occ = 0.62 if (ERA is None or ERA >= 1970) else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+        occ = EA.car_occupancy(ERA)
         for i in range(int((L_ - 3) // 6.2)):
             if r.random() > occ: continue
             p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
-            if not in_box(p.x, p.y): continue
-            o = bpy.data.objects.new(f'pcar{k}', CARS[r.randrange(len(CARS))]); sc.collection.objects.link(o)
+            if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
+            o = bpy.data.objects.new(f'pcar{k}', CARS[car_pick(r)]); sc.collection.objects.link(o)
             o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = ang + (math.pi if r.random() < 0.5 else 0); k += 1
     log('cars', k)
+
+# ── open land: dunes where the Outside Lands were still sand; ash in 1906 ──
+_YS = EA.yard_sand(ERA)
+_ASH = ERA is not None and 1906 <= ERA <= 1908        # the burned district's ground until the rubble was cleared
+if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH):
+    log('open ground')
+    import mathutils.noise as _nz
+    DRES = float(E('DUNE_RES', 2.0))
+    s_bvh = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get()) if len(streets.data.polygons) else None
+    nx_, ny_ = int((bx1 - bx0 + 2 * OPAD) / DRES) + 1, int((by1 - by0 + 2 * OPAD) / DRES) + 1
+    _SEKD = None
+    if SE:
+        from mathutils.kdtree import KDTree as _KD4
+        _sep = []
+        for a__, b__, _o in SE:
+            L__ = (b__ - a__).length
+            for t__ in range(max(1, int(L__ / 3.0)) + 1): _sep.append(a__ + (b__ - a__) * (t__ / max(1, int(L__ / 3.0))))
+        _SEKD = _KD4(len(_sep))
+        for i__, q__ in enumerate(_sep): _SEKD.insert((q__.x, q__.y, 0), i__)
+        _SEKD.balance()
+    VS, VA, CS, CA = [], [], [], []
+    for j in range(ny_):
+        for i in range(nx_):
+            x_, y_ = ox0 + i * DRES, oy0 + j * DRES
+            g_ = ground(x_, y_)
+            on_street = s_bvh is not None and s_bvh.ray_cast(Vector((x_, y_, g_ + 50)), Vector((0, 0, -1)), 60)[0] is not None
+            s_ = open_at(x_, y_, SAND)
+            cov_ = 0.0 if on_street else max(s_, _YS if EA.is_dune_ground(x_, y_, g_) else 0.0)
+            # the dune relief dies down towards a graded street (a cut, not a cliff)
+            if s_ > 0 and _SEKD is not None:
+                sd_ = _SEKD.find((x_, y_, 0))[2]; tt_ = min(1.0, max(0.0, (sd_ - 3.0) / 22.0)); s_ *= tt_ * tt_ * (3 - 2 * tt_)
+            VS.append((x_, y_, g_ + 0.06 + s_ * EA.dune_height(x_, y_, _nz) if cov_ > 0.02 else g_ - 0.6)); CS.append(cov_)
+            ca_ = 1.0 if (_ASH and not on_street and EA.burned(x_, y_)) else 0.0
+            VA.append((x_, y_, g_ + 0.05 + (0.25 * (_nz.noise(Vector((x_ / 6, y_ / 6, 3.0))) + 1)) if ca_ else g_ - 0.6)); CA.append(ca_)
+    for name, V_, C_, mat in (('dunes', VS, CS, M['sand']), ('ashfield', VA, CA, M['ash'])):
+        F_ = []
+        for j in range(ny_ - 1):
+            for i in range(nx_ - 1):
+                a_ = j * nx_ + i; q_ = (a_, a_ + 1, a_ + nx_ + 1, a_ + nx_)
+                if max(C_[k] for k in q_) > 0.02: F_.append(q_)
+        if not F_: continue
+        me = bpy.data.meshes.new(name); me.from_pydata(V_, [], F_); me.update(); me.shade_smooth()
+        if name == 'ashfield':
+            at = me.color_attributes.new('bcol', 'FLOAT_COLOR', 'CORNER'); at.data.foreach_set('color', [0.5] * (4 * len(me.loops)))
+        ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob); me.materials.append(mat)
+        log(name, 'faces', len(F_))
 
 # ── the sea: the water mask of water_mask.py, deep to shallow, foam at the shore ──
 def sea():
@@ -609,6 +818,30 @@ def sea():
         ob = bpy.data.objects.new('sea', me); sc.collection.objects.link(ob); me.materials.append(mat_)
     log('sea')
 sea()
+def hist_water():
+    """open water over made land not yet made (era.MADE_LAND)"""
+    if ERA is None: return
+    sb_ = d['box']; st_ = 12.0; V_, F_ = [], []
+    x_ = sb_[0] - 400
+    while x_ < sb_[2] + 400:
+        y_ = sb_[1] - 400
+        while y_ < sb_[3] + 400:
+            if EA.water_then(x_ + st_ / 2, y_ + st_ / 2, ERA):
+                k_ = len(V_); V_ += [(x_, y_, 0.12), (x_ + st_, y_, 0.12), (x_ + st_, y_ + st_, 0.12), (x_, y_ + st_, 0.12)]
+                F_.append((k_, k_ + 1, k_ + 2, k_ + 3))
+            y_ += st_
+        x_ += st_
+    if not F_: return
+    m_ = simple('histwater', (0.006, 0.026, 0.040), rough=0.05, spec=0.5)
+    nt_ = m_.node_tree; g_ = nt_.nodes.new('ShaderNodeNewGeometry'); w_ = nt_.nodes.new('ShaderNodeTexNoise')
+    w_.inputs['Scale'].default_value = 0.05; w_.inputs['Detail'].default_value = 8; nt_.links.new(g_.outputs['Position'], w_.inputs['Vector'])
+    b_ = nt_.nodes.new('ShaderNodeBump'); b_.inputs['Strength'].default_value = 0.4; nt_.links.new(w_.outputs['Fac'], b_.inputs['Height'])
+    nt_.links.new(b_.outputs[0], nt_.nodes['Principled BSDF'].inputs['Normal'])
+    me_ = bpy.data.meshes.new('histwater'); me_.from_pydata(V_, [], F_); me_.update()
+    bm_ = bmesh.new(); bm_.from_mesh(me_); bmesh.ops.remove_doubles(bm_, verts=bm_.verts, dist=0.01); bm_.to_mesh(me_); bm_.free()
+    ob_ = bpy.data.objects.new('histwater', me_); sc.collection.objects.link(ob_); me_.materials.append(m_)
+    log('water over made land', len(F_))
+hist_water()
 
 # ── camera and light ─────────────────────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

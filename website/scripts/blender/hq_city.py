@@ -12,6 +12,7 @@ from mathutils.kdtree import KDTree
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import gen_buildings as G
 import city_data
+import era as EA
 
 argv = sys.argv[sys.argv.index('--') + 1:]
 SD, OUT, SPP, W, H = argv[0], argv[1], int(argv[2]), int(argv[3]), int(argv[4])
@@ -93,6 +94,9 @@ TP, TC = array.array('f'), array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos'])); TC.extend(f32(m['col']))
 for i in range(2, len(TP), 3): TP[i] *= 0.5
+if ERA is not None:
+    for i in range(0, len(TP), 3):
+        if EA.water_then(TP[i], TP[i+1], ERA): TP[i+2] = -4.0      # made land not yet made
 terrain = mesh_from('terrain', TP, ground_mat(), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
@@ -111,12 +115,42 @@ if len(SP_):
     for i in range(2, len(SP_), 3): SP_[i] = SP_[i] * 0.5 - 0.3
     mesh_from('surround', SP_, bpy.data.materials['ground'], smooth=True, cols=SC_)
 
+# ── the year shown: the records that stood, open land, the streets of the day ──
+log('buildings: records')
+HG = city_data.hero_gids()
+recs = [b for b in (EA.place_record(b, ERA) for b in city_data.buildings(-9000, -9000, 9000, 9000)
+                    if in_box(b['cx'], b['cy']) and b['gid'] not in HG) if b]
+if E('MAXB'): recs = recs[:int(E('MAXB'))]
+log('buildings', len(recs))
+CBOX = BOX or d['box']
+if ERA is not None:
+    OL = EA.OpenLand(recs, CBOX, float(E('OPEN_RES', 8.0)), ground)
+    def open_at(x, y, grid=None): return OL.at(x, y, grid)
+    SG = EA.StreetGate(CBOX, ERA, open_at)
+    _sgc = {}
+    def street_stands(x, y):
+        k_ = (int(x // 5), int(y // 5))
+        if k_ not in _sgc: _sgc[k_] = SG.stands(x, y)
+        return _sgc[k_]
+    log('open land', round(sum(OL.open) / len(OL.open), 3), 'sand', round(sum(OL.sand) / len(OL.sand), 3))
+else:
+    def open_at(x, y, grid=None): return 0.0
+    def street_stands(x, y): return True
+
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
-    if m['layer'] == 'streets': SP.extend(f32(m['pos']))
-    elif m['layer'] == 'street-markings':
+    if m['layer'] == 'streets':
+        p_ = f32(m['pos'])
+        if ERA is not None:
+            q_ = array.array('f')
+            for t in range(len(p_) // 9):
+                a = t * 9
+                if street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
+            p_ = q_
+        SP.extend(p_)
+    elif m['layer'] == 'street-markings' and (ERA is None or EA.P('marks', ERA) >= 0.5):
         p = f32(m['pos'])
         for t in range(len(p) // 9):
             a = t * 9
@@ -161,7 +195,9 @@ log('street edges', len(SE))
 HP, HC = array.array('f'), array.array('f')
 for m in d['meshes']:
     # heroes only: the engine's 'caps' crown generic towers the generator now models itself
-    if m['layer'] == 'heroes' and not m.get('instanced'): HP.extend(f32(m['pos'])); HC.extend(f32(m['col']))
+    if m['layer'] == 'heroes' and not m.get('instanced'):
+        _p = f32(m['pos'])
+        if EA.hero_mesh_stands(_p, ERA): HP.extend(_p); HC.extend(f32(m['col']))
 if len(HP):
     ho = mesh_from('landmarks', HP, None, cols=HC)
     lm = simple('landmark', (0.8, 0.8, 0.8), rough=0.6)
@@ -171,12 +207,6 @@ if len(HP):
 
 # ── the city's buildings, modelled, in chunks ────────────────────────────────
 G.LOD = int(E('LOD', 2))
-log('buildings: records')
-HG = city_data.hero_gids()
-recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG
-        and (ERA is None or (b['year'] or 0) <= ERA)]
-if E('MAXB'): recs = recs[:int(E('MAXB'))]
-log('buildings', len(recs))
 recs.sort(key=lambda b: (int(b['cx'] // 700), int(b['cy'] // 700)))
 CH = 6000; nfaces = 0
 for c0 in range(0, len(recs), CH):
@@ -237,6 +267,13 @@ STREET = [load_collection(a) for a in ('island_tree_01', 'island_tree_02', 'isla
 PARK = [load_collection(a) for a in ('pine_tree_01', 'fir_tree_01', 'island_tree_02', 'island_tree_01')]
 protos = [c for c, _ in STREET + PARK]; widths = [w for _, w in STREET + PARK]
 pts = []; seen = set(); r = random.Random(3)
+_TKD = None
+if ERA is not None:
+    _tl = city_data.trees(*(CBOX[0] - 50, CBOX[1] - 50, CBOX[2] + 50, CBOX[3] + 50))
+    if _tl:
+        _TKD = KDTree(len(_tl)); _TY = [t_[2] for t_ in _tl]
+        for i_, t_ in enumerate(_tl): _TKD.insert((t_[0], t_[1], 0), i_)
+        _TKD.balance()
 for t in d['trees']:
     for (x, y, z, sxz, sy, rot, *_rest) in t['inst']:
         # the engine lists a tree once per zoom band, a few centimetres apart
@@ -244,10 +281,19 @@ for t in d['trees']:
         if k in seen or not in_box(x, y, 50): continue
         seen.add(k)
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
-        if ERA is not None and not park:
-            if r.random() > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
-        kind = (5 + r.randrange(4)) if park else r.randrange(5)
         crown = max(3.0, 2.4 * sxz)
+        if ERA is not None:
+            # dated street trees from their planting year (DataSF Street Tree
+            # List), crowns grown to their age; undated ones by era.TABLE `trees`
+            pt_ = _TKD.find((x, y, 0)) if _TKD else None
+            py_ = _TY[pt_[1]] if (pt_ and pt_[2] < 2.5) else None
+            if py_ is not None:
+                if py_ > ERA: continue
+                crown = max(1.6, crown * min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7))
+            elif not park and r.random() > EA.street_tree_keep(ERA): continue
+            if open_at(x, y) > 0.5 and r.random() > 0.04: continue
+            if EA.water_then(x, y, ERA): continue
+        kind = (5 + r.randrange(4)) if park else r.randrange(5)
         gz_ = ground(x, y)
         if gz_ is None: continue
         pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
@@ -266,13 +312,20 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
-    occ = 0.62 if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+    occ = EA.car_occupancy(ERA)
     for i in range(int((L_ - 3) // 6.2)):
         if r.random() > occ: continue
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
-        if not in_box(p.x, p.y): continue
-        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), r.randrange(len(car_colls))))
+        if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
+        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), car_pick(r)))
 instancer('cars', cpts, car_colls)
+
+# ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
+if ERA is not None:
+    bx0, by0, bx1, by1 = CBOX; OPAD = 80.0; ox0, oy0 = OL.x0, OL.y0; SAND = OL.sand
+    if 'DUNE_RES' not in os.environ: os.environ['DUNE_RES'] = '10.0'
+    _ds = _HQSRC[_HQSRC.index("# ── open land: dunes where the Outside Lands"):_HQSRC.index("# ── the sea: the water mask")]
+    _g = dict(globals()); _g['ground'] = ground0; exec(_ds, _g)
 
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]

@@ -55,3 +55,79 @@ def hero_gids():
     import json
     h = json.load(open(f'{CITY}/base/heroes.json'))
     return {int(x['b']) for x in h['heroes'] if isinstance(x.get('b'), (int, float)) and x['b'] >= 0}
+
+
+def trees(x0, y0, x1, y1):
+    """the published street trees (tree/*.qc, DataSF Street Tree List): world
+    position and planting year (None where the list gives no date).
+    Grid per src/lib/city/trees.ts: 24 m cells, key = row*600 + col, origin
+    (-7200, -6600), `pos` two nibbles over a 16 x 16 lattice (site centres),
+    years counted from 1900."""
+    out = []
+    for p in sorted(glob.glob(f'{CITY}/tree/*.qc')):
+        h, f = qc.read(p)
+        e = {k: h.get(k) for k in ('gw', 'cell', 'x0', 'y0', 'q')}
+        gw, cell, gx0, gy0, q = (e['gw'] or 600, e['cell'] or 24, e['x0'] if e['x0'] is not None else -7200,
+                                 e['y0'] if e['y0'] is not None else -6600, e['q'] or 16)
+        step = cell / q; vo = 0
+        for ci in range(len(f['cellKey'])):
+            key = int(f['cellKey'][ci]); cnt = int(f['cellCnt'][ci])
+            bx = gx0 + (key % gw) * cell; by = gy0 + (key // gw) * cell
+            if bx > x1 or bx + cell < x0 or by > y1 or by + cell < y0: vo += cnt; continue
+            for j in range(vo, vo + cnt):
+                ps = int(f['pos'][j]); yr = int(f['yr'][j])
+                out.append((bx + (ps % q + 0.5) * step, by + (ps // q + 0.5) * step, 1900 + yr if yr else None))
+            vo += cnt
+    return out
+
+
+def streets(x0, y0, x1, y1):
+    """the published roadway polygons (strt/*.qc, DataSF h8n7-e4ns ROW) with
+    their year — the Board of Supervisors' roadway acceptance, or the earliest
+    building on the frontage (pipeline DATA-TRUTH.md §street year); None when
+    undated. Returns [(rings, yr, width_dm)]."""
+    out = []
+    for p in sorted(glob.glob(f'{CITY}/strt/*_*.qc')):
+        _, f = qc.read(p)
+        if 'rdN' not in f: continue
+        k = r = 0
+        for i in range(len(f['fid'])):
+            nr = int(f['rdN'][i]); rings = []
+            for j in range(nr):
+                n_ = int(f['rdLen'][r + j])
+                rings.append(list(zip(f['rdX'][k:k + n_].tolist(), f['rdY'][k:k + n_].tolist()))); k += n_
+            r += nr
+            if not rings: continue
+            xs = [x for rg in rings for x, _ in rg]; ys = [y for rg in rings for _, y in rg]
+            if max(xs) < x0 or min(xs) > x1 or max(ys) < y0 or min(ys) > y1: continue
+            yr = int(f['yr'][i]); out.append((rings, yr or None, int(f['w'][i]), int(f['cls'][i])))
+    return out
+
+
+def street_names():
+    """the one name table the label and line chunks index with `nm`
+    (manifest chunk entry base/street-labels `names`)"""
+    import json, ast
+    m = json.load(open(f'{CITY}/manifest.json'))
+    e = [c for c in m['chunks'] if c.get('k') == 'base/street-labels'][0]
+    return e['names'] if isinstance(e['names'], list) else ast.literal_eval(e['names'])
+
+
+def freeway_points(step=10.0):
+    """points every `step` m along the named freeway centrelines (DataSF
+    3psu-pn9h classcode 1 mainline, 6 ramps): [(x, y, name)]"""
+    names = street_names(); pts = []
+    for f in ('base/street-lines.qc', 'strt/street-lines-2.qc'):
+        _, d = qc.read(f'{CITY}/{f}')
+        k = 0
+        for i in range(len(d['fid'])):
+            n = int(d['len'][i]); nm = int(d['nm'][i]); name = names[nm] if nm < len(names) else ''
+            if name.startswith(('HWY', 'I-')):
+                xs = d['x'][k:k + n].tolist(); ys = d['y'][k:k + n].tolist()
+                for j in range(n - 1):
+                    L = ((xs[j + 1] - xs[j]) ** 2 + (ys[j + 1] - ys[j]) ** 2) ** 0.5
+                    for t in range(max(1, int(L / step))):
+                        a = t * step / L if L else 0
+                        pts.append((xs[j] + (xs[j + 1] - xs[j]) * a, ys[j] + (ys[j + 1] - ys[j]) * a, name))
+            k += n
+    return pts

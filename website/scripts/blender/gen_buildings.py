@@ -26,7 +26,8 @@ from mathutils.geometry import tessellate_polygon
 # roof_flat (tar and gravel) · metal (flashing, rails) · stair (painted wood
 # or concrete) · storefront glass · awning
 MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'door',
-        'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck')
+        'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck',
+        'ash', 'soot')
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
@@ -48,36 +49,124 @@ BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68
 LOD = 0          # 0: every opening modelled · 1: flat framed panes (city-wide)
 ERA = None       # the year shown; None = today. Changes paint, not form.
 
-# ── paint by period (the documented history of SF house colour) ─────────────
-# up to 1905: the Victorian palette proper — deep earth tones, several per
-# house (olive, ochre, Indian red, bronze green, umber); 1906-1929 the classical
-# revival whites and creams; 1930-1959 the war-surplus greys and whites that
-# covered most Victorians; 1960-1989 the colorist movement starting in the
-# Haight and Western Addition, a minority of houses repainted in brights;
-# after that, today's mix.
+# ── paint by period: era.TABLE `paint` (Victorians) and `paint2` (the rest) ──
+# The mixes and their sources live in era.py; these are the palettes each
+# name stands for (display RGB: body, trim, accent). CONVENTION on the exact
+# tints, SOURCED on the families.
+import era as EA
+# 1870s Italianates in white, cream and stone tints, 'to resemble stone'
+STONE_1875 = [((0.88, 0.85, 0.76), (0.74, 0.70, 0.60), (0.30, 0.26, 0.20)),
+              ((0.82, 0.78, 0.68), (0.93, 0.90, 0.82), (0.36, 0.30, 0.22)),
+              ((0.76, 0.74, 0.70), (0.90, 0.88, 0.82), (0.28, 0.28, 0.26))]
+# the 1880s-90s polychrome: 'red, yellow, chocolate, orange ... uncouth panels
+# of yellow and brown' (1885 critic, quoted in Wikipedia 'Painted ladies'),
+# with the earth tones of the pattern books (olive, umber, Indian red)
 VIC_1890 = [((0.42, 0.40, 0.26), (0.62, 0.52, 0.34), (0.45, 0.16, 0.12)),
             ((0.55, 0.42, 0.26), (0.36, 0.30, 0.20), (0.24, 0.30, 0.20)),
             ((0.46, 0.22, 0.16), (0.72, 0.62, 0.44), (0.20, 0.26, 0.18)),
             ((0.30, 0.34, 0.24), (0.64, 0.56, 0.38), (0.48, 0.20, 0.14)),
-            ((0.62, 0.54, 0.40), (0.34, 0.26, 0.18), (0.40, 0.14, 0.10)),
-            ((0.50, 0.46, 0.38), (0.26, 0.28, 0.22), (0.56, 0.36, 0.16))]
+            ((0.78, 0.62, 0.30), (0.36, 0.22, 0.14), (0.52, 0.18, 0.12)),     # yellow body, chocolate trim
+            ((0.58, 0.20, 0.14), (0.80, 0.66, 0.36), (0.30, 0.20, 0.12)),     # red body, yellow trim
+            ((0.74, 0.46, 0.22), (0.40, 0.26, 0.16), (0.24, 0.30, 0.20)),     # orange-ochre
+            ((0.62, 0.54, 0.40), (0.34, 0.26, 0.18), (0.40, 0.14, 0.10))]
 PALE_1915 = [((0.93, 0.91, 0.86), (0.97, 0.96, 0.93), (0.30, 0.32, 0.30)),
              ((0.88, 0.85, 0.76), (0.96, 0.95, 0.90), (0.36, 0.30, 0.22)),
              ((0.80, 0.80, 0.76), (0.95, 0.94, 0.90), (0.28, 0.30, 0.34))]
+# battleship grey 'with war-surplus Navy paint', and plain whites
 GREY_1945 = [((0.62, 0.64, 0.66), (0.90, 0.90, 0.88), (0.30, 0.32, 0.34)),
              ((0.74, 0.75, 0.75), (0.93, 0.93, 0.91), (0.24, 0.26, 0.28)),
              ((0.52, 0.55, 0.58), (0.86, 0.86, 0.84), (0.20, 0.22, 0.26)),
              ((0.90, 0.89, 0.86), (0.96, 0.96, 0.94), (0.40, 0.40, 0.40))]
+ERA_PALETTES = {'stone': STONE_1875, 'poly': VIC_1890, 'pale': PALE_1915, 'grey': GREY_1945}
+
 
 def era_paint(rng, style):
-    """(body, trim, accent) for the period shown, or None for today's rules"""
-    if ERA is None or ERA >= 1990: return None
-    if ERA <= 1905: return rng.choice(VIC_1890) if style == 'vic' else rng.choice(PALE_1915)
-    if ERA < 1930: return rng.choice(PALE_1915 + VIC_1890[:2]) if style == 'vic' else rng.choice(PALE_1915)
-    if ERA < 1960: return rng.choice(GREY_1945 + PALE_1915)
-    # 1960-1989: the colorists repaint about one Victorian in four
-    if style == 'vic' and rng.random() < 0.25 + (ERA - 1960) / 30 * 0.35: return None
-    return rng.choice(GREY_1945 + PALE_1915)
+    """(body, trim, accent) for the year shown, or None for today's rules
+    (which is also what the colorists' houses take: today's Painted-Lady
+    palette is theirs)"""
+    if ERA is None: return None
+    k = EA.pick(EA.P('paint' if style == 'vic' else 'paint2', ERA), rng.random())
+    if k in (None, 'today', 'color'): return None
+    return rng.choice(ERA_PALETTES[k])
+
+
+def clip_half(poly, n, c):
+    """Sutherland-Hodgman against the half-plane n.p <= c; poly is a list of
+    ((x, y), role of the edge that starts there); a cut edge is a party wall"""
+    out = []; m = len(poly)
+    for i in range(m):
+        (P, r), (Q, _) = poly[i], poly[(i + 1) % m]
+        dp = n[0] * P[0] + n[1] * P[1] - c; dq = n[0] * Q[0] + n[1] * Q[1] - c
+        if dp <= 0: out.append((P, r))
+        if (dp <= 0) != (dq <= 0):
+            t = dp / (dp - dq); I = (P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t)
+            out.append((I, 2 if dp <= 0 else r))
+    return out
+
+
+def split_lots(b):
+    """today's merged footprint cut back into lots the width of the old city's
+    (CONVENTION: the 25-ft / 7.6 m residential lot and its 2-4x commercial
+    multiples of the 50-vara and 100-vara surveys; a deep lot is cut in two
+    back to back). Returns sub-records; each keeps the parent's roles on its
+    share of the outline and takes party walls on the cuts."""
+    r = random.Random(b['gid'] * 17 + 1)
+    ring = [tuple(p) for p in b['ring']]; roles = list(b['roles'])
+    n = len(ring)
+    if n < 3: return [b]
+    # the axis: along the longest street wall (else the longest edge)
+    def elen(i): return math.hypot(ring[(i + 1) % n][0] - ring[i][0], ring[(i + 1) % n][1] - ring[i][1])
+    cand = [i for i in range(n) if roles[i] == 1] or list(range(n))
+    i0 = max(cand, key=elen)
+    ux, uy = ring[(i0 + 1) % n][0] - ring[i0][0], ring[(i0 + 1) % n][1] - ring[i0][1]
+    L = math.hypot(ux, uy) or 1.0; ux, uy = ux / L, uy / L; vx, vy = -uy, ux
+    us = [p[0] * ux + p[1] * uy for p in ring]; vs = [p[0] * vx + p[1] * vy for p in ring]
+    u0, u1, v0, v1 = min(us), max(us), min(vs), max(vs)
+    # lot widths along the street, drawn from the period's mix
+    cuts = [u0]; u = u0
+    while u1 - u > 11.0:
+        u += r.choice((7.6, 7.6, 7.6, 10.4, 15.2, 15.2, 22.9)); cuts.append(min(u, u1))
+    if cuts[-1] < u1: cuts.append(u1)
+    if len(cuts) > 2 and cuts[-1] - cuts[-2] < 4.0: cuts.pop(-2)
+    vcuts = [v0, v1] if v1 - v0 < 48 else [v0, (v0 + v1) / 2, v1]
+    base = list(zip(ring, roles)); parts = []
+    for a, c in zip(cuts, cuts[1:]):
+        for va, vc in zip(vcuts, vcuts[1:]):
+            poly = clip_half(base, (-ux, -uy), -a)
+            poly = clip_half(poly, (ux, uy), c) if poly else poly
+            poly = clip_half(poly, (-vx, -vy), -va) if poly else poly
+            poly = clip_half(poly, (vx, vy), vc) if poly else poly
+            if len(poly) < 3: continue
+            pr = [p for p, _ in poly]
+            area = abs(sum(pr[i][0] * pr[(i + 1) % len(pr)][1] - pr[(i + 1) % len(pr)][0] * pr[i][1] for i in range(len(pr)))) / 2
+            if area < 12: continue
+            sb = dict(b); sb['ring'] = pr; sb['roles'] = [q for _, q in poly]
+            sb['gid'] = b['gid'] * 64 + len(parts) + 1
+            sb['cx'] = sum(p[0] for p in pr) / len(pr); sb['cy'] = sum(p[1] for p in pr) / len(pr)
+            parts.append(sb)
+    return parts or [b]
+
+
+def standin(b):
+    """the lost city's stand-in on today's footprint (era.py: inside the 1906
+    burned district before the fire, where the record's buildings are all
+    later). CONVENTION, marked as such: a Victorian flat on a house-sized lot,
+    a three-to-five storey brick or frame commercial block on a big one; the
+    footprint is the record's, the form is the period's."""
+    r = random.Random(b['gid'] * 131 + 5)
+    ring = b['ring']
+    area = abs(sum(ring[i][0] * ring[(i + 1) % len(ring)][1] - ring[(i + 1) % len(ring)][0] * ring[i][1] for i in range(len(ring)))) / 2
+    b = dict(b)
+    downtown = b.get('core', False)
+    if area > 700 or (downtown and area > 350 and r.random() < 0.5):
+        # the brick commercial block: Italianate, three to six storeys
+        b['ty'] = 'OFFICE'; b['shop'] = True; b['st'] = r.choice((3, 4, 4, 5, 6) if downtown else (2, 3, 3, 4)); b['h'] = b['st'] * 4.2
+        b['year'] = r.choice((1878, 1885, 1892, 1900))
+    else:
+        # the frame building of a lot: flats over a shop downtown, a house beyond
+        b['ty'] = 'FLATS'; b['st'] = r.choice((3, 3, 4) if downtown else (2, 2, 3, 3)); b['h'] = b['st'] * 3.6 + 1.2
+        b['shop'] = downtown or r.random() < 0.2; b['year'] = r.choice((1875, 1882, 1888, 1895))
+    return b
 
 
 class Out:
@@ -248,6 +337,15 @@ def substyle(b, style, rng):
 
 def building(b, ground, out):
     """b: record from city_data.buildings; ground(x, y) -> z"""
+    if b.get('standin') and not b.get('_lot'):
+        # the lost city stood on lots, not on today's merged footprints
+        for sb in split_lots(b):
+            sb['_lot'] = True
+            try: building(sb, ground, out)
+            except Exception as ex: print('stand-in lot failed', sb['gid'], ex)
+        return
+    if b.get('standin'): b = standin(b)
+    if b.get('ruin'): return ruin(b, ground, out)
     rng = random.Random(b['gid'] * 7919 + 13)
     ring, flipped = ring_ccw([tuple(p) for p in b['ring']])
     roles = b['roles'][::-1] if flipped else list(b['roles'])
@@ -314,6 +412,7 @@ def building(b, ground, out):
 
     # ── floors ──
     raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
+    if style == 'vic' and b.get('standin') and b.get('shop'): raised = 3.9      # flats over a shop
     if style == 'stucco' and raised > 1.5: raised = 2.6        # Edwardian over a garage level
     if sub == 'sunset': raised = 2.6                           # the Sunset house: garage below, living above
     first = zg + raised
@@ -456,6 +555,55 @@ def building(b, ground, out):
                     out.box3('metal', d0 + ax_u * (du + lu * t_ * (lu > 1)) + ax_v * (dv + lv * t_ * (lv > 1)) + Vector((0, 0, 0.12)), ax_u * 0.05, ax_v * 0.05, Vector((0, 0, 1.0)), (0.15, 0.15, 0.16))
 
 
+def ruin(b, ground, out):
+    """the burned district in the days after 18-21 April 1906, on the record's
+    footprint (era.py: the ring is DataSF ff3a-iqhv). SOURCED in outline — the
+    photographs of May 1906 show frame houses burned to the ground with their
+    brick chimneys standing, and brick and steel buildings left as gutted
+    shells with ragged wall tops (e.g. Arnold Genthe, 'Looking toward the Ferry
+    Building'; USGS 1906 photo archive) — the form of each ruin is a
+    CONVENTION: a low ash heap and one or two chimneys for a frame building,
+    a roofless shell of scorched walls, windows open to the sky, for a brick one."""
+    rng = random.Random(b['gid'] * 977 + 3)
+    ring, _ = ring_ccw([tuple(p) for p in b['ring']])
+    n = len(ring)
+    if n < 3: return
+    zs = [ground(x, y) for x, y in ring]; zg = sum(zs) / n; zfoot = min(zs) - 0.6
+    cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
+    frame = b['ty'] in ('HOUSE', 'FLATS', 'APARTMENT', 'UNCLASSED') and b['h'] < 16 and b.get('ruin') != 'shell'
+    ash_c = (0.30, 0.29, 0.27)
+    # the floor of the ruin: ash and fallen brick
+    inner = offset_ring(ring, -0.3)
+    hz = zg + (rng.uniform(0.4, 1.3) if frame else rng.uniform(0.6, 2.0))
+    pts = [Vector((x, y, hz + rng.uniform(-0.25, 0.25))) for x, y in inner]
+    for t in tessellate_polygon([pts]):
+        out.poly('ash', [pts[k] for k in t], ash_c)
+    for i in range(n):                                   # the heap's sides down to the ground
+        a, c = inner[i], inner[(i + 1) % n]
+        out.poly('ash', [Vector((a[0], a[1], zfoot)), Vector((c[0], c[1], zfoot)), pts[(i + 1) % n], pts[i]], ash_c)
+    X, Y, Z = Vector((1, 0, 0)), Vector((0, 1, 0)), Vector((0, 0, 1))
+    if frame:
+        for k in range(1 if rng.random() < 0.6 else 2):
+            px, py = cx + rng.uniform(-2.5, 2.5), cy + rng.uniform(-2.5, 2.5)
+            hc = rng.uniform(5.0, max(5.5, b['h'] * 0.95))
+            out.box3('chimney', Vector((px - 0.35, py - 0.45, zg)), X * 0.7, Y * 0.9, Z * hc, (1, 1, 1))
+        return
+    # the shell: every wall a slab 0.4 m thick, its top broken in 2 m runs
+    top = zg + max(4.0, b['h']); keep = 1.0 if b.get('ruin') == 'shell' else rng.uniform(0.55, 1.0)
+    walls = [Wall(ring[i], ring[(i + 1) % n], out) for i in range(n)]
+    storey = 4.0
+    for w in walls:
+        if w.L < 0.3: continue
+        for u0 in frange(0.0, w.L, 2.0)[:-1]:
+            u1 = min(w.L, u0 + max(0.3, w.L / max(1, round(w.L / 2.0))))
+            ht = zg + (top - zg) * keep * (rng.uniform(0.55, 1.0) if keep < 1.0 else 1.0)
+            w.box('soot', u0, u1, zfoot, ht, -0.4, 0.0, (0.34, 0.28, 0.24))
+            # the window openings: black, open through the wall to the sky
+            for zf in frange(zg + 1.2, ht - 2.2, storey)[:-1] if ht - zg > 4 else []:
+                if u1 - u0 > 1.2:
+                    w.rect('soot', u0 + 0.35, u1 - 0.35, zf, zf + 2.0, 0.02, (0.03, 0.03, 0.03))
+
+
 def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):
     """an octagonal corner turret with a candle-snuffer roof"""
     R = rng.uniform(1.4, 1.8); cx = Vector((cpt.x, cpt.y, 0)) + Vector((dirn.x, dirn.y, 0)) * 0.6
@@ -560,11 +708,13 @@ def facade(w, is_front, b, rng, c):
     # the entry and its stoop (or the garage of a raised house)
     door_u = None
     garage_u = None
-    if is_front and style != 'block' and L > 3.0:
+    shop_below = b.get('standin') and b.get('shop') and style == 'vic'
+    if is_front and style != 'block' and L > 3.0 and not shop_below:
         free = [(0.3, L - 0.3)]
         for hu in bay_u: free = cut(free, hu, 0.3)
         free = [f for f in free if f[1] - f[0] > 1.3]
-        if first - zg > 2.0 and L > 5.0:
+        # a garage under the house: not before the car (CONVENTION: from 1925)
+        if first - zg > 2.0 and L > 5.0 and (ERA is None or ERA >= 1925):
             # the raised house sits over a garage at the street
             gw = min(2.6, L - 2.2)
             cand = [f for f in [(0.4, L - 0.4)] if f[1] - f[0] > gw + 1.3]
@@ -587,7 +737,7 @@ def facade(w, is_front, b, rng, c):
                 w.box('trim', du0 - 0.25, du0 + 1.25, first + 2.35, first + 2.6, 0.0, 0.5, trim)       # an entry hood
             if LOD < 2: stoop(w, door_u[0] - 0.2, door_u[1] + 0.2, zg, first, trim, style)
     # a storefront where the record says shop
-    shop = is_front and b.get('shop') and style != 'vic'
+    shop = is_front and b.get('shop') and (style != 'vic' or b.get('standin'))
     if shop:
         s0, s1 = 0.3, L - 0.3
         holes.append((s0, s1, zg + 0.4, zg + 3.2))
