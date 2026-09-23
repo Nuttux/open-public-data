@@ -359,6 +359,11 @@ def place_record(b, era):
     if water_then(b['cx'], b['cy'], era): return None
     t = when(era)
     y = b['year'] or 0
+    if not y and b.get('h', 0) >= 20.0:
+        # an undated record over 20 m is not an old building (Fox Plaza's
+        # 95 m stood beside City Hall in 1890, e06): UNDATED_TALL
+        y = UNDATED_TALL.get(b['gid'], 1950)
+        if y > era: return None
     fire = burned(b['cx'], b['cy'])
     if fire and t < FIRE:
         if y <= era: return b
@@ -383,6 +388,16 @@ def place_record(b, era):
     f_ = rising(b, t)                       # the record's own building, going up
     if f_ is not None: b['rise'] = f_; return b
     return None
+
+
+# The roll leaves 2,916 buildings undated (FLAG_NOYEAR); 64 of them stand over
+# 20 m: Fox Plaza (95 m), the UCSF Parnassus towers, Parkmerced's towers, the
+# Presidio's and Treasure Island's barracks and hospitals. CONVENTION: an
+# undated record over 20 m stands from 1950 (Parkmerced's towers 1951, UCSF's
+# post-war campus); SOURCED: Fox Plaza, 1390 Market, completed 1966 on the
+# site of the Fox Theatre, demolished 1963 (Wikipedia 'Fox Plaza',
+# 'Fox Theatre (San Francisco)').
+UNDATED_TALL = {135990: 1966}
 
 
 def ash_ground(era):
