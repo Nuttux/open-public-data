@@ -334,8 +334,13 @@ log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, h
 # scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
 # crowns stand at most 1.4 widths tall, pines and firs 2.
 TALL = [1.4] * NS + [2.0] * (len(PINE) + len(FIR)) + [1.4] * len(BROAD)
+# and an absolute height: Monterey pines and cypress here stand 15-25 m, street
+# broadleaf 6-15 m. Canopy crowns 3x the disc made Pioneer Park's pines 23-32 m
+# and swallowed Coit Tower (landmarks agent, measured 24/09).
+HMAX = [15.0] * NS + [24.0] * (len(PINE) + len(FIR)) + [18.0] * len(BROAD)
 def tree_scale(kind, crown):
-    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]))
+    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]),
+               HMAX[kind] / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
 # WHAT THE ENGINE'S 'trees' LAYER HOLDS. Only the Lambert meshes are trees
 # (the register, 195,310 crowns, listed once per zoom band). The Basic meshes
