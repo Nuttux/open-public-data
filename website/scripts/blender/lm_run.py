@@ -35,6 +35,16 @@ if os.environ.get('LM_PROBE'):
 if os.environ.get('LM_PCT'):
     a_ = "sc.cycles.samples = SPP\n"; assert a_ in src, 'samples line not found'
     src = src.replace(a_, a_ + f"sc.render.resolution_percentage = {int(os.environ['LM_PCT'])}\n", 1)
+# LM_NOGHOST=1: the engine's ground-detail overlays are not ground — translucent
+# pier plates (cream, opacity .2) and their dark drop shadows offset south-west
+# (.35: the grey 'ghost piers' on the bay), the lakes' light glaze (.42) and the
+# opaque blue lakes (colour r .21) all went into hq_city's 'paths' (their vertex
+# colour is white) and drew as grey paving. Skip them (the proposed hq_city fix).
+if os.environ.get('LM_NOGHOST') == '1':
+    a_ = "        tgt = DP if (c and c[2] > 0.8) else DL\n"
+    if a_ in src:
+        src = src.replace(a_, "        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue\n" + a_, 1)
+    else: print('lm_run: LM_NOGHOST: ground-detail line not found', flush=True)
 os.environ.setdefault('LM_ALL', '1')                 # the landmarks agent's tests see every model
 g = {'__name__': '__main__', '__file__': path}
 exec(compile(src, path, 'exec'), g)

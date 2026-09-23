@@ -419,9 +419,14 @@ def cityhall(C):
     f = FP().get('cityhall')
     if not f: return
     r = _clean([tuple(p) for p in f['outer'][0]])
+    # the two light courts; OSM's other inner rings are slivers a metre wide
+    # (2- and 4-point) that broke the roof's triangulation: most of the roof
+    # went missing and the ground showed inside the walls (2026-09-24)
+    def _area(q): return 0.5 * abs(sum(q[i][0] * q[(i + 1) % len(q)][1] - q[(i + 1) % len(q)][0] * q[i][1] for i in range(len(q))))
     holes = []
     for h in f['inner']:
-        if len(h) >= 4: holes.append(_clean([tuple(p) for p in h]))
+        h = _clean([tuple(p) for p in h])
+        if len(h) >= 3 and _area(h) > 60.0: holes.append(h)
     cx, cy = centroid(r); ang = orient(r)
     fr = Frame(cx, cy, ang)
     g = min(C.tg(*p) for p in r[::6])
@@ -432,35 +437,39 @@ def cityhall(C):
     K.prism('concrete', r, g + 7.0, g + ROOF, GRANITE, top=False)
     K.prism('concrete', r, g + ROOF, g + ROOF + 1.2, GRANITE_D, top=False)       # entablature band
     K.prism('concrete', r, g + ROOF + 1.2, g + 26.5, GRANITE, top=False)         # attic
-    K.face_holes('roof_flat', r, holes, g + 26.5, hexc('#77746e'))
+    K.face_holes('roof_flat', r, holes, g + 26.5, hexc('#a19d94'))
     for h in holes:                                                             # the light courts' walls
         K.prism('concrete', h[::-1], g + 7.0, g + 26.5, GRANITE_D, top=False)
         K.face('path', [(p[0], p[1], g + 7.0) for p in h], (1, 1, 1, 1))
-    # windows: rows on every long front, colonnades on the central parts
-    u0, u1, v0, v1 = extent(r, fr)
+    # windows on every face of the outline (every edge over 5 m), four rows
+    # a bay of 4.6 m; engaged columns and a proud architrave on the long
+    # fronts (Polk and Van Ness)
+    sa = sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r)))
+    for i in range(len(r)):
+        (x0_, y0_), (x1_, y1_) = r[i], r[(i + 1) % len(r)]
+        Le = math.hypot(x1_ - x0_, y1_ - y0_)
+        if Le < 5.0: continue
+        dx, dy = (x1_ - x0_) / Le, (y1_ - y0_) / Le
+        nx_, ny_ = (dy, -dx) if sa > 0 else (-dy, dx)                     # outward
+        nb = max(1, int(Le / 4.6)); w = Le / nb
+        for k in range(nb):
+            a, b = k * w, (k + 1) * w
+            # windows ~ 1.8 m wide in a 4.6 m bay: the granite reads, not the glass
+            for (z0, z1, gw) in ((2.2, 4.8, 1.6), (8.8, 13.2, 1.9), (15.2, 19.2, 1.9), (24.4, 25.6, 1.4)):
+                m_ = max(0.4, (b - a - gw) / 2)
+                if b - a - 2 * m_ < 0.8: continue
+                pa = (x0_ + dx * (a + m_) + nx_ * 0.06, y0_ + dy * (a + m_) + ny_ * 0.06)
+                pb = (x0_ + dx * (b - m_) + nx_ * 0.06, y0_ + dy * (b - m_) + ny_ * 0.06)
+                K.face('lm_steel', [(pa[0], pa[1], g + z0), (pb[0], pb[1], g + z0), (pb[0], pb[1], g + z1), (pa[0], pa[1], g + z1)], GLAZE)
     fronts = [(-42.6, -1, -47.5, 47.5), (43.5, 1, -47.5, 47.5)]
-    sides = [(-61.4, -22.3, 22.5), (61.6, -20.7, 20.8)]
     for face_u, sgn, va, vb in fronts:
         n = int((vb - va) / 4.6); w = (vb - va) / n
         for k in range(n):
-            a, b = va + k * w, va + (k + 1) * w
-            rect_panel(K, fr, face_u, sgn, a + 1.2, b - 1.2, g + 2.0, g + 5.0)
-            rect_panel(K, fr, face_u, sgn, a + 1.1, b - 1.1, g + 8.5, g + 13.5)
-            rect_panel(K, fr, face_u, sgn, a + 1.1, b - 1.1, g + 15.0, g + 19.5)
-            rect_panel(K, fr, face_u, sgn, a + 1.3, b - 1.3, g + 24.2, g + 25.8)
+            a = va + k * w
             cu = face_u + sgn * 1.6
             p0 = fr.P(cu, a, g + 7.0); p1 = fr.P(cu, a, g + ROOF)
             K.cyl('concrete', p0, p1, 0.75, GRANITE, n=8)
-        # a balustrade line and a colonnade architrave standing proud
         K.box('concrete', frg, min(face_u, face_u + sgn * 2.4), max(face_u, face_u + sgn * 2.4), va, vb, ROOF - 0.3, ROOF + 1.2, GRANITE_D)
-    for v_face, va, vb in sides:
-        sgn = 1 if v_face > 0 else -1
-        n = int((vb - va) / 4.6); w = (vb - va) / n
-        for k in range(n):
-            a, b = va + k * w, va + (k + 1) * w
-            for (z0, z1) in ((2.0, 5.0), (8.5, 13.5), (15.0, 19.5), (24.2, 25.8)):
-                pts = [fr.P(a + 1.1, v_face + sgn * 0.06, g + z0), fr.P(b - 1.1, v_face + sgn * 0.06, g + z0), fr.P(b - 1.1, v_face + sgn * 0.06, g + z1), fr.P(a + 1.1, v_face + sgn * 0.06, g + z1)]
-                K.face('lm_steel', pts if sgn > 0 else pts[::-1], GLAZE)
     # the porticoes: six columns, a pediment, on Polk (east) and Van Ness (west)
     for (face_u, sgn, va, vb) in ((47.4, 1, -12.7, 8.1), (-50.5, -1, -12.4, 12.2)):
         vc = (va + vb) / 2; half = (vb - va) / 2 + 1.5
@@ -583,29 +592,52 @@ def pofa(C):
         for j in range(len(pts) - 1):
             K.beam('lm_matte', pts[j], pts[j + 1], 0.55, 0.35, POFA_STONE_D, up=(ca, sa, 0))
 
+def _fit_circle_geo(P):
+    """least-squares circle through points (Kasa, then Gauss-Newton on the
+    geometric distance): (cx, cy, R)"""
+    P = np.asarray(P, float); x, y = P[:, 0], P[:, 1]
+    A = np.c_[2 * x, 2 * y, np.ones(len(x))]; b = x * x + y * y
+    (a, c, k), *_ = np.linalg.lstsq(A, b, rcond=None); R = math.sqrt(max(k + a * a + c * c, 1.0))
+    for _ in range(60):
+        d = np.maximum(np.hypot(x - a, y - c), 1e-6)
+        J = np.c_[-(x - a) / d, -(y - c) / d, -np.ones(len(x))]
+        dp, *_ = np.linalg.lstsq(J, -(d - R), rcond=None)
+        a, c, R = a + dp[0], c + dp[1], R + dp[2]
+        if abs(dp).max() < 1e-4: break
+    return float(a), float(c), float(R)
+
 def pofa_colonnade(C):
+    """the two curved peristyles round the lagoon's west side: paired rows of
+    columns under an entablature, the planter boxes (the weeping women's)
+    every third bay, a pavilion at each end. The two arms are arcs of ONE
+    circle (centre in the lagoon, ~101 m): fitted on both DataSF outlines
+    together — fitted one by one, the jagged outlines gave 34 m circles and
+    the planter boxes grew into 50 m spokes (2026-09-24)."""
     if C.era is not None and C.era < 1915: return
     f = FP().get('pofa_colonnade')
     if not f: return
     K = C.K
+    arms, pav = [], []
     for d_ in f['datasf']:
         ring = [tuple(p) for p in d_['ring']]
         xs = [p[0] for p in ring]; ys = [p[1] for p in ring]
-        if max(max(xs) - min(xs), max(ys) - min(ys)) < 25:
-            # an end pavilion of the colonnade: a pier block with its box on top
-            cx, cy = centroid(ring); g = C.tg(cx, cy)
-            K.prism('concrete', ring, g - 0.5, g + 15.5, POFA_STONE)
-            K.prism('concrete', ring, g + 15.5, g + 16.5, POFA_STONE_D)
-            continue
-        ox, oy, R = _fit_circle(ring)
-        rads = [math.hypot(x - ox, y - oy) for x, y in ring]
-        angs = [math.atan2(y - oy, x - ox) for x, y in ring]
-        a_ref = angs[0]
-        un = [((a - a_ref + math.pi) % (2 * math.pi)) - math.pi for a in angs]
-        a0, a1 = min(un) + a_ref, max(un) + a_ref
-        r_in, r_out = min(rads), max(rads)
-        rows = (r_in + 1.4, r_out - 1.4)
-        n = max(2, int((a1 - a0) * (r_in + r_out) / 2 / 3.3))
+        (pav if max(max(xs) - min(xs), max(ys) - min(ys)) < 25 else arms).append(ring)
+    for ring in pav:
+        # an end pavilion of the colonnade: a pier block with its box on top
+        cx, cy = centroid(ring); g = C.tg(cx, cy)
+        K.prism('concrete', ring, g - 0.5, g + 15.5, POFA_STONE)
+        K.prism('concrete', ring, g + 15.5, g + 16.5, POFA_STONE_D)
+    if not arms: return
+    ox, oy, _R = _fit_circle_geo([p for r in arms for p in r])
+    for ring in arms:
+        P = np.asarray(ring, float)
+        rads = np.hypot(P[:, 0] - ox, P[:, 1] - oy)
+        angs = np.arctan2(P[:, 1] - oy, P[:, 0] - ox)
+        a_ref = float(np.median(angs))
+        un = (angs - a_ref + math.pi) % (2 * math.pi) - math.pi
+        a0, a1 = a_ref + float(un.min()), a_ref + float(un.max())
+        rm = float(np.median(rads)); rows = (rm - 5.3, rm + 5.3)
+        n = max(2, int((a1 - a0) * rm / 3.3))
         for i in range(n + 1):
             a = a0 + (a1 - a0) * i / n
             for rr in rows:
@@ -620,7 +652,7 @@ def pofa_colonnade(C):
                 ga = C.tg(*pa)
                 K.beam('concrete', (pa[0], pa[1], ga + 14.5), (pb[0], pb[1], ga + 14.5), 1.6, 2.6, POFA_STONE, up=(0, 0, 1))
         for i in range(1, n, 3):
-            a = a0 + (a1 - a0) * i / n; rm = (rows[0] + rows[1]) / 2
+            a = a0 + (a1 - a0) * i / n
             x, y = ox + rm * math.cos(a), oy + rm * math.sin(a); g = C.tg(x, y)
             fb = Frame(x, y, a, g)
             half = (rows[1] - rows[0]) / 2 + 1.0
