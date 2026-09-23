@@ -307,6 +307,9 @@ instancer('cars', cpts, car_colls)
 
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
+# the district script's own landmarks hook sits in that slice; the city calls
+# landmarks_hq itself (below), with its own box — cut the district's out
+_ss = _ss.split("# ── LANDMARKS, TERRAIN AND WATER DETAIL")[0]
 exec(_ss)
 # open water beyond the mask's own sheet, so the frame never runs into the void
 _oc = simple('ocean', (0.006, 0.026, 0.040), rough=0.06, spec=0.5)
