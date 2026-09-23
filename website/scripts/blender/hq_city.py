@@ -244,7 +244,7 @@ def load_collection(asset):
             p = o.matrix_world @ v.co
             mn = Vector((min(mn.x, p.x), min(mn.y, p.y), min(mn.z, p.z))); mx = Vector((max(mx.x, p.x), max(mx.y, p.y), max(mx.z, p.z)))
     c.instance_offset = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
-    return c, max(mx.x - mn.x, mx.y - mn.y)
+    return c, max(mx.x - mn.x, mx.y - mn.y), mx.z - mn.z
 
 def instancer(name, pts, protos):
     """pts: (x, y, z, scale, rot, kind); protos: collections, one per kind"""
@@ -276,7 +276,14 @@ log('trees')
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
 STREET = [load_collection(a) for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree')]
 PARK = [load_collection(a) for a in ('pine_tree_01', 'fir_tree_01', 'island_tree_02', 'island_tree_01')]
-protos = [c for c, _ in STREET + PARK]; widths = [w for _, w in STREET + PARK]
+protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
+log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, heights)])
+# A proto is scaled to the crown's WIDTH, but not past a height: a narrow pine
+# scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
+# crowns stand at most 1.4 widths tall, pines and firs 2.
+TALL = [1.4] * 5 + [2.0, 2.0, 1.4, 1.4]
+def tree_scale(kind, crown):
+    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
 # WHAT THE ENGINE'S 'trees' LAYER HOLDS. Only the Lambert meshes are trees
 # (the register, 195,310 crowns, listed once per zoom band). The Basic meshes
@@ -302,11 +309,11 @@ for t in d['trees']:
         if ERA is not None and not park:
             if r.random() > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         # parks: mostly broadleaf, some Monterey pine; firs only now and then
-        kind = (7 + r.randrange(2) if r.random() < 0.6 else 5 if r.random() < 0.75 else 6) if park else r.randrange(5)
+        kind = (7 + r.randrange(2) if r.random() < 0.8 else 5) if park else r.randrange(5)
         crown = max(3.0, 2.0 * sxz)
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
 # register already has a tree there
@@ -315,10 +322,11 @@ for (x, y, z, rad, *_rest) in MASS:
     if any((round(x / 2.5) + a, round(y / 2.5) + b) in seen for a in (-1, 0, 1) for b in (-1, 0, 1)): continue
     gz_ = ground(x, y)
     if gz_ is None: continue
-    kind = 7 + r.randrange(2) if r.random() < 0.65 else 5
-    crown = max(4.0, 2.0 * rad)
+    # canopy: crowns a little wider than the disc, so a mass reads as one clump
+    kind = 7 + r.randrange(2) if r.random() < 0.85 else 5
+    crown = max(4.0, 2.5 * rad)
     seen.add((round(x / 2.5), round(y / 2.5)))
-    pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+    pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
 
@@ -378,10 +386,6 @@ tx, ty = float(E('TX', 197)), float(E('TY', 1190))
 cam_d.type = 'ORTHO'; cam_d.ortho_scale = float(E('ORTHO', 13600)); cam_d.clip_start = 1; cam_d.clip_end = 40000
 cam.location = Vector((tx, ty, ground0(tx, ty))) - fwd * 15000
 cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
-# THE CITY'S LIGHT (look tests of 2026-09-23 on Alamo, Dolores, downtown):
-# the sun at 30 deg, not 24, more sky fill and +0.35 exposure. Still golden
-# hour, but the streets come out of the dark the live site was compared against.
-for k_, v_ in (('SUN_EL', '30'), ('SKY_K', '0.52'), ('EXPO', '0.65')): os.environ.setdefault(k_, v_)
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)
 sc.cycles.samples = SPP
