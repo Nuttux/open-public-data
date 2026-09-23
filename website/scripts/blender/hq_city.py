@@ -6,7 +6,7 @@ env: TILES=4 (the frame is rendered as TILES x TILES borders and stitched) ·
      BOX=x0,y0,x1,y1 (buildings only inside, for tests)
 """
 import bpy, bmesh, json, base64, array, math, os, sys, glob, random, time
-from mathutils import Vector
+from mathutils import Vector, Matrix
 from mathutils.bvhtree import BVHTree
 from mathutils.kdtree import KDTree
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -24,8 +24,34 @@ d = json.load(open(os.path.join(SD, 'scene.json')))
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 BOX = [float(v) for v in E('BOX').split(',')] if E('BOX') else None
+
+# ── the pyramid's geometry (see PYRAMID MODE below) ──
+CA_ = math.cos(math.radians(30)); SA_ = 0.42
+KX = math.sqrt(2) * CA_; KY = math.sqrt(2) * SA_; ZT = math.sqrt(2 * (CA_ ** 2 - SA_ ** 2))
+REF = dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
+PZ = int(E('Z', 7)); FW, FH = int(E('FW', 5120)), int(E('FH', 3072))
+_f = 2 ** (PZ - 3); SZ = REF['scale'] * _f; PCW, PCH = round(2560 * _f), round(1536 * _f)
+ONLY = [tuple(int(v) for v in t.split(':')) for t in E('ONLY', '').split(',') if t]
+def frame_world(i, j):
+    # the ground (z = 0) rectangle a frame covers, world metres
+    px0 = REF['cx'] + (i * FW / 2 - PCW / 4) / SZ; px1 = REF['cx'] + ((i + 1) * FW / 2 - PCW / 4) / SZ
+    py1 = REF['cy'] - (j * FH / 2 - PCH / 4) / SZ; py0 = REF['cy'] - ((j + 1) * FH / 2 - PCH / 4) / SZ
+    return px0 / KX, py0 / KY, px1 / KX, py1 / KY
+if E('MODE') == 'pyramid' and ONLY and BOX is None:
+    # ONE REGION, NOT THE CITY: only what can be seen in these frames, plus
+    # what casts a shadow into them (sun from the south-west) and what stands
+    # south of them and rises into view (300 m of tower or hill = ~540 m of y)
+    fr_ = [frame_world(i, j) for i, j in ONLY]
+    BOX = [min(f[0] for f in fr_) - 450, min(f[1] for f in fr_) - 700, max(f[2] for f in fr_) + 450, max(f[3] for f in fr_) + 150]
+    print('region box', [round(v) for v in BOX], flush=True)
 def in_box(x, y, pad=0.0):
     return BOX is None or (BOX[0] - pad <= x <= BOX[2] + pad and BOX[1] - pad <= y <= BOX[3] + pad)
+
+# THE TRUE GROUND. The engine's terrain is squeezed north-south 1.2649x (its
+# 3DEP request asked a square image of a bbox that is not square in degrees):
+# at Coit Tower it reads 0 m, the hill drawn 700 m south. terrain_hq rebuilds
+# the ground from 3DEP and moves what stands on it (terrain_hq.py, landmarks agent).
+import terrain_hq; terrain_hq.correct_scene(d, log, box=BOX, sd=SD)
 
 def f32(b):
     a = array.array('f'); a.frombytes(base64.b64decode(b)); return a
@@ -81,9 +107,11 @@ def ground_mat():
             else: nt.links.new(v, sock)
         return m_.outputs[2]
     dry = mixc(n1.outputs['Fac'], (0.40, 0.29, 0.13, 1), (0.56, 0.44, 0.23, 1))
-    paving = (0.24, 0.23, 0.21, 1)
-    yard = mixc(mth('GREATER_THAN', n3.outputs['Fac'], 0.42), paving, lawn)
-    flatc = mixc(green, yard, lawn)
+    # backyards: mostly lawn, a few paved patios — and none at all where the
+    # engine's ground says park (the blotches read as mould on the lawns)
+    paving = (0.30, 0.29, 0.26, 1)
+    yard = mixc(mth('GREATER_THAN', n3.outputs['Fac'], 0.64), lawn, paving)
+    flatc = mixc(mth('MINIMUM', mth('MULTIPLY', green, 3.0), 1.0), yard, lawn)
     c = mixc(steep, flatc, dry)
     nt.links.new(c, pr.inputs['Base Color'])
     return m
@@ -118,6 +146,10 @@ if len(SP_):
 # ── the year shown: the records that stood, open land, the streets of the day ──
 log('buildings: records')
 HG = city_data.hero_gids()
+# and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
+# a pass reads the copy frozen in its snapshot, a test the live one)
+_sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
+if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
 _allb = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80) and b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 if ERA is not None and E('INFILL', '1') == '1':
@@ -146,21 +178,26 @@ for m in d['meshes']:
     if m.get('instanced'): continue
     if m['layer'] == 'streets':
         p_ = f32(m['pos'])
-        if ERA is not None:
+        if ERA is not None or BOX is not None:
             q_ = array.array('f')
             for t in range(len(p_) // 9):
                 a = t * 9
-                if street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
+                if not in_box(p_[a], p_[a+1], 60): continue
+                if ERA is None or street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
             p_ = q_
         SP.extend(p_)
     elif m['layer'] == 'street-markings' and (ERA is None or EA.P('marks', ERA) >= 0.5):
         p = f32(m['pos'])
         for t in range(len(p) // 9):
             a = t * 9
-            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0: MP.extend(p[a:a+9])
+            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
         c = f32(m['col']); p = f32(m['pos'])
-        (DP if (c and c[2] > 0.8) else DL).extend(p)
+        tgt = DP if (c and c[2] > 0.8) else DL
+        if BOX is None: tgt.extend(p)
+        else:
+            for t in range(len(p) // 9):
+                if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
@@ -338,6 +375,9 @@ if ERA is not None:
 
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
+# the district script's own landmarks hook sits in that slice; the city calls
+# landmarks_hq itself (below), with its own box — cut the district's out
+_ss = _ss.split("# ── LANDMARKS, TERRAIN AND WATER DETAIL")[0]
 # the era blocks of that slice read the box and the open-land raster by name
 bx0, by0, bx1, by1 = CBOX
 OPEN = OL.open if ERA is not None else None
@@ -353,6 +393,19 @@ _on.links.new(_ob_.outputs[0], _on.nodes['Principled BSDF'].inputs['Normal'])
 _g = 60000; _me = bpy.data.meshes.new('ocean'); _me.from_pydata([(-_g, -_g, -0.5), (_g, -_g, -0.5), (_g, _g, -0.5), (-_g, _g, -0.5)], [], [(0, 1, 2, 3)])
 _oo = bpy.data.objects.new('ocean', _me); sc.collection.objects.link(_oo); _me.materials.append(_oc)
 
+# ── LANDMARKS, TERRAIN AND WATER DETAIL (landmarks_hq.py, owned by the
+#    landmarks agent): called once the scene stands, before camera and light.
+#    build(bpy, scene, mats, ground, box, scene_json, log, era) may add objects,
+#    replace the engine's crude 'landmarks' mesh piece by piece, refine the
+#    terrain, the shore and the water. Missing module = nothing happens.
+if os.environ.get('LANDMARKS', '1') == '1':
+    try:
+        import landmarks_hq
+    except ModuleNotFoundError:
+        landmarks_hq = None
+    if landmarks_hq is not None:
+        landmarks_hq.build(bpy, sc, M, ground0, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
 cam_d = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_d); sc.collection.objects.link(cam); sc.camera = cam
@@ -363,6 +416,42 @@ cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)
 sc.cycles.samples = SPP
+
+# ── PYRAMID MODE: the site's own tile grid, exactly ──────────────────────────
+# `scripts/render-city-tiles.mjs` and `lib/citygl/tile-plane.ts` define the
+# pyramid: level z is a canvas of 2560·2^(z-3) x 1536·2^(z-3) device px (dpr 2)
+# centred on REF, at REF.scale·2^(z-3) CSS px per plane unit. The engine's
+# plane is linear in the world at its 315° bearing:
+#     px = √2·cos30·x = 1.2247·x        py = √2·sA·y + z·zex   (sA 0.42)
+# and it is a TRUE orthographic camera exactly when zex = √(2(cos²30 − sA²))
+# = 1.0711 — the rows are orthogonal and of equal length. So the render uses
+# that camera (true proportions, 29.0° elevation) and the pyramid's index.json
+# says zex = zexb = 1.0711, which the tile map's overlay then uses: labels and
+# taps land on the rendered buildings, hills included.
+if E('MODE') == 'pyramid':
+    Z, sz, cw, ch = PZ, SZ, PCW, PCH
+    nfx, nfy = math.ceil(cw / FW), math.ceil(ch / FH)
+    up = Vector((0, KY, ZT)).normalized(); fw_ = Vector((0, ZT, -KY)).normalized()
+    cam_d.ortho_scale = (FW / 2) / sz / KX                           # metres across the frame
+    sc.render.resolution_x, sc.render.resolution_y = FW, FH
+    sc.render.use_border = False; sc.render.use_persistent_data = True
+    rot = Matrix((Vector((1, 0, 0)), up, -fw_)).transposed().to_euler()
+    log(f'pyramid level {Z}: canvas {cw}x{ch}, {nfx}x{nfy} frames of {FW}x{FH}, {1 / (sz * 2 * KX) * 100:.1f} cm/px')
+    for j in range(nfy):
+        for i in range(nfx):
+            if ONLY and (i, j) not in ONLY: continue
+            fn = f'{OUT}_z{Z}_{i}_{j}.png'
+            if os.path.exists(fn): continue
+            # the frame's centre in the level canvas (device px) -> CSS -> plane -> world at z = 0
+            ccx, ccy = (i + 0.5) * FW / 2, (j + 0.5) * FH / 2
+            px_ = REF['cx'] + (ccx - cw / 4) / sz; py_ = REF['cy'] - (ccy - ch / 4) / sz
+            wp = Vector((px_ / KX, py_ / KY, 0.0))
+            cam.location = wp - fw_ * 20000; cam.rotation_euler = rot
+            sc.render.filepath = fn
+            t1 = time.time(); bpy.ops.render.render(write_still=True)
+            log(f'frame {i},{j}: {time.time() - t1:.1f}s')
+    log('PYRAMID done'); sys.exit(0)
+
 T = int(E('TILES', 1))
 sc.render.use_border = T > 1; sc.render.use_crop_to_border = True
 sc.render.use_persistent_data = True          # one BVH for all the tiles

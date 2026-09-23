@@ -1,0 +1,266 @@
+"""San Francisco's landmarks and public spaces, modelled by hand, for the
+path-traced render (hq_scene.py districts, hq_city.py the whole city).
+
+Both scripts call, once the scene stands and before camera and light:
+    landmarks_hq.build(bpy, scene, mats, ground, box, scene_json, log, era)
+build() adds each landmark whose extent meets `box` (padded: a tower or a
+bridge is seen from far), standing in `era` (a year, None = today), and
+removes the engine's crude stand-in for it (the 'landmarks' object) whether
+or not the landmark stands in that year. It never raises: every landmark is
+built in its own try, and a failure is logged and skipped.
+
+THE GROUND. terrain_hq.correct_scene(d, ...) puts the scene on the true
+ground (3DEP) — see terrain_hq.py for the engine's north-south squeeze it
+undoes. When it has run, the scene carries d['_terrain_hq'] and landmarks
+stand on the true ground; otherwise they stand on the scene's own ground().
+
+Every landmark's dates are in LANDMARKS (built, gone) for the history pass.
+Sources per landmark in its module (lm_bridges.py, lm_civic.py): published
+dimensions (owners, HAER/HABS drawings at the Library of Congress,
+Wikipedia), OpenStreetMap footprints and building parts (ODbL,
+(c) OpenStreetMap contributors), USGS 3DEP. No Google data of any kind.
+"""
+import math, os, sys, time, traceback
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path: sys.path.insert(0, HERE)
+
+import numpy as np
+import lm_kit
+from lm_kit import Frame
+
+# landmarks validated on a test frame through the GPU queue; the rest are
+# built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
+# gets a model nobody has looked at. A disabled landmark leaves the engine's
+# stand-in (and the generator's building) in place.
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry'}
+
+class Region:
+    """where the engine's crude stand-in is cleared: a polygon, or a
+    rectangle in a Frame (u0..u1, v0..v1)"""
+    def __init__(self, ring=None, frame=None, uv=None):
+        self.ring, self.frame, self.uv = ring, frame, uv
+    def inside(self, X, Y):
+        if self.frame is not None:
+            dx, dy = X - self.frame.x, Y - self.frame.y
+            u = dx * self.frame.cu + dy * self.frame.su; v = -dx * self.frame.su + dy * self.frame.cu
+            u0, u1, v0, v1 = self.uv
+            return (u >= u0) & (u <= u1) & (v >= v0) & (v <= v1)
+        r = self.ring; inside = np.zeros(X.shape, bool)
+        n = len(r)
+        for i in range(n):
+            (x1, y1), (x2, y2) = r[i], r[(i + 1) % n]
+            c = ((y1 > Y) != (y2 > Y)) & (X < (x2 - x1) * (Y - y1) / ((y2 - y1) or 1e-12) + x1)
+            inside ^= c
+        return inside
+    def bbox(self):
+        if self.frame is not None:
+            u0, u1, v0, v1 = self.uv
+            pts = [self.frame.P(u, v)[:2] for u in (u0, u1) for v in (v0, v1)]
+        else: pts = self.ring
+        return (min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts))
+
+class Landmark:
+    def __init__(self, key, name, built, gone, builder, regions, pad=300.0, note='', replaces=False):
+        self.key, self.name, self.built, self.gone, self.replaces = key, name, built, gone, replaces
+        self.builder, self.regions, self.pad, self.note = builder, regions, pad, note
+    def bbox(self):
+        bs = [r.bbox() for r in self.regions]
+        return (min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs))
+    def stands(self, era):
+        # construction stages are the builder's business: it gets the year
+        if era is None: return self.gone is None
+        return (self.gone is None or era < self.gone)
+
+def _registry():
+    import lm_bridges as B, lm_civic as V
+    gg = Frame(B.GG_S[0], B.GG_S[1], B.GG_ANG)
+    bay = Frame(B.BAY_W2[0], B.BAY_W2[1], B.BAY_ANG - math.pi / 2)
+    def ol(key, grow=0.0):
+        rs = V.outer(key)
+        if not rs: return []
+        out = []
+        for r in rs:
+            if grow:
+                cx, cy = V.centroid(r)
+                r = [(cx + (x - cx) * (1 + grow), cy + (y - cy) * (1 + grow)) for x, y in r]
+            out.append(Region(ring=r))
+        return out
+    def ds(key, gid):
+        f = V.FP().get(key) or {}
+        return [Region(ring=[tuple(p) for p in d['ring']]) for d in f.get('datasf', []) if d['gid'] == gid]
+    L = [
+        # key, name, built (opened), demolished, builder, clear regions
+        Landmark('goldengate', 'Golden Gate Bridge', 1937, None, B.golden_gate,
+                 [Region(frame=gg, uv=(-70, 70, -920, B.GG_L + 560))], pad=2500.0,
+                 note='construction 1933 (piers, anchorages), towers 1935, cables 1936, opened 27 May 1937'),
+        Landmark('baybridge', 'San Francisco-Oakland Bay Bridge (west spans)', 1936, None, B.bay_bridge,
+                 [Region(frame=bay, uv=(-60, 60, -800, 2900))], pad=2500.0,
+                 note='construction 1933-36, opened 12 Nov 1936; the east span: cantilever 1936-2013, self-anchored suspension from Sep 2013'),
+        Landmark('salesforce', 'Salesforce Tower', 2018, None, V.salesforce, ol('salesforce'), pad=3000.0,
+                 note='topped out 2017, opened 2018; absent from the DataSF footprints the city is built from'),
+        Landmark('transit_center', 'Salesforce Transit Center and Park', 2018, None, V.transit_center, ol('transit_center'), pad=600.0,
+                 note='opened Aug 2018 (closed for repairs to Jul 2019); the old Transbay Terminal stood 1939-2010', replaces=True),
+        Landmark('transamerica', 'Transamerica Pyramid', 1972, None, V.transamerica, ol('transamerica', 0.08), pad=2500.0,
+                 note='built 1969-72'),
+        Landmark('coit', 'Coit Tower', 1933, None, V.coit, ol('coit', 0.15), pad=1500.0, note='dedicated Oct 1933'),
+        Landmark('ferry', 'Ferry Building', 1898, None, V.ferry, ol('ferry', 0.06), pad=1200.0,
+                 note='opened July 1898; the Embarcadero Freeway stood in front of it 1959-1991'),
+        Landmark('cityhall', 'San Francisco City Hall', 1915, None, V.cityhall, ol('cityhall', 0.05), pad=1500.0,
+                 note='built 1913-15 after the 1906 City Hall fell; the old City Hall (1872-1906) stood on the Civic Center site'),
+        Landmark('sutro', 'Sutro Tower', 1973, None, V.sutro, [Region(ring=[(V.SUTRO_C[0] + 42 * math.cos(a / 12 * 6.283), V.SUTRO_C[1] + 42 * math.sin(a / 12 * 6.283)) for a in range(12)])],
+                 pad=4000.0, note='built 1971-73, in service July 1973'),
+        Landmark('alcatraz', 'Alcatraz', 1859, None, V.alcatraz, ol('alcatraz'), pad=1500.0,
+                 note='military fortress 1859, military prison 1907-33 (cellhouse 1912), federal penitentiary 1934-63, lighthouse 1909 (first 1854), water tower 1940; warden\'s house burned 1970'),
+        Landmark('grace', 'Grace Cathedral', 1964, None, V.grace, ds('grace', 139401), pad=1200.0,
+                 note='begun 1928, consecrated 1964 (the nave finished 1964; the towers 1941)', replaces=True),
+        Landmark('stmarys', "St. Mary's Cathedral", 1971, None, V.stmarys, ds('stmarys', 149499), pad=1200.0,
+                 note='1967-71, after the old cathedral on Van Ness burned in 1962', replaces=True),
+        Landmark('conservatory', 'Conservatory of Flowers', 1879, None, V.conservatory, ol('conservatory', 0.08), pad=800.0,
+                 note='built 1878, opened 1879'),
+        Landmark('deyoung', 'de Young Museum', 2005, None, V.deyoung, ds('deyoung', 32875), pad=800.0,
+                 note='opened Oct 2005; the earlier de Young (1895 Midwinter Fair, rebuilt 1919-25) stood here until 2002', replaces=True),
+        Landmark('legion', 'Legion of Honor', 1924, None, V.legion, ol('legion', 0.03), pad=800.0, note='opened Nov 1924'),
+        Landmark('oracle', 'Oracle Park', 2000, None, V.oracle, ds('oracle', 143280), pad=1000.0,
+                 note='opened April 2000 as Pacific Bell Park', replaces=True),
+        Landmark('chase', 'Chase Center', 2019, None, V.chase, ol('chase', 0.02), pad=800.0, note='opened Sept 2019'),
+        Landmark('pofa', 'Palace of Fine Arts rotunda', 1915, None, V.pofa, ol('pofa', 0.05), pad=1000.0,
+                 note='1915 Panama-Pacific Exposition; demolished and recast in concrete 1964-67 (the history pass may hide it 1964-66)'),
+        Landmark('pofa_colonnade', 'Palace of Fine Arts colonnades', 1915, None, V.pofa_colonnade, ol('pofa_colonnade', 0.02), pad=800.0,
+                 note='as the rotunda', replaces=True),
+    ]
+    every = os.environ.get('LM_ALL') == '1'
+    return [l for l in L if l.regions and (every or l.key in ENABLED)]
+class Ctx:
+    pass
+
+def _clear(bpy, sc, regions, log):
+    """delete the engine stand-in's faces whose centre is in any region"""
+    import bmesh
+    n = 0
+    for ob in list(sc.collection.all_objects):
+        if ob.type != 'MESH' or not (ob.name == 'landmarks' or ob.name.startswith('landmarks.')): continue
+        me = ob.data
+        if not len(me.polygons): continue
+        cen = np.empty(len(me.polygons) * 3, np.float32); me.polygons.foreach_get('center', cen); cen = cen.reshape(-1, 3)
+        mw = ob.matrix_world
+        X = cen[:, 0] + mw.translation.x; Y = cen[:, 1] + mw.translation.y
+        kill = np.zeros(len(cen), bool)
+        for r in regions:
+            b = r.bbox()
+            pre = (X >= b[0]) & (X <= b[2]) & (Y >= b[1]) & (Y <= b[3])
+            if pre.any(): kill[pre] |= r.inside(X[pre], Y[pre])
+        if not kill.any(): continue
+        bm = bmesh.new(); bm.from_mesh(me); bm.faces.ensure_lookup_table()
+        bmesh.ops.delete(bm, geom=[bm.faces[i] for i in np.nonzero(kill)[0]], context='FACES')
+        bm.to_mesh(me); bm.free(); me.update(); n += int(kill.sum())
+    return n
+
+def _hidden(bpy):
+    m = bpy.data.materials.get('lm_hidden')
+    if m is None:
+        m = bpy.data.materials.new('lm_hidden'); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
+        o = nt.nodes.new('ShaderNodeOutputMaterial'); t = nt.nodes.new('ShaderNodeBsdfTransparent')
+        nt.links.new(t.outputs[0], o.inputs[0])
+    return m
+
+def _clear_generated(bpy, sc, regions):
+    """the building generator's (and the engine massing's) faces under a
+    landmark that replaces DataSF footprints — a fallback until the
+    orchestrator skips skip_gids.json. The faces are not deleted (a bmesh of
+    a city chunk costs memory): they get an extra, fully transparent
+    material slot"""
+    import re
+    n = 0
+    for ob in list(sc.collection.all_objects):
+        if ob.type != 'MESH' or not (ob.name.startswith('gen.') or re.match(r'^b\d+\.', ob.name) or ob.name == 'far'): continue
+        me = ob.data
+        np_ = len(me.polygons)
+        if not np_: continue
+        cen = np.empty(np_ * 3, np.float32); me.polygons.foreach_get('center', cen); cen = cen.reshape(-1, 3)
+        X, Y = cen[:, 0], cen[:, 1]; kill = np.zeros(np_, bool)
+        for r in regions:
+            b = r.bbox(); pre = (X >= b[0]) & (X <= b[2]) & (Y >= b[1]) & (Y <= b[3])
+            if pre.any():
+                idx = np.nonzero(pre)[0]; kill[idx] |= r.inside(X[idx], Y[idx])
+        if not kill.any(): continue
+        hm = _hidden(bpy)
+        slot = list(me.materials).index(hm) if hm.name in [m_.name for m_ in me.materials if m_] else None
+        if slot is None: me.materials.append(hm); slot = len(me.materials) - 1
+        mi = np.empty(np_, np.int32); me.polygons.foreach_get('material_index', mi)
+        mi[kill] = slot; me.polygons.foreach_set('material_index', mi); me.update()
+        n += int(kill.sum())
+    return n
+
+def _plant(C):
+    """trees the landmarks ask for (C.trees: x, y, z, crown width), from the
+    scanned trees the scene has already loaded"""
+    if not C.trees: return 0
+    bpy = C.bpy
+    colls = [c for c in bpy.data.collections if c.name.endswith('LOD0') and len(c.all_objects)]
+    if not colls: return 0
+    dims = []
+    for c in colls:
+        w = max([max(o.dimensions.x, o.dimensions.y) for o in c.all_objects if o.type == 'MESH'] or [5.0])
+        dims.append(max(0.5, w))
+    root = bpy.data.collections.new('lm_trees'); C.sc.collection.children.link(root)
+    rnd = np.random.default_rng(11)
+    for i, (x, y, z, crown) in enumerate(C.trees):
+        k = int(rnd.integers(len(colls)))
+        o = bpy.data.objects.new(f'lmtree{i}', None); o.instance_type = 'COLLECTION'; o.instance_collection = colls[k]
+        s = crown / dims[k]; o.location = (x, y, z - 0.1); o.scale = (s, s, s); o.rotation_euler.z = float(rnd.uniform(0, 6.283))
+        root.objects.link(o)
+    return len(C.trees)
+
+def build(bpy, scene, mats, ground, box, scene_json, log=print, era=None):
+    t0 = time.time()
+    try:
+        _build(bpy, scene, mats, ground, box, scene_json, log, era, t0)
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: FAILED, scene left as it was:', ex)
+
+def _build(bpy, sc, mats, ground, box, d, log, era, t0):
+    lm_kit.materials(bpy, mats)
+    C = Ctx(); C.bpy, C.sc, C.mats, C.ground, C.box, C.era, C.log, C.d = bpy, sc, mats, ground, box, era, log, d
+    C.K = lm_kit.Kit(); C.no_bents = []; C.trees = []
+    true = bool(d.get('_terrain_hq')) if isinstance(d, dict) else False
+    if true:
+        import terrain_hq
+        C.tg = lambda x, y: float(terrain_hq.true_ground(np.array([x]), np.array([y]))[0])
+    else:
+        C.tg = lambda x, y: float(ground(x, y) or 0.0)
+    try: L = _registry()
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: registry failed', ex); return
+    bx0, by0, bx1, by1 = box
+    todo, clear, gen = [], [], []
+    for lm in L:
+        a = lm.bbox()
+        if a[2] < bx0 - lm.pad or a[0] > bx1 + lm.pad or a[3] < by0 - lm.pad or a[1] > by1 + lm.pad: continue
+        clear += lm.regions
+        if lm.stands(era):
+            todo.append(lm)
+            if lm.replaces: gen += lm.regions
+    try:
+        nc = _clear(bpy, sc, clear, log)
+        if nc: log(f'landmarks_hq: cleared {nc} faces of the engine stand-ins')
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: clearing failed', ex)
+    try:
+        ng = _clear_generated(bpy, sc, gen) if gen else 0
+        if ng: log(f'landmarks_hq: cleared {ng} generated faces under replaced footprints')
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: clearing generated failed', ex)
+    done = []
+    for lm in todo:
+        nf = C.K.nf
+        try:
+            if lm.key == 'goldengate': C.no_bents = [(-452.0, -345.0)]
+            lm.builder(C); done.append(f'{lm.key}({C.K.nf - nf})')
+        except Exception as ex:
+            traceback.print_exc(); log(f'landmarks_hq: {lm.key} failed: {ex}')
+    objs = C.K.emit(bpy, sc, mats, name='lm')
+    try: nt = _plant(C)
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: trees failed', ex); nt = 0
+    if nt: log(f'landmarks_hq: {nt} trees')
+    log(f'landmarks_hq: {", ".join(done) or "none"} — {len(objs)} meshes, {time.time() - t0:.1f}s')

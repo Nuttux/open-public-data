@@ -338,43 +338,51 @@ def yard_sand(era):
 #            before 2008, 3,070 systems by April 2014, ~6,000 incentivised by
 #            GoSolarSF since 2008 (SFPUC; Vote Solar) — over ~166,000
 #            buildings.
+#  hvac      share of today's rooftop condensers and packaged units standing:
+#            none before the war, spreading from the 1950s. CONVENTION.
+#  deck      share of today's roof decks on flat-roofed houses. CONVENTION.
+#  cool      share of today's white and silver roof membranes (elastomeric
+#            coatings, aluminium paint; California's Title 24 made cool roofs
+#            the rule on new low-slope commercial roofs in 2005 — CEC 2005
+#            Building Energy Efficiency Standards); before, tar and gravel and
+#            cap sheet. CONVENTION on the steps.
 TABLE = {
     1890: dict(trees=0.03, cars=0.0, fleet={}, carcol='black',
                paint=dict(stone=0.35, poly=0.60, pale=0.05), paint2=dict(pale=1.0),
-               lamp='gas', marks=0.0, solar=0.0, strip=0.0),
+               lamp='gas', marks=0.0, solar=0.0, strip=0.0, hvac=0, deck=0, cool=0),
     1906: dict(trees=0.04, cars=0.0, fleet={}, carcol='black',
                paint=dict(stone=0.25, poly=0.55, pale=0.20), paint2=dict(pale=1.0),
-               lamp='gas', marks=0.0, solar=0.0, strip=0.0),
+               lamp='gas', marks=0.0, solar=0.0, strip=0.0, hvac=0, deck=0, cool=0),
     1915: dict(trees=0.06, cars=0.08, fleet=dict(t20=1.0), carcol='black',
                paint=dict(stone=0.10, poly=0.35, pale=0.45, grey=0.10), paint2=dict(pale=0.8, today=0.2),
-               lamp='electrolier', marks=0.0, solar=0.0, strip=0.0),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.0, hvac=0, deck=0, cool=0),
     1938: dict(trees=0.10, cars=0.25, fleet=dict(t20=0.25, r30=0.75), carcol='dark30',
                paint=dict(poly=0.10, pale=0.45, grey=0.45), paint2=dict(pale=0.5, grey=0.1, today=0.4),
-               lamp='electrolier', marks=0.0, solar=0.0, strip=0.12),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.12, hvac=0, deck=0, cool=0.02),
     1950: dict(trees=0.16, cars=0.40, fleet=dict(r30=0.75, f50=0.25), carcol='post45',
                paint=dict(pale=0.30, grey=0.70), paint2=dict(pale=0.4, grey=0.3, today=0.3),
-               lamp='electrolier', marks=0.0, solar=0.0, strip=0.25),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.25, hvac=0.05, deck=0.05, cool=0.08),
     1960: dict(trees=0.20, cars=0.50, fleet=dict(r30=0.15, f50=0.60, l60=0.25), carcol='pastel50',
                paint=dict(pale=0.28, grey=0.72), paint2=dict(pale=0.3, grey=0.3, today=0.4),
-               lamp='cobra', marks=0.0, solar=0.0, strip=0.32),
+               lamp='cobra', marks=0.0, solar=0.0, strip=0.32, hvac=0.2, deck=0.1, cool=0.15),
     1970: dict(trees=0.28, cars=0.58, fleet=dict(f50=0.20, l60=0.80), carcol='bright60',
                paint=dict(pale=0.25, grey=0.60, color=0.15), paint2=dict(pale=0.2, grey=0.2, today=0.6),
-               lamp='cobra', marks=1.0, solar=0.0, strip=0.32),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.32, hvac=0.4, deck=0.2, cool=0.25),
     1980: dict(trees=0.36, cars=0.62, fleet=dict(l60=0.55, b80=0.45), carcol='earth70',
                paint=dict(pale=0.25, grey=0.40, color=0.35), paint2=dict(pale=0.1, grey=0.1, today=0.8),
-               lamp='cobra', marks=1.0, solar=0.0, strip=0.26),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.26, hvac=0.6, deck=0.35, cool=0.35),
     1990: dict(trees=0.55, cars=0.62, fleet=dict(l60=0.15, b80=0.70, mod=0.15), carcol='mix80',
                paint=dict(pale=0.20, grey=0.25, color=0.55), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.0, strip=0.2),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.2, hvac=0.8, deck=0.55, cool=0.5),
     2000: dict(trees=0.72, cars=0.62, fleet=dict(b80=0.40, mod=0.60), carcol='green90',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.0, strip=0.16),
+               lamp='cobra', marks=1.0, solar=0.0, strip=0.16, hvac=0.9, deck=0.75, cool=0.7),
     2010: dict(trees=0.86, cars=0.62, fleet=dict(b80=0.10, mod=0.90), carcol='silver00',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.006, strip=0.13),
+               lamp='cobra', marks=1.0, solar=0.006, strip=0.13, hvac=1.0, deck=0.9, cool=0.9),
     2020: dict(trees=1.00, cars=0.62, fleet=dict(mod=1.0), carcol='today',
                paint=dict(today=1.0), paint2=dict(today=1.0),
-               lamp='cobra', marks=1.0, solar=0.04, strip=0.1),
+               lamp='cobra', marks=1.0, solar=0.04, strip=0.1, hvac=1.0, deck=1.0, cool=1.0),
 }
 
 # the fleet's paint, display RGB with weights (see `carcol` above)
@@ -398,6 +406,28 @@ CAR_COLOURS = {
                  ((0.10, 0.18, 0.40), 1), ((0.60, 0.06, 0.06), 1)],
     'today': [((0.92, 0.92, 0.90), 25), ((0.42, 0.43, 0.45), 23), ((0.02, 0.02, 0.025), 22), ((0.70, 0.71, 0.73), 10),
               ((0.10, 0.18, 0.42), 8), ((0.62, 0.06, 0.06), 7), ((0.55, 0.50, 0.40), 5)],
+}
+
+# the period bodies (TABLE `fleet`), in the lofted-car format of hq_scene's
+# car_mesh: side silhouette `sil` (x -1 rear .. 1 front, roof/deck line in
+# metres), belt line, cabin x range, wheel radius, front/rear overhang (m).
+# CONVENTION on the shapes, after the period's best-sellers: t20 the tall
+# Model T (1908-27, 30-inch wheels, ~3.4 m), r30 the rounded 1930s-40s
+# sedan with a long hood, f50 the long low 1950s car with its trunk deck,
+# l60 the long flat 1960s-70s sedan, b80 the boxy 1980s compact.
+CAR_SHAPES = {
+    't20': [(3.5, 1.68, dict(sil=[(-1, 1.05), (-0.98, 1.72), (-0.92, 1.86), (0.28, 1.88), (0.34, 1.80), (0.38, 1.16), (0.92, 1.10), (1, 1.0)],
+                             belt=1.12, cab=(-0.94, 0.37), wr=0.38, fo=0.42, ro=0.55))],
+    'r30': [(4.6, 1.78, dict(sil=[(-1, 0.72), (-0.95, 0.98), (-0.78, 1.22), (-0.52, 1.56), (-0.12, 1.62), (0.06, 1.58), (0.16, 1.22), (0.50, 1.12), (0.90, 1.02), (1, 0.84)],
+                             belt=1.14, cab=(-0.62, 0.16), wr=0.36, fo=0.75, ro=0.95))],
+    'f50': [(5.3, 1.98, dict(sil=[(-1, 0.96), (-0.97, 1.02), (-0.72, 0.99), (-0.50, 1.00), (-0.34, 1.42), (0.14, 1.44), (0.27, 1.02), (0.90, 0.96), (1, 0.82)],
+                             belt=1.0, cab=(-0.40, 0.26), wr=0.35, fo=1.0, ro=1.3))],
+    'l60': [(5.4, 2.0, dict(sil=[(-1, 0.86), (-0.97, 0.93), (-0.56, 0.96), (-0.38, 1.36), (0.12, 1.38), (0.26, 0.97), (0.95, 0.91), (1, 0.79)],
+                            belt=0.96, cab=(-0.45, 0.25), wr=0.35, fo=1.05, ro=1.3)),
+            (4.8, 1.85, dict(sil=[(-1, 0.86), (-0.97, 0.93), (-0.56, 0.96), (-0.38, 1.36), (0.12, 1.38), (0.26, 0.97), (0.95, 0.91), (1, 0.79)],
+                             belt=0.96, cab=(-0.45, 0.25), wr=0.34, fo=0.95, ro=1.1))],
+    'b80': [(4.5, 1.72, dict(sil=[(-1, 0.86), (-0.98, 0.96), (-0.62, 0.99), (-0.48, 1.36), (0.18, 1.38), (0.36, 0.99), (0.95, 0.91), (1, 0.79)],
+                             belt=0.99, cab=(-0.55, 0.34), wr=0.32, fo=0.9, ro=1.0))],
 }
 
 _YEARS = sorted(TABLE)
@@ -426,12 +456,70 @@ def P(key, era):
     return vb if t >= 1.0 else va
 
 
+def _met(c, era):
+    """how metallic a period colour is (CONVENTION): none before the late
+    1950s; greys and silvers metallic from the 1990s, other colours a little
+    from the late 1960s"""
+    if era < 1958: return 0.0
+    grey = max(c) - min(c) < 0.06 and 0.25 < sum(c) / 3 < 0.8
+    if grey: return 0.3 + 0.6 * min(1.0, max(0.0, (era - 1975) / 25.0))
+    return 0.3 * min(1.0, (era - 1958) / 20.0) if 0.05 < sum(c) / 3 < 0.9 else 0.0
+
+
+def car_paint(era, today):
+    """the kerb's paint at a year as [(share, display rgb, metallic)], mixing
+    the two neighbouring rows; `today` is the renderer's own palette for the
+    'today' row (hq_scene.py keeps it)"""
+    ra, rb, t = _row_pair(era)
+    def row(key):
+        if key == 'today': L = [(w, c, m) for w, c, m in today]
+        else: L = [(w, c, _met(c, era)) for c, w in CAR_COLOURS[key]]
+        tot = sum(w for w, _, _ in L) or 1.0
+        return [(w / tot, c, m) for w, c, m in L]
+    out = [(w * (1 - t), c, m) for w, c, m in row(ra['carcol'])]
+    if t > 0: out += [(w * t, c, m) for w, c, m in row(rb['carcol'])]
+    return [q for q in out if q[0] > 0]
+
+
 def car_colours(era):
     """the kerb's paint mix at a year: both neighbouring rows' mixes, weighted"""
     ra, rb, t = _row_pair(era)
     out = [(c, w * (1 - t)) for c, w in CAR_COLOURS[ra['carcol']]]
     if t > 0: out += [(c, w * t) for c, w in CAR_COLOURS[rb['carcol']]]
     return [(c, w) for c, w in out if w > 0]
+
+
+def rel(key, era):
+    """a TABLE share at the year shown relative to today's (1 today)"""
+    now = TABLE[_YEARS[-1]][key]
+    return P(key, era) / now if now else 1.0
+
+
+def gate(key, gid, era, salt=0):
+    """does this building (gid) carry the feature `key` in the year shown?
+    Each building draws its own fixed threshold, so as the share grows the
+    same buildings keep it and new ones join: a feature, once there, stays
+    through the film (the in-between years never flicker)"""
+    if era is None: return True
+    u = ((int(gid) * 2654435761 + 97 * salt + 12345) % 1000003) / 1000003.0
+    return u < rel(key, era)
+
+
+def gate_count(n, key, gid, era):
+    """n items of a kind at today's count; at an earlier year, the first k of
+    them — k grows with the share, item by item on each building"""
+    if era is None or n <= 0: return n
+    return sum(1 for i in range(n) if gate(key, gid, era, salt=i + 1))
+
+
+def roof_membrane(kind, gid, era):
+    """the flat roof's membrane (0 tar and gravel, 1 cap sheet, 2 white,
+    3 silver) at the year shown: tar and gravel before 1950; the white and
+    silver coatings join by the table's `cool` share (CONVENTION)"""
+    if era is None: return kind
+    if era < 1950: return 0
+    if kind >= 2 and not gate('cool', gid, era, salt=7): return 1
+    return kind
 
 
 def pick(mix, r):
