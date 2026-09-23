@@ -159,13 +159,162 @@ M['concrete'] = ph_mat('grey_plaster', 3.0, tint=True, name='concrete_wall')
 M['glass'] = glass_mat()
 M['door'] = simple('door', None, rough=0.4, attr=True)
 M['roof_shingle'] = ph_mat('grey_roof_01', 3.2, tint=True, name='roof_shingle', lift=0.0)
-M['roof_flat'] = ph_mat('tarred_gravel', 2.5, tint=True, name='roof_flat', lift=0.0)
 M['metal'] = simple('metal', None, rough=0.35, metal=0.8, attr=True)
 M['stair'] = ph_mat('concrete_pavement', 2.0, tint=True, name='stair')
 M['shopglass'] = glass_mat()
 M['awning'] = simple('awning', None, rough=0.7, attr=True)
-M['curtain'] = simple('curtain', (0.62, 0.58, 0.50), rough=0.9)
-M['asphalt'] = ph_mat('asphalt_02', 5.0, value=0.55)
+M['curtain'] = simple('curtain', None, rough=0.9, attr=True)
+class NB:
+    """a small node builder for the procedural surfaces below"""
+    def __init__(self, name):
+        self.m = bpy.data.materials.new(name); self.m.use_nodes = True; self.nt = self.m.node_tree
+        self.pr = self.nt.nodes['Principled BSDF']; self.pos = self.nt.nodes.new('ShaderNodeNewGeometry').outputs['Position']
+    def n(self, kind, **kw):
+        n_ = self.nt.nodes.new(kind)
+        for k, v in kw.items(): setattr(n_, k, v)
+        return n_
+    def put(self, sock, v):
+        if isinstance(v, (int, float)): sock.default_value = v
+        elif isinstance(v, tuple): sock.default_value = v if len(v) == len(sock.default_value) else (*v, 1.0)
+        else: self.nt.links.new(v, sock)
+    def math(self, op, a, b=None, c=None, clamp=False):
+        n_ = self.n('ShaderNodeMath', operation=op, use_clamp=clamp)
+        for i, v in enumerate((a, b, c)):
+            if v is not None: self.put(n_.inputs[i], v)
+        return n_.outputs[0]
+    def mix(self, f, a, b, blend='MIX'):
+        n_ = self.n('ShaderNodeMix', data_type='RGBA', blend_type=blend)
+        self.put(n_.inputs[0], f); self.put(n_.inputs[6], a); self.put(n_.inputs[7], b); return n_.outputs[2]
+    def vmap(self, scale=1.0, rot=0.0, loc=(0, 0, 0), vec=None):
+        n_ = self.n('ShaderNodeMapping'); self.put(n_.inputs['Vector'], vec or self.pos)
+        n_.inputs['Location'].default_value = loc; n_.inputs['Rotation'].default_value = (0, 0, rot)
+        n_.inputs['Scale'].default_value = (scale, scale, scale) if isinstance(scale, (int, float)) else scale
+        return n_.outputs[0]
+    def img(self, path, vec, noncolor=False, proj='FLAT'):
+        n_ = self.n('ShaderNodeTexImage'); n_.image = bpy.data.images.load(path, check_existing=True); n_.projection = proj
+        if proj == 'BOX': n_.projection_blend = 0.25
+        if noncolor: n_.image.colorspace_settings.name = 'Non-Color'
+        self.put(n_.inputs['Vector'], vec); return n_.outputs['Color']
+    def noise(self, scale, detail=4.0, vec=None, rough=0.5, out='Fac'):
+        n_ = self.n('ShaderNodeTexNoise'); n_.inputs['Scale'].default_value = scale; n_.inputs['Detail'].default_value = detail
+        n_.inputs['Roughness'].default_value = rough; self.put(n_.inputs['Vector'], vec or self.pos); return n_.outputs[out]
+    def voronoi(self, scale, vec=None, feature='F1', metric='EUCLIDEAN', out='Distance'):
+        n_ = self.n('ShaderNodeTexVoronoi', feature=feature, distance=metric); n_.inputs['Scale'].default_value = scale
+        self.put(n_.inputs['Vector'], vec or self.pos); return n_.outputs[out]
+    def ramp(self, f, a, b, pa=0.0, pb=1.0):
+        """a smoothstep of f from pa to pb, as a 0..1 factor"""
+        n_ = self.n('ShaderNodeMapRange', interpolation_type='SMOOTHSTEP'); self.put(n_.inputs[0], f)
+        n_.inputs[1].default_value = pa; n_.inputs[2].default_value = pb; n_.inputs[3].default_value = a; n_.inputs[4].default_value = b
+        return n_.outputs[0]
+    def bw(self, c):
+        n_ = self.n('ShaderNodeRGBToBW'); self.put(n_.inputs[0], c); return n_.outputs[0]
+    def bump(self, h, strength=0.5, dist=0.01, normal=None):
+        n_ = self.n('ShaderNodeBump'); n_.inputs['Strength'].default_value = strength; n_.inputs['Distance'].default_value = dist
+        self.put(n_.inputs['Height'], h)
+        if normal is not None: self.put(n_.inputs['Normal'], normal)
+        return n_.outputs[0]
+
+def PHT(asset, kind):
+    return glob.glob(f'{PH}/{asset}/textures/*_{kind}_*')[0]
+
+def road_mat():
+    """street asphalt without a visible repeat: the aerial scan (30 m of real
+    road, tyre marks and stains) read twice at different turns and blended
+    by a broad noise; darker and lighter stretches of resurfacing; crack
+    sealant ('tar snakes') in places; the fine aggregate for the close view"""
+    b = NB('asphalt'); P = b.pos
+    va = b.vmap(1 / 30.0); vb = b.vmap(1 / 26.0, rot=1.9, loc=(0.37, 0.61, 0))
+    ca = b.img(PHT('aerial_asphalt_01', 'diff'), va); cb = b.img(PHT('aerial_asphalt_01', 'diff'), vb)
+    f = b.ramp(b.noise(0.035, 3.0), 0.0, 1.0, 0.42, 0.58)
+    c = b.mix(f, ca, cb)
+    fine = b.img(PHT('asphalt_02', 'diff'), b.vmap(1 / 3.0, rot=0.7))
+    c = b.mix(0.35, c, fine, 'OVERLAY')
+    hs = b.n('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = 0.55; hs.inputs['Value'].default_value = 0.62
+    b.put(hs.inputs['Color'], c); c = hs.outputs[0]
+    # resurfaced stretches: fresh (darker, cooler) and old (lighter, warmer)
+    age = b.noise(0.012, 2.0)
+    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.035, 0.037, 0.042), 'MIX')
+    c = b.mix(b.ramp(age, 0.45, 0.0, 0.25, 0.4), c, (0.15, 0.14, 0.125))
+    c = b.mix(b.ramp(b.noise(0.12, 5.0), 0.0, 0.25), c, (0.55, 0.55, 0.55), 'MULTIPLY')
+    # tar snakes: meandering sealed cracks, dark and a little glossy
+    warp = b.n('ShaderNodeVectorMath', operation='ADD'); b.put(warp.inputs[0], P)
+    b.put(warp.inputs[1], b.noise(0.6, 3.0, out='Color'))
+    edge = b.voronoi(0.28, vec=warp.outputs[0], feature='DISTANCE_TO_EDGE')
+    snake = b.math('MULTIPLY', b.math('LESS_THAN', edge, 0.008), b.math('GREATER_THAN', b.noise(0.05, 2.0), 0.6))
+    c = b.mix(b.math('MULTIPLY', snake, 0.8), c, (0.008, 0.008, 0.009))
+    b.put(b.pr.inputs['Base Color'], c)
+    b.put(b.pr.inputs['Roughness'], 0.86)
+    b.put(b.pr.inputs['Normal'], b.bump(b.bw(fine), 0.35, 0.01))
+    return b.m
+
+def roof_flat_mat():
+    """flat-roof membranes, per building from the face attribute (see
+    gen_buildings.flat_roof): tar and gravel, a mineral cap sheet laid in
+    rolls along the building, white elastomeric coating, aluminium paint.
+    Rolls and seams turn with the building; dirt gathers where the air is
+    still (along the parapets, round the kit) and in ponding stains"""
+    b = NB('roof_flat'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
+    t4 = b.math('MULTIPLY', at.outputs['Alpha'], 4.0)
+    kind = b.math('FLOOR', t4)
+    turn = b.math('MULTIPLY', b.math('DIVIDE', b.math('SUBTRACT', b.math('FRACT', t4), 0.1), 0.8), -math.pi / 2)
+    rv = b.n('ShaderNodeCombineXYZ'); b.put(rv.inputs[2], turn)
+    mp = b.n('ShaderNodeMapping'); b.put(mp.inputs['Vector'], b.pos); b.put(mp.inputs['Rotation'], rv.outputs[0])
+    rolls = b.vmap((1 / 20.0, 1 / 20.0, 1.0), vec=mp.outputs[0])
+    bit = b.img(PHT('bitumen', 'diff'), rolls, proj='FLAT')
+    bitn = b.mix(1.0, bit, (1 / 0.0348, 1 / 0.0348, 1 / 0.0348), 'MULTIPLY')
+    grav = b.img(PHT('tarred_gravel', 'diff'), b.vmap(1 / 2.2), proj='FLAT')
+    gravn = b.mix(1.0, grav, (1 / 0.0428, 1 / 0.0428, 1 / 0.0428), 'MULTIPLY')
+    paint = at.outputs['Color']
+    c0 = b.mix(1.0, gravn, paint, 'MULTIPLY')
+    c1 = b.mix(1.0, b.mix(0.35, bitn, gravn), paint, 'MULTIPLY')
+    white = b.mix(0.8, bitn, (1, 1, 1))
+    c2 = b.mix(1.0, white, paint, 'MULTIPLY')
+    def eq(k): return b.math('COMPARE', kind, float(k), 0.5)
+    c = b.mix(eq(1), c0, c1); c = b.mix(eq(2), c, c2); c = b.mix(eq(3), c, c2)
+    # dirt: still air along the parapets and round the kit, ponding stains
+    ao = b.n('ShaderNodeAmbientOcclusion', samples=4); ao.inputs['Distance'].default_value = 1.2
+    dirt = b.math('MULTIPLY', b.math('SUBTRACT', 1.0, ao.outputs['AO']), 0.9, clamp=True)
+    stain = b.ramp(b.noise(0.16, 2.0), 0.0, 1.0, 0.56, 0.68)
+    light = b.math('GREATER_THAN', kind, 1.5)
+    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.math('MULTIPLY', stain, 0.22), b.math('ADD', 0.35, b.math('MULTIPLY', light, 0.65))))
+    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.ramp(b.noise(0.07, 4.0), 0.0, 0.3, 0.45, 0.8), light))
+    c = b.mix(b.math('MINIMUM', dirt, 0.85), c, (0.10, 0.09, 0.075), 'MULTIPLY')
+    b.put(b.pr.inputs['Base Color'], c)
+    b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.9, b.math('MULTIPLY', eq(3), 0.45)))
+    b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', eq(3), 0.55))
+    b.put(b.pr.inputs['Normal'], b.bump(b.bw(b.mix(eq(0), bit, grav)), 0.4, 0.02))
+    return b.m
+M['roof_flat'] = roof_flat_mat()
+M['equip'] = simple('equip', None, rough=0.45, attr=True)
+def solar_mat():
+    b = NB('solar'); pr = b.pr
+    pr.inputs['Base Color'].default_value = (0.010, 0.014, 0.032, 1); pr.inputs['Roughness'].default_value = 0.12
+    pr.inputs['Coat Weight'].default_value = 0.6; pr.inputs['Specular IOR Level'].default_value = 0.6
+    # the cell grid, faintly: 16 cm cells, silver bus lines
+    g_ = b.voronoi(1 / 0.156, metric='CHEBYCHEV', feature='DISTANCE_TO_EDGE'); g_.node.inputs['Randomness'].default_value = 0.0
+    b.put(pr.inputs['Base Color'], b.mix(b.math('LESS_THAN', g_, 0.03), (0.010, 0.014, 0.032), (0.06, 0.07, 0.09)))
+    return b.m
+M['solar'] = solar_mat()
+def weather(m, k=1.0, streaks=1.0):
+    """weathering over a wall's paint: rain streaks down the face, grime in
+    the corners and under every ledge (ambient occlusion), a slow unevenness
+    of the paint across the wall — so a stucco front is a surface, not a
+    plastic sheet"""
+    nt = m.node_tree; pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    src_ = pr.inputs['Base Color'].links[0].from_socket
+    b = NB.__new__(NB); b.m = m; b.nt = nt; b.pr = pr; b.pos = nt.nodes.new('ShaderNodeNewGeometry').outputs['Position']
+    streak = b.noise(1.0, 3.0, vec=b.vmap((3.5, 3.5, 0.22)))
+    streak = b.math('MULTIPLY', b.ramp(streak, 0.0, 1.0, 0.52, 0.75), b.ramp(b.noise(0.15, 2.0), 0.0, 1.0, 0.4, 0.7))
+    ao = b.n('ShaderNodeAmbientOcclusion', samples=4); ao.inputs['Distance'].default_value = 0.5
+    occ = b.math('MULTIPLY', b.math('SUBTRACT', 1.0, ao.outputs['AO']), 0.55 * k, clamp=True)
+    g_ = b.math('ADD', b.math('MULTIPLY', streak, 0.22 * k * streaks), occ)
+    c = b.mix(b.math('MINIMUM', g_, 0.7), src_, (0.30, 0.27, 0.22), 'MULTIPLY')
+    macro = b.ramp(b.noise(0.09, 3.0), 0.93, 1.06, 0.3, 0.7)
+    cc = b.n('ShaderNodeHueSaturation'); b.put(cc.inputs['Color'], c); b.put(cc.inputs['Value'], macro)
+    nt.links.new(cc.outputs[0], pr.inputs['Base Color'])
+for _k, _w in (('stucco', 1.0), ('siding', 0.8), ('concrete', 1.0), ('brick', 0.7), ('shingle', 0.5)):
+    weather(M[_k], _w, 0.4 if _k in ('siding', 'shingle') else 1.0)
+M['asphalt'] = road_mat()
 if E('ERA') and int(E('ERA')) < 1950:
     M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
 M['sidewalk'] = ph_mat('concrete_pavement', 3.6, value=0.95)
@@ -196,6 +345,27 @@ green_lawn(M['lawn'])
 
 # ── terrain ──────────────────────────────────────────────────────────────────
 log('terrain')
+def park_lawn(m):
+    """the district's lawns, close up: mowing stripes a mower's width apart,
+    the grain of the blades, worn and dry patches, clover. (Here only: the
+    city-wide frame keeps the plain lawn — stripes would alias at its scale.)"""
+    nt = m.node_tree; pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    src_ = pr.inputs['Base Color'].links[0].from_socket
+    b = NB.__new__(NB); b.m = m; b.nt = nt; b.pr = pr; b.pos = nt.nodes.new('ShaderNodeNewGeometry').outputs['Position']
+    sp = b.n('ShaderNodeSeparateXYZ'); b.put(sp.inputs[0], b.pos)
+    u = b.math('ADD', b.math('MULTIPLY', sp.outputs[0], math.cos(0.45)), b.math('MULTIPLY', sp.outputs[1], math.sin(0.45)))
+    band = b.ramp(b.math('SINE', b.math('MULTIPLY', u, math.pi / 0.95)), 0.0, 1.0, -0.25, 0.25)
+    blades = b.noise(28.0, 2.0)
+    val = b.math('MULTIPLY', b.math('ADD', 0.90, b.math('MULTIPLY', band, 0.16)), b.math('ADD', 0.93, b.math('MULTIPLY', blades, 0.14)))
+    hs = b.n('ShaderNodeHueSaturation'); b.put(hs.inputs['Color'], src_); b.put(hs.inputs['Value'], val)
+    b.put(hs.inputs['Hue'], b.math('ADD', 0.485, b.math('MULTIPLY', band, -0.012))); hs.inputs['Saturation'].default_value = 1.35
+    c = hs.outputs[0]
+    clover = b.ramp(b.noise(0.7, 3.0), 0.0, 0.3, 0.58, 0.68)
+    c = b.mix(clover, c, (0.55, 0.62, 0.50), 'MULTIPLY')
+    worn = b.ramp(b.noise(0.22, 4.0), 0.0, 0.55, 0.64, 0.74)
+    c = b.mix(worn, c, (0.20, 0.155, 0.075))
+    nt.links.new(c, pr.inputs['Base Color'])
+park_lawn(M['lawn'])
 TP = array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos']))
@@ -257,6 +427,36 @@ def street_edges():
         E_.append((a, b, outv))
     bm.free(); return E_
 SE = street_edges()
+def sidewalk_uv_mat():
+    """poured concrete sidewalks as San Francisco lays them: panels scored
+    every 1.5 m square to the curb, each pour its own tone (a few replaced
+    lighter), runoff grime along the curb, the curb itself sometimes painted"""
+    b = NB('sidewalk_uv'); uvn = b.n('ShaderNodeUVMap', uv_map='UVMap'); sp = b.n('ShaderNodeSeparateXYZ'); b.put(sp.inputs[0], uvn.outputs[0])
+    u, v = sp.outputs[0], sp.outputs[1]
+    tex = b.img(PHT('concrete_floor_worn_001', 'diff'), b.vmap(1 / 3.0, vec=uvn.outputs[0]))
+    c = b.mix(1.0, tex, (2.6, 2.5, 2.3), 'MULTIPLY')
+    cu = b.math('FLOOR', b.math('DIVIDE', u, 1.5)); cv = b.math('FLOOR', b.math('DIVIDE', b.math('MAXIMUM', v, 0.0), 1.5))
+    cid = b.n('ShaderNodeCombineXYZ'); b.put(cid.inputs[0], cu); b.put(cid.inputs[1], cv)
+    wn = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wn.inputs['Vector'], cid.outputs[0])
+    rnd = wn.outputs['Value']
+    tone = b.math('ADD', 0.90, b.math('MULTIPLY', rnd, 0.16))
+    tone = b.math('ADD', tone, b.math('MULTIPLY', b.math('GREATER_THAN', rnd, 0.93), 0.18))
+    hs = b.n('ShaderNodeHueSaturation'); b.put(hs.inputs['Color'], c); b.put(hs.inputs['Value'], tone); c = hs.outputs[0]
+    ju = b.math('MINIMUM', b.math('FRACT', b.math('DIVIDE', u, 1.5)), b.math('SUBTRACT', 1.0, b.math('FRACT', b.math('DIVIDE', u, 1.5))))
+    jv = b.math('ABSOLUTE', b.math('SUBTRACT', v, 1.5))
+    joint = b.math('MAXIMUM', b.math('LESS_THAN', ju, 0.006), b.math('LESS_THAN', jv, 0.008))
+    joint = b.math('MULTIPLY', joint, b.math('GREATER_THAN', v, 0.0))
+    runoff = b.math('MULTIPLY', b.ramp(v, 1.0, 0.0, 0.0, 0.7), 0.25)
+    grime = b.math('ADD', runoff, b.math('MULTIPLY', b.ramp(b.noise(0.5, 4.0), 0.0, 1.0, 0.55, 0.75), 0.18))
+    c = b.mix(grime, c, (0.45, 0.42, 0.38), 'MULTIPLY')
+    c = b.mix(b.math('MULTIPLY', joint, 0.7), c, (0.05, 0.05, 0.05))
+    at = b.n('ShaderNodeAttribute', attribute_name='scol')
+    curb = b.math('MULTIPLY', at.outputs['Alpha'], b.math('LESS_THAN', v, 0.16))
+    c = b.mix(b.math('MULTIPLY', curb, 0.85), c, at.outputs['Color'])
+    b.put(b.pr.inputs['Base Color'], c); b.put(b.pr.inputs['Roughness'], 0.8)
+    b.put(b.pr.inputs['Normal'], b.bump(b.math('SUBTRACT', 1.0, joint), 0.6, 0.01))
+    return b.m
+
 # sidewalks and curbs
 Ps, Fs = [], []
 for a, b, outv in SE:
@@ -266,8 +466,21 @@ for a, b, outv in SE:
     fa.z = max(ground(fa.x, fa.y) + 0.06, a.z + 0.15 - 0.6); fb.z = max(ground(fb.x, fb.y) + 0.06, b.z + 0.15 - 0.6)
     k = len(Ps); Ps += [a + up, b + up, fb, fa]; Fs.append((k, k+1, k+2, k+3))
     k = len(Ps); Ps += [a, b, b + up, a + up]; Fs.append((k, k+1, k+2, k+3))
-me = bpy.data.meshes.new('sidewalks'); me.from_pydata([tuple(p) for p in Ps], [], Fs); me.update()
-ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
+me = bpy.data.meshes.new('sidewalks'); me.from_pydata([tuple(p) for p in Ps], [], Fs)
+# the pavement in its own frame: u along the curb, v across it (m), so the
+# scored joints run square to the street; a painted curb here and there
+_r = random.Random(17); _uv = me.uv_layers.new(name='UVMap'); _sc = me.color_attributes.new('scol', 'FLOAT_COLOR', 'FACE')
+_cc = []
+for i, (a, b, outv) in enumerate(SE):
+    L_ = (b - a).length; s0 = _r.uniform(0, 1.5)
+    for j, (u_, v_) in enumerate(((s0, 0.0), (s0 + L_, 0.0), (s0 + L_, 3.0), (s0, 3.0))): _uv.data[i * 8 + j].uv = (u_, v_)
+    for j, (u_, v_) in enumerate(((s0, -0.16), (s0 + L_, -0.16), (s0 + L_, 0.0), (s0, 0.0))): _uv.data[i * 8 + 4 + j].uv = (u_, v_)
+    q = _r.random()
+    col = (0.60, 0.07, 0.05, 1.0) if q < 0.10 else (0.85, 0.62, 0.08, 1.0) if q < 0.14 else (0.9, 0.9, 0.88, 1.0) if q < 0.16 else (1, 1, 1, 0.0)
+    _cc += [*col, *col]
+_sc.data.foreach_set('color', _cc)
+me.update()
+ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(sidewalk_uv_mat())
 
 # ── buildings ────────────────────────────────────────────────────────────────
 log('buildings: reading records')
@@ -439,7 +652,7 @@ if E('GRASS', '1') == '1':
     n = ng.nodes; lk = ng.links.new
     gi = n.new('NodeGroupInput'); go = n.new('NodeGroupOutput')
     dist = n.new('GeometryNodeDistributePointsOnFaces'); dist.distribute_method = 'RANDOM'
-    lk(gi.outputs[0], dist.inputs['Mesh']); dist.inputs['Density'].default_value = float(E('GRASS_DENSITY', 6.0))
+    lk(gi.outputs[0], dist.inputs['Mesh']); dist.inputs['Density'].default_value = float(E('GRASS_DENSITY', 14.0))
     j = n.new('GeometryNodeJoinGeometry')
     for o in sc.objects:
         if o.type == 'MESH' and o.name != 'terrain':
@@ -448,6 +661,10 @@ if E('GRASS', '1') == '1':
     pz = n.new('GeometryNodeInputPosition'); pzs = n.new('ShaderNodeSeparateXYZ'); lk(pz.outputs[0], pzs.inputs[0])
     wet = n.new('FunctionNodeCompare'); wet.data_type = 'FLOAT'; wet.operation = 'LESS_THAN'; lk(pzs.outputs[2], wet.inputs[0]); wet.inputs[1].default_value = 1.0
     orr = n.new('FunctionNodeBooleanMath'); orr.operation = 'OR'; lk(rc.outputs['Is Hit'], orr.inputs[0]); lk(wet.outputs[0], orr.inputs[1])
+    # only over the modelled box (and a margin): beyond it nobody sees a blade
+    for axis, lim, op in ((0, bx0 - 30, 'LESS_THAN'), (0, bx1 + 30, 'GREATER_THAN'), (1, by0 - 30, 'LESS_THAN'), (1, by1 + 30, 'GREATER_THAN')):
+        cmp_ = n.new('FunctionNodeCompare'); cmp_.data_type = 'FLOAT'; cmp_.operation = op; lk(pzs.outputs[axis], cmp_.inputs[0]); cmp_.inputs[1].default_value = lim
+        o2 = n.new('FunctionNodeBooleanMath'); o2.operation = 'OR'; lk(orr.outputs[0], o2.inputs[0]); lk(cmp_.outputs[0], o2.inputs[1]); orr = o2
     dl = n.new('GeometryNodeDeleteGeometry'); dl.domain = 'POINT'; lk(dist.outputs['Points'], dl.inputs['Geometry']); lk(orr.outputs[0], dl.inputs['Selection'])
     ci = n.new('GeometryNodeCollectionInfo'); ci.inputs['Collection'].default_value = GR[0]
     ci.inputs['Separate Children'].default_value = True; ci.inputs['Reset Children'].default_value = False
@@ -457,7 +674,11 @@ if E('GRASS', '1') == '1':
     live = [s for s in rz.inputs if s.name in ('Min', 'Max') and s.type == 'VALUE']; live[0].default_value = 0; live[1].default_value = 6.283
     rot = n.new('ShaderNodeCombineXYZ'); lk([o for o in rz.outputs if o.type == 'VALUE'][0], rot.inputs[2])
     scl = n.new('FunctionNodeRandomValue'); scl.data_type = 'FLOAT'; scl.inputs['Seed'].default_value = 4
-    live = [s for s in scl.inputs if s.name in ('Min', 'Max') and s.type == 'VALUE']; live[0].default_value = 1.0; live[1].default_value = 1.8
+    # a kept lawn: small clumps, mown flat (the scan is a meadow tuft)
+    live = [s for s in scl.inputs if s.name in ('Min', 'Max') and s.type == 'VALUE']; live[0].default_value = float(E('GRASS_S0', 0.35)); live[1].default_value = float(E('GRASS_S1', 0.6))
+    sxyz = n.new('ShaderNodeCombineXYZ'); _sv = [o for o in scl.outputs if o.type == 'VALUE'][0]
+    lk(_sv, sxyz.inputs[0]); lk(_sv, sxyz.inputs[1]); _mz = n.new('ShaderNodeMath'); _mz.operation = 'MULTIPLY'; _mz.inputs[1].default_value = 0.55
+    lk(_sv, _mz.inputs[0]); lk(_mz.outputs[0], sxyz.inputs[2])
     for m_ in bpy.data.materials:
         if m_.name.startswith('grass_medium_01') and m_.node_tree:
             pr_ = next((n for n in m_.node_tree.nodes if n.type == 'BSDF_PRINCIPLED'), None)
@@ -467,7 +688,7 @@ if E('GRASS', '1') == '1':
                 m_.node_tree.links.new(s_, hs_.inputs['Color']); m_.node_tree.links.new(hs_.outputs['Color'], pr_.inputs['Base Color'])
     ii = n.new('GeometryNodeInstanceOnPoints'); lk(dl.outputs[0], ii.inputs['Points']); lk(ci.outputs[0], ii.inputs['Instance'])
     ii.inputs['Pick Instance'].default_value = True; lk([o for o in rv.outputs if o.type == 'INT'][0], ii.inputs['Instance Index'])
-    lk(rot.outputs[0], ii.inputs['Rotation']); lk([o for o in scl.outputs if o.type == 'VALUE'][0], ii.inputs['Scale'])
+    lk(rot.outputs[0], ii.inputs['Rotation']); lk(sxyz.outputs[0], ii.inputs['Scale'])
     jj = n.new('GeometryNodeJoinGeometry'); lk(gi.outputs[0], jj.inputs[0]); lk(ii.outputs[0], jj.inputs[0]); lk(jj.outputs[0], go.inputs[0])
     terrain.modifiers.new('grass', 'NODES').node_group = ng
 
@@ -497,57 +718,159 @@ if E('PROPS', '1') == '1':
 if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
     log('cars')
     def car_mesh(name, L, Wd, prof):
-        """a car from its side profile: (x, z) points around the silhouette,
-        extruded to its width and rounded; glass above the belt line"""
+        """a car lofted from cross-sections along its length. `prof`: the side
+        silhouette 'sil' (x -1 rear .. 1 front, top z in metres), the belt
+        line, the cabin's x range, wheel radius and overhangs. The plan is
+        rounded at the ends, the wheels sit in arches, the glass is dark and
+        the lamps are lamps. Materials: 0 paint · 1 glass · 2 tyre ·
+        3 headlamp · 4 black trim · 5 tail lamp · 6 rim"""
+        sil, belt, cab = prof['sil'], prof['belt'], prof['cab']
+        wr, fo, ro = prof.get('wr', 0.33), prof.get('fo', 0.9), prof.get('ro', 1.0)
+        hl = L / 2
+        xw = (hl - fo, -(hl - ro))                                  # axle positions, metres
+        def top(xn):
+            for (x0, z0), (x1, z1) in zip(sil, sil[1:]):
+                if x0 <= xn <= x1: return z0 + (z1 - z0) * ((xn - x0) / max(1e-6, x1 - x0))
+            return sil[0][1] if xn < sil[0][0] else sil[-1][1]
+        xb_ = (cab[0] + cab[1]) / 2 + 0.06                          # the B pillar
+        st = set(round(i / 16 - 1, 4) for i in range(33)) | set(p[0] for p in sil)
+        for X in xw:
+            for k in range(-6, 7): st.add(round((X + k * 0.075) / hl, 4))
+        st |= {round(xb_ - 0.035, 4), round(xb_ + 0.035, 4)}
+        st = sorted(x for x in st if -1 <= x <= 1)
+        secs = []
+        for xn in st:
+            X = xn * hl; t = abs(xn)
+            zb = 0.24 + 0.12 * max(0.0, (t - 0.86) / 0.14) ** 2
+            for Xw in xw:
+                ra = wr + 0.07
+                if abs(X - Xw) < ra: zb = max(zb, wr + 0.02 + math.sqrt(ra * ra - (X - Xw) ** 2) * 0.93)
+            w = Wd / 2 * (1 - 0.075 * max(0.0, (t - 0.70) / 0.30) ** 2)
+            zt = top(xn); zbl = min(belt, zt); h = max(0.0, zt - zbl); g = min(1.0, h / 0.3)
+            zbl = max(zbl, zb + 0.2)
+            half = [(0.0, zb), (0.86, zb), (0.975, min(zb + 0.14, zbl - 0.14)), (1.0, zbl - 0.14), (0.98, zbl),
+                    (0.935 - 0.05 * g, zbl + 0.03 + 0.02 * g), (0.915 - 0.15 * g, zbl + 0.035 + h * 0.88),
+                    (0.85 - 0.19 * g, zbl + 0.04 + h * 0.975), (0.0, zbl + 0.06 + h)]
+            secs.append((xn, X, w, zbl, g, cab[0] - 1e-3 <= xn <= cab[1] + 1e-3, half))
         bm = bmesh.new()
-        vs0 = [bm.verts.new((x * L / 2, -Wd / 2, z)) for x, z in prof]
-        f = bm.faces.new(vs0)
-        r_ = bmesh.ops.extrude_face_region(bm, geom=[f])
-        for v in [g for g in r_['geom'] if isinstance(g, bmesh.types.BMVert)]: v.co.y += Wd
+        ring = []
+        for xn, X, w, zbl, g, inc, half in secs:
+            pts = [(X, -w * f, z) for f, z in half] + [(X, w * f, z) for f, z in half[-2:0:-1]]
+            ring.append([bm.verts.new(p) for p in pts])
+        nh = len(secs[0][6]); npt = len(ring[0])
+        def hidx(j): return j if j < nh else npt - j                # ring index -> half-section index
+        faces = []
+        for i in range(len(secs) - 1):
+            A, B = ring[i], ring[i + 1]; sa, sb = secs[i], secs[i + 1]
+            slope = abs((sb[6][-1][1] - sa[6][-1][1]) / max(1e-6, sb[1] - sa[1]))
+            for j in range(npt):
+                jn = (j + 1) % npt
+                f = bm.faces.new((A[j], B[j], B[jn], A[jn]))
+                sg = min(hidx(j), hidx(jn))
+                cabin = sa[5] and sb[5]
+                if sg == 0: mi = 4
+                elif sg == 1 and prof.get('clad'): mi = 4
+                elif sg == 5 and cabin and min(sa[4], sb[4]) > 0.35:
+                    mi = 4 if (sa[0] >= xb_ - 0.036 and sb[0] <= xb_ + 0.036) else 1
+                elif sg in (6, 7) and cabin and slope > 0.33: mi = 1
+                elif sg == 7 and cabin and prof.get('glassroof'): mi = 1
+                else: mi = 0
+                f.material_index = mi
+        for idx, rev in ((0, True), (len(secs) - 1, False)):       # the end caps: body below the belt, glass above
+            R = ring[idx]; g = secs[idx][4]
+            lo = [R[j] for j in range(0, 5)] + [R[npt - j] for j in range(4, 0, -1)]
+            up = [R[j] for j in range(4, nh)] + [R[npt - j] for j in range(nh - 2, 3, -1)]
+            for poly, mi in ((lo, 0), (up, 1 if g > 0.35 else 0)):
+                f = bm.faces.new(poly[::-1] if rev else poly); f.material_index = mi
         bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
-        # narrow the cabin: glasshouse tumblehome
-        for v in bm.verts:
-            if v.co.z > prof_belt + 0.02: v.co.y *= 0.86
-        bmesh.ops.bevel(bm, geom=list(bm.edges), offset=0.07, segments=3, affect='EDGES', clamp_overlap=True)
-        wb = L / 2 - 0.85
-        for sx in (-1, 1):
-            for sy in (-1, 1):
-                rr = bmesh.ops.create_cone(bm, cap_ends=True, segments=18, radius1=0.33, radius2=0.33, depth=0.24)
-                for v in rr['verts']:
+        # lamps, grille, mirrors, wheels
+        def quad(p0, p1, p2, p3, mi):
+            f = bm.faces.new([bm.verts.new(p) for p in (p0, p1, p2, p3)]); f.material_index = mi
+        xf, wf, zf = secs[-1][1], secs[-1][2], secs[-1][3]
+        xr, wrr, zr = secs[0][1], secs[0][2], secs[0][3]
+        for s_ in (-1, 1):
+            quad((xf + 0.012, s_ * wf * 0.55, zf - 0.17), (xf + 0.012, s_ * wf * 0.93, zf - 0.17), (xf + 0.012, s_ * wf * 0.93, zf - 0.05), (xf + 0.012, s_ * wf * 0.55, zf - 0.05), 3)
+            quad((xr - 0.012, s_ * wrr * 0.62, zr - 0.16), (xr - 0.012, s_ * wrr * 0.95, zr - 0.16), (xr - 0.012, s_ * wrr * 0.95, zr - 0.03), (xr - 0.012, s_ * wrr * 0.62, zr - 0.03), 5)
+        quad((xf + 0.01, -wf * 0.45, zf - 0.40), (xf + 0.01, wf * 0.45, zf - 0.40), (xf + 0.01, wf * 0.45, zf - 0.20), (xf + 0.01, -wf * 0.45, zf - 0.20), 4)
+        xa = cab[1] * hl - 0.18
+        for s_ in (-1, 1):
+            r_ = bmesh.ops.create_cube(bm, size=1.0)
+            for v in r_['verts']: v.co = Vector((xa + v.co.x * 0.08, s_ * (Wd / 2 + 0.035) + v.co.y * 0.10, belt + 0.07 + v.co.z * 0.085))
+        for Xw in xw:
+            for s_ in (-1, 1):
+                yc = s_ * (Wd / 2 - 0.13)
+                r_ = bmesh.ops.create_cone(bm, cap_ends=True, segments=18, radius1=wr, radius2=wr, depth=0.21)
+                for v in r_['verts']:
                     y_ = v.co.z; v.co.z = v.co.y; v.co.y = y_
-                    v.co += Vector((sx * wb, sy * (Wd / 2 - 0.12), 0.33))
+                    v.co += Vector((Xw, yc, wr))
+                wf_ = list({f for v in r_['verts'] for f in v.link_faces})
+                for f in wf_: f.material_index = 2
+                bmesh.ops.recalc_face_normals(bm, faces=wf_)
+                c_ = bmesh.ops.create_circle(bm, cap_ends=True, segments=14, radius=wr * 0.62)
+                for v in c_['verts']:
+                    y_ = v.co.z; v.co.z = v.co.y; v.co.y = y_
+                    v.co += Vector((Xw, yc + s_ * 0.108, wr))
+                for f in {f for v in c_['verts'] for f in v.link_faces}: f.material_index = 6
         me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
-        for p in me.polygons:
-            c = p.center
-            if c.z < 0.68 and abs(abs(c.x) - wb) < 0.36 and abs(c.y) > Wd / 2 - 0.3: p.material_index = 2
-            elif c.z > prof_belt + 0.03 and p.normal.z < 0.85 and abs(c.x) < L / 2 - 0.3: p.material_index = 1
-            elif abs(c.x) > L / 2 - 0.08 and 0.55 < c.z < 0.8 and abs(c.y) > Wd / 2 - 0.45: p.material_index = 3
-            else: p.material_index = 0
+        for f in me.polygons:
+            c = f.center
+            if f.material_index == 6 and (f.normal.y > 0) != (c.y > 0): f.flip()
+        me.shade_smooth()
+        try: me.set_sharp_from_angle(angle=math.radians(40))
+        except Exception: pass
         return me
-    prof_belt = 0.98
-    # x in -1..1 (rear..front), z in metres
-    SEDAN = [(-1, 0.32), (1, 0.32), (1.0, 0.72), (0.96, 0.84), (0.62, 0.95), (0.36, 0.98), (0.14, 1.40), (-0.34, 1.42), (-0.62, 1.00), (-0.96, 0.96), (-1.0, 0.72)]
-    SUV = [(-1, 0.38), (1, 0.38), (1.0, 0.86), (0.93, 1.02), (0.62, 1.08), (0.42, 1.12), (0.24, 1.68), (-0.9, 1.70), (-0.98, 1.2), (-1.0, 0.86)]
-    HATCH = [(-1, 0.32), (1, 0.32), (1.0, 0.72), (0.95, 0.86), (0.60, 0.96), (0.34, 1.0), (0.10, 1.44), (-0.72, 1.44), (-0.96, 1.02), (-1.0, 0.72)]
-    VAN = [(-1, 0.38), (1, 0.38), (1.0, 0.9), (0.92, 1.05), (0.72, 1.35), (0.58, 1.95), (-0.98, 1.98), (-1.0, 0.9)]
-    paint = simple('carpaint', (0.5, 0.5, 0.5), rough=0.2, attr=False)
+    # x in -1..1 (rear..front), top z in metres
+    SEDAN = dict(sil=[(-1, 0.80), (-0.97, 0.93), (-0.82, 0.99), (-0.56, 1.02), (-0.32, 1.37), (-0.20, 1.43), (0.10, 1.44), (0.21, 1.40), (0.43, 1.00), (0.80, 0.92), (0.97, 0.80), (1, 0.70)],
+                 belt=1.0, cab=(-0.57, 0.44), fo=0.95, ro=1.05)
+    FASTBACK = dict(sil=[(-1, 0.84), (-0.96, 0.97), (-0.78, 1.02), (-0.58, 1.12), (-0.25, 1.40), (0.08, 1.43), (0.20, 1.38), (0.44, 0.98), (0.82, 0.90), (0.97, 0.78), (1, 0.68)],
+                    belt=0.99, cab=(-0.78, 0.45), fo=0.92, ro=1.0, glassroof=True)
+    HATCH = dict(sil=[(-1, 0.96), (-0.985, 1.12), (-0.93, 1.40), (-0.80, 1.47), (0.10, 1.48), (0.20, 1.44), (0.46, 1.00), (0.80, 0.92), (0.97, 0.80), (1, 0.70)],
+                 belt=1.0, cab=(-0.99, 0.47), fo=0.85, ro=0.72)
+    SUV = dict(sil=[(-1, 1.12), (-0.985, 1.30), (-0.95, 1.60), (-0.86, 1.69), (0.15, 1.70), (0.27, 1.63), (0.50, 1.13), (0.85, 1.06), (0.98, 0.93), (1, 0.82)],
+               belt=1.12, cab=(-0.99, 0.51), wr=0.37, fo=0.95, ro=0.95, clad=True)
+    MINIVAN = dict(sil=[(-1, 1.08), (-0.985, 1.20), (-0.95, 1.66), (-0.85, 1.76), (0.26, 1.77), (0.37, 1.66), (0.62, 1.12), (0.88, 1.02), (0.98, 0.90), (1, 0.78)],
+                   belt=1.12, cab=(-0.99, 0.63), wr=0.35, fo=0.95, ro=1.0)
+    SMALL = dict(sil=[(-1, 0.92), (-0.985, 1.06), (-0.92, 1.38), (-0.80, 1.47), (0.05, 1.49), (0.18, 1.44), (0.42, 1.00), (0.80, 0.93), (0.97, 0.82), (1, 0.72)],
+                 belt=0.98, cab=(-0.98, 0.44), wr=0.30, fo=0.62, ro=0.55)
+    # paint by the colour shares of cars on the road (white, black, greys and
+    # silver most; then blue, red; a few greens, browns and brights) — a
+    # convention, per car, never data
+    paint = simple('carpaint', (0.5, 0.5, 0.5), rough=0.25, attr=False)
     pn = paint.node_tree; pb = pn.nodes['Principled BSDF']; ai = pn.nodes.new('ShaderNodeObjectInfo')
-    ramp = pn.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.interpolation = 'CONSTANT'
-    CC = [(0.85, 0.85, 0.84), (0.02, 0.02, 0.025), (0.45, 0.46, 0.48), (0.18, 0.19, 0.21), (0.85, 0.85, 0.84), (0.05, 0.10, 0.28), (0.40, 0.04, 0.04), (0.02, 0.02, 0.025), (0.55, 0.50, 0.40)]
+    CC = [(0.24, (0.87, 0.87, 0.86), 0.0), (0.04, (0.80, 0.78, 0.72), 0.3), (0.20, (0.018, 0.018, 0.022), 0.0),
+          (0.10, (0.13, 0.135, 0.145), 0.7), (0.08, (0.34, 0.35, 0.37), 0.8), (0.11, (0.64, 0.65, 0.66), 0.9),
+          (0.06, (0.03, 0.07, 0.19), 0.6), (0.03, (0.12, 0.26, 0.50), 0.6), (0.06, (0.50, 0.035, 0.035), 0.3),
+          (0.02, (0.22, 0.02, 0.035), 0.5), (0.02, (0.05, 0.14, 0.08), 0.5), (0.02, (0.44, 0.36, 0.26), 0.6),
+          (0.01, (0.88, 0.48, 0.06), 0.2)]
     if ERA is not None and ERA < 1960:
-        CC = [(0.02, 0.02, 0.02), (0.02, 0.02, 0.02), (0.08, 0.10, 0.08), (0.12, 0.10, 0.08), (0.30, 0.30, 0.28), (0.05, 0.06, 0.10), (0.02, 0.02, 0.02), (0.22, 0.18, 0.12)]
-    el = ramp.color_ramp.elements
-    el[0].position = 0; el[0].color = (*[c ** 2.2 for c in CC[0]], 1)
-    for i in range(1, len(CC)): e_ = el.new(i / len(CC)); e_.color = (*[c ** 2.2 for c in CC[i]], 1)
-    pn.links.new(ai.outputs['Random'], ramp.inputs[0]); pn.links.new(ramp.outputs[0], pb.inputs['Base Color']); pb.inputs['Coat Weight'].default_value = 1.0
-    cglass = simple('carglass', (0.02, 0.025, 0.03), rough=0.02, spec=1.0)
-    tyre = simple('tyre', (0.02, 0.02, 0.02), rough=0.8)
-    lamp_m = simple('carlamp', (0.9, 0.88, 0.8), rough=0.1, spec=1.0)
+        CC = [(0.35, (0.02, 0.02, 0.02), 0.0), (0.10, (0.08, 0.10, 0.08), 0.0), (0.10, (0.12, 0.10, 0.08), 0.0), (0.15, (0.30, 0.30, 0.28), 0.0),
+              (0.10, (0.05, 0.06, 0.10), 0.0), (0.10, (0.22, 0.18, 0.12), 0.0), (0.10, (0.55, 0.52, 0.45), 0.0)]
+    ramp = pn.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.interpolation = 'CONSTANT'
+    rmet = pn.nodes.new('ShaderNodeValToRGB'); rmet.color_ramp.interpolation = 'CONSTANT'
+    acc_ = 0.0; tot_ = sum(c[0] for c in CC)
+    for i, (sh_, col_, met_) in enumerate(CC):
+        for rp, v in ((ramp, (*[c ** 2.2 for c in col_], 1)), (rmet, (met_, met_, met_, 1))):
+            e_ = rp.color_ramp.elements[0] if i == 0 else rp.color_ramp.elements.new(acc_ / tot_)
+            if i == 0: e_.position = 0.0
+            e_.color = v
+        acc_ += sh_
+    for rp in (ramp, rmet):
+        while len(rp.color_ramp.elements) > len(CC): rp.color_ramp.elements.remove(rp.color_ramp.elements[-1])
+        pn.links.new(ai.outputs['Random'], rp.inputs[0])
+    pn.links.new(ramp.outputs[0], pb.inputs['Base Color'])
+    pn.links.new(rmet.outputs[0], pb.inputs['Metallic'])
+    pb.inputs['Coat Weight'].default_value = 1.0; pb.inputs['Coat Roughness'].default_value = 0.03
+    cglass = simple('carglass', (0.012, 0.014, 0.018), rough=0.04, spec=0.5)
+    tyre = simple('tyre', (0.025, 0.025, 0.025), rough=0.85)
+    lamp_m = simple('carlamp', (0.85, 0.85, 0.82), rough=0.08, spec=1.0)
+    trim_m = simple('cartrim', (0.03, 0.03, 0.032), rough=0.6)
+    tail_m = simple('taillamp', (0.55, 0.02, 0.02), rough=0.15, spec=0.8)
+    rim_m = simple('rim', (0.55, 0.56, 0.58), rough=0.3, metal=1.0)
     CARS = []
-    for i, (L_, W_, pf) in enumerate(((4.6, 1.8, SEDAN), (4.7, 1.9, SUV), (4.1, 1.76, HATCH), (5.0, 1.95, VAN), (4.5, 1.8, SEDAN), (4.3, 1.78, HATCH))):
-        prof_belt = 0.98 if pf in (SEDAN, HATCH) else 1.1
+    for i, (L_, W_, pf) in enumerate(((4.75, 1.83, SEDAN), (4.6, 1.86, SUV), (4.28, 1.79, HATCH), (5.1, 1.99, MINIVAN),
+                                      (4.7, 1.85, FASTBACK), (4.5, 1.84, SUV), (3.7, 1.72, SMALL), (4.85, 1.85, SEDAN))):
         me = car_mesh(f'car{i}', L_, W_, pf)
-        for mm in (paint, cglass, tyre, lamp_m): me.materials.append(mm)
+        for mm in (paint, cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
         CARS.append(me)
     r = random.Random(21); k = 0
     for a, b, outv in SE:
@@ -555,12 +878,15 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         if L_ < 7: continue
         ang = math.atan2(v.y, v.x)
         occ = 0.62 if (ERA is None or ERA >= 1970) else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+        # parked with the traffic of their side (the curb on the car's right),
+        # never quite in line: a few centimetres off the curb, a degree askew
+        fwd_ = math.atan2(outv.x, -outv.y)
         for i in range(int((L_ - 3) // 6.2)):
             if r.random() > occ: continue
-            p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
+            p = a + v * ((1.5 + 3.1 + i * 6.2 + r.uniform(-0.5, 0.5)) / L_) - outv * r.uniform(1.08, 1.3)
             if not in_box(p.x, p.y): continue
             o = bpy.data.objects.new(f'pcar{k}', CARS[r.randrange(len(CARS))]); sc.collection.objects.link(o)
-            o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = ang + (math.pi if r.random() < 0.5 else 0); k += 1
+            o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = fwd_ + math.radians(r.uniform(-1.5, 1.5)); k += 1
     log('cars', k)
 
 # ── the sea: the water mask of water_mask.py, deep to shallow, foam at the shore ──
