@@ -893,7 +893,10 @@ if ERA is not None:
                                      'jewel': simple('ppie_jewel', (0.85, 0.80, 0.70), rough=0.05, metal=0.6, spec=1.0),
                                      'glassh': simple('ppie_glass', (0.70, 0.74, 0.72), rough=0.08, spec=0.9),
                                      'shadow': simple('ppie_shadow', (0.03, 0.03, 0.035), rough=0.9),
-                                     'garden': simple('ppie_garden', (0.16, 0.30, 0.10), rough=0.9)}, log)
+                                     'garden': simple('ppie_garden', (0.16, 0.30, 0.10), rough=0.9),
+                                     'gravel': simple('ppie_gravel', (0.62, 0.56, 0.46), rough=0.95),
+                                     # 'vivid coloring of the doorways' (Condensed Facts); the hue is a convention
+                                     'portal': simple('ppie_portal', (0.72, 0.36, 0.16), rough=0.6)}, log)
 # the Mission Bay rail yards, 1910-1998 (era.build_yards)
 if ERA is not None and OPEN is not None:
     EA.build_yards(bpy, ERA, (bx0, by0, bx1, by1), ground, open_at, simple('yardrail', (0.45, 0.42, 0.40), rough=0.35, metal=0.9),
@@ -961,6 +964,15 @@ a_, e_ = math.radians(az_), math.radians(el_)
 to_sun = Vector((math.sin(a_) * math.cos(e_), math.cos(a_) * math.cos(e_), math.sin(e_)))
 sun.rotation_euler = (-to_sun).to_track_quat('-Z', 'Y').to_euler()
 
+if E('PROBE_XY'):
+    # debug: what the scene holds under given world points (no render)
+    _dg = bpy.context.evaluated_depsgraph_get()
+    for _pt in E('PROBE_XY').split(';'):
+        _x, _y = [float(v) for v in _pt.split(',')]
+        _h = sc.ray_cast(_dg, Vector((_x, _y, 3000)), Vector((0, 0, -1)))
+        print('PROBE', _x, _y, '->', _h[4].name if _h[0] else None, round(_h[1].z, 2) if _h[0] else None,
+              (_h[4].active_material.name if _h[0] and _h[4].active_material else None))
+    raise SystemExit
 sc.render.engine = 'CYCLES'
 prefs = bpy.context.preferences.addons['cycles'].preferences
 prefs.compute_device_type = 'METAL'; prefs.get_devices()

@@ -997,6 +997,12 @@ def build_ppie(bpy, era, ground, mats, log=print):
                 a0 = base + j * seg + i; a1 = base + j * seg + (i + 1) % seg
                 F.append((a0, a1, a1 + seg, a0 + seg))
     H = 19.8                                                  # 65 ft facades
+    # the fairground's own ground: made land levelled for the fair — gravel
+    # walks, lawns in the courts and the South Garden (CONVENTION)
+    box('gravel', -470, -175, 800, 345, -0.8, 0.12)
+    box('garden', -440, -165, 440, -8, 0.12, 0.3)                              # the South Garden
+    for (cu0, cu1, cv0, cv1) in ((-300, -190, 120, 230), (190, 300, 120, 230)):
+        box('garden', cu0 + 6, cv0 + 6, cu1 - 6, cv1 - 6, 0.12, 0.3)
     # the walled city: 900 x 315 m from the tower's line north; courts cut out
     U0, U1, V0, V1 = -450.0, 450.0, 12.0, 327.0
     courts = [(-137, 137, 40, 327), (-420 + 120, -420 + 230, 120, 230), (190, 300, 120, 230)]
@@ -1019,6 +1025,16 @@ def build_ppie(bpy, era, ground, mats, log=print):
             for (a, b_, c, d_) in pieces:
                 if c - a < 4 or d_ - b_ < 4: continue
                 box('ivory', a, b_, c, d_, -1.0, H)
+                # the walls' rhythm: pilasters every 12 m on the long sides,
+                # a portal with a vividly coloured surround mid-facade
+                for side_v in (b_, d_):
+                    sgn = -1 if side_v == b_ else 1
+                    for uu in [a + 6 + 12 * k for k in range(int((c - a - 6) // 12))]:
+                        box('ivory', uu - 0.9, side_v + (0 if sgn > 0 else -0.9), uu + 0.9, side_v + (0.9 if sgn > 0 else 0), -1.0, H - 1.2)
+                    if c - a > 40:
+                        um = (a + c) / 2
+                        box('portal', um - 9, side_v + (0 if sgn > 0 else -1.4), um + 9, side_v + (1.4 if sgn > 0 else 0), -1.0, 17.0)
+                        box('shadow', um - 6, side_v + (0 if sgn > 0 else -1.5), um + 6, side_v + (1.5 if sgn > 0 else 0), 0.0, 13.0)
                 box('ivory', a - 0.6, b_ - 0.6, c + 0.6, d_ + 0.6, H - 1.2, H)          # the cornice
                 if c - a > 30 and d_ - b_ > 30:                                          # clerestory roof
                     box('roof', a + 8, b_ + 8, c - 8, d_ - 8, H, H + 6.0)
