@@ -294,7 +294,20 @@ HARBOR_VIEW_1895 = [(-1100, 4976), (-908, 4960), (-732, 4904), (-636, 4832), (-5
 MISSION_BAY_1895 = [(x, y - 141) for x, y in [(3712, 1280), (3808, 1424), (3904, 1472), (4032, 1456), (4144, 1408), (4160, 1280), (4160, 960),
                     (4144, 768), (4096, 640), (4048, 672), (4000, 768), (3904, 896), (3808, 992), (3776, 1088), (3712, 1152)]]
 
+def _north1895(x, y):
+    # the 1895 sheet's water on the north shore west of Harbor View's east
+    # edge (x < 340): the Crissy marsh and the Presidio shore (shore_combine.py)
+    if x >= 340 or y < 3800: return False
+    t = _topo_load('north1895')
+    if t is None: return False
+    meta, a = t
+    i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+    return 0 <= i < meta['w'] and 0 <= j < meta['h'] and a[j, i, 0] > 0.5
+
+
 MADE_LAND = [
+    ('ppie_north_shore', 1912, _north1895,
+     'USGS 1895 sheet (water extracted, shore_extract.py); Crissy marsh "completely filled for the PPIE" (Presidio Trust/PWA 2004), hydraulic fill 1912 (USGS Marina paper)'),
     ('treasure_island', 1937, _treasure_island,
      'Army Corps of Engineers, 11 Feb 1936 - 24 Aug 1937 (Wikipedia; Treasure Island Museum)'),
     ('harbor_view_cove', 1912, lambda x, y: _in_ring(x, y, HARBOR_VIEW_1895),
