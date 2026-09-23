@@ -13,7 +13,7 @@ transparent there, which the page's paper shows through.
 index.json follows lib/citygl/tile-plane.ts (tile, dpr, ref, levels) and adds
 `proj`: the heights the overlay must use to land on these pictures.
 """
-import json, math, os, subprocess, sys
+import json, math, os, subprocess, sys, time
 from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -68,7 +68,10 @@ levels = {}
 for z in range(ZTOP + 1):
     f = 2 ** (z - 3); pw, ph = round(2560 * f), round(1536 * f)
     levels[str(z)] = dict(band=band(z), scale=REF['scale'] * f, tiles=[math.ceil(pw / T), math.ceil(ph / T)], px=[pw, ph])
-json.dump(dict(tile=T, dpr=2, ref=REF, levels=levels, proj=dict(zex=ZT, zexb=ZT, sA=SA)),
+# v: the build. The page puts it on every tile URL, so a rebuilt tile shows as
+# soon as the index (5 min) does, past the day the CDN keeps the old one
+json.dump(dict(tile=T, dpr=2, ref=REF, levels=levels, proj=dict(zex=ZT, zexb=ZT, sA=SA),
+               v=time.strftime('%m%d%H%M')),
           open(os.path.join(OUT, 'index.json'), 'w'), indent=1)
 n = sum(len(v) for v in have.values())
 print('pyramid', n, 'tiles', flush=True)
