@@ -6,6 +6,7 @@ env: TILES=4 (the frame is rendered as TILES x TILES borders and stitched) ·
      BOX=x0,y0,x1,y1 (buildings only inside, for tests)
 """
 import bpy, bmesh, json, base64, array, math, os, sys, glob, random, time
+import numpy as np
 from mathutils import Vector, Matrix
 from mathutils.bvhtree import BVHTree
 from mathutils.kdtree import KDTree
@@ -233,20 +234,25 @@ for c0 in range(0, len(recs), CH):
 
 # ── trees: one point per recorded tree, instanced ────────────────────────────
 def load_collection(asset):
+    """the asset's trees, ONE PROTO PER TREE. pine_tree_01 and fir_tree_01 hold
+    three trees side by side (a, b, c): instanced whole, every 'pine' was three
+    pines spread over 8 m, some of them on the neighbours' roofs (2026-09-24).
+    Returns [(collection, crown width, height)], based at each tree's own foot."""
     path = glob.glob(f'{PH}/{asset}/*.blend')[0]
     with bpy.data.libraries.load(path, link=False) as (src, dst):
         dst.collections = [c for c in src.collections if c == f'{asset}_LOD0'] or [c for c in src.collections if c.endswith('LOD0')][:1]
     c = dst.collections[0]
-    mn = Vector((1e9, 1e9, 1e9)); mx = Vector((-1e9, -1e9, -1e9))
-    for o in c.all_objects:
-        if o.type != 'MESH': continue
+    out = []
+    for o in [o for o in c.all_objects if o.type == 'MESH']:
+        mn = Vector((1e9, 1e9, 1e9)); mx = Vector((-1e9, -1e9, -1e9))
         vs_ = o.data.vertices
         for i_ in range(0, len(vs_), 7):
-            v = vs_[i_]
-            p = o.matrix_world @ v.co
+            p = o.matrix_world @ vs_[i_].co
             mn = Vector((min(mn.x, p.x), min(mn.y, p.y), min(mn.z, p.z))); mx = Vector((max(mx.x, p.x), max(mx.y, p.y), max(mx.z, p.z)))
-    c.instance_offset = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
-    return c, max(mx.x - mn.x, mx.y - mn.y), mx.z - mn.z
+        one = bpy.data.collections.new(f'{o.name}_one'); one.objects.link(o)
+        one.instance_offset = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
+        out.append((one, max(mx.x - mn.x, mx.y - mn.y), mx.z - mn.z))
+    return out
 
 def instancer(name, pts, protos):
     """pts: (x, y, z, scale, rot, kind); protos: collections, one per kind"""
@@ -275,15 +281,58 @@ def instancer(name, pts, protos):
     log(name, len(pts))
 
 log('trees')
+# NO TRUNK OUT OF A ROOF. The measured canopy sees crowns that overhang houses
+# (it is an aerial survey), so a mass's centre can fall on a roof, and the trunk
+# planted there came out of the roof: "trees that are like a trunk starting
+# midair" (Daniel, 2026-09-24). Every footprint, filled on a 1 m grid.
+def _occupancy(recs_, pad=60):
+    xs = [p[0] for b in recs_ for p in b['ring']]; ys = [p[1] for b in recs_ for p in b['ring']]
+    if not xs: return None
+    ox, oy = int(min(xs)) - pad, int(min(ys)) - pad
+    g = np.zeros((int(max(ys)) - oy + pad, int(max(xs)) - ox + pad), dtype=bool)
+    for b in recs_:
+        rg = [(x - ox, y - oy) for x, y in b['ring']]
+        if len(rg) < 3: continue
+        y0_, y1_ = int(min(y for _, y in rg)), int(max(y for _, y in rg)) + 1
+        for row in range(max(0, y0_), min(g.shape[0], y1_)):
+            yc = row + 0.5; xi = []
+            for (xa, ya), (xb, yb) in zip(rg, rg[1:] + rg[:1]):
+                if (ya <= yc < yb) or (yb <= yc < ya): xi.append(xa + (yc - ya) * (xb - xa) / (yb - ya))
+            xi.sort()
+            for a_, b_ in zip(xi[0::2], xi[1::2]):
+                g[row, max(0, int(a_ + 0.5)):max(0, int(b_ + 0.5))] = True
+    return g, ox, oy
+_OCC = _occupancy(recs)
+def roofed(x, y):
+    if _OCC is None: return False
+    g, ox, oy = _OCC; r_, c_ = int(y - oy), int(x - ox)
+    return 0 <= r_ < g.shape[0] and 0 <= c_ < g.shape[1] and bool(g[r_, c_])
+def open_foot(x, y, reach):
+    """where the trunk can stand: the point itself if it is open ground, else
+    the nearest open ground within the crown's reach (a mass centred over a roof
+    is a yard tree whose crown overhangs the house — moved, not dropped: dropping
+    them stripped the neighbourhoods of their green, 2026-09-24)"""
+    if not roofed(x, y): return x, y
+    d = 1.5
+    while d <= max(2.5, reach):
+        for a in range(12):
+            t_ = a * math.pi / 6; nx, ny = x + d * math.cos(t_), y + d * math.sin(t_)
+            if not roofed(nx, ny): return nx, ny
+        d += 1.5
+    return None
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
-STREET = [load_collection(a) for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree')]
-PARK = [load_collection(a) for a in ('pine_tree_01', 'fir_tree_01', 'island_tree_02', 'island_tree_01')]
+STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
+PINE = load_collection('pine_tree_01'); FIR = load_collection('fir_tree_01')
+BROAD = [t for a in ('island_tree_02', 'island_tree_01') for t in load_collection(a)]
+PARK = PINE + FIR + BROAD
+NS, K_PINE = len(STREET), len(STREET)                      # kinds: street 0…, pines, firs, broadleaf
+K_FIR = K_PINE + len(PINE); K_BROAD = K_FIR + len(FIR)
 protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
 log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, heights)])
 # A proto is scaled to the crown's WIDTH, but not past a height: a narrow pine
 # scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
 # crowns stand at most 1.4 widths tall, pines and firs 2.
-TALL = [1.4] * 5 + [2.0, 2.0, 1.4, 1.4]
+TALL = [1.4] * NS + [2.0] * (len(PINE) + len(FIR)) + [1.4] * len(BROAD)
 def tree_scale(kind, crown):
     return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
@@ -307,11 +356,14 @@ for t in d['trees']:
         k = (round(x / 2.5), round(y / 2.5))
         if k in seen or not in_box(x, y, 50): continue
         seen.add(k)
+        f_ = open_foot(x, y, 3.0)
+        if f_ is None: continue
+        x, y = f_
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
         if ERA is not None and not park:
             if r.random() > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         # parks: mostly broadleaf, some Monterey pine; firs only now and then
-        kind = (7 + r.randrange(2) if r.random() < 0.8 else 5) if park else r.randrange(5)
+        kind = (K_BROAD + r.randrange(len(BROAD)) if r.random() < 0.8 else K_PINE + r.randrange(len(PINE))) if park else r.randrange(NS)
         crown = max(3.0, 2.0 * sxz)
         gz_ = ground(x, y)
         if gz_ is None: continue
@@ -321,12 +373,15 @@ nreg = len(pts)
 # register already has a tree there
 for (x, y, z, rad, *_rest) in MASS:
     if not in_box(x, y, 50) or (round(x / 2.5), round(y / 2.5)) in seen: continue
+    f_ = open_foot(x, y, 1.2 * rad)
+    if f_ is None: continue
+    x, y = f_
     if any((round(x / 2.5) + a, round(y / 2.5) + b) in seen for a in (-1, 0, 1) for b in (-1, 0, 1)): continue
     gz_ = ground(x, y)
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
-    kind = 7 + r.randrange(2) if r.random() < 0.85 else 5
-    crown = max(4.0, 2.5 * rad)
+    kind = K_BROAD + r.randrange(len(BROAD)) if r.random() < 0.85 else K_PINE + r.randrange(len(PINE))
+    crown = max(4.0, float(E("CANOPY_K", 3.0)) * rad)
     seen.add((round(x / 2.5), round(y / 2.5)))
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
