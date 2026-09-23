@@ -472,7 +472,7 @@ def building(b, ground, out):
         pts2 = [Vector((x, y, 0)) for x, y in oring]
         tris = tessellate_polygon([pts2])
         f = lambda p: p.dot(ax_u) - uc
-        rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else (1.0, 0.95, 0.9)
+        rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else rng.choice(TILE_TINTS)
         for t in tris:
             for tri in split_tri([pts2[k].copy() for k in t], f):
                 top_ = [Vector((p.x, p.y, rz(p) + 0.05)) for p in tri]
@@ -563,6 +563,7 @@ def rear_deck(w, u0, first, zg, trim, rng):
         w.box('deck', u0 + L_ + s_ * run, u0 + L_ + (s_ + 1) * run, zt - 0.05, zt, D - 1.0, D, (0.58, 0.45, 0.32))
 
 
+TILE_TINTS = [(1.0, 1.0, 1.0), (0.94, 0.88, 0.84), (1.0, 0.92, 0.82), (0.86, 0.80, 0.78), (0.97, 0.84, 0.74)]
 SHINGLE_TINTS = [(1.0, 1.0, 1.02), (0.92, 0.95, 1.05), (1.12, 1.0, 0.88), (0.95, 1.03, 0.95), (1.18, 0.92, 0.82), (0.85, 0.85, 0.88)]
 FLAT_TINTS = [(1.0, 1.0, 1.0), (1.55, 1.55, 1.52), (1.25, 1.18, 1.05), (0.8, 0.8, 0.82), (1.4, 1.42, 1.45)]
 

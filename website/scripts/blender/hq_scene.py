@@ -20,6 +20,9 @@ T0 = time.time()
 def log(*a): print(f'[{time.time() - T0:6.1f}s]', *a, flush=True)
 
 d = json.load(open(os.path.join(SD, 'scene.json')))
+# the true ground (USGS 3DEP) under everything, before anything is built on it
+# (terrain_hq.py, landmarks agent: the engine's relief is squeezed N-S 1.2649x)
+import terrain_hq; terrain_hq.correct_scene(d, log, box=([float(v) for v in E('BOX').split(',')] if E('BOX') else d['box']), sd=SD)
 bx0, by0, bx1, by1 = [float(v) for v in E('BOX').split(',')] if E('BOX') else d['box']
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
@@ -158,7 +161,6 @@ M['brick'] = ph_mat('red_brick_plaster_patch_02', 3.0, tint=True, name='brick', 
 M['concrete'] = ph_mat('grey_plaster', 3.0, tint=True, name='concrete_wall')
 M['glass'] = glass_mat()
 M['door'] = simple('door', None, rough=0.4, attr=True)
-M['roof_shingle'] = ph_mat('grey_roof_01', 3.2, tint=True, name='roof_shingle', lift=0.0)
 M['metal'] = simple('metal', None, rough=0.35, metal=0.8, attr=True)
 M['stair'] = ph_mat('concrete_pavement', 2.0, tint=True, name='stair')
 M['shopglass'] = glass_mat()
@@ -338,6 +340,31 @@ def weather(m, k=1.0, streaks=1.0):
     nt.links.new(cc.outputs[0], pr.inputs['Base Color'])
 for _k, _w in (('stucco', 1.0), ('siding', 0.8), ('concrete', 1.0), ('brick', 0.7), ('shingle', 0.5)):
     weather(M[_k], _w, 0.4 if _k in ('siding', 'shingle') else 1.0)
+def pitched_mat(name, asset, tile, value=1.0, bump=0.6):
+    """a pitched roof's covering laid the way it is laid: the texture turned
+    with each face — courses along the ridge, tile columns down the slope —
+    read in slope length (not its plan), tinted by the face colour, the
+    relief from the scan's height map"""
+    b = NB(name); geo = b.n('ShaderNodeNewGeometry'); P = b.pos
+    sn = b.n('ShaderNodeSeparateXYZ'); b.put(sn.inputs[0], geo.outputs['Normal'])
+    hz = b.n('ShaderNodeCombineXYZ'); b.put(hz.inputs[0], b.math('ADD', sn.outputs[0], 1e-3)); b.put(hz.inputs[1], sn.outputs[1])
+    nh = b.n('ShaderNodeVectorMath', operation='NORMALIZE'); b.put(nh.inputs[0], hz.outputs[0])
+    sh = b.n('ShaderNodeSeparateXYZ'); b.put(sh.inputs[0], nh.outputs[0])
+    dn = b.n('ShaderNodeVectorMath', operation='DOT_PRODUCT'); b.put(dn.inputs[0], P); b.put(dn.inputs[1], nh.outputs[0])
+    al = b.n('ShaderNodeCombineXYZ'); b.put(al.inputs[0], b.math('MULTIPLY', sh.outputs[1], -1.0)); b.put(al.inputs[1], sh.outputs[0])
+    da = b.n('ShaderNodeVectorMath', operation='DOT_PRODUCT'); b.put(da.inputs[0], P); b.put(da.inputs[1], al.outputs[0])
+    down = b.math('DIVIDE', dn.outputs['Value'], b.math('MAXIMUM', sn.outputs[2], 0.3))
+    uv = b.n('ShaderNodeCombineXYZ'); b.put(uv.inputs[0], b.math('DIVIDE', da.outputs['Value'], tile)); b.put(uv.inputs[1], b.math('DIVIDE', down, tile))
+    tex = b.img(PHT(asset, 'diff'), uv.outputs[0])
+    at = b.n('ShaderNodeAttribute', attribute_name='bcol')
+    c = b.mix(1.0, tex, at.outputs['Color'], 'MULTIPLY')
+    if value != 1.0: c = b.mix(1.0, c, (value, value, value), 'MULTIPLY')
+    b.put(b.pr.inputs['Base Color'], c); b.pr.inputs['Roughness'].default_value = 0.8
+    h = b.img(PHT(asset, 'disp'), uv.outputs[0], noncolor=True)
+    b.put(b.pr.inputs['Normal'], b.bump(b.bw(h), bump, 0.03))
+    return b.m
+M['roof_shingle'] = pitched_mat('roof_shingle', 'grey_roof_01', 3.2)
+M['roof_tile'] = pitched_mat('roof_tile', 'clay_roof_tiles_02', 2.5, value=1.1, bump=0.8)
 M['asphalt'] = road_mat()
 if E('ERA') and int(E('ERA')) < 1950:
     M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
@@ -350,7 +377,6 @@ _wm = _pn.nodes.new('ShaderNodeMix'); _wm.data_type = 'RGBA'; _wm.inputs[0].defa
 _pn.links.new(_src, _wm.inputs[6]); _wm.inputs[7].default_value = (0.78, 0.77, 0.72, 1); _pn.links.new(_wm.outputs[2], _pp.inputs['Base Color'])
 M['path'] = ph_mat('pavement_03', 3.0, name='path')
 M['chimney'] = ph_mat('red_brick_plaster_patch_02', 1.6, name='chimney')
-M['roof_tile'] = ph_mat('roof_tiles_14', 2.2, tint=True, name='roof_tile', value=1.25)
 M['deck'] = ph_mat('white_planks_clean', 2.0, tint=True, name='deck')
 
 # lawn: the scan's leaf litter greened into a kept lawn, with macro variation
@@ -382,7 +408,7 @@ def park_lawn(m):
     blades = b.noise(28.0, 2.0)
     val = b.math('MULTIPLY', b.math('ADD', 0.90, b.math('MULTIPLY', band, 0.16)), b.math('ADD', 0.93, b.math('MULTIPLY', blades, 0.14)))
     hs = b.n('ShaderNodeHueSaturation'); b.put(hs.inputs['Color'], src_); b.put(hs.inputs['Value'], val)
-    b.put(hs.inputs['Hue'], b.math('ADD', 0.485, b.math('MULTIPLY', band, -0.012))); hs.inputs['Saturation'].default_value = 1.35
+    b.put(hs.inputs['Hue'], b.math('ADD', 0.497, b.math('MULTIPLY', band, -0.010))); hs.inputs['Saturation'].default_value = 1.12
     c = hs.outputs[0]
     clover = b.ramp(b.noise(0.7, 3.0), 0.0, 0.3, 0.58, 0.68)
     c = b.mix(clover, c, (0.55, 0.62, 0.50), 'MULTIPLY')
@@ -510,6 +536,9 @@ ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.m
 # ── buildings ────────────────────────────────────────────────────────────────
 log('buildings: reading records')
 HG = city_data.hero_gids()
+# footprints a hand-modelled landmark replaces (landmarks agent's skip list)
+_sk = [q for q in (os.path.join(os.path.dirname(os.path.abspath(__file__)), 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
+if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() for g in v}
 ERA = int(E('ERA')) if E('ERA') else None
 G.ERA = ERA
 G.LOD = int(E('LOD', 0))
