@@ -6,7 +6,7 @@ env: TILES=4 (the frame is rendered as TILES x TILES borders and stitched) ·
      BOX=x0,y0,x1,y1 (buildings only inside, for tests)
 """
 import bpy, bmesh, json, base64, array, math, os, sys, glob, random, time
-from mathutils import Vector
+from mathutils import Vector, Matrix
 from mathutils.bvhtree import BVHTree
 from mathutils.kdtree import KDTree
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -23,6 +23,26 @@ d = json.load(open(os.path.join(SD, 'scene.json')))
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 BOX = [float(v) for v in E('BOX').split(',')] if E('BOX') else None
+
+# ── the pyramid's geometry (see PYRAMID MODE below) ──
+CA_ = math.cos(math.radians(30)); SA_ = 0.42
+KX = math.sqrt(2) * CA_; KY = math.sqrt(2) * SA_; ZT = math.sqrt(2 * (CA_ ** 2 - SA_ ** 2))
+REF = dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
+PZ = int(E('Z', 7)); FW, FH = int(E('FW', 5120)), int(E('FH', 3072))
+_f = 2 ** (PZ - 3); SZ = REF['scale'] * _f; PCW, PCH = round(2560 * _f), round(1536 * _f)
+ONLY = [tuple(int(v) for v in t.split(':')) for t in E('ONLY', '').split(',') if t]
+def frame_world(i, j):
+    # the ground (z = 0) rectangle a frame covers, world metres
+    px0 = REF['cx'] + (i * FW / 2 - PCW / 4) / SZ; px1 = REF['cx'] + ((i + 1) * FW / 2 - PCW / 4) / SZ
+    py1 = REF['cy'] - (j * FH / 2 - PCH / 4) / SZ; py0 = REF['cy'] - ((j + 1) * FH / 2 - PCH / 4) / SZ
+    return px0 / KX, py0 / KY, px1 / KX, py1 / KY
+if E('MODE') == 'pyramid' and ONLY and BOX is None:
+    # ONE REGION, NOT THE CITY: only what can be seen in these frames, plus
+    # what casts a shadow into them (sun from the south-west) and what stands
+    # south of them and rises into view (300 m of tower or hill = ~540 m of y)
+    fr_ = [frame_world(i, j) for i, j in ONLY]
+    BOX = [min(f[0] for f in fr_) - 450, min(f[1] for f in fr_) - 700, max(f[2] for f in fr_) + 450, max(f[3] for f in fr_) + 150]
+    print('region box', [round(v) for v in BOX], flush=True)
 def in_box(x, y, pad=0.0):
     return BOX is None or (BOX[0] - pad <= x <= BOX[2] + pad and BOX[1] - pad <= y <= BOX[3] + pad)
 
@@ -115,15 +135,24 @@ log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
-    if m['layer'] == 'streets': SP.extend(f32(m['pos']))
+    if m['layer'] == 'streets':
+        p = f32(m['pos'])
+        if BOX is None: SP.extend(p)
+        else:
+            for t in range(len(p) // 9):
+                if in_box(p[t*9], p[t*9+1], 60): SP.extend(p[t*9:t*9+9])
     elif m['layer'] == 'street-markings':
         p = f32(m['pos'])
         for t in range(len(p) // 9):
             a = t * 9
-            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0: MP.extend(p[a:a+9])
+            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
         c = f32(m['col']); p = f32(m['pos'])
-        (DP if (c and c[2] > 0.8) else DL).extend(p)
+        tgt = DP if (c and c[2] > 0.8) else DL
+        if BOX is None: tgt.extend(p)
+        else:
+            for t in range(len(p) // 9):
+                if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
@@ -296,6 +325,42 @@ cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)
 sc.cycles.samples = SPP
+
+# ── PYRAMID MODE: the site's own tile grid, exactly ──────────────────────────
+# `scripts/render-city-tiles.mjs` and `lib/citygl/tile-plane.ts` define the
+# pyramid: level z is a canvas of 2560·2^(z-3) x 1536·2^(z-3) device px (dpr 2)
+# centred on REF, at REF.scale·2^(z-3) CSS px per plane unit. The engine's
+# plane is linear in the world at its 315° bearing:
+#     px = √2·cos30·x = 1.2247·x        py = √2·sA·y + z·zex   (sA 0.42)
+# and it is a TRUE orthographic camera exactly when zex = √(2(cos²30 − sA²))
+# = 1.0711 — the rows are orthogonal and of equal length. So the render uses
+# that camera (true proportions, 29.0° elevation) and the pyramid's index.json
+# says zex = zexb = 1.0711, which the tile map's overlay then uses: labels and
+# taps land on the rendered buildings, hills included.
+if E('MODE') == 'pyramid':
+    Z, sz, cw, ch = PZ, SZ, PCW, PCH
+    nfx, nfy = math.ceil(cw / FW), math.ceil(ch / FH)
+    up = Vector((0, KY, ZT)).normalized(); fw_ = Vector((0, ZT, -KY)).normalized()
+    cam_d.ortho_scale = (FW / 2) / sz / KX                           # metres across the frame
+    sc.render.resolution_x, sc.render.resolution_y = FW, FH
+    sc.render.use_border = False; sc.render.use_persistent_data = True
+    rot = Matrix((Vector((1, 0, 0)), up, -fw_)).transposed().to_euler()
+    log(f'pyramid level {Z}: canvas {cw}x{ch}, {nfx}x{nfy} frames of {FW}x{FH}, {1 / (sz * 2 * KX) * 100:.1f} cm/px')
+    for j in range(nfy):
+        for i in range(nfx):
+            if ONLY and (i, j) not in ONLY: continue
+            fn = f'{OUT}_z{Z}_{i}_{j}.png'
+            if os.path.exists(fn): continue
+            # the frame's centre in the level canvas (device px) -> CSS -> plane -> world at z = 0
+            ccx, ccy = (i + 0.5) * FW / 2, (j + 0.5) * FH / 2
+            px_ = REF['cx'] + (ccx - cw / 4) / sz; py_ = REF['cy'] - (ccy - ch / 4) / sz
+            wp = Vector((px_ / KX, py_ / KY, 0.0))
+            cam.location = wp - fw_ * 20000; cam.rotation_euler = rot
+            sc.render.filepath = fn
+            t1 = time.time(); bpy.ops.render.render(write_still=True)
+            log(f'frame {i},{j}: {time.time() - t1:.1f}s')
+    log('PYRAMID done'); sys.exit(0)
+
 T = int(E('TILES', 1))
 sc.render.use_border = T > 1; sc.render.use_crop_to_border = True
 sc.render.use_persistent_data = True          # one BVH for all the tiles
