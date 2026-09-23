@@ -122,23 +122,25 @@ def _treasure_island(x, y):
 
 # The 1895 shoreline where it has moved since, read off the USGS 1:62,500 San
 # Francisco sheet of 1895 (public domain, georeferenced; its NAD27 datum
-# shift to this map's frame MEASURED by topo_extract.py: -90 m east, +130 m
-# north, the offset that best lays its building ink on the footprints the
-# record dates before 1895). Traced by eye on topo_view.py's gridded
-# resampling (history/refs/_topo1895_marina_zoom.png, _topo1895_missionbay.png),
-# about +-20 m.
+# shift to this map's frame MEASURED on Alcatraz, which sits 90 m east and
+# 11 m north of its WGS84 position on the sheet — the NAD27->NAD83 shift at
+# San Francisco; the building-ink correlation of topo_extract.py locks onto
+# the street grid's period and is not used). Traced by eye on topo_view.py's
+# gridded resampling with today's centrelines over it
+# (history/refs/_topo1895_marina_zoom2.png; Mission Bay traced at the earlier
+# offset and moved by its difference), about +-20 m.
 #  · Harbor View cove (the Marina): its shore reached south to about
-#    Chestnut Street between Scott and Divisadero; 'filling proceeded
+#    Chestnut Street at Scott; 'filling proceeded
 #    gradually from the late 1860s to 1912, when major hydraulic filling was
 #    done for the PPIE' (USGS, The Marina District ... geology, history).
 #  · Mission Bay's last open water, inside the rail causeway west of today's
 #    UCSF campus; the filling 'lasted from approximately 1860 to 1910'
 #    (FoundSF 'Mission Bay').
-HARBOR_VIEW_1895 = [(-1100, 5104), (-732, 5032), (-620, 4912), (-572, 4816), (-540, 4720), (-492, 4640),
-                    (-380, 4616), (-268, 4611), (-204, 4624), (-76, 4664), (20, 4720), (52, 4768), (164, 4832),
-                    (212, 4912), (292, 5008), (340, 5072), (340, 5700), (-1100, 5700)]
-MISSION_BAY_1895 = [(3712, 1280), (3808, 1424), (3904, 1472), (4032, 1456), (4144, 1408), (4160, 1280), (4160, 960),
-                    (4144, 768), (4096, 640), (4048, 672), (4000, 768), (3904, 896), (3808, 992), (3776, 1088), (3712, 1152)]
+HARBOR_VIEW_1895 = [(-1100, 4976), (-908, 4960), (-732, 4904), (-636, 4832), (-588, 4736), (-548, 4640), (-500, 4544),
+                    (-428, 4472), (-348, 4451), (-204, 4480), (-76, 4528), (20, 4592), (52, 4624), (164, 4672), (196, 4720),
+                    (228, 4800), (260, 4864), (292, 4912), (308, 5008), (340, 5104), (340, 5700), (-1100, 5700)]
+MISSION_BAY_1895 = [(x, y - 141) for x, y in [(3712, 1280), (3808, 1424), (3904, 1472), (4032, 1456), (4144, 1408), (4160, 1280), (4160, 960),
+                    (4144, 768), (4096, 640), (4048, 672), (4000, 768), (3904, 896), (3808, 992), (3776, 1088), (3712, 1152)]]
 
 MADE_LAND = [
     ('treasure_island', 1937, _treasure_island,
@@ -305,8 +307,8 @@ def yard_sand(era):
 #            standards; Market Street's 'Path of Gold' 1916), cobra (the
 #            post-war cobra-head on a steel pole). Dates of the switch are a
 #            CONVENTION within those sourced ends.
-#  marks     painted lines and crosswalks: none before 1950 (the zebra and
-#            lane paint the export carries is today's). CONVENTION.
+#  marks     painted lines and crosswalks: the export carries today's zebra
+#            and lane paint, drawn from the 1970s on. CONVENTION.
 #  strip     share of Victorians 'modernised': in the 1930s and again in the
 #            1950s contractors stripped the millwork and covered the siding in
 #            stucco or asbestos shingle; restoration from the 1970s (San
@@ -332,10 +334,10 @@ TABLE = {
                lamp='electrolier', marks=0.0, solar=0.0, strip=0.12),
     1950: dict(trees=0.16, cars=0.40, fleet=dict(r30=0.75, f50=0.25), carcol='post45',
                paint=dict(pale=0.30, grey=0.70), paint2=dict(pale=0.4, grey=0.3, today=0.3),
-               lamp='electrolier', marks=1.0, solar=0.0, strip=0.25),
+               lamp='electrolier', marks=0.0, solar=0.0, strip=0.25),
     1960: dict(trees=0.20, cars=0.50, fleet=dict(r30=0.15, f50=0.60, l60=0.25), carcol='pastel50',
                paint=dict(pale=0.28, grey=0.72), paint2=dict(pale=0.3, grey=0.3, today=0.4),
-               lamp='cobra', marks=1.0, solar=0.0, strip=0.32),
+               lamp='cobra', marks=0.0, solar=0.0, strip=0.32),
     1970: dict(trees=0.28, cars=0.58, fleet=dict(f50=0.20, l60=0.80), carcol='bright60',
                paint=dict(pale=0.25, grey=0.60, color=0.15), paint2=dict(pale=0.2, grey=0.2, today=0.6),
                lamp='cobra', marks=1.0, solar=0.0, strip=0.32),
@@ -542,12 +544,52 @@ def in_park(x, y):
     return any(_in_ring(x, y, r) for r in _PARKS.get((int(x // 100), int(y // 100)), ()))
 
 
+# ── the built-up city on the USGS sheets (topo_extract.py) ──────────────────
+# The 1:62,500 San Francisco sheets ink every built frontage: the 1895 edition
+# (surveyed 1892-94) and the 1915 edition. Where the record's survivors are
+# thin — demolished since — the sheet still says the block was built up.
+# Masks: history/masks/usgs1895.png, usgs1915.png (G = building-ink density,
+# 4 m a pixel, world frame); TOPO_DIR overrides the folder.
+TOPO_DIR = os.environ.get('TOPO_DIR', '/Users/daniel/code/qipu-render-work/history/masks')
+_TOPO = {}
+
+
+def topo_sheet(era):
+    """which sheet speaks for a year: 1895 up to the fire, 1915 to 1930"""
+    if era is None or era >= 1930: return None
+    return 'usgs1895' if era < 1906 else 'usgs1915'
+
+
+def topo_built(x, y, era):
+    """the sheet's building-ink density at a point (0..1), or 0 when no sheet
+    speaks for the year or the point is off the sheet"""
+    name = topo_sheet(era)
+    if name is None: return 0.0
+    if name not in _TOPO:
+        try:
+            import bpy, numpy as np
+            meta = json.load(open(f'{TOPO_DIR}/{name}.json'))
+            img = bpy.data.images.load(f'{TOPO_DIR}/{name}.png'); img.colorspace_settings.name = 'Non-Color'
+            a = np.empty(img.size[0] * img.size[1] * 4, np.float32); img.pixels.foreach_get(a)
+            a = a.reshape(img.size[1], img.size[0], 4)[::-1]           # top row first, as the PNG
+            _TOPO[name] = (meta, a)
+        except Exception as ex:
+            print('topo sheet unavailable', name, ex); _TOPO[name] = None
+    t = _TOPO[name]
+    if t is None: return 0.0
+    meta, a = t
+    i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+    if not (0 <= i < meta['w'] and 0 <= j < meta['h']) or a[j, i, 2] < 0.5: return 0.0
+    return float(a[j, i, 1])
+
+
 class OpenLand:
     """the open-land raster of a year: for every cell, how far it is from the
     nearest standing building (era.open_factor), and whether that open
     ground is dune sand (is_dune_ground). box = (x0, y0, x1, y1), res in m."""
-    def __init__(self, recs, box, res, ground, pad=80.0):
+    def __init__(self, recs, box, res, ground, pad=80.0, era=None):
         from mathutils.kdtree import KDTree
+        self.era = era
         pts = [p for b in recs for p in b['ring']]
         kd = KDTree(max(1, len(pts)))
         for i, p in enumerate(pts): kd.insert((p[0], p[1], 0), i)
@@ -559,6 +601,9 @@ class OpenLand:
             for i in range(self.W):
                 x, y = self.x0 + (i + 0.5) * res, self.y0 + (j + 0.5) * res
                 o = open_factor(kd.find((x, y, 0))[2]) if pts else 1.0
+                if o > 0 and self.era is not None:
+                    tb = topo_built(x, y, self.era)          # the sheet says built up
+                    o *= 1.0 - min(1.0, max(0.0, (tb - 0.12) / 0.2))
                 if o <= 0: continue
                 if in_park(x, y): self.park[j * self.W + i] = 1.0; self.open[j * self.W + i] = o; continue
                 self.open[j * self.W + i] = o
@@ -610,6 +655,7 @@ class StreetGate:
             fy = freeway_year(self.fw[i][2], x, y) if dd < 60 else None
             if fy is not None: return era >= fy
         if yr is not None and yr <= era: return True
+        if topo_built(x, y, era) > 0.15: return True             # the period's sheet draws the built street
         if yr is not None and self.open_at(x, y) > 0.5: return False
         return streets_graded(era) or self.open_at(x, y) < 0.5
 
@@ -693,11 +739,15 @@ def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
         if y <= era: continue
         nb = [all_recs[i] for _, i, _ in kd.find_range((b['cx'], b['cy'], 0), radius) if all_recs[i]['gid'] != b['gid']]
         old = [n for n in nb if (n['year'] or 0) and n['year'] <= era]
-        if len(nb) < 6 or len(old) / len(nb) < share_min: continue
-        yrs = sorted(n['year'] for n in old); med = yrs[len(yrs) // 2]
-        if y - med < gap_min: continue
-        hs = sorted(n['h'] for n in old); b = dict(b)
-        b['standin'] = True; b['nb_year'] = med; b['nb_h'] = hs[len(hs) // 2]
+        tb = topo_built(b['cx'], b['cy'], era)
+        sheet_says = tb > 0.3 and not burned(b['cx'], b['cy'])
+        if not sheet_says:
+            if len(nb) < 6 or len(old) / len(nb) < share_min: continue
+        yrs = sorted(n['year'] for n in old)
+        med = yrs[len(yrs) // 2] if yrs else (1885 if era < 1906 else 1910)
+        if y - med < gap_min and not sheet_says: continue
+        hs = sorted(n['h'] for n in old) or [9.0]
+        b = dict(b); b['standin'] = True; b['nb_year'] = min(med, era); b['nb_h'] = min(hs[len(hs) // 2], 14.0 if era < 1930 else 99)
         out.append(b)
     return out
 

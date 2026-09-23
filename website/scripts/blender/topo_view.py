@@ -26,6 +26,11 @@ for gx in range(int(x0 // G + 1) * G, int(x1), G):
 for gy in range(int(y0 // G + 1) * G, int(y1), G):
     d.line([(0, (y1 - gy) / res), (nx, (y1 - gy) / res)], fill=(0, 160, 255) if gy % (G * 2) else (255, 0, 255), width=1)
     if gy % (G * 2) == 0: d.text((2, (y1 - gy) / res + 2), str(gy), fill=(255, 0, 255))
+import city_data
+for nm, pls in city_data.named_lines().items():
+    for pl in pls:
+        pts = [((x - x0) / res, (y1 - y) / res) for x, y in pl]
+        if any(0 <= a < nx and 0 <= b < ny for a, b in pts): d.line(pts, fill=(0, 200, 0), width=1)
 for r in era.coast_rings():
     pts = [((x - x0) / res, (y1 - y) / res) for x, y in r]; d.line(pts + [pts[0]], fill=(255, 0, 0), width=2)
 V.save(out); print(out, V.size)

@@ -283,7 +283,7 @@ if ERA is not None and E('INFILL', '1') == '1':
     log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
 OPEN = None; SAND = None; OPAD = 80.0
 if ERA is not None:
-    _OL = EA.OpenLand(recs, (bx0, by0, bx1, by1), float(E('OPEN_RES', 2.0)), ground, OPAD)
+    _OL = EA.OpenLand(recs, (bx0, by0, bx1, by1), float(E('OPEN_RES', 2.0)), ground, OPAD, ERA)
     OPEN, SAND, ox0, oy0 = _OL.open, _OL.sand, _OL.x0, _OL.y0
     def open_at(x, y, grid=None): return _OL.at(x, y, grid)
     log('open land', round(sum(OPEN) / len(OPEN), 3), 'sand', round(sum(SAND) / len(SAND), 3))

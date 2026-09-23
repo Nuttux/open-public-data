@@ -127,7 +127,7 @@ if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 CBOX = BOX or d['box']
 if ERA is not None:
-    OL = EA.OpenLand(recs, CBOX, float(E('OPEN_RES', 8.0)), ground)
+    OL = EA.OpenLand(recs, CBOX, float(E('OPEN_RES', 8.0)), ground, 80.0, ERA)
     def open_at(x, y, grid=None): return OL.at(x, y, grid)
     SG = EA.StreetGate(CBOX, ERA, open_at)
     _sgc = {}

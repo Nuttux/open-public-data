@@ -12,7 +12,7 @@ MEASURED here, not assumed: the offset that best lays the sheet's building
 ink over the footprints the record dates before the survey is searched on a
 grid and applied.
 
-usage: python3 topo_extract.py <sheet.tif> <survey_year> <out_prefix>
+usage: python3 topo_extract.py <sheet.tif> <survey_year> <out_prefix> [dx,dy]
 out: <out_prefix>.png (R water, G built, 4 m a pixel) + <out_prefix>.json
 """
 import json, math, sys, pickle, os
@@ -82,7 +82,14 @@ for step, rng_ in ((10, range(-200, 201, 10)), (2, None)):
 # the same score with no shift, to say how much the measured shift buys
 s_, ok_ = sample(ink_b, 0, 0, CGX, CGY); print('ink over dated footprints unshifted', round(float((s_ * REF).sum()) / (float(REF[ok_].sum()) + 1), 3))
 _, DX, DY = best
-print('datum offset (world m):', DX, DY, 'ink over dated footprints', round(best[0], 3))
+print('ink calibration (world m):', DX, DY, 'score', round(best[0], 3))
+# The ink score is periodic with the street grid and can lock onto the next
+# block; the island check does not: Alcatraz on the 1895 sheet sits 90 m east
+# and 11 m north of its WGS84 position, which is the NAD27->NAD83 shift at San
+# Francisco (~ -90 m E). A given offset (argv[4] 'dx,dy') overrides.
+if len(sys.argv) > 4:
+    DX, DY = [float(v) for v in sys.argv[4].split(',')]
+    print('datum offset given (world m):', DX, DY)
 wat, ok = sample(water_px, DX, DY)
 bil, _ = sample(ink, DX, DY)
 # smooth: water as a clean shoreline, ink as a density over ~40 m
