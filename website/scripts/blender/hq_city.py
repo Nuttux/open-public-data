@@ -203,7 +203,9 @@ if ERA is not None:
     for k_ in range(_nv):
         x_, y_ = float(_co0[k_, 0]), float(_co0[k_, 1])
         o_ = OL.at(x_, y_)
-        if o_ > 0: _dk[k_] = o_ * (1.0 - OL.sand_at(x_, y_)) * (1.0 - OL.at(x_, y_, OL.park))
+        # the sand's own ground dries too: where the dune mesh thins out by a
+        # graded street the terrain showed as a green fringe (e08)
+        if o_ > 0: _dk[k_] = o_ * (1.0 - OL.at(x_, y_, OL.park))
     _ca = _tm.color_attributes.new('OpenDry', 'FLOAT_COLOR', 'POINT')
     _ca.data.foreach_set('color', _np.repeat(_dk, 4).tolist())
     _lt = bpy.data.materials['ground'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')

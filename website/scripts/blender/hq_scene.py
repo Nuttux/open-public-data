@@ -402,7 +402,12 @@ def sand_look(m):
     nt.links.new(hs.outputs['Color'], mx.inputs[6])
     rp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(nz.outputs['Fac'], rp.inputs[0])
     # linear albedo of dry dune sand, Ocean Beach buff (display ~0.50/0.43/0.33 .. 0.62/0.54/0.42)
-    rp.color_ramp.elements[0].color = (0.21, 0.16, 0.09, 1); rp.color_ramp.elements[1].color = (0.34, 0.26, 0.15, 1)
+    # warmer since 24 Sep (e08): the first buff rendered a neutral grey under
+    # the sky at z7 (128, 130, 125) and the dunes read as bare concrete
+    rp.color_ramp.elements[0].color = (0.36, 0.25, 0.12, 1); rp.color_ramp.elements[1].color = (0.52, 0.38, 0.19, 1)
+    if E('SAND_LO'):     # look tests: SAND_LO=r,g,b SAND_HI=r,g,b (linear)
+        rp.color_ramp.elements[0].color = (*[float(v) for v in E('SAND_LO').split(',')], 1)
+        rp.color_ramp.elements[1].color = (*[float(v) for v in E('SAND_HI').split(',')], 1)
     nt.links.new(rp.outputs[0], mx.inputs[7])
     # the dune scrub: dark clumps of lupine and coyote brush over ~12 % of the
     # sand, as the 1938 frames show (Ryker frame 148) — a tone, not geometry
