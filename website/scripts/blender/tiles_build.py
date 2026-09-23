@@ -38,6 +38,12 @@ for fn in sorted(src):
     g = os.path.join(graded, fn)
     if not os.path.exists(g) or os.path.getmtime(g) < os.path.getmtime(src[fn]):
         subprocess.run(['python3', os.path.join(HERE, 'grade.py'), src[fn], g, '40', '12'], check=True)
+    # incremental: a frame already cut since its last grade is left alone, so
+    # a rebuild (and the rsync after it) only touches what changed
+    cut = os.path.join(OUT, str(ZTOP), str(i * (FW // T)), f'{j * (FH // T)}.webp')
+    if os.path.exists(cut) and os.path.getmtime(cut) >= os.path.getmtime(g):
+        made.update((i * (FW // T) + tx, j * (FH // T) + ty) for tx in range(FW // T) for ty in range(FH // T))
+        continue
     im = Image.open(g).convert('RGB')
     for ty in range(FH // T):
         for tx in range(FW // T):
@@ -54,6 +60,14 @@ have, full = {ZTOP: made}, {ZTOP: made}
 for z in range(ZTOP - 1, -1, -1):
     up = have[z + 1]; cur = set(); full[z] = set()
     for (X, Y) in {(x // 2, y // 2) for x, y in up}:
+        out = os.path.join(OUT, str(z), str(X), f'{Y}.webp')
+        kids = [os.path.join(OUT, str(z + 1), str(2 * X + dx), f'{2 * Y + dy}.webp')
+                for dx in (0, 1) for dy in (0, 1) if (2 * X + dx, 2 * Y + dy) in up]
+        opaque = all((2 * X + dx, 2 * Y + dy) in full[z + 1] for dx in (0, 1) for dy in (0, 1))
+        if os.path.exists(out) and os.path.getmtime(out) >= max(os.path.getmtime(k) for k in kids):
+            cur.add((X, Y))
+            if opaque: full[z].add((X, Y))
+            continue
         tile = Image.new('RGBA', (T, T), (0, 0, 0, 0))
         for dx in (0, 1):
             for dy in (0, 1):
@@ -61,7 +75,6 @@ for z in range(ZTOP - 1, -1, -1):
                 src = Image.open(os.path.join(OUT, str(z + 1), str(2 * X + dx), f'{2 * Y + dy}.webp')).convert('RGBA')
                 tile.paste(src.resize((T // 2, T // 2), Image.LANCZOS), (dx * T // 2, dy * T // 2))
         d = os.path.join(OUT, str(z), str(X)); os.makedirs(d, exist_ok=True)
-        opaque = all((2 * X + dx, 2 * Y + dy) in full[z + 1] for dx in (0, 1) for dy in (0, 1))
         if opaque: full[z].add((X, Y))
         (tile.convert('RGB') if opaque else tile).save(os.path.join(d, f'{Y}.webp'), 'WEBP', quality=80, method=5)
         cur.add((X, Y))
