@@ -300,7 +300,7 @@ for t in d['trees']:
                 if py_ > ERA: continue
                 crown = max(1.6, crown * min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7))
             elif not park and r.random() > EA.street_tree_keep(ERA): continue
-            if open_at(x, y) > 0.5 and r.random() > 0.04: continue
+            if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and r.random() > 0.04: continue
             if EA.water_then(x, y, ERA): continue
         kind = (5 + r.randrange(4)) if park else r.randrange(5)
         gz_ = ground(x, y)

@@ -227,3 +227,19 @@ def line_between(name, a, b):
         return (cx + dx * t, cy + dy * t)
     pa, pb = meet(a), meet(b)
     return [pa, pb] if pa and pb else None
+
+
+def parks():
+    """the published Recreation and Parks rings (DataSF gtr9-ntp6, base/parks.qc,
+    decimetres): [(name, ring)]"""
+    import json
+    _, d = qc.read(f'{CITY}/base/parks.qc')
+    m = json.load(open(f'{CITY}/manifest.json'))
+    e = [c for c in m['chunks'] if c.get('k') == 'base/parks'][0]
+    names = e.get('names') or []
+    out, k = [], 0
+    for i, n in enumerate([int(v) for v in d['len']]):
+        xy = d['xy'][k * 2:(k + n) * 2]
+        out.append((names[i] if i < len(names) else '', [(float(xy[j * 2]) / 10, float(xy[j * 2 + 1]) / 10) for j in range(n)]))
+        k += n
+    return out

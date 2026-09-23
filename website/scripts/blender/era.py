@@ -521,6 +521,27 @@ def pavement(era, x, y):
 
 
 # ── shared scene helpers (Blender side: mathutils) ──────────────────────────
+_PARKS = None
+
+
+def in_park(x, y):
+    """inside a published Recreation and Parks ring (DataSF gtr9-ntp6): a
+    park's ground is planted, not dune — CONVENTION for the early years of the
+    western parks (Golden Gate Park was begun on the dunes in 1870 and had some
+    60,000 trees by 1875; its ocean end was still being reclaimed in the 1890s)"""
+    global _PARKS
+    if _PARKS is None:
+        import city_data
+        _PARKS = {}
+        for k, (_, r) in enumerate(city_data.parks()):
+            if len(r) < 3: continue
+            xs = [p[0] for p in r]; ys = [p[1] for p in r]
+            for gi in range(int(min(xs) // 100), int(max(xs) // 100) + 1):
+                for gj in range(int(min(ys) // 100), int(max(ys) // 100) + 1):
+                    _PARKS.setdefault((gi, gj), []).append(r)
+    return any(_in_ring(x, y, r) for r in _PARKS.get((int(x // 100), int(y // 100)), ()))
+
+
 class OpenLand:
     """the open-land raster of a year: for every cell, how far it is from the
     nearest standing building (era.open_factor), and whether that open
@@ -533,12 +554,13 @@ class OpenLand:
         kd.balance()
         self.x0, self.y0, self.res = box[0] - pad, box[1] - pad, res
         self.W = int((box[2] - box[0] + 2 * pad) / res); self.H = int((box[3] - box[1] + 2 * pad) / res)
-        self.open = [0.0] * (self.W * self.H); self.sand = [0.0] * (self.W * self.H)
+        self.open = [0.0] * (self.W * self.H); self.sand = [0.0] * (self.W * self.H); self.park = [0.0] * (self.W * self.H)
         for j in range(self.H):
             for i in range(self.W):
                 x, y = self.x0 + (i + 0.5) * res, self.y0 + (j + 0.5) * res
                 o = open_factor(kd.find((x, y, 0))[2]) if pts else 1.0
                 if o <= 0: continue
+                if in_park(x, y): self.park[j * self.W + i] = 1.0; self.open[j * self.W + i] = o; continue
                 self.open[j * self.W + i] = o
                 if x < DUNE_X:
                     g = ground(x, y)

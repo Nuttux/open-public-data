@@ -292,7 +292,7 @@ if ERA is not None:
     _om = bpy.data.images.new('openmask', _OL.W, _OL.H, float_buffer=True)
     _px = [0.0] * (4 * _OL.W * _OL.H)
     for k_ in range(_OL.W * _OL.H):
-        _px[4 * k_] = OPEN[k_] * (1.0 - SAND[k_]); _px[4 * k_ + 3] = 1.0
+        _px[4 * k_] = OPEN[k_] * (1.0 - SAND[k_]) * (1.0 - _OL.park[k_]); _px[4 * k_ + 3] = 1.0
     _om.pixels.foreach_set(_px); _om.colorspace_settings.name = 'Non-Color'
     _lt = M['lawn'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
     _src = _lp.inputs['Base Color'].links[0].from_socket
@@ -544,7 +544,7 @@ for t in d['trees']:
                 crown = max(1.6, crown)
             elif not far and rnd.random() > EA.street_tree_keep(ERA): continue
             # no tree on open land that was not yet planted: dunes and grazing ground
-            if open_at(x, y) > 0.5 and rnd.random() > 0.04: continue
+            if open_at(x, y) > 0.5 and _OL.at(x, y, _OL.park) < 0.5 and rnd.random() > 0.04: continue
             if EA.water_then(x, y, ERA): continue
             if 1906 <= ERA <= 1908 and EA.burned(x, y): continue
             if EA.PPIE_YEARS[0] <= ERA <= EA.PPIE_YEARS[1] and EA.ppie_footprint(x, y): continue
