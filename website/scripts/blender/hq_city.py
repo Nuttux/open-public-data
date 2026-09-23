@@ -284,13 +284,14 @@ pts = []; seen = set(); r = random.Random(3)
 # under each register tree, four under each measured canopy mass at the fine
 # band, one per mass at the coarse band. Planting a tree on every disc put
 # ~450,000 extra pines in the city and turned Alamo Square and Dolores Park into
-# forest (2026-09-23). The coarse-band disc is kept for what it is: where the
-# measured canopy is, and how wide; it gets one crown.
+# forest (2026-09-23). The fine-band discs are kept for what they are: where
+# the measured canopy is, and how wide (the coarse band's one disc per mass
+# spills over lawns and thins real forest, Sutro's); each gets one crown.
 MASS = []
 for t in d['trees']:
     lam = t.get('mat') == 'MeshLambertMaterial'
     if not lam:
-        if not t['visible'] and len(t['pos']) // 9 == 192: MASS.extend(t['inst'])
+        if t['visible'] and len(t['pos']) // 9 == 192: MASS.extend(t['inst'])
         continue
     for (x, y, z, sxz, sy, rot, *_rest) in t['inst']:
         # the engine lists a tree once per zoom band, a few centimetres apart
@@ -315,7 +316,8 @@ for (x, y, z, rad, *_rest) in MASS:
     gz_ = ground(x, y)
     if gz_ is None: continue
     kind = 7 + r.randrange(2) if r.random() < 0.65 else 5
-    crown = max(4.0, 1.7 * rad)
+    crown = max(4.0, 2.0 * rad)
+    seen.add((round(x / 2.5), round(y / 2.5)))
     pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
