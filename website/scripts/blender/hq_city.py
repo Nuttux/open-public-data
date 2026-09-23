@@ -100,9 +100,11 @@ def ground_mat():
             else: nt.links.new(v, sock)
         return m_.outputs[2]
     dry = mixc(n1.outputs['Fac'], (0.40, 0.29, 0.13, 1), (0.56, 0.44, 0.23, 1))
-    paving = (0.24, 0.23, 0.21, 1)
-    yard = mixc(mth('GREATER_THAN', n3.outputs['Fac'], 0.42), paving, lawn)
-    flatc = mixc(green, yard, lawn)
+    # backyards: mostly lawn, a few paved patios — and none at all where the
+    # engine's ground says park (the blotches read as mould on the lawns)
+    paving = (0.30, 0.29, 0.26, 1)
+    yard = mixc(mth('GREATER_THAN', n3.outputs['Fac'], 0.64), lawn, paving)
+    flatc = mixc(mth('MINIMUM', mth('MULTIPLY', green, 3.0), 1.0), yard, lawn)
     c = mixc(steep, flatc, dry)
     nt.links.new(c, pr.inputs['Base Color'])
     return m
