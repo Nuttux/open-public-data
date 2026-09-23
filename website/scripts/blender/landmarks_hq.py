@@ -32,8 +32,8 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate'}
-WATER_ENABLED = set()           # 'lakes', 'piers', 'sea_depth' once validated
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge'}
+WATER_ENABLED = set()           # 'lakes', 'piers', 'sea_depth', 'sea_wind' once validated
 
 class Region:
     """where the engine's crude stand-in is cleared: a polygon, or a
@@ -314,6 +314,8 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
             npr = water_hq.piers(C); log(f'landmarks_hq: {npr} pier decks and docks')
         if every or 'sea_depth' in WATER_ENABLED_:
             if water_hq.sea_depth(C): log('landmarks_hq: sea coloured by depth')
+        if every or 'sea_wind' in WATER_ENABLED_:
+            if water_hq.sea_wind(C): log('landmarks_hq: wind lanes on the sea')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: water failed', ex)
     objs = C.K.emit(bpy, sc, mats, name='lm')

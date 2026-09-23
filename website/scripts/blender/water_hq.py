@@ -114,6 +114,48 @@ def sea_depth(C):
     nt.links.new(ramp.outputs['Color'], wat.inputs['Base Color'])
     return True
 
+def sea_wind(C, seed=0.0):
+    """wind on the bay at city scale: the render's sea is one mirror of the
+    sky, so it reads flat and uniform from far out. Wind lanes and slicks
+    make its roughness vary over hundreds of metres to kilometres — calm
+    water mirrors the bright sky near the horizon, ruffled water shows its
+    own darker colour and scatters the sun. A low-frequency noise sets the
+    roughness (0.03 slick .. 0.11 ruffled) and the ripples' bump strength."""
+    bpy = C.bpy
+    m = bpy.data.materials.get('sea')
+    if m is None: return False
+    nt = m.node_tree
+    wat = next((n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED' and n.inputs['Roughness'].default_value < 0.1), None)
+    bm = next((n for n in nt.nodes if n.type == 'BUMP'), None)
+    if wat is None: return False
+    L_ = nt.links.new
+    geo = nt.nodes.new('ShaderNodeNewGeometry')
+    # wind lanes: stretched along the prevailing westerly (x), 1.5-3 km
+    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (0.45, 1.0, 1.0)
+    mp.inputs['Location'].default_value = (seed, 0.0, 0.0)
+    L_(geo.outputs['Position'], mp.inputs[0])
+    n1 = nt.nodes.new('ShaderNodeTexNoise'); n1.inputs['Scale'].default_value = 0.0011; n1.inputs['Detail'].default_value = 3.0
+    n1.inputs['Roughness'].default_value = 0.55
+    L_(mp.outputs[0], n1.inputs['Vector'])
+    # gusts: 150-400 m patches inside the lanes
+    n2 = nt.nodes.new('ShaderNodeTexNoise'); n2.inputs['Scale'].default_value = 0.006; n2.inputs['Detail'].default_value = 2.0
+    L_(geo.outputs['Position'], n2.inputs['Vector'])
+    def mth(op, a, b=None, clamp=False):
+        n_ = nt.nodes.new('ShaderNodeMath'); n_.operation = op; n_.use_clamp = clamp
+        for i, v in enumerate((a, b)):
+            if v is None: continue
+            if isinstance(v, (int, float)): n_.inputs[i].default_value = v
+            else: L_(v, n_.inputs[i])
+        return n_.outputs[0]
+    w = mth('ADD', mth('MULTIPLY', n1.outputs['Fac'], 0.75), mth('MULTIPLY', n2.outputs['Fac'], 0.25))
+    # 0 slick .. 1 ruffled, with soft edges
+    wr = mth('MULTIPLY', mth('SUBTRACT', w, 0.44), 5.0, clamp=True)
+    wr = mth('MULTIPLY', mth('MULTIPLY', wr, wr), mth('SUBTRACT', 3.0, mth('MULTIPLY', wr, 2.0)))
+    L_(mth('ADD', 0.03, mth('MULTIPLY', wr, 0.08)), wat.inputs['Roughness'])
+    if bm is not None:
+        L_(mth('ADD', 0.25, mth('MULTIPLY', wr, 0.55)), bm.inputs['Strength'])
+    return True
+
 # ── piers and docks ──────────────────────────────────────────────────────────
 PIERS_JSON = '/Users/daniel/code/qipu-render-work/landmarks/piers.json'
 try:
