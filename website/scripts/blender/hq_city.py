@@ -123,8 +123,25 @@ for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos'])); TC.extend(f32(m['col']))
 for i in range(2, len(TP), 3): TP[i] *= 0.5
 if ERA is not None:
+    # made land not yet made: under the water of the year, just below its
+    # surface; the land's last vertices at the water drop to a low bank (a
+    # 4 m drop at every then-shore read as a pale cliff round the whole bay)
+    _wc = {}
+    def _wet(i):
+        k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
+        if k_ not in _wc: _wc[k_] = EA.water_then(TP[i], TP[i+1], ERA)
+        return _wc[k_]
+    _bank = set()
+    for t in range(0, len(TP), 9):
+        w3 = [_wet(t), _wet(t + 3), _wet(t + 6)]
+        if any(w3) and not all(w3):
+            for q_, w_ in zip((t, t + 3, t + 6), w3):
+                if not w_: _bank.add((round(TP[q_] * 10), round(TP[q_+1] * 10)))
     for i in range(0, len(TP), 3):
-        if EA.water_then(TP[i], TP[i+1], ERA): TP[i+2] = -4.0      # made land not yet made
+        k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
+        if _wc.get(k_): TP[i+2] = -0.7
+        elif k_ in _bank: TP[i+2] = min(TP[i+2], 0.35)
+    log('terrain under the water of the year:', sum(1 for v in _wc.values() if v), 'vertices; bank', len(_bank))
 terrain = mesh_from('terrain', TP, ground_mat(), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
@@ -174,7 +191,38 @@ if ERA is not None:
         if k_ not in _sgc: _sgc[k_] = SG.stands(x, y)
         return _sgc[k_]
     log('open land', round(sum(OL.open) / len(OL.open), 3), 'sand', round(sum(OL.sand) / len(OL.sand), 3))
+    # the ground of open land that is not dune sand: summer-dry grass (the
+    # hills and the unbuilt ground of the period), through the ground and lawn
+    # materials, as hq_scene does (the city pass had kept it green)
+    _om = bpy.data.images.new('openmask', OL.W, OL.H, float_buffer=True)
+    _px = [0.0] * (4 * OL.W * OL.H)
+    for k_ in range(OL.W * OL.H):
+        _px[4 * k_] = OL.open[k_] * (1.0 - OL.sand[k_]) * (1.0 - OL.park[k_]); _px[4 * k_ + 3] = 1.0
+    _om.pixels.foreach_set(_px); _om.colorspace_settings.name = 'Non-Color'
+    for _mn in ('ground', 'lawn'):
+        _lt = bpy.data.materials[_mn].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
+        _src = _lp.inputs['Base Color'].links[0].from_socket
+        _g = _lt.nodes.new('ShaderNodeNewGeometry'); _mp = _lt.nodes.new('ShaderNodeMapping'); _mp.vector_type = 'POINT'
+        _mp.inputs['Location'].default_value = (-OL.x0 / (OL.W * OL.res), -OL.y0 / (OL.H * OL.res), 0)
+        _mp.inputs['Scale'].default_value = (1 / (OL.W * OL.res), 1 / (OL.H * OL.res), 1)
+        _lt.links.new(_g.outputs['Position'], _mp.inputs[0])
+        # CLIP: beyond the raster (the surround, Marin) nothing is dried
+        _ti = _lt.nodes.new('ShaderNodeTexImage'); _ti.image = _om; _ti.extension = 'CLIP'; _lt.links.new(_mp.outputs[0], _ti.inputs[0])
+        _sp = _lt.nodes.new('ShaderNodeSeparateColor'); _lt.links.new(_ti.outputs['Color'], _sp.inputs[0])
+        _bw = _lt.nodes.new('ShaderNodeRGBToBW'); _lt.links.new(_src, _bw.inputs[0])
+        _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
+        _dry.inputs[6].default_value = (0.62, 0.40, 0.13, 1)          # golden, the dry-season grass
+        _lt.links.new(_bw.outputs[0], _dry.inputs[7])
+        _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_sp.outputs[0], _mx.inputs[0])
+        _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])
+        _lt.links.new(_mx.outputs[2], _lp.inputs['Base Color'])
+    # the lots of buildings not yet built: parking or bare earth, not lawn (era.vacant_lots)
+    LOTS = EA.vacant_lots(_allb, {b['gid'] for b in recs}, ERA, open_at, CBOX) if E('LOTS', '1') == '1' else []
+    LI = EA.LotIndex(LOTS)
+    EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.35)), rough_add=0.2),
+                                     'dirt': ph_mat('dry_ground_rocks', 6.0, name='lot_dirt', value=float(E('LOT_DV', 0.9)))}, log)
 else:
+    LOTS, LI = [], None
     def open_at(x, y, grid=None): return 0.0
     def street_stands(x, y): return True
 
@@ -196,7 +244,9 @@ for m in d['meshes']:
         p = f32(m['pos'])
         for t in range(len(p) // 9):
             a = t * 9
-            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60): MP.extend(p[a:a+9])
+            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60):
+                # no paint where the street itself is not yet built (it floated over the yards)
+                if ERA is None or street_stands((p[a] + p[a+3] + p[a+6]) / 3, (p[a+1] + p[a+4] + p[a+7]) / 3): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
         c = f32(m['col']); p = f32(m['pos'])
         tgt = DP if (c and c[2] > 0.8) else DL
@@ -236,6 +286,44 @@ for a, b, outv in SE:
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 log('street edges', len(SE))
+if ERA is not None and E('SMOOTH_OPEN', '1') == '1':
+    # OPEN LAND ON THE LAND'S OWN SHAPE: today's ground carries the city's cut
+    # and fill — street benches, house pads, retaining walls — which on the
+    # open hills of an early year read as pale terraces (1890, 2026-09-24).
+    # Where the year's ground is open (not a park, not within 10 m of a street
+    # standing then) the terrain is eased toward its shape smoothed over ~20 m,
+    # as far as it is open. CONVENTION (the dunes do the same, era.dune_height).
+    import numpy as _np
+    _tm = terrain.data; _nv = len(_tm.vertices)
+    _co = _np.empty(_nv * 3, _np.float32); _tm.vertices.foreach_get('co', _co); _co = _co.reshape(-1, 3)
+    _R = 8.0; _gx0, _gy0 = _co[:, 0].min() - _R, _co[:, 1].min() - _R
+    _gi = ((_co[:, 0] - _gx0) / _R).astype(int); _gj = ((_co[:, 1] - _gy0) / _R).astype(int)
+    _GW, _GH = _gi.max() + 2, _gj.max() + 2
+    _sum = _np.zeros((_GH, _GW)); _cnt = _np.zeros((_GH, _GW))
+    _np.add.at(_sum, (_gj, _gi), _co[:, 2]); _np.add.at(_cnt, (_gj, _gi), 1)
+    def _box(a_, r_):
+        for ax_ in (0, 1):
+            c_ = _np.cumsum(_np.pad(a_, [(r_ + 1, r_) if k_ == ax_ else (0, 0) for k_ in (0, 1)], mode='edge'), axis=ax_)
+            a_ = (_np.take(c_, range(2 * r_ + 1, c_.shape[ax_]), axis=ax_) - _np.take(c_, range(0, c_.shape[ax_] - 2 * r_ - 1), axis=ax_)) / (2 * r_ + 1)
+        return a_
+    _s = _box(_box(_sum, 3), 3); _c = _box(_box(_cnt, 3), 3)
+    _zs = _np.where(_c > 1e-6, _s / _np.maximum(_c, 1e-6), 0.0)
+    _fx = (_co[:, 0] - _gx0) / _R - 0.5; _fy = (_co[:, 1] - _gy0) / _R - 0.5
+    _i0 = _np.clip(_np.floor(_fx).astype(int), 0, _GW - 2); _j0 = _np.clip(_np.floor(_fy).astype(int), 0, _GH - 2)
+    _tx = _np.clip(_fx - _i0, 0, 1); _ty = _np.clip(_fy - _j0, 0, 1)
+    _zb = (_zs[_j0, _i0] * (1 - _tx) * (1 - _ty) + _zs[_j0, _i0 + 1] * _tx * (1 - _ty) + _zs[_j0 + 1, _i0] * (1 - _tx) * _ty + _zs[_j0 + 1, _i0 + 1] * _tx * _ty)
+    _w = _np.zeros(_nv, _np.float32); _nm = 0
+    for k_ in range(_nv):
+        x_, y_, z_ = _co[k_]
+        if z_ < 0.5: continue                                   # the shore and the water of the year stay put
+        o_ = OL.at(x_, y_)
+        if o_ <= 0.02 or OL.at(x_, y_, OL.park) > 0.5: continue
+        if len(streets.data.polygons) and sbv.find_nearest(Vector((x_, y_, z_)), 10.0)[0] is not None: continue
+        _w[k_] = o_; _nm += 1
+    _co[:, 2] = _co[:, 2] + (_np.maximum(_zb, 0.4) - _co[:, 2]) * _w
+    _tm.vertices.foreach_set('co', _co.ravel()); _tm.update()
+    bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
+    log('open land eased to the land\'s own shape:', _nm, 'of', _nv, 'terrain vertices')
 if ERA is not None and len(streets.data.polygons):
     # the rails of the year and the cars on them (hq_scene's block)
     _rs = _HQSRC[_HQSRC.index("    _rb = BVHTree.FromObject(streets"):_HQSRC.index("                   simple('cableslot'")]
@@ -319,6 +407,11 @@ def instancer(name, pts, protos):
 
 log('trees')
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
+# park or street is the tree's own nature: read against today's buildings, or
+# every street tree beside a lot not yet built passed for a park tree (kept in
+# every year) — South Beach wooded in 1960 (2026-09-23)
+if ERA is not None:
+    kd = KDTree(len(_allb)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(_allb)]; kd.balance()
 STREET = [load_collection(a) for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree')]
 PARK = [load_collection(a) for a in ('pine_tree_01', 'fir_tree_01', 'island_tree_02', 'island_tree_01')]
 protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
@@ -368,8 +461,10 @@ for t in d['trees']:
                 if py_ > ERA: continue
                 crown = max(1.6, crown * min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7))
             elif not park and EA.hash01(x, y, 11) > EA.street_tree_keep(ERA): continue
+            if park and not EA.canopy_stands(x, y, ERA, _allb, kd): continue     # a park or plaza of later years
             if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and EA.hash01(x, y, 12) > 0.04: continue
             if EA.water_then(x, y, ERA): continue
+            if LI is not None and LI.inside(x, y): continue          # a vacant lot of the year
         # parks: mostly broadleaf, some Monterey pine; firs only now and then
         # (every draw by place: a tree keeps its kind, size and turn from one
         # year of the film to the next)
@@ -390,6 +485,8 @@ for (x, y, z, rad, *_rest) in MASS:
         # under water, did not stand yet
         if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5: continue
         if EA.water_then(x, y, ERA): continue
+        if LI is not None and LI.inside(x, y): continue
+        if not EA.canopy_stands(x, y, ERA, _allb, kd): continue
     gz_ = ground(x, y)
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
@@ -419,6 +516,11 @@ for a, b, outv in SE:
         if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
         if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
+# the parking lots of the year, their stalls filled by their own draws
+for L_ in LOTS:
+    for (x_, y_, h_, u_) in L_['cars']:
+        gz_ = ground(x_, y_)
+        if gz_ is not None and in_box(x_, y_): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
 instancer('cars', cpts, car_colls)
 
 # ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──

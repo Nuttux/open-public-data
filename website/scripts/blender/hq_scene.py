@@ -570,7 +570,9 @@ for m in d['meshes']:
             # fill the engine draws under its paint, not paint
             for t in range(len(p) // 9):
                 a = t * 9
-                if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0: MP.extend(p[a:a+9])
+                if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0:
+                    # no paint where the street itself is not yet built
+                    if ERA is None or street_stands((p[a] + p[a+3] + p[a+6]) / 3, (p[a+1] + p[a+4] + p[a+7]) / 3): MP.extend(p[a:a+9])
     if m['layer'] == 'ground-detail':
         c = f32(m['col'])
         if c and c[2] > 0.8: DP.extend(f32(m['pos']))          # the white pieces: paved paths

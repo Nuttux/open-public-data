@@ -311,6 +311,7 @@ def water_then(x, y, era):
     made for it: Candlestick Park stood on fill from 1960)"""
     if era is None: return False
     if any(era < yr and test(x, y) for _, yr, test, _ in MADE_LAND): return True
+    if era < 1944 and shore62_water(x, y, era): return True
     if era >= 1944 and topo_water_then(x, y, era):
         import era_lost
         return not era_lost.on_land(x, y, when(era))
@@ -848,6 +849,20 @@ def in_park(x, y):
     return any(_in_ring(x, y, r) for r in _PARKS.get((int(x // 100), int(y // 100)), ()))
 
 
+_PAREA = {}
+
+
+def park_area(x, y):
+    """area (m²) of the published park ring holding a point, 0 outside parks"""
+    in_park(0.0, 0.0)
+    for r in _PARKS.get((int(x // 100), int(y // 100)), ()):
+        if _in_ring(x, y, r):
+            k = id(r)
+            if k not in _PAREA: _PAREA[k] = _ring_area(r)
+            return _PAREA[k]
+    return 0.0
+
+
 # ── the built-up city on the USGS sheets (topo_extract.py) ──────────────────
 # The 1:62,500 San Francisco sheets ink every built frontage: the 1895 edition
 # (surveyed 1892-94) and the 1915 edition. Where the record's survivors are
@@ -913,6 +928,32 @@ def topo_built(x, y, era):
     if name.startswith('usgs') and name not in ('usgs1895', 'usgs1915'):
         v = min(1.0, max(0.0, (v - 0.4) / 0.2))
     return v
+
+
+# The south-east shore before 1944 (Islais Creek, India Basin, Hunters Point,
+# South Basin, Candlestick; and the waterfront south of Rincon Point), read off
+# the 1:62,500 sheets (public domain, USGS Historical Topographic Map
+# Collection): San Mateo 1896 (298916), 1915 (298923), 1939 (301595) south of
+# 37.75 N; San Francisco 1895 (298889) and 1915 north of it. Each sheet's
+# offset to the world MEASURED on today's DataSF centrelines over the Bayview
+# grid (San Mateo 1896 +23 +157 m, 1915 +25 +175, 1939 -107 +10; the San
+# Francisco sheets -90 -11, Alcatraz). Water = the sheet's blue ink closed into
+# a body, flooded from today's bay up to the sheet's land ink; two leaks of
+# that flood into blank paper inland cut by hand (shore_extract.py,
+# shore_combine.py; history/masks/shore*.png). The bay was only filled here
+# over the period, so an epoch's water also counts for the earlier ones, and
+# 1930-43 takes the 1946 water of the 1:24,000 sheet as well.
+SHORE62 = [('shore1895', 1906), ('shore1915', 1930), ('shore1939', 1944)]
+
+
+def shore62_water(x, y, era):
+    name = next((n for n, until in SHORE62 if era < until), None)
+    if name is None: return False
+    t = _topo_load(name)
+    if t is None: return False
+    meta, a = t
+    i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+    return 0 <= i < meta['w'] and 0 <= j < meta['h'] and a[j, i, 0] > 0.5
 
 
 def topo_water_then(x, y, era):
@@ -1467,3 +1508,166 @@ def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print
         me = bpy.data.meshes.new(nm); me.from_pydata(V, [], F); me.update()
         ob = bpy.data.objects.new(nm, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(m)
     if ntr: log('Mission Bay yard: track pieces', ntr)
+
+
+# ── vacant lots: the ground where today's building was not yet built ───────
+# A record not standing in the year shown, in the built city (the open-land
+# raster says built up round it), left the engine's ground under it: a green
+# lawn — green rectangles all over SoMa, the Western Addition and downtown in
+# the mid-century years (tests d53, 23 Sep 2026). SOURCED in outline: the
+# Yerba Buena clearance stood as 'a mostly empty concrete landscape, used as
+# parking lots, until the early 1980s' (SF Heritage; OCII 'Yerba Buena
+# Center'); the Montgomery Block was 'demolished in 1959 and replaced by a
+# parking lot' (Wikipedia). CONVENTION: from 1925 a vacant lot among
+# commercial and industrial neighbours (the use of the buildings standing
+# within 80 m that year) is a paved parking lot with the year's cars on it; any
+# other vacant lot is bare earth and dry weeds. The Outside Lands' sandy yards
+# (yard_sand), the 1906 ash, the Mission Bay yards, the Exposition ground and
+# the lost structures keep their own ground.
+LOT_BUSY = ('retail', 'office', 'industrial', 'hotel / institutional')
+LOT_BUSY_TY = ('RETAIL', 'OFFICE', 'INDUSTRIAL', 'HOTEL', 'GARAGE', 'INSTITUTION')
+
+
+def _busy(b):
+    return b.get('use') in LOT_BUSY or b.get('ty') in LOT_BUSY_TY
+
+
+def _ring_area(r):
+    return abs(sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r)))) / 2
+
+
+def vacant_lots(all_recs, placed_gids, era, open_at, box=None, radius=80.0):
+    """[dict(ring, kind 'paved'|'dirt', cars=[(x, y, heading, u)])] for the
+    records not standing in the year shown whose ground was a vacant lot"""
+    if era is None: return []
+    from mathutils.kdtree import KDTree
+    import era_lost
+    t = when(era)
+    kd = KDTree(max(1, len(all_recs)))
+    for i, b in enumerate(all_recs): kd.insert((b['cx'], b['cy'], 0), i)
+    kd.balance()
+    occ = 0.65 * car_occupancy(era)         # CONVENTION: a lot a little under half full (1970)
+    out = []
+    for b in all_recs:
+        if b['gid'] in placed_gids or len(b['ring']) < 3: continue
+        x, y = b['cx'], b['cy']
+        if box is not None and not (box[0] <= x <= box[2] and box[1] <= y <= box[3]): continue
+        if (b['year'] or 0) <= era: continue
+        if open_at(x, y) > 0.3 or water_then(x, y, era): continue
+        if x < DUNE_X and era < 1960: continue                         # the sandy yards of the Outside Lands
+        if ash_ground(era) and burned(x, y): continue
+        if YARD_YEARS[0] <= era < YARD_YEARS[1] and _in_ring(x, y, MISSION_BAY_YARD): continue
+        if PPIE_YEARS[0] <= era <= PPIE_YEARS[1] and ppie_footprint(x, y): continue
+        if era_lost.on_land(x, y, t) or in_park(x, y): continue
+        nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), radius)
+              if all_recs[i]['gid'] != b['gid'] and (all_recs[i]['year'] or 0) <= era]
+        busy = sum(1 for n in nb if _busy(n)) >= 0.5 * len(nb) if nb else _busy(b)
+        kind = 'paved' if (t >= 1925 and busy) else 'dirt'
+        lot = dict(ring=b['ring'], kind=kind, cars=[], gid=b['gid'])
+        if kind == 'paved' and _ring_area(b['ring']) > 120: lot['cars'] = _lot_cars(b['ring'], occ)
+        out.append(lot)
+    return out
+
+
+def _lot_cars(r, occ):
+    """a parking lot's stalls: rows along its longest side, a row of cars
+    nose to nose every 5.2 m, an aisle of 6.5 m after every two rows, stalls
+    2.7 m wide, 1.2 m in from the edges (CONVENTION, the common American
+    layout); each stall filled by its own fixed draw"""
+    n = len(r); best, bl = 0, -1.0
+    for i in range(n):
+        a, b = r[i], r[(i + 1) % n]; L = math.hypot(b[0] - a[0], b[1] - a[1])
+        if L > bl: best, bl = i, L
+    a, b = r[best], r[(best + 1) % n]
+    ux, uy = (b[0] - a[0]) / bl, (b[1] - a[1]) / bl; vx, vy = -uy, ux
+    us = [(p[0] - a[0]) * ux + (p[1] - a[1]) * uy for p in r]; vs = [(p[0] - a[0]) * vx + (p[1] - a[1]) * vy for p in r]
+    if abs(min(vs)) > abs(max(vs)): vx, vy = -vx, -vy; vs = [-v for v in vs]
+    out = []
+    v = min(vs) + 1.2 + 2.6; row = 0
+    while v < max(vs) - 1.2 - 2.0:
+        u = min(us) + 1.2 + 1.35
+        while u < max(us) - 1.2 - 1.35:
+            x, y = a[0] + ux * u + vx * v, a[1] + uy * u + vy * v
+            ok = _in_ring(x, y, r) and all(_in_ring(x + dx, y + dy, r) for dx, dy in ((vx * 2.3, vy * 2.3), (-vx * 2.3, -vy * 2.3)))
+            if ok and hash01(x, y, 41) < occ:
+                out.append((x, y, math.atan2(vy, vx) + (math.pi if hash01(x, y, 42) < 0.5 else 0.0), hash01(x, y, 24)))
+            u += 2.7
+        row += 1; v += 5.2 if row % 2 else 5.2 + 6.5
+    return out
+
+
+def lots_mesh(bpy, lots, ground, mats, log=print, step=4.0, lift=0.14):
+    """the vacant lots as ground plates draped on the terrain, one object per
+    kind (mats: {'paved': mat, 'dirt': mat}); each lot cut every `step` m so
+    a big lot on a slope follows the ground instead of sinking under it"""
+    import bmesh
+    from mathutils import Vector
+    from mathutils.geometry import tessellate_polygon
+    for kind in ('paved', 'dirt'):
+        V, F = [], []
+        for L in lots:
+            if L['kind'] != kind: continue
+            r = L['ring']
+            try: tris = tessellate_polygon([[Vector((p[0], p[1], 0)) for p in r]])
+            except Exception: continue
+            bm = bmesh.new(); vs = [bm.verts.new((p[0], p[1], 0.0)) for p in r]
+            for i, j, m in tris:
+                try: bm.faces.new((vs[i], vs[j], vs[m]))
+                except ValueError: pass
+            xs = [p[0] for p in r]; ys = [p[1] for p in r]
+            for ax, lo, hi in ((0, min(xs), max(xs)), (1, min(ys), max(ys))):
+                c = (math.floor(lo / step) + 1) * step
+                while c < hi:
+                    co = Vector((c, 0, 0)) if ax == 0 else Vector((0, c, 0)); no = Vector((1, 0, 0)) if ax == 0 else Vector((0, 1, 0))
+                    g = bm.verts[:] + bm.edges[:] + bm.faces[:]
+                    bmesh.ops.bisect_plane(bm, geom=g, plane_co=co, plane_no=no)
+                    c += step
+            bmesh.ops.triangulate(bm, faces=bm.faces[:])
+            ok = True
+            for v in bm.verts:
+                z = ground(v.co.x, v.co.y)
+                if z is None: ok = False; break
+                v.co.z = z + lift
+            if ok:
+                k = len(V); bm.verts.index_update()
+                V.extend(tuple(v.co) for v in bm.verts); F.extend(tuple(k + v.index for v in f.verts) for f in bm.faces)
+            bm.free()
+        if not F: continue
+        me = bpy.data.meshes.new('lots_' + kind); me.from_pydata(V, [], F); me.update()
+        for f in me.polygons:
+            if f.normal.z < 0: f.flip()
+        me.update()
+        ob = bpy.data.objects.new('lots_' + kind, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mats[kind])
+        log('vacant lots', kind, sum(1 for L in lots if L['kind'] == kind), 'cars', sum(len(L['cars']) for L in lots if L['kind'] == kind), 'faces', len(F))
+
+
+class LotIndex:
+    """point-in-vacant-lot lookup (today's trees on a lot not yet planted)"""
+    def __init__(self, lots, cell=40.0):
+        self.c, self.g = cell, {}
+        for L in lots:
+            xs = [p[0] for p in L['ring']]; ys = [p[1] for p in L['ring']]
+            for i in range(int(min(xs) // cell), int(max(xs) // cell) + 1):
+                for j in range(int(min(ys) // cell), int(max(ys) // cell) + 1): self.g.setdefault((i, j), []).append(L['ring'])
+
+    def inside(self, x, y):
+        return any(_in_ring(x, y, r) for r in self.g.get((int(x // self.c), int(y // self.c)), ()))
+
+
+def canopy_stands(x, y, era, all_recs, kd, radius=60.0):
+    """today's measured canopy mass, or a register tree far from any building,
+    in the year shown. CONVENTION: a canopy grows with the buildings round it
+    — where most of the record's buildings within 60 m are later than the
+    year, the trees were planted with that later development (South Beach,
+    Mission Bay, the Golden Gateway; Yerba Buena Gardens, opened 1993 on the
+    cleared Yerba Buena Center, SOURCED in CHECKPOINTS.md). In a large park
+    (over 8 ha: planted from its founding — Golden Gate Park, the Presidio's
+    woods) or with no building near (woods: Sutro), it stands."""
+    if era is None: return True
+    if park_area(x, y) > 80000: return True
+    nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), radius)]
+    if not nb: nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), 2.2 * radius)]   # a plaza's middle
+    if not nb: return True
+    # by built area, not by count: one hall of 1981 outweighs three sheds
+    a = [(_ring_area(b['ring']) if len(b['ring']) > 2 else 50.0, (b['year'] or 0) <= era) for b in nb]
+    return sum(w for w, old in a if old) >= 0.5 * sum(w for w, _ in a)
