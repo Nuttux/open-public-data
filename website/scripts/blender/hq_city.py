@@ -326,14 +326,28 @@ if ERA is not None:
         _TKD = KDTree(len(_tl)); _TY = [t_[2] for t_ in _tl]
         for i_, t_ in enumerate(_tl): _TKD.insert((t_[0], t_[1], 0), i_)
         _TKD.balance()
+# WHAT THE ENGINE'S 'trees' LAYER HOLDS. Only the Lambert meshes are trees
+# (the register, 195,310 crowns, listed once per zoom band). The Basic meshes
+# are the dark CONTACT DISCS painted under them (layers/canopy-shadow.ts): one
+# under each register tree, four under each measured canopy mass at the fine
+# band, one per mass at the coarse band. Planting a tree on every disc put
+# ~450,000 extra pines in the city and turned Alamo Square and Dolores Park into
+# forest (2026-09-23). The fine-band discs are kept for what they are: where
+# the measured canopy is, and how wide (the coarse band's one disc per mass
+# spills over lawns and thins real forest, Sutro's); each gets one crown.
+MASS = []
 for t in d['trees']:
+    lam = t.get('mat') == 'MeshLambertMaterial'
+    if not lam:
+        if t['visible'] and len(t['pos']) // 9 == 192: MASS.extend(t['inst'])
+        continue
     for (x, y, z, sxz, sy, rot, *_rest) in t['inst']:
         # the engine lists a tree once per zoom band, a few centimetres apart
         k = (round(x / 2.5), round(y / 2.5))
         if k in seen or not in_box(x, y, 50): continue
         seen.add(k)
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
-        crown = max(3.0, 2.4 * sxz)
+        crown = max(3.0, 2.0 * sxz)
         if ERA is not None:
             # dated street trees from their planting year (DataSF Street Tree
             # List), crowns grown to their age; undated ones by era.TABLE `trees`
@@ -345,10 +359,33 @@ for t in d['trees']:
             elif not park and EA.hash01(x, y, 11) > EA.street_tree_keep(ERA): continue
             if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and EA.hash01(x, y, 12) > 0.04: continue
             if EA.water_then(x, y, ERA): continue
-        kind = (5 + int(EA.hash01(x, y, 14) * 4)) if park else int(EA.hash01(x, y, 14) * 5)   # by place: no flicker between years
+        # parks: mostly broadleaf, some Monterey pine; firs only now and then
+        # (every draw by place: a tree keeps its kind, size and turn from one
+        # year of the film to the next)
+        u_ = EA.hash01(x, y, 14)
+        kind = (7 + int(EA.hash01(x, y, 17) * 2) if u_ < 0.6 else 5 if u_ < 0.9 else 6) if park else int(u_ * 5)
         gz_ = ground(x, y)
         if gz_ is None: continue
         pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
+nreg = len(pts)
+# the measured canopy: one crown per mass, as wide as the mass, unless the
+# register already has a tree there
+for (x, y, z, rad, *_rest) in MASS:
+    if not in_box(x, y, 50) or (round(x / 2.5), round(y / 2.5)) in seen: continue
+    if any((round(x / 2.5) + a, round(y / 2.5) + b) in seen for a in (-1, 0, 1) for b in (-1, 0, 1)): continue
+    if ERA is not None:
+        # today's canopy on ground that was then dune or open grass (outside
+        # the parks, which were planted from their founding: era.in_park), or
+        # under water, did not stand yet
+        if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5: continue
+        if EA.water_then(x, y, ERA): continue
+    gz_ = ground(x, y)
+    if gz_ is None: continue
+    kind = 7 + int(EA.hash01(x, y, 17) * 2) if EA.hash01(x, y, 14) < 0.65 else 5
+    crown = max(4.0, 2.0 * rad)
+    seen.add((round(x / 2.5), round(y / 2.5)))
+    pts.append((x, y, gz_ - 0.1, crown / max(0.5, widths[kind]) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
+log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
 
 # ── parked cars along every curb ─────────────────────────────────────────────
@@ -419,6 +456,10 @@ tx, ty = float(E('TX', 197)), float(E('TY', 1190))
 cam_d.type = 'ORTHO'; cam_d.ortho_scale = float(E('ORTHO', 13600)); cam_d.clip_start = 1; cam_d.clip_end = 40000
 cam.location = Vector((tx, ty, ground0(tx, ty))) - fwd * 15000
 cam.rotation_euler = fwd.to_track_quat('-Z', 'Y').to_euler()
+# THE CITY'S LIGHT (look tests of 2026-09-23 on Alamo, Dolores, downtown):
+# the sun at 30 deg, not 24, more sky fill and +0.35 exposure. Still golden
+# hour, but the streets come out of the dark the live site was compared against.
+for k_, v_ in (('SUN_EL', '30'), ('SKY_K', '0.52'), ('EXPO', '0.65')): os.environ.setdefault(k_, v_)
 _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.render.filepath = OUT")]
 exec(_ls)
 sc.cycles.samples = SPP
@@ -442,21 +483,33 @@ if E('MODE') == 'pyramid':
     sc.render.resolution_x, sc.render.resolution_y = FW, FH
     sc.render.resolution_percentage = int(E('PCT', 100))          # tests: the same frame, smaller
     sc.render.use_border = False; sc.render.use_persistent_data = True
+    if E('BORDER'):   # a crop of the frame, for fast look tests (fractions, y from the bottom)
+        bx_ = [float(v) for v in E('BORDER').split(',')]
+        sc.render.use_border = True; sc.render.use_crop_to_border = True
+        sc.render.border_min_x, sc.render.border_max_x, sc.render.border_min_y, sc.render.border_max_y = bx_
     rot = Matrix((Vector((1, 0, 0)), up, -fw_)).transposed().to_euler()
     log(f'pyramid level {Z}: canvas {cw}x{ch}, {nfx}x{nfy} frames of {FW}x{FH}, {1 / (sz * 2 * KX) * 100:.1f} cm/px')
     for j in range(nfy):
         for i in range(nfx):
             if ONLY and (i, j) not in ONLY: continue
-            fn = f'{OUT}_z{Z}_{i}_{j}.png'
-            if os.path.exists(fn): continue
             # the frame's centre in the level canvas (device px) -> CSS -> plane -> world at z = 0
             ccx, ccy = (i + 0.5) * FW / 2, (j + 0.5) * FH / 2
             px_ = REF['cx'] + (ccx - cw / 4) / sz; py_ = REF['cy'] - (ccy - ch / 4) / sz
             wp = Vector((px_ / KX, py_ / KY, 0.0))
             cam.location = wp - fw_ * 20000; cam.rotation_euler = rot
-            sc.render.filepath = fn
-            t1 = time.time(); bpy.ops.render.render(write_still=True)
-            log(f'frame {i},{j}: {time.time() - t1:.1f}s')
+            # LOOKS (look tests): several lights on one built scene, one file each;
+            # 'tag:el,sun,sky,expo;…'
+            for lk_ in (E('LOOKS').split(';') if E('LOOKS') else ['']):
+                fn = f'{OUT}_z{Z}_{i}_{j}.png' if not lk_ else f"{OUT}_{lk_.split(':')[0]}_z{Z}_{i}_{j}.png"
+                if os.path.exists(fn): continue
+                if lk_:
+                    el_, sk_, bk_, ex_ = (float(v) for v in lk_.split(':')[1].split(','))
+                    a_, e_ = math.radians(float(E('SUN_AZ', 215))), math.radians(el_)
+                    sun.rotation_euler = (-Vector((math.sin(a_) * math.cos(e_), math.cos(a_) * math.cos(e_), math.sin(e_)))).to_track_quat('-Z', 'Y').to_euler()
+                    sky.sun_elevation = e_; sun_d.energy = sk_; bg.inputs['Strength'].default_value = bk_; sc.view_settings.exposure = ex_
+                sc.render.filepath = fn
+                t1 = time.time(); bpy.ops.render.render(write_still=True)
+                log(f'frame {i},{j}{" " + lk_ if lk_ else ""}: {time.time() - t1:.1f}s')
     log('PYRAMID done'); sys.exit(0)
 
 T = int(E('TILES', 1))
