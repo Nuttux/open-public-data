@@ -634,10 +634,11 @@ def sidewalk_uv_mat():
     return b.m
 
 # sidewalks and curbs
-Ps, Fs = [], []
+Ps, Fs, SEk = [], [], []
 for a, b, outv in SE:
     up = Vector((0, 0, 0.15))
     if open_at((a.x + b.x) / 2 + outv.x * 1.5, (a.y + b.y) / 2 + outv.y * 1.5) > 0.5: continue   # no kerb along open land
+    SEk.append((a, b, outv))
     # the far edge of the pavement follows the ground, never floats over it
     fa, fb = a + outv * 3.0, b + outv * 3.0
     fa.z = max(ground(fa.x, fa.y) + 0.06, a.z + 0.15 - 0.6); fb.z = max(ground(fb.x, fb.y) + 0.06, b.z + 0.15 - 0.6)
@@ -648,7 +649,7 @@ me = bpy.data.meshes.new('sidewalks'); me.from_pydata([tuple(p) for p in Ps], []
 # scored joints run square to the street; a painted curb here and there
 _r = random.Random(17); _uv = me.uv_layers.new(name='UVMap'); _sc = me.color_attributes.new('scol', 'FLOAT_COLOR', 'FACE')
 _cc = []
-for i, (a, b, outv) in enumerate(SE):
+for i, (a, b, outv) in enumerate(SEk):
     L_ = (b - a).length; s0 = _r.uniform(0, 1.5)
     for j, (u_, v_) in enumerate(((s0, 0.0), (s0 + L_, 0.0), (s0 + L_, 3.0), (s0, 3.0))): _uv.data[i * 8 + j].uv = (u_, v_)
     for j, (u_, v_) in enumerate(((s0, -0.16), (s0 + L_, -0.16), (s0 + L_, 0.0), (s0, 0.0))): _uv.data[i * 8 + 4 + j].uv = (u_, v_)
