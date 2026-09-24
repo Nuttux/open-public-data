@@ -343,14 +343,18 @@ def curtain_wall_mat():
     # (the tint as is: darkening the body made the towers heavy and barely
     # changed a thing at 0.85 — from this camera a vertical pane mirrors the
     # street below, never the sky, so its lightness is the tint's)
-    b.put(b.pr.inputs['Base Color'], at.outputs['Color'])
-    b.put(b.pr.inputs['Metallic'], at.outputs['Alpha']); b.pr.inputs['Roughness'].default_value = 0.035
+    # (24/09, integration: the towers read matte) more of the coating's
+    # mirror — the sunlit city below and the towers across the street in
+    # the glass — and a spread between panes (roughness and tilt per pane)
+    b.put(b.pr.inputs['Base Color'], b.mix(1.0, at.outputs['Color'], (0.9, 0.9, 0.9), 'MULTIPLY'))
+    b.put(b.pr.inputs['Metallic'], b.math('ADD', 0.12, b.math('MULTIPLY', at.outputs['Alpha'], 0.8), clamp=True))
     # a little more Fresnel sheen: the sunlit city below mirrored in the glass
     b.pr.inputs['Specular IOR Level'].default_value = 1.15; b.pr.inputs['Coat Weight'].default_value = 0.45
     snap = b.n('ShaderNodeVectorMath', operation='SNAP'); b.put(snap.inputs[0], b.pos); snap.inputs[1].default_value = (1.5, 1.5, 3.9)
     wn = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wn.inputs['Vector'], snap.outputs[0])
     off = b.n('ShaderNodeVectorMath', operation='SUBTRACT'); b.put(off.inputs[0], wn.outputs['Color']); off.inputs[1].default_value = (0.5, 0.5, 0.5)
-    sc_ = b.n('ShaderNodeVectorMath', operation='SCALE'); b.put(sc_.inputs[0], off.outputs[0]); sc_.inputs['Scale'].default_value = 0.035
+    sc_ = b.n('ShaderNodeVectorMath', operation='SCALE'); b.put(sc_.inputs[0], off.outputs[0]); sc_.inputs['Scale'].default_value = 0.07   # (24/09: 0.035 let a tree's reflection run whole down a tower, a ghost)
+    b.put(b.pr.inputs['Roughness'], b.math('ADD', 0.03, b.math('MULTIPLY', wn.outputs['Value'], 0.09)))
     geo = b.n('ShaderNodeNewGeometry'); ad = b.n('ShaderNodeVectorMath', operation='ADD'); b.put(ad.inputs[0], geo.outputs['Normal']); b.put(ad.inputs[1], sc_.outputs[0])
     nz = b.n('ShaderNodeVectorMath', operation='NORMALIZE'); b.put(nz.inputs[0], ad.outputs[0])
     b.put(b.pr.inputs['Normal'], nz.outputs[0])
