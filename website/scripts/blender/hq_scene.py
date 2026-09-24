@@ -1125,7 +1125,7 @@ if _sk: HG |= {int(g) for v in json.load(open(_sk[0]))['by_landmark'].values() f
 # no year is taken as standing); inside the 1906 burned district, before the
 # fire, today's footprints carry the lost city's stand-ins (gen_buildings)
 _allb0 = city_data.buildings(bx0 - 80, by0 - 80, bx1 + 80, by1 + 80)
-_allb = [b for b in _allb0 if b['gid'] not in HG]
+_allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
 if ERA is not None and E('INFILL', '1') == '1':

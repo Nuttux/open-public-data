@@ -177,7 +177,7 @@ if _sk:     # a landmark replaces its footprints only once it's built (ERA None 
     _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
     HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
 _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80)]
-_allb = [b for b in _allb0 if b['gid'] not in HG]
+_allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
 if ERA is not None and E('INFILL', '1') == '1':

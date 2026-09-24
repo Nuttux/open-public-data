@@ -716,9 +716,23 @@ def construction(b, ground, out):
             for i in range(n):
                 a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
                 out.poly(mat, [a_, c_, c_ + Z * (zg - zfoot + hc), a_ + Z * (zg - zfoot + hc)], gcol)
+    # before the 1950s a steel frame was raised by guy derricks standing on
+    # its top floor — a mast and a long boom, no tower crane (CONVENTION on
+    # the date; the tower crane spread in American building from the 1950s-60s)
+    if b['h'] >= 25 and b['rise'] < 0.97 and yr < 1955 and hf > 2.0:
+        dcol = (0.20, 0.17, 0.14)
+        for q_ in range(1 + (b['h'] > 60)):
+            mx, my = cx + rng.uniform(-6, 6), cy + rng.uniform(-6, 6); z0 = zg + hf
+            out.box3('metal', Vector((mx - 0.35, my - 0.35, z0)), X * 0.7, Y * 0.7, Z * 16.0, dcol)          # the mast
+            ang = rng.uniform(0, 2 * math.pi); u = Vector((math.cos(ang), math.sin(ang), 0))
+            bl = 20.0; up = math.radians(rng.uniform(30, 60))
+            d_ = u * math.cos(up) + Z * math.sin(up); w_ = Vector((-u.y, u.x, 0)) * 0.5
+            p0 = Vector((mx, my, z0 + 1.0)); p1 = p0 + d_ * bl
+            out.poly('metal', [p0 - w_, p1 - w_ * 0.4, p1 + w_ * 0.4, p0 + w_], dcol)                        # the boom
+            out.poly('metal', [p0 - w_ + Z * 0.5, p1 - w_ * 0.4 + Z * 0.5, p1 + w_ * 0.4 + Z * 0.5, p0 + w_ + Z * 0.5], dcol)
     # the tower crane: a lattice mast (drawn solid) past the frame, a jib
     # and a counter-jib, in the usual yellow (CONVENTION)
-    if b['h'] >= 25 and b['rise'] < 0.97:
+    if b['h'] >= 25 and b['rise'] < 0.97 and yr >= 1955:
         top = zg + max(hf, 0.0) + 14.0
         ccol = (0.86, 0.66, 0.10)
         mx, my = cx + rng.uniform(-3, 3), cy + rng.uniform(-3, 3)

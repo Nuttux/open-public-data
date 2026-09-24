@@ -73,6 +73,11 @@ def rising(b, era):
     y = b.get('year')
     if era is None or not y or b.get('h', 0) < RISE_MIN_H: return None
     t0 = y - rise_years(b['h'])
+    # in the burned district nothing went up before the ruins were cleared
+    # (the 28 May 1906 photographs show no frame rising): CONVENTION, from
+    # the fire + 0.4 year
+    if y < 1915 and t0 < FIRE + 0.4 and burned(b['cx'], b['cy']): t0 = FIRE + 0.4
+    if t0 >= y: return None
     if era <= t0 or era >= y: return None
     return (era - t0) / (y - t0)
 
@@ -386,7 +391,9 @@ def place_record(b, era):
             # restored (CONVENTION: within 0.3-2.5 years)
             if t < FIRE + 0.3 + 2.2 * _u(b['gid'], 3): b['ruin'] = 'shell'
             return b
-        if y <= era: return b
+        # a building the roll dates 1906-1929 in the ring was finished in
+        # its year's middle, like every checkpoint (not on 28 May 1906)
+        if y + 0.5 <= t: return b
         f_ = rising(b, t)
         if f_ is not None: b['rise'] = f_; return b
         # the lot of a building since replaced: its post-fire building with
@@ -410,6 +417,36 @@ def place_record(b, era):
 # site of the Fox Theatre, demolished 1963 (Wikipedia 'Fox Plaza',
 # 'Fox Theatre (San Francisco)').
 UNDATED_TALL = {135990: 1966}
+
+# Records whose assessor year cannot be right for their height (the parcel's
+# first building, or a condominium's land record): a tower no city of the
+# year had. Found by the height the city's tallest building had reached by
+# then (Chronicle 1890, Call 1898 95 m, PT&T 1925 133 m, Hilton 1964,
+# 44 Montgomery 1967 150 m+, 555 California 1969). SOURCED years (Wikipedia):
+#   137615  575 Market (Chevron Tower), 175 m, completed 1975 (roll: 1906)
+#   137657/137659  77 Beale (PG&E Building), 150 m, completed 1971 (roll: 1907)
+#   137918  650 California (Hartford Building), 142 m, 1965 (roll: 1963)
+#   138668  345 Stockton (Grand Hyatt), 108 m, completed 1972 (roll: 1916)
+#   138685  Westin St. Francis Tower Building, 120 m, completed 1972 (roll:
+#           1904, the hotel's year)
+#   137672  50 First Street, 259 m: Oceanwide Center, begun 2016-17, halted
+#           2019-20, never built (Wikipedia 'Oceanwide Center') — never stood
+#   152080  2500 Steiner, a 12-storey apartment tower (OSM levels 12, 50 m),
+#           roll 1880: CONVENTION 1925 (the Pacific Heights apartment towers
+#           of the 1920s; its own year not found)
+RECORD_YEAR_FIX = {137615: 1975, 137657: 1971, 137659: 1971, 137918: 1965, 138668: 1972, 138685: 1972,
+                   137672: 9999, 152080: 1925}
+
+
+def fix_records(recs, era):
+    """the record's years corrected where they cannot be right
+    (RECORD_YEAR_FIX), in place, before anything reads them — only for an
+    era (today's pass keeps the roll as it is)"""
+    if era is None: return recs
+    for b in recs:
+        y = RECORD_YEAR_FIX.get(b['gid'])
+        if y is not None: b['year'] = y
+    return recs
 
 
 def ash_ground(era):
