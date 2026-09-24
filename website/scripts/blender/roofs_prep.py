@@ -459,7 +459,29 @@ def render_colour(a, cls, gid, w_med=0.0):
     j = 1.0 + 0.24 * (((gid * 40503 + 12345) >> 5) % 1000 / 1000.0 - 0.5)
     return [min(0.85, L * j * c / tl) for c in t]
 
-def lit_membrane(a, row, cls, area, c, F, pitched):
+def proc_flat_L(paint):
+    """the albedo tonight's procedural flat roof has on average for this paint
+    tone (gen_buildings.flat_roof: kind odds by the engine's aerial tone,
+    base greys, lightness k; x the roof_flat textures and dirt) — the floor a
+    big flat roof is held to"""
+    t = paint / 31.0
+    if t >= 0.85: odds = {2: 0.45, 3: 0.25, 1: 0.30}
+    elif t >= 0.60: odds = {1: 0.55, 3: 0.20, 0: 0.25}
+    elif t >= 0.30: odds = {1: 0.5, 0: 0.5}
+    else: odds = {0: 0.6, 1: 0.4}
+    base = {0: ((0.50, 0.48, 0.45), (0.44, 0.44, 0.44), (0.55, 0.50, 0.44), (0.38, 0.37, 0.36)),
+            1: ((0.60, 0.60, 0.58), (0.52, 0.56, 0.52), (0.62, 0.58, 0.52), (0.50, 0.52, 0.56), (0.45, 0.45, 0.46), (0.58, 0.52, 0.46)),
+            2: ((0.86, 0.86, 0.84), (0.80, 0.81, 0.80), (0.84, 0.82, 0.78)), 3: ((0.72, 0.73, 0.74), (0.66, 0.67, 0.69))}
+    T = {0: (1.215, 1.068, 0.881), 1: (1.238, 1.078, 0.960), 2: (1.05, 1.017, 1.0), 3: (1.05, 1.017, 1.0)}
+    Ls = 0.0
+    for kind, p in odds.items():
+        k = 0.90 + 0.08 * t if kind >= 2 else 0.70 + 0.35 * t
+        for bc in base[kind]:
+            lin = [min(1.0, c * k) ** 2.2 * T[kind][i] * 0.92 for i, c in enumerate(bc)]
+            Ls += p / len(base[kind]) * _lum3(lin)
+    return Ls
+
+def lit_membrane(a, row, cls, area, c, F, pitched, paint=16):
     """a patchwork roof (units, walkways, ducts, patches of shade) reads from
     the air darker than the membrane it is: its median sits between. On a
     roof of many values its lightness is taken halfway to its upper quartile;
@@ -468,7 +490,7 @@ def lit_membrane(a, row, cls, area, c, F, pitched):
     tar — dark, even, not in shade. SF's big flat roofs are light membranes
     and gravel, and a dark slate reading was mostly their clutter and shade"""
     q = row.get('q')
-    if not q or pitched or cls in ('tile', 'green', 'solar', 'white'): return a
+    if not q or pitched or cls in ('tile', 'green', 'solar', 'white'): return a, False
     L = max(_lum3(a), 1e-4)
     La = float(np.mean(c['asphalt'])); dL = La - c['darkL']
     lumF = curve(La - dL, La, float(np.mean(c['white'])), ANCH[1] * _lum3(ASPH_TINT))
@@ -476,8 +498,9 @@ def lit_membrane(a, row, cls, area, c, F, pitched):
     L2 = L
     if spread > 40: L2 = max(L, float(lumF(0.5 * (sum(row['med'][:3]) / 3 + q[2]))))
     clearly_tar = spread < 30 and sum(row['med'][:3]) / 3 < La - 5 and row.get('fsh', 0) < 0.2 and row.get('ngood', 0) >= 80
-    if area >= 250 and not clearly_tar: L2 = max(L2, 0.18)
-    return [v * L2 / L for v in a]
+    # and not darker than tonight's procedural roof for the same aerial tone (the coordinator's rule, 05:00)
+    if area >= 250 and not clearly_tar: L2 = max(L2, 0.18, 0.95 * proc_flat_L(paint))
+    return [v * L2 / L for v in a], clearly_tar
 
 def finish(out=None):
     import glob
@@ -489,6 +512,7 @@ def finish(out=None):
         r = np.asarray(r); x, y = r[:, 0], r[:, 1]
         return 0.5 * abs(float(np.dot(x, np.roll(y, -1)) - np.dot(y, np.roll(x, -1))))
     AB = {b['gid']: _area(b['ring']) for b in BB}
+    PB = {b['gid']: b.get('paint', 16) for b in BB}
     raws = sorted(glob.glob(f'{W}/raw/*.json'))
     cal = {}; roofs = {}
     counts = {}
@@ -523,9 +547,9 @@ def finish(out=None):
             cls, conf = classify(a, row, pitched, c['asphalt'], HB.get(row['gid'], 0.0))
             if cls == 'solar' and row.get('med_ns'):      # the roof between the panels
                 a = [float(F[k](row['med_ns'][k])) for k in range(3)]
-            a = lit_membrane(a, row, cls, AB.get(row['gid'], 0.0), c, F, pitched)
+            a, tar = lit_membrane(a, row, cls, AB.get(row['gid'], 0.0), c, F, pitched, PB.get(row['gid'], 16))
             counts[cls] = counts.get(cls, 0) + 1
-            roofs[str(row['gid'])] = [a[0], a[1], a[2], cls, conf]
+            roofs[str(row['gid'])] = [a[0], a[1], a[2], cls, conf, int(tar)]
     # the city's median warmth of its neutral roofs: each roof's tint says warmer or cooler than that
     ws = [(v[0] - v[2]) / max(_lum3(v[:3]), 1e-4) for v in roofs.values() if v[3] in NEUTRAL_TINTS and v[4] >= 0.5]
     w_med = float(np.median(ws)) if ws else 0.0
@@ -534,7 +558,8 @@ def finish(out=None):
         # FLAT: a light membrane the survey does not call pitched — a flat roof
         # (behind a false front, most of them), whatever form the generator drew
         flat = int(v[3] in ('white', 'cap', 'metal', 'gravel') and _lum3(v[:3]) >= 0.28 and not forms.get(int(g), False))
-        roofs[g] = [round(a[0], 3), round(a[1], 3), round(a[2], 3), v[3], v[4], flat]
+        # 7th: the photo clearly shows tar (dark, even, not in shade): the one case a big flat roof may be darker than the procedural one
+        roofs[g] = [round(a[0], 3), round(a[1], 3), round(a[2], 3), v[3], v[4], flat, v[5]]
     meta = dict(source='USDA NAIP 2022 (public domain), Planetary Computer STAC collection naip; see roofs/README.txt',
                 colour='linear albedo; per band/quad 0.75*((DN-d)/(DNwhite-d))^gamma, d = 1% bare land shade, asphalt -> 0.11, 99% roofs -> 0.75; below asphalt log slope to 0.03 at d',
                 render='neutral classes: measured lightness x a roofing-grey tint (warmer/cooler than the median roof + gid); chromatic (tile, green, sat>0.3): measured hue, saturation x1.25',

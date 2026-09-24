@@ -688,8 +688,17 @@ def measured_flat(b, rc):
     kind = _FLAT_KIND.get(cls, 1)
     if cls == 'tile':       # terracotta over a flat deck: a red-brown cap sheet, not a painted red
         L = _lum(a); a = [L + 0.6 * (v - L) for v in a]
-    t = _FLAT_TEX[kind]
     t4 = rc[3] * 4.0
+    # a BIG flat roof (>= 250 m2) is never darker than the procedural membrane
+    # it replaces, unless the photo clearly shows tar (7th field): from 60 cm
+    # its clutter, ducts and shade pull the reading down; where it is lifted
+    # it keeps the procedural kind too (the silver coating's sheen)
+    r_ = b['ring']; n_ = len(r_)
+    if not (len(m) > 6 and m[6]) and abs(sum(r_[i][0] * r_[(i + 1) % n_][1] - r_[(i + 1) % n_][0] * r_[i][1] for i in range(n_))) / 2 >= 250:
+        k0 = min(3, max(0, int(math.floor(t4))))
+        Lp = _lum([rc[i] ** 2.2 * _FLAT_TEX[k0][i] * 0.92 for i in range(3)]); L = max(_lum(a), 1e-4)
+        if L < Lp: a = [v * Lp / L for v in a]; kind = k0
+    t = _FLAT_TEX[kind]
     return (*_disp([min(1.0, a[k] / (t[k] * 0.92)) for k in range(3)]), (kind + t4 - math.floor(t4)) / 4.0)
 
 
