@@ -7,6 +7,7 @@ import os
 
 def probe(bpy, sc, log, spec):
     from mathutils import Vector
+    bpy.context.view_layer.update()          # the camera was just moved: refresh matrix_world
     cam = sc.camera; cd = cam.data
     W, H = sc.render.resolution_x, sc.render.resolution_y
     M = cam.matrix_world; R = M.to_3x3()

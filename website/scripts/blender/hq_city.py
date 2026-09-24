@@ -260,6 +260,11 @@ for m in d['meshes']:
                 # no paint where the street itself is not yet built (it floated over the yards)
                 if ERA is None or street_stands((p[a] + p[a+3] + p[a+6]) / 3, (p[a+1] + p[a+4] + p[a+7]) / 3): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
+        # not ground: the engine's translucent overlays (pier plates .2, their
+        # dark drop shadows offset south-west .35 — the grey 'ghost piers' on
+        # the bay — the lakes' glaze .42) and its opaque blue lakes (landmarks_hq
+        # draws the lakes from OSM): white vertex colours sent them to 'paths'
+        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue
         c = f32(m['col']); p = f32(m['pos'])
         tgt = DP if (c and c[2] > 0.8) else DL
         if BOX is None: tgt.extend(p)
@@ -499,8 +504,13 @@ log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, h
 # scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
 # crowns stand at most 1.4 widths tall, pines and firs 2.
 TALL = [1.4] * NS + [2.0] * (len(PINE) + len(FIR)) + [1.4] * len(BROAD)
+# and an absolute height: Monterey pines and cypress here stand 15-25 m, street
+# broadleaf 6-15 m. Canopy crowns 3x the disc made Pioneer Park's pines 23-32 m
+# and swallowed Coit Tower (landmarks agent, measured 24/09).
+HMAX = [15.0] * NS + [24.0] * (len(PINE) + len(FIR)) + [18.0] * len(BROAD)
 def tree_scale(kind, crown):
-    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]))
+    return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]),
+               HMAX[kind] / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
 _TKD = None
 if ERA is not None:
@@ -661,6 +671,11 @@ if os.environ.get('LANDMARKS', '1') == '1':
         landmarks_hq = None
     if landmarks_hq is not None:
         landmarks_hq.build(bpy, sc, M, ground0, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+
+# ── TRANSIT (transit_hq.py, the transit agent): track, overhead, platforms, vehicles; TRANSIT=0 skips
+if E('TRANSIT', '1') == '1':
+    try: import transit_hq; transit_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+    except Exception as ex: log('transit_hq: not built:', ex)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

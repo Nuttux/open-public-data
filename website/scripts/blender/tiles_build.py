@@ -19,7 +19,11 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 FR, OUT = sys.argv[1], sys.argv[2]
 UP = sys.argv[sys.argv.index('--upload') + 1] if '--upload' in sys.argv else None
-T, ZTOP, FW, FH = 512, 7, 5120, 3072
+# --z: the level the frames were rendered at (hq_city MODE=pyramid Z=…): 7 for
+# the present at 37 cm/px, 5 or 6 for the eras (f_z5_i_j.png, 2x2 frames)
+ZTOP = int(sys.argv[sys.argv.index('--z') + 1]) if '--z' in sys.argv else 7
+T, FW, FH = 512, 5120, 3072
+PRE = f'f_z{ZTOP}_'
 REF = dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
 CA, SA = math.cos(math.radians(30)), 0.42
 ZT = math.sqrt(2 * (CA ** 2 - SA ** 2))
@@ -31,10 +35,10 @@ graded = os.path.join(OUT, '_graded'); os.makedirs(graded, exist_ok=True)
 src = {}
 for fr in reversed(FR.split(',')):
     for fn in os.listdir(fr):
-        if fn.startswith('f_z7_') and fn.endswith('.png'): src[fn] = os.path.join(fr, fn)
+        if fn.startswith(PRE) and fn.endswith('.png'): src[fn] = os.path.join(fr, fn)
 made = set()
 for fn in sorted(src):
-    i, j = (int(v) for v in fn[5:-4].split('_'))
+    i, j = (int(v) for v in fn[len(PRE):-4].split('_'))
     g = os.path.join(graded, fn)
     if not os.path.exists(g) or os.path.getmtime(g) < os.path.getmtime(src[fn]):
         subprocess.run(['python3', os.path.join(HERE, 'grade.py'), src[fn], g, '40', '12'], check=True)
