@@ -14,7 +14,7 @@ python3 pod.py total                        -> total spent per COSTS.md; exit 3 
 import base64, json, os, sys, time, urllib.request, datetime as dt
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ST = os.path.join(HERE, 'state'); os.makedirs(ST, exist_ok=True)
-COSTS = os.path.join(HERE, 'COSTS.md'); HARD_STOP = 15.0
+COSTS = os.path.join(HERE, 'COSTS.md'); HARD_STOP = 30.0   # Daniel added $15 more credit (25/09 ~01:35): cap $30
 API = 'https://rest.runpod.io/v1'
 # cheapest first; all 48 GB (a 24 GB card can't hold a full frame: no out-of-core on CUDA/OptiX)
 GPUS = ['NVIDIA RTX A6000', 'NVIDIA A40', 'NVIDIA L40', 'NVIDIA RTX 6000 Ada Generation', 'NVIDIA L40S']
