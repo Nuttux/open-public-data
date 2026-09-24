@@ -54,9 +54,35 @@ def newb():
             _NB[0].extend(dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in json.load(open(sp))['records'] if era is None or r['year'] <= era)
     return _NB
 
+# THE CITY OF TODAY (FRESH=1; fresh_prep.py, from the city's permits since
+# 2022): new buildings on their current OSM outline (ODbL, (c) OpenStreetMap
+# contributors), shown from their completion year (`year`: hq_city's era
+# filter); the DataSF / OSM-added records they stand on and the finished
+# demolitions, gone from `until` (the demolition, or the new building's permit
+# issue). An OSM-added record that is a permit's building is kept, dated by
+# the permit (newb_redated). The fresh dates win over NEWB's 2019 convention.
+FRESH_FILE = '/Users/daniel/code/qipu-render-work/fresh/fresh_records.json'
+_FR = None
+def fresh():
+    """(records, gids hidden in the ERA shown, gids the fresh layer dates); empty unless FRESH=1"""
+    global _FR
+    if os.environ.get('FRESH', '0') != '1': return [], set(), set()
+    if _FR is None:
+        j = json.load(open(os.environ.get('FRESH_FILE') or FRESH_FILE))
+        era = float(os.environ['ERA']) if os.environ.get('ERA') else None
+        dated = j['supersedes'] + j['demolished']
+        _FR = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records']],
+               {int(x['gid']) for x in dated if era is None or era >= x['until']} | set(j.get('newb_redated', [])),
+               {int(x['gid']) for x in dated} | set(j.get('newb_redated', [])))
+    return _FR
+
 def buildings(x0, y0, x1, y1):
     out = []
     NB, GONE = newb()
+    FR, FGONE, FDATED = fresh()
+    if FDATED:
+        GONE = (GONE - FDATED) | FGONE
+        NB = [r for r in NB if r['gid'] not in FGONE] + FR
     # the cells, and base/solo: the 15,265 footprints too large or too tall to
     # belong to one cell (every building over 30 m is one) ship on their own
     pairs = [(p, f'{CITY}/face/{os.path.basename(p)}') for p in sorted(glob.glob(f'{CITY}/bldg/*.qc'))]
