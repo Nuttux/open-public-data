@@ -43,6 +43,13 @@ out geom tags;''',
     'marina_rel.json': '''[out:json][timeout:60];
 (relation["leisure"="marina"](37.68,-122.56,37.90,-122.30););
 out geom;''',
+    'people_osm.json': '''[out:json][timeout:120];(
+ way["leisure"="park"]["name"="Mission Dolores Park"](37.75,-122.44,37.77,-122.42);
+ nwr["natural"="beach"](37.70,-122.53,37.82,-122.35);
+ way["highway"~"^(footway|pedestrian|path|cycleway)$"](37.787,-122.405,37.810,-122.385);
+ way["highway"~"^(footway|pedestrian|path|cycleway)$"](37.800,-122.470,37.808,-122.440););
+out geom tags;''',
+    'people_rel.json': '''[out:json][timeout:60];(relation(2165532););out geom;''',
     'bus_osm.json': '''[out:json][timeout:180];
 relation["route"~"^(bus|trolleybus)$"](37.700,-122.530,37.860,-122.340);
 out body;''',
@@ -137,6 +144,28 @@ def water():
     return fer, mar, term
 
 
+def people():
+    """where people are at 5 pm: Mission Dolores Park's lawn, the beaches (Ocean
+    Beach, Crissy Field's East Beach), the promenades (the Embarcadero's Herb
+    Caen Way, Crissy Field's Golden Gate Promenade)"""
+    out = dict(parks=[], beaches=[], walks=[])
+    p = os.path.join(W, 'people_osm.json')
+    if not os.path.exists(p): return out
+    for e in json.load(open(p))['elements']:
+        t = e.get('tags', {}); g = e.get('geometry')
+        if e['type'] != 'way' or not g: continue
+        pts = [xy(q['lon'], q['lat']) for q in g]
+        if t.get('leisure') == 'park': out['parks'].append(dict(name=t.get('name', ''), ring=pts))
+        elif t.get('natural') == 'beach' and t.get('name') in ('East Beach',): out['beaches'].append(dict(name=t['name'], ring=pts))
+        elif t.get('name', '').startswith(('Herb Caen Way', 'Golden Gate Promenade')): out['walks'].append(dict(name=t['name'], pts=pts))
+    r = os.path.join(W, 'people_rel.json')
+    if os.path.exists(r):
+        for e in json.load(open(r))['elements']:
+            outer = [[xy(q['lon'], q['lat']) for q in m['geometry']] for m in e.get('members', []) if m.get('role') == 'outer' and m.get('geometry')]
+            for ring in _rings(outer): out['beaches'].append(dict(name=e['tags'].get('name', ''), ring=ring))
+    return out
+
+
 def sea():
     from PIL import Image
     from scipy import ndimage
@@ -157,7 +186,7 @@ if __name__ == '__main__':
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import osm_fetch
         for fn, q in QUERIES.items(): osm_fetch.fetch(q, os.path.join(W, fn))
-    R = roads(); F, M, T = water(); S = sea()
+    R = roads(); F, M, T = water(); S = sea(); PP = people()
     json.dump(dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors); the render sea mask', sea=S,
-                   ferries=F, marinas=M, terminals=T, roads=R), open(os.path.join(W, 'life.json'), 'w'), separators=(',', ':'))
+                   ferries=F, marinas=M, terminals=T, roads=R, people=PP), open(os.path.join(W, 'life.json'), 'w'), separators=(',', ':'))
     print('roads', len(R), 'ferries', len(F), 'marinas', len(M), 'terminals', len(T), 'sea', S)

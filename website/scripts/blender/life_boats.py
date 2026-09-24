@@ -179,7 +179,7 @@ def container_ship(L=300.0, B=48.0, seed=1, load=0.85):
     """a post-Panamax container ship: dark hull, the deck in bays of boxes
     (40 ft = 12.2 m, 2.44 m wide, 2.6 m high) 4-8 tiers above the hatches,
     the accommodation block a third from the stern, the funnel aft of it"""
-    r = random.Random(seed); vb = VB(); own = r.choice(BOX_COLS[:4])
+    r = random.Random(seed); vb = VB(); own = r.choice((BOX_COLS[0], BOX_COLS[2], BOX_COLS[3], BOX_COLS[10]))
     hull(vb, L, B, 12.0, BLACK, DGREY, stripe=(-0.4, 1.2, HULLRED), bow=0.18, transom=0.86, sheer=2.0, pow_=0.8, n=18)
     xa = -L / 2 + 0.26 * L                # the house
     vb.cabin(xa - 7, xa + 7, B / 2 - 3.0, 12.0, 44.0, WHITE, win=(40.5, 42.8), roof=OFFWHITE)
@@ -199,7 +199,7 @@ def container_ship(L=300.0, B=48.0, seed=1, load=0.85):
             while y < rows * 2.5 / 2 - 0.1:
                 w = min(2.5 * r.choice((1, 2, 2, 3)), rows * 2.5 / 2 - y)
                 t = max(1, tiers - (1 if r.random() < 0.2 else 0))
-                c = own if r.random() < 0.45 else r.choice(BOX_COLS)
+                c = own if r.random() < 0.35 else r.choice(BOX_COLS)
                 vb.box(x, x + 12.2, y, y + w - 0.08, 12.0, 12.0 + 2.6 * t, c, MATTE)
                 y += w
         else:
@@ -320,11 +320,14 @@ def sailboat(L=10.0, seed=0, sails=None, heel=0.0):
         jclew = (tack[0] + cj * jl, sj * jl, fb + 0.6)
         vb.face([tack, jclew, head], WHITE, SAIL)
         if spin:
+            # the spinnaker: a coloured bag ahead of the bow, head at the masthead,
+            # tack and clew either side, the belly out forward
             c = r.choice((srgb('#c0302a'), srgb('#1f4fa0'), srgb('#e8b02a'), srgb('#e6e6e0'), srgb('#2a8a5a')))
-            sy = math.copysign(1.0, ja) if abs(ja) > 1e-3 else 1.0
-            fx = L / 2 + L * 0.35
-            vb.face([(mx + 0.2, 0, fb + H * 0.95), (fx, sy * L * 0.55, fb + H * 0.35), (fx + 0.5, -sy * L * 0.15, fb + H * 0.4)], c, SAIL)
-            vb.face([(fx, sy * L * 0.55, fb + H * 0.35), (fx + 0.5, -sy * L * 0.15, fb + H * 0.4), (L / 2 + 1.0, 0, fb + 0.8)], c, SAIL)
+            sy = math.copysign(1.0, ba) if abs(ba) > 1e-3 else 1.0
+            hd = (mx + 0.3, 0.0, fb + H * 0.95)
+            tk = (L / 2 + 0.6, -sy * L * 0.32, fb + 1.3); cl = (L / 2 + 0.6, sy * L * 0.32, fb + 1.3)
+            bl = (L / 2 + L * 0.42, sy * L * 0.08, fb + H * 0.42)
+            for tri in ((hd, tk, bl), (hd, bl, cl), (tk, cl, bl)): vb.face(list(tri), c, SAIL)
     if heel:          # + = the mast leans to port (+y)
         ch, sh = math.cos(heel), math.sin(heel)
         vb.V = [(x, y * ch + z * sh, -y * sh + z * ch) for x, y, z in vb.V]

@@ -24,7 +24,10 @@ OSM = {
     'crissy': ('way', 32649967), 'lombard': ('way', 402111597),
 }
 # landmarks drawn on DataSF footprints named by gid (no usable OSM outline)
-GIDS = {'pofa_colonnade': [159039, 159067, 159038, 159065]}
+GIDS = {'pofa_colonnade': [159039, 159067, 159038, 159065],
+        # Sutro Tower's own DataSF 'buildings': a 190.9 m triangular prism (47759) the
+        # generator stood inside the mast, and the 210.4 m hero footprint (47760)
+        'sutro': [47759, 47760]}
 # landmarks whose DataSF footprints the generator must NOT build (the
 # landmark model replaces them); the rest keep the generator's buildings
 # DataSF footprints inside an OSM outline that the model does NOT replace
@@ -33,7 +36,7 @@ NOT_UNDER = {'stmarys': (149497,)}
 # OSM outline (Fort Point's centre is in its own parade ground)
 EXTRA = {'fortpoint': (159137,)}
 # ONLY landmarks landmarks_hq actually builds (else the building would vanish)
-SKIP = {'calacademy', 'fortpoint', 'oracle', 'chase', 'deyoung', 'legion', 'grace', 'stmarys', 'conservatory', 'pofa_colonnade', 'pofa', 'salesforce', 'transit_center', 'transamerica', 'coit', 'ferry', 'cityhall'}
+SKIP = {'sutro', 'calacademy', 'fortpoint', 'oracle', 'chase', 'deyoung', 'legion', 'grace', 'stmarys', 'conservatory', 'pofa_colonnade', 'pofa', 'salesforce', 'transit_center', 'transamerica', 'coit', 'ferry', 'cityhall'}
 
 def load_osm():
     els = {}
@@ -156,9 +159,35 @@ def piers():
             except ValueError: wt = 0.0
             out.append(dict(id=e['id'], name=t.get('name'), kind='float_line' if fl else 'line', line=pts,
                             width=wt or (2.4 if fl else 3.5), width_tagged=bool(wt)))
-    json.dump(dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors): man_made=pier within San Francisco', piers=out),
+    # DataSF 'buildings' that are pier decks: low (under 4.5 m), mostly inside
+    # an OSM deck (Pier 7 is DataSF 142933, 2.62 m, 2416 m2 — the generator
+    # stood a brick block the size of the pier, and the deck under it went
+    # black). water_hq.piers() replaces them; each deck carries the year of the
+    # DataSF footprint it matches (for the eras)
+    try:
+        from shapely.geometry import Polygon
+        decks = [(k, Polygon(p['ring'])) for k, p in enumerate(out) if p['kind'] in ('deck', 'float') and len(p['ring']) >= 3]
+        xs = [q[0] for _, P in decks for q in P.exterior.coords]; ys = [q[1] for _, P in decks for q in P.exterior.coords]
+        recs = city_data.buildings(min(xs) - 10, min(ys) - 10, max(xs) + 10, max(ys) + 10) if decks else []
+        pier_gids = []
+        for b in recs:
+            if b['h'] >= 4.5 or len(b['ring']) < 3: continue
+            B = Polygon(b['ring'])
+            if not B.is_valid: B = B.buffer(0)
+            if B.area < 50: continue
+            for k, P in decks:
+                if not P.is_valid: P = P.buffer(0)
+                if B.intersects(P) and B.intersection(P).area > 0.6 * B.area:
+                    pier_gids.append(b['gid'])
+                    if b.get('year'): out[k]['year'] = min(out[k].get('year') or 9999, int(b['year']))
+                    break
+    except Exception as ex:
+        print('piers: DataSF match failed', ex); pier_gids = []
+    json.dump(dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors): man_made=pier within San Francisco', piers=out,
+                   datasf_piers=sorted(set(pier_gids))),
               open(os.path.join(W, 'piers.json'), 'w'))
-    print('piers', len(out))
+    print('piers', len(out), 'DataSF footprints that are pier decks', len(set(pier_gids)))
+    return sorted(set(pier_gids))
 
 def main():
     els = load_osm()
@@ -185,15 +214,17 @@ def main():
         print(key, [(b['gid'], round(b['h'], 1)) for b in recs])
     out['alcatraz'] = alcatraz()
     water()
-    piers()
+    pier_gids = piers()
     json.dump(out, open(os.path.join(W, 'footprints.json'), 'w'))
     import landmarks_hq
+    if pier_gids: skip['piers'] = pier_gids                   # a water key: replaced when 'piers' is on
     skip_all = dict(skip)
     _la = os.environ.get('LM_ALL'); os.environ['LM_ALL'] = '1'
     built_all = {l.key: l.built for l in landmarks_hq._registry()}
     if _la is None: os.environ.pop('LM_ALL')
     else: os.environ['LM_ALL'] = _la
-    skip = {k: v for k, v in skip.items() if k in landmarks_hq.ENABLED}
+    built_all['piers'] = 1990                                 # water_hq.piers draws the decks from 1990 on; before, the generator's
+    skip = {k: v for k, v in skip.items() if k in landmarks_hq.ENABLED or k in landmarks_hq.WATER_ENABLED}
     built = {k: built_all.get(k) for k in skip}
     hero = city_data.hero_gids()
     gids = sorted({g for v in skip.values() for g in v} - hero)

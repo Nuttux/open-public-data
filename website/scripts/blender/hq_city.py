@@ -170,6 +170,11 @@ if len(SP_):
 # ── the year shown: the records that stood, open land, the streets of the day ──
 log('buildings: records')
 HG = city_data.hero_gids()
+# NEVER BUILT, though the roll records them: Oceanwide Center Tower I, 50 First
+# St (gid 137672, 259 m, "1917" on the roll) — begun 2016-17, halted 2019-20,
+# still a hole (Wikipedia 'Oceanwide Center'); the orchestrator's PHANTOMS
+PHANTOMS = {137672}
+HG |= PHANTOMS
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
 _sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]

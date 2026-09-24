@@ -17,7 +17,7 @@ case "$label" in city*) pri=1;; *) pri=0;; esac
 NEED=${GPU_NEED:-24}
 me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
-trap 'rm -f "$me"' EXIT INT TERM
+trap 'rm -f "$me"' EXIT; trap 'rm -f "$me"; exit 1' INT TERM   # a stopped waiter leaves (it used to loop on without a ticket)
 avail() { vm_stat | awk '/Pages free/ {f=$3} /Pages inactive/ {i=$3} /Pages purgeable/ {p=$3} /Pages speculative/ {s=$3} END {printf "%d", (f+i+p+s)*16384/1e9}'; }
 while :; do
   for t in "$Q"/*; do p=${t##*_}; [ -f "$t" ] && ! kill -0 "$p" 2>/dev/null && rm -f "$t"; done
@@ -36,5 +36,5 @@ done
 rm -f "$me"
 if [ $pri = 1 ]; then echo 0 > "$W/.gpu.tests"; else echo $(( $(cat "$W/.gpu.tests" 2>/dev/null || echo 0) + 1 )) > "$W/.gpu.tests"; fi
 echo $$ > "$L/pid"; echo "$label $(date +%H:%M:%S)" > "$L/who"
-trap 'rm -rf "$L"' EXIT INT TERM
+trap 'rm -rf "$L"' EXIT; trap 'rm -rf "$L"; exit 1' INT TERM
 "$@"
