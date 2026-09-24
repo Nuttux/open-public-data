@@ -8,14 +8,16 @@ place-hashed draws) stays hq_city's.
       palms) plus the Poly Haven trees kept for what they are (jacaranda,
       firs for the redwoods, the small tree for ornamentals); exposes
       protos / widths / heights / tall / hmax in hq_city's shapes
-  .street(ox, oy, x, y, park, crown)      a register tree: its species from
-      the DataSF Street Tree List (nearest listed tree within 2.3 m of the
-      engine's point ox, oy), its crown from its DBH; None = the list says
-      stump or empty planting site
-  .mass(x, y, crown)                      a measured canopy mass: its species
-      from the zone it stands in (veg_zones.json: the Presidio, Golden Gate
-      Park, Sutro, … each with its published mix, planted in single-species
-      stands) and the OSM tree nodes near it
+  .street(ox, oy, x, y, park, crown, on_street, roofed) -> (kind, crown, x, y)
+      a register tree: its species from the DataSF Street Tree List (nearest
+      listed tree within 2.3 m of the engine's point ox, oy), its crown from
+      its DBH, its trunk moved out of the carriageway (the list's median
+      trees excepted); None = stump, empty planting site, or no open ground
+  .mass(x, y, crown, on_street, roofed) -> (kind, crown, x, y)
+      a measured canopy mass: its species from the zone it stands in
+      (veg_zones.json: the Presidio, Golden Gate Park, Sutro, … each with its
+      published mix, planted in single-species stands) and the OSM tree
+      nodes near it; in the forests, its species' stand height
 
 Every draw is by place (hp, the same hash as hq_city's), so two frames that
 both build a tree give it the same species. Data: veg.npz, veg_zones.json in
@@ -42,6 +44,15 @@ PROTO_OF = {
 # the Poly Haven protos' (TALL, HMAX), as hq_city had them for street and park trees
 PH_SIZE = {'tree_small_02': (1.4, 9.0), 'jacaranda_tree': (1.4, 15.0), 'fir_tree_01': (2.6, 30.0)}
 PALMS = ('date_palm', 'fan_palm', 'queen_palm', 'small_palm')
+# A FOREST IS TALL. A canopy mass's crown is 3x its fine-band disc (hq_city),
+# which sizes a backyard tree well but left Sutro's blue gums 12 m tall and
+# its forest a savanna (24/09): in the forest zones a tree takes its species'
+# stand height (m, drawn by place) and its crown follows the proto's proportions
+# (crowns then interlock, as a closed canopy does). HMAX still caps it.
+FOREST_H = {'euc': (22.0, 32.0), 'cypress': (14.0, 21.0), 'pine': (16.0, 23.0), 'redwood': (20.0, 28.0),
+            'round': (9.0, 14.0), 'plane': (10.0, 15.0)}
+OPEN_ZONES = ('urban', 'coast_band', 'park', 'garden', 'square')
+SITE_MEDIAN = 2
 CONIFERS = ('pine', 'cypress', 'redwood')
 # crown width (m) from the listed DBH (in): a + b·DBH, at most c. Street trees
 # in SF: DBH median 7 in (a young 3 in tree ~3 m across, a 24 in plane ~12 m)
@@ -93,6 +104,7 @@ class Kinds:
             for i in ii: kd.insert((float(X[i]), float(Y[i]), 0.0), int(i))
             kd.balance(); return kd, len(ii)
         self.st_arch, self.st_dbh = D['st_arch'], D['st_dbh']
+        self.st_site = D['st_site'] if 'st_site' in D.files else np.zeros(len(self.st_arch), np.uint8)
         self.kst, nst = tree_of(D['st_x'], D['st_y'])
         self.h_arch = D['h_arch']; self.khi, nh = tree_of(D['h_x'], D['h_y'])
         self.drop_none = os.environ.get('VEG_DROP_NONE', '1') == '1'
@@ -143,16 +155,52 @@ class Kinds:
         if S and hp(x, y, 33) < 0.75: return _draw(mix, self._stand(x, y, S)), z['name']
         return _draw(mix, hp(x, y, 34)), z['name']
 
-    def mass(self, x, y, crown):
+    def _off_street(self, x, y, on_street, roofed, reach=4.0):
+        """NO TRUNK IN THE CARRIAGEWAY. The listed trees stand at the curb, the
+        engine's street polygons are a metre or two wide of it: palms stood in
+        Mission St's red bus lane (life agent, 24/09). The point itself if it is
+        off the street mesh, else the nearest point within reach that is on
+        neither street nor roof (rings of 0.5 m, from due east: by place)"""
+        if not on_street(x, y): return x, y
+        d = 0.5
+        while d <= reach + 1e-6:
+            n = max(8, int(2 * math.pi * d / 0.5))
+            for i in range(n):
+                t = 2 * math.pi * i / n; nx, ny = x + d * math.cos(t), y + d * math.sin(t)
+                if not on_street(nx, ny) and not (roofed is not None and roofed(nx, ny)): return nx, ny
+            d += 0.5
+        return None
+
+    def mass(self, x, y, crown, on_street=None, roofed=None):
+        r = self.mass4(x, y, crown, on_street, roofed)
+        return r if (r is None or on_street is not None) else r[:2]   # legacy callers: (kind, crown)
+
+    def mass4(self, x, y, crown, on_street=None, roofed=None):
+        """(kind, crown, x, y) for a canopy mass"""
         a, zn = self.mass_arch(x, y); k = self._kind(a, x, y)
         self._count(('mass', zn, a))
-        return k, (self._palm_crown(k, x, y) if a in PALMS else crown)
+        if on_street is not None:
+            # a mass over a paved median or a boulevard's planting stays put
+            # when there is no open ground within reach (Sunset Blvd's pines)
+            p = self._off_street(x, y, on_street, roofed)
+            if p is None: self._count(('street', 'mass_in_road_kept'))
+            elif p != (x, y): self._count(('street', 'mass_off_road')); x, y = p
+        if a in PALMS: return k, self._palm_crown(k, x, y), x, y
+        if a in FOREST_H and zn not in OPEN_ZONES:
+            lo, hi = FOREST_H[a]; ht = lo + (hi - lo) * hp(x, y, 37)
+            crown = max(crown, ht * self.widths[k] / max(0.5, self.heights[k]))
+        return k, crown, x, y
 
-    def street(self, ox, oy, x, y, park, crown):
+    def street(self, ox, oy, x, y, park, crown, on_street=None, roofed=None):
+        r = self.street4(ox, oy, x, y, park, crown, on_street, roofed)
+        return r if (r is None or on_street is not None) else r[:2]   # legacy callers: (kind, crown)
+
+    def street4(self, ox, oy, x, y, park, crown, on_street=None, roofed=None):
+        """(kind, crown, x, y) for a register tree; None = no tree there"""
         co, idx, dist = self.kst.find((ox, oy, 0.0)) if self.kst is not None else (None, None, None)
-        dbh = 0.0
+        dbh = 0.0; site = 0
         if idx is not None and dist <= 2.3:
-            a = self.ARCH[int(self.st_arch[idx])]; dbh = float(self.st_dbh[idx])
+            a = self.ARCH[int(self.st_arch[idx])]; dbh = float(self.st_dbh[idx]); site = int(self.st_site[idx])
             if a == 'none':
                 self._count(('street', 'none'))
                 if self.drop_none: return None
@@ -161,14 +209,19 @@ class Kinds:
             self._count(('street', 'listed'))
         elif park:
             self._count(('street', 'park'))
-            return self.mass(x, y, crown)
+            return self.mass4(x, y, crown, on_street, roofed)
         else:
             a = _draw(self.street_mix, hp(x, y, 35)); self._count(('street', 'unlisted'))
         k = self._kind(a, x, y); self._count(('arch', a))
-        if a in PALMS: return k, self._palm_crown(k, x, y)
+        if on_street is not None and site != SITE_MEDIAN:       # the list's median trees stay on their median
+            p = self._off_street(x, y, on_street, roofed)
+            if p is None:
+                self._count(('street', 'in_road_dropped')); return None
+            if p != (x, y): self._count(('street', 'off_road')); x, y = p
+        if a in PALMS: return k, self._palm_crown(k, x, y), x, y
         if dbh > 0 and a in CROWN_DBH:
-            p = CROWN_DBH[a]; crown = max(2.5, min(p[2], p[0] + p[1] * dbh))
-        return k, crown
+            p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
+        return k, crown, x, y
 
     def report(self, log=print):
         s = self.stats

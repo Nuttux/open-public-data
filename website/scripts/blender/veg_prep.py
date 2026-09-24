@@ -89,21 +89,24 @@ def arch_of(sp):
 
 def street():
     R = list(csv.DictReader(open(f'{SRC}/street_trees.csv')))
-    X, Y, A, D = [], [], [], []; miss = collections.Counter()
+    X, Y, A, D, S = [], [], [], [], []; miss = collections.Counter()
     for r in R:
         if not r['latitude'] or not r['longitude']: continue
         x, y = ll2e(float(r['longitude']), float(r['latitude']))
         a = arch_of(r['species'])
         if a == 'unknown': miss[r['species']] += 1
         X.append(x); Y.append(y); A.append(AI[a])
+        si = r['siteinfo'].lower()     # 1 sidewalk, 2 median, 3 yard (the list's own site)
+        S.append(2 if si.startswith('median') else 1 if si.startswith('sidewalk') else 3 if 'yard :' in si[:12] else 0)
         try: D.append(float(r['mapdbh']) if r['mapdbh'] else 0.0)
         except ValueError: D.append(0.0)
-    X, Y, A, D = map(np.array, (X, Y, A, D))
+    X, Y, A, D, S = map(np.array, (X, Y, A, D, S))
     D[(D < 0.5) | (D > 120)] = 0.0
     c = collections.Counter(ARCH[a] for a in A)
     print('street trees', len(X), dict(c.most_common()))
     print('  unmapped (unknown):', sum(miss.values()), miss.most_common(12))
-    return X.astype(np.float32), Y.astype(np.float32), A.astype(np.uint8), D.astype(np.float32), c
+    print('  sites (0 ?, 1 sidewalk, 2 median, 3 yard):', np.bincount(S, minlength=4).tolist())
+    return X.astype(np.float32), Y.astype(np.float32), A.astype(np.uint8), D.astype(np.float32), S.astype(np.uint8), c
 
 
 def join_stats(X, Y):
@@ -175,6 +178,7 @@ Z = [  # name, mix, stand m
  ('pioneer', dict(pine=0.80, cypress=0.15, euc=0.05), 40),
  ('square', dict(cypress=0.40, pine=0.35, round=0.15, euc=0.10), 35),
  ('wood_any', dict(euc=0.60, pine=0.15, cypress=0.15, round=0.10), 50),   # an unnamed wood outside the named places: a hill grove
+ ('forest_urban', dict(euc=0.62, pine=0.15, cypress=0.13, round=0.10), 60),   # dense canopy (cover > 0.28 over 40 m) left in 'urban'
  ('redwood_grove', dict(redwood=1.0), 30),
  ('garden', dict(round=0.55, plane=0.15, ornamental=0.15, redwood=0.05, small_palm=0.05, queen_palm=0.05), 25),
 ]
@@ -268,6 +272,23 @@ def zones(ways, rels):
             Z.append((f"wood_{'needle' if con else 'broad'}_{e['id']}_in_{Z[par][0]}", keep, 40)); ZI[Z[-1][0]] = len(Z) - 1
             A[Mk] = len(Z) - 1; im = Image.fromarray(A); dr = ImageDraw.Draw(im)
             named['leaf_typed'] += 1
+    # 3. a forest nobody named: where the measured canopy covers more than 28 % of
+    # the ground within 40 m and the place is still 'urban' (Sutro's
+    # woods beyond the reserve, the Interior Greenbelt, the hills' groves).
+    # Backyards stay below: urban masses' cover is 0.09 median, 0.23 at the
+    # 90th percentile; Sutro's 0.58, the Presidio's 0.35 (veg_src/engine_mass.npy)
+    mp = os.path.join(SRC, 'engine_mass.npy')
+    if os.path.exists(mp):
+        from scipy.ndimage import convolve
+        Ms = np.load(mp).astype(np.float64); c8 = 8.0
+        W8, H8 = int((X1 - X0) / c8), int((Y1 - Y0) / c8)
+        ci = np.clip(((Ms[:, 0] - X0) / c8).astype(int), 0, W8 - 1); ri = np.clip(((Y1 - Ms[:, 1]) / c8).astype(int), 0, H8 - 1)
+        A8 = np.zeros((H8, W8)); np.add.at(A8, (ri, ci), np.pi * Ms[:, 3] ** 2)
+        r = 5; yy, xx = np.mgrid[-r:r + 1, -r:r + 1]; ker = ((xx ** 2 + yy ** 2) <= r * r).astype(float)
+        cov = convolve(A8, ker, mode='constant') / (ker.sum() * c8 * c8)
+        cov4 = np.repeat(np.repeat(cov, 2, 0), 2, 1)[:A.shape[0], :A.shape[1]]
+        A = np.array(im); sel = (A == ZI['urban']) & (cov4 > 0.28)
+        A[sel] = ZI['forest_urban']; im = Image.fromarray(A); named['forest_urban_cells'] = int(sel.sum())
     print('zones painted', dict(named))
     A = np.array(im)
     print('zone cells', {Z[i][0]: int(n) for i, n in enumerate(np.bincount(A.ravel(), minlength=len(Z))) if n})
@@ -291,7 +312,7 @@ def hints(nodes):
 
 
 if __name__ == '__main__':
-    X, Y, A, D, cnt = street()
+    X, Y, A, D, S, cnt = street()
     join_stats(X, Y)
     ways, rels, nodes = load_osm()
     ZA = zones(ways, rels)
@@ -299,7 +320,7 @@ if __name__ == '__main__':
     HN = ARCH + ['conifer', 'broad']
     mix_street = {a: n for a, n in cnt.items() if a not in ('unknown', 'none')}
     tot = sum(mix_street.values()); mix_street = {a: round(n / tot, 4) for a, n in mix_street.items()}
-    np.savez_compressed(f'{VEG}/veg.npz', st_x=X, st_y=Y, st_arch=A, st_dbh=D,
+    np.savez_compressed(f'{VEG}/veg.npz', st_x=X, st_y=Y, st_arch=A, st_dbh=D, st_site=S,
                         h_x=np.array(hx, np.float32), h_y=np.array(hy, np.float32), h_arch=np.array([HN.index(a) for a in ha], np.uint8),
                         zone=ZA, zone_origin=np.array([X0, Y1, RES]))
     json.dump(dict(arch=ARCH, hint_arch=HN, street_mix=mix_street,

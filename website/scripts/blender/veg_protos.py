@@ -49,10 +49,10 @@ def eucalyptus(seed, H=30.0):
         tips.append(P[-1]); origins += [P[j] for j in range(1, len(P) - 1)]
         # foliage hangs along the leader's upper half too, not only at its tip
         for j in range(len(P) // 2, len(P) - 1):
-            if rng.random() < 0.55: tips.append(P[j] + np.array([*rng.normal(0, 1.3 * k, 2), 0.0]))
+            if rng.random() < 0.8: tips.append(P[j] + np.array([*rng.normal(0, 1.4 * k, 2), 0.0]))
     origins += [T[j] for j in range(len(T) - 3, len(T))]
     # the limbs: out and up from the leaders, longest mid-crown
-    nl = int(rng.integers(13, 18))
+    nl = int(rng.integers(17, 23))
     for i in range(nl):
         o = origins[rng.integers(len(origins))]
         tz = (o[2] - Hf * 0.8) / (H - Hf * 0.8)
@@ -61,13 +61,15 @@ def eucalyptus(seed, H=30.0):
         P = branch_path(o, (math.cos(a) * math.cos(el), math.sin(a) * math.cos(el), math.sin(el)), L, 0.35, 4, rng, droop=0.015)
         tube(M, P, np.linspace(R0 * 0.28, R0 * 0.06, len(P)), 4, 0.08)
         tips.append(P[-1])
-        if rng.random() < 0.5: tips.append(P[len(P) // 2] + rng.normal(0, 0.5 * k, 3))
+        if rng.random() < 0.7: tips.append(P[len(P) // 2] + rng.normal(0, 0.5 * k, 3))
     # the foliage: separate hanging clumps, taller than wide, gaps between
     for t in tips:
-        rx = rng.uniform(1.1, 1.9) * k; rz = rng.uniform(1.7, 2.8) * k
+        rx = rng.uniform(1.3, 2.2) * k; rz = rng.uniform(1.9, 3.0) * k
         c = t + np.array([0, 0, -rz * 0.4]) + rng.normal(0, 0.25 * k, 3)
-        clump(M, c, (rx, rx * rng.uniform(0.8, 1.2), rz), int(rng.integers(120, 170)), 0.55 * k ** 0.5, LEAF_LO, LEAF_HI, rng,
-              up=0.05, hang=0.75, stretch=2.3, core=None, shell=0.55)
+        # a darker core inside each clump: the shadowed depth a blue gum shows
+        # from above (card-only clumps read chalky, like dead trees: 24/09)
+        clump(M, c, (rx, rx * rng.uniform(0.8, 1.2), rz), int(rng.integers(130, 170)), 0.58 * k ** 0.5, LEAF_LO, LEAF_HI, rng,
+              up=0.1, hang=0.5, stretch=2.2, core=0.55, shell=0.4)
     return M
 
 
@@ -256,7 +258,7 @@ def palm(seed, kind):
 # leaf tones sit in the Poly Haven kit's range (their photographed leaves),
 # a touch lighter: dense card crowns trap light, a black-green one reads as a hole.
 RAMPS = {
-    'euc':     ('#7c756a', '#a8a08e', '#566451', '#95a084', '#9a8a6a'),
+    'euc':     ('#7c756a', '#a8a08e', '#465341', '#7a876c', '#9a8a6a'),
     'cyp':     ('#4e4036', '#76624f', '#34472e', '#5d7443', '#6a5a40'),
     'pine':    ('#4f4035', '#7a6a58', '#34482a', '#607540', '#6a5a40'),
     'plane':   ('#6d6658', '#a89f8a', '#546c2e', '#8aa352', '#b09a50'),
@@ -298,6 +300,9 @@ def kit():
     return K
 
 
+LEAF_LIFT = (1.40, 1.35, 1.25)     # linear RGB gain on the foliage stops
+
+
 def hex_lin(h):
     h = h.lstrip('#'); c = [int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4)]
     return tuple((v / 12.92) if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in c)
@@ -319,8 +324,12 @@ def _material(bpy, name, ramp):
     # position (setting positions one by one re-sorts the list under the loop)
     e.elements[0].position = stops[0][0]; e.elements[0].color = hex_lin(stops[0][1]) + (1.0,)
     e.elements[1].position = stops[-1][0]; e.elements[1].color = hex_lin(stops[-1][1]) + (1.0,)
-    for p_, hx in stops[1:-1]:
-        e.elements.new(p_).color = hex_lin(hx) + (1.0,)
+    for i_, (p_, hx) in enumerate(stops[1:-1]):
+        c_ = hex_lin(hx)
+        # canopies read near-black from above (critic 24/09): the foliage stops
+        # lifted ~35 %, a touch warmer (olive at this sun); bark stays as is
+        if i_ in (1, 2): c_ = tuple(min(0.9, v * k) for v, k in zip(c_, LEAF_LIFT))
+        e.elements.new(p_).color = c_ + (1.0,)
     L(at.outputs['Fac'], cr.inputs['Fac'])
     # each tree its own shade, by place ('crand', written by hq_city's instancer)
     ci = N.new('ShaderNodeAttribute'); ci.attribute_type = 'INSTANCER'; ci.attribute_name = 'crand'
@@ -337,7 +346,7 @@ def _material(bpy, name, ramp):
     # leaves let some light through: a thin translucent share on the foliage only
     gt = N.new('ShaderNodeMath'); gt.operation = 'GREATER_THAN'; gt.inputs[1].default_value = 0.15
     L(at.outputs['Fac'], gt.inputs[0])
-    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = 0.22
+    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = 0.30
     L(gt.outputs[0], k_.inputs[0])
     tr = N.new('ShaderNodeBsdfTranslucent'); L(hsv.outputs['Color'], tr.inputs['Color'])
     mx = N.new('ShaderNodeMixShader'); L(k_.outputs[0], mx.inputs[0])
