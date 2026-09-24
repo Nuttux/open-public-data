@@ -168,9 +168,10 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             if rs is None: continue
             for x, y in zip(rs[0], rs[1]):
                 if inb(x, y, 100): pts.append((x, y))
-        kt = KDTree(max(1, len(pts)))
-        for i, (x, y) in enumerate(pts): kt.insert((x, y, 0.0), i)
-        kt.balance()
+        if pts:     # an empty tree's find() returns a None distance (frame 0:6: no track in the region)
+            kt = KDTree(len(pts))
+            for i, (x, y) in enumerate(pts): kt.insert((x, y, 0.0), i)
+            kt.balance()
     except Exception as ex: log('life_traffic: no tracks', ex)
     # NO CAR PARKED ON A FREEWAY. hq_city parks a car along every kerb with a
     # wall within 18 m, and the engine draws the freeways at grade with kerbs:
