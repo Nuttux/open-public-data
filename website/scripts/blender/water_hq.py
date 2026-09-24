@@ -22,6 +22,45 @@ LAKE_COL = {'Lake Merced': '#2d4d4c', 'Blue Heron Lake': '#3c4a33', 'Spreckels L
             'North Lake': '#3a4834', 'Middle Lake': '#3a4834', 'South Lake': '#3a4834', 'Laguna Honda': '#2b4556',
             'Pine Lake': '#394833', 'Lloyd Lake': '#3d4a35', 'Elk Glen Lake': '#3d4a35', 'Mallard Lake': '#3d4a35'}
 
+# When each water body was there, for the era renders (None = natural, always).
+# OSM way/relation id -> (year it held water, source). Sources: SF Recreation
+# and Parks and Wikipedia (Golden Gate Park; Blue Heron Lake Boathouse; Sutro
+# Baths; Palace of Fine Arts), goldengatepark.com (Elk Glen).
+LAKE_BUILT = {
+    16650677: (None, 'Mountain Lake: natural'),
+    16308125: (None, 'Lake Merced: natural lagoon (outline changed since; kept)'),
+    31860201: (None, 'Pine Lake, Stern Grove: natural'),
+    2165709: (None, 'North Lake: one of the natural dune lakes the park kept (Chain of Lakes)'),
+    1439752: (None, 'Middle Lake: natural (Chain of Lakes)'),
+    1439753: (None, 'South Lake: natural (Chain of Lakes)'),
+    30969894: (None, 'Laguna Honda: the natural "deep lagoon", dammed as a reservoir'),
+    427296593: (None, 'Yosemite Marsh: natural'),
+    1127627007: (None, 'Islais Creek: the tidal creek, channelled'),
+    12908: (1893, 'Blue Heron (Stow) Lake: dug 1893 for the 1894 Midwinter Fair (SF Rec & Park)'),
+    16750564: (1904, 'Spreckels Lake: built 1902-04, first filled February 1904 (Wikipedia, Golden Gate Park)'),
+    910257043: (1882, 'Alvord Lake: financed by William Alvord, 1882 (Wikipedia, Golden Gate Park)'),
+    100844313: (1936, 'Elk Glen Lake: built 1936 (goldengatepark.com)'),
+    100844604: (1909, 'Lloyd Lake: attested by 1909, when the Portals of the Past were set on its shore'),
+    24308365: (1938, 'Fly Casting Pools: with the Anglers Lodge, 1938'),
+    388991375: (1940, 'Dwarf Conifer Pond: Strybing Arboretum, opened 1940'),
+    388991378: (1940, 'Bamboo Pond: Strybing Arboretum, opened 1940'),
+    7471537: (1915, 'Palace of Fine Arts lagoon: the 1915 Exposition (before: the Harbor View marsh, the history agent\'s)'),
+    32651841: (1915, 'pond by the Palace of Fine Arts: the 1915 Exposition grounds'),
+    32776540: (1966, 'Sutro Baths: the pools lie open since the 1966 fire'),
+    32776535: (1966, 'Sutro Baths: the pools lie open since the 1966 fire'),
+}
+GGPARK = (-6400.0, 480.0, -1350.0, 1400.0)      # Golden Gate Park (and its dune lakes), world m
+LAKE_UNKNOWN_GGP = (1870, 'a pond in Golden Gate Park with no dated source: not before the park (1870)')
+LAKE_UNKNOWN = (1950, 'no dated source: shown from 1950 on (a man-made pond or tank on made land would float on the old bay)')
+
+def lake_built(w):
+    """(year or None, why) for a water.json entry"""
+    if w['id'] in LAKE_BUILT: return LAKE_BUILT[w['id']]
+    xs = [p[0] for p in w['ring']]; ys = [p[1] for p in w['ring']]
+    cx, cy = sum(xs) / len(xs), sum(ys) / len(ys)
+    if GGPARK[0] <= cx <= GGPARK[2] and GGPARK[1] <= cy <= GGPARK[3]: return LAKE_UNKNOWN_GGP
+    return LAKE_UNKNOWN
+
 def _mat(bpy):
     m = bpy.data.materials.get('lm_lake')
     if m is not None: return m
@@ -46,6 +85,8 @@ def lakes(C):
         r = r[:-1] if r[0] == r[-1] else r
         xs = [p[0] for p in r]; ys = [p[1] for p in r]
         if max(xs) < bx0 - 300 or min(xs) > bx1 + 300 or max(ys) < by0 - 300 or min(ys) > by1 + 300: continue
+        yb = lake_built(w)[0]
+        if C.era is not None and yb is not None and C.era < yb: continue       # not dug yet
         # the lake's level: the ground inside it (the median of a few points
         # pulled in from the shore towards the centroid)
         cx, cy = sum(xs) / len(xs), sum(ys) / len(ys)
