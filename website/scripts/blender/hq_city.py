@@ -540,7 +540,7 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
-    occ = float(E('KERB_OCC', '0.30')) if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+    occ = float(E('KERB_OCC', '0.12')) if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
     for i in range(int((L_ - 3) // 6.2)):
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if hp(p.x, p.y, 11) > occ: continue

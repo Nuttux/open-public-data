@@ -85,7 +85,7 @@ def plan_way(r, rr, R_ix=0.0):
     within 45 m of an intersection wait at its stop line (a red light)"""
     hw = r['hw']; base = hw.replace('_link', '')
     P = np.asarray(r['pts']); Ls = float(np.hypot(*np.diff(P, axis=0).T).sum())
-    dens = DENSITY.get(hw, 2.0) * float(os.environ.get('TRAFFIC_K', '0.5'))   # half by default (25/09: the AI layer turns busy streets into car carpets)
+    dens = DENSITY.get(hw, 2.0) * float(os.environ.get('TRAFFIC_K', '0.2'))   # half by default (25/09: the AI layer turns busy streets into car carpets)
     lanes = [k for k in range(r['nf'])] + [-1 - k for k in range(r['nb'])]
     if r.get('one'): lanes = [None]
     if not lanes: lanes = [0]
