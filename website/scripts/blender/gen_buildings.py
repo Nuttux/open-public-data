@@ -184,6 +184,8 @@ class Wall:
             # the far city: a pane on the wall face with its frame and sill —
             # the proportions stay the record's, the modelling stops there
             if kind == 'door': self.rect('door', u0, u1, z0, z1, 0.02, body); return
+            if kind == 'tw':    # a tower's punched window: reflective glass, no painted frame (the stone is the frame)
+                self.rect('curtain_wall', u0, u1, z0, z1, 0.02, body); return
             self.rect('shopglass' if kind == 'shop' else 'glass', u0, u1, z0, z1, 0.03, (1, 1, 1))
             if LOD >= 2:
                 # the casing and sill as one painted quad behind the pane: at
@@ -634,7 +636,7 @@ def tower_top(kind, ring, deck, top, b, r, out, c):
     it (a caller then draws one of the old kinds)"""
     wm, body, rc = c['wall_mat'] or 'concrete', c['body'], c['rc']
     gc = c.get('gcol') or (0.22, 0.24, 0.26, 0.3); fh = c.get('fh', 3.8)
-    n = len(ring); dark = r.choice(((0.20, 0.21, 0.22), (0.30, 0.31, 0.31), (0.44, 0.44, 0.43), (0.26, 0.23, 0.20)))
+    n = len(ring); dark = r.choice(((0.46, 0.46, 0.45), (0.56, 0.56, 0.54), (0.64, 0.64, 0.62), mix(body, (0.5, 0.5, 0.5), 0.3)))
     if kind == 'setback':
         # one to three tiers, each set in from the one below, a glass band
         # round each, the last carrying a louvred screen
@@ -656,15 +658,16 @@ def tower_top(kind, ring, deck, top, b, r, out, c):
         q = offset_ring(ring, -r.uniform(1.0, 2.6))
         if not inset_ok(ring, q): return False
         h = r.uniform(3.8, 6.0)
-        dark = r.choice((mix(body, (0.5, 0.5, 0.5), 0.3), (0.62, 0.62, 0.60), (0.52, 0.52, 0.50), dark))   # louvres: light metal or the wall's own tone, dark now and then
+        dark = r.choice((mix(body, (0.5, 0.5, 0.5), 0.3), (0.62, 0.62, 0.60), (0.56, 0.56, 0.54), body))   # louvres: light metal or the wall's own tone
         prism(out, 'metal', q, deck, top + h, dark)
-        prism(out, 'metal', offset_ring(q, -0.15)[::-1], deck, top + h, mix(dark, (0, 0, 0), 0.3))
+        prism(out, 'metal', offset_ring(q, -0.15)[::-1], deck, top + h, mix(dark, (0, 0, 0), 0.12))
         return 'more'
     if kind == 'glass':
         # the wall's glass run up past the roof, an open crown
-        h = r.uniform(3.5, 7.0)
+        h = r.uniform(2.5, 5.0)
         prism(out, 'curtain_wall', offset_ring(ring, 0.02), top - 0.6, top + h, gc)
-        prism(out, 'curtain_wall', offset_ring(ring, -0.25)[::-1], deck, top + h, gc)
+        prism(out, 'metal', offset_ring(ring, -0.25)[::-1], deck, top + h, (0.62, 0.62, 0.60))     # its back: light framing, not a black band
+        prism(out, 'metal', offset_ring(ring, 0.02), top + h, top + h + 0.08, (0.66, 0.66, 0.64))
         return 'more'
     # 'stepped' and 'pyramid' need a plan close to its rectangle
     ax = Vector((ring[1][0] - ring[0][0], ring[1][1] - ring[0][1]))
@@ -936,7 +939,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             if res_ is True: kind = None
             elif res_ == 'more': kind = 'bare'                     # a stair house and cooling cells inside
         else: kind = None
-        louvre = rng.choice(((0.16, 0.165, 0.17), (0.30, 0.31, 0.31), (0.46, 0.46, 0.45), (0.24, 0.21, 0.18)))
+        louvre = rng.choice(((0.40, 0.41, 0.41), (0.52, 0.52, 0.51), (0.60, 0.60, 0.58), (0.46, 0.43, 0.40)))   # (light metal: the dark louvres drew black outlines from the air)
         def cap(u0, v0, wu, wv, z):
             out.poly('roof_flat', [at(u0 + 0.05, v0 + 0.05, z + 0.02), at(u0 + wu - 0.05, v0 + 0.05, z + 0.02),
                                    at(u0 + wu - 0.05, v0 + wv - 0.05, z + 0.02), at(u0 + 0.05, v0 + wv - 0.05, z + 0.02)], rc)
@@ -1182,6 +1185,18 @@ def facade(w, is_front, b, rng, c):
         w.box('trim', 0.0, L, zg + 3.5, zg + 4.2, 0.0, 0.12, accent)    # sign band
     # windows: each floor, the rest of the wall
     gap_min = {'vic': 0.7, 'block': 0.9}.get(style, 1.0)
+    # a punched-stone tower (24/09): reflective panes, low contrast with the
+    # stone, and a string course at every floor, so the face reads as a
+    # surface with a rhythm, not a static of dark dots
+    tw_ = None
+    if sub == 'tower' and style == 'block' and LOD >= 1:
+        tr_ = random.Random(b['gid'] * 57 + 3)
+        tw_ = tr_.choice(((0.40, 0.42, 0.43, 0.45), (0.46, 0.44, 0.40, 0.5), (0.34, 0.36, 0.38, 0.4), (0.52, 0.53, 0.54, 0.6)))
+        band = mix(body, (1.0, 1.0, 1.0), 0.12)
+        for f in range(1, nfl + 1):
+            z = first + f * fh
+            if z > eave - 0.3: break
+            w.box(c['wall_mat'] or 'concrete', 0.0, L, z - 0.22, z + 0.12, 0.0, 0.1, band)
     for f in range(nfl):
         z0 = first + f * fh + sill; z1 = z0 + wh
         if z1 > eave - 0.2: break
@@ -1204,6 +1219,7 @@ def facade(w, is_front, b, rng, c):
                 uc_ = s0 + gap * (j + 0.5)
                 u0, u1 = uc_ - ww / 2, uc_ + ww / 2
                 holes.append((u0, u1, z0, z1))
+                if tw_: w.opening(u0, u1, z0, z1, 'tw', trim, 0.18, rng, body=tw_); continue
                 w.opening(u0, u1, z0, z1, 'tall' if style == 'block' or sub == 'modern' else 'dh', trim, 0.18, rng, hood=hood)
                 # balconies on a modern front
                 if sub == 'modern' and is_front and f > 0 and j % 2 == 0 and LOD == 0:
