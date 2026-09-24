@@ -189,7 +189,14 @@ BATHY = '/Users/daniel/code/qipu-render-work/landmarks/bathy_8m.npy'     # tools
 
 def _depth_image(bpy, ox, oy, w_, h_):
     """the depth under the sea on the mask's frame, as a float image (R =
-    sqrt(depth / 120 m), more resolution in the shallows); None if no data"""
+    sqrt(depth / DEPTH_MAX), more resolution in the shallows); None if no data.
+    The 16-bit PNG first: a generated float image (images.new + pixels) came
+    out blank in the render — the whole sea took the shallow colour"""
+    png = BATHY.replace('.npy', '_v60.png')
+    if os.path.exists(png) and abs(DEPTH_MAX - 60.0) < 1e-6:
+        im = bpy.data.images.load(png, check_existing=True)
+        im.colorspace_settings.name = 'Non-Color'
+        return im
     if os.path.exists(BATHY):
         dep = np.load(BATHY).astype(np.float32)                 # row 0 = north
         ny, nx = dep.shape
@@ -200,18 +207,20 @@ def _depth_image(bpy, ox, oy, w_, h_):
         X, Y = np.meshgrid(ox + (np.arange(nx) + 0.5) * res, oy + h_ - (np.arange(ny) + 0.5) * res)
         Z = lm_dem.sample_arr(X, Y)
         dep = np.where(np.isnan(Z), 40.0, np.clip(-Z, 0.0, 120.0)).astype(np.float32)
-    v = np.sqrt(np.clip(dep / 120.0, 0, 1)).astype(np.float32)[::-1]     # bpy rows start at the bottom
+    v = np.sqrt(np.clip(dep / DEPTH_MAX, 0, 1)).astype(np.float32)[::-1]     # bpy rows start at the bottom
     im = bpy.data.images.new('lm_depth', nx, ny, alpha=False, float_buffer=True)
     px = np.zeros((ny, nx, 4), np.float32); px[..., 0] = v; px[..., 3] = 1.0
     im.pixels.foreach_set(px.ravel()); im.colorspace_settings.name = 'Non-Color'
     return im
 
-# the water's own colour (under the sky it reflects) by depth, sqrt(depth / 120 m):
-# the bay is turbid — olive-grey over the flats and along the shore, teal
-# over the shoals, the navy-teal the render had before only in the deep
-# channel of the Golden Gate and offshore
-DEPTH_STOPS = [(0.0, (0.070, 0.074, 0.052)), (0.10, (0.040, 0.060, 0.050)), (0.20, (0.020, 0.045, 0.046)),
-               (0.32, (0.010, 0.030, 0.038)), (0.50, (0.006, 0.021, 0.031)), (1.0, (0.003, 0.012, 0.024))]
+# the water's own colour (under the sky it reflects) by depth, v = sqrt(depth / 60 m):
+# the bay is turbid — sand-olive in the shallows along the shore, grey-green
+# over the flats (2-5 m), teal-grey over the bay floor (10-20 m), navy only in
+# the channels (the Golden Gate's 40-110 m). A first ramp on sqrt(depth / 120)
+# put everything from 2 m to 30 m in the same dark band: no variation showed
+DEPTH_MAX = 60.0
+DEPTH_STOPS = [(0.00, (0.100, 0.098, 0.068)), (0.18, (0.062, 0.078, 0.060)), (0.29, (0.036, 0.060, 0.056)),
+               (0.41, (0.019, 0.043, 0.049)), (0.58, (0.010, 0.029, 0.039)), (0.82, (0.005, 0.016, 0.029)), (1.0, (0.003, 0.011, 0.024))]
 
 def sea_depth(C):
     """recolour the render's 'sea' material by the depth under the water"""
@@ -277,7 +286,9 @@ def sea_wind(C, seed=0.0):
     # 0 slick .. 1 ruffled, with soft edges
     wr = mth('MULTIPLY', mth('SUBTRACT', w, 0.44), 5.0, clamp=True)
     wr = mth('MULTIPLY', mth('MULTIPLY', wr, wr), mth('SUBTRACT', 3.0, mth('MULTIPLY', wr, 2.0)))
-    L_(mth('ADD', 0.03, mth('MULTIPLY', wr, 0.08)), wat.inputs['Roughness'])
+    # roughness only 0.035-0.06: rougher water mirrors the pale sky near the
+    # horizon and washed the whole sea out (2026-09-24); the ripples carry it
+    L_(mth('ADD', 0.035, mth('MULTIPLY', wr, 0.025)), wat.inputs['Roughness'])
     if bm is not None:
         L_(mth('ADD', 0.25, mth('MULTIPLY', wr, 0.55)), bm.inputs['Strength'])
     return True
@@ -340,7 +351,10 @@ def piers(C):
                 if tg(*mid) > 1.0: continue                    # on land or on a deck the ground already has
                 fl = p['kind'] == 'float_line' or L_ < 80.0
                 z = 0.55 if fl else 2.4
-                w = p['width']
+                # widths: OSM's when tagged; else a marina finger ~1.0 m (under 45 m
+                # long), a float walkway 2.4 m, a fixed dock 3.5 m (lm_prep's
+                # blanket 3.5 / 2.4 ate the slips: no boat fitted between fingers)
+                w = p['width'] if p.get('width_tagged') else (1.0 if (fl and L_ < 45.0) else 2.4 if fl else 3.5)
                 for a, b in zip(pts, pts[1:]):
                     if math.hypot(b[0] - a[0], b[1] - a[1]) < 0.2: continue
                     K.beam('lm_matte', (a[0], a[1], z - 0.2), (b[0], b[1], z - 0.2), w, 0.4, FLOAT if fl else DECK)

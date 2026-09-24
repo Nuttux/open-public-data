@@ -46,5 +46,21 @@ if os.environ.get('LM_NOGHOST') == '1':
         src = src.replace(a_, "        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue\n" + a_, 1)
     else: print('lm_run: LM_NOGHOST: ground-detail line not found', flush=True)
 os.environ.setdefault('LM_ALL', '1')                 # the landmarks agent's tests see every model
+# the footprints the tested models replace (LM_KEYS, or all of them with LM_ALL=1)
+# go into this snapshot's own skip_gids.json, as a pass would have them once enabled:
+# the generator's building must not stand under a model under test (Oracle Park's
+# 11.6 m block covered the ballpark in a test, 2026-09-24)
+try:
+    import json as _j
+    _live = '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json'
+    if os.path.exists(_live) and os.path.abspath(HERE) != '/Users/daniel/code/opd-render/website/scripts/blender':
+        _s = _j.load(open(_live))
+        _keys = set(_s.get('all_by_landmark', {})) if os.environ.get('LM_ALL') == '1' else {k for k in os.environ.get('LM_KEYS', '').split(',') if k}
+        for _k in _keys:
+            if _k in _s.get('all_by_landmark', {}):
+                _s['by_landmark'][_k] = _s['all_by_landmark'][_k]; _s.setdefault('built', {})[_k] = _s['all_built'].get(_k)
+        _j.dump(_s, open(os.path.join(HERE, 'skip_gids.json'), 'w'))
+except Exception as _ex:
+    print('lm_run: skip list for the tested models not written', _ex, flush=True)
 g = {'__name__': '__main__', '__file__': path}
 exec(compile(src, path, 'exec'), g)
