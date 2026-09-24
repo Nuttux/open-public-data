@@ -10,7 +10,8 @@
 # container RAM holds, ~27 GB a frame) · ALL=1 renders the sea frames too · SPF (s of pod time per frame at PAR 1 for
 # the watchdog budget, default 200) · FRAMES="i:j …" to override the list (tests)
 set -u
-NAME=$1; W=/Users/daniel/code/qipu-render-work; C=$W/cloud; REPO=/Users/daniel/code/opd-render
+NAME=$1; shift; for a_ in "$@"; do case "$a_" in [A-Z]*=*) export "$a_";; esac; done   # settings also as arguments: ckpt.sh <name> ALL=1 PAR=2
+W=/Users/daniel/code/qipu-render-work; C=$W/cloud; REPO=/Users/daniel/code/opd-render
 B=$REPO/website/scripts/blender; SN=ckpt_$NAME; O=$C/ckpt_$NAME
 python3 $C/pod.py total >/dev/null || { echo "HARD STOP: COSTS.md total reached \$15"; exit 3; }
 [ -e $O ] && { echo "$O exists"; exit 1; }
