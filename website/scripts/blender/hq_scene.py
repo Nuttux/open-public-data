@@ -1941,8 +1941,9 @@ def sea():
     dist = mth('MULTIPLY', sp.outputs[1], 127.5)
     shallow = mth('POWER', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 60.0, clamp=True)), 2.0)
     mc = nt.nodes.new('ShaderNodeMix'); mc.data_type = 'RGBA'; L_(shallow, mc.inputs[0])
-    mc.inputs[6].default_value = (0.004, 0.018, 0.028, 1); mc.inputs[7].default_value = (0.02, 0.08, 0.08, 1)
+    mc.inputs[6].default_value = (*[float(v) for v in E('SEA_DEEP', '0.004,0.018,0.028').split(',')], 1); mc.inputs[7].default_value = (0.02, 0.08, 0.08, 1)   # SEA_DEEP: open-water colour, test knob
     wat = nt.nodes.new('ShaderNodeBsdfPrincipled'); L_(mc.outputs[2], wat.inputs['Base Color'])
+    if E('SEA_IOR'): wat.inputs['IOR'].default_value = float(E('SEA_IOR'))   # SEA_IOR: a higher IOR mirrors more sky at our 61° incidence (test knob)
     wat.inputs['Roughness'].default_value = float(E('SEA_ROUGH', 0.04)); wat.inputs['Specular IOR Level'].default_value = float(E('SEA_SPEC', 0.5))   # SEA_SPEC: sky mirrored by the open water (Fresnel), test knob
     wm = nt.nodes.new('ShaderNodeMapping'); wm.inputs['Scale'].default_value = (0.6, 1.8, 1); L_(geo.outputs['Position'], wm.inputs[0])
     w1 = nt.nodes.new('ShaderNodeTexNoise'); w1.inputs['Scale'].default_value = 0.05; w1.inputs['Detail'].default_value = 8; L_(wm.outputs[0], w1.inputs['Vector'])
