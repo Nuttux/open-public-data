@@ -295,6 +295,11 @@ def _lay(bank, G, surf, grade_nodes):
     if t['bridge']:
         _bridge(bank, G, surf, grade_nodes); return
     styles = np.array([style_of(t, o) for o in onst])
+    # disused track only where it is set in a street (the Belt Railroad's old
+    # rails in the pavement): off the street it lies on the pier aprons, whose
+    # ground is not the deck the landmarks agent builds, and came out as dark
+    # wavy ballast beside the pier sheds (Embarcadero, 2026-09-24)
+    if cls == 'disused': styles[styles == 'ballast'] = 'none'
     for sty in ('embedded', 'ballast'):
         m = ok & (styles == sty)
         for i0, i1 in TG.runs(m):
