@@ -653,7 +653,14 @@ def building(b, ground, out):
         if sub == 'works': proj = 0.12                      # a plain coping on a works parapet
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof
         if style == 'vic': wf.rect('siding', 0.0, wf.L, top, ctop, 0.0, body)
-        if sub == 'med':
+        # (25/09) the tiled coping on a third of the 1920s-40s fronts, not on
+        # every one: from the air the Sunset's rows are white and grey
+        # parapets with a red tile pent here and there (drone, Parkside 2018),
+        # not a red line down every avenue; the rest a plain stucco coping
+        med_tile = sub == 'med' and random.Random(b['gid'] * 613 + 29).random() < 0.33
+        if sub == 'med' and not med_tile:
+            wf.box('trim', -0.06, wf.L + 0.06, top - 0.05, ctop, 0.0, 0.16, trim)
+        elif sub == 'med':
             # a tiled coping over the parapet, pitched out
             a0, a1 = wf.P(-0.2, top + 0.1, 0.45), wf.P(wf.L + 0.2, top + 0.1, 0.45)
             b0, b1 = wf.P(-0.2, top + 0.55, -0.15), wf.P(wf.L + 0.2, top + 0.55, -0.15)
