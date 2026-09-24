@@ -167,9 +167,12 @@ for m in d['meshes']:
         else:
             for t in range(len(p) // 9):
                 if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
+SP, _ = fix_street_shards(SP)                  # street triangles torn by the drape along the seawall (hq_scene)
+SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
+MP = keep_on_streets(MP, sbv)                  # paint of a dropped footpath-street goes with it (hq_scene)
 for i in range(0, len(MP), 3):
     h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
     if h_[0] is not None: MP[i+2] = h_[0].z + 0.012
@@ -177,6 +180,8 @@ if len(MP): mesh_from('markings', MP, M['paint'])
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
+_pp = park_paths(BOX, ground0)                 # every footpath, stairway and trail, narrow and light (hq_scene)
+if _pp: mesh_from('parkpaths', _pp[0], M['parkpath'], cols=_pp[1])
 pass   # the parks: painted by hill_ground (hq_scene's materials block)
 
 bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()
@@ -274,6 +279,11 @@ def instancer(name, pts, protos):
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     for nm, k, tp in (('s', 3, 'FLOAT'), ('r', 4, 'FLOAT'), ('kind', 5, 'INT')):
         at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', [p[k] for p in pts])
+    # 'crand': the instance's own random, BY PLACE. A shader's Object Info >
+    # Random follows the instance's index, which shifts with the region: a
+    # parked car kept its place across a frame seam but changed colour (life
+    # agent, 24/09). place_random() points the protos' materials at this.
+    at = me.attributes.new('crand', 'FLOAT', 'POINT'); at.data.foreach_set('value', [hp(p[0], p[1], 7) for p in pts])
     ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob)
     ng = bpy.data.node_groups.new(name, 'GeometryNodeTree')
     ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
@@ -443,8 +453,27 @@ for a, b, outv in SE:
         if hp(p.x, p.y, 11) > occ: continue
         if not in_box(p.x, p.y): continue
         if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue
+        if carfree_at(p.x, p.y, BOX): continue     # JFK Promenade, Twin Peaks' closed loop, busways
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if hp(p.x, p.y, 12) < 0.5 else 0), int(hp(p.x, p.y, 13) * len(car_colls))))
 instancer('cars', cpts, car_colls)
+def place_random(colls):
+    """in every material of these protos, Object Info > Random -> the
+    instance's 'crand' attribute (by place, the same in every frame)"""
+    seen_ = set()
+    for c_ in colls:
+        for o_ in c_.all_objects:
+            for sl_ in getattr(o_, 'material_slots', []):
+                m_ = sl_.material
+                if m_ is None or m_.name in seen_ or not m_.node_tree: continue
+                seen_.add(m_.name); nt_ = m_.node_tree
+                for oi_ in [n_ for n_ in nt_.nodes if n_.bl_idname == 'ShaderNodeObjectInfo']:
+                    links_ = [l_ for l_ in nt_.links if l_.from_node == oi_ and l_.from_socket.name == 'Random']
+                    if not links_: continue
+                    at_ = nt_.nodes.new('ShaderNodeAttribute'); at_.attribute_type = 'INSTANCER'; at_.attribute_name = 'crand'
+                    for l_ in links_:
+                        to_ = l_.to_socket; nt_.links.remove(l_); nt_.links.new(at_.outputs['Fac'], to_)
+    log('place_random: materials re-pointed', len(seen_))
+place_random(car_colls)
 
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
