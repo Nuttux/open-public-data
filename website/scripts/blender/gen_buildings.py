@@ -474,6 +474,16 @@ def building(b, ground, out):
         trim = wrng.choice((mix(body, (0.0, 0.0, 0.0), 0.12), mix(body, (0.0, 0.0, 0.0), 0.12), (0.30, 0.31, 0.32), (0.92, 0.91, 0.88)))
         accent = wrng.choice(((0.62, 0.63, 0.62), (0.62, 0.63, 0.62), (0.48, 0.50, 0.51), (0.30, 0.40, 0.52), (0.58, 0.22, 0.17), (0.30, 0.38, 0.32), (0.86, 0.84, 0.80)))
 
+    # ── BCOL_REAL (realcolour pilot, default off): the facade measured on
+    # registered street photos (KartaView, CC BY-SA), or drawn from the
+    # measured (neighbourhood x decade x type) pool; realcolour/rc_build_a.py ──
+    import os as _os_rc
+    if _os_rc.environ.get('BCOL_REAL', '0') == '1' and PS is None and not LM and ERA is None and sub not in ('works', 'pier'):
+        RCB = _realcol().get(str(b['gid']))
+        if RCB:
+            body, trim = saturate(tuple(RCB['b']), float(_os_rc.environ.get('BCOL_SAT', 1.2))), tuple(RCB['t'])
+            if RCB.get('m') == 'brick' and style == 'block': wall_mat = 'brick'
+
     # ── floors ──
     raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
     if style == 'stucco' and raised > 1.5: raised = 2.6        # Edwardian over a garage level
@@ -1017,6 +1027,18 @@ LIDAR_R = _load_lidar()
 _ROOF_TEX = {'roof_shingle': (0.109, 0.1056, 0.0968), 'roof_tile': (0.3416, 0.0945, 0.0290)}
 _FLAT_TEX = {0: (1.215, 1.068, 0.881), 1: (1.238, 1.078, 0.960), 2: (1.05, 1.017, 1.0), 3: (1.05, 1.017, 1.0)}
 _FLAT_KIND = {'white': 2, 'metal': 3, 'gravel': 0, 'green': 0}      # the rest: cap sheet
+
+_RC = None
+def _realcol():
+    """BCOL_REAL: the realcolour table (REALCOL_LICENCE=open: without NC-derived data)"""
+    global _RC
+    import os, json
+    if _RC is None:
+        f = os.environ.get('REALCOL_FILE') or '/Users/daniel/code/qipu-render-work/realcolour/out/realcol_%s.json' % ('open' if os.environ.get('REALCOL_LICENCE') == 'open' else 'all')
+        _RC = json.load(open(f)) if os.path.exists(f) else {}
+        print('BCOL_REAL', f, len(_RC))
+    return _RC
+
 def _lum(a): return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]
 def _disp(lin): return tuple(max(0.0, v) ** (1 / 2.2) for v in lin)   # emit() raises back to 2.2
 
@@ -1973,6 +1995,9 @@ def emit(bpy, out, mats, name='gen'):
         for c in C: flat.extend((c[0] ** 2.2, c[1] ** 2.2, c[2] ** 2.2, c[3] if len(c) > 3 else 1.0))
         at.data.foreach_set('color', flat)
         me.validate(clean_customdata=False)
+        # BTEX_REAL (realcolour pilot, variant B; default off): UV 'rtex' into the projected-photo atlas (rc_tex.py)
+        if ERA is None and k in ('siding', 'stucco', 'brick', 'concrete', 'trim', 'shingle') and __import__('os').environ.get('BTEX_REAL', '0') == '1':
+            import rc_tex; rc_tex.assign_uv(me)
         me.materials.append(mats[k] if k in mats else mats['roof_flat' if k == 'roof_big' else k])
         ob = bpy.data.objects.new(f'{name}.{k}', me)
         bpy.context.scene.collection.objects.link(ob); objs.append(ob)
