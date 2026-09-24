@@ -541,7 +541,7 @@ def _mansard(K, r, z, d, h, col=None):
         inn.append((x1 + bx / lbis * k, y1 + by / lbis * k))
     for i in range(n):
         a, b = r[i], r[(i + 1) % n]; ai, bi = inn[i], inn[(i + 1) % n]
-        K.face('lm_copper', [(a[0], a[1], z), (b[0], b[1], z), (bi[0], bi[1], z + h), (ai[0], ai[1], z + h)], col or (1, 1, 1, 1))
+        K.face('lm_matte', [(a[0], a[1], z), (b[0], b[1], z), (bi[0], bi[1], z + h), (ai[0], ai[1], z + h)], col or hexc('#a6c2bf'))   # light blue-grey copper (top-down aerial)
 
 def cityhall(C):
     """SAN FRANCISCO CITY HALL (Bakewell & Brown, 1915): Beaux-Arts, Sierra
@@ -576,7 +576,7 @@ def cityhall(C):
         K.prism('pl_stone', h[::-1], g + 7.0, g + 26.5, GRANITE_D, top=False)
         K.face('path', [(p[0], p[1], g + 7.0) for p in h], (1, 1, 1, 1))
         # (25/09, aerials refs/cityhall) the courts are roofed in green glass skylights
-        K.face('glass', [(p[0], p[1], g + 25.0) for p in (h if _sa(h) > 0 else h[::-1])], hexc('#4f877c'))
+        K.face('lm_matte', [(p[0], p[1], g + 27.2) for p in (h if _sa(h) > 0 else h[::-1])], hexc('#7fae9f'))       # green-tinted glass skylight, just over the parapet
         _mansard(K, h[::-1] if _sa(h) > 0 else h, g + 26.5, 2.5, 1.2)
     # the copper-green mansard band all round the roof's edge (the aerials' turquoise frame)
     _mansard(K, r if _sa(r) > 0 else r[::-1], g + 26.5, 6.5, 2.4)
@@ -655,9 +655,9 @@ def cityhall(C):
     K.lathe('lm_gold', X0, Y0, g, [(3.0, 87.0), (2.6, 88.4), (1.6, 89.6), (0.5, 90.2), (0.35, 91.0), (0.55, 91.6), (0.12, 93.7), (0.0, 93.7)], (1, 1, 1, 1), n=16)
 
 # ── Palace of Fine Arts ──────────────────────────────────────────────────────
-POFA_STONE = hexc('#dcc3a4')
-POFA_STONE_D = hexc('#c3a684')
-POFA_DOME = hexc('#b58a6c')
+POFA_STONE = hexc('#c9a77e')     # (25/09) warm ochre-tan cast stone (aerials refs/pofa; was pale cream)
+POFA_STONE_D = hexc('#b08c63')
+POFA_DOME = hexc('#626a64')      # the rotunda dome: weathered dark grey-green (was salmon)
 
 def _fit_circle(pts):
     A = np.array([[2 * x, 2 * y, 1.0] for x, y in pts]); b = np.array([x * x + y * y for x, y in pts])
