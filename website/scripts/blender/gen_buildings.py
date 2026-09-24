@@ -320,6 +320,10 @@ def style_of(b):
     if ty in ('HOUSE', 'FLATS', 'APARTMENT', 'UNCLASSED') and y < 1912 and h < 19: return 'vic'
     if ty in ('HOUSE', 'FLATS', 'APARTMENT', 'RETAIL', 'UNCLASSED') and y < 1945 and h < 20: return 'stucco'
     if ty in ('HOUSE', 'FLATS') and h < 12: return 'midcentury'
+    # (25/09) the post-war flats (the 'Richmond special', 1945-85): two or
+    # three floors of stucco flats over a row of garages — they were drawn
+    # as pre-war apartment blocks (pilastered entry, brick, cornice)
+    if ty in ('APARTMENT', 'FLATS') and 1945 <= y < 1985 and h < 14 and not b.get('shop'): return 'midcentury'
     return 'block'
 
 
@@ -334,6 +338,7 @@ def substyle(b, style, rng):
     if style == 'stucco':
         return 'edwardian' if y < 1918 else 'med'
     if style == 'midcentury':
+        if b['ty'] in ('APARTMENT', 'FLATS') and b['h'] >= 8.5 and y < 1985: return 'postwar'
         return 'sunset' if y < 1962 else 'modern'
     # the works: warehouses, shops and garages of SoMa, Dogpatch, the Bayview
     # (the roll's INDUSTRIAL and GARAGE; they were apartment houses before)
@@ -502,14 +507,23 @@ def building(b, ground, out):
     raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
     if style == 'stucco' and raised > 1.5: raised = 2.6        # Edwardian over a garage level
     if sub == 'sunset': raised = 2.6                           # the Sunset house: garage below, living above
+    # (25/09) the 1920s-40s house of the Sunset, the Richmond, the Excelsior
+    # stands over its garage nine times in ten (the tract builders' plan);
+    # the old half-and-half draw left half of them one tall storey of 5-6 m
+    grng = random.Random(b['gid'] * 211 + 17)
+    if sub == 'med' and b['ty'] in ('HOUSE', 'FLATS') and (b['year'] or 0) >= 1922 and b['h'] >= 5.3 and raised < 2.6 and grng.random() < 0.8: raised = 2.6
+    if sub == 'postwar': raised = 2.7                          # the garage row at the street
     first = zg + raised
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
+    # the post-war flats: as many floors as the height holds (the roll counts
+    # the garage level in some records, not in others)
+    if sub == 'postwar': nfl = max(1, round((eave - first - 0.4) / 2.85))
     fh = max(2.6, (eave - first) / nfl)
     if first + fh > eave: first = zg + 0.3; fh = max(2.4, (eave - first) / nfl)
     hood = {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
     bay_kind = {'italianate': 'slant', 'stick': 'square', 'queen': rng.choice(('slant', 'square')),
                 'edwardian': 'square', 'med': 'square' if rng.random() < 0.4 else None,
-                'sunset': 'box'}.get(sub)
+                'sunset': 'box', 'postwar': 'square' if grng.random() < 0.45 else None}.get(sub)
     if LM: bay_kind = LM['bay']
     # the pre-war apartment house: bays stacked up the front, a fire escape
     yr_ = b['year'] or 1950
@@ -1391,6 +1405,7 @@ def facade(w, is_front, b, rng, c):
     elif sub == 'edwardian': ww, wh = 1.0, min(2.1, fh * 0.6)
     elif style == 'stucco': ww, wh = 1.15, min(1.8, fh * 0.55)
     elif sub == 'sunset': ww, wh = 1.2, 1.5
+    elif sub == 'postwar': ww, wh = 1.9, min(1.45, fh * 0.55)     # aluminium sliders
     elif sub == 'modern': ww, wh = 1.8, 1.6
     elif sub == 'tower': ww, wh = 1.5, min(2.4, fh * 0.72)
     else: ww, wh = 1.3, min(1.8, fh * 0.52)
@@ -1436,6 +1451,17 @@ def facade(w, is_front, b, rng, c):
                 w.box('trim', g0 - 0.12, g0 + gw + 0.12, zg + 2.3, zg + 2.45, 0.0, 0.08, trim)
                 free = cut(free, garage_u, 0.2)
                 free = [f for f in free if f[1] - f[0] > 1.3]
+                # (25/09) the post-war flats: a second garage beside the first,
+                # the entry beyond them
+                if sub == 'postwar' and free:
+                    f_ = max(free, key=lambda f: f[1] - f[0])
+                    if f_[1] - f_[0] >= gw + 1.6:
+                        g1 = f_[0] + 0.1 if f_[0] >= garage_u[1] else f_[1] - 0.1 - gw
+                        holes.append((g1, g1 + gw, zg + 0.05, zg + 2.3))
+                        w.rect('door', g1, g1 + gw, zg + 0.05, zg + 2.3, -0.12, mix(accent, (0.85, 0.84, 0.8), 0.6))
+                        for k in range(5 if LOD < 2 else 0): w.box('trim', g1, g1 + gw, zg + 0.08 + k * 0.45, zg + 0.11 + k * 0.45, -0.12, -0.08, trim)
+                        w.box('trim', g1 - 0.12, g1 + gw + 0.12, zg + 2.3, zg + 2.45, 0.0, 0.08, trim)
+                        free = [f for f in cut(free, (g1, g1 + gw), 0.2) if f[1] - f[0] > 1.3]
         if free:
             f_ = max(free, key=lambda f: f[1] - f[0])
             du0 = f_[0] + 0.15 if rng.random() < 0.5 else f_[1] - 1.15
@@ -1510,7 +1536,7 @@ def facade(w, is_front, b, rng, c):
                 u0, u1 = uc_ - ww / 2, uc_ + ww / 2
                 holes.append((u0, u1, z0, z1))
                 if tw_: w.opening(u0, u1, z0, z1, 'tw', trim, 0.18, rng, body=tw_); continue
-                w.opening(u0, u1, z0, z1, 'tall' if style == 'block' or sub == 'modern' else 'dh', trim, 0.18, rng, hood=hood)
+                w.opening(u0, u1, z0, z1, 'tall' if style == 'block' or sub in ('modern', 'postwar') else 'dh', trim, 0.18, rng, hood=hood)
                 # balconies on a modern front
                 if sub == 'modern' and is_front and f > 0 and j % 2 == 0 and LOD == 0:
                     w.box('concrete', u0 - 0.3, min(L - 0.2, u1 + gap + 0.3), z0 - sill - 0.15, z0 - sill, 0.0, 1.2, (0.8, 0.8, 0.78))
