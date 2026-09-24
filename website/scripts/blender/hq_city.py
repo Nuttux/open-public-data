@@ -271,10 +271,16 @@ recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 recs.sort(key=lambda b: (int(b['cx'] // 700), int(b['cy'] // 700)))
+if E('GID_PASS') == '1':   # every face a building draws carries its gid as colour (24 bit), for the ID pass only
+    _poly0 = G.Out.poly
+    def _poly_gid(self, mat, pts, col=(1, 1, 1)):
+        g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
+    G.Out.poly = _poly_gid
 CH = 6000; nfaces = 0; _bfail = []
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
+        if E('GID_PASS') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
         try: G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
         except Exception as ex:     # a broken building used to draw half and say nothing: log the first ones
             _bfail.append(b.get('gid'))
@@ -534,7 +540,7 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
-    occ = 0.50 if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+    occ = float(E('KERB_OCC', '0.30')) if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
     for i in range(int((L_ - 3) // 6.2)):
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if hp(p.x, p.y, 11) > occ: continue
@@ -686,6 +692,94 @@ if E('MODE') == 'pyramid':
         sc.render.use_border = True; sc.render.use_crop_to_border = True
         sc.render.border_min_x, sc.render.border_max_x, sc.render.border_min_y, sc.render.border_max_y = bx_
     rot = Matrix((Vector((1, 0, 0)), up, -fw_)).transposed().to_euler()
+    if E('CLAY') == '1':   # massing input for the AI photo layer: walls light grey, roofs mid grey, glass dark, roof gear hidden
+        def _clay(nm_, v_):
+            m_ = bpy.data.materials.get(nm_) or bpy.data.materials.new(nm_); m_.use_nodes = True
+            b_ = m_.node_tree.nodes.get('Principled BSDF'); b_.inputs['Base Color'].default_value = (v_, v_, v_, 1); b_.inputs['Roughness'].default_value = 0.8
+            return m_
+        _cw, _cr, _cg = _clay('clay_wall', 0.55), _clay('clay_roof', 0.25), _clay('clay_glass', 0.03); _ck = {}
+        for o_ in list(bpy.data.objects):
+            mt_ = __import__('re').match(r'^(b\d+|gen)\.(.+)$', o_.name)
+            if not mt_ or o_.type != 'MESH': continue
+            k_ = mt_.group(2).split('.')[0]; _ck[k_] = _ck.get(k_, 0) + 1
+            if any(t_ in k_ for t_ in ('equip', 'gear', 'hvac', 'vent', 'tank', 'solar', 'chimney')): o_.hide_render = True; continue
+            m_ = _cg if any(t_ in k_ for t_ in ('glass', 'win', 'curtain')) else _cr if 'roof' in k_ else _cw
+            for s_ in range(len(o_.data.materials)): o_.data.materials[s_] = m_
+        log('CLAY building keys:', sorted(_ck))
+    # MASK_PASS=1|only (AI photo layer, 24/09): a flat ID map next to each frame, <frame>.mask.png, same camera:
+    # red = landmark models (lm.* from landmarks_hq, the engine's 'landmarks'), blue = water (sea, ocean, lakes), green = buildings (b<chunk>.*, gen.*, far), black = the rest.
+    # Workbench, flat, no AA, Standard view; the Cycles settings are put back after. 'only' skips the Cycles frame.
+    def _ai_passes(base):
+        re_ = __import__('re'); sh_ = sc.display.shading
+        sv_ = (sc.render.engine, sh_.light, sh_.color_type, sc.display.render_aa, sc.view_settings.view_transform, sc.view_settings.look,
+               sc.view_settings.exposure, sc.view_settings.gamma, sc.render.use_compositing, sc.render.film_transparent, sc.render.filepath)
+        col_ = {o_.name: tuple(o_.color) for o_ in bpy.data.objects}; hid_ = {o_.name: o_.hide_render for o_ in bpy.data.objects}
+        bld_ = lambda n: re_.match(r'^(b\d+|gen)\.', n) is not None or n.split('.')[0] == 'far'
+        sc.render.engine = 'BLENDER_WORKBENCH'; sh_.light = 'FLAT'; sh_.show_shadows = False; sh_.show_cavity = False; sh_.show_object_outline = False
+        sc.display.render_aa = 'OFF'; sc.view_settings.look = 'None'; sc.view_settings.exposure = 0; sc.view_settings.gamma = 1; sc.render.use_compositing = False
+        is_ = sc.render.image_settings; ff_, cd_, cm_ = is_.file_format, is_.color_depth, is_.color_mode
+        if E('CLASS_PASS') == '1':
+            sh_.color_type = 'OBJECT'; sc.view_settings.view_transform = 'Standard'; sc.render.film_transparent = False
+            for o_ in bpy.data.objects:
+                n_ = o_.name.lower(); cs_ = ' '.join(c_.name.lower() for c_ in o_.users_collection)
+                water_ = o_.name in ('sea', 'ocean') or o_.name.startswith('lm.lm_lake')
+                if water_: c_ = (0, 0, 1)
+                elif (o_.name.startswith('lm.') or n_.split('.')[0] == 'landmarks'): c_ = (1, 0, 0)
+                elif bld_(o_.name): c_ = (0, 1, 0) if 'roof' in n_ else (1, 1, 0)
+                elif any(t_ in n_ for t_ in ('street', 'sidewalk', 'road', 'freeway', 'fw', 'lane', 'track', 'bridge')): c_ = (1, 0, 1)
+                elif any(t_ in (n_ + ' ' + cs_).replace('street', '') for t_ in ('tree', 'veg', 'bush', 'brush', 'palm', 'plant')): c_ = (0, 1, 1)
+                elif any(t_ in n_ for t_ in ('ground', 'terrain', 'lawn', 'far', 'shore', 'beach', 'park')): c_ = (0, 0, 0)
+                else: c_ = (1, 1, 1)
+                o_.color = (*c_, 1)
+            sc.render.filepath = base + '.class.png'; bpy.ops.render.render(write_still=True)
+        for o_ in bpy.data.objects: o_.color = col_.get(o_.name, (1, 1, 1, 1))
+        (sc.render.engine, sh_.light, sh_.color_type, sc.display.render_aa, sc.view_settings.view_transform, sc.view_settings.look,
+         sc.view_settings.exposure, sc.view_settings.gamma, sc.render.use_compositing, sc.render.film_transparent, sc.render.filepath) = sv_
+        if E('GUIDE_PASS') == '1' or E('GID_PASS') == '1':   # ONE Cycles render, 1 sample, no pixel filter, Raw: combined = building gid
+            # (emission of the face colour, 24 bit, other meshes black), + depth (Z) + normal passes, multilayer 32-bit EXR
+            def _em(nm_, attr_):
+                m_ = bpy.data.materials.get(nm_) or bpy.data.materials.new(nm_); m_.use_nodes = True; nt_ = m_.node_tree; nt_.nodes.clear()
+                o_ = nt_.nodes.new('ShaderNodeOutputMaterial'); e_ = nt_.nodes.new('ShaderNodeEmission'); e_.inputs['Strength'].default_value = 1
+                if attr_: at_ = nt_.nodes.new('ShaderNodeAttribute'); at_.attribute_name = attr_; nt_.links.new(at_.outputs['Color'], e_.inputs['Color'])
+                else: e_.inputs['Color'].default_value = (0, 0, 0, 1)
+                nt_.links.new(e_.outputs[0], o_.inputs['Surface']); return m_
+            gm_, bm_ = _em('ai_gid', 'bcol'), _em('ai_black', None); mats_ = {}
+            for o_ in bpy.data.objects:
+                if o_.type != 'MESH' or not o_.data.materials: continue
+                mats_[o_.name] = list(o_.data.materials); w_ = gm_ if bld_(o_.name) else bm_
+                for s_ in range(len(o_.data.materials)): o_.data.materials[s_] = w_
+            vl_ = bpy.context.view_layer; sp_, z_, nm_, dn_, fw_ = sc.cycles.samples, vl_.use_pass_z, vl_.use_pass_normal, sc.cycles.use_denoising, sc.cycles.filter_width
+            wb_ = sc.world; sc.world = None; sc.render.engine = 'CYCLES'; sc.view_settings.view_transform = 'Raw'; sc.view_settings.look = 'None'; sc.view_settings.exposure = 0
+            sc.cycles.samples = 1; vl_.use_pass_z = True; vl_.use_pass_normal = True; sc.cycles.use_denoising = False; sc.cycles.filter_width = 0.01
+            is_.file_format = 'OPEN_EXR'; is_.color_depth = '32'
+            if hasattr(is_, 'media_type'): is_.media_type = 'MULTI_LAYER_IMAGE'   # Blender 5: multilayer is a media type of OPEN_EXR
+            sc.render.filepath = base + '.guide.exr'; bpy.ops.render.render(write_still=True)
+            log('guide passes:', [p_.name for p_ in bpy.data.images['Render Result'].render_slots[0].name and [] or []] if False else 'written')
+            for n_, ms_ in mats_.items():
+                o_ = bpy.data.objects[n_]
+                for s_, m_ in enumerate(ms_): o_.data.materials[s_] = m_
+            sc.world = wb_; sc.cycles.samples, vl_.use_pass_z, vl_.use_pass_normal, sc.cycles.use_denoising, sc.cycles.filter_width = sp_, z_, nm_, dn_, fw_
+            (sc.render.engine, sc.view_settings.view_transform, sc.view_settings.look, sc.view_settings.exposure) = sv_[0], sv_[4], sv_[5], sv_[6]
+        if hasattr(is_, 'media_type'): is_.media_type = 'IMAGE'
+        is_.file_format, is_.color_depth, is_.color_mode = ff_, cd_, cm_; sc.render.filepath = sv_[-1]
+    def _ai_mask(path):
+        sv_ = (sc.render.engine, sc.display.shading.light, sc.display.shading.color_type, sc.display.render_aa, sc.view_settings.view_transform,
+               sc.view_settings.look, sc.view_settings.exposure, sc.view_settings.gamma, sc.render.use_compositing, sc.render.film_transparent, sc.render.filepath)
+        col_ = {}
+        for o_ in bpy.data.objects:
+            n_ = o_.name.split('.')[0] if not o_.name.startswith('lm.') else o_.name
+            water_ = o_.name in ('sea', 'ocean') or o_.name.startswith('lm.lm_lake')
+            lm_ = (o_.name.startswith('lm.') and not water_) or n_ == 'landmarks'
+            bl_ = __import__('re').match(r'^(b\d+|gen)\.', o_.name) is not None or n_ == 'far'
+            col_[o_.name] = tuple(o_.color); o_.color = (0, 0, 1, 1) if water_ else (1, 0, 0, 1) if lm_ else (0, 1, 0, 1) if bl_ else (0, 0, 0, 1)
+        sc.render.engine = 'BLENDER_WORKBENCH'; sh_ = sc.display.shading
+        sh_.light = 'FLAT'; sh_.color_type = 'OBJECT'; sh_.show_shadows = False; sh_.show_cavity = False; sh_.show_object_outline = False
+        sc.display.render_aa = 'OFF'; sc.view_settings.view_transform = 'Standard'; sc.view_settings.look = 'None'
+        sc.view_settings.exposure = 0; sc.view_settings.gamma = 1; sc.render.use_compositing = False; sc.render.film_transparent = False
+        sc.render.filepath = path; bpy.ops.render.render(write_still=True)
+        for o_ in bpy.data.objects: o_.color = col_.get(o_.name, (1, 1, 1, 1))
+        (sc.render.engine, sh_.light, sh_.color_type, sc.display.render_aa, sc.view_settings.view_transform, sc.view_settings.look,
+         sc.view_settings.exposure, sc.view_settings.gamma, sc.render.use_compositing, sc.render.film_transparent, sc.render.filepath) = sv_
     log(f'pyramid level {Z}: canvas {cw}x{ch}, {nfx}x{nfy} frames of {FW}x{FH}, {1 / (sz * 2 * KX) * 100:.1f} cm/px')
     for j in range(nfy):
         for i in range(nfx):
@@ -703,7 +797,7 @@ if E('MODE') == 'pyramid':
             # scene-linear EXR (re-toned in post, look/look_post.py)
             for lk_ in (E('LOOKS').split(';') if E('LOOKS') else ['']):
                 fn = f'{OUT}_z{Z}_{i}_{j}.png' if not lk_ else f"{OUT}_{lk_.split(':')[0]}_z{Z}_{i}_{j}.png"
-                if os.path.exists(fn): continue
+                if os.path.exists(fn if E('MASK_PASS') != 'only' else fn[:-4] + '.mask.png'): continue
                 if lk_:
                     f_ = lk_.split(':', 1)[1].split(',')
                     el_, sk_, bk_, ex_ = (float(v) for v in f_[:4])
@@ -720,12 +814,15 @@ if E('MODE') == 'pyramid':
                     for n_ in _VSP: n_.inputs[1].default_value = float(kv_.get('vspread', E('BCOL_VSPREAD', 1.0))) - 1
                     for n_, r_ in _VK: n_.inputs[1].default_value = float(kv_.get(r_ + 'k', E(r_.upper() + '_VALUE', 1.0)))
                 sc.render.filepath = fn
-                t1 = time.time(); bpy.ops.render.render(write_still=True)
-                if E('LOOK_EXR') == '1':
+                t1 = time.time()
+                if E('MASK_PASS') != 'only': bpy.ops.render.render(write_still=True)
+                if E('LOOK_EXR') == '1' and E('MASK_PASS') != 'only':
                     is_ = sc.render.image_settings; ff_, cd_ = is_.file_format, is_.color_depth
                     is_.file_format = 'OPEN_EXR'; is_.color_depth = '16'; is_.exr_codec = 'ZIP'
                     bpy.data.images['Render Result'].save_render(fn[:-4] + '.exr', scene=sc)
                     is_.file_format = ff_; is_.color_depth = cd_
+                if E('MASK_PASS'): _ai_mask(fn[:-4] + '.mask.png'); sc.render.filepath = fn   # after the EXR: the mask render replaces 'Render Result'
+                if E('CLASS_PASS') == '1' or E('GID_PASS') == '1' or E('GUIDE_PASS') == '1': _ai_passes(fn[:-4]); sc.render.filepath = fn
                 log(f'frame {i},{j}{" " + lk_ if lk_ else ""}: {time.time() - t1:.1f}s')
     log('PYRAMID done'); sys.exit(0)
 
