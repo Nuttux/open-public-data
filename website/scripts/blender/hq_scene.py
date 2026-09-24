@@ -1943,10 +1943,10 @@ el_, az_ = float(E('SUN_EL', 24)), float(E('SUN_AZ', 215))
 try: sky.sky_type = 'NISHITA'
 except Exception: pass
 sky.sun_disc = False; sky.sun_elevation = math.radians(el_); sky.sun_rotation = math.radians(az_)
-bg = wn.nodes.new('ShaderNodeBackground'); bg.inputs['Strength'].default_value = float(E('SKY_K', 0.24))
+bg = wn.nodes.new('ShaderNodeBackground'); bg.inputs['Strength'].default_value = float(E('SKY_K', 0.30))
 lp = wn.nodes.new('ShaderNodeLightPath'); bg2 = wn.nodes.new('ShaderNodeBackground'); bg2.inputs['Strength'].default_value = float(E('GLOSS_K', 0.9))
 wn.links.new(sky.outputs[0], bg2.inputs[0])
-# light pass 24/09: a harder sun over a weaker, less blue sky fill (sun 5.5 -> 6.5, sky 0.32 -> 0.24,
+# light pass 24/09: a harder sun over a weaker, less blue sky fill (sun 5.5 -> 6.5, sky 0.32 -> 0.30 (0.24 crushed the downtown canyons),
 # fill saturation 0.7, exposure 0.3 -> 0.2): real volume, walls keep their texture instead of
 # clipping, shadows neutral under grade B (b-r 7.7 -> 1.0 in the Mission) and not crushed.
 if float(E('SKY_SAT', 0.7)) != 1:   # the sky's FILL (not its reflections) desaturated toward neutral
