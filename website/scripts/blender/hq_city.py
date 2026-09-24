@@ -140,8 +140,12 @@ if ERA is not None:
                 if not w_: _bank.add((round(TP[q_] * 10), round(TP[q_+1] * 10)))
     for i in range(0, len(TP), 3):
         k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
-        if _wc.get(k_): TP[i+2] = -0.7
-        elif k_ in _bank: TP[i+2] = min(TP[i+2], 0.35)
+        # min, never set: over today's bay a made-land outline (Harbor View's
+        # runs to y 5700) would RAISE the sea floor and stand a wall at its edge
+        # (1890 z5 0:0, 2026-09-24); the bank just under the water's surface
+        # (0.12), or an outline's rim stood above it (Treasure Island, 1890)
+        if _wc.get(k_): TP[i+2] = min(TP[i+2], -0.7)
+        elif k_ in _bank: TP[i+2] = min(TP[i+2], 0.05)
     log('terrain under the water of the year:', sum(1 for v in _wc.values() if v), 'vertices; bank', len(_bank))
 terrain = mesh_from('terrain', TP, hill_ground(d, BOX), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())

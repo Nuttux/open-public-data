@@ -959,7 +959,7 @@ if E('ERA'):
     import era as _EA0
     for i in range(0, len(TP), 3):
         # made land not yet made (era.MADE_LAND): the shoal under the water
-        if _EA0.water_then(TP[i], TP[i+1], _EA0.era_from_env(E('ERA'))): TP[i+2] = -4.0
+        if _EA0.water_then(TP[i], TP[i+1], _EA0.era_from_env(E('ERA'))): TP[i+2] = min(TP[i+2], -4.0)
 M['ground'] = hill_ground(d, (bx0, by0, bx1, by1))           # golden hills, parks, yards (above)
 terrain = mesh_from('terrain', TP, M['ground'], smooth=True, weld=0.05)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
@@ -1686,7 +1686,9 @@ if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH
                 g_ = g_ + (_gs - g_) * _s0
             on_street = s_bvh is not None and s_bvh.ray_cast(Vector((x_, y_, g_ + 50)), Vector((0, 0, -1)), 60)[0] is not None
             s_ = open_at(x_, y_, SAND)
-            cov_ = 0.0 if on_street else max(s_, _YS if EA.is_dune_ground(x_, y_, g_) else 0.0)
+            # the sandy yards only on the city's own dry land: west of Stanyan
+            # below 150 m was also the sea and Marin, sanded over (1890 z5 0:0)
+            cov_ = 0.0 if on_street else max(s_, _YS * EA.dune_share(x_, y_) if (g_ > 0.3 and EA.is_dune_ground(x_, y_, g_) and not EA.water_then(x_, y_, ERA)) else 0.0)
             # the dune relief dies down towards a graded street (a cut, not a cliff)
             if s_ > 0 and _SEKD is not None:
                 sd_ = _SEKD.find((x_, y_, 0))[2]; tt_ = min(1.0, max(0.0, (sd_ - 3.0) / 22.0)); s_ *= tt_ * tt_ * (3 - 2 * tt_)
@@ -1796,7 +1798,10 @@ def hist_water():
     X0_, Y0_ = sb_[0] - 400, sb_[1] - 400
     wet = [[EA.water_then(X0_ + (i + 0.5) * st_, Y0_ + (j + 0.5) * st_, ERA) for j in range(ny_)] for i in range(nx_)]
     def quad(x_, y_, s_):
-        k_ = len(V_); V_.extend([(x_, y_, 0.12), (x_ + s_, y_, 0.12), (x_ + s_, y_ + s_, 0.12), (x_, y_ + s_, 0.12)])
+        # 2 cm under the sea's own sheet (0.12): coplanar with it over today's
+        # bay, each blocked the other's sky reflection — a black band north of
+        # the Marina in 1890 (z5 0:0)
+        k_ = len(V_); V_.extend([(x_, y_, 0.10), (x_ + s_, y_, 0.10), (x_ + s_, y_ + s_, 0.10), (x_, y_ + s_, 0.10)])
         F_.append((k_, k_ + 1, k_ + 2, k_ + 3))
     for i in range(nx_):
         for j in range(ny_):

@@ -455,8 +455,19 @@ def open_factor(dist):
     t = min(1.0, max(0.0, t)); return t * t * (3 - 2 * t)
 
 
+def dune_share(x, y):
+    """how far into the Outside Lands' sand a point lies (0 east of the dune
+    edge, 1 from 500 m inside it). The edge runs about Stanyan Street / the
+    Twin Peaks slope (DUNE_X), not as a surveyed straight line: CONVENTION, a
+    wavering edge (±400 m) so no ruler-straight seam crosses the city (1890 z5
+    0:0 showed one through the Presidio and the Richmond)"""
+    edge = DUNE_X + 260.0 * math.sin(y / 610.0) + 140.0 * math.sin(y / 233.0 + 1.3)
+    t = (edge - x) / 500.0
+    return 0.0 if t <= 0 else (1.0 if t >= 1 else t * t * (3 - 2 * t))
+
+
 def is_dune_ground(x, y, z):
-    return x < DUNE_X and z < DUNE_Z
+    return z < DUNE_Z and dune_share(x, y) > 0.0
 
 
 def streets_graded(era):
@@ -1037,9 +1048,10 @@ class OpenLand:
                 if o <= 0: continue
                 if in_park(x, y): self.park[j * self.W + i] = 1.0; self.open[j * self.W + i] = o; continue
                 self.open[j * self.W + i] = o
-                if x < DUNE_X:
+                ds_ = dune_share(x, y)
+                if ds_ > 0:
                     g = ground(x, y)
-                    if g is not None and is_dune_ground(x, y, g): self.sand[j * self.W + i] = o
+                    if g is not None and g > 0.3 and g < DUNE_Z and not water_then(x, y, self.era): self.sand[j * self.W + i] = o * ds_
 
     def at(self, x, y, grid=None):
         i, j = int((x - self.x0) / self.res), int((y - self.y0) / self.res)
@@ -1599,7 +1611,7 @@ def vacant_lots(all_recs, placed_gids, era, open_at, box=None, radius=80.0):
         if box is not None and not (box[0] <= x <= box[2] and box[1] <= y <= box[3]): continue
         if (b['year'] or 0) <= era: continue
         if open_at(x, y) > 0.3 or water_then(x, y, era): continue
-        if x < DUNE_X and era < 1960: continue                         # the sandy yards of the Outside Lands
+        if dune_share(x, y) > 0.5 and era < 1960: continue             # the sandy yards of the Outside Lands
         if ash_ground(era) and burned(x, y): continue
         if YARD_YEARS[0] <= era < YARD_YEARS[1] and _in_ring(x, y, MISSION_BAY_YARD): continue
         if PPIE_YEARS[0] <= era <= PPIE_YEARS[1] and ppie_footprint(x, y): continue
