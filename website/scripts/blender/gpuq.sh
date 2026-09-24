@@ -15,6 +15,13 @@ label="$1"; shift
 case "$label" in city*) sleep 8;; esac
 case "$label" in city*) pri=1;; *) pri=0;; esac
 NEED=${GPU_NEED:-24}
+# TWO SLOTS FOR SMALL JOBS (24/09 pm): a crop test (BORDER= or PCT=) now builds
+# only its crop's scene (a quarter of a frame's buildings; 34 s instead of 66),
+# so two of them fit side by side: a small job needs GPU_NEED_SMALL (16) GB
+# free and may take the second slot when the first holds another small job. A
+# full-frame job ('big') still runs alone. memguard stays the backstop.
+kind=big; for a in "$@"; do case "$a" in BORDER=*|PCT=*) kind=small;; esac; done
+[ $kind = small ] && NEED=${GPU_NEED_SMALL:-16}
 me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
 trap 'rm -f "$me"' EXIT; trap 'rm -f "$me"; exit 1' INT TERM   # a stopped waiter leaves (it used to loop on without a ticket)
@@ -30,11 +37,15 @@ while :; do
   if [ "$(cat "$W/.gpu.tests" 2>/dev/null || echo 0)" -ge 1 ]; then
     c=$(ls "$Q" | grep '^1' | sort | head -1); [ -n "$c" ] && first=$c
   fi
-  if [ "$Q/$first" = "$me" ] && [ ! -d "$W/.gpu.lock2" ] && [ "$(avail)" -ge "$NEED" ] && mkdir "$L" 2>/dev/null; then break; fi
+  if [ "$Q/$first" = "$me" ] && [ "$(avail)" -ge "$NEED" ]; then
+    if [ ! -d "$W/.gpu.lock2" ] && mkdir "$L" 2>/dev/null; then break; fi
+    # the second slot: small jobs only, beside another small job
+    if [ $kind = small ] && [ "$(cat "$L/kind" 2>/dev/null)" = small ] && mkdir "$W/.gpu.lock2" 2>/dev/null; then L=$W/.gpu.lock2; break; fi
+  fi
   sleep 3
 done
 rm -f "$me"
 if [ $pri = 1 ]; then echo 0 > "$W/.gpu.tests"; else echo $(( $(cat "$W/.gpu.tests" 2>/dev/null || echo 0) + 1 )) > "$W/.gpu.tests"; fi
-echo $$ > "$L/pid"; echo "$label $(date +%H:%M:%S)" > "$L/who"
+echo $$ > "$L/pid"; echo "$label $(date +%H:%M:%S)" > "$L/who"; echo $kind > "$L/kind"
 trap 'rm -rf "$L"' EXIT; trap 'rm -rf "$L"; exit 1' INT TERM
 "$@"
