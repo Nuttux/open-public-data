@@ -1,0 +1,366 @@
+"""The traffic at about 5 pm on a weekday (life_hq.py): cars in the TRAVEL
+lanes, Muni buses on their routes, delivery trucks downtown and in SoMa,
+tractor-trailers on the freeways.
+
+WHERE A CAR DRIVES. OpenStreetMap's highway ways (life.json roads, ODbL, (c)
+OpenStreetMap contributors) give the direction and the number of lanes each
+way (nf with the way, nb against it). The scene's own street mesh gives the
+kerbs: from the way's centre line the carriageway is scanned out to its
+edges at each car, and the lanes are laid inside it, right-hand traffic,
+after a parking lane on each kerb where the street has room for one (none
+on freeways and ramps). A car is dropped where:
+  - its lane is off the street mesh (OSM and the engine's streets disagree);
+  - it is within 2.3 m of a rail track's centre (transit_hq's rule for the
+    parked cars: the trams and the LRVs keep their track);
+  - it stands beside a parked car (the parking lane is taken, the lane
+    offset landed in it);
+  - it is on a crosswalk: within ~10 m (13 m on arterials) of an
+    intersection, except that on arterials a platoon may queue at the stop
+    line, the head car just short of it (a red light).
+On the two great bridges the deck is the landmarks agent's roadway (lm.asphalt),
+found by a ray from above; the Bay Bridge's eastbound lower deck, hidden under
+the upper, is not drawn.
+
+HOW MANY. Cars per km per lane at the evening peak, by class (DENSITY),
+placed in platoons (a signal's queue, a freeway's bunching): freeways ~30
+(dense, moving), arterials ~16, collectors ~8, residential streets ~2 (a car
+every few blocks). A convention, never a count; a map at 5 pm, not a jam.
+Buses: per route and direction every ~1.6 km along the way (Muni's frequent
+routes run every 5-10 min at ~12 km/h); 60-ft artics on the trunk routes.
+
+Placement is a function of the whole network: each way's cars come from its
+own seed, and every check is a property of the place (the street mesh, the
+track, the kerb), so the frames of the pyramid agree.
+"""
+import math, random, time
+import numpy as np
+
+DENSITY = {'motorway': 30.0, 'motorway_link': 14.0, 'trunk': 20.0, 'trunk_link': 10.0, 'primary': 16.0, 'primary_link': 8.0,
+           'secondary': 10.0, 'secondary_link': 6.0, 'tertiary': 6.0, 'tertiary_link': 4.0, 'residential': 2.0,
+           'unclassified': 2.5, 'living_street': 0.8, 'busway': 0.0}
+PLATOON = {'motorway': (3.2, 22.0, 34.0), 'trunk': (2.6, 12.0, 24.0), 'primary': (2.8, 7.5, 14.0), 'secondary': (2.2, 7.5, 14.0),
+           'tertiary': (1.7, 8.0, 16.0)}          # mean size, headway range (m)
+ARTERIAL = {'motorway', 'trunk', 'primary', 'secondary'}
+NO_PARK = {'motorway', 'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link'}
+TRUCK_ZONE = (2300.0, 1200.0, 4700.0, 4300.0)       # the Financial District and SoMa: deliveries
+TRUNK_BUS = ('38', '38R', '14', '14R', '49', '5', '5R', '9', '9R', '1', '22', '28', '28R', '30', '8', '7')
+
+
+def _resample(pts, step):
+    P = np.asarray(pts, float)
+    seg = np.hypot(*np.diff(P, axis=0).T); P = P[np.concatenate([[True], seg > 1e-3])]
+    if len(P) < 2: return None
+    s = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(P, axis=0).T))])
+    n = max(2, int(math.ceil(s[-1] / step)) + 1); S = np.linspace(0, s[-1], n)
+    X = np.interp(S, s, P[:, 0]); Y = np.interp(S, s, P[:, 1])
+    TX = np.gradient(X); TY = np.gradient(Y); tl = np.hypot(TX, TY) + 1e-12
+    return X, Y, S, TX / tl, TY / tl
+
+
+def plan_way(r, rr, R_ix=0.0):
+    """(s, lane) candidates along one way, from its own seed: lane >= 0 with
+    the way (0 = the kerb lane), < 0 against it (-1 = the kerb lane), None for
+    a shared single lane. Platoons; on an arterial half the platoons that come
+    within 45 m of an intersection wait at its stop line (a red light)"""
+    hw = r['hw']; base = hw.replace('_link', '')
+    P = np.asarray(r['pts']); Ls = float(np.hypot(*np.diff(P, axis=0).T).sum())
+    dens = DENSITY.get(hw, 2.0)
+    lanes = [k for k in range(r['nf'])] + [-1 - k for k in range(r['nb'])]
+    if r.get('one'): lanes = [None]
+    if not lanes: lanes = [0]
+    ix = sorted(r.get('ix', []))
+    out = []
+    size, h0, h1 = PLATOON.get(base, (1.2, 8.0, 16.0))
+    queue = base in ('trunk', 'primary', 'secondary', 'tertiary') and R_ix > 0
+    for lane in lanes:
+        if dens <= 0: break
+        fwd = lane is None or lane >= 0
+        # the kerb lane of an arterial carries a little less (buses, turns, parking manoeuvres)
+        d = dens * (0.85 if (lane in (0, -1) and base in ('primary', 'secondary')) else 1.0)
+        mean_gap = size * 1000.0 / d
+        s = rr.uniform(0, mean_gap)
+        while s < Ls:
+            n = 1
+            while rr.random() < 1 - 1 / size and n < 9: n += 1
+            nxt = [q for q in ix if q > s] if fwd else [q for q in ix if q < s]
+            stop = (min(nxt) - R_ix - 1.5) if (fwd and nxt) else ((max(nxt) + R_ix + 1.5) if nxt else None)
+            if queue and stop is not None and abs(stop - s) < 45.0 and rr.random() < 0.5:
+                # the head at the stop line, the others closed up behind it
+                for i in range(n):
+                    q = stop - (i * rr.uniform(6.8, 8.0)) * (1 if fwd else -1)
+                    if 0 < q < Ls: out.append((q, lane))
+                s = max(s, stop) + rr.expovariate(1.0 / mean_gap)
+                continue
+            q = s
+            for i in range(n):
+                if q > Ls: break
+                out.append((q, lane))
+                q += rr.uniform(h0, h1)
+            s = q + rr.expovariate(1.0 / mean_gap)
+    return out, Ls
+
+
+def build(bpy, sc, coll, T, D, ground, inb, log, t0):
+    from mathutils import Vector
+    from mathutils.bvhtree import BVHTree
+    from mathutils.kdtree import KDTree
+    import life_vehicles as LV, transit_geom as TG
+    so = sc.objects.get('streets')
+    if so is None: log('life_traffic: no street mesh'); return
+    dg = bpy.context.evaluated_depsgraph_get()
+    sb = BVHTree.FromObject(so, dg)
+    down = Vector((0, 0, -1))
+    # the bridge decks (landmarks_hq: lm.asphalt) — a ray from above
+    deck = None
+    da = sc.objects.get('lm.asphalt')
+    if da is not None and len(da.data.polygons): deck = BVHTree.FromObject(da, dg)
+    def street_z(x, y):
+        g = ground(float(x), float(y))
+        if g is None: return None
+        h = sb.ray_cast(Vector((float(x), float(y), g + 25.0)), down, 40.0)
+        if h[0] is not None and -0.8 < h[0].z - g < 2.5: return max(h[0].z, g)
+        return None
+    def deck_z(x, y):
+        if deck is None: return None
+        h = deck.ray_cast(Vector((float(x), float(y), 300.0)), down, 400.0)
+        if h[0] is not None and h[0].z > 8.0 and h[1].z > 0.8: return h[0].z
+        return None
+    # the tracks (transit.json): no car within 2.3 m of a centre line
+    import transit_hq
+    kt = None
+    try:
+        TD = transit_hq._load(); pts = []
+        for t in TD['tracks']:
+            if t.get('covered'): continue
+            if not any(inb(x, y, 200) for x, y in t['pts']): continue
+            rs = _resample(t['pts'], 1.5)
+            if rs is None: continue
+            for x, y in zip(rs[0], rs[1]):
+                if inb(x, y, 100): pts.append((x, y))
+        kt = KDTree(max(1, len(pts)))
+        for i, (x, y) in enumerate(pts): kt.insert((x, y, 0.0), i)
+        kt.balance()
+    except Exception as ex: log('life_traffic: no tracks', ex)
+    # NO CAR PARKED ON A FREEWAY. hq_city parks a car along every kerb with a
+    # wall within 18 m, and the engine draws the freeways at grade with kerbs:
+    # the I-80 and US-101 viaducts through SoMa had parked cars along them.
+    try: _clear_freeway_parking(bpy, sc, D, inb, log)
+    except Exception as ex: log('life_traffic: freeway parking not cleared', ex)
+    # the parked cars (hq_city's 'cars' instancer points)
+    kp = None; PK = None
+    co = sc.objects.get('cars')
+    if co is not None and co.type == 'MESH' and len(co.data.vertices):
+        PK = np.zeros(len(co.data.vertices) * 3, np.float32); co.data.vertices.foreach_get('co', PK); PK = PK.reshape(-1, 3)
+        kp = KDTree(len(PK))
+        for i, p in enumerate(PK): kp.insert((float(p[0]), float(p[1]), 0.0), i)
+        kp.balance()
+    placed = {}                    # 4 m grid of car centres (moving), for overlaps
+    def free(x, y, L, W):
+        for a in (-1, 0, 1):
+            for b in (-1, 0, 1):
+                for px, py, pr in placed.get((int(x // 4) + a, int(y // 4) + b), ()):
+                    if math.hypot(x - px, y - py) < pr + L * 0.45: return False
+        return True
+    cars, others = [], []
+    nway = 0; rej = dict(off=0, track=0, parked=0, ix=0, over=0, deck=0)
+    for r in D['roads']:
+        if not any(inb(x, y, 80) for x, y in r['pts'][:: max(1, len(r['pts']) // 8)] + [r['pts'][-1]]): continue
+        rr = random.Random(r['id'])
+        hw = r['hw']; base = hw.replace('_link', '')
+        R_ix = 0.0 if base == 'motorway' else (13.0 if base in ARTERIAL else 10.0)
+        cand, Ls = plan_way(r, rr, R_ix)
+        if Ls < 8: continue
+        rs = _resample(r['pts'], 1.0)
+        if rs is None: continue
+        X, Y, S, TX, TY = rs
+        # the two great bridges' decks are the landmarks agent's (lm.asphalt, 56-76 m
+        # up); every other 'bridge' way (the SoMa viaducts, the Central Freeway)
+        # the engine draws at grade, in its street mesh
+        bridge = r['br'] and hw == 'motorway' and (('Golden Gate Bridge' in r['name']) or ('Eisenhower' in r['name'] and r['pts'][0][0] > 4000))
+        # the Bay Bridge's eastbound deck is the lower one, under the upper: not drawn
+        if bridge and 'Eisenhower' in r['name'] and r['pts'][-1][0] > r['pts'][0][0] + 200: continue
+        ix = r.get('ix', [])
+        # buses: per route every ~1.6 km along the way, one direction each
+        nbus = r.get('bus', 0)
+        bus_s = []
+        if nbus and base not in ('motorway',):
+            rb = random.Random(r['id'] * 3 + 1)
+            spacing = 1600.0 / max(0.5, nbus)
+            s = rb.uniform(0, spacing)
+            while s < Ls:
+                bus_s.append((s, rb.random() < 0.5 or r['nb'] == 0)); s += spacing * rb.uniform(0.7, 1.3)
+        nway += 1
+        items = [(s, lane, True, None) for s, lane in cand]
+        for s, fwd in bus_s:
+            lane = 0 if (fwd or r['nb'] == 0) else -1
+            if r.get('one'): lane = None
+            items.append((s, lane, True, 'bus'))
+        for s, lane, head, kind in sorted(items, key=lambda t: t[0]):
+            fwd = lane is None or lane >= 0
+            # the crosswalk: keep clear of the intersection
+            if R_ix and any(abs(s - q) < R_ix for q in ix): rej['ix'] += 1; continue
+            if not (4.0 < s < Ls - 4.0): continue
+            i = int(round(s)); i = min(max(i, 0), len(X) - 1)
+            x0, y0, tx, ty = X[i], Y[i], TX[i], TY[i]
+            if not inb(x0, y0, 30): continue
+            nx, ny = -ty, tx
+            rv = random.Random(r['id'] * 1009 + int(s * 10) + (7 if lane is None else lane) * 131)
+            # the vehicle
+            if kind == 'bus':
+                vk = 'bus60' if r.get('muni') and rv.random() < 0.45 else 'bus40'; L, W = LV.LENGTH[vk], 2.6
+            else:
+                u_ = rv.random(); vk = None
+                intruck = TRUCK_ZONE[0] < x0 < TRUCK_ZONE[2] and TRUCK_ZONE[1] < y0 < TRUCK_ZONE[3] and base not in ('residential',)
+                if base == 'motorway' and u_ < 0.05: vk = f'semi{rv.randrange(4)}'
+                elif intruck and u_ < 0.09: vk = rv.choice(['parcel'] + [f'box{k}' for k in range(5)] + [f'van{k}' for k in range(5)])
+                elif u_ < 0.03: vk = rv.choice([f'van{k}' for k in range(5)] + [f'box{k}' for k in range(2)])
+                if vk: L, W = LV.LENGTH[vk], 2.4
+                else: L, W = 4.7, 1.85
+            # the surface and the carriageway at this point
+            if bridge:
+                zc = deck_z(x0, y0)
+                if zc is None: zc = street_z(x0, y0)
+                if zc is None: rej['deck'] += 1; continue
+                lw = 3.5; half = (r['nf'] + r['nb']) * lw / 2
+                dl = dr = half
+                if r['nb'] == 0: dl = dr = r['nf'] * lw / 2
+                park = 0.0
+                onsurf = lambda x, y: (deck_z(x, y) or street_z(x, y))
+            else:
+                # the carriageway across the way: runs of street mesh, from the
+                # centre line outward (a median leaves the centre off the street)
+                runs = {}
+                for sd in (1, -1):
+                    rs_ = []; on = False; st = 0.0; d_ = 0.0
+                    while d_ < 28.0 and len(rs_) < 2:
+                        o = street_z(x0 + nx * sd * d_, y0 + ny * sd * d_) is not None
+                        if o and not on: st = d_; on = True
+                        elif not o and on: rs_.append((st, d_ - 0.3)); on = False
+                        d_ += 0.6
+                    if on: rs_.append((st, d_))
+                    runs[sd] = rs_
+                L1, R1 = runs[1], runs[-1]
+                if L1 and R1 and L1[0][0] == 0.0 and R1[0][0] == 0.0:
+                    cl, cr = -R1[0][1], L1[0][1]; med = False           # one carriageway
+                elif r['nb'] > 0 and L1 and R1 and L1[0][0] < 9.0 and R1[0][0] < 9.0:
+                    med = True                                          # a median: a carriageway each side
+                    rcl, rcr = -R1[0][1], -R1[0][0]; lcl, lcr = L1[0][0], L1[0][1]
+                else: rej['off'] += 1; continue
+                n_l = 1 if lane is None else r['nf'] + r['nb']
+                if not med:
+                    park = 0.0 if (hw in NO_PARK or base == 'motorway') else float(np.clip((cr - cl - n_l * 3.1) / 2, 0.0, 2.4))
+                    lw = float(np.clip((cr - cl - 2 * park) / max(1, n_l), 2.6, 3.9))
+                    if lane is None: u = (cl + cr) / 2
+                    elif lane >= 0: u = cl + park + (lane + 0.5) * lw
+                    else: u = cr - park - (-1 - lane + 0.5) * lw
+                    if lane is not None and r['nb'] > 0 and ((lane >= 0 and u > (cl + cr) / 2 + 0.3) or (lane < 0 and u < (cl + cr) / 2 - 0.3)):
+                        rej['off'] += 1; continue
+                else:
+                    if lane is None: rej['off'] += 1; continue
+                    a_, b_, nn = (rcl, rcr, r['nf']) if lane >= 0 else (lcl, lcr, r['nb'])
+                    park = 0.0 if (hw in NO_PARK or base == 'motorway') else float(np.clip((b_ - a_ - nn * 3.1), 0.0, 2.4))
+                    lw = float(np.clip((b_ - a_ - park) / max(1, nn), 2.6, 3.9))
+                    u = (a_ + park + (lane + 0.5) * lw) if lane >= 0 else (b_ - park - (-1 - lane + 0.5) * lw)
+                    if not a_ - 0.2 <= u <= b_ + 0.2: rej['off'] += 1; continue
+                onsurf = street_z
+            if bridge:
+                n_l = 1 if lane is None else max(1, r['nf'] + r['nb'])
+                lw = 3.5
+                if lane is None: u = 0.0
+                elif r['nb'] == 0: u = -dr + (lane + 0.5) * lw
+                elif lane >= 0: u = -dr + (lane + 0.5) * lw
+                else: u = dl - (-1 - lane + 0.5) * lw
+            x, y = x0 + nx * u, y0 + ny * u
+            yaw = math.atan2(ty, tx) + (0.0 if fwd else math.pi)
+            ca, sa = math.cos(yaw), math.sin(yaw)
+            fx, fy, bx_, by_ = x + ca * L * 0.38, y + sa * L * 0.38, x - ca * L * 0.38, y - sa * L * 0.38
+            zf, zb = onsurf(fx, fy), onsurf(bx_, by_)
+            if zf is None or zb is None: rej['off'] += 1; continue
+            if kt is not None and any(kt.find((px, py, 0.0))[2] < 2.3 for px, py in ((x, y), (fx, fy), (bx_, by_))):
+                rej['track'] += 1; continue
+            if kp is not None:
+                hit = False
+                for (p, idx, dd) in kp.find_range((x, y, 0.0), L / 2 + 3.0):
+                    rx, ry = p[0] - x, p[1] - y
+                    if abs(rx * -sa + ry * ca) < (W / 2 + 0.9 + 0.35) and abs(rx * ca + ry * sa) < L / 2 + 2.4: hit = True; break
+                if hit: rej['parked'] += 1; continue
+            if not free(x, y, L, W): rej['over'] += 1; continue
+            for q in (-0.35, 0.0, 0.35):
+                px, py = x + ca * L * q, y + sa * L * q
+                placed.setdefault((int(px // 4), int(py // 4)), []).append((px, py, max(W, L * 0.3)))
+            pitch = math.atan2(zf - zb, 0.76 * L)
+            z = (zf + zb) / 2 + 0.02
+            if vk is None: cars.append((x, y, z, pitch, yaw))
+            else: others.append((vk, x, y, z, pitch, yaw))
+    log(f'life_traffic: {nway} ways, {len(cars)} cars, {len(others)} buses and trucks; dropped {rej} ({time.time() - t0:.1f}s)')
+    # the cars: hq_scene's own bodies (the 'carp{i}' collections hq_city builds), instanced
+    protos = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(8)) if c is not None]
+    if cars and protos:
+        _instancer(bpy, coll, 'life.cars', cars, protos, random.Random(5))
+    # buses and trucks: small meshes, one per kind, linked as objects
+    mats = [T['paint'], T['glass'], T['matte'], T['matte'], T['metal']]
+    pm = {}
+    vc = bpy.data.collections.new('life_vehicles'); coll.children.link(vc)
+    for k, (vk, x, y, z, pitch, yaw) in enumerate(others):
+        if vk not in pm:
+            vb = LV.PROTOS[vk](); pm[vk] = TG.mesh_multi(bpy, f'lv_{vk}', vb.V, vb.F, vb.C, vb.MI, mats)
+        ob = bpy.data.objects.new(f'lv.{vk}.{k}', pm[vk]); ob.location = (x, y, z); ob.rotation_euler = (0.0, -pitch, yaw)
+        vc.objects.link(ob)
+
+
+def _clear_freeway_parking(bpy, sc, D, inb, log):
+    import bmesh
+    from mathutils.kdtree import KDTree
+    ob = sc.objects.get('cars')
+    if ob is None or ob.type != 'MESH' or not len(ob.data.vertices): return
+    S = []
+    for r in D['roads']:
+        if r['hw'] not in ('motorway', 'motorway_link'): continue
+        if not any(inb(x, y, 60) for x, y in r['pts']): continue
+        rs = _resample(r['pts'], 2.0)
+        if rs is None: continue
+        half = r['nf'] * 1.8 + 1.2
+        for x, y in zip(rs[0], rs[1]):
+            if inb(x, y, 40): S.append((x, y, half))
+    if not S: return
+    kd = KDTree(len(S))
+    for i, (x, y, _) in enumerate(S): kd.insert((x, y, 0.0), i)
+    kd.balance()
+    bm = bmesh.new(); bm.from_mesh(ob.data)
+    kill = []
+    for v in bm.verts:
+        p, i, dd = kd.find((v.co.x, v.co.y, 0.0))
+        if i is not None and dd < S[i][2]: kill.append(v)
+    if kill:
+        bmesh.ops.delete(bm, geom=kill, context='VERTS'); bm.to_mesh(ob.data); ob.data.update()
+    bm.free()
+    log(f'life_traffic: {len(kill)} parked cars stood on a freeway, removed')
+
+
+def _instancer(bpy, coll, name, pts, protos, rr):
+    """cars on points: (x, y, z, pitch, yaw); a body picked per car"""
+    root = bpy.data.collections.new(f'{name}_protos')
+    for c in protos:
+        try: root.children.link(c)
+        except Exception: pass
+    me = bpy.data.meshes.new(name); me.vertices.add(len(pts))
+    me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
+    for nm, vals, tp in (('pitch', [-p[3] for p in pts], 'FLOAT'), ('yaw', [p[4] for p in pts], 'FLOAT'),
+                         ('kind', [rr.randrange(len(protos)) for _ in pts], 'INT')):
+        at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', vals)
+    ob = bpy.data.objects.new(name, me); coll.objects.link(ob)
+    ng = bpy.data.node_groups.new(name, 'GeometryNodeTree')
+    ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
+    ng.interface.new_socket('Geometry', in_out='OUTPUT', socket_type='NodeSocketGeometry')
+    n = ng.nodes; lk = ng.links.new
+    gi = n.new('NodeGroupInput'); go = n.new('NodeGroupOutput')
+    ci = n.new('GeometryNodeCollectionInfo'); ci.inputs['Collection'].default_value = root
+    ci.inputs['Separate Children'].default_value = True; ci.inputs['Reset Children'].default_value = True
+    def attr(nm, tp):
+        a_ = n.new('GeometryNodeInputNamedAttribute'); a_.data_type = tp; a_.inputs['Name'].default_value = nm; return a_.outputs[0]
+    rot = n.new('ShaderNodeCombineXYZ'); lk(attr('pitch', 'FLOAT'), rot.inputs[1]); lk(attr('yaw', 'FLOAT'), rot.inputs[2])
+    ii = n.new('GeometryNodeInstanceOnPoints'); lk(gi.outputs[0], ii.inputs['Points']); lk(ci.outputs[0], ii.inputs['Instance'])
+    ii.inputs['Pick Instance'].default_value = True; lk(attr('kind', 'INT'), ii.inputs['Instance Index'])
+    lk(rot.outputs[0], ii.inputs['Rotation'])
+    lk(ii.outputs[0], go.inputs[0])
+    ob.modifiers.new(name, 'NODES').node_group = ng

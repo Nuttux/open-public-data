@@ -28,8 +28,8 @@ agent owns the past: see the note in life_water / life_traffic on what could
 be dated - the ferries' routes and the Ferry Building's fleets since 1850, the
 car's arrival).
 
-env: LIFE_WATER=0 (no boats) · LIFE_STREETS=1 (the traffic, under test) · LIFE_WAKE=0 (boats
-     without wakes) · LIFE_KITES=1 (kiteboarders off Crissy Field, under test)
+env: LIFE_WATER=0 (no boats) · LIFE_STREETS=0 (no traffic) · LIFE_WAKE=0 (boats without
+     wakes) · LIFE_KITES=1 (kiteboarders off Crissy Field, under test)
 """
 import json, math, os, random, sys, time, traceback
 import numpy as np
@@ -157,7 +157,7 @@ def _build(bpy, sc, M, ground, box, log, t0):
     if E('LIFE_WATER', '1') == '1':
         try: _water(bpy, coll, T, D, ddir, inb, log, t0)
         except Exception as ex: traceback.print_exc(); log('life_hq: water failed', ex)
-    if E('LIFE_STREETS', '0') == '1':        # the traffic: under test, off until validated
+    if E('LIFE_STREETS', '1') == '1':
         try:
             import life_traffic
             life_traffic.build(bpy, sc, coll, T, D, ground, inb, log, t0)
