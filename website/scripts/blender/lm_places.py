@@ -81,7 +81,47 @@ def materials(bpy, mats):
     mats['pl_seat'] = surface('pl_seat', 0.42, [(0.05, 0.93, 1.05)], 0, 0, ao=0.35)
     mats['pl_conc'] = surface('pl_conc', 0.85, [(0.06, 0.86, 1.05), (0.9, 0.95, 1.03)], 0, 0, ao=0.45)
     mats['pl_chalk'] = surface('pl_chalk', 0.9, [(2.0, 0.92, 1.0)], 0, 0)
+    mats['pl_stone'] = stone(new)
     return mats
+
+def stone(new):
+    """dressed stone (or concrete cast as stone): ashlar courses 0.6 m, blocks 1.2 m,
+    fine joints, a per-block tone, rain streaks down the walls and grime in the
+    corners (AO); colour from bcol"""
+    m, nt = new('pl_stone')
+    if nt is None: return m
+    pr = nt.nodes['Principled BSDF']; pr.inputs['Roughness'].default_value = 0.82
+    a = nt.nodes.new('ShaderNodeAttribute'); a.attribute_name = 'bcol'
+    geo = nt.nodes.new('ShaderNodeNewGeometry')
+    sp = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(geo.outputs['Position'], sp.inputs[0])
+    add = nt.nodes.new('ShaderNodeMath'); add.operation = 'ADD'; nt.links.new(sp.outputs[0], add.inputs[0]); nt.links.new(sp.outputs[1], add.inputs[1])
+    cmb = nt.nodes.new('ShaderNodeCombineXYZ'); nt.links.new(add.outputs[0], cmb.inputs[0]); nt.links.new(sp.outputs[2], cmb.inputs[1])
+    br = nt.nodes.new('ShaderNodeTexBrick'); nt.links.new(cmb.outputs[0], br.inputs['Vector'])
+    br.offset = 0.5; br.squash = 1.0
+    br.inputs['Scale'].default_value = 1.0; br.inputs['Brick Width'].default_value = 1.25; br.inputs['Row Height'].default_value = 0.62
+    br.inputs['Mortar Size'].default_value = 0.022; br.inputs['Mortar Smooth'].default_value = 0.3; br.inputs['Bias'].default_value = 0.0
+    br.inputs['Color1'].default_value = (0.95, 0.95, 0.94, 1); br.inputs['Color2'].default_value = (1.04, 1.03, 1.02, 1)
+    br.inputs['Mortar'].default_value = (0.80, 0.79, 0.77, 1)
+    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1.5, 1.5, 0.12); nt.links.new(geo.outputs['Position'], mp.inputs[0])
+    n1 = nt.nodes.new('ShaderNodeTexNoise'); n1.inputs['Scale'].default_value = 1.0; n1.inputs['Detail'].default_value = 4.0; nt.links.new(mp.outputs[0], n1.inputs['Vector'])
+    r1 = nt.nodes.new('ShaderNodeMapRange'); r1.interpolation_type = 'SMOOTHSTEP'; nt.links.new(n1.outputs['Fac'], r1.inputs[0])
+    r1.inputs[1].default_value = 0.45; r1.inputs[2].default_value = 0.75; r1.inputs[3].default_value = 1.0; r1.inputs[4].default_value = 0.8   # streaks
+    n2 = nt.nodes.new('ShaderNodeTexNoise'); n2.inputs['Scale'].default_value = 0.08; n2.inputs['Detail'].default_value = 3.0; nt.links.new(geo.outputs['Position'], n2.inputs['Vector'])
+    r2 = nt.nodes.new('ShaderNodeMapRange'); r2.interpolation_type = 'SMOOTHSTEP'; nt.links.new(n2.outputs['Fac'], r2.inputs[0])
+    r2.inputs[1].default_value = 0.3; r2.inputs[2].default_value = 0.7; r2.inputs[3].default_value = 0.9; r2.inputs[4].default_value = 1.06
+    mm = nt.nodes.new('ShaderNodeMath'); mm.operation = 'MULTIPLY'; nt.links.new(r1.outputs[0], mm.inputs[0]); nt.links.new(r2.outputs[0], mm.inputs[1])
+    c1 = nt.nodes.new('ShaderNodeMix'); c1.data_type = 'RGBA'; c1.blend_type = 'MULTIPLY'; c1.inputs[0].default_value = 1.0
+    nt.links.new(a.outputs['Color'], c1.inputs[6]); nt.links.new(br.outputs['Color'], c1.inputs[7])
+    hs = nt.nodes.new('ShaderNodeHueSaturation'); nt.links.new(c1.outputs[2], hs.inputs['Color']); nt.links.new(mm.outputs[0], hs.inputs['Value'])
+    ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.samples = 4; ao.inputs['Distance'].default_value = 1.5
+    inv = nt.nodes.new('ShaderNodeMath'); inv.operation = 'SUBTRACT'; inv.inputs[0].default_value = 1.0; nt.links.new(ao.outputs['AO'], inv.inputs[1])
+    f = nt.nodes.new('ShaderNodeMath'); f.operation = 'MULTIPLY'; f.inputs[1].default_value = 0.5; nt.links.new(inv.outputs[0], f.inputs[0])
+    mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MULTIPLY'
+    nt.links.new(f.outputs[0], mx.inputs[0]); nt.links.new(hs.outputs[0], mx.inputs[6]); mx.inputs[7].default_value = (0.42, 0.40, 0.37, 1)
+    nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
+    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = 0.25; bm.inputs['Distance'].default_value = 0.01
+    nt.links.new(br.outputs['Fac'], bm.inputs['Height']); nt.links.new(bm.outputs['Normal'], pr.inputs['Normal'])
+    return m
 
 # ── the models ────────────────────────────────────────────────────────────────
 ORACLE_HOME = (4233.6, 2045.0)          # home plate (NAIP 2022); models/oracle_prep.py
@@ -138,3 +178,10 @@ def fourthst(C):
     j = sidecar('fourthst')
     if not j: return
     load_into(C.K, 'fourthst', C.tg(*j['datum']) + 0.20)
+
+def grace(C):
+    """Grace Cathedral (1928-64): the offline model (models/grace_prep.py); lm_civic.grace if missing"""
+    if C.era is not None and C.era < 1928: return
+    j = sidecar('grace')
+    if not j or not load_into(C.K, 'grace', j['z0']):
+        import lm_civic; lm_civic.grace(C)

@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst', 'grace'}
 WATER_ENABLED = {'lakes', 'piers'}   # + 'sea_depth', 'sea_wind' once validated
 
 class Region:
@@ -123,7 +123,7 @@ def _registry():
                  pad=4000.0, note='built 1971-73, in service July 1973', replaces=True),
         Landmark('alcatraz', 'Alcatraz', 1859, None, V.alcatraz, ol('alcatraz'), pad=1500.0,
                  note='military fortress 1859, military prison 1907-33 (cellhouse 1912), federal penitentiary 1934-63, lighthouse 1909 (first 1854), water tower 1940; warden\'s house burned 1970'),
-        Landmark('grace', 'Grace Cathedral', 1964, None, V.grace, ds('grace', 139401), pad=1200.0,
+        Landmark('grace', 'Grace Cathedral', 1964, None, P.grace, ds('grace', 139401), pad=1200.0,
                  note='begun 1928, consecrated 1964 (the nave finished 1964; the towers 1941)', replaces=True),
         Landmark('stmarys', "St. Mary's Cathedral", 1971, None, V.stmarys, ds('stmarys', 149499), pad=1200.0,
                  note='1967-71, after the old cathedral on Van Ness burned in 1962', replaces=True),
