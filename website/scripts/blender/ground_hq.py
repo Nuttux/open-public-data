@@ -126,7 +126,7 @@ def images(W):
         out.append(im)
     return out
 
-def shade(b, sample, W, old, hill, lw, g, NEU):
+def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None):
     """the ground's colour where the photo says what it is: the class
     materials laid over hill_ground's own composition `old` by their soft
     shares (the hills — golden grass, coyote brush, chert — stay the wild
@@ -174,13 +174,14 @@ def shade(b, sample, W, old, hill, lw, g, NEU):
     for_ = lambda x_: b.mix(1.0, b.mix(1.0, x_, NEU, 'MULTIPLY'), WARM, 'MULTIPLY')
     ap = for_(ap); co = for_(co); gv = for_(gv)
     # SAND: Ocean Beach's pale buff, wind ripples, darker drifts (a buff-grey
-    # albedo rendered lilac-white at Crissy, gnd8/9: this light gives blue
-    # 2.1x, red 1.2x on a pale surface, so the albedo leans hard to yellow);
+    # albedo rendered lilac-white at Crissy, gnd8/9, and pink-white under
+    # the harder sun of 53c5109c5 (integ1: sRGB 205,190,180): the albedo
+    # leans hard to yellow, green and blue both cut);
     # WET SAND and mud: darker, smoother, a sheen (the roughness)
     rip = b.math('SINE', b.math('MULTIPLY', b.math('ADD', b.bw(b.vmap(1.0)), b.math('MULTIPLY', b.noise(1 / 3.0, 2.0), 1.2)), 2 * math.pi / 0.7))
-    sd = b.mix(b.ramp(b.noise(1 / 18.0, 3.0, vec=b.vmap(1.0, loc=(3.3, 7.1, 0))), 0.0, 1.0, 0.3, 0.7), (0.40, 0.305, 0.135), (0.50, 0.38, 0.17))
+    sd = b.mix(b.ramp(b.noise(1 / 18.0, 3.0, vec=b.vmap(1.0, loc=(3.3, 7.1, 0))), 0.0, 1.0, 0.3, 0.7), (0.37, 0.265, 0.085), (0.47, 0.335, 0.11))
     sd = b.mix(b.math('MULTIPLY', b.ramp(rip, 0.0, 1.0, -1.0, 1.0), 0.12), sd, b.mix(1.0, sd, (0.8, 0.8, 0.8), 'MULTIPLY'))
-    ws = b.mix(b.ramp(b.noise(1 / 10.0, 3.0), 0.0, 1.0, 0.3, 0.7), (0.16, 0.125, 0.065), (0.21, 0.165, 0.085))
+    ws = b.mix(b.ramp(b.noise(1 / 10.0, 3.0), 0.0, 1.0, 0.3, 0.7), (0.15, 0.113, 0.048), (0.20, 0.15, 0.062))
     # MARSH: pickleweed, olive with its September red, mud in the channels
     mh = b.mix(b.ramp(b.noise(1 / 6.0, 3.0, vec=b.vmap(1.0, loc=(-6.0, 2.0, 0))), 0.0, 1.0, 0.45, 0.65), (0.085, 0.09, 0.04), (0.15, 0.075, 0.05))
     mh = b.mix(b.ramp(b.noise(1 / 14.0, 3.0), 0.0, 1.0, 0.66, 0.72), mh, (0.07, 0.065, 0.05))
@@ -194,6 +195,13 @@ def shade(b, sample, W, old, hill, lw, g, NEU):
     # the wild ground (cured grass, brush, rock: hill_ground's hills), then
     # each class over it by its share
     x = hill
+    # a house's yard is a garden and a patio, not a vacant lot: bare earth
+    # (and half the cured grass) within a few metres of a house takes
+    # hill_ground's garden (integ1: Alamo's and Twin Peaks' backyards read as
+    # dirt lots)
+    if yd is not None and yardf is not None:
+        so = b.mix(yardf, so, yd)
+        hill = b.mix(b.math('MULTIPLY', yardf, 0.5), hill, yd); x = hill
     L_ = [(tree, du), (soil, so), (marsh, mh), (water, md), (lawn, lw), (grav, gv), (asph, ap), (conc, co)]
     if os.environ.get('GROUND_SAND', '1') == '1': L_ += [(sand, sd), (wet, ws)]      # the beaches (the water agent may own them)
     for w_, col_ in L_:
@@ -205,10 +213,20 @@ def shade(b, sample, W, old, hill, lw, g, NEU):
     if ti is not None:
         t_ = sample(ti[0], ti[1], 'EXTEND')[0]
         d_ = b.math('SUBTRACT', b.math('MULTIPLY', t_, 255.0 / 127.0), 128.0 / 127.0)
-        x = b.mix(1.0, x, b.math('POWER', 2.0, b.math('MULTIPLY', d_, TONE_K)), 'MULTIPLY')
+        # a watered lawn keeps its light patches but not its dark ones (the
+        # photo's tree shadows lay dark streaks across Dolores Park, integ1)
+        dn = b.math('MULTIPLY', b.math('MINIMUM', d_, 0.0), b.math('SUBTRACT', 1.0, b.math('MULTIPLY', sh(lawn), 0.8)))
+        dp = b.math('MAXIMUM', d_, 0.0)
+        # darker ground is warmer, not bluer (damp earth, trodden grass): the
+        # dark share cuts blue more than red (a plain multiply turned the
+        # beach's damp patches lilac-grey, integ1)
+        cx_ = b.n('ShaderNodeCombineXYZ')
+        for k_, w_ in enumerate((1.0, 1.12, 1.35)):
+            b.put(cx_.inputs[k_], b.math('POWER', 2.0, b.math('MULTIPLY', b.math('ADD', dp, b.math('MULTIPLY', dn, w_)), TONE_K)))
+        x = b.mix(1.0, x, cx_.outputs[0], 'MULTIPLY')
     hv = b.ramp(have, 0.0, 1.0, 0.2, 0.8)
     col = b.mix(hv, old, x)
-    wetf = b.math('MULTIPLY', b.math('MULTIPLY', hv, sh(wet)), 0.7)
+    wetf = b.math('MULTIPLY', b.math('MULTIPLY', hv, sh(wet)), 0.3)     # (0.7: the sky's sheen turned wet sand lilac-grey)
     wildf = b.math('MULTIPLY', hv, b.math('MINIMUM', b.math('ADD', b.math('ADD', dry, scrub), soil), 1.0))
     return col, wetf, wildf, hv
 

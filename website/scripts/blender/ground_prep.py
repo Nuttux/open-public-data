@@ -128,12 +128,17 @@ def bmask(x0, y0, x1, y1, res=SUB, sweep=True):
 
 # ── OpenStreetMap hints (ground/osm/landcover.json, Overpass 2026-09-24) ─────
 OSM = f'{OUT}/osm/landcover.json'
+COURT = {'tennis', 'basketball', 'volleyball', 'handball', 'skateboard', 'pickleball', 'bocce', 'boules', 'running', 'athletics', 'table_tennis', 'racquet', 'shuffleboard', 'fitness'}
+HARD = ('asphalt', 'concrete', 'paved', 'clay', 'tartan', 'acrylic', 'sand', 'dirt', 'gravel', 'paving_stones', 'wood', 'rubber')
 def _osm_cat(t):
     n, lu, le = t.get('natural'), t.get('landuse'), t.get('leisure')
     if n in ('beach', 'sand'): return 'beach'
     if n == 'wetland': return 'wetland'
     if n == 'water' or lu in ('reservoir', 'basin'): return 'water'
     if t.get('amenity') == 'parking' and t.get('parking', 'surface') == 'surface': return 'parking'
+    # a playing field (grass or artificial turf, which the NIR reads as bare
+    # or paved: Mission High's field rendered dark olive-brown, integ1)
+    if le == 'pitch' and not set(str(t.get('sport', '')).split(';')) & COURT and t.get('surface', 'grass') not in HARD: return 'turf'
     if t.get('golf') in ('fairway', 'green', 'tee', 'driving_range') or le in ('pitch', 'golf_course') or lu in ('grass', 'village_green', 'recreation_ground', 'cemetery'):
         return 'lawn'
     if n == 'wood' or lu == 'forest': return 'wood'
@@ -225,7 +230,7 @@ def classify(DN, AL, ok, res=SUB, osm=None):
     veg = nds > 0.14
     c[veg] = CI['drygrass']
     c[veg & ((nstd > 11) | (L < 0.036))] = CI['scrub']
-    lawnh = osm.get('lawn', np.zeros(L.shape, bool))
+    lawnh = osm.get('lawn', np.zeros(L.shape, bool)) | osm.get('turf', np.zeros(L.shape, bool))
     c[veg & (((Ns > 172) & (G > 0.062)) | (lawnh & (Ns > 150))) & (nstd < 14)] = CI['lawn']
     woodh = osm.get('wood', np.zeros(L.shape, bool))
     c[veg & (nds > 0.24) & ((nstd > 13) | (L < 0.045) | woodh) & ~((Ns > 185) & (nstd < 10))] = CI['tree']
@@ -327,7 +332,7 @@ def refine(src=None, dst=None, M=100):
     src = src or f'{OUT}/ground_cls.npy'; dst = dst or src
     G = np.load(src); ny, nx = G.shape; O = G.copy()
     W, A, C, GR, SO = CI['water'], CI['asphalt'], CI['concrete'], CI['gravel'], CI['soil']
-    n = int(BLK / RES); nfill = nwet = 0
+    n = int(BLK / RES); nfill = nwet = nturf = nlawn = 0
     for j0 in range(0, ny, n):
         for i0 in range(0, nx, n):
             a0, b0 = max(0, i0 - M), max(0, j0 - M); a1, b1 = min(nx, i0 + n + M), min(ny, j0 + n + M)
@@ -349,6 +354,16 @@ def refine(src=None, dst=None, M=100):
                     near = binary_dilation(bch, iterations=int(200 / RES)) & binary_dilation(sea, iterations=int(30 / RES))
                     m_ = near & np.isin(c, [A, C, GR, SO])
                     c[m_] = CI['wetsand']; nwet += int(m_.sum())
+            # playing fields: turf, whatever the NIR said (not their courts and tracks)
+            if 'turf' in om:
+                tf = om['turf'][:c.shape[0], :c.shape[1]] & np.isin(c, [A, C, GR, SO, CI['drygrass'], CI['scrub']])
+                c[tf] = CI['lawn']; nturf += int(tf.sum())
+            # a watered lawn (OSM park grass, a garden, a cemetery, a golf
+            # course): its dry patches and bare wear are the lawn's, not a lot's
+            # (Alamo Square read as mottled brown earth, integ1)
+            if 'lawn' in om:
+                lw_ = om['lawn'][:c.shape[0], :c.shape[1]] & np.isin(c, [SO, CI['drygrass']])
+                c[lw_] = CI['lawn']; nlawn += int(lw_.sum())
             O[j0:j0 + n, i0:i0 + n] = c[j0 - b0:j0 - b0 + n, i0 - a0:i0 - a0 + n]
     np.save(dst, O)
     fr = {n_: round(float((O == j).sum()) / max(1, int((O > 0).sum())) * 100, 2) for j, n_ in enumerate(CLS) if j}
@@ -356,7 +371,7 @@ def refine(src=None, dst=None, M=100):
     json.dump(meta, open(mp, 'w'), indent=1)
     from PIL import Image
     Image.fromarray(_rgb(O[::-8, ::8])).save(f'{OUT}/ground_cls_preview.png')
-    print('refined', nfill, 'shadow pixels filled,', nwet, 'wet sand', fr)
+    print('refined', nfill, 'shadow pixels filled,', nwet, 'wet sand,', nturf, 'turf,', nlawn, 'lawn', fr)
 
 # ── the photo's own detail: a tone map at 0.5 m ────────────────────────────
 TONE_RES = SUB

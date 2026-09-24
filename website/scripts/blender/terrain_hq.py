@@ -137,6 +137,7 @@ def _enc(a):
     import base64
     return base64.b64encode(np.ascontiguousarray(a, dtype=np.float32).tobytes()).decode()
 
+SEA_MASK_SOUTH = -5760.0      # (world y) the engine's sea mask has no water south of this
 def _water_mask(sd, x0, y0, step, nx, ny):
     """the render's own land/water mask (water_mask.py's sea.png, R = water)
     sampled on the grid; None if the scene has none"""
@@ -156,7 +157,22 @@ def _water_mask(sd, x0, y0, step, nx, ny):
     xs = x0 + np.arange(nx) * step; ys = y0 + np.arange(ny) * step
     c = np.clip(((xs - g['ox']) / g['w'] * W).astype(int), 0, W - 1)
     r = np.clip(((g['oy'] + g['h'] - ys) / g['h'] * H).astype(int), 0, H - 1)
-    return a[np.ix_(r, c)] > 0.5
+    m = a[np.ix_(r, c)] > 0.5
+    # OUTSIDE the mask's square its clamped edge row was repeated: a land row
+    # at the square's south edge laid a slab of ground across the Pacific
+    # (frame 0:6, the 'sliver with a black line', 2026-09-24). There the OSM
+    # coastline decides, or where it does not reach, the ground's own height
+    X, Y = np.meshgrid(xs, ys)
+    out = (X < g['ox']) | (X > g['ox'] + g['w']) | (Y < g['oy']) | (Y > g['oy'] + g['h'])
+    # and the engine's sea stops at the county line (sea.png reads land over
+    # the whole Pacific south of y -5785: the slab across 0:6): south of it
+    # too, the coastline decides
+    out |= Y < SEA_MASK_SOUTH
+    if out.any():
+        lm, _ = _coast(X, Y)
+        Zt = np.nan_to_num(true_ground(X, Y), nan=-9.0)
+        m = np.where(out, (lm == 0) | ((lm < 0) & (Zt < 0.3)), m)
+    return m
 
 def _grid_tris(x0, y0, step, nx, ny, Z, C, keep=None):
     """triangle soup (and colours) of a regular grid; keep (ny-1, nx-1) bool"""
@@ -325,6 +341,11 @@ def _correct(d, log, box, sd, res, far, pad, t0):
             # the render's land: never below the water it borders (a fort, a
             # pier shed, a seawall the bare-earth model flattened to the sea)
             Z = np.where(~wm, np.maximum(Z, 0.6), Z)
+            # and the water under the water: 3DEP's own beach toe (another
+            # tide) and its nodata zeros stood through the sea sheet (z 0.12)
+            # and the ocean plane (-0.5) as strips in the surf off Ocean Beach
+            # and a slab at 0:6 (2026-09-24)
+            Z = np.where(wm, np.minimum(Z, -0.9), Z)
             # pier sheds over the water stand on a deck (without ground under
             # their corners hq_city's generator skipped them: hollow piers)
             pm, rings = _pier_nodes(recs_, x0, y0, step, nx, ny, wm)
