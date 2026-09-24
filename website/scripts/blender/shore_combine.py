@@ -72,7 +72,10 @@ fill = np.zeros(GX.shape, np.float32)
 for (ya, wa), (yb, wb) in zip(steps, steps[1:]):
     T = wa & ~wb
     if not T.any(): continue
-    dist = ndimage.distance_transform_edt(wa)                 # from the earlier shore
+    # from the earlier LAND: today's bay counts as water, or the fill ran in
+    # from today's outer shore and left thin land loops round the old bay
+    # (1906 z5 1:1)
+    dist = ndimage.distance_transform_edt(wa | ts)
     lab, n = ndimage.label(T)
     mx = ndimage.maximum(dist, lab, range(1, n + 1)); mn = ndimage.minimum(dist, lab, range(1, n + 1))
     mxa = np.concatenate([[1.0], mx]); mna = np.concatenate([[0.0], mn])
