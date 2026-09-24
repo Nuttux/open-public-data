@@ -19,6 +19,10 @@ API = 'https://rest.runpod.io/v1'
 # cheapest first; all 48 GB (a 24 GB card can't hold a full frame: no out-of-core on CUDA/OptiX)
 GPUS = ['NVIDIA RTX A6000', 'NVIDIA A40', 'NVIDIA L40', 'NVIDIA RTX 6000 Ada Generation', 'NVIDIA L40S']
 IMAGE = 'runpod/base:1.3.2-ubuntu2204'
+# Europe and North America only: the upload from Paris to a pod in Taiwan ran at ~1 MB/s (24/09, parity attempt 2)
+DCS = ['EU-RO-1', 'EU-SE-1', 'EU-NL-1', 'EU-CZ-1', 'EU-FR-1', 'EUR-IS-1', 'EUR-IS-2', 'EUR-IS-3', 'EUR-NO-1',   # Europe first (Daniel is in France)
+       'US-GA-1', 'US-GA-2', 'US-NC-1', 'US-MD-1', 'US-DE-1', 'CA-MTL-1', 'CA-MTL-2', 'CA-MTL-3', 'US-IL-1',   # then North America east
+       'US-TX-1', 'US-TX-3', 'US-TX-4', 'US-KS-2', 'US-KS-3', 'US-CA-2', 'US-WA-1']                           # never Asia/Oceania
 
 
 def key():
@@ -65,22 +69,30 @@ def create(label, maxh):
     maxs = int(float(maxh) * 3600)
     # the watchdog: whatever happens to the driver or this Mac, the pod stops itself after max_hours
     wd = base64.b64encode(f"""sleep {maxs}
-echo "$(date) watchdog: {maxh} h reached, stopping" >> /workspace/watchdog.log
-runpodctl stop pod "$RUNPOD_POD_ID" >> /workspace/watchdog.log 2>&1 && exit 0
+echo "$(date) watchdog: {maxh} h reached, stopping" >> /root/watchdog.log
+runpodctl stop pod "$RUNPOD_POD_ID" >> /root/watchdog.log 2>&1 && exit 0
 curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $RUNPOD_API_KEY" \\
-  -d '{{"query":"mutation {{ podStop(input: {{podId: \\"'$RUNPOD_POD_ID'\\"}}) {{ id }} }}"}}' https://api.runpod.io/graphql >> /workspace/watchdog.log 2>&1
+  -d '{{"query":"mutation {{ podStop(input: {{podId: \\"'$RUNPOD_POD_ID'\\"}}) {{ id }} }}"}}' https://api.runpod.io/graphql >> /root/watchdog.log 2>&1
 """.encode()).decode()
     body = dict(name=f'qipu-{label}', imageName=IMAGE, gpuCount=1, gpuTypeIds=GPUS, gpuTypePriority='custom',
-                containerDiskInGb=20, volumeInGb=30, volumeMountPath='/workspace', minRAMPerGPU=48, minVCPUPerGPU=8,
-                ports=['22/tcp'], supportPublicIp=True,
+                containerDiskInGb=40, volumeInGb=0, minVCPUPerGPU=8,
+                ports=['22/tcp'], supportPublicIp=True, dataCenterIds=DCS, dataCenterPriority='custom', countryCodes=['FR', 'NL', 'SE', 'NO', 'IS', 'CZ', 'RO', 'US', 'CA'],
                 env={'PUBLIC_KEY': open(os.path.expanduser('~/.ssh/id_ed25519.pub')).read().strip(),
-                     'NVIDIA_DRIVER_CAPABILITIES': 'all', 'QIPU_ROOT': '/workspace', 'WD_B64': wd},
+                     'NVIDIA_DRIVER_CAPABILITIES': 'all', 'QIPU_ROOT': '/root/q', 'WD_B64': wd},
                 dockerStartCmd=['bash', '-c', 'echo $WD_B64 | base64 -d > /wd.sh; nohup bash /wd.sh >/dev/null 2>&1 & exec /start.sh'])
     p = None
-    for cloud in ('COMMUNITY', 'SECURE'):
-        p = req('POST', '/pods', dict(body, cloudType=cloud))
+    # RAM first: the frame's scene build is single-threaded Python (~150 s), so throughput comes from PAR, and a frame
+    # needs ~27 GB; POD_RAM=80 asks for PAR 3, then falls back to any 48 GB card (an A40 has 50 GB: PAR 1)
+    tries = [(c, r) for r in dict.fromkeys([int(os.environ.get('POD_RAM', 48)), 48]) for c in ('COMMUNITY', 'SECURE')]
+    for cloud, ram in tries:
+        p = req('POST', '/pods', dict(body, cloudType=cloud, minRAMPerGPU=ram))
         if 'id' in p: break
         print(cloud, 'refused:', p.get('_body', p)[:200], file=sys.stderr)
+        # a 500 can still have made the pod (24/09 18:21: 'Internal Server Error', yet qipu-bench2 ran 15 min): adopt it
+        time.sleep(15)
+        mine = [q for q in pods() if q.get('name') == body['name'] and not os.path.exists(st_path(q['id']))]
+        if mine:
+            p = req('GET', f"/pods/{mine[0]['id']}"); print('adopted', p['id'], 'made despite the error', file=sys.stderr); break
     if not p or 'id' not in p: sys.exit('no 48 GB GPU available now')
     s = dict(id=p['id'], label=label, gpu=(p.get('machine') or {}).get('gpuTypeId') or p.get('gpu', {}).get('id'),
              cloud=cloud, cost_per_hr=p.get('adjustedCostPerHr') or p.get('costPerHr'), created=time.time(), max_hours=float(maxh),
@@ -124,7 +136,15 @@ def guard():
         if p.get('desiredStatus') != 'RUNNING': continue
         sp = st_path(p['id'])
         if not os.path.exists(sp):
-            print('UNKNOWN running pod', p['id'], p.get('name')); continue   # not ours: report, don't touch
+            try: age_s = time.time() - dt.datetime.strptime((p.get('lastStartedAt') or '')[:19], '%Y-%m-%d %H:%M:%S').replace(tzinfo=dt.timezone.utc).timestamp()
+            except ValueError: age_s = 1e9
+            if (p.get('name') or '').startswith('qipu-') and age_s < 180:
+                print('untracked qipu pod', p['id'], 'is < 3 min old (a create in progress?): left for now'); continue
+            if (p.get('name') or '').startswith('qipu-'):      # ours but untracked (a create that errored): terminate
+                print('UNTRACKED qipu pod', p['id'], p.get('name'), ': TERMINATING'); terminate(p['id']); bad = 1
+            else:
+                print('UNKNOWN running pod', p['id'], p.get('name'))   # not ours: report, don't touch
+            continue
         s = json.load(open(sp)); age = (time.time() - s['created']) / 3600
         if age > s['max_hours'] + 1 / 6:
             print(f"pod {p['id']} ran {age:.2f} h > planned {s['max_hours']} h: STOPPING"); stop(p['id']); bad = 1

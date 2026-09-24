@@ -20,4 +20,15 @@ Checkpoints ON DEMAND only (main runs `ckpt.sh <name>`, at most ~2 a day). No cr
 - viewer/: static Leaflet page (swipe vs previous checkpoint and vs pass 0924_0735), python -m http.server
   on a free port (8766 and 8790 are taken).
 
-(Committed copy; the scripts run from qipu-render-work/cloud/, where state/, COSTS.md, ckpt_*/ live. Copy back with cp if edited here.)
+## Measured (24/09 evening)
+- Uplink from Daniel's Mac: 8.6–9.8 MB/s over 4 streams to EU/US pods; ~1 MB/s to a pod in Taiwan (latency-bound), so pods are EU first, then US east, never Asia.
+- Upload per pod: ours = one zstd pack per snapshot (snapshot + city/ + the public city data, 720 MB, ~80 s up and unpacked);
+  public data fetched by the pod itself (Poly Haven 2k, 3DEP tiles), which comes back byte-identical (checksum fix-up sends ~23 KB), ~90 s in parallel.
+- Parity (frame 4:3, snap cloud_p1): A40 OptiX vs M4 Pro Metal, mean abs diff 1.11/255 (0.45 with noise averaged at 1/8 res);
+  L40S CUDA + GPU denoiser: 1.36/255 (0.54). Geometry, materials and light identical at 2x.
+- Per frame on the pod: path tracing 27–41 s (CUDA/OptiX + GPU OIDN), but the scene build is ~150 s of single-threaded Python
+  (Mac: 66 s). Blender ~25 GB RSS and ~12 GB VRAM per frame, so throughput comes from PAR (frames at once), bounded by container RAM.
+- Driver 550 fails OptiX (PTX compile error); the setup's warm-up falls back to CUDA automatically.
+- A create call answering 500 can still make a pod: pod.py adopts it; guard terminates any untracked qipu-* pod older than 3 min.
+
+(Committed copy; the scripts run from qipu-render-work/cloud/, where state/, COSTS.md, ckpt_*/ live.)
