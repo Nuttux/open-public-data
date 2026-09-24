@@ -1,0 +1,2 @@
+Patches for main's files. Format: `old\n>>>>\nnew`, blocks separated by a line `====`. Apply: `python3 ../apply_patch.py <file.py> <patch>` (fails if an old block is not found exactly once; a block whose new text is already present is skipped).
+- hq_scene_cycles_device.patch -> website/scripts/blender/hq_scene.py: CYCLES_DEVICE=OPTIX|CUDA|METAL, default METAL (unchanged on the Mac). On OPTIX/CUDA the CPU device is left off; on METAL all devices stay on as today. The cloud bundle applies it to the pod's copy of the snapshot until main commits it.

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SF Checkpoints</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root { --bg: #f4f1ea; --ink: #1d1d1b; --muted: #6b675f; --panel: #ffffffee; --line: #d8d2c4; --accent: #b8742a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #16150f; --ink: #ece8df; --muted: #a39d90; --panel: #211f19ee; --line: #3a372e; } }
+  :root[data-theme="dark"] { --bg: #16150f; --ink: #ece8df; --muted: #a39d90; --panel: #211f19ee; --line: #3a372e; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font: 13px/1.4 -apple-system, system-ui, sans-serif; }
+  #map { position: absolute; inset: 0; background: var(--bg); }
+  .bar { position: absolute; z-index: 1000; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+         background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; max-width: calc(100vw - 32px); box-sizing: border-box; }
+  .bar select, .bar button { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; }
+  .bar button.on { border-color: var(--accent); color: var(--accent); }
+  .lbl { color: var(--muted); }
+  #divider { position: absolute; z-index: 900; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent); cursor: ew-resize; }
+  #divider::after { content: '⇆'; position: absolute; top: 50%; left: -13px; width: 26px; height: 26px; line-height: 26px; text-align: center;
+         border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; }
+  .tag { position: absolute; z-index: 950; bottom: 12px; padding: 3px 8px; border-radius: 5px; background: var(--panel); border: 1px solid var(--line); }
+  #tagL { left: 12px; } #tagR { right: 12px; }
+  .leaflet-container { background: var(--bg); }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="divider"></div>
+<div class="bar">
+  <span class="lbl">left</span><select id="left"></select>
+  <span class="lbl">right</span><select id="right"></select>
+  <button id="mSwipe" class="on">swipe</button><button id="mFlip">flip (x)</button>
+  <span class="lbl" id="zoom"></span>
+</div>
+<div class="tag" id="tagL"></div><div class="tag" id="tagR"></div>
+<script>
+// Pyramids: checkpoints.json (written by ckpt.sh) lists {name, tiles, note}; tiles = z/X/Y.webp, level z is 320·2^z x 192·2^z px.
+const Q = new URLSearchParams(location.search);
+const map = L.map('map', { crs: L.CRS.Simple, minZoom: 0, maxZoom: 9, zoomSnap: 0.5, attributionControl: false });
+const B = L.latLngBounds([[-192, 0], [0, 320]]);
+map.fitBounds(B); map.setMaxBounds(B.pad(0.3));
+map.createPane('left').style.zIndex = 400; map.createPane('right').style.zIndex = 401;
+const blank = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAIBTAA7';
+const layer = (p, pane) => L.tileLayer(p.tiles + '/{z}/{x}/{y}.webp', { pane, tileSize: 512, minZoom: 0, maxZoom: 9, maxNativeZoom: 7, noWrap: true, bounds: B, errorTileUrl: blank });
+let P = [], lay = { left: null, right: null }, split = 0.5, mode = 'swipe';
+const sel = { left: document.getElementById('left'), right: document.getElementById('right') };
+function setLayer(side) {
+  if (lay[side]) map.removeLayer(lay[side]);
+  const p = P[sel[side].value]; lay[side] = layer(p, side).addTo(map);
+  document.getElementById(side === 'left' ? 'tagL' : 'tagR').textContent = p.name + (p.note ? ' · ' + p.note : '');
+  const u = new URLSearchParams(location.search); u.set(side, p.name); history.replaceState(null, '', '?' + u);
+  clip();
+}
+function clip() {
+  const pane = map.getPane('right'), w = map.getSize().x, x = Math.round(w * split);
+  const nw = map.containerPointToLayerPoint([0, 0]), se = map.containerPointToLayerPoint(map.getSize());
+  const cx = nw.x + (mode === 'swipe' ? x : 0);
+  pane.style.clip = mode === 'swipe' ? `rect(${nw.y}px, ${se.x}px, ${se.y}px, ${cx}px)` : 'auto';
+  const d = document.getElementById('divider'); d.style.display = mode === 'swipe' ? '' : 'none'; d.style.left = x + 'px';
+  document.getElementById('zoom').textContent = 'level ' + map.getZoom();
+}
+map.on('move zoom resize', clip);
+const dv = document.getElementById('divider'); let drag = false;
+dv.addEventListener('pointerdown', e => { drag = true; dv.setPointerCapture(e.pointerId); map.dragging.disable(); });
+dv.addEventListener('pointermove', e => { if (drag) { split = Math.min(1, Math.max(0, e.clientX / map.getSize().x)); clip(); } });
+dv.addEventListener('pointerup', () => { drag = false; map.dragging.enable(); });
+function flip() { const r = map.getPane('right'); mode = 'flip'; r.style.visibility = r.style.visibility === 'hidden' ? '' : 'hidden';
+  document.getElementById('mSwipe').classList.remove('on'); document.getElementById('mFlip').classList.add('on'); clip(); }
+document.getElementById('mFlip').onclick = flip;
+document.getElementById('mSwipe').onclick = () => { mode = 'swipe'; map.getPane('right').style.visibility = '';
+  document.getElementById('mSwipe').classList.add('on'); document.getElementById('mFlip').classList.remove('on'); clip(); };
+addEventListener('keydown', e => { if (e.key === 'x') flip(); });
+fetch('checkpoints.json', { cache: 'no-store' }).then(r => r.json()).then(list => {
+  P = list;
+  for (const s of ['left', 'right']) {
+    P.forEach((p, i) => sel[s].add(new Option(p.name, i)));
+    const want = Q.get(s), k = P.findIndex(p => p.name === want);
+    sel[s].value = k >= 0 ? k : (s === 'left' ? Math.min(1, P.length - 1) : 0);
+    sel[s].onchange = () => setLayer(s);
+    setLayer(s);
+  }
+});
+</script>
+</body>
+</html>

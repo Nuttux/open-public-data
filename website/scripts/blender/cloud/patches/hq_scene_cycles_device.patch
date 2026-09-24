@@ -1,0 +1,5 @@
+prefs.compute_device_type = 'METAL'; prefs.get_devices()
+for dv in prefs.devices: dv.use = True
+>>>>
+prefs.compute_device_type = os.environ.get('CYCLES_DEVICE', 'METAL'); prefs.get_devices()
+for dv in prefs.devices: dv.use = True if prefs.compute_device_type == 'METAL' else dv.type != 'CPU'
