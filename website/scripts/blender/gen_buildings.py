@@ -1049,7 +1049,7 @@ def measured_pitched(b, roof_mat, rc):
     # a shingle lives between 0.05 and ~0.22: the photo's lightness is kept in
     # ORDER, compressed into that range (a light reading over a gable is mostly
     # a flat light roof the generator pitched; at 0.3-0.4 a 50° gable went pale)
-    else: L2 = min(0.22, 0.05 + 0.5 * max(0.0, L - 0.05)) if L > 0.05 else L
+    else: L2 = (min(0.19, 0.045 + 0.45 * max(0.0, L - 0.05)) if L > 0.05 else L) * random.Random(b['gid'] * 17 + 3).uniform(0.82, 1.08)   # (24/09: darker asphalt, house to house)
     a = [v * L2 / L for v in a]
     t = _ROOF_TEX[mat]
     return mat, _disp([a[k] / t[k] for k in range(3)])
