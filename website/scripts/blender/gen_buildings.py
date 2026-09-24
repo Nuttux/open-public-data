@@ -63,6 +63,19 @@ STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86
 GLASS_TINTS = [(0.30, 0.36, 0.38, 0.12), (0.30, 0.32, 0.35, 0.1), (0.40, 0.33, 0.25, 0.35), (0.34, 0.29, 0.24, 0.3),
                (0.66, 0.68, 0.70, 0.75), (0.60, 0.58, 0.54, 0.6), (0.22, 0.24, 0.26, 0.25), (0.26, 0.26, 0.27, 0.2),
                (0.30, 0.28, 0.25, 0.25), (0.26, 0.36, 0.50, 0.3), (0.34, 0.42, 0.44, 0.2)]
+# (25/09) the glass by the tower's decade: the 1960s-70s bronze, brown and
+# near-black; the 1980s-2000s green-blue, grey and silver mirror; 2010 on the
+# light blue-grey or clear low-e glass with light mullions (415 Natoma, 181
+# Fremont, the Transbay towers), which the old draw painted 1970s brown
+GLASS_BY_ERA = ((1980, [(0.40, 0.33, 0.25, 0.35), (0.34, 0.29, 0.24, 0.3), (0.30, 0.28, 0.25, 0.25), (0.22, 0.24, 0.26, 0.25),
+                        (0.26, 0.26, 0.27, 0.2), (0.30, 0.32, 0.35, 0.1)]),
+                (2010, [(0.30, 0.36, 0.38, 0.12), (0.34, 0.42, 0.44, 0.2), (0.26, 0.36, 0.50, 0.3), (0.66, 0.68, 0.70, 0.75),
+                        (0.60, 0.58, 0.54, 0.6), (0.30, 0.32, 0.35, 0.1), (0.36, 0.44, 0.42, 0.2)]),
+                (9999, [(0.50, 0.58, 0.64, 0.35), (0.56, 0.62, 0.67, 0.45), (0.46, 0.54, 0.60, 0.3), (0.62, 0.66, 0.69, 0.55),
+                        (0.48, 0.57, 0.63, 0.25), (0.54, 0.60, 0.62, 0.4)]))
+NEW_PANELS = [(0.90, 0.90, 0.88), (0.86, 0.87, 0.87), (0.80, 0.81, 0.82), (0.92, 0.91, 0.88), (0.74, 0.76, 0.78)]   # 2010+: white and light-grey metal or GFRC panels
+def glass_for(yr, rng):
+    return rng.choice(next(g for y, g in GLASS_BY_ERA if yr < y))
 # generated towers the eye knows, by gid (the landmarks_hq towers are modelled apart)
 # 555 California (Bank of America Center, 1969): carnelian granite, bronze glass
 # in vertical bays up the serrated plan (the record's 42-sided ring gives the saw)
@@ -513,8 +526,9 @@ def building(b, ground, out):
         elif yr < 1990: fsys = 'piers' if u_ < 0.25 else ('ribbon' if u_ < 0.45 else ('grid' if u_ < 0.72 else ('curtain' if u_ < 0.87 else None)))
         else: fsys = 'curtain' if u_ < 0.5 else ('grid' if u_ < 0.7 else ('piers' if u_ < 0.85 else 'ribbon'))
         if fsys:
-            wall_mat = 'concrete'; body = trng.choice(STONE); gcol = trng.choice(GLASS_TINTS)
-            if fsys == 'ribbon' and trng.random() < 0.35: body = trng.choice(((0.20, 0.21, 0.22), (0.30, 0.26, 0.22), (0.62, 0.64, 0.66)))   # dark or metal spandrels
+            wall_mat = 'concrete'; body = trng.choice(STONE); gcol = glass_for(yr, trng)
+            if fsys == 'ribbon' and trng.random() < 0.35: body = trng.choice(((0.20, 0.21, 0.22), (0.30, 0.26, 0.22), (0.62, 0.64, 0.66)) if yr < 2010 else NEW_PANELS)   # dark or metal spandrels
+            if yr >= 2010: body = trng.choice(NEW_PANELS)
         elif wall_mat == 'brick' and trng.random() < 0.5:
             wall_mat = 'concrete'; body = trng.choice(STONE)
         elif sub == 'tower' and trng.random() < 0.6:
@@ -523,7 +537,7 @@ def building(b, ground, out):
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
-               fsys=fsys, gcol=gcol)
+               fsys=fsys, gcol=gcol, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
 
     # the house's side and back walls (24/09): in SF the street front is the
     # painted one; a party wall standing clear of its neighbour is plain grey
@@ -1523,7 +1537,7 @@ def tower_skin(w, is_front, b, rng, c):
     the street is glass in every case."""
     L = w.L; zg, first, fh, nfl, eave = c['zg'], c['first'], c['fh'], c['nfl'], c['eave']
     body, gcol, fsys, wm = c['body'], c['gcol'], c['fsys'], c['wall_mat']
-    dark = (0.10, 0.10, 0.11)
+    dark = c.get('mull') or (0.10, 0.10, 0.11)          # (25/09) light mullions on the 2010s glass
     if L < 1.5: return
     # the lobby
     w.rect('shopglass', 0.3, L - 0.3, zg + 0.2, first + fh - 0.4, 0.03, (1, 1, 1))
