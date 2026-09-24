@@ -404,48 +404,65 @@ def ferry(C):
             arch_panel(K, fr, face_u, sgn, a + 1.3, b - 1.3, g + 0.4, g + 5.2)
             rect_panel(K, fr, face_u, sgn, a + 1.6, b - 1.6, g + 7.8, g + 11.6)
             K.box('pl_stone', frg, face_u - 0.4 if sgn < 0 else face_u - 0.1, face_u + 0.1 if sgn < 0 else face_u + 0.4, a - 0.45, a + 0.45, 0.0, 13.2, STONE_D, top=False)
-    # the clock tower (after the Giralda), at the head of Market Street
+    # THE CLOCK TOWER (after the Giralda), at the head of Market Street: 245 ft
+    # (74.7 m) to the finial. Proportions measured on Commons close-ups
+    # (refs/ferry c2, c1): a 9.2 m shaft, the 22 ft (6.7 m) clocks nearly filling
+    # its faces with their centres at ~31.5 m, then tier on tier above: a band of
+    # small windows, a stepped cornice, the tall open colonnade of five bays a
+    # side behind its balustrade, a stepped block with urns, a narrower open
+    # stage of four bays, a round colonnaded tempietto, its balustrade, a slender
+    # lantern, the little dome, the finial and the flagpole.
     tu, tv = -24.0, 0.0
     T = Frame(*fr.P(tu, tv)[:2], ang, g)
     def sq(h, z0, z1, col=STONE, mat='pl_stone', top=True):
         K.box(mat, T, -h, h, -h, h, z0, z1, col, top=top)
-    sq(6.3, 0.0, 46.0, top=False)
-    for (a, b) in ((-6.7, -5.3), (5.3, 6.7)):                                  # corner pilasters
-        for (c, d_) in ((-6.7, -5.3), (5.3, 6.7)):
-            K.box('pl_stone', T, a, b, c, d_, 0.0, 46.0, STONE_D, top=False)
-    for zz in (19.0, 31.0, 45.2):
-        sq(6.75, zz, zz + 0.8, STONE_D)
+    def urns(h, z, s=0.5):
+        for (a_, b_) in ((-h, -h), (-h, h), (h, -h), (h, h)):
+            p_ = T.P(a_, b_)
+            K.lathe('pl_stone', p_[0], p_[1], g + z, [(s * 0.6, 0.0), (s, s * 0.8), (s * 0.4, s * 1.6), (0.0, s * 2.0)], STONE, n=8, smooth=True)
+    HS, ZC = 4.6, 31.5
+    sq(HS, 0.0, ZC - 4.5, top=False)
+    for (a_, b_) in ((-HS - 0.35, -HS + 0.9), (HS - 0.9, HS + 0.35)):                     # corner pilasters
+        for (c_, d_) in ((-HS - 0.35, -HS + 0.9), (HS - 0.9, HS + 0.35)):
+            K.box('pl_stone', T, a_, b_, c_, d_, 0.0, ZC + 5.7, STONE_D, top=False)
+    for zz in (13.6, 20.0):
+        sq(HS + 0.2, zz, zz + 0.5, STONE_D)
     for side in range(4):                                                     # slit windows up the shaft
-        for zz in (22.0, 34.0):
-            for off in (-2.0, 2.0):
-                _tower_panel(K, T, side, 6.3, off - 0.55, off + 0.55, zz, zz + 6.0)
-    sq(6.3, 46.0, 55.0, top=False)                                            # the clock stage
+        for zz in (15.0, 21.5):
+            for off in (-1.3, 1.3):
+                _tower_panel(K, T, side, HS, off - 0.4, off + 0.4, zz, zz + 3.2)
+    sq(HS, ZC - 4.5, ZC + 5.7, top=False)                                    # the clock stage
     for side in range(4):
-        _clock(K, T, side, 6.3, 50.6, 3.35)
-    # (25/09, from Commons close-ups refs/ferry) above the clock, as built: a band of
-    # small square windows; an OPEN loggia of four tall round-headed arches a side
-    # behind a balustrade; the cornice; a narrower open loggia of three arches, its
-    # balustrade; the octagonal lantern; the little dome, the finial and the flag
-    sq(6.9, 55.0, 55.8, STONE_D)
-    sq(6.3, 55.8, 57.6, top=False)
+        _clock(K, T, side, HS + 0.1, ZC, 3.35)
+    sq(HS + 0.45, ZC + 5.7, ZC + 6.3, STONE_D)
+    sq(HS, ZC + 6.3, ZC + 9.4, top=False)                                    # the band of small windows
     for side in range(4):
-        for off in (-3.2, -1.1, 1.1, 3.2):
-            _tower_panel(K, T, side, 6.3, off - 0.45, off + 0.45, 56.2, 57.2)
-    sq(6.75, 57.6, 58.2, STONE_D)
-    _sq_arcade(K, T, 6.3, 0.7, 58.2, 63.0, 64.6, 4, 0.62, STONE, core=3.0)
-    _balustrade(K, T, 6.55, 58.2, 1.0)
-    sq(7.0, 64.6, 65.6, STONE_D)
-    _balustrade(K, T, 6.9, 65.6, 0.9)
-    _sq_arcade(K, T, 5.0, 0.6, 65.6, 69.0, 70.4, 3, 0.6, STONE, core=2.2)
-    sq(5.5, 70.4, 71.2, STONE_D)
-    _balustrade(K, T, 5.35, 71.2, 0.8)
-    K.lathe('pl_stone', T.x, T.y, g, [(3.2, 71.2), (3.2, 74.0), (3.5, 74.0), (3.5, 74.5)], STONE, n=8, smooth=False, cap=False, ang0=math.pi / 8)
-    for k in range(8):
-        a_ = 2 * math.pi * (k + 0.5) / 8 + math.pi / 8
-        K.face('lm_steel', [(T.x + 3.22 * math.cos(a_ - 0.2), T.y + 3.22 * math.sin(a_ - 0.2), g + 71.8), (T.x + 3.22 * math.cos(a_ + 0.2), T.y + 3.22 * math.sin(a_ + 0.2), g + 71.8),
-                            (T.x + 3.22 * math.cos(a_ + 0.2), T.y + 3.22 * math.sin(a_ + 0.2), g + 73.6), (T.x + 3.22 * math.cos(a_ - 0.2), T.y + 3.22 * math.sin(a_ - 0.2), g + 73.6)], GLAZE)
-    K.lathe('pl_stone', T.x, T.y, g, [(3.0, 74.5), (2.8, 75.4), (2.0, 76.3), (0.9, 76.9), (0.3, 77.1), (0.18, 79.5), (0.0, 79.5)], STONE, n=16)
-    K.cyl('lm_paint', (T.x, T.y, g + 79.5), (T.x, T.y, g + 84.0), 0.08, hexc('#d9d9d6'), n=4, smooth=False)
+        for off in (-3.0, -1.5, 0.0, 1.5, 3.0):
+            _tower_panel(K, T, side, HS, off - 0.35, off + 0.35, ZC + 7.3, ZC + 8.3)
+    sq(HS + 0.35, ZC + 9.4, ZC + 10.4, STONE_D); sq(HS + 0.65, ZC + 10.4, ZC + 11.9, STONE)    # the stepped cornice
+    _sq_arcade(K, T, HS, 0.55, ZC + 11.9, ZC + 18.6, ZC + 20.0, 5, 0.66, STONE, core=2.2)   # the great open colonnade
+    _balustrade(K, T, HS + 0.25, ZC + 11.9, 1.1)
+    sq(HS + 0.6, ZC + 20.0, ZC + 21.0, STONE_D)
+    urns(HS + 0.3, ZC + 21.0, 0.55)
+    sq(HS - 0.4, ZC + 21.0, ZC + 23.2, STONE); sq(HS - 1.0, ZC + 23.2, ZC + 25.0, STONE)        # the stepped block
+    _sq_arcade(K, T, 3.0, 0.45, ZC + 25.0, ZC + 29.6, ZC + 30.5, 4, 0.62, STONE, core=1.2)   # the narrower open stage
+    sq(3.4, ZC + 30.5, ZC + 31.2, STONE_D); urns(3.1, ZC + 31.2, 0.4)
+    for k in range(8):                                                        # the tempietto: a ring of columns round a core
+        a_ = 2 * math.pi * k / 8 + math.pi / 8
+        px, py = T.x + 2.1 * math.cos(a_), T.y + 2.1 * math.sin(a_)
+        K.cyl('pl_stone', (px, py, g + ZC + 31.2), (px, py, g + ZC + 35.3), 0.2, STONE, n=6, smooth=True)
+    K.lathe('pl_stone', T.x, T.y, g, [(1.1, ZC + 31.2), (1.1, ZC + 35.3)], STONE_D, n=12, smooth=True, cap=False)
+    K.lathe('pl_stone', T.x, T.y, g, [(2.45, ZC + 35.3), (2.45, ZC + 36.0), (2.2, ZC + 36.1)], STONE_D, n=16, smooth=False, cap=False)
+    for k in range(20):                                                       # its balustrade
+        a_ = 2 * math.pi * k / 20
+        K.cyl('pl_stone', (T.x + 2.3 * math.cos(a_), T.y + 2.3 * math.sin(a_), g + ZC + 36.1), (T.x + 2.3 * math.cos(a_), T.y + 2.3 * math.sin(a_), g + ZC + 36.8), 0.07, STONE, n=4, smooth=False)
+    K.lathe('pl_stone', T.x, T.y, g, [(1.45, ZC + 36.1), (1.45, ZC + 38.8), (1.6, ZC + 38.9), (1.6, ZC + 39.2)], STONE, n=12, smooth=False, cap=False)    # the lantern
+    for k in range(6):
+        a_ = 2 * math.pi * (k + 0.5) / 6
+        K.face('lm_steel', [(T.x + 1.47 * math.cos(a_ - 0.25), T.y + 1.47 * math.sin(a_ - 0.25), g + ZC + 36.6), (T.x + 1.47 * math.cos(a_ + 0.25), T.y + 1.47 * math.sin(a_ + 0.25), g + ZC + 36.6),
+                            (T.x + 1.47 * math.cos(a_ + 0.25), T.y + 1.47 * math.sin(a_ + 0.25), g + ZC + 38.4), (T.x + 1.47 * math.cos(a_ - 0.25), T.y + 1.47 * math.sin(a_ - 0.25), g + ZC + 38.4)], GLAZE)
+    K.lathe('pl_stone', T.x, T.y, g, [(1.5, ZC + 39.2), (1.3, ZC + 40.0), (0.8, ZC + 40.7), (0.3, ZC + 41.0), (0.15, ZC + 43.2), (0.0, ZC + 43.2)], STONE, n=12)
+    K.cyl('lm_paint', (T.x, T.y, g + ZC + 43.2), (T.x, T.y, g + ZC + 51.0), 0.08, hexc('#d9d9d6'), n=4, smooth=False)
 
 def _sq_arcade(K, T, h, t, z0, zs, zt, n, frac, col, core=0.0):
     """an open square loggia of half-size h, walls t thick: n round-headed arches a
