@@ -32,7 +32,7 @@ _pos = [a for a in sys.argv[1:] if '=' not in a]; O = dict(a.split('=', 1) for a
 V5 = dict(wb='1/1/0.99', green='1.15', water='1.1', sat='1.12', black='0.015', clarity='0.3', clarity_r='40', waterv='0.72')
 # Default preset V6 (25/09 night, main under Daniel's overnight mandate; reversible: preset=V5): V5 with the sky light's
 # grade — cool shade kept (shn=0), deeper blacks, more contrast, a colour script (warm light, teal shade, never violet)
-V6 = dict(V5, wb='1.02/1/0.965', water='1.3', black='0.06', clarity='0.35', shn='0', s='0.30', split='0.4')
+V6 = dict(V5, wb='1.02/1/0.965', water='1.3', green='1.25', black='0.02', clarity='0.35', shn='0', s='0.30', split='0.4')
 _p = O.get('preset', 'V6')
 if _p in ('V5', 'V6'): O = {**{'V5': V5, 'V6': V6}[_p], **O}
 elif _p != 'B': sys.exit(f"preset={_p}: unknown (V6, V5 or B)")
