@@ -192,3 +192,27 @@ def legion(C):
     j = sidecar('legion')
     if not j or not load_into(C.K, 'legion', j['z0']):
         import lm_civic; lm_civic.legion(C)
+
+# ── the families (places/models/fam.py): a model per place, registered from its sidecar ──
+# A sidecar with auto=True carries everything landmarks_hq needs: name, built
+# (and gone), z0 (the model's datum on 3DEP), the rings its model clears, the
+# DataSF gids it replaces, the lawns and courts where trees give way. No code
+# per place: the prep script writes <key>.npz + <key>.json, ENABLED turns it on.
+def auto_places():
+    import json
+    out = []
+    if not os.path.isdir(MODELS): return out
+    for f in sorted(os.listdir(MODELS)):
+        if not f.endswith('.json'): continue
+        try: j = json.load(open(os.path.join(MODELS, f)))
+        except Exception: continue
+        if isinstance(j, dict) and j.get('auto') and os.path.exists(os.path.join(MODELS, f[:-5] + '.npz')):
+            out.append((f[:-5], j))
+    return out
+
+def auto_builder(key, j):
+    def build(C):
+        if C.era is not None and (C.era < j['built'] or (j.get('gone') and C.era >= j['gone'])): return
+        load_into(C.K, key, j['z0'])
+    build.__name__ = key
+    return build

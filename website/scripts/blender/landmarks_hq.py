@@ -164,6 +164,17 @@ def _registry():
         Landmark('pofa_colonnade', 'Palace of Fine Arts colonnades', 1915, None, V.pofa_colonnade, ol('pofa_colonnade', 0.02), pad=800.0,
                  note='as the rotunda', replaces=True),
     ]
+    # the places families (lm_places.auto_places): a sidecar-registered model, or a
+    # new model for a landmark above (it then takes over the builder and the regions)
+    have = {l.key: l for l in L}
+    for key, j in P.auto_places():
+        regs = [Region(ring=[tuple(q) for q in r]) for r in j.get('clear', []) if len(r) >= 3]
+        nt = [Region(ring=[tuple(q) for q in r]) for r in j.get('notree', []) if len(r) >= 3]
+        if key in have:
+            l = have[key]; l.builder = P.auto_builder(key, j); l.regions = regs or l.regions; l.notree = nt or l.notree; l.replaces = True
+        else:
+            L.append(Landmark(key, j['name'], j['built'], j.get('gone'), P.auto_builder(key, j), regs, pad=j.get('pad', 800.0),
+                              note=j.get('note', ''), replaces=True, streets=j.get('streets', False), notree=nt))
     every = os.environ.get('LM_ALL') == '1'
     return [l for l in L if l.regions and (every or l.key in ENABLED or l.key in _extra())]
 
