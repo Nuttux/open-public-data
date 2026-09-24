@@ -32,7 +32,7 @@ Placement is a function of the whole network: each way's cars come from its
 own seed, and every check is a property of the place (the street mesh, the
 track, the kerb), so the frames of the pyramid agree.
 """
-import math, random, time
+import math, os, random, time
 import numpy as np
 
 DENSITY = {'motorway': 30.0, 'motorway_link': 14.0, 'trunk': 20.0, 'trunk_link': 10.0, 'primary': 16.0, 'primary_link': 8.0,
