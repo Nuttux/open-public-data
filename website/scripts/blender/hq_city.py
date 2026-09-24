@@ -616,10 +616,10 @@ if E('BCOL_SPREAD') or 'spread=' in (E('LOOKS') or ''):
     _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle', 'roof_tile'}
     _acc = {}
     for o_ in sc.objects:
-        if o_.type != 'MESH' or 'bcol' not in o_.data.color_attributes: continue
+        if o_.type != 'MESH' or o_.data.attributes.get('bcol') is None: continue   # a FACE colour: in attributes, not color_attributes
         ms_ = [s_.material.name.split('.')[0] for s_ in o_.material_slots if s_.material]
         if not any(m_ in _sm for m_ in ms_): continue
-        ca_ = o_.data.color_attributes['bcol']; a_ = np.empty(len(ca_.data) * 4, np.float32); ca_.data.foreach_get('color', a_)
+        ca_ = o_.data.attributes['bcol']; a_ = np.empty(len(ca_.data) * 4, np.float32); ca_.data.foreach_get('color', a_)
         a_ = a_.reshape(-1, 4)[:, :3]
         for m_ in set(ms_) & _sm: _acc.setdefault(m_, []).append(a_.mean(0) if len(a_) else None)
     for mat_ in bpy.data.materials:
