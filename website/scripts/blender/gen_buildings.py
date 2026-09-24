@@ -36,11 +36,11 @@ MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'do
 # bright colorist Victorians a few in a row, lilac and purple rare (24/09:
 # the old lists read cool blue-grey and violet from the air). Repeats weight.
 VIC = [((0.95, 0.93, 0.87), (0.36, 0.44, 0.40), (0.72, 0.52, 0.22)),     # white, green trim
-       ((0.96, 0.95, 0.91), (0.40, 0.42, 0.44), (0.62, 0.14, 0.12)),     # white, grey trim, red door
+       ((0.56, 0.70, 0.72), (0.97, 0.96, 0.93), (0.62, 0.14, 0.12)),     # teal-blue
        ((0.94, 0.91, 0.82), (0.98, 0.97, 0.94), (0.30, 0.36, 0.30)),     # cream
-       ((0.91, 0.87, 0.77), (0.98, 0.97, 0.93), (0.24, 0.30, 0.40)),     # beige
+       ((0.72, 0.80, 0.64), (0.98, 0.97, 0.93), (0.24, 0.30, 0.40)),     # celadon
        ((0.94, 0.89, 0.72), (0.98, 0.97, 0.93), (0.45, 0.16, 0.14)),     # butter
-       ((0.80, 0.79, 0.75), (0.97, 0.96, 0.94), (0.20, 0.24, 0.30)),     # greige
+       ((0.94, 0.80, 0.56), (0.97, 0.96, 0.92), (0.20, 0.24, 0.30)),     # apricot
        ((0.72, 0.73, 0.72), (0.97, 0.96, 0.95), (0.62, 0.14, 0.12)),     # light grey
        ((0.64, 0.68, 0.56), (0.93, 0.90, 0.80), (0.45, 0.12, 0.14)),     # sage
        ((0.62, 0.71, 0.80), (0.97, 0.96, 0.93), (0.12, 0.20, 0.38)),     # blue
@@ -52,10 +52,10 @@ VIC = [((0.95, 0.93, 0.87), (0.36, 0.44, 0.40), (0.72, 0.52, 0.22)),     # white
        ((0.76, 0.73, 0.80), (0.97, 0.96, 0.95), (0.36, 0.18, 0.40)),     # soft lilac, rare
        ((0.36, 0.40, 0.44), (0.92, 0.89, 0.80), (0.74, 0.40, 0.20)),     # slate
        ((0.28, 0.29, 0.29), (0.95, 0.94, 0.91), (0.72, 0.52, 0.22))]     # charcoal, the recent repaint
-STUCCO = [(0.96, 0.95, 0.92), (0.97, 0.96, 0.94), (0.95, 0.94, 0.91), (0.95, 0.91, 0.82), (0.93, 0.93, 0.91),
-          (0.96, 0.94, 0.89), (0.90, 0.85, 0.75), (0.87, 0.80, 0.67), (0.95, 0.88, 0.66), (0.95, 0.83, 0.72),
-          (0.95, 0.84, 0.82), (0.83, 0.89, 0.80), (0.82, 0.87, 0.91), (0.84, 0.84, 0.82), (0.79, 0.77, 0.71),
-          (0.87, 0.89, 0.76), (0.98, 0.97, 0.96), (0.78, 0.84, 0.86)]
+STUCCO = [(0.96, 0.95, 0.92), (0.97, 0.96, 0.94), (0.95, 0.91, 0.82), (0.93, 0.93, 0.91), (0.96, 0.94, 0.89),
+          (0.90, 0.85, 0.75), (0.87, 0.80, 0.67), (0.95, 0.88, 0.66), (0.95, 0.83, 0.72), (0.95, 0.84, 0.82),
+          (0.83, 0.89, 0.80), (0.82, 0.87, 0.91), (0.84, 0.84, 0.82), (0.79, 0.77, 0.71), (0.87, 0.89, 0.76),
+          (0.78, 0.84, 0.86), (0.93, 0.80, 0.70), (0.90, 0.86, 0.62), (0.80, 0.86, 0.84), (0.92, 0.82, 0.80)]
 STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86, 0.82), (0.52, 0.50, 0.48), (0.80, 0.74, 0.64)]
 # curtain-wall glass (display colour, and in alpha how mirror-like the coating is)
 # (SF's downtown is mostly stone, bronze, grey and dark glass; blue is the
@@ -76,6 +76,8 @@ WORKS = [(0.90, 0.89, 0.85), (0.86, 0.82, 0.72), (0.74, 0.74, 0.72), (0.64, 0.62
          (0.68, 0.74, 0.80), (0.80, 0.64, 0.52), (0.58, 0.61, 0.63), (0.86, 0.78, 0.60), (0.90, 0.89, 0.85)]
 
 
+ZG_ = 0.0        # the building being drawn: its ground (window draws are taken over it)
+ZPRE_ = False    # ... and whether it is a pre-war apartment block (its windows' heads and sills)
 LOD = 0          # 0: every opening modelled · 1: flat framed panes (city-wide)
 ERA = None       # the year shown; None = today. Changes paint, not form.
 
@@ -186,7 +188,19 @@ class Wall:
             if kind == 'door': self.rect('door', u0, u1, z0, z1, 0.02, body); return
             if kind == 'tw':    # a tower's punched window: reflective glass, no painted frame (the stone is the frame)
                 self.rect('curtain_wall', u0, u1, z0, z1, 0.02, body); return
-            self.rect('shopglass' if kind == 'shop' else 'glass', u0, u1, z0, z1, 0.03, (1, 1, 1))
+            # (24/09) each pane's own draw from its position — x, y and its
+            # height over the building's ground, never the absolute z (the
+            # ground's mesh differs by region: a frame and a crop drew
+            # different panes) — its brightness rides in the face colour
+            p_ = self.P(u0, z0); pr = random.Random(int(p_.x * 7.3) * 92821 + int(p_.y * 7.3) * 68917 + int(round((z0 - ZG_) * 2)))
+            gk = pr.random() * 0.998
+            self.rect('shopglass' if kind == 'shop' else 'glass', u0, u1, z0, z1, 0.03, (gk, gk, gk) if kind != 'shop' else (1, 1, 1))
+            if (kind == 'dh' or (kind == 'tall' and trim is not None and ZPRE_)) and LOD >= 2:
+                # a house window's head casing and sill, standing proud: the
+                # low sun draws a shadow line over the pane, the sill a light
+                # line under it — the window reads set into its wall
+                self.box('trim', u0 - 0.14, u1 + 0.14, z1 + 0.02, z1 + 0.2, 0.0, 0.16, trim)
+                self.box('trim', u0 - 0.1, u1 + 0.1, z0 - 0.12, z0 - 0.02, 0.0, 0.13, trim)
             if LOD >= 2:
                 # the casing and sill as one painted quad behind the pane: at
                 # 37 cm a pixel a window is a dark pane in a light frame, and
@@ -197,7 +211,6 @@ class Wall:
                 # is lived in, not a stamped grid of dark holes (drawn from the
                 # pane's own position: the building's draw sequence stays)
                 if kind != 'shop':
-                    p_ = self.P(u0, z0); pr = random.Random(int(p_.x * 7.3) * 92821 + int(p_.y * 7.3) * 68917 + int(z0 * 11))
                     if pr.random() < 0.42:
                         c_ = pr.choice(BLINDS); k_ = pr.uniform(0.62, 0.85)
                         self.rect('curtain', u0, u1, z1 - (z1 - z0) * pr.uniform(0.18, 0.85), z1, 0.035, tuple(v * k_ for v in c_))
@@ -325,6 +338,7 @@ def building(b, ground, out):
     if n < 3: return
     zs = [ground(x, y) for x, y in ring]
     zg = sum(zs) / n                       # the record's height stands on the mean ground
+    global ZG_, ZPRE_; ZG_ = zg; ZPRE_ = (b['h'] < 30 and (b['year'] or 1950) < 1945 and b['ty'] in ('APARTMENT', 'FLATS'))
     zfoot = min(zs) - 0.6                  # walls run into the lowest ground
     style = style_of(b)
     top = zg + max(3.0, b['h'])
@@ -345,6 +359,11 @@ def building(b, ground, out):
         fronts = [f0]; roles = [1 if i == f0 else (2 if roles[i] == 1 else roles[i]) for i in range(n)]
 
     sub = substyle(b, style, rng)
+    OV = b.get('places') if isinstance(b.get('places'), dict) else {}   # the places agent's per-building overrides (city_data)
+    if OV.get('style') in STYLE_OF_SUB: style, sub = STYLE_OF_SUB[OV['style']], OV['style']
+    elif OV.get('style') in ('vic', 'stucco', 'midcentury', 'block'): style = OV['style']
+    PS = pier_shed(b)                                        # (24/09) a finger-pier shed of the port
+    if PS is not None: style, sub = 'block', 'pier'
     if LM: style, sub = 'vic', LM['sub']
     corner = sum(1 for i in range(n) if roles[i] in (1, 3) and walls[i].L > 3.0) >= 2
 
@@ -359,6 +378,7 @@ def building(b, ground, out):
     else:
         roof = 'flat'
     if not LM: roof = measured_form(b, roof)                 # ROOFS: a light membrane seen from the air is a flat roof
+    if OV.get('roof'): roof = {'gable': 'gable', 'hip': 'gable', 'flat': 'flat', 'mansard': 'flat', 'dome': 'flat'}.get(OV['roof'], roof)
     # a works shed of one or two storeys over a near-rectangular lot: a
     # sawtooth of north lights, or the bow-truss barrel of the 1910s-40s
     wrng = random.Random(b['gid'] * 577 + 3)                 # (its own draws: the main sequence stays)
@@ -393,7 +413,7 @@ def building(b, ground, out):
         body = rng.choice(STUCCO); x_ = rng.random()
         trim = (0.97, 0.96, 0.93) if x_ < 0.8 else ((0.33, 0.33, 0.32) if x_ < 0.9 else (0.46, 0.36, 0.26))
         accent = rng.choice(((0.45, 0.14, 0.12), (0.18, 0.28, 0.24), (0.20, 0.22, 0.30)))
-        if sub == 'edwardian' and rng.random() < 0.3: body, trim, accent = rng.choice(VIC)
+        if sub == 'edwardian' and rng.random() < 0.45: body, trim, accent = rng.choice(VIC)
     else:
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
@@ -401,13 +421,21 @@ def building(b, ground, out):
     # paint that must still read at a distance: the painted styles a little
     # richer, more so at the city's scale where a front is a few pixels
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
-        body = saturate(body, 1.18 if LOD == 0 else 1.4)
+        body = saturate(body, 1.18 if LOD == 0 else 1.5)
         body = unviolet(body)
+    if OV.get('facade_col'): body = hexcol(OV['facade_col'])
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
     if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
     if style == 'block':
         yr = b['year'] or 1960
         wall_mat = 'brick' if (yr < 1935 and rng.random() < 0.55) else ('stucco' if yr < 1960 else 'concrete')
+    if PS is not None:
+        # the port's sheds: painted concrete and corrugated sheet, pale —
+        # cream, stone, a sea-green grey — the bulkhead in the cream stucco
+        pr_ = random.Random(b['gid'] * 443 + 1)
+        wall_mat = 'concrete'; body = PS.get('body') or pr_.choice(((0.86, 0.84, 0.78), (0.80, 0.82, 0.76), (0.88, 0.85, 0.76), (0.76, 0.78, 0.76)))
+        trim = PS.get('trim') or pr_.choice(((0.46, 0.56, 0.50), (0.93, 0.91, 0.86), (0.40, 0.44, 0.46)))
+        accent = pr_.choice(((0.38, 0.48, 0.44), (0.52, 0.54, 0.54), (0.46, 0.30, 0.24)))
     if sub == 'works' and ep is None and not LM:
         # painted board-formed concrete mostly, common brick before the 1930s;
         # roll-up doors in galvanised grey or a painted colour
@@ -465,11 +493,17 @@ def building(b, ground, out):
     side_ = back_ = None
     if style in ('vic', 'stucco', 'midcentury') and not LM and sub != 'works':
         x_ = sr_.random()
-        if x_ < 0.72:
+        # (24/09, integration: plain side walls took the colour out of the
+        # view, which looks north onto sides and backs) — the side walls stay
+        # plain (no trim, no windows paint) but in the family of the front:
+        # its colour 40 % greyer and 10 % darker; a quarter of houses in a
+        # real stucco tone instead (beige, warm grey, pale sage, dusty pink)
+        fam = tuple(v * 0.9 for v in saturate(body, 0.6))
+        if x_ < 0.25:
             if style == 'vic' and sr_.random() < 0.3: side_ = ('siding', sr_.choice(((0.58, 0.48, 0.38), (0.66, 0.56, 0.44), (0.50, 0.42, 0.34))))
-            else: side_ = ('stucco', sr_.choice(((0.84, 0.83, 0.80), (0.86, 0.83, 0.76), (0.78, 0.77, 0.74), (0.90, 0.88, 0.84), (0.80, 0.76, 0.68))))
-        if sr_.random() < 0.5:
-            back_ = (wall_mat, sr_.choice(((0.93, 0.92, 0.89), (0.86, 0.86, 0.84), (0.90, 0.87, 0.80), body)))
+            else: side_ = ('stucco', sr_.choice(((0.86, 0.82, 0.72), (0.78, 0.76, 0.72), (0.78, 0.82, 0.74), (0.86, 0.76, 0.74))))
+        else: side_ = (wall_mat if wall_mat != 'siding' or sr_.random() < 0.6 else 'stucco', fam)
+        back_ = (wall_mat, fam if sr_.random() < 0.5 else body)
     # ── walls ──
     for i, w in enumerate(walls):
         role = roles[i]
@@ -496,7 +530,11 @@ def building(b, ground, out):
             if max(tops) > eave + 0.05:
                 gmat = 'shingle' if (i == f0 and style == 'vic') else wmat_
                 gp = [w.P(0.0, eave), w.P(w.L, eave)] + [w.P(u, t) for u, t in list(zip(pts, tops))[::-1]]
-                out.poly(gmat, gp, (mix(body, accent, 0.18) if LM else accent) if gmat == 'shingle' else wcol_)
+                # the gable's shingles in the accent on a narrow house; on a wide
+                # one (a church, a hall) a whole triangle of it read as a paint
+                # error from the air — there it is the body, a shade toward it
+                gcol_ = (mix(body, accent, 0.18) if LM else (accent if w.L < 8.5 else mix(body, accent, 0.22)))
+                out.poly(gmat, gp, gcol_ if gmat == 'shingle' else wcol_)
                 if i == f0 and style == 'vic':
                     w.box('trim', -0.25, w.L + 0.25, eave - 0.1, eave + 0.18, 0.0, 0.35, trim)
                     apex = max(tops); um = pts[1] if len(pts) == 3 else w.L / 2
@@ -526,6 +564,10 @@ def building(b, ground, out):
         # and their stairs, or an enclosed back porch built out
         if role == 0 and i != f0 and style in ('vic', 'stucco', 'midcentury') and not LM and sub != 'works' and LOD >= 1 and w.L > 4.0:
             rear_kit(w, b, first, fh, nfl, eave, zg, trim, wmat_, wcol_)
+
+    # ── the pier shed's bulkhead on the Embarcadero ──
+    if PS is not None and ctx.get('bulk_w') is not None:
+        bulkhead(ctx['bulk_w'], PS, zg, top, ctx)
 
     # ── the corner turret of a Queen Anne ──
     if sub == 'queen' and corner and rng.random() < 0.65 and LM.get('turret', True):
@@ -577,6 +619,7 @@ def building(b, ground, out):
         f = lambda p: p.dot(ax_u) - uc
         rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else rng.choice(TILE_TINTS)
         roof_mat, rc_ = measured_pitched(b, roof_mat, rc_)     # ROOFS: the measured roof, if any
+        if OV.get('roof_col'): rc_ = hexcol(OV['roof_col'])
         for t in tris:
             for tri in split_tri([pts2[k].copy() for k in t], f):
                 top_ = [Vector((p.x, p.y, rz(p) + 0.05)) for p in tri]
@@ -608,6 +651,7 @@ def building(b, ground, out):
         pts2 = [Vector((x, y, deck)) for x, y in inner]
         rc_ = flat_roof(b, rng, ax_u)
         rc_ = measured_flat(b, rc_)                            # ROOFS: the measured roof, if any
+        if OV.get('roof_col'): rc_ = (*hexcol(OV['roof_col']), rc_[3] if len(rc_) > 3 else 0.5)
         for t in tessellate_polygon([pts2]):
             out.poly('roof_flat', [pts2[k] for k in t], rc_)
         # the parapet: its inner face flashed with the roof's own membrane, a
@@ -949,6 +993,7 @@ def measured_pitched(b, roof_mat, rc):
             L = _lum(rc); return roof_mat, tuple(L + 0.45 * (c - L) for c in rc)
         return roof_mat, rc
     a, cls = list(m[:3]), m[3]
+    a = unmauve(a)
     mat = 'roof_tile' if cls == 'tile' else 'roof_shingle'
     L = max(_lum(a), 1e-4)
     if mat == 'roof_tile': L2 = min(L, 0.45)
@@ -970,6 +1015,10 @@ def measured_flat(b, rc):
     kind = _FLAT_KIND.get(cls, 1)
     if cls == 'tile':       # terracotta over a flat deck: a red-brown cap sheet, not a painted red
         L = _lum(a); a = [L + 0.6 * (v - L) for v in a]
+        # (24/09) and brown, never the pink-mauve a light red reading made
+        # (Golden Gateway Commons): the hue held to red-brown, no brighter than a cap sheet
+        L = min(_lum(a), 0.16); a = [L * 1.32, L * 0.93, L * 0.72]
+    a = unmauve(a)
     t4 = rc[3] * 4.0
     # a BIG flat roof (>= 250 m2) is never darker than the procedural membrane
     # it replaces, unless the photo clearly shows tar (7th field): from 60 cm
@@ -985,6 +1034,7 @@ def measured_flat(b, rc):
 
 
 def roof_kit(ring, inner, deck, top, b, rng, out, c):
+    if c['sub'] == 'pier': pier_roof(ring, deck, top, b, out, c); return
     """what stands on a flat roof, by the kind of building: a stair
     penthouse on the bigger ones, a hatch, skylights, plumbing vents along
     the party walls, brick chimneys on the old houses, condensers and
@@ -1233,6 +1283,8 @@ def facade(w, is_front, b, rng, c):
     style, sub = c['style'], c['sub']
     if c.get('fsys'):
         tower_skin(w, is_front, b, rng, c); return holes
+    if c['sub'] == 'pier':
+        pier_wall(w, is_front, b, c); return holes
     if c['sub'] == 'works':
         works_front(w, is_front, b, c); return holes
     first, fh, nfl, eave, zg = c['first'], c['fh'], c['nfl'], c['eave'], c['zg']
@@ -1439,6 +1491,188 @@ def tower_skin(w, is_front, b, rng, c):
         w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.25, body)          # the crown band
 
 
+# ── the port's finger-pier sheds (24/09) ────────────────────────────────────
+# A shed is a record over the bay: a vertex past the OSM coastline, or its
+# centre within 25 m of it, long (100 m and more), low (under 20 m), big.
+# Per-pier overrides (the signature places agent): PIER_OVERRIDE[gid] =
+# dict(bulkhead='beaux'|'plain'|'none', body=(r,g,b), trim=(r,g,b), number='31')
+PIER_OVERRIDE = {}
+_COAST = None
+
+
+def _coast():
+    global _COAST
+    if _COAST is None:
+        try:
+            import numpy as np
+            z = np.load('/Users/daniel/code/qipu-render-work/landmarks/coast_land.npz')
+            _COAST = (z['sd_dm'], float(z['x0']), float(z['y1']), float(z['res']))
+        except Exception as ex:
+            print('pier_shed: no coast mask', ex); _COAST = False
+    return _COAST
+
+
+def coast_sd(x, y):
+    """signed distance to the OSM coastline in metres, land positive (None off the grid)"""
+    C_ = _coast()
+    if not C_: return None
+    sd, x0, y1, res = C_
+    i = int((x - x0) / res); j = int((y1 - y) / res)
+    if 0 <= j < sd.shape[0] and 0 <= i < sd.shape[1]: return sd[j, i] / 10.0
+    return None
+
+
+def pier_shed(b):
+    """the record's pier-shed spec (a dict, maybe empty of overrides), or None.
+    The port's own records (year 1896 or none on the roll, industrial or
+    garage, by the water): a long shed over the bay, or the narrow bulkhead
+    building along the seawall"""
+    if b['gid'] in PIER_OVERRIDE: return dict(PIER_OVERRIDE[b['gid']])
+    ov = b.get('places') if isinstance(b.get('places'), dict) else {}
+    if ov.get('pier') is False: return None
+    if ov.get('pier') or ov.get('bulkhead'):                 # the places agent's pier: its bulkhead and colours
+        return {k: (hexcol(v) if isinstance(v, str) and v.startswith('#') else v) for k, v in ov.items() if k in ('bulkhead', 'bulk_body', 'bulk_trim', 'number')}
+    if b['h'] > 20 or b['ty'] not in ('INDUSTRIAL', 'GARAGE', 'UNCLASSED', 'INSTITUTION') or b['year'] not in (None, 1896): return None
+    r = b['ring']; n = len(r)
+    if n < 4: return None
+    e = max(range(n), key=lambda i: math.dist(r[i], r[(i + 1) % n]))
+    ux, uy = r[(e + 1) % n][0] - r[e][0], r[(e + 1) % n][1] - r[e][1]; l_ = math.hypot(ux, uy); ux, uy = ux / l_, uy / l_
+    us = [x * ux + y * uy for x, y in r]; vs = [-x * uy + y * ux for x, y in r]
+    A, B = max(us) - min(us), max(vs) - min(vs)
+    c0 = coast_sd(b['cx'], b['cy'])
+    if c0 is None or c0 > 100: return None
+    # the Embarcadero's run of Beaux-Arts bulkheads: Pier 45 to Pier 48;
+    # elsewhere (Fort Mason, Pier 70, the islands) a shed without one
+    emb = 1550 < b['cx'] < 4700 and 2300 < b['cy'] < 5800
+    if A >= 100 and B >= 12: return {} if emb else {'bulkhead': 'none'}   # a shed
+    if emb and A >= 40 and B <= 32 and A / max(B, 1.0) >= 2.5: return {'front': True}   # a bulkhead building
+    return None
+
+
+def pier_wall(w, is_front, b, c):
+    """a pier shed's long wall along its apron: blank painted sheet between
+    shallow pilasters, a clerestory band of steel sash under the eave, big
+    rolling doors every twenty-odd metres"""
+    L = w.L; zg, eave = c['zg'], c['eave']; body, trim, accent, wm = c['body'], c['trim'], c['accent'], c['wall_mat']
+    if L < 2.0 or w is c.get('bulk_w'): return
+    r = random.Random(b['gid'] * 71 + int(L * 10))
+    pil = mix(body, (0.0, 0.0, 0.0), 0.08)
+    step = r.uniform(6.5, 8.5); k = max(1, round(L / step)); p = L / k
+    for j in range(k + 1):
+        u = min(max(j * p, 0.3), L - 0.3)
+        w.box(wm, u - 0.3, u + 0.3, zg, eave - 0.2, 0.0, 0.18, pil)
+    # the clerestory: sash between the pilasters, a sill and a head
+    z0, z1 = eave - 2.6, eave - 0.9
+    if z0 > zg + 5.8:
+        for j in range(k):
+            u0, u1 = j * p + 0.45, (j + 1) * p - 0.45
+            w.rect('glass', u0, u1, z0, z1, 0.03, (1, 1, 1))
+            for uu in frange(u0 + 1.2, u1 - 0.6, 1.2): w.rect('trim', uu - 0.05, uu + 0.05, z0, z1, 0.035, trim)
+        w.box('trim', 0.0, L, z0 - 0.25, z0, 0.0, 0.12, trim); w.box('trim', 0.0, L, z1, z1 + 0.2, 0.0, 0.08, trim)
+    # rolling doors on the apron, every 20-30 m, and a man door now and then
+    dh = min(5.2, eave - zg - 3.2)
+    if dh > 3.0:
+        nd = max(1, int(L / r.uniform(20.0, 30.0))); 
+        for j in range(nd):
+            uc = (j + 0.5) * L / nd; dw = min(6.0, p - 1.0)
+            if dw < 3: continue
+            u0 = uc - dw / 2
+            w.rect('door', u0, u0 + dw, zg + 0.05, zg + dh, 0.2, accent)
+            w.box('metal', u0 - 0.15, u0 + dw + 0.15, zg + dh, zg + dh + 0.45, 0.0, 0.35, mix(accent, (0, 0, 0), 0.3))
+            if r.random() < 0.5: w.rect('door', uc + dw / 2 + 1.2, uc + dw / 2 + 2.2, zg + 0.05, zg + 2.3, 0.2, (0.28, 0.30, 0.30))
+
+
+def bulk_wall(walls):
+    """the wall facing the land: its middle, 8 m out, furthest onto it"""
+    cand = [w for w in walls if w.L > 12]
+    if not cand: return None
+    def land(w):
+        m = (w.a + w.b) / 2 + w.n * 8.0; v = coast_sd(m.x, m.y); return v if v is not None else -1e9
+    return max(cand, key=land)
+
+
+def bulkhead(wb, PS, zg, top, ctx):
+    """the port's face to the Embarcadero, the Beaux-Arts bulkheads of 1908-
+    1930: a frontispiece standing clear of the shed in cream stucco, and on
+    it, a pier's width apart (one on a short end), a great arched portal
+    between paired pilasters under a raised centre that carries the pier's
+    number panel; arched windows between, a cornice over all ('plain': the
+    frontispiece, the portals and the cornice)"""
+    L = wb.L; cream = PS.get('bulk_body') or (0.91, 0.88, 0.80); tr = PS.get('bulk_trim') or mix(cream, (1, 1, 1), 0.3)
+    H = top + 2.4; D = 0.9; beaux = PS.get('bulkhead', 'beaux') == 'beaux'
+    wb.box('stucco', -0.2, L + 0.2, zg - 0.3, H, 0.0, D, cream)                       # the frontispiece
+    wb.box('trim', -0.5, L + 0.5, H - 0.1, H + 0.45, 0.0, D + 0.6, tr)                 # its cornice
+    wb.box('trim', -0.3, L + 0.3, H - 0.9, H - 0.6, 0.0, D + 0.25, tr)                 # the frieze's lower band
+    wb.box('trim', -0.2, L + 0.2, zg - 0.3, zg + 1.0, 0.0, D + 0.12, mix(cream, (0.5, 0.48, 0.44), 0.35))   # the base
+    nm = max(1, round(L / 70.0)); pm = L / nm
+    for k in range(nm):
+        um = (k + 0.5) * pm
+        pw = min(12.0, pm * 0.32); rad = pw / 2; zs = zg + min(7.0, (top - zg) * 0.55)
+        pts = [(um - rad, zg + 0.1), (um + rad, zg + 0.1)] + [(um + rad * math.cos(math.pi * j / 12), zs + rad * math.sin(math.pi * j / 12)) for j in range(13)]
+        wb.o.poly('door', [wb.P(u, z, D + 0.02) for u, z in pts], (0.16, 0.17, 0.17))
+        for j in range(12):
+            a0, a1 = math.pi * j / 12, math.pi * (j + 1) / 12
+            q = [(um + rad * math.cos(a0), zs + rad * math.sin(a0)), (um + rad * math.cos(a1), zs + rad * math.sin(a1)),
+                 (um + (rad + 0.7) * math.cos(a1), zs + (rad + 0.7) * math.sin(a1)), (um + (rad + 0.7) * math.cos(a0), zs + (rad + 0.7) * math.sin(a0))]
+            wb.o.poly('trim', [wb.P(u, z, D + 0.08) for u, z in q], tr)
+        # the raised centre over the portal and its number panel
+        cw = rad + (2.5 if beaux else 1.2)
+        wb.box('stucco', um - cw, um + cw, H + 0.45, H + (2.4 if beaux else 1.2), 0.0, D, cream)
+        wb.box('trim', um - cw - 0.3, um + cw + 0.3, H + (2.4 if beaux else 1.2), H + (2.75 if beaux else 1.5), 0.0, D + 0.4, tr)
+        if beaux:
+            wb.rect('door', um - 3.0, um + 3.0, H + 0.8, H + 2.0, D + 0.02, (0.20, 0.30, 0.26))
+            wb.rect('trim', um - 1.2, um + 1.2, H + 1.05, H + 1.75, D + 0.04, (0.92, 0.90, 0.84))
+            for uu in (um - rad - 2.2, um - rad - 1.2, um + rad + 0.4, um + rad + 1.4):          # paired pilasters
+                if 0 <= uu <= L - 0.8: wb.box('trim', uu, uu + 0.8, zg + 1.0, H - 0.9, D, D + 0.35, tr)
+    if beaux:
+        # arched windows along the rest of the front, one every 7-8 m
+        for k in range(nm):
+            for side in (-1, 1):
+                um = (k + 0.5) * pm; a_ = um + side * (min(12.0, pm * 0.32) / 2 + 3.5); b_ = (k + (1 if side > 0 else 0)) * pm - side * 1.5
+                lo, hi = min(a_, b_), max(a_, b_)
+                if hi - lo < 3.0: continue
+                nw = max(1, int((hi - lo) / 7.5)); st = (hi - lo) / nw
+                for j in range(nw):
+                    uc = lo + (j + 0.5) * st; ww = min(2.6, st * 0.45); z0, z1 = zg + 2.4, zg + min(6.5, (top - zg) * 0.6)
+                    wb.rect('glass', uc - ww / 2, uc + ww / 2, z0, z1, D + 0.03, (1, 1, 1))
+                    wb.o.poly('glass', [wb.P(uc + ww / 2 * math.cos(math.pi * i / 8), z1 + ww / 2 * math.sin(math.pi * i / 8), D + 0.03) for i in range(9)], (1, 1, 1))
+                    wb.rect('trim', uc - ww / 2 - 0.2, uc + ww / 2 + 0.2, z0 - 0.3, z0, D + 0.05, tr)
+
+
+def pier_roof(ring, deck, top, b, out, c):
+    """a shed's roof: the membrane (the flat path's), and down its length a
+    raised monitor with clerestory glass both sides, where the plan is near
+    its rectangle; skylight strips across it otherwise"""
+    n = len(ring)
+    e = max(range(n), key=lambda i: math.dist(ring[i], ring[(i + 1) % n]))
+    au = Vector((ring[(e + 1) % n][0] - ring[e][0], ring[(e + 1) % n][1] - ring[e][1], 0)).normalized(); av = Vector((-au.y, au.x, 0))
+    us = [x * au.x + y * au.y for x, y in ring]; vs = [x * av.x + y * av.y for x, y in ring]
+    u0, u1, v0, v1 = min(us), max(us), min(vs), max(vs)
+    Z = Vector((0, 0, 1)); P = lambda u, v, z: au * u + av * v + Z * z
+    if ring_area(ring) >= 0.78 * (u1 - u0) * (v1 - v0):
+        wv = (v1 - v0) * 0.28; vm = (v0 + v1) / 2; h = 1.8
+        a0, a1 = u0 + 4.0, u1 - 4.0
+        out.box3(c['wall_mat'], P(a0, vm - wv / 2, deck), au * (a1 - a0), av * wv, Z * h, c['body'])
+        for side in (vm - wv / 2 - 0.02, vm + wv / 2 + 0.02):
+            out.poly('glass', [P(a0 + 0.4, side, deck + 0.4), P(a1 - 0.4, side, deck + 0.4), P(a1 - 0.4, side, deck + h - 0.3), P(a0 + 0.4, side, deck + h - 0.3)], (1, 1, 1))
+        out.box3('roof_flat', P(a0 - 0.3, vm - wv / 2 - 0.4, deck + h), au * (a1 - a0 + 0.6), av * (wv + 0.8), Z * 0.15, c['rc'])
+    else:
+        # skylight strips across the shed, every 12 m, where they fall inside
+        def inside(x, y):
+            k = False
+            for i in range(n):
+                (x1, y1), (x2, y2) = ring[i], ring[(i + 1) % n]
+                if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): k = not k
+            return k
+        for uu in frange(u0 + 6, u1 - 6, 12.0):
+            vv = v0 + 2.0
+            while vv < v1 - 2.0:
+                p0 = P(uu, vv, 0); p1 = P(uu, vv + 4.0, 0)
+                if inside(p0.x, p0.y) and inside(p1.x, p1.y):
+                    out.poly('curtain', [P(uu - 0.6, vv, deck + 0.3), P(uu + 0.6, vv, deck + 0.3), P(uu + 0.6, vv + 4.0, deck + 0.3), P(uu - 0.6, vv + 4.0, deck + 0.3)], (0.80, 0.82, 0.80))   # wired glass gone milky
+                vv += 9.0
+
+
 def works_front(w, is_front, b, c):
     """a works wall: pilasters every five to seven metres (real relief on
     the street walls, so the low sun draws their shadows), a steel-sash
@@ -1580,6 +1814,25 @@ def saturate(c, k):
     return colorsys.hls_to_rgb(h, l_, min(1.0, s_ * k))
 
 
+STYLE_OF_SUB = {'queen': 'vic', 'italianate': 'vic', 'stick': 'vic', 'edwardian': 'stucco', 'med': 'stucco', 'sunset': 'midcentury',
+                'modern': 'midcentury', 'apartment': 'block', 'commercial': 'block', 'tower': 'block', 'works': 'block'}
+
+
+def hexcol(h):
+    """'#rrggbb' (sRGB) -> a display colour, as the palettes are written"""
+    h = h.lstrip('#'); return tuple(int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4))
+
+
+def unmauve(c):
+    """a measured roof reading pink, mauve or violet (the photo's red tile or
+    brown shingle through the haze): its hue turned to a red-brown, its
+    saturation halved"""
+    import colorsys
+    h, l_, s_ = colorsys.rgb_to_hls(*[max(0.0, v) for v in c[:3]])
+    if 0.72 < h < 0.99 and s_ > 0.04: return list(colorsys.hls_to_rgb(0.04, l_, s_ * 0.5))
+    return list(c[:3])
+
+
 def unviolet(c):
     """lilac and violet paint read loud from the air: their saturation cut"""
     import colorsys
@@ -1593,7 +1846,7 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
     picture window of a Sunset house; windows in each face, its own cornice"""
     out = w.o; trim, body, style, sub = c['trim'], c['body'], c['style'], c['sub']
     fh, nfl, first = c['fh'], c['nfl'], c['first']
-    d = 0.75 if kind != 'box' else 0.45
+    d = 0.95 if kind != 'box' else 0.5                     # (24/09: 0.75 was two pixels; SF bays stand about a metre out)
     inset = 0.6 if kind == 'slant' else 0.0
     A, B = w.P(u0, 0, 0), w.P(u1, 0, 0)
     C, D = w.P(u1 - inset, 0, d), w.P(u0 + inset, 0, d)
@@ -1615,7 +1868,7 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
             fw.opening(m, fw.L - m, a0, a1, 'dh' if kind != 'box' else 'tall', trim, 0.12, rng, hood=c['hood'] if kind == 'square' else None)
             if f > 0 and LOD < 2: fw.box('trim', 0.0, fw.L, first + f * fh - 0.05, first + f * fh + 0.1, 0.0, 0.05, trim)
         fw.wall_with_holes(wm, 0.0, fw.L, z0 - 0.5, z1, holes, body)
-        fw.box('trim', -0.05, fw.L + 0.05, z1 - 0.4, z1, 0.0, 0.3, trim)            # the bay's cornice
+        fw.box('trim', -0.05, fw.L + 0.05, z1 - 0.45, z1, 0.0, 0.42, trim)          # the bay's cornice
         if LOD < 2: fw.box('trim', -0.02, fw.L + 0.02, z0 - 0.5, z0 - 0.3, 0.0, 0.1, trim)      # its base
         if style == 'vic' and kind == 'slant' and LOD == 0:
             fw.box('trim', fw.L * 0.2, fw.L * 0.8, z0 - 1.0, z0 - 0.5, 0.0, 0.08, trim)   # a panel under the bay
