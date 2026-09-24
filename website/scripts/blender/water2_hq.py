@@ -94,12 +94,12 @@ def water(bpy, N, pos, extra=None):
     tf = N.n('ShaderNodeTexImage', image=_img(bpy, 'sea_fld.png'), extension='EXTEND', interpolation='Cubic'); N.L(uv, tf.inputs[0])
     sp = N.n('ShaderNodeSeparateColor'); N.L(tf.outputs['Color'], sp.inputs[0])
     wind, cur, pac = sp.outputs[0], sp.outputs[1], sp.outputs[2]
-    # this light is ~2.1x as blue and 1.2x as red as it is green on a pale
-    # surface (ground agent, measured at Crissy) and the glossy sky is lit
-    # 2.8x the camera's (GLOSS_K): the water's own colour is warmed and its
-    # mirror dimmed and greyed so the bay renders green-grey, not blue (wat9)
-    k = g['alb_k'] * F('SEA_COL_K', 2.2)
-    wb = [float(v) for v in E('SEA_WB', '1.35,1.0,0.5').split(',')]
+    # the glossy sky is lit 2.8x the camera's (GLOSS_K): the water's own
+    # colour is warmed a little and its mirror dimmed and greyed so the bay
+    # renders green-grey, not blue (wat9); retuned for the 53c5109c5 light
+    # (less blue fill: 1.35,1,.5 went khaki, wat19)
+    k = g['alb_k'] * F('SEA_COL_K', 1.9)
+    wb = [float(v) for v in E('SEA_WB', '1.1,1.0,0.65').split(',')]
     col = N.vmath('MULTIPLY', tc.outputs['Color'], (k * wb[0], k * wb[1], k * wb[2]))
     # desaturate toward the grey the sediment gives (SEA_SAT 1 = the map as is)
     sat = F('SEA_SAT', 1.0)
@@ -141,23 +141,26 @@ def water(bpy, N, pos, extra=None):
     # the open Pacific): small streaks, clustered in gusts; WHITECAP=0 none
     wc = F('WHITECAP', 1.0)
     if wc > 0:
-        # one whitecap per Voronoi cell (~26 m downwind x 15 m across) at most,
-        # drawn with a probability that grows with the wind; each an
-        # elongated patch, bright at its head, torn by fine noise
-        vm = N.mapping(rot, scale=(1 / 26.0, 1 / 15.0, 1.0))
+        # one whitecap per Voronoi cell (~34 m downwind x 22 m across) at most,
+        # drawn with a probability that grows with the wind and with how open
+        # the water is (sea_fld B: the Pacific, the Gate's channel; few in the
+        # central bay, none in the sheltered south bay); each a streak along
+        # the wind, a soft head and a long faint tail, torn by fine noise
+        # (round dots everywhere read as confetti, wat13/14)
+        vm = N.mapping(rot, scale=(1 / 34.0, 1 / 22.0, 1.0))
         vo = N.n('ShaderNodeTexVoronoi', feature='F1', distance='EUCLIDEAN', i_Scale=1.0, i_Randomness=0.9); N.L(vm, vo.inputs['Vector'])
         rnd = N.n('ShaderNodeSeparateColor'); N.L(vo.outputs['Color'], rnd.inputs[0])
-        p_ = N.m('MULTIPLY', N.smooth(0.5, 0.95, wind), F('WHITECAP_P', 0.25))
+        p_ = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(0.6, 0.97, wind), N.smooth(0.12, 0.85, pac)), F('WHITECAP_P', 0.07))
         on = N.m('LESS_THAN', rnd.outputs[0], p_)
         # the patch in the cell's own frame (u downwind, v across, in cells):
         # a short bright head at the crest, foam trailing upwind behind it
         rel = N.vmath('SUBTRACT', vm, vo.outputs['Position'])
         rx = N.n('ShaderNodeSeparateXYZ'); N.L(rel, rx.inputs[0]); du, dv = rx.outputs[0], rx.outputs[1]
         sz = N.m('ADD', 0.5, rnd.outputs[1])                        # 0.5 .. 1.5
-        wv = N.m('MULTIPLY', sz, 0.12)                              # half width, cells (x 15 m)
+        wv = N.m('MULTIPLY', sz, 0.045)                             # half width, cells (x 22 m)
         q_ = N.m('DIVIDE', dv, wv); acr = N.m('EXPONENT', N.m('MULTIPLY', N.m('MULTIPLY', q_, q_), -1.0))
-        hd = N.m('MULTIPLY', sz, 0.05)                              # the head, cells (x 26 m)
-        tail = N.m('MULTIPLY', sz, N.m('ADD', 0.12, N.m('MULTIPLY', rnd.outputs[2], 0.25)))
+        hd = N.m('MULTIPLY', sz, 0.04)                              # the head, cells (x 34 m)
+        tail = N.m('MULTIPLY', sz, N.m('ADD', 0.10, N.m('MULTIPLY', rnd.outputs[2], 0.18)))
         r_ = N.m('DIVIDE', N.m('MAXIMUM', du, 0.0), hd); fwd = N.m('EXPONENT', N.m('MULTIPLY', N.m('MULTIPLY', r_, r_), -1.0))
         bwd = N.m('EXPONENT', N.m('DIVIDE', N.m('MINIMUM', du, 0.0), tail))
         along = N.m('MULTIPLY', fwd, bwd)
@@ -165,7 +168,7 @@ def water(bpy, N, pos, extra=None):
         # thin toward the tail: a threshold rising along it
         thr_ = N.m('ADD', 0.30, N.m('MULTIPLY', N.m('SUBTRACT', 1.0, along), 0.35))
         head = N.m('MULTIPLY', N.m('MULTIPLY', acr, along), N.smooth(0.0, 0.12, N.m('SUBTRACT', tear, thr_)))
-        head = N.m('MULTIPLY', head, 1.6, clamp=True)
+        head = N.m('MULTIPLY', head, 0.9, clamp=True)
         cap = N.m('MULTIPLY', N.m('MULTIPLY', head, on), calm)
         fb = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.62, 0.64, 0.62), i_Roughness=0.9)
         mx = N.n('ShaderNodeMixShader'); N.L(N.m('MULTIPLY', cap, 0.8 * wc), mx.inputs[0]); N.L(sh, mx.inputs[1]); N.L(fb.outputs[0], mx.inputs[2])

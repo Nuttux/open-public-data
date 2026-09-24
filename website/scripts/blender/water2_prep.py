@@ -17,7 +17,10 @@ water2_hq.py, frozen by mksnap.sh):
   sea_fld.png  16-bit RGB on the same grid: R wind (0 calm .. 1 ruffled,
                from the fetch upwind of the afternoon westerly, with gusts),
                G current lines (line-integral convolution along the depth
-               contours where the tide runs), B Pacific (1) or bay (0);
+               contours where the tide runs), B exposure (1 the open
+               Pacific, ~0.8 in the Golden Gate's channel, fading into the
+               central bay, ~0 in the sheltered south bay): the swell and
+               the whitecaps follow it;
   sea.json     the grid;
   shore.npz    the shore mesh: vertices, triangles and per-vertex fields
                (signed distance to the OSM coastline, beach polygons, surf
@@ -322,15 +325,31 @@ def shore():
                         attr_names=np.array(['sd', 'vis', 'sand', 'mud', 'marsh', 'band', 'surf']))
     print('shore.npz', len(V), 'vertices', len(T), 'triangles', flush=True)
 
+GATE = proj(-122.478, 37.8105)          # the Golden Gate's narrows
+def exposure(X, Y, D, P):
+    """how open the water is to the ocean's swell and the full westerly"""
+    dg = np.hypot(X - GATE[0], Y - GATE[1])
+    ch = smooth(6, 22, D) * np.exp(-dg / 3500.0) * 0.85
+    cb = smooth(4, 14, D) * np.exp(-dg / 8000.0) * 0.4
+    return np.clip(np.maximum(P, np.maximum(ch, cb)), 0, 1).astype(np.float32)
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     X, Y = grid()
     L, g = land_mask(X, Y); print('land share', float(L.mean()), flush=True)
     D, dist = depth(X, Y, L, g); print('depth', np.percentile(D[L < 0.5], [5, 50, 95]), flush=True)
-    A, P = colour(X, Y, D, dist, L)
+    # the bathymetry is forced to 0 m at the render's shore: along every
+    # seawall and pier that drew a tan 'mudflat' halo (Yerba Buena, the
+    # Embarcadero, wat18). The colour takes the depth found 30 m out instead;
+    # real flats stay shallow there, walls get their 8-12 m.
+    far = (dist >= 30.0) | (L >= 0.5)
+    idx = ndi.distance_transform_edt(~far, return_distances=False, return_indices=True)
+    Dc = np.where(L < 0.5, np.maximum(D, D[tuple(idx)]), D)
+    A, P = colour(X, Y, Dc, dist, L)
     Wd = wind(X, Y, L, D, P); print('wind', np.percentile(Wd[L < 0.5], [5, 50, 95]), flush=True)
     Cu = currents(X, Y, D, L); print('current lines share', float((Cu > 0.3).mean()), flush=True)
-    A = fill_land(A, L); F = fill_land(np.stack([Wd, Cu, P], -1), L)
+    Ex = exposure(X, Y, D, P); print('exposure', np.percentile(Ex[L < 0.5], [5, 50, 95]), flush=True)
+    A = fill_land(A, L); F = fill_land(np.stack([Wd, Cu, Ex], -1), L)
     png16(f'{OUT}/sea_col.png', A / ALB_K)
     png16(f'{OUT}/sea_fld.png', F)
     json.dump(dict(x0=EXT[0], y0=EXT[1], x1=EXT[2], y1=EXT[3], res=RES, nx=NX, ny=NY, alb_k=ALB_K,
