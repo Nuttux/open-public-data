@@ -21,7 +21,7 @@ NEED=${GPU_NEED:-24}
 # free and may take the second slot when the first holds another small job. A
 # full-frame job ('big') still runs alone. memguard stays the backstop.
 kind=big; for a in "$@"; do case "$a" in BORDER=*|PCT=*) kind=small;; esac; done
-[ $kind = small ] && NEED=${GPU_NEED_SMALL:-24}     # (a crop peaks at 20-23.5 GB, 24/09 pm)
+[ $kind = small ] && NEED=${GPU_NEED_SMALL:-24}     # (a crop peaks at ~33-37 GB footprint, ~22-25 GB of real RAM: one crop at a time; 24/09 memory audit)
 me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
 trap 'rm -f "$me"' EXIT; trap 'rm -f "$me"; exit 1' INT TERM   # a stopped waiter leaves (it used to loop on without a ticket)

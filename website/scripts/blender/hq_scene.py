@@ -2021,7 +2021,7 @@ sun.rotation_euler = (-to_sun).to_track_quat('-Z', 'Y').to_euler()
 sc.render.engine = 'CYCLES'
 prefs = bpy.context.preferences.addons['cycles'].preferences
 prefs.compute_device_type = os.environ.get('CYCLES_DEVICE', 'METAL'); prefs.get_devices()     # OPTIX/CUDA on a rented card (cloud/, 24/09)
-for dv in prefs.devices: dv.use = True if prefs.compute_device_type == 'METAL' else dv.type != 'CPU'
+for dv in prefs.devices: dv.use = dv.type != 'CPU'     # GPU only, Metal included: the CPU as a second device cost ~4 GB peak for no speed (24/09, memory audit)
 sc.cycles.device = 'GPU'; sc.cycles.samples = SPP; sc.cycles.use_denoising = True; sc.cycles.use_adaptive_sampling = True
 sc.cycles.max_bounces = 8; sc.cycles.transparent_max_bounces = 16
 # render quality knobs (the light agent, 24/09): denoiser, adaptive sampling,
