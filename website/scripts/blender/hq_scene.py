@@ -100,6 +100,10 @@ def glass_mat():
     nt.links.new(geo.outputs['Position'], sn.inputs[0]); nt.links.new(sn.outputs[0], wn.inputs['Vector'])
     ramp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(wn.outputs['Value'], ramp.inputs[0])
     ramp.color_ramp.elements[0].color = (0.010, 0.012, 0.016, 1); ramp.color_ramp.elements[1].color = (0.06, 0.055, 0.05, 1)
+    # (24/09) a pane in five or so catching more of the sky or a lit room: a
+    # row of windows is not a stamped row of identical dark holes
+    ramp.color_ramp.elements[1].position = 0.78
+    _e = ramp.color_ramp.elements.new(1.0); _e.color = (0.15, 0.145, 0.14, 1)
     nt.links.new(ramp.outputs[0], p.inputs['Base Color'])
     p.inputs['Roughness'].default_value = 0.03; p.inputs['Specular IOR Level'].default_value = 0.9; p.inputs['Coat Weight'].default_value = 0.4
     return m
@@ -289,6 +293,17 @@ def roof_flat_mat():
     light = b.math('GREATER_THAN', kind, 1.5)
     dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.math('MULTIPLY', stain, 0.22), b.math('ADD', 0.35, b.math('MULTIPLY', light, 0.65))))
     dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.ramp(b.noise(0.07, 4.0), 0.0, 0.3, 0.45, 0.8), light))
+    # (24/09) a roof is patched and recoated piece by piece, and a cap sheet
+    # shows its lap seams a roll apart: patches of 2-6 m a shade lighter or
+    # darker, the seams as dark lines along the rolls — no flat slab
+    cell = b.bw(b.voronoi(0.28, vec=mp.outputs[0], out='Color'))
+    pk = b.ramp(cell, 0.80, 1.14)
+    sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
+    seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)
+    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', seam, b.math('MULTIPLY', b.math('GREATER_THAN', kind, 0.5), 0.2))))
+    pkc = b.n('ShaderNodeCombineColor')
+    for i_ in range(3): b.put(pkc.inputs[i_], pk)
+    c = b.mix(1.0, c, pkc.outputs[0], 'MULTIPLY')
     c = b.mix(b.math('MINIMUM', dirt, 0.85), c, (0.10, 0.09, 0.075), 'MULTIPLY')
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.9, b.math('MULTIPLY', eq(3), 0.35)))
@@ -340,9 +355,9 @@ def weather(m, k=1.0, streaks=1.0):
     streak = b.math('MULTIPLY', b.ramp(streak, 0.0, 1.0, 0.52, 0.75), b.ramp(b.noise(0.15, 2.0), 0.0, 1.0, 0.4, 0.7))
     ao = b.n('ShaderNodeAmbientOcclusion', samples=4); ao.inputs['Distance'].default_value = 0.5
     occ = b.math('MULTIPLY', b.math('SUBTRACT', 1.0, ao.outputs['AO']), 0.55 * k, clamp=True)
-    g_ = b.math('ADD', b.math('MULTIPLY', streak, 0.22 * k * streaks), occ)
+    g_ = b.math('ADD', b.math('MULTIPLY', streak, 0.32 * k * streaks), occ)          # (24/09: 0.22 did not show from the air)
     c = b.mix(b.math('MINIMUM', g_, 0.7), src_, (0.30, 0.27, 0.22), 'MULTIPLY')
-    macro = b.ramp(b.noise(0.09, 3.0), 0.93, 1.06, 0.3, 0.7)
+    macro = b.ramp(b.noise(0.09, 3.0), 0.89, 1.07, 0.3, 0.7)
     cc = b.n('ShaderNodeHueSaturation'); b.put(cc.inputs['Color'], c); b.put(cc.inputs['Value'], macro)
     nt.links.new(cc.outputs[0], pr.inputs['Base Color'])
 for _k, _w in (('stucco', 1.0), ('siding', 0.8), ('concrete', 1.0), ('brick', 0.7), ('shingle', 0.5)):

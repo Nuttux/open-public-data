@@ -457,6 +457,19 @@ def building(b, ground, out):
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol)
 
+    # the house's side and back walls (24/09): in SF the street front is the
+    # painted one; a party wall standing clear of its neighbour is plain grey
+    # or beige stucco, or brown shingle on an old house, and the back is often
+    # a plain white or grey — so a row reads as fronts, not as coloured boxes
+    sr_ = random.Random(b['gid'] * 661 + 9)
+    side_ = back_ = None
+    if style in ('vic', 'stucco', 'midcentury') and not LM and sub != 'works':
+        x_ = sr_.random()
+        if x_ < 0.72:
+            if style == 'vic' and sr_.random() < 0.3: side_ = ('siding', sr_.choice(((0.58, 0.48, 0.38), (0.66, 0.56, 0.44), (0.50, 0.42, 0.34))))
+            else: side_ = ('stucco', sr_.choice(((0.84, 0.83, 0.80), (0.86, 0.83, 0.76), (0.78, 0.77, 0.74), (0.90, 0.88, 0.84), (0.80, 0.76, 0.68))))
+        if sr_.random() < 0.5:
+            back_ = (wall_mat, sr_.choice(((0.93, 0.92, 0.89), (0.86, 0.86, 0.84), (0.90, 0.87, 0.80), body)))
     # ── walls ──
     for i, w in enumerate(walls):
         role = roles[i]
@@ -464,7 +477,8 @@ def building(b, ground, out):
         holes = []
         if role != 2 and w.L > 1.4:
             holes = facade(w, i == f0 or role == 1, b, rng, ctx)
-        w.wall_with_holes(wall_mat, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], body)
+        wmat_, wcol_ = (side_ if (role == 2 and side_) else (back_ if (role == 0 and back_ and i != f0) else (wall_mat, body)))
+        w.wall_with_holes(wmat_, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], wcol_)
         # corner boards (wood) or quoins (stucco blocks) and a water table
         if role != 2 and LOD >= 2 and wall_mat == 'siding':
             w.rect('trim', 0.0, 0.2, first - raised, eave, 0.03, trim); w.rect('trim', w.L - 0.2, w.L, first - raised, eave, 0.03, trim)
@@ -480,9 +494,9 @@ def building(b, ground, out):
             if (ua - uc) * (ub - uc) < 0: pts.insert(1, w.L * (uc - ua) / (ub - ua))
             tops = [rz(w.P(u, 0)) for u in pts]
             if max(tops) > eave + 0.05:
-                gmat = 'shingle' if (i == f0 and style == 'vic') else wall_mat
+                gmat = 'shingle' if (i == f0 and style == 'vic') else wmat_
                 gp = [w.P(0.0, eave), w.P(w.L, eave)] + [w.P(u, t) for u, t in list(zip(pts, tops))[::-1]]
-                out.poly(gmat, gp, (mix(body, accent, 0.18) if LM else accent) if gmat == 'shingle' else body)
+                out.poly(gmat, gp, (mix(body, accent, 0.18) if LM else accent) if gmat == 'shingle' else wcol_)
                 if i == f0 and style == 'vic':
                     w.box('trim', -0.25, w.L + 0.25, eave - 0.1, eave + 0.18, 0.0, 0.35, trim)
                     apex = max(tops); um = pts[1] if len(pts) == 3 else w.L / 2
@@ -508,6 +522,10 @@ def building(b, ground, out):
         # the back of a house: a wooden deck and stair down to the yard
         if role == 0 and style in ('vic', 'stucco', 'midcentury') and w.L > 4.0 and LOD == 0 and rng.random() < 0.55 and first - zg > 0.8:
             rear_deck(w, rng.uniform(0.4, max(0.5, w.L - 3.6)), first, zg, trim, rng)
+        # (24/09) the city's LOD: the backs were bare boxes; now stacked decks
+        # and their stairs, or an enclosed back porch built out
+        if role == 0 and i != f0 and style in ('vic', 'stucco', 'midcentury') and not LM and sub != 'works' and LOD >= 1 and w.L > 4.0:
+            rear_kit(w, b, first, fh, nfl, eave, zg, trim, wmat_, wcol_)
 
     # ── the corner turret of a Queen Anne ──
     if sub == 'queen' and corner and rng.random() < 0.65 and LM.get('turret', True):
@@ -731,6 +749,49 @@ def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):
         out.poly('roof_shingle', [Vector((a.x, a.y, z1)) + (a - cx).normalized() * 0.25, Vector((c.x, c.y, z1)) + (c - cx).normalized() * 0.25, Vector((cx.x, cx.y, apex))], (0.78, 0.76, 0.78))
     # a finial
     out.box3('metal', Vector((cx.x - 0.05, cx.y - 0.05, apex - 0.1)), Vector((0.1, 0, 0)), Vector((0, 0.1, 0)), Vector((0, 0, 0.9)), (0.2, 0.2, 0.2))
+
+
+def rear_kit(w, b, first, fh, nfl, eave, zg, trim, wmat, wcol):
+    """the back of an SF house at the city's scale: a back porch built out
+    (the Edwardian flats' stacked sunrooms, a kitchen addition), its windows
+    a band; or decks stacked floor over floor, a railing, posts, and a stair
+    down to the yard. Real relief the low sun draws; a few faces each"""
+    r = random.Random(b['gid'] * 313 + 7); x_ = r.random(); L = w.L
+    if x_ < 0.3:
+        bw = min(L * 0.7, r.uniform(3.0, 5.0)); u0 = r.choice((0.0, L - bw, (L - bw) / 2)); D = r.uniform(1.8, 2.8)
+        nf = min(nfl, r.choice((1, 1, 2, 3, nfl)))
+        z0 = max(zg, first - 0.3); z1 = min(eave - 0.3, first + nf * fh)
+        if z1 - z0 < 2.0: return
+        w.box(wmat, u0, u0 + bw, z0, z1, 0.0, D, wcol)
+        w.box('metal', u0 - 0.05, u0 + bw + 0.05, z1, z1 + 0.12, 0.0, D + 0.05, (0.55, 0.55, 0.53))
+        for f in range(nf):
+            zz = first + f * fh + 0.9
+            if zz + 1.2 > z1: break
+            w.rect('glass', u0 + 0.35, u0 + bw - 0.35, zz, zz + 1.3, D + 0.02, (1, 1, 1))
+            w.rect('trim', u0 + 0.25, u0 + bw - 0.25, zz - 0.12, zz + 1.42, D + 0.01, trim)
+        return
+    if x_ < 0.82 and first - zg > 0.6:
+        Ld = min(L - 1.6, r.uniform(2.8, 4.2)); D = r.uniform(1.8, 2.6)
+        if Ld < 2.2: return
+        left = r.random() < 0.5; u0 = 0.3 if left else L - Ld - 0.3
+        nd = min(nfl, r.choice((1, 1, 2, 2, 3)))
+        wood = r.choice(((0.58, 0.45, 0.32), (0.50, 0.40, 0.30), (0.62, 0.60, 0.56), trim))
+        rail = r.choice((trim, (0.20, 0.20, 0.21), wood))
+        ztop = first + (nd - 1) * fh
+        if ztop + 1.2 > eave: return
+        for f in range(nd):
+            zd = first + f * fh
+            w.box('deck', u0, u0 + Ld, zd - 0.2, zd, 0.0, D, wood)
+            w.box('trim', u0, u0 + Ld, zd + 0.92, zd + 1.02, D - 0.07, D, rail)                     # top rail
+            w.rect('curtain', u0, u0 + Ld, zd, zd + 0.92, D - 0.03, mix(rail, (0.5, 0.5, 0.5), 0.35))  # balusters, read as a veil
+        for uu in (u0 + 0.05, u0 + Ld - 0.17):
+            w.box('deck', uu, uu + 0.12, zg - 0.2, ztop, D - 0.15, D - 0.03, wood)
+        # the stair: from the lowest deck to the yard, beside it, as a ramp of treads
+        rise = first - zg; run = rise / 0.72
+        us, ue = (u0 + Ld, u0 + Ld + run) if left else (u0, u0 - run)
+        if 0.0 <= min(us, ue) and max(us, ue) <= L:
+            w.o.poly('deck', [w.P(us, first, D - 1.0), w.P(us, first, D), w.P(ue, zg, D), w.P(ue, zg, D - 1.0)], wood)
+            w.o.poly('trim', [w.P(us, first + 0.9, D), w.P(us, first + 1.0, D), w.P(ue, zg + 1.0, D), w.P(ue, zg + 0.9, D)], rail)
 
 
 def rear_deck(w, u0, first, zg, trim, rng):
@@ -998,7 +1059,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
                 if storeys >= 25 and rng.random() < 0.35:
                     pu, pv = wu * 0.55, wv * 0.55
                     house(s_[0] + (wu - pu) * rng.uniform(0.2, 0.8), s_[1] + (wv - pv) * rng.uniform(0.2, 0.8), pu, pv, deck + h_, rng.uniform(3.0, 4.5), own)
-    elif big and area > 90 and rng.random() < 0.8:
+    elif big and area > 90 and rng.random() < (0.12 if house else 0.8):     # (a stair house on a house is rare: it was a white cube on every roof)
         wu, wv = rng.uniform(2.4, 3.6), rng.uniform(2.2, 3.2)
         if storeys >= 6: wu, wv = wu * 1.3, wv * 1.4
         s_ = spot(wu, wv)
