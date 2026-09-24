@@ -208,7 +208,8 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
         # up); every other 'bridge' way (the SoMa viaducts, the Central Freeway)
         # the engine draws at grade, in its street mesh
         bridge = r['br'] and hw == 'motorway' and (('Golden Gate Bridge' in r['name']) or ('Eisenhower' in r['name'] and r['pts'][0][0] > 4000))
-        elev = FW is not None and FW.elevated(r['id'])
+        # freeways_hq's pavement: its viaducts, and (FW_GRADE) the freeways it paves at grade
+        elev = FW is not None and (FW.elevated(r['id']) or hw in ('motorway', 'motorway_link'))
         # the Bay Bridge's eastbound deck is the lower one, under the upper: not drawn
         if bridge and 'Eisenhower' in r['name'] and r['pts'][-1][0] > r['pts'][0][0] + 200: continue
         ix = r.get('ix', [])

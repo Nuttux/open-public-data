@@ -106,6 +106,7 @@ LIVERY = {   # hull band, cabin, roof
     'bg': (srgb('#1d3f7a'), WHITE, OFFWHITE, srgb('#d6a21e')),
     'alc': (srgb('#223047'), WHITE, OFFWHITE, srgb('#223047')),
     'ti': (DGREY, WHITE, OFFWHITE, DGREY),
+    'rw': (srgb('#b8262c'), WHITE, OFFWHITE, srgb('#b8262c')),
 }
 
 

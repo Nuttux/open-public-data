@@ -97,6 +97,7 @@ VESSEL = {
     'bg': ('small_ferry', dict(op='bg', L=34.0, B=9.4), 34.0, 9.4, 18.0),
     'alc': ('small_ferry', dict(op='alc', L=30.0, B=9.0), 30.0, 9.0, 13.0),
     'ti': ('small_ferry', dict(op='ti', L=24.0, B=8.0), 24.0, 8.0, 18.0),
+    'rw': ('small_ferry', dict(op='rw', L=36.0, B=10.0), 36.0, 10.0, 12.0),
 }
 # (OSM way, which end is San Francisco's, [(metres from that end, 'out' | 'in' | 'dock' | 'dock_far', class)])
 FERRY_PLAN = [
@@ -113,12 +114,29 @@ FERRY_PLAN = [
     (27989500, 'start', [(0, 'dock', 'alc'), (1300, 'in', 'alc'), (0, 'dock_far', 'alc')]),   # Alcatraz
     (24354980, 'end', [(2100, 'out', 'bg')]),                                       # Blue & Gold, Pier 41 - Sausalito
     (662437189, 'end', [(0, 'dock', 'weta')]),                                      # Pier 41 (the short hop)
+    (98752555, 'end', [(3200, 'in', 'ggf_cat')]),                                   # Angel Island (Golden Gate Ferry)
+    (24354980, 'end', [(4600, 'in', 'bg')]),                                        # Blue & Gold back from Sausalito
+    (662437189, 'start', [(1700, 'out', 'weta')]),                                  # the Ferry Building - Pier 41 hop, under way
 ]
+# the Red & White Fleet's Golden Gate Bay Cruise from Pier 43 1/2: out along the
+# Cityfront, under the bridge, back by Alcatraz (a loop of waypoints, engine m;
+# no OSM route); one boat outbound, one coming home
+RW_LOOP = [(2010, 5500), (1750, 5900), (900, 6150), (0, 6250), (-1800, 6450), (-3300, 6650), (-3500, 6950),
+           (-2600, 7150), (-800, 7250), (600, 7200), (1300, 6900), (1900, 6300), (2010, 5560)]
+RW_AT = [(2600, 'rw'), (9300, 'rw')]
 
 
 def ferries(D, sea, placed):
     by = {f['id']: f for f in D['ferries']}
     out = []
+    R = resample(RW_LOOP, 2.0)
+    for s_, cls in RW_AT:
+        b, a, L, B, kn = VESSEL[cls]
+        x, y, yaw = _at(R, s_)
+        if not all(math.hypot(x - px, y - py) > r + L / 2 + 40 for px, py, r in placed): continue
+        out.append(dict(k=f'{b}|{cls}', b=b, a=a, x=x, y=y, yaw=yaw, kn=kn, L=L, B=B, wk=0.9,
+                        trail=_back(R, s_ - L / 2, 1, 16.0 * kn + 60), cls='ferry'))
+        placed.append((x, y, L / 2 + 30))
     for wid, sf_end, plan in FERRY_PLAN:
         f = by.get(wid)
         if f is None: continue
@@ -350,7 +368,8 @@ def berths(sea, placed, marinas=()):
 # ── sailing ──────────────────────────────────────────────────────────────────
 # (x0, y0, x1, y1, boats): the Cityfront and off the Marina / Crissy Field, the
 # water off Aquatic Park and Pier 39, off South Beach, Clipper Cove
-SAIL_ZONES = [(-2600, 5250, 900, 6900, 16), (900, 5500, 3300, 6900, 9), (4300, 1500, 5900, 3300, 4), (5300, 5400, 6300, 6300, 2)]
+SAIL_ZONES = [(-2600, 5250, 900, 6900, 20), (900, 5500, 3300, 6900, 14), (3300, 4400, 5200, 6000, 7), (4300, 1500, 5900, 3300, 5),
+              (5300, 5400, 6300, 6300, 2)]
 
 
 def _sail_trim(bearing, rr):

@@ -18,7 +18,7 @@ def bus(L=12.5, artic=False):
     vb = VB(); W = 2.59
     if not artic:
         body(vb, L, W, 3.05, 0.35, [(0.95, RED, PAINT), (1.1, SILVER, PAINT), (2.4, WIN, GLASS), (2.8, SILVER, PAINT)],
-             srgb('#b9bcbe'), SILVER, front=((0.0, 0.93), (0.35, 1.0)), glass_z=(1.0, 2.6), shoulder=0.3)
+             srgb('#e2e4e5'), SILVER, front=((0.0, 0.93), (0.35, 1.0)), glass_z=(1.0, 2.6), shoulder=0.3)
         vb.box(-L / 2 + 1.0, -L / 2 + 4.0, -0.95, 0.95, 3.0, 3.3, srgb('#8a8d90'), ROOF)       # the hybrid's battery pod
         vb.box(0.5, 3.0, -0.9, 0.9, 3.0, 3.25, srgb('#9a9d9f'), ROOF)                          # HVAC
         return vb
@@ -27,7 +27,7 @@ def bus(L=12.5, artic=False):
     for x0, Ls, frt in ((L / 2 - Lf / 2, Lf, True), (-L / 2 + Lb / 2, Lb, False)):
         sub = VB()
         body(sub, Ls, W, 3.05, 0.35, [(0.95, RED, PAINT), (1.1, SILVER, PAINT), (2.4, WIN, GLASS), (2.8, SILVER, PAINT)],
-             srgb('#b9bcbe'), SILVER, front=((0.0, 0.93), (0.35, 1.0)) if frt else ((0.0, 1.0), (0.2, 1.0)),
+             srgb('#e2e4e5'), SILVER, front=((0.0, 0.93), (0.35, 1.0)) if frt else ((0.0, 1.0), (0.2, 1.0)),
              back=((0.0, 1.0), (0.2, 1.0)) if frt else ((0.0, 0.95), (0.3, 1.0)), glass_z=(1.0, 2.6) if frt else None, shoulder=0.3)
         k = len(vb.V)
         vb.V += [(x + x0, y, z) for x, y, z in sub.V]; vb.F += [tuple(i + k for i in f) for f in sub.F]; vb.C += sub.C; vb.MI += sub.MI
