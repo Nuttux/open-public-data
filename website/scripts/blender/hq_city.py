@@ -217,6 +217,12 @@ if len(HP):
 G.LOD = int(E('LOD', 2))
 log('buildings: records')
 HG = city_data.hero_gids()
+# NEVER BUILT, though the roll records them: Oceanwide Center Tower I, 50 First
+# St (gid 137672, 259 m, "1917" on the roll) — begun 2016-17, halted 2019-20,
+# still a hole (Wikipedia 'Oceanwide Center'). It stood next to Salesforce Tower
+# in tonight's pass (history agent, 24/09).
+PHANTOMS = {137672}
+HG |= PHANTOMS
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
 _sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
