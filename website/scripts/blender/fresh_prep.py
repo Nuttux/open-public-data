@@ -231,8 +231,17 @@ def main():
                 if o['g'].distance(P) < 6.0 and fits(o): sel = [o]
         fsrc = 'osm'
         if not sel:
-            if big and par is not None and 80 < par.area < 12000:
+            # a large block fills its lot: the parcel. A house or small building
+            # (it covers the front of a narrow lot, not the yard): the footprint
+            # of what stood there, at the permit's height
+            dx0, dy0 = offset_at(px, py); Pd = Point(px + dx0, py + dy0)
+            old = [j for j in DT.query(Pd.buffer(3.0)) if DP[j].distance(Pd) < 3.0 and DB[j]['gid'] not in LMG]
+            if big and par is not None and 600 <= par.area < 12000 and (st or 0) >= 4:
                 sel = [dict(key=f"parcel:{r['blocklot']}", part=False, g=par.buffer(-0.5), t={}, bt='parcel')]; fsrc = 'parcel'
+            elif old and st:
+                j = max(old, key=lambda j: DA[j])
+                sel = [dict(key=f"dsf:{DB[j]['gid']}", part=False, g=shapely.affinity.translate(DP[j], -dx0, -dy0), t={}, bt='old footprint')]
+                fsrc = 'old footprint, permit height'
             else:
                 info['result'] = 'no footprint (OSM or parcel)'; log['nc unresolved: no footprint'] += 1; continue
         yr = fyear(r['completed_date'])
@@ -348,12 +357,17 @@ def main():
     act_bl = {s['blocklot'] for s in sites}
 
     # ── 2. DEMOLITIONS
-    dem = {}; dlog = collections.Counter(); fresh_bl = {p['blocklot'] for p in per if p.get('gids')}
+    dem = {}; dlog = collections.Counter(); dper = []
+    def note(k): dlog[k] += 1; dper[-1]['result'].append(k)
+    fresh_bl = {p['blocklot'] for p in per if p.get('gids') or p.get('already')}
+    already = {g_ for p in per for g_ in p.get('already', [])}   # the new building IS the drawn record
     for r in C:
-        if r['category'] != 'demolition' or not r['lat']: continue
+        if r['category'] != 'demolition': continue
+        dper.append(dict(permit=r['permit_number'], addr=r['name_or_address'], blocklot=r['blocklot'], result=[]))
+        if not r['lat']: dper[-1]['result'].append('no coordinates'); continue
         info = dict(permit=r['permit_number'], addr=r['name_or_address'], blocklot=r['blocklot'])
         if PARTIAL.search(r['description']) and not re.search(r'demolish (an? |the )?(existing )?(entire|whole|one|two|three|\d)', r['description'], re.I):
-            dlog['demolition partial or accessory (kept)'] += 1; continue
+            note('demolition partial or accessory (kept)'); continue
         px, py = proj(float(r['lon']), float(r['lat'])); dx, dy = offset_at(px, py)
         Pd = Point(px + dx, py + dy)
         par = parcel(r['blocklot']); pard = shapely.affinity.translate(par, dx, dy) if par is not None else None
@@ -362,7 +376,7 @@ def main():
             onp = [j for j in DT.query(pard) if DP[j].intersection(pard).area >= 0.5 * DA[j]]
         else: onp = []
         cands = list(dict.fromkeys(on + onp))
-        if not cands: dlog['demolition: nothing drawn on the lot'] += 1; continue
+        if not cands: note('demolition: nothing drawn on the lot'); continue
         ex_st = fnum(r['existing_stories'])
         garage = re.search(r'garage|carport|shed|accessory', r['description'], re.I) and not re.search(r'dwelling|residen|house|building', r['description'], re.I)
         if garage: j = min(cands, key=lambda j: DA[j])
@@ -379,14 +393,15 @@ def main():
         else: status = 'empty (demolition completed, no new building yet)'
         for j_ in pick:
             g_ = DB[j_]['gid']
-            if g_ in LMG: dlog['demolition on a landmark footprint (left to it)'] += 1; continue
+            if g_ in LMG: note('demolition on a landmark footprint (left to it)'); continue
+            if g_ in already: note('demolition: the drawn record is already the new building'); continue
             if g_ in supers:
-                dlog['demolition: already superseded by a new building'] += 1
+                note('demolition: already superseded by a new building')
                 supers[g_]['until'] = min(supers[g_]['until'], until); continue
-            if g_ in dem: continue
+            if g_ in dem: note('demolition: same building as another permit'); continue
             dem[g_] = dict(gid=g_, until=until, permit=r['permit_number'], addr=r['name_or_address'], status=status,
                            h_old=DB[j_]['h'], st_old=DB[j_]['st'], existing_stories=ex_st)
-            dlog['demolition removed: ' + status] += 1
+            note('demolition removed: ' + status)
     print('demolitions', dict(dlog), flush=True)
 
     # ── roles of the new records (party / front / back), against what stands today
@@ -424,7 +439,7 @@ def main():
                             records=len(recs), superseded=len(supers), superseded_datasf=sum(1 for s in supers.values() if s['kind'] == 'datasf'),
                             superseded_newb=sum(1 for s in supers.values() if s['kind'] == 'newb'), newb_redated=len(redated), demolished=len(dem), active_sites=len(sites)))
     json.dump(dict(meta=meta, records=recs, supersedes=sorted(supers.values(), key=lambda s: s['gid']),
-                   demolished=sorted(dem.values(), key=lambda s: s['gid']), newb_redated=sorted(redated), permits=per), open(OUT, 'w'))
+                   demolished=sorted(dem.values(), key=lambda s: s['gid']), newb_redated=sorted(redated), permits=per, demolition_permits=dper), open(OUT, 'w'))
     json.dump(dict(meta=dict(built=meta['built'], sources=meta['sources'], attribution=meta['attribution'],
                              note='one entry per lot (several permits merged); site rings on DataSF frame (shift applied), from OSM building=construction, else the DataSF parcel, else a 30 m square at the point. drawn_gids_on_site: the records drawn today on the site (>= 50% inside). Not drawn yet (no cranes): a later visual step.'),
                    sites=sites), open(OUT_A, 'w'))
