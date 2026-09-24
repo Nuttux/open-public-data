@@ -436,7 +436,7 @@ NEUTRAL_TINTS = {    # centred on a warm grey: roofing greys are warm on average
     'solar':   [(1.03, 1.0, 0.96), (1.08, 1.0, 0.90)],
 }
 
-WARM = tuple(float(v) for v in os.environ.get('ROOF_WARM', '1.05,1.0,0.93').split(','))   # the whole palette a shade warmer (the render's own concrete and gravel are warm)
+WARM = tuple(float(v) for v in os.environ.get('ROOF_WARM', '1.09,1.0,0.88').split(','))   # the whole palette a shade warmer (the render's own concrete and gravel are warm)
 
 def _lum3(a): return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]
 
