@@ -152,8 +152,10 @@ def piers():
             if a < 12: continue
             out.append(dict(id=e['id'], name=t.get('name'), kind='float' if fl else 'deck', ring=r, area=round(a)))
         else:
+            try: wt = float(str(t.get('width', '0')).split()[0])
+            except ValueError: wt = 0.0
             out.append(dict(id=e['id'], name=t.get('name'), kind='float_line' if fl else 'line', line=pts,
-                            width=float(t.get('width', 0) or 0) or (2.4 if fl else 3.5)))
+                            width=wt or (2.4 if fl else 3.5), width_tagged=bool(wt)))
     json.dump(dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors): man_made=pier within San Francisco', piers=out),
               open(os.path.join(W, 'piers.json'), 'w'))
     print('piers', len(out))
@@ -186,8 +188,13 @@ def main():
     piers()
     json.dump(out, open(os.path.join(W, 'footprints.json'), 'w'))
     import landmarks_hq
+    skip_all = dict(skip)
+    _la = os.environ.get('LM_ALL'); os.environ['LM_ALL'] = '1'
+    built_all = {l.key: l.built for l in landmarks_hq._registry()}
+    if _la is None: os.environ.pop('LM_ALL')
+    else: os.environ['LM_ALL'] = _la
     skip = {k: v for k, v in skip.items() if k in landmarks_hq.ENABLED}
-    built = {l.key: l.built for l in landmarks_hq._registry()}
+    built = {k: built_all.get(k) for k in skip}
     hero = city_data.hero_gids()
     gids = sorted({g for v in skip.values() for g in v} - hero)
     json.dump(dict(note='DataSF footprints (gid) replaced by a landmarks_hq model: the building generator should not '
@@ -195,7 +202,9 @@ def main():
                         'In an era render, skip the gids of a landmark only from the year it opened: '
                         'skip gid when ERA is None or ERA >= built[landmark] (before that the landmark is not '
                         'built and the old buildings on its site stand). gids = all of them, for the present day. '
-                        'Written by lm_prep.py.', by_landmark=skip, built={k: built.get(k) for k in skip}, gids=gids),
+                        'Written by lm_prep.py. all_by_landmark / all_built: every model that replaces footprints, '
+                        'enabled or not (lm_run.py adds the tested ones, LM_KEYS).', by_landmark=skip, built=built, gids=gids,
+                   all_by_landmark=skip_all, all_built={k: built_all.get(k) for k in skip_all}),
               open(os.path.join(W, 'skip_gids.json'), 'w'), indent=1)
     print('skip gids', len(gids))
 

@@ -125,7 +125,8 @@ def _mats(bpy, M):
     T['plat'] = tinted(M.get('sidewalk'), 'tr_plat')
     # stones: no sheen (at 0.5 specular the low sky lit the yard pale blue, 2026-09-24)
     T['ballast'] = principled('tr_ballast', rough=1.0, spec=0.12, noise=(1.3, 0.28))
-    T['steel'] = principled('tr_steel', (0.42, 0.40, 0.38), rough=0.34, metal=1.0)
+    # worn rail heads: they shine, but a yard of them read as a line drawing at 0.34 (MME, 2026-09-24)
+    T['steel'] = principled('tr_steel', (0.30, 0.285, 0.27), rough=0.46, metal=1.0)
     T['rust'] = principled('tr_rust', rough=0.85, spec=0.25)
     T['dark'] = principled('tr_dark', rough=0.9, spec=0.3)
     T['wire'] = principled('tr_wire', (0.025, 0.025, 0.025), rough=0.45, metal=0.6)
@@ -227,6 +228,8 @@ def _build(bpy, sc, M, ground, box, log, t0):
     kd.balance()
     log(f'transit_hq: {len(geo)} tracks in the region, {len(AS)} samples ({time.time() - t0:.1f}s)')
 
+    try: _clear_cars(bpy, sc, kd, log)
+    except Exception as ex: traceback.print_exc(); log('transit_hq: clearing cars failed', ex)
     nw = 0
     for G in geo:
         try: _lay(bank, G, surf, grade_nodes)
@@ -267,6 +270,23 @@ def _build(bpy, sc, M, ground, box, log, t0):
         except Exception as ex: traceback.print_exc(); log('transit_hq: vehicles failed', ex)
 
 
+# ── no parked car on a track ─────────────────────────────────────────────────
+def _clear_cars(bpy, sc, kd, log):
+    """hq_city parks cars along every kerb edge of the street mesh, and a
+    median or a track lane has kerb edges too: a car whose centre is within
+    2.3 m of a track's centre (half a slab + half a car) stands on the track.
+    Its point is removed from the 'cars' instancer."""
+    import bmesh
+    ob = sc.objects.get('cars')
+    if ob is None or ob.type != 'MESH' or not len(ob.data.vertices): return
+    bm = bmesh.new(); bm.from_mesh(ob.data)
+    kill = [v for v in bm.verts if kd.find_range((v.co.x, v.co.y, 0.0), 2.3)]
+    if kill:
+        bmesh.ops.delete(bm, geom=kill, context='VERTS'); bm.to_mesh(ob.data); ob.data.update()
+    bm.free()
+    log(f'transit_hq: {len(kill)} parked cars stood on a track, removed')
+
+
 # ── the track itself ─────────────────────────────────────────────────────────
 def _lay(bank, G, surf, grade_nodes):
     t = G['t']; X, Y, S, NX, NY, zc, ok, onst = G['X'], G['Y'], G['S'], G['NX'], G['NY'], G['zc'], G['ok'], G['onst']
@@ -275,6 +295,11 @@ def _lay(bank, G, surf, grade_nodes):
     if t['bridge']:
         _bridge(bank, G, surf, grade_nodes); return
     styles = np.array([style_of(t, o) for o in onst])
+    # disused track only where it is set in a street (the Belt Railroad's old
+    # rails in the pavement): off the street it lies on the pier aprons, whose
+    # ground is not the deck the landmarks agent builds, and came out as dark
+    # wavy ballast beside the pier sheds (Embarcadero, 2026-09-24)
+    if cls == 'disused': styles[styles == 'ballast'] = 'none'
     for sty in ('embedded', 'ballast'):
         m = ok & (styles == sty)
         for i0, i1 in TG.runs(m):

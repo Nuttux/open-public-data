@@ -22,7 +22,21 @@ pyr = pyr.replace("bpy.ops.render.render(write_still=True)", "_crops()", 1)
 src = head + "if E('MODE') == 'pyramid':\n    Z, sz" + pyr
 def _crops():
     import bpy
-    sc = bpy.context.scene; W, H = sc.render.resolution_x, sc.render.resolution_y; fn = sc.render.filepath
+    sc = bpy.context.scene; W, H = sc.render.resolution_x, sc.render.resolution_y; fn0 = sc.render.filepath
+    # ROADV=0.62,0.8,0.9: the street asphalt's value (road_mat's Hue/Saturation
+    # node) varied on the one built scene, a set of crops per value
+    rv = [v for v in os.environ.get('ROADV', '').split(',') if v.strip()] or [None]
+    for v_ in rv:
+        fn = fn0
+        if v_ is not None:
+            for m in bpy.data.materials:
+                if m.name.split('.')[0] != 'asphalt' or not m.node_tree: continue
+                for n in m.node_tree.nodes:
+                    if n.type == 'HUE_SAT': n.inputs['Value'].default_value = float(v_)
+            fn = fn0.rsplit('.', 1)[0] + f'_rv{v_}.png'
+        _crop_set(sc, W, H, fn)
+def _crop_set(sc, W, H, fn):
+    import bpy
     for spec in [c for c in os.environ.get('CROPS', '').split(';') if c.strip()]:
         name, box = spec.split(':'); x0, y0, x1, y1 = [float(v) for v in box.split(',')]
         sc.render.use_border = True; sc.render.use_crop_to_border = True
@@ -31,5 +45,5 @@ def _crops():
         sc.render.filepath = fn.rsplit('.', 1)[0] + f'_{name}.png'
         import time; t = time.time(); bpy.ops.render.render(write_still=True)
         print(f'crop {name} {time.time() - t:.1f}s', flush=True)
-g = {'__name__': '__main__', '__file__': os.path.join(HERE, 'hq_city.py'), '_crops': _crops}
+g = {'__name__': '__main__', '__file__': os.path.join(HERE, 'hq_city.py'), '_crops': _crops, '_crop_set': _crop_set}
 exec(compile(src, 'hq_city.py', 'exec'), g)

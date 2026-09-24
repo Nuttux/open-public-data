@@ -235,7 +235,7 @@ def asphalt_ref(it, B_idx=None, n_max=400):
     v = np.concatenate(vals, 1)
     return dict(median=np.median(v, 1).tolist(), p10=np.percentile(v, 10, 1).tolist(), p90=np.percentile(v, 90, 1).tolist(), n=int(v.shape[1]))
 
-def measure_item(B, own, k, it, lf, asp=None):
+def measure_item(B, own, k, it, lf, asp=None, dL=0.0):
     """every building this quad owns: its roof found (lean), its pixels
     drawn tall-last, their robust colour. Raw DN out; calibrated in finish()"""
     from PIL import Image, ImageDraw
@@ -299,7 +299,9 @@ def measure_item(B, own, k, it, lf, asp=None):
                 veg = nd > 0.2
                 nv = ~veg
                 p75 = np.percentile(L[nv], 75) if nv.sum() >= 3 else 0.0
-                shadow = nv & (L < 0.55 * p75)
+                # shade: under half the lit roof's light ABOVE THE HAZE (NAIP's
+                # offset is ~65 DN: a shaded half of a 150 roof reads ~86, not 60)
+                shadow = nv & ((L - dL) < 0.5 * (p75 - dL))
                 good = nv & ~shadow
                 row.update(fveg=float(veg.mean()), fsh=float(shadow.mean()), ngood=int(good.sum()), p75=float(p75))
                 if good.sum() >= 3:
@@ -331,7 +333,7 @@ def measure(*only):
         lf, V = lean_field(B, own, k, it)
         asp = asphalt_ref(it)
         print(name, 'lean cells', len(V), 'asphalt', asp and [round(v) for v in asp['median']], f'{time.time() - t0:.0f}s', flush=True)
-        rows = measure_item(B, own, k, it, lf, asp and asp['median'])
+        rows = measure_item(B, own, k, it, lf, asp and asp['median'], 0.9 * band_stats(it['path']))
         for r in rows: r['gid'] = B[r.pop('i')]['gid']
         json.dump(dict(item=name, asphalt=asp, lean={f'{a},{b}': v for (a, b), v in V.items()}, rows=rows), open(out, 'w'))
         print(name, len(rows), 'roofs', f'{time.time() - t0:.0f}s', flush=True)
@@ -354,6 +356,9 @@ def measure(*only):
 # same anchors gave 0.16 and roofs too dark. Below the asphalt a gentle log
 # slope to 0.03 at the shade level (tar, dark shingle: 0.05-0.1). Colours are LINEAR albedo.
 ANCH = (0.0, 0.11, 0.75)
+# aged asphalt is a warm grey (oxidised binder, the aggregate showing): the
+# street is the white balance's neutral only up to this tint (R, G, B)
+ASPH_TINT = tuple(float(v) for v in os.environ.get('ASPH_TINT', '1.10,1.02,0.88').split(','))
 
 def band_stats(path):
     import rasterio
@@ -363,17 +368,17 @@ def band_stats(path):
     m = (L > 0) & (nd < 0.05)          # no vegetation
     return float(np.percentile(L[m], 1))
 
-def curve(dark, asph, white):
+def curve(dark, asph, white, a_alb=None):
     """above the asphalt the power law; below it a gentle log slope down to
     0.03 at the shade level (the power law, pinned at a haze offset that high,
     would call a DN-110 roof black: 0.014, where tar and dark shingle are 0.05-0.1)"""
-    d, a, w = float(dark), float(asph), float(white)
-    g = math.log(ANCH[1] / ANCH[2]) / math.log((a - d) / (w - d))
-    k = math.log(ANCH[1] / 0.03) / (a - d)
+    d, a, w = float(dark), float(asph), float(white); A1 = a_alb or ANCH[1]
+    g = math.log(A1 / ANCH[2]) / math.log((a - d) / (w - d))
+    k = math.log(A1 / 0.03) / (a - d)
     def f(v):
         v = np.asarray(v, float)
         hi = ANCH[2] * np.clip((v - d) / (w - d), 1e-4, None) ** g
-        lo = ANCH[1] * np.exp((v - a) * k)
+        lo = A1 * np.exp((v - a) * k)
         return np.where(v >= a, hi, lo)
     return f
 
@@ -386,7 +391,7 @@ def classify(a, row, pitched, asph=None, h=0.0):
     r, g, b = a; L = 0.2126 * r + 0.7152 * g + 0.0722 * b
     if asph is not None:        # a roof in a tower's shade: darker than the street and lit blue by the sky
         m = row['med']; La = sum(asph[:3]) / 3
-        if sum(m[:3]) / 3 < La - 18 and (m[2] - m[0]) > (asph[2] - asph[0]) + 12 and row.get('blue', 0) < 0.35:
+        if sum(m[:3]) / 3 < La - 20 and (m[2] - m[0]) > (asph[2] - asph[0]) + 14 and row.get('blue', 0) < 0.35:
             return 'shadow', 0.0
     mx, mn = max(a), min(a); sat = (mx - mn) / max(mx, 1e-4)
     npx, ngood = row['npx'], row.get('ngood', 0)
@@ -396,6 +401,7 @@ def classify(a, row, pitched, asph=None, h=0.0):
     q = row.get('q')
     if q: conf *= min(1.0, max(0.2, 1.4 - (q[3] - q[0]) / 60.0))       # a roof of one colour, not a patchwork
     if row.get('gain', 1) < 1.0: conf *= 0.6
+    if row.get('fsh', 0) > 0.4: conf *= 0.6          # much of it in shade: what is left may be the dimmer part
     if h > 30:                  # a tower's roof is far from its footprint in the photo: trust it only where it was clearly found
         conf *= min(1.0, max(0.0, (row.get('gain', 1) - 1.05) / 0.2))
     if row.get('fveg', 0) > 0.5: return 'tree', 0.0
@@ -411,7 +417,46 @@ def classify(a, row, pitched, asph=None, h=0.0):
     else: cls = 'cap'
     return cls, round(float(conf), 2)
 
-def finish():
+# ── from the measurement to the colour the renderer gets ───────────────────
+# What NAIP says reliably at 37 cm/px: each roof's LIGHTNESS, its CLASS, and
+# its hue only where the roof really is chromatic (clay tile, a green roof,
+# paint). A neutral roof's measured hue is mostly haze and white balance, so
+# a neutral class takes its lightness from the photo and its warmth from a
+# small palette of real roofing greys, picked per roof: by the measured warmth
+# where there is one, by the gid (deterministic) where there is not.
+NEUTRAL_TINTS = {    # centred on a warm grey: roofing greys are warm on average (weathered
+                     # shingle, mineral cap sheet, tan gravel), and the golden hour's blue
+                     # sky fill turns a strict neutral slate-blue from above
+    'tar':     [(1.0, 1.0, 1.0), (1.05, 1.0, 0.93), (1.10, 1.01, 0.87), (1.15, 1.02, 0.82)],
+    'cap':     [(0.99, 1.0, 1.01), (1.05, 1.0, 0.93), (1.09, 1.01, 0.88), (1.13, 1.02, 0.84), (1.18, 1.04, 0.80)],
+    'gravel':  [(1.08, 1.01, 0.89), (1.13, 1.03, 0.84), (1.18, 1.04, 0.80), (1.23, 1.05, 0.76)],
+    'shingle': [(0.99, 1.0, 1.01), (1.05, 0.99, 0.94), (1.10, 1.0, 0.88), (1.16, 1.0, 0.82), (1.22, 1.01, 0.77), (1.02, 1.04, 0.92)],
+    'white':   [(1.01, 1.0, 0.99), (1.03, 1.0, 0.96), (1.05, 1.01, 0.93)],
+    'metal':   [(0.98, 1.0, 1.02), (1.02, 1.0, 0.98)],
+    'solar':   [(1.03, 1.0, 0.96), (1.08, 1.0, 0.90)],
+}
+
+WARM = tuple(float(v) for v in os.environ.get('ROOF_WARM', '1.05,1.0,0.93').split(','))   # the whole palette a shade warmer (the render's own concrete and gravel are warm)
+
+def _lum3(a): return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]
+
+def render_colour(a, cls, gid, w_med=0.0):
+    L = max(_lum3(a), 1e-4)
+    mx, mn = max(a), min(a); sat = (mx - mn) / max(mx, 1e-4)
+    if cls in ('tile', 'green') or sat > 0.33:
+        # chromatic: the photo's own hue, a little more saturated (the haze took some)
+        return [max(0.0, L + 1.25 * (v - L)) for v in a]
+    pal = NEUTRAL_TINTS.get(cls, NEUTRAL_TINTS['cap'])
+    pal = sorted(pal, key=lambda t: t[0] - t[2])                 # cool -> warm
+    w = (a[0] - a[2]) / L                                         # the measured warmth
+    h = ((gid * 2654435761) >> 7) % 1000 / 1000.0                  # a fixed per-roof draw
+    pos = min(max((w - w_med) / 0.16 + 0.5, 0.0), 1.0) * 0.5 + h * 0.5 # warmer or cooler than the city's median roof, and a draw
+    t = pal[min(len(pal) - 1, int(pos * len(pal)))]
+    t = [t[0] * WARM[0], t[1] * WARM[1], t[2] * WARM[2]]
+    tl = _lum3(t)
+    return [L * c / tl for c in t]
+
+def finish(out=None):
     import glob
     import city_data
     forms = roof_forms()
@@ -441,7 +486,7 @@ def finish():
         # the dark anchor sits as far below the asphalt in every band (shade is
         # blue-lit, so each band's own darkest 1% would tint the dark roofs)
         dL = np.mean(c['asphalt']) - c['darkL']
-        F = [curve(c['asphalt'][k] - dL, c['asphalt'][k], c['white'][k]) for k in range(3)]
+        F = [curve(c['asphalt'][k] - dL, c['asphalt'][k], c['white'][k], ANCH[1] * ASPH_TINT[k]) for k in range(3)]
         for row in d['rows']:
             if 'med' not in row: continue
             a = [float(F[k](row['med'][k])) for k in range(3)]
@@ -449,13 +494,25 @@ def finish():
             if cls == 'solar' and row.get('med_ns'):      # the roof between the panels
                 a = [float(F[k](row['med_ns'][k])) for k in range(3)]
             counts[cls] = counts.get(cls, 0) + 1
-            roofs[str(row['gid'])] = [round(a[0], 3), round(a[1], 3), round(a[2], 3), cls, conf]
+            roofs[str(row['gid'])] = [a[0], a[1], a[2], cls, conf]
+    # the city's median warmth of its neutral roofs: each roof's tint says warmer or cooler than that
+    ws = [(v[0] - v[2]) / max(_lum3(v[:3]), 1e-4) for v in roofs.values() if v[3] in NEUTRAL_TINTS and v[4] >= 0.5]
+    w_med = float(np.median(ws)) if ws else 0.0
+    for g, v in roofs.items():
+        a = render_colour(v[:3], v[3], int(g), w_med) if os.environ.get('ROOF_TINTS', '1') == '1' else v[:3]
+        # FLAT: a light membrane the survey does not call pitched — a flat roof
+        # (behind a false front, most of them), whatever form the generator drew
+        flat = int(v[3] in ('white', 'cap', 'metal', 'gravel') and _lum3(v[:3]) >= 0.28 and not forms.get(int(g), False))
+        roofs[g] = [round(a[0], 3), round(a[1], 3), round(a[2], 3), v[3], v[4], flat]
     meta = dict(source='USDA NAIP 2022 (public domain), Planetary Computer STAC collection naip; see roofs/README.txt',
                 colour='linear albedo; per band/quad 0.75*((DN-d)/(DNwhite-d))^gamma, d = 1% bare land shade, asphalt -> 0.11, 99% roofs -> 0.75; below asphalt log slope to 0.03 at d',
+                render='neutral classes: measured lightness x a roofing-grey tint (warmer/cooler than the median roof + gid); chromatic (tile, green, sat>0.3): measured hue, saturation x1.25',
                 classes=counts, n=len(roofs))
-    json.dump(dict(meta=meta, calib=cal), open(f'{W}/calib.json', 'w'), indent=1)
-    json.dump(dict(meta=meta, roofs=roofs), open(f'{W}/roofs.json', 'w'), separators=(',', ':'))
-    print(json.dumps(counts), len(roofs), f'{os.path.getsize(f"{W}/roofs.json") / 1e6:.1f} MB')
+    meta['asphalt_tint'] = ASPH_TINT
+    json.dump(dict(meta=meta, calib=cal), open(f'{W}/calib.json' if not out else out.replace('.json', '_calib.json'), 'w'), indent=1)
+    out = out or f'{W}/roofs.json'
+    json.dump(dict(meta=meta, roofs=roofs), open(out, 'w'), separators=(',', ':'))
+    print(json.dumps(counts), len(roofs), f'{os.path.getsize(out) / 1e6:.1f} MB')
 
 CLS_COL = dict(white=(250, 250, 250), cap=(150, 150, 150), tar=(40, 40, 40), gravel=(190, 160, 110), shingle=(90, 70, 150), tile=(220, 70, 30), green=(40, 200, 40), solar=(20, 60, 255), metal=(120, 200, 230), shadow=(255, 0, 255), tree=(0, 110, 0))
 
@@ -471,7 +528,7 @@ def top(x0, y0, x1, y1, out, res=0.3, mode='albedo'):
     import glob
     for q in glob.glob(f'{W}/raw/*.json'):
         for r in json.load(open(q))['rows']: raw[r['gid']] = r
-    roofs = json.load(open(f'{W}/roofs.json'))['roofs'] if os.path.exists(f'{W}/roofs.json') else {}
+    rf_ = os.environ.get('ROOFS_FILE', f'{W}/roofs.json'); roofs = json.load(open(rf_))['roofs'] if os.path.exists(rf_) else {}
     Bm = A.copy(); Cm = Image.new('RGB', A.size, (70, 70, 70)); db, dc = ImageDraw.Draw(Bm), ImageDraw.Draw(Cm)
     Bs = sorted(city_data.buildings(x0 - 60, y0 - 60, x1 + 60, y1 + 60), key=lambda b: b['h'])
     for b in Bs:
@@ -545,6 +602,7 @@ def view(i, j, bx0, bx1, by0, by1, out, Z=7, FW=5120, FH=3072):
     tr = it['tr']; col = (ux - tr.c) / tr.a - 0.5 - c0; row = (uy - tr.f) / tr.e - 0.5 - r0
     img = np.stack([map_coordinates(a[c].astype(np.float32), [row, col], order=1, mode='nearest') for c in range(3)], -1)
     img = img.reshape(X.shape + (3,)); img[wall] *= 0.62          # walls: the photo has none, so shade them
+    np.savez_compressed(out.rsplit('.', 1)[0] + '_mask.npz', roof=(kk > 0) & ~wall, gid=np.array([0] + [b['gid'] for b in Bs])[kk])
     Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).save(out)
     print(out, X.shape[::-1])
 
