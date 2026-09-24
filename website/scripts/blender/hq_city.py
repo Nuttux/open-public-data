@@ -612,9 +612,9 @@ sc.cycles.samples = SPP
 # mean. Walls' and roofs' 'bcol' is pushed away from its material's mean,
 # mean + k·(c − mean), k = BCOL_SPREAD (or a look's spread=), 1.0 = unchanged.
 # Hue kept, value only: c·(lum/lum_mean)^(k−1), k = BCOL_VSPREAD (vspread=);
-# and a plain value scale on roofs (ROOF_VALUE, roofk=) and walls (WALL_VALUE, wallk=).
+# and a plain value scale on roofs (ROOF_VALUE, roofk=), brick (BRICK_VALUE, brickk=) and other walls (WALL_VALUE, wallk=).
 _SPREAD = []; _VSP = []; _VK = []
-if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE')) or any(k_ in (E('LOOKS') or '') for k_ in ('spread=', 'roofk=', 'wallk=')):
+if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE', 'BRICK_VALUE')) or any(k_ in (E('LOOKS') or '') for k_ in ('spread=', 'roofk=', 'wallk=', 'brickk=')):
     _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle'}   # (roof_tile's bcol is a tint multiplier, mean > 1: left alone)
     _acc = {}
     for o_ in sc.objects:
@@ -644,7 +644,8 @@ if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE
             pw_ = nt_.nodes.new('ShaderNodeMath'); pw_.operation = 'POWER'; nt_.links.new(m0_.outputs[0], pw_.inputs[0])
             pw_.inputs[1].default_value = float(E('BCOL_VSPREAD', 1.0)) - 1
             vk_ = nt_.nodes.new('ShaderNodeMath'); vk_.operation = 'MULTIPLY'; nt_.links.new(pw_.outputs[0], vk_.inputs[0])
-            roof_ = mn_.startswith('roof'); vk_.inputs[1].default_value = float(E('ROOF_VALUE' if roof_ else 'WALL_VALUE', 1.0))
+            roof_ = 'roof' if mn_.startswith('roof') else 'brick' if mn_ == 'brick' else 'wall'
+            vk_.inputs[1].default_value = float(E({'roof': 'ROOF_VALUE', 'brick': 'BRICK_VALUE', 'wall': 'WALL_VALUE'}[roof_], 1.0))
             sc_ = nt_.nodes.new('ShaderNodeVectorMath'); sc_.operation = 'SCALE'; nt_.links.new(mx_.outputs[2], sc_.inputs[0]); nt_.links.new(vk_.outputs[0], sc_.inputs['Scale'])
             mn2_ = nt_.nodes.new('ShaderNodeVectorMath'); mn2_.operation = 'MAXIMUM'; mn2_.inputs[1].default_value = (0.0, 0.0, 0.0); nt_.links.new(sc_.outputs[0], mn2_.inputs[0])
             for t_ in outs_: nt_.links.new(mn2_.outputs[0], t_)
@@ -685,7 +686,7 @@ if E('MODE') == 'pyramid':
             cam.location = wp - fw_ * 20000; cam.rotation_euler = rot
             # LOOKS (look tests): several lights on one built scene, one file each;
             # 'tag:el,sun,sky,expo[,key=val…];…' — optional keys (the global look pass, 24/09):
-            # rgb=r/g/b (sun colour), ssat= (sky fill saturation), gloss= (sky in reflections),
+            # az= (sun azimuth), rgb=r/g/b (sun colour), ssat= (sky fill saturation), gloss= (sky in reflections),
             # agx= (AgX look name), spread= vspread= roofk= wallk= (building colour, see BCOL_SPREAD);
             # a key left out takes the build's default. LOOK_EXR=1 also writes each look's
             # scene-linear EXR (re-toned in post, look/look_post.py)
@@ -696,7 +697,8 @@ if E('MODE') == 'pyramid':
                     f_ = lk_.split(':', 1)[1].split(',')
                     el_, sk_, bk_, ex_ = (float(v) for v in f_[:4])
                     kv_ = dict(t.split('=', 1) for t in f_[4:])
-                    a_, e_ = math.radians(float(E('SUN_AZ', 215))), math.radians(el_)
+                    a_, e_ = math.radians(float(kv_.get('az', E('SUN_AZ', 215)))), math.radians(el_)
+                    sky.sun_rotation = a_
                     sun.rotation_euler = (-Vector((math.sin(a_) * math.cos(e_), math.cos(a_) * math.cos(e_), math.sin(e_)))).to_track_quat('-Z', 'Y').to_euler()
                     sky.sun_elevation = e_; sun_d.energy = sk_; bg.inputs['Strength'].default_value = bk_; sc.view_settings.exposure = ex_
                     sun_d.color = tuple(float(v) for v in kv_.get('rgb', E('SUN_RGB', '1.0/0.80/0.58').replace(',', '/')).split('/'))
@@ -705,7 +707,7 @@ if E('MODE') == 'pyramid':
                     sc.view_settings.look = kv_.get('agx', E('AGX_LOOK', 'AgX - Punchy'))
                     for n_ in _SPREAD: n_.inputs[0].default_value = float(kv_.get('spread', E('BCOL_SPREAD', 1.0)))
                     for n_ in _VSP: n_.inputs[1].default_value = float(kv_.get('vspread', E('BCOL_VSPREAD', 1.0))) - 1
-                    for n_, r_ in _VK: n_.inputs[1].default_value = float(kv_.get('roofk', E('ROOF_VALUE', 1.0)) if r_ else kv_.get('wallk', E('WALL_VALUE', 1.0)))
+                    for n_, r_ in _VK: n_.inputs[1].default_value = float(kv_.get(r_ + 'k', E(r_.upper() + '_VALUE', 1.0)))
                 sc.render.filepath = fn
                 t1 = time.time(); bpy.ops.render.render(write_still=True)
                 if E('LOOK_EXR') == '1':
