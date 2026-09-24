@@ -401,6 +401,19 @@ def sand_look(m):
     nt.links.new(geo.outputs['Position'], nz.inputs['Vector'])
     # the scan's own grain as a grey detail map; the colour is set below
     hs = nt.nodes.new('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = 0.0; hs.inputs['Value'].default_value = 1.6
+    # the scan tiles every 55 m, and at 1.5 m a pixel its baked light and
+    # shade read as a quilt (1890 z5): a second read of the same scan at 3.3x
+    # the size, turned 37 deg, averaged in, and the grain's contrast halved
+    _tx = next((n for n in nt.nodes if n.type == 'TEX_IMAGE' and n.image and 'diff' in n.image.name), None)
+    if _tx is not None:
+        _mp2 = nt.nodes.new('ShaderNodeMapping'); _mp2.inputs['Scale'].default_value = (1 / 181.0, 1 / 181.0, 1 / 181.0)
+        _mp2.inputs['Rotation'].default_value = (0, 0, math.radians(37)); nt.links.new(geo.outputs['Position'], _mp2.inputs['Vector'])
+        _t2 = nt.nodes.new('ShaderNodeTexImage'); _t2.image = _tx.image; _t2.projection = 'BOX'; _t2.projection_blend = 0.25
+        nt.links.new(_mp2.outputs['Vector'], _t2.inputs['Vector'])
+        _av = nt.nodes.new('ShaderNodeMix'); _av.data_type = 'RGBA'; _av.inputs[0].default_value = 0.5
+        nt.links.new(src_, _av.inputs[6]); nt.links.new(_t2.outputs['Color'], _av.inputs[7])
+        _bc = nt.nodes.new('ShaderNodeBrightContrast'); _bc.inputs['Contrast'].default_value = -0.45
+        nt.links.new(_av.outputs[2], _bc.inputs['Color']); src_ = _bc.outputs['Color']
     nt.links.new(src_, hs.inputs['Color'])
     mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MULTIPLY'; mx.inputs[0].default_value = 1.0
     nt.links.new(hs.outputs['Color'], mx.inputs[6])
@@ -1827,7 +1840,7 @@ if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH
             s_ = open_at(x_, y_, SAND)
             # the sandy yards only on the city's own dry land: west of Stanyan
             # below 150 m was also the sea and Marin, sanded over (1890 z5 0:0)
-            cov_ = 0.0 if on_street else max(s_, _YS * EA.dune_share(x_, y_) if (g_ > 0.3 and EA.is_dune_ground(x_, y_, g_) and not EA.water_then(x_, y_, ERA)) else 0.0)
+            cov_ = 0.0 if on_street else max(s_, _YS * EA.dune_share(x_, y_) * EA.dune_z_fade(g_) if (g_ > 0.3 and EA.is_dune_ground(x_, y_, g_) and not EA.water_then(x_, y_, ERA)) else 0.0)
             # the dune relief dies down towards a graded street (a cut, not a cliff)
             if s_ > 0 and _SEKD is not None:
                 sd_ = _SEKD.find((x_, y_, 0))[2]; tt_ = min(1.0, max(0.0, (sd_ - 3.0) / 22.0)); s_ *= tt_ * tt_ * (3 - 2 * tt_)
@@ -1844,6 +1857,18 @@ if ERA is not None and OPEN is not None and (max(SAND) > 0.01 or _YS > 0 or _ASH
         me = bpy.data.meshes.new(name); me.from_pydata(V_, [], F_); me.update(); me.shade_smooth()
         if name == 'ashfield':
             at = me.color_attributes.new('bcol', 'FLOAT_COLOR', 'CORNER'); at.data.foreach_set('color', [0.5] * (4 * len(me.loops)))
+        if name == 'dunes':
+            # the sand fades out with its coverage (the dune edge, the yards'
+            # sand): a hard mesh edge drew a ruled line across the hills
+            at = me.color_attributes.new('cov', 'FLOAT_COLOR', 'POINT')
+            at.data.foreach_set('color', [v for c_ in C_ for v in (min(1.0, c_ / 0.6),) * 3 + (1.0,)])
+            _nt = mat.node_tree
+            if not any(n.name == 'cov_fade' for n in _nt.nodes):
+                _o = next(n for n in _nt.nodes if n.type == 'OUTPUT_MATERIAL'); _src = _o.inputs[0].links[0].from_socket
+                _ca = _nt.nodes.new('ShaderNodeAttribute'); _ca.attribute_name = 'cov'; _ca.name = 'cov_fade'
+                _tr = _nt.nodes.new('ShaderNodeBsdfTransparent'); _mx = _nt.nodes.new('ShaderNodeMixShader')
+                _nt.links.new(_ca.outputs['Fac'], _mx.inputs[0]); _nt.links.new(_tr.outputs[0], _mx.inputs[1]); _nt.links.new(_src, _mx.inputs[2])
+                _nt.links.new(_mx.outputs[0], _o.inputs[0])
         ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob); me.materials.append(mat)
         log(name, 'faces', len(F_))
 

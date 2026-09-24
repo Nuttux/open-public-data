@@ -209,7 +209,7 @@ if ERA is not None:
         o_ = OL.at(x_, y_)
         # the sand's own ground dries too: where the dune mesh thins out by a
         # graded street the terrain showed as a green fringe (e08)
-        if o_ > 0: _dk[k_] = o_ * (1.0 - OL.at(x_, y_, OL.park))
+        if o_ > 0 and EA.in_city(x_, y_): _dk[k_] = o_ * (1.0 - OL.at(x_, y_, OL.park))
     _ca = _tm.color_attributes.new('OpenDry', 'FLOAT_COLOR', 'POINT')
     _ca.data.foreach_set('color', _np.repeat(_dk, 4).tolist())
     _lt = bpy.data.materials['ground'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
@@ -359,7 +359,7 @@ if ERA is not None and E('SMOOTH_OPEN', '1') == '1':
         x_, y_, z_ = _co[k_]
         if z_ < 0.5: continue                                   # the shore and the water of the year stay put
         o_ = OL.at(x_, y_)
-        if o_ <= 0.02 or OL.at(x_, y_, OL.park) > 0.5: continue
+        if o_ <= 0.02 or OL.at(x_, y_, OL.park) > 0.5 or not EA.in_city(x_, y_): continue
         if len(streets.data.polygons) and sbv.find_nearest(Vector((x_, y_, z_)), 10.0)[0] is not None: continue
         _w[k_] = o_; _nm += 1
     _co[:, 2] = _co[:, 2] + (_np.maximum(_zb, 0.4) - _co[:, 2]) * _w

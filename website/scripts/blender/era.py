@@ -478,8 +478,46 @@ def dune_share(x, y):
     return 0.0 if t <= 0 else (1.0 if t >= 1 else t * t * (3 - 2 * t))
 
 
+def dune_z_fade(z):
+    """the sand thins out up the slopes round DUNE_Z (±25 m) instead of
+    stopping at one contour (CONVENTION)"""
+    t = (DUNE_Z + 25.0 - z) / 50.0
+    return 0.0 if t <= 0 else (1.0 if t >= 1 else t * t * (3 - 2 * t))
+
+
+_CITY = None
+
+
+def in_city(x, y):
+    """on San Francisco's own land (DataSF shoreline and county line,
+    base/coast.qc ring 0, and the islands): the year's open-land logic (dunes,
+    the sandy yards, the dry grass) belongs to the city, never to Marin or
+    Daly City (1890: the Marin headlands under dune sand)"""
+    global _CITY
+    if _CITY is None:
+        import numpy as np
+        R = 8.0; X0, Y0, X1, Y1 = -7000.0, -6000.0, 7400.0, 8400.0
+        nx, ny = int((X1 - X0) / R), int((Y1 - Y0) / R)
+        m = np.zeros((ny, nx), bool)
+        ys = Y0 + (np.arange(ny) + 0.5) * R
+        for ring in coast_rings():
+            P = np.array(ring + [ring[0]], float)
+            x1, y1, x2, y2 = P[:-1, 0], P[:-1, 1], P[1:, 0], P[1:, 1]
+            for j, yc in enumerate(ys):
+                c = ((y1 > yc) != (y2 > yc))
+                if not c.any(): continue
+                xi = np.sort(x1[c] + (yc - y1[c]) * (x2[c] - x1[c]) / (y2[c] - y1[c]))
+                for a_, b_ in zip(xi[0::2], xi[1::2]):
+                    i0 = max(0, int((a_ - X0) / R + 0.5)); i1 = min(nx, int((b_ - X0) / R + 0.5))
+                    if i1 > i0: m[j, i0:i1] ^= True
+        _CITY = (m, X0, Y0, R)
+    m, X0, Y0, R = _CITY
+    i, j = int((x - X0) / R), int((y - Y0) / R)
+    return 0 <= j < m.shape[0] and 0 <= i < m.shape[1] and bool(m[j, i])
+
+
 def is_dune_ground(x, y, z):
-    return z < DUNE_Z and dune_share(x, y) > 0.0
+    return z < DUNE_Z + 25.0 and dune_share(x, y) > 0.0 and in_city(x, y)
 
 
 def streets_graded(era):
@@ -889,7 +927,31 @@ def pavement(era, x, y):
 _PARKS = None
 
 
-def in_park(x, y):
+# Golden Gate Park was planted from its east end (1870) westward. SOURCED:
+# the USGS 1:62,500 San Francisco sheet of 1895 (surveyed 1892-94) draws the
+# park's drive network and planted ground from Stanyan Street west to about
+# Strawberry Hill and a little beyond (x ≈ -3700); west of it only two long
+# drives cross dune hummocks. The 1915 sheet draws drives and lakes to the
+# ocean; 'In 1903, a pair of Dutch-style windmills were built at the extreme
+# western end of the park' (Wikipedia 'Golden Gate Park'). CONVENTION: the
+# planted front moves west linearly from x = -3700 in 1893 to the Great
+# Highway (x = -6700) in 1903; west of it the park is still dune.
+GGP_BOX = (-6800.0, 450.0, -1900.0, 1450.0)
+
+
+def ggp_unplanted(x, y, era):
+    if era is None or era >= 1903: return False
+    if not (GGP_BOX[0] < x < GGP_BOX[2] and GGP_BOX[1] < y < GGP_BOX[3]): return False
+    t = min(1.0, max(0.0, (era - 1893.0) / 10.0))
+    return x < -3700.0 + (-6700.0 + 3700.0) * t
+
+
+def in_park(x, y, era=None):
+    if ggp_unplanted(x, y, era): return False
+    return _in_park(x, y)
+
+
+def _in_park(x, y):
     """inside a published Recreation and Parks ring (DataSF gtr9-ntp6): a
     park's ground is planted, not dune — CONVENTION for the early years of the
     western parks (Golden Gate Park was begun on the dunes in 1870 and had some
@@ -1058,12 +1120,13 @@ class OpenLand:
                     tb = topo_built(x, y, self.era)          # the sheet says built up
                     o *= 1.0 - min(1.0, max(0.0, (tb - 0.12) / 0.2))
                 if o <= 0: continue
-                if in_park(x, y): self.park[j * self.W + i] = 1.0; self.open[j * self.W + i] = o; continue
+                if in_park(x, y, self.era): self.park[j * self.W + i] = 1.0; self.open[j * self.W + i] = o; continue
                 self.open[j * self.W + i] = o
                 ds_ = dune_share(x, y)
                 if ds_ > 0:
                     g = ground(x, y)
-                    if g is not None and g > 0.3 and g < DUNE_Z and not water_then(x, y, self.era): self.sand[j * self.W + i] = o * ds_
+                    if g is not None and g > 0.3 and in_city(x, y) and not water_then(x, y, self.era):
+                        self.sand[j * self.W + i] = o * ds_ * dune_z_fade(g)
 
     def at(self, x, y, grid=None):
         i, j = int((x - self.x0) / self.res), int((y - self.y0) / self.res)
@@ -1627,7 +1690,7 @@ def vacant_lots(all_recs, placed_gids, era, open_at, box=None, radius=80.0):
         if ash_ground(era) and burned(x, y): continue
         if YARD_YEARS[0] <= era < YARD_YEARS[1] and _in_ring(x, y, MISSION_BAY_YARD): continue
         if PPIE_YEARS[0] <= era <= PPIE_YEARS[1] and ppie_footprint(x, y): continue
-        if era_lost.on_land(x, y, t) or in_park(x, y): continue
+        if era_lost.on_land(x, y, t) or in_park(x, y, era): continue
         nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), radius)
               if all_recs[i]['gid'] != b['gid'] and (all_recs[i]['year'] or 0) <= era]
         busy = sum(1 for n in nb if _busy(n)) >= 0.5 * len(nb) if nb else _busy(b)
@@ -1733,6 +1796,7 @@ def canopy_stands(x, y, era, all_recs, kd, radius=60.0):
     (over 8 ha: planted from its founding — Golden Gate Park, the Presidio's
     woods) or with no building near (woods: Sutro), it stands."""
     if era is None: return True
+    if ggp_unplanted(x, y, era): return False
     if park_area(x, y) > 80000: return True
     nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), radius)]
     if not nb: nb = [all_recs[i] for _, i, _ in kd.find_range((x, y, 0), 2.2 * radius)]   # a plaza's middle
