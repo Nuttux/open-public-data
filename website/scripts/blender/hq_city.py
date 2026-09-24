@@ -611,8 +611,10 @@ sc.cycles.samples = SPP
 # read as one beige because every building's face colour sits near the same
 # mean. Walls' and roofs' 'bcol' is pushed away from its material's mean,
 # mean + k·(c − mean), k = BCOL_SPREAD (or a look's spread=), 1.0 = unchanged.
-_SPREAD = []
-if E('BCOL_SPREAD') or 'spread=' in (E('LOOKS') or ''):
+# Hue kept, value only: c·(lum/lum_mean)^(k−1), k = BCOL_VSPREAD (vspread=);
+# and a plain value scale on roofs (ROOF_VALUE, roofk=) and walls (WALL_VALUE, wallk=).
+_SPREAD = []; _VSP = []; _VK = []
+if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE')) or any(k_ in (E('LOOKS') or '') for k_ in ('spread=', 'roofk=', 'wallk=')):
     _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle', 'roof_tile'}
     _acc = {}
     for o_ in sc.objects:
@@ -635,8 +637,18 @@ if E('BCOL_SPREAD') or 'spread=' in (E('LOOKS') or ''):
             mx_.inputs[0].default_value = float(E('BCOL_SPREAD', 1.0))
             mx_.inputs[6].default_value = (*[float(v) for v in mean_], 1.0)
             nt_.links.new(at_.outputs['Color'], mx_.inputs[7])
-            for t_ in outs_: nt_.links.new(mx_.outputs[2], t_)
-            _SPREAD.append(mx_)
+            bw_ = nt_.nodes.new('ShaderNodeRGBToBW'); nt_.links.new(mx_.outputs[2], bw_.inputs[0])
+            dv_ = nt_.nodes.new('ShaderNodeMath'); dv_.operation = 'DIVIDE'; nt_.links.new(bw_.outputs[0], dv_.inputs[0])
+            dv_.inputs[1].default_value = max(1e-3, float(mean_ @ np.array([0.2126, 0.7152, 0.0722])))
+            m0_ = nt_.nodes.new('ShaderNodeMath'); m0_.operation = 'MAXIMUM'; m0_.inputs[1].default_value = 0.05; nt_.links.new(dv_.outputs[0], m0_.inputs[0])
+            pw_ = nt_.nodes.new('ShaderNodeMath'); pw_.operation = 'POWER'; nt_.links.new(m0_.outputs[0], pw_.inputs[0])
+            pw_.inputs[1].default_value = float(E('BCOL_VSPREAD', 1.0)) - 1
+            vk_ = nt_.nodes.new('ShaderNodeMath'); vk_.operation = 'MULTIPLY'; nt_.links.new(pw_.outputs[0], vk_.inputs[0])
+            roof_ = mn_.startswith('roof'); vk_.inputs[1].default_value = float(E('ROOF_VALUE' if roof_ else 'WALL_VALUE', 1.0))
+            sc_ = nt_.nodes.new('ShaderNodeVectorMath'); sc_.operation = 'SCALE'; nt_.links.new(mx_.outputs[2], sc_.inputs[0]); nt_.links.new(vk_.outputs[0], sc_.inputs['Scale'])
+            mn2_ = nt_.nodes.new('ShaderNodeVectorMath'); mn2_.operation = 'MINIMUM'; mn2_.inputs[1].default_value = (1.0, 1.0, 1.0); nt_.links.new(sc_.outputs[0], mn2_.inputs[0])
+            for t_ in outs_: nt_.links.new(mn2_.outputs[0], t_)
+            _SPREAD.append(mx_); _VSP.append(pw_); _VK.append((vk_, roof_))
         log(f'bcol spread: {mat_.name} mean {np.round(mean_, 3).tolist()}')
 
 # ── PYRAMID MODE: the site's own tile grid, exactly ──────────────────────────
@@ -674,7 +686,7 @@ if E('MODE') == 'pyramid':
             # LOOKS (look tests): several lights on one built scene, one file each;
             # 'tag:el,sun,sky,expo[,key=val…];…' — optional keys (the global look pass, 24/09):
             # rgb=r/g/b (sun colour), ssat= (sky fill saturation), gloss= (sky in reflections),
-            # agx= (AgX look name), spread= (building colour spread, see BCOL_SPREAD);
+            # agx= (AgX look name), spread= vspread= roofk= wallk= (building colour, see BCOL_SPREAD);
             # a key left out takes the build's default. LOOK_EXR=1 also writes each look's
             # scene-linear EXR (re-toned in post, look/look_post.py)
             for lk_ in (E('LOOKS').split(';') if E('LOOKS') else ['']):
@@ -692,6 +704,8 @@ if E('MODE') == 'pyramid':
                     bg2.inputs['Strength'].default_value = float(kv_.get('gloss', E('GLOSS_K', 0.9)))
                     sc.view_settings.look = kv_.get('agx', E('AGX_LOOK', 'AgX - Punchy'))
                     for n_ in _SPREAD: n_.inputs[0].default_value = float(kv_.get('spread', E('BCOL_SPREAD', 1.0)))
+                    for n_ in _VSP: n_.inputs[1].default_value = float(kv_.get('vspread', E('BCOL_VSPREAD', 1.0))) - 1
+                    for n_, r_ in _VK: n_.inputs[1].default_value = float(kv_.get('roofk', E('ROOF_VALUE', 1.0)) if r_ else kv_.get('wallk', E('WALL_VALUE', 1.0)))
                 sc.render.filepath = fn
                 t1 = time.time(); bpy.ops.render.render(write_still=True)
                 if E('LOOK_EXR') == '1':
