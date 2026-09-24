@@ -399,7 +399,7 @@ def _correct(d, log, box, sd, res, far, pad, t0):
     ter[0]['nv'] = len(T) * 3; ter[0].pop('uv', None); ter[0].pop('cen', None)
     for m in ter[1:]: d['meshes'].remove(m)
     log(f'terrain_hq: ground from 3DEP, {nfine} fine triangles at {res:g} m, {len(T) - nfine} at {far:g} m ({time.time() - t0:.1f}s)')
-    _surround(d, log, (ex0, ey0, ex1, ey1), box=box)
+    _surround(d, log, (ex0, ey0, ex1, ey1), box=box, sd=sd)
     d['_piers'] = [[(round(x, 2), round(y, 2)) for x, y in r] for r in piers_]
     if piers_: log(f'terrain_hq: {len(piers_)} pier sheds on decks')
     _redrape(d, log, G0)
@@ -407,7 +407,53 @@ def _correct(d, log, box, sd, res, far, pad, t0):
     log(f'terrain_hq: scene re-draped ({time.time() - t0:.1f}s)')
     return True
 
-def _surround(d, log, ext, step=20.0, box=None):
+COAST = '/Users/daniel/code/qipu-render-work/landmarks/coast_land.npz'
+_CL = None
+def _coast(X, Y):
+    """(land: 1 land, 0 water, -1 outside the coastline mask; sd: signed
+    distance to the OSM coastline, m, + on land) at world points"""
+    global _CL
+    if _CL is None:
+        try:
+            z = np.load(COAST)
+            M = np.unpackbits(z['land'], axis=1)[:, :int(z['nx'])].astype(bool)
+            SD = z['sd_dm'].astype(np.float32) / 10.0 if 'sd_dm' in z.files else None
+            _CL = (M, SD, float(z['x0']), float(z['y1']), float(z['res']))
+        except Exception:
+            _CL = False
+    X = np.asarray(X); Y = np.asarray(Y)
+    out = np.full(X.shape, -1, np.int8); sd = np.full(X.shape, np.nan, np.float32)
+    if not _CL: return out, sd
+    M, SD, x0, y1, r = _CL
+    c = np.floor((X - x0) / r).astype(np.int64); rr = np.floor((y1 - Y) / r).astype(np.int64)
+    ok = (c >= 0) & (c < M.shape[1]) & (rr >= 0) & (rr < M.shape[0])
+    out[ok] = M[rr[ok], c[ok]].astype(np.int8)
+    if SD is not None: sd[ok] = SD[rr[ok], c[ok]]
+    return out, sd
+
+def _coast_land(X, Y):
+    return _coast(X, Y)[0]
+
+def _shore(Zs, landN, sd, zc, st):
+    """node heights that put the shore ON the coastline, not on the grid: in
+    a band of 1.5 cells either side of the coastline the surface is a gentle
+    beach, zc + 0.08 x the signed distance to the coast (land under its 3DEP
+    height, water under the water level), so every cell the coastline crosses
+    meets the water where the distance is zero. (Sinking only the water nodes
+    by the land's rise made the beach cells steep: the ground material painted
+    them as a stepped dark strip down the Daly City coast, 2026-09-24.)
+    Elsewhere land stands at least 0.3 m over the water, open water 1.5 m under."""
+    Z = np.where(landN, np.maximum(Zs, zc + 0.3), np.minimum(Zs, zc - 1.5)).astype(np.float32)
+    if np.isnan(sd).all(): return Z
+    zc_ = np.broadcast_to(zc, Z.shape)
+    band = ~np.isnan(sd) & (np.abs(sd) < 1.5 * st)
+    beach = (zc_ + 0.08 * np.nan_to_num(sd)).astype(np.float32)
+    lb = band & landN; wb = band & ~landN
+    Z[lb] = np.minimum(Zs[lb], np.maximum(beach[lb], zc_[lb] + 0.02))
+    Z[wb] = np.minimum(beach[wb], zc_[wb] - 0.02)
+    return Z
+
+def _surround(d, log, ext, step=20.0, box=None, sd=None):
     """the land round the city (Marin, Daly City, the East Bay's edge). The
     engine's 'surround' is NOT squeezed (measured by the terrain-fix agent),
     but it is a few hundred coarse triangles that do not meet the city's
@@ -421,6 +467,12 @@ def _surround(d, log, ext, step=20.0, box=None):
     tiles = [os.path.basename(p)[2:-4].split('_') for p in __import__('glob').glob(f'{lm_dem.ROOT}/2m/t_*.npy')]
     if not tiles: return
     ti = [int(a) for a, b in tiles]; tj = [int(b) for a, b in tiles]
+    sea_sq = None
+    try:
+        g_ = json.load(open(os.path.join(sd, 'sea.json'))) if sd else None
+        if g_: sea_sq = (g_['ox'], g_['oy'], g_['ox'] + g_['w'], g_['oy'] + g_['h'])
+    except Exception:
+        pass
     x0, x1 = min(ti) * lm_dem.T, (max(ti) + 1) * lm_dem.T; y0, y1 = min(tj) * lm_dem.T, (max(tj) + 1) * lm_dem.T
     def one(st, near):
         nx = int((x1 - x0) / st) + 1; ny = int((y1 - y0) / st) + 1
@@ -428,19 +480,36 @@ def _surround(d, log, ext, step=20.0, box=None):
         X, Y = np.meshgrid(xs, ys)
         Z = lm_dem.sample_arr(X, Y)
         C = raster(SPp, SCc, x0, y0, st, nx, ny)
-        # land = where the engine's surround has a triangle. 3DEP tiles that
-        # reach into the bay read ~0 m over open water, and "above -2 m" alone
-        # laid flat khaki slabs on the bay, cut square at the tile edges
-        # (seen from level 5, 2026-09-23): a cell is land if the engine says
-        # so, or if it clearly rises
-        land = ~np.isnan(C[..., 0])
-        C[~land] = (0.77, 0.67, 0.42)
+        # LAND: the OpenStreetMap coastline (coast_land.npz, tools/coastmask.py),
+        # sampled at every node. A land node stands at least 0.8 m up, a water
+        # node at least 1.5 m down, and every cell with a land corner is kept:
+        # the sea planes cut the slope between them, so the shore is the
+        # coastline interpolated across the cell — no stair steps of whole
+        # cells, no holes where the engine's surround had no triangle, no flat
+        # slabs where 3DEP reads ~0 m over the bay (2026-09-23/24). Where the
+        # mask does not reach: the engine's surround or clearly rising ground.
+        eng = ~np.isnan(C[..., 0])
+        C[~eng] = (0.77, 0.67, 0.42)
         Zs = np.nan_to_num(Z, nan=-50.0)
-        zmax = np.maximum.reduce([Zs[:-1, :-1], Zs[:-1, 1:], Zs[1:, 1:], Zs[1:, :-1]])
-        cland = land[:-1, :-1] | land[:-1, 1:] | land[1:, 1:] | land[1:, :-1]
+        lm, sdn = _coast(X, Y)
+        landN = np.where(lm < 0, eng | (Zs > 3.0), lm > 0)
+        # the water level the shore meets: the sea sheet (z 0.12) inside the
+        # render's sea mask square, the open ocean plane (-0.5) outside it
+        zc = np.full(Zs.shape, -0.5, np.float32)
+        if sea_sq is not None:
+            zc[(X >= sea_sq[0]) & (X <= sea_sq[2]) & (Y >= sea_sq[1]) & (Y <= sea_sq[3])] = 0.12
+        Zs = _shore(Zs, landN, sdn, zc, st)
+        # colour: the engine's surround carries its own sea colour along the
+        # shore (blue-green: the ground material read it as lawn, a stepped
+        # green strip down the Daly City coast): dry grass on land where the
+        # engine's colour is watery, beach sand within 25 m of the coastline
+        watery = landN & (C[..., 2] > C[..., 0])
+        C[watery] = (0.77, 0.67, 0.42)
+        C[landN & (np.nan_to_num(sdn, nan=1e9) < 25.0)] = (0.80, 0.73, 0.55)
+        cl = landN[:-1, :-1] | landN[:-1, 1:] | landN[1:, 1:] | landN[1:, :-1]
         CX, CY = np.meshgrid((xs[:-1] + xs[1:]) / 2, (ys[:-1] + ys[1:]) / 2)
         inside_city = (CX > ext[0] + st) & (CX < ext[2] - st) & (CY > ext[1] + st) & (CY < ext[3] - st)
-        keep = (((zmax > -2.0) & cland) | (zmax > 3.0)) & ~inside_city
+        keep = cl & ~inside_city
         if near is not None:
             nb = (CX > near[0]) & (CX < near[2]) & (CY > near[1]) & (CY < near[3])
             keep &= nb if st == step else ~nb
