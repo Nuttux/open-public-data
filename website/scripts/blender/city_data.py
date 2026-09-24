@@ -37,7 +37,7 @@ def newb():
         _NB = ([], set())
         p = os.environ.get('NEWB_FILE') or next((q for q in NEWB_FILES if os.path.exists(q)), None)
         if p and os.path.exists(p):
-            j = json.load(open(p)); era = int(os.environ['ERA']) if os.environ.get('ERA') else None
+            j = json.load(open(p)); era = float(os.environ['ERA']) if os.environ.get('ERA') else None
             # a record on a landmark's site ('lm') gives way when that landmark is modelled
             try:
                 import landmarks_hq as L_; on = {l.key for l in L_._registry()}     # enabled, LM_KEYS, or all with LM_ALL=1
