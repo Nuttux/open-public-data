@@ -352,6 +352,18 @@ VEG = E('VEG', '1') == '1'
 if VEG:
     import veg_hq
     VK = veg_hq.Kinds(bpy, load_collection, log, box=BOX)
+    # IN THE CARRIAGEWAY = over the street mesh AND more than 1.2 m inside the
+    # kerb: listed trees stand at the kerb, on the mesh's edge (a plain
+    # 'over the mesh' test dropped 40 % of them, 24/09)
+    _kp = []
+    for a_, b_, _o in SE:
+        n_ = max(1, int((b_ - a_).length)); _kp.extend(a_ + (b_ - a_) * (t_ / n_) for t_ in range(n_ + 1))
+    _kk = KDTree(max(1, len(_kp)))
+    for i_, q_ in enumerate(_kp): _kk.insert((q_.x, q_.y, 0.0), i_)
+    _kk.balance()
+    def on_street(x, y):
+        if sbv.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))[0] is None: return False
+        return not _kp or _kk.find((x, y, 0.0))[2] > 1.2
     protos, widths, heights, TALL, HMAX = VK.protos, VK.widths, VK.heights, VK.tall, VK.hmax
 else:
     STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
@@ -411,9 +423,9 @@ for t in d['trees']:
             if hp(x, y, 1) > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         crown = max(3.0, 2.0 * sxz)
         if VEG:
-            kc_ = VK.street(ox_, oy_, x, y, park, crown)
-            if kc_ is None: continue            # the list says stump, or an empty planting site
-            kind, crown = kc_
+            kc_ = VK.street(ox_, oy_, x, y, park, crown, on_street, roofed)
+            if kc_ is None: continue            # the list says stump, an empty site, or only roadway around
+            kind, crown, x, y = kc_
         else:
             # parks: mostly broadleaf, some Monterey pine; firs only now and then
             kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
@@ -433,7 +445,12 @@ for (x, y, z, rad, *_rest) in MASS:
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
     crown = max(4.0, float(E("CANOPY_K", 3.0)) * rad)
-    if VEG: kind, crown = VK.mass(x, y, crown)
+    if VEG:
+        kc_ = VK.mass(x, y, crown, on_street, roofed)
+        if kc_ is None: continue
+        kind, crown, x, y = kc_
+        gz_ = ground(x, y)
+        if gz_ is None: continue
     else: kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     seen.add((round(x / 2.5), round(y / 2.5)))
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
