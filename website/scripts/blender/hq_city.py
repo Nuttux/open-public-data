@@ -226,6 +226,13 @@ for a, b, outv in SE:
     k = len(Ps); Ps += [tuple(a + up), tuple(b + up), tuple(fb), tuple(fa)]; Fs.append((k, k+1, k+2, k+3))
     k = len(Ps); Ps += [tuple(a), tuple(b), tuple(b + up), tuple(a + up)]; Fs.append((k, k+1, k+2, k+3))
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
+# the winding follows each street edge's direction: half the tops faced down and
+# half the kerbs faced the sidewalk (n.z = -1 at Davis St, gg_street_diag). Tops up,
+# kerbs towards the street.
+for f in me.polygons:
+    o_ = SE[f.index // 2][2]
+    if (f.index % 2 == 0 and f.normal.z < 0) or (f.index % 2 == 1 and f.normal.dot(o_) > 0): f.flip()
+me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 log('street edges', len(SE))
 if os.environ.get('BRUSH', '1') == '1': hill_brush(ground_s, BOX)     # the brush beyond the county line stands on the surround
