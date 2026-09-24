@@ -67,6 +67,39 @@ def _int(v):
     except Exception: return None
 
 
+def _red_lanes(t, hw, oneway, nf, nb):
+    """the transit-only lanes (SF paints them red): [[dir, k]] with dir 'f' (with
+    the way) or 'b', k the lane counted from the kerb (0 = kerb lane); 'all' for a
+    busway. From lanes:bus / lanes:psv (+ :forward / :backward), bus:lanes /
+    psv:lanes (left to right; 'designated' = bus only), busway / busway:right|left"""
+    if hw == 'busway':
+        return 'all' if int(_int(t.get('layer')) or 0) <= 0 and t.get('bridge', 'no') == 'no' else []
+    out = set()
+    def lst(v, d, n):
+        if not v: return
+        L = v.split('|')
+        for i, x in enumerate(L):
+            if x.strip() == 'designated': out.add((d, len(L) - 1 - i))
+    for key in ('bus:lanes', 'psv:lanes'):
+        if oneway: lst(t.get(key), 'f', nf)
+        lst(t.get(key + ':forward'), 'f', nf); lst(t.get(key + ':backward'), 'b', nb)
+    for key in ('lanes:bus', 'lanes:psv'):
+        n_ = _int(t.get(key))
+        if n_ and oneway:
+            for k in range(min(n_, nf)): out.add(('f', k))
+        for d, sfx, nn in (('f', ':forward', nf), ('b', ':backward', nb)):
+            m = _int(t.get(key + sfx))
+            if m:
+                for k in range(min(m, max(1, nn))): out.add((d, k))
+    bw = {k: t.get(k) for k in ('busway', 'busway:right', 'busway:left', 'busway:both', 'busway:forward')}
+    if bw['busway'] == 'lane' or bw['busway:both'] == 'lane':
+        out.add(('f', 0))
+        if not oneway: out.add(('b', 0))
+    if bw['busway:right'] == 'lane' or bw['busway:forward'] == 'lane': out.add(('f', 0))
+    if bw['busway:left'] == 'lane' and not oneway: out.add(('b', 0))
+    return sorted([d, k] for d, k in out)
+
+
 def roads():
     E = json.load(open(os.path.join(W, 'roads_osm.json')))['elements']
     B = json.load(open(os.path.join(W, 'bus_osm.json')))['elements']
@@ -97,7 +130,8 @@ def roads():
                 if n and n >= 2: nf = nb = n // 2
                 else: nf = nb = DEF2.get(base, 1) if not n else 1
                 if n == 1: nf = nb = 0      # one shared lane: drawn at the centre, either way
-        out.append(dict(id=e['id'], hw=hw, nf=int(nf), nb=int(nb), one=(n == 1 and ow != 'yes'), br=t.get('bridge', 'no') != 'no',
+        red = _red_lanes(t, hw, ow == 'yes', int(nf), int(nb))
+        out.append(dict(id=e['id'], hw=hw, nf=int(nf), nb=int(nb), one=(n == 1 and ow != 'yes'), br=t.get('bridge', 'no') != 'no', red=red,
                         ly=int(_int(t.get('layer')) or 0), pts=pts, bus=bus.get(e['id'], 0), muni=muni.get(e['id'], 0),
                         name=t.get('name', ''), ref=t.get('ref', '')))
         for p in pts: k = (p[0], p[1]); cnt[k] = cnt.get(k, 0) + 1

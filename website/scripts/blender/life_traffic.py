@@ -192,6 +192,14 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
                 for px, py, pr, pz in placed.get((int(x // 4) + a, int(y // 4) + b), ()):
                     if abs(z - pz) < 3.0 and math.hypot(x - px, y - py) < pr + L * 0.45: return False
         return True
+    # THE RED LANES. San Francisco paints its transit-only lanes red (Geary,
+    # Mission, Van Ness's centre busway, Market, Sutter, Post, O'Farrell, 3rd,
+    # 16th...): from the air a red band along the kerb lane, the city's
+    # signature. OSM's bus:lanes / lanes:bus / busway tags give which lane;
+    # the lane is found on the street mesh like a car's (life_prep._red_lanes)
+    import os as _os
+    try: nred = _red(bpy, coll, D, street_z, kt, inb, log) if _os.environ.get('LIFE_RED', '1') == '1' else 0
+    except Exception as ex: import traceback; traceback.print_exc(); log('life_traffic: red lanes failed', ex); nred = 0
     cars, others = [], []
     nway = 0; rej = dict(off=0, track=0, parked=0, ix=0, over=0, deck=0); nmode = dict(street=0, lm=0, fw=0)
     for r in D['roads']:
@@ -223,7 +231,12 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             while s < Ls:
                 bus_s.append((s, rb.random() < 0.5 or r['nb'] == 0)); s += spacing * rb.uniform(0.7, 1.3)
         nway += 1
-        items = [(s, lane, True, None) for s, lane in cand]
+        red = r.get('red') or []
+        def is_red(lane):
+            if red == 'all': return True
+            if lane is None: return False
+            return (['f', lane] in red) if lane >= 0 else (['b', -1 - lane] in red)
+        items = [(s, lane, True, None) for s, lane in cand if not is_red(lane)]
         for s, fwd in bus_s:
             lane = 0 if (fwd or r['nb'] == 0) else -1
             if r.get('one'): lane = None
@@ -364,6 +377,86 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             vb = LV.PROTOS[vk](); pm[vk] = TG.mesh_multi(bpy, f'lv_{vk}', vb.V, vb.F, vb.C, vb.MI, mats)
         ob = bpy.data.objects.new(f'lv.{vk}.{k}', pm[vk]); ob.location = (x, y, z); ob.rotation_euler = (0.0, -pitch, yaw)
         vc.objects.link(ob)
+
+
+RED = (0.46, 0.045, 0.035, 1.0)         # SFMTA's transit-only red, sRGB ~#b53b33, a little worn
+
+
+def _red(bpy, coll, D, street_z, kt, inb, log):
+    import transit_geom as TG
+    bank = TG.Bank(); n = 0
+    for r in D['roads']:
+        red = r.get('red')
+        if not red or 'Ramp' in r.get('name', '') or r['br']: continue
+        if not any(inb(x, y, 60) for x, y in r['pts']): continue
+        rs = _resample(r['pts'], 1.5)
+        if rs is None: continue
+        X, Y, S, TX, TY = rs
+        hw = r['hw']; base = hw.replace('_link', '')
+        R_ix = 13.0 if base in ARTERIAL or hw == 'busway' else 10.0
+        ix = r.get('ix', [])
+        lanes = ([k for k in range(r['nf'])] + [-1 - k for k in range(r['nb'])]) if red == 'all' else \
+                [k if d == 'f' else -1 - k for d, k in red]
+        for lane in lanes:
+            strip = []                       # runs of (left, right) edge points
+            def flush():
+                if len(strip) >= 2:
+                    A = [p[0] for p in strip]; B = [p[1] for p in strip]
+                    bank.strip('red', A, B, RED)
+                strip.clear()
+            for i in range(len(X)):
+                x0, y0 = X[i], Y[i]
+                if not inb(x0, y0, 20) or any(abs(S[i] - q) < R_ix - 3.0 for q in ix): flush(); continue
+                nx, ny = -TY[i], TX[i]
+                runs = {}
+                for sd in (1, -1):
+                    rs_ = []; on = False; st = 0.0; d_ = 0.0
+                    while d_ < 28.0 and len(rs_) < 2:
+                        o = street_z(x0 + nx * sd * d_, y0 + ny * sd * d_) is not None
+                        if o and not on: st = d_; on = True
+                        elif not o and on: rs_.append((st, d_ - 0.3)); on = False
+                        d_ += 0.6
+                    if on: rs_.append((st, d_))
+                    runs[sd] = rs_
+                L1, R1 = runs[1], runs[-1]
+                if L1 and R1 and L1[0][0] == 0.0 and R1[0][0] == 0.0:
+                    cl, cr = -R1[0][1], L1[0][1]
+                    n_l = max(1, r['nf'] + r['nb'])
+                    park = 0.0 if hw in NO_PARK else float(np.clip((cr - cl - n_l * 3.1) / 2, 0.0, 2.4))
+                    lw = float(np.clip((cr - cl - 2 * park) / n_l, 2.6, 3.9))
+                    u = (cl + park + (lane + 0.5) * lw) if lane >= 0 else (cr - park - (-1 - lane + 0.5) * lw)
+                elif r['nb'] > 0 and L1 and R1 and L1[0][0] < 9.0 and R1[0][0] < 9.0:
+                    a_, b_, nn = (-R1[0][1], -R1[0][0], r['nf']) if lane >= 0 else (L1[0][0], L1[0][1], r['nb'])
+                    park = 0.0 if hw in NO_PARK else float(np.clip((b_ - a_ - nn * 3.1), 0.0, 2.4))
+                    lw = float(np.clip((b_ - a_ - park) / max(1, nn), 2.6, 3.9))
+                    u = (a_ + park + (lane + 0.5) * lw) if lane >= 0 else (b_ - park - (-1 - lane + 0.5) * lw)
+                else: flush(); continue
+                x, y = x0 + nx * u, y0 + ny * u
+                if kt is not None and kt.find((x, y, 0.0))[2] < 1.8: flush(); continue      # a track's lane: its slab
+                h = (lw - 0.45) / 2
+                za, zb = street_z(x + nx * h, y + ny * h), street_z(x - nx * h, y - ny * h)
+                if za is None or zb is None: flush(); continue
+                strip.append(((x + nx * h, y + ny * h, za + 0.03), (x - nx * h, y - ny * h, zb + 0.03)))
+            flush()
+        n += 1
+    if not bank.nfaces(): return 0
+    m = bpy.data.materials.get('lf_redlane')
+    if m is None:
+        m = bpy.data.materials.new('lf_redlane'); m.use_nodes = True; nt = m.node_tree; pb = nt.nodes['Principled BSDF']
+        # worn paint: the red, patchy where the tyres wear it (a noise toward the asphalt's grey)
+        geo = nt.nodes.new('ShaderNodeNewGeometry'); nz = nt.nodes.new('ShaderNodeTexNoise')
+        nz.inputs['Scale'].default_value = 0.35; nz.inputs['Detail'].default_value = 8
+        nt.links.new(geo.outputs['Position'], nz.inputs['Vector'])
+        mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'
+        mr = nt.nodes.new('ShaderNodeMapRange'); mr.inputs['From Min'].default_value = 0.45; mr.inputs['From Max'].default_value = 0.75
+        mr.inputs['To Min'].default_value = 0.0; mr.inputs['To Max'].default_value = 0.3
+        nt.links.new(nz.outputs['Fac'], mr.inputs['Value']); nt.links.new(mr.outputs[0], mx.inputs[0])
+        mx.inputs[6].default_value = RED; mx.inputs[7].default_value = (0.07, 0.065, 0.06, 1.0)
+        nt.links.new(mx.outputs[2], pb.inputs['Base Color']); pb.inputs['Roughness'].default_value = 0.75
+    nf = bank.nfaces()
+    bank.emit(bpy, coll, {'red': m}, 'life.redlanes')
+    log(f'life_traffic: red transit lanes on {n} ways, {nf} faces')
+    return n
 
 
 def _clear_freeway_parking(bpy, sc, D, inb, log):

@@ -19,8 +19,8 @@ def bus(L=12.5, artic=False):
     if not artic:
         body(vb, L, W, 3.05, 0.35, [(0.95, RED, PAINT), (1.1, SILVER, PAINT), (2.4, WIN, GLASS), (2.8, SILVER, PAINT)],
              srgb('#e2e4e5'), SILVER, front=((0.0, 0.93), (0.35, 1.0)), glass_z=(1.0, 2.6), shoulder=0.3)
-        vb.box(-L / 2 + 1.0, -L / 2 + 4.0, -0.95, 0.95, 3.0, 3.3, srgb('#8a8d90'), ROOF)       # the hybrid's battery pod
-        vb.box(0.5, 3.0, -0.9, 0.9, 3.0, 3.25, srgb('#9a9d9f'), ROOF)                          # HVAC
+        vb.box(-L / 2 + 1.0, -L / 2 + 4.0, -0.95, 0.95, 3.0, 3.3, srgb('#5e6164'), ROOF)       # the hybrid's battery pod
+        vb.box(0.5, 3.0, -0.9, 0.9, 3.0, 3.25, srgb('#6e7174'), ROOF)                          # HVAC
         return vb
     # articulated: front section, the bellows, the trailer section
     Lf, Lb = 11.2, 6.6
@@ -33,8 +33,8 @@ def bus(L=12.5, artic=False):
         vb.V += [(x + x0, y, z) for x, y, z in sub.V]; vb.F += [tuple(i + k for i in f) for f in sub.F]; vb.C += sub.C; vb.MI += sub.MI
     bx = L / 2 - Lf - 0.25
     vb.box(bx - 0.3, bx + 0.55, -1.2, 1.2, 0.4, 2.95, srgb('#1b1c1d'), DARK)                    # bellows
-    vb.box(L / 2 - Lf + 1.0, L / 2 - Lf + 4.0, -0.95, 0.95, 3.0, 3.3, srgb('#8a8d90'), ROOF)
-    vb.box(L / 2 - 4.0, L / 2 - 1.5, -0.9, 0.9, 3.0, 3.25, srgb('#9a9d9f'), ROOF)
+    vb.box(L / 2 - Lf + 1.0, L / 2 - Lf + 4.0, -0.95, 0.95, 3.0, 3.3, srgb('#5e6164'), ROOF)
+    vb.box(L / 2 - 4.0, L / 2 - 1.5, -0.9, 0.9, 3.0, 3.25, srgb('#6e7174'), ROOF)
     return vb
 
 
