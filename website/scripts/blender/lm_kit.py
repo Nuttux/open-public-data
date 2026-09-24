@@ -170,10 +170,39 @@ class Kit:
         tris = tessellate_polygon(loops)
         pts = [p for l in loops for p in l]
         V = [tuple(p) for p in pts]
+        want = _ar(outer) - sum(_ar(h) for h in holes)
+        def tri_area(a, b, c): return abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) / 2
+        got = sum(tri_area(V[t[0]], V[t[1]], V[t[2]]) for t in tris)
+        if want > 1.0 and abs(got - want) > 0.01 * want:
+            # the scanline tessellator left parts out (or doubled them): a
+            # constrained Delaunay triangulation of all the rings, each triangle
+            # kept when its centre is inside the outline and outside the holes
+            try:
+                from mathutils.geometry import delaunay_2d_cdt
+                from mathutils import Vector as V2
+                co, ed, k = [], [], 0
+                for l in [outer] + list(holes):
+                    n_ = len(l)
+                    co += [V2((p[0], p[1])) for p in l]
+                    ed += [(k + i, k + (i + 1) % n_) for i in range(n_)]; k += n_
+                vo, _eo, fo, *_r = delaunay_2d_cdt(co, ed, [], 0, 1e-4)
+                print(f'lm_kit.face_holes: the tessellation covered {got:.0f} of {want:.0f} m2; constrained Delaunay instead', flush=True)
+                V = [(v[0], v[1], z) for v in vo]; tris = []
+                for f in fo:
+                    if len(f) != 3: continue
+                    cx_ = sum(V[i][0] for i in f) / 3; cy_ = sum(V[i][1] for i in f) / 3
+                    if _pin(cx_, cy_, outer) and not any(_pin(cx_, cy_, h) for h in holes): tris.append(tuple(f))
+            except Exception as ex:
+                print('lm_kit.face_holes: CDT fallback failed', ex)
         F = []
         for t in tris:
             a, b, c = V[t[0]], V[t[1]], V[t[2]]
-            if (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) < 0: t = (t[0], t[2], t[1])
+            cr = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+            # a zero-area triangle (three outline points in a row) has no normal:
+            # it rendered as a black hairline across Lake Merced
+            le = max(math.hypot(b[0] - a[0], b[1] - a[1]), math.hypot(c[0] - b[0], c[1] - b[1]), math.hypot(a[0] - c[0], a[1] - c[1]))
+            if abs(cr) < 0.02 * le: continue                # thinner than 2 cm
+            if cr < 0: t = (t[0], t[2], t[1])
             F.append(tuple(t))
         self.mesh(mat, V, F, col)
 

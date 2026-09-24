@@ -156,6 +156,11 @@ for m in d['meshes']:
             a = t * 9
             if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
+        # not ground: the engine's translucent overlays (pier plates .2, their
+        # dark drop shadows offset south-west .35 — the grey 'ghost piers' on
+        # the bay — the lakes' glaze .42) and its opaque blue lakes (landmarks_hq
+        # draws the lakes from OSM): white vertex colours sent them to 'paths'
+        if m.get('opacity', 1) < 0.45 or (m.get('color') or [1])[0] < 0.3: continue
         c = f32(m['col']); p = f32(m['pos'])
         tgt = DP if (c and c[2] > 0.8) else DL
         if BOX is None: tgt.extend(p)

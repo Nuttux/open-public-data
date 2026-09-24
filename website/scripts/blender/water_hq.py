@@ -40,7 +40,7 @@ def lakes(C):
     if not os.path.exists(WATER_JSON): return 0
     W = json.load(open(WATER_JSON))['water']
     bx0, by0, bx1, by1 = C.box
-    n = 0
+    n = 0; polys = []
     for w in W:
         r = [tuple(p) for p in w['ring']]
         r = r[:-1] if r[0] == r[-1] else r
@@ -55,9 +55,94 @@ def lakes(C):
         if w['kind'] == 'tidal': z = max(z, 0.10); col = hexc('#2c3d3c')
         elif w['kind'] == 'tank': col = hexc('#3a4540')
         else: col = hexc(LAKE_COL.get(w['name'] or '', '#394a39'))
-        C.K.face_holes('lm_lake', r, [h[:-1] if h[0] == h[-1] else h for h in w.get('holes', [])], z, col)
+        hs = [h[:-1] if h[0] == h[-1] else h for h in w.get('holes', [])]
+        C.K.face_holes('lm_lake', r, hs, z, col)
+        polys.append((r, hs))
         n += 1
+    try:
+        nl, nt = _clear_water(C, polys)
+        if nl or nt: C.log(f'water_hq: {nl} lawn faces over the lakes hidden, {nt} trees out of the water')
+    except Exception as ex:
+        C.log('water_hq: clearing over the lakes failed', ex)
     return n
+
+def _inside_many(X, Y, polys):
+    """points in any (ring, holes) polygon, even-odd, numpy"""
+    out = np.zeros(X.shape, bool)
+    for ring, holes in polys:
+        R = np.asarray(ring, float)
+        pre = (X >= R[:, 0].min()) & (X <= R[:, 0].max()) & (Y >= R[:, 1].min()) & (Y <= R[:, 1].max())
+        if not pre.any(): continue
+        x, y = X[pre], Y[pre]; ins = np.zeros(x.shape, bool)
+        for q in [ring] + list(holes):
+            Q = np.asarray(q, float); Q2 = np.roll(Q, -1, 0)
+            for (x1, y1), (x2, y2) in zip(Q, Q2):
+                c = ((y1 > y) != (y2 > y)) & (x < (x2 - x1) * (y - y1) / ((y2 - y1) or 1e-12) + x1)
+                ins ^= c
+        out[np.nonzero(pre)[0][ins]] = True
+    return out
+
+def _clear_water(C, polys):
+    """the engine's park lawns are coarse triangles draped at their corners:
+    across a lake they span from bank to bank ABOVE the water (Lake Merced,
+    the Palace of Fine Arts lagoon: khaki wedges on the water). A lawn face
+    any of whose inner points is in a lake is hidden (the ground under it has
+    the park's own grass); a tree whose trunk stands in a lake is dropped."""
+    if not polys: return 0, 0
+    bpy = C.bpy; nl = nt = 0
+    for ob in list(C.sc.collection.all_objects):
+        if ob.type != 'MESH': continue
+        me = ob.data
+        if ob.name in ('lawns', 'paths') and len(me.polygons):
+            npg = len(me.polygons)
+            co = np.empty(len(me.vertices) * 3, np.float32); me.vertices.foreach_get('co', co); co = co.reshape(-1, 3)
+            lt = np.empty(npg, np.int32); me.polygons.foreach_get('loop_total', lt)
+            if (lt != 3).any(): continue
+            vi = np.empty(npg * 3, np.int32); me.polygons.foreach_get('vertices', vi); T = co[vi.reshape(-1, 3)][:, :, :2]
+            cen = T.mean(1)
+            # the centre, halfway to each corner, and along each edge (a long
+            # sliver over the water has no inner point in it: hairlines)
+            pts = [cen] + [(cen + T[:, k]) / 2 for k in range(3)]
+            for k in range(3):
+                a_, b_ = T[:, k], T[:, (k + 1) % 3]
+                pts += [a_ + (b_ - a_) * t_ for t_ in (0.2, 0.5, 0.8)]
+            hit = np.zeros(npg, bool)
+            for P_ in pts: hit |= _inside_many(P_[:, 0].astype(float), P_[:, 1].astype(float), polys)
+            if hit.any():
+                import landmarks_hq
+                hm = landmarks_hq._hidden(bpy)
+                if hm.name not in [m_.name for m_ in me.materials if m_]: me.materials.append(hm)
+                slot = [m_.name if m_ else None for m_ in me.materials].index(hm.name)
+                mi = np.empty(npg, np.int32); me.polygons.foreach_get('material_index', mi)
+                mi[hit] = slot; me.polygons.foreach_set('material_index', mi); me.update()
+                nl += int(hit.sum())
+        elif ob.name == 'trees' and len(me.vertices):
+            co = np.empty(len(me.vertices) * 3, np.float32); me.vertices.foreach_get('co', co); co = co.reshape(-1, 3)
+            X_, Y_ = co[:, 0].astype(float), co[:, 1].astype(float)
+            wet = _inside_many(X_, Y_, polys)
+            # and a tree whose crown hangs mostly over the water (the canopy
+            # masses round Stow Lake closed over it): 3 of 8 points half-way out
+            # to the crown's edge in the lake. Crown width = scale x the proto's
+            try:
+                sc_ = np.empty(len(me.vertices), np.float32); me.attributes['s'].data.foreach_get('value', sc_)
+                kd_ = np.empty(len(me.vertices), np.int32); me.attributes['kind'].data.foreach_get('value', kd_)
+                root = bpy.data.collections.get('trees_protos')
+                wid = [max([max(o.dimensions.x, o.dimensions.y) for o in c.all_objects if o.type == 'MESH'] or [5.0]) for c in root.children] if root else [5.0]
+                wid = np.array(wid, float)
+                rad = 0.5 * sc_ * wid[np.clip(kd_, 0, len(wid) - 1)]
+                cnt = np.zeros(len(X_), np.int32)
+                for k in range(8):
+                    a_ = 2 * math.pi * k / 8
+                    cnt += _inside_many(X_ + 0.5 * rad * math.cos(a_), Y_ + 0.5 * rad * math.sin(a_), polys)
+                wet |= cnt >= 3
+            except Exception as ex:
+                C.log('water_hq: crowns over the lakes not checked', ex)
+            if wet.any():
+                import bmesh
+                bm = bmesh.new(); bm.from_mesh(me); bm.verts.ensure_lookup_table()
+                bmesh.ops.delete(bm, geom=[bm.verts[i] for i in np.nonzero(wet)[0]], context='VERTS')
+                bm.to_mesh(me); bm.free(); me.update(); nt += int(wet.sum())
+    return nl, nt
 
 BATHY = '/Users/daniel/code/qipu-render-work/landmarks/bathy_8m.npy'     # tools/bathy.py (3DEP, flattened patches filled)
 
