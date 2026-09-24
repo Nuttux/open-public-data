@@ -24,10 +24,10 @@ while :; do
   for X in "$L" "$W/.gpu.lock2"; do        # a dead owner frees its slot
     o=$(cat "$X/pid" 2>/dev/null); [ -n "$o" ] && ! kill -0 "$o" 2>/dev/null && rm -rf "$X"
   done
-  # fairness: after two tests in a row, the oldest waiting city frame goes next
+  # fairness: after a test, the oldest waiting city frame goes next (1:1; 2:1 left the pass at 4.5 min a frame, 24/09 02:40)
   # (tests first starved the city pass: 39/64 for half an hour, 24/09 00:40)
   first=$(ls "$Q" | sort | head -1)
-  if [ "$(cat "$W/.gpu.tests" 2>/dev/null || echo 0)" -ge 2 ]; then
+  if [ "$(cat "$W/.gpu.tests" 2>/dev/null || echo 0)" -ge 1 ]; then
     c=$(ls "$Q" | grep '^1' | sort | head -1); [ -n "$c" ] && first=$c
   fi
   if [ "$Q/$first" = "$me" ] && [ ! -d "$W/.gpu.lock2" ] && [ "$(avail)" -ge "$NEED" ] && mkdir "$L" 2>/dev/null; then break; fi
