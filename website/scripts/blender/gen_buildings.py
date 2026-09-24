@@ -45,8 +45,11 @@ STUCCO = [(0.95, 0.93, 0.88), (0.94, 0.86, 0.66), (0.90, 0.80, 0.66), (0.80, 0.8
           (0.76, 0.84, 0.92), (0.96, 0.95, 0.93), (0.86, 0.74, 0.62), (0.93, 0.89, 0.72), (0.98, 0.97, 0.95)]
 STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86, 0.82), (0.52, 0.50, 0.48), (0.80, 0.74, 0.64)]
 # curtain-wall glass (display colour, and in alpha how mirror-like the coating is)
-GLASS_TINTS = [(0.28, 0.40, 0.44, 0.15), (0.30, 0.32, 0.35, 0.1), (0.40, 0.33, 0.25, 0.35), (0.66, 0.68, 0.70, 0.75),
-               (0.15, 0.17, 0.19, 0.25), (0.26, 0.36, 0.50, 0.3), (0.36, 0.46, 0.44, 0.2)]
+# (SF's downtown is mostly stone, bronze, grey and dark glass; blue is the
+# exception — two of eleven, and the teal one greyed)
+GLASS_TINTS = [(0.30, 0.36, 0.38, 0.12), (0.30, 0.32, 0.35, 0.1), (0.40, 0.33, 0.25, 0.35), (0.34, 0.29, 0.24, 0.3),
+               (0.66, 0.68, 0.70, 0.75), (0.60, 0.58, 0.54, 0.6), (0.15, 0.17, 0.19, 0.25), (0.19, 0.19, 0.20, 0.2),
+               (0.24, 0.22, 0.20, 0.25), (0.26, 0.36, 0.50, 0.3), (0.34, 0.42, 0.44, 0.2)]
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
 BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66)]
 
@@ -379,8 +382,8 @@ def building(b, ground, out):
         trng = random.Random(b['gid'] * 131 + 5); u_ = trng.random(); yr = b['year'] or 1960
         if yr < 1935: fsys = None
         elif yr < 1965: fsys = 'ribbon' if u_ < 0.55 else None
-        elif yr < 1990: fsys = 'piers' if u_ < 0.4 else ('ribbon' if u_ < 0.7 else 'curtain')
-        else: fsys = 'curtain' if u_ < 0.7 else 'piers'
+        elif yr < 1990: fsys = 'piers' if u_ < 0.45 else ('ribbon' if u_ < 0.75 else 'curtain')
+        else: fsys = 'curtain' if u_ < 0.6 else 'piers'
         if fsys:
             wall_mat = 'concrete'; body = trng.choice(STONE); gcol = trng.choice(GLASS_TINTS)
         elif wall_mat == 'brick' and trng.random() < 0.5:
@@ -644,10 +647,15 @@ def measured_pitched(b, roof_mat, rc):
     terracotta, shingle otherwise (never whiter than a light shingle: a
     white reading over a gable is a flat roof the generator pitched)"""
     m = ROOF_M.get(b['gid']) if ERA is None else None
-    if not m: return roof_mat, rc
+    if not m:
+        if ROOF_M and ERA is None and roof_mat == 'roof_shingle':
+            # unmeasured (or unsure): the procedural shingle, toned toward the
+            # city the air measured — greys warm to cool, few reds and violets
+            L = _lum(rc); return roof_mat, tuple(L + 0.45 * (c - L) for c in rc)
+        return roof_mat, rc
     a, cls = list(m[:3]), m[3]
     mat = 'roof_tile' if cls == 'tile' else 'roof_shingle'
-    L, cap = _lum(a), (0.45 if mat == 'roof_tile' else 0.32)
+    L, cap = _lum(a), (0.45 if mat == 'roof_tile' else 0.26)
     if L > cap: a = [v * cap / L for v in a]
     t = _ROOF_TEX[mat]
     return mat, _disp([a[k] / t[k] for k in range(3)])

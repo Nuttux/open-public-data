@@ -309,7 +309,11 @@ def curtain_wall_mat():
     hair out of plane, so the reflections break panel by panel as they do
     on a real tower"""
     b = NB('curtain_wall'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
-    b.put(b.pr.inputs['Base Color'], at.outputs['Color'])
+    # a tinted pane is dark (the office behind it) and takes its colour in the
+    # reflection; only a mirror coating (high alpha) shows its own colour. The
+    # tint as a bright body colour turned every tower a saturated blue
+    body_k = b.math('ADD', 0.45, b.math('MULTIPLY', at.outputs['Alpha'], 0.55))
+    b.put(b.pr.inputs['Base Color'], b.mix(1.0, at.outputs['Color'], b.math('MULTIPLY', body_k, 1.0), 'MULTIPLY'))
     b.put(b.pr.inputs['Metallic'], at.outputs['Alpha']); b.pr.inputs['Roughness'].default_value = 0.035
     b.pr.inputs['Specular IOR Level'].default_value = 0.8; b.pr.inputs['Coat Weight'].default_value = 0.3
     snap = b.n('ShaderNodeVectorMath', operation='SNAP'); b.put(snap.inputs[0], b.pos); snap.inputs[1].default_value = (1.5, 1.5, 3.9)
@@ -795,7 +799,7 @@ def _brush_protos():
             out.append((one, (mx.x - mn.x, mx.y - mn.y, mx.z - mn.z)))
     return out
 
-def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4), ('paths', 1.4)), seed=5):
+def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4), ('paths', 1.4), ('parkpaths', 1.2)), seed=5):
     """THE BUSHES of the brush patches that hill_ground's field draws, and lone
     bushes out in the grass: points on a 2 m lattice fixed in the world (a
     frame's region never moves one), only on wild ground (no lawn, yard, lot,
@@ -867,6 +871,134 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
     log(f'brush: {len(pts)} bushes ({int(dense.sum())} patch and {int(lone.sum())} lone places, before the streets)')
     return len(pts)
 
+# ── footpaths, and the roads closed to cars (OpenStreetMap, ways_prep.py) ──
+# The engine's street layer draws some footpaths as full streets (the path
+# across Dolores Park on the 19th Street line had asphalt, lane paint and
+# parked cars, 2026-09-24) and knows nothing of the car-free roads (JFK
+# Promenade, the upper loop of Twin Peaks Boulevard). With the ways:
+# drop_footway_streets takes the street triangles that lie on a footpath and
+# on no road; park_paths lays every footpath, stairway and trail as a narrow
+# light ribbon on the ground; carfree_at keeps parked cars off the roads
+# closed to them. No ways file = all three do nothing.
+WAYS_JSON = os.environ.get('OSM_WAYS', '/Users/daniel/code/qipu-render-work/critic/osm/ways.json')
+_WAYS = {}
+def _ways_kd(kind, box, step=2.0, pad=80.0):
+    """a KDTree over the ways of one kind, sampled every `step` m, in box"""
+    from mathutils.kdtree import KDTree
+    key = (kind, tuple(round(v) for v in box) if box else None)
+    if key in _WAYS: return _WAYS[key]
+    if 'data' not in _WAYS:
+        _WAYS['data'] = json.load(open(WAYS_JSON)) if os.path.exists(WAYS_JSON) else None
+    W_ = _WAYS['data']; pts = []
+    if W_:
+        for w in W_[kind]:
+            P = w[0] if kind == 'foot' else w
+            for i in range(0, len(P) - 2, 2):
+                x0, y0, x1, y1 = P[i], P[i + 1], P[i + 2], P[i + 3]
+                if box and (max(x0, x1) < box[0] - pad or min(x0, x1) > box[2] + pad or max(y0, y1) < box[1] - pad or min(y0, y1) > box[3] + pad): continue
+                n = max(1, int(math.hypot(x1 - x0, y1 - y0) / step))
+                pts.extend((x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * k / n) for k in range(n + 1))
+    kd = KDTree(max(1, len(pts)))
+    for i, (x, y) in enumerate(pts): kd.insert((x, y, 0.0), i)
+    kd.balance(); _WAYS[key] = (kd, len(pts)); return _WAYS[key]
+
+def drop_footway_streets(P, box=None, near=8.0, far=12.0):
+    """P: street triangles (flat x, y, z). Returns (kept, dropped): a triangle
+    whose centre is `far` m from every road (open or closed to cars) and
+    either in a park or within `near` m of a footpath is not a road — a
+    footpath, a park's paper street — that the engine drew as one"""
+    kf, nf = _ways_kd('foot', box); kc, nc = _ways_kd('car', box); kr, nr = _ways_kd('free', box)
+    if not nc: return P, 0
+    park = _GM.get('park'); x0_, y0_, r_ = _GM.get('x0', 0), _GM.get('y0', 0), _GM.get('res', 1)
+    def in_park(x, y):
+        if park is None: return False
+        i, j = int((x - x0_) / r_), int((y - y0_) / r_)
+        return 0 <= j < park.shape[0] and 0 <= i < park.shape[1] and park[j, i] > 0.5
+    out = array.array('f'); dropped = 0
+    for t in range(len(P) // 9):
+        a = t * 9; cx = (P[a] + P[a + 3] + P[a + 6]) / 3; cy = (P[a + 1] + P[a + 4] + P[a + 7]) / 3; c = (cx, cy, 0.0)
+        if kc.find(c)[2] > far and (not nr or kr.find(c)[2] > far) and (in_park(cx, cy) or (nf and kf.find(c)[2] < near)):
+            dropped += 1; continue
+        out.extend(P[a:a + 9])
+    log(f'footpaths drawn as streets by the engine: {dropped} triangles dropped')
+    return out, dropped
+
+def keep_on_streets(MP, bvh):
+    """street paint whose triangle no longer lies on a street (its street was
+    a footpath, dropped above) is dropped with it"""
+    out = array.array('f')
+    for t in range(len(MP) // 9):
+        a = t * 9; cx = (MP[a] + MP[a + 3] + MP[a + 6]) / 3; cy = (MP[a + 1] + MP[a + 4] + MP[a + 7]) / 3; cz = (MP[a + 2] + MP[a + 5] + MP[a + 8]) / 3
+        if bvh.ray_cast(Vector((cx, cy, cz + 3.0)), Vector((0, 0, -1)), 6.0)[0] is not None: out.extend(MP[a:a + 9])
+    return out
+
+def carfree_at(x, y, box=None):
+    """a parked car here would stand on a road closed to cars: the nearest
+    road is a closed one"""
+    kr, nr = _ways_kd('free', box)
+    if not nr: return False
+    dr = kr.find((x, y, 0.0))[2]
+    if dr > 8.0: return False
+    kc, nc = _ways_kd('car', box)
+    return not nc or dr < kc.find((x, y, 0.0))[2]
+
+PATH_COL = {'concrete': (0.42, 0.41, 0.38), 'dirt': (0.27, 0.215, 0.145), 'asphalt': (0.24, 0.24, 0.24), 'wood': (0.36, 0.29, 0.21)}
+def park_paths(box, ground_fn, lift=0.06):
+    """every footpath, stairway and trail in box as a ribbon of its width on
+    the ground: (positions, vertex colours) as flat arrays, or None"""
+    _ways_kd('foot', box); W_ = _WAYS.get('data')
+    if not W_: return None
+    # a footway that crosses a street stays under the asphalt, not on it
+    st_ = bpy.data.objects.get('streets')
+    bv_ = BVHTree.FromObject(st_, bpy.context.evaluated_depsgraph_get()) if st_ is not None and st_.type == 'MESH' else None
+    P = array.array('f'); C = array.array('f'); n_ = 0
+    for pts, w, sf in W_['foot']:
+        xs, ys = pts[0::2], pts[1::2]
+        if box and (max(xs) < box[0] or min(xs) > box[2] or max(ys) < box[1] or min(ys) > box[3]): continue
+        if sf == 'unknown':
+            # no surface in the record: a trail of bare earth out on the hills,
+            # concrete in a park or among the houses
+            mx_, my_ = xs[len(xs) // 2], ys[len(ys) // 2]; wild_ = True
+            if _GM:
+                i_, j_ = int((mx_ - _GM['x0']) / _GM['res']), int((my_ - _GM['y0']) / _GM['res'])
+                if 0 <= j_ < _GM['park'].shape[0] and 0 <= i_ < _GM['park'].shape[1]:
+                    hl_ = _GM['hilly'][min(_GM['hilly'].shape[0] - 1, int((my_ - _GM['y0']) / _GM['st'])), min(_GM['hilly'].shape[1] - 1, int((mx_ - _GM['x0']) / _GM['st']))]
+                    wild_ = _GM['yard'][j_, i_] < 0.5 and (_GM['park'][j_, i_] < 0.5 or hl_ > 11.0)
+            sf = 'dirt' if wild_ else 'concrete'
+            if sf == 'dirt': w = min(w, 1.4)
+        col = PATH_COL.get(sf, PATH_COL['concrete']); h = w / 2
+        # densified every 2.5 m so the ribbon follows the ground
+        L = [(xs[0], ys[0])]
+        for i in range(1, len(xs)):
+            x0, y0 = L[-1]; x1, y1 = xs[i], ys[i]; n = max(1, int(math.hypot(x1 - x0, y1 - y0) / 2.5))
+            L.extend((x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * k / n) for k in range(1, n + 1))
+        for i in range(len(L) - 1):
+            (x0, y0), (x1, y1) = L[i], L[i + 1]
+            dx, dy = x1 - x0, y1 - y0; d = math.hypot(dx, dy)
+            if d < 1e-3: continue
+            nx, ny = -dy / d * h, dx / d * h
+            z0, z1 = ground_fn(x0, y0), ground_fn(x1, y1)
+            if z0 is None or z1 is None: continue
+            if bv_ is not None and bv_.ray_cast(Vector(((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2 + 3.0)), Vector((0, 0, -1)), 3.5)[0] is not None: continue
+            q = [(x0 + nx, y0 + ny, z0 + lift), (x0 - nx, y0 - ny, z0 + lift), (x1 - nx, y1 - ny, z1 + lift), (x1 + nx, y1 + ny, z1 + lift)]
+            for tri in ((0, 1, 2), (0, 2, 3)):
+                for k in tri: P.extend(q[k]); C.extend(col)
+            n_ += 1
+    if not n_: return None
+    log(f'park paths: {n_} ribbon quads')
+    return P, C
+
+def path_mat():
+    """a footpath seen from above: its own surface colour (vertex 'Col'),
+    worn lighter along the middle, grit, a little dirt at the edges"""
+    b = NB('parkpath'); at = b.n('ShaderNodeAttribute', attribute_name='Col')
+    c = b.mix(1.0, at.outputs['Color'], b.math('ADD', 0.86, b.math('MULTIPLY', b.noise(1 / 0.5, 3.0), 0.28)), 'MULTIPLY')
+    c = b.mix(b.ramp(b.noise(1 / 6.0, 3.0), 0.0, 0.3, 0.55, 0.75), c, b.mix(1.0, c, (0.72, 0.70, 0.66), 'MULTIPLY'))
+    b.put(b.pr.inputs['Base Color'], c); b.pr.inputs['Roughness'].default_value = 0.9
+    b.pr.inputs['Specular IOR Level'].default_value = 0.3
+    return b.m
+M['parkpath'] = path_mat()
+
 # ── terrain ──────────────────────────────────────────────────────────────────
 log('terrain')
 def park_lawn(m):
@@ -930,14 +1062,16 @@ for m in d['meshes']:
 def lift(P, dz):
     for i in range(2, len(P), 3): P[i] += dz
     return P
+SP, _ = drop_footway_streets(SP, (bx0, by0, bx1, by1))
 streets = mesh_from('streets', lift(SP, 0.02), M['asphalt'], weld=0.05)
 if len(MP):
     # paint lies ON the asphalt: dropped onto the street surface below it
     sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
+    MP = keep_on_streets(MP, sbv)
     for i in range(0, len(MP), 3):
         h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
         if h_[0] is not None: MP[i+2] = h_[0].z + 0.012
-    mesh_from('markings', MP, M['paint'])
+    if len(MP): mesh_from('markings', MP, M['paint'])
 if len(DP):
     sb = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
     keep = array.array('f')
@@ -945,6 +1079,11 @@ if len(DP):
         cx_ = sum(DP[t*9+k*3] for k in range(3)) / 3; cy_ = sum(DP[t*9+k*3+1] for k in range(3)) / 3
         if sb.ray_cast(Vector((cx_, cy_, 2000)), Vector((0, 0, -1)))[0] is None: keep.extend(DP[t*9:t*9+9])
     if len(keep): mesh_from('paths', keep, M['path'])
+_pp = park_paths((bx0, by0, bx1, by1), ground)
+if _pp:
+    _po = mesh_from('parkpaths', _pp[0], M['parkpath'])
+    _ca = _po.data.color_attributes.new('Col', 'FLOAT_COLOR', 'POINT')
+    _ca.data.foreach_set('color', [v for i in range(len(_pp[1]) // 3) for v in (_pp[1][i * 3], _pp[1][i * 3 + 1], _pp[1][i * 3 + 2], 1.0)])
 if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, (bx0, by0, bx1, by1))
 
 def street_edges():
@@ -1421,7 +1560,7 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         for i in range(int((L_ - 3) // 6.2)):
             if r.random() > occ: continue
             p = a + v * ((1.5 + 3.1 + i * 6.2 + r.uniform(-0.5, 0.5)) / L_) - outv * r.uniform(1.08, 1.3)
-            if not in_box(p.x, p.y): continue
+            if not in_box(p.x, p.y) or carfree_at(p.x, p.y, (bx0, by0, bx1, by1)): continue
             o = bpy.data.objects.new(f'pcar{k}', CARS[r.randrange(len(CARS))]); sc.collection.objects.link(o)
             o.location = (p.x, p.y, p.z + 0.02); o.rotation_euler.z = fwd_ + math.radians(r.uniform(-1.5, 1.5)); k += 1
     log('cars', k)
