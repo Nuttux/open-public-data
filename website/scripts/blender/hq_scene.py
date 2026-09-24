@@ -92,6 +92,43 @@ def simple(name, col, rough=0.5, metal=0.0, attr=False, transmission=0.0, spec=0
     else: p.inputs['Base Color'].default_value = (*col, 1)
     return m
 
+def sky_term(nt, pr, k=0.3, rnd=None, mat=None):
+    """(24/09, BAR: approved within limits) glazing seen from above mirrors
+    the street, never the sky; a pane whose mirror ray points down gets a
+    soft sky gradient added (warm toward the sun at az 215, pale blue-grey
+    away), weighted by Fresnel, over the city's real reflection"""
+    N_ = lambda t, **kw: _nn(nt, t, **kw)
+    geo = N_('ShaderNodeNewGeometry')
+    neg = N_('ShaderNodeVectorMath', operation='SCALE'); nt.links.new(geo.outputs['Incoming'], neg.inputs[0]); neg.inputs['Scale'].default_value = -1.0
+    rf = N_('ShaderNodeVectorMath', operation='REFLECT'); nt.links.new(neg.outputs[0], rf.inputs[0]); nt.links.new(geo.outputs['Normal'], rf.inputs[1])
+    sp = N_('ShaderNodeSeparateXYZ'); nt.links.new(rf.outputs[0], sp.inputs[0])
+    down = N_('ShaderNodeMath', operation='LESS_THAN'); nt.links.new(sp.outputs[2], down.inputs[0]); down.inputs[1].default_value = 0.0
+    hz = N_('ShaderNodeCombineXYZ'); nt.links.new(sp.outputs[0], hz.inputs[0]); nt.links.new(sp.outputs[1], hz.inputs[1])
+    hn = N_('ShaderNodeVectorMath', operation='NORMALIZE'); nt.links.new(hz.outputs[0], hn.inputs[0])
+    a_ = math.radians(215.0)
+    dt = N_('ShaderNodeVectorMath', operation='DOT_PRODUCT'); nt.links.new(hn.outputs[0], dt.inputs[0]); dt.inputs[1].default_value = (math.sin(a_), math.cos(a_), 0.0)
+    wm = N_('ShaderNodeMapRange', interpolation_type='SMOOTHSTEP'); nt.links.new(dt.outputs['Value'], wm.inputs[0]); wm.inputs[1].default_value = -0.2; wm.inputs[2].default_value = 1.0
+    col = N_('ShaderNodeMix', data_type='RGBA'); nt.links.new(wm.outputs[0], col.inputs[0])
+    col.inputs[6].default_value = (0.58, 0.66, 0.78, 1.0); col.inputs[7].default_value = (1.0, 0.82, 0.60, 1.0)
+    lw = N_('ShaderNodeLayerWeight'); lw.inputs['Blend'].default_value = 0.35
+    st = N_('ShaderNodeMath', operation='MULTIPLY'); nt.links.new(down.outputs[0], st.inputs[0]); nt.links.new(lw.outputs['Fresnel'], st.inputs[1])
+    st2 = N_('ShaderNodeMath', operation='MULTIPLY'); nt.links.new(st.outputs[0], st2.inputs[0]); st2.inputs[1].default_value = k
+    if rnd is not None:
+        rr = N_('ShaderNodeMapRange'); nt.links.new(rnd, rr.inputs[0]); rr.inputs[3].default_value = 0.55; rr.inputs[4].default_value = 1.45
+        st3 = N_('ShaderNodeMath', operation='MULTIPLY'); nt.links.new(st2.outputs[0], st3.inputs[0]); nt.links.new(rr.outputs[0], st3.inputs[1]); st2 = st3
+    nt.links.new(col.outputs[2], pr.inputs['Emission Color']); nt.links.new(st2.outputs[0], pr.inputs['Emission Strength'])
+    # not a light: millions of panes in the light tree cost half the frame
+    if mat is not None:
+        try: mat.cycles.emission_sampling = 'NONE'
+        except Exception: pass
+
+
+def _nn(nt, t, **kw):
+    n_ = nt.nodes.new(t)
+    for k_, v_ in kw.items(): setattr(n_, k_, v_)
+    return n_
+
+
 def glass_mat():
     # window glass seen from outside: a dark room behind, the sky mirrored
     m = bpy.data.materials.new('glass'); m.use_nodes = True; nt = m.node_tree; p = nt.nodes['Principled BSDF']
@@ -114,6 +151,7 @@ def glass_mat():
     _e = ramp.color_ramp.elements.new(1.0); _e.color = (0.20, 0.195, 0.19, 1)
     nt.links.new(ramp.outputs[0], p.inputs['Base Color'])
     p.inputs['Roughness'].default_value = 0.03; p.inputs['Specular IOR Level'].default_value = 0.9; p.inputs['Coat Weight'].default_value = 0.4
+    if os.environ.get('GLASS_SKY', '1') == '1': sky_term(nt, p, 0.22, sel_.outputs[0], mat=m)
     return m
 
 def lap_siding(mat):
@@ -358,6 +396,7 @@ def curtain_wall_mat():
     geo = b.n('ShaderNodeNewGeometry'); ad = b.n('ShaderNodeVectorMath', operation='ADD'); b.put(ad.inputs[0], geo.outputs['Normal']); b.put(ad.inputs[1], sc_.outputs[0])
     nz = b.n('ShaderNodeVectorMath', operation='NORMALIZE'); b.put(nz.inputs[0], ad.outputs[0])
     b.put(b.pr.inputs['Normal'], nz.outputs[0])
+    if os.environ.get('GLASS_SKY', '1') == '1': sky_term(b.nt, b.pr, 0.3, wn.outputs['Value'], mat=b.m)
     return b.m
 M['curtain_wall'] = curtain_wall_mat()
 def weather(m, k=1.0, streaks=1.0):
