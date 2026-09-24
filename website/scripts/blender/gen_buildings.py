@@ -108,15 +108,16 @@ GREY_1945 = [((0.62, 0.64, 0.66), (0.90, 0.90, 0.88), (0.30, 0.32, 0.34)),
 # form stays the record's; what is set here is the row's look — steep front
 # gables, the bay on the same side, the pastel-and-white of their modern
 # paint jobs (the row's character, not each house's exact colours).
-LANDMARK = {
-    58469: dict(paint=((0.56, 0.68, 0.80), (0.97, 0.94, 0.86), (0.16, 0.22, 0.42))),
-    58530: dict(paint=((0.92, 0.72, 0.64), (0.98, 0.96, 0.92), (0.46, 0.12, 0.14))),
-    58529: dict(paint=((0.94, 0.86, 0.56), (0.98, 0.97, 0.93), (0.20, 0.38, 0.26))),
-    58528: dict(paint=((0.62, 0.76, 0.62), (0.97, 0.94, 0.86), (0.52, 0.12, 0.12))),
-    58524: dict(paint=((0.80, 0.70, 0.86), (0.98, 0.97, 0.95), (0.34, 0.16, 0.44))),
-    58527: dict(paint=((0.95, 0.80, 0.68), (0.98, 0.96, 0.92), (0.12, 0.36, 0.42))),
-    58525: dict(paint=((0.64, 0.75, 0.82), (0.98, 0.97, 0.95), (0.76, 0.58, 0.22))),
+LANDMARK = {   # (24/09 places agent) the row's real paint, north to south from Commons photos (Rabich 2022, CC BY-SA 4.0; viewing only)
+    58469: dict(paint=('#dcc9a0', '#f1ece0', '#7a4b33')),     # 710 cream, brown trim
+    58530: dict(paint=('#9db6c9', '#f2efe8', '#2f3f5a')),     # 712 light blue
+    58529: dict(paint=('#c8a57a', '#eadcc0', '#6a2e22')),     # 714 tan
+    58528: dict(paint=('#dcc588', '#efe4c8', '#9a2b25')),     # 716 yellow, red accents
+    58524: dict(paint=('#a9ad94', '#ece6d4', '#6b2d2d')),     # 718 sage grey-green
+    58527: dict(paint=('#b3a676', '#ece4cc', '#3d4a30')),     # 720 olive khaki
+    58525: dict(paint=('#2d3a58', '#eeeeea', '#b48a3c')),     # 722 navy, white trim
 }
+for _g in LANDMARK: LANDMARK[_g]['paint'] = tuple(tuple(int(c[i:i + 2], 16) / 255.0 for i in (1, 3, 5)) for c in LANDMARK[_g]['paint'])
 for _g in LANDMARK: LANDMARK[_g].update(sub='queen', roof='gable', pitch=52, bay='slant', bay_left=True, turret=False, face=(-1.0, 0.0))
 
 
