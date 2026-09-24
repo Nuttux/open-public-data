@@ -38,8 +38,13 @@ def newb():
         p = os.environ.get('NEWB_FILE') or next((q for q in NEWB_FILES if os.path.exists(q)), None)
         if p and os.path.exists(p):
             j = json.load(open(p)); era = int(os.environ['ERA']) if os.environ.get('ERA') else None
-            _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records']],
-                   {int(x['gid']) for x in j.get('replaces', []) if era is None or era >= x['year']})
+            # a record on a landmark's site ('lm') gives way when that landmark is modelled
+            try:
+                import landmarks_hq as L_; on = {l.key for l in L_._registry()}     # enabled, LM_KEYS, or all with LM_ALL=1
+            except Exception: on = None
+            live = lambda r: not r.get('lm') or (on is not None and r['lm'] not in on)
+            _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records'] + j.get('lm_records', []) if live(r)],
+                   {int(x['gid']) for x in j.get('replaces', []) + j.get('lm_replaces', []) if (era is None or era >= x['year']) and live(x)})
     return _NB
 
 def buildings(x0, y0, x1, y1):

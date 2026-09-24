@@ -38,7 +38,7 @@ WHAT EACH FIELD IS, and what is a convention (flagged in the record):
 """
 import glob, json, math, os, re, sys, zlib, collections
 import numpy as np
-import shapely
+import shapely, shapely.affinity
 from shapely.geometry import Polygon, LineString, MultiPolygon, Point
 from shapely.ops import polygonize, unary_union, split
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -258,9 +258,30 @@ def main():
         if g.area < 20.0: why['< 20 m2'] += 1; continue
         geo.append((key, el, g))
     geo.sort(key=lambda e: -e[2].area)             # outlines before what is drawn inside them
+    # FIRST PASS: the DataSF records each OSM outline stands on (a record is
+    # "claimed" by an outline covering 30% of it), and the local offset
+    # between the two surveys, from the pairs that are one building (median
+    # 1.2 m city-wide, up to 2-3 m in places): what is added is moved onto
+    # DataSF's frame, so a filled gap meets its neighbours
+    claim = collections.defaultdict(set); MX = []
+    for n_, (key, el, g) in enumerate(geo):
+        for j in DT.query(g):
+            a = DP[j].intersection(g).area
+            if a <= 0: continue
+            if a >= 0.3 * DA[j]: claim[int(j)].add(n_)
+            if a > 0.6 * g.area and a > 0.6 * DA[j]:
+                c1 = g.centroid; c2 = DP[j].centroid; MX.append((c1.x, c1.y, c2.x - c1.x, c2.y - c1.y))
+    MX = np.array(MX); MT = shapely.STRtree([Point(m[0], m[1]) for m in MX])
+    print('matched pairs', len(MX), flush=True)
+    def offset_at(x, y):
+        k = MT.query(Point(x, y).buffer(150.0))
+        if len(k) < 5: return 0.0, 0.0
+        d = np.median(MX[k, 2:4], axis=0); return round(float(d[0]), 2), round(float(d[1]), 2)
     cand = []; acc = {}; accg = []
     alls = {}; allg = []
-    for key, el, g in geo:
+    for n_, (key, el, g) in enumerate(geo):
+        c_ = g.centroid; dxy = offset_at(c_.x, c_.y)
+        g = shapely.affinity.translate(g, *dxy)
         x0, y0, x1, y1 = g.bounds
         for c in [(i, j) for i in range(int(x0 // 100), int(x1 // 100) + 1) for j in range(int(y0 // 100), int(y1 // 100) + 1)]:
             alls.setdefault(c, []).append(len(allg))
@@ -294,8 +315,18 @@ def main():
                     why['tall by OSM height alone, on an old low DataSF record'] += 1; continue
             else:
                 pod = max(low, key=lambda ja: ja[1])[0]
+        # on a hand-modelled landmark's site: kept, tagged with its key;
+        # city_data drops it whenever that landmark is enabled (181 Fremont is
+        # a generic tower until the landmarks agent's model is switched on)
         lk = landmark_of(g)
-        if lk: why['landmark ' + lk] += 1; continue
+        if lk: why['landmark site (tagged) ' + lk] += 1
+        if not rep and pod is None:
+            # AN OFFSET DUPLICATE: a DataSF record of about its size within 8 m
+            # that no other OSM outline stands on is this same building, drawn
+            # a few metres off by one survey or the other (sheds, 2026-09-24)
+            if any(0.5 <= DA[j] / g.area <= 2.0 and not (claim.get(int(j), set()) - {n_}) and DP[j].distance(g) <= 8.0
+                   for j in DT.query(g.buffer(8.0))):
+                why['offset duplicate of a DataSF record'] += 1; continue
         # already an OSM outline kept (a building drawn inside another, a part tagged building)
         # drawn inside another OSM outline: a building kept already (30%), or
         # any outline at all, kept or not (50%: a tower part tagged building
@@ -308,11 +339,11 @@ def main():
         if any(allg[k].intersection(g).area > 0.5 * g.area for k in nall if k != me_): why['inside a larger OSM outline'] += 1; continue
         for c in cells: acc.setdefault(c, []).append(len(accg))
         accg.append(g)
-        cand.append((key, el, g, ov, hit, ty, my_parts, hm, hs, rep, pod))
+        cand.append((key, el, g, ov, hit, ty, my_parts, hm, hs, rep, pod, dxy, lk))
     print('kept outlines', len(cand), dict(why.most_common(40)), flush=True)
 
     recs = []; stats = collections.Counter(); REPL = []
-    for key, el, g, ovf, hit, ty, my_parts, hm, hs, rep, pod in cand:
+    for key, el, g, ovf, hit, ty, my_parts, hm, hs, rep, pod, dxy, lk in cand:
         t = el['tags']; bt = t.get('building', 'yes')
         shop = bool(t.get('shop') or bt in ('retail', 'commercial', 'supermarket') or t.get('amenity') in ('restaurant', 'cafe', 'bar', 'fast_food', 'bank', 'pharmacy')
                     or 'retail' in (t.get('building:use', '') + t.get('building:use:ground_floor', '')))
@@ -339,14 +370,14 @@ def main():
         name = t.get('name') or (t.get('addr:housenumber', '') + ' ' + t.get('addr:street', ''))
         oid = f"{el['type'][0]}{el['id']}"
         for j in rep:
-            REPL.append(dict(gid=DB[j]['gid'], by=oid, year=yr, h=round(DB[j]['h'], 1)))
+            REPL.append(dict(gid=DB[j]['gid'], by=oid, year=yr, h=round(DB[j]['h'], 1), lm=lk))
         # geometry: the parts when they tile the outline with their heights
         # (a podium and its tower), else the outline; no holes either way
         use_parts = len(my_parts) >= 2 and sum(p[1].area for p in my_parts) > 0.7 * g.area
         shapes = []
         if use_parts:
             for pk, pg, ph, pt in my_parts:
-                for q in pieces(pg): shapes.append((q, ph, f'{pk[0][0]}{pk[1]}', num(pt.get('building:levels'))))
+                for q in pieces(shapely.affinity.translate(pg, *dxy)): shapes.append((q, ph, f'{pk[0][0]}{pk[1]}', num(pt.get('building:levels'))))
         else:
             for q in pieces(g): shapes.append((q, h, None, levels))
         k_ = 0
@@ -360,7 +391,7 @@ def main():
             recs.append(dict(gid=gid, ring=r, cx=round(cx, 2), cy=round(cy, 2), h=round(hq, 2), year=yr, use=USE[ty], st=st, ty=ty,
                              shop=shop, roles=None, paint=PAINT[(gid * 2654435761) % len(PAINT)] if PAINT else 16,
                              src='osm', osm=oid, part=part, name=name.strip() or None, btype=bt, h_src=hsrc_,
-                             year_src=ys, ty_src=ty_src, ov=round(ovf, 3), replaces=[DB[j]['gid'] for j in rep] or None))
+                             year_src=ys, ty_src=ty_src, ov=round(ovf, 3), shift=list(dxy), lm=lk, replaces=[DB[j]['gid'] for j in rep] or None))
             stats['h ' + hsrc_] += 1; stats['year ' + ys] += 1; stats['ty ' + ty] += 1
     # gids: unique, and never a DataSF gid
     gs = collections.Counter(r['gid'] for r in recs)
@@ -395,7 +426,11 @@ def main():
                                 "surveyed ~2016, so taken as built after it; eras before 2019 never show it)",
                 height_defaults={f'{k[0]}|{ABINS[k[1]]}': round(v, 2) for k, v in HDEF.items()},
                 counts=dict(stats), skipped=dict(why))
-    json.dump(dict(meta=meta, records=recs, replaces=REPL), open(OUT, 'w'), separators=(',', ':'))
+    # what stands on a hand-modelled landmark's site goes in lists of its own:
+    # a reader that does not know them (an older city_data) never draws it
+    json.dump(dict(meta=meta, records=[r for r in recs if not r['lm']], replaces=[x for x in REPL if not x['lm']],
+                   lm_records=[r for r in recs if r['lm']], lm_replaces=[x for x in REPL if x['lm']]),
+              open(OUT, 'w'), separators=(',', ':'))
     print('records', len(recs), 'outlines', len(cand), 'replaced DataSF', len(REPL), dict(stats), '->', OUT, os.path.getsize(OUT) // 1024, 'KB', flush=True)
 
 if __name__ == '__main__':
