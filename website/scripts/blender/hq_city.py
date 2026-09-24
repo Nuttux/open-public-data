@@ -342,22 +342,34 @@ def open_foot(x, y, reach):
         d += 1.5
     return None
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
-STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
-PINE = load_collection('pine_tree_01'); FIR = load_collection('fir_tree_01')
-BROAD = [t for a in ('island_tree_02', 'island_tree_01') for t in load_collection(a)]
-PARK = PINE + FIR + BROAD
-NS, K_PINE = len(STREET), len(STREET)                      # kinds: street 0…, pines, firs, broadleaf
-K_FIR = K_PINE + len(PINE); K_BROAD = K_FIR + len(FIR)
-protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
-log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, heights)])
-# A proto is scaled to the crown's WIDTH, but not past a height: a narrow pine
-# scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
-# crowns stand at most 1.4 widths tall, pines and firs 2.
-TALL = [1.4] * NS + [2.0] * (len(PINE) + len(FIR)) + [1.4] * len(BROAD)
-# and an absolute height: Monterey pines and cypress here stand 15-25 m, street
-# broadleaf 6-15 m. Canopy crowns 3x the disc made Pioneer Park's pines 23-32 m
-# and swallowed Coit Tower (landmarks agent, measured 24/09).
-HMAX = [15.0] * NS + [24.0] * (len(PINE) + len(FIR)) + [18.0] * len(BROAD)
+# SPECIES (veg_hq.py, the vegetation agent; VEG=0 = the generic kit below):
+# each register tree drawn as its species in the DataSF Street Tree List
+# (nearest listed tree within 2.3 m, its crown from its DBH), each canopy mass
+# as the species of the place it stands in (the Presidio's forest, Golden Gate
+# Park's windbreaks, Sutro's blue gums …), with procedural eucalyptus, Monterey
+# cypress and pine, palms and street kinds. Draws by place, as below.
+VEG = E('VEG', '1') == '1'
+if VEG:
+    import veg_hq
+    VK = veg_hq.Kinds(bpy, load_collection, log, box=BOX)
+    protos, widths, heights, TALL, HMAX = VK.protos, VK.widths, VK.heights, VK.tall, VK.hmax
+else:
+    STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
+    PINE = load_collection('pine_tree_01'); FIR = load_collection('fir_tree_01')
+    BROAD = [t for a in ('island_tree_02', 'island_tree_01') for t in load_collection(a)]
+    PARK = PINE + FIR + BROAD
+    NS, K_PINE = len(STREET), len(STREET)                      # kinds: street 0…, pines, firs, broadleaf
+    K_FIR = K_PINE + len(PINE); K_BROAD = K_FIR + len(FIR)
+    protos = [c for c, _, _ in STREET + PARK]; widths = [w for _, w, _ in STREET + PARK]; heights = [h for _, _, h in STREET + PARK]
+    log('tree protos (w, h):', [(round(w, 1), round(h, 1)) for w, h in zip(widths, heights)])
+    # A proto is scaled to the crown's WIDTH, but not past a height: a narrow pine
+    # scaled to an 8 m crown stood 30-40 m tall, a stick (2026-09-23). Broadleaf
+    # crowns stand at most 1.4 widths tall, pines and firs 2.
+    TALL = [1.4] * NS + [2.0] * (len(PINE) + len(FIR)) + [1.4] * len(BROAD)
+    # and an absolute height: Monterey pines and cypress here stand 15-25 m, street
+    # broadleaf 6-15 m. Canopy crowns 3x the disc made Pioneer Park's pines 23-32 m
+    # and swallowed Coit Tower (landmarks agent, measured 24/09).
+    HMAX = [15.0] * NS + [24.0] * (len(PINE) + len(FIR)) + [18.0] * len(BROAD)
 def tree_scale(kind, crown):
     return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]),
                HMAX[kind] / max(0.5, heights[kind]))
@@ -390,15 +402,21 @@ for t in d['trees']:
         k = (round(x / 2.5), round(y / 2.5))
         if k in seen or not in_box(x, y, 50): continue
         seen.add(k)
+        ox_, oy_ = x, y                 # the engine's own point: the species join reads it
         f_ = open_foot(x, y, 3.0)
         if f_ is None: continue
         x, y = f_
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
         if ERA is not None and not park:
             if hp(x, y, 1) > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
-        # parks: mostly broadleaf, some Monterey pine; firs only now and then
-        kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         crown = max(3.0, 2.0 * sxz)
+        if VEG:
+            kc_ = VK.street(ox_, oy_, x, y, park, crown)
+            if kc_ is None: continue            # the list says stump, or an empty planting site
+            kind, crown = kc_
+        else:
+            # parks: mostly broadleaf, some Monterey pine; firs only now and then
+            kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         gz_ = ground(x, y)
         if gz_ is None: continue
         pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
@@ -414,12 +432,14 @@ for (x, y, z, rad, *_rest) in MASS:
     gz_ = ground(x, y)
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
-    kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     crown = max(4.0, float(E("CANOPY_K", 3.0)) * rad)
+    if VEG: kind, crown = VK.mass(x, y, crown)
+    else: kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     seen.add((round(x / 2.5), round(y / 2.5)))
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
+if VEG: VK.report(log)
 
 # ── parked cars along every curb ─────────────────────────────────────────────
 log('cars')
