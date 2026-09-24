@@ -46,6 +46,27 @@ TRUCK_ZONE = (2300.0, 1200.0, 4700.0, 4300.0)       # the Financial District and
 TRUNK_BUS = ('38', '38R', '14', '14R', '49', '5', '5R', '9', '9R', '1', '22', '28', '28R', '30', '8', '7')
 
 
+def hp(x, y, salt):
+    """a stable number in [0, 1) from the place (hq_city's own mix): every draw
+    that could differ between two frames' builds is taken from where it is"""
+    h = (int(round(x * 10)) * 73856093) ^ (int(round(y * 10)) * 19349663) ^ (salt * 83492791)
+    h = (h ^ (h >> 13)) * 0x5bd1e995 & 0xffffffff
+    return ((h ^ (h >> 15)) & 0xffffff) / float(0x1000000)
+
+
+def place_random(bpy, mat, name):
+    """a copy of a material whose per-object random (Object Info) is the
+    instance's own 'crand' attribute, drawn from its place: an instance's
+    Random is its index in the instancer, which differs between two frames'
+    regions (a car changed colour across a seam)"""
+    m = mat.copy(); m.name = name; nt = m.node_tree
+    for oi in [n for n in nt.nodes if n.type == 'OBJECT_INFO']:
+        at = nt.nodes.new('ShaderNodeAttribute'); at.attribute_type = 'INSTANCER'; at.attribute_name = 'crand'
+        for lk in list(oi.outputs['Random'].links):
+            nt.links.new(at.outputs['Fac'], lk.to_socket)
+    return m
+
+
 def _resample(pts, step):
     P = np.asarray(pts, float)
     seg = np.hypot(*np.diff(P, axis=0).T); P = P[np.concatenate([[True], seg > 1e-3])]
@@ -317,9 +338,22 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             else: others.append((vk, x, y, z, pitch, yaw))
     log(f'life_traffic: {nway} ways, {len(cars)} cars, {len(others)} buses and trucks (on {nmode}); dropped {rej} ({time.time() - t0:.1f}s)')
     # the cars: hq_scene's own bodies (the 'carp{i}' collections hq_city builds), instanced
-    protos = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(8)) if c is not None]
+    src = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(8)) if c is not None]
+    protos = []
+    for i, c in enumerate(src):
+        # the same bodies, their paint drawn from the car's place (see place_random)
+        c2 = bpy.data.collections.new(f'lcarp{i}')
+        for o in c.objects:
+            me2 = o.data.copy()
+            for k, m in enumerate(me2.materials):
+                if m is not None and any(n.type == 'OBJECT_INFO' for n in m.node_tree.nodes):
+                    pm_ = bpy.data.materials.get(f'lf_{m.name}') or place_random(bpy, m, f'lf_{m.name}')
+                    me2.materials[k] = pm_
+            c2.objects.link(bpy.data.objects.new(f'l{o.name}', me2))
+        protos.append(c2)
     if cars and protos:
-        _instancer(bpy, coll, 'life.cars', cars, protos, random.Random(5))
+        kinds = [int(hp(p[0], p[1], 11) * len(protos)) % len(protos) for p in cars]
+        _instancer(bpy, coll, 'life.cars', cars, protos, kinds, [hp(p[0], p[1], 12) for p in cars])
     # buses and trucks: small meshes, one per kind, linked as objects
     mats = [T['paint'], T['glass'], T['matte'], T['matte'], T['metal']]
     pm = {}
@@ -360,8 +394,9 @@ def _clear_freeway_parking(bpy, sc, D, inb, log):
     log(f'life_traffic: {len(kill)} parked cars stood on a freeway, removed')
 
 
-def _instancer(bpy, coll, name, pts, protos, rr):
-    """cars on points: (x, y, z, pitch, yaw); a body picked per car"""
+def _instancer(bpy, coll, name, pts, protos, kinds, crand):
+    """instances on points: (x, y, z, pitch, yaw); kinds: the proto per point;
+    crand: a number per point from its place, for the shaders' randomness"""
     root = bpy.data.collections.new(f'{name}_protos')
     for c in protos:
         try: root.children.link(c)
@@ -369,7 +404,7 @@ def _instancer(bpy, coll, name, pts, protos, rr):
     me = bpy.data.meshes.new(name); me.vertices.add(len(pts))
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     for nm, vals, tp in (('pitch', [-p[3] for p in pts], 'FLOAT'), ('yaw', [p[4] for p in pts], 'FLOAT'),
-                         ('kind', [rr.randrange(len(protos)) for _ in pts], 'INT')):
+                         ('kind', [int(k) for k in kinds], 'INT'), ('crand', [float(c) for c in crand], 'FLOAT')):
         at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', vals)
     ob = bpy.data.objects.new(name, me); coll.objects.link(ob)
     ng = bpy.data.node_groups.new(name, 'GeometryNodeTree')
@@ -385,5 +420,9 @@ def _instancer(bpy, coll, name, pts, protos, rr):
     ii = n.new('GeometryNodeInstanceOnPoints'); lk(gi.outputs[0], ii.inputs['Points']); lk(ci.outputs[0], ii.inputs['Instance'])
     ii.inputs['Pick Instance'].default_value = True; lk(attr('kind', 'INT'), ii.inputs['Instance Index'])
     lk(rot.outputs[0], ii.inputs['Rotation'])
-    lk(ii.outputs[0], go.inputs[0])
+    # the point's 'crand' onto the instance (the shader reads it as an instancer attribute)
+    st = n.new('GeometryNodeStoreNamedAttribute'); st.data_type = 'FLOAT'; st.domain = 'INSTANCE'
+    st.inputs['Name'].default_value = 'crand'
+    lk(ii.outputs[0], st.inputs['Geometry']); lk(attr('crand', 'FLOAT'), st.inputs['Value'])
+    lk(st.outputs[0], go.inputs[0])
     ob.modifiers.new(name, 'NODES').node_group = ng

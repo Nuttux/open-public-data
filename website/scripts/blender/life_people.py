@@ -128,14 +128,16 @@ def cloth_mat(bpy):
     muted, some bright"""
     m = bpy.data.materials.new('lf_cloth'); m.use_nodes = True; nt = m.node_tree; p = nt.nodes['Principled BSDF']
     p.inputs['Roughness'].default_value = 0.85
-    oi = nt.nodes.new('ShaderNodeObjectInfo'); rp = nt.nodes.new('ShaderNodeValToRGB'); rp.color_ramp.interpolation = 'CONSTANT'
+    # the person's own number, drawn from the place (life_traffic.place_random)
+    oi = nt.nodes.new('ShaderNodeAttribute'); oi.attribute_type = 'INSTANCER'; oi.attribute_name = 'crand'
+    rp = nt.nodes.new('ShaderNodeValToRGB'); rp.color_ramp.interpolation = 'CONSTANT'
     cols = [(0.02, 0.02, 0.025), (0.03, 0.04, 0.08), (0.12, 0.12, 0.12), (0.60, 0.60, 0.58), (0.35, 0.05, 0.04), (0.05, 0.12, 0.35),
             (0.30, 0.25, 0.15), (0.06, 0.15, 0.06), (0.70, 0.45, 0.05), (0.02, 0.02, 0.025)]
     for i, c in enumerate(cols):
         e = rp.color_ramp.elements[0] if i == 0 else rp.color_ramp.elements.new(i / len(cols))
         e.position = i / len(cols); e.color = (*c, 1.0)
     while len(rp.color_ramp.elements) > len(cols): rp.color_ramp.elements.remove(rp.color_ramp.elements[-1])
-    nt.links.new(oi.outputs['Random'], rp.inputs[0]); nt.links.new(rp.outputs[0], p.inputs['Base Color'])
+    nt.links.new(oi.outputs['Fac'], rp.inputs[0]); nt.links.new(rp.outputs[0], p.inputs['Base Color'])
     return m
 
 
@@ -179,10 +181,7 @@ def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0):
 
 
 def _instancer_kind(bpy, coll, name, pts, protos):
-    """like life_traffic._instancer, with the proto index given per point"""
+    """life_traffic._instancer, the proto per point given, the clothes' colour from the place"""
     import life_traffic
-    rr = random.Random(0)
-    class _R:
-        def __init__(self, ks): self.ks = iter(ks)
-        def randrange(self, n): return next(self.ks)
-    life_traffic._instancer(bpy, coll, name, [p[:5] for p in pts], protos, _R([p[5] for p in pts]))
+    life_traffic._instancer(bpy, coll, name, [p[:5] for p in pts], protos, [p[5] for p in pts],
+                            [life_traffic.hp(p[0], p[1], 21) for p in pts])

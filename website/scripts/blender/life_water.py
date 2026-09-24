@@ -242,7 +242,7 @@ def berths(sea, placed, marinas=()):
                 l_ = math.hypot(ex - mx, ey - my)
                 if l_ >= 4.0: fingers.append((f"{p['id']}{int(ex == ax)}", mx, my, (ex - mx) / l_, (ey - my) / l_, l_))
             continue
-        if Lf > 26.0: continue
+        if Lf > 45.0: continue
         if eb: ax, ay, bx, by = bx, by, ax, ay           # a = the walkway end
         fingers.append((p['id'], ax, ay, (bx - ax) / Lf, (by - ay) / Lf, Lf))
     fgrid = {}
@@ -267,6 +267,27 @@ def berths(sea, placed, marinas=()):
                     sd = 1 if lat > 0 else -1
                     if gaps[sd] is None or abs(lat) < gaps[sd]: gaps[sd] = abs(lat)
         rr = random.Random(int(fid) * 7 + 3)                # a split finger's id carries its side
+        if Lf > 26.0:
+            # a long finger (the West Harbor's angled ones): boats side-tied along it, in a row
+            for side in (-1, 1):
+                t = 2.5
+                while True:
+                    L = rr.uniform(8.5, 13.5); B = L * 0.33
+                    if t + L > Lf: break
+                    if rr.random() < 0.85:
+                        off = FW + 0.35 + B / 2
+                        cx, cy = ax + ux * (t + L / 2) + nx * side * off, ay + uy * (t + L / 2) + ny * side * off
+                        yaw = math.atan2(uy, ux) + (math.pi if rr.random() < 0.5 else 0.0)
+                        fp = [(cx + ux * q * L / 2 + nx * v * B / 2, cy + uy * q * L / 2 + ny * v * B / 2) for q in (-0.95, -0.5, 0, 0.5, 0.95) for v in (-0.9, 0, 0.9)]
+                        if all(sea.water(x, y) for x, y in fp) and not any(near_dock(x, y, 0.2) for x, y in fp) and not overlaps(fp):
+                            for x, y in fp[::3]: bgrid.setdefault((int(x // 10), int(y // 10)), []).append((x, y, B * 0.85))
+                            seed = rr.randrange(1 << 30)
+                            if rr.random() < 0.72:
+                                out.append(dict(k=f'sail|m|{round(L)}|{seed % 31}', b='sailboat', a=dict(L=round(L), seed=seed % 31), x=cx, y=cy, yaw=yaw, kn=0.0, L=L, B=B, wk=0.0, trail=[], cls='moored'))
+                            else:
+                                out.append(dict(k=f'motor|{round(L)}|{seed % 17}', b='motorboat', a=dict(L=round(L), seed=seed % 17), x=cx, y=cy, yaw=yaw, kn=0.0, L=L, B=B, wk=0.0, trail=[], cls='moored'))
+                    t += L + rr.uniform(1.0, 2.5)
+            continue
         for side in (-1, 1):
             if rr.random() > 0.85: continue
             gap = gaps[side]
