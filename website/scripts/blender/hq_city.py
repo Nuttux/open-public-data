@@ -263,16 +263,19 @@ recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 recs.sort(key=lambda b: (int(b['cx'] // 700), int(b['cy'] // 700)))
-CH = 6000; nfaces = 0
+CH = 6000; nfaces = 0; _bfail = []
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
         try: G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
-        except Exception as ex: pass
+        except Exception as ex:     # a broken building used to draw half and say nothing: log the first ones
+            _bfail.append(b.get('gid'))
+            if len(_bfail) <= 5: import traceback; log('building failed:', b.get('gid'), repr(ex)); traceback.print_exc()
     objs = G.emit(bpy, out, M, name=f'b{c0 // CH}')
     nfaces += sum(len(o.data.polygons) for o in objs); del out
     log('chunk', c0 // CH, 'faces so far', nfaces)
 
+if _bfail: log('buildings failed:', len(_bfail), 'e.g.', _bfail[:10])
 # ── trees: one point per recorded tree, instanced ────────────────────────────
 def load_collection(asset):
     """the asset's trees, ONE PROTO PER TREE. pine_tree_01 and fir_tree_01 hold
