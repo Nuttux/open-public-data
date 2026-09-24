@@ -76,7 +76,7 @@ def materials(bpy, mats):
             pr.inputs['Sheen Weight'].default_value = sheen
         return m
     # a kept ballpark lawn: the mowing pattern is in the face colours; fine and broad variation here
-    mats['pl_turf'] = surface('pl_turf', 0.85, [(0.35, 0.94, 1.05), (4.0, 0.95, 1.04)], 0, 0, ao=0.0, bump=0.25, sheen=0.3)
+    mats['pl_turf'] = surface('pl_turf', 0.9, [(0.35, 0.94, 1.05), (4.0, 0.95, 1.04)], 0, 0, ao=0.0, bump=0.25, sheen=0.0)
     mats['pl_dirt'] = surface('pl_dirt', 0.95, [(0.25, 0.92, 1.06), (3.0, 0.94, 1.05)], 0, 0, bump=0.3)
     mats['pl_seat'] = surface('pl_seat', 0.42, [(0.05, 0.93, 1.05)], 0, 0, ao=0.35)
     mats['pl_conc'] = surface('pl_conc', 0.85, [(0.06, 0.86, 1.05), (0.9, 0.95, 1.03)], 0, 0, ao=0.45)
