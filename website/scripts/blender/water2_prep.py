@@ -36,7 +36,7 @@ from PIL import Image, ImageDraw
 from scipy import ndimage as ndi
 
 W_ = '/Users/daniel/code/qipu-render-work'
-OUT = f'{W_}/water'
+OUT = os.environ.get('WATER_OUT', f'{W_}/water')     # work in progress: WATER_OUT=<side folder>
 LM = f'{W_}/landmarks'
 KX = 111320 * 0.790582709628753; KY = 111320.0
 def proj(lon, lat): return (lon + 122.438) * KX, (lat - 37.76) * KY
@@ -83,8 +83,11 @@ def sample_rows(A, x0, y1, res, X, Y, fill=np.nan, order=1):
 
 # ── the land/water mask on the grid ──────────────────────────────────────────
 def land_mask(X, Y):
-    """1 land, 0 water: the render's own mask (sea.png) inside its square,
-    the OSM coastline outside it, water beyond both"""
+    """1 land, 0 water: the OSM coastline (coast_land.npz, 4 m) wherever it
+    reaches, the render's own mask (sea.png) only beyond it. (sea.png as the
+    first word made the cove, China Basin and the slips 'land' at 8 m, and
+    the whole Pacific south of y -5785, where the engine's mask is wrong:
+    they took the colour of a shallow shore, brown — 24/09)"""
     L = np.zeros(X.shape, np.float32)
     z = np.load(f'{LM}/coast_land.npz')
     M = np.unpackbits(z['land'], axis=1)[:, :int(z['nx'])].astype(np.float32)
@@ -93,7 +96,8 @@ def land_mask(X, Y):
     g = json.load(open(f'{W_}/city/sea.json'))
     sp = np.asarray(Image.open(f'{W_}/city/sea.png'))[..., 0].astype(np.float32) / 255
     sm = sample_rows(sp, g['ox'], g['oy'] + g['h'], g['w'] / sp.shape[1], X, Y, fill=np.nan, order=1)
-    L = np.where(np.isnan(sm), L, (sm < 0.5).astype(np.float32))
+    L = np.where(np.isnan(cl), np.where(np.isnan(sm), 0.0, (sm < 0.5).astype(np.float32)), L)
+    g['_sea_land'] = np.nan_to_num(sm, nan=1.0) < 0.5        # where the engine's mask says land
     return L, g
 
 def depth(X, Y, L, g):
@@ -115,7 +119,19 @@ def depth(X, Y, L, g):
     dy = np.maximum(np.maximum((b['y1'] - b['ny'] * 8) - Y, Y - b['y1']), 0)
     w = np.clip(1 - np.hypot(dx, dy) / 1500, 0, 1)
     Do = w * De + (1 - w) * Dh
-    D = np.where(np.isnan(Db), Do, Db)
+    # the bathymetry reads 0 m wherever the engine's mask said land (it was
+    # made to meet that shore): no data there, the OSM coast decides
+    # and it sinks to 0 toward that false shore for a few hundred metres:
+    # blended out over 400 m round it
+    bad = g['_sea_land'] & (L < 0.5)
+    wb_ = np.clip(ndi.gaussian_filter(ndi.binary_dilation(bad, iterations=40).astype(np.float32), 12) * 1.5, 0, 1)
+    D0 = np.where(np.isnan(Db), Do, Db)
+    # filled from the good bathymetry round it (normalised convolution), not
+    # from a slope rule (that drew a darker slab, prev_col)
+    ok_ = (wb_ < 0.05) & (L < 0.5)
+    Df = ndi.gaussian_filter(np.where(ok_, D0, 0), 45) / np.maximum(ndi.gaussian_filter(ok_.astype(np.float32), 45), 1e-4)
+    Df = np.where(ndi.gaussian_filter(ok_.astype(np.float32), 45) > 1e-3, Df, Dh)
+    D = wb_ * Df + (1 - wb_) * D0
     return np.where(water, D, 0).astype(np.float32), dist
 
 # the water's own colour (linear albedo of the body, under a 2 % sky mirror)
@@ -137,15 +153,16 @@ def colour(X, Y, D, dist, L):
     # turbidity: plumes 0.3-2 km, stronger in the bay and over its shallows
     t = 0.75 * grf(900) + 0.45 * grf(250)
     tb = (1 - P) * (0.6 + 0.4 * smooth(20, 3, D))
-    A *= (1 + 0.16 * t * (0.35 + 0.65 * tb))[..., None]
-    A += (np.clip(t, 0, None) * tb * 0.35)[..., None] * np.array([0.020, 0.013, 0.002], np.float32)
+    A *= (1 + 0.09 * t * (0.35 + 0.65 * tb))[..., None]
+    A += (np.clip(t, 0, None) * tb * 0.2)[..., None] * np.array([0.020, 0.013, 0.002], np.float32)
     # the south-east shallows and flats (India Basin, Heron's Head, Hunters
     # Point, Candlestick): browner, the mud showing through
     se = smooth(1500, 3500, X) * smooth(-500, -2000, Y)
     mud = se * smooth(2.5, 0.2, D) * (0.55 + 0.25 * grf(200))
     A = A * (1 - mud[..., None]) + mud[..., None] * np.array([0.118, 0.100, 0.066], np.float32)
     # the Pacific's surf-stirred band: sand in suspension along the beaches
-    sb = P * np.exp(-dist / 180) * 0.55
+    # (along the beaches only: on the Marin and Lands End cliffs it drew a halo)
+    sb = P * np.exp(-dist / 180) * 0.55 * ndi.gaussian_filter(((X > -7400) & (X < -5600) & (Y < 1990)).astype(np.float32), 20)
     A = A * (1 - sb[..., None]) + sb[..., None] * np.array([0.072, 0.080, 0.064], np.float32)
     return A, P
 
@@ -345,6 +362,15 @@ def main():
     far = (dist >= 30.0) | (L >= 0.5)
     idx = ndi.distance_transform_edt(~far, return_distances=False, return_indices=True)
     Dc = np.where(L < 0.5, np.maximum(D, D[tuple(idx)]), D)
+    # basins, the cove, channels and the open sea never read as shallow
+    # sand: 4 m at least, except where the shallows are real — the south-east
+    # flats, Crissy Field, Aquatic Park, Ocean Beach, Richardson Bay
+    real = np.zeros(X.shape, bool)
+    for bx in ((4300, -6400, 8000, -2000), (-2000, 4700, -900, 5200), (1100, 5150, 1550, 5450),
+               (-7300, -9800, -5000, 1990), (-4000, 8740, 13000, 15000)):
+        real |= (X > bx[0]) & (X < bx[2]) & (Y > bx[1]) & (Y < bx[3])
+    real = ndi.gaussian_filter(real.astype(np.float32), 25) > 0.5
+    Dc = np.where(real, Dc, np.maximum(Dc, 6.0))
     A, P = colour(X, Y, Dc, dist, L)
     Wd = wind(X, Y, L, D, P); print('wind', np.percentile(Wd[L < 0.5], [5, 50, 95]), flush=True)
     Cu = currents(X, Y, D, L); print('current lines share', float((Cu > 0.3).mean()), flush=True)

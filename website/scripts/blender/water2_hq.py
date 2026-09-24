@@ -28,7 +28,7 @@ landmarks; WATER2=0 skips it. Data: /Users/daniel/code/qipu-render-work/water
 import json, math, os, time
 import numpy as np
 
-WD = '/Users/daniel/code/qipu-render-work/water'
+WD = os.environ.get('WATER_DIR') or '/Users/daniel/code/qipu-render-work/water'     # WATER_DIR: a work-in-progress set of maps
 SEA_Z = 0.12            # the mask's sheet (hq_scene sea()); the open ocean plane is at -0.5
 
 def E(k, v=None): return os.environ.get(k, v)
@@ -98,8 +98,8 @@ def water(bpy, N, pos, extra=None):
     # colour is warmed a little and its mirror dimmed and greyed so the bay
     # renders green-grey, not blue (wat9); retuned for the 53c5109c5 light
     # (less blue fill: 1.35,1,.5 went khaki, wat19)
-    k = g['alb_k'] * F('SEA_COL_K', 1.9)
-    wb = [float(v) for v in E('SEA_WB', '1.1,1.0,0.65').split(',')]
+    k = g['alb_k'] * F('SEA_COL_K', 1.3)
+    wb = [float(v) for v in E('SEA_WB', '0.9,1.1,0.45').split(',')]
     col = N.vmath('MULTIPLY', tc.outputs['Color'], (k * wb[0], k * wb[1], k * wb[2]))
     # desaturate toward the grey the sediment gives (SEA_SAT 1 = the map as is)
     sat = F('SEA_SAT', 1.0)
@@ -117,11 +117,11 @@ def water(bpy, N, pos, extra=None):
     slick = N.m('MULTIPLY', cur, F('SEA_SLICK', 0.65))
     calm = N.m('SUBTRACT', 1.0, slick)
     paw = N.smooth(0.35, 0.65, N.noise(N.mapping(rot, loc=(91.0, 57.0, 0), scale=(0.6, 1.0, 1.0)), 1 / 110.0, detail=3.0, rough=0.6))
-    wind = N.m('MULTIPLY', wind, N.m('ADD', 1.0 - F('SEA_PAW', 0.45), N.m('MULTIPLY', paw, F('SEA_PAW', 0.45))))
+    wind = N.m('MULTIPLY', wind, N.m('ADD', 1.0 - F('SEA_PAW', 0.2), N.m('MULTIPLY', paw, F('SEA_PAW', 0.2))))
     wk = N.m('MULTIPLY', N.m('ADD', 0.10, N.m('MULTIPLY', wind, 0.90)), calm)
     bm1 = N.n('ShaderNodeBump', i_Distance=F('SEA_CHOP_D', 0.25))
     N.L(N.m('ADD', h1, N.m('MULTIPLY', h2, 1.5)), bm1.inputs['Height'])
-    N.L(N.m('MULTIPLY', wk, F('SEA_CHOP', 1.8)), bm1.inputs['Strength'])
+    N.L(N.m('MULTIPLY', wk, F('SEA_CHOP', 1.1)), bm1.inputs['Strength'])
     # the Pacific's swell from the west, ~150 m crests running N-S, bent by noise
     # (a sine of x bent by noise: the Wave texture drew a dark line along y = 0, wat3)
     sx = N.n('ShaderNodeSeparateXYZ'); N.L(pos, sx.inputs[0])
@@ -133,9 +133,9 @@ def water(bpy, N, pos, extra=None):
     rough = N.m('MULTIPLY', N.m('ADD', F('SEA_R0', 0.02), N.m('MULTIPLY', wind, F('SEA_R1', 0.06))), calm)
     parts = dict(wind=wind, cur=cur, pac=pac, col=col, rough=rough, normal=bm2.outputs[0], rot=rot)
     if extra: extra(N, parts)
-    b = N.n('ShaderNodeBsdfPrincipled', i_IOR=1.333, i_Specular_IOR_Level=F('SEA_SPEC', 0.24))
+    b = N.n('ShaderNodeBsdfPrincipled', i_IOR=1.333, i_Specular_IOR_Level=F('SEA_SPEC', 0.15))
     N.L(parts['col'], b.inputs['Base Color']); N.L(parts['rough'], b.inputs['Roughness']); N.L(parts['normal'], b.inputs['Normal'])
-    b.inputs['Specular Tint'].default_value = (*[float(v) for v in E('SEA_TINT', '0.55,0.68,0.45').split(',')], 1.0)
+    b.inputs['Specular Tint'].default_value = (*[float(v) for v in E('SEA_TINT', '0.5,0.65,0.3').split(',')], 1.0)
     sh = b.outputs[0]
     # whitecaps where the westerly blows hardest (the Gate, the central bay,
     # the open Pacific): small streaks, clustered in gusts; WHITECAP=0 none
