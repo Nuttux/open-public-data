@@ -756,13 +756,13 @@ def hill_ground(d, box=None, name='ground', geom=None):
     garden = b.mix(1.0, lawn, (0.62, 0.72, 0.50), 'MULTIPLY')
     yd = b.mix(b.ramp(b.noise(1 / 7.0, 3.0), 0.0, 1.0, 0.58, 0.70), garden, b.mix(0.5, g, garden))
     yd = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(31.7, 12.3, 0))), 0.0, 1.0, 0.56, 0.60), yd, (0.035, 0.05, 0.018))
-    yd = b.mix(b.ramp(b.noise(1 / 6.0, 2.0, vec=b.vmap(1.0, loc=(-9.1, 44.2, 0))), 0.0, 1.0, 0.68, 0.70), yd, (0.30, 0.29, 0.26))
+    yd = b.mix(b.ramp(b.noise(1 / 6.0, 2.0, vec=b.vmap(1.0, loc=(-9.1, 44.2, 0))), 0.0, 1.0, 0.68, 0.70), yd, (0.285, 0.29, 0.172))
     # a paved yard: old concrete and asphalt in pours of different age, oil
     # stains, weeds in the cracks, a planted strip now and then
     pv = cramp(b.noise(1 / 14.0, 3.0, vec=b.vmap(1.0, loc=(5.5, 71.0, 0))), [(0.35, (0.13, 0.125, 0.12)), (0.5, (0.21, 0.205, 0.19)), (0.65, (0.29, 0.28, 0.26))])
     pv = b.mix(b.ramp(b.noise(1 / 2.5, 3.0), 0.0, 0.45, 0.62, 0.72), pv, (0.07, 0.068, 0.065))
     pv = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-3.3, 8.8, 0))), 0.0, 0.8, 0.66, 0.70), pv, b.mix(0.5, g, garden))
-    yd = b.mix(b.ramp(paved, 0.0, 1.0, 0.3, 0.7), yd, pv)
+    yd = b.mix(b.ramp(paved, 0.0, 1.0, 0.3, 0.7), yd, b.mix(1.0, pv, (0.95, 1.0, 0.66), 'MULTIPLY'))
     # the park lawn, where the park is not hillside (a wavy line where it
     # turns): watered, a deeper green than the lime the scan turns into here
     jit = b.math('MULTIPLY', b.math('SUBTRACT', b.noise(1 / 14.0, 3.0), 0.5), 0.12)
@@ -776,7 +776,7 @@ def hill_ground(d, box=None, name='ground', geom=None):
     # (a dry lot: weedy grass, paving in a few broad soft patches — at 9 m and
     # a hard edge they read as camouflage; where the engine says green, the
     # kept grounds of a housing block or a school: a garden's green)
-    lot = b.mix(b.ramp(b.noise(1 / 16.0, 3.0, vec=b.vmap(1.0, loc=(17.3, -5.1, 0))), 0.0, 0.8, 0.60, 0.72), b.mix(0.35, yd, g), (0.24, 0.23, 0.21))
+    lot = b.mix(b.ramp(b.noise(1 / 16.0, 3.0, vec=b.vmap(1.0, loc=(17.3, -5.1, 0))), 0.0, 0.8, 0.60, 0.72), b.mix(0.35, yd, g), (0.228, 0.23, 0.139))
     lot = b.mix(b.ramp(eg, 0.0, 1.0, 0.18, 0.5), lot, yd)
     # the watered lawn in late September: a tired green, yellower in broad
     # patches, worn to earth here and there, a gang mower's 4 m stripes
@@ -807,6 +807,13 @@ def hill_ground(d, box=None, name='ground', geom=None):
     wy = b.mix(b.ramp(b.noise(1 / 2.5, 3.0), 0.0, 0.35, 0.58, 0.72), wy, b.mix(1.0, wy, (0.70, 0.68, 0.66), 'MULTIPLY'))
     wy = b.mix(b.ramp(b.noise(1 / 0.7, 2.0), 0.0, 0.25, 0.5, 0.8), wy, b.mix(1.0, wy, (1.12, 1.1, 1.06), 'MULTIPLY'))
     wy = b.mix(b.math('MULTIPLY', b.ramp(b.noise(1 / 2.2, 3.0, vec=b.vmap(1.0, loc=(3.0, -7.0, 0))), 0.0, 1.0, 0.70, 0.75), 0.7), wy, b.mix(0.5, g, (0.10, 0.10, 0.04)))
+    # PAVING UNDER THIS LIGHT: an orange sun and a blue sky fill both lift red
+    # and blue over green, so a neutral grey renders mauve-pink (the Pier 27
+    # apron, SoMa's yards, 2026-09-24: sRGB 128,121,148). The paving's albedo
+    # carries the opposite bias — blue cut by a third, red a touch — and
+    # renders a warm-neutral grey beside the street asphalt
+    NEU = (0.95, 1.0, 0.66)
+    wy = b.mix(1.0, wy, NEU, 'MULTIPLY')
     wk = b.ramp(works, 0.0, 1.0, 0.25, 0.7)
     lot = b.mix(wk, lot, wy); yd = b.mix(wk, yd, wy)
     c = b.mix(yardf, hill, yd)
@@ -848,10 +855,14 @@ def _brush_protos():
                 grp = next((n for n in nt.nodes if n.type == 'GROUP' and 'Diffuse' in n.inputs), None)
                 if grp is None or not grp.inputs['Diffuse'].links: continue
                 src_ = grp.inputs['Diffuse'].links[0].from_socket
-                oi = nt.nodes.new('ShaderNodeObjectInfo')
+                # the bush's tone by its PLACE (the point's 'crand', a world
+                # hash), not Object Info > Random: that follows the instance
+                # index, which shifts with a frame's region, and a bush
+                # changed colour across a tile seam
+                oi = nt.nodes.new('ShaderNodeAttribute'); oi.attribute_type = 'INSTANCER'; oi.attribute_name = 'crand'
                 hs = nt.nodes.new('ShaderNodeHueSaturation'); nt.links.new(src_, hs.inputs['Color'])
                 hs.inputs['Hue'].default_value = 0.47; hs.inputs['Saturation'].default_value = 0.85
-                mv = nt.nodes.new('ShaderNodeMapRange'); nt.links.new(oi.outputs['Random'], mv.inputs[0])
+                mv = nt.nodes.new('ShaderNodeMapRange'); nt.links.new(oi.outputs['Fac'], mv.inputs[0])
                 mv.inputs[3].default_value = 0.30; mv.inputs[4].default_value = 0.52; nt.links.new(mv.outputs[0], hs.inputs['Value'])
                 nt.links.new(hs.outputs['Color'], grp.inputs['Diffuse'])
                 if 'Translucency' in grp.inputs and grp.inputs['Translucency'].links:
@@ -984,7 +995,7 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
         if z is None or z < 2.5: continue
         p_ = Vector((x, y, z))
         if any(bv.find_nearest(p_, dd + 0.5 * float(W[q]))[0] is not None for bv, dd in bvs): continue
-        pts.append((x, y, z, float(W[q]), float(W[q]) * (0.8 + 0.4 * float(h[5][q])), float(H[q]), float(h[5][q]) * 6.283, int(h[4][q] * 7.999)))
+        pts.append((x, y, z, float(W[q]), float(W[q]) * (0.8 + 0.4 * float(h[5][q])), float(H[q]), float(h[5][q]) * 6.283, int(h[4][q] * 7.999), float(h[3][q] * 0.61803 + h[2][q]) % 1.0))
     try: yard_props(ground_fn, box, bvs)
     except Exception as ex: log('yard props failed:', ex)
     _GM.clear()                                             # the maps' arrays: done with
@@ -993,13 +1004,14 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
     root = bpy.data.collections.new('brush_protos')
     for c, _ in protos: root.children.link(c)
     # a point's scale in the proto's own units: W across, H tall
-    pts = [(x, y, z, w / protos[k % len(protos)][1][0], w2 / protos[k % len(protos)][1][1], h / protos[k % len(protos)][1][2], r_, k % len(protos))
-           for (x, y, z, w, w2, h, r_, k) in pts]
+    pts = [(x, y, z, w / protos[k % len(protos)][1][0], w2 / protos[k % len(protos)][1][1], h / protos[k % len(protos)][1][2], r_, k % len(protos), cr_)
+           for (x, y, z, w, w2, h, r_, k, cr_) in pts]
     me = bpy.data.meshes.new('brush'); me.vertices.add(len(pts))
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     at_ = me.attributes.new('sc', 'FLOAT_VECTOR', 'POINT'); at_.data.foreach_set('vector', [v for p in pts for v in p[3:6]])
     at_ = me.attributes.new('r', 'FLOAT', 'POINT'); at_.data.foreach_set('value', [p[6] for p in pts])
     at_ = me.attributes.new('kind', 'INT', 'POINT'); at_.data.foreach_set('value', [p[7] for p in pts])
+    at_ = me.attributes.new('crand', 'FLOAT', 'POINT'); at_.data.foreach_set('value', [p[8] for p in pts])
     ob = bpy.data.objects.new('brush', me); bpy.context.scene.collection.objects.link(ob)
     ng = bpy.data.node_groups.new('brush', 'GeometryNodeTree')
     ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
@@ -1071,22 +1083,44 @@ def drop_footway_streets(P, box=None, near=8.0, far=12.0):
     log(f'footpaths drawn as streets by the engine: {dropped} triangles dropped')
     return out, dropped
 
-def fix_street_shards(P, grade=0.33):
-    """street triangles the ground re-drape tore: a street polygon along the
-    seawall has corners over the bay, draped down to the water, and its long
-    triangles stood up as dark jagged shards (Terry Francois Blvd, the Pier 48
-    apron, 2026-09-24). A triangle steeper than any street in the city (Filbert
-    is 31.5%) is laid flat at its highest corner. Returns (P, n fixed)."""
-    out = array.array('f', P); n = 0
-    for t in range(len(P) // 9):
-        a = t * 9
-        z0, z1, z2 = P[a + 2], P[a + 5], P[a + 8]; zlo, zhi = min(z0, z1, z2), max(z0, z1, z2)
-        if zhi - zlo < 0.4: continue
-        h = max(math.hypot(P[a + 3] - P[a], P[a + 4] - P[a + 1]), math.hypot(P[a + 6] - P[a + 3], P[a + 7] - P[a + 4]), math.hypot(P[a] - P[a + 6], P[a + 1] - P[a + 7]))
-        if zhi - zlo > grade * h + 0.3:
-            out[a + 2] = out[a + 5] = out[a + 8] = zhi; n += 1
-    if n: log(f'street shards laid flat: {n} triangles')
-    return out, n
+def merge_street_layers(SC, SA):
+    """the engine draws every street twice: a wide 'casing' (sidewalk colour,
+    the property line to the property line) and the asphalt on it, 13 cm up.
+    Where the casing lies wholly under the asphalt it is dropped: two big
+    surfaces of different triangulations, draped each on its own corners,
+    cut through each other on uneven ground — the Pier 48 lot on Terry
+    Francois Blvd was a mass of dark jagged shards (2026-09-24). Returns
+    (the merged triangles, a BVH of the asphalt alone for kerb_edge)."""
+    nA = len(SA) // 3
+    abv = BVHTree.FromPolygons([(SA[i * 3], SA[i * 3 + 1], SA[i * 3 + 2]) for i in range(nA)], [(t * 3, t * 3 + 1, t * 3 + 2) for t in range(nA // 3)]) if nA else None
+    out = array.array('f', SA); drop = 0
+    def over(x, y, z):
+        h = abv.ray_cast(Vector((x, y, z + 3.0)), Vector((0, 0, -1)), 6.0)
+        return h[0] is not None and abs(h[0].z - z) < 1.0
+    for t in range(len(SC) // 9):
+        a = t * 9; V = [(SC[a + k * 3], SC[a + k * 3 + 1], SC[a + k * 3 + 2]) for k in range(3)]
+        if abv is not None:
+            cx, cy, cz = [(V[0][k] + V[1][k] + V[2][k]) / 3 for k in range(3)]
+            # the corners pulled a little toward the centre: a corner ON the
+            # asphalt's edge must not count as off it
+            if over(cx, cy, cz) and all(over(v[0] + (cx - v[0]) * 0.05, v[1] + (cy - v[1]) * 0.05, v[2]) for v in V):
+                drop += 1; continue
+        out.extend(SC[a:a + 9])
+    log(f'street casing under the asphalt: {drop} of {len(SC) // 9} triangles dropped')
+    return out, abv
+
+def kerb_edge(bvh, a, b, outv):
+    """a street's boundary edge is a kerb only if there is no ASPHALT on its
+    outer side too (bvh: merge_street_layers' asphalt). The asphalt's own edge,
+    with only the casing beyond it, stays a kerb; an edge inside the asphalt
+    — overlapping lot and aisle polygons, a dropped casing's hole — does not"""
+    if bvh is None: return True
+    m = (a + b) / 2
+    for d_ in (0.8, 2.0):
+        p = m + outv * d_
+        h = bvh.ray_cast(Vector((p.x, p.y, m.z + 4.0)), Vector((0, 0, -1)), 8.0)
+        if h[0] is not None and abs(h[0].z - m.z) < 1.2: return False
+    return True
 
 def keep_on_streets(MP, bvh):
     """street paint whose triangle no longer lies on a street (its street was
@@ -1231,9 +1265,10 @@ def ground(x, y):
 # ── streets, markings, sidewalks ─────────────────────────────────────────────
 log('streets')
 SP, MP, DP = array.array('f'), array.array('f'), array.array('f')
+SA_ = array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
-    if m['layer'] == 'streets': SP.extend(f32(m['pos']))
+    if m['layer'] == 'streets': (SA_ if (m.get('color') or [1])[0] < 0.2 else SP).extend(f32(m['pos']))
     if m['layer'] == 'street-markings':
         p = f32(m['pos']); ar = []
         for t in range(0, len(p) // 9, max(1, len(p) // 9 // 300)):
@@ -1257,7 +1292,7 @@ for m in d['meshes']:
 def lift(P, dz):
     for i in range(2, len(P), 3): P[i] += dz
     return P
-SP, _ = fix_street_shards(SP)
+SP, ABV = merge_street_layers(SP, SA_)
 SP, _ = drop_footway_streets(SP, (bx0, by0, bx1, by1))
 streets = mesh_from('streets', lift(SP, 0.02), M['asphalt'], weld=0.05)
 if len(MP):
@@ -1284,6 +1319,7 @@ if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, (bx0, by0, bx1, by1))
 
 def street_edges():
     bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()
+    bv_ = ABV
     E_ = []
     for e in bm.edges:
         if len(e.link_faces) != 1: continue
@@ -1291,6 +1327,7 @@ def street_edges():
         inward = e.link_faces[0].calc_center_median() - (a + b) / 2; inward.z = 0
         v = b - a; outv = Vector((-v.y, v.x, 0)).normalized()
         if outv.dot(inward) > 0: outv = -outv
+        if not kerb_edge(bv_, a, b, outv): continue
         E_.append((a, b, outv))
     bm.free(); return E_
 SE = street_edges()
