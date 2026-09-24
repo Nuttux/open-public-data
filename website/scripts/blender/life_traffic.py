@@ -380,7 +380,11 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
         vc.objects.link(ob)
 
 
-RED = (0.46, 0.045, 0.035, 1.0)         # SFMTA's transit-only red, sRGB ~#b53b33, a little worn
+RED = (0.30, 0.058, 0.042, 1.0)         # SFMTA's transit-only red as it reads worn, a muted brick (sRGB ~#955243)
+# (a saturated #b53b33 read as a fresh red band from the air, 24/09)
+RED_BANDS = ((-1.0, -0.74, 0.10), (-0.74, -0.36, 0.42), (-0.36, 0.36, 0.14), (0.36, 0.74, 0.42), (0.74, 1.0, 0.10))
+# across a lane (fractions of its half width): kerb edge, the tyre track, the
+# centre, the other track, the edge; and how worn each is (paint gone to asphalt)
 
 
 def _red(bpy, coll, D, street_z, kt, inb, log):
@@ -394,16 +398,24 @@ def _red(bpy, coll, D, street_z, kt, inb, log):
         if rs is None: continue
         X, Y, S, TX, TY = rs
         hw = r['hw']; base = hw.replace('_link', '')
+        # A BUSWAY ON A TRAM TRACK IS A TRACKWAY, NOT A RED LANE: OSM tags the
+        # Embarcadero's median streetcar reservation (the F and E lines) as
+        # highway=busway, bus=yes; it is grey concrete with rails, never painted.
+        # Read as 'all lanes red', its lanes were laid on the roadway's kerbs
+        # beside the pier bulkheads (24/09)
+        if red == 'all' and kt is not None:
+            onrail = sum(1 for i in range(0, len(X), 4) if kt.find((X[i], Y[i], 0.0))[2] < 4.0)
+            if onrail > 0.4 * len(range(0, len(X), 4)): continue
         R_ix = 13.0 if base in ARTERIAL or hw == 'busway' else 10.0
         ix = r.get('ix', [])
         lanes = ([k for k in range(r['nf'])] + [-1 - k for k in range(r['nb'])]) if red == 'all' else \
                 [k if d == 'f' else -1 - k for d, k in red]
         for lane in lanes:
-            strip = []                       # runs of (left, right) edge points
+            strip = []                       # runs of the band edges across the lane
             def flush():
                 if len(strip) >= 2:
-                    A = [p[0] for p in strip]; B = [p[1] for p in strip]
-                    bank.strip('red', A, B, RED)
+                    for b_, (_t0, _t1, wear) in enumerate(RED_BANDS):
+                        bank.strip('red', [p[b_] for p in strip], [p[b_ + 1] for p in strip], (wear, wear, wear, 1.0))
                 strip.clear()
             for i in range(len(X)):
                 x0, y0 = X[i], Y[i]
@@ -435,9 +447,10 @@ def _red(bpy, coll, D, street_z, kt, inb, log):
                 x, y = x0 + nx * u, y0 + ny * u
                 if kt is not None and kt.find((x, y, 0.0))[2] < 1.8: flush(); continue      # a track's lane: its slab
                 h = (lw - 0.45) / 2
-                za, zb = street_z(x + nx * h, y + ny * h), street_z(x - nx * h, y - ny * h)
-                if za is None or zb is None: flush(); continue
-                strip.append(((x + nx * h, y + ny * h, za + 0.03), (x - nx * h, y - ny * h, zb + 0.03)))
+                ts = [RED_BANDS[0][0]] + [b_[1] for b_ in RED_BANDS]
+                zs = [street_z(x + nx * h * t_, y + ny * h * t_) for t_ in ts]
+                if any(z_ is None for z_ in zs): flush(); continue
+                strip.append([(x + nx * h * t_, y + ny * h * t_, z_ + 0.03) for t_, z_ in zip(ts, zs)])
             flush()
         n += 1
     if not bank.nfaces(): return 0
@@ -451,7 +464,19 @@ def _red(bpy, coll, D, street_z, kt, inb, log):
         mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'
         mr = nt.nodes.new('ShaderNodeMapRange'); mr.inputs['From Min'].default_value = 0.45; mr.inputs['From Max'].default_value = 0.75
         mr.inputs['To Min'].default_value = 0.0; mr.inputs['To Max'].default_value = 0.3
-        nt.links.new(nz.outputs['Fac'], mr.inputs['Value']); nt.links.new(mr.outputs[0], mx.inputs[0])
+        nt.links.new(nz.outputs['Fac'], mr.inputs['Value'])
+        # + the band's own wear (bcol: the tyre tracks worn most), broken up by a
+        # finer noise so the tracks are scuffed, not ruled
+        at = nt.nodes.new('ShaderNodeAttribute'); at.attribute_name = 'bcol'
+        nz2 = nt.nodes.new('ShaderNodeTexNoise'); nz2.inputs['Scale'].default_value = 2.2; nz2.inputs['Detail'].default_value = 4
+        nt.links.new(geo.outputs['Position'], nz2.inputs['Vector'])
+        w2 = nt.nodes.new('ShaderNodeMath'); w2.operation = 'MULTIPLY'; nt.links.new(at.outputs['Fac'], w2.inputs[0])
+        r2 = nt.nodes.new('ShaderNodeMapRange'); r2.inputs['From Min'].default_value = 0.3; r2.inputs['From Max'].default_value = 0.7
+        r2.inputs['To Min'].default_value = 0.6; r2.inputs['To Max'].default_value = 1.4
+        nt.links.new(nz2.outputs['Fac'], r2.inputs['Value']); nt.links.new(r2.outputs[0], w2.inputs[1])
+        ad = nt.nodes.new('ShaderNodeMath'); ad.operation = 'ADD'; ad.use_clamp = True
+        nt.links.new(mr.outputs[0], ad.inputs[0]); nt.links.new(w2.outputs[0], ad.inputs[1])
+        nt.links.new(ad.outputs[0], mx.inputs[0])
         mx.inputs[6].default_value = RED; mx.inputs[7].default_value = (0.07, 0.065, 0.06, 1.0)
         nt.links.new(mx.outputs[2], pb.inputs['Base Color']); pb.inputs['Roughness'].default_value = 0.75
     nf = bank.nfaces()
