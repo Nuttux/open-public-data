@@ -17,6 +17,7 @@ import city_data
 argv = sys.argv[sys.argv.index('--') + 1:]
 SD, OUT, SPP, W, H = argv[0], argv[1], int(argv[2]), int(argv[3]), int(argv[4])
 E = os.environ.get
+import look_preset   # the default look as env defaults, before any E(): LOOK=V5 clear midday (default), LOOK=B golden hour
 PH = os.path.expanduser('~/code/qipu-assets/polyhaven')
 T0 = time.time()
 def log(*a): print(f'[{time.time() - T0:7.1f}s]', *a, flush=True)
@@ -494,7 +495,17 @@ for (x, y, z, rad, *_rest) in MASS:
     else: kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     seen.add((round(x / 2.5), round(y / 2.5)))
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
-log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
+# THE REAL CANOPY (veg_canopy.py, the vegetation agent): with CANOPY=1 every
+# crown the LiDAR and NAIP agree on (yards, block interiors, hills), planted at
+# its measured height and width; veg_hq then plants no canopy masses above
+_nc = 0
+if VEG and ERA is None and getattr(VK, 'canopy_on', False):
+    for (x, y, kind, s_, r_) in VK.canopy(seen):
+        if roofed(x, y): continue
+        gz_ = ground(x, y)
+        if gz_ is None: continue
+        pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
+log('trees: register', nreg, 'canopy masses', len(pts) - nreg - _nc, 'of', len(MASS), 'measured crowns', _nc)
 instancer('trees', pts, protos)
 if VEG: VK.report(log)
 
