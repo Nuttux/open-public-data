@@ -550,6 +550,15 @@ def building(b, ground, out):
         elif style != 'midcentury':
             wf.box('trim', -0.1, wf.L + 0.1, ctop - 0.45, ctop, 0.0, proj, trim)
             wf.box('trim', -0.05, wf.L + 0.05, ctop - 0.62, ctop - 0.45, 0.0, proj * 0.5, trim)
+            # (24/09) the pre-war apartment block's cornice, heavy and wrapping
+            # every street wall: a deep crown over a frieze, the low sun's
+            # longest shadow line on the block
+            if style == 'block' and sub in ('apartment', 'commercial') and (b['year'] or 1950) < 1940 and LOD >= 1 and not fsys:
+                for j_ in fronts:
+                    wj = walls[j_]
+                    if wj.L < 2.0: continue
+                    wj.box('trim', -0.3, wj.L + 0.3, ctop - 0.5, ctop + 0.05, 0.0, 0.95, trim)
+                    wj.box('trim', -0.05, wj.L + 0.05, ctop - 1.35, ctop - 0.5, 0.0, 0.14, mix(trim, body, 0.35))
             if (style == 'vic' or sub == 'edwardian') and LOD < 2:
                 for uu in frange(0.2, wf.L - 0.2, 0.7 if sub == 'italianate' else 1.0):   # brackets
                     wf.box('trim', uu - 0.07, uu + 0.07, ctop - 1.15, ctop - 0.45, 0.0, proj * 0.8, trim)
@@ -749,6 +758,45 @@ def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):
         out.poly('roof_shingle', [Vector((a.x, a.y, z1)) + (a - cx).normalized() * 0.25, Vector((c.x, c.y, z1)) + (c - cx).normalized() * 0.25, Vector((cx.x, cx.y, apex))], (0.78, 0.76, 0.78))
     # a finial
     out.box3('metal', Vector((cx.x - 0.05, cx.y - 0.05, apex - 0.1)), Vector((0.1, 0, 0)), Vector((0, 0.1, 0)), Vector((0, 0, 0.9)), (0.2, 0.2, 0.2))
+
+
+# the street's commercial colours: awning canvas and sign boards
+AWN = [(0.62, 0.10, 0.09), (0.50, 0.08, 0.10), (0.12, 0.30, 0.18), (0.10, 0.16, 0.34), (0.08, 0.08, 0.09), (0.08, 0.08, 0.09),
+       (0.86, 0.46, 0.12), (0.90, 0.74, 0.22), (0.20, 0.44, 0.52), (0.92, 0.91, 0.87), (0.44, 0.20, 0.36), (0.30, 0.18, 0.10)]
+SIGN = [(0.94, 0.93, 0.90), (0.10, 0.10, 0.11), (0.70, 0.12, 0.10), (0.12, 0.22, 0.44), (0.92, 0.78, 0.26), (0.16, 0.36, 0.22)]
+
+
+def shopfronts(w, b, zg, trim, body):
+    """(24/09) a shop front at the city's scale, one per 5-9 m of frontage
+    (a long front is several shops): a sloped canvas awning with its valance
+    in a colour of the street's own, or none; a sign board over it; a blade
+    sign standing out now and then; a café's umbrellas on the sidewalk"""
+    L = w.L; r = random.Random(b['gid'] * 709 + int(L * 13))
+    n = max(1, round(L / r.uniform(5.0, 9.0))); p = L / n
+    for k in range(n):
+        u0, u1 = k * p + 0.25, (k + 1) * p - 0.25
+        if u1 - u0 < 1.5: continue
+        if k: w.box('trim', u0 - 0.3, u0 - 0.2, zg, zg + 3.6, 0.0, 0.14, trim)          # the pier between shops
+        x_ = r.random(); col = r.choice(AWN)
+        if x_ < 0.62:
+            D = r.uniform(1.0, 1.7); zt = zg + r.uniform(3.3, 3.7); zb = zt - D * r.uniform(0.45, 0.75)
+            w.o.poly('awning', [w.P(u0, zt, 0.02), w.P(u1, zt, 0.02), w.P(u1, zb, D), w.P(u0, zb, D)], col)
+            w.o.poly('awning', [w.P(u0, zb, D), w.P(u1, zb, D), w.P(u1, zb - 0.28, D), w.P(u0, zb - 0.28, D)], mix(col, (0, 0, 0), 0.15))   # valance
+            for uu in (u0, u1): w.o.poly('awning', [w.P(uu, zt, 0.02), w.P(uu, zb, D), w.P(uu, zb - 0.28, D), w.P(uu, zb - 0.28, 0.02)], mix(col, (0, 0, 0), 0.25))
+        sc = col if r.random() < 0.4 else r.choice(SIGN)
+        w.box('trim', u0, u1, zg + 3.75, zg + 4.4, 0.0, 0.1, sc)                            # the sign board
+        if r.random() < 0.3:                                                                  # its letters, as a lighter or darker bar
+            w.rect('trim', u0 + (u1 - u0) * 0.2, u1 - (u1 - u0) * 0.2, zg + 3.95, zg + 4.2, 0.11, (0.96, 0.95, 0.9) if sum(sc) < 1.5 else (0.1, 0.1, 0.1))
+        if r.random() < 0.14:                                                                 # a blade sign
+            uu = r.choice((u0 + 0.2, u1 - 0.2)); zs = zg + r.uniform(4.2, 5.5)
+            w.box('trim', uu - 0.06, uu + 0.06, zs, zs + r.uniform(1.2, 2.6), 0.1, 0.95, r.choice(SIGN + AWN))
+        if x_ > 0.9 and u1 - u0 > 3.0:                                                        # a café's umbrellas
+            for j in range(r.randint(1, 3)):
+                uc = u0 + (u1 - u0) * (j + 0.5) / 3; wc = r.uniform(1.9, 2.4); rad = r.uniform(0.9, 1.25); zu = zg + 2.3
+                uc_ = r.choice(((0.92, 0.91, 0.87), (0.62, 0.10, 0.09), (0.12, 0.30, 0.18), (0.10, 0.10, 0.11)))
+                ap = w.P(uc, zu + 0.45, wc); ring_ = [w.P(uc + rad * math.cos(a_), zu, wc + rad * math.sin(a_)) for a_ in [2 * math.pi * i / 8 for i in range(8)]]
+                for i in range(8): w.o.poly('awning', [ring_[i], ring_[(i + 1) % 8], ap], uc_)
+                w.box('metal', uc - 0.03, uc + 0.03, zg, zu, wc - 0.03, wc + 0.03, (0.2, 0.2, 0.2))
 
 
 def rear_kit(w, b, first, fh, nfl, eave, zg, trim, wmat, wcol):
@@ -1242,8 +1290,10 @@ def facade(w, is_front, b, rng, c):
         s0, s1 = 0.3, L - 0.3
         holes.append((s0, s1, zg + 0.4, zg + 3.2))
         w.opening(s0, s1, zg + 0.4, zg + 3.2, 'shop', trim, 0.3)
-        w.box('awning', s0, s1, zg + 3.2, zg + 3.5, 0.0, 1.2, accent)
-        w.box('trim', 0.0, L, zg + 3.5, zg + 4.2, 0.0, 0.12, accent)    # sign band
+        if LOD >= 1: shopfronts(w, b, zg, trim, body)
+        else:
+            w.box('awning', s0, s1, zg + 3.2, zg + 3.5, 0.0, 1.2, accent)
+            w.box('trim', 0.0, L, zg + 3.5, zg + 4.2, 0.0, 0.12, accent)    # sign band
     # windows: each floor, the rest of the wall
     gap_min = {'vic': 0.7, 'block': 0.9}.get(style, 1.0)
     # a punched-stone tower (24/09): reflective panes, low contrast with the
@@ -1290,7 +1340,7 @@ def facade(w, is_front, b, rng, c):
             if LOD < 2: w.box('trim', 0.0, L, first + f * fh - 0.06, first + f * fh + 0.12, 0.0, 0.06, trim)
             else: w.rect('trim', 0.0, L, first + f * fh - 0.1, first + f * fh + 0.16, 0.035, trim)
     # a fire escape down the front of a pre-war apartment house
-    if is_front and sub == 'apartment' and 1906 <= (b['year'] or 1950) < 1950 and nfl >= 3 and L > 8 and LOD < 2 and rng.random() < 0.55:
+    if is_front and sub == 'apartment' and 1906 <= (b['year'] or 1950) < 1950 and nfl >= 3 and L > 8 and rng.random() < 0.55:      # (24/09: now at the city's LOD too — the fronts' black zigzag)
         free = [(0.6, L - 0.6)]
         for hu in bay_u: free = cut(free, hu, 0.25)
         free = [f for f in free if f[1] - f[0] > 2.8]
@@ -1466,7 +1516,8 @@ def fire_escape(w, u0, u1, first, fh, nfl, eave, rng):
         if z > eave - 1.0: break
         w.box('metal', u0, u1, z - 0.06, z, 0.02, D, col)                             # the grating
         w.box('metal', u0, u1, z + 0.95, z + 1.0, D - 0.04, D, col)                   # top rail
-        w.box('metal', u0, u1, z + 0.45, z + 0.48, D - 0.04, D, col)
+        if LOD >= 1: w.rect('curtain', u0, u1, z, z + 0.95, D - 0.02, (0.16, 0.16, 0.17))            # the balusters, as a veil
+        else: w.box('metal', u0, u1, z + 0.45, z + 0.48, D - 0.04, D, col)
         for uu in (u0, u1 - 0.04): w.box('metal', uu, uu + 0.04, z, z + 1.0, 0.02, D, col)
         if LOD == 0:
             for uu in frange(u0, u1 - 0.03, 0.35): w.box('metal', uu, uu + 0.025, z, z + 1.0, D - 0.035, D - 0.01, col)
