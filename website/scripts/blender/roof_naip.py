@@ -20,6 +20,8 @@ PY = os.environ.get('RN_PYTHON', '/Library/Frameworks/Python.framework/Versions/
 DIR = os.environ.get('RN_DIR', '/Volumes/DANI-SD-DRIVE2/qipu-roofnaip')
 RATIO = os.environ.get('RN_MODE', 'photo') == 'ratio'     # variant B (see roof_naip_prep.py)
 ROOF_MATS = ('roof_flat', 'roof_big') if RATIO else ('roof_flat', 'roof_big', 'roof_shingle', 'roof_tile')
+# RN_MATS=roof_flat,roof_big (variant A-flat): the photo on the flat roofs only, pitched roofs procedural
+if os.environ.get('RN_MATS'): ROOF_MATS = tuple(os.environ['RN_MATS'].split(','))
 
 def region_image(box):
     x0, y0, x1, y1 = [float(v) for v in box]
