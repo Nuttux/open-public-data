@@ -480,6 +480,7 @@ def building(b, ground, out):
         tris = tessellate_polygon([pts2])
         f = lambda p: p.dot(ax_u) - uc
         rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else rng.choice(TILE_TINTS)
+        roof_mat, rc_ = measured_pitched(b, roof_mat, rc_)     # ROOFS: the measured roof, if any
         for t in tris:
             for tri in split_tri([pts2[k].copy() for k in t], f):
                 top_ = [Vector((p.x, p.y, rz(p) + 0.05)) for p in tri]
@@ -507,6 +508,7 @@ def building(b, ground, out):
         inner = offset_ring(ring, -0.28)
         pts2 = [Vector((x, y, deck)) for x, y in inner]
         rc_ = flat_roof(b, rng, ax_u)
+        rc_ = measured_flat(b, rc_)                            # ROOFS: the measured roof, if any
         for t in tessellate_polygon([pts2]):
             out.poly('roof_flat', [pts2[k] for k in t], rc_)
         # the parapet: its inner face flashed with the roof's own membrane, a
@@ -608,6 +610,61 @@ def flat_roof(b, rng, ax_u):
     if kind >= 2: k = 0.90 + 0.08 * t
     turn = (math.degrees(math.atan2(ax_u.y, ax_u.x)) % 90.0) / 90.0
     return (*[min(1.0, c * k) for c in base], (kind + 0.1 + 0.8 * turn) / 4.0)
+
+
+# ── ROOFS FROM THE AIR (roofs_prep.py, roofs agent) ──────────────────────────
+# each roof's colour and class measured on USDA NAIP 2022 (public domain),
+# as LINEAR ALBEDO per gid in qipu-render-work/roofs/roofs.json. Used only for
+# today (ERA None), only where the measurement is confident (ROOFS_CONF), and
+# only on the switch ROOFS=1; anywhere else the procedural roof stands. The
+# hooks run AFTER the procedural choice, so every rng draw (and with it every
+# window, paint and roof fixture) stays what it was: only the roof changes.
+def _load_roofs():
+    import os, json
+    if os.environ.get('ROOFS', '0') != '1': return {}
+    p = os.environ.get('ROOFS_FILE', '/Users/daniel/code/qipu-render-work/roofs/roofs.json')
+    if not os.path.exists(p): return {}
+    c = float(os.environ.get('ROOFS_CONF', 0.5))
+    return {int(g): v for g, v in json.load(open(p))['roofs'].items() if v[4] >= c and v[3] not in ('tree', 'shadow')}
+ROOF_M = _load_roofs()
+# the mean linear albedo of what each material multiplies the paint by (so a
+# measured albedo becomes paint = albedo / texture): the Poly Haven diffuse
+# maps (grey_roof_01; clay_roof_tiles_02 x the material's 1.1); roof_flat's
+# normalised bitumen/gravel mix per kind (hq_scene.roof_flat_mat), and its
+# dirt and ponding (~8% on average)
+_ROOF_TEX = {'roof_shingle': (0.109, 0.1056, 0.0968), 'roof_tile': (0.3416, 0.0945, 0.0290)}
+_FLAT_TEX = {0: (1.215, 1.068, 0.881), 1: (1.238, 1.078, 0.960), 2: (1.05, 1.017, 1.0), 3: (1.05, 1.017, 1.0)}
+_FLAT_KIND = {'white': 2, 'metal': 3, 'gravel': 0, 'green': 0}      # the rest: cap sheet
+def _lum(a): return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]
+def _disp(lin): return tuple(max(0.0, v) ** (1 / 2.2) for v in lin)   # emit() raises back to 2.2
+
+
+def measured_pitched(b, roof_mat, rc):
+    """a pitched roof in its measured colour: clay tile where the air sees
+    terracotta, shingle otherwise (never whiter than a light shingle: a
+    white reading over a gable is a flat roof the generator pitched)"""
+    m = ROOF_M.get(b['gid']) if ERA is None else None
+    if not m: return roof_mat, rc
+    a, cls = list(m[:3]), m[3]
+    mat = 'roof_tile' if cls == 'tile' else 'roof_shingle'
+    L, cap = _lum(a), (0.45 if mat == 'roof_tile' else 0.32)
+    if L > cap: a = [v * cap / L for v in a]
+    t = _ROOF_TEX[mat]
+    return mat, _disp([a[k] / t[k] for k in range(3)])
+
+
+def measured_flat(b, rc):
+    """a flat roof's membrane in its measured colour and kind; the roll
+    direction (alpha's fraction) is the procedural one's"""
+    m = ROOF_M.get(b['gid']) if ERA is None else None
+    if not m: return rc
+    a, cls = list(m[:3]), m[3]
+    kind = _FLAT_KIND.get(cls, 1)
+    if cls == 'tile':       # terracotta over a flat deck: a red-brown cap sheet, not a painted red
+        L = _lum(a); a = [L + 0.6 * (v - L) for v in a]
+    t = _FLAT_TEX[kind]
+    t4 = rc[3] * 4.0
+    return (*_disp([min(1.0, a[k] / (t[k] * 0.92)) for k in range(3)]), (kind + t4 - math.floor(t4)) / 4.0)
 
 
 def roof_kit(ring, inner, deck, top, b, rng, out, c):
