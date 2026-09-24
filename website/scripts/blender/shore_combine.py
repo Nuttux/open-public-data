@@ -49,8 +49,8 @@ w39, w15, w95 = keep(w39 & ~creek), keep(w15 & ~creek), keep(w95 & ~creek)
 # today's shoreline itself (its seawall, its riprap: the last metres of today's
 # land before today's water) goes with the water of the year where that water
 # reaches it, or a strip of today's shore stands in the old bay
-near_sea = ndimage.binary_dilation(ts, iterations=6) & ~ts
-def reach(w): return w | (ndimage.binary_dilation(w, iterations=6) & near_sea)
+near_sea = ndimage.binary_dilation(ts, iterations=12) & ~ts            # 48 m: the riprap rims of the fills (thin loops on the old bay, 1906 z5 1:1)
+def reach(w): return w | (ndimage.binary_dilation(w, iterations=12) & near_sea)
 w39, w15, w95 = reach(w39), reach(w15), reach(w95)
 for name, w, src in (('shore1939', w39, 'San Mateo 1:62,500 1939 (USGS 301595) + 1:24,000 1947 water'),
                      ('shore1915', w15, 'San Mateo 1915 (298923), San Francisco 1915 (1:62,500), + later'),

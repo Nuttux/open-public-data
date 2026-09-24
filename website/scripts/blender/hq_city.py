@@ -230,6 +230,13 @@ if ERA is not None:
     log('open land dried:', int((_dk > 0.5).sum()), 'of', _nv, 'terrain vertices')
     # the lots of buildings not yet built: parking or bare earth, not lawn (era.vacant_lots)
     LOTS = EA.vacant_lots(_allb, {b['gid'] for b in recs}, ERA, open_at, CBOX) if E('LOTS', '1') == '1' else []
+    # nothing of a lot on the water: a footprint over the bay or the year's
+    # water, or whose ground is under 0.8 m (the critic's props floated where
+    # 'works' polygons reach over the water, 2026-09-24)
+    def _lot_dry(L_):
+        zs_ = [ground(p_[0], p_[1]) for p_ in L_['ring']]
+        return all(z_ is not None and z_ >= 0.8 for z_ in zs_) and not any(EA.water_then(p_[0], p_[1], ERA) for p_ in L_['ring'])
+    LOTS = [L_ for L_ in LOTS if _lot_dry(L_)]
     LI = EA.LotIndex(LOTS)
     EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.35)), rough_add=0.2),
                                      'dirt': ph_mat('withered_grass', 5.0, name='lot_dirt', value=float(E('LOT_DV', 0.85)))}, log)
@@ -629,7 +636,7 @@ for a, b, outv in SE:
 for L_ in LOTS:
     for (x_, y_, h_, u_) in L_['cars']:
         gz_ = ground(x_, y_)
-        if gz_ is not None and in_box(x_, y_): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
+        if gz_ is not None and gz_ >= 0.8 and in_box(x_, y_) and not EA.water_then(x_, y_, ERA): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
 instancer('cars', cpts, car_colls)
 
 # ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
