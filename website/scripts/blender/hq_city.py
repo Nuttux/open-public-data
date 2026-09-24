@@ -196,8 +196,36 @@ for m in d['meshes']:
 # triangulations each draped by terrain_hq on its own corners, cut through
 # each other on uneven ground in dark faceted shards. The casing wholly under
 # the asphalt goes (hq_scene's fix, never ported here). ST_MERGE=0: as before
-ABV = None
-if len(SA_): SP, ABV = merge_street_layers(SP, SA_)
+ABV = None; VG = array.array('f')
+if len(SA_):
+    _nA = len(SA_); SP, ABV = merge_street_layers(SP, SA_)
+    # (25/09) THE SIDEWALK UP TO THE LOT LINE. The casing left beyond the
+    # asphalt (the kerb to the property line: sidewalk, a planting strip) was
+    # drawn as asphalt, a dark band between the 3 m sidewalk and the house
+    # fronts on every street. It is paving: cut from the street mesh (the
+    # streets are the asphalt alone, so the kerbs, the cars and the walkers
+    # follow the real kerb) and laid as sidewalk at kerb height; a casing
+    # triangle straddling the kerb is split until its pieces lie on one side.
+    # VERGE=0: as before
+    if E('VERGE', '1') == '1':
+        _cs = SP[_nA:]; SP = SP[:_nA]
+        def _on(x, y, z):
+            h = ABV.ray_cast(Vector((x, y, z + 3.0)), Vector((0, 0, -1)), 6.0)
+            return h[0] is not None and abs(h[0].z - z) < 1.0
+        def _verge(V, depth=0):
+            c = [sum(v[k] for v in V) / 3 for k in range(3)]
+            on = [_on(*c)] + [_on(v[0] + (c[0] - v[0]) * 0.05, v[1] + (c[1] - v[1]) * 0.05, v[2]) for v in V]
+            if all(on): return
+            L = max(math.dist(V[i][:2], V[(i + 1) % 3][:2]) for i in range(3))
+            if not any(on) or L < 0.8 or depth > 9:
+                if not on[0]:
+                    for v in V: VG.extend((v[0], v[1], v[2] + 0.16))
+                return
+            m = [tuple((V[i][k] + V[(i + 1) % 3][k]) / 2 for k in range(3)) for i in range(3)]
+            for T in ((V[0], m[0], m[2]), (m[0], V[1], m[1]), (m[2], m[1], V[2]), (m[0], m[1], m[2])): _verge(T, depth + 1)
+        for t in range(len(_cs) // 9):
+            a_ = t * 9; _verge([(_cs[a_ + k * 3], _cs[a_ + k * 3 + 1], _cs[a_ + k * 3 + 2]) for k in range(3)])
+        log(f'verges: {len(_cs) // 9} casing triangles beyond the asphalt -> {len(VG) // 9} sidewalk pieces')
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
@@ -207,6 +235,8 @@ for i in range(0, len(MP), 3):
     h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
     if h_[0] is not None: MP[i+2] = h_[0].z + 0.012
 if len(MP): mesh_from('markings', MP, M['paint'])
+if len(VG):
+    mesh_from('verges', VG, M['sidewalk'], weld=0.02)
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
