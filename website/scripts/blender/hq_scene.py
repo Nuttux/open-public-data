@@ -650,8 +650,17 @@ def ground_maps(d, box=None, pad=300.0):
     bias = 0.22 * _ss(0.03, 0.32, nb_) + 0.20 * _ss(0.5, 0.22, tb_) - 0.14 * _ss(0.55, 0.8, tb_) - 0.08 * _ss(0.03, 0.32, -nb_)
     del nb_, tb_
     brush = _ss(BRUSH_T - 0.006, BRUSH_T + 0.006, _fbm(XB, YB, 38.0, 5, 11, gain=0.62) + bias).astype(np.float32)
+    # THE GROUND FROM THE AIR (ground_hq.py): where the NAIP class map has
+    # data, the brush patches are the photo's scrub, not a noise field
+    gw = None
+    try:
+        import ground_hq as _gh
+        gw = _gh.weights(x0, y0, x1, y1)
+        if gw is not None: brush = _gh.brush_field(gw, XB, YB, brush, _fbm, _ss, _bilerp)
+    except Exception as ex:
+        print('ground_maps: no class map:', ex); gw = None
     del XB, YB
-    _GM.clear(); _GM.update(x0=x0, y0=y0, res=res, park=park, yard=yard, st=st, hilly=hilly, slope=slope, rb=rb, brush=brush, bias=bias.astype(np.float32), works=works, ang=ang, rail=railm)
+    _GM.clear(); _GM.update(x0=x0, y0=y0, res=res, park=park, yard=yard, st=st, hilly=hilly, slope=slope, rb=rb, brush=brush, bias=bias.astype(np.float32), works=works, ang=ang, rail=railm, gw=gw)
     def img(name, R, G, ext, B_=None):
         # 8-bit (a float image of the park mask alone was 360 MB, and Cycles
         # keeps its own copy: the Mac fell over at 00:10, 2026-09-24)
@@ -834,15 +843,23 @@ def hill_ground(d, box=None, name='ground', geom=None):
     c = b.mix(yardf, hill, yd)
     c = b.mix(lotf, c, lot)
     c = b.mix(lawnf, c, lw)
+    wetf = None
+    if _GM.get('gw') is not None:
+        # what the photo says each patch of open ground is (ground_hq.py)
+        import ground_hq as _gh
+        c, wetf, wildc, hv = _gh.shade(b, sample, _GM['gw'], c, hill, lw, g, NEU)
     b.put(pr.inputs['Base Color'], c)
     # relief: the brush's domes, the rock's blocks and the grass's tussocks
     # catch the low sun
     wildf = b.math('SUBTRACT', 1.0, b.math('MAXIMUM', b.math('MAXIMUM', lawnf, yardf), lotf))
+    if wetf is not None: wildf = b.mix(hv, wildf, wildc)
     rh = b.math('ADD', b.math('MULTIPLY', b.bw(blk.outputs['Color']), 0.35), b.ramp(joint, 0.0, 0.3, 0.0, 0.08))
     h_ = b.math('ADD', b.math('MULTIPLY', b.math('MULTIPLY', scrub, dome), 0.7), b.math('MULTIPLY', rock, rh))
     h_ = b.math('ADD', h_, b.math('MULTIPLY', b.noise(1 / 1.6, 3.0), 0.12))
     b.put(pr.inputs['Normal'], b.bump(b.math('MULTIPLY', h_, wildf), 1.0, 0.6, normal=lawn_n))
-    b.put(pr.inputs['Roughness'], b.math('SUBTRACT', 0.95, b.math('MULTIPLY', rock, 0.12)))
+    ro = b.math('SUBTRACT', 0.95, b.math('MULTIPLY', rock, 0.12))
+    if wetf is not None: ro = b.math('SUBTRACT', ro, b.math('MULTIPLY', wetf, 0.5))
+    b.put(pr.inputs['Roughness'], ro)
     pr.inputs['Specular IOR Level'].default_value = 0.35
     return m
 
@@ -994,6 +1011,12 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
     hl = at(g['hilly'], g['st']) / 20.0; sl = at(g['slope'], g['st'])
     lawnf = park * (1 - _ss(0.47, 0.67, hl)); yardf = yard * (1 - park); lotf = (1 - np.maximum(park, yard)) * (1 - _ss(0.25, 0.40, hl))
     wild = 1 - np.maximum(np.maximum(lawnf, yardf), lotf)
+    if g.get('gw') is not None:
+        # where the photo classified the ground: bushes on its brush and cured
+        # grass only, never on a lawn, a lot, a beach (ground_hq.py)
+        import ground_hq as _gh
+        wc, hv_ = _gh.at(g['gw'], X, Y, ('scrub', 'tree', 'drygrass'))
+        wild = np.where(hv_, wc.astype(np.float32), wild)
     ok = (wild > 0.8) & (sl < 34.0)
     dense = ok & (br > 0.5)
     lone = ok & (br < 0.2) & (h[2] < 0.010 * (1 + 3 * np.clip(bias, 0, 1)))
