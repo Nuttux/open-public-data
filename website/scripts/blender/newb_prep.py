@@ -5,9 +5,11 @@ Treasure Island's and Parkmerced's new blocks render as empty ground.
 
 This adds them from OpenStreetMap (ODbL, (c) OpenStreetMap contributors), as
 extra records in city_data's own schema, so gen_buildings models them exactly
-like the others. city_data.buildings() appends them when NEWB=1.
+like the others. city_data.buildings() appends them (NEWB=0 to leave them out).
 
-    python3 newb_prep.py            (reads newbuildings/osm/*.json, cached Overpass tiles)
+    python3 newb_prep.py            (reads newbuildings/osm/*.json, cached Overpass tiles;
+                                     writes newbuildings/osm_records.json and its copy
+                                     newb_records.json here, which city_data reads first)
 
 KEPT: an OSM building (or, where the building is mapped in parts with heights,
 its parts) is added only when less than 30% of its area lies on any DataSF
@@ -42,6 +44,7 @@ import shapely, shapely.affinity
 from shapely.geometry import Polygon, LineString, MultiPolygon, Point
 from shapely.ops import polygonize, unary_union, split
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
+os.environ['NEWB'] = '0'            # DataSF's own records only
 import city_data
 
 W = '/Users/daniel/code/qipu-render-work'
@@ -432,6 +435,8 @@ def main():
                    lm_records=[r for r in recs if r['lm']], lm_replaces=[x for x in REPL if x['lm']]),
               open(OUT, 'w'), separators=(',', ':'))
     print('records', len(recs), 'outlines', len(cand), 'replaced DataSF', len(REPL), dict(stats), '->', OUT, os.path.getsize(OUT) // 1024, 'KB', flush=True)
+    if len(sys.argv) <= 1:          # the copy the scripts (and a pass's frozen snapshot of them) read first
+        import shutil; shutil.copyfile(OUT, os.path.join(HERE, 'newb_records.json')); print('-> newb_records.json', flush=True)
 
 if __name__ == '__main__':
     main()

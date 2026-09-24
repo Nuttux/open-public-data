@@ -23,16 +23,16 @@ def decode(f):
 
 # THE BUILDINGS DATASF DOES NOT HAVE (newb_prep.py): OpenStreetMap records
 # (ODbL, (c) OpenStreetMap contributors) in this same schema, flagged
-# src='osm'. With NEWB=1 they are appended, and the low DataSF records a new
+# src='osm'. They are appended (NEWB=0: not), and the low DataSF records a new
 # tower stands on (the lot before it) are dropped from its year on (ERA, the
 # year hq_city/hq_scene show; unset = today). NEWB_FILE overrides the file.
 NEWB_FILES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'newb_records.json'),
               '/Users/daniel/code/qipu-render-work/newbuildings/osm_records.json']
 _NB = None
 def newb():
-    """(records, DataSF gids they replace in the ERA shown); empty when NEWB is off"""
+    """(records, DataSF gids they replace in the ERA shown); empty with NEWB=0"""
     global _NB
-    if os.environ.get('NEWB', '0') != '1': return [], set()
+    if os.environ.get('NEWB', '1') != '1': return [], set()
     if _NB is None:
         _NB = ([], set())
         p = os.environ.get('NEWB_FILE') or next((q for q in NEWB_FILES if os.path.exists(q)), None)
