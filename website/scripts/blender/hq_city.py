@@ -353,6 +353,14 @@ def tree_scale(kind, crown):
     return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]),
                HMAX[kind] / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
+# EVERY DRAW BY PLACE, NEVER BY ORDER. A generator stepped through the region's
+# own list gives the same tree or kerb a different draw in two adjacent frames'
+# builds (their regions differ), so cars and trees were cut or doubled along
+# frame seams (life agent, 24/09). hp(x, y, salt) in [0, 1) depends on the place.
+def hp(x, y, salt):
+    h = (int(round(x * 10)) * 73856093) ^ (int(round(y * 10)) * 19349663) ^ (salt * 83492791)
+    h = (h ^ (h >> 13)) * 0x5bd1e995 & 0xffffffff
+    return ((h ^ (h >> 15)) & 0xffffff) / float(0x1000000)
 # WHAT THE ENGINE'S 'trees' LAYER HOLDS. Only the Lambert meshes are trees
 # (the register, 195,310 crowns, listed once per zoom band). The Basic meshes
 # are the dark CONTACT DISCS painted under them (layers/canopy-shadow.ts): one
@@ -378,13 +386,13 @@ for t in d['trees']:
         x, y = f_
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
         if ERA is not None and not park:
-            if r.random() > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
+            if hp(x, y, 1) > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         # parks: mostly broadleaf, some Monterey pine; firs only now and then
-        kind = (K_BROAD + r.randrange(len(BROAD)) if r.random() < 0.8 else K_PINE + r.randrange(len(PINE))) if park else r.randrange(NS)
+        kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         crown = max(3.0, 2.0 * sxz)
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
 # register already has a tree there
@@ -397,10 +405,10 @@ for (x, y, z, rad, *_rest) in MASS:
     gz_ = ground(x, y)
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
-    kind = K_BROAD + r.randrange(len(BROAD)) if r.random() < 0.85 else K_PINE + r.randrange(len(PINE))
+    kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     crown = max(4.0, float(E("CANOPY_K", 3.0)) * rad)
     seen.add((round(x / 2.5), round(y / 2.5)))
-    pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * r.uniform(0.85, 1.15), r.uniform(0, 6.283), kind))
+    pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg, 'of', len(MASS))
 instancer('trees', pts, protos)
 
@@ -431,11 +439,11 @@ for a, b, outv in SE:
     ang = math.atan2(v.y, v.x)
     occ = 0.62 if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
     for i in range(int((L_ - 3) // 6.2)):
-        if r.random() > occ: continue
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
+        if hp(p.x, p.y, 11) > occ: continue
         if not in_box(p.x, p.y): continue
         if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue
-        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if r.random() < 0.5 else 0), r.randrange(len(car_colls))))
+        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if hp(p.x, p.y, 12) < 0.5 else 0), int(hp(p.x, p.y, 13) * len(car_colls))))
 instancer('cars', cpts, car_colls)
 
 # ── the sea ──────────────────────────────────────────────────────────────────
