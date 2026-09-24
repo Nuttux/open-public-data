@@ -517,9 +517,13 @@ def _clear_freeway_parking(bpy, sc, D, inb, log):
 def _instancer(bpy, coll, name, pts, protos, kinds, crand):
     """instances on points: (x, y, z, pitch, yaw); kinds: the proto per point;
     crand: a number per point from its place, for the shaders' randomness"""
+    # Collection Info (Separate Children) sorts the children BY NAME: each proto
+    # goes in a wrapper named by its index, so 'kind' picks the proto it means
+    # (the same fix as hq_city.instancer, 24/09)
     root = bpy.data.collections.new(f'{name}_protos')
-    for c in protos:
-        try: root.children.link(c)
+    for i, c in enumerate(protos):
+        w = bpy.data.collections.new(f'{name}_k{i:04d}'); root.children.link(w)
+        try: w.children.link(c)
         except Exception: pass
     me = bpy.data.meshes.new(name); me.vertices.add(len(pts))
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])

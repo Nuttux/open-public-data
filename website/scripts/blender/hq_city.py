@@ -307,8 +307,13 @@ def load_collection(asset):
 
 def instancer(name, pts, protos):
     """pts: (x, y, z, scale, rot, kind); protos: collections, one per kind"""
+    # Collection Info (Separate Children) hands the children over SORTED BY NAME,
+    # not in link order: 'fir…' and 'tree_small…' came before 'veg_…', and every
+    # kind drew a proto five places off (Sutro's blue gums as small Poly Haven
+    # trees; trees agent, 24/09). Each proto goes in a wrapper named by its index.
     root = bpy.data.collections.new(f'{name}_protos')
-    for c in protos: root.children.link(c)
+    for i, c in enumerate(protos):
+        w = bpy.data.collections.new(f'{name}_k{i:04d}'); w.children.link(c); root.children.link(w)
     me = bpy.data.meshes.new(name); me.vertices.add(len(pts))
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     for nm, k, tp in (('s', 3, 'FLOAT'), ('r', 4, 'FLOAT'), ('kind', 5, 'INT')):
