@@ -626,8 +626,11 @@ def flat_roof(b, rng, ax_u):
 def _load_roofs():
     import os, json
     if os.environ.get('ROOFS', '0') != '1': return {}
-    p = os.environ.get('ROOFS_FILE', '/Users/daniel/code/qipu-render-work/roofs/roofs.json')
+    # a pass reads the copy frozen next to its snapshot of the scripts; a test the live one
+    here = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'roofs.json')
+    p = os.environ.get('ROOFS_FILE') or (here if os.path.exists(here) else '/Users/daniel/code/qipu-render-work/roofs/roofs.json')
     if not os.path.exists(p): return {}
+    print('[roofs]', p, flush=True)
     c = float(os.environ.get('ROOFS_CONF', 0.5))
     return {int(g): v for g, v in json.load(open(p))['roofs'].items() if v[4] >= c and v[3] not in ('tree', 'shadow')}
 ROOF_M = _load_roofs()
