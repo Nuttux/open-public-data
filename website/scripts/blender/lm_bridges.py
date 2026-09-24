@@ -23,6 +23,7 @@ ORANGE = hexc('#c2432d')
 ORANGE_D = hexc('#a8381f')
 CONC = hexc('#b8b2a4')
 CONC_D = hexc('#9d978a')
+BAY_CONC = hexc('#cdcbc4'); BAY_CONC_D = hexc('#b3b0a8')   # the Bay Bridge's central anchorage: pale grey-white concrete (HAER CA-32 photos), not the Golden Gate's warm buff
 ASPH = hexc('#3a3a3c')
 WALK = hexc('#8f8b84')
 
@@ -436,11 +437,11 @@ def bay_bridge(C):
     # the central anchorage: a concrete mass from the bay to above the deck
     va = BAY_W4
     ring = [P(-17.0, va - 34.0)[:2], P(17.0, va - 34.0)[:2], P(17.0, va + 34.0)[:2], P(-17.0, va + 34.0)[:2]]
-    K.prism('concrete', [P(-19.0, va - 36.0)[:2], P(19.0, va - 36.0)[:2], P(19.0, va + 36.0)[:2], P(-19.0, va + 36.0)[:2]], -4.0, 10.0, CONC_D)
-    K.prism('concrete', ring, 10.0, bay_road(va) - BAY_TRUSS - 1.0, CONC)
-    K.box('concrete', F, -14.5, 14.5, va - 26.0, va + 26.0, bay_road(va) - BAY_TRUSS - 1.0, bay_road(va) + 8.5, CONC)
+    K.prism('pl_conc', [P(-19.0, va - 36.0)[:2], P(19.0, va - 36.0)[:2], P(19.0, va + 36.0)[:2], P(-19.0, va + 36.0)[:2]], -4.0, 10.0, BAY_CONC_D)
+    K.prism('pl_conc', ring, 10.0, bay_road(va) - BAY_TRUSS - 1.0, BAY_CONC)
+    K.box('pl_conc', F, -14.5, 14.5, va - 26.0, va + 26.0, bay_road(va) - BAY_TRUSS - 1.0, bay_road(va) + 8.5, BAY_CONC)
     for vv in (va - 26.0, va + 26.0):
-        K.box('concrete', F, -14.5, 14.5, vv - 1.5, vv + 1.5, bay_road(va) + 8.5, bay_road(va) + 11.0, CONC_D)
+        K.box('pl_conc', F, -14.5, 14.5, vv - 1.5, vv + 1.5, bay_road(va) + 8.5, bay_road(va) + 11.0, BAY_CONC_D)
     # the San Francisco anchorage (Rincon Hill) and the Yerba Buena one
     for (v0, v1) in ((-600.0, -520.0), (BAY_YBA - 10.0, BAY_YBA + 40.0)):
         g = min(tg(*P(0, v0)[:2]), tg(*P(0, v1)[:2]))
