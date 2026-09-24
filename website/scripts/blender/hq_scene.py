@@ -866,7 +866,7 @@ def hill_ground(d, box=None, name='ground', geom=None):
     if _GM.get('gw') is not None:
         # what the photo says each patch of open ground is (ground_hq.py)
         import ground_hq as _gh
-        c, wetf, wildc, hv = _gh.shade(b, sample, _GM['gw'], c, hill, lw, g, NEU, yd, yardf)
+        c, wetf, wildc, hv = _gh.shade(b, sample, _GM['gw'], c, hill, lw, g, NEU, yd, yardf, lawn)
     b.put(pr.inputs['Base Color'], c)
     # relief: the brush's domes, the rock's blocks and the grass's tussocks
     # catch the low sun

@@ -126,7 +126,7 @@ def images(W):
         out.append(im)
     return out
 
-def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None):
+def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     """the ground's colour where the photo says what it is: the class
     materials laid over hill_ground's own composition `old` by their soft
     shares (the hills — golden grass, coyote brush, chert — stay the wild
@@ -202,6 +202,16 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None):
     if yd is not None and yardf is not None:
         so = b.mix(yardf, so, yd)
         hill = b.mix(b.math('MULTIPLY', yardf, 0.5), hill, yd); x = hill
+    # THE WATERED LAWN the photo finds (a park's, a garden's, a playing
+    # field): an even, clean green with a mower's stripes, not hill_ground's
+    # tired lawn with its dry drifts and bare earth (Alamo Square read patchy
+    # olive and brown, 24/09: real aerials show it bright and even)
+    if scan is not None:
+        lw = b.mix(1.0, scan, (0.80, 0.90, 0.58), 'MULTIPLY')
+        lw = b.mix(b.ramp(b.noise(1 / 40.0, 2.0, vec=b.vmap(1.0, loc=(9.0, 3.0, 0))), 0.0, 0.35, 0.4, 0.75), lw, b.mix(1.0, lw, (1.1, 1.04, 0.85), 'MULTIPLY'))
+        sp_ = b.n('ShaderNodeSeparateXYZ'); b.put(sp_.inputs[0], b.pos)
+        uu = b.math('ADD', b.math('MULTIPLY', sp_.outputs[0], math.cos(0.14)), b.math('MULTIPLY', sp_.outputs[1], math.sin(0.14)))
+        lw = b.mix(1.0, lw, b.math('ADD', 0.96, b.math('MULTIPLY', b.ramp(b.math('SINE', b.math('MULTIPLY', uu, math.pi / 4.0)), 0.0, 1.0, -0.3, 0.3), 0.08)), 'MULTIPLY')
     L_ = [(tree, du), (soil, so), (marsh, mh), (water, md), (lawn, lw), (grav, gv), (asph, ap), (conc, co)]
     if os.environ.get('GROUND_SAND', '1') == '1': L_ += [(sand, sd), (wet, ws)]      # the beaches (the water agent may own them)
     for w_, col_ in L_:
@@ -215,8 +225,9 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None):
         d_ = b.math('SUBTRACT', b.math('MULTIPLY', t_, 255.0 / 127.0), 128.0 / 127.0)
         # a watered lawn keeps its light patches but not its dark ones (the
         # photo's tree shadows lay dark streaks across Dolores Park, integ1)
-        dn = b.math('MULTIPLY', b.math('MINIMUM', d_, 0.0), b.math('SUBTRACT', 1.0, b.math('MULTIPLY', sh(lawn), 0.8)))
-        dp = b.math('MAXIMUM', d_, 0.0)
+        lk_ = b.math('SUBTRACT', 1.0, b.math('MULTIPLY', sh(lawn), 0.8))       # a lawn keeps a fifth of the photo's grain
+        dn = b.math('MULTIPLY', b.math('MINIMUM', d_, 0.0), lk_)
+        dp = b.math('MULTIPLY', b.math('MAXIMUM', d_, 0.0), b.math('ADD', 0.4, b.math('MULTIPLY', lk_, 0.6)))
         # darker ground is warmer, not bluer (damp earth, trodden grass): the
         # dark share cuts blue more than red (a plain multiply turned the
         # beach's damp patches lilac-grey, integ1)

@@ -137,7 +137,39 @@ def _enc(a):
     import base64
     return base64.b64encode(np.ascontiguousarray(a, dtype=np.float32).tobytes()).decode()
 
+BATHY = '/Users/daniel/code/qipu-render-work/landmarks/bathy_8m.npy'
+BATHY_META = '/Users/daniel/code/qipu-render-work/landmarks/bathy_8m.json'
+_BA = None
+def _sea_depth(X, Y):
+    """the sea's depth (m, > 0) under the water nodes: USGS topobathy
+    (landmarks/bathy_8m, water_hq's) where it reads more than half a metre,
+    else a shelf 5 cm deeper per metre out, to 15 m at most; and nothing
+    within 20 m of the OSM coastline, where the swash is the ground's own (a
+    node sunk at the shore made a lit cliff of every grid cell along the
+    waterline, gnd20)"""
+    global _BA
+    if _BA is None:
+        try: _BA = (np.load(BATHY).astype(np.float32), json.load(open(BATHY_META)))
+        except Exception: _BA = False
+    lm, sdn = _coast(X, Y)
+    off = np.where(np.isnan(sdn), 400.0, np.maximum(-sdn, 0.0)) if sdn is not None else np.full(np.shape(X), 400.0)
+    D = np.clip(0.05 * (off - 20.0), 0.0, 60.0)
+    if _BA:
+        B, m = _BA
+        c = ((np.asarray(X) - m['x0']) / m['res']).astype(np.int64); r = ((m['y1'] - np.asarray(Y)) / m['res']).astype(np.int64)
+        ok = (c >= 0) & (c < B.shape[1]) & (r >= 0) & (r < B.shape[0])
+        Bd = np.zeros(np.shape(X), np.float32); Bd[ok] = np.nan_to_num(B[r[ok], c[ok]])
+        D = np.where(Bd > 0.5, np.minimum(Bd, D), np.minimum(D, 15.0))          # the measured depth, never deeper than the shelf allows (a jump to it at 20 m was a cliff, gnd23)
+    else:
+        D = np.minimum(D, 15.0)
+    return D.astype(np.float32)
+
 SEA_MASK_SOUTH = -5760.0      # (world y) the engine's sea mask has no water south of this
+def _mask_off(g, X, Y):
+    """where the render's sea mask does not speak: outside its square, and
+    south of the county line, where the engine's sea stops (sea.png reads
+    land over the whole Pacific south of y -5785: the slab across 0:6)"""
+    return (X < g['ox']) | (X > g['ox'] + g['w']) | (Y < g['oy']) | (Y > g['oy'] + g['h']) | (Y < SEA_MASK_SOUTH)
 def _water_mask(sd, x0, y0, step, nx, ny):
     """the render's own land/water mask (water_mask.py's sea.png, R = water)
     sampled on the grid; None if the scene has none"""
@@ -163,11 +195,7 @@ def _water_mask(sd, x0, y0, step, nx, ny):
     # (frame 0:6, the 'sliver with a black line', 2026-09-24). There the OSM
     # coastline decides, or where it does not reach, the ground's own height
     X, Y = np.meshgrid(xs, ys)
-    out = (X < g['ox']) | (X > g['ox'] + g['w']) | (Y < g['oy']) | (Y > g['oy'] + g['h'])
-    # and the engine's sea stops at the county line (sea.png reads land over
-    # the whole Pacific south of y -5785: the slab across 0:6): south of it
-    # too, the coastline decides
-    out |= Y < SEA_MASK_SOUTH
+    out = _mask_off(g, X, Y)
     if out.any():
         lm, _ = _coast(X, Y)
         Zt = np.nan_to_num(true_ground(X, Y), nan=-9.0)
@@ -340,12 +368,23 @@ def _correct(d, log, box, sd, res, far, pad, t0):
         if wm is not None:
             # the render's land: never below the water it borders (a fort, a
             # pier shed, a seawall the bare-earth model flattened to the sea)
-            Z = np.where(~wm, np.maximum(Z, 0.6), Z)
+            # (not where the OSM coastline stands in for the mask: its land
+            # lifted to 0.6 m made a lit cliff of every cell along Fort
+            # Funston's waterline, gnd22 — the ground's own height meets the sea)
+            try: off_ = _mask_off(json.load(open(os.path.join(sd, 'sea.json'))), X, Y)
+            except Exception: off_ = np.zeros(Z.shape, bool)
+            Z = np.where(~wm & ~off_, np.maximum(Z, 0.6), Z)
             # and the water under the water: 3DEP's own beach toe (another
             # tide) and its nodata zeros stood through the sea sheet (z 0.12)
             # and the ocean plane (-0.5) as strips in the surf off Ocean Beach
             # and a slab at 0:6 (2026-09-24)
-            Z = np.where(wm, np.minimum(Z, -0.9), Z)
+            # (at -0.9 the turbid sea showed its sand floor as khaki mud off
+            # Fort Funston: the measured depth where the bathymetry has one,
+            # else a shelf falling 4 cm a metre to 15 m beyond the surf)
+            # Only where the OSM coastline agrees it is water: where the old
+            # mask calls the upper beach water, a sunk node dug a pit whose lit
+            # walls read as peach lines along Fort Funston (gnd18)
+            Z = np.where(wm & (_coast(X, Y)[0] != 1), np.minimum(Z, np.where(_sea_depth(X, Y) > 0, -_sea_depth(X, Y), np.inf)), Z)
             # pier sheds over the water stand on a deck (without ground under
             # their corners hq_city's generator skipped them: hollow piers)
             pm, rings = _pier_nodes(recs_, x0, y0, step, nx, ny, wm)
@@ -359,7 +398,10 @@ def _correct(d, log, box, sd, res, far, pad, t0):
         # was there (a pier's buildings stand on it)
         zmax = np.maximum.reduce([Z[:-1, :-1], Z[:-1, 1:], Z[1:, 1:], Z[1:, :-1]])
         c = cov[:-1, :-1] | cov[:-1, 1:] | cov[1:, 1:] | cov[1:, :-1]
-        return c | (zmax > -3.0)
+        # (the sea is not opaque: its floor shows through the shallows, and a
+        # dropped cell was a hole seen through the water — orange posts along
+        # Fort Funston's surf once the seabed was sunk to its depth, gnd24)
+        return c | (zmax > -80.0)
     cov_, pier_, piers_ = [], [], []
     try:
         import city_data

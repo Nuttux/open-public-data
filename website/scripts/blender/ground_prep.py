@@ -549,10 +549,20 @@ def south_records():
     json.dump(dict(meta=meta, records=recs, replaces=[]), open(SOUTH_OUT, 'w'))
     print('south records', dict(why), collections.Counter(r['ty'] for r in recs).most_common(8))
 
+def naip_rgb(x0, y0, x1, y1, out, res=0.5):
+    """the aerial photo itself (NAIP 2022, true colour, north up) over a world
+    box: the reference a render crop is judged against"""
+    from PIL import Image
+    x0, y0, x1, y1, res = map(float, (x0, y0, x1, y1, res))
+    DN, AL, ndvi, ok = patch(x0, y0, x1, y1, res)
+    A = np.clip(255 * (np.clip(AL.transpose(1, 2, 0), 0, 1) * 1.4) ** (1 / 2.2), 0, 255).astype(np.uint8)[::-1]
+    Image.fromarray(A).save(out, quality=90); print(out, A.shape)
+
 if __name__ == '__main__':
     cmd = sys.argv[1]
     if cmd == 'probe': probe(*sys.argv[2:7])
     if cmd == 'build': build(int(sys.argv[2]) if len(sys.argv) > 2 else 3)
     if cmd == 'refine': refine(*sys.argv[2:4])
     if cmd == 'south': south_records()
+    if cmd == 'naip': naip_rgb(*sys.argv[2:8])
     if cmd == 'tone': build_tone(int(sys.argv[2]) if len(sys.argv) > 2 else 2)
