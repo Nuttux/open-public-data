@@ -18,13 +18,14 @@ import bpy
 HERE = os.path.dirname(os.path.abspath(__file__))
 PY = os.environ.get('RN_PYTHON', '/Library/Frameworks/Python.framework/Versions/3.12/bin/python3')
 DIR = os.environ.get('RN_DIR', '/Volumes/DANI-SD-DRIVE2/qipu-roofnaip')
-ROOF_MATS = ('roof_flat', 'roof_big', 'roof_shingle', 'roof_tile')
+RATIO = os.environ.get('RN_MODE', 'photo') == 'ratio'     # variant B (see roof_naip_prep.py)
+ROOF_MATS = ('roof_flat', 'roof_big') if RATIO else ('roof_flat', 'roof_big', 'roof_shingle', 'roof_tile')
 
 def region_image(box):
     x0, y0, x1, y1 = [float(v) for v in box]
     key = hashlib.md5(f'{x0:.1f},{y0:.1f},{x1:.1f},{y1:.1f}'.encode()).hexdigest()[:12]
-    out = f'{DIR}/crops/crop_{key}.png'
-    mm = f'{DIR}/mosaic.u8'
+    out = f'{DIR}/crops/crop_{key}' + ('_ratio' if RATIO else '') + '.png'
+    mm = f'{DIR}/mosaic_ratio.u8' if RATIO else f'{DIR}/mosaic.u8'
     if not os.path.exists(mm): print('ROOF_NAIP: no mosaic at', mm, '- procedural roofs', flush=True); return None, None
     if not os.path.exists(out + '.json') or os.path.getmtime(out) < os.path.getmtime(mm):
         os.makedirs(f'{DIR}/crops', exist_ok=True); t0 = time.time()
@@ -37,7 +38,7 @@ def attach(M, box, grain=0.12):
     path, meta = region_image(box)
     if path is None: return
     im = bpy.data.images.load(path, check_existing=True)
-    im.alpha_mode = 'CHANNEL_PACKED'; im.colorspace_settings.name = 'sRGB'
+    im.alpha_mode = 'CHANNEL_PACKED'; im.colorspace_settings.name = 'Non-Color' if RATIO else 'sRGB'
     bx0, by0, bx1, by1 = meta['box']
     print('ROOF_NAIP:', os.path.basename(path), meta['w'], 'x', meta['h'], 'roof fraction', round(meta['frac'], 3), flush=True)
     for name in ROOF_MATS:
@@ -67,7 +68,15 @@ def attach(M, box, grain=0.12):
         mu = N('ShaderNodeMix'); mu.data_type = 'RGBA'; mu.blend_type = 'MULTIPLY'; mu.inputs[0].default_value = 1.0
         L(tx.outputs['Color'], mu.inputs[6]); L(gr.outputs[0], mu.inputs[7])
         mx = N('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MIX'; L(a.outputs[0], mx.inputs[0])
+        L(mu.outputs[2], mx.inputs[7])
+        if RATIO:     # the procedural roof x (2 x ratio) where there is a photo roof, x 1 elsewhere
+            mx.inputs[6].default_value = (0.5, 0.5, 0.5, 1.0)
+            if src is None: continue
+            k2 = N('ShaderNodeMix'); k2.data_type = 'RGBA'; k2.blend_type = 'MULTIPLY'; k2.inputs[0].default_value = 1.0
+            L(src, k2.inputs[6]); L(mx.outputs[2], k2.inputs[7])
+            k3 = N('ShaderNodeMix'); k3.data_type = 'RGBA'; k3.blend_type = 'MULTIPLY'; k3.inputs[0].default_value = 1.0
+            L(k2.outputs[2], k3.inputs[6]); k3.inputs[7].default_value = (2.0, 2.0, 2.0, 1.0)
+            L(k3.outputs[2], bc); continue
         if src is not None: L(src, mx.inputs[6])
         else: mx.inputs[6].default_value = tuple(bc.default_value)
-        L(mu.outputs[2], mx.inputs[7])
         L(mx.outputs[2], bc)

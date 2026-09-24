@@ -33,7 +33,12 @@ RES = 0.3
 X0, X1, Y0, Y1 = -7000.0, 7600.0, -6500.0, 8400.0
 GW, GH = int(round((X1 - X0) / RES)), int(round((Y1 - Y0) / RES))
 DIR = os.environ.get('RN_DIR', '/Volumes/DANI-SD-DRIVE2/qipu-roofnaip')
-MM = f'{DIR}/mosaic.u8'
+# RN_MODE=ratio (variant B): flat roofs only, the photo as a MODULATION of the
+# procedural roof (its patches, recoats, panel arrays, decks >= 1.5 m; the
+# small dark and bright blots — units and their shade — removed), linear,
+# 0.5 = the roof's median; the procedural texture, kit and colour stay
+RATIO = os.environ.get('RN_MODE', 'photo') == 'ratio'
+MM = f'{DIR}/mosaic_ratio.u8' if RATIO else f'{DIR}/mosaic.u8'
 RW = '/Users/daniel/code/qipu-render-work'
 ROOFS_FILE = os.environ.get('RN_ROOFS', f'{RW}/roofs/roofs_v8.json')
 LIDAR_FILE = f'{RW}/lidar/roofs_lidar_city.json'
@@ -185,6 +190,17 @@ def bake_item(k):
             # c. the colour: chroma variation softened; the roof's measured colour as its median
             Y_ = np.maximum(_lum(A), 1e-4); med = np.median(A[:, st], 1); mc = med / max(_lum(med), 1e-4)
             A = Y_[None] * (mc[:, None, None] + 0.8 * (A / Y_[None] - mc[:, None, None]))
+            if RATIO:
+                from scipy.ndimage import grey_opening, grey_closing
+                if pitched: n_skip += 1; continue
+                med = np.maximum(np.median(A[:, st], 1), 1e-4); Rt = A / med[:, None, None]
+                Yr = np.maximum(_lum(Rt), 1e-4); Yc = grey_closing(grey_opening(Yr, size=5), size=5)
+                Rt = gaussian_filter(Rt * (Yc / Yr)[None], (0, 1.0, 1.0), mode='nearest')
+                Yr = np.maximum(_lum(Rt), 1e-4); Rt = Yr[None] * (1.0 + 0.6 * (Rt / Yr[None] - 1.0))
+                out = np.empty((hh, w, 4), np.uint8)
+                out[..., :3] = (np.clip(0.5 * Rt, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8); out[..., 3] = 255
+                win = M[gy0:gy1, gx0:gx1]; wr = inside | (buf & (win[..., 3] == 0)); win[wr] = out[wr]
+                n_ok += 1; continue
             if m is not None:
                 tg = _target(m, pitched); med = np.maximum(np.median(A[:, st], 1), 1e-4)
                 A = A * np.clip(tg / med, 0.35, 3.0)[:, None, None]
