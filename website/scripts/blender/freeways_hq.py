@@ -25,7 +25,10 @@ OpenStreetMap ways, deck heights MEASURED by the USGS 3DEP LiDAR, class 17):
     across a surface street (the bent slides up to 12 m, or is left out) nor
     through a lower deck;
   * the ground UNDER it paved (the lots under the SoMa viaducts), 6 m past
-    each edge.
+    each edge;
+and every motorway carriageway AT GRADE (the approaches, 101 and 280 on the
+ground) paved: the engine's street file has no freeway, hq_city drew them as
+lawn with lane dashes.
 And the at-grade copy is taken away where the deck stands 1.2 m or more over
 the ground: the engine's street triangles, markings and kerbs that are not on
 a surface street (OSM), the parked cars there, the trees (none grows under a
@@ -41,8 +44,10 @@ north of Market 1959-2003).
 
 env: FREEWAYS=0 (nothing built, deck_z() answers None) · FW_LOTS=0 (no paving
      under the decks) · FW_HIDE=0 (the at-grade copy left as it was) ·
-     FW_GRADE=1 (under test: the motorways at grade paved too, their lane
-     dashes on the lawn set aside; deck_z() then answers on them as well)
+     FW_GRADE=0 (the motorways at grade left as the engine drew them: lawn
+     with lane dashes; by default they are paved, draped on the ground, their
+     dashes, kerbs, parked cars, shards and the trees of their 9 m clear zone
+     set aside, and deck_z() answers on them as well)
 
 Sources: OpenStreetMap (ODbL, (c) OpenStreetMap contributors); USGS 3DEP
 LiDAR CA_SanFrancisco_1_B23 and bare earth (public domain).
@@ -60,6 +65,7 @@ SPAN = 30.0          # bent spacing (m)
 PARA_H, PARA_W = 0.85, 0.35
 LOT_M = 6.0          # paving past each deck edge (m)
 DASH, GAP = 3.66, 8.5
+GG_S = (-3510.76, 6012.75)     # the Golden Gate's south tower (lm_bridges)
 
 _F = None
 
@@ -110,7 +116,7 @@ def deck_z(way_id, x, y):
     if w is None: return None
     _, dist, z, h = _proj(w, float(x), float(y))
     if dist > w['width'] / 2 + 4.0: return None
-    if h < H_BUILT: return z + 0.03 if E('FW_GRADE', '0') == '1' else None    # the pavement at grade (json z: ground + 0.10)
+    if h < H_BUILT: return z + 0.03 if E('FW_GRADE', '1') == '1' else None    # the pavement at grade (json z: ground + 0.10)
     return z + _bias(w)
 
 
@@ -258,12 +264,15 @@ def _build(bpy, sc, M, ground, box, log, t0, ways=None, name='freeways', hide=Tr
     # the carriageways at grade (and the at-grade ends of the elevated ones):
     # a pavement draped on the ground
     RG = []
-    if E('FW_GRADE', '0') == '1' and ways is None:
+    if E('FW_GRADE', '1') == '1' and ways is None:
         for w in W:
             P = w['_P']; H = w['_H']
+            if w['hw'] not in ('motorway', 'motorway_link'): continue    # the trunk roads are in the City's street file
             for a, b in _runs(H < H_BUILT):
                 if b - a < 1: continue
                 Q = P[a:b + 1].copy(); s_ = np.asarray(w['s'][a:b + 1], np.float64)
+                # the Golden Gate's approach and toll plaza are the landmarks agent's
+                if np.hypot(Q[:, 0] - GG_S[0], Q[:, 1] - GG_S[1]).min() < 900: continue
                 if not any(inb(x, y, 60) for x, y in Q[:, :2]): continue
                 tg = np.gradient(Q[:, :2], axis=0); tg /= np.maximum(1e-9, np.linalg.norm(tg, axis=1))[:, None]
                 RG.append(dict(w=w, Q=Q, s=s_, T=tg, N=np.stack([-tg[:, 1], tg[:, 0]], 1), half=w['width'] / 2,
@@ -285,7 +294,7 @@ def _build(bpy, sc, M, ground, box, log, t0, ways=None, name='freeways', hide=Tr
             # lateral distance to that deck's centre line near sample k
             q = r['Q'][k, :2]; t = r['T'][k]; dx, dy = x - q[0], y - q[1]
             lat = abs(-dx * t[1] + dy * t[0]); lon = abs(dx * t[0] + dy * t[1])
-            if lon <= 2.0 and lat < r['half'] + extra: out.append((float(r['z'][k]), r['half'], rj, r['T'][k]))
+            if lon <= 2.6 and lat < r['half'] + extra: out.append((float(r['z'][k]), r['half'], rj, r['T'][k]))
         return out
     # the surface streets (a pier never stands across one)
     SR = []
@@ -458,7 +467,7 @@ def _hide_grade(bpy, sc, R, RG, roads_at, kd, ref, maxhalf, log):
             ri, k = refs[idx]; r = RR[ri]
             if r['h'][k] < hmin: continue
             q = r['Q'][k, :2]; t = r['T'][k]; dx, dy = x - q[0], y - q[1]
-            if abs(dx * t[0] + dy * t[1]) <= 2.0 and abs(-dx * t[1] + dy * t[0]) < r['half'] + extra: return True
+            if abs(dx * t[0] + dy * t[1]) <= 2.6 and abs(-dx * t[1] + dy * t[0]) < r['half'] + extra: return True
         return False
     def in_corr(x, y, extra, grade=False):
         return (len(ref) and _in(kd, ref, R, x, y, extra, H_HIDE)) or (grade and len(rg) and _in(kg, rg, RG, x, y, extra, -1.0))
@@ -486,11 +495,15 @@ def _hide_grade(bpy, sc, R, RG, roads_at, kd, ref, maxhalf, log):
             cx = sum(c.x for c in co) / len(co); cy = sum(c.y for c in co) / len(co)
             return not roads_at(cx, cy, road_extra)
         return t
-    split('streets', tri_test(2.0, 0.0))
+    # (the engine's right-of-way slivers under a paved carriageway: some stand
+    # up as shards through the pavement)
+    split('streets', tri_test(2.0, 0.0, True, 0.5))
     split('markings', tri_test(2.0, 0.0, True, 1.0))
     split('sidewalks', tri_test(2.0, 4.0, True, 0.5))
     split('cars', tri_test(1.0, 0.0, True, 0.5), verts=True)
-    split('trees', lambda co: in_corr(co[0].x, co[0].y, 3.0) or in_corr(co[0].x, co[0].y, 0.5, True), verts=True)
+    # no tree under a deck, nor in a freeway's clear zone (Caltrans: 30 ft from
+    # the travelled way; a canopy tree's crown here is 8-16 m wide)
+    split('trees', lambda co: in_corr(co[0].x, co[0].y, 3.0) or in_corr(co[0].x, co[0].y, 9.0, True), verts=True)
     log('freeways_hq: at-grade copy set aside', out)
 
 
