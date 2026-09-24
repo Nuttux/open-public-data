@@ -232,6 +232,11 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     # read as brown dirt, 24/09; real ones are green gardens)
     if yd is not None and yardf is not None:
         gw_ = b.math('MINIMUM', b.math('ADD', b.math('ADD', b.math('ADD', soil, dry), b.math('ADD', grav, scrub)), tree), 1.0)
+        # [vegetation agent, 24/09, CANOPY=1] the yard trees now stand where the
+        # photo's canopy is (veg_canopy.py): its ground stays the shaded duff
+        # under them, not garden lawn
+        if os.environ.get('CANOPY', '0') == '1':
+            gw_ = b.math('MINIMUM', b.math('ADD', b.math('ADD', soil, dry), b.math('ADD', grav, scrub)), 1.0)
         shrub = b.mix(b.ramp(b.noise(1 / 6.0, 3.0, vec=b.vmap(1.0, loc=(5.0, 1.0, 0))), 0.0, 1.0, 0.35, 0.65), (0.030, 0.058, 0.018), (0.042, 0.074, 0.022))
         garden = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-3.0, 8.0, 0))), 0.0, 1.0, 0.42, 0.58), lw, shrub)
         x = b.mix(b.math('MULTIPLY', b.ramp(yardf, 0.0, 1.0, 0.2, 0.6), sh(gw_)), x, garden)

@@ -108,6 +108,17 @@ class Kinds:
         self.kst, nst = tree_of(D['st_x'], D['st_y'])
         self.h_arch = D['h_arch']; self.khi, nh = tree_of(D['h_x'], D['h_y'])
         self.drop_none = os.environ.get('VEG_DROP_NONE', '1') == '1'
+        # THE REAL CANOPY (veg_canopy.py: LiDAR crowns where NAIP sees leaves,
+        # off the footprints, not on a listed tree): with CANOPY=1 each crown is
+        # planted at its measured height and width, and the engine's canopy
+        # masses (discs of a coarser measure) are no longer planted
+        cp = os.path.join(VEG, 'canopy_trees.npz')
+        self.canopy_on = os.environ.get('CANOPY', '0') == '1' and os.path.exists(cp)
+        if self.canopy_on:
+            Q = np.load(cp); cx, cy = Q['x'], Q['y']
+            sel = np.ones(len(cx), bool) if box is None else (cx > box[0] - 80) & (cx < box[2] + 80) & (cy > box[1] - 80) & (cy < box[3] + 80)
+            self.can = dict(x=cx[sel], y=cy[sel], h=Q['height'][sel], w=Q['crown'][sel], k=Q['kind'][sel]); self.can_names = [str(v) for v in Q['kind_names']]
+            log('veg canopy crowns in the region:', int(sel.sum()), 'of', len(cx))
         self.stats = {}
         log('veg data: listed street trees', nst, 'OSM tree hints', nh, 'zones', len(self.zones))
 
@@ -173,6 +184,7 @@ class Kinds:
         return None
 
     def mass(self, x, y, crown, on_street=None, roofed=None):
+        if self.canopy_on: return None          # the measured crowns (canopy()) stand instead
         r = self.mass4(x, y, crown, on_street, roofed)
         return r if (r is None or on_street is not None) else r[:2]   # legacy callers: (kind, crown)
 
@@ -229,8 +241,43 @@ class Kinds:
             p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
         return k, crown, x, y
 
+    def canopy(self, seen=()):
+        """(x, y, kind, scale, rot) per measured crown: the species' proto
+        scaled between its measured height and width (height weighs more: the
+        silhouette over the roofs), capped at the proto's HMAX; none where the
+        register already planted a tree (hq_city's 2.5 m 'seen' cells)"""
+        if not self.canopy_on: return
+        C = self.can
+        for i in range(len(C['x'])):
+            x, y = float(C['x'][i]), float(C['y'][i])
+            if (round(x / 2.5), round(y / 2.5)) in seen: continue
+            a = self.can_names[int(C['k'][i])]
+            if a not in self.kinds_of: a = 'round'
+            k = self._kind(a, x, y); h, w = float(C['h'][i]), float(C['w'][i])
+            sh, sw = h / max(0.5, self.heights[k]), w / max(0.5, self.widths[k])
+            s_ = sh if a in PALMS else sh ** 0.6 * sw ** 0.4
+            s_ = min(s_, 1.1 * self.hmax[k] / max(0.5, self.heights[k]), 1.6 * sh)
+            self._count(('canopy', a))
+            yield x, y, k, s_, 6.283 * hp(x, y, 5)
+            # A STAND, NOT ONE TREE: a segment much wider than the capped proto
+            # draws (the watershed keeps a closed gum or cypress stand whole,
+            # up to 160 m) is filled with more of its trees, scattered over its
+            # disc, so the woods stay closed (17 % of the canopy area, 24/09)
+            rw = self.widths[k] * s_
+            if a in PALMS or w < 1.4 * rw: continue
+            n = min(24, int(round(0.8 * (w / rw) ** 2))) - 1
+            R = 0.5 * (w - rw)
+            for m in range(n):
+                t_, r_ = 6.283 * hp(x, y, 60 + m), R * math.sqrt(hp(x, y, 90 + m))
+                x2, y2 = x + r_ * math.cos(t_), y + r_ * math.sin(t_)
+                if (round(x2 / 2.5), round(y2 / 2.5)) in seen: continue
+                self._count(('canopy', a))
+                yield x2, y2, k, s_ * (0.75 + 0.25 * hp(x2, y2, 7)), 6.283 * hp(x2, y2, 5)
+
     def report(self, log=print):
         s = self.stats
+        cn = {k[1]: v for k, v in s.items() if k[0] == 'canopy'}
+        if cn: log('veg canopy crowns planted:', sum(cn.values()), dict(sorted(cn.items(), key=lambda kv: -kv[1])))
         log('veg street:', {k[1]: v for k, v in s.items() if k[0] == 'street'},
             'arch:', {k[1]: v for k, v in sorted(s.items(), key=lambda kv: -kv[1]) if k[0] == 'arch'})
         agg = {}
