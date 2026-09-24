@@ -225,3 +225,42 @@ def brush_field(W, XB, YB, old, fbm, ss, bilerp):
     s_ = bilerp(sc, fx, fy, r, XB, YB); h_ = bilerp(hv, fx, fy, r, XB, YB)
     new = ss(0.40, 0.55, s_ + 0.35 * (fbm(XB, YB, 6.0, 3, 23) - 0.5))
     return (h_ * new + (1 - h_) * old).astype(np.float32)
+
+# ── beyond the county line: OSM streets over the surround ──────────────────
+SOUTH_R = '/Users/daniel/code/qipu-render-work/ground/osm/r_south.json'
+ROAD_W = {'motorway': 13.0, 'trunk': 12.0, 'primary': 11.0, 'secondary': 9.5, 'tertiary': 8.5, 'unclassified': 7.0, 'residential': 7.5,
+          'living_street': 6.0, 'service': 4.5, 'motorway_link': 6.5, 'trunk_link': 6.5, 'primary_link': 6.0, 'secondary_link': 6.0, 'tertiary_link': 6.0}
+def south_streets(ground_s, in_city, box, step=6.0, lift=0.12):
+    """the streets of Daly City, Colma and Brisbane (OpenStreetMap, ODbL) as
+    flat ribbons draped on the surround: a flat array of triangle vertices
+    (x, y, z), or None. A point the city's own ground covers is left to the
+    city's streets; `box` (x0, y0, x1, y1) bounds the work"""
+    if os.environ.get('SOUTH', '1') == '0' or not os.path.exists(SOUTH_R): return None
+    KX_ = 111320 * 0.790582709628753
+    P = []
+    for e in json.load(open(SOUTH_R))['elements']:
+        t = e.get('tags', {}); g = e.get('geometry') or []
+        w = ROAD_W.get(t.get('highway'))
+        if w is None or len(g) < 2 or t.get('tunnel') in ('yes',) or t.get('bridge') == 'yes' and t.get('highway') in ('motorway', 'trunk'): continue
+        if t.get('service') in ('parking_aisle', 'driveway', 'drive-through'): continue      # (a lot's aisles read as a dark grid, gnd11: the lot's photo carries them)
+        Q = np.array([((p['lon'] + 122.438) * KX_, (p['lat'] - 37.76) * 111320) for p in g])
+        if box is not None and (Q[:, 0].max() < box[0] or Q[:, 0].min() > box[2] or Q[:, 1].max() < box[1] or Q[:, 1].min() > box[3]): continue
+        # densified, so the ribbon follows the hills
+        pts = [Q[0]]
+        for a, b in zip(Q[:-1], Q[1:]):
+            n = max(1, int(math.ceil(np.hypot(*(b - a)) / step)))
+            pts += [a + (b - a) * (k / n) for k in range(1, n + 1)]
+        pts = np.array(pts)
+        d = np.gradient(pts, axis=0); d /= np.maximum(np.hypot(d[:, 0], d[:, 1])[:, None], 1e-6)
+        nrm = np.stack([-d[:, 1], d[:, 0]], 1) * (w / 2)
+        L_, R_ = pts + nrm, pts - nrm
+        z = []
+        for (x, y) in pts:
+            if in_city(float(x), float(y)): z.append(None); continue
+            z.append(ground_s(float(x), float(y)))
+        for k in range(len(pts) - 1):
+            if z[k] is None or z[k + 1] is None: continue
+            a0, b0, a1, b1 = L_[k], R_[k], L_[k + 1], R_[k + 1]
+            za, zb = z[k] + lift, z[k + 1] + lift
+            P += [a0[0], a0[1], za, b0[0], b0[1], za, a1[0], a1[1], zb, b0[0], b0[1], za, b1[0], b1[1], zb, a1[0], a1[1], zb]
+    return P or None

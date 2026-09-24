@@ -39,8 +39,28 @@ def calib():
     if _CAL is None: _CAL = json.load(open(f'{rp.W}/calib.json'))['calib']
     return _CAL
 
+def _cal(name):
+    """a quad's calibration; a quad the roofs never needed (south of the
+    county line) takes its northern neighbour's (the same flight, same day)"""
+    C = calib()
+    if name in C: return C[name]
+    alt = name.replace('_se_', '_ne_').replace('_sw_', '_nw_')[:15]
+    return next(v for k, v in C.items() if k[:15] == alt)
+
+_ITX = None
+def items_all():
+    """the roofs' NAIP windows (SF) and the ground's own (ground/naip_s: the
+    same quads, and their southern neighbours, down to 37.6745 N)"""
+    global _ITX
+    if _ITX is None:
+        import rasterio, glob
+        _ITX = list(rp.item_index())
+        for p in sorted(glob.glob(f'{OUT}/naip_s/*.tif')):
+            with rasterio.open(p) as s_: _ITX.append(dict(path=p, b=tuple(s_.bounds), tr=s_.transform, w=s_.width, h=s_.height))
+    return _ITX
+
 def _curves(name):
-    c = calib()[name]; dL = np.mean(c['asphalt']) - c['darkL']
+    c = _cal(name); dL = np.mean(c['asphalt']) - c['darkL']
     F = [rp.curve(c['asphalt'][k] - dL, c['asphalt'][k], c['white'][k], rp.ANCH[1] * rp.ASPH_TINT[k]) for k in range(3)]
     off = [c['asphalt'][k] - dL for k in range(3)]
     return F, off, dL
@@ -53,7 +73,7 @@ def patch(x0, y0, x1, y1, res=SUB):
     nx, ny = int(round((x1 - x0) / res)), int(round((y1 - y0) / res))
     X, Y = np.meshgrid(x0 + (np.arange(nx) + 0.5) * res, y0 + (np.arange(ny) + 0.5) * res)
     ux, uy = rp.eng_to_utm(X.ravel(), Y.ravel()); ux = np.asarray(ux); uy = np.asarray(uy)
-    its = rp.item_index()
+    its = items_all()
     depth = np.stack([np.minimum(np.minimum(ux - it['b'][0], it['b'][2] - ux), np.minimum(uy - it['b'][1], it['b'][3] - uy)) for it in its])
     own = depth.argmax(0); ok = depth.max(0) > 2.0
     DN = np.zeros((4, nx * ny), np.float32); AL = np.zeros((3, nx * ny), np.float32); NIRn = np.zeros(nx * ny, np.float32)
@@ -67,7 +87,7 @@ def patch(x0, y0, x1, y1, res=SUB):
         F, off, dL = _curves(os.path.basename(it['path'])[:-4])
         for b in range(3): AL[b, m] = F[b](DN[b, m])
         # NIR: the same haze offset below the band's own asphalt level (~ the red's)
-        NIRn[m] = np.clip((DN[3, m] - (calib()[os.path.basename(it['path'])[:-4]]['asphalt'][0] - dL)), 1, None)
+        NIRn[m] = np.clip((DN[3, m] - (_cal(os.path.basename(it['path'])[:-4])['asphalt'][0] - dL)), 1, None)
     Rn = np.clip(DN[0] - np.array([_curves(os.path.basename(its[k]['path'])[:-4])[1][0] for k in range(len(its))])[own], 1, None)
     ndvi = (NIRn - Rn) / (NIRn + Rn)
     sh = (ny, nx)
@@ -84,6 +104,13 @@ def _buildings():
             for r in json.load(open(q))['rows']: raw[r['gid']] = (r['sx'], r['sy'])
         BB = city_data.buildings(-12000, -12000, 12000, 12000)
         _B = [(np.asarray(b['ring'], np.float64), raw.get(b['gid'], (0.0, 0.0)), b['h']) for b in BB]
+        # south of the county line: the OSM outlines (south_records), leaning
+        # as the city's measured ones do per metre of height (their median)
+        if os.path.exists(SOUTH_OUT):
+            L_ = np.array([(s_[0] / h_, s_[1] / h_) for _, s_, h_ in _B if h_ > 4 and (s_[0] or s_[1])])
+            kx, ky = (np.median(L_, 0) if len(L_) else (0.0, 0.0))
+            for r_ in json.load(open(SOUTH_OUT))['records']:
+                _B.append((np.asarray(r_['ring'], np.float64), (float(kx * r_['h']), float(ky * r_['h'])), r_['h']))
         _B = [(r, s, h, r[:, 0].min(), r[:, 1].min(), r[:, 0].max(), r[:, 1].max()) for r, s, h in _B]
     return _B
 
@@ -254,7 +281,7 @@ def _mode2(c, k):
     cnt[..., 0] = np.where(cnt[..., 0] == k * k, 99, 0)       # 'none' only where nothing else is
     return cnt.argmax(-1).astype(np.uint8)
 
-GX0, GY0, GX1, GY1 = -6950.0, -6500.0, 7550.0, 8400.0      # NAIP's reach (roofs_prep.BBOX) in engine metres
+GX0, GY0, GX1, GY1 = -6950.0, -9300.0, 7550.0, 8400.0      # NAIP's reach (roofs_prep.BBOX, and ground/naip_s south to 37.6745 N) in engine metres
 
 def _one(args):
     bx, by = args
@@ -354,6 +381,16 @@ def tone_block(x0, y0, x1, y1, res=SUB):
         den = uniform_filter(vg, 2 * r + 1, mode='nearest')
         m = uniform_filter(L * vg, 2 * r + 1, mode='nearest') / np.maximum(den, 1e-3)
         x[ing] = (np.clip(np.log2(np.maximum(L, 1e-4) / np.maximum(m, 1e-4)), -1, 1) * (den > 0.03))[ing]
+        # THE PHOTO'S OWN SHADOWS (NAIP flies mid-morning: a stack's, a
+        # tree's, a fence's shadow falls north-west, against the render's sun):
+        # dark AND bluer than the ground round it (lit by the sky alone) —
+        # an oil stain or a dark shrub is dark but not bluer. Eased to neutral
+        # (the render casts its own)
+        bl = np.log2(np.maximum(AL[2], 1e-4) / np.maximum(AL[0], 1e-4))
+        bm_ = uniform_filter(bl * vg, 2 * r + 1, mode='nearest') / np.maximum(den, 1e-3)
+        shd = ing & (x < -0.25) & (bl - bm_ > 0.10)
+        shd = binary_dilation(shd, iterations=1) & ing
+        x[shd] *= 0.15
     # the edge of a masked area eases to neutral over a metre
     w = uniform_filter(v, int(round(2.0 / res)) * 2 + 1, mode='nearest')
     x = x * v * np.clip((w - 0.5) * 2, 0, 1)
@@ -401,9 +438,106 @@ def probe(x0, y0, x1, y1, out):
     for k in ('L', 'warm', 'nstd', 'lstd', 'ndvi', 'N'):
         print(k, np.percentile(f[k][bm == 0], [5, 25, 50, 75, 95]).round(3))
 
+# ── the land beyond the county line: Daly City, Colma, Brisbane ─────────────
+SOUTH_B = f'{OUT}/osm/b_south.json'           # OSM buildings (ODbL), Overpass 2026-09-24
+SOUTH_R = f'{OUT}/osm/r_south.json'           # OSM roads
+SOUTH_OUT = f'{OUT}/south_records.json'
+def south_records():
+    """GENERIC BUILDINGS SOUTH OF THE COUNTY LINE: every OSM building outside
+    San Francisco (its neighbourhoods, 40 m out: newb_prep's test), in
+    city_data's schema, so gen_buildings models them like the city's own:
+    a frame round the picture, not a survey. Conventions (flagged): height
+    from OSM, else levels x 3.2 m, else 7 m for a house (Daly City's
+    Westlake: two storeys over a garage), 9 m otherwise; year from OSM, else
+    1955 ('convention'); paint drawn (seeded by gid) from the city's houses
+    built 1940-1970; roles: front within 20 m of an OSM road, party where
+    another outline touches, back otherwise."""
+    import city_data, collections, hashlib, random
+    import shapely
+    from shapely.geometry import Polygon, Point, LineString
+    from shapely.ops import unary_union
+    hr = json.load(open(f'{city_data.CITY}/base/hood-rings.json'))
+    SF = unary_union([Polygon([(fl[i], fl[i + 1]) for i in range(0, len(fl), 3)]).buffer(0) for parts in hr['parts'] for fl in parts if len(fl) >= 9]).buffer(40.0)
+    shapely.prepare(SF)
+    B = [b for b in city_data.buildings(-9000, -12000, 9000, -3000) if b.get('src') != 'osm_south']
+    DP = [q if q.is_valid else q.buffer(0) for q in (Polygon(b['ring']) for b in B if len(b['ring']) >= 3)]
+    DT = shapely.STRtree(DP)
+    PAINT = sorted(b['paint'] for b in B if b.get('paint') is not None and 1940 <= (b['year'] or 0) <= 1970 and b['ty'] == 'HOUSE') or [5]
+    E = lambda g: [tuple(float(v) for v in rp.lonlat_to_eng(p['lon'], p['lat'])) for p in g]
+    roads = [LineString(E(e['geometry'])) for e in json.load(open(SOUTH_R))['elements'] if e.get('geometry') and len(e['geometry']) >= 2
+             and e.get('tags', {}).get('highway') not in ('service',)]
+    RT = shapely.STRtree(roads)
+    polys = []
+    for e in json.load(open(SOUTH_B))['elements']:
+        t = e.get('tags', {})
+        if e['type'] == 'way' and e.get('geometry') and len(e['geometry']) >= 4:
+            rings = [E(e['geometry'])]
+        elif e['type'] == 'relation':
+            rings = [E(m['geometry']) for m in e.get('members', []) if m.get('role') == 'outer' and m.get('geometry') and len(m['geometry']) >= 4]
+        else: continue
+        for k, r in enumerate(rings):
+            p = Polygon(r)
+            if not p.is_valid: p = p.buffer(0)
+            if p.geom_type != 'Polygon' or p.area < 20: continue
+            # outside the city: beyond its neighbourhoods, or south of the
+            # county line (37.7081 N; the neighbourhood rings, 40 m out, reach
+            # ~300 m past it and dropped Daly City's first streets, gnd12)
+            rp_ = p.representative_point()
+            if SF.contains(rp_) and rp_.y > -5760.0: continue
+            # and not a building the city already has (DataSF, newb): 30 % of it on one
+            if any(p.intersection(DP[i]).area > 0.3 * p.area for i in DT.query(p)): continue
+            polys.append((f"{e['type'][0]}{e['id']}", k, p, t))
+    PT = shapely.STRtree([p for _, _, p, _ in polys])
+    TY = {'house': 'HOUSE', 'detached': 'HOUSE', 'semidetached_house': 'HOUSE', 'terrace': 'FLATS', 'residential': 'HOUSE', 'bungalow': 'HOUSE',
+          'apartments': 'APARTMENT', 'dormitory': 'APARTMENT', 'industrial': 'INDUSTRIAL', 'warehouse': 'INDUSTRIAL', 'manufacture': 'INDUSTRIAL',
+          'retail': 'RETAIL', 'commercial': 'RETAIL', 'supermarket': 'RETAIL', 'office': 'OFFICE', 'garage': 'GARAGE', 'garages': 'GARAGE',
+          'school': 'INSTITUTION', 'church': 'INSTITUTION', 'hospital': 'INSTITUTION', 'university': 'INSTITUTION', 'college': 'INSTITUTION', 'public': 'INSTITUTION'}
+    USE = {'HOUSE': 'single family', 'FLATS': 'multi family', 'APARTMENT': 'multi family', 'INDUSTRIAL': 'industrial', 'RETAIL': 'retail',
+           'OFFICE': 'office', 'GARAGE': 'industrial', 'INSTITUTION': 'government', 'UNCLASSED': 'mixed or not stated'}
+    def num(v):
+        try: return float(str(v).split()[0].replace('m', '').replace(',', '.'))
+        except Exception: return None
+    recs = []; why = collections.Counter()
+    for q, (oid, k, p, t) in enumerate(polys):
+        bt = t.get('building', 'yes'); a = p.area
+        if bt in ('roof', 'carport', 'construction', 'ruins', 'houseboat', 'bridge', 'storage_tank', 'tank', 'shed' if a < 15 else '_'):
+            why['open structure'] += 1; continue
+        ty = TY.get(bt, 'HOUSE' if (bt == 'yes' and a < 260) else 'UNCLASSED')
+        lv = num(t.get('building:levels')); h = num(t.get('height'))
+        h_src = 'osm'
+        if h is None and lv: h = lv * 3.2; h_src = 'levels'
+        if h is None: h = 7.0 if ty in ('HOUSE', 'FLATS') else 9.0; h_src = 'default'
+        st = int(lv) if lv else max(1, int(round(h / 3.2)))
+        yr = None; y_src = 'convention'
+        for kk in ('start_date', 'construction_date'):
+            if t.get(kk) and str(t[kk])[:4].isdigit(): yr = int(str(t[kk])[:4]); y_src = 'osm'; break
+        yr = yr or 1955
+        gid = 920000000 + int(hashlib.md5(f'{oid}:{k}'.encode()).hexdigest()[:7], 16) % 99999999
+        ring = [(round(x, 2), round(y, 2)) for x, y in list(p.exterior.coords)[:-1]]
+        if Polygon(ring).exterior.is_ccw is False: ring = ring[::-1]
+        roles = []
+        near = [polys[i][2] for i in PT.query(p.buffer(0.3)) if i != q]
+        rn = [roads[i] for i in RT.query(p.buffer(20.0))]
+        for (ax, ay), (bx, by) in zip(ring, ring[1:] + ring[:1]):
+            mid = Point((ax + bx) / 2, (ay + by) / 2)
+            if any(o.distance(mid) < 0.4 for o in near): roles.append(2)
+            elif any(r_.distance(mid) < 20.0 for r_ in rn): roles.append(1)
+            else: roles.append(0)
+        c = p.centroid
+        recs.append(dict(gid=gid, ring=ring, cx=round(c.x, 2), cy=round(c.y, 2), h=round(h, 2), year=yr, use=USE[ty], st=st, ty=ty,
+                         shop=bool(t.get('shop') or t.get('amenity')) or ty == 'RETAIL', roles=roles,
+                         paint=PAINT[random.Random(gid).randrange(len(PAINT))], src='osm_south', osm=oid, part=None, name=t.get('name'),
+                         btype=bt, h_src=h_src, year_src=y_src, ty_src='osm' if bt in TY else 'size', lm=None, replaces=None))
+        why['kept'] += 1
+    meta = dict(source='OpenStreetMap (ODbL, (c) OpenStreetMap contributors), Overpass ' + json.load(open(SOUTH_B))['osm3s']['timestamp_osm_base'],
+                built=time.strftime('%Y-%m-%d %H:%M'), why=dict(why), doc=south_records.__doc__)
+    json.dump(dict(meta=meta, records=recs, replaces=[]), open(SOUTH_OUT, 'w'))
+    print('south records', dict(why), collections.Counter(r['ty'] for r in recs).most_common(8))
+
 if __name__ == '__main__':
     cmd = sys.argv[1]
     if cmd == 'probe': probe(*sys.argv[2:7])
     if cmd == 'build': build(int(sys.argv[2]) if len(sys.argv) > 2 else 3)
     if cmd == 'refine': refine(*sys.argv[2:4])
+    if cmd == 'south': south_records()
     if cmd == 'tone': build_tone(int(sys.argv[2]) if len(sys.argv) > 2 else 2)

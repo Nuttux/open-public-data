@@ -36,8 +36,8 @@ import math, random, time
 import numpy as np
 
 DENSITY = {'motorway': 30.0, 'motorway_link': 14.0, 'trunk': 20.0, 'trunk_link': 10.0, 'primary': 16.0, 'primary_link': 8.0,
-           'secondary': 10.0, 'secondary_link': 6.0, 'tertiary': 6.0, 'tertiary_link': 4.0, 'residential': 2.0,
-           'unclassified': 2.5, 'living_street': 0.8, 'busway': 0.0}
+           'secondary': 10.0, 'secondary_link': 6.0, 'tertiary': 6.0, 'tertiary_link': 4.0, 'residential': 0.7,
+           'unclassified': 0.9, 'living_street': 0.3, 'busway': 0.0}
 PLATOON = {'motorway': (3.2, 22.0, 34.0), 'trunk': (2.6, 12.0, 24.0), 'primary': (2.8, 7.5, 14.0), 'secondary': (2.2, 7.5, 14.0),
            'tertiary': (1.7, 8.0, 16.0)}          # mean size, headway range (m)
 ARTERIAL = {'motorway', 'trunk', 'primary', 'secondary'}

@@ -28,6 +28,7 @@ def decode(f):
 # year hq_city/hq_scene show; unset = today). NEWB_FILE overrides the file.
 NEWB_FILES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'newb_records.json'),
               '/Users/daniel/code/qipu-render-work/newbuildings/osm_records.json']
+SOUTH_FILE = '/Users/daniel/code/qipu-render-work/ground/south_records.json'
 _NB = None
 def newb():
     """(records, DataSF gids they replace in the ERA shown); empty with NEWB=0"""
@@ -45,6 +46,12 @@ def newb():
             live = lambda r: not r.get('lm') or (on is not None and r['lm'] not in on)
             _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records'] + j.get('lm_records', []) if live(r)],
                    {int(x['gid']) for x in j.get('replaces', []) + j.get('lm_replaces', []) if (era is None or era >= x['year']) and live(x)})
+        # beyond the county line: generic buildings from OSM (ground_prep.py
+        # south_records: Daly City, Colma, Brisbane — the picture's frame); SOUTH=0 leaves them out
+        sp = SOUTH_FILE
+        if os.environ.get('SOUTH', '1') == '1' and os.path.exists(sp):
+            era = float(os.environ['ERA']) if os.environ.get('ERA') else None
+            _NB[0].extend(dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in json.load(open(sp))['records'] if era is None or r['year'] <= era)
     return _NB
 
 def buildings(x0, y0, x1, y1):
