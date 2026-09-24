@@ -56,6 +56,8 @@ STUCCO = [(0.96, 0.95, 0.92), (0.97, 0.96, 0.94), (0.95, 0.91, 0.82), (0.93, 0.9
           (0.90, 0.85, 0.75), (0.87, 0.80, 0.67), (0.95, 0.88, 0.66), (0.95, 0.83, 0.72), (0.95, 0.84, 0.82),
           (0.83, 0.89, 0.80), (0.82, 0.87, 0.91), (0.84, 0.84, 0.82), (0.79, 0.77, 0.71), (0.87, 0.89, 0.76),
           (0.78, 0.84, 0.86), (0.93, 0.80, 0.70), (0.90, 0.86, 0.62), (0.80, 0.86, 0.84), (0.92, 0.82, 0.80)]
+NEUTRAL = [(0.95, 0.94, 0.91), (0.93, 0.93, 0.91), (0.96, 0.95, 0.93), (0.90, 0.89, 0.86), (0.86, 0.86, 0.84), (0.92, 0.89, 0.82),
+           (0.88, 0.84, 0.76), (0.82, 0.82, 0.80), (0.94, 0.92, 0.87), (0.78, 0.78, 0.77), (0.90, 0.87, 0.80), (0.84, 0.83, 0.79)]
 STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86, 0.82), (0.52, 0.50, 0.48), (0.80, 0.74, 0.64)]
 # curtain-wall glass (display colour, and in alpha how mirror-like the coating is)
 # (SF's downtown is mostly stone, bronze, grey and dark glass; blue is the
@@ -462,11 +464,17 @@ def building(b, ground, out):
     else:
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
+    # (25/09) the Sunset, the Richmond, the Parkside, the Excelsior (1920s-80s
+    # stucco): from the air rows of white, pale grey and beige with a coloured
+    # front here and there (Richmond top-down, Parkside drone) — the pastel
+    # draw read as a candy row. Seven in ten neutral, and less boosted below
+    WHITE_ROW = ep is None and not LM and sub in ('med', 'sunset', 'postwar', 'modern')
+    if WHITE_ROW and random.Random(b['gid'] * 389 + 5).random() < 0.7: body = random.Random(b['gid'] * 389 + 6).choice(NEUTRAL)
     if LM and ERA is None: body, trim, accent = LM['paint']
     # paint that must still read at a distance: the painted styles a little
     # richer, more so at the city's scale where a front is a few pixels
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
-        body = saturate(body, 1.18 if LOD == 0 else 1.5)
+        body = saturate(body, 1.18 if LOD == 0 else (1.2 if WHITE_ROW else 1.5))
         body = unviolet(body)
     if OV.get('facade_col'): body = hexcol(OV['facade_col'])
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
