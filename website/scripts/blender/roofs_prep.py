@@ -450,17 +450,45 @@ def render_colour(a, cls, gid, w_med=0.0):
     pal = sorted(pal, key=lambda t: t[0] - t[2])                 # cool -> warm
     w = (a[0] - a[2]) / L                                         # the measured warmth
     h = ((gid * 2654435761) >> 7) % 1000 / 1000.0                  # a fixed per-roof draw
-    pos = min(max((w - w_med) / 0.16 + 0.5, 0.0), 1.0) * 0.5 + h * 0.5 # warmer or cooler than the city's median roof, and a draw
+    pos = min(max((w - w_med) / 0.16 + 0.5, 0.0), 1.0) * 0.35 + h * 0.65 # warmer or cooler than the city's median roof, and a draw
     t = pal[min(len(pal) - 1, int(pos * len(pal)))]
     t = [t[0] * WARM[0], t[1] * WARM[1], t[2] * WARM[2]]
     tl = _lum3(t)
-    return [L * c / tl for c in t]
+    # neighbours differ: +-12 % in value, a second fixed draw per roof (rows
+    # of the same roofing measure alike from 60 cm, and read as one slab)
+    j = 1.0 + 0.24 * (((gid * 40503 + 12345) >> 5) % 1000 / 1000.0 - 0.5)
+    return [min(0.85, L * j * c / tl) for c in t]
+
+def lit_membrane(a, row, cls, area, c, F, pitched):
+    """a patchwork roof (units, walkways, ducts, patches of shade) reads from
+    the air darker than the membrane it is: its median sits between. On a
+    roof of many values its lightness is taken halfway to its upper quartile;
+    a LARGE flat roof (>= 250 m2: commercial, institutional, apartments) is
+    never darker than a mid cap sheet (0.18) unless the photo clearly shows
+    tar — dark, even, not in shade. SF's big flat roofs are light membranes
+    and gravel, and a dark slate reading was mostly their clutter and shade"""
+    q = row.get('q')
+    if not q or pitched or cls in ('tile', 'green', 'solar', 'white'): return a
+    L = max(_lum3(a), 1e-4)
+    La = float(np.mean(c['asphalt'])); dL = La - c['darkL']
+    lumF = curve(La - dL, La, float(np.mean(c['white'])), ANCH[1] * _lum3(ASPH_TINT))
+    spread = q[3] - q[0]
+    L2 = L
+    if spread > 40: L2 = max(L, float(lumF(0.5 * (sum(row['med'][:3]) / 3 + q[2]))))
+    clearly_tar = spread < 30 and sum(row['med'][:3]) / 3 < La - 5 and row.get('fsh', 0) < 0.2 and row.get('ngood', 0) >= 80
+    if area >= 250 and not clearly_tar: L2 = max(L2, 0.18)
+    return [v * L2 / L for v in a]
 
 def finish(out=None):
     import glob
     import city_data
     forms = roof_forms()
-    HB = {b['gid']: b['h'] for b in city_data.buildings(-9000, -9000, 9000, 9000)}
+    BB = city_data.buildings(-9000, -9000, 9000, 9000)
+    HB = {b['gid']: b['h'] for b in BB}
+    def _area(r):
+        r = np.asarray(r); x, y = r[:, 0], r[:, 1]
+        return 0.5 * abs(float(np.dot(x, np.roll(y, -1)) - np.dot(y, np.roll(x, -1))))
+    AB = {b['gid']: _area(b['ring']) for b in BB}
     raws = sorted(glob.glob(f'{W}/raw/*.json'))
     cal = {}; roofs = {}
     counts = {}
@@ -490,9 +518,12 @@ def finish(out=None):
         for row in d['rows']:
             if 'med' not in row: continue
             a = [float(F[k](row['med'][k])) for k in range(3)]
-            cls, conf = classify(a, row, forms.get(row['gid'], False), c['asphalt'], HB.get(row['gid'], 0.0))
+            # the survey's pitched flag is noise on big footprints (its slopes are the edge cells): a house's only
+            pitched = forms.get(row['gid'], False) and AB.get(row['gid'], 0.0) < 250
+            cls, conf = classify(a, row, pitched, c['asphalt'], HB.get(row['gid'], 0.0))
             if cls == 'solar' and row.get('med_ns'):      # the roof between the panels
                 a = [float(F[k](row['med_ns'][k])) for k in range(3)]
+            a = lit_membrane(a, row, cls, AB.get(row['gid'], 0.0), c, F, pitched)
             counts[cls] = counts.get(cls, 0) + 1
             roofs[str(row['gid'])] = [a[0], a[1], a[2], cls, conf]
     # the city's median warmth of its neutral roofs: each roof's tint says warmer or cooler than that
