@@ -31,18 +31,31 @@ MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'do
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
-VIC = [((0.46, 0.55, 0.42), (0.93, 0.90, 0.80), (0.45, 0.12, 0.14)),
-       ((0.50, 0.62, 0.74), (0.96, 0.95, 0.92), (0.12, 0.20, 0.38)),
-       ((0.86, 0.66, 0.66), (0.97, 0.95, 0.90), (0.14, 0.40, 0.42)),
-       ((0.90, 0.80, 0.45), (0.97, 0.96, 0.90), (0.20, 0.36, 0.24)),
-       ((0.66, 0.58, 0.74), (0.96, 0.94, 0.94), (0.36, 0.18, 0.40)),
-       ((0.88, 0.72, 0.56), (0.95, 0.90, 0.78), (0.42, 0.26, 0.16)),
-       ((0.56, 0.62, 0.66), (0.97, 0.96, 0.95), (0.62, 0.14, 0.12)),
-       ((0.95, 0.93, 0.86), (0.36, 0.44, 0.40), (0.72, 0.52, 0.22)),
-       ((0.34, 0.40, 0.46), (0.90, 0.86, 0.74), (0.74, 0.40, 0.20)),
-       ((0.80, 0.84, 0.70), (0.98, 0.97, 0.93), (0.30, 0.30, 0.34))]
-STUCCO = [(0.95, 0.93, 0.88), (0.94, 0.86, 0.66), (0.90, 0.80, 0.66), (0.80, 0.86, 0.78), (0.94, 0.80, 0.76),
-          (0.76, 0.84, 0.92), (0.96, 0.95, 0.93), (0.86, 0.74, 0.62), (0.93, 0.89, 0.72), (0.98, 0.97, 0.95)]
+# paint conventions (body, trim, accent). SF from the air is the white city:
+# most fronts white, cream, beige and pale grey, pastels a minority, the
+# bright colorist Victorians a few in a row, lilac and purple rare (24/09:
+# the old lists read cool blue-grey and violet from the air). Repeats weight.
+VIC = [((0.95, 0.93, 0.87), (0.36, 0.44, 0.40), (0.72, 0.52, 0.22)),     # white, green trim
+       ((0.96, 0.95, 0.91), (0.40, 0.42, 0.44), (0.62, 0.14, 0.12)),     # white, grey trim, red door
+       ((0.94, 0.91, 0.82), (0.98, 0.97, 0.94), (0.30, 0.36, 0.30)),     # cream
+       ((0.91, 0.87, 0.77), (0.98, 0.97, 0.93), (0.24, 0.30, 0.40)),     # beige
+       ((0.94, 0.89, 0.72), (0.98, 0.97, 0.93), (0.45, 0.16, 0.14)),     # butter
+       ((0.80, 0.79, 0.75), (0.97, 0.96, 0.94), (0.20, 0.24, 0.30)),     # greige
+       ((0.72, 0.73, 0.72), (0.97, 0.96, 0.95), (0.62, 0.14, 0.12)),     # light grey
+       ((0.64, 0.68, 0.56), (0.93, 0.90, 0.80), (0.45, 0.12, 0.14)),     # sage
+       ((0.62, 0.71, 0.80), (0.97, 0.96, 0.93), (0.12, 0.20, 0.38)),     # blue
+       ((0.90, 0.74, 0.71), (0.97, 0.95, 0.90), (0.14, 0.40, 0.42)),     # pink
+       ((0.92, 0.82, 0.52), (0.97, 0.96, 0.90), (0.20, 0.36, 0.24)),     # yellow
+       ((0.91, 0.77, 0.62), (0.96, 0.92, 0.82), (0.42, 0.26, 0.16)),     # peach
+       ((0.82, 0.85, 0.72), (0.98, 0.97, 0.93), (0.30, 0.30, 0.34)),     # pale green
+       ((0.63, 0.66, 0.67), (0.97, 0.96, 0.95), (0.62, 0.14, 0.12)),     # SF grey-blue
+       ((0.76, 0.73, 0.80), (0.97, 0.96, 0.95), (0.36, 0.18, 0.40)),     # soft lilac, rare
+       ((0.36, 0.40, 0.44), (0.92, 0.89, 0.80), (0.74, 0.40, 0.20)),     # slate
+       ((0.28, 0.29, 0.29), (0.95, 0.94, 0.91), (0.72, 0.52, 0.22))]     # charcoal, the recent repaint
+STUCCO = [(0.96, 0.95, 0.92), (0.97, 0.96, 0.94), (0.95, 0.94, 0.91), (0.95, 0.91, 0.82), (0.93, 0.93, 0.91),
+          (0.96, 0.94, 0.89), (0.90, 0.85, 0.75), (0.87, 0.80, 0.67), (0.95, 0.88, 0.66), (0.95, 0.83, 0.72),
+          (0.95, 0.84, 0.82), (0.83, 0.89, 0.80), (0.82, 0.87, 0.91), (0.84, 0.84, 0.82), (0.79, 0.77, 0.71),
+          (0.87, 0.89, 0.76), (0.98, 0.97, 0.96), (0.78, 0.84, 0.86)]
 STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86, 0.82), (0.52, 0.50, 0.48), (0.80, 0.74, 0.64)]
 # curtain-wall glass (display colour, and in alpha how mirror-like the coating is)
 # (SF's downtown is mostly stone, bronze, grey and dark glass; blue is the
@@ -50,8 +63,17 @@ STONE = [(0.84, 0.81, 0.75), (0.78, 0.76, 0.72), (0.70, 0.68, 0.64), (0.88, 0.86
 GLASS_TINTS = [(0.30, 0.36, 0.38, 0.12), (0.30, 0.32, 0.35, 0.1), (0.40, 0.33, 0.25, 0.35), (0.34, 0.29, 0.24, 0.3),
                (0.66, 0.68, 0.70, 0.75), (0.60, 0.58, 0.54, 0.6), (0.22, 0.24, 0.26, 0.25), (0.26, 0.26, 0.27, 0.2),
                (0.30, 0.28, 0.25, 0.25), (0.26, 0.36, 0.50, 0.3), (0.34, 0.42, 0.44, 0.2)]
+# generated towers the eye knows, by gid (the landmarks_hq towers are modelled apart)
+# 555 California (Bank of America Center, 1969): carnelian granite, bronze glass
+# in vertical bays up the serrated plan (the record's 42-sided ring gives the saw)
+HERO = {137915: dict(fsys='piers', body=(0.29, 0.16, 0.13), gcol=(0.18, 0.14, 0.12, 0.35), pier=1.6, top='flat')}
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
-BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66)]
+BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66),
+         (0.93, 0.91, 0.86), (0.91, 0.87, 0.77), (0.88, 0.84, 0.76)]    # and the white and cream stucco blocks
+# the works' painted concrete: white, cream, the greys, sage, a pale blue-grey,
+# a dusty terracotta, ochre
+WORKS = [(0.90, 0.89, 0.85), (0.86, 0.82, 0.72), (0.74, 0.74, 0.72), (0.64, 0.62, 0.58), (0.72, 0.76, 0.70),
+         (0.68, 0.74, 0.80), (0.80, 0.64, 0.52), (0.58, 0.61, 0.63), (0.86, 0.78, 0.60), (0.90, 0.89, 0.85)]
 
 
 LOD = 0          # 0: every opening modelled · 1: flat framed panes (city-wide)
@@ -168,6 +190,15 @@ class Wall:
                 # 37 cm a pixel a window is a dark pane in a light frame, and
                 # a painted front reads as windows, not as a coloured box
                 if kind != 'shop' and trim is not None: self.rect('trim', u0 - 0.13, u1 + 0.13, z0 - 0.12, z1 + 0.15, 0.015, trim)
+                # a blind or a curtain drawn part way down about two panes in
+                # five: a light patch at the pane's head, so a row of windows
+                # is lived in, not a stamped grid of dark holes (drawn from the
+                # pane's own position: the building's draw sequence stays)
+                if kind != 'shop':
+                    p_ = self.P(u0, z0); pr = random.Random(int(p_.x * 7.3) * 92821 + int(p_.y * 7.3) * 68917 + int(z0 * 11))
+                    if pr.random() < 0.42:
+                        c_ = pr.choice(BLINDS); k_ = pr.uniform(0.62, 0.85)
+                        self.rect('curtain', u0, u1, z1 - (z1 - z0) * pr.uniform(0.18, 0.85), z1, 0.035, tuple(v * k_ for v in c_))
                 return
             self.box('trim', u0 - 0.1, u1 + 0.1, z0 - 0.08, z0, 0.0, 0.08, trim)
             self.box('trim', u0 - 0.1, u1 + 0.1, z1, z1 + 0.12, 0.0, 0.05, trim)
@@ -275,6 +306,9 @@ def substyle(b, style, rng):
         return 'edwardian' if y < 1918 else 'med'
     if style == 'midcentury':
         return 'sunset' if y < 1962 else 'modern'
+    # the works: warehouses, shops and garages of SoMa, Dogpatch, the Bayview
+    # (the roll's INDUSTRIAL and GARAGE; they were apartment houses before)
+    if b['ty'] in ('INDUSTRIAL', 'GARAGE') and b['h'] < 24: return 'works'
     return 'tower' if b['h'] > 40 else ('commercial' if (b.get('shop') or b['ty'] in ('RETAIL', 'OFFICE')) else 'apartment')
 
 
@@ -323,6 +357,17 @@ def building(b, ground, out):
     else:
         roof = 'flat'
     if not LM: roof = measured_form(b, roof)                 # ROOFS: a light membrane seen from the air is a flat roof
+    # a works shed of one or two storeys over a near-rectangular lot: a
+    # sawtooth of north lights, or the bow-truss barrel of the 1910s-40s
+    wrng = random.Random(b['gid'] * 577 + 3)                 # (its own draws: the main sequence stays)
+    if sub == 'works' and roof == 'flat' and b['h'] < 13 and LOD >= 1:
+        _a = abs(sum(ring[i][0] * ring[(i + 1) % n][1] - ring[(i + 1) % n][0] * ring[i][1] for i in range(n))) / 2
+        _u = [x * walls[f0].t.x + y * walls[f0].t.y for x, y in ring]; _v = [x * walls[f0].n.x + y * walls[f0].n.y for x, y in ring]
+        _fill = _a / max(1.0, (max(_u) - min(_u)) * (max(_v) - min(_v)))
+        yr_w = b['year'] or 1950; x_ = wrng.random()
+        if _a >= 280 and _fill >= 0.88 and min(max(_u) - min(_u), max(_v) - min(_v)) >= 9:
+            if yr_w < 1950: roof = 'saw' if x_ < 0.28 else ('barrel' if x_ < 0.55 else roof)
+            elif yr_w < 1975: roof = 'saw' if x_ < 0.18 else roof
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and rng.random() < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
@@ -343,7 +388,8 @@ def building(b, ground, out):
     if style == 'vic':
         body, trim, accent = rng.choice(VIC)
     elif style in ('stucco', 'midcentury'):
-        body = rng.choice(STUCCO); trim = (0.97, 0.96, 0.93) if rng.random() < 0.7 else (0.35, 0.36, 0.38)
+        body = rng.choice(STUCCO); x_ = rng.random()
+        trim = (0.97, 0.96, 0.93) if x_ < 0.8 else ((0.33, 0.33, 0.32) if x_ < 0.9 else (0.46, 0.36, 0.26))
         accent = rng.choice(((0.45, 0.14, 0.12), (0.18, 0.28, 0.24), (0.20, 0.22, 0.30)))
         if sub == 'edwardian' and rng.random() < 0.3: body, trim, accent = rng.choice(VIC)
     else:
@@ -353,12 +399,21 @@ def building(b, ground, out):
     # paint that must still read at a distance: the painted styles a little
     # richer, more so at the city's scale where a front is a few pixels
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
-        body = saturate(body, 1.18 if LOD == 0 else 1.5)
+        body = saturate(body, 1.18 if LOD == 0 else 1.4)
+        body = unviolet(body)
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
     if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
     if style == 'block':
         yr = b['year'] or 1960
         wall_mat = 'brick' if (yr < 1935 and rng.random() < 0.55) else ('stucco' if yr < 1960 else 'concrete')
+    if sub == 'works' and ep is None and not LM:
+        # painted board-formed concrete mostly, common brick before the 1930s;
+        # roll-up doors in galvanised grey or a painted colour
+        yr = b['year'] or 1950
+        if yr < 1935 and wrng.random() < 0.5: wall_mat, body = 'brick', wrng.choice(((0.86, 0.70, 0.60), (0.80, 0.62, 0.52), (0.90, 0.78, 0.68)))
+        else: wall_mat, body = 'concrete', wrng.choice(WORKS)
+        trim = wrng.choice((mix(body, (0.0, 0.0, 0.0), 0.12), mix(body, (0.0, 0.0, 0.0), 0.12), (0.30, 0.31, 0.32), (0.92, 0.91, 0.88)))
+        accent = wrng.choice(((0.62, 0.63, 0.62), (0.62, 0.63, 0.62), (0.48, 0.50, 0.51), (0.30, 0.40, 0.52), (0.58, 0.22, 0.17), (0.30, 0.38, 0.32), (0.86, 0.84, 0.80)))
 
     # ── floors ──
     raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
@@ -381,14 +436,21 @@ def building(b, ground, out):
     fsys = None; gcol = None
     if style == 'block' and (sub == 'tower' or (sub == 'commercial' and b['h'] > 18)):
         trng = random.Random(b['gid'] * 131 + 5); u_ = trng.random(); yr = b['year'] or 1960
+        # (24/09: 'piers' was most towers' skin, the pinstripe the critic saw on
+        # every one; now spandrel bands, a precast frame and punched stone share it)
         if yr < 1935: fsys = None
-        elif yr < 1965: fsys = 'ribbon' if u_ < 0.55 else None
-        elif yr < 1990: fsys = 'piers' if u_ < 0.45 else ('ribbon' if u_ < 0.75 else 'curtain')
-        else: fsys = 'curtain' if u_ < 0.6 else 'piers'
+        elif yr < 1965: fsys = 'ribbon' if u_ < 0.45 else ('grid' if u_ < 0.7 else None)
+        elif yr < 1990: fsys = 'piers' if u_ < 0.25 else ('ribbon' if u_ < 0.45 else ('grid' if u_ < 0.72 else ('curtain' if u_ < 0.87 else None)))
+        else: fsys = 'curtain' if u_ < 0.5 else ('grid' if u_ < 0.7 else ('piers' if u_ < 0.85 else 'ribbon'))
         if fsys:
             wall_mat = 'concrete'; body = trng.choice(STONE); gcol = trng.choice(GLASS_TINTS)
+            if fsys == 'ribbon' and trng.random() < 0.35: body = trng.choice(((0.20, 0.21, 0.22), (0.30, 0.26, 0.22), (0.62, 0.64, 0.66)))   # dark or metal spandrels
         elif wall_mat == 'brick' and trng.random() < 0.5:
             wall_mat = 'concrete'; body = trng.choice(STONE)
+        elif sub == 'tower' and trng.random() < 0.6:
+            wall_mat = 'concrete'; body = trng.choice(STONE + [(0.74, 0.62, 0.50), (0.66, 0.50, 0.40)])     # punched granite, limestone, terracotta
+        H_ = HERO.get(b['gid'])
+        if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol)
@@ -457,6 +519,7 @@ def building(b, ground, out):
     wf = walls[f0]
     if roof == 'flat':
         proj = {'vic': 0.75, 'stucco': 0.4, 'block': 0.5, 'midcentury': 0.2}[style]
+        if sub == 'works': proj = 0.12                      # a plain coping on a works parapet
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof
         if style == 'vic': wf.rect('siding', 0.0, wf.L, top, ctop, 0.0, body)
         if sub == 'med':
@@ -507,6 +570,9 @@ def building(b, ground, out):
             a, c = Vector((*oring[i], 0)), Vector((*oring[(i + 1) % len(oring)], 0))
             za, zc = rz(a) + 0.05, rz(c) + 0.05
             out.poly('trim', [Vector((a.x, a.y, za - 0.22)), Vector((c.x, c.y, zc - 0.22)), Vector((c.x, c.y, zc)), Vector((a.x, a.y, za))], trim)
+    elif roof in ('saw', 'barrel'):
+        rc_ = measured_flat(b, flat_roof(b, rng, ax_u))
+        works_roof(roof, ring, top, ax_u, ax_v, rc_, ctx, out)
     else:
         deck = top - 0.55
         inner = offset_ring(ring, -0.28)
@@ -536,6 +602,110 @@ def building(b, ground, out):
                 for k in range(5):
                     t_ = k / 4
                     out.box3('metal', d0 + ax_u * (du + lu * t_ * (lu > 1)) + ax_v * (dv + lv * t_ * (lv > 1)) + Vector((0, 0, 0.12)), ax_u * 0.05, ax_v * 0.05, Vector((0, 0, 1.0)), (0.15, 0.15, 0.16))
+
+
+def ring_area(r):
+    n = len(r); return sum(r[i][0] * r[(i + 1) % n][1] - r[(i + 1) % n][0] * r[i][1] for i in range(n)) / 2
+
+
+def inset_ok(r, q):
+    """an inset ring still the plan's shape: every edge runs the way its
+    original ran, no edge collapsed, and some area left"""
+    n = len(r)
+    for i in range(n):
+        e0 = Vector(r[(i + 1) % n]) - Vector(r[i]); e1 = Vector(q[(i + 1) % n]) - Vector(q[i])
+        if e0.length > 0.3 and e0.dot(e1) <= 0.05 * e0.length ** 2: return False
+    return ring_area(q) > 0.12 * ring_area(r)
+
+
+def prism(out, mat, q, z0, z1, col, cap=None, capcol=None):
+    """walls round ring q from z0 to z1, and a flat cap (cap: its material)"""
+    n = len(q)
+    for i in range(n):
+        a, c_ = q[i], q[(i + 1) % n]
+        out.poly(mat, [Vector((a[0], a[1], z0)), Vector((c_[0], c_[1], z0)), Vector((c_[0], c_[1], z1)), Vector((a[0], a[1], z1))], col)
+    if cap:
+        pts = [Vector((x, y, z1)) for x, y in q]
+        for t in tessellate_polygon([pts]): out.poly(cap, [pts[k] for k in t], capcol)
+
+
+def tower_top(kind, ring, deck, top, b, r, out, c):
+    """a tower's top that follows its plan. False when the plan will not take
+    it (a caller then draws one of the old kinds)"""
+    wm, body, rc = c['wall_mat'] or 'concrete', c['body'], c['rc']
+    gc = c.get('gcol') or (0.22, 0.24, 0.26, 0.3); fh = c.get('fh', 3.8)
+    n = len(ring); dark = r.choice(((0.20, 0.21, 0.22), (0.30, 0.31, 0.31), (0.44, 0.44, 0.43), (0.26, 0.23, 0.20)))
+    if kind == 'setback':
+        # one to three tiers, each set in from the one below, a glass band
+        # round each, the last carrying a louvred screen
+        z = top; q = ring; d_ = 0.0
+        for t in range(r.choice((1, 2, 2, 3))):
+            d_ += r.uniform(1.6, 3.2); q2 = offset_ring(ring, -d_)
+            if not inset_ok(ring, q2): break
+            h = fh * r.choice((1, 1, 2))
+            prism(out, wm, q2, deck, z + h, body, cap='roof_flat', capcol=rc)
+            prism(out, 'curtain_wall', offset_ring(q2, 0.03), z + h * 0.25, z + h * 0.8, gc)
+            q = q2; z = z + h
+        if q is ring: return False
+        q3 = offset_ring(ring, -(d_ + r.uniform(1.2, 2.5)))
+        if inset_ok(ring, q3): prism(out, 'metal', q3, z, z + r.uniform(2.6, 3.8), dark, cap='equip', capcol=(0.62, 0.62, 0.60))
+        return True
+    if kind == 'ring':
+        # a louvred screen round the plan, set in: the mechanical floor's
+        # band on so many 1960s-80s towers; inside, the cooling cells
+        q = offset_ring(ring, -r.uniform(1.0, 2.6))
+        if not inset_ok(ring, q): return False
+        h = r.uniform(3.8, 6.0)
+        dark = r.choice((mix(body, (0.5, 0.5, 0.5), 0.3), (0.62, 0.62, 0.60), (0.52, 0.52, 0.50), dark))   # louvres: light metal or the wall's own tone, dark now and then
+        prism(out, 'metal', q, deck, top + h, dark)
+        prism(out, 'metal', offset_ring(q, -0.15)[::-1], deck, top + h, mix(dark, (0, 0, 0), 0.3))
+        return 'more'
+    if kind == 'glass':
+        # the wall's glass run up past the roof, an open crown
+        h = r.uniform(3.5, 7.0)
+        prism(out, 'curtain_wall', offset_ring(ring, 0.02), top - 0.6, top + h, gc)
+        prism(out, 'curtain_wall', offset_ring(ring, -0.25)[::-1], deck, top + h, gc)
+        return 'more'
+    # 'stepped' and 'pyramid' need a plan close to its rectangle
+    ax = Vector((ring[1][0] - ring[0][0], ring[1][1] - ring[0][1]))
+    best = None
+    for i in range(n):
+        e = Vector((ring[(i + 1) % n][0] - ring[i][0], ring[(i + 1) % n][1] - ring[i][1]))
+        if best is None or e.length > best.length: best = e
+    au = best.normalized(); av = Vector((-au.y, au.x))
+    us = [x * au.x + y * au.y for x, y in ring]; vs = [x * av.x + y * av.y for x, y in ring]
+    u0, u1, v0, v1 = min(us), max(us), min(vs), max(vs)
+    if ring_area(ring) < 0.85 * (u1 - u0) * (v1 - v0): return False
+    P = lambda u, v, z: Vector((au.x * u + av.x * v, au.y * u + av.y * v, z))
+    if kind == 'stepped':
+        # a ziggurat of three to five steps, each a storey-ish, set in fast
+        ns = r.randint(3, 5); d0 = r.uniform(1.2, 2.2); z = top
+        for k in range(ns):
+            dd = d0 * (k + 1); hh = r.uniform(2.2, 3.6)
+            if u1 - u0 - 2 * dd < 3 or v1 - v0 - 2 * dd < 3: break
+            q = [(p.x, p.y) for p in (P(u0 + dd, v0 + dd, 0), P(u1 - dd, v0 + dd, 0), P(u1 - dd, v1 - dd, 0), P(u0 + dd, v1 - dd, 0))]
+            prism(out, wm, q, deck, z + hh, body, cap='roof_flat', capcol=rc)
+            if k == 0: prism(out, 'curtain_wall', offset_ring(q, 0.03), z + hh * 0.3, z + hh * 0.8, gc)
+            z += hh
+        return True
+    # 'pyramid': a hipped cap over the plan's rectangle, set in a little, of
+    # dark standing-seam metal, verdigris copper now and then, or glass
+    dd = r.uniform(0.6, 1.4); ua, ub, va, vb = u0 + dd, u1 - dd, v0 + dd, v1 - dd
+    if ub - ua < 6 or vb - va < 6: return False
+    prism(out, wm, [(p.x, p.y) for p in (P(ua, va, 0), P(ub, va, 0), P(ub, vb, 0), P(ua, vb, 0))], deck, top + 0.8, body)
+    rise = min(ub - ua, vb - va) * r.uniform(0.32, 0.6); z0 = top + 0.8
+    x_ = r.random(); col = (0.42, 0.56, 0.50) if x_ < 0.2 else ((0.22, 0.22, 0.23) if x_ < 0.7 else (0.52, 0.50, 0.47))
+    mat = 'curtain_wall' if r.random() < 0.2 else 'metal'
+    if mat == 'curtain_wall': col = gc
+    half = min(ub - ua, vb - va) / 2; rl = (ub - ua) / 2 - half      # a ridge along the long side
+    rv = (vb - va) / 2 - half
+    um, vm = (ua + ub) / 2, (va + vb) / 2; zt = z0 + rise
+    A, B_ = P(um - rl, vm - rv, zt), P(um + rl, vm + rv, zt)
+    c0, c1, c2, c3 = P(ua, va, z0), P(ub, va, z0), P(ub, vb, z0), P(ua, vb, z0)
+    if rl >= rv: F_ = ([c0, c1, B_, A], [c1, c2, B_], [c2, c3, A, B_], [c3, c0, A])
+    else: F_ = ([c0, c1, A], [c1, c2, B_, A], [c2, c3, B_], [c3, c0, A, B_])
+    for f_ in F_: out.poly(mat, [v for k_, v in enumerate(f_) if k_ == 0 or (v - f_[k_ - 1]).length > 1e-3], col)
+    return True
 
 
 def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):
@@ -752,6 +922,20 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
         yr = b['year'] or 1970; eu, ev = umax - umin, vmax - vmin; fh_ = c.get('fh', 3.6)
         k_ = rng.random(); pc = 0.3 if 1978 <= yr <= 1996 else 0.08
         kind = 'crown' if k_ < pc else 'screen' if k_ < pc + 0.3 else 'bare' if k_ < pc + 0.5 else 'house'
+        # 24/09: tops that follow the tower's own plan, drawn on their own
+        # seed (the old kinds keep theirs): setback tiers, a louvred screen
+        # round the plan, a glass crown past the roof, a stepped or a hipped
+        # pyramid top on the postmodern 1980s-90s
+        H_ = HERO.get(b['gid'])
+        if H_ is None or H_.get('top') != 'flat':
+            xr = random.Random(b['gid'] * 983 + 17); x_ = xr.random()
+            if 1978 <= yr <= 1996: nk = 'pyramid' if x_ < 0.16 else 'stepped' if x_ < 0.38 else 'setback' if x_ < 0.58 else 'ring' if x_ < 0.78 else None
+            elif yr >= 1997: nk = 'glass' if x_ < 0.3 else 'setback' if x_ < 0.45 else 'ring' if x_ < 0.7 else None
+            else: nk = 'setback' if x_ < 0.25 else 'ring' if x_ < 0.6 else None
+            res_ = tower_top(nk, ring, deck, top, b, xr, out, c) if nk else False
+            if res_ is True: kind = None
+            elif res_ == 'more': kind = 'bare'                     # a stair house and cooling cells inside
+        else: kind = None
         louvre = rng.choice(((0.16, 0.165, 0.17), (0.30, 0.31, 0.31), (0.46, 0.46, 0.45), (0.24, 0.21, 0.18)))
         def cap(u0, v0, wu, wv, z):
             out.poly('roof_flat', [at(u0 + 0.05, v0 + 0.05, z + 0.02), at(u0 + wu - 0.05, v0 + 0.05, z + 0.02),
@@ -907,6 +1091,8 @@ def facade(w, is_front, b, rng, c):
     style, sub = c['style'], c['sub']
     if c.get('fsys'):
         tower_skin(w, is_front, b, rng, c); return holes
+    if c['sub'] == 'works':
+        works_front(w, is_front, b, c); return holes
     first, fh, nfl, eave, zg = c['first'], c['fh'], c['nfl'], c['eave'], c['zg']
     trim, body, accent = c['trim'], c['body'], c['accent']
     # window proportions by era: tall Victorian sashes, squarer later
@@ -1058,7 +1244,8 @@ def tower_skin(w, is_front, b, rng, c):
             if LOD < 2:
                 for uu in frange(0.25, L - 0.25, 1.5): w.box('metal', uu - 0.03, uu + 0.03, z0, z1, 0.03, 0.08, dark)
     elif fsys == 'piers':
-        s_ = L / max(1, round(L / rng.choice((1.5, 2.2, 3.0)))); pw = min(0.5, s_ * 0.3)
+        H_ = HERO.get(b['gid'])
+        s_ = L / max(1, round(L / (H_['pier'] if H_ else rng.choice((1.5, 2.2, 3.0, 3.0))))); pw = min(0.5, s_ * 0.3)
         k = 0; uu = 0.0
         while uu < L + 1e-3:
             w.box(wm, max(0.0, uu - pw / 2), min(L, uu + pw / 2), first + fh - 0.4, top, 0.0, 0.32, body)
@@ -1070,6 +1257,20 @@ def tower_skin(w, is_front, b, rng, c):
                 z = first + f * fh
                 if z > top: break
                 w.box(wm, 0.0, L, z - 0.3, z + 0.35, 0.0, 0.14, body)
+    elif fsys == 'grid':
+        # a precast frame (the 1960s-80s): deep piers and a spandrel at every
+        # floor, the glass set back in each cell, so the low sun draws a grid
+        # of shadows (the stone band and the pier both real relief)
+        s_ = L / max(1, round(L / rng.choice((2.4, 3.0, 3.6)))); pw = min(0.45, s_ * 0.18)
+        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, gcol)
+        uu = 0.0
+        while uu < L + 1e-3:
+            w.box(wm, max(0.0, uu - pw / 2), min(L, uu + pw / 2), first + fh - 0.4, top, 0.0, 0.42, body); uu += s_
+        for f in range(1, nfl + 1):
+            z = first + f * fh
+            if z > top: break
+            w.box(wm, 0.0, L, z - 0.55, z + 0.35, 0.0, 0.34, body)
+        w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.45, body)
     else:  # curtain
         w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, gcol)
         step = 1.5 if LOD < 2 else 3.0
@@ -1079,6 +1280,103 @@ def tower_skin(w, is_front, b, rng, c):
             if z > top: break
             w.box('metal', 0.0, L, z - 0.05, z + 0.05, 0.02, 0.10, dark)
         w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.25, body)          # the crown band
+
+
+def works_front(w, is_front, b, c):
+    """a works wall: pilasters every five to seven metres (real relief on
+    the street walls, so the low sun draws their shadows), a steel-sash
+    window in each bay — dark glass, or wired and whitewashed glass gone
+    milky — a clerestory band on a one-storey shed; at the street roll-up
+    doors, one of them on a loading dock under a steel canopy, and a
+    personnel door"""
+    L = w.L; zg, first, fh, nfl, eave = c['zg'], c['first'], c['fh'], c['nfl'], c['eave']
+    body, trim, accent, wm = c['body'], c['trim'], c['accent'], c['wall_mat']
+    if L < 2.5: return
+    r = random.Random(b['gid'] * 389 + int(L * 7))
+    br = random.Random(b['gid'] * 211 + 1)               # the building's own habits, the same on every wall
+    pitch = br.uniform(5.2, 7.0); milky = br.random() * 0.8; painted = br.random() < 0.15
+    nb = max(1, round(L / pitch)); p = L / nb
+    pil = mix(body, (0.0, 0.0, 0.0), 0.10) if wm != 'brick' else body
+    for k in range(nb + 1):
+        u = min(max(k * p, 0.25), L - 0.25)
+        if is_front: w.box(wm, u - 0.25, u + 0.25, zg - 0.3, eave, 0.0, 0.22, pil)
+        elif LOD < 2 or k % 2 == 0: w.rect(wm, u - 0.22, u + 0.22, zg - 0.3, eave, 0.03, pil)
+    # the street doors
+    doors = {}
+    if is_front and eave - zg > 3.4:
+        nd = 1 if L < 14 else (2 if L < 30 else 3)
+        order = sorted(range(nb), key=lambda k: (abs(k + 0.5 - nb / 2) + r.random() * 1.5))
+        dh = min(4.3, eave - zg - 1.0, max(3.2, fh - 0.8) if nfl > 1 else 4.3)
+        for j, k in enumerate(order[:nd]):
+            dw = min(p - 1.1, 4.2)
+            if dw < 2.4: continue
+            u0 = k * p + (p - dw) / 2; dock = j == 0 and L > 12 and r.random() < 0.45
+            z0 = zg + (1.2 if dock else 0.05); z1 = min(z0 + dh, eave - 0.6)
+            w.rect('door', u0, u0 + dw, z0, z1, 0.04, accent)
+            w.rect('metal', u0 - 0.1, u0 + dw + 0.1, z1, z1 + 0.35, 0.05, (0.30, 0.31, 0.32))       # the roll housing
+            if dock:
+                w.box('concrete', u0 - 0.8, u0 + dw + 0.8, zg - 0.3, zg + 1.2, 0.0, 1.9, (0.70, 0.69, 0.66))
+                w.box('metal', u0 - 1.0, u0 + dw + 1.0, z1 + 0.35, z1 + 0.5, 0.0, 2.4, (0.44, 0.45, 0.46))
+            doors[k] = z1 + 0.5
+        free = [k for k in range(nb) if k not in doors]
+        if free:
+            k = r.choice(free); u0 = k * p + p / 2 - 0.5
+            w.rect('door', u0, u0 + 1.0, zg + 0.05, zg + 2.2, 0.04, (0.26, 0.27, 0.28)); doors[k] = zg + 2.6
+    # the steel sash in each bay, floor by floor (a clerestory on a shed)
+    rows = []
+    if nfl <= 1:
+        z0 = max(zg + 2.8, eave - 2.6); z1 = eave - 0.8
+        if z1 - z0 > 0.9: rows.append((z0, z1))
+    else:
+        for f in range(nfl):
+            z0 = first + f * fh + 0.8; z1 = first + (f + 1) * fh - 0.45
+            if z1 > eave - 0.4: break
+            if z1 - z0 > 0.9: rows.append((z0, z1))
+    for k in range(nb):
+        ww = p - 1.3
+        if ww < 1.0: continue
+        u0 = k * p + 0.65
+        for (z0, z1) in rows:
+            if k in doors and z0 < doors[k]: continue
+            if not is_front and r.random() < 0.35: continue
+            x_ = r.random()
+            if painted and x_ < 0.5: continue                                               # painted over
+            if x_ < milky: w.rect('curtain', u0, u0 + ww, z0, z1, 0.03, r.choice(((0.70, 0.72, 0.68), (0.62, 0.64, 0.60), (0.76, 0.76, 0.72))))
+            else: w.rect('glass', u0, u0 + ww, z0, z1, 0.03, (1, 1, 1))
+            w.rect('trim', u0 - 0.1, u0 + ww + 0.1, z0 - 0.18, z1 + 0.1, 0.015, trim)              # the steel frame and sill
+
+
+def works_roof(kind, ring, top, ax_u, ax_v, rc, c, out):
+    """over the works' rectangle: 'saw' — teeth 6-8 m apart, the glazed
+    face turned north; 'barrel' — a bow-truss arc across the short span,
+    its ends closed in the wall. The measured roof colour on the slopes."""
+    us = [x * ax_u.x + y * ax_u.y for x, y in ring]; vs = [x * ax_v.x + y * ax_v.y for x, y in ring]
+    u0, u1, v0, v1 = min(us) + 0.1, max(us) - 0.1, min(vs) + 0.1, max(vs) - 0.1
+    # A: the ridges' axis (the long one), B: across
+    if u1 - u0 >= v1 - v0: A, B, a0, a1, b0, b1 = ax_u, ax_v, u0, u1, v0, v1
+    else: A, B, a0, a1, b0, b1 = ax_v, ax_u, v0, v1, u0, u1
+    P = lambda a, b_, z: Vector((A.x * a + B.x * b_, A.y * a + B.y * b_, z))
+    wm, body = c['wall_mat'], c['body']
+    z = top + 0.05
+    if kind == 'saw':
+        nt = max(2, round((b1 - b0) / 7.0)); pt = (b1 - b0) / nt; hs = min(2.4, pt * 0.34)
+        north = B.y >= 0                                   # the glass faces +B if +B is the northern side
+        for j in range(nt):
+            lo, hi = b0 + j * pt, b0 + (j + 1) * pt
+            bl, bh = (lo, hi) if north else (hi, lo)       # the slope rises from bl to bh, the glass stands at bh
+            out.poly('roof_flat', [P(a0, bl, z), P(a1, bl, z), P(a1, bh, z + hs), P(a0, bh, z + hs)], rc)
+            out.poly('glass', [P(a0, bh, z + hs), P(a1, bh, z + hs), P(a1, bh, z), P(a0, bh, z)], (1, 1, 1))
+            out.poly('trim', [P(a0, bh, z + hs), P(a1, bh, z + hs), P(a1, bh, z + hs - 0.15), P(a0, bh, z + hs - 0.15)], c['trim'])
+            for a in (a0, a1): out.poly(wm, [P(a, bl, z), P(a, bh, z), P(a, bh, z + hs)], body)
+    else:
+        span = b1 - b0; rise = min(0.16 * span, 4.5); ns = 10
+        pts = [(b0 + span * k / ns, z + rise * (1 - (2 * k / ns - 1) ** 2)) for k in range(ns + 1)]
+        for k in range(ns):
+            (ba, za), (bb, zb) = pts[k], pts[k + 1]
+            out.poly('roof_flat', [P(a0, ba, za), P(a1, ba, za), P(a1, bb, zb), P(a0, bb, zb)], rc)
+        for a in (a0, a1):
+            out.poly(wm, [P(a, bb, zz) for bb, zz in pts], body)
+            out.poly('trim', [P(a, bb, zz + 0.12) for bb, zz in pts] + [P(a, bb, zz) for bb, zz in pts[::-1]], c['trim'])
 
 
 def fire_escape(w, u0, u1, first, fh, nfl, eave, rng):
@@ -1122,6 +1420,14 @@ def saturate(c, k):
     import colorsys
     h, l_, s_ = colorsys.rgb_to_hls(*c[:3])
     return colorsys.hls_to_rgb(h, l_, min(1.0, s_ * k))
+
+
+def unviolet(c):
+    """lilac and violet paint read loud from the air: their saturation cut"""
+    import colorsys
+    h, l_, s_ = colorsys.rgb_to_hls(*c[:3])
+    if 0.66 < h < 0.95: s_ *= 0.6
+    return colorsys.hls_to_rgb(h, l_, s_)
 
 
 def bay(w, u0, u1, z0, z1, c, rng, kind):
