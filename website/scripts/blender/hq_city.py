@@ -167,7 +167,6 @@ for m in d['meshes']:
         else:
             for t in range(len(p) // 9):
                 if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
-SP, _ = fix_street_shards(SP)                  # street triangles torn by the drape along the seawall (hq_scene)
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
