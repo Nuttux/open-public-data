@@ -13,7 +13,7 @@ crisp shapes with an edge soft over ~2 m, no speckle):
   E2 = asphalt, concrete, gravel
   E3 = bare soil, scrub, marsh
   E4 = cured grass, tree canopy, data (1 where the photo classified the ground)
-  E5 = water the render's sea does not cover (shore mud)
+  E5 = water the render's sea does not cover (shore mud), artificial turf
 """
 import os, json, math
 import numpy as np
@@ -22,13 +22,13 @@ CLS_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_cls.npy'
 META_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_meta.json'
 TONE_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_tone.npy'
 TONE_K = float(os.environ.get('GROUND_TONE', '1.1'))   # how much of the photo's detail (log2 of the ratio per unit)
-CLS = ['none', 'sand', 'lawn', 'drygrass', 'scrub', 'tree', 'soil', 'asphalt', 'concrete', 'gravel', 'marsh', 'water', 'wetsand']
+CLS = ['none', 'sand', 'lawn', 'drygrass', 'scrub', 'tree', 'soil', 'asphalt', 'concrete', 'gravel', 'marsh', 'water', 'wetsand', 'turf']
 CI = {n: k for k, n in enumerate(CLS)}
 PACK = [(('sand',), ('wetsand',), ('lawn',)),
         (('asphalt',), ('concrete',), ('gravel',)),
         (('soil',), ('scrub',), ('marsh',)),
         (('drygrass',), ('tree',), None),
-        (('water',), (), ())]
+        (('water',), ('turf',), ())]
 BLUR = 2          # the box over the classes (5 x 5 m): a 1 m class map is speckled, and speckle sharpened reads as camouflage
 
 def _box(a, r):
@@ -138,7 +138,7 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     asph, conc, grav = S[1][0], S[1][1], S[1][2]
     soil, scrub, marsh = S[2][0], S[2][1], S[2][2]
     dry, tree, have = S[3][0], S[3][1], S[3][2]
-    water = S[4][0]
+    water, turf = S[4][0], S[4][1]
     # an edge between classes wanders a metre or two (a straight 1 m step
     # reads as pixels), and a share is sharpened so a mixed pixel is one or
     # the other, not a muddy average
@@ -212,7 +212,10 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         sp_ = b.n('ShaderNodeSeparateXYZ'); b.put(sp_.inputs[0], b.pos)
         uu = b.math('ADD', b.math('MULTIPLY', sp_.outputs[0], math.cos(0.14)), b.math('MULTIPLY', sp_.outputs[1], math.sin(0.14)))
         lw = b.mix(1.0, lw, b.math('ADD', 0.96, b.math('MULTIPLY', b.ramp(b.math('SINE', b.math('MULTIPLY', uu, math.pi / 4.0)), 0.0, 1.0, -0.3, 0.3), 0.08)), 'MULTIPLY')
-    L_ = [(tree, du), (soil, so), (marsh, mh), (water, md), (lawn, lw), (grav, gv), (asph, ap), (conc, co)]
+    # ARTIFICIAL TURF (OSM surface=artificial_turf): an even deep green, a
+    # faint cool cast, a stripe of the roller
+    tu = b.mix(b.ramp(b.noise(1 / 30.0, 2.0), 0.0, 1.0, 0.3, 0.7), (0.030, 0.085, 0.040), (0.036, 0.098, 0.046))
+    L_ = [(tree, du), (soil, so), (marsh, mh), (water, md), (lawn, lw), (turf, tu), (grav, gv), (asph, ap), (conc, co)]
     if os.environ.get('GROUND_SAND', '1') == '1': L_ += [(sand, sd), (wet, ws)]      # the beaches (the water agent may own them)
     for w_, col_ in L_:
         x = b.mix(sh(w_), x, col_)
@@ -225,7 +228,7 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         d_ = b.math('SUBTRACT', b.math('MULTIPLY', t_, 255.0 / 127.0), 128.0 / 127.0)
         # a watered lawn keeps its light patches but not its dark ones (the
         # photo's tree shadows lay dark streaks across Dolores Park, integ1)
-        lk_ = b.math('SUBTRACT', 1.0, b.math('MULTIPLY', sh(lawn), 0.8))       # a lawn keeps a fifth of the photo's grain
+        lk_ = b.math('SUBTRACT', 1.0, b.math('MULTIPLY', b.math('MINIMUM', b.math('ADD', sh(lawn), sh(turf)), 1.0), 0.8))       # a lawn keeps a fifth of the photo's grain
         dn = b.math('MULTIPLY', b.math('MINIMUM', d_, 0.0), lk_)
         dp = b.math('MULTIPLY', b.math('MAXIMUM', d_, 0.0), b.math('ADD', 0.4, b.math('MULTIPLY', lk_, 0.6)))
         # darker ground is warmer, not bluer (damp earth, trodden grass): the

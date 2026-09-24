@@ -27,11 +27,11 @@ RES = 1.0                        # the stored grid (m)
 SUB = 0.5                        # the classification grid (m)
 BLK = 1000.0                     # a block (m)
 # the class codes (uint8); 0 = no data (outside NAIP, or a building)
-CLS = ['none', 'sand', 'lawn', 'drygrass', 'scrub', 'tree', 'soil', 'asphalt', 'concrete', 'gravel', 'marsh', 'water', 'wetsand']
+CLS = ['none', 'sand', 'lawn', 'drygrass', 'scrub', 'tree', 'soil', 'asphalt', 'concrete', 'gravel', 'marsh', 'water', 'wetsand', 'turf']
 CI = {n: k for k, n in enumerate(CLS)}
 COL = {'none': (0, 0, 0), 'sand': (240, 220, 160), 'lawn': (60, 200, 60), 'drygrass': (205, 170, 90), 'scrub': (110, 120, 50),
        'tree': (20, 80, 30), 'soil': (150, 95, 60), 'asphalt': (60, 60, 65), 'concrete': (200, 200, 205), 'gravel': (150, 140, 150),
-       'marsh': (80, 140, 120), 'water': (40, 80, 170), 'wetsand': (170, 150, 110)}
+       'marsh': (80, 140, 120), 'water': (40, 80, 170), 'wetsand': (170, 150, 110), 'turf': (20, 120, 70)}
 
 _CAL = None
 def calib():
@@ -138,7 +138,8 @@ def _osm_cat(t):
     if t.get('amenity') == 'parking' and t.get('parking', 'surface') == 'surface': return 'parking'
     # a playing field (grass or artificial turf, which the NIR reads as bare
     # or paved: Mission High's field rendered dark olive-brown, integ1)
-    if le == 'pitch' and not set(str(t.get('sport', '')).split(';')) & COURT and t.get('surface', 'grass') not in HARD: return 'turf'
+    if le == 'pitch' and not set(str(t.get('sport', '')).split(';')) & COURT and t.get('surface', 'grass') not in HARD:
+        return 'synth' if t.get('surface') in ('artificial_turf', 'artificial_grass') else 'turf'
     if t.get('golf') in ('fairway', 'green', 'tee', 'driving_range') or le in ('pitch', 'golf_course') or lu in ('grass', 'village_green', 'recreation_ground', 'cemetery'):
         return 'lawn'
     if n == 'wood' or lu == 'forest': return 'wood'
@@ -230,7 +231,7 @@ def classify(DN, AL, ok, res=SUB, osm=None):
     veg = nds > 0.14
     c[veg] = CI['drygrass']
     c[veg & ((nstd > 11) | (L < 0.036))] = CI['scrub']
-    lawnh = osm.get('lawn', np.zeros(L.shape, bool)) | osm.get('turf', np.zeros(L.shape, bool))
+    lawnh = osm.get('lawn', np.zeros(L.shape, bool)) | osm.get('turf', np.zeros(L.shape, bool)) | osm.get('synth', np.zeros(L.shape, bool))
     c[veg & (((Ns > 172) & (G > 0.062)) | (lawnh & (Ns > 150))) & (nstd < 14)] = CI['lawn']
     woodh = osm.get('wood', np.zeros(L.shape, bool))
     c[veg & (nds > 0.24) & ((nstd > 13) | (L < 0.045) | woodh) & ~((Ns > 185) & (nstd < 10))] = CI['tree']
@@ -358,11 +359,16 @@ def refine(src=None, dst=None, M=100):
             if 'turf' in om:
                 tf = om['turf'][:c.shape[0], :c.shape[1]] & np.isin(c, [A, C, GR, SO, CI['drygrass'], CI['scrub']])
                 c[tf] = CI['lawn']; nturf += int(tf.sum())
+            if 'synth' in om:      # artificial turf: its own even, deep green
+                tf = om['synth'][:c.shape[0], :c.shape[1]] & (c != 0) & (c != W)
+                c[tf] = CI['turf']; nturf += int(tf.sum())
             # a watered lawn (OSM park grass, a garden, a cemetery, a golf
             # course): its dry patches and bare wear are the lawn's, not a lot's
             # (Alamo Square read as mottled brown earth, integ1)
             if 'lawn' in om:
-                lw_ = om['lawn'][:c.shape[0], :c.shape[1]] & np.isin(c, [SO, CI['drygrass']])
+                # (and the ground under its trees: where the render has no tree,
+                # the photo's canopy read as brown duff blotches on the lawn, g3)
+                lw_ = om['lawn'][:c.shape[0], :c.shape[1]] & np.isin(c, [SO, CI['drygrass'], CI['tree']])
                 c[lw_] = CI['lawn']; nlawn += int(lw_.sum())
             O[j0:j0 + n, i0:i0 + n] = c[j0 - b0:j0 - b0 + n, i0 - a0:i0 - a0 + n]
     np.save(dst, O)
