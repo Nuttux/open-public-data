@@ -15,9 +15,8 @@ so what says "tram street" or "rail yard" from the air is:
     flangeway groove in the street, raised steel with a shadow on ballast;
     the cable cars' slot between their rails (drawn 2.5x wide, a convention:
     the real slot is 3 cm);
-  - the overhead: contact wire over every electrified track (drawn 7 cm thick,
-    a convention, so its shadow reads), trolley poles at the kerb with span
-    wires, Caltrain's side poles with cantilevers;
+  - Caltrain's catenary poles with their cantilevers (they read in the yard;
+    the contact wires and Muni's kerb poles do not, and are off by default);
   - platforms (their yellow edge along the track), the cable-car turntables;
   - the VEHICLES, placed sparsely and plausibly (transit_cars.py): Muni LRV4
     singly and in twos, PCCs and the Milan tram on the F, cable cars on the
@@ -34,7 +33,8 @@ and Central Subway tunnels, BART under Market and Mission, Caltrain's four).
 ERA. The network is today's. With `era` set nothing is built: the history
 agent's era.py owns the cable lines of 1873-1890 and whatever came after.
 
-env: TRANSIT_VEH=0 (no vehicles) · TRANSIT_WIRE=0 (no overhead) ·
+env: TRANSIT_VEH=0 (no vehicles) · TRANSIT_WIRE=rail (default: Caltrain's poles only) | 1 (all
+     the overhead: contact wires, Muni kerb poles and spans) | 0 ·
      TRANSIT_ONLY=cable,tram,... (classes)
 """
 import json, math, os, random, sys, time, traceback
@@ -50,8 +50,8 @@ STEP = 1.5                 # track sampling, m
 C = lambda *c: (*c, 1.0)
 
 # colours (linear) ────────────────────────────────────────────────────────────
-SLAB = C(0.64, 0.62, 0.59)          # multiplies the concrete texture (weathered, tyre-dirty)
-SLAB_CABLE = C(0.60, 0.58, 0.55)
+SLAB = C(0.74, 0.72, 0.68)          # multiplies the concrete texture (lighter than the asphalt, as from the air)
+SLAB_CABLE = C(0.70, 0.68, 0.64)
 BALLAST = C(0.125, 0.112, 0.094)      # grey-brown, dusty (it read as concrete at 0.2)
 BALLAST_WEEDY = C(0.095, 0.098, 0.060)
 TIES_TIMBER = C(0.070, 0.055, 0.044)
@@ -123,9 +123,10 @@ def _mats(bpy, M):
     T = {}
     T['slab'] = tinted(M.get('sidewalk'), 'tr_slab')
     T['plat'] = tinted(M.get('sidewalk'), 'tr_plat')
-    T['ballast'] = principled('tr_ballast', rough=0.95, noise=(1.3, 0.28))
+    # stones: no sheen (at 0.5 specular the low sky lit the yard pale blue, 2026-09-24)
+    T['ballast'] = principled('tr_ballast', rough=1.0, spec=0.12, noise=(1.3, 0.28))
     T['steel'] = principled('tr_steel', (0.42, 0.40, 0.38), rough=0.34, metal=1.0)
-    T['rust'] = principled('tr_rust', rough=0.85)
+    T['rust'] = principled('tr_rust', rough=0.85, spec=0.25)
     T['dark'] = principled('tr_dark', rough=0.9, spec=0.3)
     T['wire'] = principled('tr_wire', (0.025, 0.025, 0.025), rough=0.45, metal=0.6)
     T['pole'] = principled('tr_pole', rough=0.55)
@@ -231,8 +232,13 @@ def _build(bpy, sc, M, ground, box, log, t0):
         try: _lay(bank, G, surf, grade_nodes)
         except Exception as ex: traceback.print_exc(); log('transit_hq: track', G['t']['id'], 'failed', ex)
     log(f'transit_hq: track beds and rails, {bank.nfaces()} faces ({time.time() - t0:.1f}s)')
-    if E('TRANSIT_WIRE', '1') == '1':
-        try: nw = _overhead(bank, geo, surf, kd, AS)
+    # THE OVERHEAD at 37 cm/px (Judah St, 2026-09-24, sheets 05): a contact
+    # wire's shadow does not show at all, and the kerb poles are faint ticks
+    # across the facades - noise. Caltrain's poles in the yard do read. So by
+    # default: Caltrain's poles and cantilevers only ('rail'); '1' = all of it
+    wmode = E('TRANSIT_WIRE', 'rail')
+    if wmode != '0':
+        try: nw = _overhead(bank, geo, surf, kd, AS, wmode)
         except Exception as ex: traceback.print_exc(); log('transit_hq: overhead failed', ex)
     try: npf = _platforms(bank, D['platforms'], surf, kd, AS, inb)
     except Exception as ex: traceback.print_exc(); log('transit_hq: platforms failed', ex); npf = 0
@@ -321,13 +327,13 @@ def _embedded(bank, t, X, Y, NX, NY, zc, surf):
     for sg in (1, -1):
         oc = sg * (g / 2 + 0.036)
         # rail head (flush, worn steel) and the flangeway on its inner side, with
-        # the grime either side of them: drawn 8 + 12 cm, a convention (the
-        # steel is 7 cm), so the pair reads as two dark lines at 37 cm/px
+        # the grime either side of them: drawn 8 + 14 + 6 cm, a convention (the
+        # steel is 7 cm), so the pair reads as two lines at 37 cm/px
         _band(bank, 'rust' if disused else 'steel', X, Y, NX, NY, Z, offs, oc - 0.04, oc + 0.04, EMB_RAIL, RUST)
         gi = oc - sg * 0.04
-        _band(bank, 'dark', X, Y, NX, NY, Z, offs, min(gi, gi - sg * 0.12), max(gi, gi - sg * 0.12), EMB_GROOVE, GROOVE)
+        _band(bank, 'dark', X, Y, NX, NY, Z, offs, min(gi, gi - sg * 0.14), max(gi, gi - sg * 0.14), EMB_GROOVE, GROOVE)
         go = oc + sg * 0.04
-        _band(bank, 'dark', X, Y, NX, NY, Z, offs, min(go, go + sg * 0.05), max(go, go + sg * 0.05), EMB_GROOVE, GRIME)
+        _band(bank, 'dark', X, Y, NX, NY, Z, offs, min(go, go + sg * 0.06), max(go, go + sg * 0.06), EMB_GROOVE, GRIME)
     if cls == 'cable':
         # the slot rails (steel, flush) and the slot the grip reaches the cable through
         _band(bank, 'dark', X, Y, NX, NY, Z, offs, -0.2, 0.2, EMB_SLOT, SLOT_STEEL)
@@ -336,8 +342,9 @@ def _embedded(bank, t, X, Y, NX, NY, zc, surf):
 
 def _ballasted(bank, t, X, Y, NX, NY, zc, surf):
     g = t['gauge']; cls = t['cls']
-    # in a yard the shoulders run on until they meet the next track's: one field of ballast
-    hw = g / 2 + 1.05; ft = hw + (2.3 if t['yard'] else 1.0); tw = g / 2 + 0.55
+    # in a yard, and on Caltrain's right of way (4th & King's tracks are mostly
+    # tagged main line), the shoulders run on until they meet the next track's
+    hw = g / 2 + 1.05; ft = hw + (2.3 if (t['yard'] or cls == 'rail') else 1.0); tw = g / 2 + 0.55
     offs = [-ft, -hw, 0.0, hw, ft]
     Z = _lateral(X, Y, NX, NY, zc, surf, offs)
     weedy = cls == 'disused' or t.get('usage') == 'industrial' or t['service'] in ('spur',)
@@ -425,7 +432,7 @@ def _wire(bank, P, r, col):
 
 
 # ── the overhead ─────────────────────────────────────────────────────────────
-def _overhead(bank, geo, surf, kd, AS):
+def _overhead(bank, geo, surf, kd, AS, mode='1'):
     poles = []                      # (x, y) placed, to keep one pole where two tracks would each want one
     def near_pole(x, y, r):
         return any((x - px) ** 2 + (y - py) ** 2 < r * r for px, py in poles[-400:])
@@ -433,11 +440,12 @@ def _overhead(bank, geo, surf, kd, AS):
     for G in geo:
         t = G['t']
         if not t['elec'] or t['covered'] or t['cls'] not in ('tram', 'lrv', 'rail'): continue
+        if mode == 'rail' and t['cls'] != 'rail': continue
         X, Y, S, NX, NY, zc, ok, onst = G['X'], G['Y'], G['S'], G['NX'], G['NY'], G['zc'], G['ok'], G['onst']
         rail = t['cls'] == 'rail'; g = t['gauge']
         hwire = 6.1 if rail else 5.6
         # the contact wire, over the track, every 4th sample (6 m)
-        for i0, i1 in TG.runs(ok):
+        for i0, i1 in (TG.runs(ok) if mode == '1' else []):
             idx = np.arange(i0, i1, 4)
             if idx[-1] != i1 - 1: idx = np.r_[idx, i1 - 1]
             idx = idx[ok[idx]]
