@@ -1980,12 +1980,40 @@ def stoop(w, u0, u1, zg, zdoor, trim, style):
             w.box('stair', uu, uu + 0.15, zg - 0.3, zdoor + 0.9, 0.0, nst * run, (0.80, 0.78, 0.74))
 
 
+WELD = __import__('os').environ.get('WELD', '1') == '1'
+
+
+def weld(V, F, C, q=1e5):
+    """(24/09) one vertex per point: every poly gave each corner its own
+    vertex (a box 24 for its 8 corners, a hip roof's split triangles three
+    each), and the frame's mesh memory rose past 40 GB with the LiDAR roofs.
+    Points within 10 µm are one; a face left with fewer than three distinct
+    corners (zero area) goes with its colour. Faces are shaded flat, so the
+    image does not change."""
+    import numpy as np
+    if not V: return V, F, C
+    a = np.asarray(V, dtype=np.float64)
+    key = np.round(a * q).astype(np.int64)
+    _, first, inv = np.unique(key, axis=0, return_index=True, return_inverse=True)
+    inv = inv.ravel().tolist(); V2 = a[first].tolist()
+    F2, C2 = [], []
+    for f, c in zip(F, C):
+        g = []
+        for i in f:
+            j = inv[i]
+            if not g or g[-1] != j: g.append(j)
+        if len(g) > 1 and g[0] == g[-1]: g.pop()
+        if len(g) >= 3 and len(set(g)) == len(g): F2.append(g); C2.append(c)
+    return V2, F2, C2
+
+
 def emit(bpy, out, mats, name='gen'):
     """one mesh per material, with a face colour attribute 'bcol'"""
     objs = []
     for k, (V, F, C) in out.m.items():
         if not F: continue
         me = bpy.data.meshes.new(f'{name}.{k}')
+        if WELD: V, F, C = weld(V, F, C)
         me.from_pydata(V, [], F)
         # colours first, THEN validate: validate drops degenerate faces and
         # takes their attribute rows with them — done the other way round,
