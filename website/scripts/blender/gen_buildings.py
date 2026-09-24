@@ -322,6 +322,7 @@ def building(b, ground, out):
         roof = 'gable' if rng.random() < 0.25 else 'flat'
     else:
         roof = 'flat'
+    if not LM: roof = measured_form(b, roof)                 # ROOFS: a light membrane seen from the air is a flat roof
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and rng.random() < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
@@ -642,6 +643,15 @@ def _lum(a): return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]
 def _disp(lin): return tuple(max(0.0, v) ** (1 / 2.2) for v in lin)   # emit() raises back to 2.2
 
 
+def measured_form(b, roof):
+    """a gable the generator drew where the air sees a light membrane (white,
+    cap sheet, silver, gravel; albedo >= 0.28) and the survey does not call
+    the roof pitched: it is a flat roof, behind a false front mostly
+    (roofs.json's 6th field, set by roofs_prep.finish)"""
+    m = ROOF_M.get(b['gid']) if ERA is None else None
+    return 'flat' if (m and roof == 'gable' and len(m) > 5 and m[5] == 1) else roof
+
+
 def measured_pitched(b, roof_mat, rc):
     """a pitched roof in its measured colour: clay tile where the air sees
     terracotta, shingle otherwise (never whiter than a light shingle: a
@@ -655,8 +665,13 @@ def measured_pitched(b, roof_mat, rc):
         return roof_mat, rc
     a, cls = list(m[:3]), m[3]
     mat = 'roof_tile' if cls == 'tile' else 'roof_shingle'
-    L, cap = _lum(a), (0.45 if mat == 'roof_tile' else 0.26)
-    if L > cap: a = [v * cap / L for v in a]
+    L = max(_lum(a), 1e-4)
+    if mat == 'roof_tile': L2 = min(L, 0.45)
+    # a shingle lives between 0.05 and ~0.22: the photo's lightness is kept in
+    # ORDER, compressed into that range (a light reading over a gable is mostly
+    # a flat light roof the generator pitched; at 0.3-0.4 a 50° gable went pale)
+    else: L2 = min(0.22, 0.05 + 0.5 * max(0.0, L - 0.05)) if L > 0.05 else L
+    a = [v * L2 / L for v in a]
     t = _ROOF_TEX[mat]
     return mat, _disp([a[k] / t[k] for k in range(3)])
 
