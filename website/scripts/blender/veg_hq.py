@@ -52,6 +52,7 @@ PALMS = ('date_palm', 'fan_palm', 'queen_palm', 'small_palm')
 FOREST_H = {'euc': (22.0, 32.0), 'cypress': (14.0, 21.0), 'pine': (16.0, 23.0), 'redwood': (20.0, 28.0),
             'round': (9.0, 14.0), 'plane': (10.0, 15.0)}
 OPEN_ZONES = ('urban', 'coast_band', 'park', 'garden', 'square')
+CAN_ZONES = ('urban', 'coast_band')      # CANOPY=1: where the measured crowns replace the masses
 SITE_MEDIAN = 2
 CONIFERS = ('pine', 'cypress', 'redwood')
 # crown width (m) from the listed DBH (in): a + b·DBH, at most c. Street trees
@@ -184,7 +185,11 @@ class Kinds:
         return None
 
     def mass(self, x, y, crown, on_street=None, roofed=None):
-        if self.canopy_on: return None          # the measured crowns (canopy()) stand instead
+        # the measured crowns (canopy()) stand instead in the city's open
+        # zones (yards, streets, block interiors); the woods and parks keep
+        # their masses: drawn one proto per LiDAR segment, Sutro's and Corona
+        # Heights' closed stands read thin and brown (whole frame 3:4, 24/09)
+        if self.canopy_on and self.zones[self.zone(x, y)]['name'] in CAN_ZONES: return None
         r = self.mass4(x, y, crown, on_street, roofed)
         return r if (r is None or on_street is not None) else r[:2]   # legacy callers: (kind, crown)
 
@@ -251,6 +256,7 @@ class Kinds:
         for i in range(len(C['x'])):
             x, y = float(C['x'][i]), float(C['y'][i])
             if (round(x / 2.5), round(y / 2.5)) in seen: continue
+            if self.zones[self.zone(x, y)]['name'] not in CAN_ZONES: continue
             a = self.can_names[int(C['k'][i])]
             if a not in self.kinds_of: a = 'round'
             k = self._kind(a, x, y); h, w = float(C['h'][i]), float(C['w'][i])
