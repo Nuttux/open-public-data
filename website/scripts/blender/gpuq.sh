@@ -21,7 +21,7 @@ NEED=${GPU_NEED:-24}
 # free and may take the second slot when the first holds another small job. A
 # full-frame job ('big') still runs alone. memguard stays the backstop.
 kind=big; for a in "$@"; do case "$a" in BORDER=*|PCT=*) kind=small;; esac; done
-[ $kind = small ] && NEED=${GPU_NEED_SMALL:-16}
+[ $kind = small ] && NEED=${GPU_NEED_SMALL:-24}     # (a crop peaks at 20-23.5 GB, 24/09 pm)
 me="$Q/$pri$(date +%s)$(printf '%06d' $$)_$$"
 echo "$label" > "$me"
 trap 'rm -f "$me"' EXIT; trap 'rm -f "$me"; exit 1' INT TERM   # a stopped waiter leaves (it used to loop on without a ticket)
@@ -40,7 +40,9 @@ while :; do
   if [ "$Q/$first" = "$me" ] && [ "$(avail)" -ge "$NEED" ]; then
     if [ ! -d "$W/.gpu.lock2" ] && mkdir "$L" 2>/dev/null; then break; fi
     # the second slot: small jobs only, beside another small job
-    if [ $kind = small ] && [ "$(cat "$L/kind" 2>/dev/null)" = small ] && mkdir "$W/.gpu.lock2" 2>/dev/null; then L=$W/.gpu.lock2; break; fi
+    # (OFF by default since 24/09 17:35: crop scenes grew to 20-23.5 GB each and
+    # memguard stopped 15 Blenders in 2.5 h with two side by side; GPU_SLOTS=2 turns it back on)
+    if [ "${GPU_SLOTS:-1}" -ge 2 ] && [ $kind = small ] && [ "$(cat "$L/kind" 2>/dev/null)" = small ] && mkdir "$W/.gpu.lock2" 2>/dev/null; then L=$W/.gpu.lock2; break; fi
   fi
   sleep 3
 done
