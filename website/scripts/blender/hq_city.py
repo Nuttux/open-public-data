@@ -607,6 +607,38 @@ _ls = _HQSRC[_HQSRC.index("world = bpy.data.worlds.new('w')"):_HQSRC.index("sc.r
 exec(_ls)
 sc.cycles.samples = SPP
 
+# BUILDING COLOUR SPREAD (the global look pass, 24/09; off by default): the city
+# read as one beige because every building's face colour sits near the same
+# mean. Walls' and roofs' 'bcol' is pushed away from its material's mean,
+# mean + k·(c − mean), k = BCOL_SPREAD (or a look's spread=), 1.0 = unchanged.
+_SPREAD = []
+if E('BCOL_SPREAD') or 'spread=' in (E('LOOKS') or ''):
+    _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle', 'roof_tile'}
+    _acc = {}
+    for o_ in sc.objects:
+        if o_.type != 'MESH' or 'bcol' not in o_.data.color_attributes: continue
+        ms_ = [s_.material.name.split('.')[0] for s_ in o_.material_slots if s_.material]
+        if not any(m_ in _sm for m_ in ms_): continue
+        ca_ = o_.data.color_attributes['bcol']; a_ = np.empty(len(ca_.data) * 4, np.float32); ca_.data.foreach_get('color', a_)
+        a_ = a_.reshape(-1, 4)[:, :3]
+        for m_ in set(ms_) & _sm: _acc.setdefault(m_, []).append(a_.mean(0) if len(a_) else None)
+    for mat_ in bpy.data.materials:
+        mn_ = mat_.name.split('.')[0]
+        if mn_ not in _sm or not mat_.node_tree: continue
+        mv_ = [v for v in _acc.get(mn_, []) if v is not None]
+        mean_ = np.mean(mv_, 0) if mv_ else np.array([0.5, 0.45, 0.4])
+        nt_ = mat_.node_tree
+        for at_ in [n for n in nt_.nodes if n.type == 'ATTRIBUTE' and n.attribute_name == 'bcol']:
+            outs_ = [l.to_socket for l in at_.outputs['Color'].links]
+            if not outs_: continue
+            mx_ = nt_.nodes.new('ShaderNodeMix'); mx_.data_type = 'RGBA'; mx_.clamp_factor = False; mx_.clamp_result = True
+            mx_.inputs[0].default_value = float(E('BCOL_SPREAD', 1.0))
+            mx_.inputs[6].default_value = (*[float(v) for v in mean_], 1.0)
+            nt_.links.new(at_.outputs['Color'], mx_.inputs[7])
+            for t_ in outs_: nt_.links.new(mx_.outputs[2], t_)
+            _SPREAD.append(mx_)
+        log(f'bcol spread: {mat_.name} mean {np.round(mean_, 3).tolist()}')
+
 # ── PYRAMID MODE: the site's own tile grid, exactly ──────────────────────────
 # `scripts/render-city-tiles.mjs` and `lib/citygl/tile-plane.ts` define the
 # pyramid: level z is a canvas of 2560·2^(z-3) x 1536·2^(z-3) device px (dpr 2)
@@ -640,17 +672,33 @@ if E('MODE') == 'pyramid':
             wp = Vector((px_ / KX, py_ / KY, 0.0))
             cam.location = wp - fw_ * 20000; cam.rotation_euler = rot
             # LOOKS (look tests): several lights on one built scene, one file each;
-            # 'tag:el,sun,sky,expo;…'
+            # 'tag:el,sun,sky,expo[,key=val…];…' — optional keys (the global look pass, 24/09):
+            # rgb=r/g/b (sun colour), ssat= (sky fill saturation), gloss= (sky in reflections),
+            # agx= (AgX look name), spread= (building colour spread, see BCOL_SPREAD);
+            # a key left out takes the build's default. LOOK_EXR=1 also writes each look's
+            # scene-linear EXR (re-toned in post, look/look_post.py)
             for lk_ in (E('LOOKS').split(';') if E('LOOKS') else ['']):
                 fn = f'{OUT}_z{Z}_{i}_{j}.png' if not lk_ else f"{OUT}_{lk_.split(':')[0]}_z{Z}_{i}_{j}.png"
                 if os.path.exists(fn): continue
                 if lk_:
-                    el_, sk_, bk_, ex_ = (float(v) for v in lk_.split(':')[1].split(','))
+                    f_ = lk_.split(':', 1)[1].split(',')
+                    el_, sk_, bk_, ex_ = (float(v) for v in f_[:4])
+                    kv_ = dict(t.split('=', 1) for t in f_[4:])
                     a_, e_ = math.radians(float(E('SUN_AZ', 215))), math.radians(el_)
                     sun.rotation_euler = (-Vector((math.sin(a_) * math.cos(e_), math.cos(a_) * math.cos(e_), math.sin(e_)))).to_track_quat('-Z', 'Y').to_euler()
                     sky.sun_elevation = e_; sun_d.energy = sk_; bg.inputs['Strength'].default_value = bk_; sc.view_settings.exposure = ex_
+                    sun_d.color = tuple(float(v) for v in kv_.get('rgb', E('SUN_RGB', '1.0/0.80/0.58').replace(',', '/')).split('/'))
+                    if 'hs_' in globals(): hs_.inputs['Saturation'].default_value = float(kv_.get('ssat', E('SKY_SAT', 0.7)))
+                    bg2.inputs['Strength'].default_value = float(kv_.get('gloss', E('GLOSS_K', 0.9)))
+                    sc.view_settings.look = kv_.get('agx', E('AGX_LOOK', 'AgX - Punchy'))
+                    for n_ in _SPREAD: n_.inputs[0].default_value = float(kv_.get('spread', E('BCOL_SPREAD', 1.0)))
                 sc.render.filepath = fn
                 t1 = time.time(); bpy.ops.render.render(write_still=True)
+                if E('LOOK_EXR') == '1':
+                    is_ = sc.render.image_settings; ff_, cd_ = is_.file_format, is_.color_depth
+                    is_.file_format = 'OPEN_EXR'; is_.color_depth = '16'; is_.exr_codec = 'ZIP'
+                    bpy.data.images['Render Result'].save_render(fn[:-4] + '.exr', scene=sc)
+                    is_.file_format = ff_; is_.color_depth = cd_
                 log(f'frame {i},{j}{" " + lk_ if lk_ else ""}: {time.time() - t1:.1f}s')
     log('PYRAMID done'); sys.exit(0)
 
