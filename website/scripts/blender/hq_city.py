@@ -482,6 +482,9 @@ if E('TRANSIT', '1') == '1':
 if E('LIFE', '1') == '1':
     try: import life_hq; life_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
     except Exception as ex: log('life_hq: not built:', ex)
+# ── FREEWAYS (freeways_hq.py, the freeways agent): the viaducts on LiDAR-measured decks, bents, the ground under them; FREEWAYS=0 skips
+if E('FREEWAYS', '1') == '1':
+    import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

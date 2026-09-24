@@ -40,7 +40,9 @@ agent owns the past: the Embarcadero Freeway 1959-91, the Central Freeway
 north of Market 1959-2003).
 
 env: FREEWAYS=0 (nothing built, deck_z() answers None) · FW_LOTS=0 (no paving
-     under the decks) · FW_HIDE=0 (the at-grade copy left as it was)
+     under the decks) · FW_HIDE=0 (the at-grade copy left as it was) ·
+     FW_GRADE=1 (under test: the motorways at grade paved too, their lane
+     dashes on the lawn set aside; deck_z() then answers on them as well)
 
 Sources: OpenStreetMap (ODbL, (c) OpenStreetMap contributors); USGS 3DEP
 LiDAR CA_SanFrancisco_1_B23 and bare earth (public domain).
@@ -108,7 +110,7 @@ def deck_z(way_id, x, y):
     if w is None: return None
     _, dist, z, h = _proj(w, float(x), float(y))
     if dist > w['width'] / 2 + 4.0: return None
-    if h < H_BUILT: return z + 0.03 if E('FW_GRADE', '1') == '1' else None    # the pavement at grade (json z: ground + 0.10)
+    if h < H_BUILT: return z + 0.03 if E('FW_GRADE', '0') == '1' else None    # the pavement at grade (json z: ground + 0.10)
     return z + _bias(w)
 
 
@@ -256,7 +258,7 @@ def _build(bpy, sc, M, ground, box, log, t0, ways=None, name='freeways', hide=Tr
     # the carriageways at grade (and the at-grade ends of the elevated ones):
     # a pavement draped on the ground
     RG = []
-    if E('FW_GRADE', '1') == '1' and ways is None:
+    if E('FW_GRADE', '0') == '1' and ways is None:
         for w in W:
             P = w['_P']; H = w['_H']
             for a, b in _runs(H < H_BUILT):
