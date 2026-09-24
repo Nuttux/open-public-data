@@ -460,8 +460,9 @@ def building(b, ground, out):
         # cream, stone, a sea-green grey — the bulkhead in the cream stucco
         pr_ = random.Random(b['gid'] * 443 + 1)
         # (24/09, integration: the greens read olive-khaki under the low sun;
-        # the real sheds are light grey and cream)
-        wall_mat = 'concrete'; body = PS.get('body') or pr_.choice(((0.88, 0.87, 0.84), (0.86, 0.84, 0.78), (0.83, 0.83, 0.81), (0.90, 0.88, 0.82)))
+        # the real sheds are light grey and cream — and the grey plaster's own
+        # tint went khaki in the shade over the bay: painted stucco, neutral)
+        wall_mat = 'stucco'; body = PS.get('body') or pr_.choice(((0.88, 0.87, 0.84), (0.86, 0.84, 0.78), (0.83, 0.83, 0.81), (0.90, 0.88, 0.82)))
         trim = PS.get('trim') or pr_.choice(((0.93, 0.91, 0.86), (0.62, 0.64, 0.64), (0.93, 0.91, 0.86)))
         accent = pr_.choice(((0.38, 0.48, 0.44), (0.52, 0.54, 0.54), (0.46, 0.30, 0.24)))
     if sub == 'works' and ep is None and not LM:
