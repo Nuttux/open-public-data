@@ -457,12 +457,27 @@ def kites(sea, placed):
     return out
 
 
+def _docks_drawn():
+    """the berths only where the docks are drawn: the landmarks agent's
+    water_hq.piers (key 'piers', in landmarks_hq.WATER_ENABLED, or LM_KEYS /
+    LM_ALL for its tests); without them ~1,000 boats float in grids on open
+    water. LIFE_BERTHS=1 / 0 forces it either way."""
+    f = os.environ.get('LIFE_BERTHS')
+    if f in ('0', '1'): return f == '1'
+    if os.environ.get('LANDMARKS', '1') != '1': return False
+    try:
+        import landmarks_hq as LH
+        return os.environ.get('LM_ALL') == '1' or 'piers' in (set(LH.WATER_ENABLED) | LH._extra())
+    except Exception:
+        return False
+
+
 def plan(D, sea):
     """every vessel on the bay"""
     placed = []
     V = ships(sea, placed)
     V += ferries(D, sea, placed)
-    V += berths(sea, placed, D.get('marinas', ()))
+    if _docks_drawn(): V += berths(sea, placed, D.get('marinas', ()))
     trails = [v['trail'] for v in V if v['trail']]
     V += sailing(sea, placed, trails)
     V += paddlers(sea, placed)
