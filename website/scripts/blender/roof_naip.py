@@ -56,7 +56,7 @@ def attach(M, box, grain=0.12):
         tx = N('ShaderNodeTexImage'); tx.image = im; tx.interpolation = 'Linear'; tx.extension = 'CLIP'; L(uv.outputs[0], tx.inputs['Vector'])
         # only the faces that look up (roof planes, pitched to ~60 deg), not gables or parapet sides
         sn = N('ShaderNodeSeparateXYZ'); L(geo.outputs['Normal'], sn.inputs[0])
-        up = N('ShaderNodeMapRange', interpolation_type='SMOOTHSTEP'); L(sn.outputs[2], up.inputs[0])
+        up = N('ShaderNodeMapRange'); up.interpolation_type = 'SMOOTHSTEP'; L(sn.outputs[2], up.inputs[0])
         up.inputs[1].default_value = 0.40; up.inputs[2].default_value = 0.55
         a = N('ShaderNodeMath', operation='MULTIPLY'); L(tx.outputs['Alpha'], a.inputs[0]); L(up.outputs[0], a.inputs[1])
         # a faint 12 cm grain on the photo
