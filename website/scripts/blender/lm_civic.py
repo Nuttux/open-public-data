@@ -1344,7 +1344,7 @@ def fortpoint(C):
     BR = hexc('#94634c'); BR_D = hexc('#744a38')
     H = 15.0
     K.prism('brick', r, g - 2.0, g + H, BR, top=False)
-    K.face_holes('lm_matte', r, holes, g + H, hexc('#8a8378'))
+    K.face_holes('lm_matte', r, holes, g + H, hexc('#5c554d'))     # the barbette tier: dark weathered paving (was #8a8378: read white at midday)
     K.prism('brick', r, g + H, g + H + 1.4, BR_D, top=False)
     for h in holes:
         K.prism('brick', h[::-1], g, g + H + 1.4, BR, top=False)
