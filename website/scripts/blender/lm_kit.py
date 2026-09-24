@@ -271,6 +271,29 @@ def materials(bpy, mats):
             nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
         mats[key] = m
 
+    # a pier deck / apron: poured concrete in ~6 m slabs, each its own tone,
+    # dark sawn joints, tyre-worn and oil-stained patches over tens of metres
+    # (a flat grey face read as a placeholder: critic 24/09, Piers 27-31)
+    m, nt = _nodes(bpy, 'lm_apron')
+    if nt is not None:
+        pr = nt.nodes['Principled BSDF']; pr.inputs['Roughness'].default_value = 0.86
+        a = attr(nt); geo = nt.nodes.new('ShaderNodeNewGeometry')
+        br = nt.nodes.new('ShaderNodeTexBrick'); nt.links.new(geo.outputs['Position'], br.inputs['Vector'])
+        br.offset = 0.0; br.squash = 1.0
+        br.inputs['Scale'].default_value = 1.0; br.inputs['Brick Width'].default_value = 6.1; br.inputs['Row Height'].default_value = 6.1
+        br.inputs['Mortar Size'].default_value = 0.05; br.inputs['Mortar Smooth'].default_value = 0.2; br.inputs['Bias'].default_value = 0.0
+        br.inputs['Color1'].default_value = (0.93, 0.93, 0.92, 1); br.inputs['Color2'].default_value = (1.04, 1.03, 1.02, 1)
+        br.inputs['Mortar'].default_value = (0.74, 0.72, 0.70, 1)
+        n1 = noise(nt, 0.035, 4.0, geo.outputs['Position'])            # stains, tens of metres
+        n2 = noise(nt, 0.22, 3.0, geo.outputs['Position'])             # oil / tyre patches, a few metres
+        v1 = mrange(nt, n1.outputs['Fac'], 0.70, 1.08, 0.32, 0.68)
+        v2 = mrange(nt, n2.outputs['Fac'], 1.0, 0.72, 0.55, 0.70)
+        m1 = nt.nodes.new('ShaderNodeMath'); m1.operation = 'MULTIPLY'; nt.links.new(v1, m1.inputs[0]); nt.links.new(v2, m1.inputs[1])
+        c1 = nt.nodes.new('ShaderNodeMix'); c1.data_type = 'RGBA'; c1.blend_type = 'MULTIPLY'; c1.inputs[0].default_value = 1.0
+        nt.links.new(a.outputs['Color'], c1.inputs[6]); nt.links.new(br.outputs['Color'], c1.inputs[7])
+        nt.links.new(hsv_value(nt, c1.outputs[2], m1.outputs[0]), pr.inputs['Base Color'])
+    mats['lm_apron'] = m
+
     # verdigris copper: patina green, streaked darker where the rain runs
     m, nt = _nodes(bpy, 'lm_copper')
     if nt is not None:

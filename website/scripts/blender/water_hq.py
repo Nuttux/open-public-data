@@ -299,7 +299,7 @@ try:
     from terrain_hq import PIER_Z                  # the plateau terrain_hq stands the sheds on
 except Exception:
     PIER_Z = 2.3
-DECK = hexc('#8e8a82'); DECK_SIDE = hexc('#3e3a35'); FLOAT = hexc('#8b8272')
+DECK = hexc('#a59d8f'); DECK_SIDE = hexc('#3e3a35'); FLOAT = hexc('#8b8272'); BOLLARD = hexc('#2b2d2e')
 
 def _inside(x, y, r):
     ins = False
@@ -381,6 +381,20 @@ def piers(C):
             K.prism('lm_matte', r, -0.3, 0.55, FLOAT); n += 1; continue
         z = deck_z(r)
         K.prism('lm_matte', r, -1.5, z - 0.02, DECK_SIDE, top=False)
-        K.face_holes('sidewalk', r, [], z, DECK)
+        K.face_holes('lm_apron', r, [], z, DECK)
+        # bollards along the edges over water, ~22 m apart (a ship's lines)
+        for i in range(len(r)):
+            a_, b_ = r[i], r[(i + 1) % len(r)]
+            L_ = math.hypot(b_[0] - a_[0], b_[1] - a_[1])
+            if L_ < 15.0: continue
+            ux, uy = (b_[0] - a_[0]) / L_, (b_[1] - a_[1]) / L_
+            mx, my = (a_[0] + b_[0]) / 2, (a_[1] + b_[1]) / 2
+            side = [s_ for s_ in (1, -1) if tg(mx - s_ * uy * 4.0, my + s_ * ux * 4.0) < 0.8]
+            if len(side) != 1: continue
+            nx, ny = -side[0] * uy, side[0] * ux              # outward, over the water
+            for k_ in range(1, int(L_ // 22.0) + 1):
+                t_ = k_ * L_ / (int(L_ // 22.0) + 1)
+                bx, by = a_[0] + ux * t_ - nx * 0.7, a_[1] + uy * t_ - ny * 0.7
+                K.cyl('lm_paint', (bx, by, z), (bx, by, z + 0.75), 0.28, BOLLARD, n=8, smooth=False)
         n += 1
     return n
