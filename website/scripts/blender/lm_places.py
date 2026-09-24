@@ -106,6 +106,10 @@ def ring(key):
     j = sidecar(key)
     return [tuple(q) for q in j['ring']] if j else None
 
+def rings(key, fields=('ring', 'house')):
+    j = sidecar(key)
+    return [[tuple(q) for q in j[f]] for f in fields if j and f in j]
+
 def deck_dz(C, samples):
     """a pier deck's level as water_hq sets one: the ground's median inside,
     never under a spike more than a metre over it, + 0.10"""
@@ -120,3 +124,17 @@ def pier39(C):
     if not j: return
     load_into(C.K, 'pier39', deck_dz(C, j['samples']))
     load_into(C.K, 'pier39_lions', 0.0)          # on K-Dock's floats (water_hq, z 0.55)
+
+def leftyodoul(C):
+    """Lefty O'Doul Bridge (1933): leaf trusses, counterweight frame, operator's house (models/leftyodoul_prep.py)"""
+    if C.era is not None and C.era < 1933: return
+    j = sidecar('leftyodoul')
+    if not j: return
+    load_into(C.K, 'leftyodoul', C.tg(*j['datum']) + 0.20)
+
+def fourthst(C):
+    """4th Street Bridge (1917): pony trusses, the counterweight, the operator's tower (models/fourthst_prep.py)"""
+    if C.era is not None and C.era < 1917: return
+    j = sidecar('fourthst')
+    if not j: return
+    load_into(C.K, 'fourthst', C.tg(*j['datum']) + 0.20)

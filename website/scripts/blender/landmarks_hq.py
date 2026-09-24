@@ -61,8 +61,9 @@ class Region:
         return (min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts))
 
 class Landmark:
-    def __init__(self, key, name, built, gone, builder, regions, pad=300.0, note='', replaces=False):
+    def __init__(self, key, name, built, gone, builder, regions, pad=300.0, note='', replaces=False, streets=False):
         self.key, self.name, self.built, self.gone, self.replaces = key, name, built, gone, replaces
+        self.streets = streets      # a bridge: the engine's streets draped into the water under it go too
         self.builder, self.regions, self.pad, self.note = builder, regions, pad, note
     def bbox(self):
         bs = [r.bbox() for r in self.regions]
@@ -135,6 +136,10 @@ def _registry():
                  note='opened April 2000 as Pacific Bell Park', replaces=True),
         Landmark('pier39', 'Pier 39', 1978, None, P.pier39, [Region(ring=P.ring('pier39'))] if P.ring('pier39') else [], pad=800.0,
                  note='opened Oct 1978 on the old cargo pier; the timber village of Buildings A-Q, the Aquarium of the Bay (1996)', replaces=True),
+        Landmark('leftyodoul', "Lefty O'Doul Bridge", 1933, None, P.leftyodoul, [Region(ring=r_) for r_ in P.rings('leftyodoul')], pad=600.0,
+                 note='Third Street Bridge, Strauss bascule, opened 1933; renamed for Lefty O\'Doul in 1980', replaces=True, streets=True),
+        Landmark('fourthst', '4th Street Bridge', 1917, None, P.fourthst, [Region(ring=r_) for r_ in P.rings('fourthst')], pad=600.0,
+                 note='Strauss bascule, opened 1917; named for Peter R. Maloney in 2006', replaces=True, streets=True),
         Landmark('chase', 'Chase Center', 2019, None, V.chase, ol('chase', 0.02), pad=800.0, note='opened Sept 2019'),
         Landmark('dutchmill', 'Dutch Windmill', 1903, None, V.dutchmill, [Region(ring=circ(V.WINDMILLS['dutchmill'][:2], 14))], pad=800.0,
                  note='built 1902-03, restored 1981; the sails turned until the 1930s'),
@@ -166,12 +171,16 @@ def _extra():
 class Ctx:
     pass
 
-def _clear(bpy, sc, regions, log):
-    """delete the engine stand-in's faces whose centre is in any region"""
+STREET_OBJS = ('streets', 'markings', 'paths')
+def _clear(bpy, sc, regions, log, names=None):
+    """delete the engine stand-in's faces (or, with `names`, those objects')
+    whose centre is in any region"""
     import bmesh
     n = 0
     for ob in list(sc.collection.all_objects):
-        if ob.type != 'MESH' or not (ob.name == 'landmarks' or ob.name.startswith('landmarks.')): continue
+        if names is not None:
+            if ob.type != 'MESH' or ob.name.split('.')[0] not in names: continue
+        elif ob.type != 'MESH' or not (ob.name == 'landmarks' or ob.name.startswith('landmarks.')): continue
         me = ob.data
         if not len(me.polygons): continue
         cen = np.empty(len(me.polygons) * 3, np.float32); me.polygons.foreach_get('center', cen); cen = cen.reshape(-1, 3)
@@ -298,6 +307,12 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         if nc: log(f'landmarks_hq: cleared {nc} faces of the engine stand-ins')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: clearing failed', ex)
+    try:
+        sr = [r for lm in todo if lm.streets and lm.complete(era) for r in lm.regions]
+        ns = _clear(bpy, sc, sr, log, names=STREET_OBJS) if sr else 0
+        if ns: log(f'landmarks_hq: cleared {ns} street faces under modelled bridges')
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: clearing streets failed', ex)
     try:
         ng = _clear_generated(bpy, sc, gen) if gen else 0
         if ng: log(f'landmarks_hq: cleared {ng} generated faces under replaced footprints')
