@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39'}
 WATER_ENABLED = {'lakes', 'piers'}   # + 'sea_depth', 'sea_wind' once validated
 
 class Region:
@@ -77,7 +77,7 @@ class Landmark:
         return self.stands(era) and (era is None or era >= self.built)
 
 def _registry():
-    import lm_bridges as B, lm_civic as V
+    import lm_bridges as B, lm_civic as V, lm_places as P
     gg = Frame(B.GG_S[0], B.GG_S[1], B.GG_ANG)
     bay = Frame(B.BAY_W2[0], B.BAY_W2[1], B.BAY_ANG - math.pi / 2)
     def ol(key, grow=0.0):
@@ -131,8 +131,10 @@ def _registry():
         Landmark('deyoung', 'de Young Museum', 2005, None, V.deyoung, ds('deyoung', 32875), pad=800.0,
                  note='opened Oct 2005; the earlier de Young (1895 Midwinter Fair, rebuilt 1919-25) stood here until 2002', replaces=True),
         Landmark('legion', 'Legion of Honor', 1924, None, V.legion, ol('legion', 0.03), pad=800.0, note='opened Nov 1924'),
-        Landmark('oracle', 'Oracle Park', 2000, None, V.oracle, ds('oracle', 143280), pad=1000.0,
+        Landmark('oracle', 'Oracle Park', 2000, None, P.oracle, ds('oracle', 143280), pad=1000.0,
                  note='opened April 2000 as Pacific Bell Park', replaces=True),
+        Landmark('pier39', 'Pier 39', 1978, None, P.pier39, [Region(ring=P.ring('pier39'))] if P.ring('pier39') else [], pad=800.0,
+                 note='opened Oct 1978 on the old cargo pier; the timber village of Buildings A-Q, the Aquarium of the Bay (1996)', replaces=True),
         Landmark('chase', 'Chase Center', 2019, None, V.chase, ol('chase', 0.02), pad=800.0, note='opened Sept 2019'),
         Landmark('dutchmill', 'Dutch Windmill', 1903, None, V.dutchmill, [Region(ring=circ(V.WINDMILLS['dutchmill'][:2], 14))], pad=800.0,
                  note='built 1902-03, restored 1981; the sails turned until the 1930s'),
@@ -251,6 +253,10 @@ def build(bpy, scene, mats, ground, box, scene_json, log=print, era=None):
 
 def _build(bpy, sc, mats, ground, box, d, log, era, t0):
     lm_kit.materials(bpy, mats)
+    try:
+        import lm_places; lm_places.materials(bpy, mats)
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: places materials failed', ex)
     C = Ctx(); C.bpy, C.sc, C.mats, C.ground, C.box, C.era, C.log, C.d = bpy, sc, mats, ground, box, era, log, d
     C.K = lm_kit.Kit(); C.no_bents = []; C.trees = []
     true = bool(d.get('_terrain_hq')) if isinstance(d, dict) else False
@@ -297,6 +303,7 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         if ng: log(f'landmarks_hq: cleared {ng} generated faces under replaced footprints')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: clearing generated failed', ex)
+    C.lm_regions = gen          # the sites modelled places take over (water_hq: no pier apron there)
     done = []
     for lm in todo:
         nf = C.K.nf

@@ -82,6 +82,33 @@ def buildings(x0, y0, x1, y1):
                             shop=bool(face['shop'][i]) if face is not None else False, roles=roles,
                             paint=int(f['paintIdx'][i])))
     out.extend(r for r in NB if x0 <= r['cx'] <= x1 and y0 <= r['cy'] <= y1)
+    return overrides(out)
+
+
+# SIGNATURE PLACES (places agent): per-building corrections for today's city,
+# places/overrides.json {gids: {gid: {h, st, ty, skip, ...}}}. h / st / ty
+# replace the record's; skip drops it; every other field (roof, roof_col,
+# facade_col, style...) rides on the record as b['places'] for gen_buildings.
+# Today only (ERA unset): an era render keeps the records as they were.
+OV_FILE = '/Users/daniel/code/qipu-render-work/places/overrides.json'
+_OV = None
+def overrides(recs):
+    global _OV
+    if os.environ.get('ERA') or os.environ.get('PLACES_OV', '1') != '1': return recs
+    if _OV is None:
+        try: _OV = {int(k): v for k, v in json.load(open(OV_FILE))['gids'].items()} if os.path.exists(OV_FILE) else {}
+        except Exception as ex: print('[overrides] unreadable', ex, flush=True); _OV = {}
+    if not _OV: return recs
+    out = []
+    for b in recs:
+        o = _OV.get(b['gid'])
+        if o is None: out.append(b); continue
+        if o.get('skip'): continue
+        b = dict(b)
+        for k in ('h', 'st', 'ty', 'year', 'use', 'shop'):
+            if k in o: b[k] = o[k]
+        b['places'] = {k: v for k, v in o.items() if k not in ('h', 'st', 'ty', 'year', 'use', 'shop', 'skip', 'why')}
+        out.append(b)
     return out
 
 

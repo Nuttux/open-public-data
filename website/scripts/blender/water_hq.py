@@ -369,6 +369,10 @@ def piers(C):
     osm_polys = [(r_, []) for k_, r_ in decks]
     for r in (C.d.get('_piers') or []) if isinstance(C.d, dict) else []:
         if not near(r): continue
+        # not under a modelled place that replaces its footprint (Oracle Park's
+        # DataSF block on the cove read as a pier shed: an apron over the field)
+        _c = np.asarray(r, float).mean(0)
+        if any(bool(g_.inside(np.array([_c[0]]), np.array([_c[1]]))[0]) for g_ in getattr(C, 'lm_regions', [])): continue
         R = np.asarray(r, float)
         xs_ = np.linspace(R[:, 0].min(), R[:, 0].max(), 14); ys_ = np.linspace(R[:, 1].min(), R[:, 1].max(), 14)
         GX, GY = np.meshgrid(xs_, ys_); GX, GY = GX.ravel(), GY.ravel()
@@ -377,6 +381,8 @@ def piers(C):
         decks.append(('apron', [tuple(q) for q in r]))
     for kind, r in decks:
         if len(r) < 3: continue
+        _c = np.asarray(r, float).mean(0)       # a modelled place draws its own deck (Pier 39)
+        if any(bool(g_.inside(np.array([_c[0]]), np.array([_c[1]]))[0]) for g_ in getattr(C, 'lm_regions', [])): continue
         if kind == 'float':
             K.prism('lm_matte', r, -0.3, 0.55, FLOAT); n += 1; continue
         z = deck_z(r)
