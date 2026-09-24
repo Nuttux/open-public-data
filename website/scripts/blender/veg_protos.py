@@ -44,12 +44,12 @@ DEEP = 0.16
 #   crevices darkened by a short local AO (2 m, down to 0.25), each tree's hue +-0.03
 V2D = dict(VEG_DEEPK=0.25, VEG_LOBE=1.6, VEG_LOBEK=1.4, VEG_LIFT=0.5, VEG_TRANS=0.12, VEG_AO=2.0, VEG_AOMIN=0.25, VEG_HUEV=0.03)
 V1D = dict(VEG_DEEPK=0.4, VEG_LOBE=1.35, VEG_LOBEK=1.0, VEG_LIFT=1.0, VEG_TRANS=0.30, VEG_AO=0.0, VEG_AOMIN=0.35, VEG_HUEV=0.015)
-def P(k):
+def vp(k):
     return float(os.environ.get(k, (V2D if V2 else V1D)[k]))
 import veg_geom as _VG
 if V2: _VG.CARD.update(radial=8.0, upk=0.2)
 CORE_C = DEEP if V2 else None
-LOBE_K = P('VEG_LOBEK')
+LOBE_K = vp('VEG_LOBEK')
 
 
 def lobe_tone(rng, zrel, rrel=1.0):
@@ -182,7 +182,7 @@ def broadleaf(seed, H, W, bole=0.3, shape='oval', n=18, rc=1.4, cards_n=110, car
         tube(M, T, np.linspace(R0 * 1.15 / stems ** 0.5, R0 * 0.8 / stems ** 0.5, len(T)), 7, np.linspace(0.04, 0.07, len(T)))
         base_pts.append(T[-1])
     if V2:     # fewer, bigger lobes, out on the envelope: gaps between them show the dark inside
-        lk = P('VEG_LOBE')
+        lk = vp('VEG_LOBE')
         n = max(5, int(round(n / lk ** 1.6))); cards_n = int(cards_n * lk ** 1.6 * 0.95); rc *= lk
     C = envelope_points(rng, n, lambda t: W / 2 * prof(t), Hb + rc * 0.5, H - rc * 0.8, jitter=0.1)
     # limbs from the trunk head to the clumps (hidden in dense crowns, seen in open ones)
@@ -374,7 +374,7 @@ def _material(bpy, name, ramp):
     stops = [(0.0, ramp[0]), (BARK_HI, ramp[1]), (LEAF_LO, ramp[2]), (LEAF_HI, ramp[3]), (0.88, ramp[4]), (1.0, ramp[4])]
     deep = None
     if V2:
-        dk = P('VEG_DEEPK'); deep = tuple(v * dk for v in hex_lin(ramp[2]))
+        dk = vp('VEG_DEEPK'); deep = tuple(v * dk for v in hex_lin(ramp[2]))
     # the two default stops become the ends; the others are added AT their
     # position (setting positions one by one re-sorts the list under the loop)
     e.elements[0].position = stops[0][0]; e.elements[0].color = hex_lin(stops[0][1]) + (1.0,)
@@ -383,25 +383,25 @@ def _material(bpy, name, ramp):
         c_ = hex_lin(hx)
         # canopies read near-black from above (critic 24/09): the foliage stops
         # lifted ~35 %, a touch warmer (olive at this sun); bark stays as is
-        if i_ in (1, 2): c_ = tuple(min(0.9, v * (1 + (k - 1) * P('VEG_LIFT'))) for v, k in zip(c_, LEAF_LIFT))
+        if i_ in (1, 2): c_ = tuple(min(0.9, v * (1 + (k - 1) * vp('VEG_LIFT'))) for v, k in zip(c_, LEAF_LIFT))
         e.elements.new(p_).color = c_ + (1.0,)
     if deep is not None: e.elements.new(DEEP).color = deep + (1.0,)
     L(at.outputs['Fac'], cr.inputs['Fac'])
     # each tree its own shade, by place ('crand', written by hq_city's instancer)
     ci = N.new('ShaderNodeAttribute'); ci.attribute_type = 'INSTANCER'; ci.attribute_name = 'crand'
     hsv = N.new('ShaderNodeHueSaturation')
-    hv_ = P('VEG_HUEV')
+    hv_ = vp('VEG_HUEV')
     hm = N.new('ShaderNodeMapRange'); hm.inputs['To Min'].default_value = 0.5 - hv_; hm.inputs['To Max'].default_value = 0.5 + hv_
     vm = N.new('ShaderNodeMapRange'); vm.inputs['To Min'].default_value = 0.88; vm.inputs['To Max'].default_value = 1.12
     L(ci.outputs['Fac'], hm.inputs['Value']); L(ci.outputs['Fac'], vm.inputs['Value'])
     L(hm.outputs['Result'], hsv.inputs['Hue']); L(vm.outputs['Result'], hsv.inputs['Value'])
     L(cr.outputs['Color'], hsv.inputs['Color'])
     base_ = hsv.outputs['Color']
-    aod = P('VEG_AO')
+    aod = vp('VEG_AO')
     if aod > 0:   # v2 test: the crown's own crevices darker (AO within the tree, foliage only)
         ao = N.new('ShaderNodeAmbientOcclusion'); ao.only_local = True; ao.samples = 8; ao.inputs['Distance'].default_value = aod
         L(hsv.outputs['Color'], ao.inputs['Color'])
-        am = N.new('ShaderNodeMapRange'); am.inputs['To Min'].default_value = P('VEG_AOMIN')
+        am = N.new('ShaderNodeMapRange'); am.inputs['To Min'].default_value = vp('VEG_AOMIN')
         L(ao.outputs['AO'], am.inputs['Value'])
         mm = N.new('ShaderNodeMixRGB'); mm.blend_type = 'MULTIPLY'; mm.inputs['Fac'].default_value = 1.0
         L(hsv.outputs['Color'], mm.inputs['Color1']); L(am.outputs['Result'], mm.inputs['Color2'])
@@ -413,7 +413,7 @@ def _material(bpy, name, ramp):
     # leaves let some light through: a thin translucent share on the foliage only
     gt = N.new('ShaderNodeMath'); gt.operation = 'GREATER_THAN'; gt.inputs[1].default_value = 0.15
     L(at.outputs['Fac'], gt.inputs[0])
-    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = P('VEG_TRANS')
+    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = vp('VEG_TRANS')
     L(gt.outputs[0], k_.inputs[0])
     tr = N.new('ShaderNodeBsdfTranslucent'); L(base_, tr.inputs['Color'])
     mx = N.new('ShaderNodeMixShader'); L(k_.outputs[0], mx.inputs[0])
