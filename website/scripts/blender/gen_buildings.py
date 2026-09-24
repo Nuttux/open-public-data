@@ -27,7 +27,7 @@ from mathutils.geometry import tessellate_polygon
 # or concrete) · storefront glass · awning
 MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'door',
         'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck',
-        'equip', 'solar', 'curtain_wall')
+        'equip', 'solar', 'curtain_wall', 'roof_big')
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
@@ -504,6 +504,7 @@ def building(b, ground, out):
             else: side_ = ('stucco', sr_.choice(((0.86, 0.82, 0.72), (0.78, 0.76, 0.72), (0.78, 0.82, 0.74), (0.86, 0.76, 0.74))))
         else: side_ = (wall_mat if wall_mat != 'siding' or sr_.random() < 0.6 else 'stucco', fam)
         back_ = (wall_mat, fam if sr_.random() < 0.5 else body)
+    if PS is not None and PS.get('bulkhead', 'beaux') != 'none': ctx['bulk_w'] = bulk_wall(walls)
     # ── walls ──
     for i, w in enumerate(walls):
         role = roles[i]
@@ -648,19 +649,22 @@ def building(b, ground, out):
     else:
         deck = top - 0.55
         inner = offset_ring(ring, -0.28)
+        # a big flat roof (a shed, a block) reads as an even membrane from the
+        # air, a few large repairs: its own material, the patches halved
+        rmat_ = 'roof_big' if abs(ring_area(ring)) > 1500 else 'roof_flat'
         pts2 = [Vector((x, y, deck)) for x, y in inner]
         rc_ = flat_roof(b, rng, ax_u)
         rc_ = measured_flat(b, rc_)                            # ROOFS: the measured roof, if any
         if OV.get('roof_col'): rc_ = (*hexcol(OV['roof_col']), rc_[3] if len(rc_) > 3 else 0.5)
         for t in tessellate_polygon([pts2]):
-            out.poly('roof_flat', [pts2[k] for k in t], rc_)
+            out.poly(rmat_, [pts2[k] for k in t], rc_)
         # the parapet: its inner face flashed with the roof's own membrane, a
         # coping on top (sheet metal; painted wood on a Victorian)
         cap_mat, cap_col = ('trim', trim) if style == 'vic' else ('metal', rng.choice(((0.50, 0.50, 0.49), (0.58, 0.57, 0.55), (0.42, 0.42, 0.42))))
         for i in range(n):
             a, c = Vector((*ring[i], 0)), Vector((*ring[(i + 1) % n], 0))
             ia, ic = Vector((*inner[i], 0)), Vector((*inner[(i + 1) % n], 0))
-            out.poly('roof_flat', [Vector((ic.x, ic.y, deck)), Vector((ia.x, ia.y, deck)), Vector((ia.x, ia.y, top - 0.02)), Vector((ic.x, ic.y, top - 0.02))], rc_)
+            out.poly(rmat_, [Vector((ic.x, ic.y, deck)), Vector((ia.x, ia.y, deck)), Vector((ia.x, ia.y, top - 0.02)), Vector((ic.x, ic.y, top - 0.02))], rc_)
             out.poly(cap_mat, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cap_col)
             out.poly(cap_mat, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cap_col)
         roof_kit(ring, inner, deck, top, b, rng, out, dict(ctx, rc=rc_, roles=roles, storeys=storeys, ax_u=ax_u, ax_v=ax_v))
@@ -1913,7 +1917,7 @@ def emit(bpy, out, mats, name='gen'):
         for c in C: flat.extend((c[0] ** 2.2, c[1] ** 2.2, c[2] ** 2.2, c[3] if len(c) > 3 else 1.0))
         at.data.foreach_set('color', flat)
         me.validate(clean_customdata=False)
-        me.materials.append(mats[k])
+        me.materials.append(mats[k] if k in mats else mats['roof_flat' if k == 'roof_big' else k])
         ob = bpy.data.objects.new(f'{name}.{k}', me)
         bpy.context.scene.collection.objects.link(ob); objs.append(ob)
     return objs

@@ -270,13 +270,13 @@ def road_mat():
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(fine), 0.35, 0.01))
     return b.m
 
-def roof_flat_mat():
+def roof_flat_mat(big=False):
     """flat-roof membranes, per building from the face attribute (see
     gen_buildings.flat_roof): tar and gravel, a mineral cap sheet laid in
     rolls along the building, white elastomeric coating, aluminium paint.
     Rolls and seams turn with the building; dirt gathers where the air is
     still (along the parapets, round the kit) and in ponding stains"""
-    b = NB('roof_flat'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
+    b = NB('roof_big' if big else 'roof_flat'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
     t4 = b.math('MULTIPLY', at.outputs['Alpha'], 4.0)
     kind = b.math('FLOOR', t4)
     turn = b.math('MULTIPLY', b.math('DIVIDE', b.math('SUBTRACT', b.math('FRACT', t4), 0.1), 0.8), -math.pi / 2)
@@ -305,11 +305,11 @@ def roof_flat_mat():
     # shows its lap seams a roll apart: patches of 2-6 m a shade lighter or
     # darker, the seams as dark lines along the rolls — no flat slab
     cell = b.bw(b.voronoi(0.28, vec=mp.outputs[0], out='Color'))
-    pk = b.ramp(cell, 0.66, 1.12)
+    pk = b.ramp(cell, 0.66, 1.12) if not big else b.ramp(b.bw(b.voronoi(0.08, vec=mp.outputs[0], out='Color')), 0.86, 1.06)
     # tar repairs: dark irregular blots over about a tenth of a roof, and the
     # recoats' lighter sheets (24/09, the roofs' contrast from the air)
-    tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.59, 0.64)
-    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.45)))
+    tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.59, 0.64) if not big else b.ramp(b.noise(0.12, 2.0, vec=mp.outputs[0]), 0.0, 1.0, 0.64, 0.68)
+    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.45 if not big else 0.25)))
     sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
     seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)
     pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', seam, b.math('MULTIPLY', b.math('GREATER_THAN', kind, 0.5), 0.2))))
@@ -323,6 +323,7 @@ def roof_flat_mat():
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(b.mix(eq(0), bit, grav)), 0.4, 0.02))
     return b.m
 M['roof_flat'] = roof_flat_mat()
+M['roof_big'] = roof_flat_mat(big=True)          # (24/09) roofs over 1,500 m2: an even membrane, rare large repairs
 M['equip'] = simple('equip', None, rough=0.45, attr=True)
 def solar_mat():
     b = NB('solar'); pr = b.pr
