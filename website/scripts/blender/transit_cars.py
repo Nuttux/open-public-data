@@ -78,7 +78,7 @@ def lrv4():
     vb = VB(); L, W = 22.86, 2.64
     silver, red, grey = srgb('#c3c6c9'), srgb('#b3202a'), srgb('#9ea1a4')
     body(vb, L, W, 3.38, 0.42, [(0.98, red, PAINT), (1.18, silver, METAL), (2.32, srgb('#0d1013'), GLASS), (2.95, silver, METAL)],
-         srgb('#a7aaad'), red, front=((0.0, 0.72), (0.7, 0.9), (1.8, 1.0)), glass_z=(1.2, 2.5))
+         srgb('#a7aaad'), silver, front=((0.0, 0.72), (0.7, 0.9), (1.8, 1.0)), glass_z=(1.2, 2.5))
     vb.box(-8.2, -5.0, -0.95, 0.95, 3.3, 3.72, grey, ROOF)           # HVAC
     vb.box(5.0, 8.2, -0.95, 0.95, 3.3, 3.72, grey, ROOF)
     vb.box(-2.4, 1.6, -0.7, 0.7, 3.3, 3.5, srgb('#6d7073'), ROOF)    # traction gear
