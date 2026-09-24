@@ -519,12 +519,29 @@ def _clock(K, T, side, h, zc, rad):
         K.face('lm_paint', [P(-nx, zc - ny, 0.2), P(nx, zc + ny, 0.2), P(e[0] + nx, zc + e[1] + ny, 0.2), P(e[0] - nx, zc + e[1] - ny, 0.2)], hexc('#1b1b1b'))
 
 # ── City Hall ────────────────────────────────────────────────────────────────
-GRANITE = hexc('#d3cec3')
-GRANITE_D = hexc('#b3ada1')
-DOME = hexc('#5f7169')
+GRANITE = hexc('#dfdcd4')     # (25/09) light Sierra granite on dressed stone (read khaki on the plaster texture)
+GRANITE_D = hexc('#c6c2b8')
+DOME = hexc('#7a7870')   # (25/09) the dome reads lead-grey with its gilded ribs (aerials refs/cityhall); the copper-green is the roof's mansard band
 
 def _clean(r):
     return r[:-1] if len(r) > 1 and r[0] == r[-1] else r
+
+def _sa(r):
+    return sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r)))
+
+def _mansard(K, r, z, d, h, col=None):
+    """a sloped copper band from a ring (ccw: inward) d metres in and h up (mitred corners)"""
+    n = len(r); inn = []
+    for i in range(n):
+        (x0, y0), (x1, y1), (x2, y2) = r[i - 1], r[i], r[(i + 1) % n]
+        la = math.hypot(x1 - x0, y1 - y0) or 1; lb = math.hypot(x2 - x1, y2 - y1) or 1
+        na = (-(y1 - y0) / la, (x1 - x0) / la); nb = (-(y2 - y1) / lb, (x2 - x1) / lb)
+        bx, by = na[0] + nb[0], na[1] + nb[1]; lbis = math.hypot(bx, by) or 1
+        k = d / max((na[0] * bx + na[1] * by) / lbis, 0.4)
+        inn.append((x1 + bx / lbis * k, y1 + by / lbis * k))
+    for i in range(n):
+        a, b = r[i], r[(i + 1) % n]; ai, bi = inn[i], inn[(i + 1) % n]
+        K.face('lm_copper', [(a[0], a[1], z), (b[0], b[1], z), (bi[0], bi[1], z + h), (ai[0], ai[1], z + h)], col or (1, 1, 1, 1))
 
 def cityhall(C):
     """SAN FRANCISCO CITY HALL (Bakewell & Brown, 1915): Beaux-Arts, Sierra
@@ -550,14 +567,19 @@ def cityhall(C):
     frg = Frame(cx, cy, ang, g)
     K = C.K
     ROOF = 23.0
-    K.prism('concrete', r, g - 1.0, g + 7.0, GRANITE_D, top=False)              # rusticated base
-    K.prism('concrete', r, g + 7.0, g + ROOF, GRANITE, top=False)
-    K.prism('concrete', r, g + ROOF, g + ROOF + 1.2, GRANITE_D, top=False)       # entablature band
-    K.prism('concrete', r, g + ROOF + 1.2, g + 26.5, GRANITE, top=False)         # attic
+    K.prism('pl_stone', r, g - 1.0, g + 7.0, GRANITE_D, top=False)              # rusticated base
+    K.prism('pl_stone', r, g + 7.0, g + ROOF, GRANITE, top=False)
+    K.prism('pl_stone', r, g + ROOF, g + ROOF + 1.2, GRANITE_D, top=False)       # entablature band
+    K.prism('pl_stone', r, g + ROOF + 1.2, g + 26.5, GRANITE, top=False)         # attic
     K.face_holes('roof_flat', r, holes, g + 26.5, hexc('#a19d94'))
     for h in holes:                                                             # the light courts' walls
-        K.prism('concrete', h[::-1], g + 7.0, g + 26.5, GRANITE_D, top=False)
+        K.prism('pl_stone', h[::-1], g + 7.0, g + 26.5, GRANITE_D, top=False)
         K.face('path', [(p[0], p[1], g + 7.0) for p in h], (1, 1, 1, 1))
+        # (25/09, aerials refs/cityhall) the courts are roofed in green glass skylights
+        K.face('glass', [(p[0], p[1], g + 25.0) for p in (h if _sa(h) > 0 else h[::-1])], hexc('#4f877c'))
+        _mansard(K, h[::-1] if _sa(h) > 0 else h, g + 26.5, 2.5, 1.2)
+    # the copper-green mansard band all round the roof's edge (the aerials' turquoise frame)
+    _mansard(K, r if _sa(r) > 0 else r[::-1], g + 26.5, 6.5, 2.4)
     # windows on every face of the outline (every edge over 5 m), four rows
     # a bay of 4.6 m; engaged columns and a proud architrave on the long
     # fronts (Polk and Van Ness)
@@ -585,30 +607,30 @@ def cityhall(C):
             a = va + k * w
             cu = face_u + sgn * 1.6
             p0 = fr.P(cu, a, g + 7.0); p1 = fr.P(cu, a, g + ROOF)
-            K.cyl('concrete', p0, p1, 0.75, GRANITE, n=8)
-        K.box('concrete', frg, min(face_u, face_u + sgn * 2.4), max(face_u, face_u + sgn * 2.4), va, vb, ROOF - 0.3, ROOF + 1.2, GRANITE_D)
+            K.cyl('pl_stone', p0, p1, 0.75, GRANITE, n=8)
+        K.box('pl_stone', frg, min(face_u, face_u + sgn * 2.4), max(face_u, face_u + sgn * 2.4), va, vb, ROOF - 0.3, ROOF + 1.2, GRANITE_D)
     # the porticoes: six columns, a pediment, on Polk (east) and Van Ness (west)
     for (face_u, sgn, va, vb) in ((47.4, 1, -12.7, 8.1), (-50.5, -1, -12.4, 12.2)):
         vc = (va + vb) / 2; half = (vb - va) / 2 + 1.5
         for k in range(6):
             v = vc - half + 1.5 + (2 * half - 3.0) * k / 5
-            K.cyl('concrete', fr.P(face_u + sgn * 2.2, v, g + 7.0), fr.P(face_u + sgn * 2.2, v, g + ROOF), 0.85, GRANITE, n=10)
-        K.box('concrete', frg, min(face_u - sgn * 1.0, face_u + sgn * 3.4), max(face_u - sgn * 1.0, face_u + sgn * 3.4), vc - half, vc + half, ROOF, ROOF + 2.4, GRANITE_D)
+            K.cyl('pl_stone', fr.P(face_u + sgn * 2.2, v, g + 7.0), fr.P(face_u + sgn * 2.2, v, g + ROOF), 0.85, GRANITE, n=10)
+        K.box('pl_stone', frg, min(face_u - sgn * 1.0, face_u + sgn * 3.4), max(face_u - sgn * 1.0, face_u + sgn * 3.4), vc - half, vc + half, ROOF, ROOF + 2.4, GRANITE_D)
         # the pediment: a triangular prism over the portico
         ua, ub = face_u - sgn * 1.0, face_u + sgn * 3.4
         pts = lambda u: [fr.P(u, vc - half, g + ROOF + 2.4), fr.P(u, vc + half, g + ROOF + 2.4), fr.P(u, vc, g + ROOF + 7.6)]
         A, B = pts(ua), pts(ub)
-        K.face('concrete', B if sgn > 0 else B[::-1], GRANITE); K.face('concrete', A[::-1] if sgn > 0 else A, GRANITE)
+        K.face('pl_stone', B if sgn > 0 else B[::-1], GRANITE); K.face('pl_stone', A[::-1] if sgn > 0 else A, GRANITE)
         K.face('roof_flat', [A[0], A[2], B[2], B[0]] if sgn > 0 else [B[0], B[2], A[2], A[0]], hexc('#8a877f'))
         K.face('roof_flat', [A[2], A[1], B[1], B[2]] if sgn > 0 else [B[2], B[1], A[1], A[2]], hexc('#8a877f'))
     # the rotunda block under the dome, then the drum, the dome, the lantern
-    K.box('concrete', frg, -19.0, 19.0, -19.0, 19.0, 26.5, 33.0, GRANITE)
-    K.box('concrete', frg, -19.6, 19.6, -19.6, 19.6, 33.0, 34.2, GRANITE_D)
+    K.box('pl_stone', frg, -19.0, 19.0, -19.0, 19.0, 26.5, 33.0, GRANITE)
+    K.box('pl_stone', frg, -19.6, 19.6, -19.6, 19.6, 33.0, 34.2, GRANITE_D)
     X0, Y0 = cx, cy
-    K.lathe('concrete', X0, Y0, g, [(17.6, 34.2), (17.6, 36.0), (15.6, 36.0), (15.6, 53.0), (17.9, 53.0), (17.9, 56.0), (16.0, 56.0), (16.0, 60.0), (15.2, 60.0)], GRANITE, n=48, smooth=False, cap=False)
+    K.lathe('pl_stone', X0, Y0, g, [(17.6, 34.2), (17.6, 36.0), (15.6, 36.0), (15.6, 53.0), (17.9, 53.0), (17.9, 56.0), (16.0, 56.0), (16.0, 60.0), (15.2, 60.0)], GRANITE, n=48, smooth=False, cap=False)
     for k in range(32):
         a = 2 * math.pi * k / 32
-        K.cyl('concrete', (X0 + 16.9 * math.cos(a), Y0 + 16.9 * math.sin(a), g + 36.0), (X0 + 16.9 * math.cos(a), Y0 + 16.9 * math.sin(a), g + 53.0), 0.62, GRANITE, n=8)
+        K.cyl('pl_stone', (X0 + 16.9 * math.cos(a), Y0 + 16.9 * math.sin(a), g + 36.0), (X0 + 16.9 * math.cos(a), Y0 + 16.9 * math.sin(a), g + 53.0), 0.62, GRANITE, n=8)
     for k in range(16):                                                         # drum windows between pairs
         a0 = 2 * math.pi * (k + 0.3) / 16; a1 = 2 * math.pi * (k + 0.7) / 16
         pts = [(X0 + 15.66 * math.cos(a0), Y0 + 15.66 * math.sin(a0), g + 40.0), (X0 + 15.66 * math.cos(a1), Y0 + 15.66 * math.sin(a1), g + 40.0),
@@ -619,23 +641,23 @@ def cityhall(C):
         t = k / 12; a = t * math.pi / 2
         prof.append((15.2 * math.cos(a) * (1 - 0.78 * t ** 3) + 3.3 * t ** 3, 60.0 + 20.0 * math.sin(a)))
     prof[-1] = (3.3, 80.0)
-    K.lathe('lm_copper', X0, Y0, g, prof, DOME, n=48, cap=False)
+    K.lathe('lm_matte', X0, Y0, g, prof, DOME, n=48, cap=False)
     for k in range(16):                                                         # gilded ribs
         a = 2 * math.pi * k / 16; ca, sa = math.cos(a), math.sin(a)
         pts = [(X0 + (rr + 0.12) * ca, Y0 + (rr + 0.12) * sa, g + z) for rr, z in prof]
         for j in range(len(pts) - 1):
             K.beam('lm_gold', pts[j], pts[j + 1], 0.45, 0.3, (1, 1, 1, 1), up=(ca, sa, 0))
-    K.lathe('concrete', X0, Y0, g, [(3.6, 80.0), (3.6, 81.0), (3.0, 81.0)], GRANITE, n=16, smooth=False, cap=False)
+    K.lathe('pl_stone', X0, Y0, g, [(3.6, 80.0), (3.6, 81.0), (3.0, 81.0)], GRANITE, n=16, smooth=False, cap=False)
     for k in range(8):
         a = 2 * math.pi * k / 8
-        K.cyl('concrete', (X0 + 3.0 * math.cos(a), Y0 + 3.0 * math.sin(a), g + 81.0), (X0 + 3.0 * math.cos(a), Y0 + 3.0 * math.sin(a), g + 86.0), 0.28, GRANITE, n=6)
-    K.lathe('concrete', X0, Y0, g, [(2.2, 81.0), (2.2, 86.0), (3.4, 86.0), (3.4, 87.0)], GRANITE, n=16, smooth=False, cap=False)
+        K.cyl('pl_stone', (X0 + 3.0 * math.cos(a), Y0 + 3.0 * math.sin(a), g + 81.0), (X0 + 3.0 * math.cos(a), Y0 + 3.0 * math.sin(a), g + 86.0), 0.28, GRANITE, n=6)
+    K.lathe('pl_stone', X0, Y0, g, [(2.2, 81.0), (2.2, 86.0), (3.4, 86.0), (3.4, 87.0)], GRANITE, n=16, smooth=False, cap=False)
     K.lathe('lm_gold', X0, Y0, g, [(3.0, 87.0), (2.6, 88.4), (1.6, 89.6), (0.5, 90.2), (0.35, 91.0), (0.55, 91.6), (0.12, 93.7), (0.0, 93.7)], (1, 1, 1, 1), n=16)
 
 # ── Palace of Fine Arts ──────────────────────────────────────────────────────
 POFA_STONE = hexc('#dcc3a4')
 POFA_STONE_D = hexc('#c3a684')
-POFA_DOME = hexc('#c07a4e')
+POFA_DOME = hexc('#b58a6c')
 
 def _fit_circle(pts):
     A = np.array([[2 * x, 2 * y, 1.0] for x, y in pts]); b = np.array([x * x + y * y for x, y in pts])
@@ -659,21 +681,21 @@ def pofa(C):
         return [(cx + rad * math.cos(rot + 2 * math.pi * k / 8), cy + rad * math.sin(rot + 2 * math.pi * k / 8), z) for k in range(8)]
     # podium: an octagon with steps
     for (rad, z0, z1) in ((27.0, -1.0, 0.8), (25.5, 0.8, 1.6)):
-        K.prism('concrete', [p[:2] for p in oct_ring(rad, 0)], g + z0, g + z1, POFA_STONE_D)
+        K.prism('pl_stone', [p[:2] for p in oct_ring(rad, 0)], g + z0, g + z1, POFA_STONE_D)
     # eight piers at the corners, paired columns before each, arches between
     for k in range(8):
         a = ang0 + 2 * math.pi * k / 8
         ca, sa = math.cos(a), math.sin(a)
         pc = (cx + 19.0 * ca, cy + 19.0 * sa)
         pf = Frame(pc[0], pc[1], a, g)
-        K.box('concrete', pf, -3.2, 3.2, -2.6, 2.6, 1.6, 27.0, POFA_STONE, top=False)
+        K.box('pl_stone', pf, -3.2, 3.2, -2.6, 2.6, 1.6, 27.0, POFA_STONE, top=False)
         for dv in (-1.6, 1.6):                                                  # paired columns, out front
             p = pf.P(5.2, dv, 1.6); q = pf.P(5.2, dv, 21.8)
-            K.cyl('concrete', p, q, 0.95, POFA_STONE, n=10, r1=0.82)
-            K.box('concrete', Frame(q[0], q[1], a, q[2]), -1.25, 1.25, -1.25, 1.25, 0.0, 1.6, POFA_STONE_D)   # capital
-        K.box('concrete', pf, 3.2, 6.6, -3.2, 3.2, 23.4, 27.0, POFA_STONE_D)    # entablature block over the pair
+            K.cyl('pl_stone', p, q, 0.95, hexc('#a4594a'), n=10, r1=0.82)   # the rotunda's columns are red (Commons aerials, refs/pofa)
+            K.box('pl_stone', Frame(q[0], q[1], a, q[2]), -1.25, 1.25, -1.25, 1.25, 0.0, 1.6, POFA_STONE_D)   # capital
+        K.box('pl_stone', pf, 3.2, 6.6, -3.2, 3.2, 23.4, 27.0, POFA_STONE_D)    # entablature block over the pair
         # a statue group standing on it (a simple mass)
-        K.box('concrete', pf, 3.8, 6.0, -1.6, 1.6, 27.0, 30.4, POFA_STONE)
+        K.box('pl_stone', pf, 3.8, 6.0, -1.6, 1.6, 27.0, 30.4, POFA_STONE)
     # the arch spandrels: between each two piers, a wall over a round arch
     for k in range(8):
         a0 = ang0 + 2 * math.pi * k / 8; a1 = ang0 + 2 * math.pi * (k + 1) / 8
@@ -689,14 +711,14 @@ def pofa(C):
                 th = math.pi - math.pi * j / 12
                 pts.append(base(L / 2 + rr * math.cos(th), zspring + rr * math.sin(th)))
             pts.append(base(L - 2.6, zspring)); pts.append(base(L - 2.6, 27.0))
-            K.face('concrete', pts if side > 0 else pts[::-1], POFA_STONE)
+            K.face('pl_stone', pts if side > 0 else pts[::-1], POFA_STONE)
     # the ring over the piers, the drum, the dome
-    K.lathe('concrete', cx, cy, g, [(23.0, 23.4), (23.0, 27.0), (21.0, 27.0), (21.0, 28.2), (17.8, 28.2), (17.8, 35.0), (18.6, 35.0), (18.6, 36.0), (17.2, 36.0)],
+    K.lathe('pl_stone', cx, cy, g, [(23.0, 23.4), (23.0, 27.0), (21.0, 27.0), (21.0, 28.2), (17.8, 28.2), (17.8, 35.0), (18.6, 35.0), (18.6, 36.0), (17.2, 36.0)],
             POFA_STONE, n=8, smooth=False, cap=False, ang0=ang0)
     for k in range(8):                                                          # relief panels on the drum
         a = ang0 + 2 * math.pi * (k + 0.5) / 8
         pf = Frame(cx + 17.0 * math.cos(a), cy + 17.0 * math.sin(a), a, g)
-        K.box('concrete', pf, 0.0, 0.5, -4.2, 4.2, 29.5, 33.8, POFA_STONE_D)
+        K.box('pl_stone', pf, 0.0, 0.5, -4.2, 4.2, 29.5, 33.8, POFA_STONE_D)
     prof = []
     for j in range(11):
         t = j / 10; th = t * math.pi / 2
@@ -742,8 +764,8 @@ def pofa_colonnade(C):
     for ring in pav:
         # an end pavilion of the colonnade: a pier block with its box on top
         cx, cy = centroid(ring); g = C.tg(cx, cy)
-        K.prism('concrete', ring, g - 0.5, g + 15.5, POFA_STONE)
-        K.prism('concrete', ring, g + 15.5, g + 16.5, POFA_STONE_D)
+        K.prism('pl_stone', ring, g - 0.5, g + 15.5, POFA_STONE)
+        K.prism('pl_stone', ring, g + 15.5, g + 16.5, POFA_STONE_D)
     if not arms: return
     ox, oy, _R = _fit_circle_geo([p for r in arms for p in r])
     for ring in arms:
@@ -759,8 +781,8 @@ def pofa_colonnade(C):
             a = a0 + (a1 - a0) * i / n
             for rr in rows:
                 x, y = ox + rr * math.cos(a), oy + rr * math.sin(a); g = C.tg(x, y)
-                K.cyl('concrete', (x, y, g - 0.3), (x, y, g + 12.6), 0.62, POFA_STONE, n=8, r1=0.54)
-                K.box('concrete', Frame(x, y, a, g + 12.6), -0.85, 0.85, -0.85, 0.85, 0.0, 1.0, POFA_STONE_D)
+                K.cyl('pl_stone', (x, y, g - 0.3), (x, y, g + 12.6), 0.62, POFA_STONE, n=8, r1=0.54)
+                K.box('pl_stone', Frame(x, y, a, g + 12.6), -0.85, 0.85, -0.85, 0.85, 0.0, 1.0, POFA_STONE_D)
         # the entablatures (one per row) and, every third bay, a planter box
         for rr in rows:
             for i in range(n):
@@ -773,8 +795,8 @@ def pofa_colonnade(C):
             x, y = ox + rm * math.cos(a), oy + rm * math.sin(a); g = C.tg(x, y)
             fb = Frame(x, y, a, g)
             half = (rows[1] - rows[0]) / 2 + 1.0
-            K.box('concrete', fb, -half, half, -2.6, 2.6, 15.8, 19.4, POFA_STONE)
-            K.box('concrete', fb, -half - 0.3, half + 0.3, -2.9, 2.9, 19.4, 19.9, POFA_STONE_D)
+            K.box('pl_stone', fb, -half, half, -2.6, 2.6, 15.8, 19.4, POFA_STONE)
+            K.box('pl_stone', fb, -half - 0.3, half + 0.3, -2.9, 2.9, 19.4, 19.9, POFA_STONE_D)
 
 # ── Sutro Tower ──────────────────────────────────────────────────────────────
 SUTRO_C = (-1306.8, -529.5)
