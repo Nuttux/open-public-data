@@ -11,8 +11,12 @@ colour ramp:
 The ramp gives ALBEDO, not light: the path tracer does the shading, so the
 inner/outer spread stays small (a baked darkening would be counted twice).
 """
-import math
+import math, os
 import numpy as np
+_E = lambda k, d: float(os.environ.get(k, d))
+# card orientation: the weight of the clump's outward direction and of the sky
+# in each card's normal (veg_protos sets its v2 values; VEG_RADIAL, VEG_UPK override)
+CARD = {'radial': 0.6, 'upk': 1.0}
 
 
 class Mesh:
@@ -129,7 +133,7 @@ def blob(M, centre, radii, c, rng, rough=0.25):
     M.add(P, F, c)
 
 
-def clump(M, centre, radii, n, size, c_lo, c_hi, rng, up=0.5, hang=0.0, stretch=1.0, core=None, shell=0.35):
+def clump(M, centre, radii, n, size, c_lo, c_hi, rng, up=0.5, hang=0.0, stretch=1.0, core=None, shell=0.35, core_c=None, lobe=None):
     """a clump of foliage: n leaf cards in an ellipsoid, crowded towards its
     skin (a crown is a shell of leaves around a darker inside); `up` tips
     the cards towards the sky (plates), `hang` towards the vertical
@@ -140,16 +144,19 @@ def clump(M, centre, radii, n, size, c_lo, c_hi, rng, up=0.5, hang=0.0, stretch=
     P = centre + d * radii * rr[:, None]
     # albedo: a little lighter on top and on the outside (older leaves inside)
     h = np.clip((P[:, 2] - centre[2]) / (2 * radii[2]) + 0.5, 0, 1)
-    tone = c_lo + (c_hi - c_lo) * np.clip(0.45 * h + 0.35 * rr + 0.3 * rng.random(n) - 0.1, 0, 1)
-    N = rng.normal(size=(n, 3)) + d * 0.6
-    N[:, 2] += up * 2.0
+    if lobe is None:
+        tone = c_lo + (c_hi - c_lo) * np.clip(0.45 * h + 0.35 * rr + 0.3 * rng.random(n) - 0.1, 0, 1)
+    else:   # v2: the clump's own tone (lobe, 0 dark .. 1 light) carries, the card's noise is small
+        tone = c_lo + (c_hi - c_lo) * np.clip(lobe + 0.25 * (h - 0.5) + 0.2 * (rr - 0.8) + 0.12 * (rng.random(n) - 0.5), 0, 1)
+    N = rng.normal(size=(n, 3)) + d * _E('VEG_RADIAL', CARD['radial'])
+    N[:, 2] += up * 2.0 * _E('VEG_UPK', CARD['upk'])
     if hang:
         N[:, 2] *= (1.0 - hang)
     N /= np.linalg.norm(N, axis=1)[:, None]
     sz = size * rng.uniform(0.75, 1.25, n)
     cards(M, P, sz, N, tone, stretch=stretch, rng=rng)
     if core:
-        blob(M, centre - np.array([0, 0, radii[2] * 0.1]), radii * core, c_lo, rng)
+        blob(M, centre - np.array([0, 0, radii[2] * 0.1]), radii * core, c_lo if core_c is None else core_c, rng)
 
 
 def envelope_points(rng, n, prof, H0, H1, jitter=0.12):

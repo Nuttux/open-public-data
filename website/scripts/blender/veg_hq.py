@@ -112,6 +112,7 @@ class Kinds:
         log('veg data: listed street trees', nst, 'OSM tree hints', nh, 'zones', len(self.zones))
 
     def _add(self, name, coll, w, h, tall, hmax):
+        # (the instancer picks by name order: hq_city.instancer wraps each proto in index order)
         self.protos.append(coll); self.widths.append(w); self.heights.append(h)
         self.tall.append(tall); self.hmax.append(hmax); self.names.append(name)
         return len(self.protos) - 1
@@ -177,6 +178,7 @@ class Kinds:
 
     def mass4(self, x, y, crown, on_street=None, roofed=None):
         """(kind, crown, x, y) for a canopy mass"""
+        if os.environ.get('VEG_NOMASS') == '1': return None      # diagnostics: the scene without the canopy masses
         a, zn = self.mass_arch(x, y); k = self._kind(a, x, y)
         self._count(('mass', zn, a))
         if on_street is not None:
@@ -189,6 +191,10 @@ class Kinds:
         if a in FOREST_H and zn not in OPEN_ZONES:
             lo, hi = FOREST_H[a]; ht = lo + (hi - lo) * hp(x, y, 37)
             crown = max(crown, ht * self.widths[k] / max(0.5, self.heights[k]))
+        dg = os.environ.get('VEG_DIAG')
+        if dg:      # diagnostics: what the masses in a world rectangle are (zone, species, crown m)
+            b_ = [float(v) for v in dg.split(',')]
+            if b_[0] <= x <= b_[2] and b_[1] <= y <= b_[3]: self._count(('diag', zn, a, self.names[k], int(crown // 4) * 4))
         return k, crown, x, y
 
     def street(self, ox, oy, x, y, park, crown, on_street=None, roofed=None):
@@ -230,4 +236,6 @@ class Kinds:
         agg = {}
         for k, v in s.items():
             if k[0] == 'mass': agg.setdefault(k[1], {})[k[2]] = v
+        dg = {k[1:]: v for k, v in s.items() if k[0] == 'diag'}
+        if dg: log('veg diag:', dict(sorted(dg.items(), key=lambda kv: -kv[1])[:40]))
         log('veg masses by zone:', {z: dict(sorted(m.items(), key=lambda kv: -kv[1])) for z, m in agg.items()})

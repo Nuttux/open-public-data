@@ -22,13 +22,42 @@ What each one is drawn after (seen from 29° above the horizon at 37 cm/px, a
                 palm / cordyline: after lm_palms.py (landmarks agent, 23/09),
                 with this kit's single ramp material.
 """
-import math
+import math, os
 import numpy as np
 from veg_geom import Mesh, tube, branch_path, clump, blob, cards, envelope_points
 
 BARK_LO, BARK_HI = 0.02, 0.10
 LEAF_LO, LEAF_HI = 0.22, 0.78
 ACCENT = 0.95
+# CROWN SHADING v2 (24/09 pm, "evenly lit yellow-green blobs"): the solid core
+# of each clump takes a DEEP leaf tone (vc 0.16: the leaf-dark stop x VEG_DEEPK),
+# since light that enters a real crown is absorbed through many leaf layers
+# before it comes back out; cards face out of their clump (a clump is shaded
+# like a ball, lit on the sun side, dark on the far one) instead of up at the sky
+V2 = os.environ.get('VEG_V2', '1') == '1'
+DEEP = 0.16
+# v2 defaults (each env-overridable), chosen on the city crops 24/09 pm (live_trees/01):
+#   cards 8 parts outward to 0.2 sky (clumps shade like balls, lit on the sun side),
+#   deep core 0.25 of the leaf-dark stop, lobes 1.6x bigger and fewer, lobe-to-lobe
+#   tone 1.4, leaf lift halved (db2eb3ae2's +35 % made the canopies pale), leaf
+#   translucency 0.30 -> 0.12 (it lit the shaded side as much as the sunlit one),
+#   crevices darkened by a short local AO (2 m, down to 0.25), each tree's hue +-0.03
+V2D = dict(VEG_DEEPK=0.25, VEG_LOBE=1.6, VEG_LOBEK=1.4, VEG_LIFT=0.5, VEG_TRANS=0.12, VEG_AO=2.0, VEG_AOMIN=0.25, VEG_HUEV=0.03)
+V1D = dict(VEG_DEEPK=0.4, VEG_LOBE=1.35, VEG_LOBEK=1.0, VEG_LIFT=1.0, VEG_TRANS=0.30, VEG_AO=0.0, VEG_AOMIN=0.35, VEG_HUEV=0.015)
+def P(k):
+    return float(os.environ.get(k, (V2D if V2 else V1D)[k]))
+import veg_geom as _VG
+if V2: _VG.CARD.update(radial=8.0, upk=0.2)
+CORE_C = DEEP if V2 else None
+LOBE_K = P('VEG_LOBEK')
+
+
+def lobe_tone(rng, zrel, rrel=1.0):
+    """v2: a clump's own tone from where it sits in the crown (zrel 0 bottom ..
+    1 top, rrel 0 axis .. 1 skin) and a draw: the crown's top and skin lighter,
+    its underside and inside darker, clump to clump contrast. None in v1."""
+    if not V2 or LOBE_K <= 0: return None
+    return float(np.clip(0.5 + LOBE_K * (0.35 * (zrel - 0.5) + 0.2 * (rrel - 0.8) + 0.3 * (rng.random() - 0.5)), 0.05, 0.95))
 
 
 # ── eucalyptus ───────────────────────────────────────────────────────────────
@@ -69,7 +98,7 @@ def eucalyptus(seed, H=30.0):
         # a darker core inside each clump: the shadowed depth a blue gum shows
         # from above (card-only clumps read chalky, like dead trees: 24/09)
         clump(M, c, (rx, rx * rng.uniform(0.8, 1.2), rz), int(rng.integers(130, 170)), 0.58 * k ** 0.5, LEAF_LO, LEAF_HI, rng,
-              up=0.1, hang=0.5, stretch=2.2, core=0.55, shell=0.4)
+              up=0.1, hang=0.5, stretch=2.2, core=0.55, shell=0.4, core_c=CORE_C, lobe=lobe_tone(rng, (c[2] - Hf) / (H - Hf)))
     return M
 
 
@@ -102,7 +131,7 @@ def cypress(seed, H=18.0, shear=0.0, wide=0.72):
         # wind: the crown drawn out leeward (+x), higher plates further
         c[0] += shear * W * (0.2 + 0.8 * (c[2] / H)) * 0.5
         clump(M, c, (rx, rx * rng.uniform(0.8, 1.15), rz), int(rng.integers(80, 105)), 0.6 * k ** 0.5, LEAF_LO, LEAF_HI, rng,
-              up=0.8, core=0.8, shell=0.28)
+              up=0.8, core=0.8, shell=0.28, core_c=CORE_C, lobe=lobe_tone(rng, (c[2] - H0) / (H1 - H0), math.hypot(c[0], c[1]) / max(0.1, prof((c[2] - H0) / (H1 - H0)))))
         # a short limb to the plate so no plate floats
         o = limb_pts[int(np.argmin([np.linalg.norm(p - c) for p in limb_pts]))]
         if np.linalg.norm(o - c) > rx * 0.6:
@@ -125,7 +154,8 @@ def mpine(seed, H=22.0):
         tube(M, [o, o + (c - o) * 0.6 + np.array([0, 0, 0.3]), c], [R0 * 0.25, R0 * 0.14, R0 * 0.05], 4, 0.06)
         rx = rng.uniform(1.5, 2.2) * k; rz = rx * rng.uniform(0.7, 0.9)
         clump(M, c, (rx, rx * rng.uniform(0.85, 1.15), rz), int(rng.integers(60, 80)), 0.5 * k ** 0.5,
-              LEAF_LO, LEAF_HI, rng, up=0.35, stretch=1.8, core=0.8, shell=0.3)
+              LEAF_LO, LEAF_HI, rng, up=0.35, stretch=1.8, core=0.8, shell=0.3, core_c=CORE_C,
+              lobe=lobe_tone(rng, (c[2] - H * 0.4) / (H * 0.6), math.hypot(c[0], c[1]) / max(0.1, W / 2)))
     return M
 
 
@@ -151,6 +181,9 @@ def broadleaf(seed, H, W, bole=0.3, shape='oval', n=18, rc=1.4, cards_n=110, car
         T = branch_path(off, d, Hb + H * 0.12, 0.08, 5, rng)
         tube(M, T, np.linspace(R0 * 1.15 / stems ** 0.5, R0 * 0.8 / stems ** 0.5, len(T)), 7, np.linspace(0.04, 0.07, len(T)))
         base_pts.append(T[-1])
+    if V2:     # fewer, bigger lobes, out on the envelope: gaps between them show the dark inside
+        lk = P('VEG_LOBE')
+        n = max(5, int(round(n / lk ** 1.6))); cards_n = int(cards_n * lk ** 1.6 * 0.95); rc *= lk
     C = envelope_points(rng, n, lambda t: W / 2 * prof(t), Hb + rc * 0.5, H - rc * 0.8, jitter=0.1)
     # limbs from the trunk head to the clumps (hidden in dense crowns, seen in open ones)
     for c in C[: max(3, n // 3)]:
@@ -160,7 +193,8 @@ def broadleaf(seed, H, W, bole=0.3, shape='oval', n=18, rc=1.4, cards_n=110, car
     for c in C:
         r = rc * rng.uniform(0.8, 1.2)
         clump(M, c, (r, r * rng.uniform(0.85, 1.15), r * rng.uniform(0.75, 0.95)), int(cards_n * rng.uniform(0.85, 1.15)), card,
-              LEAF_LO, LEAF_HI, rng, up=up, stretch=stretch, core=core, shell=shell)
+              LEAF_LO, LEAF_HI, rng, up=up, stretch=stretch, core=core, shell=shell, core_c=CORE_C,
+              lobe=lobe_tone(rng, (c[2] - Hb) / max(0.1, H - Hb), math.hypot(c[0], c[1]) / max(0.1, W / 2 * prof(min(1.0, max(0.0, (c[2] - Hb) / max(0.1, H - Hb)))))))
     if accent > 0:     # flowers (or the pohutukawa's red flush) on the sunlit outside
         na = int(accent * n * cards_n)
         idx = rng.integers(len(C), size=na)
@@ -274,6 +308,22 @@ RAMPS = {
     'fanpalm': ('#57493a', '#7a6a56', '#46612c', '#7f9652', '#8c6e4c'),
 }
 
+# v2 (24/09 pm): species-true and darker, less yellow. Under the golden-hour
+# sun (1.0, 0.80, 0.58) and grade B every green drifts yellow: the albedos lean
+# blue-green so a cypress, a pine or a blue gum still reads blue-green, the
+# broadleaf mid green, and canopies sit among the darkest things in the frame
+RAMPS2 = dict(RAMPS)
+RAMPS2.update({
+    'euc':    ('#7c756a', '#a8a08e', '#38453b', '#667867', '#8a7a5a'),
+    'cyp':    ('#4e4036', '#76624f', '#27392a', '#4a6446', '#6a5a40'),
+    'pine':   ('#4f4035', '#7a6a58', '#2b3f26', '#51683a', '#6a5a40'),
+    'plane':  ('#6d6658', '#a89f8a', '#445e2c', '#789650', '#9a8a50'),
+    'round':  ('#4f463c', '#766a5c', '#30492a', '#628446', '#7a6a48'),
+    'column': ('#5b5044', '#857866', '#46652e', '#80a052', '#9a8a50'),
+    'cherry': ('#4d3f38', '#6d5b50', '#425e2c', '#789650', '#d8a8b0'),
+})
+if os.environ.get('VEG_RAMPS2', '1' if V2 else '0') == '1': RAMPS = RAMPS2
+
 # name: (builder, ramp, TALL (max height / crown width), HMAX m)
 def kit():
     K = {}
@@ -311,6 +361,8 @@ def hex_lin(h):
 def _material(bpy, name, ramp):
     m = bpy.data.materials.get(name)
     if m is not None: return m
+    if name[4:] in os.environ.get('VEG_DBGRAMP', '').split(','):     # diagnostics: this kind's leaves magenta
+        ramp = (ramp[0], ramp[1], '#800060', '#ff00c0', '#ff00c0')
     m = bpy.data.materials.new(name)
     try: m.use_nodes = True
     except Exception: pass
@@ -320,6 +372,9 @@ def _material(bpy, name, ramp):
     at = N.new('ShaderNodeAttribute'); at.attribute_type = 'GEOMETRY'; at.attribute_name = 'vc'
     cr = N.new('ShaderNodeValToRGB'); e = cr.color_ramp; e.interpolation = 'LINEAR'
     stops = [(0.0, ramp[0]), (BARK_HI, ramp[1]), (LEAF_LO, ramp[2]), (LEAF_HI, ramp[3]), (0.88, ramp[4]), (1.0, ramp[4])]
+    deep = None
+    if V2:
+        dk = P('VEG_DEEPK'); deep = tuple(v * dk for v in hex_lin(ramp[2]))
     # the two default stops become the ends; the others are added AT their
     # position (setting positions one by one re-sorts the list under the loop)
     e.elements[0].position = stops[0][0]; e.elements[0].color = hex_lin(stops[0][1]) + (1.0,)
@@ -328,27 +383,39 @@ def _material(bpy, name, ramp):
         c_ = hex_lin(hx)
         # canopies read near-black from above (critic 24/09): the foliage stops
         # lifted ~35 %, a touch warmer (olive at this sun); bark stays as is
-        if i_ in (1, 2): c_ = tuple(min(0.9, v * k) for v, k in zip(c_, LEAF_LIFT))
+        if i_ in (1, 2): c_ = tuple(min(0.9, v * (1 + (k - 1) * P('VEG_LIFT'))) for v, k in zip(c_, LEAF_LIFT))
         e.elements.new(p_).color = c_ + (1.0,)
+    if deep is not None: e.elements.new(DEEP).color = deep + (1.0,)
     L(at.outputs['Fac'], cr.inputs['Fac'])
     # each tree its own shade, by place ('crand', written by hq_city's instancer)
     ci = N.new('ShaderNodeAttribute'); ci.attribute_type = 'INSTANCER'; ci.attribute_name = 'crand'
     hsv = N.new('ShaderNodeHueSaturation')
-    hm = N.new('ShaderNodeMapRange'); hm.inputs['To Min'].default_value = 0.485; hm.inputs['To Max'].default_value = 0.515
+    hv_ = P('VEG_HUEV')
+    hm = N.new('ShaderNodeMapRange'); hm.inputs['To Min'].default_value = 0.5 - hv_; hm.inputs['To Max'].default_value = 0.5 + hv_
     vm = N.new('ShaderNodeMapRange'); vm.inputs['To Min'].default_value = 0.88; vm.inputs['To Max'].default_value = 1.12
     L(ci.outputs['Fac'], hm.inputs['Value']); L(ci.outputs['Fac'], vm.inputs['Value'])
     L(hm.outputs['Result'], hsv.inputs['Hue']); L(vm.outputs['Result'], hsv.inputs['Value'])
     L(cr.outputs['Color'], hsv.inputs['Color'])
-    L(hsv.outputs['Color'], pr.inputs['Base Color'])
+    base_ = hsv.outputs['Color']
+    aod = P('VEG_AO')
+    if aod > 0:   # v2 test: the crown's own crevices darker (AO within the tree, foliage only)
+        ao = N.new('ShaderNodeAmbientOcclusion'); ao.only_local = True; ao.samples = 8; ao.inputs['Distance'].default_value = aod
+        L(hsv.outputs['Color'], ao.inputs['Color'])
+        am = N.new('ShaderNodeMapRange'); am.inputs['To Min'].default_value = P('VEG_AOMIN')
+        L(ao.outputs['AO'], am.inputs['Value'])
+        mm = N.new('ShaderNodeMixRGB'); mm.blend_type = 'MULTIPLY'; mm.inputs['Fac'].default_value = 1.0
+        L(hsv.outputs['Color'], mm.inputs['Color1']); L(am.outputs['Result'], mm.inputs['Color2'])
+        base_ = mm.outputs['Color']
+    L(base_, pr.inputs['Base Color'])
     pr.inputs['Roughness'].default_value = 0.7
     try: pr.inputs['Specular IOR Level'].default_value = 0.35
     except KeyError: pass
     # leaves let some light through: a thin translucent share on the foliage only
     gt = N.new('ShaderNodeMath'); gt.operation = 'GREATER_THAN'; gt.inputs[1].default_value = 0.15
     L(at.outputs['Fac'], gt.inputs[0])
-    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = 0.30
+    k_ = N.new('ShaderNodeMath'); k_.operation = 'MULTIPLY'; k_.inputs[1].default_value = P('VEG_TRANS')
     L(gt.outputs[0], k_.inputs[0])
-    tr = N.new('ShaderNodeBsdfTranslucent'); L(hsv.outputs['Color'], tr.inputs['Color'])
+    tr = N.new('ShaderNodeBsdfTranslucent'); L(base_, tr.inputs['Color'])
     mx = N.new('ShaderNodeMixShader'); L(k_.outputs[0], mx.inputs[0])
     L(pr.outputs[0], mx.inputs[1]); L(tr.outputs[0], mx.inputs[2])
     L(mx.outputs[0], out.inputs['Surface'])
