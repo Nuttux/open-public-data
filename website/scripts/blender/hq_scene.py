@@ -1941,14 +1941,13 @@ def sea():
     dist = mth('MULTIPLY', sp.outputs[1], 127.5)
     shallow = mth('POWER', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 60.0, clamp=True)), 2.0)
     mc = nt.nodes.new('ShaderNodeMix'); mc.data_type = 'RGBA'; L_(shallow, mc.inputs[0])
-    mc.inputs[6].default_value = (*[float(v) for v in E('SEA_DEEP', '0.004,0.018,0.028').split(',')], 1); mc.inputs[7].default_value = (0.02, 0.08, 0.08, 1)   # SEA_DEEP: open-water colour, test knob
+    mc.inputs[6].default_value = (0.004, 0.018, 0.028, 1); mc.inputs[7].default_value = (0.02, 0.08, 0.08, 1)
     wat = nt.nodes.new('ShaderNodeBsdfPrincipled'); L_(mc.outputs[2], wat.inputs['Base Color'])
-    if E('SEA_IOR'): wat.inputs['IOR'].default_value = float(E('SEA_IOR'))   # SEA_IOR: a higher IOR mirrors more sky at our 61° incidence (test knob)
-    wat.inputs['Roughness'].default_value = float(E('SEA_ROUGH', 0.04)); wat.inputs['Specular IOR Level'].default_value = float(E('SEA_SPEC', 0.5))   # SEA_SPEC: sky mirrored by the open water (Fresnel), test knob
+    wat.inputs['Roughness'].default_value = 0.04; wat.inputs['Specular IOR Level'].default_value = 0.5
     wm = nt.nodes.new('ShaderNodeMapping'); wm.inputs['Scale'].default_value = (0.6, 1.8, 1); L_(geo.outputs['Position'], wm.inputs[0])
     w1 = nt.nodes.new('ShaderNodeTexNoise'); w1.inputs['Scale'].default_value = 0.05; w1.inputs['Detail'].default_value = 8; L_(wm.outputs[0], w1.inputs['Vector'])
     w2 = nt.nodes.new('ShaderNodeTexNoise'); w2.inputs['Scale'].default_value = 1.4; w2.inputs['Detail'].default_value = 8; L_(geo.outputs['Position'], w2.inputs['Vector'])
-    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = float(E('SEA_BUMP', 0.6)); bm.inputs['Distance'].default_value = 0.3
+    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = 0.6; bm.inputs['Distance'].default_value = 0.3
     L_(mth('ADD', w1.outputs['Fac'], mth('MULTIPLY', w2.outputs['Fac'], 0.35)), bm.inputs['Height']); L_(bm.outputs[0], wat.inputs['Normal'])
     fn = nt.nodes.new('ShaderNodeTexNoise'); fn.inputs['Scale'].default_value = 0.4; fn.inputs['Detail'].default_value = 12; L_(geo.outputs['Position'], fn.inputs['Vector'])
     foam = mth('GREATER_THAN', mth('MULTIPLY', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 5.0, clamp=True)), mth('ADD', fn.outputs['Fac'], 0.3)), 0.5)
