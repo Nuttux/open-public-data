@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys'}
 WATER_ENABLED = {'lakes'}        # + 'piers', 'sea_depth', 'sea_wind' once validated
 
 class Region:
@@ -117,7 +117,7 @@ def _registry():
         Landmark('cityhall', 'San Francisco City Hall', 1915, None, V.cityhall, ol('cityhall', 0.05), pad=1500.0,
                  note='built 1913-15 after the 1906 City Hall fell; the old City Hall (1872-1906) stood on the Civic Center site'),
         Landmark('sutro', 'Sutro Tower', 1973, None, V.sutro, [Region(ring=[(V.SUTRO_C[0] + 42 * math.cos(a / 12 * 6.283), V.SUTRO_C[1] + 42 * math.sin(a / 12 * 6.283)) for a in range(12)])],
-                 pad=4000.0, note='built 1971-73, in service July 1973'),
+                 pad=4000.0, note='built 1971-73, in service July 1973', replaces=True),
         Landmark('alcatraz', 'Alcatraz', 1859, None, V.alcatraz, ol('alcatraz'), pad=1500.0,
                  note='military fortress 1859, military prison 1907-33 (cellhouse 1912), federal penitentiary 1934-63, lighthouse 1909 (first 1854), water tower 1940; warden\'s house burned 1970'),
         Landmark('grace', 'Grace Cathedral', 1964, None, V.grace, ds('grace', 139401), pad=1200.0,

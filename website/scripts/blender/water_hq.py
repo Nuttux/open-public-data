@@ -318,6 +318,9 @@ def piers(C):
     dark sides down into the water (the piles in shadow). A float: 0.55 m
     over the water, weathered timber. Returns the number built."""
     K, tg = C.K, C.tg
+    # today's decks and docks (OSM): the present-day city only; the history
+    # agent draws the waterfront of each era (its own piers)
+    if C.era is not None and C.era < 1990: return 0
     bx0, by0, bx1, by1 = C.box
     def near(pts, pad=200.0):
         xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
