@@ -14,6 +14,7 @@ is unchanged without them), as key=val arguments after the positionals:
   black=    black point: (x - b) / (1 - b), deeper shadows
   shsat=    extra saturation in the shadows, (1 - lum)-weighted: rich, not grey
   green= water= beige=   saturation gain per hue band (110°, 195°, 35°)
+  waterv=   value gain on saturated teal (hue ~185°): deeper water, greys untouched
   chroma=   colour local contrast: each pixel's chroma pushed away from its
             neighbourhood's (radius width/300) — neighbours stop sharing one beige
   clarity=  luminance local contrast at a large radius (width/clarity_r, default
@@ -54,6 +55,10 @@ if any(k in O for k in ('green', 'water', 'beige', 'shsat')):
     gain = 1 + (o('green', 1) - 1) * band(110, 35) + (o('water', 1) - 1) * band(195, 30) + (o('beige', 1) - 1) * band(35, 18)
     gain = gain * (1 + (o('shsat', 1) - 1) * np.clip(1 - lum / 0.5, 0, 1))
     x = lum + (x - lum) * gain
+if 'waterv' in O:    # deep water: value gain on saturated teal/green-blue (hue ~185°), greys untouched
+    c = (x.max(-1) - x.min(-1))[..., None]
+    w = np.exp(-(((hue - 185 + 180) % 360 - 180) / 28) ** 2)[..., None] * np.clip(c / 0.12, 0, 1)
+    x = x * (1 + (o('waterv', 1) - 1) * w)
 if 'chroma' in O:   # neighbours stop sharing one beige: chroma local contrast
     lum = (x * LW).sum(-1, keepdims=True); c = x - lum; cb = blur(c, max(2, im.width / 300))
     x = lum + cb + (c - cb) * (1 + o('chroma', 0))
