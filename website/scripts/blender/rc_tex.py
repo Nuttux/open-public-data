@@ -110,3 +110,39 @@ def patch_materials(M, k=None):
             for l in links:
                 to = l.to_socket; nt.links.remove(l); nt.links.new(mx.outputs[2], to)
     print('BTEX_REAL: wall materials patched', atlas, flush=True)
+
+
+ROOF_MATS = ('roof_flat', 'roof_big', 'roof_shingle', 'roof_tile')
+
+
+def patch_roofs(M):
+    """the roofs seen by the registered drone obliques (rc_build_aer.py): a
+    world-XY layer mixed over the roof paint by its alpha on the faces that
+    look up (the ROOF_NAIP recipe, its image replaced by the projected photos)"""
+    import bpy
+    sfx = '_open' if os.environ.get('REALCOL_LICENCE') == 'open' else ''
+    jf, pf = f'{D_}/btex_roof{sfx}.json', f'{D_}/btex_roof{sfx}.png'
+    if not os.path.exists(jf): print('BTEX_REAL: no roof layer', jf, flush=True); return
+    meta = json.load(open(jf)); bx0, by0, bx1, by1 = meta['box']
+    im = bpy.data.images.load(pf, check_existing=True); im.alpha_mode = 'CHANNEL_PACKED'
+    for name in ROOF_MATS:
+        m = M.get(name)
+        if m is None: continue
+        nt = m.node_tree; pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+        bc = pr.inputs['Base Color']; src = bc.links[0].from_socket if bc.links else None
+        N = nt.nodes.new; L = nt.links.new
+        geo = N('ShaderNodeNewGeometry'); sp = N('ShaderNodeSeparateXYZ'); L(geo.outputs['Position'], sp.inputs[0])
+        def lin(sock, a, b):
+            n_ = N('ShaderNodeMapRange'); L(sock, n_.inputs[0]); n_.inputs[1].default_value = a; n_.inputs[2].default_value = b
+            n_.inputs[3].default_value = 0.0; n_.inputs[4].default_value = 1.0; n_.clamp = False; return n_.outputs[0]
+        uv = N('ShaderNodeCombineXYZ'); L(lin(sp.outputs[0], bx0, bx1), uv.inputs[0]); L(lin(sp.outputs[1], by0, by1), uv.inputs[1])
+        tx = N('ShaderNodeTexImage'); tx.image = im; tx.interpolation = 'Linear'; tx.extension = 'CLIP'; L(uv.outputs[0], tx.inputs['Vector'])
+        sn = N('ShaderNodeSeparateXYZ'); L(geo.outputs['Normal'], sn.inputs[0])
+        up = N('ShaderNodeMapRange'); up.interpolation_type = 'SMOOTHSTEP'; L(sn.outputs[2], up.inputs[0])
+        up.inputs[1].default_value = 0.40; up.inputs[2].default_value = 0.55
+        a = N('ShaderNodeMath'); a.operation = 'MULTIPLY'; L(tx.outputs['Alpha'], a.inputs[0]); L(up.outputs[0], a.inputs[1])
+        mx = N('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MIX'; L(a.outputs[0], mx.inputs[0]); L(tx.outputs['Color'], mx.inputs[7])
+        if src is not None: L(src, mx.inputs[6])
+        else: mx.inputs[6].default_value = tuple(bc.default_value)
+        L(mx.outputs[2], bc)
+    print('BTEX_REAL: roof layer', pf, meta['w'], 'x', meta['h'], flush=True)

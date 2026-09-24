@@ -459,6 +459,7 @@ if E('ROOF_NAIP', '0') == '1' and not E('ERA'):
 if E('BTEX_REAL', '0') == '1' and not E('ERA'):
     import rc_tex
     rc_tex.patch_materials(M)
+    rc_tex.patch_roofs(M)
 M['asphalt'] = road_mat()
 if E('ERA') and int(E('ERA')) < 1950:
     M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
