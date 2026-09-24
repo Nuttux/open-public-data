@@ -449,6 +449,11 @@ def pitched_mat(name, asset, tile, value=1.0, bump=0.6):
     return b.m
 M['roof_shingle'] = pitched_mat('roof_shingle', 'grey_roof_01', 3.2)
 M['roof_tile'] = pitched_mat('roof_tile', 'clay_roof_tiles_02', 2.5, value=1.1, bump=0.8)
+# ── ROOF_NAIP (experiment, roof_naip.py; default off): the real roof from
+# NAIP 2022 projected top-down over the four roof materials, today only ──
+if E('ROOF_NAIP', '0') == '1' and not E('ERA'):
+    import roof_naip
+    roof_naip.attach(M, globals().get('BOX') or ([float(v) for v in E('BOX').split(',')] if E('BOX') else None))
 M['asphalt'] = road_mat()
 if E('ERA') and int(E('ERA')) < 1950:
     M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.72, name='oldpave') if int(E('ERA')) >= 1910 else ph_mat('pavement_03', 1.6, value=0.55, name='basalt')
