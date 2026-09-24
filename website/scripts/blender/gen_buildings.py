@@ -384,7 +384,16 @@ def building(b, ground, out):
     if not LM and roof == 'flat' and style in ('vic', 'stucco', 'midcentury') and ERA is None:
         m_ = ROOF_M.get(b['gid'])
         if m_ and (m_[3] == 'shingle' or (m_[3] == 'tile' and sub in ('med', 'sunset'))) and b['h'] < 16 and abs(ring_area(ring)) < 350 and walls[f0].L <= 10.5: roof = 'gable'   # (a row house's width: wider, it drew barns)
-    if OV.get('roof'): roof = {'gable': 'gable', 'hip': 'gable', 'flat': 'flat', 'mansard': 'flat', 'dome': 'flat'}.get(OV['roof'], roof)
+    if OV.get('roof'): roof = {'gable': 'gable', 'hip': 'hip', 'flat': 'flat', 'mansard': 'flat', 'dome': 'flat'}.get(OV['roof'], roof)
+    # (24/09) THE ROOF'S FORM FROM THE LIDAR — USGS 3DEP, CA_SanFrancisco_1_B23,
+    # public domain (qipu-render-work/lidar/roofs_lidar.py): flat, a gable and
+    # its ridge's direction, or a hip, with the measured pitch. It overrides
+    # the conventions above wherever the footprint was measured
+    LR = LIDAR_R.get(str(b['gid'])) if (ERA is None and not LM and not OV.get('roof') and sub not in ('works', 'pier', 'tower')) else None
+    if LR:
+        if LR[0] == 'flat': roof = 'flat'
+        elif abs(ring_area(ring)) < (800 if style != 'block' else 500) and b['h'] < 25: roof = LR[0]
+        else: LR = None
     # a works shed of one or two storeys over a near-rectangular lot: a
     # sawtooth of north lights, or the bow-truss barrel of the 1910s-40s
     wrng = random.Random(b['gid'] * 577 + 3)                 # (its own draws: the main sequence stays)
@@ -399,15 +408,26 @@ def building(b, ground, out):
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and rng.random() < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
+    if LR and roof == 'gable':
+        # the measured ridge: along v (a front gable) or along u (a side gable)
+        rd_ = Vector((math.cos(math.radians(LR[1])), math.sin(math.radians(LR[1])), 0))
+        if abs(rd_.dot(ax_u)) > abs(rd_.dot(ax_v)): ax_u, ax_v = ax_v.copy(), -ax_u
     us = [Vector((x, y, 0)).dot(ax_u) for x, y in ring]
     vs = [Vector((x, y, 0)).dot(ax_v) for x, y in ring]
     umin, umax = min(us), max(us); uc = (umin + umax) / 2; hw = (umax - umin) / 2
     pitch = math.radians(LM.get('pitch') or {'vic': 50, 'med': 24, 'sunset': 26}.get(style if style == 'vic' else sub, 28))
-    rise = min(hw * math.tan(pitch), 0.55 * (top - zg)) if roof == 'gable' else 0.0
+    if LR and roof in ('gable', 'hip'): pitch = math.radians(min(55.0, max(16.0, LR[2])))
+    vmin, vmax = min(vs), max(vs); vc = (vmin + vmax) / 2; hs_ = min(hw, (vmax - vmin) / 2)
+    rise = min(hw * math.tan(pitch), 0.55 * (top - zg)) if roof == 'gable' else (min(hs_ * math.tan(pitch), 0.55 * (top - zg)) if roof == 'hip' else 0.0)
     eave = top - rise
     if roof == 'gable':
         def rz(p):  # roof height over a point
             return eave + max(0.0, hw - abs(p.dot(ax_u) - uc)) * math.tan(pitch) * (rise / (hw * math.tan(pitch)))
+    elif roof == 'hip':
+        kh_ = rise / max(hs_, 0.1)
+        def rz(p):  # a hip: the height grows with the distance to the nearest eave
+            u_, v_ = p.dot(ax_u), p.dot(ax_v)
+            return eave + max(0.0, min(u_ - umin, umax - u_, v_ - vmin, vmax - v_)) * kh_
     else:
         def rz(p): return top
 
@@ -531,7 +551,7 @@ def building(b, ground, out):
                 w.box('trim', w.L - 0.16, w.L, first - raised, eave, 0.0, 0.05, trim)
             w.box('trim' if wall_mat == 'siding' else 'concrete', -0.02, w.L + 0.02, zfoot, zg + 0.35, 0.0, 0.06, (0.55, 0.53, 0.50))
         # gable end: the wall above the eave follows the roof
-        if roof == 'gable':
+        if roof in ('gable', 'hip'):
             pts = [0.0, w.L]
             ua, ub = w.a.dot(ax_u), w.b.dot(ax_u)
             if (ua - uc) * (ub - uc) < 0: pts.insert(1, w.L * (uc - ua) / (ub - ua))
@@ -621,16 +641,25 @@ def building(b, ground, out):
         wf.box('trim', -0.1, wf.L + 0.1, eave - 0.35, eave - 0.1, 0.0, 0.22, trim)
 
     # ── roof ──
-    if roof == 'gable':
+    if roof in ('gable', 'hip'):
         oring = offset_ring(ring, 0.35)
         pts2 = [Vector((x, y, 0)) for x, y in oring]
         tris = tessellate_polygon([pts2])
         f = lambda p: p.dot(ax_u) - uc
+        if roof == 'hip':
+            # the hip's creases: four diagonals from the corners, and the ridge
+            fs_ = [lambda p: (p.dot(ax_u) - umin) - (p.dot(ax_v) - vmin), lambda p: (p.dot(ax_u) - umin) - (vmax - p.dot(ax_v)),
+                   lambda p: (umax - p.dot(ax_u)) - (p.dot(ax_v) - vmin), lambda p: (umax - p.dot(ax_u)) - (vmax - p.dot(ax_v)),
+                   (lambda p: p.dot(ax_v) - vc) if (umax - umin) >= (vmax - vmin) else (lambda p: p.dot(ax_u) - uc)]
+            def split_all(tri):
+                parts = [tri]
+                for g_ in fs_: parts = [q for t_ in parts for q in split_tri(t_, g_)]
+                return parts
         rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else rng.choice(TILE_TINTS)
         roof_mat, rc_ = measured_pitched(b, roof_mat, rc_)     # ROOFS: the measured roof, if any
         if OV.get('roof_col'): rc_ = hexcol(OV['roof_col'])
         for t in tris:
-            for tri in split_tri([pts2[k].copy() for k in t], f):
+            for tri in (split_tri([pts2[k].copy() for k in t], f) if roof == 'gable' else split_all([pts2[k].copy() for k in t])):
                 top_ = [Vector((p.x, p.y, rz(p) + 0.05)) for p in tri]
                 out.poly(roof_mat, top_, rc_)
         # the ridge cap along the top
@@ -638,7 +667,7 @@ def building(b, ground, out):
         r0 = ax_u * uc + ax_v * min(ovs); r1 = ax_u * uc + ax_v * max(ovs)
         zr = rz(r0) + 0.05
         o_ = Vector((r0.x, r0.y, zr)) - ax_u * 0.14
-        out.box3(roof_mat, o_, ax_v * (max(ovs) - min(ovs)), ax_u * 0.28, Vector((0, 0, 0.12)), tuple(c * 0.85 for c in rc_))
+        if roof == 'gable': out.box3(roof_mat, o_, ax_v * (max(ovs) - min(ovs)), ax_u * 0.28, Vector((0, 0, 0.12)), tuple(c * 0.85 for c in rc_))
         if style == 'vic' and rng.random() < 0.8:
             vpos = min(vs) + (max(vs) - min(vs)) * rng.uniform(0.3, 0.7)
             upos = uc + (hw * 0.55) * (1 if rng.random() < 0.5 else -1)
@@ -972,6 +1001,13 @@ def _load_roofs():
     c = float(os.environ.get('ROOFS_CONF', 0.5))
     return {int(g): v for g, v in json.load(open(p))['roofs'].items() if v[4] >= c and v[3] not in ('tree', 'shadow')}
 ROOF_M = _load_roofs()
+LIDAR_FILE = '/Users/daniel/code/qipu-render-work/lidar/roofs_lidar_city.json'
+def _load_lidar():
+    import json, os
+    if os.environ.get('LIDAR_ROOFS', '1') != '1' or not os.path.exists(LIDAR_FILE): return {}
+    try: d_ = json.load(open(LIDAR_FILE)); d_.pop('_tiles', None); return d_
+    except Exception as ex: print('lidar roofs unreadable', ex); return {}
+LIDAR_R = _load_lidar()
 # the mean linear albedo of what each material multiplies the paint by (so a
 # measured albedo becomes paint = albedo / texture): the Poly Haven diffuse
 # maps (grey_roof_01; clay_roof_tiles_02 x the material's 1.1); roof_flat's
