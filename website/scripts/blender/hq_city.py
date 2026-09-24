@@ -615,7 +615,7 @@ sc.cycles.samples = SPP
 # and a plain value scale on roofs (ROOF_VALUE, roofk=) and walls (WALL_VALUE, wallk=).
 _SPREAD = []; _VSP = []; _VK = []
 if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE')) or any(k_ in (E('LOOKS') or '') for k_ in ('spread=', 'roofk=', 'wallk=')):
-    _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle', 'roof_tile'}
+    _sm = {'siding', 'shingle', 'stucco', 'brick', 'concrete_wall', 'trim', 'roof_flat', 'roof_big', 'roof_shingle'}   # (roof_tile's bcol is a tint multiplier, mean > 1: left alone)
     _acc = {}
     for o_ in sc.objects:
         if o_.type != 'MESH' or o_.data.attributes.get('bcol') is None: continue   # a FACE colour: in attributes, not color_attributes
@@ -633,7 +633,7 @@ if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE
         for at_ in [n for n in nt_.nodes if n.type == 'ATTRIBUTE' and n.attribute_name == 'bcol']:
             outs_ = [l.to_socket for l in at_.outputs['Color'].links]
             if not outs_: continue
-            mx_ = nt_.nodes.new('ShaderNodeMix'); mx_.data_type = 'RGBA'; mx_.clamp_factor = False; mx_.clamp_result = True
+            mx_ = nt_.nodes.new('ShaderNodeMix'); mx_.data_type = 'RGBA'; mx_.clamp_factor = False; mx_.clamp_result = False   # no clamp: some bcol are multipliers > 1
             mx_.inputs[0].default_value = float(E('BCOL_SPREAD', 1.0))
             mx_.inputs[6].default_value = (*[float(v) for v in mean_], 1.0)
             nt_.links.new(at_.outputs['Color'], mx_.inputs[7])
@@ -646,7 +646,7 @@ if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE
             vk_ = nt_.nodes.new('ShaderNodeMath'); vk_.operation = 'MULTIPLY'; nt_.links.new(pw_.outputs[0], vk_.inputs[0])
             roof_ = mn_.startswith('roof'); vk_.inputs[1].default_value = float(E('ROOF_VALUE' if roof_ else 'WALL_VALUE', 1.0))
             sc_ = nt_.nodes.new('ShaderNodeVectorMath'); sc_.operation = 'SCALE'; nt_.links.new(mx_.outputs[2], sc_.inputs[0]); nt_.links.new(vk_.outputs[0], sc_.inputs['Scale'])
-            mn2_ = nt_.nodes.new('ShaderNodeVectorMath'); mn2_.operation = 'MINIMUM'; mn2_.inputs[1].default_value = (1.0, 1.0, 1.0); nt_.links.new(sc_.outputs[0], mn2_.inputs[0])
+            mn2_ = nt_.nodes.new('ShaderNodeVectorMath'); mn2_.operation = 'MAXIMUM'; mn2_.inputs[1].default_value = (0.0, 0.0, 0.0); nt_.links.new(sc_.outputs[0], mn2_.inputs[0])
             for t_ in outs_: nt_.links.new(mn2_.outputs[0], t_)
             _SPREAD.append(mx_); _VSP.append(pw_); _VK.append((vk_, roof_))
         log(f'bcol spread: {mat_.name} mean {np.round(mean_, 3).tolist()}')
