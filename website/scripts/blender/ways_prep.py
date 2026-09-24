@@ -1,11 +1,11 @@
-"""ways_prep.py <overpass highways.json> <out ways.json> — OpenStreetMap
+"""ways_prep.py <overpass highways.json> <out ways_v2.json> — OpenStreetMap
 (ODbL, (c) OpenStreetMap contributors) ways in the render's world frame
 (x = (lon + 122.438) * 111320 * cos 37.76°, y = (lat - 37.76) * 111320),
 sorted for hq_scene's park paths and car rules:
   car  — roads cars drive and park on
   free — road surfaces closed to private cars (JFK Promenade, the car-free
          loop of Twin Peaks Boulevard, busways): asphalt, no parked cars
-  foot — footways, paths, steps, cycleways, tracks: [points, width m, surface]
+  foot — footways, paths, steps, cycleways, tracks: [points, width m, surface, highway]
          (sidewalks and crossings are not fetched)
 fetch: osm_fetch.py highways.json '[out:json][timeout:240];(way["highway"]
   ["footway"!~"sidewalk|crossing|traffic_island"]["area"!="yes"]
@@ -36,6 +36,6 @@ for e in json.load(open(sys.argv[1]))['elements']:
     elif hw in FOOT:
         try: w = float(str(t.get('width', '')).replace('m', '').strip())
         except ValueError: w = FOOT[hw]
-        out['foot'].append([P, round(min(max(w, 1.0), 6.0), 1), surf(t)])
+        out['foot'].append([P, round(min(max(w, 1.0), 6.0), 1), surf(t), hw])
 json.dump(out, open(sys.argv[2], 'w'), separators=(',', ':'))
 print({k: len(v) for k, v in out.items()})

@@ -26,15 +26,20 @@ def _crops():
     # ROADV=0.62,0.8,0.9: the street asphalt's value (road_mat's Hue/Saturation
     # node) varied on the one built scene, a set of crops per value
     rv = [v for v in os.environ.get('ROADV', '').split(',') if v.strip()] or [None]
+    # ROADK=1,1.35,1.6: the whole street albedo (road_mat's 'road_k' multiply, warm)
+    rk = [v for v in os.environ.get('ROADK', '').split(',') if v.strip()] or [None]
     for v_ in rv:
-        fn = fn0
-        if v_ is not None:
+        for k_ in rk:
+            fn = fn0
             for m in bpy.data.materials:
                 if m.name.split('.')[0] != 'asphalt' or not m.node_tree: continue
                 for n in m.node_tree.nodes:
-                    if n.type == 'HUE_SAT': n.inputs['Value'].default_value = float(v_)
-            fn = fn0.rsplit('.', 1)[0] + f'_rv{v_}.png'
-        _crop_set(sc, W, H, fn)
+                    if v_ is not None and n.type == 'HUE_SAT': n.inputs['Value'].default_value = float(v_)
+                    if k_ is not None and n.name == 'road_k':
+                        k = float(k_); n.inputs[7].default_value = (1.0, 1.0, 1.0, 1.0) if k == 1.0 else (k * 1.03, k, k * 0.94, 1.0)
+            if v_ is not None: fn = fn.rsplit('.', 1)[0] + f'_rv{v_}.png'
+            if k_ is not None: fn = fn.rsplit('.', 1)[0] + f'_rk{k_}.png'
+            _crop_set(sc, W, H, fn)
 def _crop_set(sc, W, H, fn):
     import bpy
     for spec in [c for c in os.environ.get('CROPS', '').split(';') if c.strip()]:
