@@ -147,9 +147,18 @@ def ground0(x, y):
 SP_, SC_ = array.array('f'), array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'surround' and not m.get('instanced'): SP_.extend(f32(m['pos'])); SC_.extend(f32(m['col']))
+bvh_s = None
 if len(SP_):
     for i in range(2, len(SP_), 3): SP_[i] = SP_[i] * 0.5 - 0.3
-    mesh_from('surround', SP_, bpy.data.materials['ground'], smooth=True, cols=SC_)
+    _sur = mesh_from('surround', SP_, bpy.data.materials['ground'], smooth=True, cols=SC_)
+    bvh_s = BVHTree.FromObject(_sur, bpy.context.evaluated_depsgraph_get())
+def ground_s(x, y):
+    # beyond the county line (Daly City, Brisbane: ground_hq's generic
+    # buildings and OSM streets) the surround is the ground
+    g_ = ground(x, y)
+    if g_ is not None or bvh_s is None: return g_
+    h_ = bvh_s.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
+    return h_[0].z if h_[0] else None
 
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
@@ -190,6 +199,11 @@ if len(MP): mesh_from('markings', MP, M['paint'])
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
+try:     # the streets beyond the county line (OSM, draped on the surround: ground_hq)
+    import ground_hq as _gh
+    _ssp = _gh.south_streets(ground_s, lambda x, y: ground(x, y) is not None, BOX)
+    if _ssp: mesh_from('streets_south', _ssp, M['asphalt']); log('south streets', len(_ssp) // 18, 'quads')
+except Exception as ex: log('south streets failed:', ex)
 _pp = park_paths(BOX, ground0)                 # every footpath, stairway and trail, narrow and light (hq_scene)
 if _pp: mesh_from('parkpaths', _pp[0], M['parkpath'], cols=_pp[1])
 pass   # the parks: painted by hill_ground (hq_scene's materials block)
@@ -214,7 +228,7 @@ for a, b, outv in SE:
 me = bpy.data.meshes.new('sidewalks'); me.from_pydata(Ps, [], Fs); me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
 log('street edges', len(SE))
-if os.environ.get('BRUSH', '1') == '1': hill_brush(ground, BOX)
+if os.environ.get('BRUSH', '1') == '1': hill_brush(ground_s, BOX)     # the brush beyond the county line stands on the surround
 
 # ── landmarks the engine models by hand (Coit Tower, the Transamerica...) ──
 HP, HC = array.array('f'), array.array('f')
@@ -253,7 +267,7 @@ CH = 6000; nfaces = 0
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
-        try: G.building(b, ground, out)
+        try: G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
         except Exception as ex: pass
     objs = G.emit(bpy, out, M, name=f'b{c0 // CH}')
     nfaces += sum(len(o.data.polygons) for o in objs); del out
