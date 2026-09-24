@@ -77,6 +77,8 @@ ALU = hexc('#c9ccce')
 CONC = hexc('#cfc8b8')
 
 # ── Salesforce Tower ─────────────────────────────────────────────────────────
+SF_FIN = hexc('#d3d6d7')          # (25/09) the sunshades: pale pearl-grey, thinner (the tower read stark white in bands)
+SF_GLASS = (0.31, 0.39, 0.46, 0.55)   # a bluer pearl glass (aerials refs/salesforce)
 def salesforce(C):
     if C.era is not None and C.era < 2017: return
     r = outer('salesforce')
@@ -100,25 +102,25 @@ def salesforce(C):
     for z in zs:
         s = half(z); hu, hv = hu0 * s * 0.985, hv0 * s * 0.985
         rings.append(rrect(fr, hu, hv, rad(z) * min(hu, hv), g + z, 5))
-    K.loft('curtain_wall', rings, PEARL, cap_top=False)
+    K.loft('curtain_wall', rings, SF_GLASS, cap_top=False)
     # sunshades: a white fin every floor, 0.8 m out, 0.25 m thick
     for z in zs[1:] + [CROWN0 + 3.4 * k for k in range(1, 17) if CROWN0 + 3.4 * k <= TOP - 0.3] + [TOP - 0.3]:
         s = half(min(z, ROOF)); hu, hv = hu0 * s, hv0 * s
-        ro = rrect(fr, hu + 0.55, hv + 0.55, rad(z) * min(hu, hv) + 0.55, g + z, 5)
+        ro = rrect(fr, hu + 0.42, hv + 0.42, rad(z) * min(hu, hv) + 0.42, g + z, 5)
         ri = rrect(fr, hu - 0.35, hv - 0.35, rad(z) * min(hu, hv) - 0.35, g + z, 5)
-        th = 0.28 if z < CROWN0 else 0.45
+        th = 0.2 if z < CROWN0 else 0.4
         roT = [(p[0], p[1], p[2] + th) for p in ro]; riT = [(p[0], p[1], p[2] + th) for p in ri]
         n = len(ro); V = ro + roT + riT + ri; Fc = []
         for i in range(n):
             j = (i + 1) % n
             Fc += [(i, j, n + j, n + i), (n + i, n + j, 2 * n + j, 2 * n + i), (2 * n + i, 2 * n + j, 3 * n + j, 3 * n + i), (3 * n + i, 3 * n + j, j, i)]
-        K.mesh('lm_paint', V, Fc, WHITE)
+        K.mesh('lm_paint', V, Fc, SF_FIN)
     # vertical mullions of the crown (the sunshades' posts), and the core inside
     s = half(ROOF); hu, hv = hu0 * s, hv0 * s
     ring = rrect(fr, hu + 0.1, hv + 0.1, rad(ROOF) * min(hu, hv), 0, 5)
     for i in range(0, len(ring), 2):
         p = ring[i]
-        K.cyl('lm_paint', (p[0], p[1], g + CROWN0), (p[0], p[1], g + TOP - 0.3), 0.18, WHITE, n=4, smooth=False)
+        K.cyl('lm_paint', (p[0], p[1], g + CROWN0), (p[0], p[1], g + TOP - 0.3), 0.18, SF_FIN, n=4, smooth=False)
     core = rrect(fr, hu * 0.62, hv * 0.62, 3.0, 0, 3)
     K.prism('lm_paint', [p[:2] for p in core], g + CROWN0, g + ROOF + 8, hexc('#bfc3c4'))
     K.prism('lm_paint', [p[:2] for p in rrect(fr, hu * 0.45, hv * 0.45, 2.0, 0, 3)], g + ROOF + 8, g + TOP - 6, hexc('#a9adb0'))
