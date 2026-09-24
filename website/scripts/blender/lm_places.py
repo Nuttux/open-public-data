@@ -185,3 +185,10 @@ def grace(C):
     j = sidecar('grace')
     if not j or not load_into(C.K, 'grace', j['z0']):
         import lm_civic; lm_civic.grace(C)
+
+def legion(C):
+    """Legion of Honor (1924): the offline model (models/legion_prep.py); lm_civic.legion if missing"""
+    if C.era is not None and C.era < 1924: return
+    j = sidecar('legion')
+    if not j or not load_into(C.K, 'legion', j['z0']):
+        import lm_civic; lm_civic.legion(C)

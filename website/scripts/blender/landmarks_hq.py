@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst', 'grace'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst', 'grace', 'legion'}
 WATER_ENABLED = {'lakes', 'piers'}   # + 'sea_depth', 'sea_wind' once validated
 
 class Region:
@@ -61,8 +61,9 @@ class Region:
         return (min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts))
 
 class Landmark:
-    def __init__(self, key, name, built, gone, builder, regions, pad=300.0, note='', replaces=False, streets=False):
+    def __init__(self, key, name, built, gone, builder, regions, pad=300.0, note='', replaces=False, streets=False, notree=None):
         self.key, self.name, self.built, self.gone, self.replaces = key, name, built, gone, replaces
+        self.notree = notree or []  # where the scene's trees (and parked cars) give way: courts, lawns, terraces
         self.streets = streets      # a bridge: the engine's streets draped into the water under it go too
         self.builder, self.regions, self.pad, self.note = builder, regions, pad, note
     def bbox(self):
@@ -131,7 +132,8 @@ def _registry():
                  note='built 1878, opened 1879'),
         Landmark('deyoung', 'de Young Museum', 2005, None, V.deyoung, ds('deyoung', 32875), pad=800.0,
                  note='opened Oct 2005; the earlier de Young (1895 Midwinter Fair, rebuilt 1919-25) stood here until 2002', replaces=True),
-        Landmark('legion', 'Legion of Honor', 1924, None, V.legion, ol('legion', 0.03), pad=800.0, note='opened Nov 1924'),
+        Landmark('legion', 'Legion of Honor', 1924, None, P.legion, [Region(ring=r_) for r_ in P.rings('legion', ('ring',))] or ol('legion', 0.03), pad=800.0, note='opened Nov 1924',
+                 replaces=True, notree=[Region(ring=r_) for r_ in P.rings('legion', ('notree',))]),
         Landmark('oracle', 'Oracle Park', 2000, None, P.oracle, ds('oracle', 143280), pad=1000.0,
                  note='opened April 2000 as Pacific Bell Park', replaces=True),
         Landmark('pier39', 'Pier 39', 1978, None, P.pier39, [Region(ring=P.ring('pier39'))] if P.ring('pier39') else [], pad=800.0,
@@ -172,6 +174,23 @@ class Ctx:
     pass
 
 STREET_OBJS = ('streets', 'markings', 'paths')
+def _clear_points(bpy, sc, regions, names=('trees', 'cars')):
+    """delete the instancer points (a tree, a parked car) standing in any region"""
+    import bmesh
+    n = 0
+    for nm in names:
+        ob = sc.objects.get(nm)
+        if ob is None or ob.type != 'MESH' or not len(ob.data.vertices): continue
+        me = ob.data; co = np.empty(len(me.vertices) * 3, np.float32); me.vertices.foreach_get('co', co); co = co.reshape(-1, 3)
+        X, Y = co[:, 0], co[:, 1]; kill = np.zeros(len(co), bool)
+        for r in regions:
+            b = r.bbox(); pre = (X >= b[0]) & (X <= b[2]) & (Y >= b[1]) & (Y <= b[3])
+            if pre.any(): idx = np.nonzero(pre)[0]; kill[idx] |= r.inside(X[idx], Y[idx])
+        if not kill.any(): continue
+        bm = bmesh.new(); bm.from_mesh(me); bm.verts.ensure_lookup_table()
+        bmesh.ops.delete(bm, geom=[bm.verts[i] for i in np.nonzero(kill)[0]], context='VERTS')
+        bm.to_mesh(me); bm.free(); me.update(); n += int(kill.sum())
+    return n
 def _clear(bpy, sc, regions, log, names=None):
     """delete the engine stand-in's faces (or, with `names`, those objects')
     whose centre is in any region"""
@@ -307,6 +326,12 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         if nc: log(f'landmarks_hq: cleared {nc} faces of the engine stand-ins')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: clearing failed', ex)
+    try:
+        tr = [r for lm in todo if lm.complete(era) for r in lm.notree]
+        nt_ = _clear_points(bpy, sc, tr) if tr else 0
+        if nt_: log(f'landmarks_hq: {nt_} trees / parked cars cleared from modelled places')
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: clearing trees failed', ex)
     try:
         sr = [r for lm in todo if lm.streets and lm.complete(era) for r in lm.regions]
         ns = _clear(bpy, sc, sr, log, names=STREET_OBJS) if sr else 0
