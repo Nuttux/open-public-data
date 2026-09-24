@@ -1342,13 +1342,33 @@ def fortpoint(C):
     g = max(min(C.tg(*p) for p in r), 1.0)
     K = C.K
     BR = hexc('#94634c'); BR_D = hexc('#744a38')
-    H = 15.0
-    K.prism('brick', r, g - 2.0, g + H, BR, top=False)
+    H = 18.5      # three casemate tiers and the barbette parapet (4 levels, ~60 ft over the parade)
+    K.prism('brick', r, g - 2.0, g + 4.0, hexc('#9a927f'), top=False)     # the granite lower course
+    K.prism('brick', r, g + 4.0, g + H, BR, top=False)
     K.face_holes('lm_matte', r, holes, g + H, hexc('#5c554d'))     # the barbette tier: dark weathered paving (was #8a8378: read white at midday)
     K.prism('brick', r, g + H, g + H + 1.4, BR_D, top=False)
     for h in holes:
         K.prism('brick', h[::-1], g, g + H + 1.4, BR, top=False)
         K.face('path', [(x, y, g + 0.05) for x, y in h], (1, 1, 1, 1))
+        # the courtyard galleries: three tiers of tall dark arches round the parade ground
+        hh = list(h); m_ = len(hh)
+        ah = sum(hh[i][0] * hh[(i + 1) % m_][1] - hh[(i + 1) % m_][0] * hh[i][1] for i in range(m_))
+        for i in range(m_):
+            (x1, y1), (x2, y2) = hh[i], hh[(i + 1) % m_]
+            L = math.hypot(x2 - x1, y2 - y1)
+            if L < 5: continue
+            dx, dy = (x2 - x1) / L, (y2 - y1) / L
+            nx, ny = (-dy, dx) if ah > 0 else (dy, -dx)          # into the courtyard
+            k_ = int(L / 4.6)
+            for k in range(k_):
+                t = (k + 0.5) * L / k_
+                for z0, zh in ((0.4, 3.6), (6.2, 3.4), (11.8, 3.4)):
+                    pts = [(x1 + dx * (t - 1.5) + nx * 0.06, y1 + dy * (t - 1.5) + ny * 0.06, g + z0),
+                           (x1 + dx * (t + 1.5) + nx * 0.06, y1 + dy * (t + 1.5) + ny * 0.06, g + z0)]
+                    for j in range(7):
+                        th = math.pi * j / 6
+                        pts.append((x1 + dx * (t + 1.5 * math.cos(th)) + nx * 0.06, y1 + dy * (t + 1.5 * math.cos(th)) + ny * 0.06, g + z0 + zh - 1.5 + 1.5 * math.sin(th)))
+                    K.face('lm_steel', pts if ah > 0 else pts[::-1], hexc('#1b1715'))
     # the casemates: three tiers of arched gun ports on the outer walls
     n = len(r)
     a2 = sum(r[i][0] * r[(i + 1) % n][1] - r[(i + 1) % n][0] * r[i][1] for i in range(n))
@@ -1361,7 +1381,7 @@ def fortpoint(C):
         m = int(L / 4.2)
         for k in range(m):
             t = (k + 0.5) * L / m
-            for z0 in (2.0, 6.6, 11.0):
+            for z0 in (2.4, 7.4, 12.4):
                 pts = [(x1 + dx * (t - 0.6) + nx * 0.06, y1 + dy * (t - 0.6) + ny * 0.06, g + z0)]
                 pts.append((x1 + dx * (t + 0.6) + nx * 0.06, y1 + dy * (t + 0.6) + ny * 0.06, g + z0))
                 for j in range(5):
@@ -1371,7 +1391,8 @@ def fortpoint(C):
                 K.face('lm_steel', [pts[0], pts[1]] + pts[2:], hexc('#1d1a18'))
     # the lighthouse on the barbette tier
     lx, ly = -3458.0, 5626.0
-    K.lathe('lm_paint', lx, ly, g + H, [(1.6, 0.0), (0.9, 6.0), (1.1, 6.0), (1.1, 7.8), (0.4, 8.8), (0.0, 8.8)], hexc('#e9e5dc'), n=6, smooth=False)
+    K.box('brick', Frame(lx, ly, 0.0), -3.2, 3.2, -3.2, 3.2, g, g + H + 4.5, BR_D)   # the stair tower under the light
+    K.lathe('lm_paint', lx, ly, g + H + 4.5, [(1.6, 0.0), (0.9, 6.0), (1.1, 6.0), (1.1, 7.8), (0.4, 8.8), (0.0, 8.8)], hexc('#e9e5dc'), n=6, smooth=False)
 
 # ── Union Square: the Dewey Monument ─────────────────────────────────────────
 DEWEY = (2684.0, 3115.0)
