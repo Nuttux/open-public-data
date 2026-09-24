@@ -283,6 +283,8 @@ for m in d['meshes']:
         else:
             for t in range(len(p) // 9):
                 if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
+SP, _ = fix_street_shards(SP)                  # street triangles torn by the drape along the seawall (hq_scene)
+SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
 _PAVE2 = None
@@ -298,6 +300,7 @@ if ERA is not None and EA.pavement(ERA, 0, 0) in ('basalt', 'dirt'):
     _sm.polygons.foreach_set('material_index', _mi); _sm.update()
     log('streets paved with basalt block', sum(_mi), 'of', len(_mi), 'faces; earth elsewhere')
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
+MP = keep_on_streets(MP, sbv)                  # paint of a dropped footpath-street goes with it (hq_scene)
 for i in range(0, len(MP), 3):
     h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
     if h_[0] is not None: MP[i+2] = h_[0].z + 0.012
@@ -305,6 +308,8 @@ if len(MP): mesh_from('markings', MP, M['paint'])
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
+_pp = park_paths(BOX, ground0)                 # every footpath, stairway and trail, narrow and light (hq_scene)
+if _pp: mesh_from('parkpaths', _pp[0], M['parkpath'], cols=_pp[1])
 pass   # the parks: painted by hill_ground (hq_scene's materials block)
 
 bm = bmesh.new(); bm.from_mesh(streets.data); bm.edges.ensure_lookup_table()
@@ -440,6 +445,11 @@ def instancer(name, pts, protos):
     # stays with the place from one year of the film to the next
     at = me.attributes.new('id', 'INT', 'POINT')
     at.data.foreach_set('value', [int(EA.hash01(p[0], p[1], 31) * 2147483000) for p in pts])
+    # 'crand': the instance's own random, BY PLACE. A shader's Object Info >
+    # Random follows the instance's index, which shifts with the region: a
+    # parked car kept its place across a frame seam but changed colour (life
+    # agent, 24/09). place_random() points the protos' materials at this.
+    at = me.attributes.new('crand', 'FLOAT', 'POINT'); at.data.foreach_set('value', [hp(p[0], p[1], 7) for p in pts])
     ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob)
     ng = bpy.data.node_groups.new(name, 'GeometryNodeTree')
     ng.interface.new_socket('Geometry', in_out='INPUT', socket_type='NodeSocketGeometry')
@@ -524,6 +534,14 @@ def tree_scale(kind, crown):
     return min(crown / max(0.5, widths[kind]), TALL[kind] * crown / max(0.5, heights[kind]),
                HMAX[kind] / max(0.5, heights[kind]))
 pts = []; seen = set(); r = random.Random(3)
+# EVERY DRAW BY PLACE, NEVER BY ORDER. A generator stepped through the region's
+# own list gives the same tree or kerb a different draw in two adjacent frames'
+# builds (their regions differ), so cars and trees were cut or doubled along
+# frame seams (life agent, 24/09). hp(x, y, salt) in [0, 1) depends on the place.
+def hp(x, y, salt):
+    h = (int(round(x * 10)) * 73856093) ^ (int(round(y * 10)) * 19349663) ^ (salt * 83492791)
+    h = (h ^ (h >> 13)) * 0x5bd1e995 & 0xffffffff
+    return ((h ^ (h >> 15)) & 0xffffff) / float(0x1000000)
 _TKD = None
 if ERA is not None:
     _tl = city_data.trees(*(CBOX[0] - 50, CBOX[1] - 50, CBOX[2] + 50, CBOX[3] + 50))
@@ -636,6 +654,7 @@ for a, b, outv in SE:
         if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
         if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
         if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue      # a car parks near a door
+        if carfree_at(p.x, p.y, BOX): continue     # JFK Promenade, Twin Peaks' closed loop, busways
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
 # the parking lots of the year, their stalls filled by their own draws
 for L_ in LOTS:
@@ -643,6 +662,24 @@ for L_ in LOTS:
         gz_ = ground(x_, y_)
         if gz_ is not None and gz_ >= 0.8 and in_box(x_, y_) and not EA.water_then(x_, y_, ERA): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
 instancer('cars', cpts, car_colls)
+def place_random(colls):
+    """in every material of these protos, Object Info > Random -> the
+    instance's 'crand' attribute (by place, the same in every frame)"""
+    seen_ = set()
+    for c_ in colls:
+        for o_ in c_.all_objects:
+            for sl_ in getattr(o_, 'material_slots', []):
+                m_ = sl_.material
+                if m_ is None or m_.name in seen_ or not m_.node_tree: continue
+                seen_.add(m_.name); nt_ = m_.node_tree
+                for oi_ in [n_ for n_ in nt_.nodes if n_.bl_idname == 'ShaderNodeObjectInfo']:
+                    links_ = [l_ for l_ in nt_.links if l_.from_node == oi_ and l_.from_socket.name == 'Random']
+                    if not links_: continue
+                    at_ = nt_.nodes.new('ShaderNodeAttribute'); at_.attribute_type = 'INSTANCER'; at_.attribute_name = 'crand'
+                    for l_ in links_:
+                        to_ = l_.to_socket; nt_.links.remove(l_); nt_.links.new(at_.outputs['Fac'], to_)
+    log('place_random: materials re-pointed', len(seen_))
+place_random(car_colls)
 
 # ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
 if ERA is not None:
@@ -692,6 +729,9 @@ if E('TRANSIT', '1') == '1':
 if E('LIFE', '1') == '1':
     try: import life_hq; life_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
     except Exception as ex: log('life_hq: not built:', ex)
+# ── FREEWAYS (freeways_hq.py, the freeways agent): the viaducts on LiDAR-measured decks, bents, the ground under them; FREEWAYS=0 skips
+if E('FREEWAYS', '1') == '1':
+    import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA, keep=EA.freeway_keep(ERA))    # a past year: the ways already open (era.freeway_keep)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

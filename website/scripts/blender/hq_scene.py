@@ -257,6 +257,9 @@ def road_mat():
     cover = b.math('LESS_THAN', mh, 0.34 / 25.0)
     rim = b.math('MULTIPLY', cover, b.math('GREATER_THAN', mh, 0.28 / 25.0))
     c = b.mix(cover, c, (0.028, 0.027, 0.025)); c = b.mix(rim, c, (0.07, 0.068, 0.064))
+    # the whole street's albedo in one knob (node 'road_k', env ROAD_K): its
+    # value times a warm tint, so a brighter street never turns blue-grey
+    k_ = float(E('ROAD_K', 1.0)); c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY'); c.node.name = 'road_k'
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
     b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))
@@ -317,13 +320,13 @@ def curtain_wall_mat():
     hair out of plane, so the reflections break panel by panel as they do
     on a real tower"""
     b = NB('curtain_wall'); at = b.n('ShaderNodeAttribute', attribute_name='bcol')
-    # a tinted pane is dark (the office behind it) and takes its colour in the
-    # reflection; only a mirror coating (high alpha) shows its own colour. The
-    # tint as a bright body colour turned every tower a saturated blue
-    body_k = b.math('ADD', 0.45, b.math('MULTIPLY', at.outputs['Alpha'], 0.55))
-    b.put(b.pr.inputs['Base Color'], b.mix(1.0, at.outputs['Color'], b.math('MULTIPLY', body_k, 1.0), 'MULTIPLY'))
+    # (the tint as is: darkening the body made the towers heavy and barely
+    # changed a thing at 0.85 — from this camera a vertical pane mirrors the
+    # street below, never the sky, so its lightness is the tint's)
+    b.put(b.pr.inputs['Base Color'], at.outputs['Color'])
     b.put(b.pr.inputs['Metallic'], at.outputs['Alpha']); b.pr.inputs['Roughness'].default_value = 0.035
-    b.pr.inputs['Specular IOR Level'].default_value = 0.8; b.pr.inputs['Coat Weight'].default_value = 0.3
+    # a little more Fresnel sheen: the sunlit city below mirrored in the glass
+    b.pr.inputs['Specular IOR Level'].default_value = 1.15; b.pr.inputs['Coat Weight'].default_value = 0.45
     snap = b.n('ShaderNodeVectorMath', operation='SNAP'); b.put(snap.inputs[0], b.pos); snap.inputs[1].default_value = (1.5, 1.5, 3.9)
     wn = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wn.inputs['Vector'], snap.outputs[0])
     off = b.n('ShaderNodeVectorMath', operation='SUBTRACT'); b.put(off.inputs[0], wn.outputs['Color']); off.inputs[1].default_value = (0.5, 0.5, 0.5)
@@ -591,18 +594,48 @@ def ground_maps(d, box=None, pad=300.0):
         T = f_(m['pos']).reshape(-1, 3, 3)[:, :, :2].astype(np.float64)
         T = T[(T[:, :, 0].max(1) > x0) & (T[:, :, 0].min(1) < x1) & (T[:, :, 1].max(1) > y0) & (T[:, :, 1].min(1) < y1)]
         _fill_tris(T, x0, y0, res, nx, ny, park)
+    # the rail lines (the engine's 'rail' layer), grown 5 m: no container on a track
+    railm = np.zeros((ny, nx), np.float32)
+    for m in d['meshes']:
+        if m['layer'] != 'rail' or m.get('instanced'): continue
+        T = f_(m['pos']).reshape(-1, 3, 3)[:, :, :2].astype(np.float64)
+        T = T[(T[:, :, 0].max(1) > x0) & (T[:, :, 0].min(1) < x1) & (T[:, :, 1].max(1) > y0) & (T[:, :, 1].min(1) < y1)]
+        if len(T): _fill_tris(T, x0, y0, res, nx, ny, railm)
+    # and every track OpenStreetMap has (yard ladders, Muni's depots: the engine
+    # draws the main lines only), from the transit agent's fetch
+    try:
+        rp_ = os.environ.get('OSM_RAIL', '/Users/daniel/code/qipu-render-work/transit/rail_osm.json')
+        if os.path.exists(rp_):
+            KXo = 111320 * 0.790582709628753
+            for e_ in json.load(open(rp_))['elements']:
+                t_ = e_.get('tags', {}); g_ = e_.get('geometry') or []
+                if e_.get('type') != 'way' or t_.get('railway') not in ('rail', 'light_rail', 'tram', 'narrow_gauge', 'siding') or t_.get('tunnel') or len(g_) < 2: continue
+                Q = np.array([((p_['lon'] + 122.438) * KXo, (p_['lat'] - 37.76) * 111320) for p_ in g_], np.float64)
+                if Q[:, 0].max() < x0 or Q[:, 0].min() > x1 or Q[:, 1].max() < y0 or Q[:, 1].min() > y1: continue
+                for a_, b_ in zip(Q[:-1], Q[1:]):
+                    n_ = max(2, int(np.hypot(*(b_ - a_)) / res) + 1); tt = np.linspace(0, 1, n_)[:, None]
+                    S_ = a_ + (b_ - a_) * tt; ii = ((S_[:, 0] - x0) / res).astype(np.int64); jj = ((S_[:, 1] - y0) / res).astype(np.int64)
+                    ok = (ii >= 0) & (ii < nx) & (jj >= 0) & (jj < ny); railm[jj[ok], ii[ok]] = 1.0
+    except Exception as ex:
+        print('ground_maps: no OSM rails:', ex)
+    railm = (_box_mean(railm, int(round(5.0 / res))) > 1e-6).astype(np.uint8)
     # yards: every building's outline sampled at the map's pixel, grown 7 m;
     # a house's yard is a garden, a warehouse's, a shop's or an office's is
     # paved (SoMa's lots read as lawns, 2026-09-24)
     nearH = np.zeros((ny, nx), np.float32); nearP = np.zeros((ny, nx), np.float32)
     try:
         EH, EP = ([], []), ([], [])
+        IND = []                      # (x, y, length, industrial?) of every wall, for the works map below
         for b_ in city_data.buildings(x0, y0, x1, y1):
             r_ = b_['ring']
             if len(r_) < 2: continue
             paved_ = b_['ty'] in ('RETAIL', 'OFFICE', 'INDUSTRIAL', 'GARAGE') or b_['use'] in ('retail', 'office', 'industrial')
+            works_ = b_['ty'] in ('INDUSTRIAL', 'GARAGE') or b_['use'] == 'industrial'
             E_ = EP if paved_ else EH
             E_[0].extend(r_); E_[1].extend(r_[1:] + r_[:1])
+            for (ax_, ay_), (bx_, by_) in zip(r_, r_[1:] + r_[:1]):
+                IND.append(((ax_ + bx_) / 2, (ay_ + by_) / 2, math.hypot(bx_ - ax_, by_ - ay_), 1.0 if works_ else 0.0,
+                            math.atan2(by_ - ay_, bx_ - ax_)))
         for (E0, E1), tgt in ((EH, nearH), (EP, nearP)):
             if not E0: continue
             E0 = np.asarray(E0, np.float64); E1 = np.asarray(E1, np.float64)
@@ -639,6 +672,27 @@ def ground_maps(d, box=None, pad=300.0):
         ii = ((P_[:, 0] - x0) / st).astype(np.int64); jj = ((P_[:, 1] - y0) / st).astype(np.int64)
         ok = (ii >= 0) & (ii < mx_) & (jj >= 0) & (jj < my_)
         np.add.at(egs, (jj[ok], ii[ok]), np.clip((K_[ok, 1] - K_[ok, 0]) * 10.0, 0, 1)); np.add.at(egn, (jj[ok], ii[ok]), 1.0)
+    # WORKS: open ground among warehouses and yards is not a lawn but a paved
+    # or gravel yard (Dogpatch, Islais Creek, Bayview, Hunters Point read as
+    # green fields, 2026-09-24): the share of industrial walls in all walls
+    # within ~60 m; and the grid's own angle there (the walls' 4θ averaged),
+    # so containers line up with the street grid
+    works = np.zeros((my_, mx_), np.float32); ang = np.zeros((my_, mx_), np.float32)
+    try:
+        if IND:
+            I_ = np.asarray(IND, np.float64)
+            ii = ((I_[:, 0] - x0) / st).astype(np.int64); jj = ((I_[:, 1] - y0) / st).astype(np.int64)
+            ok = (ii >= 0) & (ii < mx_) & (jj >= 0) & (jj < my_)
+            wa = np.zeros((my_, mx_), np.float64); wi = np.zeros((my_, mx_), np.float64); c4 = np.zeros((my_, mx_), np.float64); s4 = np.zeros((my_, mx_), np.float64)
+            np.add.at(wa, (jj[ok], ii[ok]), I_[ok, 2]); np.add.at(wi, (jj[ok], ii[ok]), I_[ok, 2] * I_[ok, 3])
+            np.add.at(c4, (jj[ok], ii[ok]), I_[ok, 2] * np.cos(4 * I_[ok, 4])); np.add.at(s4, (jj[ok], ii[ok]), I_[ok, 2] * np.sin(4 * I_[ok, 4]))
+            rw = int(round(60.0 / st))
+            wa_ = _box_mean(wa.astype(np.float32), rw); wi_ = _box_mean(wi.astype(np.float32), rw)
+            works = (np.clip((wi_ / np.maximum(wa_, 1e-6) - 0.45) / 0.3, 0, 1) * (wa_ > 1e-4)).astype(np.float32)
+            ang = (np.arctan2(_box_mean(s4.astype(np.float32), rw), _box_mean(c4.astype(np.float32), rw)) / 4.0).astype(np.float32)
+            del I_, wa, wi, c4, s4, wa_, wi_
+    except Exception as ex:
+        print('ground_maps: no works map:', ex)
     r_ = int(round(12.0 / st))
     eg = (_box_mean(_box_mean(egs.astype(np.float32), r_), r_) / np.maximum(_box_mean(_box_mean(egn.astype(np.float32), r_), r_), 1e-3)).astype(np.float32)
     # C: the coyote brush's patches at ~1.2 m, a pure function of the world
@@ -656,7 +710,7 @@ def ground_maps(d, box=None, pad=300.0):
     del nb_, tb_
     brush = _ss(BRUSH_T - 0.006, BRUSH_T + 0.006, _fbm(XB, YB, 38.0, 5, 11, gain=0.62) + bias).astype(np.float32)
     del XB, YB
-    _GM.clear(); _GM.update(x0=x0, y0=y0, res=res, park=park, yard=yard, st=st, hilly=hilly, slope=slope, rb=rb, brush=brush, bias=bias.astype(np.float32))
+    _GM.clear(); _GM.update(x0=x0, y0=y0, res=res, park=park, yard=yard, st=st, hilly=hilly, slope=slope, rb=rb, brush=brush, bias=bias.astype(np.float32), works=works, ang=ang, rail=railm)
     def img(name, R, G, ext, B_=None):
         # 8-bit (a float image of the park mask alone was 360 MB, and Cycles
         # keeps its own copy: the Mac fell over at 00:10, 2026-09-24)
@@ -669,8 +723,9 @@ def ground_maps(d, box=None, pad=300.0):
     A = img('ground_A', park, yard, 'CLIP', paved)
     B = img('ground_B', np.clip(0.5 + tpi / 10.0, 0, 1), np.clip(hilly / 20.0, 0, 1), 'EXTEND', np.clip(eg, 0, 1))
     C = img('ground_C', brush, np.clip(bias + 0.5, 0, 1), 'CLIP')
+    D = img('ground_D', works, np.zeros_like(works), 'EXTEND')
     log(f'ground maps: {nx}x{ny} at {res:.2f} m (park {park.mean() * 100:.1f}%, yard {yard.mean() * 100:.0f}%), form {mx_}x{my_} at {st:g} m')
-    return A, (x0, y0, nx * res, ny * res), B, (x0, y0, mx_ * st, my_ * st), C, (x0, y0, cx_ * rb, cy_ * rb)
+    return A, (x0, y0, nx * res, ny * res), B, (x0, y0, mx_ * st, my_ * st), C, (x0, y0, cx_ * rb, cy_ * rb), D
 
 def hill_ground(d, box=None, name='ground', geom=None):
     """the terrain's material (see the maps above): the 'lawn' material copied
@@ -679,7 +734,7 @@ def hill_ground(d, box=None, name='ground', geom=None):
     hill_brush, and the ground only darkens under it; off, the shader alone
     draws the clumps, their shadows and the lone bushes"""
     if geom is None: geom = os.environ.get('BRUSH', '1') == '1'
-    A, fa, B, fb, C, fc = ground_maps(d, box)
+    A, fa, B, fb, C, fc, D = ground_maps(d, box)
     m = bpy.data.materials['lawn'].copy(); m.name = name; nt = m.node_tree
     pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
     lawn = pr.inputs['Base Color'].links[0].from_socket
@@ -694,6 +749,7 @@ def hill_ground(d, box=None, name='ground', geom=None):
         s_ = b.n('ShaderNodeSeparateColor'); b.put(s_.inputs[0], t_.outputs['Color']); return s_.outputs
     sa = sample(A, fa, 'CLIP'); sb_ = sample(B, fb, 'EXTEND')
     park, yard, paved, tpi, hilly, eg = sa[0], sa[1], sa[2], sb_[0], sb_[1], sb_[2]
+    works = sample(D, fb, 'EXTEND')[0]
     nn = b.n('ShaderNodeSeparateXYZ'); b.put(nn.inputs[0], geo.outputs['Normal'])
     nz, north = nn.outputs[2], nn.outputs[1]                     # +y is north
     slope = b.math('SUBTRACT', 1.0, nz)                          # 1 - cos: 0.03 at 14°, 0.13 at 30°, 0.23 at 40°
@@ -816,6 +872,17 @@ def hill_ground(d, box=None, name='ground', geom=None):
     lw = b.mix(dry, lw, b.mix(1.0, lw, (1.45, 1.08, 0.55), 'MULTIPLY'))
     bare = b.math('MULTIPLY', b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(4.1, -8.3, 0))), 0.0, 1.0, 0.58, 0.70), b.ramp(dry, 0.0, 0.7, 0.35, 0.6))
     lw = b.mix(bare, lw, (0.105, 0.085, 0.05))
+    # a works yard (mostly one worn asphalt, warm grey, its tone drifting gently over
+    # 50 m; dusty gravel in a few soft patches; the fine wear of tyres and
+    # oil; weeds in the cracks — the Voronoi patchwork read as crazy paving,
+    # the 24 m noise as camouflage)
+    wy = b.mix(b.ramp(b.noise(1 / 50.0, 2.0, vec=b.vmap(1.0, loc=(-41.0, 13.0, 0))), 0.0, 1.0, 0.3, 0.7), (0.105, 0.098, 0.088), (0.15, 0.14, 0.125))
+    wy = b.mix(b.math('MULTIPLY', b.ramp(b.noise(1 / 20.0, 3.0, vec=b.vmap(1.0, loc=(8.0, 51.0, 0))), 0.0, 1.0, 0.60, 0.72), 0.75), wy, (0.21, 0.19, 0.16))
+    wy = b.mix(b.ramp(b.noise(1 / 2.5, 3.0), 0.0, 0.35, 0.58, 0.72), wy, b.mix(1.0, wy, (0.70, 0.68, 0.66), 'MULTIPLY'))
+    wy = b.mix(b.ramp(b.noise(1 / 0.7, 2.0), 0.0, 0.25, 0.5, 0.8), wy, b.mix(1.0, wy, (1.12, 1.1, 1.06), 'MULTIPLY'))
+    wy = b.mix(b.math('MULTIPLY', b.ramp(b.noise(1 / 2.2, 3.0, vec=b.vmap(1.0, loc=(3.0, -7.0, 0))), 0.0, 1.0, 0.70, 0.75), 0.7), wy, b.mix(0.5, g, (0.10, 0.10, 0.04)))
+    wk = b.ramp(works, 0.0, 1.0, 0.25, 0.7)
+    lot = b.mix(wk, lot, wy); yd = b.mix(wk, yd, wy)
     c = b.mix(yardf, hill, yd)
     c = b.mix(lotf, c, lot)
     c = b.mix(lawnf, c, lw)
@@ -873,6 +940,85 @@ def _brush_protos():
             out.append((one, (mx.x - mn.x, mx.y - mn.y, mx.z - mn.z)))
     return out
 
+CONTAINER_COLS = [(0.30, 0.07, 0.04), (0.30, 0.07, 0.04), (0.05, 0.12, 0.25), (0.06, 0.15, 0.08), (0.36, 0.37, 0.37),
+                  (0.62, 0.62, 0.60), (0.45, 0.15, 0.03), (0.17, 0.05, 0.05), (0.05, 0.18, 0.19), (0.24, 0.20, 0.14)]
+def yard_props(ground_fn, box, bvs, seed=9):
+    """what stands in a works yard: rows of shipping containers (one or two
+    high) and parked semi-trailers, lined up with the local street grid, on
+    open flat ground of the works map, clear of buildings, streets and parks.
+    A 16 m lattice fixed in the world; a sparse few."""
+    import numpy as np
+    g = _GM
+    if not g or 'works' not in g: return 0
+    x0, y0 = g['x0'], g['y0']
+    bx0, by0, bx1, by1 = box if box is not None else (x0, y0, x0 + g['park'].shape[1] * g['res'], y0 + g['park'].shape[0] * g['res'])
+    cs = 16.0
+    I, J = np.meshgrid(np.arange(math.floor(bx0 / cs), math.ceil(bx1 / cs)), np.arange(math.floor(by0 / cs), math.ceil(by1 / cs)))
+    I = I.ravel(); J = J.ravel(); h = [_vn_hash(I, J, seed * 100 + k) for k in range(6)]
+    X = (I + 0.3 + 0.4 * h[0]) * cs; Y = (J + 0.3 + 0.4 * h[1]) * cs
+    def at(a, res_, xx, yy):
+        i = np.clip(((xx - x0) / res_).astype(np.int64), 0, a.shape[1] - 1); j = np.clip(((yy - y0) / res_).astype(np.int64), 0, a.shape[0] - 1)
+        return a[j, i]
+    cand = (at(g['works'], g['st'], X, Y) > 0.7) & (at(g['hilly'], g['st'], X, Y) < 5.0) & (h[2] < 0.22)
+    V, F, C = [], [], []
+    def box3(o, u, v, L, W, z0, H, col):
+        k = len(V)
+        for (a, b_) in ((0, 0), (L, 0), (L, W), (0, W)):
+            p = o + u * a + v * b_; V.append((p.x, p.y, z0))
+        for (a, b_) in ((0, 0), (L, 0), (L, W), (0, W)):
+            p = o + u * a + v * b_; V.append((p.x, p.y, z0 + H))
+        for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)):
+            F.append(tuple(k + i for i in f)); C.append(col)
+    groups = 0
+    for q in np.nonzero(cand)[0].tolist():
+        x, y = float(X[q]), float(Y[q])
+        a_ = float(at(g['ang'], g['st'], np.array([x]), np.array([y]))[0]) + (math.pi / 2 if h[3][q] < 0.5 else 0.0)
+        u = Vector((math.cos(a_), math.sin(a_), 0)); v = Vector((-u.y, u.x, 0))
+        trailers = h[4][q] < 0.35
+        n = 1 + int(h[5][q] * (4 if trailers else 5))
+        L, W, H, gap = (14.6, 2.6, 2.9, 1.3) if trailers else ((12.2 if h[4][q] < 0.8 else 6.1), 2.44, 2.6, 0.25)
+        o = Vector((x, y, 0)) - u * (L / 2) - v * (n * (W + gap) / 2)
+        # the whole group's footprint must be open works ground
+        cx_ = [o + u * a + v * b_ for a in (0, L / 2, L) for b_ in (0, n * (W + gap) / 2, n * (W + gap))]
+        xs_ = np.array([p.x for p in cx_]); ys_ = np.array([p.y for p in cx_])
+        if (at(g['yard'], g['res'], xs_, ys_) > 0.2).any() or (at(g['park'], g['res'], xs_, ys_) > 0.3).any() or (at(g['works'], g['st'], xs_, ys_) < 0.6).any(): continue
+        if (at(g['rail'], g['res'], xs_, ys_) > 0).any(): continue
+        if any(bv.find_nearest(Vector((p.x, p.y, ground_fn(p.x, p.y) or 0.0)), dd + 1.5)[0] is not None for p in cx_ for bv, dd in bvs): continue
+        zs = [ground_fn(p.x, p.y) for p in cx_]
+        # never on the water: the Port's works polygons reach over the bay,
+        # where the ground is the flat sea (a pier apron stands at ~2.3 m)
+        if any(z_ is None or z_ < 0.8 for z_ in zs) or max(zs) - min(zs) > 1.5: continue
+        z0 = min(zs) - 0.05
+        rr = random.Random(int(I[q]) * 7919 + int(J[q]))
+        for k in range(n):
+            ok_ = o + v * (k * (W + gap)) + u * rr.uniform(-0.4, 0.4)
+            if trailers:
+                col = rr.choice(((0.62, 0.62, 0.60), (0.55, 0.55, 0.54), (0.66, 0.65, 0.61), (0.40, 0.40, 0.40), (0.28, 0.08, 0.05)))
+                box3(ok_, u, v, L, W, z0 + 1.1, H, col)                       # the box, on its wheels
+                box3(ok_ + u * 1.0 + v * 0.3, u, v, 2.4, W - 0.6, z0, 1.1, (0.03, 0.03, 0.03))   # the bogie in its shadow
+            else:
+                for lv in range(1 if rr.random() < 0.55 else 2):
+                    box3(ok_, u, v, L, W, z0 + lv * H, H - 0.02, rr.choice(CONTAINER_COLS))
+        groups += 1
+    if not F: return 0
+    me = bpy.data.meshes.new('yardprops'); me.from_pydata(V, [], F)
+    at_ = me.color_attributes.new('bcol', 'FLOAT_COLOR', 'FACE')
+    at_.data.foreach_set('color', [c for col in C for c in (*col, 1.0)])
+    me.update()
+    mat = bpy.data.materials.get('yardbox')
+    if mat is None:
+        b = NB('yardbox'); atn = b.n('ShaderNodeAttribute', attribute_name='bcol')
+        # painted steel, weathered: rust and grime blotches, the corrugation a fine bump
+        cc = b.mix(b.ramp(b.noise(1 / 1.5, 4.0), 0.0, 0.45, 0.55, 0.8), atn.outputs['Color'], (0.16, 0.08, 0.05))
+        b.put(b.pr.inputs['Base Color'], cc); b.pr.inputs['Roughness'].default_value = 0.6; b.pr.inputs['Metallic'].default_value = 0.25
+        sp_ = b.n('ShaderNodeSeparateXYZ'); b.put(sp_.inputs[0], b.pos)
+        b.put(b.pr.inputs['Normal'], b.bump(b.math('SINE', b.math('MULTIPLY', b.math('ADD', sp_.outputs[0], sp_.outputs[1]), 20.0)), 0.15, 0.02))
+        mat = b.m
+    me.materials.append(mat)
+    ob = bpy.data.objects.new('yardprops', me); bpy.context.scene.collection.objects.link(ob)
+    log(f'yard props: {groups} groups of containers and trailers, {len(F) // 6} boxes')
+    return groups
+
 def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4), ('paths', 1.4), ('parkpaths', 1.2)), seed=5):
     """THE BUSHES of the brush patches that hill_ground's field draws, and lone
     bushes out in the grass: points on a 2 m lattice fixed in the world (a
@@ -913,6 +1059,8 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
         p_ = Vector((x, y, z))
         if any(bv.find_nearest(p_, dd + 0.5 * float(W[q]))[0] is not None for bv, dd in bvs): continue
         pts.append((x, y, z, float(W[q]), float(W[q]) * (0.8 + 0.4 * float(h[5][q])), float(H[q]), float(h[5][q]) * 6.283, int(h[4][q] * 7.999)))
+    try: yard_props(ground_fn, box, bvs)
+    except Exception as ex: log('yard props failed:', ex)
     _GM.clear()                                             # the maps' arrays: done with
     if not pts: return 0
     protos = _brush_protos()
@@ -954,7 +1102,7 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
 # on no road; park_paths lays every footpath, stairway and trail as a narrow
 # light ribbon on the ground; carfree_at keeps parked cars off the roads
 # closed to them. No ways file = all three do nothing.
-WAYS_JSON = os.environ.get('OSM_WAYS', '/Users/daniel/code/qipu-render-work/critic/osm/ways.json')
+WAYS_JSON = os.environ.get('OSM_WAYS', '/Users/daniel/code/qipu-render-work/critic/osm/ways_v2.json')   # v2: with the highway kind
 _WAYS = {}
 def _ways_kd(kind, box, step=2.0, pad=80.0):
     """a KDTree over the ways of one kind, sampled every `step` m, in box"""
@@ -997,6 +1145,23 @@ def drop_footway_streets(P, box=None, near=8.0, far=12.0):
     log(f'footpaths drawn as streets by the engine: {dropped} triangles dropped')
     return out, dropped
 
+def fix_street_shards(P, grade=0.33):
+    """street triangles the ground re-drape tore: a street polygon along the
+    seawall has corners over the bay, draped down to the water, and its long
+    triangles stood up as dark jagged shards (Terry Francois Blvd, the Pier 48
+    apron, 2026-09-24). A triangle steeper than any street in the city (Filbert
+    is 31.5%) is laid flat at its highest corner. Returns (P, n fixed)."""
+    out = array.array('f', P); n = 0
+    for t in range(len(P) // 9):
+        a = t * 9
+        z0, z1, z2 = P[a + 2], P[a + 5], P[a + 8]; zlo, zhi = min(z0, z1, z2), max(z0, z1, z2)
+        if zhi - zlo < 0.4: continue
+        h = max(math.hypot(P[a + 3] - P[a], P[a + 4] - P[a + 1]), math.hypot(P[a + 6] - P[a + 3], P[a + 7] - P[a + 4]), math.hypot(P[a] - P[a + 6], P[a + 1] - P[a + 7]))
+        if zhi - zlo > grade * h + 0.3:
+            out[a + 2] = out[a + 5] = out[a + 8] = zhi; n += 1
+    if n: log(f'street shards laid flat: {n} triangles')
+    return out, n
+
 def keep_on_streets(MP, bvh):
     """street paint whose triangle no longer lies on a street (its street was
     a footpath, dropped above) is dropped with it"""
@@ -1016,6 +1181,30 @@ def carfree_at(x, y, box=None):
     kc, nc = _ways_kd('car', box)
     return not nc or dr < kc.find((x, y, 0.0))[2]
 
+def _dp(L, tol):
+    """Douglas-Peucker: the polyline with every vertex closer than tol to the
+    chord dropped (OSM's garden paths come in 1 m stair-steps)"""
+    if len(L) < 3: return L
+    (ax, ay), (bx, by) = L[0], L[-1]; dx, dy = bx - ax, by - ay; n = math.hypot(dx, dy) or 1e-9
+    k, dm = 0, -1.0
+    for i in range(1, len(L) - 1):
+        d_ = abs((L[i][0] - ax) * dy - (L[i][1] - ay) * dx) / n
+        if d_ > dm: k, dm = i, d_
+    if dm <= tol: return [L[0], L[-1]]
+    return _dp(L[:k + 1], tol)[:-1] + _dp(L[k:], tol)
+
+def _chaikin(L, it=2, cmax=3.0):
+    """corner cutting, a cut of at most cmax m: no right-angle corner survives"""
+    for _ in range(it):
+        if len(L) < 3: return L
+        out = [L[0]]
+        for i in range(len(L) - 1):
+            (x0, y0), (x1, y1) = L[i], L[i + 1]; d = math.hypot(x1 - x0, y1 - y0) or 1e-9; f = min(0.25, cmax / d)
+            if i > 0: out.append((x0 + (x1 - x0) * f, y0 + (y1 - y0) * f))
+            if i < len(L) - 2: out.append((x1 - (x1 - x0) * f, y1 - (y1 - y0) * f))
+        out.append(L[-1]); L = out
+    return L
+
 PATH_COL = {'concrete': (0.42, 0.41, 0.38), 'dirt': (0.27, 0.215, 0.145), 'asphalt': (0.24, 0.24, 0.24), 'wood': (0.36, 0.29, 0.21)}
 def park_paths(box, ground_fn, lift=0.06):
     """every footpath, stairway and trail in box as a ribbon of its width on
@@ -1026,9 +1215,15 @@ def park_paths(box, ground_fn, lift=0.06):
     st_ = bpy.data.objects.get('streets')
     bv_ = BVHTree.FromObject(st_, bpy.context.evaluated_depsgraph_get()) if st_ is not None and st_.type == 'MESH' else None
     P = array.array('f'); C = array.array('f'); n_ = 0
-    for pts, w, sf in W_['foot']:
+    for rec in W_['foot']:
+        pts, w, sf = rec[0], rec[1], rec[2]; hw = rec[3] if len(rec) > 3 else ''
+        if hw == 'steps': continue                  # a flight of stairs: short, and drawn as a zigzag
         xs, ys = pts[0::2], pts[1::2]
         if box and (max(xs) < box[0] or min(xs) > box[2] or max(ys) < box[1] or min(ys) > box[3]): continue
+        # simplified, the stair-steps gone, the corners rounded; a stub under 8 m dropped
+        Lw = _chaikin(_dp(list(zip(xs, ys)), 1.2), it=3, cmax=7.0)     # a garden's right-angle corner becomes a curve
+        if sum(math.hypot(Lw[i + 1][0] - Lw[i][0], Lw[i + 1][1] - Lw[i][1]) for i in range(len(Lw) - 1)) < 8.0: continue
+        xs, ys = [p[0] for p in Lw], [p[1] for p in Lw]
         if sf == 'unknown':
             # no surface in the record: a trail of bare earth out on the hills,
             # concrete in a park or among the houses
@@ -1210,6 +1405,7 @@ for m in d['meshes']:
 def lift(P, dz):
     for i in range(2, len(P), 3): P[i] += dz
     return P
+SP, _ = fix_street_shards(SP)
 SP, _ = drop_footway_streets(SP, (bx0, by0, bx1, by1))
 streets = mesh_from('streets', lift(SP, 0.02), M['asphalt'], weld=0.05)
 if len(MP):

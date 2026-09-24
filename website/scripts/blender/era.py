@@ -1911,3 +1911,42 @@ def build_piers(bpy, era, mats, box=None, log=print):
         me = bpy.data.meshes.new('lost_piers_' + key); me.from_pydata(V, [], F); me.update()
         ob = bpy.data.objects.new('lost_piers_' + key, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mats[key])
     log('lost piers standing:', len(ps))
+
+
+# ── today's viaducts in a past year (freeways_hq.build(keep=...)) ───────────
+# The freeways agent builds today's viaducts from OSM ways with LiDAR decks.
+# For a past year each way is kept once its road had opened (freeway_year,
+# SOURCED above; named by the way's ref, else by the nearest DataSF freeway
+# centreline). Also SOURCED: the Transbay bus ramps belong to the Salesforce
+# Transit Center (opened August 2018; the 1939 terminal's loop is
+# era.STRUCTURES until 2011); the Presidio Parkway replaced Doyle Drive
+# (1936) in 2012-15 on nearly its line — drawn from 1936 as Doyle Drive's
+# stand-in (CONVENTION). A way with no name and no DataSF freeway within 80 m
+# stands from 1970 (CONVENTION).
+def freeway_keep(era):
+    if era is None: return None
+    import city_data
+    from mathutils.kdtree import KDTree
+    fw = city_data.freeway_points()
+    kd = KDTree(max(1, len(fw)))
+    for i, f in enumerate(fw): kd.insert((f[0], f[1], 0), i)
+    kd.balance()
+
+    def year_of(w):
+        P = w['pts']; x, y = P[len(P) // 2][0], P[len(P) // 2][1]
+        nm = (w.get('name') or ''); ref = (w.get('ref') or '')
+        if 'Transbay' in nm: return 2018.6
+        if 'Presidio Parkway' in nm or 'Doyle' in nm: return 1936
+        if 'Central Freeway' in nm: return 1959
+        if ref.startswith('I 80'): return freeway_year('I-80', x, y)
+        if ref.startswith('I 280'): return freeway_year('I-280', x, y)
+        if ref.startswith('US 101') and 'CA 1' not in ref: return freeway_year('HWY 101', x, y) or 1936
+        _, i, dd = kd.find((x, y, 0))
+        if dd < 80:
+            fy = freeway_year(fw[i][2], x, y)
+            if fy is not None: return fy
+        return 1970
+
+    def keep(w):
+        return era >= year_of(w)
+    return keep
