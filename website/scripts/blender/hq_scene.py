@@ -98,20 +98,12 @@ def glass_mat():
     geo = nt.nodes.new('ShaderNodeNewGeometry'); wn = nt.nodes.new('ShaderNodeTexWhiteNoise'); wn.noise_dimensions = '3D'
     sn = nt.nodes.new('ShaderNodeVectorMath'); sn.operation = 'SNAP'; sn.inputs[1].default_value = (1.3, 1.3, 1.3)
     nt.links.new(geo.outputs['Position'], sn.inputs[0]); nt.links.new(sn.outputs[0], wn.inputs['Vector'])
-    # (24/09) a pane's own draw rides in its face colour (gen_buildings: from
-    # its position over its building's ground); 1.0 — no draw — falls back to
-    # the noise of the snapped position
-    at_ = nt.nodes.new('ShaderNodeAttribute'); at_.attribute_name = 'bcol'
-    sp_ = nt.nodes.new('ShaderNodeSeparateColor'); nt.links.new(at_.outputs['Color'], sp_.inputs[0])
-    has_ = nt.nodes.new('ShaderNodeMath'); has_.operation = 'LESS_THAN'; has_.inputs[1].default_value = 0.999; nt.links.new(sp_.outputs[0], has_.inputs[0])
-    sel_ = nt.nodes.new('ShaderNodeMix'); sel_.data_type = 'FLOAT'
-    nt.links.new(has_.outputs[0], sel_.inputs[0]); nt.links.new(wn.outputs['Value'], sel_.inputs[2]); nt.links.new(sp_.outputs[0], sel_.inputs[3])
-    ramp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(sel_.outputs[0], ramp.inputs[0])
-    ramp.color_ramp.elements[0].color = (0.018, 0.022, 0.028, 1); ramp.color_ramp.elements[1].color = (0.075, 0.072, 0.068, 1)
+    ramp = nt.nodes.new('ShaderNodeValToRGB'); nt.links.new(wn.outputs['Value'], ramp.inputs[0])
+    ramp.color_ramp.elements[0].color = (0.010, 0.012, 0.016, 1); ramp.color_ramp.elements[1].color = (0.06, 0.055, 0.05, 1)
     # (24/09) a pane in five or so catching more of the sky or a lit room: a
     # row of windows is not a stamped row of identical dark holes
     ramp.color_ramp.elements[1].position = 0.78
-    _e = ramp.color_ramp.elements.new(1.0); _e.color = (0.20, 0.195, 0.19, 1)
+    _e = ramp.color_ramp.elements.new(1.0); _e.color = (0.15, 0.145, 0.14, 1)
     nt.links.new(ramp.outputs[0], p.inputs['Base Color'])
     p.inputs['Roughness'].default_value = 0.03; p.inputs['Specular IOR Level'].default_value = 0.9; p.inputs['Coat Weight'].default_value = 0.4
     return m
@@ -308,8 +300,8 @@ def roof_flat_mat():
     pk = b.ramp(cell, 0.66, 1.12)
     # tar repairs: dark irregular blots over about a tenth of a roof, and the
     # recoats' lighter sheets (24/09, the roofs' contrast from the air)
-    tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.59, 0.64)
-    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.45)))
+    tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.58, 0.63)
+    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.6)))
     sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
     seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)
     pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', seam, b.math('MULTIPLY', b.math('GREATER_THAN', kind, 0.5), 0.2))))
