@@ -1930,12 +1930,19 @@ el_, az_ = float(E('SUN_EL', 24)), float(E('SUN_AZ', 215))
 try: sky.sky_type = 'NISHITA'
 except Exception: pass
 sky.sun_disc = False; sky.sun_elevation = math.radians(el_); sky.sun_rotation = math.radians(az_)
-bg = wn.nodes.new('ShaderNodeBackground'); bg.inputs['Strength'].default_value = float(E('SKY_K', 0.32))
+bg = wn.nodes.new('ShaderNodeBackground'); bg.inputs['Strength'].default_value = float(E('SKY_K', 0.24))
 lp = wn.nodes.new('ShaderNodeLightPath'); bg2 = wn.nodes.new('ShaderNodeBackground'); bg2.inputs['Strength'].default_value = float(E('GLOSS_K', 0.9))
-wn.links.new(sky.outputs[0], bg.inputs[0]); wn.links.new(sky.outputs[0], bg2.inputs[0])
+wn.links.new(sky.outputs[0], bg2.inputs[0])
+# light pass 24/09: a harder sun over a weaker, less blue sky fill (sun 5.5 -> 6.5, sky 0.32 -> 0.24,
+# fill saturation 0.7, exposure 0.3 -> 0.2): real volume, walls keep their texture instead of
+# clipping, shadows neutral under grade B (b-r 7.7 -> 1.0 in the Mission) and not crushed.
+if float(E('SKY_SAT', 0.7)) != 1:   # the sky's FILL (not its reflections) desaturated toward neutral
+    hs_ = wn.nodes.new('ShaderNodeHueSaturation'); hs_.inputs['Saturation'].default_value = float(E('SKY_SAT', 0.7))
+    wn.links.new(sky.outputs[0], hs_.inputs['Color']); wn.links.new(hs_.outputs[0], bg.inputs[0])
+else: wn.links.new(sky.outputs[0], bg.inputs[0])
 mix = wn.nodes.new('ShaderNodeMixShader'); wn.links.new(lp.outputs['Is Glossy Ray'], mix.inputs[0])
 wn.links.new(bg.outputs[0], mix.inputs[1]); wn.links.new(bg2.outputs[0], mix.inputs[2]); wn.links.new(mix.outputs[0], wo.inputs[0])
-sun_d = bpy.data.lights.new('sun', 'SUN'); sun_d.energy = float(E('SUN_K', 5.5)); sun_d.angle = math.radians(0.8)
+sun_d = bpy.data.lights.new('sun', 'SUN'); sun_d.energy = float(E('SUN_K', 6.5)); sun_d.angle = math.radians(0.8)
 sun_d.color = tuple(float(v) for v in E('SUN_RGB', '1.0,0.80,0.58').split(','))
 sun = bpy.data.objects.new('sun', sun_d); sc.collection.objects.link(sun)
 a_, e_ = math.radians(az_), math.radians(el_)
@@ -1948,8 +1955,29 @@ prefs.compute_device_type = 'METAL'; prefs.get_devices()
 for dv in prefs.devices: dv.use = True
 sc.cycles.device = 'GPU'; sc.cycles.samples = SPP; sc.cycles.use_denoising = True; sc.cycles.use_adaptive_sampling = True
 sc.cycles.max_bounces = 8; sc.cycles.transparent_max_bounces = 16
+# render quality knobs (the light agent, 24/09): denoiser, adaptive sampling,
+# pixel filter, bounces, clamps — env overrides for A/B tests, defaults below
+cy_ = sc.cycles
+for k_, a_n, f_ in (('DN_PREFILTER', 'denoising_prefilter', str), ('DN_QUALITY', 'denoising_quality', str),
+                    ('DN_PASSES', 'denoising_input_passes', str), ('ADAPT_THR', 'adaptive_threshold', float),
+                    ('ADAPT_MIN', 'adaptive_min_samples', int), ('PIXEL_FILTER', 'filter_width', float),
+                    ('DIFF_B', 'diffuse_bounces', int), ('GLOSS_B', 'glossy_bounces', int),
+                    ('TRANS_B', 'transmission_bounces', int), ('CLAMP_IND', 'sample_clamp_indirect', float),
+                    ('CLAMP_DIR', 'sample_clamp_direct', float), ('BLUR_GLOSSY', 'blur_glossy', float),
+                    ('DN_GPU', 'denoising_use_gpu', lambda v: v == '1')):
+    if E(k_) is not None and hasattr(cy_, a_n): setattr(cy_, a_n, f_(E(k_)))
+# pixel filter 1.5 -> 1.0 px: +32 % fine detail for free (16 -> 128 spp gave +6 % for 3.4x the time);
+# a final pass can render at 150 % and Lanczos-downsample (+17 % more, 2x the time)
+if E('PIXEL_FILTER') is None: cy_.filter_width = 1.0
+log('cycles:', ' '.join(f'{a}={getattr(cy_, a, "?")}' for a in ('denoiser', 'denoising_prefilter', 'denoising_quality',
+    'denoising_input_passes', 'denoising_use_gpu', 'adaptive_threshold', 'adaptive_min_samples', 'filter_width', 'diffuse_bounces',
+    'glossy_bounces', 'transmission_bounces', 'sample_clamp_direct', 'sample_clamp_indirect', 'blur_glossy', 'caustics_reflective',
+    'use_light_tree', 'use_fast_gi')))
 sc.render.resolution_x, sc.render.resolution_y = W, H
-sc.view_settings.view_transform = 'AgX'; sc.view_settings.look = E('AGX_LOOK', 'AgX - Punchy'); sc.view_settings.exposure = float(E('EXPO', 0.3))
+sc.view_settings.view_transform = 'AgX'
+try: sc.view_settings.look = E('AGX_LOOK', 'AgX - Punchy')
+except TypeError as ex_: log('AGX_LOOK not found:', ex_); sc.view_settings.look = 'AgX - Punchy'
+sc.view_settings.exposure = float(E('EXPO', 0.2))
 sc.render.filepath = OUT
 if E('BORDER'):
     bx_ = [float(v) for v in E('BORDER').split(',')]
