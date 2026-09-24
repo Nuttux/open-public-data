@@ -269,7 +269,19 @@ def coast_rings():
 
 
 def _treasure_island(x, y):
-    return y > 6000 and 5000 < x < 7200 and _in_ring(x, y, coast_rings()[1])
+    if not (y > 6000 and 5000 < x < 7200): return False
+    r = coast_rings()[1]
+    if _in_ring(x, y, r): return True
+    # and 45 m round it (its piers and breakwater, raised as decks, stood
+    # on the old bay as pale slivers, 1930); not along Yerba Buena's shore
+    if y < 6060: return False
+    for i in range(len(r)):
+        (x1, y1), (x2, y2) = r[i], r[(i + 1) % len(r)]
+        if min(y1, y2) < 6000: continue
+        dx, dy = x2 - x1, y2 - y1; L2 = dx * dx + dy * dy or 1.0
+        t = max(0.0, min(1.0, ((x - x1) * dx + (y - y1) * dy) / L2))
+        if (x - x1 - t * dx) ** 2 + (y - y1 - t * dy) ** 2 < 45.0 ** 2: return True
+    return False
 
 
 # The 1895 shoreline where it has moved since, read off the USGS 1:62,500 San

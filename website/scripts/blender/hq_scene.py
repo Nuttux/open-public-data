@@ -1733,6 +1733,10 @@ def sea():
         return n_.outputs[0]
     dist = mth('MULTIPLY', sp.outputs[1], 127.5)
     shallow = mth('POWER', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 60.0, clamp=True)), 2.0)
+    if ERA is not None:
+        # the shallows are TODAY's (the mask's distance to today's shore): in
+        # another year they drew today's Treasure Island and fill as a pale rim
+        shallow = mth('MULTIPLY', shallow, 0.0)
     mc = nt.nodes.new('ShaderNodeMix'); mc.data_type = 'RGBA'; L_(shallow, mc.inputs[0])
     mc.inputs[6].default_value = (0.004, 0.018, 0.028, 1); mc.inputs[7].default_value = (0.02, 0.08, 0.08, 1)
     wat = nt.nodes.new('ShaderNodeBsdfPrincipled'); L_(mc.outputs[2], wat.inputs['Base Color'])
@@ -1744,6 +1748,11 @@ def sea():
     L_(mth('ADD', w1.outputs['Fac'], mth('MULTIPLY', w2.outputs['Fac'], 0.35)), bm.inputs['Height']); L_(bm.outputs[0], wat.inputs['Normal'])
     fn = nt.nodes.new('ShaderNodeTexNoise'); fn.inputs['Scale'].default_value = 0.4; fn.inputs['Detail'].default_value = 12; L_(geo.outputs['Position'], fn.inputs['Vector'])
     foam = mth('GREATER_THAN', mth('MULTIPLY', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 5.0, clamp=True)), mth('ADD', fn.outputs['Fac'], 0.3)), 0.5)
+    if ERA is not None:
+        # the foam line is TODAY's shore (the mask's distance): in another year
+        # it drew today's Treasure Island, Marina and bay fill as white
+        # outlines on the water (1936 z5 1:0)
+        foam = mth('MULTIPLY', foam, 0.0)
     fp = nt.nodes.new('ShaderNodeBsdfPrincipled'); fp.inputs['Base Color'].default_value = (0.8, 0.82, 0.8, 1); fp.inputs['Roughness'].default_value = 0.8
     mx = nt.nodes.new('ShaderNodeMixShader'); L_(foam, mx.inputs[0]); L_(wat.outputs[0], mx.inputs[1]); L_(fp.outputs[0], mx.inputs[2])
     tr = nt.nodes.new('ShaderNodeBsdfTransparent')
@@ -1796,7 +1805,25 @@ def hist_water():
     st_ = 12.0; V_, F_ = [], []
     nx_ = int((sb_[2] - sb_[0] + 800) / st_) + 1; ny_ = int((sb_[3] - sb_[1] + 800) / st_) + 1
     X0_, Y0_ = sb_[0] - 400, sb_[1] - 400
-    wet = [[EA.water_then(X0_ + (i + 0.5) * st_, Y0_ + (j + 0.5) * st_, ERA) for j in range(ny_)] for i in range(nx_)]
+    # only over TODAY's land: over today's bay the sea's own sheet is the water,
+    # and a second sheet drew the made-land outline as a pale line on it
+    import numpy as _np5
+    _sp, _sj = os.path.join(SD, 'sea.png'), os.path.join(SD, 'sea.json')
+    _tw = None
+    if os.path.exists(_sp) and os.path.exists(_sj):
+        _g5 = json.load(open(_sj)); _im5 = bpy.data.images.load(_sp); _im5.colorspace_settings.name = 'Non-Color'
+        _a5 = _np5.empty(_im5.size[0] * _im5.size[1] * 4, _np5.float32); _im5.pixels.foreach_get(_a5)
+        _tw = (_a5.reshape(_im5.size[1], _im5.size[0], 4)[..., 0] > 0.5, _g5, _im5.size[0], _im5.size[1])      # R > 0.5 = water (the sea shader's cut)
+    def today_water(x, y):
+        if _tw is None: return False
+        m_, g5, w5, h5 = _tw
+        i5 = int((x - g5['ox']) / g5['w'] * w5); j5 = int((y - g5['oy']) / g5['h'] * h5)
+        return 0 <= i5 < w5 and 0 <= j5 < h5 and bool(m_[j5, i5])
+    def wet_at(x, y):
+        # a few metres past today's shore too, under the sea's sheet: where
+        # the two met edge to edge a dark hairline showed between them
+        return EA.water_then(x, y, ERA) and not all(today_water(x + dx, y + dy) for dx, dy in ((0, 0), (8, 0), (-8, 0), (0, 8), (0, -8)))
+    wet = [[wet_at(X0_ + (i + 0.5) * st_, Y0_ + (j + 0.5) * st_) for j in range(ny_)] for i in range(nx_)]
     def quad(x_, y_, s_):
         # 2 cm under the sea's own sheet (0.12): coplanar with it over today's
         # bay, each blocked the other's sky reflection — a black band north of
@@ -1812,13 +1839,23 @@ def hist_water():
             elif any(nb):                                   # a shore cell: at 4 m
                 for a in range(3):
                     for b in range(3):
-                        if EA.water_then(x_ + (a + 0.5) * 4.0, y_ + (b + 0.5) * 4.0, ERA): quad(x_ + a * 4.0, y_ + b * 4.0, 4.0)
+                        if wet_at(x_ + (a + 0.5) * 4.0, y_ + (b + 0.5) * 4.0): quad(x_ + a * 4.0, y_ + b * 4.0, 4.0)
     if not F_: return
-    m_ = simple('histwater', (0.006, 0.026, 0.040), rough=0.05, spec=0.5)
-    nt_ = m_.node_tree; g_ = nt_.nodes.new('ShaderNodeNewGeometry'); w_ = nt_.nodes.new('ShaderNodeTexNoise')
-    w_.inputs['Scale'].default_value = 0.05; w_.inputs['Detail'].default_value = 8; nt_.links.new(g_.outputs['Position'], w_.inputs['Vector'])
-    b_ = nt_.nodes.new('ShaderNodeBump'); b_.inputs['Strength'].default_value = 0.4; nt_.links.new(w_.outputs['Fac'], b_.inputs['Height'])
-    nt_.links.new(b_.outputs[0], nt_.nodes['Principled BSDF'].inputs['Normal'])
+    _sea = bpy.data.materials.get('sea')
+    if _sea is not None:
+        # the sea's own shader, never cut: the old bay and today's the same
+        # water (a second material drew the made land's outline as a seam)
+        m_ = _sea.copy(); m_.name = 'histwater'; nt_ = m_.node_tree
+        _out = next(n for n in nt_.nodes if n.type == 'OUTPUT_MATERIAL')
+        _cut = _out.inputs[0].links[0].from_node
+        for l_ in list(_cut.inputs[0].links): nt_.links.remove(l_)
+        _cut.inputs[0].default_value = 1.0
+    else:
+        m_ = simple('histwater', (0.006, 0.026, 0.040), rough=0.05, spec=0.5)
+        nt_ = m_.node_tree; g_ = nt_.nodes.new('ShaderNodeNewGeometry'); w_ = nt_.nodes.new('ShaderNodeTexNoise')
+        w_.inputs['Scale'].default_value = 0.05; w_.inputs['Detail'].default_value = 8; nt_.links.new(g_.outputs['Position'], w_.inputs['Vector'])
+        b_ = nt_.nodes.new('ShaderNodeBump'); b_.inputs['Strength'].default_value = 0.4; nt_.links.new(w_.outputs['Fac'], b_.inputs['Height'])
+        nt_.links.new(b_.outputs[0], nt_.nodes['Principled BSDF'].inputs['Normal'])
     me_ = bpy.data.meshes.new('histwater'); me_.from_pydata(V_, [], F_); me_.update()
     bm_ = bmesh.new(); bm_.from_mesh(me_); bmesh.ops.remove_doubles(bm_, verts=bm_.verts, dist=0.01); bm_.to_mesh(me_); bm_.free()
     ob_ = bpy.data.objects.new('histwater', me_); sc.collection.objects.link(ob_); me_.materials.append(m_)
