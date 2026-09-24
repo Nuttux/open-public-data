@@ -202,12 +202,18 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     if yd is not None and yardf is not None:
         so = b.mix(yardf, so, yd)
         hill = b.mix(b.math('MULTIPLY', yardf, 0.5), hill, yd); x = hill
+    # CURED GRASS glows gold in the low sun, not khaki: warmer and richer
+    # where the photo finds dry grass (Twin Peaks, Bernal, San Bruno)
+    x = b.mix(b.math('MULTIPLY', sh(dry), 0.85), x, b.mix(1.0, x, (1.24, 1.05, 0.56), 'MULTIPLY'))
     # THE WATERED LAWN the photo finds (a park's, a garden's, a playing
     # field): an even, clean green with a mower's stripes, not hill_ground's
     # tired lawn with its dry drifts and bare earth (Alamo Square read patchy
     # olive and brown, 24/09: real aerials show it bright and even)
     if scan is not None:
-        lw = b.mix(1.0, scan, (0.80, 0.90, 0.58), 'MULTIPLY')
+        # a lush irrigated green (the beauty bar: a flight simulator's
+        # parks, not the photo's olive) with a third of the scan's own tint
+        lush = b.mix(b.ramp(b.noise(1 / 25.0, 2.0, vec=b.vmap(1.0, loc=(2.0, 11.0, 0))), 0.0, 1.0, 0.3, 0.7), (0.086, 0.146, 0.019), (0.104, 0.166, 0.024))
+        lw = b.mix(0.25, lush, b.mix(1.0, scan, (0.80, 0.90, 0.58), 'MULTIPLY'))
         lw = b.mix(b.ramp(b.noise(1 / 40.0, 2.0, vec=b.vmap(1.0, loc=(9.0, 3.0, 0))), 0.0, 0.35, 0.4, 0.75), lw, b.mix(1.0, lw, (1.1, 1.04, 0.85), 'MULTIPLY'))
         sp_ = b.n('ShaderNodeSeparateXYZ'); b.put(sp_.inputs[0], b.pos)
         uu = b.math('ADD', b.math('MULTIPLY', sp_.outputs[0], math.cos(0.14)), b.math('MULTIPLY', sp_.outputs[1], math.sin(0.14)))
@@ -219,6 +225,16 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     if os.environ.get('GROUND_SAND', '1') == '1': L_ += [(sand, sd), (wet, ws)]      # the beaches (the water agent may own them)
     for w_, col_ in L_:
         x = b.mix(sh(w_), x, col_)
+    # A HOUSE'S YARD IS A GARDEN: lawn and shrubs under the yard trees, a
+    # paved patio where the photo finds concrete. Earth, cured grass, gravel,
+    # brush and the photo's canopy (the render grows its own yard trees)
+    # within the yard band take it (Castro's and the Sunset's block interiors
+    # read as brown dirt, 24/09; real ones are green gardens)
+    if yd is not None and yardf is not None:
+        gw_ = b.math('MINIMUM', b.math('ADD', b.math('ADD', b.math('ADD', soil, dry), b.math('ADD', grav, scrub)), tree), 1.0)
+        shrub = b.mix(b.ramp(b.noise(1 / 6.0, 3.0, vec=b.vmap(1.0, loc=(5.0, 1.0, 0))), 0.0, 1.0, 0.35, 0.65), (0.030, 0.058, 0.018), (0.042, 0.074, 0.022))
+        garden = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-3.0, 8.0, 0))), 0.0, 1.0, 0.42, 0.58), lw, shrub)
+        x = b.mix(b.math('MULTIPLY', b.ramp(yardf, 0.0, 1.0, 0.2, 0.6), sh(gw_)), x, garden)
     # THE PHOTO'S DETAIL: the ground's own light and dark within each kind of
     # ground (trails through the grass, worn lawn, stains and tyre marks in a
     # lot, the brush's texture), multiplied in: 2^(k·d), d the log2 ratio

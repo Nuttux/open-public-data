@@ -130,6 +130,40 @@ def bmask(x0, y0, x1, y1, res=SUB, sweep=True):
 OSM = f'{OUT}/osm/landcover.json'
 COURT = {'tennis', 'basketball', 'volleyball', 'handball', 'skateboard', 'pickleball', 'bocce', 'boules', 'running', 'athletics', 'table_tennis', 'racquet', 'shuffleboard', 'fitness'}
 HARD = ('asphalt', 'concrete', 'paved', 'clay', 'tartan', 'acrylic', 'sand', 'dirt', 'gravel', 'paving_stones', 'wood', 'rubber')
+# unirrigated hills and wild land, never watered lawn
+WILD_PARKS = ('Twin Peaks', 'Bernal Heights', 'McLaren', 'Glen Canyon', 'Corona Heights', 'Tank Hill', 'Bayview',
+              'Mount Davidson', 'Mount Sutro', 'Buena Vista', 'Presidio', 'San Bruno', 'Billy Goat', 'Grand View',
+              'Hawk Hill', 'Rocky Outcrop', 'Kite Hill', 'Starr King', 'Lands End', 'Fort Funston', 'Candlestick')
+IRR_SHARE, IRR_AREA, MEADOW = 0.25, 300000.0, 0.35
+# parks built after the photo (NAIP 2022 shows them as graded fill and
+# gravel: Bayfront Park read as a camouflage of paving and dirt, integ1)
+NEW_PARKS = ('Bayfront Park', 'Presidio Tunnel Tops', 'Outpost Meadow', 'Francisco Park')
+def park_split(G):
+    """each OSM 'park' polygon becomes 'ipark' (watered as a whole: its lawn
+    share of the grass the photo sees is at least IRR_SHARE and it is under
+    IRR_AREA m²: Alamo 0.35, Dolores 0.63, Lafayette 0.29) or 'mpark' (a big
+    or mixed park: only its meadows, the dry patches among lawn, are watered:
+    Golden Gate Park 0.21)"""
+    from PIL import Image, ImageDraw
+    global _OP
+    L_, D_, S_, Sc_ = CI['lawn'], CI['drygrass'], CI['soil'], CI['scrub']; out = []; ni = nm = 0
+    for cat, O, I in _osm_polys():
+        if cat == 'park':
+            P = np.concatenate(O); x0, y0 = P.min(0); x1, y1 = P.max(0)
+            i0, j0 = max(0, int((x0 - GX0) / RES)), max(0, int((y0 - GY0) / RES))
+            i1, j1 = min(G.shape[1], int((x1 - GX0) / RES) + 1), min(G.shape[0], int((y1 - GY0) / RES) + 1)
+            cat = 'mpark'
+            if i1 - i0 > 2 and j1 - j0 > 2:
+                im = Image.new('L', (i1 - i0, j1 - j0), 0); dr = ImageDraw.Draw(im)
+                for r in O: dr.polygon([((x - GX0) / RES - i0, (y - GY0) / RES - j0) for x, y in r], fill=1)
+                for r in I: dr.polygon([((x - GX0) / RES - i0, (y - GY0) / RES - j0) for x, y in r], fill=0)
+                m = np.asarray(im, bool); v = np.asarray(G[j0:j1, i0:i1])[m]
+                g = int(np.isin(v, [L_, D_, S_, Sc_]).sum())
+                if g >= 200 and (v == L_).sum() / g >= IRR_SHARE and m.sum() * RES ** 2 < IRR_AREA: cat = 'ipark'
+            ni += cat == 'ipark'; nm += cat == 'mpark'
+        out.append((cat, O, I))
+    _OP = out; print('parks:', ni, 'watered,', nm, 'mixed')
+
 def _osm_cat(t):
     n, lu, le = t.get('natural'), t.get('landuse'), t.get('leisure')
     if n in ('beach', 'sand'): return 'beach'
@@ -144,6 +178,11 @@ def _osm_cat(t):
         return 'lawn'
     if n == 'wood' or lu == 'forest': return 'wood'
     if n in ('scrub', 'heath', 'grassland'): return 'wild'
+    # a city park: irrigated or wild is decided per polygon from the photo
+    # (park_split); the hills keep their cured grass whatever the photo says
+    if le in ('park', 'garden'):
+        if t.get('name', '') in NEW_PARKS: return 'npark'
+        return 'wpark' if any(w in t.get('name', '') for w in WILD_PARKS) else 'park'
     return None
 
 def _stitch(segs):
@@ -332,6 +371,7 @@ def refine(src=None, dst=None, M=100):
     from scipy.ndimage import label, distance_transform_edt, binary_dilation
     src = src or f'{OUT}/ground_cls.npy'; dst = dst or src
     G = np.load(src); ny, nx = G.shape; O = G.copy()
+    park_split(G)
     W, A, C, GR, SO = CI['water'], CI['asphalt'], CI['concrete'], CI['gravel'], CI['soil']
     n = int(BLK / RES); nfill = nwet = nturf = nlawn = 0
     for j0 in range(0, ny, n):
@@ -370,6 +410,24 @@ def refine(src=None, dst=None, M=100):
                 # the photo's canopy read as brown duff blotches on the lawn, g3)
                 lw_ = om['lawn'][:c.shape[0], :c.shape[1]] & np.isin(c, [SO, CI['drygrass'], CI['tree']])
                 c[lw_] = CI['lawn']; nlawn += int(lw_.sum())
+            # a watered park: its cured patches, bare wear and the photo's
+            # canopy duff (where the render grows its own trees) are lawn; a
+            # mixed park: only the dry patches among its meadows (Alamo read
+            # blotchy brown and olive, g4)
+            if 'ipark' in om:
+                ip = om['ipark'][:c.shape[0], :c.shape[1]] & np.isin(c, [SO, CI['drygrass'], CI['tree']])
+                c[ip] = CI['lawn']; nlawn += int(ip.sum())
+            # a park the photo caught as a building site: its lawns where the
+            # fill was smooth (paving, fill), planted beds where it was rough
+            # (gravel, earth, sand, weeds)
+            if 'npark' in om:
+                npk = om['npark'][:c.shape[0], :c.shape[1]]
+                c[npk & np.isin(c, [A, C])] = CI['lawn']
+                c[npk & np.isin(c, [GR, SO, CI['sand'], CI['drygrass']])] = CI['scrub']
+            if 'mpark' in om:
+                near = _box(c == CI['lawn'], int(25 / RES)) >= MEADOW
+                mp = om['mpark'][:c.shape[0], :c.shape[1]] & near & np.isin(c, [SO, CI['drygrass']])
+                c[mp] = CI['lawn']; nlawn += int(mp.sum())
             O[j0:j0 + n, i0:i0 + n] = c[j0 - b0:j0 - b0 + n, i0 - a0:i0 - a0 + n]
     np.save(dst, O)
     fr = {n_: round(float((O == j).sum()) / max(1, int((O > 0).sum())) * 100, 2) for j, n_ in enumerate(CLS) if j}

@@ -650,7 +650,7 @@ def ground_maps(d, box=None, pad=300.0):
             del E0, E1, n_, k_, t_, P_, ii, jj, ok
     except Exception as ex:
         print('ground_maps: no buildings for the yards:', ex)
-    nearH = (_box_mean(nearH, int(round(7.0 / res))) > 1e-6).astype(np.float32)
+    nearH = (_box_mean(nearH, int(round(12.0 / res))) > 1e-6).astype(np.float32)     # (7 m left the Sunset's back-to-back yards a brown strip, 24/09)
     nearP = (_box_mean(nearP, int(round(9.0 / res))) > 1e-6).astype(np.float32)
     yard = np.clip(_box_mean(np.maximum(nearH, nearP), int(round(2.0 / res))), 0, 1)
     paved = np.clip(_box_mean(nearP * (1.0 - 0.6 * nearH), int(round(3.0 / res))), 0, 1)
