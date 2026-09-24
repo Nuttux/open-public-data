@@ -139,10 +139,14 @@ def depth(X, Y, L, g):
 # SF Bay peaks in the green-yellow): tan-olive over the flats, olive-grey
 # over the shoals, green-grey over the bay floor, slate in the channels.
 # The Pacific off the city: clearer, green-blue, darker offshore.
-BAY = [(0.0, (0.100, 0.090, 0.060)), (1.0, (0.086, 0.083, 0.059)), (3.0, (0.067, 0.073, 0.055)),
-       (6.0, (0.053, 0.064, 0.053)), (12.0, (0.041, 0.055, 0.049)), (25.0, (0.027, 0.041, 0.041)), (50.0, (0.017, 0.030, 0.033))]
-PAC = [(0.0, (0.062, 0.074, 0.062)), (3.0, (0.046, 0.063, 0.058)), (8.0, (0.031, 0.049, 0.051)),
-       (15.0, (0.021, 0.039, 0.045)), (30.0, (0.014, 0.031, 0.039)), (60.0, (0.010, 0.026, 0.036))]
+# FINAL linear albedos (the shader no longer re-tints them; 25/09 beauty
+# pass). The bay: teal-green over its shallows (never tan: that read as mud),
+# a clear green-grey over its floor, deep blue-green in the channels and the
+# Gate. The Pacific: deeper and bluer offshore.
+BAY = [(0.0, (0.062, 0.108, 0.074)), (2.0, (0.054, 0.098, 0.066)), (4.0, (0.048, 0.088, 0.058)),
+       (8.0, (0.041, 0.077, 0.050)), (15.0, (0.032, 0.064, 0.047)), (30.0, (0.021, 0.050, 0.046)), (60.0, (0.013, 0.038, 0.044))]
+PAC = [(0.0, (0.052, 0.094, 0.072)), (5.0, (0.032, 0.068, 0.066)), (15.0, (0.019, 0.050, 0.063)),
+       (30.0, (0.012, 0.038, 0.060)), (60.0, (0.008, 0.029, 0.056))]
 def ramp(D, stops):
     xs = [s[0] for s in stops]
     return np.stack([np.interp(D, xs, [s[1][k] for s in stops]) for k in range(3)], -1).astype(np.float32)
@@ -153,17 +157,17 @@ def colour(X, Y, D, dist, L):
     # turbidity: plumes 0.3-2 km, stronger in the bay and over its shallows
     t = 0.75 * grf(900) + 0.45 * grf(250)
     tb = (1 - P) * (0.6 + 0.4 * smooth(20, 3, D))
-    A *= (1 + 0.09 * t * (0.35 + 0.65 * tb))[..., None]
-    A += (np.clip(t, 0, None) * tb * 0.2)[..., None] * np.array([0.020, 0.013, 0.002], np.float32)
+    A *= (1 + 0.09 * t * (0.08 + 0.92 * tb))[..., None]      # (little in the Pacific: its mottle read as haze)
+    A += (np.clip(t, 0, None) * tb * 0.2)[..., None] * np.array([0.008, 0.012, 0.004], np.float32)
     # the south-east shallows and flats (India Basin, Heron's Head, Hunters
     # Point, Candlestick): browner, the mud showing through
     se = smooth(1500, 3500, X) * smooth(-500, -2000, Y)
     mud = se * smooth(2.5, 0.2, D) * (0.55 + 0.25 * grf(200))
-    A = A * (1 - mud[..., None]) + mud[..., None] * np.array([0.118, 0.100, 0.066], np.float32)
+    A = A * (1 - mud[..., None]) + mud[..., None] * np.array([0.080, 0.088, 0.052], np.float32)   # olive, subtle
     # the Pacific's surf-stirred band: sand in suspension along the beaches
     # (along the beaches only: on the Marin and Lands End cliffs it drew a halo)
     sb = P * np.exp(-dist / 180) * 0.55 * ndi.gaussian_filter(((X > -7400) & (X < -5600) & (Y < 1990)).astype(np.float32), 20)
-    A = A * (1 - sb[..., None]) + sb[..., None] * np.array([0.072, 0.080, 0.064], np.float32)
+    A = A * (1 - sb[..., None]) + sb[..., None] * np.array([0.066, 0.100, 0.074], np.float32)
     return A, P
 
 def fill_land(F, L):
@@ -350,6 +354,17 @@ def exposure(X, Y, D, P):
     cb = smooth(4, 14, D) * np.exp(-dg / 8000.0) * 0.4
     return np.clip(np.maximum(P, np.maximum(ch, cb)), 0, 1).astype(np.float32)
 
+def shore_sd():
+    """shore_sd.png: 16-bit grey on coast_land's own 4 m grid (json in
+    shore_sd.json): metres from the OSM coastline on the water side, 0..64
+    (the piers are land there, unlike the engine's mask): the soft wash and
+    the dark wet line along the walls"""
+    z = np.load(f'{LM}/coast_land.npz'); SD = z['sd_dm'].astype(np.float32) / 10.0
+    v = np.clip(-SD, 0, 64) / 64.0
+    png16(f'{OUT}/shore_sd.png', np.repeat(v[..., None], 3, -1))
+    json.dump(dict(x0=float(z['x0']), y1=float(z['y1']), res=float(z['res']), nx=int(SD.shape[1]), ny=int(SD.shape[0]), vmax=64.0),
+              open(f'{OUT}/shore_sd.json', 'w'))
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     X, Y = grid()
@@ -387,6 +402,7 @@ def main():
     Image.fromarray((prev * 255).astype(np.uint8)).save(f'{OUT}/prev_col.jpg', quality=85)
     Image.fromarray((np.clip(F[::s, ::s], 0, 1) * 255).astype(np.uint8)).save(f'{OUT}/prev_fld.jpg', quality=85)
     print('sea maps written', flush=True)
+    shore_sd()
     shore()
 
 if __name__ == '__main__':

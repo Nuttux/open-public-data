@@ -84,7 +84,18 @@ def _img(bpy, name):
         im.colorspace_settings.name = 'Non-Color'; _IMG[name] = im
     return _IMG[name]
 
-def water(bpy, N, pos, extra=None):
+def shore_dist(bpy, N, pos):
+    """metres from the OSM coastline on the water side (0 on land), from
+    shore_sd.png; None without it"""
+    sj = os.path.join(WD, 'shore_sd.json')
+    if not os.path.exists(sj): return None
+    q = json.load(open(sj)); ww, hh = q['nx'] * q['res'], q['ny'] * q['res']
+    sm_ = N.mapping(pos, loc=(-q['x0'] / ww, -(q['y1'] - hh) / hh, 0), scale=(1 / ww, 1 / hh, 1))
+    ti = N.n('ShaderNodeTexImage', image=_img(bpy, 'shore_sd.png'), extension='EXTEND', interpolation='Linear'); N.L(sm_, ti.inputs[0])
+    sx_ = N.n('ShaderNodeSeparateColor'); N.L(ti.outputs['Color'], sx_.inputs[0])
+    return N.m('MULTIPLY', sx_.outputs[0], q['vmax'])
+
+def water(bpy, N, pos, extra=None, flat=None):
     """the sea surface's BSDF at world position `pos`; returns (shader, dict of
     sockets: wind, cur, pac, col). extra(N, parts) may alter the parts first."""
     g = json.load(open(os.path.join(WD, 'sea.json')))
@@ -94,13 +105,14 @@ def water(bpy, N, pos, extra=None):
     tf = N.n('ShaderNodeTexImage', image=_img(bpy, 'sea_fld.png'), extension='EXTEND', interpolation='Cubic'); N.L(uv, tf.inputs[0])
     sp = N.n('ShaderNodeSeparateColor'); N.L(tf.outputs['Color'], sp.inputs[0])
     wind, cur, pac = sp.outputs[0], sp.outputs[1], sp.outputs[2]
-    # the glossy sky is lit 2.8x the camera's (GLOSS_K): the water's own
-    # colour is warmed a little and its mirror dimmed and greyed so the bay
-    # renders green-grey, not blue (wat9); retuned for the 53c5109c5 light
-    # (less blue fill: 1.35,1,.5 went khaki, wat19)
-    k = g['alb_k'] * F('SEA_COL_K', 1.3)
-    wb = [float(v) for v in E('SEA_WB', '0.9,1.1,0.45').split(',')]
-    col = N.vmath('MULTIPLY', tc.outputs['Color'], (k * wb[0], k * wb[1], k * wb[2]))
+    # sea_col holds the final albedo (water2_prep's ramps); SEA_COL_K and
+    # SEA_WB stay as test knobs only
+    k = g['alb_k'] * F('SEA_COL_K', 1.0)
+    # the bay's body pulled green (the ramps' blue read teal-blue under this
+    # sky, wat31); the Pacific keeps its blue (wb fades out with exposure)
+    wb = [float(v) for v in E('SEA_WB', '1.05,1.05,0.6').split(',')]
+    wbv = N.mix(N.smooth(0.3, 0.9, pac), tuple(wb), (1.0, 1.0, 1.0))
+    col = N.vmath('MULTIPLY', N.vmath('MULTIPLY', tc.outputs['Color'], (k, k, k)), wbv)
     # desaturate toward the grey the sediment gives (SEA_SAT 1 = the map as is)
     sat = F('SEA_SAT', 1.0)
     if abs(sat - 1.0) > 1e-3:
@@ -118,8 +130,9 @@ def water(bpy, N, pos, extra=None):
     calm = N.m('SUBTRACT', 1.0, slick)
     paw = N.smooth(0.35, 0.65, N.noise(N.mapping(rot, loc=(91.0, 57.0, 0), scale=(0.6, 1.0, 1.0)), 1 / 110.0, detail=3.0, rough=0.6))
     wind = N.m('MULTIPLY', wind, N.m('ADD', 1.0 - F('SEA_PAW', 0.2), N.m('MULTIPLY', paw, F('SEA_PAW', 0.2))))
-    wk = N.m('MULTIPLY', N.m('ADD', 0.10, N.m('MULTIPLY', wind, 0.90)), calm)
+    wk = N.m('MULTIPLY', N.m('ADD', 0.35, N.m('MULTIPLY', wind, 0.65)), calm)      # a ripple everywhere (the bay read dead flat)
     bm1 = N.n('ShaderNodeBump', i_Distance=F('SEA_CHOP_D', 0.25))
+    if flat is not None: N.L(flat, bm1.inputs['Normal'])
     N.L(N.m('ADD', h1, N.m('MULTIPLY', h2, 1.5)), bm1.inputs['Height'])
     N.L(N.m('MULTIPLY', wk, F('SEA_CHOP', 1.1)), bm1.inputs['Strength'])
     # the Pacific's swell from the west, ~150 m crests running N-S, bent by noise
@@ -133,9 +146,9 @@ def water(bpy, N, pos, extra=None):
     rough = N.m('MULTIPLY', N.m('ADD', F('SEA_R0', 0.02), N.m('MULTIPLY', wind, F('SEA_R1', 0.06))), calm)
     parts = dict(wind=wind, cur=cur, pac=pac, col=col, rough=rough, normal=bm2.outputs[0], rot=rot)
     if extra: extra(N, parts)
-    b = N.n('ShaderNodeBsdfPrincipled', i_IOR=1.333, i_Specular_IOR_Level=F('SEA_SPEC', 0.15))
+    b = N.n('ShaderNodeBsdfPrincipled', i_IOR=1.333, i_Specular_IOR_Level=F('SEA_SPEC', 0.24))
     N.L(parts['col'], b.inputs['Base Color']); N.L(parts['rough'], b.inputs['Roughness']); N.L(parts['normal'], b.inputs['Normal'])
-    b.inputs['Specular Tint'].default_value = (*[float(v) for v in E('SEA_TINT', '0.5,0.65,0.3').split(',')], 1.0)
+    b.inputs['Specular Tint'].default_value = (*[float(v) for v in E('SEA_TINT', '0.65,0.78,0.5').split(',')], 1.0)
     sh = b.outputs[0]
     # whitecaps where the westerly blows hardest (the Gate, the central bay,
     # the open Pacific): small streaks, clustered in gusts; WHITECAP=0 none
@@ -173,6 +186,20 @@ def water(bpy, N, pos, extra=None):
         fb = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.62, 0.64, 0.62), i_Roughness=0.9)
         mx = N.n('ShaderNodeMixShader'); N.L(N.m('MULTIPLY', cap, 0.8 * wc), mx.inputs[0]); N.L(sh, mx.inputs[1]); N.L(fb.outputs[0], mx.inputs[2])
         sh = mx.outputs[0]
+    # along walls, piers and rocks (the OSM coastline, piers included): a
+    # dark wet line at the foot, and a soft broken wash of old foam a few
+    # metres out — in the bay only (the surf has its own)
+    dsh = shore_dist(bpy, N, pos)
+    if dsh is not None and F('WASH', 1.0) > 0:
+        bay = N.m('SUBTRACT', 1.0, N.smooth(0.3, 0.8, pac))
+        wl = N.m('MULTIPLY', N.smooth(1.6, 0.3, dsh), bay)
+        dk = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.012, 0.022, 0.018), i_Roughness=0.2, i_Specular_IOR_Level=0.3)
+        m1 = N.n('ShaderNodeMixShader'); N.L(N.m('MULTIPLY', wl, 0.55), m1.inputs[0]); N.L(sh, m1.inputs[1]); N.L(dk.outputs[0], m1.inputs[2]); sh = m1.outputs[0]
+        lace = N.noise(N.mapping(pos, scale=(1.0, 1.0, 1.0)), 0.35, detail=5.0, rough=0.65)
+        wz = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(6.0, 1.0, dsh), N.smooth(0.3, 1.2, dsh)), bay)
+        wf_ = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(0.56, 0.68, lace), wz), 0.35 * F('WASH', 1.0))
+        fw = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.55, 0.58, 0.55), i_Roughness=0.9)
+        m2 = N.n('ShaderNodeMixShader'); N.L(wf_, m2.inputs[0]); N.L(sh, m2.inputs[1]); N.L(fw.outputs[0], m2.inputs[2]); sh = m2.outputs[0]
     return sh, parts
 
 def sea_mats(bpy, log):
@@ -200,6 +227,12 @@ def sea_mats(bpy, log):
             ti = N.n('ShaderNodeTexImage', image=cut_img, extension='EXTEND'); N.L(mp, ti.inputs[0])
             sp = N.n('ShaderNodeSeparateColor'); N.L(ti.outputs['Color'], sp.inputs[0])
             land = N.m('LESS_THAN', sp.outputs[0], 0.5)
+            # the engine's mask calls some water land (Horseshoe Bay inside its
+            # breakwater, the cove...): cut only where the OSM coast agrees,
+            # or the ground shows through as a pale blob (wat33)
+            ds_ = shore_dist(bpy, N, pos)
+            if ds_ is not None:
+                land = N.m('MULTIPLY', land, N.m('LESS_THAN', ds_, 1.0))
             tr = N.n('ShaderNodeBsdfTransparent'); cm = N.n('ShaderNodeMixShader')
             N.L(land, cm.inputs[0]); N.L(sh, cm.inputs[1]); N.L(tr.outputs[0], cm.inputs[2]); sh = cm.outputs[0]
         N.L(sh, o.inputs[0]); mats[name] = m
@@ -226,7 +259,7 @@ def sea_mats(bpy, log):
 
 # ── the shore ────────────────────────────────────────────────────────────────
 DRY = ((0.40, 0.305, 0.135), (0.50, 0.38, 0.17))      # ground_hq class 1 (682b70869)
-WET = ((0.16, 0.125, 0.065), (0.21, 0.165, 0.085))    # ground_hq class 12
+WET = ((0.18, 0.14, 0.078), (0.24, 0.19, 0.105))     # wet tan (ground_hq class 12, a touch warmer)
 MUD = (0.105, 0.092, 0.068); MARSH = ((0.085, 0.092, 0.042), (0.13, 0.12, 0.06))
 FOAM = (0.80, 0.82, 0.80)
 # breaker lines on a fully exposed beach: distance from the waterline (m),
@@ -244,8 +277,8 @@ def shore_mat(bpy):
     sdj = N.m('ADD', sd, N.m('MULTIPLY', jit, N.m('ADD', 0.2, surf)))
     s = N.m('MULTIPLY', sdj, -1.0)                               # metres seaward of the waterline
     # widths by exposure (surf 0 bay .. 1 Ocean Beach)
-    wetw = N.m('ADD', 4.0, N.m('MULTIPLY', surf, 26.0))          # wet sand above the waterline
-    swash = N.m('ADD', 1.5, N.m('MULTIPLY', surf, 14.0))         # the thin sheet of the last wave
+    wetw = N.m('ADD', 4.0, N.m('MULTIPLY', surf, 16.0))          # wet sand above the waterline
+    swash = N.m('ADD', 1.5, N.m('MULTIPLY', surf, 9.0))          # the thin sheet of the last wave
     # ── land: dry sand, the wrack line, wet sand
     n18 = N.noise(pos, 1 / 18.0, detail=3.0)
     dry = N.mix(n18, DRY[0], DRY[1])
@@ -265,20 +298,23 @@ def shore_mat(bpy):
     wr = N.m('MULTIPLY', N.smooth(1.2, 0.0, N.m('ABSOLUTE', N.m('SUBTRACT', sdj, N.m('ADD', edge, 2.5)))),
              N.smooth(0.55, 0.7, N.noise(pos, 0.08, detail=2.0)))
     sandc = N.mix(N.m('MULTIPLY', wr, N.m('MULTIPLY', surf, 0.7)), sandc, (0.05, 0.045, 0.03))
-    sandr = N.m('ADD', 0.95, N.m('MULTIPLY', wetf, -0.35))     # wet 0.6, as ground_hq
+    sandr = N.m('ADD', 0.95, N.m('MULTIPLY', wetf, -0.4))      # wet 0.55 (glossier mirrored the grey sky: a concrete strip)
     # mud and marsh
     mud_a = N.m('MULTIPLY', N.smooth(-2.0, 8.0, mud), F('MUD_K', 0.8))
     msh_a = N.m('MULTIPLY', N.smooth(-2.0, 6.0, marsh), 0.9)
     msh_c = N.mix(N.noise(pos, 0.15, detail=4.0), MARSH[0], MARSH[1])
     landc = N.mix(mud_a, sandc, MUD); landc = N.mix(msh_a, landc, msh_c)
     landr = N.lerp(mud_a, sandr, 0.35); landr = N.lerp(msh_a, landr, 0.85)
-    lb = N.n('ShaderNodeBsdfPrincipled', i_Specular_IOR_Level=0.22); N.L(landc, lb.inputs['Base Color']); N.L(landr, lb.inputs['Roughness'])
+    lb = N.n('ShaderNodeBsdfPrincipled', i_Specular_IOR_Level=0.2); N.L(landc, lb.inputs['Base Color']); N.L(landr, lb.inputs['Roughness'])
     # ── water: the sea's own, lighter and sandier in the surf zone
     def surfwater(N_, p):
         stir = N_.m('MULTIPLY', surf, N_.smooth(260.0, 20.0, s))
         # sand in suspension: a lighter olive-tan (in the warmed, x1.8 albedo space of water())
-        p['col'] = N_.mix(N_.m('MULTIPLY', stir, F('SURF_STIR', 0.55)), p['col'], (0.20, 0.18, 0.085))
-    wsh, parts = water(bpy, N, pos, extra=surfwater)
+        p['col'] = N_.mix(N_.m('MULTIPLY', stir, F('SURF_STIR', 0.5)), p['col'], (0.075, 0.105, 0.075))
+    up = N.n('ShaderNodeCombineXYZ', i_X=0.0, i_Y=0.0, i_Z=1.0).outputs[0]
+    wsh, parts = water(bpy, N, pos, extra=surfwater, flat=up)
+    for b_ in (lb, ):
+        N.L(up, b_.inputs['Normal'])
     # the swash: water thinning to nothing over the wet sand
     sw_t = N.smooth(0.0, 1.0, N.m('DIVIDE', s, swash))            # 0 at the waterline, 1 beyond the swash
     # whitewater: each breaker line is a crisp, dense front with its foam
@@ -315,32 +351,44 @@ def shore_mat(bpy):
     fm = N.m('MAXIMUM', fm, N.m('MULTIPLY', old_, N.m('MULTIPLY', N.smooth(230.0, 120.0, s), 0.28)))
     # the uprush's lace at the waterline, the last wave's edge
     xs = N.m('DIVIDE', s, swash)
-    upr = N.m('MULTIPLY', N.smooth(-0.1, 0.12, xs), N.smooth(0.55, 0.2, xs))
-    fm = N.m('MAXIMUM', fm, N.m('MULTIPLY', upr, N.smooth(0.25, 0.45, lace_v)))
+    upr = N.m('MULTIPLY', N.smooth(-0.05, 0.06, xs), N.smooth(0.3, 0.1, xs))
+    fm = N.m('MAXIMUM', fm, N.m('MULTIPLY', upr, N.smooth(0.35, 0.5, lace_v)))
     fm = N.m('MULTIPLY', fm, surf)
     fm = N.m('MULTIPLY', fm, F('SURF_K', 1.0), clamp=True)
     fshade = N.m('ADD', 0.72, N.m('MULTIPLY', N.noise(pos, 0.35, detail=5.0, rough=0.65), 0.5))
     fb = N.n('ShaderNodeBsdfPrincipled', i_Roughness=0.85)
     fcol = N.mix(N.m('MULTIPLY', N.m('SUBTRACT', 1.0, fshade), 2.0, clamp=True), FOAM, (0.40, 0.43, 0.41))
-    N.L(fcol, fb.inputs['Base Color'])
+    N.L(fcol, fb.inputs['Base Color']); N.L(up, fb.inputs['Normal'])
     wf = N.n('ShaderNodeMixShader'); N.L(fm, wf.inputs[0]); N.L(wsh, wf.inputs[1]); N.L(fb.outputs[0], wf.inputs[2])
     # the swash over the wet sand: the sand shows through the thin sheet
     ws = N.n('ShaderNodeMixShader'); N.L(N.m('ADD', 0.15, N.m('MULTIPLY', sw_t, 0.85)), ws.inputs[0])
     # the backwash's sheen: wet sand under a film of water
-    wb = N.n('ShaderNodeBsdfPrincipled', i_Roughness=0.18, i_IOR=1.333, i_Specular_IOR_Level=0.4); N.L(wet, wb.inputs['Base Color'])
+    wb = N.n('ShaderNodeBsdfPrincipled', i_Roughness=0.3, i_IOR=1.333, i_Specular_IOR_Level=0.25); N.L(wet, wb.inputs['Base Color']); N.L(up, wb.inputs['Normal'])
     N.L(wb.outputs[0], ws.inputs[1]); N.L(wf.outputs[0], ws.inputs[2])
     # land or water: the waterline, except on mud and marsh (always land)
     iswater = N.m('MULTIPLY', N.smooth(-0.3, 0.3, s), N.m('SUBTRACT', 1.0, N.m('MAXIMUM', mud_a, msh_a)))
     lw = N.n('ShaderNodeMixShader'); N.L(iswater, lw.inputs[0]); N.L(lb.outputs[0], lw.inputs[1]); N.L(ws.outputs[0], lw.inputs[2])
+    # thin lacy foam on the swash and the wet sand: filaments of old bubbles
+    fil = N.m('MULTIPLY', N.smooth(0.012, 0.0, N.m('ABSOLUTE', N.m('SUBTRACT', lace_v, 0.5))),
+              N.m('MULTIPLY', N.smooth(-0.5, 0.2, N.m('DIVIDE', s, wetw)), N.smooth(1.6, 0.9, xs)))
+    fl = N.n('ShaderNodeMixShader'); N.L(N.m('MULTIPLY', fil, N.m('MULTIPLY', surf, 0.55)), fl.inputs[0]); N.L(lw.outputs[0], fl.inputs[1]); N.L(fb.outputs[0], fl.inputs[2])
+    lw = fl
     # alpha: the mesh's own visibility; mud and marsh fade in by themselves
     tr = N.n('ShaderNodeBsdfTransparent')
     # alpha: the polygons' own soft edges and the coast band's landward edge
     # (b1 m over the coastline), from the signed distances — smooth lines, not
     # the 3 m grid's steps the per-vertex visibility drew
     b1 = N.attr('ws_b1')
-    polyA = N.m('MAXIMUM', N.smooth(-1.0, 1.0, sand), N.m('MAXIMUM', N.smooth(-1.0, 1.0, mud), N.smooth(-1.0, 1.0, marsh)))
+    # the dry sand is the ground's (ground_hq: NAIP classes and the photo's
+    # own grain); this overlay stops at the wet line, fading over 3 m
     bandA = N.m('MULTIPLY', N.smooth(1.5, -1.5, N.m('SUBTRACT', sd, b1)), N.m('MULTIPLY', vis, 20.0, clamp=True))
-    cm = N.n('ShaderNodeMixShader'); N.L(N.m('MAXIMUM', polyA, bandA), cm.inputs[0]); N.L(tr.outputs[0], cm.inputs[1]); N.L(lw.outputs[0], cm.inputs[2])
+    # ... except where the ground lies under the sea sheet (ws_low): there
+    # the overlay's own dry sand, or the sea would show through the beach
+    low = N.attr('ws_low')
+    beachA = N.m('MULTIPLY', N.m('MAXIMUM', N.smooth(-1.0, 1.0, sand), bandA),
+                 N.m('MAXIMUM', N.smooth(3.0, -0.5, N.m('SUBTRACT', sdj, edge)), N.smooth(0.3, 0.7, low)))
+    polyA = N.m('MAXIMUM', beachA, N.m('MAXIMUM', N.smooth(-1.0, 1.0, mud), N.smooth(-1.0, 1.0, marsh)))
+    cm = N.n('ShaderNodeMixShader'); N.L(polyA, cm.inputs[0]); N.L(tr.outputs[0], cm.inputs[1]); N.L(lw.outputs[0], cm.inputs[2])
     N.L(cm.outputs[0], o.inputs[0])
     return m
 
@@ -373,7 +421,15 @@ def shore(bpy, sc, ground, box, log):
         Z[i] = -50.0 if h is None else h
     seaz = np.where((xy[:, 0] >= sq[0]) & (xy[:, 0] <= sq[2]) & (xy[:, 1] >= sq[1]) & (xy[:, 1] <= sq[3]), SEA_Z, -0.5)
     land = at['sd'] > 0
-    Z = np.where(land, np.maximum(Z, seaz) + 0.05, np.maximum(Z + 0.05, seaz + 0.04)).astype(np.float32)
+    at['low'] = (Z < seaz + 0.25).astype(np.float32)
+    # on the water side the sheet follows the ground up at most 0.6 m (the
+    # lobed 3DEP beach), then lies on the water
+    Z = np.where(land, np.maximum(Z, seaz) + 0.05, seaz + 0.04 + np.clip(Z + 0.01 - seaz, 0, 0.6)).astype(np.float32)
+    # the steps of the ground under it (the sunk sea's edge, walls) are
+    # shaded flat by the material (a flat normal): lit sand-coloured 'posts'
+    # along the surf line otherwise (wat24-26, gnd25); dropping them opened a
+    # stepped slit onto the sea (wat27). Only cliffs over 3 m are dropped
+    zt = Z[T]; T = T[(zt.max(1) - zt.min(1)) < 3.0]
     me = bpy.data.meshes.new('shore2')
     me.vertices.add(len(xy)); me.vertices.foreach_set('co', np.column_stack([xy, Z]).astype(np.float32).ravel())
     me.loops.add(len(T) * 3); me.loops.foreach_set('vertex_index', T.astype(np.int32).ravel())
@@ -383,7 +439,7 @@ def shore(bpy, sc, ground, box, log):
     me.update(calc_edges=True)
     # the band's landward edge, m over the coastline: 12 at Ocean Beach, 0 elsewhere (water2_prep ZONES)
     at['b1'] = np.where((xy[:, 0] > -7300) & (xy[:, 0] < -5000) & (xy[:, 1] > -9800) & (xy[:, 1] < 1990), 12.0, 0.0)
-    for k in ('sd', 'vis', 'sand', 'mud', 'marsh', 'surf', 'b1'):
+    for k in ('sd', 'vis', 'sand', 'mud', 'marsh', 'surf', 'b1', 'low'):
         a_ = me.attributes.new('ws_' + k, 'FLOAT', 'POINT'); a_.data.foreach_set('value', at[k].astype(np.float32))
     me.materials.append(shore_mat(bpy))
     ob = bpy.data.objects.new('shore2', me); sc.collection.objects.link(ob)
