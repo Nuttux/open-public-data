@@ -378,6 +378,12 @@ def building(b, ground, out):
     else:
         roof = 'flat'
     if not LM: roof = measured_form(b, roof)                 # ROOFS: a light membrane seen from the air is a flat roof
+    # (24/09) and the other way: a house whose roof the air reads as dark
+    # shingle (or clay tile) is pitched — the Castro's, Noe's, the Haight's
+    # gables, where the generator had drawn a flat roof behind a parapet
+    if not LM and roof == 'flat' and style in ('vic', 'stucco', 'midcentury') and ERA is None:
+        m_ = ROOF_M.get(b['gid'])
+        if m_ and (m_[3] == 'shingle' or (m_[3] == 'tile' and sub in ('med', 'sunset'))) and b['h'] < 16 and abs(ring_area(ring)) < 350: roof = 'gable'
     if OV.get('roof'): roof = {'gable': 'gable', 'hip': 'gable', 'flat': 'flat', 'mansard': 'flat', 'dome': 'flat'}.get(OV['roof'], roof)
     # a works shed of one or two storeys over a near-rectangular lot: a
     # sawtooth of north lights, or the bow-truss barrel of the 1910s-40s
