@@ -196,7 +196,8 @@ for m in d['meshes']:
 # triangulations each draped by terrain_hq on its own corners, cut through
 # each other on uneven ground in dark faceted shards. The casing wholly under
 # the asphalt goes (hq_scene's fix, never ported here). ST_MERGE=0: as before
-if len(SA_): SP, _ = merge_street_layers(SP, SA_)
+ABV = None
+if len(SA_): SP, ABV = merge_street_layers(SP, SA_)
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
@@ -226,6 +227,11 @@ for e in bm.edges:
     inward = e.link_faces[0].calc_center_median() - (a + b) / 2; inward.z = 0
     v = b - a; outv = Vector((-v.y, v.x, 0)).normalized()
     if outv.dot(inward) > 0: outv = -outv
+    # (25/09) a kerb only where no asphalt lies beyond the edge (hq_scene's
+    # kerb_edge): the edges of the casing left round a dropped piece — the
+    # slivers the merge leaves across a roadway — drew their 3 m sidewalk
+    # band over the asphalt, pale diagonal wedges along the Sunset's streets
+    if not kerb_edge(ABV, a, b, outv): continue
     SE.append((a, b, outv))
 bm.free()
 Ps, Fs = [], []
