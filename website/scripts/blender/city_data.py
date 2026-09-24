@@ -1,7 +1,7 @@
 """Buildings of a box, straight from the published chunks: footprint ring,
 height, year, use, storeys, facade type, shop bit, per-edge role.
 Mirrors src/lib/citygl/bldg.ts decodeBldg (global accumulator, escapes first)."""
-import glob, os, numpy as np
+import glob, json, os, numpy as np
 import qc
 CITY = '/Users/daniel/code/opd-render/website/public/data/us/sf/city'
 RH = [-0.375, -0.125, 0.125, 0.375]
@@ -21,8 +21,30 @@ def decode(f):
         rings.append(r)
     return rings
 
+# THE BUILDINGS DATASF DOES NOT HAVE (newb_prep.py): OpenStreetMap records
+# (ODbL, (c) OpenStreetMap contributors) in this same schema, flagged
+# src='osm'. With NEWB=1 they are appended, and the low DataSF records a new
+# tower stands on (the lot before it) are dropped from its year on (ERA, the
+# year hq_city/hq_scene show; unset = today). NEWB_FILE overrides the file.
+NEWB_FILES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'newb_records.json'),
+              '/Users/daniel/code/qipu-render-work/newbuildings/osm_records.json']
+_NB = None
+def newb():
+    """(records, DataSF gids they replace in the ERA shown); empty when NEWB is off"""
+    global _NB
+    if os.environ.get('NEWB', '0') != '1': return [], set()
+    if _NB is None:
+        _NB = ([], set())
+        p = os.environ.get('NEWB_FILE') or next((q for q in NEWB_FILES if os.path.exists(q)), None)
+        if p and os.path.exists(p):
+            j = json.load(open(p)); era = int(os.environ['ERA']) if os.environ.get('ERA') else None
+            _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records']],
+                   {int(x['gid']) for x in j.get('replaces', []) if era is None or era >= x['year']})
+    return _NB
+
 def buildings(x0, y0, x1, y1):
     out = []
+    NB, GONE = newb()
     # the cells, and base/solo: the 15,265 footprints too large or too tall to
     # belong to one cell (every building over 30 m is one) ship on their own
     pairs = [(p, f'{CITY}/face/{os.path.basename(p)}') for p in sorted(glob.glob(f'{CITY}/bldg/*.qc'))]
@@ -40,12 +62,14 @@ def buildings(x0, y0, x1, y1):
             cx = sum(p[0] for p in r) / n_; cy = sum(p[1] for p in r) / n_
             if not (x0 <= cx <= x1 and y0 <= cy <= y1): continue
             u = int(f['u'][i])
+            if GONE and int(f['gid'][i]) in GONE: continue
             out.append(dict(gid=int(f['gid'][i]), ring=r, cx=cx, cy=cy,
                             h=float(f['h'][i]) + RH[int(f['hf'][i]) & 3], year=None if u & 16 else 1849 + int(f['yr'][i]),
                             use=USES[u & 7] if (u & 7) < len(USES) else 'mixed or not stated', st=int(f['st'][i]),
                             ty=FA_TYPES[int(face['ty'][i])] if face is not None and int(face['ty'][i]) < 10 else 'UNCLASSED',
                             shop=bool(face['shop'][i]) if face is not None else False, roles=roles,
                             paint=int(f['paintIdx'][i])))
+    out.extend(r for r in NB if x0 <= r['cx'] <= x1 and y0 <= r['cy'] <= y1)
     return out
 
 
