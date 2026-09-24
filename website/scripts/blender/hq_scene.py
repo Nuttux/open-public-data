@@ -297,7 +297,11 @@ def roof_flat_mat():
     # shows its lap seams a roll apart: patches of 2-6 m a shade lighter or
     # darker, the seams as dark lines along the rolls — no flat slab
     cell = b.bw(b.voronoi(0.28, vec=mp.outputs[0], out='Color'))
-    pk = b.ramp(cell, 0.80, 1.14)
+    pk = b.ramp(cell, 0.66, 1.12)
+    # tar repairs: dark irregular blots over about a tenth of a roof, and the
+    # recoats' lighter sheets (24/09, the roofs' contrast from the air)
+    tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.58, 0.63)
+    pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.6)))
     sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
     seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)
     pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', seam, b.math('MULTIPLY', b.math('GREATER_THAN', kind, 0.5), 0.2))))
@@ -358,6 +362,12 @@ def weather(m, k=1.0, streaks=1.0):
     g_ = b.math('ADD', b.math('MULTIPLY', streak, 0.32 * k * streaks), occ)          # (24/09: 0.22 did not show from the air)
     c = b.mix(b.math('MINIMUM', g_, 0.7), src_, (0.30, 0.27, 0.22), 'MULTIPLY')
     macro = b.ramp(b.noise(0.09, 3.0), 0.89, 1.07, 0.3, 0.7)
+    # (24/09) and the render's own unevenness at a metre or two: patched and
+    # re-skimmed stucco, boards repainted piece by piece, sun-faded panels —
+    # about ±8 %, so a wall is a surface and not a plastic sheet
+    mot = b.ramp(b.noise(0.55, 2.0, rough=0.55), 0.86, 1.10, 0.3, 0.7)
+    mot2 = b.ramp(b.bw(b.voronoi(0.42, out='Color')), 0.95, 1.04)
+    macro = b.math('MULTIPLY', b.math('MULTIPLY', macro, mot), mot2)
     cc = b.n('ShaderNodeHueSaturation'); b.put(cc.inputs['Color'], c); b.put(cc.inputs['Value'], macro)
     nt.links.new(cc.outputs[0], pr.inputs['Base Color'])
 for _k, _w in (('stucco', 1.0), ('siding', 0.8), ('concrete', 1.0), ('brick', 0.7), ('shingle', 0.5)):

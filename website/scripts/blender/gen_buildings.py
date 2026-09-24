@@ -620,8 +620,8 @@ def building(b, ground, out):
             out.poly(cap_mat, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cap_col)
             out.poly(cap_mat, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cap_col)
         roof_kit(ring, inner, deck, top, b, rng, out, dict(ctx, rc=rc_, roles=roles, storeys=storeys, ax_u=ax_u, ax_v=ax_v))
-        # a roof deck on about one flat-roofed house in five
-        if style in ('vic', 'stucco', 'midcentury') and rng.random() < 0.2:
+        # a roof deck on about one flat-roofed house in five (at the city's LOD roof_kit lays it)
+        if style in ('vic', 'stucco', 'midcentury') and rng.random() < 0.2 and LOD == 0:
             cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
             d0 = Vector((cx, cy, deck + 0.12)) - ax_u * 1.6 - ax_v * 1.6
             out.box3('deck', d0, ax_u * 3.2, ax_v * 3.2, Vector((0, 0, 0.12)), (0.62, 0.48, 0.34))
@@ -1161,7 +1161,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             if rng.random() < 0.3: cyl('metal', s_[0] + 0.1, s_[1] + 0.1, deck + h, 0.08, r * 2.2, col, 8)
     # condensers and rooftop units
     n_hv = 0
-    if style == 'block': n_hv = int(min(8, 1 + area / 140 * rng.uniform(0.6, 1.4)))
+    if style == 'block': n_hv = int(min(14, 1 + area / 90 * rng.uniform(0.6, 1.4)))     # (24/09: denser, 8 at most read bare)
     elif house and rng.random() < 0.2: n_hv = 1
     for _ in range(n_hv):
         rtu = style == 'block' and (b.get('shop') or b['ty'] in ('RETAIL', 'OFFICE', 'HOTEL')) and rng.random() < 0.5
@@ -1170,6 +1170,11 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
         if not s_: continue
         col = rng.choice(((0.78, 0.77, 0.73), (0.70, 0.70, 0.68), (0.84, 0.83, 0.79)))
         box('equip', s_[0], s_[1], wu, wv, deck, h, col)
+        if rtu and LOD >= 1:
+            # its supply duct running off across the roof, low, in galvanised sheet
+            dl = rng.uniform(2.5, 6.0); dv = rng.choice((-1, 1))
+            v0_ = s_[1] + wv if dv > 0 else s_[1] - dl
+            if vmin + 0.4 < v0_ and v0_ + dl < vmax - 0.4: box('metal', s_[0] + wu * 0.35, v0_, 0.6, dl, deck, 0.55, (0.62, 0.63, 0.62))
         if LOD < 2:
             for k in range(2 if rtu else 1):
                 um = s_[0] + (wu * (0.3 + 0.4 * k) if rtu else wu / 2); vm = s_[1] + wv / 2
@@ -1194,6 +1199,31 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
                     out.poly('solar', [at(u0, s_[1], z0), at(u0 + pw, s_[1], z0), at(u0 + pw, s_[1] + wv, z1), at(u0, s_[1] + wv, z1)], (1, 1, 1))
                 box('metal', s_[0], s_[1] + wv - 0.05, wu, 0.05, deck, z1 - deck, (0.5, 0.5, 0.5))
             if nrow: break
+    # (24/09) a roof deck at the city's LOD: planks, a railing seen as a thin
+    # veil round it, planters, an umbrella now and then — on about one house
+    # roof in four; the old centred square stays for LOD 0
+    dr = random.Random(b['gid'] * 97 + 5)
+    if style in ('vic', 'stucco', 'midcentury') and LOD >= 1 and area > 40 and dr.random() < 0.26:
+        wu, wv = dr.uniform(2.8, 5.0), dr.uniform(2.4, 4.0)
+        s_ = spot(wu, wv, tries=30, pad=0.35)
+        if s_:
+            u0, v0 = s_; z0 = deck + 0.14
+            box('deck', u0, v0, wu, wv, deck, 0.14, dr.choice(((0.60, 0.46, 0.32), (0.52, 0.40, 0.29), (0.66, 0.58, 0.48), (0.46, 0.44, 0.42))))
+            rc_ = dr.choice(((0.14, 0.14, 0.15), (0.90, 0.89, 0.86), (0.40, 0.33, 0.26)))
+            C4 = [at(u0, v0, 0), at(u0 + wu, v0, 0), at(u0 + wu, v0 + wv, 0), at(u0, v0 + wv, 0)]
+            for i in range(4):
+                a_, c_ = C4[i], C4[(i + 1) % 4]
+                out.poly('curtain', [a_ + Z * z0, c_ + Z * z0, c_ + Z * (z0 + 1.05), a_ + Z * (z0 + 1.05)], rc_)
+            for k in range(dr.randint(1, 4)):                                   # planters along an edge
+                pu = dr.uniform(0.6, 1.4)
+                box('equip', u0 + dr.uniform(0.1, max(0.12, wu - pu - 0.1)), v0 + (0.1 if dr.random() < 0.5 else wv - 0.55), pu, 0.45, z0, 0.5,
+                    dr.choice(((0.20, 0.30, 0.14), (0.26, 0.36, 0.18), (0.30, 0.34, 0.20))))
+            if dr.random() < 0.3:                                               # an umbrella
+                uc, vc, ra = u0 + wu / 2, v0 + wv / 2, dr.uniform(0.9, 1.2); zu = z0 + 2.1
+                ucol = dr.choice(((0.92, 0.91, 0.87), (0.62, 0.10, 0.09), (0.12, 0.30, 0.18), (0.86, 0.46, 0.12)))
+                R_ = [at(uc + ra * math.cos(2 * math.pi * i / 8), vc + ra * math.sin(2 * math.pi * i / 8), zu) for i in range(8)]
+                ap = at(uc, vc, zu + 0.4)
+                for i in range(8): out.poly('awning', [R_[i], R_[(i + 1) % 8], ap], ucol)
 
 
 def facade(w, is_front, b, rng, c):
