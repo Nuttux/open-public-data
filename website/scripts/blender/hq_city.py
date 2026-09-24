@@ -163,14 +163,17 @@ def ground_s(x, y):
 
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
+SA_ = array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
     if m['layer'] == 'streets':
-        p = f32(m['pos'])
-        if BOX is None: SP.extend(p)
+        # the engine's two street layers, the casing (light) and the asphalt
+        # (dark), kept apart for merge_street_layers (as hq_scene does)
+        p = f32(m['pos']); tgt = SA_ if (m.get('color') or [1])[0] < 0.2 and E('ST_MERGE', '1') == '1' else SP
+        if BOX is None: tgt.extend(p)
         else:
             for t in range(len(p) // 9):
-                if in_box(p[t*9], p[t*9+1], 60): SP.extend(p[t*9:t*9+9])
+                if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
     elif m['layer'] == 'street-markings':
         p = f32(m['pos'])
         for t in range(len(p) // 9):
@@ -188,6 +191,12 @@ for m in d['meshes']:
         else:
             for t in range(len(p) // 9):
                 if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
+# (25/09) THE CRUMPLED LOTS (Mission Rock, the Golden Gateway garages, Pier
+# 48): the casing and the asphalt, two big surfaces of different
+# triangulations each draped by terrain_hq on its own corners, cut through
+# each other on uneven ground in dark faceted shards. The casing wholly under
+# the asphalt goes (hq_scene's fix, never ported here). ST_MERGE=0: as before
+if len(SA_): SP, _ = merge_street_layers(SP, SA_)
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
