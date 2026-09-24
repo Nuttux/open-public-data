@@ -42,7 +42,18 @@ if E('MODE') == 'pyramid' and ONLY and BOX is None:
     # what casts a shadow into them (sun from the south-west) and what stands
     # south of them and rises into view (300 m of tower or hill = ~540 m of y)
     fr_ = [frame_world(i, j) for i, j in ONLY]
-    BOX = [min(f[0] for f in fr_) - 450, min(f[1] for f in fr_) - 700, max(f[2] for f in fr_) + 450, max(f[3] for f in fr_) + 150]
+    _pad = (450, 700, 450, 150)
+    if E('BORDER') and len(ONLY) == 1:
+        # A CROP TEST NEEDS ONLY ITS CROP: the frame's sub-rectangle (BORDER is
+        # fractions, y from the image bottom = the frame's low world y), with a
+        # tighter margin (shadows ~450 m for 200 m towers at 24 deg, towers to
+        # the south rising into view). A whole-frame scene for a crop cost
+        # 35-45 GB and 30-50 s of build; this is a fraction (24/09, parallel tests)
+        bx_ = [float(v) for v in E('BORDER').split(',')]
+        f0 = fr_[0]; fw_, fh_ = f0[2] - f0[0], f0[3] - f0[1]
+        fr_ = [(f0[0] + bx_[0] * fw_, f0[1] + bx_[2] * fh_, f0[0] + bx_[1] * fw_, f0[1] + bx_[3] * fh_)]
+        _pad = tuple(float(v) for v in E('BOXPAD', '300,500,300,120').split(','))
+    BOX = [min(f[0] for f in fr_) - _pad[0], min(f[1] for f in fr_) - _pad[1], max(f[2] for f in fr_) + _pad[2], max(f[3] for f in fr_) + _pad[3]]
     print('region box', [round(v) for v in BOX], flush=True)
 def in_box(x, y, pad=0.0):
     return BOX is None or (BOX[0] - pad <= x <= BOX[2] + pad and BOX[1] - pad <= y <= BOX[3] + pad)
@@ -539,6 +550,11 @@ if os.environ.get('LANDMARKS', '1') == '1':
     if landmarks_hq is not None:
         landmarks_hq.build(bpy, sc, M, ground0, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
 
+# ── WATER (water2_hq.py, the water agent): the sea coloured by depth and turbidity, wind and current, beaches and surf; WATER2=0 skips
+if E('WATER2', '1') == '1':
+    try: import water2_hq; water2_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log('water2_hq: not built:', ex)
 # ── TRANSIT (transit_hq.py, the transit agent): track, overhead, platforms, vehicles; TRANSIT=0 skips
 if E('TRANSIT', '1') == '1':
     try: import transit_hq; transit_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
