@@ -171,7 +171,7 @@ def piers():
         recs = city_data.buildings(min(xs) - 10, min(ys) - 10, max(xs) + 10, max(ys) + 10) if decks else []
         pier_gids = []
         for b in recs:
-            if b['h'] >= 4.5 or len(b['ring']) < 3: continue
+            if b['h'] >= 4.5 or len(b['ring']) < 3 or b['gid'] >= 910000000: continue   # DataSF only (OSM newbuildings: gids 910000000+)
             B = Polygon(b['ring'])
             if not B.is_valid: B = B.buffer(0)
             if B.area < 50: continue
@@ -200,7 +200,7 @@ def main():
         xs = [p[0] for r in outer for p in r]; ys = [p[1] for r in outer for p in r]
         bb = (min(xs), min(ys), max(xs), max(ys))
         recs = city_data.buildings(bb[0] - 5, bb[1] - 5, bb[2] + 5, bb[3] + 5)
-        under = [b for b in recs if any(pip(b['cx'], b['cy'], r) for r in outer) and not any(pip(b['cx'], b['cy'], r) for r in inner)]
+        under = [b for b in recs if b['gid'] < 910000000 and any(pip(b['cx'], b['cy'], r) for r in outer) and not any(pip(b['cx'], b['cy'], r) for r in inner)]
         out[key] = dict(osm=f'{ref[0]}/{ref[1]}', tags=e.get('tags', {}), outer=outer, inner=inner, bbox=bb,
                         datasf=[dict(gid=b['gid'], ring=b['ring'], h=b['h'], year=b['year']) for b in under])
         if key in SKIP: skip[key] = [b['gid'] for b in under if b['gid'] not in NOT_UNDER.get(key, ())] + list(EXTRA.get(key, ()))

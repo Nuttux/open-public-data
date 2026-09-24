@@ -33,7 +33,7 @@ from lm_kit import Frame
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
 ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz'}
-WATER_ENABLED = {'lakes'}        # + 'piers', 'sea_depth', 'sea_wind' once validated
+WATER_ENABLED = {'lakes', 'piers'}   # + 'sea_depth', 'sea_wind' once validated
 
 class Region:
     """where the engine's crude stand-in is cleared: a polygon, or a

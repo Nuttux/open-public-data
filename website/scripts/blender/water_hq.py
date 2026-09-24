@@ -363,8 +363,18 @@ def piers(C):
                     K.beam('lm_matte', (a[0], a[1], z - 0.2), (b[0], b[1], z - 0.2), w, 0.4, FLOAT if fl else DECK)
                     if not fl: K.beam('lm_matte', (a[0], a[1], (z - 1.6) / 2), (b[0], b[1], (z - 1.6) / 2), w * 0.85, z + 1.2, DECK_SIDE, caps=False)
                 n += 1
+    # the aprons terrain_hq grew round the pier sheds, only where no OSM deck
+    # already covers them: an apron on an OSM deck doubled it (its dark sides
+    # 2-5 m outside the deck, a black end on Pier 7 and a black band on Pier 1)
+    osm_polys = [(r_, []) for k_, r_ in decks]
     for r in (C.d.get('_piers') or []) if isinstance(C.d, dict) else []:
-        if near(r): decks.append(('apron', [tuple(q) for q in r]))
+        if not near(r): continue
+        R = np.asarray(r, float)
+        xs_ = np.linspace(R[:, 0].min(), R[:, 0].max(), 14); ys_ = np.linspace(R[:, 1].min(), R[:, 1].max(), 14)
+        GX, GY = np.meshgrid(xs_, ys_); GX, GY = GX.ravel(), GY.ravel()
+        ins = _inside_many(GX, GY, [(r, [])])
+        if ins.sum() and osm_polys and _inside_many(GX[ins], GY[ins], osm_polys).mean() > 0.3: continue
+        decks.append(('apron', [tuple(q) for q in r]))
     for kind, r in decks:
         if len(r) < 3: continue
         if kind == 'float':
