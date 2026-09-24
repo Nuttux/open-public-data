@@ -162,6 +162,12 @@ def _build(bpy, sc, M, ground, box, log, t0):
             import life_traffic
             life_traffic.build(bpy, sc, coll, T, D, ground, inb, log, t0)
         except Exception as ex: traceback.print_exc(); log('life_hq: streets failed', ex)
+    if E('LIFE_PEOPLE', '0') == '1':          # under test
+        try:
+            import life_people, life_water as LW
+            sea = LW.Sea(D['sea'], os.path.join(ddir, 'sea_4m.npy'))
+            life_people.build(bpy, sc, coll, T, D, ground, sea, inb, log, t0)
+        except Exception as ex: traceback.print_exc(); log('life_hq: people failed', ex)
 
 
 def _water(bpy, coll, T, D, ddir, inb, log, t0):

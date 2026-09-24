@@ -125,6 +125,16 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
         h = deck.ray_cast(Vector((float(x), float(y), 300.0)), down, 400.0)
         if h[0] is not None and h[0].z > 8.0 and h[1].z > 0.8: return h[0].z
         return None
+    # the viaducts (freeways_hq, the freeways agent): a pure-Python query of
+    # its decks; without it every freeway is the engine's, at grade
+    # (only when the running script builds them: freeways_hq runs after life_hq)
+    try:
+        import sys as _sys
+        _src = open(_sys.argv[_sys.argv.index('-P') + 1]).read() if '-P' in _sys.argv else ''
+        if 'freeways_hq' not in _src: raise RuntimeError('the render script does not build the viaducts')
+        import freeways_hq as FW; FW.load()
+    except Exception as ex:
+        FW = None; log('life_traffic: no viaduct decks (freeways_hq):', ex)
     # the tracks (transit.json): no car within 2.3 m of a centre line
     import transit_hq
     kt = None
@@ -155,14 +165,14 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
         for i, p in enumerate(PK): kp.insert((float(p[0]), float(p[1]), 0.0), i)
         kp.balance()
     placed = {}                    # 4 m grid of car centres (moving), for overlaps
-    def free(x, y, L, W):
+    def free(x, y, L, W, z=0.0):
         for a in (-1, 0, 1):
             for b in (-1, 0, 1):
-                for px, py, pr in placed.get((int(x // 4) + a, int(y // 4) + b), ()):
-                    if math.hypot(x - px, y - py) < pr + L * 0.45: return False
+                for px, py, pr, pz in placed.get((int(x // 4) + a, int(y // 4) + b), ()):
+                    if abs(z - pz) < 3.0 and math.hypot(x - px, y - py) < pr + L * 0.45: return False
         return True
     cars, others = [], []
-    nway = 0; rej = dict(off=0, track=0, parked=0, ix=0, over=0, deck=0)
+    nway = 0; rej = dict(off=0, track=0, parked=0, ix=0, over=0, deck=0); nmode = dict(street=0, lm=0, fw=0)
     for r in D['roads']:
         if not any(inb(x, y, 80) for x, y in r['pts'][:: max(1, len(r['pts']) // 8)] + [r['pts'][-1]]): continue
         rr = random.Random(r['id'])
@@ -177,6 +187,7 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
         # up); every other 'bridge' way (the SoMa viaducts, the Central Freeway)
         # the engine draws at grade, in its street mesh
         bridge = r['br'] and hw == 'motorway' and (('Golden Gate Bridge' in r['name']) or ('Eisenhower' in r['name'] and r['pts'][0][0] > 4000))
+        elev = FW is not None and FW.elevated(r['id'])
         # the Bay Bridge's eastbound deck is the lower one, under the upper: not drawn
         if bridge and 'Eisenhower' in r['name'] and r['pts'][-1][0] > r['pts'][0][0] + 200: continue
         ix = r.get('ix', [])
@@ -216,16 +227,34 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
                 elif u_ < 0.03: vk = rv.choice([f'van{k}' for k in range(5)] + [f'box{k}' for k in range(2)])
                 if vk: L, W = LV.LENGTH[vk], 2.4
                 else: L, W = 4.7, 1.85
-            # the surface and the carriageway at this point
-            if bridge:
-                zc = deck_z(x0, y0)
-                if zc is None: zc = street_z(x0, y0)
-                if zc is None: rej['deck'] += 1; continue
+            # the surface and the carriageway at this point: the landmarks' bridge
+            # deck, the freeways agent's viaduct deck, or the street mesh
+            mode = 'street'
+            if bridge and deck_z(x0, y0) is not None: mode = 'lm'
+            elif elev and FW.deck_z(r['id'], x0, y0) is not None: mode = 'fw'
+            if mode == 'lm':
                 lw = 3.5; half = (r['nf'] + r['nb']) * lw / 2
                 dl = dr = half
                 if r['nb'] == 0: dl = dr = r['nf'] * lw / 2
                 park = 0.0
                 onsurf = lambda x, y: (deck_z(x, y) or street_z(x, y))
+                if lane is None: u = 0.0
+                elif r['nb'] == 0 or lane >= 0: u = -dr + (lane + 0.5) * lw
+                else: u = dl - (-1 - lane + 0.5) * lw
+            elif mode == 'fw':
+                # freeways_hq's deck: 12 ft lanes inside the parapets, the left
+                # shoulder ~1.2 m on the mainline (0.9 on a ramp), the rest right
+                half = FW.deck_half(r['id']) or (r['nf'] + r['nb']) * 1.83 + 1.5
+                sh = 0.9 if hw.endswith('_link') else 1.2
+                if lane is None: u = 0.0
+                elif r['nb'] == 0:
+                    lw = min(3.66, (2 * half - sh - 0.5) / max(1, r['nf']))
+                    u = half - sh - (r['nf'] - 1 - lane + 0.5) * lw
+                else:
+                    lw = min(3.66, (2 * half - 1.2) / max(1, r['nf'] + r['nb']))
+                    u = (-half + 0.6 + (lane + 0.5) * lw) if lane >= 0 else (half - 0.6 - (-1 - lane + 0.5) * lw)
+                wid = r['id']
+                onsurf = lambda x, y, wid=wid: FW.deck_z(wid, x, y)
             else:
                 # the carriageway across the way: runs of street mesh, from the
                 # centre line outward (a median leaves the centre off the street)
@@ -263,36 +292,30 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
                     u = (a_ + park + (lane + 0.5) * lw) if lane >= 0 else (b_ - park - (-1 - lane + 0.5) * lw)
                     if not a_ - 0.2 <= u <= b_ + 0.2: rej['off'] += 1; continue
                 onsurf = street_z
-            if bridge:
-                n_l = 1 if lane is None else max(1, r['nf'] + r['nb'])
-                lw = 3.5
-                if lane is None: u = 0.0
-                elif r['nb'] == 0: u = -dr + (lane + 0.5) * lw
-                elif lane >= 0: u = -dr + (lane + 0.5) * lw
-                else: u = dl - (-1 - lane + 0.5) * lw
             x, y = x0 + nx * u, y0 + ny * u
             yaw = math.atan2(ty, tx) + (0.0 if fwd else math.pi)
             ca, sa = math.cos(yaw), math.sin(yaw)
             fx, fy, bx_, by_ = x + ca * L * 0.38, y + sa * L * 0.38, x - ca * L * 0.38, y - sa * L * 0.38
             zf, zb = onsurf(fx, fy), onsurf(bx_, by_)
             if zf is None or zb is None: rej['off'] += 1; continue
-            if kt is not None and any(kt.find((px, py, 0.0))[2] < 2.3 for px, py in ((x, y), (fx, fy), (bx_, by_))):
+            if mode == 'street' and kt is not None and any(kt.find((px, py, 0.0))[2] < 2.3 for px, py in ((x, y), (fx, fy), (bx_, by_))):
                 rej['track'] += 1; continue
-            if kp is not None:
+            if mode == 'street' and kp is not None:
                 hit = False
                 for (p, idx, dd) in kp.find_range((x, y, 0.0), L / 2 + 3.0):
                     rx, ry = p[0] - x, p[1] - y
                     if abs(rx * -sa + ry * ca) < (W / 2 + 0.9 + 0.35) and abs(rx * ca + ry * sa) < L / 2 + 2.4: hit = True; break
                 if hit: rej['parked'] += 1; continue
-            if not free(x, y, L, W): rej['over'] += 1; continue
+            if not free(x, y, L, W, (zf + zb) / 2): rej['over'] += 1; continue
             for q in (-0.35, 0.0, 0.35):
                 px, py = x + ca * L * q, y + sa * L * q
-                placed.setdefault((int(px // 4), int(py // 4)), []).append((px, py, max(W, L * 0.3)))
+                placed.setdefault((int(px // 4), int(py // 4)), []).append((px, py, max(W, L * 0.3), (zf + zb) / 2))
             pitch = math.atan2(zf - zb, 0.76 * L)
             z = (zf + zb) / 2 + 0.02
+            nmode[mode] += 1
             if vk is None: cars.append((x, y, z, pitch, yaw))
             else: others.append((vk, x, y, z, pitch, yaw))
-    log(f'life_traffic: {nway} ways, {len(cars)} cars, {len(others)} buses and trucks; dropped {rej} ({time.time() - t0:.1f}s)')
+    log(f'life_traffic: {nway} ways, {len(cars)} cars, {len(others)} buses and trucks (on {nmode}); dropped {rej} ({time.time() - t0:.1f}s)')
     # the cars: hq_scene's own bodies (the 'carp{i}' collections hq_city builds), instanced
     protos = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(8)) if c is not None]
     if cars and protos:
