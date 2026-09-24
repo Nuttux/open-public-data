@@ -8,7 +8,7 @@ softened (x0.7). Then a gentle S-curve, a soft bloom on the brightest
 highlights, and local contrast. No haze, no vignette: the frame stays crisp
 and tile-able. (color/grade2.py holds the variants A-D.)
 
-DEFAULT since 24/09 evening (Daniel): preset V5 "clear midday" = look B plus
+Default preset V6 since 25/09 night (see V6 below); before that, from 24/09 evening (Daniel), preset V5 "clear midday" = look B plus
 wb=1/1/0.99 green=1.15 water=1.1 sat=1.12 black=0.015 clarity=0.3 clarity_r=40
 waterv=0.72 (explicit keys override it). preset=B: look B alone, byte for byte.
 
@@ -30,8 +30,12 @@ from PIL import Image, ImageFilter
 _pos = [a for a in sys.argv[1:] if '=' not in a]; O = dict(a.split('=', 1) for a in sys.argv[1:] if '=' in a)
 # Default preset V5 "clear midday" (Daniel, 24/09 evening); preset=B gives back look B alone. Explicit keys win.
 V5 = dict(wb='1/1/0.99', green='1.15', water='1.1', sat='1.12', black='0.015', clarity='0.3', clarity_r='40', waterv='0.72')
-if O.get('preset', 'V5') == 'V5': O = {**V5, **O}
-elif O.get('preset') != 'B': sys.exit(f"preset={O.get('preset')}: unknown (V5 or B)")
+# Default preset V6 (25/09 night, main under Daniel's overnight mandate; reversible: preset=V5): V5 with the sky light's
+# grade — cool shade kept (shn=0), deeper blacks, more contrast, a colour script (warm light, teal shade, never violet)
+V6 = dict(V5, wb='1.02/1/0.965', water='1.3', black='0.06', clarity='0.35', shn='0', s='0.30', split='0.4')
+_p = O.get('preset', 'V6')
+if _p in ('V5', 'V6'): O = {**{'V5': V5, 'V6': V6}[_p], **O}
+elif _p != 'B': sys.exit(f"preset={_p}: unknown (V6, V5 or B)")
 def o(k, d): return float(O[k]) if k in O else d
 WB = np.array([float(v) for v in O['wb'].split('/')]) if 'wb' in O else np.array([1.03, 1.0, 0.95])
 SHADOW_NEUTRAL = o('shn', 0.6); SAT = o('sat', 1.08); PURPLE_SAT = o('purple', 0.7); S = o('s', 0.22)
