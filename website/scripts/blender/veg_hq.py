@@ -111,8 +111,9 @@ class Kinds:
         self.drop_none = os.environ.get('VEG_DROP_NONE', '1') == '1'
         # THE REAL CANOPY (veg_canopy.py: LiDAR crowns where NAIP sees leaves,
         # off the footprints, not on a listed tree): with CANOPY=1 each crown is
-        # planted at its measured height and width, and the engine's canopy
-        # masses (discs of a coarser measure) are no longer planted
+        # planted at its measured height and width in the open zones (CAN_ZONES),
+        # where the engine's canopy masses (discs of a coarser measure) are then
+        # no longer planted; the woods and parks keep their masses
         cp = os.path.join(VEG, 'canopy_trees.npz')
         self.canopy_on = os.environ.get('CANOPY', '0') == '1' and os.path.exists(cp)
         if self.canopy_on:
