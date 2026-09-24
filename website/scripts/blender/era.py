@@ -866,7 +866,11 @@ def pick(mix, r):
 #     surface streets and are not gated here.
 def freeway_year(name, x, y):
     if not name: return None
-    if name.startswith('I-80'): return 1936
+    # the Bay Bridge's own approach down to Fifth Street (5th St crosses
+    # I-80 at x ≈ 3229) with the bridge, 1936; west of it 'The San Francisco
+    # Skyway from the Bayshore Freeway to the Bay Bridge ... opened on June
+    # 14, 1955' (gribblenation 'The Bayshore Freeway')
+    if name.startswith('I-80'): return 1936 if x >= 3200 else 1955.45
     if name.startswith('I-280'):
         # north of 16th Street (y 732) the freeway is purple on the 1973
         # photorevision of the 1:24,000 San Francisco North sheet and absent
@@ -1268,9 +1272,47 @@ def hero_mesh_filter(pos, col, era):
     return (P, C) if len(P) else None
 
 
-def build_structures(bpy, era, ground, mat, box=None, log=print):
-    """the lost viaducts as geometry: each deck a slab with parapets, carried
-    on two-column bents; deck heights follow the ground, smoothed over ±40 m"""
+def lost_ways(era, ground, box=None):
+    """the lost double-deck viaducts of the year as freeways_hq ways (one way
+    per deck, points every 3 m, deck top = the ground smoothed over ±40 m +
+    the deck's height), so they are drawn like today's (decks, lane paint,
+    parapets, bents): the freeways agent's builder"""
+    import math as _m
+    ways = []
+    for k_, st in enumerate(structures(era)):
+        path = st['path']
+        if box is not None and not any(box[0] - 300 <= x <= box[2] + 300 and box[1] - 300 <= y <= box[3] + 300 for x, y in path): continue
+        P = []
+        for (ax, ay), (bx, by) in zip(path, path[1:]):
+            n = max(1, int(_m.hypot(bx - ax, by - ay) / 3.0))
+            P += [(ax + (bx - ax) * i / n, ay + (by - ay) * i / n) for i in range(n)]
+        P.append(path[-1])
+        g = [ground(x, y) or 0.0 for x, y in P]
+        gs = [sum(g[max(0, i - 13):i + 14]) / len(g[max(0, i - 13):i + 14]) for i in range(len(g))]
+        s_ = [0.0]
+        for i in range(1, len(P)): s_.append(s_[-1] + _m.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]))
+        for j, dz in enumerate(st['decks']):
+            ways.append(dict(id=880000 + 10 * k_ + j, hw='motorway', lanes=3 if st['w'] >= 14 else 2, width=st['w'],
+                             s=s_, pts=[[x, y, gs[i] + dz] for i, (x, y) in enumerate(P)], hag=[gs[i] + dz - g[i] for i in range(len(P))],
+                             name=st['k']))
+    return ways
+
+
+def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
+    """the lost viaducts as geometry: with the freeways agent's builder
+    (freeways_hq.build_ways, when there and M is given) drawn like today's
+    viaducts; else each deck a slab with parapets, carried on two-column
+    bents; deck heights follow the ground, smoothed over ±40 m"""
+    if M is not None and os.environ.get('LOST_FW_HQ', '1') == '1':
+        try:
+            import freeways_hq
+            W = lost_ways(era, ground, box)
+            if W:
+                freeways_hq.build_ways(bpy, bpy.context.scene, M, ground, box or (-9000, -9000, 9000, 9000), W, log, name='lost_freeways')
+                log('lost structures standing (freeways_hq):', sorted({w['name'] for w in W}))
+            return None
+        except ModuleNotFoundError:
+            pass
     from mathutils import Vector
     V, F = [], []
 

@@ -2140,7 +2140,7 @@ if ERA is not None and OPEN is not None:
     EA.build_yards(bpy, ERA, (bx0, by0, bx1, by1), ground, open_at, simple('yardrail', (0.45, 0.42, 0.40), rough=0.35, metal=0.9),
                    simple('ballast', (0.20, 0.18, 0.16), rough=0.95), log)
 # the structures the record has lost (era.STRUCTURES: the freeways that came down)
-if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log)
+if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log, M=M)
 # the stadiums, pools, halls and terminals since torn down (era_lost.LOST)
 if ERA is not None:
     EA.build_lost(bpy, ERA, ground, {'field': M['lawn'], 'stands': simple('lost_stands', (0.62, 0.61, 0.58), rough=0.8),
