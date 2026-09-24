@@ -58,15 +58,15 @@ def attach(M, box, grain=0.12):
         sn = N('ShaderNodeSeparateXYZ'); L(geo.outputs['Normal'], sn.inputs[0])
         up = N('ShaderNodeMapRange'); up.interpolation_type = 'SMOOTHSTEP'; L(sn.outputs[2], up.inputs[0])
         up.inputs[1].default_value = 0.40; up.inputs[2].default_value = 0.55
-        a = N('ShaderNodeMath', operation='MULTIPLY'); L(tx.outputs['Alpha'], a.inputs[0]); L(up.outputs[0], a.inputs[1])
+        a = N('ShaderNodeMath'); a.operation = 'MULTIPLY'; L(tx.outputs['Alpha'], a.inputs[0]); L(up.outputs[0], a.inputs[1])
         # a faint 12 cm grain on the photo
         nz = N('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 1 / 0.12; nz.inputs['Detail'].default_value = 2.0
         L(geo.outputs['Position'], nz.inputs['Vector'])
         gr = N('ShaderNodeMapRange'); L(nz.outputs['Fac'], gr.inputs[0]); gr.inputs[1].default_value = 0.3; gr.inputs[2].default_value = 0.7
         gr.inputs[3].default_value = 1.0 - grain; gr.inputs[4].default_value = 1.0 + grain
-        mu = N('ShaderNodeMix', data_type='RGBA', blend_type='MULTIPLY'); mu.inputs[0].default_value = 1.0
+        mu = N('ShaderNodeMix'); mu.data_type = 'RGBA'; mu.blend_type = 'MULTIPLY'; mu.inputs[0].default_value = 1.0
         L(tx.outputs['Color'], mu.inputs[6]); L(gr.outputs[0], mu.inputs[7])
-        mx = N('ShaderNodeMix', data_type='RGBA', blend_type='MIX'); L(a.outputs[0], mx.inputs[0])
+        mx = N('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MIX'; L(a.outputs[0], mx.inputs[0])
         if src is not None: L(src, mx.inputs[6])
         else: mx.inputs[6].default_value = tuple(bc.default_value)
         L(mu.outputs[2], mx.inputs[7])
