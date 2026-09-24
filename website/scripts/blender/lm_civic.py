@@ -1491,7 +1491,7 @@ def lombard(C):
                 x, y = a[0] + d[0] * t + nrm[0] * s_, a[1] + d[1] * t + nrm[1] * s_
                 pts.append((x, y, sz(x, y) + (0.08 if abs(s_) > HALF - 2.4 else 0.45)))
             edge = abs((s0 + s1) / 2) > HALF - 2.4
-            col = hexc('#a7a39a') if edge else (hexc('#c2477a') if rnd.random() < 0.18 else hexc('#b83a4e') if rnd.random() < 0.08 else hexc('#2f4a26') if rnd.random() < 0.6 else hexc('#3d5a2c'))
+            col = hexc('#a7a39a') if edge else (hexc('#c86a92') if rnd.random() < 0.09 else hexc('#e3dcd2') if rnd.random() < 0.06 else hexc('#2f4a26') if rnd.random() < 0.6 else hexc('#3d5a2c'))   # hedges, a few pink and white hydrangeas (the 18 % pink read as red roofs)
             K.face('lm_matte', pts, col)
     # the brick road along the switchbacks, a curb each side
     pts = [tuple(p) for p in cl]
