@@ -223,7 +223,7 @@ def main():
     built_all = {l.key: l.built for l in landmarks_hq._registry()}
     if _la is None: os.environ.pop('LM_ALL')
     else: os.environ['LM_ALL'] = _la
-    built_all['piers'] = 0                                    # the decks stand in every era they are drawn
+    built_all['piers'] = 1990                                 # water_hq.piers draws the decks from 1990 on; before, the generator's
     skip = {k: v for k, v in skip.items() if k in landmarks_hq.ENABLED or k in landmarks_hq.WATER_ENABLED}
     built = {k: built_all.get(k) for k in skip}
     hero = city_data.hero_gids()

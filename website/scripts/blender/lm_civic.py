@@ -123,6 +123,72 @@ def salesforce(C):
     K.prism('lm_paint', [p[:2] for p in core], g + CROWN0, g + ROOF + 8, hexc('#bfc3c4'))
     K.prism('lm_paint', [p[:2] for p in rrect(fr, hu * 0.45, hv * 0.45, 2.0, 0, 3)], g + ROOF + 8, g + TOP - 6, hexc('#a9adb0'))
 
+# ── 181 Fremont ─────────────────────────────────────────────────────────────
+# OSM way 445566153 (ODbL, (c) OpenStreetMap contributors): height 244.4 m,
+# 57 levels; not in DataSF (two 5.4 m lot records stood on its site)
+FREMONT181_RING = [(3758.78, 3340.46), (3747.78, 3329.4), (3742.72, 3324.32), (3740.36, 3321.94), (3730.19, 3311.73),
+                   (3736.84, 3305.11), (3755.46, 3286.6), (3774.17, 3305.4), (3766.77, 3312.77), (3776.65, 3322.7)]
+FREMONT_GLASS = (0.29, 0.36, 0.44, 0.55)        # blue-grey curtain wall: tint + how metallic (alpha)
+BRACE = hexc('#e4e5e2')
+
+def fremont181(C):
+    """181 FREMONT (Heller Manus, 2018): 802 ft (244.4 m, OSM) of blue-grey
+    glass on a 40 x 36 m plate set at 45 degrees to the street grid, wrapped in
+    a white exoskeleton of diagonal megabraces (each face a chevron every ~9
+    floors), the upper floors cut back in sloping facets to a crown and a
+    spire. The plan is OSM's outline (its stepped east corner kept); the
+    braces run on the outline's bounding rectangle."""
+    if C.era is not None and C.era < 2017: return
+    r = FREMONT181_RING; K = C.K
+    cx, cy = centroid(r); ang = orient(r, near=45)
+    fr = Frame(cx, cy, ang)
+    u0, u1, v0, v1 = extent(r, fr)
+    g = min(C.tg(*p) for p in r)
+    ROOF, CROWN_TOP, TOP = 205.0, 236.0, 244.4
+    # the shaft: glass, a thin white band every floor (3.6 m) catching the light
+    K.prism('curtain_wall', r, g - 1.0, g + ROOF, FREMONT_GLASS, top=False)
+    for k in range(1, int(ROOF / 3.6)):
+        z = g + k * 3.6
+        ro = [(cx + (x - cx) * 1.004, cy + (y - cy) * 1.004) for x, y in r]
+        K.prism('lm_paint', ro, z, z + 0.22, hexc('#aeb4b9'), top=False)
+    # the crown: the plate pulled in towards its north corner in facets, to a point
+    uc, vc = (u0 + u1) / 2, (v0 + v1) / 2
+    apex = fr.P(uc + (u1 - uc) * 0.35, vc + (v1 - vc) * 0.35, g + CROWN_TOP)
+    n = len(r)
+    tiers = [(ROOF, 1.0), (ROOF + 12.0, 0.72), (ROOF + 22.0, 0.42)]
+    rings = []
+    for (z, sc) in tiers:
+        rings.append([(apex[0] + (x - apex[0]) * sc, apex[1] + (y - apex[1]) * sc, g + z) for x, y in r])
+    K.loft('curtain_wall', rings, FREMONT_GLASS, cap_top=False)
+    top = rings[-1]
+    for i in range(n):                                   # the last facets meet at the apex
+        a, b = top[i], top[(i + 1) % n]
+        K.face('curtain_wall', [a, b, apex], FREMONT_GLASS)
+    # the crown's white frame: the ridges up to the apex
+    for p in rings[0][::2]:
+        K.beam('lm_paint', p, apex, 0.6, 0.6, BRACE)
+    K.cyl('lm_paint', apex, (apex[0], apex[1], g + TOP), 0.45, BRACE, n=6, smooth=False, r1=0.12)
+    # the exoskeleton: on each face of the bounding rectangle, diagonals from
+    # corner to corner every 33 m (a zigzag, so every face reads as chevrons),
+    # 0.5 m proud of the glass, and a white horizontal at every node
+    faces = [((u0, v0), (u1, v0)), ((u1, v0), (u1, v1)), ((u1, v1), (u0, v1)), ((u0, v1), (u0, v0))]
+    H = 33.0; nz = int(ROOF / H)
+    for (a, b) in faces:
+        du, dv = b[0] - a[0], b[1] - a[1]; L = math.hypot(du, dv)
+        nu, nv = dv / L, -du / L                          # outward (the faces run counter-clockwise)
+        off = 0.5
+        pa = lambda t, z: fr.P(a[0] + du * t + nu * off, a[1] + dv * t + nv * off, g + z)
+        for k in range(nz):
+            z0, z1 = k * H, min(ROOF, (k + 1) * H)
+            t0, t1 = (0.0, 1.0) if k % 2 == 0 else (1.0, 0.0)
+            K.beam('lm_paint', pa(t0, z0), pa(0.5, (z0 + z1) / 2), 1.3, 0.8, BRACE, up=(0, 0, 1))
+            K.beam('lm_paint', pa(0.5, (z0 + z1) / 2), pa(t1, z1), 1.3, 0.8, BRACE, up=(0, 0, 1))
+            K.beam('lm_paint', pa(0.0, z1), pa(1.0, z1), 1.0, 0.8, BRACE, up=(0, 0, 1))
+        for t in (0.0, 1.0):                              # the corner columns
+            K.beam('lm_paint', pa(t, 0.0), pa(t, ROOF), 1.4, 1.4, BRACE, up=(du / L, dv / L, 0))
+    # the lobby: a dark glass base, 12 m
+    K.prism('lm_steel', [(cx + (x - cx) * 0.98, cy + (y - cy) * 0.98) for x, y in r], g - 0.5, g + 12.0, hexc('#2b3035'), top=False)
+
 # ── Salesforce Transit Center and its roof park ──────────────────────────────
 def transit_center(C):
     if C.era is not None and C.era < 2018: return

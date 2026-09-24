@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory'}
 WATER_ENABLED = {'lakes'}        # + 'piers', 'sea_depth', 'sea_wind' once validated
 
 class Region:
@@ -107,6 +107,8 @@ def _registry():
                  note='opened 2 Sept 2013; the 1936 cantilever east span it replaced was taken down 2013-17'),
         Landmark('salesforce', 'Salesforce Tower', 2018, None, V.salesforce, ol('salesforce'), pad=3000.0,
                  note='topped out 2017, opened 2018; absent from the DataSF footprints the city is built from'),
+        Landmark('fremont181', '181 Fremont', 2018, None, V.fremont181, [Region(ring=V.FREMONT181_RING)], pad=3000.0,
+                 note='topped out 2017, opened 2018; not in DataSF (OSM way 445566153)'),
         Landmark('transit_center', 'Salesforce Transit Center and Park', 2018, None, V.transit_center, ol('transit_center'), pad=600.0,
                  note='opened Aug 2018 (closed for repairs to Jul 2019); the old Transbay Terminal stood 1939-2010', replaces=True),
         Landmark('transamerica', 'Transamerica Pyramid', 1972, None, V.transamerica, ol('transamerica', 0.08), pad=2500.0,

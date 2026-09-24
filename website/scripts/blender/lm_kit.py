@@ -173,7 +173,10 @@ class Kit:
         want = _ar(outer) - sum(_ar(h) for h in holes)
         def tri_area(a, b, c): return abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) / 2
         got = sum(tri_area(V[t[0]], V[t[1]], V[t[2]]) for t in tris)
-        if want > 1.0 and abs(got - want) > 0.01 * want:
+        # always the constrained Delaunay: the scanline tessellator can cover a
+        # concave ring twice in one place and leave a hole in another with the
+        # right total area (the end of Pier 7 went black, 2026-09-24)
+        if want > 1.0:
             # the scanline tessellator left parts out (or doubled them): a
             # constrained Delaunay triangulation of all the rings, each triangle
             # kept when its centre is inside the outline and outside the holes
@@ -186,7 +189,7 @@ class Kit:
                     co += [V2((p[0], p[1])) for p in l]
                     ed += [(k + i, k + (i + 1) % n_) for i in range(n_)]; k += n_
                 vo, _eo, fo, *_r = delaunay_2d_cdt(co, ed, [], 0, 1e-4)
-                print(f'lm_kit.face_holes: the tessellation covered {got:.0f} of {want:.0f} m2; constrained Delaunay instead', flush=True)
+                if abs(got - want) > 0.01 * want: print(f'lm_kit.face_holes: the tessellation covered {got:.0f} of {want:.0f} m2', flush=True)
                 V = [(v[0], v[1], z) for v in vo]; tris = []
                 for f in fo:
                     if len(f) != 3: continue
