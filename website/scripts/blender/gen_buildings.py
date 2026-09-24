@@ -1996,8 +1996,9 @@ def emit(bpy, out, mats, name='gen'):
         at.data.foreach_set('color', flat)
         me.validate(clean_customdata=False)
         # BTEX_REAL (realcolour pilot, variant B; default off): UV 'rtex' into the projected-photo atlas (rc_tex.py)
-        if ERA is None and k in ('siding', 'stucco', 'brick', 'concrete', 'trim', 'shingle') and __import__('os').environ.get('BTEX_REAL', '0') == '1':
-            import rc_tex; rc_tex.assign_uv(me)
+        if ERA is None and __import__('os').environ.get('BTEX_REAL', '0') == '1':
+            import rc_tex
+            if k in rc_tex.FACADE_MATS: rc_tex.assign_uv(me)
         me.materials.append(mats[k] if k in mats else mats['roof_flat' if k == 'roof_big' else k])
         ob = bpy.data.objects.new(f'{name}.{k}', me)
         bpy.context.scene.collection.objects.link(ob); objs.append(ob)
