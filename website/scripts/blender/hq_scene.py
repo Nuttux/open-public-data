@@ -15,6 +15,7 @@ import city_data
 argv = sys.argv[sys.argv.index('--') + 1:]
 SD, OUT, SPP, W, H = argv[0], argv[1], int(argv[2]), int(argv[3]), int(argv[4])
 E = os.environ.get
+import look_preset   # the default look as env defaults, before any E(): LOOK=V5 clear midday (default), LOOK=B golden hour
 PH = os.path.expanduser('~/code/qipu-assets/polyhaven')
 T0 = time.time()
 def log(*a): print(f'[{time.time() - T0:6.1f}s]', *a, flush=True)

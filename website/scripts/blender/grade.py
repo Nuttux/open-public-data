@@ -8,8 +8,11 @@ softened (x0.7). Then a gentle S-curve, a soft bloom on the brightest
 highlights, and local contrast. No haze, no vignette: the frame stays crisp
 and tile-able. (color/grade2.py holds the variants A-D.)
 
-Options for the global look pass (24/09 evening; all OFF by default, look B
-is unchanged without them), as key=val arguments after the positionals:
+DEFAULT since 24/09 evening (Daniel): preset V5 "clear midday" = look B plus
+wb=1/1/0.99 green=1.15 water=1.1 sat=1.12 black=0.015 clarity=0.3 clarity_r=40
+waterv=0.72 (explicit keys override it). preset=B: look B alone, byte for byte.
+
+Options for the global look pass, as key=val arguments after the positionals:
   wb=r/g/b  shn=  sat=  purple=  s=     override look B's constants
   black=    black point: (x - b) / (1 - b), deeper shadows
   shsat=    extra saturation in the shadows, (1 - lum)-weighted: rich, not grey
@@ -25,6 +28,10 @@ import sys
 import numpy as np
 from PIL import Image, ImageFilter
 _pos = [a for a in sys.argv[1:] if '=' not in a]; O = dict(a.split('=', 1) for a in sys.argv[1:] if '=' in a)
+# Default preset V5 "clear midday" (Daniel, 24/09 evening); preset=B gives back look B alone. Explicit keys win.
+V5 = dict(wb='1/1/0.99', green='1.15', water='1.1', sat='1.12', black='0.015', clarity='0.3', clarity_r='40', waterv='0.72')
+if O.get('preset', 'V5') == 'V5': O = {**V5, **O}
+elif O.get('preset') != 'B': sys.exit(f"preset={O.get('preset')}: unknown (V5 or B)")
 def o(k, d): return float(O[k]) if k in O else d
 WB = np.array([float(v) for v in O['wb'].split('/')]) if 'wb' in O else np.array([1.03, 1.0, 0.95])
 SHADOW_NEUTRAL = o('shn', 0.6); SAT = o('sat', 1.08); PURPLE_SAT = o('purple', 0.7); S = o('s', 0.22)
