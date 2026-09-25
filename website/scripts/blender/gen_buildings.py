@@ -1111,7 +1111,12 @@ def measured_pitched(b, roof_mat, rc):
     a = unmauve(a)
     mat = 'roof_tile' if cls == 'tile' else 'roof_shingle'
     L = max(_lum(a), 1e-4)
-    if mat == 'roof_tile': L2 = min(L, 0.45)
+    if mat == 'roof_tile':
+        # (25/09) weathered clay, terracotta-brown: the photo's hue kept, its
+        # saturation and lightness held down: the measured albedo rendered
+        # bright orange (AgX Punchy and the grade's saturation on top), where
+        # the Richmond and Sunset photos show brown-red
+        a = [L + 0.55 * (v - L) for v in a]; L2 = min(L, 0.30) * 0.9
     # a shingle lives between 0.05 and ~0.22: the photo's lightness is kept in
     # ORDER, compressed into that range (a light reading over a gable is mostly
     # a flat light roof the generator pitched; at 0.3-0.4 a 50° gable went pale)
