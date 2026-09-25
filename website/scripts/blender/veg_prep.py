@@ -14,7 +14,7 @@ Sources in veg_src/ (fetch commands in veg/README.md): street_trees.csv, osm_veg
 osm_coast.json (the Pacific coastline), engine_reg.npy (the engine's own
 register points, to measure the join).
 """
-import csv, json, math, os, re, collections
+import csv, json, math, os, re, sys, collections
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.spatial import cKDTree
@@ -311,6 +311,41 @@ def hints(nodes):
     return X, Y, A
 
 
+# ── v3 (25/09): the broad 'round' class split into the city's main evergreen
+# street species (veg_protos kit3 draws each): a separate file, so the v2 code
+# and the archetype indices in veg.npz stay as they are. st_sub aligned with
+# veg.npz's st_x (the same rows: those with coordinates, in the list's order).
+SUB = ['', 'ficus', 'vbox', 'bbox', 'oak']
+SUB_RX = [
+    (r'^ficus', 'ficus'),                                                      # Indian laurel fig (F. microcarpa 'Nitida', 'Green Gem', F. retusa)
+    (r'^pittosporum|^myoporum|^laurus|^rhamnus|^heteromeles|^xylosma', 'vbox'),  # dense rounded domes
+    (r'^lophostemon|^tristaniopsis|^tristania|^magnolia grandiflora|^melaleuca quinquenervia|^michelia|^magnolia', 'bbox'),  # upright dense ovals
+    (r'^quercus (agrifolia|ilex|suber|virginiana|wislizeni|chrysolepis)|^lithocarpus|^umbellularia', 'oak'),  # the evergreen oaks
+]
+def sub_of(sp, arch):
+    if arch != 'round': return 0
+    s = sp.split('::')[0].strip().lower()
+    for rx, a in SUB_RX:
+        if re.search(rx, s): return SUB.index(a)
+    return 0
+
+
+def subspecies():
+    R = list(csv.DictReader(open(f'{SRC}/street_trees.csv')))
+    X, Y, U = [], [], []
+    for r in R:
+        if not r['latitude'] or not r['longitude']: continue
+        x, y = ll2e(float(r['longitude']), float(r['latitude']))
+        X.append(x); Y.append(y); U.append(sub_of(r['species'], arch_of(r['species'])))
+    X, Y, U = np.array(X, np.float32), np.array(Y, np.float32), np.array(U, np.uint8)
+    D = np.load(f'{VEG}/veg.npz')
+    assert len(X) == len(D['st_x']) and np.allclose(X, D['st_x']) and np.allclose(Y, D['st_y']), 'street list changed: re-run veg_prep.py first'
+    np.savez_compressed(f'{VEG}/veg_sub.npz', st_sub=U, sub_names=np.array(SUB))
+    print('veg_sub.npz:', {SUB[k] or 'round': int(v) for k, v in zip(*np.unique(U[D['st_arch'] == AI['round']], return_counts=True))})
+
+
+if __name__ == '__main__' and sys.argv[1:] == ['sub']:
+    subspecies(); sys.exit(0)
 if __name__ == '__main__':
     X, Y, A, D, S, cnt = street()
     join_stats(X, Y)
