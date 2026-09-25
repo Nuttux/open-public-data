@@ -24,8 +24,10 @@ rm -f $S/newb_records.json $S/transit.json $S/skip_gids.json
 for f in $S/*.py $S/*.mjs $S/cloud/*.py; do
   [ -f "$f" ] || continue
   case "$f" in */cityconf.py) continue;; esac     # it finds the city from CITY itself
-  sed -i '' -e "s#/Users/daniel/code/opd-render/website/public/data/us/sf/city#$CW/engine#g" \
-            -e "s#/Users/daniel/code/qipu-render-work/#$CW/#g" "$f"
+  # work folder FIRST, engine second: the engine's new path is itself under qipu-render-work/, and the
+  # other order rewrote it twice (cities/<city>/cities/<city>/engine: terrain_hq, era fell back in silence)
+  sed -i '' -e "s#/Users/daniel/code/qipu-render-work/#$CW/#g" \
+            -e "s#/Users/daniel/code/opd-render/website/public/data/us/sf/city#$CW/engine#g" "$f"
 done
 python3 - "$S/hq_city.py" "$CW/city.json" <<'PY'
 import json, sys
@@ -38,4 +40,5 @@ python3 -c "import ast,glob; [ast.parse(open(f).read()) for f in glob.glob('$S/*
 echo "$N = $C ($(cd $REPO && git log --oneline -1 $C | cut -c1-80)) for $CITY" > $S/SNAPSHOT.txt
 # anything still pointing at SF's data (should be empty)
 grep -rn "qipu-render-work/\|us/sf/city" $S/*.py $S/*.mjs 2>/dev/null | grep -v "$CW" | grep -v "/cityconf.py:" | grep -v "qipu-assets" | cut -c1-160 > $S/SF_PATHS.txt || true
+grep -rn "cities/$CITY/cities/" $S/*.py $S/*.mjs 2>/dev/null | cut -c1-160 >> $S/SF_PATHS.txt || true
 echo "$S  ($(du -sh $S | cut -f1)); SF paths left: $(wc -l < $S/SF_PATHS.txt)"
