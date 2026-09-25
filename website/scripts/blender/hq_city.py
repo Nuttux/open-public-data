@@ -142,7 +142,8 @@ if ERA is not None:
     _wc = {}
     def _wet(i):
         k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
-        if k_ not in _wc: _wc[k_] = EA.water_then(TP[i], TP[i+1], ERA)
+        # (25/09) + a dated pier not yet built: its deck is in the 3DEP ground (a mound in the water, Pier 7 1973-90)
+        if k_ not in _wc: _wc[k_] = EA.water_then(TP[i], TP[i+1], ERA) or EA.dated_absent(TP[i], TP[i+1], ERA, pad=10.0)
         return _wc[k_]
     _bank = set()
     for t in range(0, len(TP), 9):

@@ -2212,7 +2212,9 @@ def dated_absent(x, y, era, pad=4.0):
     (within half its width + 4 m of its line, beyond 15 m from its root)"""
     if era is None: return False
     for pts, w, root, yr in _dated_lines():
-        if era >= yr or math.hypot(x - root[0], y - root[1]) < 15.0: continue
+        if era >= yr: continue
+        if not (min(q[0] for q in pts) - w - pad <= x <= max(q[0] for q in pts) + w + pad and min(q[1] for q in pts) - w - pad <= y <= max(q[1] for q in pts) + w + pad): continue
+        if math.hypot(x - root[0], y - root[1]) < 15.0: continue
         if any(_seg_dist(x, y, a, b) < w / 2 + pad for a, b in zip(pts, pts[1:])): return True
     return False
 
