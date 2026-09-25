@@ -141,7 +141,23 @@ def buildings(x0, y0, x1, y1):
                             shop=bool(face['shop'][i]) if face is not None else False, roles=roles,
                             paint=int(f['paintIdx'][i])))
     out.extend(r for r in NB if x0 <= r['cx'] <= x1 and y0 <= r['cy'] <= y1)
-    return overrides(out, (x0, y0, x1, y1))
+    return overrides(measured(out), (x0, y0, x1, y1))
+
+
+# MEASURED HEIGHTS (HEIGHTS=1; lidar/heights.json, from lidar_heights.py and
+# the accepting step that compares them with the records): {"h": {gid: h}},
+# a LiDAR survey newer than the records' — today's city only (ERA unset: an
+# era render keeps the heights of its records). HEIGHTS_FILE overrides the file.
+HEIGHTS_FILE = _w('/Users/daniel/code/qipu-render-work/lidar/heights.json')
+_HM = None
+def measured(recs):
+    global _HM
+    if os.environ.get('ERA') or os.environ.get('HEIGHTS', '0') != '1': return recs
+    if _HM is None:
+        p = os.environ.get('HEIGHTS_FILE') or HEIGHTS_FILE
+        _HM = {int(k): float(v) for k, v in json.load(open(p))['h'].items()} if os.path.exists(p) else {}
+        print('[heights]', len(_HM), 'measured heights from', p, flush=True)
+    return [dict(b, h=_HM[b['gid']], h_src='lidar') if b['gid'] in _HM else b for b in recs]
 
 
 # SIGNATURE PLACES (places agent): per-building corrections for today's city,
