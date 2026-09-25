@@ -345,7 +345,7 @@ def piers(C):
         for p in json.load(open(PIERS_JSON))['piers']:
             pts = p.get('ring') or p.get('line')
             if not near(pts): continue
-            if C.era is not None and C.era < __import__('era').DATED_PIERS.get(p.get('name'), 0): continue   # a pier not yet built (era.DATED_PIERS)
+            if C.era is not None and (C.era < __import__('era').DATED_PIERS.get(p.get('name'), 0) or all(__import__('era').dated_absent(q[0], q[1], C.era, pad=14.0) for q in pts)): continue   # a pier not yet built (era.DATED_PIERS), named or not
             if p['kind'] in ('deck', 'float'):
                 decks.append((p['kind'], [tuple(q) for q in p['ring']]))
             else:

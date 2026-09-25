@@ -431,11 +431,14 @@ UNDATED_TALL = {135990: 1966}
 #           1904, the hotel's year)
 #   137672  50 First Street, 259 m: Oceanwide Center, begun 2016-17, halted
 #           2019-20, never built (Wikipedia 'Oceanwide Center') — never stood
+#   142933  Pier 7, the public fishing pier (on the roll a 2.6 m 'building',
+#           1896): the old Pier 7 burned in 1973; today's pier opened in 1990
+#           (Port of San Francisco; Wikipedia 'Pier 7 (San Francisco)')
 #   152080  2500 Steiner, a 12-storey apartment tower (OSM levels 12, 50 m),
 #           roll 1880: CONVENTION 1925 (the Pacific Heights apartment towers
 #           of the 1920s; its own year not found)
 RECORD_YEAR_FIX = {137615: 1975, 137657: 1971, 137659: 1971, 137918: 1965, 138668: 1972, 138685: 1972,
-                   137672: 9999, 152080: 1925}
+                   137672: 9999, 152080: 1925, 142933: 1990}
 
 
 def fix_records(recs, era):
@@ -2064,7 +2067,7 @@ def build_piers(bpy, era, mats, box=None, log=print):
 # the public breakwater pier off the Embarcadero, opened in 2006 (Port of San
 # Francisco; Wikipedia 'Pier 14'). Before its year its deck, rails and walk
 # are not drawn; the Embarcadero it starts from stays.
-DATED_PIERS = {'Pier 14': 2006.0}
+DATED_PIERS = {'Pier 14': 2006.0, 'Pier 7': 1990.0}   # (Pier 7: see RECORD_YEAR_FIX 142933)
 _DATED = None
 
 
@@ -2083,13 +2086,13 @@ def _dated_lines():
     return _DATED
 
 
-def dated_absent(x, y, era):
+def dated_absent(x, y, era, pad=4.0):
     """True where a dated pier stands today but not yet in the year shown
     (within half its width + 4 m of its line, beyond 15 m from its root)"""
     if era is None: return False
     for pts, w, root, yr in _dated_lines():
         if era >= yr or math.hypot(x - root[0], y - root[1]) < 15.0: continue
-        if any(_seg_dist(x, y, a, b) < w / 2 + 4.0 for a, b in zip(pts, pts[1:])): return True
+        if any(_seg_dist(x, y, a, b) < w / 2 + pad for a, b in zip(pts, pts[1:])): return True
     return False
 
 
