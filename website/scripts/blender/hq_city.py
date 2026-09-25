@@ -787,7 +787,7 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
-    occ = float(E('KERB_OCC', '0.12')) if ERA is None else EA.car_occupancy(ERA)
+    occ = float(E('KERB_OCC', '0.20')) * (1.0 if ERA is None else EA.car_occupancy(ERA) / EA.car_occupancy(None))   # the era table is relative to today's kerb
     for i in range(int((L_ - 3) // 6.2)):
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
         if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years

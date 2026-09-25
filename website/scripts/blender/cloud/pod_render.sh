@@ -8,6 +8,8 @@ N=$1; O=$2; PAR=$3; shift 3
 S=/Users/daniel/code/qipu-render-work/snap/$N; mkdir -p $O
 for k in $(seq 120); do [ -s /root/q/device ] && break; sleep 5; done       # the setup's warm-up (OptiX, else CUDA)
 DEV=${CYCLES_DEVICE:-$(cat /root/q/device 2>/dev/null)}
+# CUDA renders some Brick-node materials pure black (lm_apron, dock decks, lots: ai_eras 25/09). OptiX only, unless ALLOW_CUDA=1.
+if [ "$DEV" != OPTIX ] && [ "${ALLOW_CUDA:-0}" != 1 ]; then echo "REFUSING TO RENDER: device $DEV (OptiX failed on this host; CUDA blackens some materials). Set ALLOW_CUDA=1 to override."; echo "RENDER_DONE 0 frames; refused: device $DEV"; exit 3; fi
 [ -z "$DEV" -o "$DEV" = NONE ] && { echo "RENDER_DONE 0 frames; no working GPU device (see /root/q/warm_*.log)"; exit 1; }
 echo "device $DEV"; export DEV
 # frames at once: what the container's RAM holds (a frame's Blender peaks at ~25 GB RSS; 24/09 A40 parity)
