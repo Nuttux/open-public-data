@@ -201,6 +201,10 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
     import os as _os
     try: nred = _red(bpy, coll, D, street_z, kt, inb, log) if _os.environ.get('LIFE_RED', '1') == '1' else 0
     except Exception as ex: import traceback; traceback.print_exc(); log('life_traffic: red lanes failed', ex); nred = 0
+    # THE ROAD MARKINGS (life_marks.py, 25/09): lane lines, centre lines, stop bars, SFMTA's bike lanes
+    if _os.environ.get('LIFE_MARKS', '1') == '1':
+        try: import life_marks; life_marks.build(bpy, sc, coll, D, street_z, kt, inb, log)
+        except Exception as ex: import traceback; traceback.print_exc(); log('life_traffic: road markings failed', ex)
     cars, others = [], []
     nway = 0; rej = dict(off=0, track=0, parked=0, ix=0, over=0, deck=0); nmode = dict(street=0, lm=0, fw=0)
     for r in D['roads']:
