@@ -754,9 +754,17 @@ for (x, y, z, rad, *_rest) in MASS:
 # crown the LiDAR and NAIP agree on (yards, block interiors, hills), planted at
 # its measured height and width; veg_hq then plants no canopy masses above
 _nc = 0
-if VEG and ERA is None and getattr(VK, 'canopy_on', False):
+# (eras, 25/09: in a past year the measured crowns stand where the year's gates let a canopy mass stand: not on the
+# open land or the dunes of the year, not under water, not on a vacant lot, not where a later building's site or park
+# was (era.canopy_stands); without it a past year lost every yard and hill tree of today's CANOPY=1 render)
+if VEG and getattr(VK, 'canopy_on', False):
     for (x, y, kind, s_, r_) in VK.canopy(seen):
         if roofed(x, y): continue
+        if ERA is not None:
+            if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5: continue
+            if EA.water_then(x, y, ERA): continue
+            if LI is not None and LI.inside(x, y): continue
+            if not EA.canopy_stands(x, y, ERA, _allb, kd): continue
         gz_ = ground(x, y)
         if gz_ is None: continue
         pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
