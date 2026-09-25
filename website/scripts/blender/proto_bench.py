@@ -109,11 +109,14 @@ if PART in ('cars', 'all'):
             if m.name.startswith(('carpaint', 'carglass', 'tyre', 'carlamp', 'cartrim', 'taillamp', 'rim')): m.name = m.name + f'_old{v_}'
         g_ = dict(globals()); exec(_cs, g_); rows.append(g_['CARS'])
     for j, CARS in enumerate(rows):
-        y = -30.0 + j * 7.5; x = -len(CARS) * 3.2 / 2 * 1.0
+        y = -30.0 + j * 7.5; x = -len(CARS) * 3.2 / 2 * 1.0; cyaw = E('CAR_YAW')
         for i, me in enumerate(CARS):
             for c_ in range(3):      # three paints each
                 o = bpy.data.objects.new(f'car{j}_{i}_{c_}', me); sc.collection.objects.link(o)
-                o.location = (x + c_ * 2.4, y + (c_ % 2) * 0.1, 0.03); o.rotation_euler.z = math.pi / 2 + 0.02 * c_
+                if cyaw is None:
+                    o.location = (x + c_ * 2.4, y + (c_ % 2) * 0.1, 0.03); o.rotation_euler.z = math.pi / 2 + 0.02 * c_
+                else:        # parked along a kerb: nose to tail, 6.2 m slots
+                    o.location = (-60.0 + (i * 3 + c_) * 6.4, y, 0.03); o.rotation_euler.z = float(cyaw) + 0.02 * c_
             x += 8.2
     log('cars: before', len(rows[0]), 'after', len(rows[1]))
 
