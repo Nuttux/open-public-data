@@ -141,7 +141,7 @@ def buildings(x0, y0, x1, y1):
                             shop=bool(face['shop'][i]) if face is not None else False, roles=roles,
                             paint=int(f['paintIdx'][i])))
     out.extend(r for r in NB if x0 <= r['cx'] <= x1 and y0 <= r['cy'] <= y1)
-    return overrides(measured(out), (x0, y0, x1, y1))
+    return overrides(towers(measured(out)), (x0, y0, x1, y1))
 
 
 # MEASURED HEIGHTS (HEIGHTS=1; lidar/heights.json, from lidar_heights.py and
@@ -158,6 +158,35 @@ def measured(recs):
         _HM = {int(k): float(v) for k, v in json.load(open(p))['h'].items()} if os.path.exists(p) else {}
         print('[heights]', len(_HM), 'measured heights from', p, flush=True)
     return [dict(b, h=_HM[b['gid']], h_src='lidar') if b['gid'] in _HM else b for b in recs]
+
+
+# PODIUM AND TOWER (TOWERS=1; lidar/towers.json from tower_split.py): a record
+# holding a low podium and a tall tower is lowered to its podium and each tower
+# is added as its own record (same schema: its ring, h, the parent's year / use /
+# ty / st / shop / paint, roles 0, h_src 'tower:<src>', parent=<gid>). Tower
+# gids are 2,000,000,000 + an ordinal (tower_split.GID0): above every record gid
+# (city < 910,000,000, OSM 910,000,000-999,000,000). Today only (ERA unset);
+# off by default, and SF has no file. TOWERS_FILE overrides the file.
+TOWERS_FILE = _w('/Users/daniel/code/qipu-render-work/lidar/towers.json')
+_TW = None
+def towers(recs):
+    global _TW
+    if os.environ.get('ERA') or os.environ.get('TOWERS', '0') != '1': return recs
+    if _TW is None:
+        p = os.environ.get('TOWERS_FILE') or TOWERS_FILE
+        _TW = {int(k): v for k, v in json.load(open(p))['towers'].items()} if os.path.exists(p) else {}
+        print('[towers]', len(_TW), 'podium/tower splits from', p, flush=True)
+    out = []
+    for b in recs:
+        t = _TW.get(b['gid'])
+        if t is None: out.append(b); continue
+        out.append(dict(b, h=t['podium_h'], h_src='podium'))
+        for w in t['towers']:
+            r = [tuple(q) for q in w['ring']]
+            out.append(dict(gid=int(w['gid']), ring=r, cx=sum(q[0] for q in r) / len(r), cy=sum(q[1] for q in r) / len(r),
+                            h=w['h'], year=b['year'], use=b['use'], st=b.get('st', 0), ty=b['ty'], shop=b.get('shop', False),
+                            roles=[0] * len(r), paint=b.get('paint', 0), src='tower', h_src='tower:' + w['h_src'], parent=b['gid']))
+    return out
 
 
 # SIGNATURE PLACES (places agent): per-building corrections for today's city,
