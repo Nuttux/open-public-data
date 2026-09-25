@@ -1426,6 +1426,53 @@ def build_lost(bpy, era, ground, mats, box=None, log=print):
     return L.emit(bpy, P, mats)
 
 
+# ── the buildings the record has lost, from the Sanborn maps (sanborn agent, 25/09) ─────────
+# qipu-render-work/sanborn/lost_buildings.geojson: footprints of the 1950 Sanborn edition ("1913 corrected
+# to 1950", Sanborn Map Co., via oldinsurancemaps.net; SOURCED footprint, storeys CONVENTION by material and
+# size) that no DataSF record holds today, each with `gone_by` (the year of the record that replaced it, or a
+# dated clearance: SOURCED or CONVENTION, see its gone_by_src). A lost building stands in the year shown from
+# the rebuilding after the fire (1906.5, CONVENTION: the 1950 edition says it stood in 1950, not since when)
+# until its gone_by; one without a gone_by is left out (listed by era_audit). Where Sanborn draws a block, its
+# buildings replace the infill() guesses on the same ground.
+SANBORN = '/Users/daniel/code/qipu-render-work/sanborn/lost_buildings.geojson'
+_SB = None
+
+
+def sanborn_all():
+    global _SB
+    if _SB is None:
+        _SB = []
+        if os.path.exists(SANBORN):
+            for k, f in enumerate(json.load(open(SANBORN))['features']):
+                pr = f['properties']; g = f['geometry']
+                if g['type'] != 'Polygon' or not g['coordinates']: continue
+                r = [tuple(p[:2]) for p in g['coordinates'][0]]
+                if len(r) > 3 and r[0] == r[-1]: r = r[:-1]
+                if len(r) < 3: continue
+                h = float(pr.get('height_m') or 4.0 * max(1, int(pr.get('storeys') or 1)))
+                big = (pr.get('footprint_m2') or 0) > 300
+                _SB.append(dict(gid=800000000 + k, ring=r, cx=sum(p[0] for p in r) / len(r), cy=sum(p[1] for p in r) / len(r), h=h,
+                                year=1910, use='industrial' if big else 'residential', st=int(pr.get('storeys') or 1),
+                                ty='INDUSTRIAL' if big else 'HOUSE', shop=False, roles=[1] * len(r), paint=16,
+                                wall='brick' if (pr.get('material') or '').startswith('brick') else None,
+                                gone_by=pr.get('gone_by'), sanborn=pr.get('id')))
+    return _SB
+
+
+def sanborn_records(era):
+    """the Sanborn lost buildings standing in the year shown"""
+    if era is None: return []
+    return [dict(b) for b in sanborn_all() if b['gone_by'] and 1906.5 <= era < float(b['gone_by'])]
+
+
+def sanborn_covers(era=None):
+    """a KDTree of every Sanborn footprint (standing or not): the blocks Sanborn drew"""
+    from mathutils.kdtree import KDTree
+    sb = sanborn_all(); kd = KDTree(max(1, len(sb)))
+    for i, b in enumerate(sb): kd.insert((b['cx'], b['cy'], 0), i)
+    kd.balance(); return kd, len(sb)
+
+
 def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
     """the buildings the record has lost outside the fire: a record dated
     after the year shown that REPLACED something — it is 25+ years younger
