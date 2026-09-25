@@ -1016,6 +1016,7 @@ if E('MODE') == 'pyramid':
                 if water_: c_ = (0, 0, 1)
                 elif (o_.name.startswith('lm.') or n_.split('.')[0] == 'landmarks'): c_ = (1, 0, 0)
                 elif bld_(o_.name): c_ = (0, 1, 0) if 'roof' in n_ else (1, 1, 0)
+                elif n_.startswith(('carp', 'cars', 'life.cars', 'pcar')) or 'car_protos' in cs_: c_ = (1, 0.5, 0)     # cars: their own class (the eras' change mask regenerates them)
                 elif any(t_ in n_ for t_ in ('street', 'sidewalk', 'road', 'freeway', 'fw', 'lane', 'track', 'bridge')): c_ = (1, 0, 1)
                 elif any(t_ in (n_ + ' ' + cs_).replace('street', '') for t_ in ('tree', 'veg', 'bush', 'brush', 'palm', 'plant')): c_ = (0, 1, 1)
                 elif any(t_ in n_ for t_ in ('ground', 'terrain', 'lawn', 'far', 'shore', 'beach', 'park')): c_ = (0, 0, 0)
