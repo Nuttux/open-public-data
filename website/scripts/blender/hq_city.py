@@ -207,14 +207,17 @@ _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['
 _allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
-_sbr = [b for b in EA.sanborn_records(ERA) if in_box(b['cx'], b['cy'])] if E('SANBORN', '1') == '1' else []
-if _sbr: log('Sanborn lost buildings standing', len(_sbr)); recs += [b for b in (EA.place_record(dict(b), ERA) for b in _sbr) if b]
+_sbr = [b for b in EA.sanborn_records(ERA) if in_box(b['cx'], b['cy'], 80)] if E('SANBORN', '1') == '1' else []
+if _sbr:
+    _nc = len(recs); recs = [b for b in recs if not EA.sanborn_contradicted(b, ERA)]
+    log('Sanborn lost buildings standing', len(_sbr), '; contradicted records hidden', _nc - len(recs))
+    recs += [b for b in (EA.place_record(dict(b), ERA) for b in _sbr if in_box(b['cx'], b['cy'])) if b]
 if ERA is not None and E('INFILL', '1') == '1':
     _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
-    if E('SANBORN', '1') == '1' and EA.sanborn_all():     # where Sanborn drew the block, its buildings, not the guesses
-        _skd, _ = EA.sanborn_covers(); _n0 = len(_inf)
-        _inf = [b for b in _inf if _skd.find((b['cx'], b['cy'], 0))[2] > 20.0]
-        log('infill stand-ins replaced by the Sanborn blocks', _n0 - len(_inf))
+    if _sbr:      # no guess on ground a lost building of the year stands on
+        _skd = EA.sanborn_index(_sbr); _n0 = len(_inf)
+        _inf = [b for b in _inf if _skd.find((b['cx'], b['cy'], 0))[2] > 8.0]
+        log('infill stand-ins on Sanborn ground dropped', _n0 - len(_inf))
     log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))

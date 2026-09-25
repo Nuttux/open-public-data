@@ -1426,14 +1426,19 @@ def build_lost(bpy, era, ground, mats, box=None, log=print):
     return L.emit(bpy, P, mats)
 
 
-# ── the buildings the record has lost, from the Sanborn maps (sanborn agent, 25/09) ─────────
-# qipu-render-work/sanborn/lost_buildings.geojson: footprints of the 1950 Sanborn edition ("1913 corrected
-# to 1950", Sanborn Map Co., via oldinsurancemaps.net; SOURCED footprint, storeys CONVENTION by material and
-# size) that no DataSF record holds today, each with `gone_by` (the year of the record that replaced it, or a
-# dated clearance: SOURCED or CONVENTION, see its gone_by_src). A lost building stands in the year shown from
-# the rebuilding after the fire (1906.5, CONVENTION: the 1950 edition says it stood in 1950, not since when)
-# until its gone_by; one without a gone_by is left out (listed by era_audit). Where Sanborn draws a block, its
-# buildings replace the infill() guesses on the same ground.
+# ── the buildings the record has lost, from the Sanborn maps (sanborn agent, 25-26/09) ─────
+# qipu-render-work/sanborn/lost_buildings.geojson (PILOT_AREA.md): 4,561 footprints of the 1950 Sanborn edition
+# ("1913 corrected to 1950", Sanborn Map Co.; OldInsuranceMaps CC0 georeferencing) that no DataSF record holds
+# today. SOURCED: footprint, material, gone_by where a replacing record or a dated clearance gives it; storeys a
+# CONVENTION by material (height_m). The year each stands from is not known (the sheet says only: in 1950):
+#   inside the 1906 fire zone (Yerba Buena, SoMa, Golden Gateway, the waterfront) from 1907, CONVENTION;
+#   in the Western Addition ('wa', outside the fire) from 1900, the roll's own "no year" value (CHECKPOINTS.md).
+# gone_by null (1,143): hidden from 1960, CONVENTION; the ones now under a freeway (within 25 m of a DataSF
+# freeway line) go 2 years before that freeway opened (era.freeway_year; CONVENTION on the 2 years).
+# The walls follow the material: frame -> siding (houses, flats), brick -> brick, concrete/fireproof/metal -> concrete.
+# Where the year shows a lost building, infill() puts no guess on that ground; the DataSF records the sheet
+# contradicts (sanborn/lost_buildings_contradicted_records.json: dated <= 1950, but 3+ other buildings stand on
+# their ground in 1950) are not drawn before 1951.
 SANBORN = '/Users/daniel/code/qipu-render-work/sanborn/lost_buildings.geojson'
 _SB = None
 
@@ -1443,34 +1448,67 @@ def sanborn_all():
     if _SB is None:
         _SB = []
         if os.path.exists(SANBORN):
+            fw = None
+            try:
+                import city_data
+                from mathutils.kdtree import KDTree
+                pts = city_data.freeway_points(); fw = (KDTree(max(1, len(pts))), pts)
+                for i, q in enumerate(pts): fw[0].insert((q[0], q[1], 0), i)
+                fw[0].balance()
+            except Exception as ex:
+                print('sanborn: no freeway index', ex)
             for k, f in enumerate(json.load(open(SANBORN))['features']):
                 pr = f['properties']; g = f['geometry']
                 if g['type'] != 'Polygon' or not g['coordinates']: continue
                 r = [tuple(p[:2]) for p in g['coordinates'][0]]
                 if len(r) > 3 and r[0] == r[-1]: r = r[:-1]
                 if len(r) < 3: continue
-                h = float(pr.get('height_m') or 4.0 * max(1, int(pr.get('storeys') or 1)))
-                big = (pr.get('footprint_m2') or 0) > 300
-                _SB.append(dict(gid=800000000 + k, ring=r, cx=sum(p[0] for p in r) / len(r), cy=sum(p[1] for p in r) / len(r), h=h,
-                                year=1910, use='industrial' if big else 'residential', st=int(pr.get('storeys') or 1),
-                                ty='INDUSTRIAL' if big else 'HOUSE', shop=False, roles=[1] * len(r), paint=16,
-                                wall='brick' if (pr.get('material') or '').startswith('brick') else None,
-                                gone_by=pr.get('gone_by'), sanborn=pr.get('id')))
+                cx, cy = sum(p[0] for p in r) / len(r), sum(p[1] for p in r) / len(r)
+                mat = (pr.get('material') or 'frame'); st = int(pr.get('storeys') or 2)
+                h = float(pr.get('height_m') or 3.4 * st)
+                y0 = 1900.0 if pr.get('area') == 'wa' else 1907.0
+                gone = pr.get('gone_by'); gsrc = 'sanborn'
+                if gone is None:
+                    gone = 1960.0; gsrc = 'CONVENTION 1960'
+                    if fw is not None:
+                        _, i_, dd = fw[0].find((cx, cy, 0))
+                        if dd < 25.0:
+                            fy = freeway_year(fw[1][i_][2], cx, cy)
+                            if fy: gone = float(fy) - 2.0; gsrc = f'under {fw[1][i_][2]} (opened {fy}) - 2'
+                area_ = abs(sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r)))) / 2
+                house = mat == 'frame' and area_ < 600
+                _SB.append(dict(gid=800000000 + k, ring=r, cx=cx, cy=cy, h=h, year=int(y0), use='residential' if house else ('industrial' if area_ > 800 else 'commercial'),
+                                st=st, ty='HOUSE' if house else ('INDUSTRIAL' if area_ > 800 else 'COMMERCIAL'), shop=False, roles=[1] * len(r), paint=16,
+                                wall={'frame': 'siding', 'brick': 'brick'}.get(mat, 'concrete'),
+                                y0=y0, gone_by=float(gone), gone_src=gsrc, sanborn=pr.get('id')))
     return _SB
 
 
 def sanborn_records(era):
     """the Sanborn lost buildings standing in the year shown"""
     if era is None: return []
-    return [dict(b) for b in sanborn_all() if b['gone_by'] and 1906.5 <= era < float(b['gone_by'])]
+    t = when(era)
+    return [dict(b) for b in sanborn_all() if b['y0'] <= t < b['gone_by']]
 
 
-def sanborn_covers(era=None):
-    """a KDTree of every Sanborn footprint (standing or not): the blocks Sanborn drew"""
+def sanborn_index(recs):
     from mathutils.kdtree import KDTree
-    sb = sanborn_all(); kd = KDTree(max(1, len(sb)))
-    for i, b in enumerate(sb): kd.insert((b['cx'], b['cy'], 0), i)
-    kd.balance(); return kd, len(sb)
+    kd = KDTree(max(1, len(recs)))
+    for i, b in enumerate(recs): kd.insert((b['cx'], b['cy'], 0), i)
+    kd.balance(); return kd
+
+
+_SBC = None
+
+
+def sanborn_contradicted(b, era):
+    """a DataSF record dated <= 1950 that the 1950 sheet contradicts: not drawn before 1951"""
+    global _SBC
+    if era is None or when(era) >= 1951: return False
+    if _SBC is None:
+        p = SANBORN.replace('lost_buildings.geojson', 'lost_buildings_contradicted_records.json')
+        _SBC = [tuple(v['centroid']) for v in json.load(open(p)).values()] if os.path.exists(p) else []
+    return any(abs(b['cx'] - x) < 3.0 and abs(b['cy'] - y) < 3.0 for x, y in _SBC)
 
 
 def infill(all_recs, era, placed_gids, radius=80.0, share_min=0.6, gap_min=25):
