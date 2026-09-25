@@ -334,9 +334,9 @@ def substyle(b, style, rng):
     building takes within its era is a seeded draw"""
     y = b['year'] or 1950
     if style == 'vic':
-        if y < 1880: return rng.choice(('italianate', 'italianate', 'stick'))
-        if y < 1890: return rng.choice(('stick', 'stick', 'italianate', 'queen'))
-        return rng.choice(('queen', 'queen', 'stick', 'italianate'))
+        if y < 1880: return rng.choice('sub', ('italianate', 'italianate', 'stick'))
+        if y < 1890: return rng.choice('sub', ('stick', 'stick', 'italianate', 'queen'))
+        return rng.choice('sub', ('queen', 'queen', 'stick', 'italianate'))
     if style == 'stucco':
         return 'edwardian' if y < 1918 else 'med'
     if style == 'midcentury':
@@ -351,6 +351,9 @@ def substyle(b, style, rng):
 def building(b, ground, out):
     """b: record from city_data.buildings; ground(x, y) -> z"""
     rng = random.Random(b['gid'] * 7919 + 13)
+    RP = ROW_G.get(b['gid']) if (b['gid'] not in LANDMARK and not b.get('places')) else None
+    if RP: b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
+    RD = RowDraw(RP, rng)
     ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], PARTY_G.get(str(b['gid']))))
     roles = b['roles'][::-1] if flipped else list(b['roles'])
     if flipped:  # roles are per edge i -> i+1; reversing the ring shifts them by one
@@ -379,7 +382,7 @@ def building(b, ground, out):
         f0 = max((i for i in range(n) if walls[i].L > 2.0), key=lambda i: walls[i].n.x * fx + walls[i].n.y * fy)
         fronts = [f0]; roles = [1 if i == f0 else (2 if roles[i] == 1 else roles[i]) for i in range(n)]
 
-    sub = substyle(b, style, rng)
+    sub = substyle(b, style, RD)
     OV = b.get('places') if isinstance(b.get('places'), dict) else {}   # the places agent's per-building overrides (city_data)
     if OV.get('style') in STYLE_OF_SUB: style, sub = STYLE_OF_SUB[OV['style']], OV['style']
     elif OV.get('style') in ('vic', 'stucco', 'midcentury', 'block'): style = OV['style']
@@ -390,12 +393,12 @@ def building(b, ground, out):
 
     # ── roof form and eave ──
     if style == 'vic':
-        roof = 'gable' if (sub == 'queen' and rng.random() < 0.9) or (sub != 'queen' and rng.random() < 0.15) else 'flat'
+        roof = 'gable' if (sub == 'queen' and RD.random('roof') < 0.9) or (sub != 'queen' and RD.random('roof') < 0.15) else 'flat'
         if LM: roof = LM['roof']
     elif style == 'midcentury':
-        roof = 'gable' if (sub == 'sunset' and rng.random() < 0.4) else 'flat'
+        roof = 'gable' if (sub == 'sunset' and RD.random('roof') < 0.4) else 'flat'
     elif sub == 'med':
-        roof = 'gable' if rng.random() < 0.25 else 'flat'
+        roof = 'gable' if RD.random('roof') < 0.25 else 'flat'
     else:
         roof = 'flat'
     if not LM: roof = measured_form(b, roof)                 # ROOFS: a light membrane seen from the air is a flat roof
@@ -426,7 +429,7 @@ def building(b, ground, out):
         if _a >= 280 and _fill >= 0.88 and min(max(_u) - min(_u), max(_v) - min(_v)) >= 9:
             if yr_w < 1950: roof = 'saw' if x_ < 0.28 else ('barrel' if x_ < 0.55 else roof)
             elif yr_w < 1975: roof = 'saw' if x_ < 0.18 else roof
-    roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and rng.random() < 0.5)) else 'roof_shingle'
+    roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and RD.random('rmat') < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
     if LR and roof == 'gable':
@@ -478,7 +481,7 @@ def building(b, ground, out):
         body = unviolet(body)
     if OV.get('facade_col'): body = hexcol(OV['facade_col'])
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
-    if sub == 'edwardian' and rng.random() < 0.35: wall_mat = 'siding'
+    if sub == 'edwardian' and RD.random('clad') < 0.35: wall_mat = 'siding'
     if style == 'block':
         yr = b['year'] or 1960
         wall_mat = 'brick' if (yr < 1935 and rng.random() < 0.55) else ('stucco' if yr < 1960 else 'concrete')
@@ -512,14 +515,14 @@ def building(b, ground, out):
             if RCB.get('m') == 'brick' and style == 'block': wall_mat = 'brick'
 
     # ── floors ──
-    raised = {'vic': rng.uniform(1.0, 1.6), 'stucco': rng.uniform(0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
+    raised = {'vic': RD.uniform('raised', 1.0, 1.6), 'stucco': RD.uniform('raised', 0.3, 2.6), 'midcentury': 0.2, 'block': 0.4}[style]
     if style == 'stucco' and raised > 1.5: raised = 2.6        # Edwardian over a garage level
     if sub == 'sunset': raised = 2.6                           # the Sunset house: garage below, living above
     # (25/09) the 1920s-40s house of the Sunset, the Richmond, the Excelsior
     # stands over its garage nine times in ten (the tract builders' plan);
     # the old half-and-half draw left half of them one tall storey of 5-6 m
     grng = random.Random(b['gid'] * 211 + 17)
-    if sub == 'med' and b['ty'] in ('HOUSE', 'FLATS') and (b['year'] or 0) >= 1922 and b['h'] >= 5.3 and raised < 2.6 and grng.random() < 0.8: raised = 2.6
+    if sub == 'med' and b['ty'] in ('HOUSE', 'FLATS') and (b['year'] or 0) >= 1922 and b['h'] >= 5.3 and raised < 2.6 and RD.random('garage', grng) < 0.8: raised = 2.6
     if sub == 'postwar': raised = 2.7                          # the garage row at the street
     first = zg + raised
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
@@ -529,9 +532,9 @@ def building(b, ground, out):
     fh = max(2.6, (eave - first) / nfl)
     if first + fh > eave: first = zg + 0.3; fh = max(2.4, (eave - first) / nfl)
     hood = {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
-    bay_kind = {'italianate': 'slant', 'stick': 'square', 'queen': rng.choice(('slant', 'square')),
-                'edwardian': 'square', 'med': 'square' if rng.random() < 0.4 else None,
-                'sunset': 'box', 'postwar': 'square' if grng.random() < 0.45 else None}.get(sub)
+    bay_kind = {'italianate': 'slant', 'stick': 'square', 'queen': RD.choice('bay', ('slant', 'square')),
+                'edwardian': 'square', 'med': 'square' if RD.random('bay') < 0.4 else None,
+                'sunset': 'box', 'postwar': 'square' if RD.random('bay', grng) < 0.45 else None}.get(sub)
     if LM: bay_kind = LM['bay']
     # the pre-war apartment house: bays stacked up the front, a fire escape
     yr_ = b['year'] or 1950
@@ -559,7 +562,7 @@ def building(b, ground, out):
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
-               fsys=fsys, gcol=gcol, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
+               fsys=fsys, gcol=gcol, rd=RD, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
 
     # the house's side and back walls (24/09): in SF the street front is the
     # painted one; a party wall standing clear of its neighbour is plain grey
@@ -665,7 +668,7 @@ def building(b, ground, out):
         # every one: from the air the Sunset's rows are white and grey
         # parapets with a red tile pent here and there (drone, Parkside 2018),
         # not a red line down every avenue; the rest a plain stucco coping
-        med_tile = sub == 'med' and random.Random(b['gid'] * 613 + 29).random() < 0.33
+        med_tile = sub == 'med' and RD.random('coping', random.Random(b['gid'] * 613 + 29)) < 0.33
         if sub == 'med' and not med_tile:
             wf.box('trim', -0.06, wf.L + 0.06, top - 0.05, ctop, 0.0, 0.16, trim)
         elif sub == 'med':
@@ -783,6 +786,54 @@ def _load_party():
     if os.environ.get('PARTY_CLOSE', '1') != '1' or not os.path.exists(PARTY_FILE): return {}
     return json.load(open(PARTY_FILE))['gaps']
 PARTY_G = _load_party()
+
+
+# (25/09) THE BUILDERS' ROWS: SF's houses went up in runs — a builder put the
+# same house on several lots (the 1880s-90s speculators, the Doelgers and
+# Gallis of the Sunset and Parkside, the Richmond and Excelsior tract builders).
+# qipu-render-work/rows/builder_rows.py finds them (next-door, same year +-1,
+# same height +-1 m, same frontage and lot width, LiDAR tops alike): per gid
+# [row, idx, n, kind, h, st, year]. A run shares its massing (the run's
+# median height, storeys and year), its variant, roof, bay (kind and side),
+# raised floor and garage, entry side, cladding and cornice; each house keeps
+# its own paint, trim, door and window draws. ROWS=0 = each house on its own.
+ROWS_FILE = '/Users/daniel/code/qipu-render-work/rows/builder_rows.json'
+def _load_rows():
+    import os, json
+    if os.environ.get('ROWS', '1') != '1' or not os.path.exists(ROWS_FILE): return {}
+    return {int(g): v for g, v in json.load(open(ROWS_FILE))['rows'].items() if len(v) >= 7}
+ROW_G = _load_rows()
+
+
+class RowDraw:
+    """the draws a builder's run shares: each keyed draw comes from the run's
+    own seed. The house's own rng is still drawn, the same way, and the value
+    thrown away: its paint, trim, door, window and blind draws stay exactly
+    the ones it had on its own (the run changes the plan, not the paint job).
+    A house outside a run draws from its own rng as it always did."""
+    MIRROR = {'v': 0.2, 'e': 0.25, 'm': 0.5, 'p': 0.5}   # runs built in mirrored pairs: the tract builders' paired garages
+    def __init__(self, rp, rng):
+        self.rp, self.rng = rp, rng
+        self.k = {}
+    def _u(self, key):
+        if key not in self.k: self.k[key] = random.Random(f'{self.rp[0]}:{key}').random()
+        return self.k[key]
+    def random(self, key, rng=None):
+        v = (rng or self.rng).random()
+        return self._u(key) if self.rp else v
+    def choice(self, key, seq, rng=None):
+        v = (rng or self.rng).choice(seq)
+        return seq[min(len(seq) - 1, int(self._u(key) * len(seq)))] if self.rp else v
+    def uniform(self, key, a, b, rng=None):
+        v = (rng or self.rng).uniform(a, b)
+        return a + (b - a) * self._u(key) if self.rp else v
+    def side(self, key, rng=None):
+        """a left/right choice: the run's, mirrored house by house on a run
+        built in mirrored pairs (half the tract rows, a fifth of the older ones)"""
+        v = (rng or self.rng).random() < 0.5
+        if not self.rp: return v
+        v = self._u(key) < 0.5
+        return (not v) if (self._u('mirror') < self.MIRROR.get(self.rp[3], 0.25) and self.rp[1] % 2) else v
 def close_party(r, offs):
     """the ring (record order) with its facing edges pushed out by their offsets"""
     if not offs: return r
@@ -1471,7 +1522,7 @@ def facade(w, is_front, b, rng, c):
             n_b = max(1, min(5, int(L / 7.0))); bw = min(3.0, L / n_b * 0.45)
             starts = [L * (k + 0.5) / n_b - bw / 2 for k in range(n_b)]
         elif n_b == 1:
-            left = rng.random() < 0.5 if c.get('bay_left') is None else c['bay_left']
+            left = c['rd'].side('bayside', rng) if c.get('bay_left') is None else c['bay_left']
             starts = [0.35 if left else L - bw - 0.35]
         else:
             starts = [0.4, L - bw - 0.4]
@@ -1492,7 +1543,7 @@ def facade(w, is_front, b, rng, c):
             gw = min(2.6, L - 2.2)
             cand = [f for f in [(0.4, L - 0.4)] if f[1] - f[0] > gw + 1.3]
             if cand:
-                g0 = cand[0][0] if rng.random() < 0.5 else cand[0][1] - gw
+                g0 = cand[0][0] if c['rd'].side('garside', rng) else cand[0][1] - gw
                 garage_u = (g0, g0 + gw)
                 holes.append((g0, g0 + gw, zg + 0.05, zg + 2.3))
                 w.rect('door', g0, g0 + gw, zg + 0.05, zg + 2.3, -0.12, mix(accent, (0.85, 0.84, 0.8), 0.6))
@@ -1513,7 +1564,7 @@ def facade(w, is_front, b, rng, c):
                         free = [f for f in cut(free, (g1, g1 + gw), 0.2) if f[1] - f[0] > 1.3]
         if free:
             f_ = max(free, key=lambda f: f[1] - f[0])
-            du0 = f_[0] + 0.15 if rng.random() < 0.5 else f_[1] - 1.15
+            du0 = f_[0] + 0.15 if c['rd'].side('doorside', rng) else f_[1] - 1.15
             door_u = (du0, du0 + 1.0)
             holes.append((door_u[0], door_u[1], first, first + 2.3))
             w.opening(door_u[0], door_u[1], first, first + 2.3, 'door', trim, 0.35, rng, accent)
