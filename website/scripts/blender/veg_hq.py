@@ -41,6 +41,18 @@ PROTO_OF = {
     'redwood': ['ph:fir_tree_01'], 'jacaranda': ['ph:jacaranda_tree'],
     'date_palm': ['phoenix'], 'fan_palm': ['washy'], 'queen_palm': ['queen'], 'small_palm': ['fanpalm'],
 }
+# v3 (VEG_V3=1, the deep-zoom kit, veg_protos.kit3): 2-3 sizes per species
+# (the one nearest the tree's own size is drawn, see _kind), and the 'round'
+# class split into its main species: the listed trees by their own species
+# (veg_sub.npz, veg_prep.py sub), the unlisted ones by the list's shares
+PROTO_OF3 = dict(PROTO_OF)
+PROTO_OF3.update({
+    'plane': ['plane_a', 'plane_b', 'plane_y'], 'pohu': ['pohu', 'pohu_b'],
+    'euc': ['euc_a', 'euc_b', 'euc_c', 'euc_y'], 'pine': ['pine_a', 'pine_b', 'pine_y'], 'cypress': ['cyp_a', 'cyp_b', 'cyp_y'],
+    'ficus': ['ficus_a', 'ficus_b'], 'vbox': ['vbox_a', 'vbox_b'], 'bbox': ['bbox_a', 'bbox_b'], 'oak': ['oak_a', 'oak_b'],
+    'date_palm': ['phoenix', 'phoenix_b'], 'fan_palm': ['washy', 'washy_b'],
+})
+ROUND_SUB = {'round': 0.33, 'ficus': 0.08, 'vbox': 0.22, 'bbox': 0.25, 'oak': 0.12}     # the unlisted 'round' trees (the list's shares, oaks up)
 # the Poly Haven protos' (TALL, HMAX), as hq_city had them for street and park trees
 PH_SIZE = {'tree_small_02': (1.4, 9.0), 'jacaranda_tree': (1.4, 15.0), 'fir_tree_01': (2.6, 30.0)}
 PALMS = ('date_palm', 'fan_palm', 'queen_palm', 'small_palm')
@@ -60,7 +72,7 @@ CONIFERS = ('pine', 'cypress', 'redwood')
 CROWN_DBH = {'plane': (2.0, 0.42, 18), 'round': (2.0, 0.36, 15), 'pohu': (2.2, 0.40, 14), 'euc': (2.0, 0.30, 16),
              'column': (1.2, 0.14, 6), 'cherry': (1.8, 0.30, 8), 'plum': (1.8, 0.30, 8), 'olive': (1.8, 0.30, 8),
              'ornamental': (1.6, 0.28, 7), 'pine': (2.0, 0.34, 16), 'cypress': (2.5, 0.42, 20), 'redwood': (1.5, 0.22, 10),
-             'jacaranda': (2.0, 0.40, 12)}
+             'jacaranda': (2.0, 0.40, 12), 'ficus': (2.2, 0.38, 14), 'vbox': (2.0, 0.34, 12), 'bbox': (2.0, 0.34, 13), 'oak': (2.5, 0.45, 18)}
 
 
 def _draw(mix, u):
@@ -75,10 +87,11 @@ def _draw(mix, u):
 class Kinds:
     def __init__(self, bpy, load_collection, log=print, box=None):
         import veg_protos as VP
+        self.v3 = VP.V3_ON; P_OF = PROTO_OF3 if self.v3 else PROTO_OF
         self.protos, self.widths, self.heights, self.tall, self.hmax, self.names = [], [], [], [], [], []
         idx = {}
         K = VP.kit(); faces = {}
-        for nm in sorted({p for ps in PROTO_OF.values() for p in ps}):
+        for nm in sorted({p for ps in P_OF.values() for p in ps}):
             if nm.startswith('ph:'):
                 t_, h_ = PH_SIZE[nm[3:]]
                 for i, (c, w, h) in enumerate(load_collection(nm[3:])):
@@ -87,7 +100,7 @@ class Kinds:
                 b, ramp, t_, h_ = K[nm]
                 c, w, h, nf = VP.to_blender(bpy, f'veg_{nm}', b(), ramp); faces[nm] = nf
                 idx.setdefault(nm, []).append(self._add(nm, c, w, h, t_, h_))
-        self.kinds_of = {a: [k for p in ps for k in idx[p]] for a, ps in PROTO_OF.items()}
+        self.kinds_of = {a: [k for p in ps for k in idx[p]] for a, ps in P_OF.items()}
         self.arch_of_kind = {}
         for a, ks in self.kinds_of.items():
             for k in ks: self.arch_of_kind.setdefault(k, a)
@@ -107,6 +120,10 @@ class Kinds:
         self.st_arch, self.st_dbh = D['st_arch'], D['st_dbh']
         self.st_site = D['st_site'] if 'st_site' in D.files else np.zeros(len(self.st_arch), np.uint8)
         self.kst, nst = tree_of(D['st_x'], D['st_y'])
+        sp_ = os.path.join(VEG, 'veg_sub.npz')
+        self.st_sub = None
+        if self.v3 and os.path.exists(sp_):
+            S_ = np.load(sp_); self.st_sub = S_['st_sub']; self.sub_names = [str(v) for v in S_['sub_names']]
         self.h_arch = D['h_arch']; self.khi, nh = tree_of(D['h_x'], D['h_y'])
         self.drop_none = os.environ.get('VEG_DROP_NONE', '1') == '1'
         # THE REAL CANOPY (veg_canopy.py: LiDAR crowns where NAIP sees leaves,
@@ -133,9 +150,30 @@ class Kinds:
     def _count(self, k):
         self.stats[k] = self.stats.get(k, 0) + 1
 
-    def _kind(self, arch, x, y):
+    def _kind(self, arch, x, y, crown=None, h=None):
         ks = self.kinds_of[arch]
-        return ks[int(hp(x, y, 2) * len(ks)) % len(ks)]
+        if not self.v3 or len(ks) == 1:
+            return ks[int(hp(x, y, 2) * len(ks)) % len(ks)]
+        if crown is None and h is None:
+            # v3, size unknown: the full-grown proto (a palm's young one only
+            # where a height or DBH says so: the Embarcadero's date palms drawn
+            # half as stumps otherwise), else by place among the others
+            return ks[0] if arch in PALMS else ks[int(hp(x, y, 2) * len(ks)) % len(ks)]
+        # v3: the size nearest the tree's own (height if known, else crown
+        # width), the next nearest one time in three (by place): a young
+        # street tree is drawn from a young proto, not a shrunken old one
+        if h is not None: d_ = [abs(math.log(max(0.5, h) / max(0.5, self.heights[k]))) for k in ks]
+        else: d_ = [abs(math.log(max(0.5, crown) / max(0.5, self.widths[k]))) for k in ks]
+        o_ = sorted(range(len(ks)), key=lambda i: (d_[i], i))
+        return ks[o_[1] if hp(x, y, 2) < 0.33 and d_[o_[1]] < d_[o_[0]] + 0.35 else o_[0]]
+
+    def _sub(self, a, x, y, idx=None):
+        """v3: the 'round' class as its species (listed: its own; else by share)"""
+        if not self.v3 or a != 'round': return a
+        if idx is not None and self.st_sub is not None:
+            s_ = self.sub_names[int(self.st_sub[idx])]
+            return s_ or 'round'
+        return _draw(ROUND_SUB, hp(x, y, 38))
 
     def _palm_crown(self, kind, x, y):
         return self.widths[kind] * (0.85 + 0.3 * hp(x, y, 36))
@@ -197,7 +235,9 @@ class Kinds:
     def mass4(self, x, y, crown, on_street=None, roofed=None):
         """(kind, crown, x, y) for a canopy mass"""
         if os.environ.get('VEG_NOMASS') == '1': return None      # diagnostics: the scene without the canopy masses
-        a, zn = self.mass_arch(x, y); k = self._kind(a, x, y)
+        a, zn = self.mass_arch(x, y); a = self._sub(a, x, y)
+        k = self._kind(a, x, y, crown=crown if a not in PALMS else None,
+                       h=(sum(FOREST_H[a]) / 2 if (self.v3 and a in FOREST_H and self.zones[self.zone(x, y)]['name'] not in OPEN_ZONES) else None))
         self._count(('mass', zn, a))
         if on_street is not None:
             # a mass over a paved median or a boulevard's planting stays put
@@ -230,13 +270,17 @@ class Kinds:
                 if self.drop_none: return None
                 a = 'unknown'
             if a == 'unknown': a = _draw(self.street_mix, hp(x, y, 35))
+            a = self._sub(a, x, y, idx)
             self._count(('street', 'listed'))
         elif park:
             self._count(('street', 'park'))
             return self.mass4(x, y, crown, on_street, roofed)
         else:
-            a = _draw(self.street_mix, hp(x, y, 35)); self._count(('street', 'unlisted'))
-        k = self._kind(a, x, y); self._count(('arch', a))
+            a = self._sub(_draw(self.street_mix, hp(x, y, 35)), x, y); self._count(('street', 'unlisted'))
+        if self.v3 and dbh > 0 and a in CROWN_DBH:
+            p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
+        k = self._kind(a, x, y, crown=crown if a not in PALMS else None,
+                       h=(6.0 if (a in PALMS and 0 < dbh < 14) else None)); self._count(('arch', a))
         if on_street is not None and site != SITE_MEDIAN:       # the list's median trees stay on their median
             p = self._off_street(x, y, on_street, roofed)
             if p is None:
@@ -260,7 +304,8 @@ class Kinds:
             if self.zones[self.zone(x, y)]['name'] not in CAN_ZONES: continue
             a = self.can_names[int(C['k'][i])]
             if a not in self.kinds_of: a = 'round'
-            k = self._kind(a, x, y); h, w = float(C['h'][i]), float(C['w'][i])
+            a = self._sub(a, x, y)
+            h, w = float(C['h'][i]), float(C['w'][i]); k = self._kind(a, x, y, h=h)
             sh, sw = h / max(0.5, self.heights[k]), w / max(0.5, self.widths[k])
             s_ = sh if a in PALMS else sh ** 0.6 * sw ** 0.4
             s_ = min(s_, 1.1 * self.hmax[k] / max(0.5, self.heights[k]), 1.6 * sh)

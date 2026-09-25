@@ -24,7 +24,15 @@ What each one is drawn after (seen from 29° above the horizon at 37 cm/px, a
 """
 import math, os
 import numpy as np
-from veg_geom import Mesh, tube, branch_path, clump, blob, cards, envelope_points
+from veg_geom import Mesh, tube, branch_path, clump as _clump2, blob, cards, envelope_points
+import veg_geom as _VG3
+# v3, the deep-zoom kit (VEG_V3=1, default): the same skeletons, their clumps
+# built by veg_geom.clump3 (twigs of small leaves, smooth shading normals)
+# while a v3 proto is being built (_MODE), its leaf parameters in _VG3.V3
+_MODE = {'v3': False}
+def clump(M, *a, **k):
+    if _MODE['v3']: return _VG3.clump3(M, *a, **k)
+    return _clump2(M, *a, **k)
 
 BARK_LO, BARK_HI = 0.02, 0.10
 LEAF_LO, LEAF_HI = 0.22, 0.78
@@ -200,7 +208,13 @@ def broadleaf(seed, H, W, bole=0.3, shape='oval', n=18, rc=1.4, cards_n=110, car
         idx = rng.integers(len(C), size=na)
         d = rng.normal(size=(na, 3)); d[:, 2] = np.abs(d[:, 2]) + 0.3; d /= np.linalg.norm(d, axis=1)[:, None]
         P = C[idx] + d * rc * 1.02
-        cards(M, P, card * 0.8, d + np.array([0, 0, 0.8]), ACCENT, rng=rng)
+        if _MODE['v3']:
+            ns_ = d + np.array([0, 0, 0.8]); ns_ /= np.linalg.norm(ns_, axis=1)[:, None]
+            m_ = max(1, int(5 * (card / _VG3.V3['leaf']) ** 2))      # one v2 card = a few small flowers
+            Pk = np.repeat(P, m_, 0) + rng.normal(0, card * 0.35, (len(P) * m_, 3))
+            _VG3.leaves(M, Pk, np.repeat(ns_, m_, 0), np.repeat(ns_, m_, 0), _VG3.V3['leaf'] * 0.9, ACCENT, 1.0, rng)
+        else:
+            cards(M, P, card * 0.8, d + np.array([0, 0, 0.8]), ACCENT, rng=rng)
     return M
 
 
@@ -213,7 +227,44 @@ def _frond(M, base, az, elev, length, width, droop, tone, rng, pinnate=True, seg
         x += ca * math.cos(e) * st; y += sa * math.cos(e) * st; z += math.sin(e) * st
         P.append(np.array((x, y, z)))
     side = np.array((-sa, ca, 0.0))
-    if pinnate:
+    if pinnate and _MODE['v3']:
+        # v3: a thin rachis and its LEAFLETS, pairs every ~12 cm raised in a V
+        # (a palm's feather reads at level 9: the v2 blade was one flat ribbon)
+        tube(M, P, np.linspace(0.05, 0.015, len(P)), 3, tone - 0.12)
+        P = np.array(P); seg = np.linalg.norm(np.diff(P, axis=0), axis=1); cum = np.concatenate([[0], np.cumsum(seg)])
+        ss = np.arange(0.35, cum[-1], 0.12)
+        if len(ss):
+            Q = np.stack([np.interp(ss, cum, P[:, j]) for j in range(3)], 1)
+            fw = np.gradient(Q, axis=0); fw /= np.maximum(1e-9, np.linalg.norm(fw, axis=1))[:, None]
+            t = ss / cum[-1]; ln = width * 1.7 * (0.35 + 0.65 * np.sin(np.pi * np.minimum(1.0, t * 1.15)))
+            Vs, Ns_, Cs = [], [], []
+            for sg in (-1.0, 1.0):
+                d = side[None, :] * sg * 0.8 + fw * 0.45 + np.array([0, 0, 0.35])[None, :]
+                d /= np.linalg.norm(d, axis=1)[:, None]
+                tip = Q + d * ln[:, None] - np.array([0, 0, 1.0])[None, :] * (0.25 * ln * ln)[:, None]   # the leaflets droop
+                wv = np.cross(d, np.array([0, 0, 1.0])); wv /= np.maximum(1e-9, np.linalg.norm(wv, axis=1))[:, None]
+                wv *= 0.035
+                Vs.append(np.stack([Q - wv, Q + wv, tip + wv * 0.3, tip - wv * 0.3], 1))
+                nn = np.cross(d, wv); nn /= np.maximum(1e-9, np.linalg.norm(nn, axis=1))[:, None]
+                nn = np.where((nn[:, 2] < 0)[:, None], -nn, nn) + np.array([0, 0, 0.6]); nn /= np.linalg.norm(nn, axis=1)[:, None]
+                Ns_.append(np.repeat(nn, 4, 0)); Cs.append(np.repeat(tone + 0.08 * (rng.random(len(Q)) - 0.5), 4))
+            Vs = np.concatenate(Vs).reshape(-1, 3)
+            M.add(Vs, np.arange(len(Vs)).reshape(-1, 4), np.concatenate(Cs), np.concatenate(Ns_))
+    elif not pinnate and _MODE['v3']:
+        # v3: a costapalmate fan split into pleated segments with gaps
+        tube(M, P, 0.05, 3, tone - 0.1)
+        tip = P[-1]; n = 22; Vs = []; Cs = []
+        for j in range(n):
+            a0_ = -math.pi * 0.6 + math.pi * 1.2 * j / n; a1_ = a0_ + math.pi * 1.2 / n * 0.8
+            pts_ = []
+            for a_, r_ in ((a0_, 0.12), (a1_, 0.12), (a1_, 1.0), (a0_, 1.0)):
+                dx = ca * math.cos(elev * 0.3) * math.cos(a_) + side[0] * math.sin(a_)
+                dy = sa * math.cos(elev * 0.3) * math.cos(a_) + side[1] * math.sin(a_)
+                dz = math.sin(elev * 0.3) * math.cos(a_) * 0.6 + 0.15 - 0.25 * r_ * r_ * (0.5 + abs(math.sin(a_)))
+                pts_.append(tip + np.array((dx, dy, dz)) * width * r_ + np.array((0, 0, 0.04 * (j % 2))))
+            Vs += pts_; Cs += [tone + 0.04 * (j % 2 - 0.5)] * 4
+        Vs = np.array(Vs); M.add(Vs, np.arange(len(Vs)).reshape(-1, 4), Cs)
+    elif pinnate:
         V, F, col = [], [], []
         for i, p in enumerate(P):
             t = i / segs
@@ -245,10 +296,10 @@ def _lathe(M, prof, sides, tone):
     tube(M, P, R, sides, tone, cap=True)
 
 
-def palm(seed, kind):
+def palm(seed, kind, H=None):
     rng = np.random.default_rng(seed); M = Mesh()
     if kind == 'phoenix':
-        H = 9.0; R0, R1 = 0.55, 0.45
+        H = H or 9.0; R0, R1 = 0.55, 0.45
         _lathe(M, [(R0 * 1.25, 0.0), (R0, 0.8), (R1 * 1.05, H * 0.5), (R1, H - 0.3), (R1 * 1.45, H + 0.4)], 10, [0.03, 0.05, 0.06, 0.07, 0.05])
         crown = (0.0, 0.0, H + 0.4)
         for i in range(60):
@@ -256,13 +307,13 @@ def palm(seed, kind):
             ring = i % 3
             elev = [0.95, 0.45, -0.05][ring] + rng.uniform(-0.1, 0.1)
             tone = [0.62, 0.5, 0.36][ring] + rng.uniform(-0.05, 0.05)
-            _frond(M, crown, az, elev, rng.uniform(4.3, 5.4), 0.55, [0.35, 0.75, 1.05][ring], tone, rng)
+            _frond(M, crown, az, elev, rng.uniform(4.3, 5.4) * min(1.0, 0.55 + 0.05 * H), 0.55, [0.35, 0.75, 1.05][ring], tone, rng)   # (a young palm's fronds shorter)
         # the dead fronds' stubs under the head
         for i in range(10):
             az = rng.uniform(0, 2 * math.pi)
             _frond(M, (0, 0, H - 0.2), az, -0.9, rng.uniform(2.0, 3.0), 0.35, 0.2, ACCENT, rng)
     elif kind == 'washingtonia':
-        H = 18.0
+        H = H or 18.0
         _lathe(M, [(0.42, 0.0), (0.30, 1.0), (0.24, H * 0.6), (0.22, H - 3.2)], 8, [0.06, 0.07, 0.08, 0.08])
         _lathe(M, [(0.24, H - 2.2), (0.75, H - 1.7), (0.85, H - 0.9), (0.5, H - 0.2)], 10, ACCENT)   # a trimmed skirt of dead fronds (street palms are pruned)
         crown = (0.0, 0.0, H - 0.2)
@@ -347,6 +398,137 @@ def kit():
     K['washy'] = (lambda: palm(92, 'washingtonia'), 'washy', 99.0, 26.0)
     K['queen'] = (lambda: palm(93, 'queen'), 'queen', 99.0, 14.0)
     K['fanpalm'] = (lambda: palm(94, 'fan_small'), 'fanpalm', 99.0, 7.0)
+    return kit3() if V3_ON else K
+
+
+# ── v3: the deep-zoom kit (25/09) ────────────────────────────────────────────
+# VEG_V3=1 (default; 0 = the v2 kit above, unchanged). The v2 skeletons and
+# silhouettes (their L7 look was tuned on whole frames), rebuilt with v3 clumps
+# (small leaves ~2 px at level 9 in twigs, smooth shading, smooth cores); the
+# broad 'round' class split into the city's main evergreen street species, and
+# 2-3 sizes per species (veg_hq picks the one nearest the tree's own size, so
+# a young street tree is not a shrunken old one). The forms are a CONVENTION
+# after each species' usual habit (not measured); the city's own list says who is where.
+V3_ON = os.environ.get('VEG_V3', '1') == '1'
+V3_GAIN = float(os.environ.get('VEG3_GAIN', 1.0))
+# the v3 leaf gain per ramp: each species' foliage brought back to its v2
+# mean (sRGB, crown pixels at level 8 on a grey ground, LOOK B; bench 25/09),
+# so the level-7 frame keeps its tone: small leaves shadow each other and
+# show the dark inside through their gaps, v3 crowns rendered 10-28 % darker
+# at the same albedo (palms: their fronds were already matched)
+V3_GAINS = {'euc': 1.9, 'pine': 1.38, 'cyp': 1.6, 'oak': 1.5, 'bbox': 1.12, 'plane': 1.26, 'round': 1.09, 'ficus': 1.43,
+            'vbox': 1.04, 'pohu': 1.47, 'column': 1.31, 'cherry': 1.31, 'plum': 1.31, 'olive': 1.12,
+            'phoenix': 1.27, 'queen': 1.6, 'washy': 0.88, 'fanpalm': 0.9}
+V3LEAF = {   # species: V3 leaf params (leaf width m, density, stretch, twig ball m, leaf cap per clump, flat sprays)
+    'euc':    dict(leaf=0.12, dens=0.8, stretch=2.6, twig=0.42, cap=7000),
+    'cyp':    dict(leaf=0.15, dens=0.9, stretch=1.2, twig=0.45, cap=5500, flat=0.55),
+    'pine':   dict(leaf=0.10, dens=0.95, stretch=3.0, twig=0.34, cap=6500),
+    'plane':  dict(leaf=0.17, dens=0.9, stretch=1.1, twig=0.45, cap=9000),
+    'round':  dict(leaf=0.14, dens=1.0, stretch=1.35, twig=0.36, cap=9000),
+    'ficus':  dict(leaf=0.12, dens=1.1, stretch=1.4, twig=0.30, cap=9500),
+    'vbox':   dict(leaf=0.13, dens=1.05, stretch=1.5, twig=0.34, cap=9000),
+    'bbox':   dict(leaf=0.14, dens=1.0, stretch=1.45, twig=0.38, cap=9000),
+    'oak':    dict(leaf=0.12, dens=1.0, stretch=1.3, twig=0.32, cap=8000),
+    'pohu':   dict(leaf=0.13, dens=1.05, stretch=1.4, twig=0.34, cap=9000),
+    'column': dict(leaf=0.13, dens=1.0, stretch=1.3, twig=0.32, cap=8000),
+    'cherry': dict(leaf=0.13, dens=0.95, stretch=1.3, twig=0.32, cap=6500),
+    'plum':   dict(leaf=0.13, dens=0.95, stretch=1.3, twig=0.32, cap=6500),
+    'olive':  dict(leaf=0.11, dens=0.9, stretch=2.0, twig=0.30, cap=6500),
+}
+_V3D = dict(_VG3.V3)
+
+
+def _v3(sp, fn, *a, **k):
+    """build fn(*a) as a v3 proto with species sp's leaves"""
+    _VG3.V3.clear(); _VG3.V3.update(_V3D); _VG3.V3.update(V3LEAF.get(sp, {}))
+    _VG3.V3['dens'] *= float(os.environ.get('VEG3_DENS', 1.0)); _VG3.V3['leaf'] *= float(os.environ.get('VEG3_LEAF', 1.0))
+    _MODE['v3'] = True
+    try: M = fn(*a, **k)
+    finally: _MODE['v3'] = False
+    M.v3 = True
+    return M
+
+
+# the species' ramps: bark dark, bark light, leaf dark, leaf light, accent. In
+# the v2 'round' range (the L7 look was tuned on it), each a shade toward its
+# species: the fig a deep glossy green, the Victorian box a brighter mid green,
+# the Brisbane box dark, the live oak a dark olive.
+RAMPS.update({
+    'ficus': ('#7d776d', '#a49c8e', '#2b4526', '#5a7e40', '#7a6a48'),
+    'vbox':  ('#574d43', '#7e7264', '#34522a', '#6d9346', '#b8a860'),
+    'bbox':  ('#6b5a4a', '#8c7a66', '#2e4829', '#5e7d45', '#7a6a48'),
+    'oak':   ('#4e463e', '#716658', '#2f4228', '#5f7244', '#7a6a48'),
+})
+
+
+def oak(seed, H=10.0, W=14.0):
+    """Quercus agrifolia, the coast live oak: a short trunk splitting low into
+    a few massive sinuous limbs that spread out, a broad dense dome wider than
+    tall, its skin of small dark leaves lumpy and uneven (a convention after its usual habit)"""
+    rng = np.random.default_rng(seed); M = Mesh(); R0 = 0.03 * H + 0.1
+    zb = H * rng.uniform(0.14, 0.2)
+    T = branch_path((0, 0, 0), (rng.normal(0, 0.08), rng.normal(0, 0.08), 1.0), zb, 0.1, 3, rng)
+    tube(M, T, np.linspace(R0 * 1.35, R0, len(T)), 9, np.linspace(0.03, 0.05, len(T)))
+    tips = []; nl = int(rng.integers(4, 6)); a0 = rng.uniform(0, 2 * math.pi)
+    for i in range(nl):
+        a = a0 + 2 * math.pi * i / nl + rng.uniform(-0.35, 0.35); el = math.radians(rng.uniform(22, 42))
+        L = W * rng.uniform(0.34, 0.46)
+        P = branch_path(T[-1], (math.cos(a) * math.cos(el), math.sin(a) * math.cos(el), math.sin(el)), L, 0.45, 6, rng, droop=0.02)
+        tube(M, P, np.linspace(R0 * 0.62, R0 * 0.14, len(P)), 7, 0.05)
+        tips += [P[j] for j in range(2, len(P))]
+    prof = SHAPES['dome']; H0 = zb + 0.9
+    C = envelope_points(rng, int(rng.integers(24, 30)), lambda t: W / 2 * prof(t), H0, H - 1.2, jitter=0.12)
+    for c in C:
+        o = tips[int(np.argmin([np.linalg.norm(p - c) for p in tips]))]
+        if np.linalg.norm(o - c) > 1.4: tube(M, [o, c], [R0 * 0.14, R0 * 0.05], 5, 0.05)
+        r = rng.uniform(1.5, 2.1)
+        zrel = (c[2] - H0) / max(0.1, H - H0)
+        clump(M, c, (r, r * rng.uniform(0.85, 1.15), r * rng.uniform(0.6, 0.8)), 110, 0.45, LEAF_LO, LEAF_HI, rng,
+              up=0.5, core=0.72, shell=0.3, core_c=CORE_C, lobe=lobe_tone(rng, zrel, math.hypot(c[0], c[1]) / max(0.1, W / 2)))
+    return M
+
+
+def kit3():
+    K = {}
+    B = broadleaf
+    K['euc_a'] = (lambda: _v3('euc', eucalyptus, 11, 30.0), 'euc', 2.6, 32.0)
+    K['euc_b'] = (lambda: _v3('euc', eucalyptus, 12, 26.0), 'euc', 2.6, 32.0)
+    K['euc_c'] = (lambda: _v3('euc', eucalyptus, 13, 32.0), 'euc', 2.6, 32.0)
+    K['euc_y'] = (lambda: _v3('euc', eucalyptus, 14, 17.0), 'euc', 2.6, 32.0)         # young / street blue gum
+    K['cyp_a'] = (lambda: _v3('cyp', cypress, 21, 18.0, 0.0), 'cyp', 1.0, 22.0)
+    K['cyp_b'] = (lambda: _v3('cyp', cypress, 22, 16.0, 0.35, 0.9), 'cyp', 1.0, 22.0)
+    K['cyp_y'] = (lambda: _v3('cyp', cypress, 23, 10.0, 0.1, 0.8), 'cyp', 1.0, 22.0)
+    K['pine_a'] = (lambda: _v3('pine', mpine, 31, 22.0), 'pine', 1.6, 24.0)
+    K['pine_b'] = (lambda: _v3('pine', mpine, 32, 19.0), 'pine', 1.6, 24.0)
+    K['pine_y'] = (lambda: _v3('pine', mpine, 33, 12.0), 'pine', 1.6, 24.0)
+    K['plane_a'] = (lambda: _v3('plane', B, 41, 14.0, 11.0, bole=0.28, shape='oval', n=20, rc=1.7, cards_n=120, card=0.55, core=0.55, up=0.35, shell=0.4), 'plane', 1.4, 18.0)
+    K['plane_b'] = (lambda: _v3('plane', B, 42, 12.0, 10.0, bole=0.3, shape='vase', n=18, rc=1.6, cards_n=115, card=0.55, core=0.55, up=0.35, shell=0.4), 'plane', 1.4, 18.0)
+    K['plane_y'] = (lambda: _v3('plane', B, 43, 7.5, 5.0, bole=0.35, shape='oval', n=12, rc=1.2, cards_n=110, card=0.5, core=0.5, up=0.35, shell=0.4), 'plane', 1.5, 18.0)
+    K['round_a'] = (lambda: _v3('round', B, 51, 10.0, 8.5, bole=0.25, shape='round', n=18, rc=1.5, cards_n=120, card=0.45, core=0.75, up=0.45, shell=0.3), 'round', 1.4, 15.0)
+    K['round_b'] = (lambda: _v3('round', B, 52, 9.0, 7.0, bole=0.3, shape='oval', n=16, rc=1.4, cards_n=115, card=0.45, core=0.75, up=0.45, shell=0.3), 'round', 1.4, 15.0)
+    # Ficus microcarpa 'Nitida' (Indian laurel fig): a dense clipped round head, smooth grey trunk
+    K['ficus_a'] = (lambda: _v3('ficus', B, 55, 9.0, 9.0, bole=0.28, shape='round', n=18, rc=1.6, cards_n=120, card=0.4, core=0.82, up=0.45, shell=0.22), 'ficus', 1.3, 14.0)
+    K['ficus_b'] = (lambda: _v3('ficus', B, 56, 6.0, 5.5, bole=0.35, shape='round', n=12, rc=1.3, cards_n=120, card=0.4, core=0.82, up=0.45, shell=0.22), 'ficus', 1.3, 14.0)
+    # Pittosporum undulatum (Victorian box): a dense rounded dome, bright glossy mid green
+    K['vbox_a'] = (lambda: _v3('vbox', B, 57, 8.0, 8.0, bole=0.22, shape='dome', n=16, rc=1.5, cards_n=120, card=0.42, core=0.8, up=0.5, shell=0.25), 'vbox', 1.2, 12.0)
+    K['vbox_b'] = (lambda: _v3('vbox', B, 58, 5.0, 4.8, bole=0.3, shape='round', n=10, rc=1.2, cards_n=115, card=0.42, core=0.8, up=0.5, shell=0.25), 'vbox', 1.2, 12.0)
+    # Lophostemon confertus (Brisbane box): an upright oval, dark, fairly open
+    K['bbox_a'] = (lambda: _v3('bbox', B, 59, 13.0, 8.0, bole=0.3, shape='oval', n=20, rc=1.5, cards_n=115, card=0.45, core=0.65, up=0.4, shell=0.35), 'bbox', 1.8, 16.0)
+    K['bbox_b'] = (lambda: _v3('bbox', B, 60, 8.0, 5.0, bole=0.32, shape='oval', n=13, rc=1.2, cards_n=115, card=0.45, core=0.65, up=0.4, shell=0.35), 'bbox', 1.8, 16.0)
+    K['oak_a'] = (lambda: _v3('oak', oak, 65, 11.0, 15.0), 'oak', 0.9, 16.0)
+    K['oak_b'] = (lambda: _v3('oak', oak, 66, 7.0, 9.0), 'oak', 0.9, 16.0)
+    K['pohu'] = (lambda: _v3('pohu', B, 61, 8.0, 9.5, bole=0.15, shape='dome', n=20, rc=1.6, cards_n=120, card=0.45, core=0.8, up=0.55, shell=0.25, accent=0.015, stems=2), 'pohu', 1.0, 12.0)
+    K['pohu_b'] = (lambda: _v3('pohu', B, 62, 5.0, 5.5, bole=0.18, shape='dome', n=12, rc=1.3, cards_n=120, card=0.45, core=0.8, up=0.55, shell=0.25, accent=0.015, stems=2), 'pohu', 1.0, 12.0)
+    K['column'] = (lambda: _v3('column', B, 71, 11.0, 4.2, bole=0.12, shape='column', n=14, rc=1.2, cards_n=100, card=0.42, core=0.7, up=0.3, shell=0.3), 'column', 3.0, 16.0)
+    K['cherry'] = (lambda: _v3('cherry', B, 81, 6.0, 5.5, bole=0.3, shape='round', n=12, rc=1.1, cards_n=100, card=0.4, core=0.6, up=0.4, shell=0.35), 'cherry', 1.3, 9.0)
+    K['plum'] = (lambda: _v3('plum', B, 82, 6.0, 5.2, bole=0.3, shape='oval', n=12, rc=1.1, cards_n=100, card=0.4, core=0.6, up=0.4, shell=0.35), 'plum', 1.3, 9.0)
+    K['olive'] = (lambda: _v3('olive', B, 83, 5.5, 5.5, bole=0.25, shape='round', n=12, rc=1.1, cards_n=110, card=0.38, core=0.5, up=0.4, shell=0.45, stems=2), 'olive', 1.2, 9.0)
+    K['phoenix'] = (lambda: _v3('palm', palm, 91, 'phoenix'), 'phoenix', 99.0, 16.0)
+    K['phoenix_b'] = (lambda: _v3('palm', palm, 95, 'phoenix', 5.0), 'phoenix', 99.0, 16.0)
+    K['washy'] = (lambda: _v3('palm', palm, 92, 'washingtonia'), 'washy', 99.0, 26.0)
+    K['washy_b'] = (lambda: _v3('palm', palm, 96, 'washingtonia', 11.0), 'washy', 99.0, 26.0)
+    K['queen'] = (lambda: _v3('palm', palm, 93, 'queen'), 'queen', 99.0, 14.0)
+    K['fanpalm'] = (lambda: _v3('palm', palm, 94, 'fan_small'), 'fanpalm', 99.0, 7.0)
     return K
 
 
@@ -361,7 +543,7 @@ def hex_lin(h):
 def _material(bpy, name, ramp):
     m = bpy.data.materials.get(name)
     if m is not None: return m
-    if name[4:] in os.environ.get('VEG_DBGRAMP', '').split(','):     # diagnostics: this kind's leaves magenta
+    if name[4:].replace('_v3', '') in os.environ.get('VEG_DBGRAMP', '').split(','):     # diagnostics: this kind's leaves magenta
         ramp = (ramp[0], ramp[1], '#800060', '#ff00c0', '#ff00c0')
     m = bpy.data.materials.new(name)
     try: m.use_nodes = True
@@ -384,6 +566,10 @@ def _material(bpy, name, ramp):
         # canopies read near-black from above (critic 24/09): the foliage stops
         # lifted ~35 %, a touch warmer (olive at this sun); bark stays as is
         if i_ in (1, 2): c_ = tuple(min(0.9, v * (1 + (k - 1) * vp('VEG_LIFT'))) for v, k in zip(c_, LEAF_LIFT))
+        # v3: the small leaves shadow each other and show the dark inside
+        # through their gaps (a crown ~20 % darker than v2's cards at the
+        # same albedo, bench 25/09): the leaf stops lifted back to v2's mean
+        if i_ in (1, 2) and name.endswith('_v3'): c_ = tuple(min(0.9, v * V3_GAIN * V3_GAINS.get(name[4:-3], 1.3)) for v in c_)
         e.elements.new(p_).color = c_ + (1.0,)
     if deep is not None: e.elements.new(DEEP).color = deep + (1.0,)
     L(at.outputs['Fac'], cr.inputs['Fac'])
@@ -397,7 +583,7 @@ def _material(bpy, name, ramp):
     L(hm.outputs['Result'], hsv.inputs['Hue']); L(vm.outputs['Result'], hsv.inputs['Value'])
     L(cr.outputs['Color'], hsv.inputs['Color'])
     base_ = hsv.outputs['Color']
-    aod = vp('VEG_AO')
+    aod = vp('VEG_AO') if not name.endswith('_v3') else float(os.environ.get('VEG3_AO', 0.0))   # v3: the leaves' own geometry shadows the crevices
     if aod > 0:   # v2 test: the crown's own crevices darker (AO within the tree, foliage only)
         ao = N.new('ShaderNodeAmbientOcclusion'); ao.only_local = True; ao.samples = 8; ao.inputs['Distance'].default_value = aod
         L(hsv.outputs['Color'], ao.inputs['Color'])
@@ -422,8 +608,39 @@ def _material(bpy, name, ramp):
     return m
 
 
+def _to_blender3(bpy, name, mesh, ramp_name):
+    """v3: the mesh through foreach_set (a proto has ~10^5 leaves), smooth
+    faces and the leaves' own shading normals as custom normals"""
+    V = np.concatenate(mesh.V); C = np.concatenate(mesh.C)
+    polys = [np.asarray(f, np.int64) for f in mesh.F]
+    loops = [np.concatenate(polys)] if polys else []
+    sizes = [np.array([len(f) for f in mesh.F], np.int64)] if polys else []
+    for a in mesh.Fa: loops.append(a.ravel()); sizes.append(np.full(len(a), a.shape[1], np.int64))
+    loops = np.concatenate(loops); sizes = np.concatenate(sizes)
+    starts = np.concatenate([[0], np.cumsum(sizes)[:-1]])
+    me = bpy.data.meshes.new(name)
+    me.vertices.add(len(V)); me.vertices.foreach_set('co', V.astype(np.float32).ravel())
+    me.loops.add(len(loops)); me.loops.foreach_set('vertex_index', loops.astype(np.int32))
+    me.polygons.add(len(sizes)); me.polygons.foreach_set('loop_start', starts.astype(np.int32))
+    me.update(calc_edges=True)
+    at = me.attributes.new('vc', 'FLOAT', 'POINT'); at.data.foreach_set('value', C.astype(np.float32))
+    me.polygons.foreach_set('use_smooth', np.ones(len(sizes), bool))
+    N = mesh.normals().astype(np.float32)
+    try:     # Blender 4.5+: free normals as the 'custom_normal' point attribute (2.4 s -> 0.01 s for a 750k-vertex proto)
+        at = me.attributes.new('custom_normal', 'FLOAT_VECTOR', 'POINT'); at.data.foreach_set('vector', N.ravel())
+    except Exception:
+        me.normals_split_custom_set_from_vertices(N)
+    me.materials.append(_material(bpy, f'veg_{ramp_name}_v3', RAMPS[ramp_name]))
+    me.update()
+    ob = bpy.data.objects.new(name, me)
+    coll = bpy.data.collections.new(f'{name}_one'); coll.objects.link(ob)
+    mn, mx = V.min(0), V.max(0)
+    return coll, float(max(mx[0] - mn[0], mx[1] - mn[1])), float(mx[2]), len(sizes)
+
+
 def to_blender(bpy, name, mesh, ramp_name):
     """one collection holding the proto's mesh object, foot at the origin"""
+    if getattr(mesh, 'v3', False): return _to_blender3(bpy, name, mesh, ramp_name)
     V, F, C = mesh.arrays()
     me = bpy.data.meshes.new(name)
     me.from_pydata([tuple(v) for v in V], [], F)

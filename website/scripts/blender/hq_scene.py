@@ -2053,6 +2053,17 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
                     y_ = v.co.z; v.co.z = v.co.y; v.co.y = y_
                     v.co += Vector((Xw, yc + s_ * 0.108, wr))
                 for f in {f for v in c_['verts'] for f in v.link_faces}: f.material_index = 6
+        # CARS v2 (25/09): an open pickup bed (the dark floor inside its rails:
+        # from above it is what says 'pickup') and roof rails (SUVs)
+        if prof.get('bed'):
+            b0, b1 = prof['bed']; zt_ = top((b0 + b1) / 2) + 0.075; wb_ = Wd / 2 - 0.09      # (the loft's roof line runs 6 cm over the silhouette)
+            quad((b0 * hl + 0.06, -wb_, zt_), (b1 * hl - 0.06, -wb_, zt_), (b1 * hl - 0.06, wb_, zt_), (b0 * hl + 0.06, wb_, zt_), 4)
+        if prof.get('rails'):
+            xr0, xr1 = cab[0] * hl + 0.25, cab[1] * hl - 0.35; zr_ = top((cab[0] + cab[1]) / 2 - 0.1) + 0.035
+            for s_ in (-1, 1):
+                r_ = bmesh.ops.create_cube(bm, size=1.0)
+                for v in r_['verts']: v.co = Vector(((xr0 + xr1) / 2 + v.co.x * (xr1 - xr0), s_ * (Wd / 2 - 0.16) + v.co.y * 0.05, zr_ + v.co.z * 0.05))
+                for f in {f for v in r_['verts'] for f in v.link_faces}: f.material_index = 4
         me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
         for f in me.polygons:
             c = f.center
@@ -2074,6 +2085,21 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
                    belt=1.12, cab=(-0.99, 0.63), wr=0.35, fo=0.95, ro=1.0)
     SMALL = dict(sil=[(-1, 0.92), (-0.985, 1.06), (-0.92, 1.38), (-0.80, 1.47), (0.05, 1.49), (0.18, 1.44), (0.42, 1.00), (0.80, 0.93), (0.97, 0.82), (1, 0.72)],
                  belt=0.98, cab=(-0.98, 0.44), wr=0.30, fo=0.62, ro=0.55)
+    # CARS v2 (25/09, CARS_V2=0 = the eight bodies before): today's fleet
+    # adds the pickup (open bed), the high-roof cargo van (Sprinter/Transit:
+    # white, the city's deliveries), a crossover with roof rails and the
+    # Model Y-type fastback crossover. MOD is the fleet (L, W, profile):
+    # hq_city picks a kerb car uniformly among its bodies, so a body listed
+    # twice is twice as common. The eras branch (era.CAR_SHAPES) swaps this
+    # list per decade: same car_mesh profile format; 'bed', 'rails' and
+    # 'fleet' (the white fleet paint) are optional keys.
+    SUV_R = dict(SUV, rails=True)
+    CROSS = dict(sil=[(-1, 1.02), (-0.985, 1.18), (-0.93, 1.42), (-0.70, 1.58), (0.08, 1.62), (0.20, 1.57), (0.46, 1.08), (0.82, 1.0), (0.97, 0.86), (1, 0.76)],
+                 belt=1.08, cab=(-0.90, 0.47), wr=0.36, fo=0.92, ro=0.98, glassroof=True, clad=True)
+    PICKUP = dict(sil=[(-1, 1.02), (-0.985, 1.14), (-0.14, 1.16), (-0.12, 1.84), (0.22, 1.88), (0.33, 1.80), (0.50, 1.24), (0.88, 1.16), (0.98, 1.02), (1, 0.88)],
+                  belt=1.18, cab=(-0.12, 0.50), wr=0.40, fo=0.95, ro=1.25, bed=(-0.97, -0.15))
+    VAN = dict(sil=[(-1, 2.25), (-0.99, 2.45), (-0.92, 2.56), (0.55, 2.56), (0.63, 2.36), (0.79, 1.42), (0.92, 1.16), (0.99, 0.98), (1, 0.84)],
+               belt=1.22, cab=(0.40, 0.80), wr=0.36, fo=0.8, ro=1.05, fleet=True)
     # paint by the colour shares of cars on the road (white, black, greys and
     # silver most; then blue, red; a few greens, browns and brights) — a
     # convention, per car, never data
@@ -2117,6 +2143,18 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
     rim_m = simple('rim', (0.55, 0.56, 0.58), rough=0.3, metal=1.0)
     MOD = ((4.75, 1.83, SEDAN), (4.6, 1.86, SUV), (4.28, 1.79, HATCH), (5.1, 1.99, MINIVAN),
            (4.7, 1.85, FASTBACK), (4.5, 1.84, SUV), (3.7, 1.72, SMALL), (4.85, 1.85, SEDAN))
+    if E('CARS_V2', '1') == '1':
+        MOD = ((4.75, 1.83, SEDAN), (4.65, 1.86, SUV_R), (4.28, 1.79, HATCH), (5.1, 1.99, MINIVAN),
+               (4.7, 1.85, FASTBACK), (4.5, 1.84, SUV), (3.7, 1.72, SMALL), (4.85, 1.85, SEDAN),
+               (5.85, 2.02, PICKUP), (5.9, 2.03, VAN), (4.75, 1.92, CROSS), (4.45, 1.84, SUV_R))
+    # the white fleet (vans): white mostly, silver, a few dark blue and grey
+    fpaint = simple('carpaint_fleet', (0.5, 0.5, 0.5), rough=0.3)
+    fn_ = fpaint.node_tree; fb_ = fn_.nodes['Principled BSDF']; fi_ = fn_.nodes.new('ShaderNodeObjectInfo')
+    fr_ = fn_.nodes.new('ShaderNodeValToRGB'); fr_.color_ramp.interpolation = 'CONSTANT'
+    for i_, (pos_, col_) in enumerate(((0.0, (0.80, 0.80, 0.79)), (0.72, (0.62, 0.63, 0.645)), (0.85, (0.06, 0.09, 0.20)), (0.93, (0.30, 0.31, 0.33)))):
+        e_ = fr_.color_ramp.elements[0] if i_ == 0 else (fr_.color_ramp.elements[1] if i_ == 1 else fr_.color_ramp.elements.new(pos_))
+        e_.position = pos_; e_.color = (*[c ** 2.2 for c in col_], 1)
+    fn_.links.new(fi_.outputs['Random'], fr_.inputs[0]); fn_.links.new(fr_.outputs[0], fb_.inputs['Base Color'])
     # the fleet of the year shown (era.TABLE `fleet`): each period's body
     # lofted like today's cars (era.CAR_SHAPES, CONVENTION on the shapes)
     _fleet = EA.P('fleet', ERA) if ERA is not None else {'mod': 1.0}
@@ -2125,7 +2163,7 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         kinds = MOD if fam == 'mod' else EA.CAR_SHAPES[fam]
         for j_, (L_, W_, pf) in enumerate(kinds):
             me = car_mesh(f'car_{fam}{j_}', L_, W_, pf)
-            for mm in (paint, cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
+            for mm in (fpaint if pf.get('fleet') else paint, cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
             CARS.append(me); CAR_W.append(share / len(kinds))
     def car_pick(u):
         """the body in a kerb slot, from the slot's own number u in [0, 1)"""

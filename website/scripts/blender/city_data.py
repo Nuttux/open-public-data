@@ -108,7 +108,7 @@ def buildings(x0, y0, x1, y1):
                             shop=bool(face['shop'][i]) if face is not None else False, roles=roles,
                             paint=int(f['paintIdx'][i])))
     out.extend(r for r in NB if x0 <= r['cx'] <= x1 and y0 <= r['cy'] <= y1)
-    return overrides(out)
+    return overrides(out, (x0, y0, x1, y1))
 
 
 # SIGNATURE PLACES (places agent): per-building corrections for today's city,
@@ -118,13 +118,19 @@ def buildings(x0, y0, x1, y1):
 # Today only (ERA unset): an era render keeps the records as they were.
 OV_FILE = '/Users/daniel/code/qipu-render-work/places/overrides.json'
 _OV = None
-def overrides(recs):
-    global _OV
+_OV_ADD = None
+def overrides(recs, bbox=None):
+    """+ 'ring' per gid (a record's footprint corrected, e.g. to the tower the LiDAR measures on its lot; roles
+    default to street all round), and a top-level 'add' list of whole records (structures the LiDAR shows that
+    no record has), appended when their centre is in the query box — both today only, like the rest"""
+    global _OV, _OV_ADD
     if os.environ.get('ERA') or os.environ.get('PLACES_OV', '1') != '1': return recs
     if _OV is None:
-        try: _OV = {int(k): v for k, v in json.load(open(OV_FILE))['gids'].items()} if os.path.exists(OV_FILE) else {}
-        except Exception as ex: print('[overrides] unreadable', ex, flush=True); _OV = {}
-    if not _OV: return recs
+        try:
+            j = json.load(open(OV_FILE)) if os.path.exists(OV_FILE) else {}
+            _OV = {int(k): v for k, v in j.get('gids', {}).items()}; _OV_ADD = list(j.get('add', []))
+        except Exception as ex: print('[overrides] unreadable', ex, flush=True); _OV = {}; _OV_ADD = []
+    if not _OV and not _OV_ADD: return recs
     out = []
     for b in recs:
         o = _OV.get(b['gid'])
@@ -133,8 +139,18 @@ def overrides(recs):
         b = dict(b)
         for k in ('h', 'st', 'ty', 'year', 'use', 'shop'):
             if k in o: b[k] = o[k]
-        b['places'] = {k: v for k, v in o.items() if k not in ('h', 'st', 'ty', 'year', 'use', 'shop', 'skip', 'why')}
+        if o.get('ring'):
+            b['ring'] = [tuple(p) for p in o['ring']]; n = len(b['ring'])
+            b['cx'] = sum(p[0] for p in b['ring']) / n; b['cy'] = sum(p[1] for p in b['ring']) / n
+            b['roles'] = list(o.get('roles') or [1] * n)
+        b['places'] = {k: v for k, v in o.items() if k not in ('h', 'st', 'ty', 'year', 'use', 'shop', 'skip', 'why', 'ring', 'roles')}
         out.append(b)
+    if _OV_ADD and bbox is not None:
+        x0, y0, x1, y1 = bbox
+        seen = {b['gid'] for b in out}
+        for a in _OV_ADD:
+            if x0 <= a['cx'] <= x1 and y0 <= a['cy'] <= y1 and a['gid'] not in seen:
+                a = dict(a); a['ring'] = [tuple(p) for p in a['ring']]; out.append(a)
     return out
 
 

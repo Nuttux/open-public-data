@@ -353,7 +353,7 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             else: others.append((vk, x, y, z, pitch, yaw))
     log(f'life_traffic: {nway} ways, {len(cars)} cars, {len(others)} buses and trucks (on {nmode}); dropped {rej} ({time.time() - t0:.1f}s)')
     # the cars: hq_scene's own bodies (the 'carp{i}' collections hq_city builds), instanced
-    src = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(8)) if c is not None]
+    src = [c for c in (bpy.data.collections.get(f'carp{i}') for i in range(32)) if c is not None]   # (hq_scene's MOD: 12 bodies since CARS v2)
     protos = []
     for i, c in enumerate(src):
         # the same bodies, their paint drawn from the car's place (see place_random)

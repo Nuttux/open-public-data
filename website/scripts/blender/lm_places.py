@@ -212,6 +212,7 @@ def auto_places():
 
 def auto_builder(key, j):
     def build(C):
+        if C.era is None and j.get('gone'): return          # gone before today (e.g. the Columbus bronze at Coit, removed 2020)
         if C.era is not None and (C.era < j['built'] or (j.get('gone') and C.era >= j['gone'])): return
         load_into(C.K, key, j['z0'])
     build.__name__ = key
