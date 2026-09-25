@@ -14,17 +14,27 @@ from osm_fetch import fetch
 WHAT = sys.argv[1:] or ['buildings', 'roads', 'ways']
 BOX = '({},{},{},{})'.format(*C.BBOX)
 
-def get(path, q):
-    if os.path.exists(path) and os.path.getsize(path) > 0: print('kept', path); return
+def get(path, q, tries=8):
+    if os.path.exists(path) and os.path.getsize(path) > 0: print('kept', path); return True
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    if not fetch(q, path): sys.exit(f'failed {path}')
+    ok = fetch(q, path, tries)
     time.sleep(5)
+    return ok
+
+def bldg(t, depth=0):
+    """a tile's buildings and parts; a tile the servers keep timing out on
+    (downtown's) is fetched as its four quarters (newb_prep dedups by OSM id)"""
+    b = '({},{},{},{})'.format(*t); n = '_'.join(f'{v:.3f}' for v in t).replace('.', '_').replace('-', '_')
+    for pre, tag in (('b', 'building'), ('p', 'building:part')):
+        path = C.work('newbuildings', 'osm', f'{pre}_{n}.json')
+        if get(path, f'[out:json][timeout:600];(way["{tag}"]{b};relation["{tag}"]{b};);out tags geom;', tries=3 if depth < 2 else 8): continue
+        s_, w_, n_, e_ = t; ms, mw = round((s_ + n_) / 2, 4), round((w_ + e_) / 2, 4)
+        print('split', n, flush=True)
+        for q in ((s_, w_, ms, mw), (s_, mw, ms, e_), (ms, w_, n_, mw), (ms, mw, n_, e_)): bldg(q, depth + 1)
+        return
 
 if 'buildings' in WHAT:
-    for t in C.tiles():
-        b = '({},{},{},{})'.format(*t); n = '_'.join(f'{v:.3f}' for v in t).replace('.', '_').replace('-', '_')
-        get(C.work('newbuildings', 'osm', f'b_{n}.json'), f'[out:json][timeout:600];(way["building"]{b};relation["building"]{b};);out tags geom;')
-        get(C.work('newbuildings', 'osm', f'p_{n}.json'), f'[out:json][timeout:600];(way["building:part"]{b};relation["building:part"]{b};);out tags geom;')
+    for t in C.tiles(): bldg(t)
 if 'roads' in WHAT:
     get(C.work('life', 'roads_osm.json'), '[out:json][timeout:300];\nway["highway"~"^(motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link'
         f'|tertiary|tertiary_link|residential|unclassified|living_street|busway)$"]{BOX};\nout geom tags;')

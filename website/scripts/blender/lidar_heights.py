@@ -11,9 +11,10 @@ half ground), and the pixels inside give:
     h    the median nDSM (m): the height the engine publishes is a median too
     p90  the 90th percentile: the tower above a podium, the ridge of a roof
     n    how many 1 m pixels were read (a footprint under ~6 px keeps its record)
+    void how many pixels inside were empty in the survey (no data)
 Tiles: every *.tif in the two folders, paired by map tile (LidarBC's
 bc_<maptile>_…; else the name up to _dsm/_dem). No data (−32767, water, a gap between surveys) is skipped.
-out.json {"meta": …, "h": {gid: [h, p90, n]}}"""
+out.json {"meta": …, "h": {gid: [h, p90, n, void]}}"""
 import glob, json, os, re, sys, time
 import numpy as np
 import rasterio
@@ -59,7 +60,7 @@ def main():
         q = p.buffer(-INSET)
         polys.append((gid, q if q.area >= 4 else p))
     bounds = np.array([p.bounds for _, p in polys])
-    vals = {}
+    vals, void = {}, {}
     for k, t in enumerate(pairs):
         with rasterio.open(dsm[t]) as a, rasterio.open(dem[t]) as b:
             if a.transform != b.transform or a.shape != b.shape:
@@ -71,8 +72,14 @@ def main():
             sel = np.nonzero((bounds[:, 2] > l) & (bounds[:, 0] < r) & (bounds[:, 3] > bt) & (bounds[:, 1] < tp))[0]
             if not len(sel): continue
             lab = rasterize(((polys[i][1], i + 1) for i in sel), out_shape=A.shape, transform=a.transform, fill=0, dtype='int32')
+            # the pixels the survey left empty inside a footprint (LidarBC 2025: the tops of the tall
+            # towers are void, their returns dropped): counted, so a footprint read mostly at its edges is known
+            lv = lab[(lab > 0) & np.isnan(H)] - 1
+            if len(lv):
+                for idx, cnt in zip(*np.unique(lv, return_counts=True)): void[int(idx)] = void.get(int(idx), 0) + int(cnt)
             m = (lab > 0) & ~np.isnan(H)
             L = lab[m] - 1; V = H[m]
+            if not len(L): continue          # footprints over no data only (water, the survey's edge)
             o = np.argsort(L, kind='stable'); L = L[o]; V = V[o]
             cut = np.nonzero(np.diff(L))[0] + 1
             for idx, chunk in zip(L[np.r_[0, cut]], np.split(V, cut)):
@@ -82,7 +89,7 @@ def main():
     for i, chunks in vals.items():
         v = np.concatenate(chunks)
         if len(v) == 0: continue
-        out[str(polys[i][0])] = [round(float(np.median(v)), 2), round(float(np.percentile(v, 90)), 2), int(len(v))]
+        out[str(polys[i][0])] = [round(float(np.median(v)), 2), round(float(np.percentile(v, 90)), 2), int(len(v)), int(void.get(i, 0))]
     meta = dict(what='per-footprint LiDAR height: median / 90th percentile of DSM − DEM inside the outline drawn '
                      f'{INSET:g} m in, n = 1 m pixels read', dsm=DSM, dem=DEM, records=REC or f'city_data ({C.CITY})',
                 footprints=len(polys), measured=len(out), tiles=len(pairs))

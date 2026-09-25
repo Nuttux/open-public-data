@@ -3,8 +3,8 @@ API, with retries over public mirrors. usage: python3 osm_fetch.py <out.json> <q
 import sys, time, json, urllib.request, urllib.parse
 EP = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter',
       'https://overpass.private.coffee/api/interpreter']
-def fetch(q, out):
-    for attempt in range(8):
+def fetch(q, out, tries=8):
+    for attempt in range(tries):
         ep = EP[attempt % len(EP)]
         try:
             req = urllib.request.Request(ep, data=urllib.parse.urlencode({'data': q}).encode(), headers={'User-Agent': 'qipu-render/0.1'})
