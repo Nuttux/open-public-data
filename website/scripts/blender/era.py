@@ -2058,6 +2058,41 @@ def build_piers(bpy, era, mats, box=None, log=print):
     log('lost piers standing:', len(ps), '(sheds with monitor roofs, weathered)')
 
 
+# ── dated waterfront works the exports draw in every year ──────────────────
+# The OSM pier ways (landmarks/piers.json: water_hq decks and docks) and the
+# engine's street layer carry today's public piers undated. SOURCED: Pier 14,
+# the public breakwater pier off the Embarcadero, opened in 2006 (Port of San
+# Francisco; Wikipedia 'Pier 14'). Before its year its deck, rails and walk
+# are not drawn; the Embarcadero it starts from stays.
+DATED_PIERS = {'Pier 14': 2006.0}
+_DATED = None
+
+
+def _dated_lines():
+    global _DATED
+    if _DATED is None:
+        _DATED = []
+        p = '/Users/daniel/code/qipu-render-work/landmarks/piers.json'
+        if os.path.exists(p):
+            for q in json.load(open(p))['piers']:
+                y = DATED_PIERS.get(q.get('name'))
+                pts = q.get('line') or q.get('ring')
+                if y and pts:
+                    root = min(pts, key=lambda t: t[0] + t[1])     # the shore end (the bay lies north-east)
+                    _DATED.append((pts, float(q.get('width') or 8.0), root, y))
+    return _DATED
+
+
+def dated_absent(x, y, era):
+    """True where a dated pier stands today but not yet in the year shown
+    (within half its width + 4 m of its line, beyond 15 m from its root)"""
+    if era is None: return False
+    for pts, w, root, yr in _dated_lines():
+        if era >= yr or math.hypot(x - root[0], y - root[1]) < 15.0: continue
+        if any(_seg_dist(x, y, a, b) < w / 2 + 4.0 for a, b in zip(pts, pts[1:])): return True
+    return False
+
+
 # ── today's viaducts in a past year (freeways_hq.build(keep=...)) ───────────
 # The freeways agent builds today's viaducts from OSM ways with LiDAR decks.
 # For a past year each way is kept once its road had opened (freeway_year,

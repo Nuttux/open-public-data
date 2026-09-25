@@ -283,7 +283,7 @@ for m in d['meshes']:
             for t in range(len(p_) // 9):
                 a = t * 9
                 if not in_box(p_[a], p_[a+1], 60): continue
-                if ERA is None or street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
+                if ERA is None or (street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3) and not EA.dated_absent((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3, ERA)): q_.extend(p_[a:a+9])
             p_ = q_
         (SA_ if (m.get('color') or [1])[0] < 0.2 and E('ST_MERGE', '1') == '1' else SP).extend(p_)
     elif m['layer'] == 'street-markings' and (ERA is None or EA.P('marks', ERA) >= 0.5):
@@ -304,7 +304,7 @@ for m in d['meshes']:
         if BOX is None: tgt.extend(p)
         else:
             for t in range(len(p) // 9):
-                if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
+                if in_box(p[t*9], p[t*9+1], 60) and not EA.dated_absent(p[t*9], p[t*9+1], ERA): tgt.extend(p[t*9:t*9+9])
 # (25/09) THE CRUMPLED LOTS (Mission Rock, the Golden Gateway garages, Pier
 # 48): the casing and the asphalt, two big surfaces of different
 # triangulations each draped by terrain_hq on its own corners, cut through
