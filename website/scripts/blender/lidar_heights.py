@@ -11,8 +11,8 @@ half ground), and the pixels inside give:
     h    the median nDSM (m): the height the engine publishes is a median too
     p90  the 90th percentile: the tower above a podium, the ridge of a roof
     n    how many 1 m pixels were read (a footprint under ~6 px keeps its record)
-Tiles: every *.tif in the two folders, paired by map tile (the name up to
-_dsm/_dem). No data (−32767, water, a gap between surveys) is skipped.
+Tiles: every *.tif in the two folders, paired by map tile (LidarBC's
+bc_<maptile>_…; else the name up to _dsm/_dem). No data (−32767, water, a gap between surveys) is skipped.
 out.json {"meta": …, "h": {gid: [h, p90, n]}}"""
 import glob, json, os, re, sys, time
 import numpy as np
@@ -36,7 +36,9 @@ def records():
     return [(b['gid'], b['ring']) for b in city_data.buildings(-1e6, -1e6, 1e6, 1e6)]
 
 def key(p):
-    return re.sub(r'_(dsm|dem)\.tif$', '', os.path.basename(p))
+    # the map tile (LidarBC: bc_092g025_1_2_3_…, its DEM files carry no _dem suffix), else the name without _dsm/_dem
+    b = os.path.basename(p); m = re.match(r'bc_(\d{3}[a-z]\d{3}(?:_\d)+)_', b)
+    return m.group(1) if m else re.sub(r'_(dsm|dem)\.tif$', '', b)
 
 def main():
     recs = records(); print('footprints', len(recs), f'{time.time() - T0:.0f}s', flush=True)
