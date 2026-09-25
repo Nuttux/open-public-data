@@ -2143,7 +2143,7 @@ def build_piers(bpy, era, mats, box=None, log=print):
     lin = lambda c: tuple(v ** 2.2 for v in c)
     for cx, cy, ang, L, W, shed in ps:
         P = frame(cx, cy, ang); h = lambda salt: hash01(cx, cy, salt)
-        dk = 0.28 + 0.08 * h(3)
+        dk = 0.28 + 0.08 * h(3) if shed else 0.40 + 0.06 * h(3)     # a bare deck (its shed gone) was paved over for parking: lighter
         box6('deck', P, L / 2, W / 2, -0.5, 3.0, lin((dk, dk * 0.96, dk * 0.9)))
         if L > 40 and W > 24 and shed:
             wc = _SHED_TONES[int(h(1) * len(_SHED_TONES))]; rc = _ROOF_TONES[int(h(2) * len(_ROOF_TONES))]
