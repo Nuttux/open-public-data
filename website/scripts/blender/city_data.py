@@ -219,9 +219,11 @@ def trees(x0, y0, x1, y1):
     (-7200, -6600), `pos` two nibbles over a 16 x 16 lattice (site centres),
     years counted from 1900."""
     out = []
+    # another city's chunks carry their grid in the manifest (trees.grid), not in the chunk header
+    mg = {} if _C.SF else json.load(open(f'{CITY}/manifest.json')).get('trees', {}).get('grid', {})
     for p in sorted(glob.glob(f'{CITY}/tree/*.qc')):
         h, f = qc.read(p)
-        e = {k: h.get(k) for k in ('gw', 'cell', 'x0', 'y0', 'q')}
+        e = {k: h.get(k, mg.get(k)) for k in ('gw', 'cell', 'x0', 'y0', 'q')}
         gw, cell, gx0, gy0, q = (e['gw'] or 600, e['cell'] or 24, e['x0'] if e['x0'] is not None else -7200,
                                  e['y0'] if e['y0'] is not None else -6600, e['q'] or 16)
         step = cell / q; vo = 0
