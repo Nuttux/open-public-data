@@ -48,7 +48,10 @@ def newb():
                 import landmarks_hq as L_; on = {l.key for l in L_._registry()}     # enabled, LM_KEYS, or all with LM_ALL=1
             except Exception: on = None
             live = lambda r: not r.get('lm') or (on is not None and r['lm'] not in on)
-            _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']]) for r in j['records'] + j.get('lm_records', []) if live(r)],
+            # another city's dated layer (newb_dates.py: permits, tax roll, LiDAR) re-dates added records; SF has none
+            dp = None if _C.SF else _C.WORK + '/newbuildings/dates.json'
+            D = {int(g): {'year': v['year'], 'year_src': v['year_src']} for g, v in json.load(open(dp))['dates'].items()} if dp and os.path.exists(dp) else {}
+            _NB = ([dict(r, ring=[(float(x), float(y)) for x, y in r['ring']], **D.get(r['gid'], {})) for r in j['records'] + j.get('lm_records', []) if live(r)],
                    {int(x['gid']) for x in j.get('replaces', []) + j.get('lm_replaces', []) if (era is None or era >= x['year']) and live(x)})
         # beyond the county line: generic buildings from OSM (ground_prep.py
         # south_records: Daly City, Colma, Brisbane — the picture's frame); SOUTH=0 leaves them out
