@@ -13,6 +13,7 @@ from mathutils.kdtree import KDTree
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import gen_buildings as G
 import city_data
+import era as EA
 
 argv = sys.argv[sys.argv.index('--') + 1:]
 SD, OUT, SPP, W, H = argv[0], argv[1], int(argv[2]), int(argv[3]), int(argv[4])
@@ -68,7 +69,7 @@ import terrain_hq; terrain_hq.correct_scene(d, log, box=BOX, sd=SD)
 def f32(b):
     a = array.array('f'); a.frombytes(base64.b64decode(b)); return a
 
-ERA = int(E('ERA')) if E('ERA') else None
+ERA = EA.era_from_env(E('ERA'))
 G.ERA = ERA
 # the materials are hq_scene.py's own, run from its source so the two never drift
 _HQSRC = open(os.path.join(HERE, 'hq_scene.py')).read()
@@ -134,6 +135,30 @@ TP, TC = array.array('f'), array.array('f')
 for m in d['meshes']:
     if m['layer'] == 'terrain' and not m.get('instanced'): TP.extend(f32(m['pos'])); TC.extend(f32(m['col']))
 for i in range(2, len(TP), 3): TP[i] *= 0.5
+if ERA is not None:
+    # made land not yet made: under the water of the year, just below its
+    # surface; the land's last vertices at the water drop to a low bank (a
+    # 4 m drop at every then-shore read as a pale cliff round the whole bay)
+    _wc = {}
+    def _wet(i):
+        k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
+        if k_ not in _wc: _wc[k_] = EA.water_then(TP[i], TP[i+1], ERA)
+        return _wc[k_]
+    _bank = set()
+    for t in range(0, len(TP), 9):
+        w3 = [_wet(t), _wet(t + 3), _wet(t + 6)]
+        if any(w3) and not all(w3):
+            for q_, w_ in zip((t, t + 3, t + 6), w3):
+                if not w_: _bank.add((round(TP[q_] * 10), round(TP[q_+1] * 10)))
+    for i in range(0, len(TP), 3):
+        k_ = (round(TP[i] * 10), round(TP[i+1] * 10))
+        # min, never set: over today's bay a made-land outline (Harbor View's
+        # runs to y 5700) would RAISE the sea floor and stand a wall at its edge
+        # (1890 z5 0:0, 2026-09-24); the bank just under the water's surface
+        # (0.12), or an outline's rim stood above it (Treasure Island, 1890)
+        if _wc.get(k_): TP[i+2] = min(TP[i+2], -0.7)
+        elif k_ in _bank: TP[i+2] = min(TP[i+2], 0.05)
+    log('terrain under the water of the year:', sum(1 for v in _wc.values() if v), 'vertices; bank', len(_bank))
 terrain = mesh_from('terrain', TP, hill_ground(d, BOX), smooth=True, weld=0.05, cols=TC)
 bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
 def ground(x, y):
@@ -141,8 +166,10 @@ def ground(x, y):
     # generator raises on it and the chunk loop skips it)
     h_ = bvh_t.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
     return h_[0].z if h_[0] else None
-def ground0(x, y):
-    g_ = ground(x, y); return 0.0 if g_ is None else g_
+def ground0(x, y, _ground=ground):
+    # bound to THIS ground: the sea's slice runs with ground = ground0, and a
+    # ground0 reading the global name then called itself (RecursionError, 1960)
+    g_ = _ground(x, y); return 0.0 if g_ is None else g_
 # the land around the city (Daly City, Marin): the engine's surround, so the
 # terrain does not end in a cliff at the county line
 SP_, SC_ = array.array('f'), array.array('f')
@@ -161,24 +188,111 @@ def ground_s(x, y):
     h_ = bvh_s.ray_cast(Vector((x, y, 2000)), Vector((0, 0, -1)))
     return h_[0].z if h_[0] else None
 
+# ── the year shown: the records that stood, open land, the streets of the day ──
+log('buildings: records')
+HG = city_data.hero_gids()
+# NEVER BUILT, though the roll records them: Oceanwide Center Tower I, 50 First
+# St (gid 137672, 259 m, "1917" on the roll) — begun 2016-17, halted 2019-20,
+# still a hole (Wikipedia 'Oceanwide Center'); the orchestrator's PHANTOMS
+PHANTOMS = {137672}
+HG |= PHANTOMS
+# and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
+# a pass reads the copy frozen in its snapshot, a test the live one)
+_sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
+if _sk:     # a landmark replaces its footprints only once it's built (ERA None = today)
+    _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
+    HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
+_allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80)]
+_allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
+recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
+recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
+if ERA is not None and E('INFILL', '1') == '1':
+    _inf = [b for b in EA.infill(_allb, ERA, {b['gid'] for b in recs}) if in_box(b['cx'], b['cy'])]
+    log('lost buildings stood in for (era.infill)', len(_inf)); recs += _inf
+if E('MAXB'): recs = recs[:int(E('MAXB'))]
+log('buildings', len(recs))
+CBOX = BOX or d['box']
+if ERA is not None:
+    OL = EA.OpenLand(recs, CBOX, float(E('OPEN_RES', 8.0)), ground, 80.0, ERA)
+    def open_at(x, y, grid=None): return OL.at(x, y, grid)
+    SG = EA.StreetGate(CBOX, ERA, open_at)
+    _sgc = {}
+    def street_stands(x, y):
+        k_ = (int(x // 5), int(y // 5))
+        if k_ not in _sgc: _sgc[k_] = SG.stands(x, y)
+        return _sgc[k_]
+    log('open land', round(sum(OL.open) / len(OL.open), 3), 'sand', round(sum(OL.sand) / len(OL.sand), 3))
+    # the ground of open land that is not dune sand: summer-dry grass (the
+    # hills and the unbuilt ground of the period), as hq_scene does. A colour
+    # attribute on the terrain (OpenDry), read by the ground material: an
+    # image mask sampled nothing in the city pass (e04, 2026-09-24)
+    import numpy as _np
+    _tm = terrain.data; _nv = len(_tm.vertices)
+    _co0 = _np.empty(_nv * 3, _np.float32); _tm.vertices.foreach_get('co', _co0); _co0 = _co0.reshape(-1, 3)
+    _dk = _np.zeros(_nv, _np.float32)
+    for k_ in range(_nv):
+        x_, y_ = float(_co0[k_, 0]), float(_co0[k_, 1])
+        o_ = OL.at(x_, y_)
+        # the sand's own ground dries too: where the dune mesh thins out by a
+        # graded street the terrain showed as a green fringe (e08)
+        if o_ > 0 and EA.in_city(x_, y_): _dk[k_] = o_ * (1.0 - OL.at(x_, y_, OL.park))
+    _ca = _tm.color_attributes.new('OpenDry', 'FLOAT_COLOR', 'POINT')
+    _ca.data.foreach_set('color', _np.repeat(_dk, 4).tolist())
+    _lt = bpy.data.materials['ground'].node_tree; _lp = next(n for n in _lt.nodes if n.type == 'BSDF_PRINCIPLED')
+    _src = _lp.inputs['Base Color'].links[0].from_socket
+    _at = _lt.nodes.new('ShaderNodeAttribute'); _at.attribute_name = 'OpenDry'
+    _bw = _lt.nodes.new('ShaderNodeRGBToBW'); _lt.links.new(_src, _bw.inputs[0])
+    # the grass's own light and shade, lifted to straw (a lawn's luminance is
+    # ~0.17: x3.2 makes the golden (0.62, 0.40, 0.13) a linear ~(0.33, 0.22,
+    # 0.07), California's summer-dry grass; the plain multiply read as mud)
+    _bk = _lt.nodes.new('ShaderNodeMath'); _bk.operation = 'MULTIPLY'; _bk.inputs[1].default_value = float(E('DRY_K', 3.2))
+    _lt.links.new(_bw.outputs[0], _bk.inputs[0])
+    _dry = _lt.nodes.new('ShaderNodeMix'); _dry.data_type = 'RGBA'; _dry.blend_type = 'MULTIPLY'; _dry.inputs[0].default_value = 1.0
+    _dry.inputs[6].default_value = (0.56, 0.45, 0.19, 1)          # straw with olive: the dry-season grass (the first golden read peach, e11)
+    _lt.links.new(_bk.outputs[0], _dry.inputs[7])
+    _mx = _lt.nodes.new('ShaderNodeMix'); _mx.data_type = 'RGBA'; _lt.links.new(_at.outputs['Fac'], _mx.inputs[0])
+    _lt.links.new(_src, _mx.inputs[6]); _lt.links.new(_dry.outputs[2], _mx.inputs[7])
+    _lt.links.new(_mx.outputs[2], _lp.inputs['Base Color'])
+    log('open land dried:', int((_dk > 0.5).sum()), 'of', _nv, 'terrain vertices')
+    # the lots of buildings not yet built: parking or bare earth, not lawn (era.vacant_lots)
+    LOTS = EA.vacant_lots(_allb, {b['gid'] for b in recs}, ERA, open_at, CBOX) if E('LOTS', '1') == '1' else []
+    # nothing of a lot on the water: a footprint over the bay or the year's
+    # water, or whose ground is under 0.8 m (the critic's props floated where
+    # 'works' polygons reach over the water, 2026-09-24)
+    def _lot_dry(L_):
+        zs_ = [ground(p_[0], p_[1]) for p_ in L_['ring']]
+        return all(z_ is not None and z_ >= 0.8 for z_ in zs_) and not any(EA.water_then(p_[0], p_[1], ERA) for p_ in L_['ring'])
+    LOTS = [L_ for L_ in LOTS if _lot_dry(L_)]
+    LI = EA.LotIndex(LOTS)
+    EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.35)), rough_add=0.2),
+                                     'dirt': ph_mat('withered_grass', 5.0, name='lot_dirt', value=float(E('LOT_DV', 0.85)))}, log)
+else:
+    LOTS, LI = [], None
+    def open_at(x, y, grid=None): return 0.0
+    def street_stands(x, y): return True
+
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
 SA_ = array.array('f')
 for m in d['meshes']:
     if m.get('instanced'): continue
     if m['layer'] == 'streets':
-        # the engine's two street layers, the casing (light) and the asphalt
-        # (dark), kept apart for merge_street_layers (as hq_scene does)
-        p = f32(m['pos']); tgt = SA_ if (m.get('color') or [1])[0] < 0.2 and E('ST_MERGE', '1') == '1' else SP
-        if BOX is None: tgt.extend(p)
-        else:
-            for t in range(len(p) // 9):
-                if in_box(p[t*9], p[t*9+1], 60): tgt.extend(p[t*9:t*9+9])
-    elif m['layer'] == 'street-markings':
+        p_ = f32(m['pos'])
+        if ERA is not None or BOX is not None:
+            q_ = array.array('f')
+            for t in range(len(p_) // 9):
+                a = t * 9
+                if not in_box(p_[a], p_[a+1], 60): continue
+                if ERA is None or street_stands((p_[a] + p_[a+3] + p_[a+6]) / 3, (p_[a+1] + p_[a+4] + p_[a+7]) / 3): q_.extend(p_[a:a+9])
+            p_ = q_
+        (SA_ if (m.get('color') or [1])[0] < 0.2 and E('ST_MERGE', '1') == '1' else SP).extend(p_)
+    elif m['layer'] == 'street-markings' and (ERA is None or EA.P('marks', ERA) >= 0.5):
         p = f32(m['pos'])
         for t in range(len(p) // 9):
             a = t * 9
-            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60): MP.extend(p[a:a+9])
+            if abs((p[a+3]-p[a])*(p[a+7]-p[a+1]) - (p[a+4]-p[a+1])*(p[a+6]-p[a])) / 2 < 6.0 and in_box(p[a], p[a+1], 60):
+                # no paint where the street itself is not yet built (it floated over the yards)
+                if ERA is None or street_stands((p[a] + p[a+3] + p[a+6]) / 3, (p[a+1] + p[a+4] + p[a+7]) / 3): MP.extend(p[a:a+9])
     elif m['layer'] == 'ground-detail':
         # not ground: the engine's translucent overlays (pier plates .2, their
         # dark drop shadows offset south-west .35 — the grey 'ghost piers' on
@@ -235,6 +349,18 @@ if len(SA_):
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
+_PAVE2 = None
+if ERA is not None and EA.pavement(ERA, 0, 0) in ('basalt', 'dirt'):
+    # before 1910 the paving changes with the place (era.pavement): the
+    # materials slice gave the whole city one, from the scene's centre
+    _PAVE2 = {'basalt': bpy.data.materials.get('basalt') or ph_mat('cobblestone_floor_05', 2.2, value=0.62, name='basalt'),
+              'dirt': bpy.data.materials.get('dirt') or ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')}
+    _sm = streets.data; _sm.materials.clear(); _sm.materials.append(_PAVE2['dirt']); _sm.materials.append(_PAVE2['basalt'])
+    import numpy as _np
+    _cen = _np.empty(len(_sm.polygons) * 3, _np.float32); _sm.polygons.foreach_get('center', _cen); _cen = _cen.reshape(-1, 3)
+    _mi = [1 if EA.pavement(ERA, float(c_[0]), float(c_[1])) == 'basalt' else 0 for c_ in _cen]
+    _sm.polygons.foreach_set('material_index', _mi); _sm.update()
+    log('streets paved with basalt block', sum(_mi), 'of', len(_mi), 'faces; earth elsewhere')
 sbv = BVHTree.FromObject(streets, bpy.context.evaluated_depsgraph_get())
 MP = keep_on_streets(MP, sbv)                  # paint of a dropped footpath-street goes with it (hq_scene)
 for i in range(0, len(MP), 3):
@@ -286,14 +412,66 @@ for f in me.polygons:
     if (f.index % 2 == 0 and f.normal.z < 0) or (f.index % 2 == 1 and f.normal.dot(o_) > 0): f.flip()
 me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
+if _PAVE2 is not None:
+    # no concrete footway where the carriageway was graded earth (CONVENTION:
+    # plank and earth walks beyond the paved core before 1910)
+    me.materials.append(_PAVE2['dirt'])
+    _mi = [1 if EA.pavement(ERA, float(f_.center.x), float(f_.center.y)) == 'dirt' else 0 for f_ in me.polygons]
+    me.polygons.foreach_set('material_index', _mi); me.update()
 log('street edges', len(SE))
+if ERA is not None and E('SMOOTH_OPEN', '1') == '1':
+    # OPEN LAND ON THE LAND'S OWN SHAPE: today's ground carries the city's cut
+    # and fill — street benches, house pads, retaining walls — which on the
+    # open hills of an early year read as pale terraces (1890, 2026-09-24).
+    # Where the year's ground is open (not a park, not within 10 m of a street
+    # standing then) the terrain is eased toward its shape smoothed over ~20 m,
+    # as far as it is open. CONVENTION (the dunes do the same, era.dune_height).
+    import numpy as _np
+    _tm = terrain.data; _nv = len(_tm.vertices)
+    _co = _np.empty(_nv * 3, _np.float32); _tm.vertices.foreach_get('co', _co); _co = _co.reshape(-1, 3)
+    _R = 8.0; _gx0, _gy0 = _co[:, 0].min() - _R, _co[:, 1].min() - _R
+    _gi = ((_co[:, 0] - _gx0) / _R).astype(int); _gj = ((_co[:, 1] - _gy0) / _R).astype(int)
+    _GW, _GH = _gi.max() + 2, _gj.max() + 2
+    _sum = _np.zeros((_GH, _GW)); _cnt = _np.zeros((_GH, _GW))
+    _np.add.at(_sum, (_gj, _gi), _co[:, 2]); _np.add.at(_cnt, (_gj, _gi), 1)
+    def _box(a_, r_):
+        for ax_ in (0, 1):
+            c_ = _np.cumsum(_np.pad(a_, [(r_ + 1, r_) if k_ == ax_ else (0, 0) for k_ in (0, 1)], mode='edge'), axis=ax_)
+            a_ = (_np.take(c_, range(2 * r_ + 1, c_.shape[ax_]), axis=ax_) - _np.take(c_, range(0, c_.shape[ax_] - 2 * r_ - 1), axis=ax_)) / (2 * r_ + 1)
+        return a_
+    _s = _box(_box(_sum, 3), 3); _c = _box(_box(_cnt, 3), 3)
+    _zs = _np.where(_c > 1e-6, _s / _np.maximum(_c, 1e-6), 0.0)
+    _fx = (_co[:, 0] - _gx0) / _R - 0.5; _fy = (_co[:, 1] - _gy0) / _R - 0.5
+    _i0 = _np.clip(_np.floor(_fx).astype(int), 0, _GW - 2); _j0 = _np.clip(_np.floor(_fy).astype(int), 0, _GH - 2)
+    _tx = _np.clip(_fx - _i0, 0, 1); _ty = _np.clip(_fy - _j0, 0, 1)
+    _zb = (_zs[_j0, _i0] * (1 - _tx) * (1 - _ty) + _zs[_j0, _i0 + 1] * _tx * (1 - _ty) + _zs[_j0 + 1, _i0] * (1 - _tx) * _ty + _zs[_j0 + 1, _i0 + 1] * _tx * _ty)
+    _w = _np.zeros(_nv, _np.float32); _nm = 0
+    for k_ in range(_nv):
+        x_, y_, z_ = _co[k_]
+        if z_ < 0.5: continue                                   # the shore and the water of the year stay put
+        o_ = OL.at(x_, y_)
+        if o_ <= 0.02 or OL.at(x_, y_, OL.park) > 0.5 or not EA.in_city(x_, y_): continue
+        if len(streets.data.polygons) and sbv.find_nearest(Vector((x_, y_, z_)), 10.0)[0] is not None: continue
+        _w[k_] = o_; _nm += 1
+    _co[:, 2] = _co[:, 2] + (_np.maximum(_zb, 0.4) - _co[:, 2]) * _w
+    _tm.vertices.foreach_set('co', _co.ravel()); _tm.update()
+    bvh_t = BVHTree.FromObject(terrain, bpy.context.evaluated_depsgraph_get())
+    log('open land eased to the land\'s own shape:', _nm, 'of', _nv, 'terrain vertices')
+if ERA is not None and len(streets.data.polygons):
+    # the rails of the year and the cars on them (hq_scene's block)
+    _rs = _HQSRC[_HQSRC.index("    _rb = BVHTree.FromObject(streets"):_HQSRC.index("                   simple('cableslot'")]
+    _rs = '\n'.join(l[4:] if l.startswith('    ') else l for l in _rs.split('\n'))
+    bx0, by0, bx1, by1 = CBOX
+    exec(_rs + "\n                   simple('cableslot', (0.02, 0.02, 0.02), rough=0.9), _bm, log)".replace('\n                   ', '\n               '))
 if os.environ.get('BRUSH', '1') == '1': hill_brush(ground_s, BOX)     # the brush beyond the county line stands on the surround
 
 # ── landmarks the engine models by hand (Coit Tower, the Transamerica...) ──
 HP, HC = array.array('f'), array.array('f')
 for m in d['meshes']:
     # heroes only: the engine's 'caps' crown generic towers the generator now models itself
-    if m['layer'] == 'heroes' and not m.get('instanced'): HP.extend(f32(m['pos'])); HC.extend(f32(m['col']))
+    if m['layer'] == 'heroes' and not m.get('instanced'):
+        _f = EA.hero_mesh_filter(f32(m['pos']), f32(m['col']), ERA)
+        if _f is not None: HP.extend(_f[0]); HC.extend(_f[1])
 if len(HP):
     ho = mesh_from('landmarks', HP, None, cols=HC)
     lm = simple('landmark', (0.8, 0.8, 0.8), rough=0.6)
@@ -303,24 +481,6 @@ if len(HP):
 
 # ── the city's buildings, modelled, in chunks ────────────────────────────────
 G.LOD = int(E('LOD', 2))
-log('buildings: records')
-HG = city_data.hero_gids()
-# NEVER BUILT, though the roll records them: Oceanwide Center Tower I, 50 First
-# St (gid 137672, 259 m, "1917" on the roll) — begun 2016-17, halted 2019-20,
-# still a hole (Wikipedia 'Oceanwide Center'). It stood next to Salesforce Tower
-# in tonight's pass (history agent, 24/09).
-PHANTOMS = {137672}
-HG |= PHANTOMS
-# and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
-# a pass reads the copy frozen in its snapshot, a test the live one)
-_sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
-if _sk:     # a landmark replaces its footprints only once it's built (ERA None = today)
-    _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
-    HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
-recs = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy']) and b['gid'] not in HG
-        and (ERA is None or (b['year'] or 0) <= ERA)]
-if E('MAXB'): recs = recs[:int(E('MAXB'))]
-log('buildings', len(recs))
 recs.sort(key=lambda b: (int(b['cx'] // 700), int(b['cy'] // 700)))
 if E('GID_PASS') == '1':   # every face a building draws carries its gid as colour (24 bit), for the ID pass only
     _poly0 = G.Out.poly
@@ -376,6 +536,10 @@ def instancer(name, pts, protos):
     me.vertices.foreach_set('co', [v for p in pts for v in p[:3]])
     for nm, k, tp in (('s', 3, 'FLOAT'), ('r', 4, 'FLOAT'), ('kind', 5, 'INT')):
         at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', [p[k] for p in pts])
+    # a stable id by place: the instances' random (tree tint, car paint) then
+    # stays with the place from one year of the film to the next
+    at = me.attributes.new('id', 'INT', 'POINT')
+    at.data.foreach_set('value', [int(EA.hash01(p[0], p[1], 31) * 2147483000) for p in pts])
     # 'crand': the instance's own random, BY PLACE. A shader's Object Info >
     # Random follows the instance's index, which shifts with the region: a
     # parked car kept its place across a frame seam but changed colour (life
@@ -440,6 +604,11 @@ def open_foot(x, y, reach):
         d += 1.5
     return None
 kd = KDTree(len(recs)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(recs)]; kd.balance()
+# park or street is the tree's own nature: read against today's buildings, or
+# every street tree beside a lot not yet built passed for a park tree (kept in
+# every year) — South Beach wooded in 1960 (2026-09-23)
+if ERA is not None:
+    kd = KDTree(len(_allb)); [kd.insert((b['cx'], b['cy'], 0), i) for i, b in enumerate(_allb)]; kd.balance()
 # SPECIES (veg_hq.py, the vegetation agent; VEG=0 = the generic kit below):
 # each register tree drawn as its species in the DataSF Street Tree List
 # (nearest listed tree within 2.3 m, its crown from its DBH), each canopy mass
@@ -492,6 +661,13 @@ def hp(x, y, salt):
     h = (int(round(x * 10)) * 73856093) ^ (int(round(y * 10)) * 19349663) ^ (salt * 83492791)
     h = (h ^ (h >> 13)) * 0x5bd1e995 & 0xffffffff
     return ((h ^ (h >> 15)) & 0xffffff) / float(0x1000000)
+_TKD = None
+if ERA is not None:
+    _tl = city_data.trees(*(CBOX[0] - 50, CBOX[1] - 50, CBOX[2] + 50, CBOX[3] + 50))
+    if _tl:
+        _TKD = KDTree(len(_tl)); _TY = [t_[2] for t_ in _tl]
+        for i_, t_ in enumerate(_tl): _TKD.insert((t_[0], t_[1], 0), i_)
+        _TKD.balance()
 # WHAT THE ENGINE'S 'trees' LAYER HOLDS. Only the Lambert meshes are trees
 # (the register, 195,310 crowns, listed once per zoom band). The Basic meshes
 # are the dark CONTACT DISCS painted under them (layers/canopy-shadow.ts): one
@@ -517,19 +693,31 @@ for t in d['trees']:
         if f_ is None: continue
         x, y = f_
         park = kd.find((x, y, 0))[2] > 28 if len(recs) else True
-        if ERA is not None and not park:
-            if hp(x, y, 1) > (0.12 if ERA < 1945 else 0.22 if ERA < 1965 else 0.45 if ERA < 1985 else 1.0): continue
         crown = max(3.0, 2.0 * sxz)
+        if ERA is not None:
+            # dated street trees from their planting year (DataSF Street Tree
+            # List), crowns grown to their age; undated ones by era.TABLE `trees`
+            pt_ = _TKD.find((x, y, 0)) if _TKD else None
+            py_ = _TY[pt_[1]] if (pt_ and pt_[2] < 2.5) else None
+            if py_ is not None:
+                if py_ > ERA: continue
+                crown = max(1.6, crown * min(1.0, ((ERA - py_ + 3) / (2025 - py_ + 3)) ** 0.7))
+            elif not park and EA.hash01(x, y, 11) > EA.street_tree_keep(ERA): continue
+            if park and not EA.canopy_stands(x, y, ERA, _allb, kd): continue     # a park or plaza of later years
+            if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5 and EA.hash01(x, y, 12) > 0.04: continue
+            if EA.water_then(x, y, ERA): continue
+            if LI is not None and LI.inside(x, y): continue          # a vacant lot of the year
         if VEG:
             kc_ = VK.street(ox_, oy_, x, y, park, crown, on_street, roofed)
             if kc_ is None: continue            # the list says stump, an empty site, or only roadway around
             kind, crown, x, y = kc_
         else:
-            # parks: mostly broadleaf, some Monterey pine; firs only now and then
-            kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
+            u_ = EA.hash01(x, y, 14)
+            kind = ((K_BROAD + int(EA.hash01(x, y, 17) * len(BROAD)) if u_ < 0.8 else K_PINE + int(EA.hash01(x, y, 18) * len(PINE)))
+                    if park else int(u_ * NS))
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
+        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
 # register already has a tree there
@@ -539,6 +727,14 @@ for (x, y, z, rad, *_rest) in MASS:
     if f_ is None: continue
     x, y = f_
     if any((round(x / 2.5) + a, round(y / 2.5) + b) in seen for a in (-1, 0, 1) for b in (-1, 0, 1)): continue
+    if ERA is not None:
+        # today's canopy on ground that was then dune or open grass (outside
+        # the parks, which were planted from their founding: era.in_park), or
+        # under water, did not stand yet
+        if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5: continue
+        if EA.water_then(x, y, ERA): continue
+        if LI is not None and LI.inside(x, y): continue
+        if not EA.canopy_stands(x, y, ERA, _allb, kd): continue
     gz_ = ground(x, y)
     if gz_ is None: continue
     # canopy: crowns a little wider than the disc, so a mass reads as one clump
@@ -591,14 +787,19 @@ for a, b, outv in SE:
     v = b - a; L_ = v.length
     if L_ < 7: continue
     ang = math.atan2(v.y, v.x)
-    occ = float(E('KERB_OCC', '0.12')) if (ERA is None or ERA >= 1970) else 0.0 if ERA < 1908 else 0.10 if ERA < 1930 else 0.25 if ERA < 1950 else 0.45
+    occ = float(E('KERB_OCC', '0.12')) if ERA is None else EA.car_occupancy(ERA)
     for i in range(int((L_ - 3) // 6.2)):
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
-        if hp(p.x, p.y, 11) > occ: continue
-        if not in_box(p.x, p.y): continue
-        if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue
+        if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
+        if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
+        if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue      # a car parks near a door
         if carfree_at(p.x, p.y, BOX): continue     # JFK Promenade, Twin Peaks' closed loop, busways
-        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if hp(p.x, p.y, 12) < 0.5 else 0), int(hp(p.x, p.y, 13) * len(car_colls))))
+        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
+# the parking lots of the year, their stalls filled by their own draws
+for L_ in LOTS:
+    for (x_, y_, h_, u_) in L_['cars']:
+        gz_ = ground(x_, y_)
+        if gz_ is not None and gz_ >= 0.8 and in_box(x_, y_) and not EA.water_then(x_, y_, ERA): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
 instancer('cars', cpts, car_colls)
 def place_random(colls):
     """in every material of these protos, Object Info > Random -> the
@@ -619,12 +820,24 @@ def place_random(colls):
     log('place_random: materials re-pointed', len(seen_))
 place_random(car_colls)
 
+# ── open ground of the year: dunes, the 1906 ash (hq_scene's block, city-sized) ──
+if ERA is not None:
+    bx0, by0, bx1, by1 = CBOX; OPAD = 80.0; ox0, oy0 = OL.x0, OL.y0; SAND = OL.sand; OPEN = OL.open
+    if 'DUNE_RES' not in os.environ: os.environ['DUNE_RES'] = '10.0'
+    _ds = _HQSRC[_HQSRC.index("# ── open land: dunes where the Outside Lands"):_HQSRC.index("# ── the sea: the water mask")]
+    _g = dict(globals()); _g['ground'] = ground0; exec(_ds, _g)
+
 # ── the sea ──────────────────────────────────────────────────────────────────
 _ss = _HQSRC[_HQSRC.index("def sea():"):_HQSRC.index("# ── camera and light")]
 # the district script's own landmarks hook sits in that slice; the city calls
 # landmarks_hq itself (below), with its own box — cut the district's out
 _ss = _ss.split("# ── LANDMARKS, TERRAIN AND WATER DETAIL")[0]
+# the era blocks of that slice read the box and the open-land raster by name
+bx0, by0, bx1, by1 = CBOX
+OPEN = OL.open if ERA is not None else None
+_ground_keep = ground; ground = ground0
 exec(_ss)
+ground = _ground_keep
 # open water beyond the mask's own sheet, so the frame never runs into the void
 _oc = simple('ocean', (0.006, 0.026, 0.040), rough=0.06, spec=0.5)
 _on = _oc.node_tree; _og = _on.nodes.new('ShaderNodeNewGeometry'); _ow = _on.nodes.new('ShaderNodeTexNoise')
@@ -662,7 +875,7 @@ if E('LIFE', '1') == '1':
     except Exception as ex: log('life_hq: not built:', ex)
 # ── FREEWAYS (freeways_hq.py, the freeways agent): the viaducts on LiDAR-measured decks, bents, the ground under them; FREEWAYS=0 skips
 if E('FREEWAYS', '1') == '1':
-    import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
+    import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA, keep=EA.freeway_keep(ERA))    # a past year: the ways already open (era.freeway_keep)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
@@ -737,6 +950,7 @@ if E('MODE') == 'pyramid':
     up = Vector((0, KY, ZT)).normalized(); fw_ = Vector((0, ZT, -KY)).normalized()
     cam_d.ortho_scale = (FW / 2) / sz / KX                           # metres across the frame
     sc.render.resolution_x, sc.render.resolution_y = FW, FH
+    sc.render.resolution_percentage = int(E('PCT', 100))          # tests: the same frame, smaller
     sc.render.use_border = False; sc.render.use_persistent_data = True
     if E('BORDER'):   # a crop of the frame, for fast look tests (fractions, y from the bottom)
         bx_ = [float(v) for v in E('BORDER').split(',')]
