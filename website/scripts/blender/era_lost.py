@@ -222,7 +222,7 @@ LOST = [
     # Francisco North sheet, 225 x 40 m from (3598, 3192) to (3760, 3348).
     # Height: CONVENTION (four levels, garage to deck). The loop viaduct is
     # in era.STRUCTURES.
-    dict(key='transbay_terminal', y0=1939.04, y1=2011.0,
+    dict(key='transbay_terminal', y0=1939.04, y1=2011.67, dem=(2010.95, 2011.67),
          form=dict(kind='block', c=(3679.0, 3270.0), ang=43.9, L=225.0, W=40.0, h=18.0)),
 ]
 
@@ -239,6 +239,10 @@ def standing(era):
         st = dict(e['form'])
         for y_, ov in e.get('forms', []):
             if era >= y_: st.update(ov)
+        d = e.get('dem')       # the demolition grammar (era.demolished_path): it comes down over its window
+        if d and era >= d[0] and 'h' in st:
+            f = min(1.0, (era - d[0]) / (d[1] - d[0])); st['h'] = st['h'] * (1 - f) + 0.5 * f
+            if 'L' in st: st['L'] = max(8.0, st['L'] * (1 - 0.6 * f))
         out.append((e, st))
     return out
 

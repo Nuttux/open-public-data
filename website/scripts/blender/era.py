@@ -60,11 +60,17 @@ FIRE = 1906 + 107 / 365.0
 # 2017 (Wikipedia pages of each). CONVENTION: the duration grows with the
 # height, 0.8 year + 1 year per 120 m, capped at 3; buildings under 25 m
 # simply appear in their year.
-RISE_MIN_H = 25.0
+# (25/09 eras2, Daniel: 'one grammar for every change') every building of
+# about six floors and up (20 m) goes through the same sequence — site
+# cleared, core and crane, floors rising, cladding — over ~2-3 years before
+# its completion year: 1.8 years + 1 year per 200 m, capped at 3 (CONVENTION,
+# where no permit or construction dates are known; LANDMARK_SITES keeps the
+# SOURCED ones)
+RISE_MIN_H = 20.0
 
 
 def rise_years(h):
-    return min(3.0, 0.8 + h / 120.0)
+    return min(3.0, 1.8 + h / 200.0)
 
 
 def rising(b, era):
@@ -144,6 +150,11 @@ LANDMARK_SITES = {
     # landmarks agent's footprints.json).
     # (landmarks_hq shows the finished tower from 2017, its topping out)
     'salesforce': dict(build=(2013.24, 2017.0), h=296.0, ring_from='salesforce'),
+    # SOURCED: Wikipedia '181 Fremont' — construction started 2013, topped out
+    # December 2016, completed May 2018; roof 210 m (spire 245 m). The start
+    # month is a CONVENTION (mid-2013). landmarks_hq shows the finished tower
+    # from 2017 (lm_civic.fremont181), as Salesforce. Ring: lm_civic.FREMONT181_RING (OSM).
+    'fremont181': dict(build=(2013.5, 2016.95), h=210.0, ring_mod=('lm_civic', 'FREMONT181_RING')),
 }
 _LMG = None
 
@@ -173,6 +184,16 @@ def landmark_sites(all_records, era):
         if k: by_key.setdefault(k, []).append(b)
     for k, st in LANDMARK_SITES.items():
         recs = [dict(b) for b in by_key.get(k, [])]
+        if not recs and st.get('ring_mod'):
+            try:
+                import importlib
+                r = [tuple(p) for p in getattr(importlib.import_module(st['ring_mod'][0]), st['ring_mod'][1])]
+                if r[0] == r[-1]: r = r[:-1]
+                recs = [dict(gid=900000000 + len(k) * 1000 + sum(map(ord, k)), ring=r, cx=sum(p[0] for p in r) / len(r),
+                             cy=sum(p[1] for p in r) / len(r), h=st['h'], year=int(st['build'][1]) + 1, use='office', st=0,
+                             ty='OFFICE', shop=False, roles=[1] * len(r), paint=16)]
+            except Exception as ex:
+                print('landmark_sites:', k, 'ring unreadable', ex)
         if not recs and st.get('ring_from') and os.path.exists(LM_FOOTPRINTS):
             f = json.load(open(LM_FOOTPRINTS)).get(st['ring_from'])
             if f and f.get('outer'):
@@ -438,7 +459,7 @@ UNDATED_TALL = {135990: 1966}
 #           roll 1880: CONVENTION 1925 (the Pacific Heights apartment towers
 #           of the 1920s; its own year not found)
 RECORD_YEAR_FIX = {137615: 1975, 137657: 1971, 137659: 1971, 137918: 1965, 138668: 1972, 138685: 1972,
-                   137672: 9999, 152080: 1925, 142933: 1990}
+                   137672: 9999, 152080: 1925, 142933: 1991}
 
 
 def fix_records(recs, era):
@@ -908,7 +929,7 @@ def freeway_year(name, x, y):
 # 1950s California double-deck viaduct: decks at ~7.5 m and ~14 m, 16 m wide,
 # bents every 24 m.
 STRUCTURES = [
-    dict(k='embarcadero_fwy', kind='viaduct2', y0=1959, y1=1991, w=16.0,
+    dict(k='embarcadero_fwy', kind='viaduct2', y0=1959, y1=1991.75, dem=(1991.16, 1991.75), w=16.0,
          path=[(3880, 2930), (3960, 3040), (4040, 3170), (4110, 3330), (4140, 3470), (4128, 3611),
                (4004, 3759), (3937, 3810), (3884, 3853), (3836, 3906), (3793, 3989), (3749, 4084),
                (3693, 4141), (3600, 4275), (3549, 4368)]),
@@ -924,7 +945,7 @@ STRUCTURES = [
 # 3720001; Wikipedia 'San Francisco Transbay Terminal'). Its line TRACED on
 # the USGS 1:24,000 San Francisco North sheet of 1956 (history/refs/usgs24k;
 # +-20 m); one deck at 7.5 m, 10 m wide: CONVENTION.
-STRUCTURES.append(dict(k='transbay_loop', kind='viaduct1', y0=1939.04, y1=2011.0, w=10.0, decks=[7.5],
+STRUCTURES.append(dict(k='transbay_loop', kind='viaduct1', y0=1939.04, y1=2011.67, dem=(2010.95, 2011.67), w=10.0, decks=[7.5],
                        path=[(3760, 3342), (3814, 3378), (3880, 3386), (3928, 3366), (3958, 3312), (3962, 3252), (3940, 3192), (3886, 3144), (3808, 3096), (3748, 3054), (3714, 3000), (3702, 2928), (3706, 2832)]))
 
 
@@ -936,7 +957,31 @@ def structures(era):
         if st['y0'] <= era < st['y1']:
             decks = list(st.get('decks', [7.5, 14.0]))
             if st.get('deck1_until') and era >= st['deck1_until']: decks = [7.5]
-            out.append(dict(st, decks=decks))
+            path = demolished_path(st, era)
+            if len(path) >= 2: out.append(dict(st, decks=decks, path=path))
+    return out
+
+
+# THE DEMOLITION GRAMMAR (25/09 eras2): a structure with a demolition window
+# `dem` (start, end) comes down span by span over it, from the end of its path
+# (CONVENTION on the direction: from its far end back to its approach). The
+# Embarcadero Freeway: demolition began 27 Feb 1991 (SOURCED, above); its end
+# in autumn 1991 is a CONVENTION (1991.75). The Transbay loop and terminal:
+# torn down Dec 2010 - Sep 2011 (SOURCED, era_lost).
+def demolition_share(st, era):
+    d = st.get('dem')
+    if not d or era is None or era < d[0]: return 0.0
+    return min(1.0, (era - d[0]) / (d[1] - d[0]))
+
+
+def demolished_path(st, era):
+    f = demolition_share(st, era); P = st['path']
+    if f <= 0: return P
+    seg = [math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(P, P[1:])]; keep = sum(seg) * (1 - f); out = [P[0]]
+    for (a, b), L in zip(zip(P, P[1:]), seg):
+        if keep <= 0: break
+        if L <= keep: out.append(b); keep -= L
+        else: t = keep / L; out.append((a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)); keep = 0
     return out
 
 
@@ -1964,19 +2009,80 @@ def _seg_dist(x, y, a, b):
     return math.hypot(x - ax - t * dx, y - ay - t * dy)
 
 
-def piers(era):
-    """[(cx, cy, ang_deg, L, W)] of the lost piers standing in the year shown"""
-    global _PIERS
-    if era is None or era < 1925 or era >= 1986: return []
+# THE LOST PIERS AS IDENTITIES (25/09 eras2). The 1:24,000 editions each draw
+# the piers of their survey; before, piers() took one edition per window and cut
+# everything at 1986, so a pier flickered at every window boundary and every
+# lost pier 'vanished' in 1986 for no reason (the Pier 7 shed: burned 1973,
+# still drawn to 1985). Now the detections of all editions are joined into
+# piers (centre within 70 m, same heading within 25 deg); a pier stands from the
+# survey year of the first edition that draws it (from 1925 when that is the
+# 1947 sheet: the first sheet with piers) to the survey year of the first
+# edition that no longer draws it, gaps between editions filled. A DATED FACT
+# (PIER_FACTS) overrides an edition's window. A pier still on the last sheet
+# (1980) with no dated fact goes at that sheet's own date (1980) and is FLAGGED
+# by era_audit.py: it needs a dated source.
+PIER_FACTS = [
+    # SOURCED: FoundSF 'Pier 7'; sfmemory.org 'Pier 7, Mar 1973': a five-alarm
+    # fire destroyed the Pier 7 shed on 21 March 1973; the deck was then used
+    # for parking and fishing, damaged in the Loma Prieta earthquake (17 Oct
+    # 1989); the new public pier was dedicated in October 1990. The old deck's
+    # removal at the start of the rebuilding (1990.0) is a CONVENTION.
+    dict(name='Pier 7 (the 1901 pier)', at=(3724.0, 4407.0), r=80.0, since=1901.0, shed_until=1973.22, until=1990.0,
+         src='FoundSF Pier 7; sfmemory Mar 1973: shed burned 21 Mar 1973; deck damaged Oct 1989; new pier Oct 1990'),
+]
+_PIER_IDS = None
+
+
+def _pier_ids():
+    global _PIER_IDS, _PIERS
+    if _PIER_IDS is not None: return _PIER_IDS
     if _PIERS is None:
         p = os.path.join(TOPO_DIR, 'piers.json')
         _PIERS = json.load(open(p)) if os.path.exists(p) else {}
-    ep = 'usgs1947' if era < 1944 else topo_sheet(era)
+    eds = [(n, sv) for n, sv, _, _ in TOPO24 if n in _PIERS]
+    ids = []
+    for n, sv in eds:
+        for cx, cy, ang, L, W in _PIERS[n]:
+            if cy < -5800 or L > 420 or _seg_dist(cx, cy, *BAY_BRIDGE_LINE) < 90: continue
+            best = None
+            for q in ids:
+                lx, ly, la = q['det'][-1][1][:3]
+                da = abs((ang - la + 90) % 180 - 90)
+                if math.hypot(cx - lx, cy - ly) < 70 and da < 25 and q['det'][-1][0] != n: best = q; break
+            if best is None: best = dict(det=[]); ids.append(best)
+            best['det'].append((n, (cx, cy, ang, L, W), sv))
+    names = [n for n, _ in eds]; sv_of = dict(eds)
+    for q in ids:
+        first, last = q['det'][0][0], q['det'][-1][0]
+        q['y0'] = 1925.0 if first == names[0] else float(sv_of[first]); q['y0_src'] = 'edition ' + first
+        nxt = names.index(last) + 1
+        q['y1'] = float(sv_of[names[nxt]]) if nxt < len(names) else float(sv_of[last]) + 0.99
+        q['y1_src'] = ('edition ' + names[nxt] + ' no longer draws it') if nxt < len(names) else ('NO DATED SOURCE: last drawn on ' + last)
+        q['dated'] = nxt < len(names)
+        cx, cy = q['det'][-1][1][:2]
+        for f in PIER_FACTS:
+            if math.hypot(cx - f['at'][0], cy - f['at'][1]) < f['r']:
+                q['y1'] = f['until']; q['y1_src'] = f['src']; q['shed_until'] = f.get('shed_until'); q['name'] = f['name']; q['dated'] = True
+                if f.get('since'): q['y0'] = f['since']; q['y0_src'] = f['src']; q['dated0'] = True
+    _PIER_IDS = ids
+    return ids
+
+
+def pier_identities():
+    """[(name, first edition, last edition, from, to, source of the end, dated)] for era_audit.py"""
+    return [(q.get('name', ''), q['det'][0][0], q['det'][-1][0], q['y0'], q['y1'], q['y1_src'], q['dated'], q['det'][-1][1][:2], q.get('dated0', False)) for q in _pier_ids()]
+
+
+def piers(era):
+    """[(cx, cy, ang_deg, L, W, shed)] of the lost piers standing in the year shown"""
+    if era is None: return []
     out = []
-    for cx, cy, ang, L, W in _PIERS.get(ep, []):
-        if cy < -5800 or L > 420: continue                              # the sheet's edge; a bridge span
-        if _seg_dist(cx, cy, *BAY_BRIDGE_LINE) < 90: continue
-        out.append((cx, cy, ang, L, W))
+    for q in _pier_ids():
+        if not (q['y0'] <= era < q['y1']): continue
+        g = [d for d in q['det'] if d[2] <= era + 0.5] or q['det'][:1]
+        cx, cy, ang, L, W = g[-1][1]
+        shed = not (q.get('shed_until') and era >= q['shed_until'])
+        out.append((cx, cy, ang, L, W, shed))
     return out
 
 
@@ -2031,11 +2137,11 @@ def build_piers(bpy, era, mats, box=None, log=print):
             (s0, t0), (s1, t1) = q[i], q[(i + 1) % 4]
             quad(sides or key, [P(s0, t0, z0), P(s1, t1, z0), P(s1, t1, z1), P(s0, t0, z1)], col)
     lin = lambda c: tuple(v ** 2.2 for v in c)
-    for cx, cy, ang, L, W in ps:
+    for cx, cy, ang, L, W, shed in ps:
         P = frame(cx, cy, ang); h = lambda salt: hash01(cx, cy, salt)
         dk = 0.28 + 0.08 * h(3)
         box6('deck', P, L / 2, W / 2, -0.5, 3.0, lin((dk, dk * 0.96, dk * 0.9)))
-        if L > 40 and W > 24:
+        if L > 40 and W > 24 and shed:
             wc = _SHED_TONES[int(h(1) * len(_SHED_TONES))]; rc = _ROOF_TONES[int(h(2) * len(_ROOF_TONES))]
             l2, w2, ze = (L - 6) / 2, (W - 6) / 2, 11.0
             box6('wall', P, l2, w2, 3.0, ze, lin(wc))
@@ -2067,7 +2173,7 @@ def build_piers(bpy, era, mats, box=None, log=print):
 # the public breakwater pier off the Embarcadero, opened in 2006 (Port of San
 # Francisco; Wikipedia 'Pier 14'). Before its year its deck, rails and walk
 # are not drawn; the Embarcadero it starts from stays.
-DATED_PIERS = {'Pier 14': 2006.0, 'Pier 7': 1990.0}   # (Pier 7: see RECORD_YEAR_FIX 142933)
+DATED_PIERS = {'Pier 14': 2006.0, 'Pier 7': 1990.78}   # (Pier 7: see RECORD_YEAR_FIX 142933)
 _DATED = None
 
 
