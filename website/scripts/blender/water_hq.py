@@ -340,7 +340,7 @@ def piers(C):
             for (x1, y1), (x2, y2) in zip(pts, pts[1:] + pts[:1]):
                 if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / ((y2 - y1) or 1e-9) + x1: c = not c
             return c
-        yrs = [b['year'] for b in _recs if min(xs_) <= b['cx'] <= max(xs_) and min(ys_) <= b['cy'] <= max(ys_) and inside(b['cx'], b['cy'])]
+        yrs = [_EA.RECORD_YEAR_FIX.get(b['gid'], b['year']) for b in _recs if min(xs_) <= b['cx'] <= max(xs_) and min(ys_) <= b['cy'] <= max(ys_) and inside(b['cx'], b['cy'])]
         return min(yrs) if yrs else 1925.0
     bx0, by0, bx1, by1 = C.box
     def near(pts, pad=200.0):
@@ -391,6 +391,7 @@ def piers(C):
     osm_polys = [(r_, []) for k_, r_ in decks]
     for r in (C.d.get('_piers') or []) if isinstance(C.d, dict) else []:
         if not near(r): continue
+        if C.era is not None and C.era < deck_year([tuple(q) for q in r]): continue      # an apron before its pier's own year (Pier 7, 1990.0-1990.78)
         # not under a modelled place that replaces its footprint (Oracle Park's
         # DataSF block on the cove read as a pier shed: an apron over the field)
         _c = np.asarray(r, float).mean(0)
