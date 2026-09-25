@@ -407,8 +407,8 @@ def kit():
 # (small leaves ~2 px at level 9 in twigs, smooth shading, smooth cores); the
 # broad 'round' class split into the city's main evergreen street species, and
 # 2-3 sizes per species (veg_hq picks the one nearest the tree's own size, so
-# a young street tree is not a shrunken old one). Sources of the forms: Calscape,
-# SelecTree (Cal Poly), UC ANR/Sunset tree pages; the city's own list for who is where.
+# a young street tree is not a shrunken old one). The forms are a CONVENTION
+# after each species' usual habit (not measured); the city's own list says who is where.
 V3_ON = os.environ.get('VEG_V3', '1') == '1'
 V3_GAIN = float(os.environ.get('VEG3_GAIN', 1.0))
 # the v3 leaf gain per ramp: each species' foliage brought back to its v2
@@ -464,7 +464,7 @@ RAMPS.update({
 def oak(seed, H=10.0, W=14.0):
     """Quercus agrifolia, the coast live oak: a short trunk splitting low into
     a few massive sinuous limbs that spread out, a broad dense dome wider than
-    tall, its skin of small dark leaves lumpy and uneven (Calscape; SelecTree)"""
+    tall, its skin of small dark leaves lumpy and uneven (a convention after its usual habit)"""
     rng = np.random.default_rng(seed); M = Mesh(); R0 = 0.03 * H + 0.1
     zb = H * rng.uniform(0.14, 0.2)
     T = branch_path((0, 0, 0), (rng.normal(0, 0.08), rng.normal(0, 0.08), 1.0), zb, 0.1, 3, rng)
