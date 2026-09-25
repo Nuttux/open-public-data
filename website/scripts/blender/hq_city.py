@@ -801,11 +801,11 @@ for a, b, outv in SE:
     occ = float(E('KERB_OCC', '0.20')) * (1.0 if ERA is None else EA.car_occupancy(ERA) / EA.car_occupancy(None))   # the era table is relative to today's kerb
     for i in range(int((L_ - 3) // 6.2)):
         p = a + v * ((1.5 + 3.1 + i * 6.2) / L_) - outv * 1.25
-        if EA.hash01(p.x, p.y, 21) > occ: continue            # by kerb slot: no flicker between years
+        if hp(p.x, p.y, 11) > occ: continue            # by kerb slot (the render branch's own draw: today identical, no flicker between years)
         if not in_box(p.x, p.y) or open_at(p.x, p.y) > 0.3: continue
         if _fp and kdw.find((p.x, p.y, 0.0))[2] > 18.0: continue      # a car parks near a door
         if carfree_at(p.x, p.y, BOX): continue     # JFK Promenade, Twin Peaks' closed loop, busways
-        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if EA.hash01(p.x, p.y, 25) < 0.5 else 0), car_pick(EA.hash01(p.x, p.y, 24))))
+        cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if hp(p.x, p.y, 12) < 0.5 else 0), car_pick(hp(p.x, p.y, 13))))
 # the parking lots of the year, their stalls filled by their own draws
 for L_ in LOTS:
     for (x_, y_, h_, u_) in L_['cars']:
