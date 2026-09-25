@@ -320,7 +320,28 @@ def piers(C):
     K, tg = C.K, C.tg
     # today's decks and docks (OSM): the present-day city only; the history
     # agent draws the waterfront of each era (its own piers)
-    if C.era is not None and C.era < 1990: return 0
+    # (25/09 eras2) no cut-off year any more (it made every deck of today's piers
+    # appear at once in 1990): a deck stands from its own year — a dated pier's
+    # (era.DATED_PIERS), else the earliest DataSF year of a building standing on
+    # it (its shed), else 1925, the first sheet with the piers (CONVENTION,
+    # listed by era_audit.py)
+    _recs = None
+    def deck_year(pts):
+        nonlocal _recs
+        import era as _EA
+        y_ = _EA.dated_year(pts)
+        if y_: return y_
+        if _recs is None:
+            import city_data
+            _recs = [b for b in city_data.buildings(bx0 - 300, by0 - 300, bx1 + 300, by1 + 300) if b.get('year')]
+        xs_ = [p_[0] for p_ in pts]; ys_ = [p_[1] for p_ in pts]
+        def inside(x, y):
+            c = False
+            for (x1, y1), (x2, y2) in zip(pts, pts[1:] + pts[:1]):
+                if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / ((y2 - y1) or 1e-9) + x1: c = not c
+            return c
+        yrs = [b['year'] for b in _recs if min(xs_) <= b['cx'] <= max(xs_) and min(ys_) <= b['cy'] <= max(ys_) and inside(b['cx'], b['cy'])]
+        return min(yrs) if yrs else 1925.0
     bx0, by0, bx1, by1 = C.box
     def near(pts, pad=200.0):
         xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
@@ -345,7 +366,7 @@ def piers(C):
         for p in json.load(open(PIERS_JSON))['piers']:
             pts = p.get('ring') or p.get('line')
             if not near(pts): continue
-            if C.era is not None and (C.era < __import__('era').DATED_PIERS.get(p.get('name'), 0) or all(__import__('era').dated_absent(q[0], q[1], C.era, pad=14.0) for q in pts)): continue   # a pier not yet built (era.DATED_PIERS), named or not
+            if C.era is not None and (C.era < __import__('era').DATED_PIERS.get(p.get('name'), 0) or C.era < deck_year([tuple(q) for q in pts])): continue   # a deck before its own year
             if p['kind'] in ('deck', 'float'):
                 decks.append((p['kind'], [tuple(q) for q in p['ring']]))
             else:

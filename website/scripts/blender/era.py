@@ -424,8 +424,12 @@ def place_record(b, era):
         if _u(b['gid'], 0) < rebuild_share(t): b['rebuild'] = True; return b
         if _u(b['gid'], 1) < rubble_share(t): b['ruin'] = 'burned'; return b
         return None
-    if y <= era: return b
-    f_ = rising(b, t)                       # the record's own building, going up
+    # the roll gives a year, not a date: each building is completed at its own
+    # moment of that year (a fixed draw per lot, CONVENTION), so the buildings
+    # of one year do not all appear on the 1st of January (25/09 eras2)
+    yc = y + 0.1 + 0.8 * _u(b['gid'], 9) if y else y
+    if yc <= t: return b
+    f_ = rising(dict(b, year=yc), t)        # the record's own building, going up
     if f_ is not None: b['rise'] = f_; return b
     return None
 
@@ -2190,6 +2194,14 @@ def _dated_lines():
                     root = min(pts, key=lambda t: t[0] + t[1])     # the shore end (the bay lies north-east)
                     _DATED.append((pts, float(q.get('width') or 8.0), root, y))
     return _DATED
+
+
+def dated_year(pts):
+    """the opening year of a dated pier whose line these points mostly follow (else None)"""
+    for P_, w, root, yr in _dated_lines():
+        near = sum(1 for (x, y) in pts if any(_seg_dist(x, y, a, b) < w / 2 + 14.0 for a, b in zip(P_, P_[1:])))
+        if near > 0.5 * len(pts): return yr
+    return None
 
 
 def dated_absent(x, y, era, pad=4.0):
