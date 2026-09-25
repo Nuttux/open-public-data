@@ -2290,7 +2290,8 @@ if ERA is not None:
 # the Mission Bay rail yards, 1910-1998 (era.build_yards)
 if ERA is not None and OPEN is not None:
     EA.build_yards(bpy, ERA, (bx0, by0, bx1, by1), ground, open_at, simple('yardrail', (0.45, 0.42, 0.40), rough=0.35, metal=0.9),
-                   simple('ballast', (0.20, 0.18, 0.16), rough=0.95), log)
+                   simple('ballast', (0.20, 0.18, 0.16), rough=0.95), log,
+                   street=(lambda x, y: sbv.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))[0] is not None) if 'sbv' in globals() else None)
 # the structures the record has lost (era.STRUCTURES: the freeways that came down)
 if ERA is not None: EA.build_structures(bpy, ERA, ground, M['concrete'] if 'concrete_struct' not in M else M['concrete_struct'], (bx0, by0, bx1, by1) if 'bx0' in globals() else None, log, M=M)
 # the stadiums, pools, halls and terminals since torn down (era_lost.LOST)

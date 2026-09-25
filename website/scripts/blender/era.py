@@ -1691,7 +1691,7 @@ MISSION_BAY_YARD = [(4180, 2296), (4327, 481), (4047, 460), (3781, 729), (3199, 
 YARD_YEARS = (1910, 1998)
 
 
-def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print):
+def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print, street=None):
     """(ai_eras 25/09) the yard as it reads from the air (LoC aerial LCCN2011631765, 1985; SP yard photos 1967-85):
     dark ballast almost continuous across the tracks, each track a darker tie band with two steel rails, two
     diagonal ladders (the switches), and strings of freight cars on most tracks: boxcars in rust, brown and
@@ -1703,7 +1703,8 @@ def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print
     xs = [p[0] for p in MISSION_BAY_YARD]; ys = [p[1] for p in MISSION_BAY_YARD]
     c = Vector((sum(xs) / len(xs), sum(ys) / len(ys), 0))
     inb = lambda q: box[0] - 10 <= q.x <= box[2] + 10 and box[1] - 10 <= q.y <= box[3] + 10
-    ok = lambda q: inb(q) and _in_ring(q.x, q.y, MISSION_BAY_YARD) and open_at(q.x, q.y) >= 0.3
+    ok = lambda q: (inb(q) and _in_ring(q.x, q.y, MISSION_BAY_YARD) and open_at(q.x, q.y) >= 0.3
+                    and not (street and any(street(q.x + a, q.y + b) for a, b in ((0, 0), (2.5, 0), (-2.5, 0), (0, 2.5), (0, -2.5)))))   # the streets of the year cross the yard
     G = {k: ([], []) for k in ('ballast', 'ties', 'rails')}
     def quad(key, p0, p1, nv, g, w, dz):
         z0, z1 = ground(p0.x, p0.y), ground(p1.x, p1.y)
@@ -1728,8 +1729,8 @@ def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print
             p0 = c + d * s0 + dl * (t * 3.0); p1 = p0 + dl * 3.0
             if ok((p0 + p1) / 2): track(p0, p1, nl)
     # freight cars: slots of 16 m along each track; strings keyed by (track, block of 6 slots)
-    PAL = {'box_rust': (0.26, 0.09, 0.05), 'box_brown': (0.17, 0.10, 0.06), 'box_grey': (0.30, 0.30, 0.29), 'box_yellow': (0.50, 0.38, 0.10),
-           'tank_black': (0.03, 0.03, 0.03), 'tank_grey': (0.42, 0.42, 0.41), 'roof_galv': (0.40, 0.39, 0.37)}
+    PAL = {'box_rust': (0.26, 0.09, 0.05), 'box_brown': (0.17, 0.10, 0.06), 'box_grey': (0.31, 0.29, 0.26), 'box_yellow': (0.50, 0.38, 0.10),
+           'tank_black': (0.07, 0.068, 0.065), 'tank_grey': (0.42, 0.42, 0.41), 'roof_galv': (0.40, 0.39, 0.37)}
     C = {k: ([], []) for k in PAL}; ncar = 0
     def box3(key, p, L, W, H, z):
         V, F = C[key]; k = len(V); dd, nn = d * (L / 2), n * (W / 2)
@@ -1737,9 +1738,9 @@ def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print
             for a in (p - dd - nn, p + dd - nn, p + dd + nn, p - dd + nn): V.append((a.x, a.y, zz))
         F.extend([(k, k + 1, k + 2, k + 3), (k + 4, k + 7, k + 6, k + 5), (k, k + 4, k + 5, k + 1), (k + 1, k + 5, k + 6, k + 2), (k + 2, k + 6, k + 7, k + 3), (k + 3, k + 7, k + 4, k)])
     for k in range(-260, 261):
-        if hash01(k, 7, 71) > 0.8: continue                       # a track kept clear
+        if hash01(k, 7, 71) > 0.45: continue                      # by the 1980s-90s the yard was half idle (LoC aerial 1985): most tracks empty
         for j in range(-40, 41):
-            if hash01(k, j // 6, 72) > 0.72 or hash01(k, j, 73) > 0.9: continue
+            if hash01(k, j // 6, 72) > 0.55 or hash01(k, j, 73) > 0.85: continue
             s_ = j * 16.0; p = c + n * (k * 4.6) + d * s_
             if any(abs(s_ - s0 - k * 4.6 / math.tan(a7)) < 14 for s0 in LAD): continue   # clear of the ladder where it crosses this track
             tank = hash01(k, j, 74) < 0.25; L = 12.5 if tank else 14.8
@@ -1751,7 +1752,7 @@ def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print
                 key = 'tank_black' if hash01(k, j, 75) < 0.6 else 'tank_grey'
                 box3(key, p, L, 2.6, 2.5, z + 0.3); box3(key, p, L + 0.8, 3.0, 0.3, z)
             else:
-                u = hash01(k, j, 76); key = 'box_rust' if u < 0.45 else 'box_brown' if u < 0.75 else 'box_grey' if u < 0.93 else 'box_yellow'
+                u = hash01(k, j, 76); key = 'box_rust' if u < 0.5 else 'box_brown' if u < 0.85 else 'box_grey' if u < 0.96 else 'box_yellow'
                 box3(key, p, L, 3.05, 3.4, z); box3('roof_galv' if hash01(k, j, 77) < 0.3 else key, p, L - 0.2, 2.7, 0.12, z + 3.4)
             ncar += 1
     def mat(nm, col, rough=0.8, metal=0.0):
