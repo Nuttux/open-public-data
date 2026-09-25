@@ -933,6 +933,29 @@ if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE
             _SPREAD.append(mx_); _VSP.append(pw_); _VK.append((vk_, roof_))
         log(f'bcol spread: {mat_.name} mean {np.round(mean_, 3).tolist()}')
 
+# ── CAMPATH: many camera positions from one built scene (the film) ──────────
+# CAMPATH=<file.json>: [{"tx": x, "ty": y, "ortho": metres across, "out": path.png}, ...]
+# (tx, ty) the world point at the frame's centre (z = 0 plane); the camera is
+# the pyramid's true orthographic one (the site's look). One year's scene is
+# built once and every film frame of that year rendered from it.
+if E('CAMPATH'):
+    _cp = json.load(open(E('CAMPATH')))
+    _CA, _SA = math.cos(math.radians(30)), 0.42
+    _KX, _KY = math.sqrt(2) * _CA, math.sqrt(2) * _SA; _ZT = math.sqrt(2 * (_CA ** 2 - _SA ** 2))
+    _up = Vector((0, _KY, _ZT)).normalized(); _fw = Vector((0, _ZT, -_KY)).normalized()
+    cam.rotation_euler = Matrix((Vector((1, 0, 0)), _up, -_fw)).transposed().to_euler()
+    sc.render.resolution_x, sc.render.resolution_y = W, H; sc.render.resolution_percentage = 100
+    sc.render.use_border = False; sc.render.use_persistent_data = True
+    for _k, _c in enumerate(_cp):
+        if os.path.exists(_c['out']): continue
+        # the frame's centre on the ground plane z = 0, seen along _fw
+        cam.location = Vector((_c['tx'], _c['ty'], 0.0)) - _fw * 20000
+        cam_d.ortho_scale = _c['ortho']
+        sc.render.filepath = _c['out']
+        t1 = time.time(); bpy.ops.render.render(write_still=True)
+        log(f"campath {_k + 1}/{len(_cp)}: {time.time() - t1:.1f}s")
+    log('CAMPATH done'); sys.exit(0)
+
 # ── PYRAMID MODE: the site's own tile grid, exactly ──────────────────────────
 # `scripts/render-city-tiles.mjs` and `lib/citygl/tile-plane.ts` define the
 # pyramid: level z is a canvas of 2560·2^(z-3) x 1536·2^(z-3) device px (dpr 2)
