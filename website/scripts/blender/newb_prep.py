@@ -281,7 +281,7 @@ def main():
         if len(k) < 5: return 0.0, 0.0
         d = np.median(MX[k, 2:4], axis=0); return round(float(d[0]), 2), round(float(d[1]), 2)
     cand = []; acc = {}; accg = []
-    alls = {}; allg = []
+    alls = {}; allg = []; allh = []
     for n_, (key, el, g) in enumerate(geo):
         c_ = g.centroid; dxy = offset_at(c_.x, c_.y)
         g = shapely.affinity.translate(g, *dxy)
@@ -291,11 +291,14 @@ def main():
         allg.append(g); me_ = len(allg) - 1
         t = el['tags']; ty = type_of(t); my_parts = parts_of(g)
         hm, hs = measured_h(t, ty, my_parts)
+        allh.append(hm or 0.0)
         hit = [(int(j), DP[j].intersection(g).area) for j in DT.query(g)]
         hit = [(j, a) for j, a in hit if a > 0]
         ov = sum(a for j, a in hit) / g.area
         # a tall DataSF record standing in this outline, even offset: already there
-        if hm and any(DB[j]['h'] >= 0.6 * hm and (a >= 0.25 * DA[j] or a >= 0.15 * g.area) for j, a in hit):
+        # (another city, 25/09: a record under a tenth of the outline's area does not count by its own
+        # share — a 25 m² fragment of 24 m blocked Vancouver House's 3,492 m² outline)
+        if hm and any(DB[j]['h'] >= 0.6 * hm and ((a >= 0.25 * DA[j] and (CC.SF or DA[j] >= 0.1 * g.area)) or a >= 0.15 * g.area) for j, a in hit):
             why['in DataSF (tall)'] += 1; continue
         rep = []; pod = None
         if ov > 0.30:
@@ -339,7 +342,10 @@ def main():
         near = {k for c in cells for k in acc.get(c, ())}
         if sum(accg[k].intersection(g).area for k in near) > 0.3 * g.area: why['inside another OSM outline'] += 1; continue
         nall = {k for c in cells for k in alls.get(c, ())}
-        if any(allg[k].intersection(g).area > 0.5 * g.area for k in nall if k != me_): why['inside a larger OSM outline'] += 1; continue
+        # (another city, 25/09: a tower inside a LOW larger outline is not inside it — One Wall Centre,
+        # 150 m, sat in the 4-storey outline of the Wall Centre complex)
+        if any(allg[k].intersection(g).area > 0.5 * g.area and (CC.SF or not (hm and hm >= 1.5 * allh[k] + 10)) for k in nall if k != me_):
+            why['inside a larger OSM outline'] += 1; continue
         for c in cells: acc.setdefault(c, []).append(len(accg))
         accg.append(g)
         cand.append((key, el, g, ov, hit, ty, my_parts, hm, hs, rep, pod, dxy, lk))
