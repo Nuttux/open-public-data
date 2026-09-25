@@ -387,12 +387,34 @@ RED_BANDS = ((-1.0, -0.74, 0.10), (-0.74, -0.36, 0.42), (-0.36, 0.36, 0.14), (0.
 # centre, the other track, the edge; and how worn each is (paint gone to asphalt)
 
 
+# ONLY THE RED THE PHOTO SHOWS (25/09). OSM's bus lanes are not all painted red:
+# many are white-striped 'BUS ONLY' lanes (Sacramento, Sutter, Post, Clay, 16th
+# in Mission Bay, Geary Blvd in the outer Richmond, Mission in SoMa), and the
+# AI layer copies whatever red we draw. red_verified.json (the red-lane check,
+# NAIP 2022 sampled across every red way) keeps, per way and lane, the arc-length
+# stretches where the paint is really there; the rest is left asphalt.
+# RED_VERIFY=0: every OSM bus lane red, as before.
+RED_VERIFIED = '/Users/daniel/code/qipu-render-work/life/red_verified.json'
+
+
+def _red_verified(log):
+    if os.environ.get('RED_VERIFY', '1') == '0': return None
+    for p in (os.path.join(os.path.dirname(os.path.abspath(__file__)), 'red_verified.json'), RED_VERIFIED):
+        if os.path.exists(p):
+            import json
+            V = json.load(open(p))['ways']; log('life_traffic: red lanes verified against NAIP:', p); return V
+    log('life_traffic: red_verified.json missing, every OSM bus lane drawn red'); return None
+
+
 def _red(bpy, coll, D, street_z, kt, inb, log):
     import transit_geom as TG
     bank = TG.Bank(); n = 0
+    V = _red_verified(log)
     for r in D['roads']:
         red = r.get('red')
         if not red or 'Ramp' in r.get('name', '') or r['br']: continue
+        vw = V.get(str(r['id']), {}) if V is not None else None
+        if vw is not None and not vw: continue
         if not any(inb(x, y, 60) for x, y in r['pts']): continue
         rs = _resample(r['pts'], 1.5)
         if rs is None: continue
@@ -410,7 +432,9 @@ def _red(bpy, coll, D, street_z, kt, inb, log):
         ix = r.get('ix', [])
         lanes = ([k for k in range(r['nf'])] + [-1 - k for k in range(r['nb'])]) if red == 'all' else \
                 [k if d == 'f' else -1 - k for d, k in red]
+        if vw is not None: lanes = [l_ for l_ in lanes if str(l_) in vw]
         for lane in lanes:
+            ivs = vw[str(lane)] if vw is not None else None
             strip = []                       # runs of the band edges across the lane
             def flush():
                 if len(strip) >= 2:
@@ -420,6 +444,7 @@ def _red(bpy, coll, D, street_z, kt, inb, log):
             for i in range(len(X)):
                 x0, y0 = X[i], Y[i]
                 if not inb(x0, y0, 20) or any(abs(S[i] - q) < R_ix - 3.0 for q in ix): flush(); continue
+                if ivs is not None and not any(a_ - 1.0 <= S[i] <= b_ + 1.0 for a_, b_ in ivs): flush(); continue
                 nx, ny = -TY[i], TX[i]
                 runs = {}
                 for sd in (1, -1):
