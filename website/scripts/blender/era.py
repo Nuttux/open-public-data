@@ -1692,33 +1692,78 @@ YARD_YEARS = (1910, 1998)
 
 
 def build_yards(bpy, era, box, ground, open_at, rail_mat, ballast_mat, log=print):
+    """(ai_eras 25/09) the yard as it reads from the air (LoC aerial LCCN2011631765, 1985; SP yard photos 1967-85):
+    dark ballast almost continuous across the tracks, each track a darker tie band with two steel rails, two
+    diagonal ladders (the switches), and strings of freight cars on most tracks: boxcars in rust, brown and
+    grey, tank cars black or grey. CONVENTION: layout, the cars' share, colours; every draw keyed to its place."""
     if era is None or not (YARD_YEARS[0] <= era < YARD_YEARS[1]): return
     from mathutils import Vector
+    import math
     d = Vector((-0.7074, -0.7068, 0)); n = Vector((-d.y, d.x, 0))
-    RV, RF, BV, BF = [], [], [], []
     xs = [p[0] for p in MISSION_BAY_YARD]; ys = [p[1] for p in MISSION_BAY_YARD]
     c = Vector((sum(xs) / len(xs), sum(ys) / len(ys), 0))
+    inb = lambda q: box[0] - 10 <= q.x <= box[2] + 10 and box[1] - 10 <= q.y <= box[3] + 10
+    ok = lambda q: inb(q) and _in_ring(q.x, q.y, MISSION_BAY_YARD) and open_at(q.x, q.y) >= 0.3
+    G = {k: ([], []) for k in ('ballast', 'ties', 'rails')}
+    def quad(key, p0, p1, nv, g, w, dz):
+        z0, z1 = ground(p0.x, p0.y), ground(p1.x, p1.y)
+        if z0 is None or z1 is None: return False
+        V, F = G[key]; q = [p0 + nv * (g - w), p1 + nv * (g - w), p1 + nv * (g + w), p0 + nv * (g + w)]; k = len(V)
+        V.extend((a.x, a.y, z + dz) for a, z in zip(q, (z0, z1, z1, z0))); F.append((k, k + 1, k + 2, k + 3)); return True
+    def track(p0, p1, nv):
+        if not quad('ballast', p0, p1, nv, 0.0, 2.2, 0.05): return False
+        quad('ties', p0, p1, nv, 0.0, 1.3, 0.10)
+        for g in (-0.7175, 0.7175): quad('rails', p0, p1, nv, g, 0.05, 0.20)
+        return True
     ntr = 0
     for k in range(-260, 261):
-        off = k * 4.6
-        for s in range(-200, 201):
-            p0 = c + n * off + d * (s * 3.0); p1 = p0 + d * 3.0
-            m = (p0 + p1) / 2
-            if not (box[0] - 10 <= m.x <= box[2] + 10 and box[1] - 10 <= m.y <= box[3] + 10): continue
-            if not _in_ring(m.x, m.y, MISSION_BAY_YARD) or open_at(m.x, m.y) < 0.3: continue
-            z0, z1 = ground(p0.x, p0.y), ground(p1.x, p1.y)
-            if z0 is None or z1 is None: continue
-            for (w, V, F, dz) in ((1.6, BV, BF, 0.06), (0.04, RV, RF, 0.16)):
-                for g in ((0.0,) if V is BV else (-0.7175, 0.7175)):
-                    q = [p0 + n * (g - w), p1 + n * (g - w), p1 + n * (g + w), p0 + n * (g + w)]
-                    zz = [z0, z1, z1, z0]; kk = len(V)
-                    V.extend((a.x, a.y, z + dz) for a, z in zip(q, zz)); F.append((kk, kk + 1, kk + 2, kk + 3))
-            ntr += 1
-    for nm, V, F, m in (('yard_ballast', BV, BF, ballast_mat), ('yard_rails', RV, RF, rail_mat)):
+        for sgi in range(-200, 201):
+            p0 = c + n * (k * 4.6) + d * (sgi * 3.0); p1 = p0 + d * 3.0
+            if ok((p0 + p1) / 2) and track(p0, p1, n): ntr += 1
+    # two ladders: lead tracks at 7 degrees across the body of the yard (the switches)
+    LAD = (-70.0, 95.0); a7 = math.radians(7)
+    for s0 in LAD:
+        dl = (d * math.cos(a7) + n * math.sin(a7)).normalized(); nl = Vector((-dl.y, dl.x, 0))
+        for t in range(-400, 401):
+            p0 = c + d * s0 + dl * (t * 3.0); p1 = p0 + dl * 3.0
+            if ok((p0 + p1) / 2): track(p0, p1, nl)
+    # freight cars: slots of 16 m along each track; strings keyed by (track, block of 6 slots)
+    PAL = {'box_rust': (0.26, 0.09, 0.05), 'box_brown': (0.17, 0.10, 0.06), 'box_grey': (0.30, 0.30, 0.29), 'box_yellow': (0.50, 0.38, 0.10),
+           'tank_black': (0.03, 0.03, 0.03), 'tank_grey': (0.42, 0.42, 0.41), 'roof_galv': (0.40, 0.39, 0.37)}
+    C = {k: ([], []) for k in PAL}; ncar = 0
+    def box3(key, p, L, W, H, z):
+        V, F = C[key]; k = len(V); dd, nn = d * (L / 2), n * (W / 2)
+        for zz in (z, z + H):
+            for a in (p - dd - nn, p + dd - nn, p + dd + nn, p - dd + nn): V.append((a.x, a.y, zz))
+        F.extend([(k, k + 1, k + 2, k + 3), (k + 4, k + 7, k + 6, k + 5), (k, k + 4, k + 5, k + 1), (k + 1, k + 5, k + 6, k + 2), (k + 2, k + 6, k + 7, k + 3), (k + 3, k + 7, k + 4, k)])
+    for k in range(-260, 261):
+        if hash01(k, 7, 71) > 0.8: continue                       # a track kept clear
+        for j in range(-40, 41):
+            if hash01(k, j // 6, 72) > 0.72 or hash01(k, j, 73) > 0.9: continue
+            s_ = j * 16.0; p = c + n * (k * 4.6) + d * s_
+            if any(abs(s_ - s0 - k * 4.6 / math.tan(a7)) < 14 for s0 in LAD): continue   # clear of the ladder where it crosses this track
+            tank = hash01(k, j, 74) < 0.25; L = 12.5 if tank else 14.8
+            if not all(ok(p + d * u) for u in (-L / 2, 0, L / 2)): continue
+            z = ground(p.x, p.y)
+            if z is None: continue
+            z += 1.0
+            if tank:
+                key = 'tank_black' if hash01(k, j, 75) < 0.6 else 'tank_grey'
+                box3(key, p, L, 2.6, 2.5, z + 0.3); box3(key, p, L + 0.8, 3.0, 0.3, z)
+            else:
+                u = hash01(k, j, 76); key = 'box_rust' if u < 0.45 else 'box_brown' if u < 0.75 else 'box_grey' if u < 0.93 else 'box_yellow'
+                box3(key, p, L, 3.05, 3.4, z); box3('roof_galv' if hash01(k, j, 77) < 0.3 else key, p, L - 0.2, 2.7, 0.12, z + 3.4)
+            ncar += 1
+    def mat(nm, col, rough=0.8, metal=0.0):
+        m = bpy.data.materials.get(nm) or bpy.data.materials.new(nm); m.use_nodes = True; b = m.node_tree.nodes.get('Principled BSDF')
+        b.inputs['Base Color'].default_value = (*col, 1); b.inputs['Roughness'].default_value = rough; b.inputs['Metallic'].default_value = metal; return m
+    mats = {'ballast': mat('yard_ballast_dark', (0.085, 0.078, 0.07), 0.95), 'ties': mat('yard_ties', (0.045, 0.036, 0.03), 0.9), 'rails': mat('yard_steel', (0.20, 0.17, 0.15), 0.4, 0.7)}
+    for key, (V, F) in list(G.items()) + [('car_' + k, v) for k, v in C.items()]:
         if not F: continue
-        me = bpy.data.meshes.new(nm); me.from_pydata(V, [], F); me.update()
-        ob = bpy.data.objects.new(nm, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(m)
-    if ntr: log('Mission Bay yard: track pieces', ntr)
+        m = mats.get(key) or mat('yard_' + key, PAL[key[4:]], 0.55 if 'tank' in key else 0.8, 0.3 if key.endswith('galv') else 0.0)
+        me = bpy.data.meshes.new('yard_' + key); me.from_pydata(V, [], F); me.update()
+        ob = bpy.data.objects.new('yard_' + key, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(m)
+    if ntr: log('Mission Bay yard: track pieces', ntr, 'freight cars', ncar)
 
 
 # ── vacant lots: the ground where today's building was not yet built ───────
