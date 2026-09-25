@@ -32,7 +32,7 @@ from lm_kit import Frame
 # built only when LM_ALL=1 (the landmarks agent's tests), so a city pass never
 # gets a model nobody has looked at. A disabled landmark leaves the engine's
 # stand-in (and the generator's building) in place.
-ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst', 'grace', 'legion', 'fremont181', 'fortpoint', 'lombard', 'sas', 'dolores', 'pofahall', 'maritime', 'ghirardelli', 'hydeships', 'wharf', 'embarcadero', 't_555cal', 't_345cal', 't_101cal', 't_russ', 't_mills', 't_shell', 't_hobart', 't_millennium', 't_pactel', 't_spbuilding', 't_onemarket', 't_hiltonfidi', 't_library', 't_asianart', 't_fedbldg', 't_burton', 'archive'}
+ENABLED = {'salesforce', 'transit_center', 'transamerica', 'ferry', 'goldengate', 'baybridge', 'cityhall', 'pofa', 'pofa_colonnade', 'coit', 'chase', 'stmarys', 'deyoung', 'calacademy', 'conservatory', 'alcatraz', 'sutro', 'oracle', 'pier39', 'leftyodoul', 'fourthst', 'grace', 'legion', 'fremont181', 'fortpoint', 'lombard', 'sas', 'dolores', 'pofahall', 'maritime', 'ghirardelli', 'hydeships', 'wharf', 'embarcadero', 't_555cal', 't_345cal', 't_101cal', 't_russ', 't_mills', 't_shell', 't_hobart', 't_millennium', 't_pactel', 't_spbuilding', 't_onemarket', 't_hiltonfidi', 't_library', 't_asianart', 't_fedbldg', 't_burton', 'archive', 't_opera', 't_veterans', 't_davies', 'sfmoma', 'c_sspp', 'c_stignatius', 'c_emanuel', 'c_holyvirgin', 'c_stboniface'}
 WATER_ENABLED = {'lakes', 'piers'}   # + 'sea_depth', 'sea_wind' once validated
 
 class Region:
