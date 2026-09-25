@@ -66,11 +66,14 @@ FIRE = 1906 + 107 / 365.0
 # its completion year: 1.8 years + 1 year per 200 m, capped at 3 (CONVENTION,
 # where no permit or construction dates are known; LANDMARK_SITES keeps the
 # SOURCED ones)
-RISE_MIN_H = 20.0
+# (25/09, one grammar for every size) below 20 m no pop either: the short
+# form, over 0.5 year + 1 year per 16 m (a two-storey house ~0.9 year, a
+# 20 m block ~1.75), CONVENTION; only sheds and kiosks under 3 m still appear
+RISE_MIN_H = 3.0
 
 
 def rise_years(h):
-    return min(3.0, 1.8 + h / 200.0)
+    return min(3.0, 1.8 + h / 200.0) if h >= 20.0 else 0.5 + h / 16.0
 
 
 def rising(b, era):

@@ -1047,6 +1047,12 @@ def construction(b, ground, out):
     yr = b.get('year') or 1970
     steel = yr < 1960
     fcol = (0.42, 0.30, 0.22) if steel else (0.62, 0.61, 0.58)          # red-primed steel / raw concrete
+    # (25/09 eras2: one grammar for every size) under 20 m the SHORT FORM: a
+    # light wood frame (pale timber, platform framing floor by floor, studs
+    # every ~1.2 m drawn as posts every 2.4 m), then plywood sheathing
+    # following it, no core, no crane (CONVENTION on the form and colours)
+    small = b['h'] < 20.0
+    if small: fcol = (0.80, 0.68, 0.48)
     # the site: excavated ground, the foundation mat
     pts = [Vector((x, y, zg + 0.05)) for x, y in offset_ring(ring, -0.2)]
     for t in tessellate_polygon([pts]): out.poly('concrete', [pts[k] for k in t], (0.46, 0.42, 0.36) if fr <= 0 else (0.58, 0.57, 0.54))
@@ -1056,7 +1062,7 @@ def construction(b, ground, out):
         out.poly('metal', [a_, c_, c_ + Z * (zg - zfoot + 2.4), a_ + Z * (zg - zfoot + 2.4)], (0.30, 0.34, 0.30))
     if hf > 0.5:
         inner = offset_ring(ring, -0.6)
-        fh = 3.9 if b['h'] > 30 else 3.4
+        fh = 3.9 if b['h'] > 30 else (3.0 if small else 3.4)
         z = zg + fh
         while z <= zg + hf + 0.01:
             P0 = [Vector((x, y, z - 0.3)) for x, y in inner]; P1 = [Vector((x, y, z)) for x, y in inner]
@@ -1069,17 +1075,20 @@ def construction(b, ground, out):
         for i in range(len(inner)):
             A, C = Vector((*inner[i], 0)), Vector((*inner[(i + 1) % len(inner)], 0))
             L_ = (C - A).length
-            for k in range(max(1, int(L_ / 8.0))):
-                q = A + (C - A) * (k / max(1, int(L_ / 8.0)))
-                out.box3('concrete', Vector((q.x - 0.4, q.y - 0.4, zg)), X * 0.8, Y * 0.8, Z * hf, fcol)
+            sp_, cw_ = (2.4, 0.18) if small else (8.0, 0.4)
+            for k in range(max(1, int(L_ / sp_))):
+                q = A + (C - A) * (k / max(1, int(L_ / sp_)))
+                out.box3('concrete', Vector((q.x - cw_, q.y - cw_, zg)), X * 2 * cw_, Y * 2 * cw_, Z * hf, fcol)
         # the core, a storey or two ahead of the floors
         area = abs(sum(ring[i][0] * ring[(i + 1) % n][1] - ring[(i + 1) % n][0] * ring[i][1] for i in range(n))) / 2
         cs = max(5.0, min(16.0, math.sqrt(area) * 0.3))
-        out.box3('concrete', Vector((cx - cs / 2, cy - cs / 2, zg)), X * cs, Y * cs, Z * min(H, hf + 6.0), (0.66, 0.65, 0.62))
+        if not small: out.box3('concrete', Vector((cx - cs / 2, cy - cs / 2, zg)), X * cs, Y * cs, Z * min(H, hf + 6.0), (0.66, 0.65, 0.62))
         # the cladding, following the frame
+        if small: hc = H * cl                                      # the sheathing follows the frame closely
         if hc > 1.0:
             gcol = rng.choice(GLASS_TINTS) if yr >= 1985 else rng.choice(STONE)
             mat = 'curtain_wall' if yr >= 1985 else 'concrete'
+            if small: gcol, mat = (0.72, 0.62, 0.47), 'concrete'           # plywood sheathing
             for i in range(n):
                 a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
                 out.poly(mat, [a_, c_, c_ + Z * (zg - zfoot + hc), a_ + Z * (zg - zfoot + hc)], gcol)
