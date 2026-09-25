@@ -1690,8 +1690,9 @@ def _load_roofs():
     c = float(os.environ.get('ROOFS_CONF', 0.5))
     return {int(g): v for g, v in json.load(open(p))['roofs'].items() if v[4] >= c and v[3] not in ('tree', 'shadow')}
 ROOF_M = _load_roofs()
-LIDAR_FILE = '/Users/daniel/code/qipu-render-work/lidar/roofs_lidar_city.json' if SF else \
-    '/Users/daniel/code/qipu-render-work/cities/%s/lidar/roofs_lidar_city.json' % os.environ['CITY']   # (another city: roofs_dsm.py)
+LIDAR_FILE = '/Users/daniel/code/qipu-render-work/lidar/roofs_lidar_city.json'
+if not SF:   # another city (roofs_dsm.py): its own folder, through cityconf — which citysnap.sh does not re-point
+    import cityconf as _CC; LIDAR_FILE = _CC.work('lidar', 'roofs_lidar_city.json')
 def _load_lidar():
     import json, os
     if os.environ.get('LIDAR_ROOFS', '1') != '1' or not os.path.exists(LIDAR_FILE): return {}
