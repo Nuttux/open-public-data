@@ -538,8 +538,10 @@ def instancer(name, pts, protos):
         at = me.attributes.new(nm, tp, 'POINT'); at.data.foreach_set('value', [p[k] for p in pts])
     # a stable id by place: the instances' random (tree tint, car paint) then
     # stays with the place from one year of the film to the next
-    at = me.attributes.new('id', 'INT', 'POINT')
-    at.data.foreach_set('value', [int(EA.hash01(p[0], p[1], 31) * 2147483000) for p in pts])
+    # (only for a past year: today keeps the render branch's instancing exactly; the film's last frame is ERA=2026)
+    if ERA is not None:
+        at = me.attributes.new('id', 'INT', 'POINT')
+        at.data.foreach_set('value', [int(EA.hash01(p[0], p[1], 31) * 2147483000) for p in pts])
     # 'crand': the instance's own random, BY PLACE. A shader's Object Info >
     # Random follows the instance's index, which shifts with the region: a
     # parked car kept its place across a frame seam but changed colour (life
@@ -712,12 +714,12 @@ for t in d['trees']:
             if kc_ is None: continue            # the list says stump, an empty site, or only roadway around
             kind, crown, x, y = kc_
         else:
-            u_ = EA.hash01(x, y, 14)
-            kind = ((K_BROAD + int(EA.hash01(x, y, 17) * len(BROAD)) if u_ < 0.8 else K_PINE + int(EA.hash01(x, y, 18) * len(PINE)))
-                    if park else int(u_ * NS))
+            # parks: mostly broadleaf, some Monterey pine; firs only now and then
+            # (render's own draws by place: today stays the render branch's, and a place keeps its tree through the film)
+            kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         gz_ = ground(x, y)
         if gz_ is None: continue
-        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * EA.hash01(x, y, 15)), EA.hash01(x, y, 13) * 6.283, kind))
+        pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
 # register already has a tree there

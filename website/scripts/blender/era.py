@@ -1977,28 +1977,85 @@ def piers(era):
     return out
 
 
+# the pier sheds of the lost piers, as the 1930s-60s aerials show them: long
+# timber-framed sheds clad in corrugated iron or board, under a low gable with
+# a raised MONITOR (clerestory) along the ridge, weathered in varied tones from
+# one pier to the next (grey, buff, rust-brown, faded green); decks of tarred
+# timber, darker at the aprons. SOURCED in outline: Port of San Francisco
+# 'Embarcadero Historic District' (NRHP 2006): 'steel-framed pier sheds with
+# corrugated metal siding and clerestory monitors'. Tones: CONVENTION.
+_SHED_TONES = [(0.50, 0.49, 0.46), (0.56, 0.52, 0.44), (0.44, 0.37, 0.31), (0.47, 0.49, 0.44), (0.60, 0.58, 0.53), (0.40, 0.40, 0.40)]
+_ROOF_TONES = [(0.36, 0.35, 0.34), (0.44, 0.41, 0.37), (0.33, 0.27, 0.23), (0.50, 0.49, 0.47), (0.29, 0.30, 0.31)]
+
+
+def _pier_mat(bpy, name, rough, spec, streaks, dark):
+    """a weathered surface: the face's own tone (attribute pcol) broken by
+    large stains and streaks along the pier (world-space noise)"""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; pb = nt.nodes['Principled BSDF']
+    pb.inputs['Roughness'].default_value = rough; pb.inputs['Specular IOR Level'].default_value = spec
+    at = nt.nodes.new('ShaderNodeAttribute'); at.attribute_name = 'pcol'
+    tc = nt.nodes.new('ShaderNodeTexCoord')
+    n1 = nt.nodes.new('ShaderNodeTexNoise'); n1.inputs['Scale'].default_value = 0.035; n1.inputs['Detail'].default_value = 6.0
+    nt.links.new(tc.outputs['Object'], n1.inputs['Vector'])
+    n2 = nt.nodes.new('ShaderNodeTexNoise'); n2.inputs['Scale'].default_value = streaks; n2.inputs['Detail'].default_value = 3.0
+    nt.links.new(tc.outputs['Object'], n2.inputs['Vector'])
+    mr = nt.nodes.new('ShaderNodeMapRange'); mr.inputs['To Min'].default_value = 1.0 - dark; mr.inputs['To Max'].default_value = 1.0 + dark * 0.5
+    nt.links.new(n1.outputs['Fac'], mr.inputs['Value'])
+    mr2 = nt.nodes.new('ShaderNodeMapRange'); mr2.inputs['To Min'].default_value = 0.85; mr2.inputs['To Max'].default_value = 1.08
+    nt.links.new(n2.outputs['Fac'], mr2.inputs['Value'])
+    k = nt.nodes.new('ShaderNodeMath'); k.operation = 'MULTIPLY'; nt.links.new(mr.outputs[0], k.inputs[0]); nt.links.new(mr2.outputs[0], k.inputs[1])
+    sc = nt.nodes.new('ShaderNodeVectorMath'); sc.operation = 'SCALE'; nt.links.new(at.outputs['Color'], sc.inputs[0]); nt.links.new(k.outputs[0], sc.inputs['Scale'])
+    nt.links.new(sc.outputs[0], pb.inputs['Base Color'])
+    return m
+
+
 def build_piers(bpy, era, mats, box=None, log=print):
     ps = [p for p in piers(era) if box is None or (box[0] - 400 <= p[0] <= box[2] + 400 and box[1] - 400 <= p[1] <= box[3] + 400)]
     if not ps: return
-    parts = {'deck': ([], []), 'wall': ([], []), 'roof': ([], [])}
+    parts = {'deck': ([], [], []), 'wall': ([], [], []), 'roof': ([], [], []), 'glaze': ([], [], [])}
 
-    def box6(key, cx, cy, ang, L, W, z0, z1):
-        V, F = parts[key]
+    def quad(key, pts, col):
+        V, F, C = parts[key]; k = len(V); V.extend(pts); F.append(tuple(range(k, k + len(pts)))); C.append(col)
+
+    def frame(cx, cy, ang):
         a = math.radians(ang); ux, uy = math.cos(a), math.sin(a); vx, vy = -uy, ux
-        q = [(cx + s * ux * L / 2 + t * vx * W / 2, cy + s * uy * L / 2 + t * vy * W / 2) for s, t in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
-        k = len(V); V.extend([(x, y, z0) for x, y in q] + [(x, y, z1) for x, y in q])
-        F.extend([(k, k + 3, k + 2, k + 1), (k + 4, k + 5, k + 6, k + 7), (k, k + 1, k + 5, k + 4), (k + 1, k + 2, k + 6, k + 5),
-                  (k + 2, k + 3, k + 7, k + 6), (k + 3, k, k + 4, k + 7)])
+        return lambda s, t, z: (cx + s * ux + t * vx, cy + s * uy + t * vy, z)
+
+    def box6(key, P, l, w, z0, z1, col, sides=None):
+        q = [(-l, -w), (l, -w), (l, w), (-l, w)]
+        quad(key, [P(s, t, z1) for s, t in q], col)
+        for i in range(4):
+            (s0, t0), (s1, t1) = q[i], q[(i + 1) % 4]
+            quad(sides or key, [P(s0, t0, z0), P(s1, t1, z0), P(s1, t1, z1), P(s0, t0, z1)], col)
+    lin = lambda c: tuple(v ** 2.2 for v in c)
     for cx, cy, ang, L, W in ps:
-        box6('deck', cx, cy, ang, L, W, -0.5, 3.0)
+        P = frame(cx, cy, ang); h = lambda salt: hash01(cx, cy, salt)
+        dk = 0.28 + 0.08 * h(3)
+        box6('deck', P, L / 2, W / 2, -0.5, 3.0, lin((dk, dk * 0.96, dk * 0.9)))
         if L > 40 and W > 24:
-            box6('wall', cx, cy, ang, L - 6, W - 6, 3.0, 11.0)
-            box6('roof', cx, cy, ang, L - 6.4, W - 6.4, 11.0, 11.6)
-    for key, (V, F) in parts.items():
+            wc = _SHED_TONES[int(h(1) * len(_SHED_TONES))]; rc = _ROOF_TONES[int(h(2) * len(_ROOF_TONES))]
+            l2, w2, ze = (L - 6) / 2, (W - 6) / 2, 11.0
+            box6('wall', P, l2, w2, 3.0, ze, lin(wc))
+            # a low gable (rise 1.6 m) with the monitor along its ridge
+            zr = ze + 1.6; wm = max(3.0, 0.16 * (W - 6)); zm = zr + 2.4
+            for sg in (-1, 1):
+                quad('roof', [P(-l2 - 0.4, sg * (w2 + 0.4), ze - 0.2), P(l2 + 0.4, sg * (w2 + 0.4), ze - 0.2), P(l2 + 0.4, sg * wm, zr), P(-l2 - 0.4, sg * wm, zr)][::sg], lin(rc))
+            # the gable ends
+            for se in (-1, 1):
+                quad('wall', [P(se * l2, -w2, ze), P(se * l2, w2, ze), P(se * l2, wm, zr), P(se * l2, -wm, zr)], lin(wc))
+            # the monitor: clerestory glazing on its sides, a flat-pitched cap
+            lm = l2 - 6.0
+            if lm > 10:
+                box6('roof', P, lm, wm, zr, zm, lin(tuple(min(1, c * 1.08) for c in rc)), sides='glaze')
+    tones = {'deck': (0.85, 0.3, 0.9, 0.35), 'wall': (0.8, 0.35, 0.6, 0.3), 'roof': (0.6, 0.45, 0.25, 0.45), 'glaze': (0.2, 0.6, 0.5, 0.2)}
+    for key, (V, F, C) in parts.items():
         if not F: continue
         me = bpy.data.meshes.new('lost_piers_' + key); me.from_pydata(V, [], F); me.update()
-        ob = bpy.data.objects.new('lost_piers_' + key, me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mats[key])
-    log('lost piers standing:', len(ps))
+        at = me.attributes.new('pcol', 'FLOAT_COLOR', 'FACE')
+        for i, c in enumerate(C): at.data[i].color = (*(c if key != 'glaze' else (0.035, 0.04, 0.045)), 1.0)
+        ob = bpy.data.objects.new('lost_piers_' + key, me); bpy.context.scene.collection.objects.link(ob)
+        me.materials.append(_pier_mat(bpy, 'pier_' + key, *tones[key]))
+    log('lost piers standing:', len(ps), '(sheds with monitor roofs, weathered)')
 
 
 # ── today's viaducts in a past year (freeways_hq.build(keep=...)) ───────────
