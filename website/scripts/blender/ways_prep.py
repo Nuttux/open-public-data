@@ -11,7 +11,7 @@ fetch: osm_fetch.py highways.json '[out:json][timeout:240];(way["highway"]
   ["footway"!~"sidewalk|crossing|traffic_island"]["area"!="yes"]
   (37.70,-122.52,37.84,-122.35););out tags geom;'"""
 import sys, json
-KX = 111320 * 0.790582709628753; KY = 111320
+import cityconf as CC     # CITY=vancouver: that city's projection (fetch: osm_city.py ways)
 CAR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service',
        'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link', 'road'}
 FOOT = {'footway': 2.0, 'path': 1.6, 'steps': 2.0, 'cycleway': 2.4, 'bridleway': 2.0, 'track': 3.0}
@@ -27,7 +27,7 @@ out = dict(car=[], free=[], foot=[])
 for e in json.load(open(sys.argv[1]))['elements']:
     t = e.get('tags', {}); hw = t.get('highway'); g = e.get('geometry') or []
     if len(g) < 2 or t.get('indoor') == 'yes' or t.get('tunnel') in ('yes', 'building_passage') or t.get('layer', '0').startswith('-'): continue
-    P = [round(v, 1) for p in g for v in ((p['lon'] + 122.438) * KX, (p['lat'] - 37.76) * KY)]
+    P = [round(v, 1) for p in g for v in CC.proj(p['lon'], p['lat'])]
     mv = t.get('motor_vehicle', t.get('motorcar', t.get('access', 'yes')))
     closed = mv in ('no', 'bus', 'psv', 'private', 'emergency') or t.get('access') == 'no'
     if hw in CAR and not closed: out['car'].append(P)

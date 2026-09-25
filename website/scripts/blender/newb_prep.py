@@ -47,11 +47,11 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 os.environ['NEWB'] = '0'            # DataSF's own records only
 import city_data
 
-W = '/Users/daniel/code/qipu-render-work'
+import cityconf as CC     # CITY=vancouver: that city's chunks, folder, projection, survey year
+W = CC.WORK
 OSM = f'{W}/newbuildings/osm'
 OUT = sys.argv[1] if len(sys.argv) > 1 else f'{W}/newbuildings/osm_records.json'
-KX = 111320 * 0.790582709628753; KY = 111320.0
-def proj(lon, lat): return ((lon + 122.438) * KX, (lat - 37.76) * KY)
+proj = CC.proj
 
 SKIP_TYPES = {'roof', 'carport', 'construction', 'ruins', 'demolished', 'no', 'collapsed', 'bridge', 'houseboat',
               'storage_tank', 'silo', 'tent', 'ship', 'boat', 'container', 'abandoned', 'proposed', 'disused', 'razed',
@@ -184,13 +184,13 @@ def main():
     shapely.prepare(SF); SFp = SF
     # landmarks modelled by hand: every one in the registry
     os.environ['LM_ALL'] = '1'
-    import landmarks_hq
     LMR = []
-    for l in landmarks_hq._registry():
+    import landmarks_hq    # SF's registry: another city has none yet
+    for l in (landmarks_hq._registry() if CC.SF else []):
         for r in l.regions:
             if r.ring is not None: LMR.append((l.key, Polygon(r.ring).buffer(0), None))
             else: LMR.append((l.key, None, r))
-    fp = json.load(open(f'{W}/landmarks/footprints.json'))
+    fp = json.load(open(f'{W}/landmarks/footprints.json')) if os.path.exists(f'{W}/landmarks/footprints.json') else {}
     for k, v in fp.items():         # the OSM outlines the landmarks agent measured (Salesforce, Chase...)
         for r in v.get('outer', []):
             if len(r) >= 3: LMR.append((k, Polygon(r).buffer(0), None))
@@ -369,7 +369,7 @@ def main():
                 h, hsrc = float(np.median(sim)), 'neighbours'
         if h is None: h, hsrc = hdef(ty, g.area), 'default'
         h = max(3.0, h)
-        if yr is None: yr, ys = 2019, 'convention'
+        if yr is None: yr, ys = CC.SURVEY_YEAR, 'convention'
         name = t.get('name') or (t.get('addr:housenumber', '') + ' ' + t.get('addr:street', ''))
         oid = f"{el['type'][0]}{el['id']}"
         for j in rep:
@@ -425,8 +425,8 @@ def main():
                 rule='kept when < 30% of its area is on a DataSF footprint (or, >= 30 m tall by OSM, it stands on DataSF records under 12 m, which it replaces), '
                      'no DataSF record >= 0.6 of its height stands inside it, >= 20 m2, inside SF, not a hand-modelled landmark',
                 year_convention="start_date; else, house-sized (< 400 m2) among >= 6 DataSF records within 60 m of median year < 1990: their median year "
-                                "('neighbours', DataSF rows missing from the published records); else 2019 ('convention': not in DataSF, "
-                                "surveyed ~2016, so taken as built after it; eras before 2019 never show it)",
+                                "('neighbours', DataSF rows missing from the published records); else " + str(CC.SURVEY_YEAR) + " ('convention': not in "
+                                "the city's footprints, so taken as built after their survey; eras before it never show it)",
                 height_defaults={f'{k[0]}|{ABINS[k[1]]}': round(v, 2) for k, v in HDEF.items()},
                 counts=dict(stats), skipped=dict(why))
     # what stands on a hand-modelled landmark's site goes in lists of its own:
@@ -435,7 +435,7 @@ def main():
                    lm_records=[r for r in recs if r['lm']], lm_replaces=[x for x in REPL if x['lm']]),
               open(OUT, 'w'), separators=(',', ':'))
     print('records', len(recs), 'outlines', len(cand), 'replaced DataSF', len(REPL), dict(stats), '->', OUT, os.path.getsize(OUT) // 1024, 'KB', flush=True)
-    if len(sys.argv) <= 1:          # the copy the scripts (and a pass's frozen snapshot of them) read first
+    if len(sys.argv) <= 1 and CC.SF:          # the copy the scripts (and a pass's frozen snapshot of them) read first
         import shutil; shutil.copyfile(OUT, os.path.join(HERE, 'newb_records.json')); print('-> newb_records.json', flush=True)
 
 if __name__ == '__main__':

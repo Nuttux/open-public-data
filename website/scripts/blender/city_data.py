@@ -3,7 +3,11 @@ height, year, use, storeys, facade type, shop bit, per-edge role.
 Mirrors src/lib/citygl/bldg.ts decodeBldg (global accumulator, escapes first)."""
 import glob, json, os, numpy as np
 import qc
-CITY = '/Users/daniel/code/opd-render/website/public/data/us/sf/city'
+import cityconf as _C
+CITY = _C.ENGINE     # CITY unset: SF's chunks (cityconf.py)
+def _w(p):
+    """an SF work-folder path, for another city: the same path in its own folder"""
+    return p if _C.SF or p.startswith(_C.WORK + '/') or not p.startswith(_C.ROOT + '/') else _C.WORK + p[len(_C.ROOT):]
 RH = [-0.375, -0.125, 0.125, 0.375]
 FA_TYPES = ["HOUSE", "FLATS", "APARTMENT", "RETAIL", "OFFICE", "INDUSTRIAL", "INSTITUTION", "HOTEL", "GARAGE", "UNCLASSED"]
 USES = ["single family", "multi-family", "retail", "office", "industrial", "hotel / institutional", "mixed or not stated"]
@@ -26,9 +30,9 @@ def decode(f):
 # src='osm'. They are appended (NEWB=0: not), and the low DataSF records a new
 # tower stands on (the lot before it) are dropped from its year on (ERA, the
 # year hq_city/hq_scene show; unset = today). NEWB_FILE overrides the file.
-NEWB_FILES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'newb_records.json'),
-              '/Users/daniel/code/qipu-render-work/newbuildings/osm_records.json']
-SOUTH_FILE = '/Users/daniel/code/qipu-render-work/ground/south_records.json'
+NEWB_FILES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'newb_records.json')] * _C.SF + \
+             [_w('/Users/daniel/code/qipu-render-work/newbuildings/osm_records.json')]
+SOUTH_FILE = _w('/Users/daniel/code/qipu-render-work/ground/south_records.json')
 _NB = None
 def newb():
     """(records, DataSF gids they replace in the ERA shown); empty with NEWB=0"""
@@ -61,7 +65,7 @@ def newb():
 # demolitions, gone from `until` (the demolition, or the new building's permit
 # issue). An OSM-added record that is a permit's building is kept, dated by
 # the permit (newb_redated). The fresh dates win over NEWB's 2019 convention.
-FRESH_FILE = '/Users/daniel/code/qipu-render-work/fresh/fresh_records.json'
+FRESH_FILE = _w('/Users/daniel/code/qipu-render-work/fresh/fresh_records.json')
 _FR = None
 def fresh():
     """(records, gids hidden in the ERA shown, gids the fresh layer dates); empty unless FRESH=1"""
@@ -145,7 +149,7 @@ def buildings(x0, y0, x1, y1):
 # replace the record's; skip drops it; every other field (roof, roof_col,
 # facade_col, style...) rides on the record as b['places'] for gen_buildings.
 # Today only (ERA unset): an era render keeps the records as they were.
-OV_FILE = '/Users/daniel/code/qipu-render-work/places/overrides.json'
+OV_FILE = _w('/Users/daniel/code/qipu-render-work/places/overrides.json')
 _OV = None
 _OV_ADD = None
 def overrides(recs, bbox=None):
