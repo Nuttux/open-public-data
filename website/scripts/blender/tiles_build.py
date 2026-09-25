@@ -24,7 +24,10 @@ UP = sys.argv[sys.argv.index('--upload') + 1] if '--upload' in sys.argv else Non
 ZTOP = int(sys.argv[sys.argv.index('--z') + 1]) if '--z' in sys.argv else 7
 T, FW, FH = 512, 5120, 3072
 PRE = f'f_z{ZTOP}_'
-REF = dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
+# the tile pyramid's reference view (the site's index.json `ref`); CITY_REF=cx,cy,scale
+# for another city (city.json `ref`), San Francisco's by default
+REF = dict(zip(('cx', 'cy', 'scale'), map(float, os.environ['CITY_REF'].split(',')))) if os.environ.get('CITY_REF') else \
+    dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
 CA, SA = math.cos(math.radians(30)), 0.42
 ZT = math.sqrt(2 * (CA ** 2 - SA ** 2))
 band = lambda z: (lambda k: 0 if k < 1.826 else 1 if k < 5.77 else 2)(2 ** (z - 3))

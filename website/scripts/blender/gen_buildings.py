@@ -16,7 +16,7 @@ building looks the same in every render.
 Output: per-material lists of (verts, faces, face colour) — built into a few
 big meshes by `emit()` so a district of thousands of buildings stays fast.
 """
-import math, random
+import math, os, random
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
@@ -81,7 +81,8 @@ def glass_for(yr, rng):
 # generated towers the eye knows, by gid (the landmarks_hq towers are modelled apart)
 # 555 California (Bank of America Center, 1969): carnelian granite, bronze glass
 # in vertical bays up the serrated plan (the record's 42-sided ring gives the saw)
-HERO = {137915: dict(fsys='piers', body=(0.29, 0.16, 0.13), gcol=(0.18, 0.14, 0.12, 0.35), pier=1.6, top='flat')}
+SF = os.environ.get('CITY', 'sf') == 'sf'    # the gid tables and SF places below are San Francisco's own
+HERO = {} if not SF else {137915: dict(fsys='piers', body=(0.29, 0.16, 0.13), gcol=(0.18, 0.14, 0.12, 0.35), pier=1.6, top='flat')}
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
 BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66),
          (0.93, 0.91, 0.86), (0.91, 0.87, 0.77), (0.88, 0.84, 0.76)]    # and the white and cream stucco blocks
@@ -156,6 +157,7 @@ LANDMARK = {   # (24/09 places agent) the row's real paint, north to south from 
     58527: dict(paint=('#b3a676', '#ece4cc', '#3d4a30')),     # 720 olive khaki
     58525: dict(paint=('#2d3a58', '#eeeeea', '#b48a3c')),     # 722 navy, white trim
 }
+if not SF: LANDMARK = {}
 for _g in LANDMARK: LANDMARK[_g]['paint'] = tuple(tuple(int(c[i:i + 2], 16) / 255.0 for i in (1, 3, 5)) for c in LANDMARK[_g]['paint'])
 for _g in LANDMARK: LANDMARK[_g].update(sub='queen', roof='gable', pitch=52, bay='slant', bay_left=True, turret=False, face=(-1.0, 0.0))
 
@@ -2527,7 +2529,7 @@ def pier_shed(b):
     if c0 is None or c0 > 100: return None
     # the Embarcadero's run of Beaux-Arts bulkheads: Pier 45 to Pier 48;
     # elsewhere (Fort Mason, Pier 70, the islands) a shed without one
-    emb = 1550 < b['cx'] < 4700 and 2300 < b['cy'] < 5800
+    emb = SF and 1550 < b['cx'] < 4700 and 2300 < b['cy'] < 5800
     if A >= 100 and B >= 12: return {} if emb else {'bulkhead': 'none'}   # a shed
     if emb and A >= 40 and B <= 32 and A / max(B, 1.0) >= 2.5: return {'front': True}   # a bulkhead building
     return None

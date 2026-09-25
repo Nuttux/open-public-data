@@ -114,7 +114,8 @@ def buildings(x0, y0, x1, y1):
     # the cells, and base/solo: the 15,265 footprints too large or too tall to
     # belong to one cell (every building over 30 m is one) ship on their own
     pairs = [(p, f'{CITY}/face/{os.path.basename(p)}') for p in sorted(glob.glob(f'{CITY}/bldg/*.qc'))]
-    pairs.append((f'{CITY}/base/solo.qc', f'{CITY}/base/solo-face.qc'))
+    if os.path.exists(f'{CITY}/base/solo.qc'):   # SF only (Vancouver's encoder keeps every footprint in its cell)
+        pairs.append((f'{CITY}/base/solo.qc', f'{CITY}/base/solo-face.qc'))
     for path, fp in pairs:
         _, f = qc.read(path)
         face = qc.read(fp)[1] if os.path.exists(fp) else None
@@ -186,6 +187,7 @@ def hero_gids():
     """footprints the engine replaces by a hand-built landmark (heroes.json `b`):
     the generator must not model them a second time"""
     import json
+    if not os.path.exists(f'{CITY}/base/heroes.json'): return set()   # a city with no hand-built landmarks yet
     h = json.load(open(f'{CITY}/base/heroes.json'))
     return {int(x['b']) for x in h['heroes'] if isinstance(x.get('b'), (int, float)) and x['b'] >= 0}
 

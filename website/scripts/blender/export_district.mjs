@@ -9,7 +9,8 @@ fs.mkdirSync(out, { recursive: true });
 const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
 const p = await b.newPage({ viewport: { width: 1600, height: 1000 } });
 p.on('pageerror', e => console.log('[pageerror]', e.message.slice(0, 200)));
-await p.goto('http://localhost:3100/en/usa/san-francisco/the-city?release=0', { waitUntil: 'domcontentloaded', timeout: 300000 });
+// EXPORT_URL: another city's map page (city.json `export_url`); SF by default
+await p.goto(process.env.EXPORT_URL || 'http://localhost:3100/en/usa/san-francisco/the-city?release=0', { waitUntil: 'domcontentloaded', timeout: 300000 });
 await p.waitForFunction(() => globalThis.__cityGL && globalThis.__cityGLProj, null, { timeout: 300000 });
 await p.waitForTimeout(12000);
 // frame the district in the live engine for the side-by-side

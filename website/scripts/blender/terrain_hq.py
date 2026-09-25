@@ -53,7 +53,8 @@ def _engine_fine():
         j = json.load(open(f'{CITY}/base/terrain-fine.json'))
         a = np.fromfile(f'{CITY}/base/terrain-fine.bin', dtype='<u2').reshape(j['h'], j['w']).astype(np.float32) / 65535 * j['zmax']
         # the fixed build says how its grid is registered; the first one did not
-        SQUEEZE = 1.0 if ('registration' in j or 'request' in j) else SQUEEZE_OLD
+        # (another city's DEM never went through SF's first 3DEP request: TERRAIN_SQUEEZE=1)
+        SQUEEZE = float(os.environ['TERRAIN_SQUEEZE']) if os.environ.get('TERRAIN_SQUEEZE') else 1.0 if ('registration' in j or 'request' in j) else SQUEEZE_OLD
         _EF = (a, j['extent'])
     return _EF
 
@@ -164,7 +165,7 @@ def _sea_depth(X, Y):
         D = np.minimum(D, 15.0)
     return D.astype(np.float32)
 
-SEA_MASK_SOUTH = -5760.0      # (world y) the engine's sea mask has no water south of this
+SEA_MASK_SOUTH = float(os.environ.get('SEA_MASK_SOUTH', -5760.0))      # (world y) the engine's sea mask has no water south of this
 def _mask_off(g, X, Y):
     """where the render's sea mask does not speak: outside its square, and
     south of the county line, where the engine's sea stops (sea.png reads

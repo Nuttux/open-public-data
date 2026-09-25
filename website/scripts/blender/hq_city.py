@@ -30,7 +30,10 @@ BOX = [float(v) for v in E('BOX').split(',')] if E('BOX') else None
 # ── the pyramid's geometry (see PYRAMID MODE below) ──
 CA_ = math.cos(math.radians(30)); SA_ = 0.42
 KX = math.sqrt(2) * CA_; KY = math.sqrt(2) * SA_; ZT = math.sqrt(2 * (CA_ ** 2 - SA_ ** 2))
-REF = dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
+# the tile pyramid's reference view (the site's index.json `ref`); CITY_REF=cx,cy,scale
+# for another city (city.json `ref`), San Francisco's by default
+REF = dict(zip(('cx', 'cy', 'scale'), map(float, os.environ['CITY_REF'].split(',')))) if os.environ.get('CITY_REF') else \
+    dict(cx=241.427019126574, cy=707.0567508859249, scale=2 ** (round(math.log2(0.06898352692062097) * 24) / 24))
 PZ = int(E('Z', 7)); FW, FH = int(E('FW', 5120)), int(E('FH', 3072))
 _f = 2 ** (PZ - 3); SZ = REF['scale'] * _f; PCW, PCH = round(2560 * _f), round(1536 * _f)
 ONLY = [tuple(int(v) for v in t.split(':')) for t in E('ONLY', '').split(',') if t]
@@ -195,7 +198,7 @@ HG = city_data.hero_gids()
 # NEVER BUILT, though the roll records them: Oceanwide Center Tower I, 50 First
 # St (gid 137672, 259 m, "1917" on the roll) — begun 2016-17, halted 2019-20,
 # still a hole (Wikipedia 'Oceanwide Center'); the orchestrator's PHANTOMS
-PHANTOMS = {137672}
+PHANTOMS = {137672} if os.environ.get('CITY', 'sf') == 'sf' else set()   # gids are per city
 HG |= PHANTOMS
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
