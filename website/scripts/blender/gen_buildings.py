@@ -221,24 +221,29 @@ class Wall:
             if (kind == 'dh' or (kind == 'tall' and trim is not None and ZPRE_)) and LOD >= 2:
                 # a house window's head casing and sill, standing proud: the
                 # low sun draws a shadow line over the pane, the sill a light
-                # line under it — the window reads set into its wall
-                self.box('trim', u0 - 0.14, u1 + 0.14, z1 + 0.02, z1 + 0.2, 0.0, 0.16, trim)
-                self.box('trim', u0 - 0.1, u1 + 0.1, z0 - 0.12, z0 - 0.02, 0.0, 0.13, trim)
+                # line under it — the window reads set into its wall. At level 9
+                # (FINE) the casing of a painted house is its signature: wider
+                # and deeper, a crisp light frame round every dark pane
+                hc = 0.22 if FINE else 0.14
+                self.box('trim', u0 - hc, u1 + hc, z1 + 0.02, z1 + (0.26 if FINE else 0.2), 0.0, 0.2 if FINE else 0.16, trim)
+                self.box('trim', u0 - hc + 0.04, u1 + hc - 0.04, z0 - (0.16 if FINE else 0.12), z0 - 0.02, 0.0, 0.16 if FINE else 0.13, trim)
                 if FINE and kind == 'dh' and hood == 'pediment':
-                    # (25/09, level 9) the Italianate's hood: a shallow
-                    # pediment over the casing, its two slopes catching the sun
-                    um, zb, a_, b_ = (u0 + u1) / 2, z1 + 0.2, u0 - 0.2, u1 + 0.2; pk = zb + 0.32
-                    self.o.poly('trim', [self.P(a_, zb, 0.2), self.P(b_, zb, 0.2), self.P(um, pk, 0.2)], trim)
-                    self.o.poly('trim', [self.P(a_, zb, 0.2), self.P(um, pk, 0.2), self.P(um, pk, 0.0), self.P(a_, zb, 0.0)], trim)
-                    self.o.poly('trim', [self.P(um, pk, 0.2), self.P(b_, zb, 0.2), self.P(b_, zb, 0.0), self.P(um, pk, 0.0)], trim)
+                    # (25/09, level 9) the Italianate's hood: a pediment over
+                    # the casing, its two slopes catching the sun
+                    um, zb, a_, b_ = (u0 + u1) / 2, z1 + 0.26, u0 - 0.26, u1 + 0.26; pk = zb + 0.36
+                    self.o.poly('trim', [self.P(a_, zb, 0.25), self.P(b_, zb, 0.25), self.P(um, pk, 0.25)], trim)
+                    self.o.poly('trim', [self.P(a_, zb, 0.25), self.P(um, pk, 0.25), self.P(um, pk, 0.0), self.P(a_, zb, 0.0)], trim)
+                    self.o.poly('trim', [self.P(um, pk, 0.25), self.P(b_, zb, 0.25), self.P(b_, zb, 0.0), self.P(um, pk, 0.0)], trim)
                 elif FINE and kind == 'dh' and hood == 'cap':
                     # the Stick and Edwardian cap: a crown wider and deeper than the casing
-                    self.box('trim', u0 - 0.22, u1 + 0.22, z1 + 0.2, z1 + 0.32, 0.0, 0.26, trim)
+                    self.box('trim', u0 - 0.28, u1 + 0.28, z1 + 0.26, z1 + 0.4, 0.0, 0.3, trim)
             if LOD >= 2:
                 # the casing and sill as one painted quad behind the pane: at
                 # 37 cm a pixel a window is a dark pane in a light frame, and
                 # a painted front reads as windows, not as a coloured box
-                if kind != 'shop' and trim is not None: self.rect('trim', u0 - 0.13, u1 + 0.13, z0 - 0.12, z1 + 0.15, 0.015, trim)
+                if kind != 'shop' and trim is not None:
+                    cw = 0.2 if (FINE and kind == 'dh') else 0.13
+                    self.rect('trim', u0 - cw, u1 + cw, z0 - 0.12, z1 + 0.15, 0.015, trim)
                 # a blind or a curtain drawn part way down about two panes in
                 # five: a light patch at the pane's head, so a row of windows
                 # is lived in, not a stamped grid of dark holes (drawn from the
@@ -501,6 +506,12 @@ def building(b, ground, out):
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
         body = saturate(body, 1.18 if LOD == 0 else (1.2 if WHITE_ROW else 1.5))
         body = unviolet(body)
+    # (25/09, level 9) the painted house's signature is its light trim standing
+    # out of a mid-tone body. A pale body under white trim read as a plain box
+    # at 9 cm: there the body is taken a shade deeper (at most 20 %, its hue kept)
+    if FINE and (style == 'vic' or sub == 'edwardian') and not LM and _lum(trim) > 0.6 and _lum(body) > _lum(trim) - 0.22:
+        k_ = max(0.8, (_lum(trim) - 0.22) / max(0.05, _lum(body)))
+        body = tuple(v * k_ for v in body)
     if OV.get('facade_col'): body = hexcol(OV['facade_col'])
     wall_mat = {'vic': 'siding', 'stucco': 'stucco', 'midcentury': 'stucco'}.get(style)
     if sub == 'edwardian' and RD.random('clad') < 0.35: wall_mat = 'siding'
@@ -616,7 +627,9 @@ def building(b, ground, out):
         wmat_, wcol_ = (side_ if (role == 2 and side_) else (back_ if (role == 0 and back_ and i != f0) else (wall_mat, body)))
         w.wall_with_holes(wmat_, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], wcol_)
         # corner boards (wood) or quoins (stucco blocks) and a water table
-        if role != 2 and LOD >= 2 and wall_mat == 'siding':
+        if role != 2 and LOD >= 2 and wall_mat == 'siding' and FINE:
+            w.box('trim', -0.02, 0.28, first - raised, eave, 0.0, 0.06, trim); w.box('trim', w.L - 0.28, w.L + 0.02, first - raised, eave, 0.0, 0.06, trim)
+        elif role != 2 and LOD >= 2 and wall_mat == 'siding':
             w.rect('trim', 0.0, 0.2, first - raised, eave, 0.03, trim); w.rect('trim', w.L - 0.2, w.L, first - raised, eave, 0.03, trim)
         if role != 2 and LOD < 2:
             if wall_mat == 'siding':
@@ -638,8 +651,17 @@ def building(b, ground, out):
                 gcol_ = (mix(body, accent, 0.18) if LM else (accent if w.L < 8.5 else mix(body, accent, 0.22)))
                 out.poly(gmat, gp, gcol_ if gmat == 'shingle' else wcol_)
                 if i == f0 and style == 'vic':
-                    w.box('trim', -0.25, w.L + 0.25, eave - 0.1, eave + 0.18, 0.0, 0.35, trim)
+                    w.box('trim', -0.25, w.L + 0.25, eave - (0.2 if FINE else 0.1), eave + 0.18, 0.0, 0.42 if FINE else 0.35, trim)
                     apex = max(tops); um = pts[1] if len(pts) == 3 else w.L / 2
+                    if FINE and len(pts) == 3 and apex - eave > 1.0:
+                        # (25/09, level 9) the bargeboards: a broad light board
+                        # down each rake of the front gable, under the roof's edge
+                        for (ua, za), (ub, zb_) in (((pts[0], tops[0]), (pts[1], tops[1])), ((pts[1], tops[1]), (pts[2], tops[2]))):
+                            sl = (zb_ - za) / (ub - ua) if abs(ub - ua) > 1e-6 else 0.0
+                            if ua == pts[0]: ua, za = ua - 0.35, za - 0.35 * sl
+                            if ub == pts[2]: ub, zb_ = ub + 0.35, zb_ + 0.35 * sl
+                            out.poly('trim', [w.P(ua, za + 0.04, 0.34), w.P(ub, zb_ + 0.04, 0.34), w.P(ub, zb_ - 0.3, 0.34), w.P(ua, za - 0.3, 0.34)], trim)
+                            out.poly('trim', [w.P(ua, za - 0.3, 0.34), w.P(ub, zb_ - 0.3, 0.34), w.P(ub, zb_ - 0.3, 0.1), w.P(ua, za - 0.3, 0.1)], mix(trim, (0.4, 0.4, 0.4), 0.25))
                     if apex - eave > 2.2:
                         w.box('glass', um - 0.4, um + 0.4, eave + 0.5, eave + 1.5, 0.02, 0.05, (1, 1, 1))
                         w.box('trim', um - 0.5, um + 0.5, eave + 0.4, eave + 0.5, 0.0, 0.1, trim)
@@ -685,7 +707,13 @@ def building(b, ground, out):
         proj = {'vic': 0.75, 'stucco': 0.4, 'block': 0.5, 'midcentury': 0.2}[style]
         if sub == 'works': proj = 0.12                      # a plain coping on a works parapet
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof
+        # (25/09, level 9) the Italianate false front: a taller screen that hides
+        # the roof from the street, its bracketed cornice over a light frieze
+        if style == 'vic' and FINE: ctop = top + 1.6; proj = 0.9
         if style == 'vic': wf.rect('siding', 0.0, wf.L, top, ctop, 0.0, body)
+        if style == 'vic' and FINE:
+            wf.rect('trim', 0.0, wf.L, ctop - 1.75, ctop - 1.15, 0.03, trim)          # the frieze
+            wf.box('trim', -0.05, wf.L + 0.05, ctop - 1.85, ctop - 1.75, 0.0, 0.14, trim)   # its bed moulding
         # (25/09) the tiled coping on a third of the 1920s-40s fronts, not on
         # every one: from the air the Sunset's rows are white and grey
         # parapets with a red tile pent here and there (drone, Parkside 2018),
@@ -714,7 +742,8 @@ def building(b, ground, out):
                 # brackets (at level 9 too: their row of shadows under the crown
                 # is the flat-front Victorian's signature, ~8-11 px apart)
                 for uu in frange(0.2, wf.L - 0.2, 0.7 if sub == 'italianate' else 1.0):
-                    wf.box('trim', uu - 0.08, uu + 0.08, ctop - 1.15, ctop - 0.45, 0.0, proj * 0.8, trim)
+                    bw_ = 0.1 if FINE else 0.08
+                    wf.box('trim', uu - bw_, uu + bw_, ctop - 1.15, ctop - 0.45, 0.0, proj * 0.8, trim)
                 # dentils under the cornice (22 cm apart: below level 9's pixel, left out there)
                 if sub in ('italianate', 'edwardian') and LOD < 2:
                     for uu in frange(0.1, wf.L - 0.1, 0.22):
@@ -2118,7 +2147,15 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
             fw.opening(m, fw.L - m, a0, a1, 'dh' if kind != 'box' else 'tall', trim, 0.12, rng, hood=c['hood'] if kind == 'square' else None)
             if f > 0 and (LOD < 2 or FINE): fw.box('trim', 0.0, fw.L, first + f * fh - 0.05, first + f * fh + 0.1, 0.0, 0.06, trim)
         fw.wall_with_holes(wm, 0.0, fw.L, z0 - 0.5, z1, holes, body)
-        fw.box('trim', -0.05, fw.L + 0.05, z1 - 0.45, z1, 0.0, 0.42, trim)          # the bay's cornice
+        if FINE and kind != 'box':
+            # (25/09, level 9) the bay reads by its trim: a light board up each
+            # angle, a frieze under a deeper cornice, small brackets under it
+            fw.box('trim', -0.04, 0.12, z0 - 0.5, z1, 0.0, 0.05, trim); fw.box('trim', fw.L - 0.12, fw.L + 0.04, z0 - 0.5, z1, 0.0, 0.05, trim)
+            fw.rect('trim', 0.0, fw.L, z1 - 0.85, z1 - 0.5, 0.02, trim)
+            fw.box('trim', -0.08, fw.L + 0.08, z1 - 0.5, z1, 0.0, 0.55, trim)
+            for uu in frange(0.15, fw.L - 0.15, 0.55): fw.box('trim', uu - 0.05, uu + 0.05, z1 - 0.85, z1 - 0.5, 0.0, 0.35, trim)
+        else:
+            fw.box('trim', -0.05, fw.L + 0.05, z1 - 0.45, z1, 0.0, 0.42, trim)          # the bay's cornice
         if LOD < 2 or FINE: fw.box('trim', -0.02, fw.L + 0.02, z0 - 0.5, z0 - 0.3, 0.0, 0.1, trim)      # its base
         if style == 'vic' and kind == 'slant' and LOD == 0:
             fw.box('trim', fw.L * 0.2, fw.L * 0.8, z0 - 1.0, z0 - 0.5, 0.0, 0.08, trim)   # a panel under the bay
@@ -2149,7 +2186,7 @@ def stoop_fine(w, u0, u1, zg, zdoor, trim, body, style, b, ground):
     house's paint. The flight ends on the sidewalk's own height (the hills);
     its own draws, so the house's sequence stays"""
     r = random.Random(b['gid'] * 947 + 11)
-    land, tr = 0.95, 0.27
+    land, tr = 0.85, 0.25                          # a steep flight (rise 18.5 cm over 25): the Victorian stair
     # the sidewalk at the flight's foot, a first guess of its length
     n0 = max(2, int(round((zdoor - zg) / 0.185)))
     pf = w.P((u0 + u1) / 2, 0.0, land + (n0 - 1) * tr)
@@ -2160,7 +2197,7 @@ def stoop_fine(w, u0, u1, zg, zdoor, trim, body, style, b, ground):
     n = max(2, int(round(rise / 0.185)))           # risers
     wend = land + (n - 1) * tr
     x_ = r.random()
-    tread = trim if x_ < 0.45 else ((0.56, 0.57, 0.57) if x_ < 0.75 else (0.74, 0.72, 0.67))
+    tread = trim if x_ < 0.55 else ((0.74, 0.74, 0.73) if x_ < 0.8 else (0.80, 0.78, 0.74))     # pale: the diagonals the air sees
     zb = min(zs, zg) - 0.6
     w.box('stair', u0, u1, zb, zdoor, 0.0, land, tread)                       # the landing
     for s_ in range(n - 1):                                                    # the flight
@@ -2169,10 +2206,11 @@ def stoop_fine(w, u0, u1, zg, zdoor, trim, body, style, b, ground):
     # the knee walls, their top 0.85 m over the treads, a cap in the trim
     wm = 'trim' if style == 'vic' else 'stucco'
     prof = [(0.0, zb), (wend, zb), (wend, zs + rise / n + 0.85), (land, zdoor + 0.85), (0.0, zdoor + 0.85)]
+    kc = trim if style == 'vic' else body          # a Victorian's balustrade walls in the trim, a stucco house's in its body
     for uo, ui in ((u0, u0 + 0.12), (u1, u1 - 0.12)):
-        w.o.poly(wm, [w.P(uo, z_, w_) for w_, z_ in prof], body)
-        w.o.poly(wm, [w.P(ui, z_, w_) for w_, z_ in prof[::-1]], body)
-        w.o.poly(wm, [w.P(uo, zb, wend), w.P(ui, zb, wend), w.P(ui, prof[2][1], wend), w.P(uo, prof[2][1], wend)], body)
+        w.o.poly(wm, [w.P(uo, z_, w_) for w_, z_ in prof], kc)
+        w.o.poly(wm, [w.P(ui, z_, w_) for w_, z_ in prof[::-1]], kc)
+        w.o.poly(wm, [w.P(uo, zb, wend), w.P(ui, zb, wend), w.P(ui, prof[2][1], wend), w.P(uo, prof[2][1], wend)], kc)
         sg = 1.0 if ui > uo else -1.0; ca, cb = uo - 0.03 * sg, ui + 0.03 * sg      # the cap, 3 cm proud each side
         for (w1, z1), (w2, z2) in ((prof[2], prof[3]), (prof[3], prof[4])):
             w.o.poly('trim', [w.P(ca, z1, w1), w.P(ca, z2, w2), w.P(cb, z2, w2), w.P(cb, z1, w1)], trim)
