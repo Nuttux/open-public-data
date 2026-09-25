@@ -134,8 +134,10 @@ if PART == 'boats':
             me = TG.mesh_multi(bpy, f'boat{j}_{i}', vb.V, vb.F, vb.C, vb.MI, mats)
             o = bpy.data.objects.new(f'boat{j}_{i}', me); sc.collection.objects.link(o)
             Lb = max(v[0] for v in vb.V) - min(v[0] for v in vb.V); Bb = max(v[1] for v in vb.V) - min(v[1] for v in vb.V)
-            o.location = (x + Bb / 2, -8.0 + j * 60.0 if False else (j * 55.0), 0.0); o.rotation_euler.z = math.pi / 2
-            x += Bb + 4.0
+            yaw_ = float(E('BOAT_YAW', 1.5708)); o.rotation_euler.z = yaw_
+            ext_ = abs(math.cos(yaw_)) * Lb + abs(math.sin(yaw_)) * Bb
+            o.location = (x + ext_ / 2, j * 55.0, 0.0)
+            x += ext_ + 4.0
     log('boats: built')
 
 # camera: the frame's own forward, ortho, MPP m/px

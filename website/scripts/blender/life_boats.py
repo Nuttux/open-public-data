@@ -70,6 +70,37 @@ class VB:
             self.face([(x0, -h, z1), (x1, -h, z1), (x1, h, z1), (x0, h, z1)], roof, PAINT)
 
 
+# BOATS v2 (25/09, the deep-zoom pass; BOATS_V2=0 = the bodies before): at
+# level 9 (9 cm/px) a 10 m sloop is 110 px. The hulls get twice the stations,
+# flare (the deck edge wider than the waterline) and a rubbing strake; the
+# sloops their rig (spreaders, boom, forestay, backstay and shrouds as
+# 4-5 cm bars: the faint lines a real aerial shows), winches, hatches and a
+# dodger; the motor yachts a windscreen, a hardtop or bimini, a swim platform
+# and rails; the fishing boats their trolling poles spread and a boom; the
+# ferries window mullions, rails and life-raft canisters. The placements
+# (life_water.plan: the Wharf fleet, the marinas' slips, the ferry routes)
+# are unchanged; only the bodies.
+def v2():
+    import os
+    return os.environ.get('BOATS_V2', '1') == '1'
+
+
+def rod(vb, a, b, w, col, mi=METAL):
+    """a thin square bar from a to b, w wide (a stay, a rail, a pole)"""
+    ax, ay, az = a; bx, by, bz = b
+    dx, dy, dz = bx - ax, by - ay, bz - az; L = math.sqrt(dx * dx + dy * dy + dz * dz) or 1e-6
+    ux, uy, uz = dx / L, dy / L, dz / L
+    # two perpendiculars
+    px, py, pz = (-uy, ux, 0.0) if abs(uz) < 0.9 else (1.0, 0.0, 0.0)
+    n = math.sqrt(px * px + py * py + pz * pz); px, py, pz = px / n * w / 2, py / n * w / 2, pz / n * w / 2
+    qx, qy, qz = uy * pz - uz * py, uz * px - ux * pz, ux * py - uy * px
+    ring = lambda o: [(o[0] + sx * px + sy * qx, o[1] + sx * py + sy * qy, o[2] + sx * pz + sy * qz) for sx, sy in ((1, 1), (-1, 1), (-1, -1), (1, -1))]
+    A, B = ring(a), ring(b)
+    for i in range(4):
+        j = (i + 1) % 4
+        vb.face([A[i], A[j], B[j], B[i]], col, mi)
+
+
 def plan(t, bow=0.3, transom=0.8, pow_=0.55):
     """half-width fraction at t (0 = stern, 1 = bow)"""
     if t > 1 - bow: return max(0.0, (1 - t) / bow) ** pow_
@@ -80,18 +111,25 @@ def hull(vb, L, B, fb, col, deck, stripe=None, bow=0.3, transom=0.8, sheer=0.0, 
          deck_mi=PAINT, draft=0.4):
     """a hull from the waterline (a little below) to the deck edge; `stripe`
     (z_a, z_b, colour) a band along the side; `sheer` the bow's rise"""
+    V2_ = v2()
+    if V2_: n *= 2
     ts = [i / n for i in range(n + 1)]
     xs = [x0 - L / 2 + t * L for t in ts]
     ws = [B / 2 * plan(t, bow, transom, pow_) for t in ts]
     zt = [fb + sheer * max(0.0, (t - 0.55) / 0.45) ** 2 for t in ts]
     bands = [(-draft, stripe[0], col), (stripe[0], stripe[1], stripe[2]), (stripe[1], None, col)] if stripe else [(-draft, None, col)]
+    if V2_:      # a rubbing strake just under the deck edge
+        fbm = min(zt); rs = max(0.05, min(0.14, 0.02 * fbm + 0.04))
+        bands = [(lo, (min(hi, fbm - rs) if hi is not None else fbm - rs), c) for lo, hi, c in bands if lo < fbm - rs] + [(fbm - rs, None, OFFWHITE if col[0] > 0.5 else DGREY)]
+    # flare (v2): the side leans out from the waterline to the deck edge
+    wl = (lambda w, z: w * (0.8 + 0.2 * max(0.0, min(1.0, (z + draft) / max(0.1, fb + draft))))) if V2_ else (lambda w, z: w)
     for i in range(n):
         xa, xb, wa, wb, za, zb = xs[i], xs[i + 1], ws[i], ws[i + 1], zt[i], zt[i + 1]
         for lo, hi, c in bands:
             ha, hb = (min(hi, za) if hi is not None else za), (min(hi, zb) if hi is not None else zb)
             if ha <= lo + 1e-3 and hb <= lo + 1e-3: continue
             for s in (-1, 1):
-                p = [(xa, s * wa + y0, lo), (xb, s * wb + y0, lo), (xb, s * wb + y0, hb), (xa, s * wa + y0, ha)]
+                p = [(xa, s * wl(wa, lo) + y0, lo), (xb, s * wl(wb, lo) + y0, lo), (xb, s * wl(wb, hb) + y0, hb), (xa, s * wl(wa, ha) + y0, ha)]
                 vb.face(p if s < 0 else p[::-1], c, PAINT)
         if wa + wb > 1e-3:
             vb.face([(xa, -wa + y0, za), (xb, -wb + y0, zb), (xb, wb + y0, zb), (xa, wa + y0, za)], deck, deck_mi)
@@ -108,6 +146,23 @@ LIVERY = {   # hull band, cabin, roof
     'ti': (DGREY, WHITE, OFFWHITE, DGREY),
     'rw': (srgb('#b8262c'), WHITE, OFFWHITE, srgb('#b8262c')),
 }
+
+
+def _ferry_v2(vb, L, B, win_bands, deck, raft_x):
+    """v2 details: light mullions across the window bands (a pane every 1.4 m),
+    a rail round the open deck `deck` = (x0, x1, half width, z), white
+    life-raft canisters along it at raft_x"""
+    if not v2(): return
+    for (x0, x1, hw, za, zb) in win_bands:
+        x = x0 + 0.7
+        while x < x1 - 0.5:
+            for s in (-1, 1): vb.face([(x, s * (hw + 0.02), za), (x + 0.12, s * (hw + 0.02), za), (x + 0.12, s * (hw + 0.02), zb), (x, s * (hw + 0.02), zb)][::(1 if s < 0 else -1)], OFFWHITE, PAINT)
+            x += 1.4
+    dx0, dx1, dhw, dz = deck
+    for s in (-1, 1): vb.box(dx0 + 0.2, dx1 - 0.2, s * (dhw - 0.05) - 0.03, s * (dhw - 0.05) + 0.03, dz + 0.95, dz + 1.05, GREY, METAL)
+    vb.box(dx0 + 0.17, dx0 + 0.23, -dhw + 0.05, dhw - 0.05, dz + 0.95, dz + 1.05, GREY, METAL)
+    for x in raft_x:
+        for s in (-1, 1): vb.box(x, x + 1.4, s * (dhw - 0.55) - 0.35, s * (dhw - 0.55) + 0.35, dz, dz + 0.65, WHITE, PAINT)
 
 
 def ferry_cat(op='weta', L=42.0, B=10.6, decks=2):
@@ -137,6 +192,8 @@ def ferry_cat(op='weta', L=42.0, B=10.6, decks=2):
         vb.cabin(p0, p0 + 5.0, 2.6, 7.4, 9.4, cab, win=(7.9, 9.0), roof=roof, nose=1.2)
         vb.box(p0 + 1.0, p0 + 1.6, -0.3, 0.3, 9.4, 10.6, GREY, METAL)          # mast
         vb.box(-L / 2 + 14.5, -L / 2 + 16.0, -0.9, 0.9, 7.4, 8.8, acc, PAINT)   # funnel casing, the operator's colour
+    _ferry_v2(vb, L, B, [(c0, c1 - 2.2, B / 2 - 0.35 + 0.0, 3.0, 4.4)] + ([(-L / 2 + 13.0, L / 2 - 11.0 - 1.6, B / 2 - 1.4, 5.6, 6.9)] if decks >= 2 else []),
+              (c0, c1 - 2.2, B / 2 - 0.55, 5.0), [-L / 2 + 5.8, -L / 2 + 7.6] if decks >= 2 else [-L / 2 + 8.0])
     return vb
 
 
@@ -151,6 +208,8 @@ def ferry_mono(op='ggf', L=50.0, B=10.8):
     p0 = L / 2 - 20.0
     vb.cabin(p0, p0 + 5.5, 3.0, 7.7, 9.8, cab, win=(8.2, 9.4), roof=roof, nose=1.2)
     vb.box(-L / 2 + 14.0, -L / 2 + 16.0, -1.0, 1.0, 7.7, 9.3, acc, PAINT)
+    _ferry_v2(vb, L, B, [(-L / 2 + 5.0, L / 2 - 12.0, B / 2 - 0.5, 3.3, 4.7), (-L / 2 + 10.0, L / 2 - 17.0, B / 2 - 1.2, 5.9, 7.2)],
+              (-L / 2 + 5.0, L / 2 - 9.0 - 3.0, B / 2 - 0.5, 5.3), [-L / 2 + 6.0, -L / 2 + 7.8])
     return vb
 
 
@@ -168,6 +227,7 @@ def small_ferry(op='alc', L=30.0, B=9.0):
         vb.box(x, x + 0.45, -B / 2 + 1.2, B / 2 - 1.2, 4.6, 5.0, DGREY, MATTE)
     p0 = L / 2 - 11.0
     vb.cabin(p0, p0 + 4.0, 2.2, 4.6, 6.6, cab, win=(5.0, 6.2), roof=roof, nose=1.0)
+    _ferry_v2(vb, L, B, [(-L / 2 + 3.0, L / 2 - 7.5, B / 2 - 0.4, 2.8, 4.0)], (-L / 2 + 3.0, L / 2 - 5.5 - 2.0, B / 2 - 0.4, 4.6), [-L / 2 + 3.4])
     return vb
 
 
@@ -259,6 +319,10 @@ def tug(L=30.0, B=11.0, col='#1e1f22', house='#e8e6e0', trim='#b0302a'):
     vb.cabin(L / 2 - 14.0, L / 2 - 8.5, 2.8, 6.0, 8.6, h, win=(7.0, 8.2), roof=srgb('#d0ccc4'))
     vb.box(-L / 2 + 11.0, -L / 2 + 12.4, -2.4, -1.2, 6.0, 9.5, srgb('#1e1f22'), MATTE)
     vb.box(-L / 2 + 11.0, -L / 2 + 12.4, 1.2, 2.4, 6.0, 9.5, srgb('#1e1f22'), MATTE)
+    if v2():     # the bow's push fender (black rubber), the towing winch, the mast
+        vb.box(L / 2 - 1.2, L / 2 + 0.6, -B * 0.3, B * 0.3, 0.6, 3.4, srgb('#161616'), MATTE)
+        vb.box(-L / 2 + 5.0, -L / 2 + 7.5, -1.4, 1.4, 3.2, 4.4, srgb('#6a6e72'), METAL)
+        rod(vb, (L / 2 - 11.0, 0.0, 8.6), (L / 2 - 11.0, 0.0, 13.0), 0.18, GREY)
     return vb
 
 
@@ -269,7 +333,14 @@ def fishing(L=14.0, B=4.4, col='#e8e6e0', trim='#2a4a7a', seed=0):
     hull(vb, L, B, 1.6, srgb(col), srgb('#8a857a'), stripe=(0.9, 1.6, srgb(trim)), bow=0.35, transom=0.75, sheer=0.7, pow_=0.5)
     vb.cabin(L / 2 - 6.5, L / 2 - 3.2, B / 2 - 0.5, 1.6, 3.8, srgb('#f0eee8'), win=(2.9, 3.5), roof=srgb('#d8d4ca'))
     vb.box(L / 2 - 6.0, L / 2 - 5.8, -0.1, 0.1, 3.8, 9.0, GREY, METAL)          # mast
-    if r.random() < 0.7:
+    if v2():
+        # trolling poles spread out to the sides (up and out ~35 deg), a boom aft, the rails
+        for s in (-1, 1):
+            rod(vb, (L / 2 - 5.9, s * B * 0.4, 1.8), (L / 2 - 6.6, s * (B * 0.4 + 6.0), 7.5), 0.07, GREY)
+            rod(vb, (-L / 2 + 0.4, s * B * 0.42, 1.6), (L / 2 - 6.6, s * B * 0.42, 1.6 + 0.9), 0.05, GREY)
+        rod(vb, (L / 2 - 5.9, 0.0, 5.5), (-L / 2 + 1.5, 0.0, 3.4), 0.1, GREY)
+        vb.box(L / 2 - 6.5, L / 2 - 6.1, -0.2, 0.2, 3.8, 4.0, srgb('#e0602a'), PAINT)          # the life ring on the house roof
+    elif r.random() < 0.7:
         for s in (-1, 1):
             vb.box(L / 2 - 5.9, L / 2 - 5.7, s * 0.2, s * 0.2 + s * 0.12, 1.6, 8.0, GREY, METAL)
     for k in range(r.randint(1, 3)):         # crab pots, gear
@@ -305,6 +376,24 @@ def sailboat(L=10.0, seed=0, sails=None, heel=0.0):
     mx = L * 0.12; H = L * 1.3                               # mast foot, height over the deck
     vb.box(mx - 0.09, mx + 0.09, -0.09, 0.09, fb, fb + H, GREY, METAL)
     boomz = fb + 1.4 + 0.04 * L; bl = L * 0.42
+    if v2():
+        # the rig: spreaders, the forestay to the stem, the backstay to the
+        # transom, the shrouds to the chainplates (4-5 cm: faint lines at level 9)
+        top_ = (mx, 0.0, fb + H); sz_ = fb + H * 0.55
+        vb.box(mx - 0.05, mx + 0.05, -B * 0.36, B * 0.36, sz_ - 0.04, sz_ + 0.04, GREY, METAL)
+        rod(vb, top_, (L / 2 - 0.25, 0.0, fb + 0.25), 0.045, GREY)
+        rod(vb, top_, (-L / 2 + 0.2, 0.0, fb + 0.1), 0.045, GREY)
+        for s_ in (-1, 1):
+            rod(vb, (mx, 0.0, sz_), (mx - 0.2, s_ * B * 0.45, fb + 0.05), 0.04, GREY)
+            rod(vb, (mx, s_ * B * 0.36, sz_), top_, 0.035, GREY)
+            # cockpit winches and the coamings' dark edge
+            vb.box(-L * 0.24, -L * 0.24 + 0.22, s_ * B * 0.32 - 0.11, s_ * B * 0.32 + 0.11, fb, fb + 0.2, DGREY, METAL)
+        vb.box(mx + 0.4, mx + 0.4 + 0.08 * L, -0.28, 0.28, fb + 0.55 + 0.02 * L, fb + 0.6 + 0.02 * L, srgb('#3a4148'), GLASS)   # the forward hatch
+        vb.box(L * 0.3, L * 0.3 + 0.5, -0.3, 0.3, fb, fb + 0.06, srgb('#3a4148'), GLASS)                                   # the fore-deck hatch
+        if r.random() < 0.55:     # a dodger over the companionway
+            dc = r.choice(COVERS)
+            vb.cabin(-L * 0.16, -L * 0.1, B / 2 * 0.5, fb + 0.55 + 0.02 * L, fb + 1.05 + 0.02 * L, dc, roof=dc, nose=0.25)
+        vb.box(mx - bl, mx, -0.07, 0.07, boomz - 0.3, boomz - 0.18, GREY, METAL)     # the boom under the cover
     if sails is None:
         vb.box(mx - bl, mx, -0.22, 0.22, boomz - 0.18, boomz + 0.25, r.choice(COVERS), MATTE)       # the sail cover
     else:
@@ -342,8 +431,24 @@ def motorboat(L=11.0, seed=0, flybridge=None):
     fb = 1.1 + 0.035 * L
     hull(vb, L, B, fb, hc, NONSKID, stripe=(0.1, 0.3, srgb('#2a3f6a')), bow=0.38, transom=0.9, sheer=0.15 * L / 10, pow_=0.55)
     vb.cabin(-L * 0.18, L * 0.22, B / 2 * 0.8, fb, fb + 1.6, WHITE, win=(fb + 0.6, fb + 1.3), roof=OFFWHITE, nose=L * 0.07)
-    if flybridge if flybridge is not None else r.random() < 0.5:
+    fly = flybridge if flybridge is not None else r.random() < 0.5
+    if fly:
         vb.box(-L * 0.12, L * 0.08, -B * 0.32, B * 0.32, fb + 1.6, fb + 2.0, WHITE, PAINT, top=(srgb('#2a2c30'), MATTE))
+    if v2():
+        # the raked windscreen as one dark pane over the saloon's front, a
+        # swim platform aft (teak), bow rails, the flybridge's bimini on struts
+        x1_ = L * 0.22 - L * 0.07
+        vb.face([(x1_ - 0.9, -B * 0.34, fb + 1.58), (x1_ - 0.9, B * 0.34, fb + 1.58), (x1_ + 0.15, B * 0.36, fb + 0.95), (x1_ + 0.15, -B * 0.36, fb + 0.95)], WIN, GLASS)
+        vb.box(-L / 2 - 0.7, -L / 2 + 0.05, -B * 0.4, B * 0.4, 0.25, 0.35, TEAK, MATTE)
+        for s_ in (-1, 1):
+            rod(vb, (L * 0.25, s_ * B * 0.36, fb + 0.6), (L / 2 - 0.5, s_ * 0.25, fb + 0.2 + 0.6), 0.04, GREY)
+        if fly:
+            bc = r.choice(COVERS[:3] + [OFFWHITE])
+            vb.box(-L * 0.14, L * 0.02, -B * 0.34, B * 0.34, fb + 2.9, fb + 2.97, bc, MATTE)
+            for sx_ in (-L * 0.13, L * 0.01):
+                for s_ in (-1, 1): rod(vb, (sx_, s_ * B * 0.32, fb + 2.0), (sx_, s_ * B * 0.33, fb + 2.9), 0.04, GREY)
+        else:
+            vb.box(-L * 0.3, -L * 0.14, -B * 0.36, B * 0.36, fb + 1.45, fb + 1.52, OFFWHITE, PAINT)     # a hardtop over the cockpit
     return vb
 
 
