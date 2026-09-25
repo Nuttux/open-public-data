@@ -205,7 +205,8 @@ if len(SA_):
     # fronts on every street. It is paving: cut from the street mesh (the
     # streets are the asphalt alone, so the kerbs, the cars and the walkers
     # follow the real kerb) and laid as sidewalk at kerb height; a casing
-    # triangle straddling the kerb is split until its pieces lie on one side.
+    # triangle straddling the kerb is split until its pieces lie on one side
+    # (or within the kerb's sidewalk band).
     # VERGE=0: as before
     if E('VERGE', '1') == '1':
         _cs = SP[_nA:]; SP = SP[:_nA]
@@ -217,9 +218,14 @@ if len(SA_):
             on = [_on(*c)] + [_on(v[0] + (c[0] - v[0]) * 0.05, v[1] + (c[1] - v[1]) * 0.05, v[2]) for v in V]
             if all(on): return
             L = max(math.dist(V[i][:2], V[(i + 1) % 3][:2]) for i in range(3))
-            if not any(on) or L < 0.8 or depth > 9:
-                if not on[0]:
-                    for v in V: VG.extend((v[0], v[1], v[2] + 0.16))
+            if not any(on):
+                for v in V: VG.extend((v[0], v[1], v[2] + 0.16))
+                return
+            # a small piece across the kerb lies within the 3 m sidewalk band
+            # drawn from the kerb: laid just under the asphalt, whose edge
+            # then draws the kerb line (no sawtooth into the roadway)
+            if L < 2.5 or depth > 6:
+                for v in V: VG.extend((v[0], v[1], v[2] - 0.03))
                 return
             m = [tuple((V[i][k] + V[(i + 1) % 3][k]) / 2 for k in range(3)) for i in range(3)]
             for T in ((V[0], m[0], m[2]), (m[0], V[1], m[1]), (m[2], m[1], V[2]), (m[0], m[1], m[2])): _verge(T, depth + 1)
