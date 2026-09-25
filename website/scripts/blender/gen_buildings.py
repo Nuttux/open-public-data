@@ -102,6 +102,7 @@ ERA = None       # the year shown; None = today. Changes paint, not form.
 # renders (env Z); GEN_FINE=0/1 forces it
 import os as _os_f
 FINE = int(_os_f.environ.get('GEN_FINE', '1' if int(_os_f.environ.get('Z', '7') or 7) >= 8 else '0'))
+TRACT = _os_f.environ.get('TRACT', '1') == '1'   # (25/09) the tract builders' fronts and street entries; TRACT=0 = off
 
 # ── paint by period: era.TABLE `paint` (Victorians) and `paint2` (the rest) ──
 # The mixes and their sources live in era.py; these are the palettes each
@@ -545,7 +546,7 @@ def building(b, ground, out):
     # (24/09) and the other way: a house whose roof the air reads as dark
     # shingle (or clay tile) is pitched — the Castro's, Noe's, the Haight's
     # gables, where the generator had drawn a flat roof behind a parapet
-    if not LM and roof == 'flat' and style in ('vic', 'stucco', 'midcentury') and ERA is None:
+    if not LM and roof == 'flat' and style in ('vic', 'stucco', 'midcentury'):
         m_ = ROOF_M.get(b['gid'])
         if m_ and (m_[3] == 'shingle' or (m_[3] == 'tile' and sub in ('med', 'sunset'))) and b['h'] < 16 and abs(ring_area(ring)) < 350 and walls[f0].L <= 10.5: roof = 'gable'   # (a row house's width: wider, it drew barns)
     if OV.get('roof'): roof = {'gable': 'gable', 'hip': 'hip', 'flat': 'flat', 'mansard': 'flat', 'dome': 'flat'}.get(OV['roof'], roof)
@@ -553,7 +554,7 @@ def building(b, ground, out):
     # public domain (qipu-render-work/lidar/roofs_lidar.py): flat, a gable and
     # its ridge's direction, or a hip, with the measured pitch. It overrides
     # the conventions above wherever the footprint was measured
-    LR = LIDAR_R.get(str(b['gid'])) if (ERA is None and not LM and not OV.get('roof') and sub not in ('works', 'pier', 'tower')) else None
+    LR = LIDAR_R.get(str(b['gid'])) if (not LM and not OV.get('roof') and sub not in ('works', 'pier', 'tower')) else None   # (eras: a standing building's roof form is its own in every year)
     if LR:
         if LR[0] == 'flat': roof = 'flat'
         elif abs(ring_area(ring)) < (800 if style != 'block' else 500) and b['h'] < 25: roof = LR[0]
@@ -688,10 +689,22 @@ def building(b, ground, out):
     fh = max(2.6, (eave - first) / nfl)
     if first + fh > eave: first = zg + 0.3; fh = max(2.4, (eave - first) / nfl)
     hood = None if stripped else {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
+    # (25/09) THE TRACT BUILDER'S FRONT (1918-61: the Sunset, Parkside, the
+    # Richmond, the Excelsior): a run shares its massing, garage and entry, but
+    # its fronts take the builder's few designs in turn, never twice side by
+    # side (the Doelger way): 'spanish' (tile pent, barrel or square bay,
+    # arched tunnel entry), 'streamline' (plain parapet, eyebrow over the
+    # windows, speed lines), 'provincial' (a shingle or tile pent across the
+    # front), 'plain'. Own draws: the house's sequence stays
+    SV = sunset_front(b, sub, RP) if (TRACT and sub in ('med', 'sunset') and not LM and not OV.get('style') and PS is None) else None
     bay_kind = {'italianate': 'slant', 'stick': 'square', 'queen': RD.choice('bay', ('slant', 'square')),
                 'edwardian': 'square', 'med': 'square' if RD.random('bay') < 0.4 else None,
                 'sunset': 'box', 'postwar': 'square' if RD.random('bay', grng) < 0.45 else None}.get(sub)
     if LM: bay_kind = LM['bay']
+    if SV:
+        x_sv = random.Random(b['gid'] * 709 + 3).random()
+        bay_kind = {'spanish': 'barrel' if x_sv < 0.55 else 'square', 'streamline': None,
+                    'provincial': 'box' if x_sv < 0.45 else None, 'plain': 'square' if x_sv < 0.3 else None}[SV]
     # the pre-war apartment house: bays stacked up the front, a fire escape
     yr_ = b['year'] or 1950
     if sub == 'apartment' and 1900 <= yr_ < 1945 and storeys >= 3 and rng.random() < 0.88: bay_kind = rng.choice(('square', 'slant', 'square'))
@@ -718,7 +731,7 @@ def building(b, ground, out):
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
-               fsys=fsys, gcol=gcol, rd=RD, ground=ground, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
+               fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
 
     # the house's side and back walls (24/09): in SF the street front is the
     # painted one; a party wall standing clear of its neighbour is plain grey
@@ -842,9 +855,18 @@ def building(b, ground, out):
         # parapets with a red tile pent here and there (drone, Parkside 2018),
         # not a red line down every avenue; the rest a plain stucco coping
         med_tile = sub == 'med' and RD.random('coping', random.Random(b['gid'] * 613 + 29)) < 0.33
-        if sub == 'med' and not med_tile:
+        if SV: med_tile = SV == 'spanish'
+        if SV == 'streamline':
+            # the eyebrow over the living-room windows and the speed lines under the parapet
+            zeb = first + fh - 0.3
+            wf.box('trim', 0.25, wf.L - 0.25, zeb, zeb + 0.09, 0.0, 0.6, trim)
+            for zz in (top - 0.45, top - 0.7): wf.rect('trim', 0.0, wf.L, zz, zz + 0.07, 0.012, mix(body, (0.3, 0.3, 0.3), 0.25))
+        if SV == 'provincial':
+            pr_ = random.Random(b['gid'] * 811 + 5)
+            front_pent(wf, top, trim, body, out, pr_)
+        elif (sub == 'med' or SV) and not med_tile:
             wf.box('trim', -0.06, wf.L + 0.06, top - 0.05, ctop, 0.0, 0.16, trim)
-        elif sub == 'med':
+        elif sub == 'med' or SV:
             # a tiled coping over the parapet, pitched out
             a0, a1 = wf.P(-0.2, top + 0.1, 0.45), wf.P(wf.L + 0.2, top + 0.1, 0.45)
             b0, b1 = wf.P(-0.2, top + 0.55, -0.15), wf.P(wf.L + 0.2, top + 0.55, -0.15)
@@ -1502,17 +1524,28 @@ def measured_form(b, roof):
     cap sheet, silver, gravel; albedo >= 0.28) and the survey does not call
     the roof pitched: it is a flat roof, behind a false front mostly
     (roofs.json's 6th field, set by roofs_prep.finish)"""
-    m = ROOF_M.get(b['gid']) if ERA is None else None
+    m = ROOF_M.get(b['gid'])
     return 'flat' if (m and roof == 'gable' and len(m) > 5 and m[5] == 1) else roof
+
+
+def roof_now(b):
+    """is the roof measured on NAIP 2022 already on this building in the year
+    shown? A roof is re-covered every ~25 years: today's surface went on at a
+    fixed moment per building between 1997 and 2022 (never before the
+    building), and before that the period's procedural roof stands. CONVENTION
+    on the cycle; no city-wide switch year (25/09 eras, one grammar)"""
+    if ERA is None: return True
+    u = ((int(b['gid']) * 2654435761 + 4711) % 1000003) / 1000003.0
+    return ERA >= max((b.get('year') or 1900) + 0.5, 2022.0 - 25.0 * u)
 
 
 def measured_pitched(b, roof_mat, rc):
     """a pitched roof in its measured colour: clay tile where the air sees
     terracotta, shingle otherwise (never whiter than a light shingle: a
     white reading over a gable is a flat roof the generator pitched)"""
-    m = ROOF_M.get(b['gid']) if ERA is None else None
+    m = ROOF_M.get(b['gid']) if roof_now(b) else None
     if not m:
-        if ROOF_M and ERA is None and roof_mat == 'roof_shingle':
+        if ROOF_M and roof_now(b) and roof_mat == 'roof_shingle':
             # unmeasured (or unsure): the procedural shingle, toned toward the
             # city the air measured — greys warm to cool, few reds and violets
             L = _lum(rc); return roof_mat, tuple(L + 0.45 * (c - L) for c in rc)
@@ -1539,7 +1572,7 @@ def measured_pitched(b, roof_mat, rc):
 def measured_flat(b, rc):
     """a flat roof's membrane in its measured colour and kind; the roll
     direction (alpha's fraction) is the procedural one's"""
-    m = ROOF_M.get(b['gid']) if ERA is None else None
+    m = ROOF_M.get(b['gid']) if roof_now(b) else None
     if not m: return rc
     a, cls = list(m[:3]), m[3]
     kind = _FLAT_KIND.get(cls, 1)
@@ -1895,7 +1928,18 @@ def facade(w, is_front, b, rng, c):
                         garage_panels(w, g1, g1 + gw, zg, trim, mix(accent, (0.85, 0.84, 0.8), 0.6))
                         w.box('trim', g1 - 0.12, g1 + gw + 0.12, zg + 2.3, zg + 2.45, 0.0, 0.08, trim)
                         free = [f for f in cut(free, (g1, g1 + gw), 0.2) if f[1] - f[0] > 1.3]
-        if free:
+        if free and garage_u is not None and LOD >= 1 and TRACT:
+            # (25/09) a house over its garage is entered from the street: a
+            # recess beside the garage with the stair going up inside it (the
+            # Sunset's tunnel entry, arched on the Spanish fronts; a square
+            # porch on the others and the Edwardians) — the door no longer
+            # hangs on the wall a storey up
+            f_ = max(free, key=lambda f: f[1] - f[0])
+            du0 = f_[0] + 0.15 if c['rd'].side('doorside', rng) else f_[1] - 1.15
+            eu0, eu1 = max(f_[0], du0 - 0.1), min(f_[1], du0 + 1.1)
+            holes.append((eu0, eu1, zg + 0.02, zg + 2.35))
+            entry_recess(w, eu0, eu1, zg, c)
+        elif free:
             f_ = max(free, key=lambda f: f[1] - f[0])
             du0 = f_[0] + 0.15 if c['rd'].side('doorside', rng) else f_[1] - 1.15
             door_u = (du0, du0 + 1.0)
@@ -2405,29 +2449,34 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
     picture window of a Sunset house; windows in each face, its own cornice"""
     out = w.o; trim, body, style, sub = c['trim'], c['body'], c['style'], c['sub']
     fh, nfl, first = c['fh'], c['nfl'], c['first']
-    d = 0.95 if kind != 'box' else 0.5                     # (24/09: 0.75 was two pixels; SF bays stand about a metre out)
+    d = 0.95 if kind not in ('box', 'barrel') else (0.5 if kind == 'box' else 0.85)   # (24/09: 0.75 was two pixels; SF bays stand about a metre out)
     inset = 0.6 if kind == 'slant' else 0.0
     A, B = w.P(u0, 0, 0), w.P(u1, 0, 0)
     C, D = w.P(u1 - inset, 0, d), w.P(u0 + inset, 0, d)
-    faces = [(A, D), (D, C), (C, B)]
+    if kind == 'barrel':
+        # (25/09) the Spanish front's barrel bay: a half-round in six faces
+        pts_b = [w.P(u0 + (u1 - u0) * (1 - math.cos(math.pi * k / 6)) / 2, 0, d * math.sin(math.pi * k / 6)) for k in range(7)]
+    else:
+        pts_b = [A, D, C, B]
+    faces = list(zip(pts_b, pts_b[1:]))
     wm = c['wall_mat'] if c['wall_mat'] in ('siding', 'stucco') else 'stucco'
-    wh = min(2.3, fh * 0.62) if kind != 'box' else 1.5
+    wh = min(2.3, fh * 0.62) if kind not in ('box', 'barrel') else (1.5 if kind == 'box' else min(1.8, fh * 0.6))
     sill = (fh - wh) * 0.45
     for (p, q) in faces:
         fw = Wall((p.x, p.y), (q.x, q.y), out)
         if fw.L < 0.05: continue
         holes = []
-        nfl_b = nfl if kind != 'box' else 1
+        nfl_b = nfl if kind not in ('box', 'barrel') else 1
         for f in range(nfl_b):
             a0 = first + f * fh + sill; a1 = a0 + wh
             if a1 > z1 - 0.2: break
             m = 0.18 if fw.L > 1.2 else 0.14
             if fw.L - 2 * m < 0.3: continue
             holes.append((m, fw.L - m, a0, a1))
-            fw.opening(m, fw.L - m, a0, a1, 'dh' if kind != 'box' else 'tall', trim, 0.12, rng, hood=c['hood'] if kind == 'square' else None)
+            fw.opening(m, fw.L - m, a0, a1, 'dh' if kind not in ('box', 'barrel') else 'tall', trim, 0.12, rng, hood=c['hood'] if kind == 'square' else None)
             if f > 0 and (LOD < 2 or FINE): fw.box('trim', 0.0, fw.L, first + f * fh - 0.05, first + f * fh + 0.1, 0.0, 0.06, trim)
         fw.wall_with_holes(wm, 0.0, fw.L, z0 - 0.5, z1, holes, body)
-        if FINE and kind != 'box':
+        if FINE and kind not in ('box', 'barrel'):
             # (25/09, level 9) the bay reads by its trim: a light board up each
             # angle, a frieze under a deeper cornice, small brackets under it
             fw.box('trim', -0.04, 0.12, z0 - 0.5, z1, 0.0, 0.05, trim); fw.box('trim', fw.L - 0.12, fw.L + 0.04, z0 - 0.5, z1, 0.0, 0.05, trim)
@@ -2440,13 +2489,76 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
         if style == 'vic' and kind == 'slant' and LOD == 0:
             fw.box('trim', fw.L * 0.2, fw.L * 0.8, z0 - 1.0, z0 - 0.5, 0.0, 0.08, trim)   # a panel under the bay
     for z, up in ((z1, True), (z0 - 0.5, False)):
-        pl = [Vector((p.x, p.y, z)) for p in (A, B, C, D)]
+        pl = [Vector((p.x, p.y, z)) for p in [A, B] + pts_b[-2:0:-1]]
         out.poly('trim', pl[::-1] if up else pl, trim)
     # a small tiled hood over the bay of a Mediterranean or Sunset house
     if sub in ('med', 'sunset'):
         e0, e1 = w.P(u0 - 0.2, z1 + 0.05, d + 0.35), w.P(u1 + 0.2, z1 + 0.05, d + 0.35)
         k0, k1 = w.P(u0 - 0.2, z1 + 0.7, 0.0), w.P(u1 + 0.2, z1 + 0.7, 0.0)
         out.poly('roof_tile', [e0, e1, k1, k0], (1, 1, 1))
+
+
+SV_W = {'early': (('spanish', 0.5), ('plain', 0.35), ('provincial', 0.15)),                         # 1918-35
+        'late': (('spanish', 0.3), ('streamline', 0.35), ('provincial', 0.25), ('plain', 0.1)),     # 1936-45
+        'post': (('provincial', 0.4), ('plain', 0.4), ('streamline', 0.2))}                          # 1946-61
+def sunset_front(b, sub, RP):
+    """the builder's front design of a tract house: its own weighted draw, or
+    in a run the run's two or three designs taken in turn (never twice side by side)"""
+    y = b['year'] or 1940
+    W = SV_W['early' if y < 1936 else ('late' if y < 1946 else 'post')]
+    def draw(r, pool):
+        t = r.random() * sum(w_ for _, w_ in pool); acc = 0.0
+        for k, (n_, w_) in enumerate(pool):
+            acc += w_
+            if t <= acc: return k
+        return len(pool) - 1
+    if RP:
+        r = random.Random(f'{RP[0]}:front'); pool = list(W); order = []
+        n_ = 2 if r.random() < 0.5 else 3
+        while pool and len(order) < n_: order.append(pool.pop(draw(r, pool))[0])
+        return order[RP[1] % len(order)]
+    return W[draw(random.Random(b['gid'] * 353 + 41), list(W))][0]
+
+
+def front_pent(wf, top, trim, body, out, r):
+    """the 1940s-50s front: a pent roof across the whole front, shingle (or
+    tile) over a light fascia, its cheeks at the ends — from the air the grey
+    or red band at the street edge of a Sunset roof"""
+    zl, zh, wo, wi = top - 0.95, top + 0.4, 0.42, -1.25
+    if r.random() < 0.7: mat, col = 'roof_shingle', r.choice(((0.80, 0.80, 0.82), (0.95, 0.94, 0.95), (0.70, 0.70, 0.72), (1.10, 1.0, 0.92)))
+    else: mat, col = 'roof_tile', r.choice(TILE_TINTS)
+    out.poly(mat, [wf.P(-0.1, zl, wo), wf.P(wf.L + 0.1, zl, wo), wf.P(wf.L + 0.1, zh, wi), wf.P(-0.1, zh, wi)], col)
+    out.poly('trim', [wf.P(-0.1, zl - 0.2, wo), wf.P(wf.L + 0.1, zl - 0.2, wo), wf.P(wf.L + 0.1, zl, wo), wf.P(-0.1, zl, wo)], trim)
+    out.poly('trim', [wf.P(-0.1, zl - 0.2, wo), wf.P(wf.L + 0.1, zl - 0.2, wo), wf.P(wf.L + 0.1, zl - 0.2, 0.0), wf.P(-0.1, zl - 0.2, 0.0)], trim)
+    for uu in (-0.1, wf.L + 0.1): out.poly('stucco', [wf.P(uu, zl, wo), wf.P(uu, zh, wi), wf.P(uu, zl, wi)], body)
+
+
+def entry_recess(w, u0, u1, zg, c):
+    """the street entry of a house over its garage: a recess 1.5 m deep, its
+    walls in their own shade, the stair rising inside (tiled or terrazzo
+    steps), arched on a Spanish front, framed square on the others"""
+    D, zt = 1.5, zg + 2.35
+    body, trim, sv = c['body'], c['trim'], c.get('sv')
+    wm = c['wall_mat'] if c['wall_mat'] in ('stucco', 'siding') else 'stucco'
+    shade = mix(body, (0.22, 0.21, 0.2), 0.5)
+    w.o.poly(wm, [w.P(u0, zg - 0.3, 0.0), w.P(u0, zt, 0.0), w.P(u0, zt, -D), w.P(u0, zg - 0.3, -D)], shade)
+    w.o.poly(wm, [w.P(u1, zg - 0.3, 0.0), w.P(u1, zg - 0.3, -D), w.P(u1, zt, -D), w.P(u1, zt, 0.0)], shade)
+    w.o.poly(wm, [w.P(u0, zt, 0.0), w.P(u1, zt, 0.0), w.P(u1, zt, -D), w.P(u0, zt, -D)], mix(shade, (0.1, 0.1, 0.1), 0.3))
+    w.rect('door', u0, u1, zg - 0.3, zt, -D + 0.01, (0.13, 0.12, 0.11))
+    tc = (0.60, 0.32, 0.24) if sv == 'spanish' else (0.72, 0.70, 0.66)
+    w.box('stair', u0, u1, zg - 0.3, zg + 0.03, -0.4, 0.0, tc)
+    for k in range(4):
+        w.box('stair', u0 + 0.02, u1 - 0.02, zg - 0.3, zg + 0.03 + 0.17 * (k + 1), -0.4 - 0.27 * (k + 1), -0.4 - 0.27 * k, tc)
+    if sv in ('spanish', 'provincial'):
+        # the arch: the wall's corners filled down to a half-round head (fans from each corner)
+        r_ = (u1 - u0) / 2; zs = zt - r_; um = (u0 + u1) / 2
+        for sg, cu in ((-1.0, u0), (1.0, u1)):
+            arc = [(um + sg * r_ * math.cos(math.pi / 2 * k / 8), zs + r_ * math.sin(math.pi / 2 * k / 8)) for k in range(9)]
+            for (ua, za), (ub, zb_) in zip(arc, arc[1:]):
+                w.o.poly(wm, [w.P(cu, zt, 0.0), w.P(ua, za, 0.0), w.P(ub, zb_, 0.0)], body)
+    else:
+        w.box('trim', u0 - 0.12, u1 + 0.12, zt, zt + 0.14, 0.0, 0.08, trim)
+        for uu in (u0 - 0.12, u1): w.box('trim', uu, uu + 0.12, zg, zt, 0.0, 0.06, trim)
 
 
 def garage_panels(w, g0, g1, zg, trim, dcol):
