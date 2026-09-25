@@ -477,7 +477,7 @@ if E('ERA'):
     _pv = _EA.pavement(_EA.era_from_env(E('ERA')), (d['box'][0] + d['box'][2]) / 2, (d['box'][1] + d['box'][3]) / 2)
     if _pv == 'basalt': M['asphalt'] = ph_mat('cobblestone_floor_05', 2.2, value=0.62, name='basalt')
     elif _pv == 'dirt': M['asphalt'] = ph_mat('brown_mud_dry', 3.0, value=1.05, name='dirt')
-    elif _pv == 'oldpave': M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.52, name='oldpave')   # 0.72 read as a pale wash from the air (25/09)
+    elif _pv == 'oldpave': M['asphalt'] = ph_mat('concrete_pavement', 4.0, value=0.45, name='oldpave')   # 0.72 read as a pale wash from the air (25/09)
 # open ground of the period: dune sand, and ash for the burned city of 1906
 M['sand'] = ph_mat('aerial_sand', 55.0, name='sand', value=1.0)
 # 1906: ash and scorched brick (burned_ground_01, CC0)

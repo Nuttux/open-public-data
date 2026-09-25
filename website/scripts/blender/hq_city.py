@@ -264,7 +264,7 @@ if ERA is not None:
         return all(z_ is not None and z_ >= 0.8 for z_ in zs_) and not any(EA.water_then(p_[0], p_[1], ERA) for p_ in L_['ring'])
     LOTS = [L_ for L_ in LOTS if _lot_dry(L_)]
     LI = EA.LotIndex(LOTS)
-    EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.35)), rough_add=0.2),
+    EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 1.0)), rough_add=0.2),
                                      'dirt': ph_mat('withered_grass', 5.0, name='lot_dirt', value=float(E('LOT_DV', 0.85)))}, log)
 else:
     LOTS, LI = [], None

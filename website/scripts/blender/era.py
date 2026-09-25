@@ -1985,7 +1985,7 @@ def piers(era):
 # 'Embarcadero Historic District' (NRHP 2006): 'steel-framed pier sheds with
 # corrugated metal siding and clerestory monitors'. Tones: CONVENTION.
 _SHED_TONES = [(0.50, 0.49, 0.46), (0.56, 0.52, 0.44), (0.44, 0.37, 0.31), (0.47, 0.49, 0.44), (0.60, 0.58, 0.53), (0.40, 0.40, 0.40)]
-_ROOF_TONES = [(0.36, 0.35, 0.34), (0.44, 0.41, 0.37), (0.33, 0.27, 0.23), (0.50, 0.49, 0.47), (0.29, 0.30, 0.31)]
+_ROOF_TONES = [(0.36, 0.34, 0.31), (0.46, 0.41, 0.35), (0.38, 0.29, 0.23), (0.50, 0.48, 0.44), (0.27, 0.26, 0.25), (0.42, 0.36, 0.30)]
 
 
 def _pier_mat(bpy, name, rough, spec, streaks, dark):
@@ -2047,7 +2047,7 @@ def build_piers(bpy, era, mats, box=None, log=print):
             lm = l2 - 6.0
             if lm > 10:
                 box6('roof', P, lm, wm, zr, zm, lin(tuple(min(1, c * 1.08) for c in rc)), sides='glaze')
-    tones = {'deck': (0.85, 0.3, 0.9, 0.35), 'wall': (0.8, 0.35, 0.6, 0.3), 'roof': (0.6, 0.45, 0.25, 0.45), 'glaze': (0.2, 0.6, 0.5, 0.2)}
+    tones = {'deck': (0.85, 0.3, 0.9, 0.35), 'wall': (0.8, 0.3, 0.6, 0.3), 'roof': (0.85, 0.2, 0.3, 0.5), 'glaze': (0.2, 0.6, 0.5, 0.2)}   # roofs matte: at spec .45 they mirrored the blue sky
     for key, (V, F, C) in parts.items():
         if not F: continue
         me = bpy.data.meshes.new('lost_piers_' + key); me.from_pydata(V, [], F); me.update()
