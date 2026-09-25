@@ -351,7 +351,7 @@ def substyle(b, style, rng):
 def building(b, ground, out):
     """b: record from city_data.buildings; ground(x, y) -> z"""
     rng = random.Random(b['gid'] * 7919 + 13)
-    ring, flipped = ring_ccw([tuple(p) for p in b['ring']])
+    ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], PARTY_G.get(str(b['gid']))))
     roles = b['roles'][::-1] if flipped else list(b['roles'])
     if flipped:  # roles are per edge i -> i+1; reversing the ring shifts them by one
         roles = roles[1:] + roles[:1]
@@ -771,6 +771,35 @@ def building(b, ground, out):
                 for k in range(5):
                     t_ = k / 4
                     out.box3('metal', d0 + ax_u * (du + lu * t_ * (lu > 1)) + ax_v * (dv + lv * t_ * (lv > 1)) + Vector((0, 0, 0.12)), ax_u * 0.05, ax_v * 0.05, Vector((0, 0, 1.0)), (0.15, 0.15, 0.16))
+
+
+# (25/09) THE ROWS' SHARED WALLS: DataSF footprints of a row stand 0.1-1.5 m
+# apart where the houses touch; the slots drew each house as a separate box.
+# qipu-render-work/rows/party_gaps.py gives, per low-rise house, the edges
+# facing a neighbour and the outward offset that closes the slot
+PARTY_FILE = '/Users/daniel/code/qipu-render-work/rows/party_gaps.json'
+def _load_party():
+    import os, json
+    if os.environ.get('PARTY_CLOSE', '1') != '1' or not os.path.exists(PARTY_FILE): return {}
+    return json.load(open(PARTY_FILE))['gaps']
+PARTY_G = _load_party()
+def close_party(r, offs):
+    """the ring (record order) with its facing edges pushed out by their offsets"""
+    if not offs: return r
+    n = len(r); a2 = sum(r[k][0] * r[(k + 1) % n][1] - r[(k + 1) % n][0] * r[k][1] for k in range(n)); s = 1.0 if a2 > 0 else -1.0
+    nm = []
+    for k in range(n):
+        (x0, y0), (x1, y1) = r[k], r[(k + 1) % n]; L = math.hypot(x1 - x0, y1 - y0) or 1.0
+        nm.append((s * (y1 - y0) / L, -s * (x1 - x0) / L))
+    off = {int(k): o for k, o in offs if int(k) < n}
+    out = []
+    for v in range(n):
+        e0, e1 = (v - 1) % n, v
+        o0, o1 = off.get(e0, 0.0), off.get(e1, 0.0)
+        if nm[e0][0] * nm[e1][0] + nm[e0][1] * nm[e1][1] > 0.9:     # a straight run split in two: one move
+            o = max(o0, o1); out.append((r[v][0] + nm[e1][0] * o, r[v][1] + nm[e1][1] * o)); continue
+        out.append((r[v][0] + nm[e0][0] * o0 + nm[e1][0] * o1, r[v][1] + nm[e0][1] * o0 + nm[e1][1] * o1))
+    return out
 
 
 def ring_area(r):
