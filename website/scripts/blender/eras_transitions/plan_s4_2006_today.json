@@ -1,0 +1,44 @@
+{
+ "view": [
+  6280,
+  5080,
+  10160,
+  7262
+ ],
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "seconds": 10.0,
+ "holds": [
+  0.6,
+  1.6
+ ],
+ "out": "/Volumes/DANI-SD-DRIVE2/transitions/film/s4_2006_today",
+ "workers": 6,
+ "stills": 30,
+ "captions": [
+  [
+   2006.0,
+   2008.0,
+   "South of Market: the Transbay district, 2006"
+  ],
+  [
+   2010.95,
+   2011.9,
+   "2010-11: the Transbay Terminal and its ramps are torn down"
+  ],
+  [
+   2013.24,
+   2017.0,
+   "2013-17: Salesforce Tower rises (topped out April 2017)"
+  ],
+  [
+   2018.4,
+   2019.8,
+   "2018: the Salesforce Transit Center and its roof park open"
+  ]
+ ],
+ "sub": 2
+}

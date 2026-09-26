@@ -1,0 +1,46 @@
+{
+ "view": [
+  6560,
+  3950,
+  10240,
+  6020
+ ],
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "seconds": 11.0,
+ "holds": [
+  0.3,
+  0.4
+ ],
+ "out": "/Volumes/DANI-SD-DRIVE2/transitions/film/s2_1959_1985",
+ "workers": 6,
+ "stills": 30,
+ "captions": [
+  [
+   1960.0,
+   1963.6,
+   "early 1960s: the produce market is cleared for the Golden Gateway"
+  ],
+  [
+   1971.0,
+   1981.5,
+   "1971-81: Embarcadero Center rises"
+  ]
+ ],
+ "focus": [
+  [
+   1960.0,
+   1963.6,
+   0.6
+  ],
+  [
+   1970.5,
+   1982.0,
+   0.35
+  ]
+ ],
+ "sub": 2
+}

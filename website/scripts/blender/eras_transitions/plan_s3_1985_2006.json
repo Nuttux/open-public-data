@@ -1,0 +1,41 @@
+{
+ "view": [
+  6560,
+  3950,
+  10240,
+  6020
+ ],
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "seconds": 10.0,
+ "holds": [
+  0.3,
+  1.0
+ ],
+ "out": "/Volumes/DANI-SD-DRIVE2/transitions/film/s3_1985_2006",
+ "workers": 6,
+ "stills": 30,
+ "captions": [
+  [
+   1989.79,
+   1990.9,
+   "17 Oct 1989: the Loma Prieta earthquake closes the Embarcadero Freeway"
+  ],
+  [
+   1991.16,
+   1992.4,
+   "1991: the Embarcadero Freeway is torn down"
+  ]
+ ],
+ "focus": [
+  [
+   1991.0,
+   1992.0,
+   2.5
+  ]
+ ],
+ "sub": 2
+}

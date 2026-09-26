@@ -1,0 +1,110 @@
+[
+ {
+  "name": "s1_1938_1959",
+  "pkl": "/Volumes/DANI-SD-DRIVE2/transitions/emb/p_1938_1959.pkl",
+  "view": [
+   6560,
+   3950,
+   10240,
+   6020
+  ],
+  "seconds": 10.0,
+  "holds": [
+   1.0,
+   0.4
+  ],
+  "captions": [
+   [
+    1957.0,
+    1959.1,
+    "1957-59: the double-deck Embarcadero Freeway is built (opened 5 Feb 1959)"
+   ]
+  ]
+ },
+ {
+  "name": "s2_1959_1985",
+  "pkl": "/Volumes/DANI-SD-DRIVE2/transitions/emb/p_1959_1985.pkl",
+  "view": [
+   6560,
+   3950,
+   10240,
+   6020
+  ],
+  "seconds": 11.0,
+  "holds": [
+   0.3,
+   0.4
+  ],
+  "captions": [
+   [
+    1960.0,
+    1963.6,
+    "early 1960s: the produce market is cleared for the Golden Gateway"
+   ],
+   [
+    1971.0,
+    1981.5,
+    "1971-81: Embarcadero Center rises"
+   ]
+  ]
+ },
+ {
+  "name": "s3_1985_2006",
+  "pkl": "/Volumes/DANI-SD-DRIVE2/transitions/emb/p_1985_2006.pkl",
+  "view": [
+   6560,
+   3950,
+   10240,
+   6020
+  ],
+  "seconds": 10.0,
+  "holds": [
+   0.3,
+   1.0
+  ],
+  "captions": [
+   [
+    1989.79,
+    1990.9,
+    "17 Oct 1989: the Loma Prieta earthquake closes the Embarcadero Freeway"
+   ],
+   [
+    1991.16,
+    1992.4,
+    "1991: the Embarcadero Freeway is torn down"
+   ]
+  ]
+ },
+ {
+  "name": "s4_2006_today",
+  "pkl": "/Volumes/DANI-SD-DRIVE2/transitions/hero_2006_now.pkl",
+  "view": [
+   6280,
+   5080,
+   10160,
+   7262
+  ],
+  "seconds": 10.0,
+  "holds": [
+   0.6,
+   1.6
+  ],
+  "captions": [
+   [
+    2010.95,
+    2011.9,
+    "2010-11: the Transbay Terminal and its ramps are torn down"
+   ],
+   [
+    2013.24,
+    2017.0,
+    "2013-17: Salesforce Tower rises (topped out April 2017)"
+   ],
+   [
+    2018.4,
+    2019.8,
+    "2018: the Salesforce Transit Center and its roof park open"
+   ]
+  ]
+ }
+]

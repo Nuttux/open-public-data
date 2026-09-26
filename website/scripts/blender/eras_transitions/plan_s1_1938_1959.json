@@ -1,0 +1,41 @@
+{
+ "view": [
+  6560,
+  3950,
+  10240,
+  6020
+ ],
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "seconds": 9.0,
+ "holds": [
+  1.0,
+  0.4
+ ],
+ "out": "/Volumes/DANI-SD-DRIVE2/transitions/film/s1_1938_1959",
+ "workers": 6,
+ "stills": 30,
+ "captions": [
+  [
+   1938.0,
+   1944.0,
+   "The Embarcadero and the Ferry Building, 1938"
+  ],
+  [
+   1957.0,
+   1959.1,
+   "1957-59: the double-deck Embarcadero Freeway is built (opened 5 Feb 1959)"
+  ]
+ ],
+ "focus": [
+  [
+   1956.8,
+   1959.2,
+   1.2
+  ]
+ ],
+ "sub": 2
+}
