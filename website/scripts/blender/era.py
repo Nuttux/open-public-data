@@ -956,6 +956,15 @@ STRUCTURES.append(dict(k='transbay_loop', kind='viaduct1', y0=1939.04, y1=2011.6
                        path=[(3760, 3342), (3814, 3378), (3880, 3386), (3928, 3366), (3958, 3312), (3962, 3252), (3940, 3192), (3886, 3144), (3808, 3096), (3748, 3054), (3714, 3000), (3702, 2928), (3706, 2832)]))
 
 
+EMB_PALMS_FROM = 1995.0     # see hq_city (the Embarcadero palms)
+
+
+def near_embarcadero(x, y, d):
+    """within d m of the Embarcadero Freeway's line (STRUCTURES) - the promenade the palms line"""
+    P_ = STRUCTURES[0]['path']
+    return any(_seg_dist(x, y, a, b) < d for a, b in zip(P_, P_[1:]))
+
+
 def structures(era):
     """the lost structures standing in the year shown, with their decks"""
     if era is None: return []

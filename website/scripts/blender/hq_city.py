@@ -723,6 +723,11 @@ for t in d['trees']:
             kc_ = VK.street(ox_, oy_, x, y, park, crown, on_street, roofed)
             if kc_ is None: continue            # the list says stump, an empty site, or only roadway around
             kind, crown, x, y = kc_
+            # the Embarcadero's Canary Island date palms: 'when the freeway came down, 222 Canary Island date palms went
+            # up' (SF Public Works, 'Canary Island date palms on the Embarcadero', 2014; CBS SF). Undated in the tree list:
+            # they stand from the new roadway's years, 1995 (CONVENTION inside the SOURCED window 1991-2000), within
+            # 60 m of the old freeway's line
+            if ERA is not None and ERA < EA.EMB_PALMS_FROM and 'phoenix' in VK.names[kind] and EA.near_embarcadero(x, y, 60.0): continue
         else:
             # parks: mostly broadleaf, some Monterey pine; firs only now and then
             # (render's own draws by place: today stays the render branch's, and a place keeps its tree through the film)
