@@ -1055,7 +1055,10 @@ if E('MODE') == 'pyramid':
             gm_, bm_ = _em('ai_gid', 'bcol'), _em('ai_black', None); mats_ = {}
             for o_ in bpy.data.objects:
                 if o_.type != 'MESH' or not o_.data.materials: continue
-                mats_[o_.name] = list(o_.data.materials); w_ = gm_ if bld_(o_.name) else bm_
+                # keyed by the MESH (26/09): objects sharing a mesh (instances) saw the ID material the first had put on it,
+                # and the restore put it back -> every frame after the first of a multi-frame run came out in ID colours
+                if o_.data.name not in mats_: mats_[o_.data.name] = list(o_.data.materials)
+                w_ = gm_ if bld_(o_.name) else bm_
                 for s_ in range(len(o_.data.materials)): o_.data.materials[s_] = w_
             vl_ = bpy.context.view_layer; sp_, z_, nm_, dn_, fw_ = sc.cycles.samples, vl_.use_pass_z, vl_.use_pass_normal, sc.cycles.use_denoising, sc.cycles.filter_width
             wb_ = sc.world; sc.world = None; sc.render.engine = 'CYCLES'; sc.view_settings.view_transform = 'Raw'; sc.view_settings.look = 'None'; sc.view_settings.exposure = 0
@@ -1065,8 +1068,8 @@ if E('MODE') == 'pyramid':
             sc.render.filepath = base + '.guide.exr'; bpy.ops.render.render(write_still=True)
             log('guide passes:', [p_.name for p_ in bpy.data.images['Render Result'].render_slots[0].name and [] or []] if False else 'written')
             for n_, ms_ in mats_.items():
-                o_ = bpy.data.objects[n_]
-                for s_, m_ in enumerate(ms_): o_.data.materials[s_] = m_
+                me_ = bpy.data.meshes[n_]
+                for s_, m_ in enumerate(ms_): me_.materials[s_] = m_
             sc.world = wb_; sc.cycles.samples, vl_.use_pass_z, vl_.use_pass_normal, sc.cycles.use_denoising, sc.cycles.filter_width = sp_, z_, nm_, dn_, fw_
             (sc.render.engine, sc.view_settings.view_transform, sc.view_settings.look, sc.view_settings.exposure) = sv_[0], sv_[4], sv_[5], sv_[6]
         if hasattr(is_, 'media_type'): is_.media_type = 'IMAGE'
