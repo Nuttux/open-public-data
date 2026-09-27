@@ -41,9 +41,9 @@ def load(box=None):
     return out
 
 
-def layout(r, occ=0.75):
-    """stalls of a lot ring -> (stalls [(cx, cy, ux, uy, hx, hy)], cars [(x, y, heading, u)]); u = along the rows,
-    h = the unit vector toward the stall's head (where the wheel stop is)"""
+def layout(r):
+    """stalls of a lot ring -> [(cx, cy, ux, uy, hx, hy)]; u = along the rows, h = the unit vector toward the stall's head
+    (where the wheel stop is)"""
     n = len(r); best, bl = 0, -1.0
     for i in range(n):
         a, b = r[i], r[(i + 1) % n]; L = math.hypot(b[0] - a[0], b[1] - a[1])
@@ -58,20 +58,48 @@ def layout(r, occ=0.75):
         rows.append((v, 1))                                              # a back-to-back pair: heads meet in the middle
         if v + 2 * SD <= max(vs) - EDGE: rows.append((v + SD, -1)); v += 2 * SD + AISLE
         else: v += SD + AISLE
-    stalls, cars = [], []
+    stalls = []
     for v0, hd in rows:
         u = min(us) + EDGE
         while u + SW <= max(us) - EDGE:
             cu, cv = u + SW / 2, v0 + SD / 2
             P = [(a[0] + ux * (cu + du) + vx * (cv + dv), a[1] + uy * (cu + du) + vy * (cv + dv)) for du in (-SW / 2, SW / 2) for dv in (-SD / 2, SD / 2)]
             if all(_in(x, y, r) for x, y in P):
-                x, y = a[0] + ux * cu + vx * cv, a[1] + uy * cu + vy * cv
-                hx, hy = vx * hd, vy * hd; stalls.append((x, y, ux, uy, hx, hy))
-                if _h(x, y, 41) < occ:
-                    nose = 1.0 if _h(x, y, 42) > 0.16 else -1.0
-                    cars.append((x - hx * 0.25 * nose, y - hy * 0.25 * nose, math.atan2(hy * nose, hx * nose), _h(x, y, 24)))
+                stalls.append((a[0] + ux * cu + vx * cv, a[1] + uy * cu + vy * cv, ux, uy, vx * hd, vy * hd))
             u += SW
-    return stalls, cars
+    return stalls
+
+
+def clear(lots, bvh, ground, gap=3.0):
+    """drop the stalls on or near a street: OSM lot outlines run over the sidewalk and into the carriageway (the street
+    mesh lies over the plate there, but the cars and lines stood on the road). A stall stays when each corner is off the
+    street mesh by >= gap m (the sidewalk band, 3 m)"""
+    from mathutils import Vector
+    n0 = n1 = 0
+    for L in lots:
+        keep = []
+        for st in L['stalls']:
+            x, y, ux, uy, hx, hy = st; n0 += 1; ok = True
+            for du in (-SW / 2, SW / 2):
+                for dv in (-SD / 2, SD / 2):
+                    px, py = x + ux * du + hx * dv, y + uy * du + hy * dv; z = ground(px, py)
+                    if z is None: ok = False; break
+                    q = bvh.find_nearest(Vector((px, py, z)))
+                    if q[0] is not None and q[3] < gap: ok = False; break
+                if not ok: break
+            if ok: keep.append(st); n1 += 1
+        L['stalls'] = keep
+    return n0, n1
+
+
+def cars(stalls, occ=0.75):
+    """parked cars on ~occ of the stalls, each stall its own draw: (x, y, heading, u); nose in, 1 in 6 backed in"""
+    out = []
+    for (x, y, ux, uy, hx, hy) in stalls:
+        if _h(x, y, 41) < occ:
+            nose = 1.0 if _h(x, y, 42) > 0.16 else -1.0
+            out.append((x - hx * 0.25 * nose, y - hy * 0.25 * nose, math.atan2(hy * nose, hx * nose), _h(x, y, 24)))
+    return out
 
 
 def marks(bpy, lots, ground, mats, log=print, lift=0.14):
