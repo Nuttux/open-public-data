@@ -149,3 +149,76 @@ def lion(K, x, y, a, l, u, z0):
     for sd in (-1, 1):                                                          # fore flippers, swept back
         K.face('lm_matte', [P(0.72, sd * 0.16 * s, 0.03), P(0.66, sd * 0.42 * s, 0.02), P(0.56, sd * 0.40 * s, 0.02), P(0.62, sd * 0.14 * s, 0.03)], col)
         K.face('lm_matte', [P(0.06, sd * 0.03 * s, 0.03), P(-0.06, sd * 0.20 * s, 0.02), P(-0.02, sd * 0.05 * s, 0.02)], col)   # hind
+
+
+# ── a cruise ship at the Pier 27 James R. Herman Cruise Terminal (CRUISE=1, today) ─────────────────────────────────────
+# Pier 27 hosts ~80-100 calls a year; a weekday in late September usually has a ship in (CONVENTION: one is in). A
+# generic ~290 m Grand-class ship (290 x 36 m, 12 decks over the hull; CONVENTION on the livery: navy hull, white
+# superstructure, orange lifeboats), berthed along the pier's long east face, bow to the bay. Placement: OSM Pier 27.
+def _outline(L, B, s_n=40):
+    """(s, half-beam) round the plan: a round stern, parallel body, a sharp bow over the forward 20 %"""
+    out = []
+    for i in range(s_n + 1):
+        s = L * i / s_n
+        if s < 0.04 * L: hb = B / 2 * (0.82 + 0.18 * s / (0.04 * L))
+        elif s > 0.8 * L: hb = B / 2 * max(0.02, ((L - s) / (0.2 * L)) ** 0.6)
+        else: hb = B / 2
+        out.append((s, hb))
+    return out
+
+
+def cruise_ship(K, ring):
+    import math as m
+    n = len(ring); best = None
+    for i in range(n):
+        a, b = ring[i], ring[(i + 1) % n]; L_ = m.hypot(b[0] - a[0], b[1] - a[1])
+        if best is None or L_ > best[0]: best = (L_, a, b)
+    Le, a, b = best
+    ux, uy = (b[0] - a[0]) / Le, (b[1] - a[1]) / Le
+    cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
+    nx, ny = uy, -ux
+    if (a[0] - cx) * nx + (a[1] - cy) * ny < 0: nx, ny = -nx, -ny                 # n: away from the pier, over the water
+    if uy < 0: ux, uy = -ux, -uy                                                  # u: toward the bay's north (the bow)
+    L, B = 290.0, 36.0
+    mx, my = (a[0] + b[0]) / 2 + nx * (B / 2 + 2.5), (a[1] + b[1]) / 2 + ny * (B / 2 + 2.5)
+    def P(s, v): return (mx + ux * (s - L / 2) + nx * v, my + uy * (s - L / 2) + ny * v)
+    O = _outline(L, B)
+    def ring_at(inset, s0=0.0, s1=None):
+        s1 = L if s1 is None else s1
+        pts = [(s, hb - inset) for s, hb in O if s0 <= s <= s1 and hb - inset > 0.3]
+        return [P(s, v) for s, v in pts] + [P(s, -v) for s, v in reversed(pts)]
+    NAVY, WHITE, RED, DARK, GLASS = (0.07, 0.09, 0.15), (0.86, 0.86, 0.84), (0.55, 0.12, 0.10), (0.16, 0.18, 0.22), (0.10, 0.13, 0.18)
+    hull = ring_at(0.0)
+    K.prism('lm_paint', hull, -8.0, 0.4, RED, top=False)
+    K.prism('lm_paint', hull, 0.4, 12.0, NAVY, top=False)
+    K.prism('lm_paint', hull, 12.0, 14.0, WHITE, top=True, top_col=(0.62, 0.62, 0.60))
+    # the superstructure: 12 decks of cabins with balconies, set in from the hull, stepped at the bow, cut at the stern
+    z = 14.0
+    for d in range(12):
+        s0 = 8.0 + max(0, d - 8) * 4.0; s1 = L * (0.83 - 0.012 * d)
+        r = ring_at(1.2, s0, s1)
+        K.prism('lm_paint', r, z, z + 2.9, WHITE, top=(d == 11), top_col=(0.66, 0.64, 0.60))
+        if 1 <= d <= 10:                                                         # the balcony band: glass and shade
+            K.prism('lm_paint', ring_at(1.12, s0 + 3, s1 - 3), z + 0.9, z + 2.1, GLASS, top=False)
+        z += 2.9
+    # the bridge: a dark band across the front of deck 10, its wings out to the hull's width
+    sb = L * (0.83 - 0.012 * 9) - 2.0
+    K.prism('lm_paint', [P(sb - 3, -B / 2 - 1.5), P(sb, -B / 2 - 1.5), P(sb, B / 2 + 1.5), P(sb - 3, B / 2 + 1.5)], 14 + 9 * 2.9, 14 + 10 * 2.9, DARK)
+    # the lifeboats along both sides at deck 4, orange, in a row
+    for sd in (-1, 1):
+        for k in range(10):
+            s = L * 0.25 + k * 14.0
+            v0 = sd * (B / 2 - 0.5)
+            K.prism('lm_paint', [P(s, v0), P(s + 11, v0), P(s + 11, v0 + sd * 3.6), P(s, v0 + sd * 3.6)], 20.0, 23.2, (0.90, 0.45, 0.10), top=True)
+    # the top: pool deck, two pools, rows of loungers (mid grey: no confetti), the funnel aft, a mast forward
+    zt = 14 + 12 * 2.9 + 0.02
+    for s, w in ((L * 0.45, 12.0), (L * 0.6, 9.0)):
+        K.prism('lm_paint', [P(s, -w / 2), P(s + w * 1.4, -w / 2), P(s + w * 1.4, w / 2), P(s, w / 2)], zt - 0.05, zt + 0.05, (0.10, 0.46, 0.62))
+    for k in range(18):
+        for sd in (-1, 1):
+            s = L * 0.4 + k * 4.0; v = sd * (B / 2 - 4.5)
+            K.prism('lm_paint', [P(s, v - 0.3), P(s + 1.8, v - 0.3), P(s + 1.8, v + 0.3), P(s, v + 0.3)], zt, zt + 0.35, (0.62, 0.62, 0.60))
+    K.prism('lm_paint', [P(L * 0.16, -5), P(L * 0.24, -4), P(L * 0.24, 4), P(L * 0.16, 5)], zt, zt + 14.0, WHITE)
+    K.prism('lm_paint', [P(L * 0.16, -5), P(L * 0.24, -4), P(L * 0.24, 4), P(L * 0.16, 5)], zt + 14.0, zt + 16.0, (0.06, 0.06, 0.07))
+    K.cyl('lm_paint', (*P(L * 0.72, 0), zt), (*P(L * 0.72, 0), zt + 12.0), 0.5, WHITE, n=8, caps=True, smooth=False)
+    return 1

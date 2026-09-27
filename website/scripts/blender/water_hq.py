@@ -416,6 +416,8 @@ def piers(C):
             else: K.prism('lm_matte', r, -0.3, 0.55, FLOAT)
             n += 1; continue
         z = deck_z(r)
+        if idx_ == 675 and os.environ.get('CRUISE', '1') == '1' and C.era is None:      # (27/09, assets_urban) a ship at Pier 27's cruise terminal
+            import urban_water as UW; UW.cruise_ship(K, r)
         K.prism('lm_matte', r, -1.5, z - 0.02, DECK_SIDE, top=False)
         K.face_holes('lm_apron', r, [], z, DECK)
         # bollards along the edges over water, ~22 m apart (a ship's lines)
