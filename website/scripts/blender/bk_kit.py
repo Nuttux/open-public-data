@@ -19,7 +19,10 @@ in one snapshot. Nothing here changes a footprint or a height: it changes what i
 import os, random, colorsys
 
 def _on(k, d='1'): return os.environ.get('BK', '1') == '1' and os.environ.get(k, d) == '1'
-FIRE = _on('BK_FIRE'); PAL = _on('BK_PAL'); CAP = _on('BK_CAP'); SIDE = _on('BK_SIDE')
+# (v5) BK_PAL is OFF by default: the pool measured on the western street photos (Western Addition, Hayes, Tenderloin)
+# turned the north-east's painted rows grey and beige after the AI (sheets v1-v3: the blue, green and yellow fronts of
+# Russian Hill went grey) - the opposite of the brief (monotone). BK_PAL=1 brings it back for a test.
+FIRE = _on('BK_FIRE'); PAL = _on('BK_PAL', '0'); CAP = _on('BK_CAP'); SIDE = _on('BK_SIDE'); EDWCOL = _on('BK_EDWCOL')
 print('[bk_kit] v1 FIRE', FIRE, 'PAL', PAL, 'CAP', CAP, 'SIDE', SIDE, flush=True)
 
 
@@ -149,3 +152,13 @@ def parts_of(b, ground, style, era):
 
 # ── BK_ROOFMAT: the flat roof's membrane patched in sheets (hq_scene.roof_flat_mat) ─────────────────────────────────
 ROOFMAT = _on('BK_ROOFMAT')
+
+
+# ── BK_EDWCOL: the Edwardian flats keep the painted rows' colours ─────────────────────────────────────────────────
+def edw_paint(b, sub, body, stucco_pal, vic_pal):
+    """an Edwardian (sub 'edwardian') whose body is a stucco white takes a painted row's colours half the time: the
+    fire-district rebuild (BK_FIRE) moved ~90 % of North Beach / Russian Hill from the Victorian palette to the stucco
+    whites (monotone). None = keep"""
+    if not EDWCOL or sub != 'edwardian' or body not in stucco_pal: return None
+    r = random.Random(b['gid'] * 6151 + 29)
+    return r.choice(vic_pal) if r.random() < 0.5 else None

@@ -614,6 +614,8 @@ def building(b, ground, out):
         trim = (0.97, 0.96, 0.93) if x_ < 0.8 else ((0.33, 0.33, 0.32) if x_ < 0.9 else (0.46, 0.36, 0.26))
         accent = rng.choice(((0.45, 0.14, 0.12), (0.18, 0.28, 0.24), (0.20, 0.22, 0.30)))
         if sub == 'edwardian' and rng.random() < 0.45: body, trim, accent = rng.choice(VIC)
+        _ec = BK.edw_paint(b, sub, body, STUCCO, VIC)          # (BK_EDWCOL) the Edwardian rows keep their colours
+        if _ec: body, trim, accent = _ec
     else:
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
