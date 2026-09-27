@@ -13,7 +13,7 @@ rgba colour and a material slot). Slots are the callers' own five: 0 PAINT,
 
 LIVE_V3=0 switches every v3 body off (the bodies before, for A/B).
 """
-import math, os
+import math, os, random
 
 PAINT, GLASS, ROOF, DARK, METAL = range(5)
 
@@ -195,3 +195,16 @@ def loft(vb, W, z0, stations, bands, roof, shoulder=0.12, end_cols=None):
         col = (end_cols[1] if front else end_cols[0]) if end_cols else roof
         pts = [(x, -w, z0), (x, w, z0), (x, w, ztop), (x, iw, h), (x, -iw, h), (x, -w, ztop)]
         vb.face(pts if front else pts[::-1], col, PAINT)
+
+
+def riders(vb, pts, seed=0):
+    """people on a cable car: a torso and a head per rider (~5 px each at z9); pts (x, y, z_feet, facing_out)"""
+    if os.environ.get('LIVE_RIDERS', '1') == '0': return
+    r = random.Random(seed)
+    CL = ['#2a2d33', '#3b4a63', '#6b2f2f', '#d9d4c8', '#565a5e', '#1f2a3a', '#8a7c62', '#a33b32', '#2f4a3a', '#c8b89a']
+    SK = ['#c89c7c', '#8d5d42', '#e0b89a', '#5e3a28', '#b88a6a']
+    for x, y, z, _ in pts:
+        c = srgb(r.choice(CL)); k = srgb(r.choice(SK)); h = r.uniform(1.45, 1.7)
+        chbox(vb, x - 0.2, x + 0.2, y - 0.17, y + 0.17, z, z + h - 0.3, c, PAINT, ch=0.06)
+        chbox(vb, x - 0.11, x + 0.11, y - 0.1, y + 0.1, z + h - 0.3, z + h - 0.06, k, PAINT, ch=0.05)
+        box(vb, x - 0.12, x + 0.12, y - 0.11, y + 0.11, z + h - 0.12, z + h - 0.02, srgb(r.choice(['#1c1a18', '#3a2a1e', '#6a5236', '#222222'])), DARK)

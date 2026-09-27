@@ -165,6 +165,31 @@ def _ferry_v2(vb, L, B, win_bands, deck, raft_x):
         for s in (-1, 1): vb.box(x, x + 1.4, s * (dhw - 0.55) - 0.35, s * (dhw - 0.55) + 0.35, dz, dz + 0.65, WHITE, PAINT)
 
 
+def _ferry_v3(vb, L, B, top, pilot, seed=0):
+    """v3 (27/09, live assets agent; LIVE_V3=0 off): the open top deck as a real deck: light grey
+    non-skid with rows of benches and the passengers on it (~5 px each at z9), a radar mast on the
+    pilothouse; top = (x0, x1, half width, z) of the open deck, pilot = (x0, x1, z_roof)"""
+    import live_kit as LK
+    if not LK.on(): return
+    import random as _r
+    r = _r.Random(seed); x0, x1, hw, z = top
+    vb.box(x0, x1, -hw, hw, z, z + 0.03, srgb('#aeb3b5'), MATTE)                         # the deck paint
+    x = x0 + 1.0; pts = []
+    while x < x1 - 1.0:
+        if not (pilot[0] - 0.8 < x < pilot[1] + 0.5):
+            for s in (-1, 1): vb.box(x, x + 0.45, s * 0.6, s * (hw - 0.6), z, z + 0.45, srgb('#737b80'), MATTE)   # bench rows either side of the aisle
+            for k in range(3):
+                if r.random() < 0.45: pts.append((x + 0.7, r.uniform(-hw + 0.8, hw - 0.8), z, True))
+        x += 1.5
+    for k in range(int(L / 6)):
+        pts.append((r.uniform(x0 + 0.5, x1 - 0.5), r.choice((-1, 1)) * (hw - 0.35), z, True))     # at the rails
+    LK.riders(vb, pts, seed + 5)
+    px0, px1, pz = pilot; xm = (px0 + px1) / 2
+    rod(vb, (xm, 0.0, pz), (xm, 0.0, pz + 2.4), 0.12, GREY)
+    vb.box(xm - 0.15, xm + 0.15, -1.1, 1.1, pz + 2.2, pz + 2.32, DGREY, METAL)              # the radar bar
+    vb.box(xm - 0.35, xm + 0.35, -0.35, 0.35, pz, pz + 0.5, GREY, METAL)
+
+
 def ferry_cat(op='weta', L=42.0, B=10.6, decks=2):
     """a passenger catamaran: two demihulls, the bridge deck, a main cabin
     with its band of windows, an upper cabin, the pilothouse, open deck aft"""
@@ -194,6 +219,8 @@ def ferry_cat(op='weta', L=42.0, B=10.6, decks=2):
         vb.box(-L / 2 + 14.5, -L / 2 + 16.0, -0.9, 0.9, 7.4, 8.8, acc, PAINT)   # funnel casing, the operator's colour
     _ferry_v2(vb, L, B, [(c0, c1 - 2.2, B / 2 - 0.35 + 0.0, 3.0, 4.4)] + ([(-L / 2 + 13.0, L / 2 - 11.0 - 1.6, B / 2 - 1.4, 5.6, 6.9)] if decks >= 2 else []),
               (c0, c1 - 2.2, B / 2 - 0.55, 5.0), [-L / 2 + 5.8, -L / 2 + 7.6] if decks >= 2 else [-L / 2 + 8.0])
+    if decks >= 2: _ferry_v3(vb, L, B, (-L / 2 + 13.2, L / 2 - 11.5, B / 2 - 1.5, 7.4), (L / 2 - 17.0, L / 2 - 12.0, 9.4), seed=int(L))
+    else: _ferry_v3(vb, L, B, (c0 + 0.3, c1 - 2.5, B / 2 - 0.7, 5.0), (c1 - 4.0, c1 - 2.5, 5.0), seed=int(L))
     return vb
 
 
@@ -210,6 +237,7 @@ def ferry_mono(op='ggf', L=50.0, B=10.8):
     vb.box(-L / 2 + 14.0, -L / 2 + 16.0, -1.0, 1.0, 7.7, 9.3, acc, PAINT)
     _ferry_v2(vb, L, B, [(-L / 2 + 5.0, L / 2 - 12.0, B / 2 - 0.5, 3.3, 4.7), (-L / 2 + 10.0, L / 2 - 17.0, B / 2 - 1.2, 5.9, 7.2)],
               (-L / 2 + 5.0, L / 2 - 9.0 - 3.0, B / 2 - 0.5, 5.3), [-L / 2 + 6.0, -L / 2 + 7.8])
+    _ferry_v3(vb, L, B, (-L / 2 + 10.2, L / 2 - 17.0, B / 2 - 1.3, 7.7), (p0, p0 + 5.5, 9.8), seed=int(L) + 1)
     return vb
 
 
@@ -228,6 +256,7 @@ def small_ferry(op='alc', L=30.0, B=9.0):
     p0 = L / 2 - 11.0
     vb.cabin(p0, p0 + 4.0, 2.2, 4.6, 6.6, cab, win=(5.0, 6.2), roof=roof, nose=1.0)
     _ferry_v2(vb, L, B, [(-L / 2 + 3.0, L / 2 - 7.5, B / 2 - 0.4, 2.8, 4.0)], (-L / 2 + 3.0, L / 2 - 5.5 - 2.0, B / 2 - 0.4, 4.6), [-L / 2 + 3.4])
+    _ferry_v3(vb, L, B, (-L / 2 + 3.2, L / 2 - 7.8, B / 2 - 0.6, 4.6), (p0, p0 + 4.0, 6.6), seed=int(L) + 2)
     return vb
 
 
