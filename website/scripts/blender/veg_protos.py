@@ -541,6 +541,16 @@ def kit3():
 V4_ON = os.environ.get('VEG_V4', '1') == '1'
 V4_GAIN = float(os.environ.get('VEG4_GAIN', 1.0))
 V4_GAINS = dict(V3_GAINS)
+V4_GAINS.update({'euc': 1.45, 'cyp': 1.5, 'pine': 1.35})    # the v4 blue gum is more open: less lift (1.9 read pale, ghostly)
+# v4 leaf stops (dark, light): a richer, healthier green than the v2/v3 golden-hour
+# ramps (which leaned olive / teal), each species its own hue; bark and accent as before
+RAMPS4_LEAF = {
+    'plane': ('#3d6428', '#7fa84c'), 'round': ('#2f5226', '#66913f'), 'ficus': ('#2a4a22', '#5b8a3a'),
+    'vbox': ('#35592a', '#71a044'), 'bbox': ('#2e4d27', '#5f8742'), 'oak': ('#2f4a26', '#627f40'),
+    'pohu': ('#34502e', '#6a8c55'), 'olive': ('#56654a', '#8a9a72'), 'pine': ('#28422a', '#4f7040'),
+    'cyp': ('#263f2a', '#4b6c44'), 'euc': ('#3d4d3d', '#71866a'), 'cherry': ('#3f6229', '#7ba24c'),
+    'column': ('#43682c', '#80a552'),
+}
 # (the v3 widths / heights of each proto, measured in the tg0 crop log, so the
 # v4 proto keeps the proportions veg_hq scales by)
 V4_SIZE = {'euc_a': (20.2, 30.0), 'euc_b': (14.5, 26.9), 'euc_c': (18.7, 31.4), 'euc_y': (8.7, 18.2), 'cyp_a': (21.3, 18.5),
@@ -571,6 +581,14 @@ def kit4():
     put('pohu', 'pohu', 161, 8.0, 9.5); put('pohu_b', 'pohu', 162, 5.0, 5.5)
     put('column', 'column', 171, 11.0, 4.2)
     put('cherry', 'cherry', 181, 6.0, 5.5); put('plum', 'plum', 182, 6.0, 5.2); put('olive', 'olive', 183, 5.5, 5.5)
+    # the ornamentals (veg_hq 'ornamental'): v4 small broadleaves in place of Poly Haven's
+    # tree_small_02, a LEAFLESS tree that the AI pass painted as dead, broken trees
+    def orn(seed, H, W, shape):
+        def b():
+            M = V4.build('cherry', seed, H, W, shape=shape); M.sfx = '_v4'; return M
+        return b
+    K['orn_a'] = (orn(191, 6.5, 6.2, 'round'), 'cherry', 1.3, 9.0)
+    K['orn_b'] = (orn(192, 5.0, 4.4, 'oval'), 'cherry', 1.3, 9.0)
     return K
 
 
@@ -673,7 +691,10 @@ def _to_blender3(bpy, name, mesh, ramp_name):
         at = me.attributes.new('custom_normal', 'FLOAT_VECTOR', 'POINT'); at.data.foreach_set('vector', N.ravel())
     except Exception:
         me.normals_split_custom_set_from_vertices(N)
-    me.materials.append(_material(bpy, f'veg_{ramp_name}' + getattr(mesh, 'sfx', '_v3'), RAMPS[ramp_name]))
+    sfx_ = getattr(mesh, 'sfx', '_v3'); rp_ = RAMPS[ramp_name]
+    if sfx_ == '_v4' and ramp_name in RAMPS4_LEAF and os.environ.get('VEG4_RAMPS', '1') == '1':
+        rp_ = (rp_[0], rp_[1], RAMPS4_LEAF[ramp_name][0], RAMPS4_LEAF[ramp_name][1], rp_[4])
+    me.materials.append(_material(bpy, f'veg_{ramp_name}' + sfx_, rp_))
     me.update()
     ob = bpy.data.objects.new(name, me)
     coll = bpy.data.collections.new(f'{name}_one'); coll.objects.link(ob)

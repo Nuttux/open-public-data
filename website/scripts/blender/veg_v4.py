@@ -348,19 +348,19 @@ SP = {
     'column': dict(BROAD, fill=0.9, shape='column', lobes=0.08, scaf=6, bole=0.1, ang0=14, leader=1, nk=[0, 4, 3, 3, 2], ang=[0, 25, 35, 40, 45],
                    fol=dict(leaf=0.13, stretch=1.3, dens=1.5, size=0.85, flat=0.3, up=0.45, jt=0.12, surf=0.5)),
     # Monterey pine: whorls, dense needle tufts at the branch ends, dark gaps
-    'pine': dict( fill=0.6,bole=0.35, shape='pinedome', lobes=0.2, whorls=7, per_whorl=4, el0=8, lead=0.86, r0k=0.03, omax=3,
+    'pine': dict( fill=0.85, along=1.0,bole=0.35, shape='pinedome', lobes=0.2, whorls=7, per_whorl=4, el0=8, lead=0.86, r0k=0.03, omax=3,
                  nk=[0, 3, 3, 2, 2], ang=[0, 40, 45, 45], lr=[0, 0.55, 0.5, 0.5], t0=[0, 0.35, 0.3, 0.3], up=[0, 0.35, 0.3, 0.3],
                  trop=[0.2, 0.25, 0.3, 0.2], bend=0.3, taper=0.35, rr=0.55, lmin=0.5,
-                 fol=dict(leaf=0.10, stretch=3.0, dens=1.9, size=1.05, flat=0.2, up=0.6, jt=0.16, surf=0.35)),
+                 fol=dict(leaf=0.10, stretch=3.0, dens=1.9, size=1.25, flat=0.2, up=0.6, jt=0.16, surf=0.35)),
     # Monterey cypress: big spreading limbs, flat horizontal plates, flat top
-    'cyp': dict( fill=0.7,bole=0.4, shape='flattop', lobes=0.18, whorls=5, per_whorl=4, el0=22, el_up=0.6, lead=0.6, r0k=0.05, omax=3,
+    'cyp': dict( fill=0.85, along=1.0,bole=0.4, shape='flattop', lobes=0.18, whorls=5, per_whorl=4, el0=22, el_up=0.6, lead=0.6, r0k=0.05, omax=3,
                 nk=[0, 4, 4, 3, 3], ang=[0, 42, 50, 55], lr=[0, 0.6, 0.55, 0.5], t0=[0, 0.3, 0.25, 0.2], up=[0, 0.05, 0.0, 0.0],
                 trop=[0.1, 0.05, 0.0, 0.0], bend=0.3, taper=0.35, rr=0.55, lmin=0.6,
                 fol=dict(leaf=0.15, stretch=1.2, dens=1.9, size=1.9, flat=0.85, up=0.7, jt=0.13, surf=0.4)),
     # blue gum: hanging, drawn-out sprays, open
-    'euc': dict( fill=0.2,omax=4, nk=[0, 5, 3, 3, 2], ang=[0, 38, 42, 45, 45], lr=[0, 0.5, 0.55, 0.5, 0.5], t0=[0, 0.3, 0.3, 0.3, 0.3], up=[0, 0.1, 0.0, -0.1, -0.1],
+    'euc': dict( fill=0.38,omax=4, nk=[0, 5, 3, 3, 2], ang=[0, 38, 42, 45, 45], lr=[0, 0.5, 0.55, 0.5, 0.5], t0=[0, 0.3, 0.3, 0.3, 0.3], up=[0, 0.1, 0.0, -0.1, -0.1],
                 trop=[0.3, 0.15, -0.05, -0.2, -0.3], bend=0.35, taper=0.35, rr=0.55, lmin=0.8, lobes=0.25,
-                fol=dict(leaf=0.12, stretch=2.6, dens=0.95, size=1.5, flat=0.3, hang=0.6, up=0.45, jt=0.18, surf=0.5)),
+                fol=dict(leaf=0.12, stretch=2.6, dens=1.25, size=1.6, flat=0.3, hang=0.55, up=0.45, jt=0.16, surf=0.5)),
 }
 
 

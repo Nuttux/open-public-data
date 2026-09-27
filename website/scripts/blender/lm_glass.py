@@ -33,6 +33,17 @@ E = lambda k, d: float(os.environ.get(k, d))
 ON = os.environ.get('GLASS_V2', '1') == '1'
 
 
+# per-tower glass where the model's tint is wrong (refs/TOWERS.md, photos looked at only):
+# (name, x, y, radius m, tint rgb + coating alpha) -> the faces moved here inside the radius
+TOWER_GLASS = [
+    ('555 California: dark bronze glass in the granite bays', 3014, 3574, 48, (0.17, 0.135, 0.11, 0.42)),
+    ('Millennium Tower: darker blue-grey', 3681, 3385, 32, (0.21, 0.27, 0.33, 0.55)),
+    ('101 California: charcoal ribbon glass', 3507, 3658, 40, (0.17, 0.19, 0.21, 0.5)),
+    ('345 California: neutral grey', 3305, 3628, 45, (0.24, 0.26, 0.28, 0.5)),
+]
+TOWERS_ON = os.environ.get('GLASS_TOWERS', '1') == '1'
+
+
 def remap(K):
     """move the Kit's 'curtain_wall' faces to lm_curtain / lm_glazing (in place)"""
     if not ON or 'curtain_wall' not in K.m: return {}
@@ -47,12 +58,18 @@ def remap(K):
             a, b = P[i], P[(i + 1) % len(P)]
             nx += (a[1] - b[1]) * (a[2] + b[2]); ny += (a[2] - b[2]) * (a[0] + b[0]); nz += (a[0] - b[0]) * (a[1] + b[1])
         ln = math.sqrt(nx * nx + ny * ny + nz * nz) or 1.0
-        if abs(nz / ln) > 0.5 or dz < 0.2:
-            key = 'curtain_wall'
+        if abs(nz / ln) > 0.95 or dz < 0.2:
+            key = 'curtain_wall'          # flat glass (skylights, canopies): as before
+        elif abs(nz / ln) > 0.5:
+            key = 'lm_glazing'            # sloped glass (181 Fremont's crown): mullions, no spandrel
         else:
             wh = max(math.hypot(p[0] - q[0], p[1] - q[1]) for p in P for q in P)
             win = abs(c[3] - 0.5) < 0.011 and ((len(f) == 4 and wh <= 2.4 and dz <= 4.6) or dz <= 4.6)
             key = 'lm_glazing' if win else 'lm_curtain'
+        if TOWERS_ON and key != 'curtain_wall':
+            cx = sum(p[0] for p in P) / len(P); cy = sum(p[1] for p in P) / len(P)
+            for _, tx, ty, tr, tc in TOWER_GLASS:
+                if (cx - tx) ** 2 + (cy - ty) ** 2 < tr * tr: c = tc; break
         g = K._g(key); k0 = len(g[0]); g[0].extend(P); g[1].append(tuple(range(k0, k0 + len(P)))); g[2].append(c); g[3].append(s)
         n[key] += 1
     return n
@@ -157,7 +174,7 @@ def _material(bpy, name, spandrel=True):
     # colours. Vision glass: the tint, dark-bodied (the room behind absorbs),
     # each pane a shade lighter or darker; a blind in some panes (a pale, matte
     # band in the pane's upper part, like an occupied office from outside)
-    pv = N('ShaderNodeMapRange'); L(rnd, pv.inputs[0]); pv.inputs[3].default_value = 0.78; pv.inputs[4].default_value = 1.18
+    pv = N('ShaderNodeMapRange'); L(rnd, pv.inputs[0]); pv.inputs[3].default_value = 0.52; pv.inputs[4].default_value = 0.86
     body = N('ShaderNodeVectorMath', operation='SCALE'); L(tint, body.inputs[0]); L(pv.outputs[0], body.inputs['Scale'])
     body_c = MIX(0.0, body.outputs[0], body.outputs[0])
     bl_on = M('LESS_THAN', rs.outputs[1], E('GLASS_BLIND', 0.22))
@@ -176,7 +193,7 @@ def _material(bpy, name, spandrel=True):
     # how mirror-like: the coating (alpha) on the vision glass, less on the
     # spandrel, the frame a satin metal
     gk = E('GLASS_REFL', 1.0)
-    met_v = M('MINIMUM', M('ADD', 0.08, M('MULTIPLY', coat, 0.55 * gk)), 0.75)
+    met_v = M('MINIMUM', M('ADD', 0.05, M('MULTIPLY', coat, 0.45 * gk)), 0.7)
     met_s = M('MULTIPLY', met_v, 0.55)
     met = MIXF(frame, MIXF(span, met_v, met_s), 0.65)
     L(met, pr.inputs['Metallic'])
@@ -198,7 +215,7 @@ def _material(bpy, name, spandrel=True):
     L(frame, bp.inputs['Height']); L(nz_.outputs[0], bp.inputs['Normal'])
     L(bp.outputs['Normal'], pr.inputs['Normal'])
     if os.environ.get('GLASS_SKY', '1') == '1':
-        _sky(nt, pr, E('GLASS_SKYK', 0.34), rnd, vis, m)
+        _sky(nt, pr, E('GLASS_SKYK', 0.3), rnd, vis, m)
     return m
 
 
