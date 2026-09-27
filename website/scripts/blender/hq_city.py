@@ -793,6 +793,7 @@ if VEG and getattr(VK, 'canopy_on', False):
             if not EA.canopy_stands(x, y, ERA, _allb, kd): continue
         gz_ = ground(x, y)
         if gz_ is None: continue
+        if gz_ < 0.5 and E('MARINA_V2', '1') == '1': continue      # (27/09, assets_urban) a 'crown' over the water: the LiDAR's masts and docks (trees on South Beach Harbor's fingers)
         pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg - _nc, 'of', len(MASS), 'measured crowns', _nc)
 instancer('trees', pts, protos)
