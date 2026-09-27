@@ -95,15 +95,16 @@ def photo_to_paint(c):
 
 
 # ── side and back walls of a wood house ─────────────────────────────────────
-SHINGLE_BROWN = ((0.46, 0.37, 0.29), (0.52, 0.43, 0.34), (0.40, 0.33, 0.27), (0.56, 0.49, 0.41))
+# (v4) weathered shingle is grey-brown, not red-brown: the AI read (0.46, 0.37, 0.29) as common brick (v2 sheet)
+SHINGLE_BROWN = ((0.55, 0.50, 0.44), (0.60, 0.55, 0.48), (0.50, 0.46, 0.41), (0.64, 0.60, 0.54))
 PLAIN = ((0.84, 0.82, 0.78), (0.78, 0.77, 0.74), (0.88, 0.87, 0.84), (0.72, 0.71, 0.68))
 def side_walls(b, style, wall_mat, fam):
     """(side, back) wall (mat, colour) or None to keep the generator's own"""
     if not SIDE or style not in ('vic', 'stucco'): return None
     r = random.Random(b['gid'] * 8191 + 17); x = r.random()
     if wall_mat == 'siding' or (style == 'vic' and x < 0.5):
-        if x < 0.40: s = ('siding', r.choice(SHINGLE_BROWN))
-        elif x < 0.65: s = ('stucco', r.choice(PLAIN))
+        if x < 0.25: s = ('siding', r.choice(SHINGLE_BROWN))
+        elif x < 0.60: s = ('stucco', r.choice(PLAIN))
         else: return None
     else:
         if x < 0.35: s = ('stucco', r.choice(PLAIN))
