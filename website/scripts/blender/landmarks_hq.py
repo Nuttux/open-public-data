@@ -299,6 +299,10 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
         import lm_places; lm_places.materials(bpy, mats)
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: places materials failed', ex)
+    try:     # GLASS v2 (assets_trees_glass 27/09): the curtain walls' grid, spandrels and softer glass
+        import lm_glass; lm_glass.materials(bpy, mats)
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: glass v2 materials failed', ex)
     C = Ctx(); C.bpy, C.sc, C.mats, C.ground, C.box, C.era, C.log, C.d = bpy, sc, mats, ground, box, era, log, d
     C.K = lm_kit.Kit(); C.no_bents = []; C.trees = []
     true = bool(d.get('_terrain_hq')) if isinstance(d, dict) else False
@@ -381,6 +385,11 @@ def _build(bpy, sc, mats, ground, box, d, log, era, t0):
             if water_hq.sea_wind(C): log('landmarks_hq: wind lanes on the sea')
     except Exception as ex:
         traceback.print_exc(); log('landmarks_hq: water failed', ex)
+    try:
+        import lm_glass; _gn = lm_glass.remap(C.K)
+        if _gn: log('landmarks_hq: glass v2 faces', _gn)
+    except Exception as ex:
+        traceback.print_exc(); log('landmarks_hq: glass v2 remap failed', ex)
     objs = C.K.emit(bpy, sc, mats, name='lm')
     try: nt = _plant(C)
     except Exception as ex:
