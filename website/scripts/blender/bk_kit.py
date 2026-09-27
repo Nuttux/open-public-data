@@ -89,6 +89,8 @@ def photo_to_paint(c):
     l = min(0.95, 0.30 + 0.72 * l)
     if (h < 0.06 or h > 0.72) and s < 0.30: s *= 0.35
     elif 0.72 < h < 0.93: s *= 0.4
+    elif s >= 0.12:                    # (v3) a real colour: the photo's haze and shade took half its saturation back
+        s = min(0.65, s * 1.5); l = min(l, 0.82)
     return colorsys.hls_to_rgb(h, l, s)
 
 
