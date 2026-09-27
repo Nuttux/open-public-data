@@ -356,6 +356,20 @@ def roof_flat_mat(big=False):
     # tar repairs: dark irregular blots over about a tenth of a roof, and the
     # recoats' lighter sheets (24/09, the roofs' contrast from the air)
     tar = b.ramp(b.noise(0.45, 3.0, vec=mp.outputs[0]), 0.0, 1.0, 0.59, 0.64) if not big else b.ramp(b.noise(0.12, 2.0, vec=mp.outputs[0]), 0.0, 1.0, 0.64, 0.68)
+    if G.BK.ROOFMAT and not big:
+        # (27/09, assets_buildings BK_ROOFMAT) a roof is re-covered and patched in SHEETS, not in blots (the voronoi
+        # cells and noise blots read as camouflage, and the AI copied them): staggered rectangular recoat panels
+        # along the rolls (3.7 x 2.8 m, a few % lighter or darker), rectangular tar repairs on ~7 % of 2.1 x 1.6 m cells
+        sxp = b.n('ShaderNodeSeparateXYZ'); b.put(sxp.inputs[0], mp.outputs[0])
+        row = b.math('FLOOR', b.math('DIVIDE', sxp.outputs[1], 2.8))
+        col_ = b.math('FLOOR', b.math('DIVIDE', b.math('ADD', sxp.outputs[0], b.math('MULTIPLY', row, 1.9)), 3.7))
+        cv_ = b.n('ShaderNodeCombineXYZ'); b.put(cv_.inputs[0], col_); b.put(cv_.inputs[1], row)
+        wn_ = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wn_.inputs['Vector'], cv_.outputs[0])
+        pk = b.ramp(wn_.outputs['Value'], 0.90, 1.07)
+        tr_ = b.n('ShaderNodeCombineXYZ'); b.put(tr_.inputs[0], b.math('FLOOR', b.math('DIVIDE', sxp.outputs[0], 2.1)))
+        b.put(tr_.inputs[1], b.math('FLOOR', b.math('DIVIDE', sxp.outputs[1], 1.6))); b.put(tr_.inputs[2], 7.0)
+        wt_ = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wt_.inputs['Vector'], tr_.outputs[0])
+        tar = b.math('GREATER_THAN', wt_.outputs['Value'], 0.93)
     pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.45 if not big else 0.25)))
     sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
     seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)

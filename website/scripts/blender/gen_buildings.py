@@ -494,9 +494,14 @@ def building(b, ground, out):
     if b.get('ruin'): return ruin(b, ground, out)
     rng = random.Random(b['gid'] * 7919 + 13)
     RP = ROW_G.get(b['gid']) if (b['gid'] not in LANDMARK and not b.get('places')) else None
-    if RP: b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
+    if RP and not b.get('_bkpart'): b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
+    # (BK_MASS) the LiDAR's roof massing: the building drawn as its measured parts (lower wings, light wells cut out)
+    _pp = None if b.get('_bkpart') else BK.parts_of(b, ground, 'stucco' if BK.fire_rebuilt(b, style_of(b), ERA) else style_of(b), ERA)
+    if _pp:
+        for sb in _pp: building(sb, ground, out)
+        return
     RD = RowDraw(RP, rng)
-    ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], PARTY_G.get(str(b['gid']))))
+    ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], None if b.get('_bkpart') else PARTY_G.get(str(b['gid']))))
     roles = b['roles'][::-1] if flipped else list(b['roles'])
     if flipped:  # roles are per edge i -> i+1; reversing the ring shifts them by one
         roles = roles[1:] + roles[:1]
@@ -504,9 +509,10 @@ def building(b, ground, out):
     if n < 3: return
     zs = [ground(x, y) for x, y in ring]
     zg = sum(zs) / n                       # the record's height stands on the mean ground
+    if b.get('_zg') is not None: zg = b['_zg']          # (a measured part: its building's ground)
     global ZG_, ZPRE_; ZG_ = zg; ZPRE_ = (b['h'] < 30 and (b['year'] or 1950) < 1945 and b['ty'] in ('APARTMENT', 'FLATS'))
     zfoot = min(zs) - 0.6                  # walls run into the lowest ground
-    style = style_of(b)
+    style = b.get('_style') or style_of(b)
     if BK.fire_rebuilt(b, style, ERA): style = 'stucco'      # (BK_FIRE) the burned district's 'old' house: an Edwardian flat
     top = zg + max(3.0, b['h'])
     storeys = b['st'] or max(1, round(b['h'] / 3.4))
@@ -572,6 +578,7 @@ def building(b, ground, out):
         if _a >= 280 and _fill >= 0.88 and min(max(_u) - min(_u), max(_v) - min(_v)) >= 9:
             if yr_w < 1950: roof = 'saw' if x_ < 0.28 else ('barrel' if x_ < 0.55 else roof)
             elif yr_w < 1975: roof = 'saw' if x_ < 0.18 else roof
+    if b.get('_bkpart'): roof = 'flat'                        # (a measured part: the flat roof the LiDAR saw)
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and RD.random('rmat') < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
@@ -767,7 +774,7 @@ def building(b, ground, out):
         if w.L < 0.05: continue
         holes = []
         if role != 2 and w.L > 1.4:
-            holes = facade(w, i == f0 or role == 1, b, rng, ctx)
+            holes = facade(w, (i == f0 or role == 1) and not b.get('_rear'), b, rng, ctx)
         wmat_, wcol_ = (side_ if (role == 2 and side_) else (back_ if (role == 0 and back_ and i != f0) else (wall_mat, body)))
         w.wall_with_holes(wmat_, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], wcol_)
         # corner boards (wood) or quoins (stucco blocks) and a water table
@@ -847,7 +854,7 @@ def building(b, ground, out):
 
     # ── cornice on the street wall ──
     wf = walls[f0]
-    if roof == 'flat':
+    if roof == 'flat' and not b.get('_rear'):
         proj = {'vic': 0.75, 'stucco': 0.4, 'block': 0.5, 'midcentury': 0.2}[style]
         if sub == 'works': proj = 0.12                      # a plain coping on a works parapet
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof

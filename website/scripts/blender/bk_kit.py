@@ -76,7 +76,20 @@ def paint(b, style, sub):
         if len(cand) >= 12: break
     if not cand: return None
     _, _, body, trim = r.choice(cand)
-    return red_cal(tuple(body)), tuple(trim)
+    return red_cal(photo_to_paint(tuple(body))), tuple(trim)
+
+
+PAL2 = _on('BK_PAL2')
+def photo_to_paint(c):
+    """(BK_PAL2) a colour measured on a street photo is the paint under that photo's light: shade and a warm or
+    magenta white balance. Lift it to a paint (L 0.38 -> 0.57, 0.76 -> 0.85) and take the tint out of the low-
+    saturation warm-pinks and violets (they rendered mauve); real hues (blue, green, yellow, tan, red) kept"""
+    if not PAL2: return c
+    h, l, s = colorsys.rgb_to_hls(*c)
+    l = min(0.95, 0.30 + 0.72 * l)
+    if (h < 0.06 or h > 0.72) and s < 0.30: s *= 0.35
+    elif 0.72 < h < 0.93: s *= 0.4
+    return colorsys.hls_to_rgb(h, l, s)
 
 
 # ── side and back walls of a wood house ─────────────────────────────────────
@@ -96,3 +109,40 @@ def side_walls(b, style, wall_mat, fam):
         else: return None
     back = s if r.random() < 0.6 else (s[0], r.choice(PLAIN))
     return s, back
+
+
+# ── BK_MASS: the roof massing measured by the LiDAR (bk_massing.json, assets_buildings/tools/lidar_parts.py) ─────────
+# A footprint whose returns show a lower rear wing, a stepped back, or a light well open to the ground is drawn as its
+# parts: each part the same building (gid, paint, style), its height the record's less the measured drop (the main part
+# keeps the record's height exactly), the wells cut out. USGS 3DEP CA_SanFrancisco_1_B23 (public domain). Today only.
+MASS = _on('BK_MASS')
+_MS = None
+def _mass():
+    global _MS
+    if _MS is None:
+        import json
+        p = os.environ.get('BK_MASS_FILE') or os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bk_massing.json')
+        _MS = json.load(open(p)) if (MASS and os.path.exists(p)) else {}
+        print('[bk_kit] massing', p, len(_MS), flush=True)
+    return _MS
+
+
+def parts_of(b, ground, style, era):
+    """the sub-records of a measured building, or None"""
+    if not MASS or era is not None or b.get('_bkpart') or b.get('standin') or b.get('places') or b.get('rise') is not None: return None
+    m = _mass().get(str(b['gid']))
+    if not m: return None
+    zs = [ground(x, y) for x, y in b['ring']]; zg = sum(zs) / len(zs)
+    out = []
+    for k, p in enumerate(m['parts']):
+        h = b['h'] - p['d']
+        if h < 2.6: continue
+        r = [tuple(q) for q in p['ring']]
+        st = max(1, round((b.get('st') or max(1, round(b['h'] / 3.2))) * h / max(b['h'], 1.0)))
+        out.append(dict(b, ring=r, roles=list(p['roles']), h=h, st=st, _bkpart=k + 1, _zg=zg, _style=style,
+                        _rear=not any(q == 1 for q in p['roles']), cx=sum(q[0] for q in r) / len(r), cy=sum(q[1] for q in r) / len(r)))
+    return out or None
+
+
+# ── BK_ROOFMAT: the flat roof's membrane patched in sheets (hq_scene.roof_flat_mat) ─────────────────────────────────
+ROOFMAT = _on('BK_ROOFMAT')
