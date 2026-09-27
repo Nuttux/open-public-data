@@ -207,6 +207,10 @@ _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['
 _allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
+if ERA is None and E('SITES', '1') == '1':   # (27/09, assets_urban) today's construction sites (DataSF permits on their parcels): urban_build.py
+    import urban_build as UB
+    _st = [b for b in UB.records(recs) if in_box(b['cx'], b['cy'])]; recs += _st
+    if _st: log('SITES: today\'s construction sites', len(_st), [(b['_site_today'], round(b['rise'], 2)) for b in _st][:6])
 _sbr = [b for b in EA.sanborn_records(ERA) if in_box(b['cx'], b['cy'], 80)] if E('SANBORN', '1') == '1' else []
 if _sbr:
     _nc = len(recs); recs = [b for b in recs if not EA.sanborn_contradicted(b, ERA)]
