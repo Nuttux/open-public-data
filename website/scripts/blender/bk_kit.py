@@ -121,7 +121,10 @@ def side_walls(b, style, wall_mat, fam):
 # A footprint whose returns show a lower rear wing, a stepped back, or a light well open to the ground is drawn as its
 # parts: each part the same building (gid, paint, style), its height the record's less the measured drop (the main part
 # keeps the record's height exactly), the wells cut out. USGS 3DEP CA_SanFrancisco_1_B23 (public domain). Today only.
-MASS = _on('BK_MASS')
+# (v8) OFF by default: on Telegraph Hill (tele, sheets v2-v7) a stepped house drew a tall blank wall that the AI kept as a
+# concrete slab (edge recall 0.43 -> 0.36, the one consistent drop). Needs the exposed internal walls drawn as real
+# back walls (windows, decks) before it can be on. BK_MASS=1 for tests.
+MASS = _on('BK_MASS', '0')
 _MS = None
 def _mass():
     global _MS
