@@ -1944,6 +1944,16 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             cyl('equip', s_[0] + 0.45, s_[1] + 0.45, deck, 0.28, 0.34, (0.40, 0.40, 0.39), 10)             # the curb
             cyl('metal', s_[0] + 0.45, s_[1] + 0.45, deck + 0.28, 0.22, 0.2, c_, 10)                       # the throat
             cyl('equip', s_[0] + 0.45, s_[1] + 0.45, deck + 0.5, 0.16, 0.44, c_, 12)                        # the hood
+        # satellite dishes on apartment roofs (1 in 3), on a short mast near the parapet, facing the southern sky (az ~200, el ~45)
+        if sub == 'apartment' or b.get('ty') in ('FLATS', 'APARTMENT', 'RESIDENTIAL', 'MIXED') or storeys >= 4:
+            for _ in range(er_.choice((0, 0, 1, 1, 2, 3)) if er_.random() < 0.35 else 0):
+                s_ = spot(0.9, 0.9, tries=10, pad=0.2)
+                if not s_: continue
+                cz = deck + er_.uniform(0.8, 1.2); c0 = at(s_[0] + 0.45, s_[1] + 0.45, cz); az, el = math.radians(er_.uniform(185, 215)), math.radians(er_.uniform(38, 48))
+                N_ = Vector((math.sin(az) * math.cos(el), math.cos(az) * math.cos(el), math.sin(el))); e1 = N_.cross(Z).normalized(); e2 = e1.cross(N_).normalized()
+                rd = er_.uniform(0.33, 0.45)
+                out.poly('equip', [c0 + (e1 * math.cos(2 * math.pi * k / 10) + e2 * math.sin(2 * math.pi * k / 10)) * rd for k in range(10)], er_.choice(((0.62, 0.62, 0.60), (0.55, 0.55, 0.54), (0.30, 0.30, 0.31))))
+                cyl('metal', s_[0] + 0.45, s_[1] + 0.45, deck, cz - deck - 0.05, 0.03, (0.35, 0.35, 0.35), 6)
     # solar: rows of panels, tilted up a little toward the sun's side
     if (house or sub == 'apartment') and area > 45 and rng.random() < 0.14 * EA.rel('solar', ERA):
         pw, pd, gap = 1.02, 1.68, 0.03

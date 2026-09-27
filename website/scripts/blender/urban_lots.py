@@ -44,14 +44,17 @@ def load(box=None):
 def layout(r):
     """stalls of a lot ring -> [(cx, cy, ux, uy, hx, hy)]; u = along the rows, h = the unit vector toward the stall's head
     (where the wheel stop is)"""
-    n = len(r); best, bl = 0, -1.0
+    # the rows follow the lot's minimum-area rectangle (its longest edge could be a diagonal cut), along its long side
+    n = len(r); best = None
     for i in range(n):
         a, b = r[i], r[(i + 1) % n]; L = math.hypot(b[0] - a[0], b[1] - a[1])
-        if L > bl: best, bl = i, L
-    a, b = r[best], r[(best + 1) % n]
-    ux, uy = (b[0] - a[0]) / bl, (b[1] - a[1]) / bl; vx, vy = -uy, ux
+        if L < 1.0: continue
+        ex, ey = (b[0] - a[0]) / L, (b[1] - a[1]) / L
+        us = [p[0] * ex + p[1] * ey for p in r]; vs = [-p[0] * ey + p[1] * ex for p in r]
+        du, dv = max(us) - min(us), max(vs) - min(vs); A = du * dv
+        if best is None or A < best[0] - 1e-6: best = (A, (ex, ey) if du >= dv else (-ey, ex))
+    ux, uy = best[1]; vx, vy = -uy, ux; a = r[0]
     us = [(p[0] - a[0]) * ux + (p[1] - a[1]) * uy for p in r]; vs = [(p[0] - a[0]) * vx + (p[1] - a[1]) * vy for p in r]
-    if abs(min(vs)) > abs(max(vs)): vx, vy = -vx, -vy; vs = [-v for v in vs]
     rows = []; v = min(vs) + EDGE; first = True
     while v + SD <= max(vs) - EDGE:
         if first: rows.append((v, -1)); v += SD + AISLE; first = False; continue
