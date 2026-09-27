@@ -58,3 +58,17 @@ the cheap fix: see GRAMMAR.md §7.)
   2-row line in the 2006 mosaic; the 5:x | 6:x boundary is a vertical step in the water.
 - **Sanborn buildings with no demolition date** all go at one conventional year (1960): a key-to-key transition either pops
   them all at once or has to invent a wave.
+
+## 5. Grading after the fix (random, not hand-picked)
+
+Tools: `tools/vid_audit.py` (every frame aligned to the previous one; share of pixels jumping > 40 levels in one frame),
+`tools/frame_sample.py` (seeded random frames, a random native 400x225 crop each, shown with the same crop 3 frames earlier),
+and the QA tool on the consistent-key layers (below).
+
+| | v4 film (before) | new film (after) |
+|---|---|---|
+| frames with > 1 % of the image jumping > 40 levels in one frame (pops) | 7 blocks of frames (key years 7.5 / 15.7 / 22.5 s, the bay at 28.3 s, staged completions) | **none**, except the one deliberate scene cut (Embarcadero -> Transbay, 30.0 s) |
+| cross-fade share of the changed area | 22-40 % per step | **0** (every pixel is one year or the other; no blend of two keys) |
+| joins between consecutive shots (same view) | n/a (one glide) | 0.06 % and 0.5 % of pixels > 40 levels (a building completed in the earlier key) |
+| random frames, seed 7 (12 crops) | 3 structural (translucent towers #8 #9, a red roof wiped in #3/#4) | 0 structural; 2 cosmetic (#3 #4: flat cleared lots with straight edges) |
+| random frames, seed 11 (12 crops) | 4 structural (#5 morph, #6 ghost block, #9 fade, #10 hard seam across a tower) | 0 structural, 0 cosmetic |

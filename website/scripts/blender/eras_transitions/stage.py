@@ -7,6 +7,9 @@ from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 RW = '/Users/daniel/code/qipu-render-work'; SNAP = f'{RW}/snap/er_p3'; PIL8 = f'{RW}/eras2/pilot'
 FIN = '/Volumes/DANI-SD-DRIVE2/qipu-eras/fin3'
+# TR_KEYS=ek2: the past years' keys are the era keys v2 (ai/ek_blend.py: the year's own coherent generation, FIX recipe) instead of
+# the pilot's compose_hard mosaics (fin3); today stays fin3's (the look agent's layer)
+KEYS = os.environ.get('TR_KEYS', 'fin3'); EK2 = os.environ.get('TR_EK2', '/Volumes/DANI-SD-DRIVE2/transitions/ek2')
 # ── the pyramid camera (hq_city.py, level 8) ─────────────────────────────────────────────────────────────────────────
 CA_ = math.cos(math.radians(30)); SA_ = 0.42
 KX = math.sqrt(2) * CA_; KY = math.sqrt(2) * SA_; ZT = math.sqrt(2 * (CA_ ** 2 - SA_ ** 2))
@@ -82,8 +85,24 @@ def load_key(y, win, src=None):
             ax0, ay0, ax1, ay1 = max(x0, ox), max(y0, oy), min(x1, ox + 10240), min(y1, oy + 6144)
             if ax1 <= ax0 or ay1 <= ay0: continue
             p = (src or {}).get((y, i, j)) or (f'{FIN}/now_m_{i}_{j}.png' if y == 'now' else f'{FIN}/{y}/m_{i}_{j}.png')
+            if y != 'now' and KEYS == 'ek2':
+                for ext in ('jpg', 'png'):
+                    if os.path.exists(f'{EK2}/{y}/m_{i}_{j}.{ext}'): p = f'{EK2}/{y}/m_{i}_{j}.{ext}'; break
             out[ay0 - y0:ay1 - y0, ax0 - x0:ax1 - x0] = np.asarray(Image.open(p).convert('RGB').crop((ax0 - ox, ay0 - oy, ax1 - ox, ay1 - oy)))
+    if y != 'now': out = fill_holes(out)
     return seam_fix(out, win)
+
+
+def fill_holes(img):
+    """pure-black holes in a past key (pipeline holes: the render has no pure black at these zooms): inpainted from around.
+    Today's key is left as it is (the look agent's layer; the past years keep today's pixels wherever nothing changed)."""
+    import cv2
+    from scipy import ndimage as nd
+    blk = img.max(-1) < 4
+    if not blk.any(): return img
+    lab, n = nd.label(blk); ar = nd.sum(blk, lab, range(1, n + 1)); keep = np.isin(lab, np.nonzero(ar >= 3)[0] + 1)
+    if not keep.any(): return img
+    return cv2.inpaint(np.ascontiguousarray(img), nd.binary_dilation(keep, iterations=1).astype(np.uint8), 5, cv2.INPAINT_TELEA)
 # ── records ──────────────────────────────────────────────────────────────────────────────────────────────────────────
 def _fake_mathutils():
     """era.sanborn_all() wants mathutils.kdtree (Blender) for its freeway rule: a scipy stand-in, same answers"""

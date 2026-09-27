@@ -33,23 +33,58 @@ def fnoise(shape, sigma, seed):
 n1, n2, n3 = fnoise((H, W), 6, 1), fnoise((H, W), 1.5, 2), fnoise((H, W), 22, 3)
 EARTH = np.clip(np.array([172, 156, 134], np.float32)[None, None] * (0.93 + 0.05 * n1 + 0.035 * n2 + 0.04 * n3)[..., None], 0, 255)
 CONC = np.clip(np.array([196, 193, 186], np.float32)[None, None] * (0.97 + 0.02 * n2 + 0.02 * n1)[..., None], 0, 255)
+# the cleared ground reads as PARCELS: each lot its own tone and material (graded earth to gravel), a slightly darker edge
+GRAV = np.clip(np.array([150, 147, 140], np.float32)[None, None] * (0.95 + 0.04 * n2 + 0.03 * n1 + 0.03 * n3)[..., None], 0, 255)
+_LT = np.ones((H, W), np.float32); _LM = np.zeros((H, W), np.float32); _rl = np.random.default_rng(5)
+for _o in OBJ:
+    _f = _o['foot']
+    if not _f.any(): continue
+    _x0, _y0, _x1, _y1 = _o['box']; _v = _LT[_y0:_y1, _x0:_x1]; _m = _LM[_y0:_y1, _x0:_x1]
+    _v[_f] = _rl.uniform(0.9, 1.07); _m[_f] = _rl.uniform(0.0, 0.7)
+    _e = _f & ~nd.binary_erosion(_f, iterations=2); _v[_e] *= 0.9
+EARTH = np.clip((EARTH * (1 - _LM[..., None]) + GRAV * _LM[..., None]) * _LT[..., None], 0, 255)
 
 # ── plates: what is behind the objects ───────────────────────────────────────────────────────────────────────────────
 SB, SD, both = D['SB'], D['SD'], D['both']
 E = np.where((SB & ~SD)[..., None], AS, B).copy()
 FEET = D['FB'] | D['FD']
 fill_earth = both & FEET
+# the ground under a gone VIADUCT (a 'span') is a street, not a building lot: behind both it and a new tower (neither key shows
+# it) it continues the ground just in front of it (the first px below it that a key shows), not a brown earth plate (a floating
+# earth band across the Transbay towers' facades: A/B #4 #16)
+SPF = np.zeros_like(both)
+for o in OBJ:
+    if o['side'] == 'died' and o['kind'] == 'span': fx0, fy0, fx1, fy1 = o['box']; SPF[fy0:fy1, fx0:fx1] |= o['foot']
+sp_fill = fill_earth & SPF; fill_earth &= ~SPF
 E[fill_earth] = EARTH[fill_earth].astype(np.uint8)
+if sp_fill.any():
+    rr, cc = np.nonzero(sp_fill); got = np.zeros(len(rr), bool); Hh = sp_fill.shape[0]
+    for k in range(1, 160):
+        sr = rr + k; ok = (~got) & (sr < Hh); ok2 = np.zeros(len(rr), bool); ok2[ok] = ~both[sr[ok], cc[ok]]
+        E[rr[ok2], cc[ok2]] = E[sr[ok2], cc[ok2]]; got |= ok2
+        if got.all(): break
+    E[rr[~got], cc[~got]] = EARTH[rr[~got], cc[~got]].astype(np.uint8)
+    log('span ground behind both: continued from below', int(got.sum()), 'of', len(rr))
 hole = both & ~FEET
 if hole.any():
-    # behind both an old building and the new one on its lot: what stands behind continues downward (the lower floors of the
-    # buildings behind, the street behind): each hole pixel copies the plate k periods (2 floors) above the hole's top
-    # (a periodic copy of what stands above made horizontal bands: the cleared site simply extends there, a calm graded ground,
-    # a touch darker toward the top of the hole where the ground behind would be in the next buildings' shade)
-    hr_, hc_ = np.nonzero(hole)
-    top = np.full(W, H, np.int64); np.minimum.at(top, hc_, hr_)
-    shade_ = np.clip(0.9 + 0.1 * np.minimum((hr_ - top[hc_]) / 60.0, 1.0), 0.85, 1.0)
-    E[hr_, hc_] = np.clip(EARTH[hr_, hc_] * shade_[:, None], 0, 255).astype(np.uint8)
+    # behind BOTH a gone object and a new one (neither key shows it): what the earlier year shows just above the gone object
+    # continues down over it (a ground point behind a low viaduct span or a building is seen about its height higher in the
+    # image): each hole pixel of a gone object copies the plate its height (in px) above, once, from outside the hole; what is
+    # left (no source) gets the graded site ground
+    Hh, Ww = hole.shape
+    for o in sorted([o for o in OBJ if o['side'] == 'died'], key=lambda o: o['h']):
+        fx0, fy0, fx1, fy1 = o['box']; hm = hole[fy0:fy1, fx0:fx1] & o['sprite']
+        if not hm.any(): continue
+        off = int(o['h'] * S.PX_Z) + 4; rr, cc = np.nonzero(hm); rr = rr + fy0; cc = cc + fx0; got = np.zeros(len(rr), bool)
+        for k in (1, 2, 3):
+            sr = rr - k * off; ok = (~got) & (sr >= 0); ok2 = np.zeros(len(rr), bool); ok2[ok] = ~hole[sr[ok], cc[ok]]
+            E[rr[ok2], cc[ok2]] = E[sr[ok2], cc[ok2]]; got |= ok2
+        hole[rr[got], cc[got]] = False
+    if hole.any():
+        hr_, hc_ = np.nonzero(hole)
+        top = np.full(W, H, np.int64); np.minimum.at(top, hc_, hr_)
+        shade_ = np.clip(0.9 + 0.1 * np.minimum((hr_ - top[hc_]) / 60.0, 1.0), 0.85, 1.0)
+        E[hr_, hc_] = np.clip(EARTH[hr_, hc_] * shade_[:, None], 0, 255).astype(np.uint8)
 log('plates; both', int(both.sum()), 'hole inpainted', int(hole.sum()))
 
 # ── objects: per-object arrays ───────────────────────────────────────────────────────────────────────────────────────
@@ -170,7 +205,7 @@ def film_window(o):
     c0, c1 = (o.get('site0', o['ys']), o['yc']) if o['side'] == 'born' else (o['ds'], o['de'])
     f0 = clip01((eA - c0) / max(c1 - c0, 1e-3)) if c0 < eA else 0.0
     s0, s1 = film_at(max(c0, eA)), film_at(c1)
-    md = (0.7 + 1.0 * min(1.0, o['h'] / 150.0)) if o['side'] == 'born' else (0.6 + 0.4 * min(1.0, o['h'] / 60.0))
+    md = (0.7 + 1.0 * min(1.0, o['h'] / 150.0)) if o['side'] == 'born' else (0.8 + 0.5 * min(1.0, o['h'] / 60.0))
     md *= (1 - f0)
     if s1 - s0 < md:
         c = (s0 + s1) / 2; s0, s1 = c - md / 2, c + md / 2
@@ -272,7 +307,9 @@ def draw_born(F, o, s):
             frm = frm & ~scr
     if frm.any():
         sh = o['shade'][frm][:, None]
-        base = P_[frm] * 0.30 + np.array([62, 62, 64], np.float32) * sh ** 0.5 * 0.55
+        # the open frame's interior is dark (no facade yet): only a trace of the finished facade (0.12, was 0.30: on a glass tower
+        # the frame band read as a translucent ghost of the finished curtain wall over its neighbours)
+        base = P_[frm] * 0.12 + np.array([62, 62, 64], np.float32) * sh ** 0.5 * 0.62
         g_ = base.mean(-1, keepdims=True); base = g_ * 0.6 + base * 0.4
         zz = Z[frm]; slab = np.mod(zz, o['fl']) < 0.75
         cc_ = np.nonzero(frm)[1] + fx0; colm = np.mod(cc_, max(6, int(round((8.0 if o['h'] >= 30 else 4.0) * S.PX_E)))) < 2   # columns
@@ -363,20 +400,20 @@ def puff(k, r):
 DUST = []
 for o in DIED:
     fx0, fy0, fx1, fy1 = o['box']; cols = np.nonzero(o['M'].any(0))[0]
-    if len(cols) == 0 or o.get('cont'): continue
+    if len(cols) == 0 or o.get('cont') or o['h'] < 12: continue     # (a house comes down without a dust cloud: it read as a smudge)
     small = o['h'] < 15
     s0, s1 = o['s0'] + 0.1 * (o['s1'] - o['s0']), o['s0'] + (0.35 if small else 0.75) * (o['s1'] - o['s0'])
-    s1 = max(s1, s0 + 0.25); npf = int(np.clip(math.sqrt(o['n']) / (3.0 if small else 1.6), 6 if small else 14, 140)); rr = np.random.default_rng(o['i'] + 99)
+    s1 = max(s1, s0 + 0.25); npf = int(np.clip(math.sqrt(o['n']) / 2.5, 8, 80)); rr = np.random.default_rng(o['i'] + 99)
     for k in range(npf):
         te = rr.uniform(s0, s1 + (0.25 if small else 0.1)); c = int(rr.choice(cols)); u = clip01((te - s0) / (s1 - s0))
         yfoot = o['ynear'][c]; hz = o['hroof'] * ((1 - u * u) if small else (1 - smooth(u)))
         base = rr.random() < (0.55 if small else 0.3)
         y_ = yfoot - rr.uniform(0, 6) if base else yfoot - hz * S.PX_Z - rr.uniform(-4, 8)
-        R0 = (4 + 1.1 * math.sqrt(max(o['h'], 3))) * rr.uniform(0.7, 1.35) * (1.4 if small else 1.0) * (1.2 if base else 1.0)
-        DUST.append(dict(te=te, life=rr.uniform(1.1, 2.1), x=fx0 + c, y=fy0 + y_, r0=R0, vx=rr.uniform(14, 34), vy=rr.uniform(-26, -10) * (0.5 if base else 1.0),
-                         a=rr.uniform(0.45, 0.7) * (0.75 if small else 1.0), k=int(rr.integers(0, 12)), sp=rr.uniform(0.9, 1.6) if base else 1.0))
+        R0 = (3 + 0.8 * math.sqrt(max(o['h'], 3))) * rr.uniform(0.7, 1.3) * (1.15 if base else 1.0)
+        DUST.append(dict(te=te, life=rr.uniform(0.6, 1.1), x=fx0 + c, y=fy0 + y_, r0=R0, vx=rr.uniform(8, 20), vy=rr.uniform(-16, -6) * (0.5 if base else 1.0),
+                         a=rr.uniform(0.16, 0.28), k=int(rr.integers(0, 12)), sp=rr.uniform(0.9, 1.3) if base else 1.0))
 log('dust puffs', len(DUST))
-DCOL = np.array([192, 181, 163], np.float32)
+DCOL = np.array([206, 201, 191], np.float32)       # a light, dry haze
 def draw_dust(F, s):
     for p in DUST:
         u = (s - p['te']) / p['life']
@@ -425,6 +462,19 @@ def compose(s):
     return F, t
 
 
+CAMK = [(k[0], k[1] - WX0, k[2] - WY0, k[3]) for k in PL.get('cam', [])]     # [film s, centre x, centre y, width] in canvas px
+def cam_box(s):
+    if not CAMK: return VX0, VY0, VX1, VY1
+    ks = [k[0] for k in CAMK]
+    if s <= ks[0]: c = CAMK[0][1:]
+    elif s >= ks[-1]: c = CAMK[-1][1:]
+    else:
+        j = max(i for i in range(len(ks)) if ks[i] <= s); u = smooth((s - ks[j]) / max(ks[j + 1] - ks[j], 1e-6))
+        c = [CAMK[j][q] * (1 - u) + CAMK[j + 1][q] * u for q in (1, 2, 3)]
+    cx, cy, cw = c; ch = cw * OH / OW
+    return cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2
+
+
 def frame(fi):
     s = fi / FPS; SUBF = PL.get('sub', 1)
     if SUBF > 1:            # a touch of motion blur on what moves (a rising slab, dust); what stands still stays byte-identical
@@ -435,8 +485,10 @@ def frame(fi):
         F = acc / SUBF; t = year_at(s)
     else:
         F, t = compose(s)
-    V = np.clip(F[VY0:VY1, VX0:VX1] + 0.5, 0, 255).astype(np.uint8)
-    im = Image.fromarray(V).resize((OW, OH), Image.LANCZOS)
+    cx0, cy0, cx1, cy1 = cam_box(s)                   # the camera (a slow eased glide between plan keys; the view when none)
+    ix0, iy0 = max(0, int(math.floor(cx0)) - 2), max(0, int(math.floor(cy0)) - 2); ix1, iy1 = min(W, int(math.ceil(cx1)) + 2), min(H, int(math.ceil(cy1)) + 2)
+    V = np.clip(F[iy0:iy1, ix0:ix1] + 0.5, 0, 255).astype(np.uint8)
+    im = Image.fromarray(V).resize((OW, OH), Image.LANCZOS, box=(cx0 - ix0, cy0 - iy0, cx1 - ix0, cy1 - iy0))
     if PL.get('labels', True):
         dr = ImageDraw.Draw(im); FT = ImageFont.truetype('/System/Library/Fonts/Helvetica.ttc', int(OH * 0.05)); FC = ImageFont.truetype('/System/Library/Fonts/Helvetica.ttc', int(OH * 0.024))
         lab = 'today' if t >= eB - 0.01 and D['yB'] == 'now' else f'{int(t)}'

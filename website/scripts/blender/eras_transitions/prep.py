@@ -6,14 +6,14 @@ sprites, per-pixel heights and footprints, their dates, the consistent start key
 A* (the start key) = the later key B wherever the thing shown did not change (static buildings keep B's own pixels, so a
 building that stands in both years never changes rendition), the earlier key A on what did change (the objects gone by B, the
 ground that changed, what stood behind the objects born in the step), relit where a changing object's shadow falls."""
-import sys, os, json, math, pickle, time
+import sys, os, json, math, pickle, time, resource
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage as nd
 import stage as S, objects as O
 
-T0 = time.time()
-def log(*a): print(f'[{time.time() - T0:6.1f}s]', *a, flush=True)
+T0 = time.time(); RSS_U = 2**30 if sys.platform == 'darwin' else 2**20     # (ru_maxrss: bytes on macOS, KB on Linux)
+def log(*a): print(f'[{time.time() - T0:6.1f}s {resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / RSS_U:4.2f}G]', *a, flush=True)   # (peak RSS so far)
 
 
 def rect_ring(c, ang, L, W):
@@ -103,8 +103,23 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
     xs, ys = S.c2w(np.array([x0, x1, x0, x1]), np.array([y0, y0, y1, y1]), 0.0); wbox = (xs.min(), ys.min(), xs.max(), ys.max())
     A = S.load_key(yA, win); B = np.load(bsrc) if bsrc else S.load_key(yB, win); log('keys', A.shape, 'B from', bsrc or 'the key')
     assert B.shape == A.shape, (B.shape, A.shape)
+    # what the earlier key may have copied is the later year's ORIGINAL key (compose_hard: outside its masks, the next year's
+    # final pixels), not our consistent B: leak tests compare A with it
+    EK = S.KEYS == 'ek2' and yA != 'now'
+    # (ek2: no leak tests, so no reload of the later key: memory)
+    DDo = None if EK else np.abs(A.astype(np.int16) - (S.load_key(yB, win) if bsrc else B).astype(np.int16)).max(-1)
     gA_raw = S.gids(S.load_pass(yA, 'gid', win)); gB_raw = S.gids(S.load_pass(yB, 'gid', win))
-    cA = S.classes(S.load_pass(yA, 'class', win)); cB = S.classes(S.load_pass(yB, 'class', win)); log('passes')
+    rawA, rawB = S.load_pass(yA, 'class', win), S.load_pass(yB, 'class', win); cA = S.classes(rawA); cB = S.classes(rawB); log('passes')
+    # ek2 (stage.KEYS): the earlier key is the year's OWN generation (no copies of the later key): changes are found in the RENDERS
+    # (what the two years' scenes differ in), never in the keys (two generations of the same street differ everywhere)
+    carm = lambda a: (a[..., 0] > 200) & (a[..., 1] > 90) & (a[..., 1] < 170) & (a[..., 2] < 60)
+    CAR = carm(rawA) | carm(rawB); del rawA, rawB
+    BLA_s = nd.gaussian_filter(S.load_pass(yA, 'beauty', win).astype(np.float32), (1.0, 1.0, 0))
+    BLB_s = nd.gaussian_filter(S.load_pass(yB, 'beauty', win).astype(np.float32), (1.0, 1.0, 0))
+    RD = np.abs(BLA_s - BLB_s).max(-1) > 30
+    # the renders' chromaticity difference (a pure light change keeps it low), kept alone so the two float renders can go (memory)
+    nrd = lambda a, b: np.abs(a / (a.sum(-1, keepdims=True) + 6) - b / (b.sum(-1, keepdims=True) + 6)).max(-1)
+    if not EK: NRD = nrd(BLA_s, BLB_s); del BLA_s, BLB_s       # (ek2: after the renders' tone match, below)
     PA = O.standing(eA, wbox) + extra_prisms(eA, wbox)
     PB = O.standing(None if yB == 'now' else eB, wbox) + extra_prisms(None if yB == 'now' else eB, wbox)
     if yB == 'now':      # the Transit Center model replaces its four record footprints
@@ -143,18 +158,52 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
         zg = b.get('zg', 0.0); X, Y = O.poly_px(b, zg, win)
         return X, Y, zg
     # pass 1: each changing object's pixels in its own key (label images), static pixels = both id maps on the same static key
-    kA_ = np.array([b['key'] for b in PA] + ['']); kB_ = np.array([b['key'] for b in PB] + [''])
-    stat_px = (MA >= 0) & (MB >= 0) & (kA_[MA] == kB_[MB]) & np.isin(kA_[MA], list(static))
+    # (integer codes, not key strings indexed per pixel: a string array per pixel took ~250 B/px)
+    code = {k: n for n, k in enumerate(sorted(set(kA) | set(kB)))}
+    cdA = np.array([code[b['key']] for b in PA] + [-1]); cdB = np.array([code[b['key']] for b in PB] + [-2])
+    stA = np.array([b['key'] in static for b in PA] + [False])
+    stat_px = (MA >= 0) & (MB >= 0) & (cdA[MA] == cdB[MB]) & stA[MA]
+    if EK:
+        # ek2: the RENDERS decide what changed, but two era renders differ in tone where nothing changed (the era's ground and
+        # street materials, exposure, a facade's aging: 35 % of static building px and half the ground differed by > 30 in
+        # 1985 -> 2006). Render A is matched to render B per class and channel (a quantile LUT on the px of that class in both
+        # years; for buildings the static ones only) before the difference: what remains is a change of SHAPE or of local light
+        BLA_m = BLA_s.copy(); qq = np.linspace(0.5, 99.5, 100); RD0 = RD.mean()
+        for c in range(8):
+            tgt = cA == c
+            mc = tgt & (cB == c) & ~CAR & (stat_px if c in (S.ROOF, S.FACADE, S.LANDMARK) else True)
+            idx = np.nonzero(mc.ravel())[0]
+            if len(idx) < 5000: continue
+            idx = idx[:: max(1, len(idx) // 300000)]
+            for ch in range(3):
+                qa = np.maximum.accumulate(np.percentile(BLA_s[..., ch].ravel()[idx], qq) + np.arange(100) * 1e-3)
+                qb = np.percentile(BLB_s[..., ch].ravel()[idx], qq)
+                BLA_m[..., ch][tgt] = np.interp(BLA_s[..., ch][tgt], qa, qb)
+        RD = np.abs(BLA_m - BLB_s).max(-1) > 30; NRD = nrd(BLA_m, BLB_s)
+        lw_ = np.array([0.299, 0.587, 0.114], np.float32); LrA, LrB = BLA_m @ lw_, BLB_s @ lw_; del BLA_m, BLA_s, BLB_s
+        log(f'ek2: renders tone-matched per class: changed {RD0:.3f} -> {RD.mean():.3f} of the window, static buildings {(RD & stat_px).sum() / max(stat_px.sum(), 1):.3f}')
+    if EK:
+        # the year's generation graded to the later key on what did not change (the same buildings seen in both keys): one monotone
+        # curve per channel for the window (global: no local smudge), so a building of the year sits in the later key's light
+        tm = (stat_px | (np.isin(cA, [S.GROUND, S.STREET, S.TREE]) & (cA == cB))) & (cA == cB) & (cA != S.WATER) & ~CAR & ~nd.binary_dilation(RD, iterations=4)
+        idx = np.nonzero(tm.ravel())[0][::5]
+        if len(idx) > 20000:
+            q = np.linspace(0.5, 99.5, 100); A = A.copy(); Af = A.reshape(-1, 3); Bf = B.reshape(-1, 3)
+            for ch in range(3):
+                qa = np.percentile(Af[idx, ch], q) + np.arange(100) * 1e-3; qb = np.percentile(Bf[idx, ch], q)
+                lut = np.clip(np.interp(np.arange(256), np.maximum.accumulate(qa), qb) + 0.5, 0, 255).astype(np.uint8)
+                A[..., ch] = lut[A[..., ch]]
+            log('ek2: the year graded to the later key on', len(idx) * 5, 'static px')
+        DD = np.abs(A.astype(np.int16) - B.astype(np.int16)).max(-1)
     LAB = {'died': np.zeros((H, W), np.int32), 'born': np.zeros((H, W), np.int32)}; CAND = []
     for side, keys, P, M, cls in (('died', died, PA, MA, cA), ('born', born, PB, MB, cB)):
         kidx = {b['key']: i for i, b in enumerate(P)}
         for k in keys:
             b = P[kidx[k]]; m = M == kidx[k]
-            if b['kind'] in ('lost', 'span'):     # a lost structure has no id: its prism raster where the two keys differ
-                im = Image.new('L', (W, H)); dr = ImageDraw.Draw(im)
+            if b['kind'] in ('lost', 'span'):     # a lost structure has no id: its whole prism raster (not only where the keys
+                im = Image.new('L', (W, H)); dr = ImageDraw.Draw(im)       # differ: a key may already hold a ghost of it)
                 for p in O.silhouette_polys(b, win): dr.polygon([(float(x), float(y)) for x, y in p], fill=1)
-                m = (np.asarray(im) > 0) & ((DD > 20) | (cA != cB)) & (cls != S.WATER) & ~stat_px
-                m = nd.binary_closing(nd.binary_opening(m, iterations=1), iterations=2) & (np.asarray(im) > 0)
+                m = (np.asarray(im) > 0) & (cls != S.WATER) & ~stat_px
             if m.sum() < 40: continue
             CAND.append((side, k, b)); LAB[side][m & (LAB[side] == 0)] = len(CAND)
     # pass 2: changed pixels no object owns (a spire, a brace, a rooftop kit outside the record's prism) go to the nearest
@@ -170,13 +219,38 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
     # the earlier key's anachronisms: where it shows exactly today's pixels on an object that changes (a landmark with no id in
     # the passes escaped compose_hard's mask: Salesforce's crown and 181 Fremont stand in the 2006 key), its own Blender render of
     # the year, brought to the key's colours by a per-channel fit on the pixels that did not change
-    anach = nd.binary_opening(((LAB['born'] > 0) | (LAB['died'] > 0)) & (DD < 10) & np.isin(cB, [S.ROOF, S.FACADE, S.LANDMARK, S.OTHER]), iterations=1)
-    anach = nd.binary_dilation(anach, iterations=1) & ((LAB['born'] > 0) | (LAB['died'] > 0))      # thin leaks too (a crown lattice), with their edges
+    SOLS = [S.ROOF, S.FACADE, S.LANDMARK, S.OTHER]
+    # inside a changing object, the two years' RENDERS differ (a viaduct deck over the street, a tower over a lot) but the two
+    # KEYS are equal: the earlier key copied the later one (compose_hard missed it: a structure classed as street, a gid-0 model)
+    rdiff = RD
+    if EK: anach = np.zeros((H, W), bool)       # (ek2: the year's own generation never copied the later key: no leaks to repair)
+    else:
+     anach = nd.binary_opening(((LAB['born'] > 0) | (LAB['died'] > 0)) & (DDo < 10) & (np.isin(cB, SOLS) | rdiff), iterations=1)
+     anach = nd.binary_dilation(anach, iterations=1) & ((LAB['born'] > 0) | (LAB['died'] > 0))      # thin leaks too (a crown lattice), with their edges
+     # and anything the later year's render has that the earlier year's render has not (a viaduct, a pier shed, a prop), shown the
+     # same in both keys: the earlier key leaked it
+     SOLT = SOLS + [S.TREE]                 # (a tree too: today's palms along the Embarcadero were planted after 1991)
+     leak = nd.binary_opening((DDo < 10) & np.isin(cB, SOLT) & ~np.isin(cA, SOLT) & ~stat_px, iterations=1)
+     leak = nd.binary_dilation(leak, iterations=1) & np.isin(cB, SOLT) & ~np.isin(cA, SOLT) & ~stat_px
+     anach |= leak
+     # leaks are regions, not pixels: inside each changing object, the leaked pixels closed into patches; an object that leaked on
+     # more than a quarter of its pixels is replaced whole (a coherent render of it rather than a patchwork of it and its leak)
+     for j_, (side_, k_, b_) in enumerate(CAND):
+         mo = LAB[side_] == j_ + 1; n_ = int(mo.sum())
+         if n_ < 50: continue
+         la = anach & mo
+         if la.sum() > 0.25 * n_: anach |= mo
+         elif la.any(): anach |= nd.binary_closing(la, iterations=3) & mo
     FITTED = None
+    if EK: anach[:] = False                     # (ek2: the year's own generation never copied the later key: no leaks to repair)
     if anach.sum() > 500:
         BL = S.load_pass(yA, 'beauty', win).astype(np.float32)
         fit = stat_px & (DD < 12) & (np.abs(BL - A.astype(np.float32)).max(-1) < 80)
-        idx = np.nonzero(fit.ravel())[0]; idx = idx[:: max(1, len(idx) // 400000)]
+        idx = np.nonzero(fit.ravel())[0]
+        if len(idx) < 2000:        # too few static pixels to fit the render to the key (open water): the whole window instead
+            idx = np.nonzero(((DD < 12) & (np.abs(BL - A.astype(np.float32)).max(-1) < 80)).ravel())[0]
+        if len(idx) < 2000: idx = np.arange(0, A.shape[0] * A.shape[1], 97)
+        idx = idx[:: max(1, len(idx) // 400000)]
         A = A.copy(); Af_ = A.reshape(-1, 3).astype(np.float32); Bf_ = BL.reshape(-1, 3)
         BLs = nd.gaussian_filter(BL, (0.8, 0.8, 0))                    # the render's noise softened
         fitted = np.zeros_like(BL)
@@ -193,8 +267,55 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
             mu_s = np.clip(src_[m_].mean(0), 8, None); mu_r = ref_[ring].mean(0)
             g_ = np.clip((0.6 * mu_r + 0.4 * mu_s) / mu_s, 0.6, 1.6)          # a gain (never pushes a dark facade to black)
             A[y0_:y1_, x0_:x1_][m_] = np.clip(src_[m_] * g_, 0, 255).astype(np.uint8)
+        # better than the render where the object shows itself elsewhere in the key: the leaked pixels of an object copied from
+        # its own valid pixels, along its axis (a viaduct span: along its path) or a whole number of floors up or down (a building)
+        nown = 0
+        for j_, (side_, k_, b_) in enumerate(CAND):
+            if side_ != 'died' or b_['kind'] in ('span', 'lost'): continue    # (a born object's pixels in A are what stood there before;
+            mo = LAB['died'] == j_ + 1                                         #  a viaduct's own pixels are too few and mixed: its render)
+            lk = mo & anach
+            if lk.sum() < 20: continue
+            ok_src = nd.binary_erosion(mo & ~anach, iterations=2)
+            if ok_src.sum() < 3 * lk.sum(): continue
+            yy_, xx_ = np.nonzero(mo); y0_, y1_, x0_, x1_ = yy_.min(), yy_.max() + 1, xx_.min(), xx_.max() + 1
+            if b_['kind'] == 'span':
+                P_ = np.array(b_['ring'], float); Xp, Yp = S.w2c(P_[:, 0], P_[:, 1], 0.0)
+                d_ = np.array([Xp.max() - Xp.min(), Yp[np.argmax(Xp)] - Yp[np.argmin(Xp)]]); d_ = d_ / max(np.hypot(*d_), 1e-6)
+                offs = [(int(round(d_[1] * t)), int(round(d_[0] * t))) for t in range(12, 400, 12) for t in (t, -t)]
+            else:
+                per = max(8, int(round(2 * (3.9 if b_['h'] >= 30 else 3.4) * S.PX_Z)))
+                offs = [(sg * k * per, 0) for k in range(1, 40) for sg in (1, -1)]
+            ly, lx = np.nonzero(lk); got = np.zeros(len(ly), bool)
+            for oy_, ox_ in offs:
+                sy_, sx_ = ly + oy_, lx + ox_; inb = (~got) & (sy_ >= 0) & (sy_ < H) & (sx_ >= 0) & (sx_ < W)
+                q = np.zeros(len(ly), bool); q[inb] = ok_src[sy_[inb], sx_[inb]]
+                A[ly[q], lx[q]] = A[sy_[q], sx_[q]]; got |= q
+                if got.all(): break
+            nown += int(got.sum())
         DD = np.abs(A.astype(np.int16) - B.astype(np.int16)).max(-1)
-        log('anachronisms of today in the earlier key replaced by its own render (fitted):', int(anach.sum()))
+        log('anachronisms of today in the earlier key replaced by its own render (fitted):', int(anach.sum()), '; from the object itself:', nown)
+    # a tree planted later (a tree in the later render, none in the earlier one) is not in the earlier year: the earlier key's
+    # pixels there (an exact copy of it, or a translucent ghost of it) inpainted from the ground around (small patches)
+    tadd = (cB == S.TREE) & (cA != S.TREE) & ~stat_px & (LAB['born'] == 0) & (LAB['died'] == 0)
+    tadd = nd.binary_dilation(nd.binary_opening(tadd, iterations=1), iterations=2) & ~stat_px & ~np.isin(cA, SOLS) & (cA != S.WATER)
+    if tadd.sum() > 20 and not EK:
+        import cv2
+        A = cv2.inpaint(np.ascontiguousarray(A), tadd.astype(np.uint8), 4, cv2.INPAINT_TELEA); log('trees planted later removed from the earlier key:', int(tadd.sum()))
+    # a structure built later over WATER: in the earlier key its place is open water, the later key's water shifted from beside
+    # it (the water of A* is the later key's where it is water in both years), never the earlier key's ghost of it
+    nwat = 0
+    wz = (LAB['born'] > 0) & (cA == S.WATER) & (cB != S.WATER)
+    if wz.sum() > 20:
+        wsrc = (cA == S.WATER) & (cB == S.WATER) & (LAB['born'] == 0) & (LAB['died'] == 0)
+        ly, lx = np.nonzero(wz); got = np.zeros(len(ly), bool)
+        for t in range(48, 2000, 48):
+            for ox_ in (t, -t):
+                sx_ = lx + ox_; inb = (~got) & (sx_ >= 0) & (sx_ < W); q = np.zeros(len(ly), bool); q[inb] = wsrc[ly[inb], sx_[inb]]
+                A[ly[q], lx[q]] = B[ly[q], sx_[q]]; got |= q
+            if got.all(): break
+        nwat = int(got.sum())
+        if nwat: A = A; log('water under structures built later:', nwat)
+    DD = np.abs(A.astype(np.int16) - B.astype(np.int16)).max(-1)
     for j, (side, k, b) in enumerate(CAND):
         K = B if side == 'born' else A
         m = LAB[side] == j + 1
@@ -290,7 +411,11 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
     log('sprites: born', int(SB.sum()), 'died', int(SD.sum()), 'both', int((SB & SD).sum()))
     # ── shadows: per object, the footprint swept along the sun vector; the height each pixel needs ─────────────────
     lum = lambda I: I.astype(np.float32) @ np.array([0.299, 0.587, 0.114], np.float32)
-    LA, LB = lum(A), lum(B)
+    LA, LB = (None, None) if EK else (lum(A), lum(B))          # (ek2 uses the renders, not the keys' light)
+    RDd = nd.binary_dilation(RD, iterations=2)
+    RLO = NRD < 0.05          # the renders differ by light only (a shadow cast or lifted)
+    kreg_p = os.path.join(os.path.dirname(bsrc or astar_out or outp), 'shade_k.json')
+    KREG = json.load(open(kreg_p)) if (bsrc and os.path.exists(kreg_p)) else {}; KREG_OUT = dict(KREG)
     for o in objs:
         Hs = o['h']; X, Y, zg = geometry(dict(ring=o['ring'], zg=o['zg']))
         ext = Hs * np.abs(S.SHV); sx0 = int(max(0, X.min() - 4)); sx1 = int(min(W, X.max() + ext[0] + 6)); sy0 = int(max(0, Y.min() - ext[1] - Hs * S.PX_Z - 6)); sy1 = int(min(H, Y.max() + 6))
@@ -305,14 +430,42 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
             # a shadow of today's building already in the earlier key (it leaked with the building): where the earlier key equals
             # today's and its own render is clearly brighter, the render (fitted) gives back the year's light
             fl = FITTED[sl]; lf = fl @ np.array([0.299, 0.587, 0.114], np.float32)
-            cand = np.isfinite(hreq) & (DD[sl] < 10) & (lf > 1.25 * LB[sl] + 4) & ~SB[sl] & ~SD[sl]
+            cand = np.isfinite(hreq) & (DDo[sl] < 10) & (lf > 1.25 * LB[sl] + 4) & ~SB[sl] & ~SD[sl]
             if cand.any():
                 A[sl][cand] = fl[cand].astype(np.uint8); LA[sl][cand] = lf[cand]
-        if o['side'] == 'born': dark = (LB[sl] < 0.82 * LA[sl]) & ~SB[sl] & ~SD[sl]
-        else: dark = (LA[sl] < 0.82 * LB[sl]) & ~SD[sl] & ~SB[sl]
-        dark &= np.isfinite(hreq) & (hreq > max(0.3, o.get('hcA', 0.0)))   # (what it already shaded in A stays A's)
-        dark = nd.binary_opening(dark, iterations=1)
-        o['shadow'] = (sx0, sy0, np.where(dark, hreq, np.inf).astype(np.float32)) if dark.any() else None
+        # the shadow's REGION: for a born building, B's own shadow edge (B is the clean, later key) inside the swept footprint;
+        # for a gone building, the swept footprint itself on the visible ground (geometry, not the earlier key's mask edges: the
+        # compose_hard staircase). Its SHADE: one ratio per channel, measured between the two keys inside the region.
+        free = ~SB[sl] & ~SD[sl] & np.isfinite(hreq) & (hreq > max(0.3, o.get('hcA', 0.0)))   # (what it already shaded in A stays A's)
+        if EK:
+            # ek2: the shadow is the year's own (A's pixels, from the RENDERS' difference); the region only times its switch
+            # (the whole render difference inside the object's swept footprint, not only a same-colour one: a shade's colour is
+            # bluer than sunlit asphalt, so the light-only test (RLO) missed most of the freeway's shadow and left the rest to the
+            # ground-change mask: a jagged dark patch of 1985's shadow beside 2006's sunlit street, A/B #3 #02)
+            # but only where the render is DARKER in the year the object stands (a shade), not every render difference in the swept
+            # footprint (that took 2006's street in patches under a tall object's long sweep: held-out QA #04)
+            dk = (LrB[sl] < 0.85 * LrA[sl] - 3) if o['side'] == 'born' else (LrA[sl] < 0.85 * LrB[sl] - 3)
+            lr = RDd[sl] & free & dk
+            reg = nd.binary_opening(lr, iterations=1)
+            if reg.sum() < 20: o['shadow'] = None; continue
+            o['shadow'] = (sx0, sy0, np.where(reg, hreq, np.inf).astype(np.float32)); o['shade_k'] = np.array([0.56, 0.56, 0.56], np.float32)
+            continue
+        if o['side'] == 'born':
+            reg = nd.binary_opening((LB[sl] < 0.82 * LA[sl]) & free, iterations=1); meas = reg
+        else:
+            reg = free & np.isin(cB[sl], [S.GROUND, S.STREET, S.TREE]); meas = reg & (LA[sl] < 0.82 * LB[sl])
+        if reg.sum() < 20: o['shadow'] = None; continue
+        num, den = (B, A) if o['side'] == 'born' else (A, B)
+        if o['side'] == 'born' and o['key'] in KREG:
+            k = np.array(KREG[o['key']], np.float32)            # the ratio it was laid with, one step later in the chain: exact inverse
+        elif meas.sum() >= 30:
+            nu = num[sl][meas].astype(np.float32) + 2; de = den[sl][meas].astype(np.float32) + 2
+            kl = float(np.median(nu.mean(-1) / de.mean(-1)))
+            ch = np.clip((nu.mean(0) / nu.mean()) / (de.mean(0) / de.mean()), 0.94, 1.06)     # a shade may be a little bluer, no more
+            k = kl * ch
+        else: k = np.array([0.56, 0.56, 0.56], np.float32)
+        o['shadow'] = (sx0, sy0, np.where(reg, hreq, np.inf).astype(np.float32)); o['shade_k'] = np.clip(k, 0.3, 0.92).astype(np.float32)
+        if o['side'] == 'died': KREG_OUT[o['key']] = o['shade_k'].tolist()
     # ── A*: B where nothing changed, A on what changed ────────────────────────────────────────────────────────────
     Astar = B.copy()
     Astar[SD] = A[SD]
@@ -323,11 +476,23 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
     for o in objs:
         if o['shadow'] is None: continue
         sx0, sy0, hr = o['shadow']; shd[sy0:sy0 + hr.shape[0], sx0:sx0 + hr.shape[1]] |= np.isfinite(hr)
-    Af, Bf = A.astype(np.float32), B.astype(np.float32)
-    sm = lambda I: nd.gaussian_filter(I, (2.0, 2.0, 0))
-    ratio = np.clip((sm(Af) + 4) / (sm(Bf) + 4), 0.25, 4.0)
-    rel = np.clip(Bf * ratio, 0, 255).astype(np.uint8)
-    Astar[shd] = rel[shd]
+    # in A*: a born building's shadow lifted off B (B / k: the ground as lit in A), a gone building's shadow laid on B (B * k), with
+    # a 1.2 px soft edge; the shade ratio per object and channel (no per-pixel ratio map: it copied the earlier key's mask edges)
+    if not EK:
+        Bf = B.astype(np.float32); AS = Astar.astype(np.float32)
+        for o in objs:
+            if o['shadow'] is None: continue
+            sx0, sy0, hr = o['shadow']; reg = np.isfinite(hr); sl = (slice(sy0, sy0 + hr.shape[0]), slice(sx0, sx0 + hr.shape[1]))
+            a = np.clip(nd.gaussian_filter(reg.astype(np.float32), 1.2), 0, 1)[..., None] * (~SB[sl] & ~SD[sl])[..., None]
+            k = o['shade_k'][None, None, :]
+            tgt = Bf[sl] / k if o['side'] == 'born' else Bf[sl] * k
+            AS[sl] = AS[sl] * (1 - a) + tgt * a
+        Astar = np.clip(AS + 0.5, 0, 255).astype(np.uint8); del Bf, AS
+    else:
+        # ek2: B wherever the two years' renders agree; the year's own (graded) pixels wherever they differ (objects, their shadows,
+        # ground, cars, trees): the render outlines every change exactly, so no key-mask edge (staircase, patch) is ever drawn
+        # (not every px where the renders differ: a static building or ground whose render only differs stays B's, one rendition)
+        Astar = B.copy(); MAm = SD | SB | shd; Astar[MAm] = A[MAm]
     # static buildings hidden in B behind a born one: B's own rendition continued behind them (floors repeat); when B shows too
     # little of one, A's rendition on the whole building, and B's where B shows it switches as the rising front passes
     SWK = np.zeros((H, W), np.uint8); SWO = np.full((H, W), -1, np.int32); SWP = np.zeros((H, W), np.float32)
@@ -350,9 +515,21 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
         def zsw(q):
             qy, qx = np.nonzero(q); cidx = np.clip(qx - fx0, 0, len(ob['ynear']) - 1)
             return qy, qx, np.clip((ob['ynear'][cidx] + fy0 - qy) / S.PX_Z, 0, 0.97 * ob['h'])
-        if hid.sum() > 0.6 * mA.sum():
+        # (ek2 tried B's floors repeated behind (periodic_fill): on a tower whose visible part is not one repeating floor (glass
+        # + ledges) it drew a wedding-cake hallucination (A/B #3 #06, 181 Fremont's neighbour g137723 behind Salesforce Tower).
+        # ek2 takes the first branch below in every case)
+        if hid.sum() > 0.6 * mA.sum() or EK:
             # mostly hidden: A's rendition on the whole building; where B shows it, B takes over as the rising front passes
             Astar[mA] = A[mA]; q = mBv & mA
+            if EK:
+                # ek2 (every case): the year's rendition on the whole building, brought to B's rendition of it (per-channel mean and
+                # contrast on the px both show), and the whole building switches to B's ONCE, when the rising front has covered its
+                # hidden part (row by row, the switch drew rectangles where the front's columns end: A/B #4-5 #12; the A-behind
+                # patch drew a second rendition inside B's: #11)
+                ov = q
+                if ov.sum() > 200:
+                    a_ = A[ov].astype(np.float32); b_ = B[ov].astype(np.float32); g_ = np.clip(b_.std(0) / (a_.std(0) + 1), 0.7, 1.4)
+                    Astar[mA] = np.clip((A[mA].astype(np.float32) - a_.mean(0)) * g_ + b_.mean(0) + 0.5, 0, 255).astype(np.uint8)
         else:
             # A's rendition behind, B's where B shows it, a 10 px feather on B's side of the line (switched with the front)
             Astar[hid] = A[hid]
@@ -361,33 +538,130 @@ def main(yA, yB, win, outp, bsrc=None, astar_out=None):
             wq = np.clip(dh / 10.0, 0, 1)[..., None]
             Astar[sl] = np.where(q[sl][..., None], (B[sl].astype(np.float32) * wq + A[sl].astype(np.float32) * (1 - wq)).astype(np.uint8), Astar[sl]); ncomp += 1
         if q.any():
-            qy, qx, zq = zsw(q); SWK[qy, qx] = 1; SWO[qy, qx] = own; SWP[qy, qx] = zq; nswitch += int(q.sum())
+            qy, qx, zq = zsw(q)
+            if EK: zq = np.full_like(zq, min(float(zsw(hid)[2].max()), 0.97 * ob['h']))
+            SWK[qy, qx] = 1; SWO[qy, qx] = own; SWP[qy, qx] = zq; nswitch += int(q.sum())
     log('static behind born: completed from B', ncomp, '; A rendition + switch px', nswitch)
     # ground that changed (class or strong difference on ground classes, away from sprites and shadows): A's own
     ground = lambda c: np.isin(c, [S.GROUND, S.STREET, S.TREE, S.WATER, S.OTHER])
-    dd = np.abs(A.astype(np.int16) - B.astype(np.int16)).max(-1)
     # water that is water in both years is the later year's water (its look, glitter and boats): not a change (BAR 26/09: one water)
-    gch = ground(cA) & ground(cB) & ((cA != cB) | (dd > 28)) & ~SB & ~SD & ~shd & ~((cA == S.WATER) & (cB == S.WATER))
+    # a pure light change (same colour, another brightness) on ground no object shades is a key artefact (the staircase shadow
+    # masks of compose_hard, a shadow of something that stands in both years): not a change
+    if EK:
+        light_only = NRD < 0.04
+        dd = np.where(RD, 255, 0)                        # (the renders decide what changed)
+    else:
+        dd = np.abs(A.astype(np.int16) - B.astype(np.int16)).max(-1)
+        nA = A.astype(np.float32) / (A.astype(np.float32).sum(-1, keepdims=True) + 6); nB = B.astype(np.float32) / (B.astype(np.float32).sum(-1, keepdims=True) + 6)
+        light_only = (np.abs(nA - nB).max(-1) < 0.04) & (np.abs(LA - LB) > 12); del nA, nB
+    gch = ground(cA) & ground(cB) & ((cA != cB) | ((dd > 28) & ~light_only)) & ~SB & ~SD & ~shd & ~((cA == S.WATER) & (cB == S.WATER))
+    if EK:
+        # ek2: on ground of the SAME class in both years (a street that stayed a street) a render difference is repaving, markings
+        # or render noise, not history: the later key's street (the earlier year's generation there drew patches of another
+        # asphalt on today's roadway: held-out QA #04); a class change (a road become a plaza, a lot become a park) stays a change
+        gch &= (cA != cB)
     # what changed that no record explains (pier sheds, kiosks, structures the era builders draw): the earlier key's own, never
     # today's in the past; a landmark model standing in both years (the Ferry Building) stays the later key's
     SOL = [S.ROOF, S.FACADE, S.LANDMARK, S.OTHER]
-    unexpl = (dd > 28) & ~SB & ~SD & ~shd & ~stat_px & ~((cA == S.WATER) & (cB == S.WATER)) & ~((cA == S.LANDMARK) & (cB == S.LANDMARK)) & \
+    unexpl = (dd > 28) & ~light_only & ~SB & ~SD & ~shd & ~stat_px & ~((cA == S.WATER) & (cB == S.WATER)) & ~((cA == S.LANDMARK) & (cB == S.LANDMARK)) & \
              (np.isin(cA, SOL) | np.isin(cB, SOL))
     # but a thing floating on the later year's water that touches no land (a boat, its wake) is life, not history: it stays the
     # later key's (the earlier key's own water there would be a ghost of the boat's shape in another water)
-    fl = unexpl & ~np.isin(cA, SOL) & (cA == S.WATER)
+    fl = (unexpl | gch) & ~np.isin(cA, SOL) & (cA == S.WATER)
     if fl.any():
         land = nd.binary_dilation(~(cA == S.WATER) & ~(cB == S.WATER) & ~fl, iterations=4)
         labf, nf = nd.label(fl); touch = np.unique(labf[land & fl]); touch = touch[touch > 0]
-        boats = fl & ~np.isin(labf, touch); unexpl &= ~boats; log('floating life kept as the later key:', int(boats.sum()))
+        # a VESSEL moored at a quay touches land too (today's docked ferry): a patch on the earlier year's water that the later
+        # render classes mostly 'other' (vessels; piers and wharves are records or ground) and no record owns is life as well.
+        # (erasing it left a slab of another water, a striped hull or a block of darker water: A/B #1 #03, #3 #03, #4 #03)
+        if nf:
+            oth = nd.mean((cB == S.OTHER).astype(np.float32), labf, np.arange(1, nf + 1)); vessel = np.nonzero(oth >= 0.8)[0] + 1
+            touch = np.setdiff1d(touch, vessel)
+        boats = fl & ~np.isin(labf, touch); unexpl &= ~boats; gch &= ~boats; log('floating life (boats, moored vessels) kept as the later key:', int(boats.sum()))
     gch |= unexpl
     gch = nd.binary_opening(gch, iterations=2); gch = nd.binary_closing(gch, iterations=2) & ~SB & ~SD & ~shd
     lab, ng = nd.label(gch); ar = nd.sum(gch, lab, range(1, ng + 1)); keep = np.isin(lab, np.nonzero(ar >= 150)[0] + 1)
     gch = keep; Astar[gch] = A[gch]
+    if EK and gch.any():
+        # ek2: a ground change is the year's own generation beside the later key's ground: two generations of one street differ in
+        # local tone, so the patch read as a jagged dark slab (A/B #4 #02: 1985's parking beside 2006's plaza). The patch is
+        # brought to the later key's tone at its edge by a smooth membrane: the mean B - A difference on the ring of B px around
+        # it, spread inwards (normalised convolution, 32 px); its own texture and content stay the year's
+        # (tried: plantings = the later key inpainted under today's trees: TELEA smeared dark blobs wherever today's trees stand on
+        # the earlier year's street (A/B #10 #01-#09): the year's own street, toned by the membrane, reads better)
+        gch_t = gch
+        ring = nd.binary_dilation(gch, iterations=3) & ~gch & ~SB & ~SD & ~shd
+        wr = nd.gaussian_filter(ring.astype(np.float32), 32)
+        cor = np.stack([nd.gaussian_filter(np.where(ring, B[..., ch].astype(np.float32) - A[..., ch].astype(np.float32), 0), 32) for ch in range(3)], -1) / (wr[..., None] + 1e-6)
+        cor[wr < 2e-4] = 0                                              # (no ring within reach: no correction)
+        Astar[gch_t] = np.clip(A[gch_t].astype(np.float32) + cor[gch_t] + 0.5, 0, 255).astype(np.uint8); del cor, wr, ring
     log('A*: died', int(SD.sum()), 'born-behind', int(only_b.sum()), 'shadows', int(shd.sum()), 'ground', int(gch.sum()))
+    # ONE WATER: wherever A* would show the earlier key's pixels on water of the earlier year's render (a boat or pier of today
+    # erased, a structure built later over water, a shore moved), the later key's water copied from beside (the nearest pixels, left
+    # or right, that are water in both years and B's own): no patch of another water ('slab') is ever left in the bay
+    wm = (np.abs(Astar.astype(np.int16) - B.astype(np.int16)).max(-1) > 0) & (cA == S.WATER) & ~SD
+    if wm.sum() > 20:
+        wsrc = (cA == S.WATER) & (cB == S.WATER) & ~wm & (np.abs(Astar.astype(np.int16) - B.astype(np.int16)).max(-1) == 0)
+        # each connected patch first as ONE block of the later key's water from beside (the same offset for the whole patch: a
+        # docked ferry of today filled per row from different offsets drew a striped hull in A/B #3 #03); per row only as a fallback
+        labw, nw_ = nd.label(wm, structure=np.ones((3, 3), bool)); nblk = 0
+        for k_, bb in enumerate(nd.find_objects(labw)):
+            if bb is None: continue
+            mk = labw[bb] == k_ + 1; (ya, yb_), (xa, xb_) = (bb[0].start, bb[0].stop), (bb[1].start, bb[1].stop)
+            for d_ in range(24, 3000, 24):
+                hit = None
+                for ox_, oy_ in ((d_, 0), (-d_, 0), (0, d_), (0, -d_)):
+                    if xa + ox_ < 0 or xb_ + ox_ > W or ya + oy_ < 0 or yb_ + oy_ > H: continue
+                    if wsrc[ya + oy_:yb_ + oy_, xa + ox_:xb_ + ox_][mk].mean() >= 0.995: hit = (ox_, oy_); break
+                if hit:
+                    ox_, oy_ = hit; Astar[ya:yb_, xa:xb_][mk] = B[ya + oy_:yb_ + oy_, xa + ox_:xb_ + ox_][mk]; wm[ya:yb_, xa:xb_][mk] = False; nblk += 1
+                    break
+        log('one water: patches copied as a block', nblk, 'of', nw_)
+        ly, lx = np.nonzero(wm); got = np.zeros(len(ly), bool)
+        for t_ in range(24, 3000, 24):
+            for ox_ in (t_, -t_):
+                sx_ = lx + ox_; inb = (~got) & (sx_ >= 0) & (sx_ < W); q_ = np.zeros(len(ly), bool); q_[inb] = wsrc[ly[inb], sx_[inb]]
+                Astar[ly[q_], lx[q_]] = B[ly[q_], sx_[q_]]; got |= q_
+            if got.all(): break
+        log('one water: earlier-key water replaced by the later key\'s', int(got.sum()), 'of', int(wm.sum()))
     # ── the lot / behind-both fill (neither key shows it): graded earth in the footprints, inpainted above ───────────
     both = SB & SD
-    if astar_out: np.save(astar_out, Astar); log('A* saved for the step before:', astar_out)
+    if astar_out and os.environ.get('TR_ORDER') == '1':
+        # the SLIDER's order map (GRAMMAR §7): per pixel that differs between A* and B, the moment of the step (0..254) it switches
+        # from A* to B: a new building from its base up over its window, a gone one from its top down, a shadow when the height it
+        # needs is reached, a ground change with its owner; 255 = the same in both years
+        span = max(eB - eA, 1e-3); nrm = lambda y: min(0.98, max(0.02, (y - eA) / span))
+        T = np.full((H, W), -1.0, np.float32)
+        for o in objs:
+            if o.get('cont'): continue
+            fx0, fy0, fx1, fy1 = o['box']; sp = o['sprite']; fh, fw = sp.shape
+            yn = o['ynear'][None, :]; rows = np.arange(fh, dtype=np.float32)[:, None]
+            Z = np.clip((yn - rows) / S.PX_Z, 0, o['h'])
+            if o['side'] == 'born': t0, t1 = nrm(o.get('site0', o['ys'])), nrm(o['yc']); tz = t0 + (t1 - t0) * (0.15 + 0.85 * Z / max(o['h'], 1))
+            else: t0, t1 = nrm(o['ds']), nrm(o['de']); tz = t0 + (t1 - t0) * 0.9 * (1 - Z / max(o['h'], 1))
+            v = T[fy0:fy1, fx0:fx1]; v[sp] = tz[sp]
+            o['_t'] = (t0, t1)
+            if o.get('shadow') is not None:
+                sx0, sy0, hr = o['shadow']; reg = np.isfinite(hr); vv = T[sy0:sy0 + hr.shape[0], sx0:sx0 + hr.shape[1]]
+                hh = np.clip(hr / max(o['h'], 1), 0, 1)
+                ts = t0 + (t1 - t0) * (0.15 + 0.85 * hh) if o['side'] == 'born' else t0 + (t1 - t0) * 0.9 * (1 - hh)
+                m_ = reg & (vv < 0); vv[m_] = ts[m_]
+        if gch.any():
+            seed = np.zeros((H, W), np.int32)
+            for k_, o in enumerate(objs):
+                if '_t' in o: fx0, fy0, fx1, fy1 = o['box']; seed[fy0:fy1, fx0:fx1][o['sprite'] | o['foot']] = k_ + 1
+            if seed.any():
+                _, (iy, ix) = nd.distance_transform_edt(seed == 0, return_indices=True); ow = seed[iy, ix] - 1
+                g_ = gch & (T < 0); oo = ow[g_]
+                tt = np.array([objs[k].get('_t', (0.5, 0.5))[1] for k in range(len(objs))] + [0.5], np.float32)
+                T[g_] = tt[np.where(oo >= 0, oo, len(objs))]
+        diff = np.abs(Astar.astype(np.int16) - B.astype(np.int16)).max(-1) > 0
+        T[diff & (T < 0)] = 0.5
+        ORD = np.where(diff, np.clip(np.round(T * 254), 0, 254), 255).astype(np.uint8)
+        np.save(astar_out.replace('K_', 'O_'), ORD); log('order map saved', int(diff.sum()), 'px change')
+    if astar_out:
+        np.save(astar_out, Astar); log('A* saved for the step before:', astar_out)
+        json.dump(KREG_OUT, open(os.path.join(os.path.dirname(astar_out), 'shade_k.json'), 'w'))
     if os.environ.get('TR_NOPKL') == '1': log('K* only (no pickle)'); return
     meta = lambda P: [dict(key=b['key'], kind=b['kind'], h=float(b['h']), cy=float(b['cy']), zg=float(b.get('zg', 0.0)), ring=b['ring']) for b in P]
     pickle.dump(dict(win=win, yA=yA, yB=yB, eA=eA, eB=eB, A=A, B=B, Astar=Astar, cA=cA, cB=cB, SB=SB, SD=SD, FB=FB, FD=FD, both=both, gch=gch,

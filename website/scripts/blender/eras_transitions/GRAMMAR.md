@@ -114,11 +114,31 @@ births (bottom first) and deaths (top first), along the path for lines) + the pl
   models and roof shapes).
 - `prep.py <yA> <yB> <window> <out.pkl> [B.npy] [A*.npy]` one step: objects (born / died, spans of viaducts), dates (records,
   era.py conventions, SOURCED windows, clearance waves), plates, shadows (height each pixel needs), and **A\***, the consistent
-  earlier key: B on everything that did not change, A on what did, today's water, the earlier key's anachronisms (today's
-  landmarks with gid 0 that leaked in) replaced by the year's own render fitted to the key's colours.
+  earlier key: B on everything that did not change, A on what did. Rules that remove the smudges at their root:
+  - **leaks**: where the two years' renders differ (or the later render has a structure the earlier one has not) but the earlier
+    key equals the later year's ORIGINAL key, the earlier key copied it (compose_hard missed gid-0 landmarks and structures
+    classed as street, e.g. the 1959 freeway inside the 1938 key): the year's own render, fitted to the key's colours and
+    brought to the tone around the patch, replaces it (a flatter patch, never a ghost);
+  - **shadows** from geometry: a gone building's shadow = its footprint swept along the sun on the visible ground, laid with one
+    shade ratio per object (luminance x a chroma factor within 6 %); a new building's shadow lifted off B with the same kind of
+    ratio; a registry per chain makes the ratio used to lay a shadow (later step) the one used to lift it (earlier step);
+  - leaks are **regions**: closed inside each changing object, and an object that leaked on more than a quarter of its pixels is
+    replaced whole (the 1985 freeway in front of the Ferry Building: a coherent deck instead of a patchwork); a leaked building
+    takes its own floors from where it did not leak before the render is used;
+  - a **tree planted later** (a tree in the later render, none in the earlier) is inpainted away from the earlier key (exact copy
+    or translucent ghost);
+  - a **pure light change** on ground no changing object shades (compose_hard's staircase shadow masks) is dropped;
+  - **water** that is water in both years, **floating life** (boats and wakes not touching land), and the water under a
+    structure built later over it, are the later key's water;
+  - **black pipeline holes** in a past key are inpainted at load; the tone step at every L7 frame boundary is spread over 96 px.
 - `run_chain.sh <window> <dir>` the keys from today back to 1938, each step's A\* the next earlier step's B: consecutive shots
   join without a jump (no key-year pop).
 - `render.py <prep.pkl> <plan.json>` the frames: plate, background switches (shadows by height, ground by date with a wipe),
   objects drawn on scratch buffers and kept by a per-pixel depth test, stages of §1-§2, dust puffs, film-time windows with
   minimum screen times, focus windows for captioned events. `film.sh` renders the shots of `film/shots.json` and cuts them.
-- Not built: cranes (parked), tree growth (K6, trees switch with their ground), the slider order maps (§7), camera moves.
+- `kstar_pilot.py <dir> <jobs>` the consistent keys of the whole pilot, tile by tile (an L8 frame + margins, the chain today ->
+  1938), and the slider's **order maps** (per pixel, the moment of the step it switches); `build_pyr_tr.py` their pyramids and
+  order tiles; `viewer/eras_tr.html` the slider: at z8 and closer every pixel switches at its own moment while scrubbing (a
+  building rises from its base, a gone one goes from the top, a lot with its building), no blend; zoomed out, the old fade.
+- `render.py` camera: eased glides between plan keys (`cam`: [film s, centre x, centre y, width]), <= ~2 % of the width a second.
+- Not built: cranes (parked), tree growth (K6: trees switch with their ground), order maps below z8 in the slider.
