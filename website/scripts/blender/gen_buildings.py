@@ -109,6 +109,7 @@ TRACT = _os_f.environ.get('TRACT', '1') == '1'   # (25/09) the tract builders' f
 # name stands for (display RGB: body, trim, accent). CONVENTION on the exact
 # tints, SOURCED on the families.
 import era as EA
+import bk_kit as BK      # (27/09, assets_buildings) the ordinary building's kit v1: typology and skin
 # 1870s Italianates in white, cream and stone tints, 'to resemble stone'
 STONE_1875 = [((0.88, 0.85, 0.76), (0.74, 0.70, 0.60), (0.30, 0.26, 0.20)),
               ((0.82, 0.78, 0.68), (0.93, 0.90, 0.82), (0.36, 0.30, 0.22)),
@@ -506,6 +507,7 @@ def building(b, ground, out):
     global ZG_, ZPRE_; ZG_ = zg; ZPRE_ = (b['h'] < 30 and (b['year'] or 1950) < 1945 and b['ty'] in ('APARTMENT', 'FLATS'))
     zfoot = min(zs) - 0.6                  # walls run into the lowest ground
     style = style_of(b)
+    if BK.fire_rebuilt(b, style, ERA): style = 'stucco'      # (BK_FIRE) the burned district's 'old' house: an Edwardian flat
     top = zg + max(3.0, b['h'])
     storeys = b['st'] or max(1, round(b['h'] / 3.4))
     # a storey count its height cannot hold (a 70 m tower "of 2 storeys"):
@@ -613,12 +615,16 @@ def building(b, ground, out):
     # front here and there (Richmond top-down, Parkside drone) — the pastel
     # draw read as a candy row. Seven in ten neutral, and less boosted below
     WHITE_ROW = ep is None and not LM and sub in ('med', 'sunset', 'postwar', 'modern')
+    pal_ = None
+    if not LM and ep is None and ERA is None and PS is None and not OV.get('facade_col') and sub not in ('works', 'pier'):
+        pal_ = BK.paint(b, style, sub)                          # (BK_PAL) the fronts measured on street photos
+        if pal_: body, trim = pal_
     if WHITE_ROW and random.Random(b['gid'] * 389 + 5).random() < 0.7: body = random.Random(b['gid'] * 389 + 6).choice(NEUTRAL)
     if LM and ERA is None: body, trim, accent = LM['paint']
     # paint that must still read at a distance: the painted styles a little
     # richer, more so at the city's scale where a front is a few pixels
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
-        body = saturate(body, 1.18 if LOD == 0 else (1.2 if WHITE_ROW else 1.5))
+        body = saturate(body, 1.18 if LOD == 0 else (1.2 if (WHITE_ROW or pal_) else 1.5))
         body = unviolet(body)
     # (25/09, level 9) the painted house's signature is its light trim standing
     # out of a mid-tone body. A pale body under white trim read as a plain box
@@ -752,6 +758,8 @@ def building(b, ground, out):
             else: side_ = ('stucco', sr_.choice(((0.86, 0.82, 0.72), (0.78, 0.76, 0.72), (0.78, 0.82, 0.74), (0.86, 0.76, 0.74))))
         else: side_ = (wall_mat if wall_mat != 'siding' or sr_.random() < 0.6 else 'stucco', fam)
         back_ = (wall_mat, fam if sr_.random() < 0.5 else body)
+        sw_ = BK.side_walls(b, style, wall_mat, fam)          # (BK_SIDE) brown shingle and plain boards on the sides and backs
+        if sw_: side_, back_ = sw_
     if PS is not None and PS.get('bulkhead', 'beaux') != 'none': ctx['bulk_w'] = bulk_wall(walls)
     # ── walls ──
     for i, w in enumerate(walls):
@@ -958,8 +966,10 @@ def building(b, ground, out):
             a, c = Vector((*ring[i], 0)), Vector((*ring[(i + 1) % n], 0))
             ia, ic = Vector((*inner[i], 0)), Vector((*inner[(i + 1) % n], 0))
             out.poly(rmat_, [Vector((ic.x, ic.y, deck)), Vector((ia.x, ia.y, deck)), Vector((ia.x, ia.y, top - 0.02)), Vector((ic.x, ic.y, top - 0.02))], rc_)
-            out.poly(cap_mat, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cap_col)
-            out.poly(cap_mat, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cap_col)
+            # (BK_CAP) on the side and back walls the roof's coating wraps over the parapet: no light outline
+            cm_, cc_ = (cap_mat, cap_col) if (not BK.CAP or roles[i] in (1, 3) or style == 'block' and roles[i] != 2) else (rmat_, rc_)
+            out.poly(cm_, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cc_)
+            out.poly(cm_, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cc_)
         roof_kit(ring, inner, deck, top, b, rng, out, dict(ctx, rc=rc_, roles=roles, storeys=storeys, ax_u=ax_u, ax_v=ax_v))
         # a roof deck on about one flat-roofed house in five (at the city's LOD roof_kit lays it)
         if style in ('vic', 'stucco', 'midcentury') and rng.random() < 0.2 * EA.rel('deck', ERA) and LOD == 0:
