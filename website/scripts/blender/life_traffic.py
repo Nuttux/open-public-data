@@ -259,6 +259,7 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             # the vehicle
             if kind == 'bus':
                 vk = 'bus60' if r.get('muni') and rv.random() < 0.45 else 'bus40'; L, W = LV.LENGTH[vk], 2.6
+                vk = LV.bus_kind(r['id'], x0, y0, vk)   # v3: a trolleybus where the way's routes are trolleybus routes (hash of the place, no draw)
             else:
                 u_ = rv.random(); vk = None
                 intruck = TRUCK_ZONE[0] < x0 < TRUCK_ZONE[2] and TRUCK_ZONE[1] < y0 < TRUCK_ZONE[3] and base not in ('residential',)

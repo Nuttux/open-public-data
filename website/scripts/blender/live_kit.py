@@ -151,3 +151,47 @@ def merge(dst, src, dx=0.0, dy=0.0, dz=0.0):
     k = len(dst.V)
     dst.V += [(x + dx, y + dy, z + dz) for x, y, z in src.V]
     dst.F += [tuple(i + k for i in f) for f in src.F]; dst.C += src.C; dst.MI += src.MI
+
+
+def loft(vb, W, z0, stations, bands, roof, shoulder=0.12, end_cols=None):
+    """a body lofted along x through `stations` [(x, top_z, width_scale[, top_col, top_mi])] (ascending x),
+    so its side silhouette can change: a hood, a sloped windscreen, a cab over a box. `bands`
+    [(z_top, col, mi)] up the sides from z0, clipped under each station's top; the last band runs to
+    the top. A station's optional (top_col, top_mi) paints the top segment from it to the next
+    (a windscreen: GLASS; a hood: PAINT); otherwise `roof` / ROOF. end_cols: (rear, front) colours."""
+    hw = W / 2
+
+    def ring(x, h, s):
+        pts, seg = [(x, -hw * s, z0)], []
+        prev = z0
+        for zt, c, mi in bands:
+            z = min(zt, h - shoulder)
+            if z <= prev + 1e-4: z = prev + 1e-4
+            pts.append((x, -hw * s, z)); seg.append((c, mi)); prev = z
+        return pts, seg
+    rings = []
+    for st in stations:
+        x, h, s = st[0], st[1], st[2]
+        side_pts, seg = ring(x, h, s)
+        rings.append((x, h, s, side_pts, seg, st[3] if len(st) > 3 else None, st[4] if len(st) > 4 else ROOF))
+    for a, b in zip(rings, rings[1:]):
+        xa, ha, sa, pa, sga, tca, tma = a; xb, hb, sb, pb, sgb, _, _ = b
+        for i in range(len(pa) - 1):
+            c, mi = sga[i]
+            for sgn in (-1, 1):
+                q = [(xa, pa[i][1] if sgn < 0 else -pa[i][1], pa[i][2]), (xb, pb[i][1] if sgn < 0 else -pb[i][1], pb[i][2]),
+                     (xb, pb[i + 1][1] if sgn < 0 else -pb[i + 1][1], pb[i + 1][2]), (xa, pa[i + 1][1] if sgn < 0 else -pa[i + 1][1], pa[i + 1][2])]
+                vb.face(q if sgn < 0 else q[::-1], c, mi)
+        # the shoulder and the top
+        za, zb = pa[-1][2], pb[-1][2]; wa, wb = hw * sa, hw * sb; ia, ib = wa - shoulder, wb - shoulder
+        tc, tm = (tca, tma) if tca is not None else (roof, ROOF)
+        for sgn in (-1, 1):
+            q = [(xa, sgn * wa, za), (xb, sgn * wb, zb), (xb, sgn * max(0.05, ib), hb), (xa, sgn * max(0.05, ia), ha)]
+            vb.face(q if sgn < 0 else q[::-1], tc, tm)
+        vb.face([(xa, -max(0.05, ia), ha), (xb, -max(0.05, ib), hb), (xb, max(0.05, ib), hb), (xa, max(0.05, ia), ha)], tc, tm)
+    # the ends
+    for (x, h, s, p, sg, _, _), front in ((rings[0], False), (rings[-1], True)):
+        w = hw * s; iw = max(0.05, w - shoulder); ztop = p[-1][2]
+        col = (end_cols[1] if front else end_cols[0]) if end_cols else roof
+        pts = [(x, -w, z0), (x, w, z0), (x, w, ztop), (x, iw, h), (x, -iw, h), (x, -w, ztop)]
+        vb.face(pts if front else pts[::-1], col, PAINT)
