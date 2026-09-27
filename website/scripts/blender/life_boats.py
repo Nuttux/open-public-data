@@ -266,6 +266,8 @@ BOX_COLS = [srgb(h) for h in ('#3b6fa0', '#a0302a', '#c8c6c0', '#2f6a4a', '#d27c
 
 
 def container_ship(L=300.0, B=48.0, seed=1, load=0.85):
+    import live_kit as _LK
+    if _LK.on(): return container_ship_v3(L, B, seed, load)
     """a post-Panamax container ship: dark hull, the deck in bays of boxes
     (40 ft = 12.2 m, 2.44 m wide, 2.6 m high) 4-8 tiers above the hatches,
     the accommodation block a third from the stern, the funnel aft of it"""
@@ -296,6 +298,45 @@ def container_ship(L=300.0, B=48.0, seed=1, load=0.85):
             vb.box(x, x + 12.2, -B / 2 + 2.0, B / 2 - 2.0, 12.0, 12.6, DGREY, MATTE)      # an empty hatch
         x += 12.8
     # forecastle
+    vb.box(L / 2 - 20.0, L / 2 - 10.0, -B / 2 + 4.0, B / 2 - 4.0, 12.0, 14.0, DGREY, MATTE)
+    return vb
+
+
+# v3 (27/09, live assets agent): at z9 a 40 ft box is 130 x 26 px, so a bay painted one colour read as a
+# slab. Every box is its own box now (its line's colour, a hairline gap), stacks stepped a tier or two,
+# the outer boxes' sides in their own colours, lashing bridges between the bays, the house with window rows.
+# Colours by the lines seen in the bay (SOURCES.md: Maersk blue, Evergreen green, ONE magenta, CMA CGM blue,
+# Hapag orange; MSC / COSCO / lessors: CONVENTION), the ship's own line the commonest.
+BOX_V3 = [('#4aa7cc', 3), ('#2f6a4a', 3), ('#b0306e', 2), ('#23408a', 3), ('#d2712a', 3), ('#c9a93e', 3), ('#d9d6cc', 3),
+          ('#8a2a26', 3), ('#8a8e93', 3), ('#7a4a2a', 2), ('#c2b294', 2), ('#1f5a8a', 2), ('#5e6a3a', 1), ('#a8443a', 2)]
+
+
+def container_ship_v3(L=300.0, B=48.0, seed=1, load=0.85):
+    r = random.Random(seed); vb = VB()
+    own = srgb(r.choice([c for c, _ in BOX_V3[:6]]))
+    cols = [(srgb(c), w) for c, w in BOX_V3]
+    hull(vb, L, B, 12.0, srgb('#1d2430'), DGREY, stripe=(-0.4, 1.2, HULLRED), bow=0.18, transom=0.86, sheer=2.0, pow_=0.8, n=18)
+    xa = -L / 2 + 0.26 * L
+    vb.cabin(xa - 7, xa + 7, B / 2 - 3.0, 12.0, 44.0, WHITE, win=(40.5, 42.8), roof=OFFWHITE)
+    for z in range(15, 40, 3): vb.box(xa - 7.05, xa + 7.05, -B / 2 + 2.95, B / 2 - 2.95, z, z + 0.9, WIN, GLASS, sides=True, top=(WHITE, PAINT))   # window rows
+    vb.box(xa - 16, xa - 9, -3.5, 3.5, 12.0, 46.0, OFFWHITE, PAINT, top=(BLACK, MATTE))
+    vb.box(xa + 5.5, xa + 7.0, -B / 2 + 0.5, B / 2 - 0.5, 40.0, 41.5, WHITE, PAINT)
+    rows = int((B - 4) // 2.5); y0 = -rows * 2.5 / 2
+    x = -L / 2 + 14.0
+    while x + 12.2 < L / 2 - 22.0:
+        if xa - 18 < x + 12.2 and x < xa + 8:
+            x = xa + 8.5; continue
+        tiers = r.choice((4, 5, 6, 6, 7)) if r.random() < load else 0
+        vb.box(x, x + 12.2, -B / 2 + 2.0, B / 2 - 2.0, 12.0, 12.6, DGREY, MATTE)                 # the hatch cover
+        if tiers:
+            for k in range(rows):
+                t = max(0, tiers - (r.choice((0, 0, 0, 1, 2)) if 0 < k < rows - 1 else r.choice((0, 1, 2))))
+                y = y0 + k * 2.5
+                for j in range(t):
+                    c = own if r.random() < 0.3 else _pick(r, cols)
+                    vb.box(x + 0.04, x + 12.16, y + 0.04, y + 2.44, 12.6 + 2.6 * j, 12.6 + 2.6 * j + 2.55, c, MATTE)
+            vb.box(x + 12.25, x + 12.75, -B / 2 + 2.0, B / 2 - 2.0, 12.6, 12.6 + 2.6 * min(tiers, 3), GREY, METAL)   # lashing bridge
+        x += 12.8
     vb.box(L / 2 - 20.0, L / 2 - 10.0, -B / 2 + 4.0, B / 2 - 4.0, 12.0, 14.0, DGREY, MATTE)
     return vb
 
