@@ -2103,10 +2103,12 @@ def tower_skin(w, is_front, b, rng, c):
             w.box(wm, 0.0, L, z - 0.55, z + 0.35, 0.0, 0.34, body)
         w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.45, body)
     else:  # curtain
-        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, gcol)
+        # (BK_GLASS) the curtain wall's own grid and spandrels are in the material (alpha + 1 = spandrels on): only the
+        # deeper mullion caps every 3 m stay as geometry, no floor bands (two floor rhythms would beat)
+        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, (*gcol[:3], gcol[3] + 1.0) if BK.GLASS else gcol)
         step = 1.5 if LOD < 2 else 3.0
         for uu in frange(0.0, L, step): w.box('metal', uu - 0.035, uu + 0.035, first + fh - 0.4, top, 0.02, 0.12, dark)
-        for f in range(1, nfl + 1):
+        for f in (range(1, nfl + 1) if not BK.GLASS else ()):
             z = first + f * fh
             if z > top: break
             w.box('metal', 0.0, L, z - 0.05, z + 0.05, 0.02, 0.10, dark)

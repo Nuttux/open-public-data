@@ -422,6 +422,8 @@ def curtain_wall_mat():
     if os.environ.get('GLASS_SKY', '1') == '1': sky_term(b.nt, b.pr, 0.3, wn.outputs['Value'], mat=b.m)
     return b.m
 M['curtain_wall'] = curtain_wall_mat()
+if G.BK.GLASS:   # (28/09, assets_buildings BK_GLASS) the generic towers' glass: mullions, spandrels, dark-bodied panes (bk_glass.py)
+    import bk_glass; M['curtain_wall'] = bk_glass._material(bpy, 'bk_curtain', spandrel=True)
 def weather(m, k=1.0, streaks=1.0):
     """weathering over a wall's paint: rain streaks down the face, grime in
     the corners and under every ledge (ambient occlusion), a slow unevenness

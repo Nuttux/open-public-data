@@ -162,3 +162,7 @@ def edw_paint(b, sub, body, stucco_pal, vic_pal):
     if not EDWCOL or sub != 'edwardian' or body not in stucco_pal: return None
     r = random.Random(b['gid'] * 6151 + 29)
     return r.choice(vic_pal) if r.random() < 0.5 else None
+
+
+# ── BK_GLASS: generic curtain walls as mullions + spandrels + dark panes (bk_glass.py, from lm_glass) ────────────────
+GLASS = _on('BK_GLASS')
