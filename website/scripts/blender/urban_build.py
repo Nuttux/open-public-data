@@ -128,3 +128,77 @@ def site_extras(out, ring, zg, rng):
         out.box3('metal', q, u * 2.2, v * rng.uniform(1.0, 2.0), Z * rng.uniform(0.4, 1.2), rng.choice(((0.42, 0.28, 0.18), (0.52, 0.44, 0.30), (0.35, 0.36, 0.38), (0.62, 0.56, 0.40))))
     p = o + u * max(0.0, L - 8.0)                                                           # two portable toilets
     for k in range(2): out.box3('metal', p + u * (k * 1.3), u * 1.1, v * 1.1, Z * 2.3, (0.16, 0.34, 0.58))
+
+
+# ---- SCAFFOLDS (28/09, assets_urban; SCAFFOLD=1 default, 0 = before) ----
+# DataSF DPW Street Space permits (fxfq-npa9, PDDL), purpose 'Scaffolding', status Active on 2026-09-27 (108), geocoded by
+# address with DataSF EAS addresses (3mea-di5p, PDDL): scaffold_today.json (assets_urban/tools/scaffold_geo.py + scaffold_export.py).
+# SOURCED: which buildings carry one. CONVENTION: the front (the footprint edge nearest the street mesh), a tube-and-coupler frame
+# 1.1 m deep, 2.1 m bays, 2.0 m lifts, to the eaves (22 m at most; taller buildings: the 2 lower lifts only, a sidewalk shed),
+# timber planks on every other lift and the top, a brace per 2 bays, and on 3 in 5 a debris net (white, blue or green) outside.
+def _inside(x, y, r):
+    k = False
+    for a in range(len(r)):
+        (x1, y1), (x2, y2) = r[a], r[(a + 1) % len(r)]
+        if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): k = not k
+    return k
+
+
+def scaffold_mark(recs, sbv, box=None):
+    """flag the records that carry today's scaffolds: b['_scaffold'] = [(a, b, v)] front edges (outward unit normal v)"""
+    p = os.path.join(HERE, 'scaffold_today.json')
+    if not os.path.exists(p): return 0
+    n_ = 0
+    for s in json.load(open(p))['scaffolds']:
+        x, y = s['x'], s['y']
+        if box and not (box[0] - 30 <= x <= box[2] + 30 and box[1] - 30 <= y <= box[3] + 30): continue
+        near = [b for b in recs if abs(b['cx'] - x) < 60 and abs(b['cy'] - y) < 60 and (b.get('h') or 0) > 3 and not b.get('_site_today')]
+        hit = [b for b in near if _inside(x, y, b['ring'])]
+        if not hit:
+            near.sort(key=lambda b: math.hypot(b['cx'] - x, b['cy'] - y))
+            hit = [b for b in near[:1] if math.hypot(b['cx'] - x, b['cy'] - y) < 14]
+        if not hit: continue
+        b = hit[0]; r = b['ring']; m = len(r)
+        sa = sum(r[i][0] * r[(i + 1) % m][1] - r[(i + 1) % m][0] * r[i][1] for i in range(m))
+        best = []
+        for i in range(m):
+            a, c = r[i], r[(i + 1) % m]; L = math.hypot(c[0] - a[0], c[1] - a[1])
+            if L < 2.5: continue
+            v = ((c[1] - a[1]) / L, -(c[0] - a[0]) / L) if sa > 0 else (-(c[1] - a[1]) / L, (c[0] - a[0]) / L)
+            mx, my = (a[0] + c[0]) / 2, (a[1] + c[1]) / 2
+            for d in (1.5, 3.0, 4.5, 6.0, 8.0, 10.0):
+                if sbv.ray_cast(Vector((mx + v[0] * d, my + v[1] * d, 3000.0)), Vector((0, 0, -1)))[0] is not None:
+                    best.append((d, -L, a, c, v)); break
+        if not best: continue
+        best.sort(key=lambda t: (t[0], t[1])); d0 = best[0][0]; v0 = best[0][4]
+        b['_scaffold'] = [(a, c, v) for d, _, a, c, v in best if d <= d0 + 0.1 and v[0] * v0[0] + v[1] * v0[1] > 0.94][:3]
+        n_ += 1
+    return n_
+
+
+def scaffold(out, b, ground, rng):
+    """the scaffold on b's front edge(s) (see scaffold_mark)"""
+    Z = Vector((0, 0, 1)); tube = (0.62, 0.63, 0.64); plank = (0.58, 0.47, 0.33)
+    net = rng.choice(((0.86, 0.87, 0.86), (0.22, 0.38, 0.62), (0.26, 0.46, 0.33))) if rng.random() < 0.6 else None
+    for a, c, v in b['_scaffold']:
+        A = Vector((a[0], a[1], 0)); C = Vector((c[0], c[1], 0)); V = Vector((v[0], v[1], 0)); L = (C - A).length; U = (C - A) / L
+        zg = ground((a[0] + c[0]) / 2, (a[1] + c[1]) / 2)
+        if zg is None: continue
+        h = b.get('h') or 8.0; top = min(h, 22.0) if h <= 30 else 4.0
+        nl = max(2, int(top / 2.0)); nb = max(1, int(L / 2.1)); bw = L / nb
+        for side in (0.25, 1.35):                                            # the inner and outer lines of standards
+            for k in range(nb + 1):
+                p = A + U * (k * bw) + V * side + Z * zg
+                _bar(out, p, p + Z * (nl * 2.0 + 1.0), 0.05, tube)
+            for l in range(1, nl + 1):                                       # ledgers (and the guard rail on the top lift)
+                p = A + V * side + Z * (zg + l * 2.0); _bar(out, p, p + U * L, 0.05, tube)
+                if l == nl: _bar(out, p + Z * 1.0, p + Z * 1.0 + U * L, 0.05, tube)
+        for k in range(0, nb, 2):                                            # a brace per two bays, outer face
+            p = A + U * (k * bw) + V * 1.35 + Z * zg; _bar(out, p, p + U * min(2 * bw, L - k * bw) + Z * min(nl * 2.0, 2 * bw * 1.6), 0.05, tube)
+        for l in list(range(1, nl, 2)) + [nl]:                               # timber planks, 5 boards with gaps
+            for j in range(5):
+                p = A + V * (0.3 + j * 0.21) + Z * (zg + l * 2.0 + 0.03)
+                out.box3('metal', p, U * L, V * 0.19, Z * 0.05, tuple(q * rng.uniform(0.85, 1.1) for q in plank))
+        if net:                                                              # the debris net outside the outer line
+            p0, p1 = A + V * 1.42 + Z * zg, C + V * 1.42 + Z * zg
+            out.poly('metal', [p0, p1, p1 + Z * (nl * 2.0 + 1.0), p0 + Z * (nl * 2.0 + 1.0)], net)

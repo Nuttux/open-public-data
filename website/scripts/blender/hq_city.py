@@ -508,12 +508,18 @@ if E('GID_PASS') == '1':   # every face a building draws carries its gid as colo
     def _poly_gid(self, mat, pts, col=(1, 1, 1)):
         g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
     G.Out.poly = _poly_gid
+_SCF = 0
+if ERA is None and E('SCAFFOLD', '1') == '1':   # (28/09, assets_urban) today's scaffolds (DataSF DPW scaffolding permits): urban_build.py
+    import urban_build as UB, random as _rnd
+    _SCF = UB.scaffold_mark(recs, sbv, BOX or d['box']); log('SCAFFOLD: buildings with a scaffold', _SCF)
 CH = 6000; nfaces = 0; _bfail = []
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
         if E('GID_PASS') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
-        try: G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
+        try:
+            G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
+            if _SCF and b.get('_scaffold'): UB.scaffold(out, b, ground_s, _rnd.Random(int(b['gid'])))
         except Exception as ex:     # a broken building used to draw half and say nothing: log the first ones
             _bfail.append(b.get('gid'))
             if len(_bfail) <= 5: import traceback; log('building failed:', b.get('gid'), repr(ex)); traceback.print_exc()
