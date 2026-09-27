@@ -163,7 +163,7 @@ def pier39(C):
     j = sidecar('pier39')
     if not j: return
     load_into(C.K, 'pier39', deck_dz(C, j['samples']))
-    load_into(C.K, 'pier39_lions', 0.0)          # on K-Dock's floats (water_hq, z 0.55)
+    if __import__('os').environ.get('MARINA_V2', '1') != '1': load_into(C.K, 'pier39_lions', 0.0)          # on K-Dock's floats (water_hq, z 0.55); MARINA_V2: urban_water draws them
 
 def leftyodoul(C):
     """Lefty O'Doul Bridge (1933): leaf trusses, counterweight frame, operator's house (models/leftyodoul_prep.py)"""
