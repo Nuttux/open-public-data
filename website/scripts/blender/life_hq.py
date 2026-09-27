@@ -126,7 +126,8 @@ def wake_mat(bpy):
         n3 = nt.nodes.new('ShaderNodeTexNoise'); n3.inputs['Scale'].default_value = 1.0; n3.inputs['Detail'].default_value = 6; n3.inputs['Roughness'].default_value = 0.7
         L_(cmb.outputs[0], n3.inputs['Vector'])
         st_ = mth('ADD', 0.5, mth('MULTIPLY', mth('SUBTRACT', n3.outputs['Fac'], 0.5), 2.6))
-        foam = mth('MULTIPLY', foam, mth('ADD', 0.55, mth('MULTIPLY', st_, 0.9)), clamp=True)
+        # the streak enters the threshold field (not the clamped foam), so even the saturated core breaks up
+        foam = mth('MULTIPLY', mth('ADD', mth('SUBTRACT', mth('MULTIPLY', I, 1.1), 0.42), mth('ADD', N, mth('MULTIPLY', mth('SUBTRACT', st_, 0.5), 0.75))), 3.0, clamp=True)
     churn = mth('MULTIPLY', mth('MULTIPLY', I, 1.4, clamp=True), float(E('LIFE_CHURN', 0.55)))
     alpha = mth('MAXIMUM', foam, churn)
     col = nt.nodes.new('ShaderNodeMix'); col.data_type = 'RGBA'; L_(foam, col.inputs[0])
