@@ -2064,6 +2064,23 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
                 r_ = bmesh.ops.create_cube(bm, size=1.0)
                 for v in r_['verts']: v.co = Vector(((xr0 + xr1) / 2 + v.co.x * (xr1 - xr0), s_ * (Wd / 2 - 0.16) + v.co.y * 0.05, zr_ + v.co.z * 0.05))
                 for f in {f for v in r_['verts'] for f in v.link_faces}: f.material_index = 4
+        # LIVE v3 (27/09, live assets agent): a Waymo's sensor dome on its roof (the white base, the dark
+        # lidar drum, the small corner pods), a taxi's roof sign
+        def cube(cx, cy, cz, sx, sy, sz, mi):
+            r_ = bmesh.ops.create_cube(bm, size=1.0)
+            for v in r_['verts']: v.co = Vector((cx + v.co.x * sx, cy + v.co.y * sy, cz + v.co.z * sz))
+            for f in {f for v in r_['verts'] for f in v.link_faces}: f.material_index = mi
+        if prof.get('lidar'):
+            xc = ((cab[0] + cab[1]) / 2 - 0.05) * hl; zt_ = top((cab[0] + cab[1]) / 2 - 0.05) + 0.05
+            cube(xc, 0.0, zt_ + 0.06, 0.62, 0.62, 0.12, 0)
+            r_ = bmesh.ops.create_cone(bm, cap_ends=True, segments=16, radius1=0.25, radius2=0.22, depth=0.3)
+            for v in r_['verts']: v.co += Vector((xc, 0.0, zt_ + 0.27))
+            for f in {f for v in r_['verts'] for f in v.link_faces}: f.material_index = 4
+            for xs_ in (hl - 0.35, -hl + 0.3):
+                for s_ in (-1, 1): cube(xs_, s_ * (Wd / 2 - 0.12), top(xs_ / hl) + 0.07, 0.14, 0.12, 0.14, 4)
+        if prof.get('taxi'):
+            xc = ((cab[0] + cab[1]) / 2) * hl; zt_ = top((cab[0] + cab[1]) / 2) + 0.05
+            cube(xc, 0.0, zt_ + 0.12, 0.26, 0.9, 0.22, 3)
         me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
         for f in me.polygons:
             c = f.center
@@ -2147,6 +2164,8 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         MOD = ((4.75, 1.83, SEDAN), (4.65, 1.86, SUV_R), (4.28, 1.79, HATCH), (5.1, 1.99, MINIVAN),
                (4.7, 1.85, FASTBACK), (4.5, 1.84, SUV), (3.7, 1.72, SMALL), (4.85, 1.85, SEDAN),
                (5.85, 2.02, PICKUP), (5.9, 2.03, VAN), (4.75, 1.92, CROSS), (4.45, 1.84, SUV_R))
+        if E('LIVE_V3', '1') == '1':    # 2026: Waymo's white I-PACE fleet (~3 %) and the city's taxis (~2 %) — CONVENTION shares
+            MOD = MOD + ((4.68, 2.01, dict(CROSS, lidar=True, paint='waymo', w=0.35)), (4.6, 1.78, dict(FASTBACK, taxi=True, paint='taxi', w=0.25)))
     # the white fleet (vans): white mostly, silver, a few dark blue and grey
     fpaint = simple('carpaint_fleet', (0.5, 0.5, 0.5), rough=0.3)
     fn_ = fpaint.node_tree; fb_ = fn_.nodes['Principled BSDF']; fi_ = fn_.nodes.new('ShaderNodeObjectInfo')
@@ -2163,8 +2182,11 @@ if E('CARS', '1') == '1' and not (ERA is not None and ERA < 1908):
         kinds = MOD if fam == 'mod' else EA.CAR_SHAPES[fam]
         for j_, (L_, W_, pf) in enumerate(kinds):
             me = car_mesh(f'car_{fam}{j_}', L_, W_, pf)
-            for mm in (fpaint if pf.get('fleet') else paint, cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
-            CARS.append(me); CAR_W.append(share / len(kinds))
+            pm_ = {'waymo': 'carpaint_waymo', 'taxi': 'carpaint_taxi'}.get(pf.get('paint'))
+            if pm_ and bpy.data.materials.get(pm_) is None:
+                simple(pm_, (0.62, 0.62, 0.61) if pf.get('paint') == 'waymo' else (0.86, 0.45, 0.012), rough=0.28)   # linear: the fleet white, taxi yellow #f0b418
+            for mm in (bpy.data.materials[pm_] if pm_ else (fpaint if pf.get('fleet') else paint), cglass, tyre, lamp_m, trim_m, tail_m, rim_m): me.materials.append(mm)
+            CARS.append(me); CAR_W.append(share * pf.get('w', 1.0) / sum(p_.get('w', 1.0) for _, _, p_ in kinds))
     def car_pick(u):
         """the body in a kerb slot, from the slot's own number u in [0, 1)"""
         u = u * sum(CAR_W); acc = 0.0

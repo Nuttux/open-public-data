@@ -795,6 +795,7 @@ cc = bpy.data.collections.new('car_protos_src')
 car_colls = []
 for i, me_ in enumerate(CARS):
     c = bpy.data.collections.new(f'carp{i}'); o = bpy.data.objects.new(f'carp{i}', me_); c.objects.link(o); car_colls.append(c)
+    c['w'] = float(CAR_W[i]) if i < len(CAR_W) else 1.0   # the body's share (life_traffic draws its moving cars with it)
 cpts = []; r = random.Random(21)
 # a car parks where there is a door to park at: the building walls, sampled
 # every 8 m; a curb with no wall within 18 m is a park drive, a hill road, a

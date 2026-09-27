@@ -372,7 +372,11 @@ def build(bpy, sc, coll, T, D, ground, inb, log, t0):
             c2.objects.link(bpy.data.objects.new(f'l{o.name}', me2))
         protos.append(c2)
     if cars and protos:
-        kinds = [int(hp(p[0], p[1], 11) * len(protos)) % len(protos) for p in cars]
+        wts = [float(c.get('w', 1.0)) for c in src]; cw_ = np.cumsum(wts) / sum(wts)
+        if os.environ.get('LIVE_V3', '1') == '1':   # v3: the bodies' shares (Waymo, taxis rare), same hash draw
+            kinds = [min(int(np.searchsorted(cw_, hp(p[0], p[1], 11), side='right')), len(protos) - 1) for p in cars]
+        else:
+            kinds = [int(hp(p[0], p[1], 11) * len(protos)) % len(protos) for p in cars]
         _instancer(bpy, coll, 'life.cars', cars, protos, kinds, [hp(p[0], p[1], 12) for p in cars])
     # buses and trucks: small meshes, one per kind, linked as objects
     mats = [T['paint'], T['glass'], T['matte'], T['matte'], T['metal']]
