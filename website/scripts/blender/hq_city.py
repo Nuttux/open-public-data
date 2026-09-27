@@ -280,6 +280,15 @@ else:
     LOTS, LI = [], None
     def open_at(x, y, grid=None): return 0.0
     def street_stands(x, y): return True
+    # (27/09, assets_urban) TODAY'S SURFACE PARKING LOTS (urban_lots.py): paved, striped, wheel stops, parked cars
+    if E('LOTS_V2', '1') == '1':
+        import urban_lots as UL
+        _bx = CBOX if len(CBOX) == 4 else None
+        LOTS = [L_ for L_ in UL.load(_bx) if all((lambda z_: z_ is not None and z_ >= 0.8)(ground(p_[0], p_[1])) for p_ in L_['ring'])]   # (lots on pier decks: not yet)
+        for L_ in LOTS: L_['stalls'], L_['cars'] = UL.layout(L_['ring'], float(E('LOT_OCC', 0.75)))
+        EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 0.8)), rough_add=0.2)}, log)
+        UL.marks(bpy, LOTS, ground, {'line': simple('lot_line', (0.72, 0.72, 0.69), rough=0.7), 'line_y': simple('lot_line_y', (0.70, 0.55, 0.12), rough=0.7),
+                                     'stop': simple('lot_stop', (0.50, 0.49, 0.46), rough=0.9)}, log)
 
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
