@@ -167,3 +167,13 @@ for _i, _lv in enumerate(PCC_LIVERIES):
 
 LENGTH = {'lrv4': 22.86, 'pw': 14.9, 'cable': 8.3, 'cable_cal': 9.1, 'kiss_cab': 26.0, 'kiss_mid': 26.0, 'kiss_panto': 26.0,
           'gal': 25.9, 'gal_cab': 25.9, 'loco': 17.7, **{f'pcc{i}': 15.2 for i in range(len(PCC_LIVERIES))}}
+
+# v3 bodies (27/09, live assets agent, live_rail.py): same keys and lengths; LIVE_V3=0 keeps the ones above
+import live_kit as _LK
+if _LK.on():
+    import live_rail as _LR
+    PROTOS.update({'lrv4': _LR.lrv4_v3, 'pw': _LR.peter_witt_v3, 'cable': _LR.cable_car_v3, 'cable_cal': lambda: _LR.cable_car_v3(9.1),
+                   'kiss_cab': lambda: _LR.kiss_v3(cab_front=True), 'kiss_mid': _LR.kiss_v3, 'kiss_panto': lambda: _LR.kiss_v3(panto=True),
+                   'gal': _LR.gallery_v3, 'gal_cab': lambda: _LR.gallery_v3(cab=True), 'loco': _LR.loco_v3})
+    for _i, _lv in enumerate(PCC_LIVERIES):
+        PROTOS[f'pcc{_i}'] = (lambda lv=_lv: _LR.pcc_v3(lv))

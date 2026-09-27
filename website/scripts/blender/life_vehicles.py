@@ -84,9 +84,138 @@ def semi(seed=0):
     return vb
 
 
+# ── v3 (27/09, live assets agent; LIVE_V3=0 = the bodies above) ────────────
+# New Flyer Xcelsior as Muni runs it: XDE40 / XDE60 diesel-electric hybrids
+# (the energy-storage pod on the front roof, the HVAC at the rear) and XT40 /
+# XT60 trolleybuses (a long traction fairing, the two trolley poles from
+# mid-roof back past the tail under their retainer hooks). Dimensions:
+# 12.5 m / 18.3 m x 2.59 m, 7.24 m wheelbase (40 ft), doors front and centre
+# (40 ft) and front, centre, rear (60 ft) on the kerb side. The livery: silver
+# with the red skirt and the black window band (SOURCES.md, cptdb XT60), the
+# roof light grey, its gear mid grey and grouped (BAR 24/09). Pole length and
+# the gear's exact layout: CONVENTION (typical North American trolleybus).
+import live_kit as LK
+
+B_SILVER, B_RED, B_ROOF, B_WIN = srgb('#c9ccce'), srgb('#b3202a'), srgb('#cdd0d0'), srgb('#0e1115')
+POLE = srgb('#262728')
+
+
+def _xcel_section(vb, L, x0, front, back, doors, axles, twin_axles=()):
+    """one rigid Xcelsior body section of length L centred at x0: the lofted
+    shell, the doors (kerb side, -y), the wheels"""
+    W = 2.59; hw = W / 2; sub = VB()
+    fr = ((0.0, 0.9), (0.22, 0.97), (0.5, 1.0)) if front else ((0.0, 1.0), (0.2, 1.0))
+    bk = ((0.0, 0.93), (0.3, 1.0)) if back else ((0.0, 1.0), (0.2, 1.0))
+    body(sub, L, W, 3.08, 0.32, [(0.9, B_RED, PAINT), (1.12, B_SILVER, PAINT), (2.46, B_WIN, GLASS), (2.86, B_SILVER, PAINT)],
+         B_ROOF, B_SILVER, front=fr, back=bk, shoulder=0.26)
+    for a, b in doors:
+        LK.door(sub, a, b, 0.34, 2.5, hw, B_SILVER)
+    LK.wheels(sub, [x for x in axles], hw, r=0.5)
+    for x in twin_axles: LK.disc(sub, x, -(hw + 0.08), 0.5, 0.2, srgb('#3a3c3e'), DARK, 8, s=-1); LK.disc(sub, x, hw + 0.08, 0.5, 0.2, srgb('#3a3c3e'), DARK, 8, s=1)
+    if front:
+        e = L / 2
+        LK.end(sub, e, -1.12, 1.12, 0.98, 2.68, B_WIN, GLASS)                 # the big windscreen
+        LK.end(sub, e, -1.05, 1.05, 2.72, 2.96, LK.SIGN, DARK)                # the destination sign
+        LK.end(sub, e + 0.01, -0.8, 0.8, 2.79, 2.88, LK.SIGN_LIT, PAINT)      # its amber text line
+        for s in (-1, 1):
+            LK.end(sub, e, s * 1.12, s * 0.86, 0.55, 0.72, LK.LAMP, METAL)     # headlamps
+            LK.rod(sub, (e - 0.1, s * 1.2, 2.45), (e + 0.25, s * 1.45, 2.4), 0.06, UNDER, DARK)   # mirror arm
+            LK.box(sub, e + 0.2, e + 0.3, s * 1.38 - 0.08, s * 1.38 + 0.08, 1.9, 2.4, UNDER, DARK) # mirror
+        LK.box(sub, e, e + 0.32, -0.95, 0.95, 0.45, 0.52, UNDER, DARK)        # the bike rack, folded
+        LK.box(sub, e + 0.25, e + 0.32, -0.95, 0.95, 0.52, 0.95, UNDER, DARK)
+    if back:
+        e = -L / 2
+        LK.end(sub, e, -1.0, 1.0, 0.42, 1.15, srgb('#2a2c2e'), DARK, front=False)   # engine grille / bumper
+        LK.end(sub, e, -0.9, 0.9, 1.35, 2.4, B_WIN, GLASS, front=False)             # rear window / black panel
+        for s in (-1, 1): LK.end(sub, e, s * 1.2, s * 1.0, 0.7, 1.4, LK.TAIL, PAINT, front=False)
+    merge(vb, sub, x0)
+
+
+def merge(dst, src, dx=0.0):
+    k = len(dst.V)
+    dst.V += [(x + dx, y, z) for x, y, z in src.V]; dst.F += [tuple(i + k for i in f) for f in src.F]; dst.C += src.C; dst.MI += src.MI
+
+
+def _poles(vb, xb, xe, zb):
+    """the trolley poles: a base, two poles from xb back to xe (past the tail), their retainer hooks"""
+    LK.chbox(vb, xb - 0.45, xb + 0.45, -0.55, 0.55, zb, zb + 0.14, LK.GEAR_D, DARK, ch=0.05)
+    for y in (-0.3, 0.3):
+        LK.rod(vb, (xb, y, zb + 0.18), (xe, y * 1.05, zb + 0.32), 0.09, POLE, DARK)
+        LK.box(vb, xe + 0.9, xe + 1.1, y - 0.09, y + 0.09, 3.08, zb + 0.34, POLE, DARK)     # retainer hook post
+
+
+def bus_v3(L=12.5, artic=False, trolley=False):
+    vb = VB()
+    if not artic:
+        e = L / 2
+        _xcel_section(vb, L, 0.0, True, True, [(e - 1.65, e - 0.45), (e - 7.55, e - 6.35)], [e - 2.6, e - 9.84], twin_axles=[e - 9.84])
+        if trolley:
+            LK.chbox(vb, e - 7.8, e - 1.2, -1.02, 1.02, 3.02, 3.36, LK.GEAR_L, ROOF, ch=0.16)      # traction fairing
+            LK.chbox(vb, -e + 0.7, -e + 3.0, -1.0, 1.0, 3.02, 3.32, LK.GEAR, ROOF, ch=0.12)        # HVAC
+            for x in (-e + 1.3, -e + 2.4): LK.box(vb, x - 0.3, x + 0.3, -0.3, 0.3, 3.32, 3.33, LK.GEAR_D, DARK)
+            _poles(vb, e - 4.6, -e - 0.7, 3.36)
+        else:
+            LK.chbox(vb, e - 5.2, e - 1.3, -0.98, 0.98, 3.02, 3.4, LK.GEAR_L, ROOF, ch=0.16)       # energy storage pod
+            LK.chbox(vb, -e + 0.6, -e + 3.2, -1.02, 1.02, 3.02, 3.36, LK.GEAR, ROOF, ch=0.12)      # HVAC over the engine
+            for x in (-e + 1.25, -e + 2.55): LK.box(vb, x - 0.32, x + 0.32, -0.32, 0.32, 3.36, 3.37, LK.GEAR_D, DARK)
+            LK.box(vb, 0.2, 0.9, -0.35, 0.35, 3.02, 3.1, LK.GEAR_D, ROOF)                          # roof hatch
+        return vb
+    Lf, Lb = 11.2, 6.4; xf = L / 2 - Lf / 2; xr = -L / 2 + Lb / 2; ef = L / 2
+    hf, hb = Lf / 2, Lb / 2
+    _xcel_section(vb, Lf, xf, True, False, [(hf - 1.65, hf - 0.45), (hf - 7.0, hf - 5.8)], [hf - 2.6, -hf + 1.9])
+    _xcel_section(vb, Lb, xr, False, True, [(hb - 2.3, hb - 1.1)], [-hb + 2.7], twin_axles=[-hb + 2.7])
+    bx0, bx1 = L / 2 - Lf - 0.7, L / 2 - Lf          # the bellows between the sections
+    for k in range(5):
+        a = bx0 + k * (bx1 - bx0) / 5; b = a + (bx1 - bx0) / 5
+        LK.box(vb, a, b, -1.22, 1.22, 0.45, 2.95, srgb('#1b1c1d') if k % 2 else srgb('#2c2d2f'), DARK)
+    if trolley:
+        LK.chbox(vb, ef - 8.8, ef - 1.2, -1.02, 1.02, 3.02, 3.36, LK.GEAR_L, ROOF, ch=0.16)
+        LK.chbox(vb, -L / 2 + 0.6, -L / 2 + 2.6, -1.0, 1.0, 3.02, 3.3, LK.GEAR, ROOF, ch=0.12)
+        _poles(vb, bx0 - 0.9, -L / 2 - 0.7, 3.1)
+        LK.box(vb, bx0 - 0.9 - 0.5, bx0 - 0.9 + 0.5, -0.6, 0.6, 3.02, 3.12, LK.GEAR_D, ROOF)
+    else:
+        LK.chbox(vb, ef - 5.2, ef - 1.3, -0.98, 0.98, 3.02, 3.4, LK.GEAR_L, ROOF, ch=0.16)
+        LK.chbox(vb, ef - 10.6, ef - 8.2, -1.0, 1.0, 3.02, 3.33, LK.GEAR, ROOF, ch=0.12)
+        LK.chbox(vb, -L / 2 + 0.6, -L / 2 + 3.0, -1.02, 1.02, 3.02, 3.36, LK.GEAR, ROOF, ch=0.12)
+    return vb
+
+
+def bus_kind(way_id, x, y, vk):
+    """the model of a Muni bus on OSM way `way_id`: a trolleybus with the share
+    of the way's route relations that are trolleybus routes (OSM bus_osm.json,
+    ODbL); the draw is a hash of the place, so placement is untouched"""
+    if not LK.on(): return vk
+    r = _trolley_share().get(int(way_id), 0.0)
+    u = ((int(round(x * 10)) * 73856093) ^ (int(round(y * 10)) * 19349663) ^ 0x5bd1e995) & 0xffff
+    return ('trol60' if vk == 'bus60' else 'trol40') if u / 65536.0 < r else vk
+
+
+_TS = None
+def _trolley_share():
+    global _TS
+    if _TS is not None: return _TS
+    _TS = {}
+    import json, os
+    for p in (os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bus_osm.json'), '/Users/daniel/code/qipu-render-work/life/bus_osm.json'):
+        if not os.path.exists(p): continue
+        n, t = {}, {}
+        for e in json.load(open(p))['elements']:
+            if e.get('type') != 'relation': continue
+            tb = e.get('tags', {}).get('route') == 'trolleybus'
+            for m in e.get('members', []):
+                if m.get('type') != 'way': continue
+                n[m['ref']] = n.get(m['ref'], 0) + 1; t[m['ref']] = t.get(m['ref'], 0) + (1 if tb else 0)
+        _TS = {k: t[k] / n[k] for k in n}
+        break
+    return _TS
+
+
 PROTOS = {'bus40': lambda: bus(12.5), 'bus60': lambda: bus(18.3, True), 'parcel': lambda: box_truck('parcel'),
           **{f'box{i}': (lambda i=i: box_truck('white', i)) for i in range(5)},
           **{f'van{i}': (lambda i=i: van(i)) for i in range(5)},
           **{f'semi{i}': (lambda i=i: semi(i)) for i in range(4)}}
-LENGTH = {'bus40': 12.5, 'bus60': 18.3, 'parcel': 7.2, **{f'box{i}': 8.3 for i in range(5)}, **{f'van{i}': 5.9 for i in range(5)},
+if LK.on():
+    PROTOS.update({'bus40': lambda: bus_v3(12.5), 'bus60': lambda: bus_v3(18.3, True),
+                   'trol40': lambda: bus_v3(12.5, trolley=True), 'trol60': lambda: bus_v3(18.3, True, trolley=True)})
+LENGTH = {'bus40': 12.5, 'bus60': 18.3, 'trol40': 12.5, 'trol60': 18.3, 'parcel': 7.2, **{f'box{i}': 8.3 for i in range(5)}, **{f'van{i}': 5.9 for i in range(5)},
           **{f'semi{i}': 21.0 for i in range(4)}}

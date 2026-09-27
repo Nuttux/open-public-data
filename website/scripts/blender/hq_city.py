@@ -898,6 +898,10 @@ if E('TRANSIT', '1') == '1':
 if E('LIFE', '1') == '1':
     try: import life_hq; life_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA)
     except Exception as ex: log('life_hq: not built:', ex)
+# LIVE_DUMP=<path> (live assets agent): where the rail cars, buses / trucks and boats of this build stand (name, x, y, z), for crop hunting
+if E('LIVE_DUMP'):
+    json.dump([[o.name, round(o.location.x, 1), round(o.location.y, 1), round(o.location.z, 1), round(o.rotation_euler.z, 2)]
+               for o in bpy.data.objects if o.name.split('.')[0] in ('tv', 'lv', 'lf')], open(E('LIVE_DUMP'), 'w'))
 # ── FREEWAYS (freeways_hq.py, the freeways agent): the viaducts on LiDAR-measured decks, bents, the ground under them; FREEWAYS=0 skips
 if E('FREEWAYS', '1') == '1':
     import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA, keep=EA.freeway_keep(ERA))    # a past year: the ways already open (era.freeway_keep)
