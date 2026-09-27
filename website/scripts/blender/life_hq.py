@@ -168,6 +168,12 @@ def _build(bpy, sc, M, ground, box, log, t0):
             sea = LW.Sea(D['sea'], os.path.join(ddir, 'sea_4m.npy'))
             life_people.build(bpy, sc, coll, T, D, ground, sea, inb, log, t0)
         except Exception as ex: traceback.print_exc(); log('life_hq: people failed', ex)
+    elif E('HOT', '1') == '1':                # (27/09, assets_urban) the hot zones' crowds, tents, cafe tables and parklets without the rest of the (still under test) people
+        try:
+            import life_people, life_water as LW
+            sea = LW.Sea(D['sea'], os.path.join(ddir, 'sea_4m.npy'))
+            life_people.build(bpy, sc, coll, T, D, ground, sea, inb, log, t0, only_hot=True)
+        except Exception as ex: traceback.print_exc(); log('life_hq: hot people failed', ex)
 
 
 def _water(bpy, coll, T, D, ddir, inb, log, t0):

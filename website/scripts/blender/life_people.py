@@ -141,13 +141,13 @@ def cloth_mat(bpy):
     return m
 
 
-def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0):
+def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0, only_hot=False):
     import time
     from mathutils import Vector
     from mathutils.bvhtree import BVHTree
     import transit_geom as TG
     from life_traffic import _instancer
-    pl = [p for p in plan(D, sea) if inb(p[1], p[2], 30)]
+    pl = [] if only_hot else [p for p in plan(D, sea) if inb(p[1], p[2], 30)]
     import os as _os
     HOT_ = _os.environ.get('HOT', '1') == '1'; PV2_ = _os.environ.get('PEOPLE_V2', '1') == '1'     # (27/09, assets_urban) urban_people.py
     if HOT_:
