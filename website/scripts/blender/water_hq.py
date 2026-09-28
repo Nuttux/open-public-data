@@ -363,12 +363,14 @@ def piers(C):
     n = 0
     decks = []
     if os.path.exists(PIERS_JSON):
-        for p in json.load(open(PIERS_JSON))['piers']:
+        MV2 = os.environ.get('MARINA_V2', '1') == '1' and C.era is None     # (27/09, assets_urban) marinas and piers at z9: urban_water.py
+        if MV2: import urban_water as UW
+        for idx_, p in enumerate(json.load(open(PIERS_JSON))['piers']):
             pts = p.get('ring') or p.get('line')
             if not near(pts): continue
             if C.era is not None and (C.era < __import__('era').DATED_PIERS.get(p.get('name'), 0) or C.era < deck_year([tuple(q) for q in pts])): continue   # a deck before its own year
             if p['kind'] in ('deck', 'float'):
-                decks.append((p['kind'], [tuple(q) for q in p['ring']]))
+                decks.append((p['kind'], [tuple(q) for q in p['ring']], idx_))
             else:
                 # a dock or a finger: a plank strip along the line, over water only
                 L_ = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts, pts[1:]))
@@ -380,15 +382,18 @@ def piers(C):
                 # long), a float walkway 2.4 m, a fixed dock 3.5 m (lm_prep's
                 # blanket 3.5 / 2.4 ate the slips: no boat fitted between fingers)
                 w = p['width'] if p.get('width_tagged') else (1.0 if (fl and L_ < 45.0) else 2.4 if fl else 3.5)
+                if MV2:
+                    UW.dock_line(K, [tuple(q) for q in pts], z, w, fl, L_, tg, FLOAT if fl else DECK)
+                    if fl and L_ >= 45.0: UW.gangway(K, [tuple(q) for q in pts], tg)
                 for a, b in zip(pts, pts[1:]):
                     if math.hypot(b[0] - a[0], b[1] - a[1]) < 0.2: continue
-                    K.beam('lm_matte', (a[0], a[1], z - 0.2), (b[0], b[1], z - 0.2), w, 0.4, FLOAT if fl else DECK)
+                    if not MV2: K.beam('lm_matte', (a[0], a[1], z - 0.2), (b[0], b[1], z - 0.2), w, 0.4, FLOAT if fl else DECK)
                     if not fl: K.beam('lm_matte', (a[0], a[1], (z - 1.6) / 2), (b[0], b[1], (z - 1.6) / 2), w * 0.85, z + 1.2, DECK_SIDE, caps=False)
                 n += 1
     # the aprons terrain_hq grew round the pier sheds, only where no OSM deck
     # already covers them: an apron on an OSM deck doubled it (its dark sides
     # 2-5 m outside the deck, a black end on Pier 7 and a black band on Pier 1)
-    osm_polys = [(r_, []) for k_, r_ in decks]
+    osm_polys = [(d_[1], []) for d_ in decks]
     for r in (C.d.get('_piers') or []) if isinstance(C.d, dict) else []:
         if not near(r): continue
         if C.era is not None and C.era < deck_year([tuple(q) for q in r]): continue      # an apron before its pier's own year (Pier 7, 1990.0-1990.78)
@@ -401,14 +406,18 @@ def piers(C):
         GX, GY = np.meshgrid(xs_, ys_); GX, GY = GX.ravel(), GY.ravel()
         ins = _inside_many(GX, GY, [(r, [])])
         if ins.sum() and osm_polys and _inside_many(GX[ins], GY[ins], osm_polys).mean() > 0.3: continue
-        decks.append(('apron', [tuple(q) for q in r]))
-    for kind, r in decks:
+        decks.append(('apron', [tuple(q) for q in r], -1))
+    for kind, r, idx_ in decks:
         if len(r) < 3: continue
         _c = np.asarray(r, float).mean(0)       # a modelled place draws its own deck (Pier 39)
         if any(bool(g_.inside(np.array([_c[0]]), np.array([_c[1]]))[0]) for g_ in getattr(C, 'lm_regions', [])): continue
         if kind == 'float':
-            K.prism('lm_matte', r, -0.3, 0.55, FLOAT); n += 1; continue
+            if os.environ.get('MARINA_V2', '1') == '1' and C.era is None: import urban_water as UW; UW.float_poly(K, r, idx_)
+            else: K.prism('lm_matte', r, -0.3, 0.55, FLOAT)
+            n += 1; continue
         z = deck_z(r)
+        if idx_ == 675 and os.environ.get('CRUISE', '1') == '1' and C.era is None:      # (27/09, assets_urban) a ship at Pier 27's cruise terminal
+            import urban_water as UW; UW.cruise_ship(K, r)
         K.prism('lm_matte', r, -1.5, z - 0.02, DECK_SIDE, top=False)
         K.face_holes('lm_apron', r, [], z, DECK)
         # bollards along the edges over water, ~22 m apart (a ship's lines)
@@ -425,5 +434,10 @@ def piers(C):
                 t_ = k_ * L_ / (int(L_ // 22.0) + 1)
                 bx, by = a_[0] + ux * t_ - nx * 0.7, a_[1] + uy * t_ - ny * 0.7
                 K.cyl('lm_paint', (bx, by, z), (bx, by, z + 0.75), 0.28, BOLLARD, n=8, smooth=False)
+            if os.environ.get('MARINA_V2', '1') == '1' and C.era is None:      # (27/09) timber fender piles along the edge, every 3.5 m
+                for k_ in range(int(L_ // 3.5)):
+                    t_ = (k_ + 0.5) * L_ / int(L_ // 3.5)
+                    fx, fy = a_[0] + ux * t_ + nx * 0.2, a_[1] + uy * t_ + ny * 0.2
+                    K.cyl('lm_matte', (fx, fy, -1.2), (fx, fy, z + 0.25), 0.17, (0.20, 0.17, 0.14), n=6, smooth=False)
         n += 1
     return n

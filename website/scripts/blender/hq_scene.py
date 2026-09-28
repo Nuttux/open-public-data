@@ -401,6 +401,7 @@ def roof_flat_mat(big=False):
 M['roof_flat'] = roof_flat_mat()
 M['roof_big'] = roof_flat_mat(big=True)          # (24/09) roofs over 1,500 m2: an even membrane, rare large repairs
 M['equip'] = simple('equip', None, rough=0.45, attr=True)
+M['plant'] = simple('plant', None, rough=0.9, attr=True, spec=0.3)   # (27/09, assets_urban) roof gardens: sedum mats, shrubs
 def solar_mat():
     b = NB('solar'); pr = b.pr
     pr.inputs['Base Color'].default_value = (0.010, 0.014, 0.032, 1); pr.inputs['Roughness'].default_value = 0.12

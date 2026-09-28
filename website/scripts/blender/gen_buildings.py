@@ -27,7 +27,7 @@ from mathutils.geometry import tessellate_polygon
 # or concrete) · storefront glass · awning
 MATS = ('siding', 'trim', 'shingle', 'stucco', 'brick', 'concrete', 'glass', 'door',
         'roof_shingle', 'roof_flat', 'metal', 'stair', 'shopglass', 'awning', 'curtain', 'chimney', 'roof_tile', 'deck',
-        'equip', 'solar', 'curtain_wall', 'roof_big', 'ash', 'soot')
+        'equip', 'solar', 'curtain_wall', 'roof_big', 'ash', 'soot', 'plant')
 
 # paint conventions. Victorian palettes after the Painted Ladies' own era
 # (body, trim, accent); later eras: stucco pastels and whites.
@@ -103,6 +103,11 @@ ERA = None       # the year shown; None = today. Changes paint, not form.
 import os as _os_f
 FINE = int(_os_f.environ.get('GEN_FINE', '1' if int(_os_f.environ.get('Z', '7') or 7) >= 8 else '0'))
 TRACT = _os_f.environ.get('TRACT', '1') == '1'   # (25/09) the tract builders' fronts and street entries; TRACT=0 = off
+# (27/09, assets_urban) ROOF_V2: the rooftops at z9. The kit at full detail on FINE levels (vents, fan discs, ducts,
+# single solar panels); packaged units on curbs with a condenser grille and fans, split condensers on sleeper rails,
+# walkway pads, mushroom exhaust fans, a door and a lift overrun on the stair house; solar arrays where NAIP 2022
+# measures a solar roof, roof gardens where it measures a green one; roof-deck furniture. ROOF_V2=0 = before.
+ROOF_V2 = _os_f.environ.get('ROOF_V2', '1') == '1'
 
 # ── paint by period: era.TABLE `paint` (Victorians) and `paint2` (the rest) ──
 # The mixes and their sources live in era.py; these are the palettes each
@@ -1297,6 +1302,8 @@ def construction(b, ground, out):
             for i in range(n):
                 a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
                 out.poly(mat, [a_, c_, c_ + Z * (zg - zfoot + hc), a_ + Z * (zg - zfoot + hc)], gcol)
+    if b.get('_site_today') and not (b['h'] >= 25 and b['rise'] < 0.97) and _os_f.environ.get('CRANE_V2', '1') == '1':
+        import urban_build as UB; UB.site_extras(out, ring, zg, rng)
     # before the 1950s a steel frame was raised by guy derricks standing on
     # its top floor — a mast and a long boom, no tower crane (CONVENTION on
     # the date; the tower crane spread in American building from the 1950s-60s)
@@ -1317,6 +1324,11 @@ def construction(b, ground, out):
         top = zg + max(hf, 0.0) + 14.0
         ccol = (0.86, 0.66, 0.10)
         mx, my = cx + rng.uniform(-3, 3), cy + rng.uniform(-3, 3)
+        if _os_f.environ.get('CRANE_V2', '1') == '1':      # (27/09, assets_urban) the lattice crane (urban_build.py)
+            import urban_build as UB
+            ang = rng.uniform(0, 2 * math.pi); UB.tower_crane(out, mx, my, zg, top, min(60.0, 25 + b['h'] * 0.15), ang, rng)
+            if b.get('_site_today'): UB.site_extras(out, ring, zg, rng)
+            return
         out.box3('metal', Vector((mx - 0.9, my - 0.9, zg)), X * 1.8, Y * 1.8, Z * (top - zg), ccol)
         ang = rng.uniform(0, 2 * math.pi); u = Vector((math.cos(ang), math.sin(ang), 0)); v = Vector((-u.y, u.x, 0))
         o = Vector((mx, my, top)) - u * 14.0 - v * 0.7
@@ -1774,6 +1786,7 @@ def measured_flat(b, rc):
     m = ROOF_M.get(b['gid']) if roof_now(b) else None
     if not m: return rc
     a, cls = list(m[:3]), m[3]
+    if ROOF_V2 and cls == 'solar': return rc      # the panels are drawn (roof_kit): under them the procedural membrane
     kind = _FLAT_KIND.get(cls, 1)
     if cls == 'tile':       # terracotta over a flat deck: a red-brown cap sheet, not a painted red
         L = _lum(a); a = [L + 0.6 * (v - L) for v in a]
@@ -1795,6 +1808,114 @@ def measured_flat(b, rc):
     return (*_disp([min(1.0, a[k] / (t[k] * 0.92)) for k in range(3)]), (kind + t4 - math.floor(t4)) / 4.0)
 
 
+# ── ROOF_V2 pieces (27/09, assets_urban): called from roof_kit with its own local frame (u along ax_u, v along ax_v) ──
+def _free(placed, u0, u1, v0, v1, pad):
+    return not any(u0 < q[1] + pad and u1 > q[0] - pad and v0 < q[3] + pad and v1 > q[2] - pad for q in placed)
+
+
+def solar_array(b, area, deck, umin, umax, vmin, vmax, inside, placed, at, box, out, ax_v):
+    """where NAIP 2022 measures a solar roof (roofs.json class 'solar', 837 roofs): rows of 1.05 x 1.75 m panels on low
+    racks, tilted toward the south, a fire setback from the parapet (0.9 m, 0.5 on a small roof), the rows spaced so
+    they do not shade each other; each row's back skirt in galvanised grey. SOURCED on where (NAIP), CONVENTION on layout"""
+    r = random.Random(b['gid'] * 53 + 11); tilt = math.radians(r.choice((5, 10, 10, 15))); pw, pd = 1.05, 1.75
+    wv = pd * math.cos(tilt); pitch = wv + (0.3 if tilt < 0.1 else 0.6); sb = 0.9 if area > 150 else 0.5
+    z0 = deck + 0.2; z1 = z0 + pd * math.sin(tilt); n = 0; north = ax_v.y >= 0     # +v runs north: the high edge there
+    Z = Vector((0, 0, 1)); v = vmin + sb
+    while v + wv <= vmax - sb and n < 1200:
+        run = []; u = umin + sb
+        while u + pw <= umax - sb:
+            if all(inside(u + du, v + dv) for du in (-0.25, pw + 0.25) for dv in (-0.25, wv + 0.25)) and _free(placed, u, u + pw, v, v + wv, 0.3):
+                za, zb = (z0, z1) if north else (z1, z0)
+                out.poly('solar', [at(u, v, za), at(u + pw, v, za), at(u + pw, v + wv, zb), at(u, v + wv, zb)], (1, 1, 1))
+                vb = v + wv if north else v
+                out.poly('metal', [at(u, vb, deck), at(u + pw, vb, deck), at(u + pw, vb, z1), at(u, vb, z1)], (0.46, 0.46, 0.45))
+                run.append(u); n += 1
+            u += pw + 0.025
+        if run: placed.append((min(run), max(run) + pw, v, v + wv))
+        v += pitch
+
+
+def roof_garden(b, area, deck, umin, umax, vmin, vmax, inside, placed, spot, at, box, cyl, out):
+    """where NAIP 2022 measures a green roof (class 'green', 254 roofs): a big roof is an extensive sedum roof (mats in
+    olive, green and rust-red, a gravel margin and a paver path through it); a small one is a garden: a plank deck,
+    raised planters with shrubs round it, a table and chairs. SOURCED on where, CONVENTION on the planting"""
+    r = random.Random(b['gid'] * 71 + 5)
+    if area > 300:
+        st = 1.2; ph = r.uniform(0, 6.28); pv = (vmin + vmax) / 2 + r.uniform(-0.2, 0.2) * (vmax - vmin)
+        SED = ((0.30, 0.36, 0.15), (0.24, 0.33, 0.12), (0.40, 0.32, 0.20), (0.34, 0.40, 0.18), (0.44, 0.40, 0.24))
+        u = umin + 0.6; nq = 0
+        while u + st <= umax - 0.6 and nq < 3000:
+            v = vmin + 0.6
+            while v + st <= vmax - 0.6:
+                if abs(v + st / 2 - pv) > 0.7 and inside(u, v) and inside(u + st, v + st) and inside(u + st, v) and inside(u, v + st) and _free(placed, u, u + st, v, v + st, 0.2):
+                    k = int((math.sin(u * 0.21 + ph) + math.sin(v * 0.17 - ph) + 2) * 1.2 + r.random() * 0.8) % len(SED)
+                    out.poly('plant', [at(u + 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + st - 0.03, deck + 0.08), at(u + 0.03, v + st - 0.03, deck + 0.08)], SED[k]); nq += 1
+                v += st
+            u += st
+        box('deck', umin + 0.6, pv - 0.45, umax - umin - 1.2, 0.9, deck, 0.05, (0.60, 0.59, 0.56))   # the paver path (clipped by the parapet)
+        return
+    s_ = spot(min(4.5, (umax - umin) * 0.5), min(3.5, (vmax - vmin) * 0.5), tries=30, pad=0.4)
+    if not s_: return
+    u0, v0 = s_; wu, wv = min(4.5, (umax - umin) * 0.5), min(3.5, (vmax - vmin) * 0.5)
+    box('deck', u0, v0, wu, wv, deck, 0.12, r.choice(((0.58, 0.45, 0.32), (0.52, 0.42, 0.31))))
+    deck_furniture(r, u0, v0, wu, wv, deck + 0.12, box, cyl)
+    for _ in range(r.randint(3, 7)):                                        # planters with shrubs round the deck
+        q = spot(r.uniform(0.8, 1.8), 0.6, tries=12, pad=0.3)
+        if not q: continue
+        box('equip', q[0], q[1], 1.3, 0.6, deck, 0.45, (0.42, 0.38, 0.33))
+        for k in range(2):
+            cyl('plant', q[0] + 0.35 + 0.6 * k, q[1] + 0.3, deck + 0.45, r.uniform(0.3, 0.7), r.uniform(0.28, 0.42),
+                r.choice(((0.16, 0.28, 0.09), (0.22, 0.34, 0.12), (0.18, 0.24, 0.10))), 7)
+
+
+def deck_furniture(r, u0, v0, wu, wv, z0, box, cyl):
+    """a table and chairs (or two loungers) on a roof deck: dark metal, teak, a cushion colour now and then"""
+    if wu < 2.0 or wv < 1.8: return
+    tc = r.choice(((0.20, 0.20, 0.21), (0.46, 0.34, 0.22), (0.80, 0.79, 0.75)))
+    if r.random() < 0.65:
+        cu, cv = u0 + wu * r.uniform(0.35, 0.65), v0 + wv * r.uniform(0.4, 0.6)
+        cyl('equip', cu, cv, z0, 0.72, 0.45, tc, 10)
+        for a in range(r.choice((2, 3, 4))):
+            ang = a * math.pi * 2 / 4 + r.uniform(-0.2, 0.2); du, dv = math.cos(ang) * 0.8, math.sin(ang) * 0.8
+            box('equip', cu + du - 0.23, cv + dv - 0.23, 0.46, 0.46, z0, 0.45, tc)
+    else:
+        lc = r.choice(((0.85, 0.83, 0.78), (0.28, 0.40, 0.46), (0.46, 0.34, 0.22)))
+        for k in range(2):
+            box('equip', u0 + 0.3 + k * 0.9, v0 + 0.3, 0.65, 1.9, z0, 0.35, lc)
+
+
+def hvac_row(rtu, u0, v0, wu, wv, h, m, col, deck, box, cyl, at, out, seed, vmin, vmax):
+    """a row of m units on the old footprints. RTU: a packaged unit on its roof curb, the condenser end's grille darker
+    with one or two fans, the economiser hood on its side. Split condensers: on two sleeper rails, a fan grille on
+    top. And the walkway pads beside the row (mid grey, never white: BAR 24/09)"""
+    r = random.Random(seed); dk = tuple(c * 0.55 for c in col); fan = (0.07, 0.07, 0.07)
+    if not rtu:
+        for k in (0.12, wv - 0.22): box('metal', u0 - 0.15, v0 + k, m * (wu + 0.35) - 0.05, 0.1, deck, 0.12, (0.40, 0.40, 0.39))
+    for i in range(m):
+        u = u0 + i * (wu + 0.35)
+        if rtu:
+            box('metal', u, v0, wu, wv, deck, 0.3, (0.38, 0.38, 0.37))
+            box('equip', u + 0.04, v0 + 0.04, wu - 0.08, wv - 0.08, deck + 0.3, h - 0.3, col)
+            gl = wu * 0.42; zt = deck + h + 0.005
+            out.poly('equip', [at(u + wu - gl - 0.04, v0 + 0.08, zt), at(u + wu - 0.1, v0 + 0.08, zt), at(u + wu - 0.1, v0 + wv - 0.08, zt), at(u + wu - gl - 0.04, v0 + wv - 0.08, zt)], dk)
+            nf = 2 if wv > 1.55 and gl > 1.0 else 1
+            for k in range(nf):
+                cyl('metal', u + wu - 0.07 - gl / 2, v0 + wv * (k + 0.5) / nf, zt, 0.02, min(gl, wv / nf) * 0.4, fan, 12)
+            box('equip', u + 0.15, v0 - 0.3, wu * 0.32, 0.3, deck + 0.3 + (h - 0.3) * 0.35, (h - 0.3) * 0.55, tuple(c * 0.9 for c in col))
+        else:
+            box('equip', u, v0, wu, wv, deck + 0.12, h - 0.12, col)
+            zt = deck + h + 0.005
+            out.poly('equip', [at(u + 0.07, v0 + 0.07, zt), at(u + wu - 0.07, v0 + 0.07, zt), at(u + wu - 0.07, v0 + wv - 0.07, zt), at(u + 0.07, v0 + wv - 0.07, zt)], dk)
+            cyl('metal', u + wu / 2, v0 + wv / 2, zt, 0.02, min(wu, wv) * 0.38, fan, 12)
+    # the walkway pads along the service side
+    L = m * (wu + 0.35) - 0.35; side = -1 if r.random() < 0.5 else 1; vp = v0 - 0.95 if side < 0 else v0 + wv + 0.35
+    if vmin + 0.3 < vp and vp + 0.6 < vmax - 0.3:
+        pc = r.choice(((0.58, 0.58, 0.56), (0.52, 0.52, 0.50), (0.62, 0.60, 0.56)))
+        k = 0
+        while k * 0.68 + 0.6 <= L + 0.4:
+            box('deck', u0 - 0.2 + k * 0.68, vp, 0.6, 0.6, deck, 0.03, pc); k += 1
+
+
 def roof_kit(ring, inner, deck, top, b, rng, out, c):
     if c['sub'] == 'pier': pier_roof(ring, deck, top, b, out, c); return
     """what stands on a flat roof, by the kind of building: a stair
@@ -1802,6 +1923,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
     the party walls, brick chimneys on the old houses, condensers and
     rooftop units on apartments and shops, now and then solar panels"""
     style, sub, body, wall_mat, rc = c['style'], c['sub'], c['body'], c['wall_mat'], c['rc']
+    KL = min(LOD, 1) if (ROOF_V2 and FINE) else LOD      # (27/09) the kit's own detail: at z9 a condenser is 10 px
     ax_u, ax_v, storeys, roles = c['ax_u'], c['ax_v'], c['storeys'], c['roles']
     n = len(ring)
     area = abs(sum(ring[i][0] * ring[(i + 1) % n][1] - ring[(i + 1) % n][0] * ring[i][1] for i in range(n))) / 2
@@ -1929,9 +2051,22 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             out.poly('roof_flat', [at(s_[0] + 0.05, s_[1] + 0.05, deck + h + 0.02), at(s_[0] + wu - 0.05, s_[1] + 0.05, deck + h + 0.02),
                                    at(s_[0] + wu - 0.05, s_[1] + wv - 0.05, deck + h + 0.02), at(s_[0] + 0.05, s_[1] + wv - 0.05, deck + h + 0.02)], rc)
             box('metal', s_[0] - 0.04, s_[1] - 0.04, wu + 0.08, wv + 0.08, deck + h, 0.06, (0.5, 0.5, 0.49))
+            if ROOF_V2:   # (27/09) a steel door on its long side; from 5 storeys the lift overrun against it, taller, in the same wall
+                vr_ = random.Random(b['gid'] * 131 + 7)
+                box('door', s_[0] + wu * vr_.uniform(0.2, 0.55), s_[1] - 0.05, 0.95, 0.05, deck, 2.15, (0.30, 0.31, 0.32))
+                ou, ov = min(2.8, wu * 0.85), vr_.uniform(2.1, 2.6)
+                if storeys >= 5 and all(inside(s_[0] + du, s_[1] + wv + dv) for du in (-0.3, ou + 0.3) for dv in (0.0, ov + 0.3)):
+                    placed.append((s_[0], s_[0] + ou, s_[1] + wv, s_[1] + wv + ov)); h2 = h + vr_.uniform(1.0, 1.6)
+                    box(wall_mat or 'stucco', s_[0], s_[1] + wv, ou, ov, deck, h2, body)
+                    out.poly('roof_flat', [at(s_[0] + 0.05, s_[1] + wv + 0.05, deck + h2 + 0.02), at(s_[0] + ou - 0.05, s_[1] + wv + 0.05, deck + h2 + 0.02),
+                                           at(s_[0] + ou - 0.05, s_[1] + wv + ov - 0.05, deck + h2 + 0.02), at(s_[0] + 0.05, s_[1] + wv + ov - 0.05, deck + h2 + 0.02)], rc)
+                    box('metal', s_[0] - 0.04, s_[1] + wv - 0.04, ou + 0.08, ov + 0.08, deck + h2, 0.06, (0.5, 0.5, 0.49))
     elif rng.random() < 0.55 and not hs_:                       # a roof hatch
         s_ = spot(0.85, 0.85)
         if s_: box('metal', s_[0], s_[1], 0.85, 0.85, deck, 0.38, (0.46, 0.46, 0.45))
+    mR_ = ROOF_M.get(b['gid']) if (ROOF_V2 and roof_now(b)) else None
+    if mR_ and mR_[3] == 'solar' and area > 25: solar_array(b, area, deck, umin, umax, vmin, vmax, inside, placed, at, box, out, ax_v)
+    if mR_ and mR_[3] == 'green' and area > 20: roof_garden(b, area, deck, umin, umax, vmin, vmax, inside, placed, spot, at, box, cyl, out)
     # skylights over the stairs and the light wells: a curb and glass, or a milky dome
     nsk_ = rng.choice((0, 1, 1, 2, 3)) if house or area < 400 else rng.randint(1, 4)
     if hs_: nsk_ = 1 if (nsk_ and random.Random(b['gid'] * 29 + 1).random() < 0.35) else 0    # a house: the occasional skylight only
@@ -1942,7 +2077,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
         # (24/09, Daniel: white confetti on every flat roof) curbs in galvanised
         # grey, the domes no whiter than 0.6
         box('trim' if rng.random() < 0.6 else 'metal', s_[0], s_[1], wu, wv, deck, 0.22, (0.54, 0.54, 0.52))
-        if rng.random() < 0.6 or LOD >= 2:
+        if rng.random() < 0.6 or KL >= 2:
             out.poly('glass', [at(s_[0] + 0.06, s_[1] + 0.06, deck + 0.235), at(s_[0] + wu - 0.06, s_[1] + 0.06, deck + 0.235),
                                at(s_[0] + wu - 0.06, s_[1] + wv - 0.06, deck + 0.235 + 0.12), at(s_[0] + 0.06, s_[1] + wv - 0.06, deck + 0.235 + 0.12)], (1, 1, 1))
         else:
@@ -1962,18 +2097,18 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             h = rng.uniform(1.0, 1.7)
             out.box3('chimney', p0 + Z * (deck - 0.1), t_ * 0.9, nn * 0.55, Z * (top - deck + h), (1, 1, 1))
             out.box3('trim', p0 - t_ * 0.05 - nn * 0.05 + Z * (top + h - 0.08), t_ * 1.0, nn * 0.65, Z * 0.12, (0.55, 0.53, 0.50))
-            if LOD < 2:
+            if KL < 2:
                 for k in range(rng.randint(1, 2)):
                     cyl('metal', (p0 + t_ * (0.25 + 0.4 * k) + nn * 0.27).dot(ax_u), (p0 + t_ * (0.25 + 0.4 * k) + nn * 0.27).dot(ax_v),
                         top + h + 0.04, 0.35, 0.09, (0.25, 0.24, 0.23), 6)
     # plumbing vents and flues, mostly near the edges
-    if LOD < 2:
+    if KL < 2:
         for _ in range(int(min(10, 2 + area / 45))):
             s_ = spot(0.2, 0.2, tries=12, pad=0.15)
             if not s_: continue
             col = (0.08, 0.08, 0.08) if rng.random() < 0.6 else (0.55, 0.55, 0.53)
             h = rng.uniform(0.3, 0.8); r = rng.uniform(0.04, 0.09)
-            cyl('metal', s_[0] + 0.1, s_[1] + 0.1, deck, h, r, col, 6 if LOD else 8)
+            cyl('metal', s_[0] + 0.1, s_[1] + 0.1, deck, h, r, col, 6 if KL else 8)
             if rng.random() < 0.3: cyl('metal', s_[0] + 0.1, s_[1] + 0.1, deck + h, 0.08, r * 2.2, col, 8)
     # condensers and rooftop units
     n_hv = 0
@@ -1992,17 +2127,39 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
             s_ = spot(m_ * (wu + 0.35) - 0.35, wv, tries=15, pad=0.5)
             if not s_: m_ = m_ // 2 if m_ > 1 else 0
         if not s_: continue
-        for k_ in range(m_):
-            box('equip', s_[0] + k_ * (wu + 0.35), s_[1], wu, wv, deck, h, col)
-        if rtu and LOD >= 1:
+        if ROOF_V2:
+            hvac_row(rtu, s_[0], s_[1], wu, wv, h, m_, col, deck, box, cyl, at, out, b['gid'] * 7 + ci_, vmin, vmax)
+        else:
+            for k_ in range(m_):
+                box('equip', s_[0] + k_ * (wu + 0.35), s_[1], wu, wv, deck, h, col)
+        if rtu and KL >= 1:
             # the row's supply duct running off across the roof, low, in galvanised sheet
             dl = rng.uniform(2.5, 6.0); dv = rng.choice((-1, 1))
             v0_ = s_[1] + wv if dv > 0 else s_[1] - dl
             if vmin + 0.4 < v0_ and v0_ + dl < vmax - 0.4: box('metal', s_[0] + wu * 0.35, v0_, 0.6, dl, deck, 0.55, (0.52, 0.53, 0.52))
-        if LOD < 2:
+        if KL < 2 and not ROOF_V2:
             for k in range(2 if rtu else 1):
                 um = s_[0] + (wu * (0.3 + 0.4 * k) if rtu else wu / 2); vm = s_[1] + wv / 2
                 cyl('metal', um, vm, deck + h, 0.015, min(wu, wv) * 0.36, (0.07, 0.07, 0.07), 12)
+    if ROOF_V2 and not hs_ and (style == 'block' or storeys >= 3) and area > 60:
+        er_ = random.Random(b['gid'] * 211 + 3)
+        for _ in range(er_.randint(1, min(6, 2 + int(area / 250)))):
+            s_ = spot(0.9, 0.9, tries=12, pad=0.4)
+            if not s_: continue
+            c_ = er_.choice(((0.50, 0.50, 0.49), (0.44, 0.44, 0.43), (0.56, 0.55, 0.52)))
+            cyl('equip', s_[0] + 0.45, s_[1] + 0.45, deck, 0.28, 0.34, (0.40, 0.40, 0.39), 10)             # the curb
+            cyl('metal', s_[0] + 0.45, s_[1] + 0.45, deck + 0.28, 0.22, 0.2, c_, 10)                       # the throat
+            cyl('equip', s_[0] + 0.45, s_[1] + 0.45, deck + 0.5, 0.16, 0.44, c_, 12)                        # the hood
+        # satellite dishes on apartment roofs (1 in 3), on a short mast near the parapet, facing the southern sky (az ~200, el ~45)
+        if sub == 'apartment' or b.get('ty') in ('FLATS', 'APARTMENT', 'RESIDENTIAL', 'MIXED') or storeys >= 4:
+            for _ in range(er_.choice((0, 0, 1, 1, 2, 3)) if er_.random() < 0.35 else 0):
+                s_ = spot(0.9, 0.9, tries=10, pad=0.2)
+                if not s_: continue
+                cz = deck + er_.uniform(0.8, 1.2); c0 = at(s_[0] + 0.45, s_[1] + 0.45, cz); az, el = math.radians(er_.uniform(185, 215)), math.radians(er_.uniform(38, 48))
+                N_ = Vector((math.sin(az) * math.cos(el), math.cos(az) * math.cos(el), math.sin(el))); e1 = N_.cross(Z).normalized(); e2 = e1.cross(N_).normalized()
+                rd = er_.uniform(0.33, 0.45)
+                out.poly('equip', [c0 + (e1 * math.cos(2 * math.pi * k / 10) + e2 * math.sin(2 * math.pi * k / 10)) * rd for k in range(10)], er_.choice(((0.62, 0.62, 0.60), (0.55, 0.55, 0.54), (0.30, 0.30, 0.31))))
+                cyl('metal', s_[0] + 0.45, s_[1] + 0.45, deck, cz - deck - 0.05, 0.03, (0.35, 0.35, 0.35), 6)
     # solar: rows of panels, tilted up a little toward the sun's side
     if (house or sub == 'apartment') and area > 45 and rng.random() < 0.14 * EA.rel('solar', ERA):
         pw, pd, gap = 1.02, 1.68, 0.03
@@ -2015,7 +2172,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
                 if not s_: break
                 nrow += 1
                 z0 = deck + 0.25; z1 = z0 + pd * math.sin(tilt)
-                if LOD >= 2:
+                if KL >= 2:
                     out.poly('solar', [at(s_[0], s_[1], z0), at(s_[0] + wu, s_[1], z0), at(s_[0] + wu, s_[1] + wv, z1), at(s_[0], s_[1] + wv, z1)], (1, 1, 1))
                     continue
                 for k in range(ncol):
@@ -2023,11 +2180,11 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
                     out.poly('solar', [at(u0, s_[1], z0), at(u0 + pw, s_[1], z0), at(u0 + pw, s_[1] + wv, z1), at(u0, s_[1] + wv, z1)], (1, 1, 1))
                 box('metal', s_[0], s_[1] + wv - 0.05, wu, 0.05, deck, z1 - deck, (0.5, 0.5, 0.5))
             if nrow: break
-    # (24/09) a roof deck at the city's LOD: planks, a railing seen as a thin
+    # (24/09) a roof deck at the city's KL: planks, a railing seen as a thin
     # veil round it, planters, an umbrella now and then — on about one house
-    # roof in four; the old centred square stays for LOD 0
+    # roof in four; the old centred square stays for KL 0
     dr = random.Random(b['gid'] * 97 + 5)
-    if style in ('vic', 'stucco', 'midcentury') and LOD >= 1 and area > 40 and dr.random() < 0.15:
+    if style in ('vic', 'stucco', 'midcentury') and KL >= 1 and area > 40 and dr.random() < 0.15:
         wu, wv = dr.uniform(2.8, 5.0), dr.uniform(2.4, 4.0)
         s_ = spot(wu, wv, tries=30, pad=0.35)
         if s_:
@@ -2048,6 +2205,7 @@ def roof_kit(ring, inner, deck, top, b, rng, out, c):
                 R_ = [at(uc + ra * math.cos(2 * math.pi * i / 8), vc + ra * math.sin(2 * math.pi * i / 8), zu) for i in range(8)]
                 ap = at(uc, vc, zu + 0.4)
                 for i in range(8): out.poly('awning', [R_[i], R_[(i + 1) % 8], ap], ucol)
+            if ROOF_V2: deck_furniture(dr, u0, v0, wu, wv, z0, box, cyl)
 
 
 def facade(w, is_front, b, rng, c):
@@ -2854,7 +3012,7 @@ def emit(bpy, out, mats, name='gen'):
         if ERA is None and __import__('os').environ.get('BTEX_REAL', '0') == '1':
             import rc_tex
             if k in rc_tex.FACADE_MATS: rc_tex.assign_uv(me)
-        me.materials.append(mats[k] if k in mats else mats['roof_flat' if k == 'roof_big' else k])
+        me.materials.append(mats[k] if k in mats else mats['roof_flat' if k == 'roof_big' else 'equip' if k == 'plant' else k])
         ob = bpy.data.objects.new(f'{name}.{k}', me)
         bpy.context.scene.collection.objects.link(ob); objs.append(ob)
     return objs

@@ -141,14 +141,20 @@ def cloth_mat(bpy):
     return m
 
 
-def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0):
+def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0, only_hot=False):
     import time
     from mathutils import Vector
     from mathutils.bvhtree import BVHTree
     import transit_geom as TG
     from life_traffic import _instancer
-    pl = [p for p in plan(D, sea) if inb(p[1], p[2], 30)]
-    if not pl: return 0
+    pl = [] if only_hot else [p for p in plan(D, sea) if inb(p[1], p[2], 30)]
+    import os as _os
+    HOT_ = _os.environ.get('HOT', '1') == '1'; PV2_ = _os.environ.get('PEOPLE_V2', '1') == '1'     # (27/09, assets_urban) urban_people.py
+    if HOT_:
+        import urban_people as UP
+        hot_ = UP.plan_hot(inb)
+    else: hot_ = []
+    if not pl and not hot_: return 0
     # the surface: the paving where there is some (sidewalks, paths, streets), else the ground
     dg = bpy.context.evaluated_depsgraph_get(); bvs = []
     for nm in ('sidewalks', 'paths', 'streets'):
@@ -156,7 +162,7 @@ def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0):
         if o is not None and o.type == 'MESH' and len(o.data.polygons): bvs.append(BVHTree.FromObject(o, dg))
     down = Vector((0, 0, -1))
     so = sc.objects.get('streets'); sbv = BVHTree.FromObject(so, dg) if so is not None and len(so.data.polygons) else None
-    pts = []; kinds = sorted({p[0] for p in pl})
+    pts = []; kinds = sorted({p[0] for p in pl} | {h_[0] for h_ in hot_})
     for k, x, y, yaw, wet in pl:
         if wet: z = sea.z(x, y)
         else:
@@ -169,8 +175,15 @@ def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0):
                 h = bv.ray_cast(Vector((x, y, g + 3.0)), down, 4.0)
                 if h[0] is not None and h[0].z > z: z = h[0].z
         pts.append((x, y, z, 0.0, yaw, kinds.index(k)))
+    if HOT_:
+        hbv_ = UP.scene_bvh(bpy, sc, None)
+        for (x_, y_, z_, k_, yaw_) in UP.place(hot_, ground, hbv_, sbv, log): pts.append((x_, y_, z_, 0.0, yaw_, kinds.index(k_)))
+        try: UP.props(bpy, sc, T, ground, sbv, hbv_, inb, log)
+        except Exception as ex_: log('urban_people props failed', repr(ex_)[:200])
+        log(f'urban_people: {len(hot_)} planned in the hot zones')
     cm = cloth_mat(bpy)
     protos = _protos(); colls = []
+    if PV2_: protos = (UP if HOT_ else __import__('urban_people')).protos(protos)
     for k in kinds:
         vb = protos[k]
         me = TG.mesh_multi(bpy, f'lp_{k}', vb.V, vb.F, vb.C, vb.MI, [cm, T['matte']])

@@ -207,6 +207,10 @@ _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['
 _allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
+if ERA is None and E('SITES', '1') == '1':   # (27/09, assets_urban) today's construction sites (DataSF permits on their parcels): urban_build.py
+    import urban_build as UB
+    _st = [b for b in UB.records(recs) if in_box(b['cx'], b['cy'])]; recs += _st
+    if _st: log('SITES: today\'s construction sites', len(_st), [(b['_site_today'], round(b['rise'], 2)) for b in _st][:6])
 _sbr = [b for b in EA.sanborn_records(ERA) if in_box(b['cx'], b['cy'], 80)] if E('SANBORN', '1') == '1' else []
 if _sbr:
     _nc = len(recs); recs = [b for b in recs if not EA.sanborn_contradicted(b, ERA)]
@@ -280,6 +284,13 @@ else:
     LOTS, LI = [], None
     def open_at(x, y, grid=None): return 0.0
     def street_stands(x, y): return True
+    # (27/09, assets_urban) TODAY'S SURFACE PARKING LOTS (urban_lots.py): paved, striped, wheel stops, parked cars
+    if E('LOTS_V2', '1') == '1':
+        import urban_lots as UL
+        _bx = CBOX if len(CBOX) == 4 else None
+        LOTS = [L_ for L_ in UL.load(_bx) if all((lambda z_: z_ is not None and z_ >= 0.8)(ground(p_[0], p_[1])) for p_ in L_['ring'])]   # (lots on pier decks: not yet)
+        for L_ in LOTS: L_['stalls'] = UL.layout(L_['ring'])      # (the stalls near a street are dropped once the street mesh stands: below)
+        EA.lots_mesh(bpy, LOTS, ground, {'paved': ph_mat('worn_asphalt', 7.0, name='lot_paved', value=float(E('LOT_PV', 0.8)), rough_add=0.2)}, log)
 
 log('streets')
 SP, MP, DP, DL = array.array('f'), array.array('f'), array.array('f'), array.array('f')
@@ -520,12 +531,18 @@ if E('GID_PASS') == '1':   # every face a building draws carries its gid as colo
     def _poly_gid(self, mat, pts, col=(1, 1, 1)):
         g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
     G.Out.poly = _poly_gid
+_SCF = 0
+if ERA is None and E('SCAFFOLD', '1') == '1':   # (28/09, assets_urban) today's scaffolds (DataSF DPW scaffolding permits): urban_build.py
+    import urban_build as UB, random as _rnd
+    _SCF = UB.scaffold_mark(recs, sbv, BOX or d['box']); log('SCAFFOLD: buildings with a scaffold', _SCF)
 CH = 6000; nfaces = 0; _bfail = []
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
         if E('GID_PASS') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
-        try: G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
+        try:
+            G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
+            if _SCF and b.get('_scaffold'): UB.scaffold(out, b, ground_s, _rnd.Random(int(b['gid'])))
         except Exception as ex:     # a broken building used to draw half and say nothing: log the first ones
             _bfail.append(b.get('gid'))
             if len(_bfail) <= 5: import traceback; log('building failed:', b.get('gid'), repr(ex)); traceback.print_exc()
@@ -805,6 +822,7 @@ if VEG and getattr(VK, 'canopy_on', False):
             if not EA.canopy_stands(x, y, ERA, _allb, kd): continue
         gz_ = ground(x, y)
         if gz_ is None: continue
+        if gz_ < 0.5 and E('MARINA_V2', '1') == '1': continue      # (27/09, assets_urban) a 'crown' over the water: the LiDAR's masts and docks (trees on South Beach Harbor's fingers)
         pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg - _nc, 'of', len(MASS), 'measured crowns', _nc)
 instancer('trees', pts, protos)
@@ -844,6 +862,12 @@ for a, b, outv in SE:
         if carfree_at(p.x, p.y, BOX): continue     # JFK Promenade, Twin Peaks' closed loop, busways
         cpts.append((p.x, p.y, p.z + 0.02, 1.0, ang + (math.pi if hp(p.x, p.y, 12) < 0.5 else 0), car_pick(hp(p.x, p.y, 13))))
 # the parking lots of the year, their stalls filled by their own draws
+if ERA is None and LOTS and E('LOTS_V2', '1') == '1':      # (27/09, assets_urban) today's lots: off the streets, then lines, stops and cars
+    _n0, _n1 = UL.clear(LOTS, sbv, ground)
+    for L_ in LOTS: L_['cars'] = UL.cars(L_['stalls'], float(E('LOT_OCC', 0.75)))
+    UL.marks(bpy, LOTS, ground, {'line': simple('lot_line', (0.72, 0.72, 0.69), rough=0.7), 'line_y': simple('lot_line_y', (0.70, 0.55, 0.12), rough=0.7),
+                                 'stop': simple('lot_stop', (0.50, 0.49, 0.46), rough=0.9)}, log)
+    log('LOTS_V2: stalls kept off the streets', _n1, 'of', _n0)
 for L_ in LOTS:
     for (x_, y_, h_, u_) in L_['cars']:
         gz_ = ground(x_, y_)
