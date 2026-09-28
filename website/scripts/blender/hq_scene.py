@@ -1041,13 +1041,17 @@ def _brush_protos():
                 # changed colour across a tile seam
                 oi = nt.nodes.new('ShaderNodeAttribute'); oi.attribute_type = 'INSTANCER'; oi.attribute_name = 'crand'
                 hs = nt.nodes.new('ShaderNodeHueSaturation'); nt.links.new(src_, hs.inputs['Color'])
-                hs.inputs['Hue'].default_value = 0.47; hs.inputs['Saturation'].default_value = 0.85
+                # BRUSH_V4 (assets_trees_glass 28/09, BAR 27/09 23:05 lush green): the dark olive / sage
+                # coyote-brush tint (value 0.30-0.52) read as dead grey twigs and the AI pass painted them
+                # as dead shrubs (Washington Square); now a healthy mid green, a little variation
+                bv4 = os.environ.get('BRUSH_V4', '1') == '1'
+                hs.inputs['Hue'].default_value = 0.505 if bv4 else 0.47; hs.inputs['Saturation'].default_value = 1.12 if bv4 else 0.85
                 mv = nt.nodes.new('ShaderNodeMapRange'); nt.links.new(oi.outputs['Fac'], mv.inputs[0])
-                mv.inputs[3].default_value = 0.30; mv.inputs[4].default_value = 0.52; nt.links.new(mv.outputs[0], hs.inputs['Value'])
+                mv.inputs[3].default_value = 0.62 if bv4 else 0.30; mv.inputs[4].default_value = 0.88 if bv4 else 0.52; nt.links.new(mv.outputs[0], hs.inputs['Value'])
                 nt.links.new(hs.outputs['Color'], grp.inputs['Diffuse'])
                 if 'Translucency' in grp.inputs and grp.inputs['Translucency'].links:
                     tl = grp.inputs['Translucency'].links[0].from_socket
-                    mt = nt.nodes.new('ShaderNodeMath'); mt.operation = 'MULTIPLY'; mt.inputs[1].default_value = 0.3
+                    mt = nt.nodes.new('ShaderNodeMath'); mt.operation = 'MULTIPLY'; mt.inputs[1].default_value = 0.6 if bv4 else 0.3
                     nt.links.new(tl, mt.inputs[0]); nt.links.new(mt.outputs[0], grp.inputs['Translucency'])
                 if 'Rough' in grp.inputs:
                     for l_ in list(grp.inputs['Rough'].links): nt.links.remove(l_)
@@ -1164,6 +1168,12 @@ def hill_brush(ground_fn, box=None, avoid=(('streets', 4.2), ('sidewalks', 1.4),
         # grass only, never on a lawn, a lot, a beach (ground_hq.py)
         import ground_hq as _gh
         wc, hv_ = _gh.at(g['gw'], X, Y, ('scrub', 'tree', 'drygrass'))
+        if os.environ.get('BRUSH_V4', '1') == '1':
+            # BRUSH_V4: in a park, a bush only on the photo's scrub or under its canopy,
+            # not on cured patches of a mown lawn (Washington Square: bushes scattered
+            # over the lawn read as dead weeds after the AI pass)
+            wc2, _ = _gh.at(g['gw'], X, Y, ('scrub', 'tree'))
+            wc = np.where(park > 0.5, wc2, wc)
         wild = np.where(hv_, wc.astype(np.float32), wild)
     ok = (wild > 0.8) & (sl < 34.0)
     dense = ok & (br > 0.5)
