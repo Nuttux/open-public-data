@@ -442,6 +442,7 @@ if os.environ.get('GROUND_V2', '1') == '1' and ERA is None:
     # [GROUND_V2] courts, fields, tracks, playgrounds, dirt lots, lawn strips from OSM (ground_osm.py)
     try:
         import ground_osm; ground_osm.build(sc, M, ground0, streets, BOX, log)
+        import port_containers; port_containers.build(sc, ground0, BOX, log)
     except Exception as ex:
         import traceback; traceback.print_exc(); log(f'ground_osm: failed ({ex})')
 if _PAVE2 is not None:
