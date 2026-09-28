@@ -1,0 +1,19 @@
+{
+ "name": "qipu building table",
+ "version": 1,
+ "format": "sqlite3",
+ "default_path": "/Volumes/DANI-SD-DRIVE2/pipeline/bt/sf_bt.sqlite",
+ "id": {"bid": "int = render gid; <1e6 DataSF, 8.0e8 fresh, 9.1e8 OSM, 9.9e8 places add"},
+ "tables": {
+  "buildings": {"bid": "int pk", "origin": "datasf|osm|fresh|places_add", "area": "text", "cx": "m", "cy": "m", "minx": "m", "miny": "m", "maxx": "m", "maxy": "m",
+                "ring": "json [[x,y],...] world m", "roles": "json [0 back|1 front|2 party|3 side]", "raw": "json source record as the render reads it",
+                "year_built": "real", "year_built_src": "text", "year_demolished": "real", "year_demolished_src": "text", "demolished_by": "text", "rev": "hash"},
+  "attrs": {"bid": "int", "attr": "text", "value": "json", "conf": "0..1", "src": "sources.src", "date": "YYYY-MM[-DD]", "note": "text"},
+  "geoms": {"bid": "int", "kind": "arc|massing_part|front_walls|footprint_places", "idx": "int", "geom": "json", "conf": "0..1", "src": "text", "date": "text"},
+  "sources": {"src": "pk", "publisher": "text", "dataset": "text", "what": "text", "licence": "text", "retrieved": "text"},
+  "meta": {"k": "pk", "v": "text"},
+  "bt_rt": "rtree(id, minx, maxx, miny, maxy)"
+ },
+ "profiles": {"best": "places first, then max conf", "render_today": "= city_data.buildings merge (no faithful, no era_fix)", "fa_table": "= faithful fa_table_v3.json"},
+ "reader": "bt_read.BT: get, attr, in_box, records, fa_table, alive, changed"
+}
