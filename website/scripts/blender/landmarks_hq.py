@@ -106,7 +106,10 @@ def _registry():
                  note='construction 1933 (piers, anchorages), towers 1935, cables 1936, opened 27 May 1937'),
         Landmark('baybridge', 'San Francisco-Oakland Bay Bridge (west spans)', 1936, None, B.bay_bridge,
                  [Region(frame=bay, uv=(-60, 60, -800, 2900))], pad=2500.0,
-                 note='construction 1933-36, opened 12 Nov 1936; the east span: cantilever 1936-2013, self-anchored suspension from Sep 2013'),
+                 note='construction 1933-36, opened 12 Nov 1936; the east span: cantilever 1936-2013, self-anchored suspension from Sep 2013',
+                 # [GROUND_V2, assets_ground 28/09] nothing grows under the deck and the
+                 # truss (Rincon Hill's approach): trees there read through the truss
+                 notree=[Region(frame=bay, uv=(-16, 16, -800, 0))] if os.environ.get('GROUND_V2', '1') == '1' else None),
         Landmark('sas', 'Bay Bridge east span (self-anchored suspension)', 2013, None, B.sas,
                  [Region(ring=[(6420, 5580), (7500, 6300), (7400, 6500), (6380, 5680)])], pad=2500.0,
                  note='opened 2 Sept 2013; the 1936 cantilever east span it replaced was taken down 2013-17'),
