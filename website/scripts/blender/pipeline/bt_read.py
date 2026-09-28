@@ -63,6 +63,7 @@ class BT:
         return d
 
     def in_box(s, x0, y0, x1, y1):
+        x0, y0, x1, y1 = float(x0), float(y0), float(x1), float(y1)
         return [r[0] for r in s.c.execute('select bid from buildings where cx between ? and ? and cy between ? and ?', (x0, x1, y0, y1))]
 
     def alive(s, gid, year):
@@ -78,6 +79,7 @@ class BT:
     def records(s, x0, y0, x1, y1, era=None, places=True, modelled_landmarks=None, south=True):
         """city_data.buildings(x0, y0, x1, y1) with NEWB=1 FRESH=1 (SOUTH=south, PLACES_OV=places) for ERA=era, from the table, in city_data's order.
         modelled_landmarks: the landmark keys the scene models (landmarks_hq registry); None = as outside Blender (lm records dropped)"""
+        x0, y0, x1, y1 = float(x0), float(y0), float(x1), float(y1)   # numpy scalars bind as blobs in sqlite3 (0 rows, silently: terrain_hq passes np.int64)
         on = modelled_landmarks
         live = lambda lm: not lm or (on is not None and lm not in on)
         lmrep = {b: json.loads(v) for b, a, v in s._attrs_src('osm', 'replaced_for_landmark')}
