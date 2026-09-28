@@ -532,7 +532,7 @@ if E('GID_PASS') == '1':   # every face a building draws carries its gid as colo
         g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
     G.Out.poly = _poly_gid
 _SCF = 0
-if ERA is None and E('SCAFFOLD', '1') == '1':   # (28/09, assets_urban) today's scaffolds (DataSF DPW scaffolding permits): urban_build.py
+if ERA is None and E('SCAFFOLD', '0') == '1':   # (28/09, assets_urban) today's scaffolds (DataSF DPW scaffolding permits): urban_build.py
     import urban_build as UB, random as _rnd
     _SCF = UB.scaffold_mark(recs, sbv, BOX or d['box']); log('SCAFFOLD: buildings with a scaffold', _SCF)
 CH = 6000; nfaces = 0; _bfail = []
