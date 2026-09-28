@@ -76,7 +76,35 @@ def fresh():
                {int(x['gid']) for x in dated} | set(j.get('newb_redated', [])))
     return _FR
 
+# THE BUILDING TABLE (BT=1, pipeline agent 28/09; default off): the same records, read from the one building table
+# (pipeline/bt_read.py, pipeline/BT_SCHEMA.md) instead of the .qc cells + newb + fresh + places files. The table holds
+# the production merge (NEWB=1 FRESH=1), so BT=1 is honoured only with NEWB=1 FRESH=1 and no NEWB_FILE / FRESH_FILE
+# override (else: the files, as before, with a warning). SOUTH / PLACES_OV / ERA / the landmark registry act as below.
+# Table: BT_FILE, else <this dir>/data/bt/sf_bt.sqlite (the snapshot's copy), else the SD card's build.
+_BT = None
+def _bt_ok():
+    if os.environ.get('BT', '0') != '1': return False
+    why = [k for k, d in (('NEWB', '1'), ('FRESH', '0')) if os.environ.get(k, d) != '1'] + [k for k in ('NEWB_FILE', 'FRESH_FILE') if os.environ.get(k)]
+    if why:
+        if _BT is None: print(f'[city_data] BT=1 ignored ({", ".join(why)}): the table holds the NEWB=1 FRESH=1 merge; reading the files', flush=True)
+        return False
+    return True
+def _bt_buildings(x0, y0, x1, y1):
+    global _BT
+    if _BT is None:
+        here = os.path.dirname(os.path.abspath(__file__)); import sys as _sys
+        _sys.path.insert(0, os.path.join(here, 'pipeline')); import bt_read
+        p = os.environ.get('BT_FILE') or next((q for q in (os.path.join(here, 'data', 'bt', 'sf_bt.sqlite'), bt_read.DEF) if os.path.exists(q)), None)
+        if p is None: raise FileNotFoundError('BT=1: no building table (BT_FILE, data/bt/sf_bt.sqlite, ' + bt_read.DEF + ')')
+        try:
+            import landmarks_hq as L_; on = {l.key for l in L_._registry()}
+        except Exception: on = None
+        _BT = (bt_read.BT(p), on); print(f"[city_data] BT=1 {p} (built {_BT[0].meta.get('built')}, {_BT[0].meta.get('n_buildings')} buildings)", flush=True)
+    era = float(os.environ['ERA']) if os.environ.get('ERA') else None
+    return _BT[0].records(x0, y0, x1, y1, era=era, places=os.environ.get('PLACES_OV', '1') == '1', modelled_landmarks=_BT[1],
+                          south=os.environ.get('SOUTH', '1') == '1')
 def buildings(x0, y0, x1, y1):
+    if _bt_ok(): return _bt_buildings(x0, y0, x1, y1)
     out = []
     NB, GONE = newb()
     FR, FGONE, FDATED = fresh()

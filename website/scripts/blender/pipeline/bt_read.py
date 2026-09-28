@@ -75,8 +75,8 @@ class BT:
         q = 'select bid, attr, value from attrs where src = ?' + (' and attr = ?' if attr else '')
         return s.c.execute(q, (src, attr) if attr else (src,)).fetchall()
 
-    def records(s, x0, y0, x1, y1, era=None, places=True, modelled_landmarks=None):
-        """city_data.buildings(x0, y0, x1, y1) with NEWB=1 FRESH=1 SOUTH=0 (+ PLACES_OV) for ERA=era, from the table.
+    def records(s, x0, y0, x1, y1, era=None, places=True, modelled_landmarks=None, south=True):
+        """city_data.buildings(x0, y0, x1, y1) with NEWB=1 FRESH=1 (SOUTH=south, PLACES_OV=places) for ERA=era, from the table, in city_data's order.
         modelled_landmarks: the landmark keys the scene models (landmarks_hq registry); None = as outside Blender (lm records dropped)"""
         on = modelled_landmarks
         live = lambda lm: not lm or (on is not None and lm not in on)
@@ -87,10 +87,11 @@ class BT:
         FDATED = set(fr_until) | redated; FGONE = {b for b, u in fr_until.items() if era is None or era >= u} | redated
         if FDATED: GONE = (GONE - FDATED) | FGONE
         out = []
-        for r in s.c.execute("select * from buildings where origin in ('datasf', 'osm', 'fresh') and cx between ? and ? and cy between ? and ?", (x0, x1, y0, y1)):
+        for r in s.c.execute("select * from buildings where origin in ('datasf', 'osm', 'south', 'fresh') and cx between ? and ? and cy between ? and ? order by ord", (x0, x1, y0, y1)):
             d = s._core(r); o = d['origin']
             if o == 'datasf' and d['bid'] in GONE: continue
             if o == 'osm' and (d['bid'] in FGONE or not live(d['raw'].get('lm'))): continue
+            if o == 'south' and (not south or d['bid'] in FGONE or (era is not None and d['raw']['year'] > era)): continue
             rec = dict(d['raw']); rec['ring'] = d['ring']; rec['roles'] = d['roles'] if o == 'datasf' else d['roles']
             out.append(rec)
         if era is not None or not places: return out
@@ -112,7 +113,7 @@ class BT:
                 b['cx'] = sum(p[0] for p in b['ring']) / n; b['cy'] = sum(p[1] for p in b['ring']) / n; b['roles'] = list(f.get('roles') or [1] * n)
             b['places'] = {k[3:]: v for k, v in o.items() if k.startswith('ov_')}
             res.append(b); seen.add(b['gid'])
-        for r in s.c.execute("select * from buildings where origin = 'places_add' and cx between ? and ? and cy between ? and ?", (x0, x1, y0, y1)):
+        for r in s.c.execute("select * from buildings where origin = 'places_add' and cx between ? and ? and cy between ? and ? order by ord", (x0, x1, y0, y1)):
             d = s._core(r)
             if d['bid'] not in seen: a = dict(d['raw']); a['ring'] = d['ring']; a['roles'] = d['roles']; res.append(a)
         return res

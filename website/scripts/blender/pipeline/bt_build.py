@@ -34,7 +34,7 @@ def pilot_box(i0=16, i1=27, j0=8, j1=15, pad=150):
     return (round(x0 - pad), round(y0 - pad), round(x1 + pad), round(y1 + pad))
 
 
-AREAS = {'pilot': pilot_box(), 'mission': (1232, -312, 1584, 45), 'northbeach': (2130, 4008, 3168, 5143)}
+AREAS = {'city': (-20000, -20000, 20000, 20000), 'pilot': pilot_box(), 'mission': (1232, -312, 1584, 45), 'northbeach': (2130, 4008, 3168, 5143)}
 FAITHFUL = {'northbeach': f'{RW}/faithful/out', 'mission': f'{RW}/faithful/areas/mission/out'}
 
 SOURCES = {   # src -> (publisher, dataset, what, licence, retrieved)
@@ -69,11 +69,11 @@ def schema(c):
     create table meta(k text primary key, v text);
     create table sources(src text primary key, publisher text, dataset text, what text, licence text, retrieved text);
     create table buildings(bid integer primary key, origin text, area text, cx real, cy real, minx real, miny real, maxx real, maxy real,
-      ring text, roles text, raw text, year_built real, year_built_src text, year_demolished real, year_demolished_src text, demolished_by text, rev text);
+      ring text, roles text, raw text, ord real, year_built real, year_built_src text, year_demolished real, year_demolished_src text, demolished_by text, rev text);
     create table attrs(bid integer, attr text, value text, conf real, src text, date text, note text, primary key(bid, attr, src));
     create table geoms(bid integer, kind text, idx integer, geom text, conf real, src text, date text);
     create index attrs_attr on attrs(attr); create index geoms_bid on geoms(bid);
-    create index b_cx on buildings(cx, cy);""")
+    create index b_cx on buildings(cx, cy); create index b_ord on buildings(ord);""")
     try: c.execute('create virtual table bt_rt using rtree(id, minx, maxx, miny, maxy)'); return True
     except sqlite3.OperationalError: return False
 
@@ -90,18 +90,19 @@ def main(o):
     def attr(bid, a, v, src, date=None, conf=None, note=None):
         if v is None: return
         A.append((bid, a, json.dumps(v), CONF.get(src, 0.5) if conf is None else conf, src, date or SOURCES.get(src, ('',) * 5)[4], note))
-    def add_building(r, origin, area):
+    def add_building(r, origin, area, ord_):
         ring = [(float(x), float(y)) for x, y in r['ring']]; xs = [p[0] for p in ring]; ys = [p[1] for p in ring]
         B[r['gid']] = dict(bid=r['gid'], origin=origin, area=area, cx=r['cx'], cy=r['cy'], minx=min(xs), miny=min(ys), maxx=max(xs), maxy=max(ys),
-                           ring=ring, roles=r.get('roles'), raw={k: v for k, v in r.items() if k not in ('ring', 'roles')},
+                           ring=ring, roles=r.get('roles'), raw={k: v for k, v in r.items() if k not in ('ring', 'roles')}, ord=ord_,
                            year_built=None, year_built_src=None, year_demolished=None, year_demolished_src=None, demolished_by=None)
     # 1. DataSF (the city bundle), raw: no OSM / fresh / places merged
     os.environ.update(NEWB='0', FRESH='0', PLACES_OV='0', SOUTH='0'); os.environ.pop('ERA', None)
     import city_data
+    ORD = {r['gid']: i for i, r in enumerate(city_data.buildings(-20000, -20000, 20000, 20000))}   # city_data's own order (cells, index): records() keeps it
     for a, box in areas.items():
         for r in city_data.buildings(*box):
             if r['gid'] in B: continue
-            add_building(r, 'datasf', a); g = r['gid']
+            add_building(r, 'datasf', a, ORD[r['gid']]); g = r['gid']
             attr(g, 'footprint', 'ring', 'datasf_fp', note='integer world m (bundle quantisation)')
             attr(g, 'h', round(r['h'], 3), 'datasf_lidar'); attr(g, 'st', r['st'], 'assessor'); attr(g, 'use', r['use'], 'assessor')
             attr(g, 'ty', r['ty'], 'assessor'); attr(g, 'shop', r['shop'], 'assessor')
@@ -111,10 +112,10 @@ def main(o):
     # 2. OSM (newb): records + landmark-site records; replaces -> demolished years of DataSF records
     nbp = next(p for p in (f'{BL}/newb_records.json', f'{RW}/newbuildings/osm_records.json') if os.path.exists(p))
     NB = json.load(open(nbp)); nbd = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(nbp)))
-    for r in NB['records'] + NB.get('lm_records', []):
+    for i, r in enumerate(NB['records'] + NB.get('lm_records', [])):
         a = inarea(r['cx'], r['cy'])
         if not a or r['gid'] in B: continue
-        add_building(r, 'osm', a); g = r['gid']
+        add_building(r, 'osm', a, 1e7 + i); g = r['gid']
         attr(g, 'footprint', 'ring', 'osm', nbd); attr(g, 'osm_id', r.get('osm'), 'osm', nbd)
         for k, sk in (('h', 'h_src'), ('year_built', 'year_src'), ('ty', 'ty_src')):
             v = r.get('year' if k == 'year_built' else k)
@@ -128,12 +129,19 @@ def main(o):
             b.update(year_demolished=x['year'], year_demolished_src='osm', demolished_by=f"osm {x.get('by')}" + (f" (landmark {x['lm']})" if x.get('lm') else ''))
             attr(b['bid'], 'year_demolished', x['year'], 'osm', nbd, note=f"replaced by OSM {x.get('by')}" + (f" landmark {x['lm']}" if x.get('lm') else ''))
             if x.get('lm'): attr(b['bid'], 'replaced_for_landmark', x['lm'], 'osm', nbd)
+    # 2b. beyond the county line (SOUTH, ground_prep.py south_records: generic OSM buildings of Daly City / Colma / Brisbane)
+    sp = city_data.SOUTH_FILE; spd = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(sp)))
+    for i, r in enumerate(json.load(open(sp))['records']):
+        a = inarea(r['cx'], r['cy'])
+        if not a or r['gid'] in B: continue
+        add_building(r, 'south', a, 2e7 + i); g = r['gid']
+        attr(g, 'footprint', 'ring', 'osm', spd); attr(g, 'h', r.get('h'), 'osm_neighbours', spd); attr(g, 'year_built', r.get('year'), 'osm_neighbours', spd)
     # 3. fresh (permits since 2022)
     fp = f'{RW}/fresh/fresh_records.json'; FR = json.load(open(fp)); frd = FR['meta'].get('built', '')[:10]
-    for r in FR['records']:
+    for i, r in enumerate(FR['records']):
         a = inarea(r['cx'], r['cy'])
         if not a or (r['gid'] in B and B[r['gid']]['origin'] != 'osm'): continue
-        add_building(r, 'fresh', a); g = r['gid']   # an OSM-added record that is a permit's building (newb_redated): the fresh record wins, OSM attrs stay candidates
+        add_building(r, 'fresh', a, 3e7 + i); g = r['gid']   # an OSM-added record that is a permit's building (newb_redated): the fresh record wins, OSM attrs stay candidates
         attr(g, 'footprint', 'ring', 'fresh', frd, note=r.get('footprint_src')); attr(g, 'h', r.get('h'), 'fresh', frd, note=r.get('h_src'))
         attr(g, 'st', r.get('st'), 'fresh', frd); attr(g, 'use', r.get('use'), 'fresh', frd); attr(g, 'ty', r.get('ty'), 'fresh', frd)
         attr(g, 'year_built', r.get('year'), 'fresh', frd, note=f"permit {r.get('permit')}"); attr(g, 'permit', r.get('permit'), 'fresh', frd)
@@ -148,10 +156,10 @@ def main(o):
         if g in B: attr(g, 'fresh_redated', True, 'fresh', frd, note='an OSM-added record that is a permit building: dated by the permit')
     # 4. places overrides (today only)
     OV = json.load(open(f'{RW}/places/overrides.json')); ovd = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(f'{RW}/places/overrides.json')))
-    for r in OV.get('add', []):
+    for i, r in enumerate(OV.get('add', [])):
         a = inarea(r['cx'], r['cy'])
         if a and r['gid'] not in B:
-            add_building(r, 'places_add', a); attr(r['gid'], 'footprint', 'ring', 'places', ovd, note=r.get('why'))
+            add_building(r, 'places_add', a, 4e7 + i); attr(r['gid'], 'footprint', 'ring', 'places', ovd, note=r.get('why'))
             for k in ('h', 'st', 'ty', 'use'): attr(r['gid'], k, r.get(k), 'places', ovd, note=r.get('why'))
             attr(r['gid'], 'year_built', r.get('year'), 'places', ovd, note=r.get('why'))
     for gs, o_ in OV.get('gids', {}).items():
@@ -221,9 +229,9 @@ def main(o):
     for g, b in B.items():
         b['rev'] = hashlib.sha1(json.dumps([b['ring'], sorted((r[1], r[2], r[4]) for r in byb.get(g, [])), b['year_demolished'],
                                             sorted(Gb.get(g, []))], sort_keys=True, default=str).encode()).hexdigest()[:16]
-    c.executemany('insert into buildings values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+    c.executemany('insert into buildings values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                   [(b['bid'], b['origin'], b['area'], b['cx'], b['cy'], b['minx'], b['miny'], b['maxx'], b['maxy'], json.dumps(b['ring']), json.dumps(b['roles']),
-                    json.dumps(b['raw']), b['year_built'], b['year_built_src'], b['year_demolished'], b['year_demolished_src'], b['demolished_by'], b['rev']) for b in B.values()])
+                    json.dumps(b['raw']), b['ord'], b['year_built'], b['year_built_src'], b['year_demolished'], b['year_demolished_src'], b['demolished_by'], b['rev']) for b in B.values()])
     c.executemany('insert or replace into attrs values(?,?,?,?,?,?,?)', A)
     c.executemany('insert into geoms values(?,?,?,?,?,?,?)', G)
     if rt: c.executemany('insert into bt_rt values(?,?,?,?,?)', [(b['bid'], b['minx'], b['maxx'], b['miny'], b['maxy']) for b in B.values()])
@@ -241,5 +249,5 @@ def main(o):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--areas', default='pilot,mission'); ap.add_argument('--out', default=DEF_DB)
+    ap.add_argument('--areas', default='city'); ap.add_argument('--out', default=DEF_DB)
     main(ap.parse_args())
