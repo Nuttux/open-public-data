@@ -534,6 +534,18 @@ def building(b, ground, out):
         fx, fy = LM['face']
         f0 = max((i for i in range(n) if walls[i].L > 2.0), key=lambda i: walls[i].n.x * fx + walls[i].n.y * fy)
         fronts = [f0]; roles = [1 if i == f0 else (2 if roles[i] == 1 else roles[i]) for i in range(n)]
+    if FA and FA.get('fw') and not LM:
+        # (FAITHFUL v2) the walls the street photos saw are FRONTS (the record called some of them backs: the map drew rear
+        # porches where the photo shows the street front); matched on midpoint + outward normal (close_party / ccw safe)
+        ph_ = []
+        for mx_, my_, nx_, ny_ in (q_[:4] for q_ in FA['fw']):
+            c_ = [(math.hypot((walls[i].a.x + walls[i].b.x) / 2 - mx_, (walls[i].a.y + walls[i].b.y) / 2 - my_), i) for i in range(n)
+                  if walls[i].L > 2.0 and roles[i] != 2 and walls[i].n.x * nx_ + walls[i].n.y * ny_ > 0.8]
+            c_ = [q_ for q_ in c_ if q_[0] < 3.0]
+            if c_ and min(c_)[1] not in ph_: ph_.append(min(c_)[1])
+        if ph_:
+            roles = [1 if i in ph_ else roles[i] for i in range(n)]
+            f0 = ph_[0]; fronts = sorted(set(fronts) | set(ph_))
 
     sub = substyle(b, style, RD)
     OV = b.get('places') if isinstance(b.get('places'), dict) else {}   # the places agent's per-building overrides (city_data)
