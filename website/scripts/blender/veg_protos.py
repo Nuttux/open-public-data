@@ -398,6 +398,7 @@ def kit():
     K['washy'] = (lambda: palm(92, 'washingtonia'), 'washy', 99.0, 26.0)
     K['queen'] = (lambda: palm(93, 'queen'), 'queen', 99.0, 14.0)
     K['fanpalm'] = (lambda: palm(94, 'fan_small'), 'fanpalm', 99.0, 7.0)
+    if V3_ON and V4_ON: return kit4()
     return kit3() if V3_ON else K
 
 
@@ -532,6 +533,65 @@ def kit3():
     return K
 
 
+# ── v4: branch-driven crowns (assets_trees_glass, 27/09; veg_v4.py) ────────────
+# VEG_V4=1 (default; 0 = the v3 kit, unchanged): the same names, sizes and
+# (TALL, HMAX), so placement, species and the size pick are untouched; every
+# broadleaf, conifer and blue gum regrown as a branch system carrying leaf
+# sprays (no ball clumps, no solid core); palms stay v3.
+V4_ON = os.environ.get('VEG_V4', '1') == '1'
+V4_GAIN = float(os.environ.get('VEG4_GAIN', 1.0))
+V4_GAINS = dict(V3_GAINS)
+V4_GAINS.update({'euc': 1.45, 'cyp': 1.5, 'pine': 1.35})    # the v4 blue gum is more open: less lift (1.9 read pale, ghostly)
+# v4 leaf stops (dark, light): a richer, healthier green than the v2/v3 golden-hour
+# ramps (which leaned olive / teal), each species its own hue; bark and accent as before
+RAMPS4_LEAF = {
+    'plane': ('#3d6428', '#7fa84c'), 'round': ('#2f5226', '#66913f'), 'ficus': ('#2a4a22', '#5b8a3a'),
+    'vbox': ('#35592a', '#71a044'), 'bbox': ('#2e4d27', '#5f8742'), 'oak': ('#2f4a26', '#627f40'),
+    'pohu': ('#34502e', '#6a8c55'), 'olive': ('#56654a', '#8a9a72'), 'pine': ('#28422a', '#4f7040'),
+    'cyp': ('#263f2a', '#4b6c44'), 'euc': ('#3d4d3d', '#71866a'), 'cherry': ('#3f6229', '#7ba24c'),
+    'column': ('#43682c', '#80a552'),
+}
+# (the v3 widths / heights of each proto, measured in the tg0 crop log, so the
+# v4 proto keeps the proportions veg_hq scales by)
+V4_SIZE = {'euc_a': (20.2, 30.0), 'euc_b': (14.5, 26.9), 'euc_c': (18.7, 31.4), 'euc_y': (8.7, 18.2), 'cyp_a': (21.3, 18.5),
+           'cyp_b': (20.7, 16.4), 'cyp_y': (11.8, 10.3), 'pine_a': (17.3, 22.8), 'pine_b': (14.6, 19.5), 'pine_y': (8.8, 12.5),
+           'plane_a': (16.1, 13.4), 'plane_b': (14.1, 11.7), 'plane_y': (8.6, 7.5), 'round_a': (13.8, 10.3), 'round_b': (11.7, 9.5),
+           'ficus_a': (13.9, 9.6), 'ficus_b': (9.9, 6.4), 'vbox_a': (13.1, 8.0), 'vbox_b': (7.7, 5.4), 'bbox_a': (13.3, 12.0),
+           'bbox_b': (8.5, 8.0), 'oak_a': (19.9, 11.1), 'oak_b': (13.2, 7.1), 'pohu': (14.5, 8.6), 'pohu_b': (8.7, 5.6),
+           'column': (8.5, 11.1), 'cherry': (8.7, 5.6), 'plum': (8.0, 6.4), 'olive': (9.0, 5.2)}
+V4_WK = float(os.environ.get('VEG4_WK', 0.88))     # the envelope's width in the v3 extent (sprays reach past it)
+def kit4():
+    import veg_v4 as V4
+    K = kit3()
+    def put(nm, kind, seed, H, W=None, **o):
+        _, ramp, t_, h_ = K[nm]
+        def b(kind=kind, seed=seed, H=H, W=W, o=o):
+            w_, h_ = V4_SIZE.get(nm, (W, H))
+            M = V4.build(kind, seed, h_, w_ * V4_WK, **o); M.sfx = '_v4'; return M
+        K[nm] = (b, ramp, t_, h_)
+    put('euc_a', 'euc', 111, 30.0); put('euc_b', 'euc', 112, 26.0); put('euc_c', 'euc', 113, 32.0); put('euc_y', 'euc', 114, 17.0)
+    put('cyp_a', 'cyp', 121, 18.0, 16.0); put('cyp_b', 'cyp', 122, 16.0, 17.0, shear=0.35); put('cyp_y', 'cyp', 123, 10.0, 8.5)
+    put('pine_a', 'pine', 131, 22.0, 12.5); put('pine_b', 'pine', 132, 19.0, 11.0); put('pine_y', 'pine', 133, 12.0, 6.5, shape='cone')
+    put('plane_a', 'plane', 141, 14.0, 11.0); put('plane_b', 'plane', 142, 12.0, 10.0, shape='vase'); put('plane_y', 'plane', 143, 7.5, 5.0)
+    put('round_a', 'round', 151, 10.0, 8.5); put('round_b', 'round', 152, 9.0, 7.0, shape='oval')
+    put('ficus_a', 'ficus', 155, 9.0, 9.0); put('ficus_b', 'ficus', 156, 6.0, 5.5)
+    put('vbox_a', 'vbox', 157, 8.0, 8.0); put('vbox_b', 'vbox', 158, 5.0, 4.8, shape='round')
+    put('bbox_a', 'bbox', 159, 13.0, 8.0); put('bbox_b', 'bbox', 160, 8.0, 5.0)
+    put('oak_a', 'oak', 165, 11.0, 15.0); put('oak_b', 'oak', 166, 7.0, 9.0)
+    put('pohu', 'pohu', 161, 8.0, 9.5); put('pohu_b', 'pohu', 162, 5.0, 5.5)
+    put('column', 'column', 171, 11.0, 4.2)
+    put('cherry', 'cherry', 181, 6.0, 5.5); put('plum', 'plum', 182, 6.0, 5.2); put('olive', 'olive', 183, 5.5, 5.5)
+    # the ornamentals (veg_hq 'ornamental'): v4 small broadleaves in place of Poly Haven's
+    # tree_small_02, a LEAFLESS tree that the AI pass painted as dead, broken trees
+    def orn(seed, H, W, shape):
+        def b():
+            M = V4.build('cherry', seed, H, W, shape=shape); M.sfx = '_v4'; return M
+        return b
+    K['orn_a'] = (orn(191, 6.5, 6.2, 'round'), 'cherry', 1.3, 9.0)
+    K['orn_b'] = (orn(192, 5.0, 4.4, 'oval'), 'cherry', 1.3, 9.0)
+    return K
+
+
 LEAF_LIFT = (1.40, 1.35, 1.25)     # linear RGB gain on the foliage stops
 
 
@@ -543,7 +603,7 @@ def hex_lin(h):
 def _material(bpy, name, ramp):
     m = bpy.data.materials.get(name)
     if m is not None: return m
-    if name[4:].replace('_v3', '') in os.environ.get('VEG_DBGRAMP', '').split(','):     # diagnostics: this kind's leaves magenta
+    if name[4:].replace('_v3', '').replace('_v4', '') in os.environ.get('VEG_DBGRAMP', '').split(','):     # diagnostics: this kind's leaves magenta
         ramp = (ramp[0], ramp[1], '#800060', '#ff00c0', '#ff00c0')
     m = bpy.data.materials.new(name)
     try: m.use_nodes = True
@@ -570,6 +630,7 @@ def _material(bpy, name, ramp):
         # through their gaps (a crown ~20 % darker than v2's cards at the
         # same albedo, bench 25/09): the leaf stops lifted back to v2's mean
         if i_ in (1, 2) and name.endswith('_v3'): c_ = tuple(min(0.9, v * V3_GAIN * V3_GAINS.get(name[4:-3], 1.3)) for v in c_)
+        if i_ in (1, 2) and name.endswith('_v4'): c_ = tuple(min(0.9, v * V4_GAIN * V4_GAINS.get(name[4:-3], 1.3)) for v in c_)
         e.elements.new(p_).color = c_ + (1.0,)
     if deep is not None: e.elements.new(DEEP).color = deep + (1.0,)
     L(at.outputs['Fac'], cr.inputs['Fac'])
@@ -583,7 +644,7 @@ def _material(bpy, name, ramp):
     L(hm.outputs['Result'], hsv.inputs['Hue']); L(vm.outputs['Result'], hsv.inputs['Value'])
     L(cr.outputs['Color'], hsv.inputs['Color'])
     base_ = hsv.outputs['Color']
-    aod = vp('VEG_AO') if not name.endswith('_v3') else float(os.environ.get('VEG3_AO', 0.0))   # v3: the leaves' own geometry shadows the crevices
+    aod = vp('VEG_AO') if not name.endswith(('_v3', '_v4')) else float(os.environ.get('VEG3_AO', 0.0))   # v3: the leaves' own geometry shadows the crevices
     if aod > 0:   # v2 test: the crown's own crevices darker (AO within the tree, foliage only)
         ao = N.new('ShaderNodeAmbientOcclusion'); ao.only_local = True; ao.samples = 8; ao.inputs['Distance'].default_value = aod
         L(hsv.outputs['Color'], ao.inputs['Color'])
@@ -630,7 +691,10 @@ def _to_blender3(bpy, name, mesh, ramp_name):
         at = me.attributes.new('custom_normal', 'FLOAT_VECTOR', 'POINT'); at.data.foreach_set('vector', N.ravel())
     except Exception:
         me.normals_split_custom_set_from_vertices(N)
-    me.materials.append(_material(bpy, f'veg_{ramp_name}_v3', RAMPS[ramp_name]))
+    sfx_ = getattr(mesh, 'sfx', '_v3'); rp_ = RAMPS[ramp_name]
+    if sfx_ == '_v4' and ramp_name in RAMPS4_LEAF and os.environ.get('VEG4_RAMPS', '1') == '1':
+        rp_ = (rp_[0], rp_[1], RAMPS4_LEAF[ramp_name][0], RAMPS4_LEAF[ramp_name][1], rp_[4])
+    me.materials.append(_material(bpy, f'veg_{ramp_name}' + sfx_, rp_))
     me.update()
     ob = bpy.data.objects.new(name, me)
     coll = bpy.data.collections.new(f'{name}_one'); coll.objects.link(ob)

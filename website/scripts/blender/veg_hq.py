@@ -52,6 +52,10 @@ PROTO_OF3.update({
     'ficus': ['ficus_a', 'ficus_b'], 'vbox': ['vbox_a', 'vbox_b'], 'bbox': ['bbox_a', 'bbox_b'], 'oak': ['oak_a', 'oak_b'],
     'date_palm': ['phoenix', 'phoenix_b'], 'fan_palm': ['washy', 'washy_b'],
 })
+# v4 (assets_trees_glass 27/09): the ornamentals drawn from v4 small broadleaves, not Poly
+# Haven's leafless tree_small_02 (the AI pass painted it as dead, broken trees)
+if os.environ.get('VEG_V4', '1') == '1' and os.environ.get('VEG_V3', '1') == '1':
+    PROTO_OF3['ornamental'] = ['orn_a', 'cherry', 'orn_b', 'round_b']
 ROUND_SUB = {'round': 0.33, 'ficus': 0.08, 'vbox': 0.22, 'bbox': 0.25, 'oak': 0.12}     # the unlisted 'round' trees (the list's shares, oaks up)
 # the Poly Haven protos' (TALL, HMAX), as hq_city had them for street and park trees
 PH_SIZE = {'tree_small_02': (1.4, 9.0), 'jacaranda_tree': (1.4, 15.0), 'fir_tree_01': (2.6, 30.0)}
