@@ -117,6 +117,17 @@ def wake_mat(bpy):
     L_(geo.outputs['Position'], n2.inputs['Vector'])
     N = mth('ADD', mth('MULTIPLY', mth('SUBTRACT', n1.outputs['Fac'], 0.5), 1.2), mth('MULTIPLY', mth('SUBTRACT', n2.outputs['Fac'], 0.5), 0.5))
     foam = mth('MULTIPLY', mth('ADD', mth('SUBTRACT', mth('MULTIPLY', I, 1.25), 0.42), N), 3.2, clamp=True)
+    if E('LIVE_V3', '1') == '1':
+        # v3 (27/09, live assets agent): at z9 the foam read as one solid white slab. Real wake foam is torn
+        # into streaks along the track: modulate it by an anisotropic noise in the decal's own (along, across)
+        # coordinates (mean ~1, so the wake's weight at L7 is unchanged)
+        cmb = nt.nodes.new('ShaderNodeCombineXYZ'); L_(mth('MULTIPLY', u, 90.0), cmb.inputs[0]); L_(mth('MULTIPLY', v, 7.0), cmb.inputs[1])
+        L_(mth('MULTIPLY', t, 13.0), cmb.inputs[2])
+        n3 = nt.nodes.new('ShaderNodeTexNoise'); n3.inputs['Scale'].default_value = 1.0; n3.inputs['Detail'].default_value = 6; n3.inputs['Roughness'].default_value = 0.7
+        L_(cmb.outputs[0], n3.inputs['Vector'])
+        st_ = mth('ADD', 0.5, mth('MULTIPLY', mth('SUBTRACT', n3.outputs['Fac'], 0.5), 2.6))
+        # the streak enters the threshold field (not the clamped foam), so even the saturated core breaks up
+        foam = mth('MULTIPLY', mth('ADD', mth('SUBTRACT', mth('MULTIPLY', I, 1.1), 0.42), mth('ADD', N, mth('MULTIPLY', mth('SUBTRACT', st_, 0.5), 0.75))), 3.0, clamp=True)
     churn = mth('MULTIPLY', mth('MULTIPLY', I, 1.4, clamp=True), float(E('LIFE_CHURN', 0.55)))
     alpha = mth('MAXIMUM', foam, churn)
     col = nt.nodes.new('ShaderNodeMix'); col.data_type = 'RGBA'; L_(foam, col.inputs[0])
