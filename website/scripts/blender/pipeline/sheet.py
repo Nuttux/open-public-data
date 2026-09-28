@@ -13,25 +13,28 @@ def font(s):
     return ImageFont.load_default()
 
 
-# (label, group, key, better: -1 lower is better / +1 higher / 0 info)
-ROWS = [('patchiness (overlap disagreement, windows)', 'win', 'disagree', -1), ('detector flags, windows', 'win', 'flags', -1),
-        ('land invented on water, windows (px)', 'win', 'land_on_water', -1), ('sharpness, windows', 'win', 'sharp', 1),
-        ('building colour held, windows (%)', 'win', 'col_pass', 1), ('facade lightness shift, windows', 'win', 'col_dL', 0),
-        ('detector flags, 10 golden crops', 'golden', 'flags', -1), ('golden crops with a flag', 'golden', 'crops_flagged', -1),
-        ('land invented on water, golden (px)', 'golden', 'land_on_water', -1), ('sharpness, golden', 'golden', 'sharp', 1),
-        ('building colour held, golden (%)', 'golden', 'col_pass', 1)]
+# (label, group, key, better: -1 lower is better / +1 higher / 0 info, noise tolerance). Tolerances = the noise floor measured by the
+# dry run 28/09 (base recipe FP8=3 on a 5090 vs production bf16 on A40s = the same recipe): disagree -0.3 %, sharpness -3 / -4 %,
+# golden flags 4 -> 6, colour held -2.9 points. A difference inside the tolerance reads 'same'.
+ROWS = [('patchiness (overlap disagreement, windows)', 'win', 'disagree', -1, ('rel', 0.05)), ('detector flags, windows', 'win', 'flags', -1, ('abs', 3)),
+        ('land invented on water, windows (px)', 'win', 'land_on_water', -1, ('abs', 2000)), ('sharpness, windows', 'win', 'sharp', 1, ('rel', 0.06)),
+        ('building colour held, windows (%)', 'win', 'col_pass', 1, ('abs', 5)), ('facade lightness shift, windows', 'win', 'col_dL', 0, None),
+        ('detector flags, 10 golden crops', 'golden', 'flags', -1, ('abs', 3)), ('golden crops with a flag', 'golden', 'crops_flagged', -1, ('abs', 1)),
+        ('land invented on water, golden (px)', 'golden', 'land_on_water', -1, ('abs', 2000)), ('sharpness, golden', 'golden', 'sharp', 1, ('rel', 0.06)),
+        ('building colour held, golden (%)', 'golden', 'col_pass', 1, ('abs', 5))]
 
 
-def verdict(o, n, b):
+def verdict(o, n, b, tol):
     if o is None or n is None or b == 0: return ''
-    if abs(n - o) <= 0.03 * max(abs(o), 1e-6) or (isinstance(o, int) and abs(n - o) <= 1 and max(o, n) < 10): return 'same'
+    t = tol[1] * max(abs(o), 1e-6) if tol[0] == 'rel' else tol[1]
+    if abs(n - o) <= t: return 'same'
     return 'better' if (n - o) * b > 0 else 'WORSE'
 
 
 def make(name, ref, spec, info, new, old, gdir, rg, wdir, rw, rp):
     os.makedirs(SHEETS, exist_ok=True); W = 2400; F1, F2, F3 = font(40), font(26), font(22)
-    rows = [(l, old['_agg'].get(g, {}).get(k), new['_agg'].get(g, {}).get(k), verdict(old['_agg'].get(g, {}).get(k), new['_agg'].get(g, {}).get(k), b))
-            for l, g, k, b in ROWS if g in new['_agg']]
+    rows = [(l, old['_agg'].get(g, {}).get(k), new['_agg'].get(g, {}).get(k), verdict(old['_agg'].get(g, {}).get(k), new['_agg'].get(g, {}).get(k), b, t))
+            for l, g, k, b, t in ROWS if g in new['_agg']]
     wins = [k for k in ('w1', 'w2', 'w3') if wdir and os.path.exists(f'{wdir}/{name}_{k}.png')]
     gids = [c for c in G10 if gdir and os.path.exists(f'{gdir}/{c}.png') and os.path.exists(f'{rg}/{c}.png')]
     PW = 580; gw = 228
