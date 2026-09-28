@@ -848,6 +848,10 @@ for L_ in LOTS:
     for (x_, y_, h_, u_) in L_['cars']:
         gz_ = ground(x_, y_)
         if gz_ is not None and gz_ >= 0.8 and in_box(x_, y_) and not EA.water_then(x_, y_, ERA): cpts.append((x_, y_, gz_ + 0.11, 1.0, h_, car_pick(u_)))
+if ERA is None and 'ground_osm' in sys.modules:
+    # [GROUND_V2] the parked cars of the pier-deck lots (ground_osm.deck_lot): a bare deck read as a roof (Pier 30-32)
+    for (x_, y_, z_, h_) in sys.modules['ground_osm'].DECK_CARS:
+        if in_box(x_, y_): cpts.append((x_, y_, z_ + 0.02, 1.0, h_, car_pick(hp(x_, y_, 13))))
 instancer('cars', cpts, car_colls)
 def place_random(colls):
     """in every material of these protos, Object Info > Random -> the

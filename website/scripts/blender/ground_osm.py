@@ -31,6 +31,7 @@ from mathutils.geometry import tessellate_polygon
 SRC = '/Users/daniel/code/qipu-render-work/ground/osm/landcover.json'
 PIERS = '/Users/daniel/code/qipu-render-work/landmarks/piers.json'
 LX, LY = 88007.3, 111320.0
+DECK_CARS = []     # (x, y, z, heading) parked cars on the deck lots, for hq_city's car instancer
 
 def _srgb(h):
     h = h.lstrip('#'); c = [int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4)]
@@ -155,6 +156,10 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
         while b + 11.0 <= hv - 1.0:
             for a in [(-hu + 1.0) + 2.7 * k for k in range(int((2 * hu - 2.0) / 2.7) + 1)]:
                 lin(a, b, a, b + 11.0); n += 1
+                for bb in (b + 2.75, b + 8.25):
+                    cx_, cy_ = c[0] + u[0] * (a + 1.35) + v[0] * bb, c[1] + u[1] * (a + 1.35) + v[1] * bb
+                    if a + 2.7 <= hu - 1.0 and inpoly(cx_, cy_, P) and _h((round(cx_, 1), round(cy_, 1)), 100) < 72:
+                        DECK_CARS.append((cx_, cy_, zd - 0.15, math.atan2(v[1], v[0]) + (math.pi if _h((round(cy_, 1), 7), 2) else 0.0)))
             lin(-hu + 1.0, b + 5.5, hu - 1.0, b + 5.5)
             b += 11.0 + 7.0
         return n
