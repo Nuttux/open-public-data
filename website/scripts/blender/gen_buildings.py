@@ -782,6 +782,8 @@ def building(b, ground, out):
         back_ = (wall_mat, fam if sr_.random() < 0.5 else body)
         sw_ = BK.side_walls(b, style, wall_mat, fam)          # (BK_SIDE) brown shingle and plain boards on the sides and backs
         if sw_: side_, back_ = sw_
+        if FA and FA.get('facade_col'):     # (FAITHFUL) the street photos saw this building's exposed walls: they carry its real paint
+            side_, back_ = (wall_mat, body), (wall_mat, body)
     if PS is not None and PS.get('bulkhead', 'beaux') != 'none': ctx['bulk_w'] = bulk_wall(walls)
     # ── walls ──
     for i, w in enumerate(walls):
