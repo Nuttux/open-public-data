@@ -137,7 +137,7 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
     def deck_lot(P):
         """stalls 2.7 x 5.5 m in back-to-back pairs along the long side, 7 m aisles, white lines on the deck"""
         c, u, v, hu, hv = _frame(P)
-        zs = sorted(ground0(x, y) for x, y in P); zd = zs[len(zs) // 2] + 0.08
+        zs = sorted(ground0(x, y) for x, y in P); zd = zs[len(zs) // 2] + 0.3      # (+8 cm: under water_hq's deck slab)
         def lin(a0, b0, a1, b1):
             p0 = (c[0] + u[0] * a0 + v[0] * b0, c[1] + u[1] * a0 + v[1] * b0); p1 = (c[0] + u[0] * a1 + v[0] * b1, c[1] + u[1] * a1 + v[1] * b1)
             if not (inpoly(*p0, P) and inpoly(*p1, P)): return

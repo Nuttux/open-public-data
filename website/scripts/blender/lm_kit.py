@@ -287,7 +287,7 @@ def materials(bpy, mats):
         n1 = noise(nt, 0.035, 4.0, geo.outputs['Position'])            # stains, tens of metres
         n2 = noise(nt, 0.22, 3.0, geo.outputs['Position'])             # oil / tyre patches, a few metres
         v1 = mrange(nt, n1.outputs['Fac'], 0.70, 1.08, 0.32, 0.68)
-        v2 = mrange(nt, n2.outputs['Fac'], 1.0, 0.72, 0.55, 0.70)
+        v2 = mrange(nt, n2.outputs['Fac'], 1.0, 0.88 if os.environ.get('GROUND_V2', '1') == '1' else 0.72, 0.55, 0.70)   # [GROUND_V2] softer stains: the blotched deck read as a roof (Pier 30-32)
         m1 = nt.nodes.new('ShaderNodeMath'); m1.operation = 'MULTIPLY'; nt.links.new(v1, m1.inputs[0]); nt.links.new(v2, m1.inputs[1])
         c1 = nt.nodes.new('ShaderNodeMix'); c1.data_type = 'RGBA'; c1.blend_type = 'MULTIPLY'; c1.inputs[0].default_value = 1.0
         nt.links.new(a.outputs['Color'], c1.inputs[6]); nt.links.new(br.outputs['Color'], c1.inputs[7])
