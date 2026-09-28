@@ -368,6 +368,19 @@ if len(SA_):
             a_ = t * 9; _verge([(_cs[a_ + k * 3], _cs[a_ + k * 3 + 1], _cs[a_ + k * 3 + 2]) for k in range(3)])
         log(f'verges: {len(_cs) // 9} casing triangles beyond the asphalt -> {len(VG) // 9} sidewalk pieces')
 SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
+if E('SE_APRON', '0') == '1' and ERA is None and len(SP):
+    # [SE_APRON, street_edge 28/09] THE KERB WHERE THE WALLS NEED IT. The roadway runs to the property line where
+    # its kerb ring does not close, and DataSF's footprints sit ~1.6 m off the right of way: a third of North Beach's
+    # fronts stood on the asphalt (stoops into the carriageway, the gutter's pale pan at the wall, no kerb). The
+    # aprons of se_prep.py (sidewalk width: SFMTA 4g86-grxu, PDDL) are cut from the asphalt and laid as sidewalk;
+    # the kerb (street_edges below), its step, the gutter and the kerb cars follow the new edge. ABV is rebuilt
+    # from the asphalt left, so the new edge counts as a kerb. SE_FILE=<json> overrides se_aprons.json.
+    import street_edge as _SE
+    SP, _sd = _SE.cut(SP, _SE.load(BOX, E('SE_FILE', '')), log)
+    for i in range(0, len(_sd), 3): VG.extend((_sd[i], _sd[i + 1], _sd[i + 2] + 0.16))
+    _nA = len(SP) // 3
+    ABV = BVHTree.FromPolygons([(SP[i * 3], SP[i * 3 + 1], SP[i * 3 + 2]) for i in range(_nA)],
+                               [(t * 3, t * 3 + 1, t * 3 + 2) for t in range(_nA // 3)]) if _nA else None
 for i in range(2, len(SP), 3): SP[i] += 0.02
 streets = mesh_from('streets', SP, M['asphalt'], weld=0.05)
 _PAVE2 = None
