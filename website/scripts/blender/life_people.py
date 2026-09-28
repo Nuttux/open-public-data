@@ -149,7 +149,7 @@ def build(bpy, sc, coll, T, D, ground, sea, inb, log, t0, only_hot=False):
     from life_traffic import _instancer
     pl = [] if only_hot else [p for p in plan(D, sea) if inb(p[1], p[2], 30)]
     import os as _os
-    HOT_ = _os.environ.get('HOT', '1') == '1'; PV2_ = _os.environ.get('PEOPLE_V2', '1') == '1'     # (27/09, assets_urban) urban_people.py
+    HOT_ = _os.environ.get('HOT', '1') == '1'; PV2_ = _os.environ.get('PEOPLE_V2', '0') == '1'     # (27/09, assets_urban) urban_people.py
     CROWD_ = _os.environ.get('HOT_CROWD', '0') == '1'     # (28/09 combo, BAR 10:00) the hot zones' dense crowds off by default; tents, cafe tables, parklets stay
     if HOT_:
         import urban_people as UP
