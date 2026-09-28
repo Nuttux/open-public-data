@@ -422,6 +422,27 @@ for f in me.polygons:
     if (f.index % 2 == 0 and f.normal.z < 0) or (f.index % 2 == 1 and f.normal.dot(o_) > 0): f.flip()
 me.update()
 ob = bpy.data.objects.new('sidewalks', me); sc.collection.objects.link(ob); me.materials.append(M['sidewalk'])
+if os.environ.get('GROUND_V2', '1') == '1' and ERA is None:
+    # [GROUND_V2, assets_ground 28/09] THE GUTTER: SF's 0.6 m concrete gutter
+    # pan along every kerb, a pale band with a darker grime line at the
+    # kerb's foot. It frames each carriageway (a street, not a canal: the
+    # dark bluish asphalt near the bay read as water to the AI, #54 / #55)
+    Pg, Fg = [], []
+    for a, b, outv in SE:
+        dz = Vector((0, 0, 0.012)); ia, ib = a - outv * 0.6, b - outv * 0.6
+        k = len(Pg); Pg += [tuple(a + dz), tuple(ia + dz), tuple(ib + dz), tuple(b + dz)]; Fg.append((k, k + 1, k + 2, k + 3))
+    mg = bpy.data.meshes.new('gutters'); mg.from_pydata(Pg, [], Fg); mg.update()
+    for f in mg.polygons:
+        if f.normal.z < 0: f.flip()
+    mg.update()
+    M['gutter'] = ph_mat('concrete_pavement', 1.8, name='gutter', value=0.78)
+    og = bpy.data.objects.new('gutters', mg); sc.collection.objects.link(og); mg.materials.append(M['gutter'])
+    print(f'gutters: {len(Fg)} kerb edges')
+    # [GROUND_V2] courts, fields, tracks, playgrounds, dirt lots, lawn strips from OSM (ground_osm.py)
+    try:
+        import ground_osm; ground_osm.build(sc, M, ground0, streets, BOX, log)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log(f'ground_osm: failed ({ex})')
 if _PAVE2 is not None:
     # no concrete footway where the carriageway was graded earth (CONVENTION:
     # plank and earth walks beyond the paved core before 1910)
@@ -1040,7 +1061,7 @@ if E('MODE') == 'pyramid':
                 elif (o_.name.startswith('lm.') or n_.split('.')[0] == 'landmarks'): c_ = (1, 0, 0)
                 elif bld_(o_.name): c_ = (0, 1, 0) if 'roof' in n_ else (1, 1, 0)
                 elif n_.startswith(('carp', 'cars', 'life.cars', 'pcar')) or 'car_protos' in cs_: c_ = (1, 0.5, 0)     # cars: their own class (the eras' change mask regenerates them)
-                elif any(t_ in n_ for t_ in ('street', 'sidewalk', 'road', 'freeway', 'fw', 'lane', 'track', 'bridge')): c_ = (1, 0, 1)
+                elif any(t_ in n_ for t_ in ('street', 'sidewalk', 'gutter', 'road', 'freeway', 'fw', 'lane', 'track', 'bridge')): c_ = (1, 0, 1)
                 elif any(t_ in (n_ + ' ' + cs_).replace('street', '') for t_ in ('tree', 'veg', 'bush', 'brush', 'palm', 'plant')): c_ = (0, 1, 1)
                 elif any(t_ in n_ for t_ in ('ground', 'terrain', 'lawn', 'far', 'shore', 'beach', 'park')): c_ = (0, 0, 0)
                 else: c_ = (1, 1, 1)

@@ -294,7 +294,8 @@ def road_mat():
     b.put(hs.inputs['Color'], c); c = hs.outputs[0]
     # resurfaced stretches: fresh (darker, cooler) and old (lighter, warmer)
     age = b.noise(0.012, 2.0)
-    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.035, 0.037, 0.042), 'MIX')
+    # [GROUND_V2] fresh stretches a dark NEUTRAL, not cool: the cool ones added to the blue cast (below)
+    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.046, 0.045, 0.043) if E('GROUND_V2', '1') == '1' else (0.035, 0.037, 0.042), 'MIX')
     c = b.mix(b.ramp(age, 0.45, 0.0, 0.25, 0.4), c, (0.15, 0.14, 0.125))
     c = b.mix(b.ramp(b.noise(0.12, 5.0), 0.0, 0.25), c, (0.55, 0.55, 0.55), 'MULTIPLY')
     # tar snakes: meandering sealed cracks, dark and a little glossy
@@ -310,7 +311,18 @@ def road_mat():
     c = b.mix(cover, c, (0.028, 0.027, 0.025)); c = b.mix(rim, c, (0.07, 0.068, 0.064))
     # the whole street's albedo in one knob (node 'road_k', env ROAD_K): its
     # value times a warm tint, so a brighter street never turns blue-grey
-    k_ = float(E('ROAD_K', 1.0)); c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY'); c.node.name = 'road_k'
+    k_ = float(E('ROAD_K', 1.0))
+    if E('GROUND_V2', '1') == '1':
+        # [GROUND_V2, assets_ground 28/09] the de-blue bias the ground's paving
+        # already has (ground_hq WARM x hill_ground NEU): under the V6 sky fill
+        # a grey albedo rendered sRGB 100,111,126 (b0_s54 raw): slate blue, and
+        # beside the bay the AI painted it as water (#54 / #55). Measured
+        # per-channel gain to the neutral warm grey of real SF asphalt (Esri
+        # ref ~ 110,108,104): R x1.28, G x0.98, B x0.68
+        c = b.mix(1.0, c, (k_ * 1.28, k_ * 0.98, k_ * 0.68), 'MULTIPLY')
+    else:
+        c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY')
+    c.node.name = 'road_k'
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
     b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))

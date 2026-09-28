@@ -29,6 +29,12 @@ PACK = [(('sand',), ('wetsand',), ('lawn',)),
         (('soil',), ('scrub',), ('marsh',)),
         (('drygrass',), ('tree',), None),
         (('water',), ('turf',), ())]
+# GROUND_V2 (assets_ground, 28/09; =0 gives the base): every open surface
+# unmistakable for the AI pass (asphalt vs water vs lawn vs dirt): inland
+# photo 'water' (shadows) re-classed, the photo's dark tone (its own baked
+# shadows) damped on paving, lush green for cured grass (BAR 27/09 23:05),
+# a green shrub bed for the city's scrub, bare lots a clear ochre dirt
+V2 = os.environ.get('GROUND_V2', '1') == '1'
 BLUR = 2          # the box over the classes (5 x 5 m): a 1 m class map is speckled, and speckle sharpened reads as camouflage
 
 def _box(a, r):
@@ -57,6 +63,59 @@ def crop(x0, y0, x1, y1):
     if not c.any(): return None
     return c, (M['x0'] + i0 * r, M['y0'] + j0 * r, r)
 
+def _inland_water(c, fx, fy, r, keep=12.0, it=40):
+    """[GROUND_V2] the photo's 'water' more than `keep` m inland of the OSM
+    coastline is a SHADOW (a courtyard between walls, the street under the
+    Bay Bridge approach, a lot beside a tower): it rendered as the shore's
+    dark mud, and the AI pass painted a pond or the bay there (#25, #54).
+    Such cells take their neighbours' class (grown inward, `it` m at most),
+    asphalt where nothing reaches."""
+    w = c == CI['water']
+    if not w.any(): return c
+    try:
+        import terrain_hq as _th
+        ys = fy + (np.arange(c.shape[0]) + 0.5) * r; xs = fx + (np.arange(c.shape[1]) + 0.5) * r
+        jj, ii = np.nonzero(w)
+        _, sd = _th._coast(xs[ii], ys[jj])
+        inl = np.zeros(c.shape, bool); inl[jj, ii] = np.nan_to_num(sd, nan=-1.0) > keep
+    except Exception as ex:
+        print('ground_hq: no coast for inland water:', ex); return c
+    if not inl.any(): return c
+    c = c.copy(); c[inl] = 0; todo = inl.copy(); n0 = int(inl.sum())
+    for _ in range(it):
+        if not todo.any(): break
+        for dj, di in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+            src = np.roll(c, (dj, di), (0, 1)); ok = todo & (src > 0) & (src != CI['water'])
+            c[ok] = src[ok]; todo &= ~ok
+    c[todo] = CI['asphalt']
+    print(f'ground_hq V2: {n0} m2 of inland photo water re-classed from its neighbours ({int(todo.sum())} to asphalt)')
+    return c
+
+def _urban_clean(c, rad=7, pave_min=0.55):
+    """[GROUND_V2] in paved surroundings (asphalt + concrete >= `pave_min` of
+    the 15 x 15 m window) the photo's gravel is pale concrete, and a speck of
+    lawn, soil, cured grass, scrub or gravel (a speck) is the paving
+    round it: the Embarcadero promenade and median rendered as a beige,
+    green-blotched camouflage the AI read as sand and dunes (27/09); specks
+    are what a 5 x 5 m square does not fit in"""
+    pv = _box(((c == CI['asphalt']) | (c == CI['concrete'])).astype(np.float32), rad)
+    urb = pv >= pave_min
+    c = c.copy(); c[urb & (c == CI['gravel'])] = CI['concrete']
+    soft = urb & np.isin(c, [CI[n] for n in ('lawn', 'soil', 'drygrass', 'scrub', 'gravel', 'sand')])
+    if soft.any():
+        # (an opening: what a 5 x 5 m square cannot fit in is a speck; numpy only, Blender has no scipy)
+        er = _box(soft.astype(np.float32), 2) > 0.999
+        sm = soft & ~(_box(er.astype(np.float32), 2) > 0.0)
+        if sm.any():
+            c[sm] = 0; todo = sm.copy()
+            for _ in range(8):
+                if not todo.any(): break
+                for dj, di in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                    src = np.roll(c, (dj, di), (0, 1)); ok = todo & np.isin(src, [CI['asphalt'], CI['concrete']])
+                    c[ok] = src[ok]; todo &= ~ok
+            c[todo] = CI['concrete']
+    return c
+
 def weights(x0, y0, x1, y1):
     """{'maps': [(R, G, B) float32 0..1] x 4, 'frame': (x0, y0, w, h),
     'cls', 'cframe'} for hill_ground, or None"""
@@ -69,6 +128,7 @@ def weights(x0, y0, x1, y1):
     cnt = np.stack([_box((c == k).astype(np.float32), BLUR) for k in range(len(CLS))])
     cnt[0] *= 0.5                                                  # 'none' only where nothing else is
     c = np.where(c > 0, cnt.argmax(0).astype(np.uint8), 0).astype(np.uint8); del cnt
+    if V2: c = _urban_clean(_inland_water(c, fx, fy, r))
     maps = []
     for grp in PACK:
         ch = []
@@ -150,7 +210,16 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     # grass gone thin: straw over earth, not a ploughed field)
     so = b.mix(b.ramp(b.noise(1 / 9.0, 3.0, vec=b.vmap(1.0, loc=(7.7, 3.1, 0))), 0.0, 1.0, 0.35, 0.7), (0.19, 0.14, 0.07), (0.27, 0.20, 0.10))
     so = b.mix(b.ramp(b.noise(1 / 1.6, 2.0), 0.0, 0.4, 0.55, 0.75), so, b.mix(1.0, so, (0.8, 0.78, 0.76), 'MULTIPLY'))
-    so = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-2.2, 9.4, 0))), 0.0, 0.85, 0.40, 0.62), so, b.mix(0.3, g, so))
+    if not V2:
+        so = b.mix(b.ramp(b.noise(1 / 4.0, 3.0, vec=b.vmap(1.0, loc=(-2.2, 9.4, 0))), 0.0, 0.85, 0.40, 0.62), so, b.mix(0.3, g, so))
+    else:
+        # [GROUND_V2] BARE DIRT, unmistakably: no weeds (the olive weed tint
+        # read as a lawn to the AI), a redder brown than any sand, pale
+        # compacted tyre tracks, darker clods and ruts
+        so = b.mix(1.0, so, (1.02, 0.92, 0.95), 'MULTIPLY')
+        trk = b.ramp(b.noise(1 / 3.0, 2.0, vec=b.vmap((0.25, 1.0, 1.0), rot=0.6, loc=(4.0, 1.0, 0))), 0.0, 1.0, 0.56, 0.62)
+        so = b.mix(b.math('MULTIPLY', trk, 0.55), so, b.mix(1.0, so, (1.3, 1.25, 1.15), 'MULTIPLY'))
+        so = b.mix(b.ramp(b.noise(1 / 0.5, 2.0, vec=b.vmap(1.0, loc=(9.0, 2.0, 0))), 0.0, 0.5, 0.62, 0.72), so, b.mix(1.0, so, (0.62, 0.58, 0.55), 'MULTIPLY'))
     # UNDER TREES: litter and shaded grass, dark olive-brown
     du = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(1.3, 22.0, 0))), 0.0, 1.0, 0.4, 0.7), (0.10, 0.085, 0.034), (0.145, 0.125, 0.045))
     # ASPHALT (a lot, a yard, a playground): worn warm grey, its tone
@@ -204,7 +273,16 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         hill = b.mix(b.math('MULTIPLY', yardf, 0.5), hill, yd); x = hill
     # CURED GRASS glows gold in the low sun, not khaki: warmer and richer
     # where the photo finds dry grass (Twin Peaks, Bernal, San Bruno)
-    x = b.mix(b.math('MULTIPLY', sh(dry), 0.85), x, b.mix(1.0, x, (1.24, 1.05, 0.56), 'MULTIPLY'))
+    if not V2:
+        x = b.mix(b.math('MULTIPLY', sh(dry), 0.85), x, b.mix(1.0, x, (1.24, 1.05, 0.56), 'MULTIPLY'))
+    else:
+        # [GROUND_V2] no cured gold (BAR 27/09 23:05: lush, verdant, never
+        # the real season): the photo's dry grass is an unmown MEADOW green,
+        # a touch more olive and patchier than a watered lawn (the AI keeps a
+        # green it can read; the gold read as sand on the Embarcadero)
+        mdw = b.mix(b.ramp(b.noise(1 / 7.0, 3.0, vec=b.vmap(1.0, loc=(6.0, -3.0, 0))), 0.0, 1.0, 0.3, 0.7), (0.070, 0.118, 0.022), (0.098, 0.150, 0.030))
+        mdw = b.mix(b.ramp(b.noise(1 / 1.2, 2.0), 0.0, 0.5, 0.55, 0.75), mdw, b.mix(1.0, mdw, (0.78, 0.84, 0.8), 'MULTIPLY'))
+        x = b.mix(b.math('MULTIPLY', sh(dry), 0.9), x, mdw)
     # THE WATERED LAWN the photo finds (a park's, a garden's, a playing
     # field): an even, clean green with a mower's stripes, not hill_ground's
     # tired lawn with its dry drifts and bare earth (Alamo Square read patchy
@@ -222,6 +300,14 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     # faint cool cast, a stripe of the roller
     tu = b.mix(b.ramp(b.noise(1 / 30.0, 2.0), 0.0, 1.0, 0.3, 0.7), (0.030, 0.085, 0.040), (0.036, 0.098, 0.046))
     L_ = [(tree, du), (soil, so), (marsh, mh), (water, md), (lawn, lw), (turf, tu), (grav, gv), (asph, ap), (conc, co)]
+    if V2:
+        # [GROUND_V2] THE CITY'S SHRUB BEDS (the photo's scrub: Washington
+        # Square's beds, park borders, freeway banks): a dense clumped green,
+        # never the hills' grey-olive brush the AI read as dead patches
+        cl_ = b.voronoi(1 / 1.3, vec=b.vmap(1.0, loc=(3.0, -7.0, 0)))
+        sb_ = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(-9.0, 4.0, 0))), 0.0, 1.0, 0.35, 0.65), (0.034, 0.066, 0.017), (0.052, 0.088, 0.022))
+        sb_ = b.mix(b.ramp(cl_, 0.0, 1.0, 0.28, 0.5), b.mix(1.0, sb_, (1.25, 1.2, 1.1), 'MULTIPLY'), b.mix(1.0, sb_, (0.55, 0.6, 0.6), 'MULTIPLY'))
+        L_.insert(1, (scrub, sb_))
     if os.environ.get('GROUND_SAND', '1') == '1': L_ += [(sand, sd), (wet, ws)]      # the beaches (the water agent may own them)
     for w_, col_ in L_:
         x = b.mix(sh(w_), x, col_)
@@ -250,6 +336,13 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         # a watered lawn keeps its light patches but not its dark ones (the
         # photo's tree shadows lay dark streaks across Dolores Park, integ1)
         lk_ = b.math('SUBTRACT', 1.0, b.math('MULTIPLY', b.math('MINIMUM', b.math('ADD', sh(lawn), sh(turf)), 1.0), 0.8))       # a lawn keeps a fifth of the photo's grain
+        if V2:
+            # [GROUND_V2] paving keeps a third of the photo's DARK detail: the
+            # rest is the photo's own baked shadows (walls, trees at 11 am in
+            # May), laid over the render's own shadows as dark blotches that
+            # the AI read as a pond (courtyard #25) or the bay (#54)
+            pv_ = b.math('MINIMUM', b.math('ADD', b.math('ADD', sh(asph), sh(conc)), sh(grav)), 1.0)
+            lk_ = b.math('MAXIMUM', b.math('SUBTRACT', lk_, b.math('MULTIPLY', pv_, 0.65)), 0.2)
         dn = b.math('MULTIPLY', b.math('MINIMUM', d_, 0.0), lk_)
         dp = b.math('MULTIPLY', b.math('MAXIMUM', d_, 0.0), b.math('ADD', 0.4, b.math('MULTIPLY', lk_, 0.6)))
         # darker ground is warmer, not bluer (damp earth, trodden grass): the
