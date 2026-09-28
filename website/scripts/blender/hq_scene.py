@@ -294,7 +294,8 @@ def road_mat():
     b.put(hs.inputs['Color'], c); c = hs.outputs[0]
     # resurfaced stretches: fresh (darker, cooler) and old (lighter, warmer)
     age = b.noise(0.012, 2.0)
-    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.035, 0.037, 0.042), 'MIX')
+    # [GROUND_V2] fresh stretches a dark NEUTRAL, not cool: the cool ones added to the blue cast (below)
+    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.046, 0.045, 0.043) if E('GROUND_V2', '1') == '1' else (0.035, 0.037, 0.042), 'MIX')
     c = b.mix(b.ramp(age, 0.45, 0.0, 0.25, 0.4), c, (0.15, 0.14, 0.125))
     c = b.mix(b.ramp(b.noise(0.12, 5.0), 0.0, 0.25), c, (0.55, 0.55, 0.55), 'MULTIPLY')
     # tar snakes: meandering sealed cracks, dark and a little glossy
@@ -310,9 +311,23 @@ def road_mat():
     c = b.mix(cover, c, (0.028, 0.027, 0.025)); c = b.mix(rim, c, (0.07, 0.068, 0.064))
     # the whole street's albedo in one knob (node 'road_k', env ROAD_K): its
     # value times a warm tint, so a brighter street never turns blue-grey
-    k_ = float(E('ROAD_K', 1.0)); c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY'); c.node.name = 'road_k'
+    k_ = float(E('ROAD_K', 1.0))
+    if E('GROUND_V2', '1') == '1':
+        # [GROUND_V2, assets_ground 28/09] the de-blue bias the ground's paving
+        # already has (ground_hq WARM x hill_ground NEU): under the V6 sky fill
+        # a grey albedo rendered sRGB 100,111,126 (b0_s54 raw): slate blue, and
+        # beside the bay the AI painted it as water (#54 / #55). Measured
+        # per-channel gain to the neutral warm grey of real SF asphalt (Esri
+        # ref ~ 110,108,104): R x1.28, G x0.98, B x0.68
+        c = b.mix(1.0, c, (k_ * 1.32, k_ * 0.99, k_ * 0.65), 'MULTIPLY')
+    else:
+        c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY')
+    c.node.name = 'road_k'
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
+    if E('GROUND_V2', '1') == '1' and 'Specular IOR Level' in b.pr.inputs:
+        # [GROUND_V2] a dull asphalt: its sheen mirrored the V6 sky as a blue cast (a3_street_o06 still 84,88,94 raw)
+        b.pr.inputs['Specular IOR Level'].default_value = 0.25
     b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(fine), 0.35, 0.01))
     return b.m
@@ -562,6 +577,24 @@ _src = _pp.inputs['Base Color'].links[0].from_socket
 _wm = _pn.nodes.new('ShaderNodeMix'); _wm.data_type = 'RGBA'; _wm.inputs[0].default_value = 0.78   # worn paint: the asphalt shows through
 _pn.links.new(_src, _wm.inputs[6]); _wm.inputs[7].default_value = (0.78, 0.77, 0.72, 1); _pn.links.new(_wm.outputs[2], _pp.inputs['Base Color'])
 M['path'] = ph_mat('pavement_03', 3.0, name='path')
+def _deblue(m, g, sat=None):
+    """[GROUND_V2, assets_ground 28/09] a grey paving albedo times a warm
+    gain: under the V6 sky fill plain concrete rendered blue-grey (Washington
+    Square's paths sRGB 152,158,164 raw); gain measured to a neutral warm grey"""
+    nt = m.node_tree; pr = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    if not pr.inputs['Base Color'].links: return
+    src = pr.inputs['Base Color'].links[0].from_socket
+    mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MULTIPLY'; mx.inputs[0].default_value = 1.0
+    if sat is not None:
+        hs = nt.nodes.new('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = sat
+        nt.links.new(src, hs.inputs['Color']); src = hs.outputs[0]
+    nt.links.new(src, mx.inputs[6]); mx.inputs[7].default_value = (*g, 1.0); nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
+PAVE_GAIN = (1.12, 0.99, 0.82)
+if E('GROUND_V2', '1') == '1':
+    _deblue(M['sidewalk'], PAVE_GAIN)
+    # the plazas' flagstones (pavement_03) are a buff sandstone: the Embarcadero lot and
+    # plazas read as a dirt lot to the AI (a5_lotA). A grey paver: most of the colour off
+    _deblue(M['path'], (1.04, 1.0, 0.94), sat=0.3)
 M['chimney'] = ph_mat('red_brick_plaster_patch_02', 1.6, name='chimney')
 M['deck'] = ph_mat('white_planks_clean', 2.0, tint=True, name='deck')
 
