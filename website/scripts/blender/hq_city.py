@@ -436,6 +436,7 @@ if os.environ.get('GROUND_V2', '1') == '1' and ERA is None:
         if f.normal.z < 0: f.flip()
     mg.update()
     M['gutter'] = ph_mat('concrete_pavement', 1.8, name='gutter', value=0.78)
+    _deblue(M['gutter'], PAVE_GAIN)
     og = bpy.data.objects.new('gutters', mg); sc.collection.objects.link(og); mg.materials.append(M['gutter'])
     print(f'gutters: {len(Fg)} kerb edges')
     # [GROUND_V2] courts, fields, tracks, playgrounds, dirt lots, lawn strips from OSM (ground_osm.py)
