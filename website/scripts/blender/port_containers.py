@@ -17,12 +17,23 @@ def _lin(h):
     c = [x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
     return (c[0] * 1.05, c[1], c[2] * 0.92)      # (the V6 sky's blue cast on paint: a light warm gain)
 
-def build(sc, ground0, box=None, log=print):
+def build(sc, ground0, box=None, log=print, streets_obj=None):
     if os.environ.get('PORT_BOXES', '1') != '1' or not os.path.exists(SRC): return None
     import bpy
     C = json.load(open(SRC))['containers']
     if box is not None:
         x0, y0, x1, y1 = box; C = [c for c in C if x0 - 20 < c['x'] < x1 + 20 and y0 - 20 < c['y'] < y1 + 20]
+    if streets_obj is not None:
+        # not on a street: the LiDAR's boxes stand where the OSM street mesh runs a terminal road (a4_pier80)
+        import bmesh
+        from mathutils import Vector
+        from mathutils.bvhtree import BVHTree
+        bm = bmesh.new(); bm.from_mesh(streets_obj.data); bm.transform(streets_obj.matrix_world); bvh = BVHTree.FromBMesh(bm); bm.free()
+        def on_st(x, y): return bvh.ray_cast(Vector((x, y, 2000.0)), Vector((0, 0, -1)))[0] is not None
+        n0 = len(C)
+        C = [c for c in C if not any(on_st(c['x'] + math.cos(c['a']) * s_ * c['L'] / 2 + -math.sin(c['a']) * q_, c['y'] + math.sin(c['a']) * s_ * c['L'] / 2 + math.cos(c['a']) * q_)
+                                     for s_ in (-0.9, 0.0, 0.9) for q_ in (-1.1, 1.1))]
+        log(f'port_containers: {n0 - len(C)} stacks off the streets')
     if not C: return None
     V, F, FC, VU = [], [], [], []
     for c in C:

@@ -14,6 +14,9 @@ into a muddy dirt lot and a lawn into sand, 27/09):
     wood chips when OSM says so);
   - brownfield / construction ground: bare ochre-brown dirt (not sand, not
     grass);
+  - parking lots on pier decks (Piers 30-32, 48, 3, 45: OSM amenity=parking inside a
+    piers.json deck): white stall lines on the deck (a bare deck read as a roof and
+    the AI built a shed on Pier 30-32, 28/09); the lots on land are assets_urban's;
   - small landuse=grass outlines (medians, strips, < 6000 m2): lush lawn
     (BAR 27/09 23:05).
 Geometry: triangulated, split to <= 3 m, draped on the terrain (ground0) +4..6 cm
@@ -26,6 +29,7 @@ from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
 SRC = '/Users/daniel/code/qipu-render-work/ground/osm/landcover.json'
+PIERS = '/Users/daniel/code/qipu-render-work/landmarks/piers.json'
 LX, LY = 88007.3, 111320.0
 
 def _srgb(h):
@@ -121,6 +125,32 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
     def box_(c, u, v, a0, a1, b0, b1, col=WHITE):
         line(c, u, v, a0, b0, a1, b0, col); line(c, u, v, a1, b0, a1, b1, col); line(c, u, v, a1, b1, a0, b1, col); line(c, u, v, a0, b1, a0, b0, col)
     if box is not None: bx0, by0, bx1, by1 = box
+    DECKS = []
+    try: DECKS = [p['ring'] for p in json.load(open(PIERS))['piers'] if p.get('kind') == 'deck']
+    except Exception: pass
+    def inpoly(x, y, R):
+        k = False
+        for i in range(len(R)):
+            (x1, y1), (x2, y2) = R[i - 1], R[i]
+            if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): k = not k
+        return k
+    def deck_lot(P):
+        """stalls 2.7 x 5.5 m in back-to-back pairs along the long side, 7 m aisles, white lines on the deck"""
+        c, u, v, hu, hv = _frame(P)
+        zs = sorted(ground0(x, y) for x, y in P); zd = zs[len(zs) // 2] + 0.08
+        def lin(a0, b0, a1, b1):
+            p0 = (c[0] + u[0] * a0 + v[0] * b0, c[1] + u[1] * a0 + v[1] * b0); p1 = (c[0] + u[0] * a1 + v[0] * b1, c[1] + u[1] * a1 + v[1] * b1)
+            if not (inpoly(*p0, P) and inpoly(*p1, P)): return
+            dx, dy = p1[0] - p0[0], p1[1] - p0[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * 0.05, dx / L * 0.05
+            Q = [(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny), (p0[0] - nx, p0[1] - ny)]
+            A.tri((*Q[0], zd), (*Q[1], zd), (*Q[2], zd), WHITE); A.tri((*Q[0], zd), (*Q[2], zd), (*Q[3], zd), WHITE)
+        b = -hv + 1.0; n = 0
+        while b + 11.0 <= hv - 1.0:
+            for a in [(-hu + 1.0) + 2.7 * k for k in range(int((2 * hu - 2.0) / 2.7) + 1)]:
+                lin(a, b, a, b + 11.0); n += 1
+            lin(-hu + 1.0, b + 5.5, hu - 1.0, b + 5.5)
+            b += 11.0 + 7.0
+        return n
     for e in E:
         g = e.get('geometry'); t = e.get('tags', {})
         if e.get('type') != 'way' or not g or len(g) < 4: continue
@@ -215,6 +245,8 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
             plate(P, col, 0.05); k = 'playground'
         elif lu in ('brownfield', 'construction') and ar < 40000:
             plate(P, DIRT, 0.04); k = 'dirt'
+        elif t.get('amenity') == 'parking' and DECKS and any(inpoly(sum(x for x, _ in P) / len(P), sum(y for _, y in P) / len(P), R) for R in DECKS):
+            if deck_lot(P): k = 'deck_lot'
         elif lu == 'grass' and ar < 6000:
             plate(P, LAWN, 0.045); k = 'lawn'
         if k: nk[k] = nk.get(k, 0) + 1
