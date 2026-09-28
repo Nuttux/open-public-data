@@ -70,7 +70,7 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     warp1 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(53.0, 17.0, 0)), 1 / 23.0, detail=2.0), 0.5)      # crests bent over ~20-40 m
     warp2 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(-29.0, 71.0, 0)), 1 / 7.0, detail=2.0), 0.5)      # and over ~5-10 m
     grp = N.noise(N.mapping(rot, loc=(11.0, 5.0, 0), scale=(0.5, 1.0, 1.0)), 1 / 14.0, detail=1.0)       # wave groups
-    s0 = F('V4_SLOPE', 0.05); h = None
+    s0 = F('V4_SLOPE', 0.042); h = None
     for i, (lam, dth, ph) in enumerate(TRAINS):
         th = wang + math.radians(dth); k = 2 * math.pi / lam
         arg = N.m('ADD', N.m('MULTIPLY', X, k * math.cos(th)), N.m('MULTIPLY', Y, k * math.sin(th)))
@@ -97,9 +97,9 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     bm2 = N.n('ShaderNodeBump', i_Distance=0.02)
     N.L(cap, bm2.inputs['Height']); N.L(N.m('MULTIPLY', amp, F('V4_CAP', 0.25)), bm2.inputs['Strength']); N.L(bm.outputs[0], bm2.inputs['Normal'])
     normal = bm2.outputs[0]
-    rough = N.m('MULTIPLY', N.m('ADD', F('V4_R0', 0.05), N.m('ADD', N.m('MULTIPLY', wind, F('V4_R1', 0.03)), N.m('MULTIPLY', gust, F('V4_RG', 0.04)))), calm)
+    rough = N.m('MULTIPLY', N.m('ADD', F('V4_R0', 0.06), N.m('ADD', N.m('MULTIPLY', wind, F('V4_R1', 0.03)), N.m('MULTIPLY', gust, F('V4_RG', 0.04)))), calm)
     # ── the body colour by depth and distance to the shore
-    deep, shal = T('V4_DEEP', '0.012,0.050,0.085'), T('V4_SHAL', '0.030,0.105,0.118'); kk = F('V4_K', 1.0)
+    deep, shal = T('V4_DEEP', '0.018,0.056,0.085'), T('V4_SHAL', '0.030,0.108,0.118'); kk = F('V4_K', 2.2)
     dep = depth(bpy, N, pos, WD, img); dsh = shore_dist(bpy, N, pos)
     f = None
     if dep is not None: f = N.smooth(14.0, 2.0, dep)
