@@ -4,7 +4,7 @@ Kit accumulates faces per material key, with a face colour ('bcol', the same
 attribute the district materials read) and a smooth flag, and emits one mesh
 per material. Every primitive takes world coordinates (metres, z up).
 """
-import math
+import math, os
 
 def hexc(h, a=1.0):
     """'#rrggbb' (sRGB) -> linear rgba, as gen_buildings emits its paint"""
@@ -291,7 +291,14 @@ def materials(bpy, mats):
         m1 = nt.nodes.new('ShaderNodeMath'); m1.operation = 'MULTIPLY'; nt.links.new(v1, m1.inputs[0]); nt.links.new(v2, m1.inputs[1])
         c1 = nt.nodes.new('ShaderNodeMix'); c1.data_type = 'RGBA'; c1.blend_type = 'MULTIPLY'; c1.inputs[0].default_value = 1.0
         nt.links.new(a.outputs['Color'], c1.inputs[6]); nt.links.new(br.outputs['Color'], c1.inputs[7])
-        nt.links.new(hsv_value(nt, c1.outputs[2], m1.outputs[0]), pr.inputs['Base Color'])
+        hv_ = hsv_value(nt, c1.outputs[2], m1.outputs[0])
+        if os.environ.get('GROUND_V2', '1') == '1':
+            # [GROUND_V2, assets_ground 28/09] the de-blue gain of the city's paving
+            # (hq_scene PAVE_GAIN): the aprons along the Embarcadero rendered sRGB
+            # 162,170,175 raw, a cold blue-grey band beside the bay
+            g_ = nt.nodes.new('ShaderNodeMix'); g_.data_type = 'RGBA'; g_.blend_type = 'MULTIPLY'; g_.inputs[0].default_value = 1.0
+            nt.links.new(hv_, g_.inputs[6]); g_.inputs[7].default_value = (1.12, 0.99, 0.82, 1); hv_ = g_.outputs[2]
+        nt.links.new(hv_, pr.inputs['Base Color'])
     mats['lm_apron'] = m
 
     # verdigris copper: patina green, streaked darker where the rain runs

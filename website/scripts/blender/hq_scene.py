@@ -319,12 +319,15 @@ def road_mat():
         # beside the bay the AI painted it as water (#54 / #55). Measured
         # per-channel gain to the neutral warm grey of real SF asphalt (Esri
         # ref ~ 110,108,104): R x1.28, G x0.98, B x0.68
-        c = b.mix(1.0, c, (k_ * 1.28, k_ * 0.98, k_ * 0.68), 'MULTIPLY')
+        c = b.mix(1.0, c, (k_ * 1.32, k_ * 0.99, k_ * 0.65), 'MULTIPLY')
     else:
         c = b.mix(1.0, c, (1.0, 1.0, 1.0) if k_ == 1.0 else (k_ * 1.03, k_, k_ * 0.94), 'MULTIPLY')
     c.node.name = 'road_k'
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
+    if E('GROUND_V2', '1') == '1' and 'Specular IOR Level' in b.pr.inputs:
+        # [GROUND_V2] a dull asphalt: its sheen mirrored the V6 sky as a blue cast (a3_street_o06 still 84,88,94 raw)
+        b.pr.inputs['Specular IOR Level'].default_value = 0.25
     b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))
     b.put(b.pr.inputs['Normal'], b.bump(b.bw(fine), 0.35, 0.01))
     return b.m

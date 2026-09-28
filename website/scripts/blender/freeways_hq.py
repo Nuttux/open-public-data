@@ -179,7 +179,7 @@ def _mats(bpy, M):
     lot = M['asphalt'].copy(); lot.name = 'fw.lot'
     for n in lot.node_tree.nodes:
         if n.name == 'road_k':
-            n.inputs[7].default_value = (1.18 * 1.28, 1.14 * 0.98, 1.08 * 0.68, 1) if os.environ.get('GROUND_V2', '1') == '1' else (1.18, 1.14, 1.08, 1)   # [GROUND_V2] road_mat's de-blue gain kept
+            n.inputs[7].default_value = (1.18 * 1.32, 1.14 * 0.99, 1.08 * 0.65, 1) if os.environ.get('GROUND_V2', '1') == '1' else (1.18, 1.14, 1.08, 1)   # [GROUND_V2] road_mat's de-blue gain kept
     T['lot'] = lot
     return T
 
