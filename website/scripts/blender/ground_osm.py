@@ -16,8 +16,9 @@ into a muddy dirt lot and a lawn into sand, 27/09):
     grass);
   - small landuse=grass outlines (medians, strips, < 6000 m2): lush lawn
     (BAR 27/09 23:05).
-Geometry: triangulated, split to <= 3 m, draped on the terrain (ground0) +3 cm;
-lines +4.5 cm, 0.10 m wide (about 1 px at z9). Triangles over the street mesh are
+Geometry: triangulated, split to <= 3 m, draped on the terrain (ground0) +4..6 cm
+(at +2 cm the terrain's own facets poked through a lawn as dark holes, a3_sbpark);
+lines +9 cm, 0.10 m wide (about 1 px at z9). Triangles over the street mesh are
 dropped (OSM outlines overlap the kerb). One material, per-face colour 'bcol'.
 Data: OSM (ODbL) ground/osm/landcover.json (Overpass, 24/09)."""
 import os, json, math, hashlib
@@ -43,7 +44,7 @@ TRACK = (0.30, 0.075, 0.045)
 GRIT = _warm((0.34, 0.27, 0.17))
 SAND = (0.40, 0.30, 0.13)
 CHIPS = (0.20, 0.115, 0.055)
-COURTS = [(_srgb('2f6b4f'), _srgb('7a3b2e')), (_srgb('2d5f86'), _srgb('3f7a4a')), (_srgb('3c7a52'), _srgb('2f5f44')), (_srgb('3a6f96'), _srgb('3a6f96'))]
+COURTS = [(_srgb('2f6b4f'), _srgb('7a3b2e')), (_srgb('3a6484'), _srgb('3f7a4a')), (_srgb('3c7a52'), _srgb('2f5f44')), (_srgb('45708f'), _srgb('4a7760'))]
 RUBBER = [_srgb('9c4a33'), _srgb('3d6f9a'), _srgb('4f8a4a'), _srgb('b0703a')]
 
 def _h(i, n): return int(hashlib.sha1(str(i).encode()).hexdigest()[:8], 16) % n
@@ -95,7 +96,7 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
         h = bvh.ray_cast(Vector((x, y, 2000.0)), Vector((0, 0, -1)))
         return h[0] is not None
     A = _Acc(); nk = {}
-    def plate(P, col, dz=0.03, keep_street=False):
+    def plate(P, col, dz=0.06, keep_street=False):
         if len(P) < 3: return
         try: T = tessellate_polygon([[Vector((x, y, 0)) for x, y in P]])
         except Exception: return
@@ -104,7 +105,7 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
                 cx, cy = (a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3
                 if not keep_street and on_street(cx, cy): continue
                 A.tri(*[(p[0], p[1], ground0(p[0], p[1]) + dz) for p in (a, b, c)], col)
-    def rect(c, u, v, u0, u1, v0, v1, col, dz=0.038):
+    def rect(c, u, v, u0, u1, v0, v1, col, dz=0.075):
         P = [(c[0] + u[0] * a + v[0] * b, c[1] + u[1] * a + v[1] * b) for a, b in ((u0, v0), (u1, v0), (u1, v1), (u0, v1))]
         plate(P, col, dz, keep_street=True)
     def line(c, u, v, a0, b0, a1, b1, col=WHITE, w=0.10):
@@ -113,7 +114,7 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
         dx, dy = p1[0] - p0[0], p1[1] - p0[1]; L = math.hypot(dx, dy)
         if L < 0.05: return
         nx, ny = -dy / L * w / 2, dx / L * w / 2
-        plate([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny), (p0[0] - nx, p0[1] - ny)], col, 0.045, keep_street=True)
+        plate([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny), (p0[0] - nx, p0[1] - ny)], col, 0.09, keep_street=True)
     def circle(c, u, v, a, b, r, col=WHITE, n=28, w=0.10, t0=0.0, t1=2 * math.pi):
         pts = [(a + r * math.cos(t0 + (t1 - t0) * i / n), b + r * math.sin(t0 + (t1 - t0) * i / n)) for i in range(n + 1)]
         for (a0, b0), (a1, b1) in zip(pts, pts[1:]): line(c, u, v, a0, b0, a1, b1, col, w)
@@ -160,14 +161,14 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
                     box_(c, u, v, -L_ / 2, L_ / 2, -W_ / 2, W_ / 2); line(c, u, v, 0, -W_ / 2, 0, W_ / 2); circle(c, u, v, 0, 0, 1.8)
                     for s in (-1, 1):
                         a0 = s * L_ / 2; a1 = s * (L_ / 2 - 5.8)
-                        rect(c, u, v, min(a0, a1), max(a0, a1), -2.45, 2.45, COURTS[_h(e['id'] + 2, len(COURTS))][1], 0.04)
+                        rect(c, u, v, min(a0, a1), max(a0, a1), -2.45, 2.45, COURTS[_h(e['id'] + 2, len(COURTS))][1], 0.075)
                         box_(c, u, v, min(a0, a1), max(a0, a1), -2.45, 2.45)
                         circle(c, u, v, s * (L_ / 2 - 1.575), 0, 6.75, n=24, t0=math.pi / 2 if s > 0 else -math.pi / 2, t1=3 * math.pi / 2 if s > 0 else math.pi / 2)
                 elif 2 * hu > 8:
                     box_(c, u, v, -hu + 0.5, hu - 0.5, -hv + 0.5, hv - 0.5); circle(c, u, v, hu - 2.0, 0, 1.8)
                 k = 'basketball'
             elif sp == 'four_square':
-                plate(P, ASPH, 0.035); box_(c, u, v, -hu, hu, -hv, hv); line(c, u, v, 0, -hv, 0, hv); line(c, u, v, -hu, 0, hu, 0)
+                plate(P, ASPH, 0.06); box_(c, u, v, -hu, hu, -hv, hv); line(c, u, v, 0, -hv, 0, hv); line(c, u, v, -hu, 0, hu, 0)
                 k = 'four_square'
             elif sp in ('baseball', 'softball'):
                 plate(P, TURF if sf == 'artificial_turf' else LAWN)
@@ -186,9 +187,9 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
                     R = 29.0 if sp == 'baseball' else 18.0; B = 27.43 if sp == 'baseball' else 18.29
                     if min(n1, n2) > R * 1.3:
                         arc = [(0.0, 0.0)] + [(R * math.cos(a), R * math.sin(a)) for a in [(-math.pi / 4 - 0.05) + (math.pi / 2 + 0.1) * i / 16 for i in range(17)]]
-                        plate([(H[0] + du[0] * a + dv[0] * b, H[1] + du[1] * a + dv[1] * b) for a, b in arc], CLAY, 0.04, keep_street=True)
+                        plate([(H[0] + du[0] * a + dv[0] * b, H[1] + du[1] * a + dv[1] * b) for a, b in arc], CLAY, 0.07, keep_street=True)
                         s2 = B / math.sqrt(2)
-                        plate([(H[0] + du[0] * a + dv[0] * b, H[1] + du[1] * a + dv[1] * b) for a, b in ((s2 * 0.25, 0), (s2, -s2 * 0.75), (s2 * 1.75, 0), (s2, s2 * 0.75))], TURF if sf == 'artificial_turf' else LAWN, 0.05, keep_street=True)
+                        plate([(H[0] + du[0] * a + dv[0] * b, H[1] + du[1] * a + dv[1] * b) for a, b in ((s2 * 0.25, 0), (s2, -s2 * 0.75), (s2 * 1.75, 0), (s2, s2 * 0.75))], TURF if sf == 'artificial_turf' else LAWN, 0.08, keep_street=True)
                         circle(H, du, dv, s2 * 1.0 * 0.95, 0, 2.7, CLAY, 12, 0.9)
                         for s in (-1, 1): line(H, du, dv, 0, 0, min(n1, n2) * 0.95 * math.cos(math.pi / 4), s * min(n1, n2) * 0.95 * math.sin(math.pi / 4))
                 k = sp
@@ -211,11 +212,11 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
             plate(P, TRACK); k = 'track'
         elif le == 'playground' and ar < 20000:
             col = SAND if sf == 'sand' else (CHIPS if sf in ('woodchips', 'bark', 'wood') else (LAWN if sf == 'grass' else RUBBER[_h(e['id'], len(RUBBER))]))
-            plate(P, col, 0.025); k = 'playground'
+            plate(P, col, 0.05); k = 'playground'
         elif lu in ('brownfield', 'construction') and ar < 40000:
-            plate(P, DIRT, 0.02); k = 'dirt'
+            plate(P, DIRT, 0.04); k = 'dirt'
         elif lu == 'grass' and ar < 6000:
-            plate(P, LAWN, 0.02); k = 'lawn'
+            plate(P, LAWN, 0.045); k = 'lawn'
         if k: nk[k] = nk.get(k, 0) + 1
     if not A.F: log('ground_osm: nothing in the box'); return None
     me = bpy.data.meshes.new('ground_osm'); me.from_pydata(A.V, [], A.F); me.update()
