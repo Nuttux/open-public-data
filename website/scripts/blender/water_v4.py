@@ -70,7 +70,7 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     warp1 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(53.0, 17.0, 0)), 1 / 23.0, detail=2.0), 0.5)      # crests bent over ~20-40 m
     warp2 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(-29.0, 71.0, 0)), 1 / 7.0, detail=2.0), 0.5)      # and over ~5-10 m
     grp = N.noise(N.mapping(rot, loc=(11.0, 5.0, 0), scale=(0.5, 1.0, 1.0)), 1 / 14.0, detail=1.0)       # wave groups
-    s0 = F('V4_SLOPE', 0.042); h = None
+    s0 = F('V4_SLOPE', 0.03); h = None
     for i, (lam, dth, ph) in enumerate(TRAINS):
         th = wang + math.radians(dth); k = 2 * math.pi / lam
         arg = N.m('ADD', N.m('MULTIPLY', X, k * math.cos(th)), N.m('MULTIPLY', Y, k * math.sin(th)))
@@ -95,16 +95,16 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     # capillary ruffle below the resolved trains, stretched across the wind
     cap = N.noise(N.mapping(rot, scale=(1.0, 0.6, 1.0)), 2.2, detail=3.0, rough=0.5)
     bm2 = N.n('ShaderNodeBump', i_Distance=0.02)
-    N.L(cap, bm2.inputs['Height']); N.L(N.m('MULTIPLY', amp, F('V4_CAP', 0.25)), bm2.inputs['Strength']); N.L(bm.outputs[0], bm2.inputs['Normal'])
+    N.L(cap, bm2.inputs['Height']); N.L(N.m('MULTIPLY', amp, F('V4_CAP', 0.15)), bm2.inputs['Strength']); N.L(bm.outputs[0], bm2.inputs['Normal'])
     normal = bm2.outputs[0]
-    rough = N.m('MULTIPLY', N.m('ADD', F('V4_R0', 0.06), N.m('ADD', N.m('MULTIPLY', wind, F('V4_R1', 0.03)), N.m('MULTIPLY', gust, F('V4_RG', 0.04)))), calm)
+    rough = N.m('MULTIPLY', N.m('ADD', F('V4_R0', 0.09), N.m('ADD', N.m('MULTIPLY', wind, F('V4_R1', 0.03)), N.m('MULTIPLY', gust, F('V4_RG', 0.04)))), calm)
     # ── the body colour by depth and distance to the shore
-    deep, shal = T('V4_DEEP', '0.018,0.056,0.085'), T('V4_SHAL', '0.030,0.108,0.118'); kk = F('V4_K', 2.2)
+    deep, shal = T('V4_DEEP', '0.012,0.064,0.095'), T('V4_SHAL', '0.012,0.064,0.095'); kk = F('V4_K', 2.1)
     dep = depth(bpy, N, pos, WD, img); dsh = shore_dist(bpy, N, pos)
     f = None
     if dep is not None: f = N.smooth(14.0, 2.0, dep)
     if dsh is not None:
-        fs = N.m('MULTIPLY', N.smooth(F('V4_SHORE_M', 70.0), 4.0, dsh), 0.75)
+        fs = N.m('MULTIPLY', N.smooth(max(F('V4_SHORE_M', 4.01), 4.01), 4.0, dsh), 0.75)
         f = fs if f is None else N.m('MAXIMUM', f, fs)
     col = N.mix(f if f is not None else 0.0, deep, shal)
     var = N.m('ADD', 1.0 - 0.06, N.m('MULTIPLY', N.noise(N.mapping(pos, loc=(401.0, 233.0, 0)), 1 / 450.0, detail=2.0), 0.12))
