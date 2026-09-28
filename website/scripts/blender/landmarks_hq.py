@@ -248,7 +248,7 @@ def _clear_generated(bpy, sc, regions):
     a city chunk costs memory): they get an extra, fully transparent
     material slot"""
     import re
-    n = 0
+    n = 0; keep = _kept_footprints(regions) if os.environ.get('LM_CLEAR_KEEP', '0') == '1' else None; saved = [0]
     for ob in list(sc.collection.all_objects):
         if ob.type != 'MESH' or not (ob.name.startswith('gen.') or re.match(r'^b\d+\.', ob.name) or ob.name == 'far'): continue
         me = ob.data
@@ -260,6 +260,12 @@ def _clear_generated(bpy, sc, regions):
             b = r.bbox(); pre = (X >= b[0]) & (X <= b[2]) & (Y >= b[1]) & (Y <= b[3])
             if pre.any():
                 idx = np.nonzero(pre)[0]; kill[idx] |= r.inside(X[idx], Y[idx])
+        if kill.any() and keep is not None:
+            # [LM_CLEAR_KEEP] a face on or inside a building that is NOT replaced stays (One Market's ring took 142944's east walls)
+            for F, fb in keep:
+                pre = kill & (X >= fb[0]) & (X <= fb[2]) & (Y >= fb[1]) & (Y <= fb[3])
+                if pre.any():
+                    idx = np.nonzero(pre)[0]; kill[idx] &= ~_near_ring(F, X[idx], Y[idx], 0.6); saved[0] += int(pre.sum() - kill[idx].sum())
         if not kill.any(): continue
         hm = _hidden(bpy)
         slot = list(me.materials).index(hm) if hm.name in [m_.name for m_ in me.materials if m_] else None
@@ -267,7 +273,35 @@ def _clear_generated(bpy, sc, regions):
         mi = np.empty(np_, np.int32); me.polygons.foreach_get('material_index', mi)
         mi[kill] = slot; me.polygons.foreach_set('material_index', mi); me.update()
         n += int(kill.sum())
+    if keep is not None: print(f'landmarks_hq: LM_CLEAR_KEEP {len(keep)} footprints kept whole, {saved[0]} faces not hidden', flush=True)
     return n
+
+def _near_ring(F, X, Y, tol):
+    """inside the ring F, or within tol m of its edges"""
+    ins = Region(ring=F).inside(X, Y); n = len(F)
+    for i in range(n):
+        (x1, y1), (x2, y2) = F[i], F[(i + 1) % n]; dx, dy = x2 - x1, y2 - y1; L2 = dx * dx + dy * dy or 1e-12
+        t = np.clip(((X - x1) * dx + (Y - y1) * dy) / L2, 0, 1)
+        ins |= (X - x1 - t * dx) ** 2 + (Y - y1 - t * dy) ** 2 <= tol * tol
+    return ins
+
+def _kept_footprints(regions):
+    """(ring, bbox) of the buildings a clear region only grazes: their centre outside every region (a replaced building's
+    centre lies inside its landmark's ring). LM_CLEAR_KEEP=1 (street_edge [bugs] 28/09): the see-through tower by the Ferry
+    Building — t_onemarket's clear ring runs 0.6 m inside gid 142944's east walls, so their faces took the transparent slot"""
+    import city_data
+    bb = [r.bbox() for r in regions]
+    x0, y0, x1, y1 = min(b[0] for b in bb), min(b[1] for b in bb), max(b[2] for b in bb), max(b[3] for b in bb)
+    out = []
+    for b in city_data.buildings(x0 - 5, y0 - 5, x1 + 5, y1 + 5):
+        F = [tuple(p) for p in b['ring']]
+        if len(F) < 3: continue
+        fx0, fy0 = min(p[0] for p in F), min(p[1] for p in F); fx1, fy1 = max(p[0] for p in F), max(p[1] for p in F)
+        if not any(fx1 >= q[0] and fx0 <= q[2] and fy1 >= q[1] and fy0 <= q[3] for q in bb): continue
+        cx, cy = np.array([b['cx']]), np.array([b['cy']])
+        if any(r.inside(cx, cy)[0] for r in regions): continue
+        out.append((F, (fx0 - 1, fy0 - 1, fx1 + 1, fy1 + 1)))
+    return out
 
 def _plant(C):
     """trees the landmarks ask for (C.trees: x, y, z, crown width), from the

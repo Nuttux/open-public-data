@@ -403,6 +403,29 @@ for i in range(0, len(MP), 3):
 if len(MP): mesh_from('markings', MP, M['paint'])
 if len(VG):
     mesh_from('verges', VG, M['sidewalk'], weld=0.02)
+if E('TREE_EDGE', '0') == '1' and ERA is None:
+    # [TREE_EDGE, street_edge 28/09] THE MEDIANS UNDER THE MEDIAN TREES. The list's median trees are kept on the roadway only
+    # where the data has a divided street (tree_edge_prep.py); the roadway polygon has no island there, so a planted median
+    # 1.8 m wide with a 15 cm kerb is laid under each run of them (Guerrero, Dolores). The other trees in the carriageway
+    # were moved to the sidewalk or dropped (veg_hq)
+    import veg_hq as _vq
+    _te = _vq._tree_edge(); _mt, _mk = [], []
+    for x0_, y0_, x1_, y1_ in _te[2]:
+        if not (in_box(x0_, y0_, 60) or in_box(x1_, y1_, 60)): continue
+        a_ = Vector((x0_, y0_, 0.0)); b_ = Vector((x1_, y1_, 0.0)); t_ = b_ - a_
+        t_ = t_.normalized() if t_.length > 0.5 else Vector((1.0, 0.0, 0.0))
+        a_ = a_ - t_ * 1.5; b_ = b_ + t_ * 1.5; n_ = Vector((-t_.y, t_.x, 0.0)) * 0.9
+        C_ = [a_ - n_, b_ - n_, b_ + n_, a_ + n_]; Z_ = []
+        for c_ in C_:
+            h_ = sbv.ray_cast(Vector((c_.x, c_.y, 3000.0)), Vector((0, 0, -1)))
+            Z_.append(h_[0].z if h_[0] is not None else (ground(c_.x, c_.y) or 0.0))
+        T_ = [(c_.x, c_.y, z_ + 0.15) for c_, z_ in zip(C_, Z_)]; B_ = [(c_.x, c_.y, z_ - 0.05) for c_, z_ in zip(C_, Z_)]
+        _mt.extend([*T_[0], *T_[1], *T_[2], *T_[0], *T_[2], *T_[3]])
+        for i_ in range(4):
+            j_ = (i_ + 1) % 4; _mk.extend([*B_[i_], *B_[j_], *T_[j_], *B_[i_], *T_[j_], *T_[i_]])
+    if _mt:
+        mesh_from('medians', array.array('f', _mt), M['lawn']); mesh_from('median_kerbs', array.array('f', _mk), M['sidewalk'])
+    log('tree_edge: medians', len(_mt) // 18)
 for i in range(2, len(DP), 3): DP[i] += 0.04
 for i in range(2, len(DL), 3): DL[i] += 0.03
 if len(DP): mesh_from('paths', DP, M['path'])
