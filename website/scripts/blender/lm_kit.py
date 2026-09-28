@@ -297,7 +297,7 @@ def materials(bpy, mats):
             # (hq_scene PAVE_GAIN): the aprons along the Embarcadero rendered sRGB
             # 162,170,175 raw, a cold blue-grey band beside the bay
             g_ = nt.nodes.new('ShaderNodeMix'); g_.data_type = 'RGBA'; g_.blend_type = 'MULTIPLY'; g_.inputs[0].default_value = 1.0
-            nt.links.new(hv_, g_.inputs[6]); g_.inputs[7].default_value = (1.12, 0.99, 0.82, 1); hv_ = g_.outputs[2]
+            nt.links.new(hv_, g_.inputs[6]); g_.inputs[7].default_value = (1.05, 1.0, 0.93, 1); hv_ = g_.outputs[2]
         nt.links.new(hv_, pr.inputs['Base Color'])
     mats['lm_apron'] = m
 

@@ -134,10 +134,17 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
             (x1, y1), (x2, y2) = R[i - 1], R[i]
             if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): k = not k
         return k
-    def deck_lot(P):
+    def deck_top(R):
+        """the deck's height as water_hq.piers.deck_z makes it (median of the ground inside, capped, >= PIER_Z + 0.1)"""
+        xs = [x for x, _ in R]; ys = [y for _, y in R]; st = max(4.0, (max(xs) - min(xs) + max(ys) - min(ys)) / 30)
+        S_ = [ground0(x, y) for x in [min(xs) + st * (i + 0.5) for i in range(int((max(xs) - min(xs)) / st))]
+              for y in [min(ys) + st * (j + 0.5) for j in range(int((max(ys) - min(ys)) / st))] if inpoly(x, y, R)] or [ground0(*p) for p in R]
+        S_.sort(); med = S_[len(S_) // 2]
+        return min(max(min(S_[-1], med + 1.0) + 0.10, 2.4), 6.5)
+    def deck_lot(P, R):
         """stalls 2.7 x 5.5 m in back-to-back pairs along the long side, 7 m aisles, white lines on the deck"""
         c, u, v, hu, hv = _frame(P)
-        zs = sorted(ground0(x, y) for x, y in P); zd = zs[len(zs) // 2] + 0.3      # (+8 cm: under water_hq's deck slab)
+        zd = deck_top(R) + 0.15      # (on water_hq's deck slab: its own height rule, a margin for the sampling)
         def lin(a0, b0, a1, b1):
             p0 = (c[0] + u[0] * a0 + v[0] * b0, c[1] + u[1] * a0 + v[1] * b0); p1 = (c[0] + u[0] * a1 + v[0] * b1, c[1] + u[1] * a1 + v[1] * b1)
             if not (inpoly(*p0, P) and inpoly(*p1, P)): return
@@ -246,7 +253,8 @@ def build(sc, M, ground0, streets_obj=None, box=None, log=print):
         elif lu in ('brownfield', 'construction') and ar < 40000:
             plate(P, DIRT, 0.04); k = 'dirt'
         elif t.get('amenity') == 'parking' and DECKS and any(inpoly(sum(x for x, _ in P) / len(P), sum(y for _, y in P) / len(P), R) for R in DECKS):
-            if deck_lot(P): k = 'deck_lot'
+            R = next(R for R in DECKS if inpoly(sum(x for x, _ in P) / len(P), sum(y for _, y in P) / len(P), R))
+            if deck_lot(P, R): k = 'deck_lot'
         elif lu == 'grass' and ar < 6000:
             plate(P, LAWN, 0.045); k = 'lawn'
         if k: nk[k] = nk.get(k, 0) + 1
