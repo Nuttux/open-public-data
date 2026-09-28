@@ -48,7 +48,8 @@ def db():
     create table if not exists outputs(h_in text primary key, out_sha text, cas text, gx int, gy int, op text, key text, seed int,
       h_px text, h_cls text, h_recipe text, h_runner text, model text, prec text, spec text, run text, card text, s real, t real, line text);
     create table if not exists seen(tile text, h_in text, run text, t real, primary key(tile, h_in));
-    create index if not exists seen_tile on seen(tile);""")
+    create index if not exists seen_tile on seen(tile);
+    create table if not exists thumbs(h_in text primary key, w int, data blob);""")
     return c
 
 
@@ -117,6 +118,14 @@ def crop_hash(im, ox, oy, box):
     return sha(im.crop((x0 - ox, y0 - oy, x1 - ox, y1 - oy)).tobytes())[:16]
 
 
+TW = 32   # input thumbnail: the op's read region box-filtered to 32 x 32 (2048 px -> 64 px blocks): path-tracing noise averages out
+def thumb(im, ox, oy, box):
+    import numpy as np
+    x0, y0, x1, y1 = box; a = np.asarray(im.crop((x0 - ox, y0 - oy, x1 - ox, y1 - oy)), np.float32)
+    h, w = a.shape[0] // TW * TW, a.shape[1] // TW * TW
+    return a[:h, :w].reshape(TW, h // TW, TW, w // TW, 3).mean((1, 3)).round().astype(np.uint8)
+
+
 def hash_inputs(j, M, spec):
     R, ox, oy, C = M.get(j['tag'])
     box = region(j); hp = crop_hash(R, ox, oy, box); hc = crop_hash(C, ox, oy, box)
@@ -124,7 +133,7 @@ def hash_inputs(j, M, spec):
     nf = f"nf:{var.get('nf')}" if var.get('nf') else ''
     parts = dict(op=j['op'], gx=j['gx'], gy=j['gy'], px=hp, cls=hc if j['op'].startswith('G') else None, recipe=spec['_h_recipe'],
                  prompt=j['key'], seed=j['seed'], nf=nf, model=spec.get('model', ''), prec=spec['_prec'])
-    j.update(h_px=hp, h_cls=hc, h_in=sha(cj(parts).encode()), parts=parts)
+    j.update(h_px=hp, h_cls=hc, h_in=sha(cj(parts).encode()), parts=parts, thumb=lambda: thumb(R, ox, oy, box))
     return j
 
 
@@ -158,6 +167,7 @@ def record(o):
                    spec['_h_runner'][:16], spec.get('model', ''), spec['_prec'], spec['name'], o.run or spec['name'], o.card or pv.get('card', ''),
                    pv.get('s'), time.time(), j['line']))
         c.execute('insert or replace into seen values(?,?,?,?)', (tile_id(j), h, o.run or spec['name'], time.time()))
+        c.execute('insert or ignore into thumbs values(?,?,?)', (h, TW, j['thumb']().tobytes()))
         n += 1
     c.commit()
     print(f'record {o.run or spec["name"]}: {n} tiles ({new} new in CAS), {miss} job lines without an output')
@@ -182,6 +192,21 @@ def explain(c, j):
     return '+'.join(w) or 'noise-field'
 
 
+def tolerant_match(c, j, tol):
+    """ERAS (DESIGN.md): an output whose inputs differ from this line's ONLY in render pixels, where the two regions' 32 x 32 thumbnails
+    differ by at most `tol` (max |dRGB| of a 64 px block) -> reuse it (path-tracing noise between two renders of an unchanged area)"""
+    import numpy as np
+    p = j['parts']; me = None
+    for cas, h, px in c.execute('select cas, h_in, h_px from outputs where op = ? and gx = ? and gy = ? and h_recipe = ? and key = ? and seed = ? and model = ? and prec = ?',
+                                (j['op'], j['gx'], j['gy'], p['recipe'], p['prompt'], p['seed'], p['model'], p['prec'])):
+        r = c.execute('select data from thumbs where h_in = ?', (h,)).fetchone()
+        if not r or not os.path.exists(cas): continue
+        if me is None: me = j['thumb']().astype(np.int16)
+        d = np.abs(np.frombuffer(r[0], np.uint8).reshape(TW, TW, 3).astype(np.int16) - me)
+        if d.max() <= tol: return cas
+    return None
+
+
 def plan(o, quiet=False):
     spec = load_spec(o.spec); M = Mosaics(o.mosaics); c = db(); files = o.jobs.split(','); J = parse_jobs(files)
     todo, hit, why = [], [], {}
@@ -191,8 +216,12 @@ def plan(o, quiet=False):
         q = 'select cas, card from outputs where h_in = ?'
         rows = c.execute(q, (j['h_in'],)).fetchall()
         if o.card_strict: rows = [r for r in rows if r[1] == o.card_strict]
-        if rows and os.path.exists(rows[0][0]): j['cas'] = rows[0][0]; hit.append(j)
-        else: w = explain(c, j); why[w] = why.get(w, 0) + 1; todo.append(j)
+        if rows and os.path.exists(rows[0][0]): j['cas'] = rows[0][0]; hit.append(j); continue
+        w = explain(c, j)
+        if getattr(o, 'tolerant', None) is not None and w == 'render':
+            t = tolerant_match(c, j, o.tolerant)
+            if t: j['cas'] = t; j['tolerant'] = True; hit.append(j); why['tolerant reuse'] = why.get('tolerant reuse', 0) + 1; continue
+        why[w] = why.get(w, 0) + 1; todo.append(j)
     if o.emit:
         os.makedirs(o.emit, exist_ok=True)
         for f in files:
@@ -259,7 +288,7 @@ if __name__ == '__main__':
         p = sp.add_parser(n); p.add_argument('--jobs', required=True)
         if n != 'touch': p.add_argument('--spec', required=True); p.add_argument('--mosaics', required=True)
         if n == 'record': p.add_argument('--outs', required=True); p.add_argument('--run'); p.add_argument('--card')
-        if n == 'plan': p.add_argument('--emit'); p.add_argument('--link'); p.add_argument('--card-strict')
+        if n == 'plan': p.add_argument('--emit'); p.add_argument('--link'); p.add_argument('--card-strict'); p.add_argument('--tolerant', type=float, help='max |dRGB| of 64 px blocks (eras)')
         if n == 'touch': p.add_argument('--bt'); p.add_argument('--bids'); p.add_argument('--box'); p.add_argument('--z0', default='0'); p.add_argument('--z1', default='40')
     sp.add_parser('stats')
     o = ap.parse_args()
