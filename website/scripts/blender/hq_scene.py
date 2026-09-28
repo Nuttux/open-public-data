@@ -561,7 +561,7 @@ _src = _pp.inputs['Base Color'].links[0].from_socket
 _wm = _pn.nodes.new('ShaderNodeMix'); _wm.data_type = 'RGBA'; _wm.inputs[0].default_value = 0.78   # worn paint: the asphalt shows through
 _pn.links.new(_src, _wm.inputs[6]); _wm.inputs[7].default_value = (0.78, 0.77, 0.72, 1); _pn.links.new(_wm.outputs[2], _pp.inputs['Base Color'])
 M['path'] = ph_mat('pavement_03', 3.0, name='path')
-def _deblue(m, g):
+def _deblue(m, g, sat=None):
     """[GROUND_V2, assets_ground 28/09] a grey paving albedo times a warm
     gain: under the V6 sky fill plain concrete rendered blue-grey (Washington
     Square's paths sRGB 152,158,164 raw); gain measured to a neutral warm grey"""
@@ -569,10 +569,16 @@ def _deblue(m, g):
     if not pr.inputs['Base Color'].links: return
     src = pr.inputs['Base Color'].links[0].from_socket
     mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MULTIPLY'; mx.inputs[0].default_value = 1.0
+    if sat is not None:
+        hs = nt.nodes.new('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = sat
+        nt.links.new(src, hs.inputs['Color']); src = hs.outputs[0]
     nt.links.new(src, mx.inputs[6]); mx.inputs[7].default_value = (*g, 1.0); nt.links.new(mx.outputs[2], pr.inputs['Base Color'])
 PAVE_GAIN = (1.12, 0.99, 0.82)
 if E('GROUND_V2', '1') == '1':
-    for k_ in ('sidewalk', 'path'): _deblue(M[k_], PAVE_GAIN)
+    _deblue(M['sidewalk'], PAVE_GAIN)
+    # the plazas' flagstones (pavement_03) are a buff sandstone: the Embarcadero lot and
+    # plazas read as a dirt lot to the AI (a5_lotA). A grey paver: most of the colour off
+    _deblue(M['path'], (1.04, 1.0, 0.94), sat=0.3)
 M['chimney'] = ph_mat('red_brick_plaster_patch_02', 1.6, name='chimney')
 M['deck'] = ph_mat('white_planks_clean', 2.0, tint=True, name='deck')
 
