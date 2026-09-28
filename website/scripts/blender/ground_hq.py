@@ -245,8 +245,9 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         # [GROUND_V2] (a3, 28/09: replacing NEU x WARM by the sidewalks' gain
         # turned the Embarcadero promenade lilac, raw 143,140,147, and the AI
         # painted it PINK; NEU x WARM rendered it 143,140,130, a warm grey:
-        # kept, with a touch more blue for a neutral grey)
-        for_ = lambda x_: b.mix(1.0, b.mix(1.0, b.mix(1.0, x_, NEU, 'MULTIPLY'), WARM, 'MULTIPLY'), (1.0, 1.0, 1.1), 'MULTIPLY')
+        # kept, with more blue for a neutral grey: x1.2 -> raw ~143,140,141;
+        # the beige read as dirt / sand to the AI at Embarcadero Plaza, a10)
+        for_ = lambda x_: b.mix(1.0, b.mix(1.0, b.mix(1.0, x_, NEU, 'MULTIPLY'), WARM, 'MULTIPLY'), (1.0, 1.0, float(os.environ.get('PAVE_B', '1.2'))), 'MULTIPLY')
     ap = for_(ap); co = for_(co); gv = for_(gv)
     # SAND: Ocean Beach's pale buff, wind ripples, darker drifts (a buff-grey
     # albedo rendered lilac-white at Crissy, gnd8/9, and pink-white under
