@@ -109,6 +109,7 @@ TRACT = _os_f.environ.get('TRACT', '1') == '1'   # (25/09) the tract builders' f
 # name stands for (display RGB: body, trim, accent). CONVENTION on the exact
 # tints, SOURCED on the families.
 import era as EA
+import bk_kit as BK      # (27/09, assets_buildings) the ordinary building's kit v1: typology and skin
 # 1870s Italianates in white, cream and stone tints, 'to resemble stone'
 STONE_1875 = [((0.88, 0.85, 0.76), (0.74, 0.70, 0.60), (0.30, 0.26, 0.20)),
               ((0.82, 0.78, 0.68), (0.93, 0.90, 0.82), (0.36, 0.30, 0.22)),
@@ -492,25 +493,39 @@ def building(b, ground, out):
     if b.get('standin'): b = standin(b)
     if b.get('ruin'): return ruin(b, ground, out)
     rng = random.Random(b['gid'] * 7919 + 13)
+    # (FAITHFUL, default off) the building as street photos / aerials saw it: typology, storeys, garage,
+    # bays, facade / trim colour, material (qipu-render-work/faithful/fa_build.py -> FA_FILE)
+    FA = _faithful().get(str(b['gid'])) if (ERA is None and not b.get('_bkpart') and b['gid'] not in LANDMARK) else None
     RP = ROW_G.get(b['gid']) if (b['gid'] not in LANDMARK and not b.get('places')) else None
-    if RP: b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
+    if RP and not b.get('_bkpart'): b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
+    # (BK_MASS) the LiDAR's roof massing: the building drawn as its measured parts (lower wings, light wells cut out)
+    _pp = None if b.get('_bkpart') else BK.parts_of(b, ground, 'stucco' if BK.fire_rebuilt(b, style_of(b), ERA) else style_of(b), ERA)
+    if _pp:
+        for sb in _pp: building(sb, ground, out)
+        return
     RD = RowDraw(RP, rng)
-    ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], PARTY_G.get(str(b['gid']))))
+    ring, flipped = ring_ccw(close_party([tuple(p) for p in b['ring']], None if b.get('_bkpart') else PARTY_G.get(str(b['gid']))))
     roles = b['roles'][::-1] if flipped else list(b['roles'])
     if flipped:  # roles are per edge i -> i+1; reversing the ring shifts them by one
         roles = roles[1:] + roles[:1]
+    ARC_E = {}
+    if FA and FA.get('arcs') and b['gid'] not in LANDMARK and len(ring) >= 3:
+        ring, roles, ARC_E = splice_arcs(ring, roles, FA['arcs'])      # (FAITHFUL v3) the footprint's real curves
     n = len(ring)
     if n < 3: return
     zs = [ground(x, y) for x, y in ring]
     zg = sum(zs) / n                       # the record's height stands on the mean ground
+    if b.get('_zg') is not None: zg = b['_zg']          # (a measured part: its building's ground)
     global ZG_, ZPRE_; ZG_ = zg; ZPRE_ = (b['h'] < 30 and (b['year'] or 1950) < 1945 and b['ty'] in ('APARTMENT', 'FLATS'))
     zfoot = min(zs) - 0.6                  # walls run into the lowest ground
-    style = style_of(b)
+    style = b.get('_style') or style_of(b)
+    if BK.fire_rebuilt(b, style, ERA): style = 'stucco'      # (BK_FIRE) the burned district's 'old' house: an Edwardian flat
     top = zg + max(3.0, b['h'])
     storeys = b['st'] or max(1, round(b['h'] / 3.4))
     # a storey count its height cannot hold (a 70 m tower "of 2 storeys"):
     # the record's height wins, at a storey of 3.9 m (3.6 m for a house)
     if b['h'] / storeys > 5.5: storeys = max(storeys, round(b['h'] / (3.9 if style == 'block' else 3.6)))
+    if FA and FA.get('st'): storeys = max(1, min(int(FA['st']), round(b['h'] / 2.4)))      # (FAITHFUL) storeys counted on the photo
     walls = [Wall(ring[i], ring[(i + 1) % n], out) for i in range(n)]
     fronts = [i for i in range(n) if roles[i] == 1 and walls[i].L > 2.0]
     if not fronts:                         # no front measured: the longest non-party edge
@@ -522,9 +537,22 @@ def building(b, ground, out):
         fx, fy = LM['face']
         f0 = max((i for i in range(n) if walls[i].L > 2.0), key=lambda i: walls[i].n.x * fx + walls[i].n.y * fy)
         fronts = [f0]; roles = [1 if i == f0 else (2 if roles[i] == 1 else roles[i]) for i in range(n)]
+    if FA and FA.get('fw') and not LM:
+        # (FAITHFUL v2) the walls the street photos saw are FRONTS (the record called some of them backs: the map drew rear
+        # porches where the photo shows the street front); matched on midpoint + outward normal (close_party / ccw safe)
+        ph_ = []
+        for mx_, my_, nx_, ny_ in (q_[:4] for q_ in FA['fw']):
+            c_ = [(math.hypot((walls[i].a.x + walls[i].b.x) / 2 - mx_, (walls[i].a.y + walls[i].b.y) / 2 - my_), i) for i in range(n)
+                  if walls[i].L > 2.0 and roles[i] != 2 and walls[i].n.x * nx_ + walls[i].n.y * ny_ > 0.8]
+            c_ = [q_ for q_ in c_ if q_[0] < 3.0]
+            if c_ and min(c_)[1] not in ph_: ph_.append(min(c_)[1])
+        if ph_:
+            roles = [1 if i in ph_ else roles[i] for i in range(n)]
+            f0 = ph_[0]; fronts = sorted(set(fronts) | set(ph_))
 
     sub = substyle(b, style, RD)
     OV = b.get('places') if isinstance(b.get('places'), dict) else {}   # the places agent's per-building overrides (city_data)
+    if FA: OV = dict(OV, **{k_: FA[k_] for k_ in ('style', 'roof_col') if FA.get(k_)})     # (FAITHFUL) typology / roof colour
     if OV.get('style') in STYLE_OF_SUB: style, sub = STYLE_OF_SUB[OV['style']], OV['style']
     elif OV.get('style') in ('vic', 'stucco', 'midcentury', 'block'): style = OV['style']
     PS = pier_shed(b)                                        # (24/09) a finger-pier shed of the port
@@ -570,6 +598,7 @@ def building(b, ground, out):
         if _a >= 280 and _fill >= 0.88 and min(max(_u) - min(_u), max(_v) - min(_v)) >= 9:
             if yr_w < 1950: roof = 'saw' if x_ < 0.28 else ('barrel' if x_ < 0.55 else roof)
             elif yr_w < 1975: roof = 'saw' if x_ < 0.18 else roof
+    if b.get('_bkpart'): roof = 'flat'                        # (a measured part: the flat roof the LiDAR saw)
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and RD.random('rmat') < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
     ax_u = walls[f0].t.copy(); ax_v = -walls[f0].n.copy()
@@ -605,6 +634,8 @@ def building(b, ground, out):
         trim = (0.97, 0.96, 0.93) if x_ < 0.8 else ((0.33, 0.33, 0.32) if x_ < 0.9 else (0.46, 0.36, 0.26))
         accent = rng.choice(((0.45, 0.14, 0.12), (0.18, 0.28, 0.24), (0.20, 0.22, 0.30)))
         if sub == 'edwardian' and rng.random() < 0.45: body, trim, accent = rng.choice(VIC)
+        _ec = BK.edw_paint(b, sub, body, STUCCO, VIC)          # (BK_EDWCOL) the Edwardian rows keep their colours
+        if _ec: body, trim, accent = _ec
     else:
         body = rng.choice(BLOCK); trim = (0.88, 0.86, 0.82); accent = (0.2, 0.2, 0.22)
     if ep is not None: body, trim, accent = ep
@@ -613,12 +644,16 @@ def building(b, ground, out):
     # front here and there (Richmond top-down, Parkside drone) — the pastel
     # draw read as a candy row. Seven in ten neutral, and less boosted below
     WHITE_ROW = ep is None and not LM and sub in ('med', 'sunset', 'postwar', 'modern')
+    pal_ = None
+    if not LM and ep is None and ERA is None and PS is None and not OV.get('facade_col') and sub not in ('works', 'pier'):
+        pal_ = BK.paint(b, style, sub)                          # (BK_PAL) the fronts measured on street photos
+        if pal_: body, trim = pal_
     if WHITE_ROW and random.Random(b['gid'] * 389 + 5).random() < 0.7: body = random.Random(b['gid'] * 389 + 6).choice(NEUTRAL)
     if LM and ERA is None: body, trim, accent = LM['paint']
     # paint that must still read at a distance: the painted styles a little
     # richer, more so at the city's scale where a front is a few pixels
     if style in ('vic', 'stucco', 'midcentury') and (ep is None or ERA is None or ERA >= 1960):
-        body = saturate(body, 1.18 if LOD == 0 else (1.2 if WHITE_ROW else 1.5))
+        body = saturate(body, 1.18 if LOD == 0 else (1.2 if (WHITE_ROW or pal_) else 1.5))
         body = unviolet(body)
     # (25/09, level 9) the painted house's signature is its light trim standing
     # out of a mid-tone body. A pale body under white trim read as a plain box
@@ -681,6 +716,8 @@ def building(b, ground, out):
     grng = random.Random(b['gid'] * 211 + 17)
     if sub == 'med' and b['ty'] in ('HOUSE', 'FLATS') and (b['year'] or 0) >= 1922 and b['h'] >= 5.3 and raised < 2.6 and RD.random('garage', grng) < 0.8: raised = 2.6
     if sub == 'postwar': raised = 2.7                          # the garage row at the street
+    if FA and FA.get('garage') is not None and style in ('vic', 'stucco', 'midcentury'):   # (FAITHFUL) a garage at the street, or none
+        raised = max(raised, 2.6) if FA['garage'] else min(raised, 1.5)
     first = zg + raised
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
     # the post-war flats: as many floors as the height holds (the roll counts
@@ -729,7 +766,17 @@ def building(b, ground, out):
             wall_mat = 'concrete'; body = trng.choice(STONE + [(0.74, 0.62, 0.50), (0.66, 0.50, 0.40)])     # punched granite, limestone, terracotta
         H_ = HERO.get(b['gid'])
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
-    ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
+    if FA:     # (FAITHFUL) the photo's colours and material have the last word; bays counted on the photo
+        if FA.get('facade_col'): body = hexcol(FA['facade_col'])
+        if FA.get('trim_col'): trim = hexcol(FA['trim_col'])
+        if FA.get('mat') in ('brick', 'stucco', 'siding', 'concrete'): wall_mat = FA['mat']
+        if FA.get('bays') is not None and style != 'block':
+            bay_kind = None if int(FA['bays']) == 0 else (FA.get('bay_kind') or bay_kind or 'square')
+        n_arcbay = len({id(a_) for i_, a_ in ARC_E.items() if a_.get('kind') in ('bay', 'bow') and roles[i_] == 1})
+        if n_arcbay and FA.get('bays') is not None:      # (v3) a round bay the footprint carries is drawn by the ring itself
+            FA = dict(FA, bays=max(0, int(FA['bays']) - n_arcbay))
+            if FA['bays'] == 0: bay_kind = None
+    ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body, nbay=(FA or {}).get('bays'),
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
 
@@ -752,18 +799,25 @@ def building(b, ground, out):
             else: side_ = ('stucco', sr_.choice(((0.86, 0.82, 0.72), (0.78, 0.76, 0.72), (0.78, 0.82, 0.74), (0.86, 0.76, 0.74))))
         else: side_ = (wall_mat if wall_mat != 'siding' or sr_.random() < 0.6 else 'stucco', fam)
         back_ = (wall_mat, fam if sr_.random() < 0.5 else body)
+        sw_ = BK.side_walls(b, style, wall_mat, fam)          # (BK_SIDE) brown shingle and plain boards on the sides and backs
+        if sw_: side_, back_ = sw_
+        if FA and FA.get('facade_col'):     # (FAITHFUL) the street photos saw this building's exposed walls: they carry its real paint
+            side_, back_ = (wall_mat, body), (wall_mat, body)
     if PS is not None and PS.get('bulkhead', 'beaux') != 'none': ctx['bulk_w'] = bulk_wall(walls)
     # ── walls ──
     for i, w in enumerate(walls):
         role = roles[i]
         if w.L < 0.05: continue
         holes = []
-        if role != 2 and w.L > 1.4:
-            holes = facade(w, i == f0 or role == 1, b, rng, ctx)
+        if i in ARC_E and role != 2:
+            holes = arc_face(w, ctx, ARC_E[i], rng)          # (FAITHFUL v3) a face of a real curve: windows, bands, cornice round it
+        elif role != 2 and w.L > 1.4:
+            holes = facade(w, (i == f0 or role == 1) and not b.get('_rear'), b, rng, ctx)
         wmat_, wcol_ = (side_ if (role == 2 and side_) else (back_ if (role == 0 and back_ and i != f0) else (wall_mat, body)))
         w.wall_with_holes(wmat_, 0.0, w.L, zfoot, eave, [h for h in holes if h[0] >= 0], wcol_)
         # corner boards (wood) or quoins (stucco blocks) and a water table
-        if role != 2 and LOD >= 2 and wall_mat == 'siding' and FINE:
+        if i in ARC_E: pass                                  # (v3) no corner boards on the faces of a curve
+        elif role != 2 and LOD >= 2 and wall_mat == 'siding' and FINE:
             w.box('trim', -0.02, 0.28, first - raised, eave, 0.0, 0.06, trim); w.box('trim', w.L - 0.28, w.L + 0.02, first - raised, eave, 0.0, 0.06, trim)
         elif role != 2 and LOD >= 2 and wall_mat == 'siding':
             w.rect('trim', 0.0, 0.2, first - raised, eave, 0.03, trim); w.rect('trim', w.L - 0.2, w.L, first - raised, eave, 0.03, trim)
@@ -830,7 +884,30 @@ def building(b, ground, out):
         bulkhead(ctx['bulk_w'], PS, zg, top, ctx)
 
     # ── the corner turret of a Queen Anne ──
-    if sub == 'queen' and corner and rng.random() < 0.65 and LM.get('turret', True):
+    tur_ = sub == 'queen' and corner and rng.random() < 0.65 and LM.get('turret', True)
+    arc_t = {id(a_): a_ for i_, a_ in ARC_E.items() if a_.get('kind') == 'turret' and roles[i_] != 2}
+    for a_ in arc_t.values():     # (FAITHFUL v3) the round tower the footprint + LiDAR show: its top above the roof, cone / dome cap
+        zb_ = eave if roof == 'flat' else max(eave, top - 1.0)
+        rs_ = a_.get('rise') or 0.0; rad_ = max(1.1, min(2.8, a_.get('rad', 1.8))); cap_ = a_.get('cap') or 'cone'
+        hc_ = (1.9 if cap_ == 'cone' else (0.9 if cap_ == 'dome' else 0.2)) * rad_
+        hb_ = max(1.0, min(4.0, rs_ - hc_ - (zb_ - eave))) if rs_ > 1.2 else 1.6
+        turret_round(a_['ctr'], rad_, zb_ - 0.3, zb_ + hb_, cap_, trim, body, wall_mat, rng, out)
+    shp_ = (FA or {}).get('shape') or {}
+    if FA and shp_:              # (FAITHFUL v3) the photo says whether there is a corner turret (and its cap)
+        tur_ = bool(shp_.get('turret')) and corner and not arc_t and not LM
+    if tur_ and FA and shp_:
+        others = [i for i in range(n) if i != f0 and roles[i] in (1, 3) and walls[i].L > 3.0 and i not in ARC_E]
+        if others:
+            j = min(others, key=lambda i: min((walls[i].a - walls[f0].b).length, (walls[i].b - walls[f0].a).length))
+            cpt = walls[f0].a if (walls[j].b - walls[f0].a).length < (walls[j].a - walls[f0].b).length else walls[f0].b
+            dn_ = (walls[f0].n + walls[j].n).normalized(); rad_ = rng.uniform(1.5, 1.9)
+            ctr_ = (cpt.x + dn_.x * 0.5, cpt.y + dn_.y * 0.5)
+            zb_ = eave if roof == 'flat' else max(eave, top - 1.0)
+            # the tower from the first floor up, round (a polygonal one reads round at map scale)
+            turret_round(ctr_, rad_, first + 0.2, zb_ + rng.uniform(1.2, 2.0), {'dome': 'dome', 'flat': 'flat'}.get(shp_.get('turret_roof'), 'cone'),
+                         trim, body, wall_mat, rng, out, full=True, fh=fh)
+        tur_ = False
+    if tur_:
         others = [i for i in range(n) if i != f0 and roles[i] in (1, 3) and walls[i].L > 3.0]
         j = others[0]
         # the corner shared by the front and that street wall
@@ -839,7 +916,7 @@ def building(b, ground, out):
 
     # ── cornice on the street wall ──
     wf = walls[f0]
-    if roof == 'flat':
+    if roof == 'flat' and not b.get('_rear'):
         proj = {'vic': 0.75, 'stucco': 0.4, 'block': 0.5, 'midcentury': 0.2}[style]
         if sub == 'works': proj = 0.12                      # a plain coping on a works parapet
         ctop = top + (1.0 if style == 'vic' else 0.3)          # a false front rises past the roof
@@ -958,8 +1035,10 @@ def building(b, ground, out):
             a, c = Vector((*ring[i], 0)), Vector((*ring[(i + 1) % n], 0))
             ia, ic = Vector((*inner[i], 0)), Vector((*inner[(i + 1) % n], 0))
             out.poly(rmat_, [Vector((ic.x, ic.y, deck)), Vector((ia.x, ia.y, deck)), Vector((ia.x, ia.y, top - 0.02)), Vector((ic.x, ic.y, top - 0.02))], rc_)
-            out.poly(cap_mat, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cap_col)
-            out.poly(cap_mat, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cap_col)
+            # (BK_CAP) on the side and back walls the roof's coating wraps over the parapet: no light outline
+            cm_, cc_ = (cap_mat, cap_col) if (not BK.CAP or roles[i] in (1, 3) or style == 'block' and roles[i] != 2) else (rmat_, rc_)
+            out.poly(cm_, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cc_)
+            out.poly(cm_, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cc_)
         roof_kit(ring, inner, deck, top, b, rng, out, dict(ctx, rc=rc_, roles=roles, storeys=storeys, ax_u=ax_u, ax_v=ax_v))
         # a roof deck on about one flat-roofed house in five (at the city's LOD roof_kit lays it)
         if style in ('vic', 'stucco', 'midcentury') and rng.random() < 0.2 * EA.rel('deck', ERA) and LOD == 0:
@@ -1325,6 +1404,115 @@ def turret(cpt, dirn, first, eave, top, trim, body, accent, rng, out):
     out.box3('metal', Vector((cx.x - 0.05, cx.y - 0.05, apex - 0.1)), Vector((0.1, 0, 0)), Vector((0, 0.1, 0)), Vector((0, 0, 0.9)), (0.2, 0.2, 0.2))
 
 
+
+def _resample(pts, step=0.8):
+    """a polyline resampled to faces of about step m (the DataSF arcs carry 0.1-3 m edges)"""
+    L = [0.0]
+    for p, q in zip(pts, pts[1:]): L.append(L[-1] + math.hypot(q[0] - p[0], q[1] - p[1]))
+    k = max(3, int(round(L[-1] / step))); out = []
+    for j in range(k + 1):
+        s_ = L[-1] * j / k; i = max(0, min(len(pts) - 2, next((m for m in range(len(L) - 1) if L[m + 1] >= s_), len(pts) - 2)))
+        t = 0.0 if L[i + 1] - L[i] < 1e-9 else (s_ - L[i]) / (L[i + 1] - L[i])
+        out.append((pts[i][0] + (pts[i + 1][0] - pts[i][0]) * t, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * t))
+    return out
+
+
+def splice_arcs(ring, roles, arcs):
+    """(FAITHFUL v3) the real footprint's curves spliced into the record ring. The city's rings are integer metres and
+    simplified: every round bay, turret and curved corner of the DataSF footprint came out as a straight chord. Each arc
+    (DataSF, checked on the 3DEP LiDAR; qipu-render-work/faithful/v3) replaces the ring stretch between the nearest ring
+    points of its two ends; its faces take that stretch's street role. -> ring, roles, {edge index: arc}"""
+    E = [(tuple(ring[i]), roles[i], None) for i in range(len(ring))]
+    area = lambda r: sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r))) / 2
+    A0 = area([e[0] for e in E])
+    for a in arcs:
+        pts = [tuple(p) for p in a.get('pts', [])]
+        if len(pts) < 3 or A0 <= 0: continue
+        n = len(E)
+        def near(p):
+            best = None
+            for i in range(n):
+                (ax, ay), (bx, by) = E[i][0], E[(i + 1) % n][0]; dx, dy = bx - ax, by - ay; L2 = dx * dx + dy * dy
+                t = 0.0 if L2 < 1e-9 else max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / L2))
+                d = math.hypot(ax + dx * t - p[0], ay + dy * t - p[1])
+                if best is None or d < best[0]: best = (d, i, t)
+            return best
+        d0, i0, t0 = near(pts[0]); d1, i1, t1 = near(pts[-1]); span = (i1 - i0) % n
+        if d0 > 1.2 or d1 > 1.2 or span > 3 or span + 2 > n or (span == 0 and t1 <= t0 + 0.05): continue
+        if max(near(p)[0] for p in pts) > 2.6: continue
+        R_ = E[i0:] + E[:i0]
+        if any(R_[k][2] is not None for k in range(span + 1)): continue       # already a curve there
+        role = next((R_[k][1] for k in range(span + 1) if R_[k][1] != 2), None)
+        if role is None: continue                                          # on a party wall: nothing to see
+        at = lambda k, t: (R_[k][0][0] + (R_[(k + 1) % n][0][0] - R_[k][0][0]) * t, R_[k][0][1] + (R_[(k + 1) % n][0][1] - R_[k][0][1]) * t)
+        pa, pb = at(0, t0), at(span, t1)
+        cur = _resample([pa] + pts[1:-1] + [pb])
+        new = ([R_[0]] if t0 > 0.03 else []) + [(p, role, a) for p in cur[:-1]]
+        new += ([(pb, R_[span][1], R_[span][2])] if t1 < 0.97 else []) + R_[span + 1:]
+        A1 = area([e[0] for e in new])
+        if A1 <= 0 or abs(A1 - A0) > 0.35 * A0: continue
+        E = new; A0 = A1
+    ae = {i: e[2] for i, e in enumerate(E) if e[2] is not None}
+    return [e[0] for e in E], [e[1] for e in E], ae
+
+
+def arc_face(w, c, a, rng):
+    """(FAITHFUL v3) one face of a real curve (round bay, turret body, curved corner, bowed front): its windows per floor,
+    the floor bands, and the cornice returning round the curve (each face's piece overlaps its neighbours)"""
+    trim, fh, nfl, first, eave = c['trim'], c['fh'], c['nfl'], c['first'], c['eave']
+    holes = []
+    if w.L >= 0.45:
+        m = max(0.07, w.L * 0.13); wh = min(2.1, fh * 0.6); sill = (fh - wh) * 0.45
+        for f in range(nfl):
+            a0 = first + f * fh + sill; a1 = a0 + wh
+            if a1 > eave - 0.3: break
+            holes.append((m, w.L - m, a0, a1)); w.opening(m, w.L - m, a0, a1, 'dh', trim, 0.1, rng)
+    if LOD < 2 or FINE:
+        for f in range(1, nfl): w.box('trim', -0.03, w.L + 0.03, first + f * fh - 0.05, first + f * fh + 0.1, 0.0, 0.06, trim)
+    proj = 0.6 if c['style'] == 'vic' else 0.42
+    w.box('trim', -0.12, w.L + 0.12, eave - 0.45, eave + (0.3 if c['roof'] == 'flat' else 0.0), 0.0, proj, trim)   # the cornice, round the curve
+    return holes
+
+
+def turret_round(ctr, rad, z0, z1, cap, trim, body, wmat, rng, out, full=False, fh=3.0, nf=14):
+    """(v3) a round corner tower: nf faces from z0 to z1 (full: from the first floor, windows per floor; else only the part
+    above the roof, a window band), its cornice, and a conical, domed or flat cap with a finial"""
+    cx, cy = ctr; wm = wmat if wmat in ('siding', 'stucco', 'brick') else 'stucco'
+    P = [Vector((cx + math.cos(2 * math.pi * k / nf) * rad, cy + math.sin(2 * math.pi * k / nf) * rad, 0)) for k in range(nf)]
+    for k in range(nf):
+        a, c_ = P[k], P[(k + 1) % nf]
+        fw = Wall((a.x, a.y), (c_.x, c_.y), out); holes = []
+        if full:
+            f = 0
+            while z0 + f * fh + 0.9 + 1.5 < z1 - 0.4:
+                a0 = z0 + f * fh + 0.8; holes.append((0.12, fw.L - 0.12, a0, a0 + 1.5)); fw.opening(0.12, fw.L - 0.12, a0, a0 + 1.5, 'dh', trim, 0.1); f += 1
+        elif z1 - z0 > 1.7:
+            a0 = z0 + 0.6; a1 = min(z1 - 0.45, a0 + 1.2); holes.append((0.12, fw.L - 0.12, a0, a1)); fw.opening(0.12, fw.L - 0.12, a0, a1, 'dh', trim, 0.1)
+        fw.wall_with_holes(wm, 0.0, fw.L, z0 - (0.5 if full else 0.0), z1, holes, body)
+        fw.box('trim', -0.06, fw.L + 0.06, z1 - 0.35, z1, 0.0, 0.28, trim)
+    E = [p + (p - Vector((cx, cy, 0))).normalized() * 0.28 for p in P]           # the cap's eave, over the cornice
+    rc = (0.40, 0.40, 0.43)
+    if cap == 'dome':
+        rings = [(E, z1)]
+        for j in range(1, 4):
+            ph = math.pi / 2 * j / 4; rr = math.cos(ph); rings.append(([Vector((cx, cy, 0)) + (p - Vector((cx, cy, 0))) * rr for p in E], z1 + (rad + 0.28) * math.sin(ph)))
+        apex = z1 + rad + 0.28
+        for (r0, h0), (r1, h1) in zip(rings, rings[1:]):
+            for k in range(nf):
+                out.poly('roof_shingle', [Vector((r0[k].x, r0[k].y, h0)), Vector((r0[(k + 1) % nf].x, r0[(k + 1) % nf].y, h0)),
+                                          Vector((r1[(k + 1) % nf].x, r1[(k + 1) % nf].y, h1)), Vector((r1[k].x, r1[k].y, h1))], rc)
+        r0, h0 = rings[-1]
+        for k in range(nf): out.poly('roof_shingle', [Vector((r0[k].x, r0[k].y, h0)), Vector((r0[(k + 1) % nf].x, r0[(k + 1) % nf].y, h0)), Vector((cx, cy, apex))], rc)
+    elif cap == 'flat':
+        apex = z1 + 0.2
+        out.poly('roof_flat', [Vector((p.x, p.y, z1 + 0.05)) for p in E], (0.6, 0.6, 0.6))
+    else:
+        apex = z1 + rad * 1.9
+        for k in range(nf):
+            out.poly('roof_shingle', [Vector((E[k].x, E[k].y, z1)), Vector((E[(k + 1) % nf].x, E[(k + 1) % nf].y, z1)), Vector((cx, cy, apex))], rc)
+    if cap != 'flat': out.box3('metal', Vector((cx - 0.05, cy - 0.05, apex - 0.1)), Vector((0.1, 0, 0)), Vector((0, 0.1, 0)), Vector((0, 0, 0.8)), (0.2, 0.2, 0.2))
+
+
 # the street's commercial colours: awning canvas and sign boards
 AWN = [(0.62, 0.10, 0.09), (0.50, 0.08, 0.10), (0.12, 0.30, 0.18), (0.10, 0.16, 0.34), (0.08, 0.08, 0.09), (0.08, 0.08, 0.09),
        (0.86, 0.46, 0.12), (0.90, 0.74, 0.22), (0.20, 0.44, 0.52), (0.92, 0.91, 0.87), (0.44, 0.20, 0.36), (0.30, 0.18, 0.10)]
@@ -1503,6 +1691,17 @@ LIDAR_R = _load_lidar()
 _ROOF_TEX = {'roof_shingle': (0.109, 0.1056, 0.0968), 'roof_tile': (0.3416, 0.0945, 0.0290)}
 _FLAT_TEX = {0: (1.215, 1.068, 0.881), 1: (1.238, 1.078, 0.960), 2: (1.05, 1.017, 1.0), 3: (1.05, 1.017, 1.0)}
 _FLAT_KIND = {'white': 2, 'metal': 3, 'gravel': 0, 'green': 0}      # the rest: cap sheet
+
+_FA = None
+def _faithful():
+    """FAITHFUL: per-building reality table {gid: {style, st, garage, bays, bay_kind, facade_col, trim_col, mat, roof_col}}"""
+    global _FA
+    import os, json
+    if _FA is None:
+        f = os.environ.get('FA_FILE', '')
+        _FA = json.load(open(f)) if (os.environ.get('FAITHFUL', '0') == '1' and f and os.path.exists(f)) else {}
+        if _FA: print('FAITHFUL', f, len(_FA))
+    return _FA
 
 _RC = None
 def _realcol():
@@ -1880,16 +2079,21 @@ def facade(w, is_front, b, rng, c):
         kind = c['bay']
         # a narrow Victorian carries one bay; a wide Edwardian two, one each side
         n_b = 2 if (sub == 'edwardian' and L > 9.5) else 1
-        bw = min(3.2 if kind != 'box' else 3.4, L * (0.4 if n_b == 1 else 0.3))
-        if style == 'block':
+        if c.get('nbay') and style != 'block': n_b = max(1, min(int(c['nbay']), int(L / 3.2)))     # (FAITHFUL)
+        bw = min(3.2 if kind != 'box' else 3.4, L * (0.4 if n_b == 1 else (0.3 if n_b == 2 else 0.7 / n_b)))
+        if kind == 'bow': n_b = 1; bw = L * 0.8                  # (v3) the bowed front spans most of the wall
+        if kind == 'bow' and style != 'block': starts = [L * 0.1]
+        elif style == 'block':
             # an apartment front: a bay every seven metres or so, from the second floor
             n_b = max(1, min(5, int(L / 7.0))); bw = min(3.0, L / n_b * 0.45)
             starts = [L * (k + 0.5) / n_b - bw / 2 for k in range(n_b)]
         elif n_b == 1:
             left = c['rd'].side('bayside', rng) if c.get('bay_left') is None else c['bay_left']
             starts = [0.35 if left else L - bw - 0.35]
-        else:
+        elif n_b == 2:
             starts = [0.4, L - bw - 0.4]
+        else:
+            starts = [L * (k + 0.5) / n_b - bw / 2 for k in range(n_b)]
         for bu0 in starts:
             z0_ = first + fh if (style == 'block' and nfl >= 3) else first
             z1_ = eave - 0.25 if kind != 'box' else first + fh - 0.2
@@ -2084,10 +2288,12 @@ def tower_skin(w, is_front, b, rng, c):
             w.box(wm, 0.0, L, z - 0.55, z + 0.35, 0.0, 0.34, body)
         w.box(wm, -0.05, L + 0.05, top, eave + 0.1, 0.0, 0.45, body)
     else:  # curtain
-        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, gcol)
+        # (BK_GLASS) the curtain wall's own grid and spandrels are in the material (alpha + 1 = spandrels on): only the
+        # deeper mullion caps every 3 m stay as geometry, no floor bands (two floor rhythms would beat)
+        w.rect('curtain_wall', 0.0, L, first + fh - 0.4, top, 0.02, (*gcol[:3], gcol[3] + 1.0) if BK.GLASS else gcol)
         step = 1.5 if LOD < 2 else 3.0
         for uu in frange(0.0, L, step): w.box('metal', uu - 0.035, uu + 0.035, first + fh - 0.4, top, 0.02, 0.12, dark)
-        for f in range(1, nfl + 1):
+        for f in (range(1, nfl + 1) if not BK.GLASS else ()):
             z = first + f * fh
             if z > top: break
             w.box('metal', 0.0, L, z - 0.05, z + 0.05, 0.02, 0.10, dark)
@@ -2453,9 +2659,13 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
     inset = 0.6 if kind == 'slant' else 0.0
     A, B = w.P(u0, 0, 0), w.P(u1, 0, 0)
     C, D = w.P(u1 - inset, 0, d), w.P(u0 + inset, 0, d)
+    if kind == 'round': d = min(1.0, (u1 - u0) * 0.42)      # (v3) a round bay: a half-cylinder, full height, windows in each face
+    if kind == 'bow': d = min(0.7, (u1 - u0) * 0.12)         # (v3) a bowed front: a shallow segment across most of the wall
     if kind == 'barrel':
         # (25/09) the Spanish front's barrel bay: a half-round in six faces
         pts_b = [w.P(u0 + (u1 - u0) * (1 - math.cos(math.pi * k / 6)) / 2, 0, d * math.sin(math.pi * k / 6)) for k in range(7)]
+    elif kind in ('round', 'bow'):
+        pts_b = [w.P(u0 + (u1 - u0) * (1 - math.cos(math.pi * k / 7)) / 2, 0, d * math.sin(math.pi * k / 7)) for k in range(8)]
     else:
         pts_b = [A, D, C, B]
     faces = list(zip(pts_b, pts_b[1:]))
@@ -2476,7 +2686,7 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
             fw.opening(m, fw.L - m, a0, a1, 'dh' if kind not in ('box', 'barrel') else 'tall', trim, 0.12, rng, hood=c['hood'] if kind == 'square' else None)
             if f > 0 and (LOD < 2 or FINE): fw.box('trim', 0.0, fw.L, first + f * fh - 0.05, first + f * fh + 0.1, 0.0, 0.06, trim)
         fw.wall_with_holes(wm, 0.0, fw.L, z0 - 0.5, z1, holes, body)
-        if FINE and kind not in ('box', 'barrel'):
+        if FINE and kind not in ('box', 'barrel', 'round', 'bow'):
             # (25/09, level 9) the bay reads by its trim: a light board up each
             # angle, a frieze under a deeper cornice, small brackets under it
             fw.box('trim', -0.04, 0.12, z0 - 0.5, z1, 0.0, 0.05, trim); fw.box('trim', fw.L - 0.12, fw.L + 0.04, z0 - 0.5, z1, 0.0, 0.05, trim)
@@ -2484,7 +2694,8 @@ def bay(w, u0, u1, z0, z1, c, rng, kind):
             fw.box('trim', -0.08, fw.L + 0.08, z1 - 0.5, z1, 0.0, 0.55, trim)
             for uu in frange(0.15, fw.L - 0.15, 0.55): fw.box('trim', uu - 0.05, uu + 0.05, z1 - 0.85, z1 - 0.5, 0.0, 0.35, trim)
         else:
-            fw.box('trim', -0.05, fw.L + 0.05, z1 - 0.45, z1, 0.0, 0.42, trim)          # the bay's cornice
+            fw.box('trim', -0.05 - (0.08 if kind in ('round', 'bow') else 0.0), fw.L + 0.05 + (0.08 if kind in ('round', 'bow') else 0.0),
+                   z1 - 0.45, z1, 0.0, 0.42, trim)          # the bay's cornice (round the curve on a round bay)
         if LOD < 2 or FINE: fw.box('trim', -0.02, fw.L + 0.02, z0 - 0.5, z0 - 0.3, 0.0, 0.1, trim)      # its base
         if style == 'vic' and kind == 'slant' and LOD == 0:
             fw.box('trim', fw.L * 0.2, fw.L * 0.8, z0 - 1.0, z0 - 0.5, 0.0, 0.08, trim)   # a panel under the bay
