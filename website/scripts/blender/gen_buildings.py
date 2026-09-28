@@ -493,6 +493,9 @@ def building(b, ground, out):
     if b.get('standin'): b = standin(b)
     if b.get('ruin'): return ruin(b, ground, out)
     rng = random.Random(b['gid'] * 7919 + 13)
+    # (FAITHFUL, default off) the building as street photos / aerials saw it: typology, storeys, garage,
+    # bays, facade / trim colour, material (qipu-render-work/faithful/fa_build.py -> FA_FILE)
+    FA = _faithful().get(str(b['gid'])) if (ERA is None and not b.get('_bkpart') and b['gid'] not in LANDMARK) else None
     RP = ROW_G.get(b['gid']) if (b['gid'] not in LANDMARK and not b.get('places')) else None
     if RP and not b.get('_bkpart'): b = dict(b, h=RP[4], st=RP[5], year=RP[6])      # the run's one design: its height, storeys, year
     # (BK_MASS) the LiDAR's roof massing: the building drawn as its measured parts (lower wings, light wells cut out)
@@ -519,6 +522,7 @@ def building(b, ground, out):
     # a storey count its height cannot hold (a 70 m tower "of 2 storeys"):
     # the record's height wins, at a storey of 3.9 m (3.6 m for a house)
     if b['h'] / storeys > 5.5: storeys = max(storeys, round(b['h'] / (3.9 if style == 'block' else 3.6)))
+    if FA and FA.get('st'): storeys = max(1, min(int(FA['st']), round(b['h'] / 2.4)))      # (FAITHFUL) storeys counted on the photo
     walls = [Wall(ring[i], ring[(i + 1) % n], out) for i in range(n)]
     fronts = [i for i in range(n) if roles[i] == 1 and walls[i].L > 2.0]
     if not fronts:                         # no front measured: the longest non-party edge
@@ -533,6 +537,7 @@ def building(b, ground, out):
 
     sub = substyle(b, style, RD)
     OV = b.get('places') if isinstance(b.get('places'), dict) else {}   # the places agent's per-building overrides (city_data)
+    if FA: OV = dict(OV, **{k_: FA[k_] for k_ in ('style', 'roof_col') if FA.get(k_)})     # (FAITHFUL) typology / roof colour
     if OV.get('style') in STYLE_OF_SUB: style, sub = STYLE_OF_SUB[OV['style']], OV['style']
     elif OV.get('style') in ('vic', 'stucco', 'midcentury', 'block'): style = OV['style']
     PS = pier_shed(b)                                        # (24/09) a finger-pier shed of the port
@@ -696,6 +701,8 @@ def building(b, ground, out):
     grng = random.Random(b['gid'] * 211 + 17)
     if sub == 'med' and b['ty'] in ('HOUSE', 'FLATS') and (b['year'] or 0) >= 1922 and b['h'] >= 5.3 and raised < 2.6 and RD.random('garage', grng) < 0.8: raised = 2.6
     if sub == 'postwar': raised = 2.7                          # the garage row at the street
+    if FA and FA.get('garage') is not None and style in ('vic', 'stucco', 'midcentury'):   # (FAITHFUL) a garage at the street, or none
+        raised = max(raised, 2.6) if FA['garage'] else min(raised, 1.5)
     first = zg + raised
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
     # the post-war flats: as many floors as the height holds (the roll counts
@@ -744,7 +751,13 @@ def building(b, ground, out):
             wall_mat = 'concrete'; body = trng.choice(STONE + [(0.74, 0.62, 0.50), (0.66, 0.50, 0.40)])     # punched granite, limestone, terracotta
         H_ = HERO.get(b['gid'])
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
-    ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body,
+    if FA:     # (FAITHFUL) the photo's colours and material have the last word; bays counted on the photo
+        if FA.get('facade_col'): body = hexcol(FA['facade_col'])
+        if FA.get('trim_col'): trim = hexcol(FA['trim_col'])
+        if FA.get('mat') in ('brick', 'stucco', 'siding', 'concrete'): wall_mat = FA['mat']
+        if FA.get('bays') is not None and style != 'block':
+            bay_kind = None if int(FA['bays']) == 0 else (FA.get('bay_kind') or bay_kind or 'square')
+    ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body, nbay=(FA or {}).get('bays'),
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
 
@@ -1523,6 +1536,17 @@ _ROOF_TEX = {'roof_shingle': (0.109, 0.1056, 0.0968), 'roof_tile': (0.3416, 0.09
 _FLAT_TEX = {0: (1.215, 1.068, 0.881), 1: (1.238, 1.078, 0.960), 2: (1.05, 1.017, 1.0), 3: (1.05, 1.017, 1.0)}
 _FLAT_KIND = {'white': 2, 'metal': 3, 'gravel': 0, 'green': 0}      # the rest: cap sheet
 
+_FA = None
+def _faithful():
+    """FAITHFUL: per-building reality table {gid: {style, st, garage, bays, bay_kind, facade_col, trim_col, mat, roof_col}}"""
+    global _FA
+    import os, json
+    if _FA is None:
+        f = os.environ.get('FA_FILE', '')
+        _FA = json.load(open(f)) if (os.environ.get('FAITHFUL', '0') == '1' and f and os.path.exists(f)) else {}
+        if _FA: print('FAITHFUL', f, len(_FA))
+    return _FA
+
 _RC = None
 def _realcol():
     """BCOL_REAL: the realcolour table (REALCOL_LICENCE=open: without NC-derived data)"""
@@ -1899,7 +1923,8 @@ def facade(w, is_front, b, rng, c):
         kind = c['bay']
         # a narrow Victorian carries one bay; a wide Edwardian two, one each side
         n_b = 2 if (sub == 'edwardian' and L > 9.5) else 1
-        bw = min(3.2 if kind != 'box' else 3.4, L * (0.4 if n_b == 1 else 0.3))
+        if c.get('nbay') and style != 'block': n_b = max(1, min(int(c['nbay']), int(L / 3.2)))     # (FAITHFUL)
+        bw = min(3.2 if kind != 'box' else 3.4, L * (0.4 if n_b == 1 else (0.3 if n_b == 2 else 0.7 / n_b)))
         if style == 'block':
             # an apartment front: a bay every seven metres or so, from the second floor
             n_b = max(1, min(5, int(L / 7.0))); bw = min(3.0, L / n_b * 0.45)
@@ -1907,8 +1932,10 @@ def facade(w, is_front, b, rng, c):
         elif n_b == 1:
             left = c['rd'].side('bayside', rng) if c.get('bay_left') is None else c['bay_left']
             starts = [0.35 if left else L - bw - 0.35]
-        else:
+        elif n_b == 2:
             starts = [0.4, L - bw - 0.4]
+        else:
+            starts = [L * (k + 0.5) / n_b - bw / 2 for k in range(n_b)]
         for bu0 in starts:
             z0_ = first + fh if (style == 'block' and nfl >= 3) else first
             z1_ = eave - 0.25 if kind != 'box' else first + fh - 0.2

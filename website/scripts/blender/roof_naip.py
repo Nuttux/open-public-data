@@ -24,6 +24,9 @@ ROOF_MATS = ('roof_flat', 'roof_big') if RATIO else ('roof_flat', 'roof_big', 'r
 if os.environ.get('RN_MATS'): ROOF_MATS = tuple(os.environ['RN_MATS'].split(','))
 
 def region_image(box):
+    # (FAITHFUL) RN_CROP=<png>: a region image cut beforehand (the faithful NGS 25 cm + NAIP bake), used as is
+    if os.environ.get('RN_CROP') and os.path.exists(os.environ['RN_CROP'] + '.json'):
+        return os.environ['RN_CROP'], json.load(open(os.environ['RN_CROP'] + '.json'))
     x0, y0, x1, y1 = [float(v) for v in box]
     key = hashlib.md5(f'{x0:.1f},{y0:.1f},{x1:.1f},{y1:.1f}'.encode()).hexdigest()[:12]
     out = f'{DIR}/crops/crop_{key}' + ('_ratio' if RATIO else '') + '.png'
