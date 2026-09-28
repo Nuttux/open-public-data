@@ -367,7 +367,21 @@ if len(SA_):
         for t in range(len(_cs) // 9):
             a_ = t * 9; _verge([(_cs[a_ + k * 3], _cs[a_ + k * 3 + 1], _cs[a_ + k * 3 + 2]) for k in range(3)])
         log(f'verges: {len(_cs) // 9} casing triangles beyond the asphalt -> {len(VG) // 9} sidewalk pieces')
-SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
+if E('FOOT_SPLIT', '0') == '1' and ERA is None:
+    # [FOOT_SPLIT, street_edge [bugs] 28/09] the footway cut along its line, laid as sidewalk (street_edge.foot_split)
+    import street_edge as _SE0
+    _kf, _nf = _ways_kd('foot', BOX); _kc, _nc = _ways_kd('car', BOX); _kr, _nr = _ways_kd('free', BOX)
+    _pk = _GM.get('park'); _px0, _py0, _pr = _GM.get('x0', 0), _GM.get('y0', 0), _GM.get('res', 1)
+    def _inpark(x, y):
+        if _pk is None: return False
+        i, j = int((x - _px0) / _pr), int((y - _py0) / _pr)
+        return 0 <= j < _pk.shape[0] and 0 <= i < _pk.shape[1] and _pk[j, i] > 0.5
+    def _isfoot(x, y):
+        c = (x, y, 0.0)
+        return bool(_nc) and _kc.find(c)[2] > 12.0 and (not _nr or _kr.find(c)[2] > 12.0) and (_inpark(x, y) or (bool(_nf) and _kf.find(c)[2] < 8.0))
+    SP, _fw = _SE0.foot_split(SP, _isfoot, _inpark, log); VG.extend(_fw)
+else:
+    SP, _ = drop_footway_streets(SP, BOX)          # footpaths the engine drew as streets (hq_scene)
 if E('SE_APRON', '0') == '1' and ERA is None and len(SP):
     # [SE_APRON, street_edge 28/09] THE KERB WHERE THE WALLS NEED IT. The roadway runs to the property line where
     # its kerb ring does not close, and DataSF's footprints sit ~1.6 m off the right of way: a third of North Beach's

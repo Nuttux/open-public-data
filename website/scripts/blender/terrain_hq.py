@@ -257,13 +257,6 @@ def _pier_nodes(recs, x0, y0, step, nx, ny, wm):
         size = max(8.0, min(max(xs) - min(xs), max(ys) - min(ys)))
         k = 1 + 8.0 / size
         g = [(cx + (x - cx) * k, cy + (y - cy) * k) for x, y in r]
-        if os.environ.get('PIER_TRIM', '0') == '1':
-            # [PIER_TRIM, street_edge [bugs] 28/09] THE EMBARCADERO SAWTOOTH. Scaled about its centre, a long shed's ring grew
-            # by tens of metres at its ends (k = 1 + 8 / its width): the landward end reached over the Embarcadero, the ground
-            # there rose to PIER_Z and the flat apron deck with it, and the draped asphalt poked through both in triangles.
-            # Now: a 4 m apron (the docstring's own) round the shed's water sides only (a vertex on land stays on the wall)
-            g = _pier_apron(r, [bool(0 <= int(round((x - x0) / step)) < nx and 0 <= int(round((y - y0) / step)) < ny
-                                     and wm[int(round((y - y0) / step)), int(round((x - x0) / step))]) for x, y in r], 4.0)
         rings.append(g)
         gx = [p[0] for p in g]; gy = [p[1] for p in g]
         i0 = max(0, int((min(gx) - x0) / step)); i1 = min(nx - 1, int((max(gx) - x0) / step) + 1)
@@ -278,20 +271,6 @@ def _pier_nodes(recs, x0, y0, step, nx, ny, wm):
             ins ^= cnd
         mask[J[ins], I[ins]] = True
     return mask, rings
-
-def _pier_apron(r, wet, d):
-    """the footprint r offset d m outward (mitred) at its wet vertices; a dry vertex (on land) keeps its place"""
-    n = len(r); A = sum(r[i][0] * r[(i + 1) % n][1] - r[(i + 1) % n][0] * r[i][1] for i in range(n)); sg = 1.0 if A > 0 else -1.0
-    def nrm(a, b):
-        dx, dy = b[0] - a[0], b[1] - a[1]; L = math.hypot(dx, dy) or 1e-9
-        return (sg * dy / L, -sg * dx / L)          # outward for either winding
-    out = []
-    for i in range(n):
-        if not wet[i]: out.append(tuple(r[i])); continue
-        n1 = nrm(r[i - 1], r[i]); n2 = nrm(r[i], r[(i + 1) % n]); c = 1.0 + n1[0] * n2[0] + n1[1] * n2[1]
-        f = d / max(c, 0.3)
-        out.append((r[i][0] + (n1[0] + n2[0]) * f, r[i][1] + (n1[1] + n2[1]) * f))
-    return out
 
 PIER_Z = 2.3
 
