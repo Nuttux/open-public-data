@@ -144,6 +144,29 @@ def build(bpy, sc, coll, D, street_z, kt, inb, log):
             if oneway and b: f, b = False, True                   # a contraflow lane on a one-way street
         return (f, b, a['green'], a['buf'], a['c4'])
 
+    IXF = os.environ.get('MARKS_IX', '0') == '1'
+    if IXF:
+        # [MARKS_IX, 29/09] life_prep's 'ix' = every vertex shared by 2+ ways: a plain way split (the same street, two OSM ways end to end)
+        # and a driveway / service road joining counted as intersections, and every such point got a stop bar across the lanes mid-block
+        # (block52_v7: the Embarcadero, bars across the carriageway). A real intersection here: >= 3 through-roads (no service /
+        # driveway / footway), or 2 meeting at a corner (> 35 deg) or one crossing the other mid-way.
+        MINOR = ('service', 'track', 'footway', 'path', 'pedestrian', 'steps', 'cycleway', 'living_street', 'driveway', 'busway')
+        VX = {}
+        for r_ in D['roads']:
+            b_ = r_['hw'].replace('_link', '')
+            if b_ in MINOR: continue
+            P_ = r_['pts']; m_ = len(P_) - 1
+            for i_, p_ in enumerate(P_):
+                j_ = min(i_ + 1, m_); k_ = max(i_ - 1, 0); d_ = (P_[j_][0] - P_[k_][0], P_[j_][1] - P_[k_][1]); l_ = math.hypot(*d_) or 1.0
+                VX.setdefault((p_[0], p_[1]), []).append((i_ in (0, m_), d_[0] / l_, d_[1] / l_))
+        def real_ix(p_):
+            L_ = VX.get((p_[0], p_[1]), [])
+            if len(L_) >= 3: return True
+            if len(L_) < 2: return False
+            (e1, x1, y1), (e2, x2, y2) = L_[:2]
+            if not (e1 and e2): return True                        # one crosses the other mid-way
+            return abs(x1 * x2 + y1 * y2) < math.cos(math.radians(35))   # a corner, not a continuation
+        nix = [0, 0]
     for r in D['roads']:
         hw = r['hw']; base = hw.replace('_link', '')
         if hw in SKIP or base in SKIP or r['br'] or r.get('one'): continue
@@ -158,6 +181,9 @@ def build(bpy, sc, coll, D, street_z, kt, inb, log):
         lanes_f = nf >= 2; lanes_b = nb >= 2
         R_ix = 13.0 if base in ('trunk', 'primary', 'secondary') else 10.0
         ix = sorted(r.get('ix', []))
+        if IXF and ix:
+            P_ = np.asarray(r['pts'], np.float64); S_ = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(P_, axis=0).T))])
+            keep_ = [q for q in ix if real_ix(r['pts'][int(np.argmin(np.abs(S_ - q)))])]; nix[0] += len(ix); nix[1] += len(keep_); ix = keep_
         # the layout, scanned every 5 m and held in between (a gap where the
         # carriageway is not found)
         # (every 5 m, a 3-scan median against the 0.6 m steps of the scan, and
@@ -320,4 +346,5 @@ def build(bpy, sc, coll, D, street_z, kt, inb, log):
     bank.emit(bpy, coll, {'marks': m}, 'life.marks')
     log(f"life_marks: {stats['ways']} ways ({stats['lane']} with lane lines, {stats['centre']} centre lines, {stats['bike']} bike lanes, "
         f"{stats['green']} green), {stats['bar']} stop bars, {nfc} faces ({time.time() - t0:.1f}s)")
+    if IXF: log(f'life_marks MARKS_IX: {nix[1]} of {nix[0]} way-vertex intersections kept (splits / driveways dropped)')
     return nfc
