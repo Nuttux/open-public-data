@@ -103,27 +103,46 @@ def salesforce(C):
         s = half(z); hu, hv = hu0 * s * 0.985, hv0 * s * 0.985
         rings.append(rrect(fr, hu, hv, rad(z) * min(hu, hv), g + z, 5))
     K.loft('curtain_wall', rings, SF_GLASS, cap_top=False)
+    # [LM_SF_CROWN, off by default] the crown read as a bare white tube cage (block52 one-off): 0.4 m
+    # thick pale-paint rings every 3.4 m around a pale core, over an open (uncapped) shaft, with nothing
+    # dark behind them. With it: the crown's fins are thin aluminium blades (lm_steel) at half the pitch
+    # (a screen, as the real perforated crown reads), a mullion at every ring point, a dark deck on the
+    # shaft, a dark steel frame (posts + diagonals) inside the screen, and a mid-grey core
+    SFC = os.environ.get('LM_SF_CROWN') == '1'
+    CP_, CTH_, CMAT_, CCOL_ = (1.7, 0.14, 'lm_steel', hexc('#b3b8bb')) if SFC else (3.4, 0.4, 'lm_paint', SF_FIN)
     # sunshades: a white fin every floor, 0.8 m out, 0.25 m thick
-    for z in zs[1:] + [CROWN0 + 3.4 * k for k in range(1, 17) if CROWN0 + 3.4 * k <= TOP - 0.3] + [TOP - 0.3]:
+    for z in zs[1:] + [CROWN0 + CP_ * k for k in range(1, 40) if CROWN0 + CP_ * k <= TOP - 0.3] + [TOP - 0.3]:
         s = half(min(z, ROOF)); hu, hv = hu0 * s, hv0 * s
         ro = rrect(fr, hu + 0.42, hv + 0.42, rad(z) * min(hu, hv) + 0.42, g + z, 5)
         ri = rrect(fr, hu - 0.35, hv - 0.35, rad(z) * min(hu, hv) - 0.35, g + z, 5)
-        th = 0.2 if z < CROWN0 else 0.4
+        th = 0.2 if z < CROWN0 else CTH_
         roT = [(p[0], p[1], p[2] + th) for p in ro]; riT = [(p[0], p[1], p[2] + th) for p in ri]
         n = len(ro); V = ro + roT + riT + ri; Fc = []
         for i in range(n):
             j = (i + 1) % n
             Fc += [(i, j, n + j, n + i), (n + i, n + j, 2 * n + j, 2 * n + i), (2 * n + i, 2 * n + j, 3 * n + j, 3 * n + i), (3 * n + i, 3 * n + j, j, i)]
-        K.mesh('lm_paint', V, Fc, SF_FIN)
+        K.mesh(CMAT_ if z >= CROWN0 else 'lm_paint', V, Fc, CCOL_ if z >= CROWN0 else SF_FIN)
     # vertical mullions of the crown (the sunshades' posts), and the core inside
     s = half(ROOF); hu, hv = hu0 * s, hv0 * s
     ring = rrect(fr, hu + 0.1, hv + 0.1, rad(ROOF) * min(hu, hv), 0, 5)
-    for i in range(0, len(ring), 2):
+    for i in range(0, len(ring), 1 if SFC else 2):
         p = ring[i]
-        K.cyl('lm_paint', (p[0], p[1], g + CROWN0), (p[0], p[1], g + TOP - 0.3), 0.18, SF_FIN, n=4, smooth=False)
+        K.cyl(CMAT_, (p[0], p[1], g + CROWN0), (p[0], p[1], g + TOP - 0.3), 0.12 if SFC else 0.18, CCOL_, n=4, smooth=False)
+    if SFC:
+        s0 = half(CROWN0); h0u, h0v = hu0 * s0, hv0 * s0
+        deck = rrect(fr, h0u - 0.3, h0v - 0.3, rad(CROWN0) * min(h0u, h0v) - 0.3, 0, 5)
+        K.prism('roof_flat', [p[:2] for p in deck], g + CROWN0 - 0.6, g + CROWN0 + 0.4, hexc('#4a4f53'))
+        fi = rrect(fr, hu - 2.2, hv - 2.2, max(0.5, rad(ROOF) * min(hu, hv) - 2.2), 0, 3)   # the steel frame, 2.2 m in
+        STEEL = hexc('#3d4247'); zt_ = TOP - 4.0; nfi = len(fi)
+        for i in range(nfi):
+            a_, b_ = fi[i], fi[(i + 1) % nfi]
+            K.cyl('lm_steel', (a_[0], a_[1], g + CROWN0), (a_[0], a_[1], g + zt_), 0.35, STEEL, n=4, smooth=False)
+            K.cyl('lm_steel', (a_[0], a_[1], g + CROWN0 + 0.4), (b_[0], b_[1], g + zt_), 0.2, STEEL, n=4, smooth=False)
+            K.cyl('lm_steel', (a_[0], a_[1], g + zt_), (b_[0], b_[1], g + zt_), 0.25, STEEL, n=4, smooth=False)
+    CORE1, CORE2 = (hexc('#7c8184'), hexc('#6a6f73')) if SFC else (hexc('#bfc3c4'), hexc('#a9adb0'))
     core = rrect(fr, hu * 0.62, hv * 0.62, 3.0, 0, 3)
-    K.prism('lm_paint', [p[:2] for p in core], g + CROWN0, g + ROOF + 8, hexc('#bfc3c4'))
-    K.prism('lm_paint', [p[:2] for p in rrect(fr, hu * 0.45, hv * 0.45, 2.0, 0, 3)], g + ROOF + 8, g + TOP - 6, hexc('#a9adb0'))
+    K.prism('lm_paint', [p[:2] for p in core], g + CROWN0, g + ROOF + 8, CORE1)
+    K.prism('lm_paint', [p[:2] for p in rrect(fr, hu * 0.45, hv * 0.45, 2.0, 0, 3)], g + ROOF + 8, g + TOP - 6, CORE2)
 
 # ── 181 Fremont ─────────────────────────────────────────────────────────────
 # OSM way 445566153 (ODbL, (c) OpenStreetMap contributors): height 244.4 m,

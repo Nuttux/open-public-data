@@ -15,6 +15,10 @@ MODELS = '/Users/daniel/code/qipu-render-work/places/models'
 def load_into(K, key, dz):
     """append places/models/<key>.npz to the kit, raised by dz; False when absent"""
     p = os.path.join(MODELS, key + '.npz')
+    # [LM_MODELS_OVERRIDE, off by default] a directory of one-off replacement models (same key, same
+    # sidecar z0/clear/gids), e.g. combo/block52/oneoffs/models: t_555cal (clean crown), c_sspp (facade)
+    ov = os.environ.get('LM_MODELS_OVERRIDE', '')
+    if ov and os.path.exists(os.path.join(ov, key + '.npz')): p = os.path.join(ov, key + '.npz')
     if not os.path.exists(p): return False
     z = np.load(p)
     for m in sorted({k.split('|')[0] for k in z.files}):
