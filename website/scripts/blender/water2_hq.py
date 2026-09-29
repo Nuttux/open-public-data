@@ -98,6 +98,8 @@ def shore_dist(bpy, N, pos):
 def water(bpy, N, pos, extra=None, flat=None):
     """the sea surface's BSDF at world position `pos`; returns (shader, dict of
     sockets: wind, cur, pac, col). extra(N, parts) may alter the parts first."""
+    if E('WATER_V5', '0') == '1':      # water v5 (water_v5.py, 29/09): large-scale wind / slick field, turbid body, Fresnel, contact foam; default off
+        import water_v5; return water_v5.water(bpy, N, pos, extra, flat, _img, shore_dist, WD)
     if E('WATER_V4', '0') == '1':      # water v4 (water_v4.py, 29/09): physical wave spectrum, Fresnel, depth / shore colour; default off
         import water_v4; return water_v4.water(bpy, N, pos, extra, flat, _img, shore_dist, WD)
     g = json.load(open(os.path.join(WD, 'sea.json')))
