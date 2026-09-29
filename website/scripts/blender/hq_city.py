@@ -331,7 +331,8 @@ for m in d['meshes']:
 # triangulations each draped by terrain_hq on its own corners, cut through
 # each other on uneven ground in dark faceted shards. The casing wholly under
 # the asphalt goes (hq_scene's fix, never ported here). ST_MERGE=0: as before
-ABV = None; VG = array.array('f')
+ABV = None; VG = array.array('f'); VGD = array.array('f')   # VGD: sidewalk pieces re-draped on the ground (SE_DRAPE=1)
+_SEDR = E('SE_DRAPE', '0') == '1'
 if len(SA_):
     _nA = len(SA_); SP, ABV = merge_street_layers(SP, SA_)
     # (25/09) THE SIDEWALK UP TO THE LOT LINE. The casing left beyond the
@@ -354,7 +355,7 @@ if len(SA_):
             if all(on): return
             L = max(math.dist(V[i][:2], V[(i + 1) % 3][:2]) for i in range(3))
             if not any(on):
-                for v in V: VG.extend((v[0], v[1], v[2] + 0.16))
+                for v in V: (VGD if _SEDR else VG).extend((v[0], v[1], v[2] + 0.16))
                 return
             # a small piece across the kerb lies within the 3 m sidewalk band
             # drawn from the kerb: laid just under the asphalt, whose edge
@@ -391,7 +392,7 @@ if E('SE_APRON', '0') == '1' and ERA is None and len(SP):
     # from the asphalt left, so the new edge counts as a kerb. SE_FILE=<json> overrides se_aprons.json.
     import street_edge as _SE
     SP, _sd = _SE.cut(SP, _SE.load(BOX, E('SE_FILE', '')), log)
-    for i in range(0, len(_sd), 3): VG.extend((_sd[i], _sd[i + 1], _sd[i + 2] + 0.16))
+    for i in range(0, len(_sd), 3): (VGD if _SEDR else VG).extend((_sd[i], _sd[i + 1], _sd[i + 2] + 0.16))
     _nA = len(SP) // 3
     ABV = BVHTree.FromPolygons([(SP[i * 3], SP[i * 3 + 1], SP[i * 3 + 2]) for i in range(_nA)],
                                [(t * 3, t * 3 + 1, t * 3 + 2) for t in range(_nA // 3)]) if _nA else None
@@ -415,6 +416,14 @@ for i in range(0, len(MP), 3):
     h_ = sbv.ray_cast(Vector((MP[i], MP[i+1], MP[i+2] + 3)), Vector((0, 0, -1)))
     if h_[0] is not None: MP[i+2] = h_[0].z + 0.012
 if len(MP): mesh_from('markings', MP, M['paint'])
+if len(VGD):
+    # [SE_DRAPE, 29/09] THE SIDEWALK ON THE GROUND, NOT ON ITS TRIANGLE'S PLANE. The verges (casing beyond the asphalt) and the
+    # SE_APRON pieces each lay 16 cm over the plane of the engine triangle they came from (20-40 m triangles draped at their
+    # corners only): on a slope two neighbouring pieces from different triangles stood tens of cm apart, a stack of paved tiers
+    # with hard steps (block52_v7, Jackson Sq; the AI painted the steps brown). Subdivided to 2.5 m and draped on the 3DEP
+    # ground + 0.28 (the asphalt's base 0.10 + 0.02 + the 0.16 kerb): one continuous sidewalk following the slope.
+    import street_edge as _SE2
+    VG.extend(_SE2.drape(VGD, terrain_hq.true_ground, 0.28, float(E('SE_DRAPE_STEP', '2.5')), log))
 if len(VG):
     mesh_from('verges', VG, M['sidewalk'], weld=0.02)
 if E('TREE_EDGE', '0') == '1' and ERA is None:

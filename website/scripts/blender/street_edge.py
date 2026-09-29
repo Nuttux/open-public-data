@@ -110,3 +110,21 @@ def foot_split(P, is_foot, in_park, log=print, tmin=0.6):
         a = t * 9; rec([(P[a + k * 3], P[a + k * 3 + 1], P[a + k * 3 + 2]) for k in range(3)], 0)
     log(f'street_edge foot_split: {st[0]} splits, {st[1]} footway pieces -> {len(side) // 9} sidewalk triangles; {len(keep) // 9} asphalt')
     return keep, side
+
+def drape(T, ground, lift, step=2.5, log=print):
+    """SE_DRAPE=1: flat triangles (x, y, z) * 3 subdivided (midpoints) until every edge is <= step m, each vertex set to
+    ground(x, y) + lift (ground: numpy (X, Y) -> Z). Returns the flat array."""
+    import numpy as np
+    A = np.asarray(T, np.float64).reshape(-1, 3, 3)[..., :2]; out = []
+    while len(A):
+        e = np.max(np.stack([np.hypot(*(A[:, (i + 1) % 3] - A[:, i]).T) for i in range(3)], 1), 1)
+        ok = e <= step; out.append(A[ok]); B = A[~ok]
+        if not len(B): break
+        m = [(B[:, i] + B[:, (i + 1) % 3]) / 2 for i in range(3)]
+        A = np.concatenate([np.stack(t, 1) for t in ((B[:, 0], m[0], m[2]), (m[0], B[:, 1], m[1]), (m[2], m[1], B[:, 2]), (m[0], m[1], m[2]))])
+    P = np.concatenate(out); n0 = len(T) // 9
+    Z = ground(P[..., 0].ravel(), P[..., 1].ravel()).reshape(-1, 3) + lift
+    V = np.concatenate([P, Z[..., None]], -1).astype(np.float32)
+    log(f'street_edge drape: {n0} sidewalk triangles -> {len(V)} draped (step {step} m, +{lift})')
+    import array as _a
+    r = _a.array('f'); r.frombytes(V.tobytes()); return r
