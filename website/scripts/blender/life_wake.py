@@ -16,6 +16,7 @@ water (the render's sea mask) and sit on the sheet (z 0.12) or the open
 'ocean' plane beyond it (z -0.5).
 """
 import math
+import os
 import numpy as np
 
 LIFT = 0.03
@@ -76,5 +77,12 @@ def build(bpy, coll, vessels, sea, inb, mat, mesh_attrs):
     for v_, f_, a_ in parts:
         V.append(v_); F.append(f_ + off); off += len(v_)
         for k in A: A[k].append(a_[k])
-    mesh_attrs(bpy, 'life.wakes', np.concatenate(V), np.concatenate(F), {k: np.concatenate(a) for k, a in A.items()}, mat, coll)
+    ob = mesh_attrs(bpy, 'life.wakes', np.concatenate(V), np.concatenate(F), {k: np.concatenate(a) for k, a in A.items()}, mat, coll)
+    if os.environ.get('WAKE_NOAO', '0') == '1':
+        # [WAKE_NOAO, 29/09] the water v4 shader darkens by two Ambient Occlusion nodes (V4_AO 6 m at walls / hulls, V4_SHADE 60 m
+        # toward the sun). Cycles' AO node ignores a surface's transparency: the decal 3 cm over the sea occluded the whole
+        # hemisphere under its full footprint, so every wake drew its trail edges and bow arms as dark straight bands (block52_v7
+        # ferry + sailboat). The AO rays trace shadow visibility: a decal without it is invisible to them (tested, Blender 5.2);
+        # its own shadow (a 3 cm decal) is nil anyway.
+        ob.visible_shadow = False
     return nw
