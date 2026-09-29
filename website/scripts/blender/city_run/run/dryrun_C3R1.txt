@@ -1,0 +1,81 @@
+SB    new crops (city) AI tiles  render pod-h  AI card-h  name
+C3R1         62     56     1434           5.1        3.6  Russian Hill / Nob Hill / Lombard / Marina / Fort Mason / Pa
+TOTAL new crops 62, AI tiles 1434; render 4/5/7 pod-h, AI 3/4/5 card-h (low/exp/high); GPU $ 3/4/7 before setup, probes, retries
+
+==== C3R1: the tasks and the exact commands city.py run would launch ====
+  task C3R1:render         lane R   deps ['gate:P-LM-a', 'gate:P-LM-b', 'gate:P-LM-c', 'gate:P-LM-d', 'gate:P-PIER-a', 'gate:P-PIER-b', 'gate:P-RAIL-a', 'gate:P-RAIL-b', 'gate:P-RAIL-c', 'gate:P-SEAM-a']
+  task C3R1:import         lane mac deps ['C3R1:render']
+  task C3R1:windows        lane mac deps ['C3R1:import']
+  task C3R1:ai:C3R1w0      lane A   deps ['C3R1:windows']
+  task C3R1:ai:C3R1w1      lane A   deps ['C3R1:windows']
+  task C3R1:post           lane mac deps ['C3R1:import', 'claims:C3R1']
+  task C3R1:qa             lane mac deps ['C3R1:post']
+
+-- render (lane R) --
+{
+ "file": "/Volumes/QIPU-SSD/qipu-city/sb/C3R1/jobs_render.txt",
+ "jobs": 134,
+ "own": 40,
+ "ring": 30,
+ "have": 0,
+ "sea": 6,
+ "lines": [
+  "cb_14_7 14:7 0,1,0,1 Z=9 SE_APRON=1 TREE_EDGE=1 FOOT_SPLIT=1 LM_CLEAR_KEEP=1 ROOF_CALM=1 WATER_V4=1 WAKE_NOAO=1 LM_SF_CROWN=1 LM_MODELS_OVERRIDE=/Users/daniel/code/qipu-render-work/snap/city1/data/oneoffs_models FAITHFUL=1 FA_FILE=/Users/daniel/code/qipu-render-work/snap/combo2/data/faithful/fa_table_v3.json ROOF_NAIP=1 RN_CROP=/Users/daniel/code/qipu-render-work/snap/combo2/data/faithful/rn_sf8.png BTEX_REAL=1 BTEX_MODE=paint BTEX_FILE=/Users/daniel/code/qipu-render-work/snap/city1/data/faithful/btex_walls_v2g.json BTEX_ATLAS=/Users/daniel/code/qipu-render-work/snap/city1/data/faithful/btex_atlas_v2.png",
+  "cb_15_7 15:7 0,1,0,1 Z=9 SE_APRON=1 TREE_EDGE=1 FOOT_SPLIT=1 LM_CLEAR_KEEP=1 ROOF_CALM=1 WATER_V4=1 WAKE_NOAO=1 LM_SF_CROWN=1 LM_MODELS_OVERRIDE=/Users/daniel/code/qipu-render-work/snap/city1/data/oneoffs_models FAITHFUL=1 FA_FILE=/Users/daniel/code/qipu-render-work/snap/combo2/data/faithful/fa_table_v3.json ROOF_NAIP=1 RN_CROP=/Users/daniel/code/qipu-render-work/snap/combo2/data/faithful/rn_sf8.png BTEX_REAL=1 BTEX_MODE=paint BTEX_FILE=/Users/daniel/code/qipu-render-work/snap/city1/data/faithful/btex_walls_v2g.json BTEX_ATLAS=/Users/daniel/code/qipu-render-work/snap/city1/data/faithful/btex_atlas_v2.png",
+  "... 134 lines"
+ ]
+}
+
+  cmd: bash cloud/lmk_pod.sh cty-r1 up city1 3   (only if no city render pod is free; NETVOL=1 when the pack is on /vol)
+  cmd: PAR=2 bash city/run/render_sb.sh cty-r1 city1 /Volumes/QIPU-SSD/qipu-city/sb/C3R1/jobs_render.txt /Volumes/QIPU-SSD/qipu-city/sb/C3R1/fetched 'c[bp]_*'
+  cmd: python3 city/run/prep_sb.py import C3R1 /Volumes/QIPU-SSD/qipu-city/sb/C3R1/fetched
+
+-- AI windows (lane A) --
+{
+ "sb": "C3R1",
+ "tiles_in_range": 1640,
+ "ai": 1470,
+ "already": 0,
+ "windows": [
+  {
+   "window": "C3R1w0",
+   "tiles": 650,
+   "keys": {
+    "v8_rail4": 69,
+    "v5_dry": 581
+   },
+   "mosaic": [
+    74624,
+    23424,
+    104320,
+    38400
+   ],
+   "mosaic_mp": 445
+  },
+  {
+   "window": "C3R1w1",
+   "tiles": 820,
+   "keys": {
+    "v8_rail4": 71,
+    "v5_dry": 749
+   },
+   "mosaic": [
+    74624,
+    34944,
+    104320,
+    51200
+   ],
+   "mosaic_mp": 483
+  }
+ ]
+}
+
+  cmd: START=0 python3 speed/gpu.py up cty-a1 3  ->  bash city/run/run_win.sh cty-a1 /Volumes/QIPU-SSD/qipu-city/sb/C3R1/C3R1w0 C3R1w0 up|wait|pull
+  cmd: START=0 python3 speed/gpu.py up cty-a1 3  ->  bash city/run/run_win.sh cty-a1 /Volumes/QIPU-SSD/qipu-city/sb/C3R1/C3R1w1 C3R1w1 up|wait|pull
+
+-- post (Mac, banded) --
+  cmd: python3 city/run/post_sb.py C3R1 quilt      (streamed, ~1 GB RAM)
+  cmd: python3 city/run/post_sb.py C3R1 finish     (8 bands of 3072 rows + 1536 halo, ~6-8 GB RAM each, resumable per band)
+  cmd: python3 city/run/post_sb.py C3R1 sheet  -> ~/Downloads/qipu-renders/live_ai/city/C3R1.jpg
+  cmd: python3 city/run/city.py qa C3R1
+  z9 tiles -> /Volumes/QIPU-SSD/qipu-city/layer/tiles/9 (2400 webp)
