@@ -70,6 +70,9 @@ FOREST_H = {'euc': (22.0, 32.0), 'cypress': (14.0, 21.0), 'pine': (16.0, 23.0), 
 OPEN_ZONES = ('urban', 'coast_band', 'park', 'garden', 'square')
 CAN_ZONES = ('urban', 'coast_band')      # CANOPY=1: where the measured crowns replace the masses
 SITE_MEDIAN = 2
+# [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
+# not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
+TREE_ROAD = os.environ.get('TREE_ROAD', '0') == '1'
 _TE = []
 def _tree_edge():
     """TREE_EDGE=1: (moves {listed index: (x, y) | None}, kept median indices, median links) of tree_edge.json (TE_FILE)"""
@@ -254,8 +257,8 @@ class Kinds:
         if on_street is not None:
             # a mass over a paved median or a boulevard's planting stays put
             # when there is no open ground within reach (Sunset Blvd's pines)
-            p = self._off_street(x, y, on_street, roofed)
-            if p is None and _tree_edge() is not None: self._count(('street', 'te_mass_in_road_dropped')); return None
+            p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
+            if p is None and (TREE_ROAD or _tree_edge() is not None): self._count(('street', 'te_mass_in_road_dropped')); return None
             if p is None: self._count(('street', 'mass_in_road_kept'))
             elif p != (x, y): self._count(('street', 'mass_off_road')); x, y = p
         if a in PALMS: return k, self._palm_crown(k, x, y), x, y
@@ -303,11 +306,16 @@ class Kinds:
                 if mv is None: self._count(('street', 'te_dropped')); return None
                 self._count(('street', 'te_snapped')); x, y = mv
             else: self._count(('street', 'te_median_kept'))
-        elif on_street is not None and site != SITE_MEDIAN:       # the list's median trees stay on their median
-            p = self._off_street(x, y, on_street, roofed)
+        elif on_street is not None and (TREE_ROAD or site != SITE_MEDIAN):       # the list's median trees stay on their median (TREE_ROAD: only on a real one)
+            p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
             if p is None:
                 self._count(('street', 'in_road_dropped')); return None
             if p != (x, y): self._count(('street', 'off_road')); x, y = p
+        if TREE_ROAD and on_street is not None and on_street(x, y):
+            # [TREE_ROAD, 30/09] after the TREE_EDGE decisions too: a kept 'median' tree with no median laid under it stood on the lanes
+            p = self._off_street(x, y, on_street, roofed, reach=2.0)
+            if p is None: self._count(('street', 'road_dropped')); return None
+            self._count(('street', 'road_moved')); x, y = p
         if a in PALMS: return k, self._palm_crown(k, x, y), x, y
         if dbh > 0 and a in CROWN_DBH:
             p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))

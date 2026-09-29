@@ -742,6 +742,21 @@ if VEG:
     def on_street(x, y):
         if sbv.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))[0] is None: return False
         return not _kp or _kk.find((x, y, 0.0))[2] > 1.2
+    if E('TREE_ROAD', '0') == '1':
+        # [TREE_ROAD, 30/09] THE TRUNK OFF THE ASPHALT. on_street's 1.2 m kerb tolerance let a tree stand on the asphalt next to any kerb
+        # line (curb lanes, the Embarcadero's platform / median / track kerbs), and _off_street moved road trees onto such points:
+        # rows of round trees on the lanes (block52_v8). Strict: on the asphalt = on the road, except on a TREE_EDGE median strip.
+        _mdp = []
+        try:
+            for x0_, y0_, x1_, y1_ in (_te[2] if E('TREE_EDGE', '0') == '1' and ERA is None else []):
+                n_ = max(1, int(math.hypot(x1_ - x0_, y1_ - y0_) / 0.5)); _mdp.extend((x0_ + (x1_ - x0_) * t_ / n_, y0_ + (y1_ - y0_) * t_ / n_) for t_ in range(n_ + 1))
+        except NameError: pass
+        _mdk = KDTree(max(1, len(_mdp)))
+        for i_, q_ in enumerate(_mdp): _mdk.insert((q_[0], q_[1], 0.0), i_)
+        _mdk.balance()
+        def on_street(x, y):
+            if sbv.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))[0] is None: return False
+            return not _mdp or _mdk.find((x, y, 0.0))[2] > 1.1
     protos, widths, heights, TALL, HMAX = VK.protos, VK.widths, VK.heights, VK.tall, VK.hmax
 else:
     STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
@@ -872,8 +887,13 @@ _nc = 0
 # open land or the dunes of the year, not under water, not on a vacant lot, not where a later building's site or park
 # was (era.canopy_stands); without it a past year lost every yard and hill tree of today's CANOPY=1 render)
 if VEG and getattr(VK, 'canopy_on', False):
+    _tr = E('TREE_ROAD', '0') == '1'; _trc = [0, 0]
     for (x, y, kind, s_, r_) in VK.canopy(seen):
         if roofed(x, y): continue
+        if _tr and on_street(x, y):     # [TREE_ROAD] a measured crown over the road (a street tree's overhang): its trunk off the asphalt
+            p_ = VK._off_street(x, y, on_street, roofed, reach=2.0)
+            if p_ is None: _trc[0] += 1; continue
+            _trc[1] += 1; x, y = p_
         if ERA is not None:
             if open_at(x, y) > 0.5 and OL.at(x, y, OL.park) < 0.5: continue
             if EA.water_then(x, y, ERA): continue
@@ -884,6 +904,7 @@ if VEG and getattr(VK, 'canopy_on', False):
         if gz_ < 0.5 and E('MARINA_V2', '1') == '1': continue      # (27/09, assets_urban) a 'crown' over the water: the LiDAR's masts and docks (trees on South Beach Harbor's fingers)
         pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg - _nc, 'of', len(MASS), 'measured crowns', _nc)
+if VEG and getattr(VK, 'canopy_on', False) and E('TREE_ROAD', '0') == '1': log('trees: TREE_ROAD canopy crowns over the road: dropped', _trc[0], 'moved', _trc[1])
 instancer('trees', pts, protos)
 if VEG: VK.report(log)
 
