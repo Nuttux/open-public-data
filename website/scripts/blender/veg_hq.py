@@ -297,7 +297,7 @@ class Kinds:
             p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
         k = self._kind(a, x, y, crown=crown if a not in PALMS else None,
                        h=(6.0 if (a in PALMS and 0 < dbh < 14) else None)); self._count(('arch', a))
-        te = _tree_edge()
+        te = _tree_edge(); kept_median = False
         if te is not None and on_street is not None and idx is not None and dist <= 2.3 and (idx in te[1] or idx in te[0]):
             # [TREE_EDGE, street_edge 28/09] tree_edge_prep.py decided: a median tree with a median in the data stays; any other
             # tree in the carriageway goes to the sidewalk on its side, or away
@@ -305,13 +305,14 @@ class Kinds:
                 mv = te[0][idx]
                 if mv is None: self._count(('street', 'te_dropped')); return None
                 self._count(('street', 'te_snapped')); x, y = mv
-            else: self._count(('street', 'te_median_kept'))
+            else: self._count(('street', 'te_median_kept')); kept_median = True
         elif on_street is not None and (TREE_ROAD or site != SITE_MEDIAN):       # the list's median trees stay on their median (TREE_ROAD: only on a real one)
             p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
             if p is None:
                 self._count(('street', 'in_road_dropped')); return None
             if p != (x, y): self._count(('street', 'off_road')); x, y = p
-        if TREE_ROAD and on_street is not None and on_street(x, y):
+        # (the Embarcadero's median = its Canary Island date palms: a kept median PALM stays where the list has it, laid strip or not)
+        if TREE_ROAD and on_street is not None and not (kept_median and a in PALMS) and on_street(x, y):
             # [TREE_ROAD, 30/09] after the TREE_EDGE decisions too: a kept 'median' tree with no median laid under it stood on the lanes
             p = self._off_street(x, y, on_street, roofed, reach=2.0)
             if p is None: self._count(('street', 'road_dropped')); return None
