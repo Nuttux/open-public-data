@@ -83,3 +83,30 @@ def cut(SP, aprons, log=print):
     log(f'street_edge: {len(aprons)} aprons cut {ncut} asphalt triangles: {len(SP) // 9} -> {len(keep) // 9} asphalt, '
         f'{len(side) // 9} sidewalk triangles')
     return keep, side
+
+def foot_split(P, is_foot, in_park, log=print, tmin=0.6):
+    """FOOT_SPLIT=1 ([bugs] 28/09, the Embarcadero sawtooth): hq_scene's drop_footway_streets drops WHOLE engine triangles whose
+    centre reads as footway (far from every carriageway, near a footpath): the Embarcadero's roadway polygon takes in the
+    promenade, its triangles are 20-40 m long, and the dropped ones left triangular bites and a zigzag edge. Here a triangle
+    that straddles the footway line is split (midpoints) down to tmin m, so the edge follows the line; the footway pieces
+    are laid as sidewalk (+0.16, the verges' height) instead of holes, except in a park (a paper street: ground shows).
+    is_foot(x, y), in_park(x, y): the same tests drop_footway_streets uses. Returns (asphalt, sidewalk triangles)."""
+    keep, side = array.array('f'), array.array('f'); st = [0, 0]
+    def rec(V, depth):
+        c = [(V[0][k] + V[1][k] + V[2][k]) / 3 for k in range(3)]
+        fl = [is_foot(c[0], c[1])] + [is_foot(v[0] + (c[0] - v[0]) * 0.05, v[1] + (c[1] - v[1]) * 0.05) for v in V]
+        L = max(math.dist(V[i][:2], V[(i + 1) % 3][:2]) for i in range(3))
+        if all(f == fl[0] for f in fl) or L < tmin or depth > 9:
+            if fl[0]:
+                st[1] += 1
+                if not in_park(c[0], c[1]):
+                    for v in V: side.extend((v[0], v[1], v[2] + 0.16))
+            else: keep.extend((*V[0], *V[1], *V[2]))
+            return
+        st[0] += 1
+        m = [tuple((V[i][k] + V[(i + 1) % 3][k]) / 2 for k in range(3)) for i in range(3)]
+        for T in ((V[0], m[0], m[2]), (m[0], V[1], m[1]), (m[2], m[1], V[2]), (m[0], m[1], m[2])): rec(T, depth + 1)
+    for t in range(len(P) // 9):
+        a = t * 9; rec([(P[a + k * 3], P[a + k * 3 + 1], P[a + k * 3 + 2]) for k in range(3)], 0)
+    log(f'street_edge foot_split: {st[0]} splits, {st[1]} footway pieces -> {len(side) // 9} sidewalk triangles; {len(keep) // 9} asphalt')
+    return keep, side

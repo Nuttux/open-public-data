@@ -359,10 +359,13 @@ def roof_flat_mat(big=False):
     # dirt: still air along the parapets and round the kit, ponding stains
     ao = b.n('ShaderNodeAmbientOcclusion', samples=4); ao.inputs['Distance'].default_value = 1.2
     dirt = b.math('MULTIPLY', b.math('SUBTRACT', 1.0, ao.outputs['AO']), 0.9, clamp=True)
-    stain = b.ramp(b.noise(0.16, 2.0), 0.0, 1.0, 0.56, 0.68)
+    # ROOF_CALM (street_edge [bugs] 29/09, the roof 'camo' the AI carries over x1.0-1.8): ponding stains and weathering soft and
+    # large (wide ramps, a third of the contrast), no Voronoi cells, no blots; the parapet / kit dirt (AO) stays
+    CALM = os.environ.get('ROOF_CALM', '0') == '1'
+    stain = b.ramp(b.noise(0.16, 2.0), 0.0, 1.0, 0.56, 0.68) if not CALM else b.ramp(b.noise(0.05, 1.0), 0.0, 1.0, 0.40, 0.80)
     light = b.math('GREATER_THAN', kind, 1.5)
-    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.math('MULTIPLY', stain, 0.22), b.math('ADD', 0.35, b.math('MULTIPLY', light, 0.65))))
-    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.ramp(b.noise(0.07, 4.0), 0.0, 0.3, 0.45, 0.8), light))
+    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.math('MULTIPLY', stain, 0.22 if not CALM else 0.08), b.math('ADD', 0.35, b.math('MULTIPLY', light, 0.65))))
+    dirt = b.math('ADD', dirt, b.math('MULTIPLY', b.ramp(b.noise(0.07 if not CALM else 0.03, 4.0 if not CALM else 1.0), 0.0, 0.3 if not CALM else 0.1, 0.45 if not CALM else 0.3, 0.8), light))
     # (24/09) a roof is patched and recoated piece by piece, and a cap sheet
     # shows its lap seams a roll apart: patches of 2-6 m a shade lighter or
     # darker, the seams as dark lines along the rolls — no flat slab
@@ -385,6 +388,13 @@ def roof_flat_mat(big=False):
         b.put(tr_.inputs[1], b.math('FLOOR', b.math('DIVIDE', sxp.outputs[1], 1.6))); b.put(tr_.inputs[2], 7.0)
         wt_ = b.n('ShaderNodeTexWhiteNoise', noise_dimensions='3D'); b.put(wt_.inputs['Vector'], tr_.outputs[0])
         tar = b.math('MULTIPLY', b.math('GREATER_THAN', wt_.outputs['Value'], 0.965), 0.75)
+    if CALM:
+        # one membrane, recoated whole: a +-2 % drift over tens of metres, the BK_ROOFMAT sheets at a third of their contrast,
+        # tar repairs rare and faint
+        drift = b.ramp(b.noise(0.025, 1.0, vec=mp.outputs[0]), 0.98, 1.02, 0.3, 0.7)
+        if G.BK.ROOFMAT and not big: pk = b.math('MULTIPLY', drift, b.math('ADD', 0.67, b.math('MULTIPLY', pk, 0.33)))
+        else: pk = drift
+        tar = b.math('MULTIPLY', tar, 0.3)
     pk = b.math('MULTIPLY', pk, b.math('SUBTRACT', 1.0, b.math('MULTIPLY', tar, 0.45 if not big else 0.25)))
     sx = b.n('ShaderNodeSeparateXYZ'); b.put(sx.inputs[0], mp.outputs[0])
     seam = b.math('LESS_THAN', b.math('FRACT', b.math('DIVIDE', sx.outputs[1], 0.92)), 0.06)

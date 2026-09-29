@@ -12,7 +12,7 @@ normal (gravel, bitumen, tile relief) and roughness are kept, so our sun
 shades the grain; a faint 12 cm grain multiplies the photo (0.6 m is softer
 than our 0.37 m pixel).
 """
-import os, json, hashlib, subprocess, time
+import os, json, hashlib, subprocess, time, math
 import bpy
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -60,6 +60,26 @@ def attach(M, box, grain=0.12):
             n_.inputs[3].default_value = 0.0; n_.inputs[4].default_value = 1.0; n_.clamp = False; return n_.outputs[0]
         uv = N('ShaderNodeCombineXYZ'); L(lin(sp.outputs[0], bx0, bx1), uv.inputs[0]); L(lin(sp.outputs[1], by0, by1), uv.inputs[1])
         tx = N('ShaderNodeTexImage'); tx.image = im; tx.interpolation = 'Linear'; tx.extension = 'CLIP'; L(uv.outputs[0], tx.inputs['Vector'])
+        col = tx.outputs['Color']
+        if os.environ.get('ROOF_CALM', '0') == '1':
+            # ROOF_CALM (street_edge [bugs] 29/09): the photo as the roof's COLOUR, not its texture. At 25-60 cm the photo's blotches,
+            # parked cars and shadows came through as 'camo' the AI amplified; the alpha-weighted mean of 13 samples over a 2.4 m disc
+            # keeps each roof's tone and its large stains, and drops what is smaller than a few metres (the edge alpha stays sharp)
+            acc = aw = None
+            for r_, n_ in ((0.0, 1), (1.2, 6), (2.4, 6)):
+                for k_ in range(n_):
+                    t_ = 2 * math.pi * k_ / n_ + (0.5 if r_ > 2 else 0.0)
+                    off = N('ShaderNodeVectorMath'); off.operation = 'ADD'; L(uv.outputs[0], off.inputs[0])
+                    off.inputs[1].default_value = (r_ * math.cos(t_) / (bx1 - bx0), r_ * math.sin(t_) / (by1 - by0), 0.0)
+                    t2 = N('ShaderNodeTexImage'); t2.image = im; t2.interpolation = 'Linear'; t2.extension = 'CLIP'; L(off.outputs[0], t2.inputs['Vector'])
+                    sc_ = N('ShaderNodeVectorMath'); sc_.operation = 'SCALE'; L(t2.outputs['Color'], sc_.inputs[0]); L(t2.outputs['Alpha'], sc_.inputs['Scale'])
+                    if acc is None: acc, aw = sc_.outputs[0], t2.outputs['Alpha']
+                    else:
+                        va = N('ShaderNodeVectorMath'); va.operation = 'ADD'; L(acc, va.inputs[0]); L(sc_.outputs[0], va.inputs[1]); acc = va.outputs[0]
+                        ma = N('ShaderNodeMath'); ma.operation = 'ADD'; L(aw, ma.inputs[0]); L(t2.outputs['Alpha'], ma.inputs[1]); aw = ma.outputs[0]
+            mx_ = N('ShaderNodeMath'); mx_.operation = 'MAXIMUM'; L(aw, mx_.inputs[0]); mx_.inputs[1].default_value = 1e-3
+            iv = N('ShaderNodeMath'); iv.operation = 'DIVIDE'; iv.inputs[0].default_value = 1.0; L(mx_.outputs[0], iv.inputs[1])
+            dv = N('ShaderNodeVectorMath'); dv.operation = 'SCALE'; L(acc, dv.inputs[0]); L(iv.outputs[0], dv.inputs['Scale']); col = dv.outputs[0]
         # only the faces that look up (roof planes, pitched to ~60 deg), not gables or parapet sides
         sn = N('ShaderNodeSeparateXYZ'); L(geo.outputs['Normal'], sn.inputs[0])
         up = N('ShaderNodeMapRange'); up.interpolation_type = 'SMOOTHSTEP'; L(sn.outputs[2], up.inputs[0])
@@ -71,7 +91,7 @@ def attach(M, box, grain=0.12):
         gr = N('ShaderNodeMapRange'); L(nz.outputs['Fac'], gr.inputs[0]); gr.inputs[1].default_value = 0.3; gr.inputs[2].default_value = 0.7
         gr.inputs[3].default_value = 1.0 - grain; gr.inputs[4].default_value = 1.0 + grain
         mu = N('ShaderNodeMix'); mu.data_type = 'RGBA'; mu.blend_type = 'MULTIPLY'; mu.inputs[0].default_value = 1.0
-        L(tx.outputs['Color'], mu.inputs[6]); L(gr.outputs[0], mu.inputs[7])
+        L(col, mu.inputs[6]); L(gr.outputs[0], mu.inputs[7])
         mx = N('ShaderNodeMix'); mx.data_type = 'RGBA'; mx.blend_type = 'MIX'; L(a.outputs[0], mx.inputs[0])
         L(mu.outputs[2], mx.inputs[7])
         if RATIO:     # the procedural roof x (2 x ratio) where there is a photo roof, x 1 elsewhere
