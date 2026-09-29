@@ -75,7 +75,7 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
         # v4d: two periodic ocean-spectrum height tiles (JONSWAP, water_v4_prep.wave_tiles; 61.3 m and 97.1 m, incommensurate), world-keyed,
         # rotated / offset differently and summed: no cross-hatching of sine trains, no visible repetition
         q = json.load(open(wj))['tiles']; h = None; fs = F('V4_FSLOPE', 0.085)
-        for (name, t), (dr, off) in zip(sorted(q.items()), ((0.0, (0.37, 0.11)), (19.0, (0.71, 0.53)))):
+        for (name, t), (dr, off) in zip(sorted(q.items()), ((0.0, (0.37, 0.11)), (F('V4_FROT', 0.0), (0.71, 0.53)))):   # v4f: same orientation (19 deg crossed crests = diamond glints)
             mp = N.mapping(pos, loc=(off[0], off[1], 0), rot=(0, 0, -(wang + math.radians(dr))), scale=(1 / t['L'], 1 / t['L'], 1))
             ti = N.n('ShaderNodeTexImage', image=img(bpy, name + '.png'), extension='REPEAT', interpolation='Cubic'); N.L(mp, ti.inputs[0])
             sp_ = N.n('ShaderNodeSeparateColor'); N.L(ti.outputs['Color'], sp_.inputs[0])
@@ -128,6 +128,18 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
         aof = N.m('SUBTRACT', 1.0, N.m('MULTIPLY', N.m('SUBTRACT', 1.0, ao.outputs['AO']), F('V4_AO', 0.6)))
         aov = N.n('ShaderNodeCombineXYZ'); [N.L(aof, aov.inputs[i]) for i in range(3)]
         col = N.vmath('MULTIPLY', col, aov.outputs[0])
+    if F('V4_SHADE', 0.7) > 0:   # v4f: water in the shadow of seawalls / breakwaters / piers = darker and desaturated (a body lit by the
+        # sky alone read a flat saturated teal). Sun visibility estimated in the shader: the AO node's hemisphere turned toward the sun
+        # (the scene's SUN_AZ / SUN_EL, as hq_scene), occluders within V4_SHADE_D m; sharpened.
+        az_, el_ = math.radians(F('SUN_AZ', 215)), math.radians(F('SUN_EL', 24))
+        ts = (math.sin(az_) * math.cos(el_), math.cos(az_) * math.cos(el_), math.sin(el_))
+        sa = N.n('ShaderNodeAmbientOcclusion', i_Distance=F('V4_SHADE_D', 60.0)); sa.samples = 16; sa.only_local = False
+        N.L(N.n('ShaderNodeCombineXYZ', i_X=ts[0], i_Y=ts[1], i_Z=ts[2]).outputs[0], sa.inputs['Normal'])
+        a0 = (1 + math.sin(el_)) / 2   # AO of open water for this axis: the hemisphere's part below the horizon hits the sea itself
+        sh_ = N.m('MULTIPLY', N.smooth(a0 * 0.97, a0 * 0.70, sa.outputs['AO']), F('V4_SHADE', 0.7))   # 0 sunlit .. V4_SHADE deep in shadow
+        bw = N.n('ShaderNodeRGBToBW'); N.L(col, bw.inputs[0])
+        grey = N.n('ShaderNodeCombineXYZ'); [N.L(N.m('MULTIPLY', bw.outputs[0], F('V4_SHADE_K', 0.55)), grey.inputs[i]) for i in range(3)]
+        col = N.mix(sh_, col, grey.outputs[0])
     parts = dict(wind=wind, cur=cur, pac=pac, col=col, rough=rough, normal=normal, rot=rot)
     if extra: extra(N, parts)
     # optics: the BODY colour is light scattered up from inside the water, it does not shade like a solid with the ripples: it gets a
