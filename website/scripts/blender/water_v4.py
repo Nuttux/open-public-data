@@ -70,18 +70,30 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     warp1 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(53.0, 17.0, 0)), 1 / 23.0, detail=2.0), 0.5)      # crests bent over ~20-40 m
     warp2 = N.m('SUBTRACT', N.noise(N.mapping(pos, loc=(-29.0, 71.0, 0)), 1 / 7.0, detail=2.0), 0.5)      # and over ~5-10 m
     grp = N.noise(N.mapping(rot, loc=(11.0, 5.0, 0), scale=(0.5, 1.0, 1.0)), 1 / 14.0, detail=1.0)       # wave groups
-    s0 = F('V4_SLOPE', 0.03); h = None
-    for i, (lam, dth, ph) in enumerate(TRAINS):
-        th = wang + math.radians(dth); k = 2 * math.pi / lam
-        arg = N.m('ADD', N.m('MULTIPLY', X, k * math.cos(th)), N.m('MULTIPLY', Y, k * math.sin(th)))
-        # short crests: each train's phase bent and its amplitude broken by its own world noise at ~3-4 wavelengths
-        nb = N.noise(N.mapping(pos, loc=(17.0 * i + 3.0, 29.0 * i + 7.0, 0)), 1.0 / (3.5 * lam), detail=1.5)
-        na = N.noise(N.mapping(pos, loc=(41.0 * i + 11.0, 13.0 * i + 5.0, 0)), 1.0 / (4.0 * lam), detail=1.0)
-        arg = N.m('ADD', arg, N.m('ADD', ph, N.m('ADD', N.m('MULTIPLY', N.m('SUBTRACT', nb, 0.5), 7.0), N.m('MULTIPLY', warp1, 6.0 * (1 if i % 2 else -1)))))
-        am = N.m('MULTIPLY', N.smooth(0.3, 0.75, na), 1.6)
-        if lam > 3.0: am = N.m('MULTIPLY', am, N.m('ADD', 0.55, N.m('MULTIPLY', grp, 0.9)))
-        term = N.m('MULTIPLY', N.m('SINE', arg), N.m('MULTIPLY', am, s0 * lam / (2 * math.pi)))
-        h = term if h is None else N.m('ADD', h, term)
+    wj = os.path.join(WD, 'v4_waves.json')
+    if E('V4_FFT', '1') == '1' and os.path.exists(wj):
+        # v4d: two periodic ocean-spectrum height tiles (JONSWAP, water_v4_prep.wave_tiles; 61.3 m and 97.1 m, incommensurate), world-keyed,
+        # rotated / offset differently and summed: no cross-hatching of sine trains, no visible repetition
+        q = json.load(open(wj))['tiles']; h = None; fs = F('V4_FSLOPE', 0.085)
+        for (name, t), (dr, off) in zip(sorted(q.items()), ((0.0, (0.37, 0.11)), (19.0, (0.71, 0.53)))):
+            mp = N.mapping(pos, loc=(off[0], off[1], 0), rot=(0, 0, -(wang + math.radians(dr))), scale=(1 / t['L'], 1 / t['L'], 1))
+            ti = N.n('ShaderNodeTexImage', image=img(bpy, name + '.png'), extension='REPEAT', interpolation='Cubic'); N.L(mp, ti.inputs[0])
+            sp_ = N.n('ShaderNodeSeparateColor'); N.L(ti.outputs['Color'], sp_.inputs[0])
+            ht = N.m('MULTIPLY', N.m('ADD', t['lo'], N.m('MULTIPLY', sp_.outputs[0], t['hi'] - t['lo'])), fs)
+            h = ht if h is None else N.m('ADD', h, ht)
+    else:
+        s0 = F('V4_SLOPE', 0.03); h = None
+        for i, (lam, dth, ph) in enumerate(TRAINS):
+            th = wang + math.radians(dth); k = 2 * math.pi / lam
+            arg = N.m('ADD', N.m('MULTIPLY', X, k * math.cos(th)), N.m('MULTIPLY', Y, k * math.sin(th)))
+            # short crests: each train's phase bent and its amplitude broken by its own world noise at ~3-4 wavelengths
+            nb = N.noise(N.mapping(pos, loc=(17.0 * i + 3.0, 29.0 * i + 7.0, 0)), 1.0 / (3.5 * lam), detail=1.5)
+            na = N.noise(N.mapping(pos, loc=(41.0 * i + 11.0, 13.0 * i + 5.0, 0)), 1.0 / (4.0 * lam), detail=1.0)
+            arg = N.m('ADD', arg, N.m('ADD', ph, N.m('ADD', N.m('MULTIPLY', N.m('SUBTRACT', nb, 0.5), 7.0), N.m('MULTIPLY', warp1, 6.0 * (1 if i % 2 else -1)))))
+            am = N.m('MULTIPLY', N.smooth(0.3, 0.75, na), 1.6)
+            if lam > 3.0: am = N.m('MULTIPLY', am, N.m('ADD', 0.55, N.m('MULTIPLY', grp, 0.9)))
+            term = N.m('MULTIPLY', N.m('SINE', arg), N.m('MULTIPLY', am, s0 * lam / (2 * math.pi)))
+            h = term if h is None else N.m('ADD', h, term)
     h = N.m('MULTIPLY', h, amp)
     # a low swell through the Gate, from the west (bay: small)
     for lam, dth, a in ((31.0, 0.0, 0.05), (18.0, 14.0, 0.03)):
@@ -95,7 +107,7 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     # capillary ruffle below the resolved trains, stretched across the wind
     cap = N.noise(N.mapping(rot, scale=(1.0, 0.6, 1.0)), 2.2, detail=3.0, rough=0.5)
     bm2 = N.n('ShaderNodeBump', i_Distance=0.02)
-    N.L(cap, bm2.inputs['Height']); N.L(N.m('MULTIPLY', amp, F('V4_CAP', 0.15)), bm2.inputs['Strength']); N.L(bm.outputs[0], bm2.inputs['Normal'])
+    N.L(cap, bm2.inputs['Height']); N.L(N.m('MULTIPLY', amp, F('V4_CAP', 0.0 if E('V4_FFT', '1') == '1' else 0.15)), bm2.inputs['Strength']); N.L(bm.outputs[0], bm2.inputs['Normal'])
     normal = bm2.outputs[0]
     rough = N.m('MULTIPLY', N.m('ADD', F('V4_R0', 0.09), N.m('ADD', N.m('MULTIPLY', wind, F('V4_R1', 0.03)), N.m('MULTIPLY', gust, F('V4_RG', 0.04)))), calm)
     # ── the body colour by depth and distance to the shore
@@ -111,6 +123,11 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     col = N.vmath('MULTIPLY', col, N.n('ShaderNodeCombineXYZ', i_X=kk, i_Y=kk, i_Z=kk).outputs[0])
     varv = N.n('ShaderNodeCombineXYZ'); [N.L(var, varv.inputs[i]) for i in range(3)]
     col = N.vmath('MULTIPLY', col, varv.outputs[0])
+    if F('V4_AO', 0.6) > 0:   # v4d: soft darker water at the foot of walls / piers / hulls from the scene's own geometry (not a flat tint)
+        ao = N.n('ShaderNodeAmbientOcclusion', i_Distance=F('V4_AO_D', 6.0)); ao.samples = 8; ao.only_local = False
+        aof = N.m('SUBTRACT', 1.0, N.m('MULTIPLY', N.m('SUBTRACT', 1.0, ao.outputs['AO']), F('V4_AO', 0.6)))
+        aov = N.n('ShaderNodeCombineXYZ'); [N.L(aof, aov.inputs[i]) for i in range(3)]
+        col = N.vmath('MULTIPLY', col, aov.outputs[0])
     parts = dict(wind=wind, cur=cur, pac=pac, col=col, rough=rough, normal=normal, rot=rot)
     if extra: extra(N, parts)
     # optics: the BODY colour is light scattered up from inside the water, it does not shade like a solid with the ripples: it gets a
@@ -130,12 +147,12 @@ def water(bpy, N, pos, extra, flat, img, shore_dist, WD):
     # ── the shore: a dark wet band at the foot of walls / piers, a thin broken foam lace a metre or two out (bay only)
     if dsh is not None and F('V4_WASH', 1.0) > 0:
         bay = N.m('SUBTRACT', 1.0, N.smooth(0.3, 0.8, pac))
-        wl = N.m('MULTIPLY', N.smooth(1.2, 0.2, dsh), bay)
+        wl = N.m('MULTIPLY', N.smooth(1.2, 0.2, dsh), N.m('MULTIPLY', bay, F('V4_WET', 0.0)))
         dk = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.010, 0.020, 0.022), i_Roughness=0.15, i_Specular_IOR_Level=0.5)
         m1 = N.n('ShaderNodeMixShader'); N.L(N.m('MULTIPLY', wl, 0.6 * F('V4_WASH', 1.0)), m1.inputs[0]); N.L(sh, m1.inputs[1]); N.L(dk.outputs[0], m1.inputs[2]); sh = m1.outputs[0]
         lace = N.noise(N.mapping(rot, scale=(0.7, 1.4, 1.0)), 0.8, detail=6.0, rough=0.65)
         wz = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(3.5, 0.8, dsh), N.smooth(0.2, 0.8, dsh)), bay)
-        wf_ = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(0.58, 0.70, lace), wz), F('V4_FOAM', 0.45))
+        wf_ = N.m('MULTIPLY', N.m('MULTIPLY', N.smooth(0.58, 0.70, lace), wz), F('V4_FOAM', 0.25))
         fw = N.n('ShaderNodeBsdfPrincipled', i_Base_Color=(0.62, 0.66, 0.66), i_Roughness=0.9)
         m2 = N.n('ShaderNodeMixShader'); N.L(wf_, m2.inputs[0]); N.L(sh, m2.inputs[1]); N.L(fw.outputs[0], m2.inputs[2]); sh = m2.outputs[0]
     return sh, parts
