@@ -16,7 +16,7 @@ kerb, its 15 cm step, the gutter and the kerb cars then follow the new kerb.
   cap:   never more than 35 % of the roadway's own width along the wall's normal (alleys, narrow lanes keep a carriageway).
   skip:  an edge whose walls already have their width (the kerb would move < 0.25 m); an edge with walls along < 30 %.
 
-python3 se_prep.py [x0 y0 x1 y1 (world m)] [--out se_aprons.json]
+python3 se_prep.py [x0 y0 x1 y1 (world m)] [--out se_aprons.json]   (env SE_CLIP=1: aprons clipped to the wall frontage)
   input: city_data.buildings / city_data.streets (as the render reads them), SE_SW=<4g86 geojson>
   (default /Volumes/DANI-SD-DRIVE2/street_edge/sidewalk_widths_4g86.geojson)."""
 import sys, os, json, math, time, numpy as np
@@ -28,6 +28,7 @@ from shapely.ops import unary_union
 from shapely.strtree import STRtree
 
 FT = 0.3048
+CLIP = os.environ.get('SE_CLIP', '0') == '1'   # aprons only along the wall-fronted stretches (see below)
 SW_FILE = os.environ.get('SE_SW', '/Volumes/DANI-SD-DRIVE2/street_edge/sidewalk_widths_4g86.geojson')
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 OUT = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else os.path.join(HERE, 'se_aprons.json')
@@ -88,10 +89,10 @@ for poly in (RW.geoms if hasattr(RW, 'geoms') else [RW]):
             if shapely.contains_xy(RW, *(m + out * 0.3)): continue          # a seam between two roadway pieces
             # the walls along this kerb (or right-of-way) edge: signed distance from the edge to the first wall outward
             # (negative: the building stands on the roadway)
-            hs = []
+            hs = []; us = []
             for u in np.arange(0.5, L, 1.0):
                 p = a + t * u; on = shapely.contains_xy(BU, p[0] + out[0] * H, p[1] + out[1] * H)
-                if on.any(): hs.append(float(H[int(np.argmax(on))]))
+                if on.any(): hs.append(float(H[int(np.argmax(on))])); us.append(float(u))
             if len(hs) < max(2, 0.3 * L): continue
             stats['fronted'] += 1
             W = sw_width(m, t)
@@ -102,7 +103,19 @@ for poly in (RW.geoms if hasattr(RW, 'geoms') else [RW]):
             R = float(ds[np.argmin(on)]) if not on.all() else 40.0
             if s > 0.35 * R: s = 0.35 * R; stats['capped'] += 1
             if s < 0.25: continue
-            q = Polygon([a, c, c - out * s, a - out * s]).intersection(poly)
+            if CLIP:
+                # [SE_CLIP, 29/09] only the wall-fronted stretches of the edge (gaps <= 4 m bridged, 1 m past the last wall): the apron
+                # no longer spans a lot frontage / driveway / plaza opening (block52_v7 Jackson Sq: an apron across a parking lot's
+                # frontage stood ~1 m over the lot, two paved tiers with a hard step)
+                iv = []
+                for u in us:
+                    if iv and u - iv[-1][1] <= 4.0 + 1.0: iv[-1][1] = u
+                    else: iv.append([u, u])
+                segs = [(max(0.0, u0 - 1.5), min(L, u1 + 1.5)) for u0, u1 in iv if u1 - u0 >= 1.0]
+                if not segs: continue
+                q = unary_union([Polygon([a + t * u0, a + t * u1, a + t * u1 - out * s, a + t * u0 - out * s]) for u0, u1 in segs]).intersection(poly)
+            else:
+                q = Polygon([a, c, c - out * s, a - out * s]).intersection(poly)
             if q.is_empty or q.area < 0.2: continue
             stats['apron'] += 1
             parts = [q] if q.geom_type == 'Polygon' else [g for g in getattr(q, 'geoms', []) if g.geom_type == 'Polygon']
