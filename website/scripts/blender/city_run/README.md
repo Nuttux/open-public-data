@@ -15,7 +15,7 @@ AI jobs (prep_sb.py):
 
 Post (post_sb.py, in finish, after compose):
 - `BRIDGE_RENDER=1`: landmark components standing in water (ring ≥ 85 % water, sparse) are replaced by the render (bridge decks, towers and trusses). In b8 the AI drew a house and rooftop units on the Bay Bridge.
-- `QUAY_R=300`: AI greenery (trees, hedges, lawns) on ground, street or quay-wall pixels within 300 L9 px of water, where the render has no vegetation. It is filled from the surrounding AI paving (plus render grain), together with the plants' cast shadows. `QUAY_R=0` = off.
+- `QUAY_R` is now **off by default** (Daniel rejected it on b8, 30/09 evening: the fill left smeared, 'photoshopped' patches, and the tree removal was a misreading). What Daniel meant is that the land ends abruptly against the water and looks pasted in. The proposed fix is `QUAY_LIP=1` (off until he approves the sheet `live_ai/block52/b8_quay_edge_test.jpg`): a 1.8 m seawall face with a wet line and a kerb, drawn where ground meets render water with no pier wall nearby. The proper version is a straight seawall in the render itself (terrain_hq, along the OSM coastline).
 - `ROOF_PLANTS=0` (experimental, off): the same fill for green on flat roofs. On b8 it left blotches (Westfield) and smeared a glass tower's park reflection, so it is not used.
 
 ### Auto detect + re-roll stage (NEW, between `ai:<w>` and `post`)

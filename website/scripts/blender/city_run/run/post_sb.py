@@ -194,10 +194,10 @@ def bridge_mask(sid):
     for yy in range(y0, y1, 2048): parts.append(codeof(M.read((x0, yy, x1, min(y1, yy + 2048)), 'class.png'))[::4, ::4])
     c = np.vstack(parts); del parts; wat = c == 1; l4, n = nd.label(c == 4); sz = np.bincount(l4.ravel()); sl = nd.find_objects(l4); m = np.zeros(c.shape, bool)
     for i in range(1, n + 1):
-        if sz[i] * 16 < 20000: continue
+        if sz[i] * 16 < 300000: continue   # bridges only (b8: 20k also caught two floating ferry barges, drawn flat grey)
         s = sl[i - 1]; ys = slice(max(0, s[0].start - 10), s[0].stop + 10); xs = slice(max(0, s[1].start - 10), s[1].stop + 10); mi = l4[ys, xs] == i
         ring = nd.binary_dilation(mi, iterations=8) & ~mi; wf = float(wat[ys, xs][ring].mean()); fill = sz[i] / float(mi.shape[0] * mi.shape[1])
-        if wf >= 0.85 and fill < 0.25: m[ys, xs] |= mi
+        if wf >= 0.85 and fill < 0.25 and max(mi.shape) * 4 >= 2000: m[ys, xs] |= mi
     np.savez_compressed(f, m=m, o=np.array([x0, y0])); return m, (x0, y0)
 def bridge(out, ren, code, box, sid):
     if not BRIDGE_RENDER: return out, dict(bridge_px=0)
