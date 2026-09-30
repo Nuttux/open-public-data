@@ -7,7 +7,7 @@
   windows <SB>              -> the AI windows: the SB's tile range split in 2 by rows (upper / lower half, 1 shared L8 each). Claims the
                                unclaimed AI tiles (<ROOT>/tiles/claims.json: a world tile is generated ONCE, first window wins), and per
                                window <SBD>/<w>/: R_<w>.jpg (mosaic of the tiles +- 1536 px from the crop registry, pre-toned CAMO=0 ROOFN=1),
-                               R_<w>.json, P.txt (C9 lines; key v8_rail4 on rail tiles else v5_dry; seed sha1('pilot:gx,gy')), SL8.json
+                               R_<w>.json, P.txt (C9 lines; key RAIL_KEY (v8_rail5) on rail tiles else v5_dry; seed sha1('pilot:gx,gy')), SL8.json
                                (FIX-v6: nf9 1, nfkey nfC), sl8v.py (= sl8v_city.py: L8 prefill + resume), run_pyv.py, lr_run9.py
                                (= combo/block52/lr_run9_b8.py: FIX-v6 prompts + v8_rail4), l8pre_<w>.png (the neighbours' L8 from <ROOT>/l8/).
   probe <probe id>          -> <ROOT>/probes/<id>/: jobs_render.txt (partial crops: the probe tiles +- 1536 px), after the render the window
@@ -66,7 +66,10 @@ def claims(update=None):
 def rail_keys(tiles):
     sys.path.insert(0, f'{W}/combo/block52'); import rails_b8
     TH = next(r['RAIL_M'] for r in AREAS['key_rules'] if r['key'] == 'v8_rail4')
-    R = rails_b8.rail_len([t.replace('_', ',') for t in tiles]); return {t: ('v8_rail4' if R[t.replace('_', ',')] >= TH else 'v5_dry') for t in tiles}
+    # RAIL_KEY (30/09 b8 sweep): v8_rail5 (default) = rails only where the render shows them, other streets plain asphalt, NO vehicle
+    # wording (rail4's VEHG invented buses / cars; b8 ran v5_dry everywhere and erased the F-line and T-line); RAIL_KEY=v8_rail4 = before
+    K = os.environ.get('RAIL_KEY', 'v8_rail5')
+    R = rails_b8.rail_len([t.replace('_', ',') for t in tiles]); return {t: (K if R[t.replace('_', ',')] >= TH else 'v5_dry') for t in tiles}
 seed = lambda gx, gy: int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16)
 
 def l8_prefill(T, out_png):
@@ -92,6 +95,7 @@ def make_window(wdir, w, T, box, mos, keys):
     Image.fromarray(mos.read(box)).save(f'{pt}/R.jpg', quality=96); Image.fromarray(mos.read(box, 'class.png')).save(f'{pt}/R.class.png', compress_level=1)
     json.dump(dict(ox=box[0], oy=box[1]), open(f'{pt}/meta.json', 'w'))
     subprocess.run(['python3', f'{W}/ai/look_regain/pretone_block.py', w, f'{wdir}/R_{w}.jpg'], env=dict(os.environ, CAMO='0', ROOFN='1', PT_DIR=pt), check=True)
+    if os.environ.get('AUTO_REROLL', '1') == '1': shutil.copy(f'{pt}/R.class.png', f'{wdir}/C_{w}.png')   # the class map for autoreroll.py (30/09)
     shutil.rmtree(pt); json.dump(dict(ox=box[0], oy=box[1]), open(f'{wdir}/R_{w}.json', 'w'))
     open(f'{wdir}/P.txt', 'w').write('\n'.join(lines) + '\n'); json.dump(dict(jobs='P.txt', nf9=1, nfkey='nfC', out=w), open(f'{wdir}/SL8.json', 'w'))
     subprocess.run(['python3', f'{HERE}/mk_sl8v_city.py', f'{wdir}/sl8v.py'], check=True, stdout=subprocess.DEVNULL)

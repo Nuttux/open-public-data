@@ -205,6 +205,14 @@ if _sk:     # a landmark replaces its footprints only once it's built (ERA None 
     HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}
 _allb0 = [b for b in city_data.buildings(-9000, -9000, 9000, 9000) if in_box(b['cx'], b['cy'], 80)]
 _allb = [b for b in EA.fix_records(_allb0, ERA) if b['gid'] not in HG]
+# [SLIVER, 30/09 b8 defect sweep: gid 124187 (7 m2 footprint, 35 m, 'single family') stood as a brick chimney in a park]
+# SLIVER=1 (default, 0 = before): a record with a footprint under 30 m2 and a height over 3x its footprint's side is a data sliver, dropped
+if E('SLIVER', '1') == '1':
+    def _ring_area(r_):
+        r_ = list(r_); n_ = len(r_)
+        return abs(sum(r_[i][0] * r_[(i + 1) % n_][1] - r_[(i + 1) % n_][0] * r_[i][1] for i in range(n_))) / 2 if n_ >= 3 else 0.0
+    _sl = [b['gid'] for b in _allb if _ring_area(b['ring']) < 30 and (b.get('h') or 0) > 3 * math.sqrt(max(_ring_area(b['ring']), 1.0))]
+    _allb = [b for b in _allb if b['gid'] not in set(_sl)]; log('SLIVER: dropped', len(_sl), 'sliver records', _sl[:12])
 recs = [b for b in (EA.place_record(dict(b), ERA) for b in _allb if in_box(b['cx'], b['cy'])) if b]
 recs += [b for b in EA.landmark_sites(_allb0, ERA) if in_box(b['cx'], b['cy'])]     # a landmark going up, or what stood before it
 if ERA is None and E('SITES', '1') == '1':   # (27/09, assets_urban) today's construction sites (DataSF permits on their parcels): urban_build.py
@@ -226,6 +234,21 @@ if ERA is not None and E('INFILL', '1') == '1':
 if E('MAXB'): recs = recs[:int(E('MAXB'))]
 log('buildings', len(recs))
 CBOX = BOX or d['box']
+# [TREE_WATER, 30/09 b8 defect sweep: 7 register / canopy trees stood in Mission Creek's water] TREE_WATER=1 (default, 0 = before):
+# no tree, canopy mass or measured crown on the render's own water (terrain_hq's sea.png mask, the OSM coastline outside it)
+_TW = []
+def in_water(x, y):
+    if E('TREE_WATER', '1') != '1': return False
+    if not _TW:
+        st_ = 2.0 if (CBOX[2] - CBOX[0]) * (CBOX[3] - CBOX[1]) < 16e6 else 6.0
+        x0_, y0_ = CBOX[0] - 60, CBOX[1] - 60; nx_ = int((CBOX[2] - CBOX[0] + 120) / st_) + 1; ny_ = int((CBOX[3] - CBOX[1] + 120) / st_) + 1
+        try: m_ = terrain_hq._water_mask(SD, x0_, y0_, st_, nx_, ny_)
+        except Exception as ex_: log('TREE_WATER: no mask', ex_); m_ = None
+        _TW.append((m_, x0_, y0_, st_) if m_ is not None else None)
+    if _TW[0] is None:                                   # no sea.png in the scene dir: the OSM coastline (> 2 m past it = water)
+        l_, sd_ = terrain_hq._coast(np.array([x]), np.array([y])); return bool(l_[0] == 0 and not (sd_[0] > -2.0))
+    m_, x0_, y0_, st_ = _TW[0]; c_ = int(round((x - x0_) / st_)); r_ = int(round((y - y0_) / st_))
+    return 0 <= r_ < m_.shape[0] and 0 <= c_ < m_.shape[1] and bool(m_[r_, c_])
 if ERA is not None:
     OL = EA.OpenLand(recs, CBOX, float(E('OPEN_RES', 8.0)), ground, 80.0, ERA)
     def open_at(x, y, grid=None): return OL.at(x, y, grid)
@@ -848,6 +871,7 @@ for t in d['trees']:
             kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         gz_ = ground(x, y)
         if gz_ is None: continue
+        if in_water(x, y): continue                          # [TREE_WATER]
         pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 nreg = len(pts)
 # the measured canopy: one crown per mass, as wide as the mass, unless the
@@ -878,6 +902,7 @@ for (x, y, z, rad, *_rest) in MASS:
         if gz_ is None: continue
     else: kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     seen.add((round(x / 2.5), round(y / 2.5)))
+    if in_water(x, y): continue                          # [TREE_WATER]
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 # THE REAL CANOPY (veg_canopy.py, the vegetation agent): with CANOPY=1 every
 # crown the LiDAR and NAIP agree on (yards, block interiors, hills), planted at
@@ -902,6 +927,7 @@ if VEG and getattr(VK, 'canopy_on', False):
         gz_ = ground(x, y)
         if gz_ is None: continue
         if gz_ < 0.5 and E('MARINA_V2', '1') == '1': continue      # (27/09, assets_urban) a 'crown' over the water: the LiDAR's masts and docks (trees on South Beach Harbor's fingers)
+        if in_water(x, y): continue                          # [TREE_WATER]
         pts.append((x, y, gz_ - 0.1, s_, r_, kind)); _nc += 1
 log('trees: register', nreg, 'canopy masses', len(pts) - nreg - _nc, 'of', len(MASS), 'measured crowns', _nc)
 if VEG and getattr(VK, 'canopy_on', False) and E('TREE_ROAD', '0') == '1': log('trees: TREE_ROAD canopy crowns over the road: dropped', _trc[0], 'moved', _trc[1])

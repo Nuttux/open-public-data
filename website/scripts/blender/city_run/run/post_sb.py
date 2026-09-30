@@ -83,6 +83,97 @@ def compose(out, ren, code):
     if rim.any(): out[rim] = (out[rim] * (1 - al[rim][:, None]) + ren[rim] * al[rim][:, None]).astype(np.uint8)
     st.update(docks_render=int(touch.sum()), plants_fixed=int(plant.sum())); return out, st
 
+# (30/09 b8 defect sweep) two water-side rules after compose, default ON (0 = off):
+#   QUAY_R=300       AI greenery (trees, hedges, lawns) on ground / street px within QUAY_R L9 px (~28 m) of water where the render has none
+#                    (quays, pier aprons and tips, waterfront plazas, the Embarcadero) -> filled from the surrounding AI paving (+ render
+#                    texture), their cast shadows too; the render's own trees and lawns (render green) stay
+#   BRIDGE_RENDER=1  landmark components standing in water (ring >= 85 % water, sparse: area / bbox < 0.25 = bridge decks, towers, trusses)
+#                    -> render (the AI drew a house and rooftop units on the Bay Bridge deck); one mask per SB at 1/4, cached
+QUAY_R = int(os.environ.get('QUAY_R', '300')); BRIDGE_RENDER = os.environ.get('BRIDGE_RENDER', '1') == '1'
+def _normconv(a, valid, sigmas=(10, 40, 160)):
+    """fill: Gaussian normalised convolution of a over valid px, coarser sigma where the finer one has no support"""
+    F = np.zeros(a.shape, np.float32); got = np.zeros(a.shape[:2], bool); v = valid.astype(np.float32)
+    for sg in sigmas:
+        den = cv2.GaussianBlur(v, (0, 0), sg); num = cv2.GaussianBlur(a.astype(np.float32) * v[..., None], (0, 0), sg)
+        ok = (den > 0.02) & ~got; F[ok] = num[ok] / den[ok, None]; got |= ok
+        if got.all(): break
+    if not got.all(): F[~got] = a[valid].mean(0) if valid.any() else a[~got]
+    return F
+def _fill_plants(out, ren, code, pl, pave_cls, obj_cls=(), grow=4):
+    """replace the AI plant blobs pl (+ their cast shadows) by the surrounding AI surface of classes pave_cls (normalised convolution
+    + the render's grain); blobs over obj_cls px (a shed wall behind a quay tree) get the render there, shifted to the AI's tone"""
+    pl = nd.binary_opening(pl, iterations=2)
+    if not pl.any(): return 0, 0
+    lb, n = nd.label(nd.binary_dilation(pl, iterations=grow)); tot = 0; H, Wd = code.shape; PAD = 96
+    for sl in nd.find_objects(lb):
+        ys = slice(max(0, sl[0].start - PAD), min(H, sl[0].stop + PAD)); xs = slice(max(0, sl[1].start - PAD), min(Wd, sl[1].stop + PAD))
+        m = lb[ys, xs] > 0; c = code[ys, xs]; o = out[ys, xs].astype(np.float32); r = ren[ys, xs].astype(np.float32); L = o.mean(-1)
+        pave = np.isin(c, pave_cls); obj = np.isin(c, obj_cls) if obj_cls else np.zeros_like(pave); m = m & (pave | obj); valid = ~m & pave
+        if valid.sum() < 50: continue
+        Lm = np.median(L[valid]); valid &= L > Lm - 15                       # the surface, not its shadows
+        if valid.sum() < 50: continue
+        F = _normconv(o, valid)
+        near = nd.binary_dilation(m, iterations=64) & ~m & pave             # the cast shadows round the plant: darker than the fill
+        sh = nd.binary_opening(near & (L < F.mean(-1) - 12), iterations=1)
+        mp = (m & pave) | (nd.binary_dilation(sh, iterations=2) & pave)
+        tex = r - cv2.GaussianBlur(r, (0, 0), 2.0)                           # render grain on the filled surface
+        f = np.clip(F + 0.6 * tex + 0.5, 0, 255).astype(np.uint8); blk = out[ys, xs]; blk[mp] = f[mp]; tot += int(mp.sum())
+        mo = m & obj
+        if mo.any():
+            vo = obj & ~m
+            d = (o[vo].mean(0) - r[vo].mean(0)) if vo.sum() > 50 else np.zeros(3, np.float32)
+            blk[mo] = np.clip(r[mo] + d + 0.5, 0, 255).astype(np.uint8); tot += int(mo.sum())
+    return tot, int(n)
+def _green(a): a = a.astype(np.int16); return (a[..., 1] > a[..., 0] + 8) & (a[..., 1] > a[..., 2] + 2)
+def quay_plants(out, ren, code):
+    wat = code == 1
+    if not wat.any() or QUAY_R <= 0: return out, dict(quay_plants=0)
+    dw = np.repeat(np.repeat(nd.distance_transform_edt(~wat[::4, ::4]) * 4, 4, 0), 4, 1)[:code.shape[0], :code.shape[1]]
+    rveg = nd.binary_dilation((code == 3)[::2, ::2], iterations=6); rveg = np.repeat(np.repeat(rveg, 2, 0), 2, 1)[:code.shape[0], :code.shape[1]]   # the render's own trees / lawns (+ ~12 px)
+    cand = (dw <= QUAY_R) & np.isin(code, (0, 5, 6, 7)) & ~rveg; pl = np.zeros(code.shape, bool)
+    for y in range(0, out.shape[0], 2048):
+        s = slice(y, min(out.shape[0], y + 2048))
+        if cand[s].any(): pl[s] = cand[s] & _green(out[s]) & ~(_green(ren[s]) & np.isin(code[s], (6, 7)))   # (a green render wall stays)
+    tot, n = _fill_plants(out, ren, code, pl, (0, 5), (6, 7)); return out, dict(quay_plants=tot, quay_blobs=n)
+# ROOF_PLANTS=1 (experimental, default 0; 30/09 b8 #11: a garden street with trees invented on the Westfield roof in every seed, SOLID clause
+# or not): AI greenery on roof / landmark px of a FLAT render roof where the render has no green (+ 12 px) -> the surrounding roof
+ROOF_PLANTS = os.environ.get('ROOF_PLANTS', '0') == '1'   # OFF by default: on b8 it left pale blotches on Westfield and smeared a glass tower's park reflection
+def roof_plants(out, ren, code):
+    if not ROOF_PLANTS: return out, dict(roof_plants=0)
+    rveg = nd.binary_dilation(((code == 3) | _green(ren))[::2, ::2], iterations=6); rveg = np.repeat(np.repeat(rveg, 2, 0), 2, 1)[:code.shape[0], :code.shape[1]]
+    pl = np.zeros(code.shape, bool)
+    for y in range(0, out.shape[0], 2048):
+        s = slice(y, min(out.shape[0], y + 2048)); c = code[s]; rf = np.isin(c, (2, 4)) & ~rveg[s]
+        if not rf.any(): continue
+        Lr = cv2.cvtColor(np.ascontiguousarray(ren[s]), cv2.COLOR_RGB2GRAY).astype(np.float32)
+        flat = cv2.blur(np.abs(cv2.Laplacian(Lr, cv2.CV_32F)), (31, 31)) < 6
+        pl[s] = rf & flat & _green(out[s])
+    l_, n_ = nd.label(nd.binary_opening(pl, iterations=2)); keep = np.bincount(l_.ravel()) >= 400; keep[0] = False; pl = keep[l_]   # tiny specks stay
+    tot, n = _fill_plants(out, ren, code, pl, (2, 4), grow=9); return out, dict(roof_plants=tot, roof_blobs=n)   # (a crown's pale rim too)
+
+def bridge_mask(sid):
+    """1/4-res mask (SB box +- HALO) of the landmark components that stand in water: bridges"""
+    D = sbd(sid); f = f'{D}/bridge4.npz'
+    if os.path.exists(f): z = np.load(f); return z['m'], tuple(z['o'])
+    Q, _, _ = geom(sid); M = mos(); x0, y0, x1, y1 = Q[0] - HALO, Q[1] - HALO, Q[2] + HALO, Q[3] + HALO; parts = []
+    for yy in range(y0, y1, 2048): parts.append(codeof(M.read((x0, yy, x1, min(y1, yy + 2048)), 'class.png'))[::4, ::4])
+    c = np.vstack(parts); del parts; wat = c == 1; l4, n = nd.label(c == 4); sz = np.bincount(l4.ravel()); sl = nd.find_objects(l4); m = np.zeros(c.shape, bool)
+    for i in range(1, n + 1):
+        if sz[i] * 16 < 20000: continue
+        s = sl[i - 1]; ys = slice(max(0, s[0].start - 10), s[0].stop + 10); xs = slice(max(0, s[1].start - 10), s[1].stop + 10); mi = l4[ys, xs] == i
+        ring = nd.binary_dilation(mi, iterations=8) & ~mi; wf = float(wat[ys, xs][ring].mean()); fill = sz[i] / float(mi.shape[0] * mi.shape[1])
+        if wf >= 0.85 and fill < 0.25: m[ys, xs] |= mi
+    np.savez_compressed(f, m=m, o=np.array([x0, y0])); return m, (x0, y0)
+def bridge(out, ren, code, box, sid):
+    if not BRIDGE_RENDER: return out, dict(bridge_px=0)
+    m4, (ox, oy) = bridge_mask(sid); a, b = (box[1] - oy) // 4, (box[0] - ox) // 4; h4, w4 = (code.shape[0] + 3) // 4, (code.shape[1] + 3) // 4
+    sub = np.zeros((h4, w4), bool); ya, xa = max(0, a), max(0, b); yb, xb = min(m4.shape[0], a + h4), min(m4.shape[1], b + w4)
+    if ya < yb and xa < xb: sub[ya - a:yb - a, xa - b:xb - b] = m4[ya:yb, xa:xb]
+    if not sub.any(): return out, dict(bridge_px=0)
+    m = np.repeat(np.repeat(nd.binary_dilation(sub, iterations=1), 4, 0), 4, 1)[:code.shape[0], :code.shape[1]] & np.isin(code, (4, 7))
+    m = m | (nd.binary_dilation(m, iterations=3) & (code != 1) & ~np.isin(code, (2, 6)))   # its rim (AI halo), never a neighbour's roof or wall
+    out[m] = ren[m]; return out, dict(bridge_px=int(m.sum()))
+
 def roof(out, ren, cls, g3):
     sys.modules['measure'] = types.SimpleNamespace(MX=types.SimpleNamespace(code=lambda c: ((np.asarray(c) > 128) * np.array([4, 2, 1])).sum(-1)), SU=None)
     sys.path.insert(0, f'{W}/ai/ai_level'); import roof_fix as RF
@@ -168,6 +259,9 @@ def step_finish(sid, only=None):
         mem('region')
         ren = M.read(box); cls = M.read(box, 'class.png'); code = codeof(cls)
         out, s1 = compose(img, ren, code)
+        out, sb_ = bridge(out, ren, code, box, sid); s1.update(sb_)
+        out, sq_ = quay_plants(out, ren, code); s1.update(sq_)
+        out, sr_ = roof_plants(out, ren, code); s1.update(sr_)
         mem('compose')
         out, s2 = roof(out, ren, cls, M.read(box, 'gid.png')); del cls
         mem('roof')

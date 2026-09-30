@@ -1302,7 +1302,7 @@ def construction(b, ground, out):
             for i in range(n):
                 a_, c_ = Vector((*ring[i], zfoot)), Vector((*ring[(i + 1) % n], zfoot))
                 out.poly(mat, [a_, c_, c_ + Z * (zg - zfoot + hc), a_ + Z * (zg - zfoot + hc)], gcol)
-    if b.get('_site_today') and not (b['h'] >= 25 and b['rise'] < 0.97) and _os_f.environ.get('CRANE_V2', '0') == '1':
+    if b.get('_site_today') and not (b['h'] >= 25 and b['rise'] < 0.97) and _os_f.environ.get('CRANE_V2', '1') == '1':
         import urban_build as UB; UB.site_extras(out, ring, zg, rng)
     # before the 1950s a steel frame was raised by guy derricks standing on
     # its top floor — a mast and a long boom, no tower crane (CONVENTION on
@@ -1324,7 +1324,7 @@ def construction(b, ground, out):
         top = zg + max(hf, 0.0) + 14.0
         ccol = (0.86, 0.66, 0.10)
         mx, my = cx + rng.uniform(-3, 3), cy + rng.uniform(-3, 3)
-        if _os_f.environ.get('CRANE_V2', '0') == '1':      # (27/09, assets_urban) the lattice crane (urban_build.py)
+        if _os_f.environ.get('CRANE_V2', '1') == '1':      # (27/09, assets_urban) the lattice crane (urban_build.py)
             import urban_build as UB
             ang = rng.uniform(0, 2 * math.pi); UB.tower_crane(out, mx, my, zg, top, min(60.0, 25 + b['h'] * 0.15), ang, rng)
             if b.get('_site_today'): UB.site_extras(out, ring, zg, rng)
@@ -1841,17 +1841,34 @@ def roof_garden(b, area, deck, umin, umax, vmin, vmax, inside, placed, spot, at,
     raised planters with shrubs round it, a table and chairs. SOURCED on where, CONVENTION on the planting"""
     r = random.Random(b['gid'] * 71 + 5)
     if area > 300:
-        st = 1.2; ph = r.uniform(0, 6.28); pv = (vmin + vmax) / 2 + r.uniform(-0.2, 0.2) * (vmax - vmin)
-        SED = ((0.30, 0.36, 0.15), (0.24, 0.33, 0.12), (0.40, 0.32, 0.20), (0.34, 0.40, 0.18), (0.44, 0.40, 0.24))
-        u = umin + 0.6; nq = 0
-        while u + st <= umax - 0.6 and nq < 3000:
-            v = vmin + 0.6
-            while v + st <= vmax - 0.6:
-                if abs(v + st / 2 - pv) > 0.7 and inside(u, v) and inside(u + st, v + st) and inside(u + st, v) and inside(u, v + st) and _free(placed, u, u + st, v, v + st, 0.2):
-                    k = int((math.sin(u * 0.21 + ph) + math.sin(v * 0.17 - ph) + 2) * 1.2 + r.random() * 0.8) % len(SED)
-                    out.poly('plant', [at(u + 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + st - 0.03, deck + 0.08), at(u + 0.03, v + st - 0.03, deck + 0.08)], SED[k]); nq += 1
-                v += st
-            u += st
+        # [GREENROOF_V2, 30/09 b8 sweep: the 1.2 m mats in 5 contrasting colours read as a pixel checkerboard and the AI kept it]
+        # GREENROOF_V2=1 (default): 2.4 m mats of ONE sedum tone, +-4 % on a slow field (a continuous planted roof); 0 = the 27/09 mats
+        if _os_f.environ.get('GREENROOF_V2', '1') == '1':
+            st = 2.4; ph = r.uniform(0, 6.28); pv = (vmin + vmax) / 2 + r.uniform(-0.2, 0.2) * (vmax - vmin)
+            base = r.choice(((0.31, 0.36, 0.16), (0.34, 0.37, 0.19), (0.36, 0.36, 0.20)))
+            u = umin + 0.6; nq = 0
+            while u + st <= umax - 0.6 and nq < 3000:
+                v = vmin + 0.6
+                while v + st <= vmax - 0.6:
+                    if abs(v + st / 2 - pv) > 0.7 and inside(u, v) and inside(u + st, v + st) and inside(u + st, v) and inside(u, v + st) and _free(placed, u, u + st, v, v + st, 0.2):
+                        j = 1.0 + 0.03 * (math.sin(u * 0.07 + ph) + math.sin(v * 0.05 - ph)) + r.uniform(-0.01, 0.01)
+                        out.poly('plant', [at(u, v, deck + 0.08), at(u + st, v, deck + 0.08), at(u + st, v + st, deck + 0.08), at(u, v + st, deck + 0.08)], tuple(min(1.0, c * j) for c in base)); nq += 1
+                    v += st
+                u += st
+            box('deck', umin + 0.6, pv - 0.45, umax - umin - 1.2, 0.9, deck, 0.12, (0.60, 0.59, 0.56))   # the paver path, over the mats
+            return
+        else:
+            st = 1.2; ph = r.uniform(0, 6.28); pv = (vmin + vmax) / 2 + r.uniform(-0.2, 0.2) * (vmax - vmin)
+            SED = ((0.30, 0.36, 0.15), (0.24, 0.33, 0.12), (0.40, 0.32, 0.20), (0.34, 0.40, 0.18), (0.44, 0.40, 0.24))
+            u = umin + 0.6; nq = 0
+            while u + st <= umax - 0.6 and nq < 3000:
+                v = vmin + 0.6
+                while v + st <= vmax - 0.6:
+                    if abs(v + st / 2 - pv) > 0.7 and inside(u, v) and inside(u + st, v + st) and inside(u + st, v) and inside(u, v + st) and _free(placed, u, u + st, v, v + st, 0.2):
+                        k = int((math.sin(u * 0.21 + ph) + math.sin(v * 0.17 - ph) + 2) * 1.2 + r.random() * 0.8) % len(SED)
+                        out.poly('plant', [at(u + 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + 0.03, deck + 0.08), at(u + st - 0.03, v + st - 0.03, deck + 0.08), at(u + 0.03, v + st - 0.03, deck + 0.08)], SED[k]); nq += 1
+                    v += st
+                u += st
         box('deck', umin + 0.6, pv - 0.45, umax - umin - 1.2, 0.9, deck, 0.05, (0.60, 0.59, 0.56))   # the paver path (clipped by the parapet)
         return
     s_ = spot(min(4.5, (umax - umin) * 0.5), min(3.5, (vmax - vmin) * 0.5), tries=30, pad=0.4)
