@@ -84,12 +84,13 @@ def compose(out, ren, code):
     st.update(docks_render=int(touch.sum()), plants_fixed=int(plant.sum())); return out, st
 
 # (30/09 b8 defect sweep) two water-side rules after compose, default ON (0 = off):
-#   QUAY_R=300       AI greenery (trees, hedges, lawns) on ground / street px within QUAY_R L9 px (~28 m) of water where the render has none
+#   QUAY_R=300 (default 0 = off) AI greenery (trees, hedges, lawns) on ground / street px within QUAY_R L9 px (~28 m) of water where the render has none
 #                    (quays, pier aprons and tips, waterfront plazas, the Embarcadero) -> filled from the surrounding AI paving (+ render
 #                    texture), their cast shadows too; the render's own trees and lawns (render green) stay
 #   BRIDGE_RENDER=1  landmark components standing in water (ring >= 85 % water, sparse: area / bbox < 0.25 = bridge decks, towers, trusses)
 #                    -> render (the AI drew a house and rooftop units on the Bay Bridge deck); one mask per SB at 1/4, cached
-QUAY_R = int(os.environ.get('QUAY_R', '300')); BRIDGE_RENDER = os.environ.get('BRIDGE_RENDER', '1') == '1'
+QUAY_R = int(os.environ.get('QUAY_R', '0'));   # OFF by default (30/09 evening: Daniel rejected it on b8, the fill left smeared 'photoshopped' patches; the pier issue is the abrupt land/water edge, not the trees)
+BRIDGE_RENDER = os.environ.get('BRIDGE_RENDER', '1') == '1'
 def _normconv(a, valid, sigmas=(10, 40, 160)):
     """fill: Gaussian normalised convolution of a over valid px, coarser sigma where the finer one has no support"""
     F = np.zeros(a.shape, np.float32); got = np.zeros(a.shape[:2], bool); v = valid.astype(np.float32)
@@ -153,6 +154,37 @@ def roof_plants(out, ren, code):
         pl[s] = rf & flat & _green(out[s])
     l_, n_ = nd.label(nd.binary_opening(pl, iterations=2)); keep = np.bincount(l_.ravel()) >= 400; keep[0] = False; pl = keep[l_]   # tiny specks stay
     tot, n = _fill_plants(out, ren, code, pl, (2, 4), grow=9); return out, dict(roof_plants=tot, roof_blobs=n)   # (a crown's pale rim too)
+
+QUAY_LIP = os.environ.get('QUAY_LIP', '0') == '1'; PXM = 9.45   # L9 px per metre up (2 * ZT * SZ)
+def quay_lip(out, code, HQ=1.8, seed=0):
+    """QUAY_LIP=1 (proposal, default 0 until Daniel approves the sheet live_ai/block52/b8_quay_edge_test.jpg): where ground / lawn /
+    street meets the render's water with no pier wall, dock or object nearby, a HQ m seawall face on the edges facing the camera (land
+    stands HQ m above the water: HQ * 9.45 px), a dark wet band at the waterline, a light kerb, a thin shadow past the edges facing away"""
+    H = int(round(HQ * PXM)); o = out.astype(np.float32)
+    W = code == 1; Lnd = np.isin(code, (0, 3, 5))
+    obj = nd.binary_dilation(np.isin(code, (2, 4, 6, 7)), iterations=6)            # a render pier / wall / dock nearby: it has its own edge
+    h_, w_ = code.shape
+    # distance (rows) down from the last land px through water (south-facing edges), and up (north-facing)
+    dn = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32); src = np.zeros(w_, bool)
+    for y in range(h_):
+        run = np.where(Lnd[y] & ~obj[y], 0, np.where(W[y], run + 1, 10 ** 6)); dn[y] = run
+    up = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32)
+    for y in range(h_ - 1, -1, -1):
+        run = np.where(Lnd[y] & ~obj[y], 0, np.where(W[y], run + 1, 10 ** 6)); up[y] = run
+    face = W & (dn >= 1) & (dn <= H)
+    t = np.clip((dn - 0.5) / H, 0, 1)
+    rng = np.random.default_rng(seed); col = (1.0 + 0.025 * nd.gaussian_filter1d(rng.standard_normal(w_), 6) * 2.5).astype(np.float32)[None, :]   # soft staining
+    base = np.array([146, 145, 140], np.float32)
+    wall = base[None, None, :] * (1.04 - 0.22 * t)[..., None] * col[..., None]
+    wet = np.clip((t - 0.72) / 0.28, 0, 1)[..., None]; wall = wall * (1 - 0.55 * wet) + np.array([62, 66, 64], np.float32) * 0.55 * wet
+    a = nd.gaussian_filter(face.astype(np.float32), 0.7); a = np.where(face, 1.0, np.minimum(a, 0.6))[..., None]
+    o = o * (1 - a) + wall * a
+    kerb = Lnd & ~obj & (np.roll(W, -1, 0) | np.roll(W, -2, 0)) & ~W                                   # the land px right above a face: a light kerb
+    o[kerb] = np.minimum(255, o[kerb] * 1.12 + 10)
+    sh = W & (up >= 1) & (up <= int(1.2 * 5.2) + 2)                                                   # shadow on the water past the north-facing edges
+    s = nd.gaussian_filter(sh.astype(np.float32), 1.0)[..., None]
+    o = o * (1 - 0.30 * s)
+    return np.clip(o + 0.5, 0, 255).astype(np.uint8), dict(face_px=int(face.sum()), kerb_px=int(kerb.sum()), shadow_px=int(sh.sum()))
 
 def bridge_mask(sid):
     """1/4-res mask (SB box +- HALO) of the landmark components that stand in water: bridges"""
@@ -264,6 +296,7 @@ def step_finish(sid, only=None):
         out, s1 = compose(img, ren, code)
         out, sb_ = bridge(out, ren, code, box, sid); s1.update(sb_)
         out, sq_ = quay_plants(out, ren, code); s1.update(sq_)
+        if QUAY_LIP: out, sl_ = quay_lip(out, code); s1.update(sl_)
         out, sr_ = roof_plants(out, ren, code); s1.update(sr_)
         mem('compose')
         out, s2 = roof(out, ren, cls, M.read(box, 'gid.png')); del cls
