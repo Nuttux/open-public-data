@@ -89,20 +89,27 @@ def scores(win, t, o):
     # garden: greenery on big flat roofs / landmark roofs
     flat = cv2.blur(np.abs(cv2.Laplacian(Lr[..., 0], cv2.CV_32F)), (15, 15)) < 6
     d['garden'] = big(np.isin(c, (2, 4)) & flat & green(o) & ~nd.binary_dilation(green(r) | (c == 3), iterations=6), 2)
-    # tree_roof (30/09 b8, Daniel): a render tree whose trunk base (the lowest px of each column of the crown, + 3 px) lands on a roof:
-    # px count of such trees (> 300 px, > 60 % of the base on roof). Report only (the tree is in the render: TREE_ROOF=1 at the next render)
-    lt, nt = nd.label(c == 3); tr = 0
+    d['tree_roof'] = sum(h[0] for h in tree_roof_hits(c))
+    return d
+
+def tree_roof_hits(c, x0=0, y0=0):
+    """tree_roof (30/09 b8, Daniel: a bare tree stood on a Golden Gateway roof): render trees (class 3) whose trunk base (the lowest px of
+    each column of the crown, + 3 px) lands on a roof (class 2, > 60 % of the base) with roof on both sides of the crown above its base
+    (a tree standing BEHIND a roof edge has street / ground / facade beside it there: not a hit). c: class codes (any size); returns
+    [(px, x, y)] per hit, x / y = the base centre + (x0, y0). Report only: the tree is in the render (TREE_ROOF=1 moves it at the next render)."""
+    lt, _ = nd.label(c == 3); H, Wd = c.shape; out = []
     for k_, sl in enumerate(nd.find_objects(lt)):
         mk = lt[sl] == k_ + 1
         if mk.sum() < 300: continue
-        ys_ = mk.shape[0] - 1 - np.argmax(mk[::-1], 0); has = mk.any(0); xs_ = np.arange(mk.shape[1])[has]; yb = np.minimum(ys_[has] + sl[0].start + 3, 1023)
-        base = c[yb, xs_ + sl[1].start]
-        if (base == 2).mean() <= 0.6: continue
-        yb0 = int(np.median(yb)) - 10; xl, xr = sl[1].start - 14, sl[1].stop + 14   # roof on a side of the crown above its base (a tree
-        if yb0 < 0 or xl < 0 or xr >= 1024: continue                               # behind a building has no roof there: not flagged)
-        if (c[yb0, xl:xl + 8] == 2).mean() > 0.6 or (c[yb0, xr - 8:xr] == 2).mean() > 0.6: tr += int(mk.sum())
-    d['tree_roof'] = tr
-    return d
+        ys_ = mk.shape[0] - 1 - np.argmax(mk[::-1], 0); has = mk.any(0); xs_ = np.arange(mk.shape[1])[has]; yb = np.minimum(ys_[has] + sl[0].start + 3, H - 1)
+        if ((c[yb, xs_ + sl[1].start]) == 2).mean() <= 0.6: continue
+        yb_ = int(np.median(yb)); xl, xr = sl[1].start - 14, sl[1].stop + 14
+        if yb_ - 30 < 0 or xl < 0 or xr >= Wd: continue
+        # roof on BOTH sides of the crown, 10 and 30 px above its base (v2, 30/09 21:10: the one-side test of v1 fired on 150+ trees standing
+        # BEHIND a roof edge in the iso view, precision ~10 % on 24 b8 samples; a tree ON a roof has its roof all round the trunk)
+        if all((c[yb_ - d, xl:xl + 8] == 2).mean() > 0.6 and (c[yb_ - d, xr - 8:xr] == 2).mean() > 0.6 for d in (10, 30)):
+            out.append((int(mk.sum()), int(x0 + (sl[1].start + sl[1].stop) // 2), int(y0 + np.median(yb))))
+    return out
 
 def flat_disagree(win, T, load):
     """per tile: the number of neighbours it disagrees with on flat surfaces (dE of the overlap means > FLAT_DE, farther from the median)"""
