@@ -156,7 +156,7 @@ def roof_plants(out, ren, code):
     tot, n = _fill_plants(out, ren, code, pl, (2, 4), grow=9); return out, dict(roof_plants=tot, roof_blobs=n)   # (a crown's pale rim too)
 
 QUAY_LIP = os.environ.get('QUAY_LIP', '0') == '1'; PXM = 9.45   # L9 px per metre up (2 * ZT * SZ)
-def quay_lip(out, code, HQ=1.8, seed=0):
+def quay_lip(out, code, HQ=1.8, seed=0, ren=None):
     """QUAY_LIP=1 (proposal, default 0 until Daniel approves the sheet live_ai/block52/b8_quay_edge_test.jpg): where ground / lawn /
     street meets the render's water with no pier wall, dock or object nearby, a HQ m seawall face on the edges facing the camera (land
     stands HQ m above the water: HQ * 9.45 px), a dark wet band at the waterline, a light kerb, a thin shadow past the edges facing away"""
@@ -166,6 +166,22 @@ def quay_lip(out, code, HQ=1.8, seed=0):
     if nl_:
         sz_ = np.bincount(lb_.ravel()); Lnd = Lnd & (sz_[lb_] >= 4000)
     obj = nd.binary_dilation(np.isin(code, (2, 4, 6, 7)), iterations=6)            # a render pier / wall / dock nearby: it has its own edge
+    # QUAY_LIP_NAT=1 (30/09 night, b8 check of the whole block): no seawall on NATURAL shores: the render's land px at the edge are green
+    # (a grass bank: Mission Creek), sand (a beach: Aquatic Park, the Pier 70 / India Basin shores) or rough grey (riprap): no source there
+    if ren is not None and os.environ.get('QUAY_LIP_NAT', '1') == '1':
+        edge = Lnd & nd.binary_dilation(W, iterations=8)
+        if edge.any():
+            r_ = ren.astype(np.int16); La_ = cv2.cvtColor(np.ascontiguousarray(ren), cv2.COLOR_RGB2LAB).astype(np.float32)
+            grn = (r_[..., 1] > r_[..., 0] + 6) & (r_[..., 1] > r_[..., 2] + 2)
+            sand = (La_[..., 2] > 142) & (La_[..., 0] > 140) & (La_[..., 1] < 140)
+            g_ = La_[..., 0]; rough = np.sqrt(np.maximum(cv2.blur(g_ * g_, (7, 7)) - cv2.blur(g_, (7, 7)) ** 2, 0)) > 18
+            nat = edge & (grn | sand | rough)
+            # decided per stretch of shore (edge component x 160-column block), not per px: per px left teeth of wall in the gaps
+            le_, ne_ = nd.label(nd.binary_dilation(edge, iterations=3)); le_ = le_ * edge
+            key = le_.astype(np.int64) * 1000 + (np.arange(code.shape[1])[None, :] // 160)
+            kk, inv = np.unique(key[edge], return_inverse=True); fr = np.bincount(inv, weights=nat[edge].astype(float)) / np.bincount(inv)
+            drop = np.zeros_like(edge); drop[edge] = fr[inv] > 0.45
+            Lnd = Lnd & ~nd.binary_dilation(drop, iterations=6)
     h_, w_ = code.shape
     # distance (rows) down from the last land px through water (south-facing edges), and up (north-facing)
     dn = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32); src = np.zeros(w_, bool)
@@ -354,7 +370,7 @@ def step_finish(sid, only=None):
         out, s1 = compose(img, ren, code)
         out, sb_ = bridge(out, ren, code, box, sid); s1.update(sb_)
         out, sq_ = quay_plants(out, ren, code); s1.update(sq_)
-        if QUAY_LIP: out, sl_ = quay_lip(out, code); s1.update(sl_)
+        if QUAY_LIP: out, sl_ = quay_lip(out, code, ren=ren); s1.update(sl_)
         out, sr_ = roof_plants(out, ren, code); s1.update(sr_)
         mem('compose')
         out, s2 = roof(out, ren, cls, M.read(box, 'gid.png')); del cls
