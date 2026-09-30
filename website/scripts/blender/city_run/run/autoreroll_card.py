@@ -23,7 +23,7 @@ def pull():
 up = False; t0 = time.time()
 try:
     env = dict(os.environ, START='0', FP8='3', VAST_MAXTB='4', MAX_VAST=os.environ.get('MAX_VAST', '10'), PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True')
-    r = subprocess.run([sys.executable, f'{W}/speed/gpu.py', 'up', L, '1'], env=env, capture_output=True, text=True, cwd=W)
+    r = subprocess.run([sys.executable, f'{W}/speed/gpu.py', 'up', L, os.environ.get('RR_CARD_H', '1')], env=env, capture_output=True, text=True, cwd=W)
     open(f'{H}/gpu_{L}.log', 'w').write(r.stdout + r.stderr); up = os.path.exists(f'{W}/speed/gpus/{L}.json')
     rl = [x for x in r.stdout.splitlines() if x.startswith('READY')]
     if r.returncode or not rl: raise SystemExit(f'NO GPU rc {r.returncode}: {(r.stderr.strip().splitlines() or ["?"])[-1][:200]}')
