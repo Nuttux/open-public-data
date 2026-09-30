@@ -89,6 +89,19 @@ def scores(win, t, o):
     # garden: greenery on big flat roofs / landmark roofs
     flat = cv2.blur(np.abs(cv2.Laplacian(Lr[..., 0], cv2.CV_32F)), (15, 15)) < 6
     d['garden'] = big(np.isin(c, (2, 4)) & flat & green(o) & ~nd.binary_dilation(green(r) | (c == 3), iterations=6), 2)
+    # tree_roof (30/09 b8, Daniel): a render tree whose trunk base (the lowest px of each column of the crown, + 3 px) lands on a roof:
+    # px count of such trees (> 300 px, > 60 % of the base on roof). Report only (the tree is in the render: TREE_ROOF=1 at the next render)
+    lt, nt = nd.label(c == 3); tr = 0
+    for k_, sl in enumerate(nd.find_objects(lt)):
+        mk = lt[sl] == k_ + 1
+        if mk.sum() < 300: continue
+        ys_ = mk.shape[0] - 1 - np.argmax(mk[::-1], 0); has = mk.any(0); xs_ = np.arange(mk.shape[1])[has]; yb = np.minimum(ys_[has] + sl[0].start + 3, 1023)
+        base = c[yb, xs_ + sl[1].start]
+        if (base == 2).mean() <= 0.6: continue
+        yb0 = int(np.median(yb)) - 10; xl, xr = sl[1].start - 14, sl[1].stop + 14   # roof on a side of the crown above its base (a tree
+        if yb0 < 0 or xl < 0 or xr >= 1024: continue                               # behind a building has no roof there: not flagged)
+        if (c[yb0, xl:xl + 8] == 2).mean() > 0.6 or (c[yb0, xr - 8:xr] == 2).mean() > 0.6: tr += int(mk.sum())
+    d['tree_roof'] = tr
     return d
 
 def flat_disagree(win, T, load):
@@ -115,7 +128,7 @@ def flat_disagree(win, T, load):
 
 def flagged(d):
     TH = dict(TH_DET_AUTO, **TH_NEW); return [k for k, th in TH.items() if d.get(k, 0) >= th]
-def report_flags(d): return [k for k, th in _det()['TH'].items() if d.get(k, 0) >= th and k not in TH_DET_AUTO]
+def report_flags(d): return [k for k, th in _det()['TH'].items() if d.get(k, 0) >= th and k not in TH_DET_AUTO] + (['tree_roof'] if d.get('tree_roof', 0) >= 300 else [])
 def cost(d):
     TH = dict(TH_DET_AUTO, **TH_NEW); return sum(min(3.0, d.get(k, 0) / th) for k, th in TH.items())
 

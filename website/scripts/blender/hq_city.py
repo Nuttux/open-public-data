@@ -871,6 +871,11 @@ for t in d['trees']:
             kind = (K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.8 else K_PINE + int(hp(x, y, 2) * len(PINE))) if park else int(hp(x, y, 2) * NS)
         gz_ = ground(x, y)
         if gz_ is None: continue
+        if E('TREE_ROOF', '1') == '1' and roofed(x, y):   # [TREE_ROOF, 30/09 b8: a tree stood on a Golden Gateway roof] trunk inside a footprint -> open ground within 3 m, else dropped
+            f_ = open_foot(x, y, 3.0)
+            if f_ is None: continue
+            x, y = f_; gz_ = ground(x, y)
+            if gz_ is None: continue
         if in_water(x, y): continue                          # [TREE_WATER]
         pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 nreg = len(pts)
@@ -902,6 +907,11 @@ for (x, y, z, rad, *_rest) in MASS:
         if gz_ is None: continue
     else: kind = K_BROAD + int(hp(x, y, 2) * len(BROAD)) if hp(x, y, 3) < 0.85 else K_PINE + int(hp(x, y, 2) * len(PINE))
     seen.add((round(x / 2.5), round(y / 2.5)))
+    if E('TREE_ROOF', '1') == '1' and roofed(x, y):   # [TREE_ROOF, 30/09 b8: a tree stood on a Golden Gateway roof] trunk inside a footprint -> open ground within 3 m, else dropped
+        f_ = open_foot(x, y, 3.0)
+        if f_ is None: continue
+        x, y = f_; gz_ = ground(x, y)
+        if gz_ is None: continue
     if in_water(x, y): continue                          # [TREE_WATER]
     pts.append((x, y, gz_ - 0.1, tree_scale(kind, crown) * (0.85 + 0.3 * hp(x, y, 4)), 6.283 * hp(x, y, 5), kind))
 # THE REAL CANOPY (veg_canopy.py, the vegetation agent): with CANOPY=1 every

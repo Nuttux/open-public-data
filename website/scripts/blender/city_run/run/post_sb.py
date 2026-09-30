@@ -161,16 +161,19 @@ def quay_lip(out, code, HQ=1.8, seed=0):
     street meets the render's water with no pier wall, dock or object nearby, a HQ m seawall face on the edges facing the camera (land
     stands HQ m above the water: HQ * 9.45 px), a dark wet band at the waterline, a light kerb, a thin shadow past the edges facing away"""
     H = int(round(HQ * PXM)); o = out.astype(np.float32)
-    W = code == 1; Lnd = np.isin(code, (0, 3, 5))
+    W = code == 1; Lnd = np.isin(code, (0, 3))              # (not street: bridge decks over water got a wall under them)
+    lb_, nl_ = nd.label(Lnd)                                   # small land blobs in water (trees / reeds standing in a creek): no wall
+    if nl_:
+        sz_ = np.bincount(lb_.ravel()); Lnd = Lnd & (sz_[lb_] >= 4000)
     obj = nd.binary_dilation(np.isin(code, (2, 4, 6, 7)), iterations=6)            # a render pier / wall / dock nearby: it has its own edge
     h_, w_ = code.shape
     # distance (rows) down from the last land px through water (south-facing edges), and up (north-facing)
     dn = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32); src = np.zeros(w_, bool)
     for y in range(h_):
         run = np.where(Lnd[y] & ~obj[y], 0, np.where(W[y], run + 1, 10 ** 6)); dn[y] = run
-    up = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32)
+    up = np.full((h_, w_), 10 ** 6, np.int32); run = np.full(w_, 10 ** 6, np.int32); LG = Lnd & (code == 0)   # the far-side shadow: from ground edges only (a tree at the edge got a dark halo)
     for y in range(h_ - 1, -1, -1):
-        run = np.where(Lnd[y] & ~obj[y], 0, np.where(W[y], run + 1, 10 ** 6)); up[y] = run
+        run = np.where(LG[y] & ~obj[y], 0, np.where(W[y], run + 1, 10 ** 6)); up[y] = run
     face = W & (dn >= 1) & (dn <= H)
     t = np.clip((dn - 0.5) / H, 0, 1)
     rng = np.random.default_rng(seed); col = (1.0 + 0.025 * nd.gaussian_filter1d(rng.standard_normal(w_), 6) * 2.5).astype(np.float32)[None, :]   # soft staining
@@ -185,6 +188,61 @@ def quay_lip(out, code, HQ=1.8, seed=0):
     s = nd.gaussian_filter(sh.astype(np.float32), 1.0)[..., None]
     o = o * (1 - 0.30 * s)
     return np.clip(o + 0.5, 0, 255).astype(np.uint8), dict(face_px=int(face.sum()), kerb_px=int(kerb.sum()), shadow_px=int(sh.sum()))
+
+# ROOF_RN_SEAM=1 (default; 30/09 b8, Daniel: "why do they change the roofs here?"): the render's aerial-photo roof layer (ROOF_NAIP +
+# RN_CROP, snap/.../faithful/rn_sf8.png, world box x 1900-3400, y 3800-5350) colours the roofs INSIDE its box with their real colour and
+# leaves the procedural roof outside, so a roof cut by the box edge is two colours with a straight seam (61 roofs in b8; the AI copies it).
+# Per cut building: its roof px (part 2) outside the box are re-toned (Lab mean / std) to its roof px inside, feathered 10 px at the edge.
+ROOF_RN_SEAM = os.environ.get('ROOF_RN_SEAM', '1') == '1'
+RN_JSON = os.environ.get('RN_CROP_JSON', '/Users/daniel/code/qipu-render-work/snap/combo6/data/faithful/rn_sf8.png.json')
+def rn_seams(sid):
+    """{gid: [gx_lo, gx_hi, gy_lo, gy_hi]}: the L9 rectangle, at the building's roof height, inside which its roof has the photo colour"""
+    D = sbd(sid); f = f'{D}/rn_seams.json'
+    if os.path.exists(f): return {int(k): v for k, v in json.load(open(f)).items()}
+    import math, importlib.util as iu
+    SN = os.environ.get('RN_SNAP', '/Users/daniel/code/qipu-render-work/snap/combo6'); sys.path.insert(0, SN)   # the render snapshot's records (+ its qc reader)
+    sp = iu.spec_from_file_location('cd_snap', f'{SN}/city_data.py'); cd = iu.module_from_spec(sp); sp.loader.exec_module(cd); sys.path.remove(SN)
+    from shapely.geometry import Polygon, box as sbox
+    bx = json.load(open(RN_JSON))['box']; R = sbox(*bx); edge = R.exterior
+    LON0, LAT0 = -122.438, 37.76; CA = math.cos(math.pi / 6); SA = 0.42; KX = math.sqrt(2) * CA; KY = math.sqrt(2) * SA; ZT = math.sqrt(2 * (CA * CA - SA * SA))
+    RCX, RCY = 241.427019126574, 707.0567508859249; SZ = 2 ** (round(math.log2(0.06898352692062097) * 24) / 24) * 64; PCW, PCH = 2560 * 64, 1536 * 64
+    dm = json.load(open('/Users/daniel/code/qipu-render-work/cloud/viewer/dem20.json')); dz = np.fromfile('/Users/daniel/code/qipu-render-work/cloud/viewer/dem20.bin', np.int16).reshape(dm['ny'], dm['nx'])
+    def dem(x, y):
+        c, r = int((x - dm['x0']) / dm['step']), int((y - dm['y0']) / dm['step'])
+        return max(0.0, dz[r, c] / 10) if 0 <= r < dm['ny'] and 0 <= c < dm['nx'] else 0.0
+    gxf = lambda x: 2 * ((x * KX - RCX) * SZ + PCW / 4); gyf = lambda y, z: 2 * ((RCY - (y * KY + z * ZT)) * SZ + PCH / 4)
+    Q, _, _ = geom(sid); out = {}
+    for b in cd.buildings(bx[0] - 200, bx[1] - 200, bx[2] + 200, bx[3] + 200):
+        try: P = Polygon(b['ring']).buffer(0)
+        except Exception: continue
+        if P.area < 40 or not P.intersects(edge): continue
+        a = P.intersection(R).area / P.area
+        if not 0.03 < a < 0.97: continue
+        c = P.centroid; z = dem(c.x, c.y) + (b.get('h') or 8.0)
+        gy0, gy1 = gyf(bx[3], z), gyf(bx[1], z)
+        if not (Q[0] - 2000 <= gxf(c.x) < Q[2] + 2000 and Q[1] - 2000 <= gyf(c.y, z) < Q[3] + 2000): continue
+        out[int(b['gid'])] = [gxf(bx[0]), gxf(bx[2]), gy0, gy1]
+    json.dump(out, open(f, 'w')); print('RN_SEAMS', sid, len(out), 'roofs cut by the roof-photo box', flush=True); return out
+def rn_seam(out, gid, part, box, sid, code=None):
+    if not ROOF_RN_SEAM: return out, dict(rn_seam=0)
+    S_ = rn_seams(sid); ids = [g for g in S_ if (gid == g).any()] if S_ else []
+    if not ids: return out, dict(rn_seam=0)
+    n = 0; H, Wd = gid.shape
+    for g in ids:
+        m = (gid == g) & (part == 2) & ((code == 2) if code is not None else True)
+        if m.sum() < 400: continue
+        ys_, xs_ = np.where(m); y0, y1, x0, x1 = ys_.min(), ys_.max() + 1, xs_.min(), xs_.max() + 1
+        mm = m[y0:y1, x0:x1]; gx = box[0] + x0 + np.arange(x1 - x0)[None, :]; gy = box[1] + y0 + np.arange(y1 - y0)[:, None]
+        gx0, gx1, gy0, gy1 = S_[g]; ins = (gx >= gx0) & (gx < gx1) & (gy >= gy0) & (gy < gy1)
+        A, B = mm & ins, mm & ~ins
+        if A.sum() < 200 or B.sum() < 200: continue
+        La = lab(out[y0:y1, x0:x1]); ma, sa = La[A].mean(0), La[A].std(0) + 1e-3; mb, sb_ = La[B].mean(0), La[B].std(0) + 1e-3
+        if np.hypot(*(ma[1:] - mb[1:])) < 6: continue                     # the same colour both sides (white / grey roofs): nothing to fix
+        Nl = La.copy(); Nl[..., 1:] = (La[..., 1:] - mb[1:]) / sb_[1:] * sa[1:] + ma[1:]; Nl[..., 0] = La[..., 0] - mb[0] + ma[0]
+        d = nd.distance_transform_edt(~A); w = np.clip(d / 10.0, 0, 1) * B                # 0 at the photo side, 1 from 10 px in
+        blk = out[y0:y1, x0:x1].astype(np.float32); nr = cv2.cvtColor(np.clip(Nl, 0, 255).astype(np.uint8), cv2.COLOR_LAB2RGB).astype(np.float32)
+        out[y0:y1, x0:x1] = np.clip(blk * (1 - w[..., None]) + nr * w[..., None] + 0.5, 0, 255).astype(np.uint8); n += 1
+    return out, dict(rn_seam=n)
 
 def bridge_mask(sid):
     """1/4-res mask (SB box +- HALO) of the landmark components that stand in water: bridges"""
@@ -303,7 +361,8 @@ def step_finish(sid, only=None):
         mem('roof')
         g3 = M.read(box, 'gid.png').astype(np.int32); gid = (g3[..., 0] << 16) | (g3[..., 1] << 8) | g3[..., 2]; gid[gid == 0] = -1; del g3
         cy = slice(max(0, inner[0].start - 512), min(out.shape[0], inner[0].stop + 512)); part = M.read(box, 'part.png')   # colour on the band +- 512 rows (RAM)
-        out[cy], s3 = colour2(out[cy], gid[cy], part[cy], ins[cy], (slice(inner[0].start - cy.start, inner[0].stop - cy.start), inner[1]), sid); del gid, part
+        out[cy], s3 = colour2(out[cy], gid[cy], part[cy], ins[cy], (slice(inner[0].start - cy.start, inner[0].stop - cy.start), inner[1]), sid)
+        out, s5 = rn_seam(out, gid, part, box, sid, code); s3.update(s5); del gid, part
         mem('colour')
         out, s4 = piers(out, ren, code)
         mem('piers')
