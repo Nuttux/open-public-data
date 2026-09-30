@@ -129,7 +129,10 @@ def quay_plants(out, ren, code):
     wat = code == 1
     if not wat.any() or QUAY_R <= 0: return out, dict(quay_plants=0)
     dw = np.repeat(np.repeat(nd.distance_transform_edt(~wat[::4, ::4]) * 4, 4, 0), 4, 1)[:code.shape[0], :code.shape[1]]
-    rveg = nd.binary_dilation((code == 3)[::2, ::2], iterations=6); rveg = np.repeat(np.repeat(rveg, 2, 0), 2, 1)[:code.shape[0], :code.shape[1]]   # the render's own trees / lawns (+ ~12 px)
+    # the render's own trees / lawns (+ ~12 px): class veg, AND green render ground (b8: lawns on the Brannan St Wharf, Mission Rock and the
+    # Mission Creek banks are class 0 green in the render; the first version erased them). Green camo blotches on aprons are protected too.
+    rg = ren[::2, ::2].astype(np.int16); rgr = ((rg[..., 1] - rg[..., 0]) >= 12) & ((rg[..., 1] - rg[..., 2]) >= 12)
+    rveg = nd.binary_dilation((code[::2, ::2] == 3) | rgr, iterations=6); rveg = np.repeat(np.repeat(rveg, 2, 0), 2, 1)[:code.shape[0], :code.shape[1]]
     cand = (dw <= QUAY_R) & np.isin(code, (0, 5, 6, 7)) & ~rveg; pl = np.zeros(code.shape, bool)
     for y in range(0, out.shape[0], 2048):
         s = slice(y, min(out.shape[0], y + 2048))

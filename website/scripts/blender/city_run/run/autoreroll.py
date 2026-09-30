@@ -71,7 +71,7 @@ def scores(win, t, o):
     cp = win.crop(win.C, gx, gy, pad=QUAY_R); wat = cp == 1
     dw = nd.distance_transform_edt(~wat[::4, ::4]) * 4 if wat.any() else np.full((cp.shape[0] // 4 + 1, cp.shape[1] // 4 + 1), 1e9)
     dw = np.repeat(np.repeat(dw, 4, 0), 4, 1)[QUAY_R:QUAY_R + 1024, QUAY_R:QUAY_R + 1024]
-    rveg = nd.binary_dilation(c == 3, iterations=10)   # the render's trees / lawns (its green apron blotches are NOT plants)
+    rg = r.astype(np.int16); rveg = nd.binary_dilation((c == 3) | (((rg[..., 1] - rg[..., 0]) >= 12) & ((rg[..., 1] - rg[..., 2]) >= 12)), iterations=10)   # the render's trees / lawns / green ground (= post_sb QUAY_R)
     d['quay'] = big((dw <= QUAY_R) & np.isin(c, (0, 5)) & green(o) & ~rveg)
     # bridge: landmark components in water, drawn far from the render
     l4, n4 = nd.label(c == 4); bsc = 0
