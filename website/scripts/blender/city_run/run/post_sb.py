@@ -234,7 +234,21 @@ def roof_tone(out, gid, part, code, ren, sid):
         if int(g) not in _RT: _RT[int(g)] = np.median(La[mm], 0)
         tgt = _RT[int(g)]; sp = lf[mm].std(0)
         if sp[1] < 2.0 and sp[2] < 2.0 and sp[0] < 3.0: continue                  # already one tone
-        Nl = La.copy(); Nl[..., 1:] = La[..., 1:] - lf[..., 1:] + tgt[1:]; Nl[..., 0] = La[..., 0] - 0.6 * (lf[..., 0] - tgt[0])
+        Nl = La.copy(); Nl[..., 1:] = La[..., 1:] - lf[..., 1:] + tgt[1:]; kL = np.full(mm.shape, 0.6, np.float32)
+        # (01/10) within 150 px of water, a roof's DARK low-frequency patches are lifted fully: shadows of trees the AI grew in the water
+        # (the compose put the render's water back over the trees, their shadows stayed on the roof as grey 'bites' along its edge)
+        dw = None
+        py0, py1, px0, px1 = max(0, y0 - 150), min(H, y1 + 150), max(0, x0 - 150), min(Wd, x1 + 150); wn = code[py0:py1, px0:px1] == 1
+        if wn.any():
+            dw = nd.distance_transform_edt(~wn)[y0 - py0:y0 - py0 + (y1 - y0), x0 - px0:x0 - px0 + (x1 - x0)]
+            kL = np.where((dw <= 150) & (lf[..., 0] < tgt[0] - 6), 1.0, kL).astype(np.float32)
+        Nl[..., 0] = La[..., 0] - kL * (lf[..., 0] - tgt[0])
+        if wn.any():                                  # the shadow blobs themselves (speckled, high-frequency at 12 px): set to the roof's tone
+            sh = mm & (dw <= 150) & (La[..., 0] < tgt[0] - 25); sh = nd.binary_opening(nd.binary_closing(sh, iterations=4), iterations=3)
+            if sh.sum() >= 200:
+                sh = nd.binary_dilation(sh, iterations=3); shf = np.clip(cv2.GaussianBlur(sh.astype(np.float32), (0, 0), 3) * 1.5, 0, 1)
+                Nl[..., 0] = Nl[..., 0] * (1 - shf) + (tgt[0] + 0.1 * (La[..., 0] - lf[..., 0])) * shf
+                for k_ in (1, 2): Nl[..., k_] = Nl[..., k_] * (1 - shf) + tgt[k_] * shf
         fw = np.clip(nd.distance_transform_edt(mm) / 8.0, 0, 1)[..., None]
         nr = cv2.cvtColor(np.clip(Nl, 0, 255).astype(np.uint8), cv2.COLOR_LAB2RGB).astype(np.float32); blk = out[y0:y1, x0:x1].astype(np.float32)
         out[y0:y1, x0:x1] = np.clip(blk * (1 - fw) + nr * fw + 0.5, 0, 255).astype(np.uint8); n += 1
