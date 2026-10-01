@@ -211,6 +211,36 @@ def quay_lip(out, code, HQ=1.8, seed=0, ren=None):
 # Per cut building: its roof px (part 2) outside the box are re-toned (Lab mean / std) to its roof px inside, feathered 10 px at the edge.
 ROOF_RN_SEAM = os.environ.get('ROOF_RN_SEAM', '1') == '1'
 RN_JSON = os.environ.get('RN_CROP_JSON', '/Users/daniel/code/qipu-render-work/snap/combo6/data/faithful/rn_sf8.png.json')
+# ROOF_FLAT_TONE=1 (01/10, b8v2 review: big flat shed roofs keep stepped beige / grey colour seams where two AI tiles chose their own
+# tone, R5): per building whose roof (part 2, class roof) is big (>= 20k px), flat in the render and wholly inside the band region,
+# the roof's LOW-frequency colour (gaussian 40 px, normalised inside the roof) is pulled to the roof's median: a*b* fully, L at 60 %;
+# the median of a roof is taken once (the first band that sees it) and kept in <SB>/roof_tone.json, so a roof crossing band lines gets
+# ONE target (the low-frequency field itself is the same in every band: the band's rows are >= 1024 px from the region's edge);
+# the roof's detail (seams of the sheeting, vents, skylights) stays. Feathered 8 px at the roof edge. Default 0 until reviewed.
+ROOF_FLAT_TONE = os.environ.get('ROOF_FLAT_TONE', '0') == '1'; RT_SIG = float(os.environ.get('RT_SIG', 12))   # 40 left half of a tile step (a step is high-frequency too)
+_RT = {}
+def roof_tone(out, gid, part, code, ren, sid):
+    if not ROOF_FLAT_TONE: return out, dict(roof_tone=0)
+    f_ = f'{sbd(sid)}/roof_tone.json'
+    if not _RT and os.path.exists(f_): _RT.update({int(k): np.array(v) for k, v in json.load(open(f_)).items()})
+    H, Wd = gid.shape; rf = (part == 2) & (code == 2); ids, cnt = np.unique(gid[rf], return_counts=True); n = 0
+    for g, c_ in zip(ids, cnt):
+        if g < 0 or c_ < 20000: continue
+        m = rf & (gid == g); ys_, xs_ = np.where(m); y0, y1, x0, x1 = ys_.min(), ys_.max() + 1, xs_.min(), xs_.max() + 1
+        mm = m[y0:y1, x0:x1]; Lr = cv2.cvtColor(np.ascontiguousarray(ren[y0:y1, x0:x1]), cv2.COLOR_RGB2GRAY).astype(np.float32)
+        if (cv2.blur(np.abs(cv2.Laplacian(cv2.GaussianBlur(Lr, (0, 0), 2), cv2.CV_32F)), (31, 31))[mm] < 8).mean() < 0.7: continue   # not a flat roof
+        La = lab(out[y0:y1, x0:x1]); w = cv2.GaussianBlur(mm.astype(np.float32), (0, 0), RT_SIG) + 1e-4
+        lf = np.stack([cv2.GaussianBlur(La[..., k] * mm, (0, 0), RT_SIG) / w for k in range(3)], -1)
+        if int(g) not in _RT: _RT[int(g)] = np.median(La[mm], 0)
+        tgt = _RT[int(g)]; sp = lf[mm].std(0)
+        if sp[1] < 2.0 and sp[2] < 2.0 and sp[0] < 3.0: continue                  # already one tone
+        Nl = La.copy(); Nl[..., 1:] = La[..., 1:] - lf[..., 1:] + tgt[1:]; Nl[..., 0] = La[..., 0] - 0.6 * (lf[..., 0] - tgt[0])
+        fw = np.clip(nd.distance_transform_edt(mm) / 8.0, 0, 1)[..., None]
+        nr = cv2.cvtColor(np.clip(Nl, 0, 255).astype(np.uint8), cv2.COLOR_LAB2RGB).astype(np.float32); blk = out[y0:y1, x0:x1].astype(np.float32)
+        out[y0:y1, x0:x1] = np.clip(blk * (1 - fw) + nr * fw + 0.5, 0, 255).astype(np.uint8); n += 1
+    json.dump({str(k): [float(x) for x in v] for k, v in _RT.items()}, open(f_, 'w'))
+    return out, dict(roof_tone=n)
+
 def rn_seams(sid):
     """{gid: [gx_lo, gx_hi, gy_lo, gy_hi]}: the L9 rectangle, at the building's roof height, inside which its roof has the photo colour"""
     D = sbd(sid); f = f'{D}/rn_seams.json'
@@ -378,7 +408,8 @@ def step_finish(sid, only=None):
         g3 = M.read(box, 'gid.png').astype(np.int32); gid = (g3[..., 0] << 16) | (g3[..., 1] << 8) | g3[..., 2]; gid[gid == 0] = -1; del g3
         cy = slice(max(0, inner[0].start - 512), min(out.shape[0], inner[0].stop + 512)); part = M.read(box, 'part.png')   # colour on the band +- 512 rows (RAM)
         out[cy], s3 = colour2(out[cy], gid[cy], part[cy], ins[cy], (slice(inner[0].start - cy.start, inner[0].stop - cy.start), inner[1]), sid)
-        out, s5 = rn_seam(out, gid, part, box, sid, code); s3.update(s5); del gid, part
+        out, s5 = rn_seam(out, gid, part, box, sid, code); s3.update(s5)
+        out, s6 = roof_tone(out, gid, part, code, ren, sid); s3.update(s6); del gid, part
         mem('colour')
         out, s4 = piers(out, ren, code)
         mem('piers')
