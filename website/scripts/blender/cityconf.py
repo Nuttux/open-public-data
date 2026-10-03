@@ -15,6 +15,15 @@ citysnap.sh leaves this file's paths alone (it re-points everything else)."""
 import json, os
 
 ROOT = '/Users/daniel/code/qipu-render-work'
+# RENDER SWITCHES THAT READ SAN FRANCISCO'S OWN DATA (gid tables, SF coordinates, SF-only layers). San Francisco keeps
+# its defaults (this list is not read for SF). For another city citysnap.sh writes each one as '0' into the snapshot's
+# hq_city.py BEFORE the city's own city.json `env`: absent from city.json = off; a city that builds the layer turns it on there.
+SF_ONLY = (
+    'FAITHFUL', 'ROOF_NAIP', 'BTEX_REAL', 'SE_APRON', 'LM_SF_CROWN', 'TREE_EDGE', 'TREE_ROAD', 'WATER_V4',   # block env_b8.txt inputs
+    'SANBORN', 'SITES', 'LOTS_V2', 'CRANE_V2', 'TRACT', 'ROWS', 'PLACES_OV', 'SOUTH',                     # SF records / lots / rows
+    'MARINA_V2', 'CRUISE', 'PORT_BOXES', 'BOATS_V2', 'HOT', 'RED_VERIFY', 'LIFE_MARKS',                   # SF water / life places
+    'GLASS_V2', 'GROUND_V2', 'TREE_WATER',                                                                 # SF landmark coords, SF sea mask
+)
 CITY = os.environ.get('CITY', 'sf')
 SF = CITY == 'sf'
 if SF:
