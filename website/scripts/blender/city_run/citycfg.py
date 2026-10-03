@@ -104,11 +104,10 @@ def outside(lon, lat):
     import numpy as np
     if SF: return (lat < 37.7080) | ((lat > 37.815) & (lon < -122.44)) | (lat > 37.845)
     if BLOCK.get('limits'):
-        from matplotlib.path import Path
-        g = json.load(open(BLOCK['limits'])); g = g.get('features', [g])[0].get('geometry', g) if 'features' in g or 'geometry' in g else g
-        rings = [p[0] for p in g['coordinates']] if g['type'] == 'MultiPolygon' else [g['coordinates'][0]]
-        pts = np.c_[np.ravel(lon), np.ravel(lat)]; ins = np.zeros(len(pts), bool)
-        for r in rings: ins |= Path(r).contains_points(pts)
+        from shapely.geometry import shape
+        from shapely import contains_xy
+        g = json.load(open(BLOCK['limits'])); g = g.get('geometry', g)
+        ins = contains_xy(shape(g), np.ravel(lon), np.ravel(lat))
         return ~ins.reshape(np.shape(lon))
     s, w, n, e = J['bbox']; return (lat < s) | (lat > n) | (lon < w) | (lon > e)
 
