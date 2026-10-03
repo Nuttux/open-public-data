@@ -38,8 +38,10 @@ sf_only = next(ast.literal_eval(n.value) for n in ast.parse(open(sys.argv[1].rsp
 env = dict({k: 0 for k in sf_only}, **cj.get('env', {}), CITY=cj['city'], CITY_REF=','.join(repr(float(v)) for v in cj['ref']))
 env = dict(env, **kv)   # given switches win
 pre = "import os as _os_city\n" + "".join(f"_os_city.environ.setdefault({k!r}, {str(v)!r})\n" for k, v in env.items())
-open(p, 'w').write(pre + open(p).read())
+body = open(p).read()   # read BEFORE open(p, 'w'): `open(p, 'w').write(pre + open(p).read())` truncated hq_city.py to the prelude (B2 03/10)
+open(p, 'w').write(pre + body)
 PY
+grep -q "^def \|^import bpy" $S/hq_city.py && [ $(wc -l < $S/hq_city.py) -gt 200 ] || { echo "citysnap: hq_city.py has no body ($(wc -l < $S/hq_city.py) lines)"; exit 1; }
 python3 -c "import ast,glob; [ast.parse(open(f).read()) for f in glob.glob('$S/*.py')]"
 echo "$N = $C ($(cd $REPO && git log --oneline -1 $C | cut -c1-80)) for $CITY" > $S/SNAPSHOT.txt
 # anything still pointing at SF's data (should be empty)
