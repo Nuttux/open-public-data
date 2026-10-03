@@ -71,4 +71,4 @@ WP=(); for p in $PODS; do worker $p & WP+=($!); sleep 20; done
 MON=$!
 for w in $WP; do wait $w; done
 kill $MON 2>/dev/null
-say "RENDER_Q_DONE done $(ls $V/q/done | wc -l | tr -d ' ') todo $(ls $V/q/todo | wc -l | tr -d ' ') fail $(ls $V/q/fail | wc -l | tr -d ' '); $(python3 $V/b8.py check 2>&1 | tail -1)"
+say "RENDER_Q_DONE done $(ls $V/q/done | wc -l | tr -d ' ') todo $(ls $V/q/todo | wc -l | tr -d ' ') fail $(ls $V/q/fail | wc -l | tr -d ' '); $(BLK_DIR=$V python3 $HERE/b8.py check 2>&1 | tail -1)"
