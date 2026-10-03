@@ -22,6 +22,7 @@ Image.MAX_IMAGE_PIXELS = None
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import sb as SBm, quilt_stream as QS
 from mos import Mos
+CC = SBm.CC   # CITY (unset = SF): city_run/citycfg.py
 W = '/Users/daniel/code/qipu-render-work'; ROOT = SBm.ROOT; BH = 3072; FBH = int(os.environ.get('FIN_BH', 1536)); HALO = int(os.environ.get('HALO', 1024))   # quilt bands / finish bands / halo
 lab = lambda a: cv2.cvtColor(np.ascontiguousarray(a), cv2.COLOR_RGB2LAB).astype(np.float32)
 def mem(tag):
@@ -209,7 +210,7 @@ def quay_lip(out, code, HQ=1.8, seed=0, ren=None):
 # RN_CROP, snap/.../faithful/rn_sf8.png, world box x 1900-3400, y 3800-5350) colours the roofs INSIDE its box with their real colour and
 # leaves the procedural roof outside, so a roof cut by the box edge is two colours with a straight seam (61 roofs in b8; the AI copies it).
 # Per cut building: its roof px (part 2) outside the box are re-toned (Lab mean / std) to its roof px inside, feathered 10 px at the edge.
-ROOF_RN_SEAM = os.environ.get('ROOF_RN_SEAM', '1') == '1'
+ROOF_RN_SEAM = os.environ.get('ROOF_RN_SEAM', '1' if CC.BLOCK['roof_rn_seam'] else '0') == '1'   # SF's NAIP box; another city: off
 RN_JSON = os.environ.get('RN_CROP_JSON', '/Users/daniel/code/qipu-render-work/snap/combo6/data/faithful/rn_sf8.png.json')
 # ROOF_FLAT_TONE=1 (01/10, b8v2 review: big flat shed roofs keep stepped beige / grey colour seams where two AI tiles chose their own
 # tone, R5): per building whose roof (part 2, class roof) is big (>= 20k px), flat in the render and wholly inside the band region,
@@ -339,9 +340,10 @@ def roof(out, ren, cls, g3):
 
 _CT = []
 def colour2(out, gid, part, ins, inner, sid):
+    if not os.environ.get('CITY_FA_FILE', CC.BLOCK['colour_table']): return out, dict(facades=0, new_deltas=0)   # no gid colour table (another city)
     sys.path.insert(0, f'{W}/faithful'); sys.path.insert(0, f'{W}/faithful/v4'); import fc, bid_correct as BC
     if not _CT:
-        T_ = json.load(open(os.environ.get('CITY_FA_FILE', f'{W}/snap/combo2/data/faithful/fa_table_v3.json')))
+        T_ = json.load(open(os.environ.get('CITY_FA_FILE', CC.BLOCK['colour_table'])))
         _CT.append((BC.confidence(), {int(g): [float(x) for x in fc.hexlab(e.get('ref_col') or e['facade_col'])] for g, e in T_.items() if (e.get('ref_col') or e.get('facade_col'))}))
     conf, TAB = _CT[0]; KW = 1; LCAP, ER, FE = 8.0, 3, 3.0
     DF = f'{ROOT}/colour/deltas.jsonl'; os.makedirs(os.path.dirname(DF), exist_ok=True)
@@ -444,8 +446,9 @@ def step_finish(sid, only=None):
         del img, ren, out, fin, code
 
 def step_sheet(sid):
-    D = sbd(sid); Q, _, _ = geom(sid); AR = json.load(open(f'{HERE}/areas.json'))['risks']; pts = []
-    sys.path.insert(0, '/Users/daniel/code/qipu-render-work/combo/block52'); import rails_b8 as R
+    D = sbd(sid); Q, _, _ = geom(sid); AR = json.load(open(CC.BLOCK['areas']))['risks'] if CC.BLOCK['areas'] else {}; pts = []
+    if CC.SF: sys.path.insert(0, '/Users/daniel/code/qipu-render-work/combo/block52'); import rails_b8 as R
+    else: R = types.SimpleNamespace(l9=CC.l9_of_lonlat)
     for rk in AR.values():
         for p in rk['probes']:
             x, y = (p['l9'] if 'l9' in p else [float(v[0]) for v in R.l9(np.array([p['lat']]), np.array([p['lon']]))])

@@ -12,7 +12,8 @@ line 37.708), 'sea' = < 0.5 % land. AI tile (1024 px, stride 640): water + outsi
   python3 sb.py            -> the SB table (order, crops by kind, render jobs, AI tiles owned in run order, z9 tiles) -> <ROOT>/plan/sbs.json
   python3 sb.py json       -> same, JSON only"""
 import os, sys, json, math, numpy as np
-ROOT = os.environ.get('CITY_ROOT', '/Volumes/QIPU-SSD/qipu-city'); COV = f'{ROOT}/cov'
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))); import citycfg as CC   # CITY (unset = SF): city_run/citycfg.py
+ROOT = os.environ.get('CITY_ROOT', CC.BLOCK['city_root']); COV = f'{ROOT}/cov'
 CW, CH, S, TS, M = 5120, 3072, 640, 1024, 1536; HO = (TS - S) // 2; BAND = HO - 56; FE = 6; CELL = 64
 CITY_W, CITY_H = 32 * CW, 32 * CH
 COLG = [(0, 4), (5, 9), (10, 14), (15, 19), (20, 25), (26, 31)]; ROWG = [(0, 7), (8, 15), (16, 23), (24, 31)]
@@ -43,6 +44,8 @@ SBS = [  # id, name, risk tags (areas.json), note
     ('C0R0', 'Marin headlands west / Point Bonita', ['terrain'], 'Marin'),
     ('C4R0', 'north bay water off the piers / Angel Island edge', ['terrain'], 'water'),
 ]
+if not CC.SF:   # another city: its own super-block list (city.json block.sbs: [id, name, tags, note]) or every column x row group, unnamed
+    SBS = [tuple(x) for x in CC.BLOCK.get('sbs', [])] or [(f'C{c}R{r}', '', [], '') for r in range(len(ROWG)) for c in range(len(COLG))]
 ORDER = [s[0] for s in SBS]
 
 def sb_crops(sid):
@@ -70,7 +73,11 @@ def frac(ii, x0, y0, x1, y1):   # mean over the L9 box (64 px cells)
     a, b, c, d = y0 // CELL, x0 // CELL, y1 // CELL, x1 // CELL; return float((ii[c, d] - ii[a, d] - ii[c, b] + ii[a, b]) / max(1, (c - a) * (d - b)))
 def outside_mask(shape):
     """1 where the 64 px cell centre is outside San Francisco: south of the county line (lat < 37.7080) or Marin / Angel Island
-    (lat > 37.815 and lon < -122.44, or lat > 37.845). Inverse of rails_b8.l9 (viewer DEM heights: 3 fixed-point steps)."""
+    (lat > 37.815 and lon < -122.44, or lat > 37.845). Inverse of rails_b8.l9 (viewer DEM heights: 3 fixed-point steps).
+    Another city (CITY): outside its limits (citycfg.outside), same inverse through its engine DEM."""
+    if not CC.SF:
+        Y9, X9 = np.mgrid[0:shape[0], 0:shape[1]].astype(np.float64) * CELL + CELL / 2
+        lon, lat = CC.lonlat_of_l9(X9, Y9); return CC.outside(lon, lat)
     sys.path.insert(0, '/Users/daniel/code/qipu-render-work/combo/block52'); import rails_b8 as R
     Y9, X9 = np.mgrid[0:shape[0], 0:shape[1]].astype(np.float64) * CELL + CELL / 2
     x = ((X9 / 2 - R.PCW / 4) / R.SZ + R.CX) / R.KX; t = R.CY - (Y9 / 2 - R.PCH / 4) / R.SZ; z = np.zeros_like(x)
