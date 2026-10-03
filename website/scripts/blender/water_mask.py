@@ -8,7 +8,7 @@ Output: <dir>/sea.png (R = water, G = distance to shore, 0.5 m a step) and
 <dir>/sea.json (the metres each pixel covers).
 usage: python3 water_mask.py <scene_dir>
 """
-import array, base64, json, sys
+import array, base64, json, os, sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from scipy.ndimage import distance_transform_edt
@@ -26,6 +26,15 @@ for m in d['meshes']:
     for t in range(len(p) // 9):
         pts = [((p[t*9+k*3] - ox) / RES, H - (p[t*9+k*3+1] - oy) / RES) for k in range(3)]
         dr.polygon(pts, fill=255); n += 1
+# another city's engine lays its open-water sheet under the whole box and the
+# neighbouring land ('surround': North Shore, Burnaby, Richmond) on top of it:
+# that land is not sea. SF (CITY unset) is unchanged.
+if os.environ.get('CITY', 'sf') != 'sf':
+    for m in d['meshes']:
+        if m['layer'] != 'surround' or m.get('instanced'): continue
+        p = array.array('f'); p.frombytes(base64.b64decode(m['pos']))
+        for t in range(len(p) // 9):
+            dr.polygon([((p[t*9+k*3] - ox) / RES, H - (p[t*9+k*3+1] - oy) / RES) for k in range(3)], fill=0)
 raw = np.asarray(img, dtype=np.uint8).copy()
 # outside the exported box nothing was exported: carry the box's own edge
 # outward, so a bay that runs off the frame keeps running
