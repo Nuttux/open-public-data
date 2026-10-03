@@ -274,3 +274,16 @@ def emit(bpy, P, mats, name='lost'):
         if mats.get(mat) is not None: me.materials.append(mats[mat])
         obs.append(ob)
     return obs
+
+
+# ── another city (env CITY, as cityconf.py; unset or 'sf' = San Francisco) ───
+# LOST above is San Francisco's. Another city's lost structures are its
+# city.json "eras" -> "era_py" -> "lost" (same entry format, 'at' from ll() of
+# the city's own projection centre: "proj" lon0 / lat0); none = an empty list.
+# (the path is joined, not one literal: citysnap.sh re-points 'qipu-render-work/' literals)
+import os as _os
+if _os.environ.get('CITY', 'sf') != 'sf':
+    import json as _json
+    _cfg = _json.load(open(_os.environ.get('ERA_CITY_JSON') or _os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', _os.environ['CITY'], 'city.json')))
+    LAT0, LON0 = _cfg['proj']['lat0'], _cfg['proj']['lon0']
+    LOST = list(_cfg.get('eras', {}).get('era_py', {}).get('lost', []))

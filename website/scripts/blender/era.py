@@ -2350,3 +2350,122 @@ def freeway_keep(era):
     def keep(w):
         return era >= year_of(w)
     return keep
+
+
+# ── another city (env CITY, as cityconf.py; unset or 'sf' = San Francisco) ───
+# Nothing below runs for San Francisco: every value above stays as it is.
+# Another city's eras read qipu-render-work/cities/<CITY>/city.json, key
+# "eras" -> "era_py" (ERA_CITY_JSON overrides the file; self-contained, so an
+# overlay that ships era.py alone to a pod still works):
+#   checkpoints   the film's key years (null = today), as CHECKPOINTS
+#   topo_dir      folder of the period masks (topo_extract.py format); env TOPO_DIR wins
+#   topo_early    [[sheet, until, survey year]] the early sheets (SF: usgs1895 to 1906, usgs1915 to 1930)
+#   topo24        [[sheet, photo year, first, last]] the later epochs, as TOPO24
+#   record_years  {gid: [from, from_src, until, until_src]} (eras/record_years.json):
+#                 a record stands from 'from', and is gone from 'until' (its lot's demolition)
+#   table         {year: {key: value}} merged over TABLE's rows (a new year adds a row)
+#   landmarks_dir skip_gids.json / footprints.json / piers.json of the city's landmarks
+#   sanborn       the city's lost-buildings geojson (SF: the 1950 Sanborn), absent = none
+#   rail_undated_from  the year an undated base/rail.json segment stands from (unset: no era shows it)
+# San Francisco's own history (1906 fire, made land, dunes, Golden Gate Park,
+# lost freeways, cable cars, PPIE, Mission Bay yard, piers, bridge towers,
+# hand-fixed record years) is switched off: none of it happened elsewhere.
+def _other_city(name):
+    g = globals()
+    # (the path is joined, not one literal: citysnap.sh re-points every 'qipu-render-work/' literal at cities/<city>/ and would double it)
+    cfg = json.load(open(os.environ.get('ERA_CITY_JSON') or os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', name, 'city.json')))
+    e = cfg.get('eras', {}).get('era_py', {})
+    g['CITY'] = cfg['engine']
+    g['CHECKPOINTS'] = tuple(e.get('checkpoints', [None]))
+    g['CHECKPOINT_DATE'] = {int(k): v for k, v in e.get('checkpoint_date', {}).items()}
+    g['TOPO_DIR'] = os.environ.get('TOPO_DIR', e.get('topo_dir', f"{cfg.get('work', '')}/eras/masks"))
+    early = [tuple(t) for t in e.get('topo_early', [])]
+    g['TOPO24'] = [tuple(t) for t in e.get('topo24', [])]
+    late = {t[0] for t in g['TOPO24']}
+
+    def topo_sheet(era):
+        if era is None: return None
+        for name_, until, _ in early:
+            if era < until: return name_
+        for name_, _, a, b in TOPO24:
+            if a <= era < b + 1: return name_
+        return None
+
+    def topo_survey(name_):
+        return next((s for n, _, s in early if n == name_), None) or next((p for n, p, _, _ in TOPO24 if n == name_), None)
+
+    def topo_built(x, y, era):
+        name_ = topo_sheet(era)
+        if name_ is None: return 0.0
+        t = _topo_load(name_)
+        if t is None: return 0.0
+        meta, a = t
+        i = int((x - meta['x0']) / meta['res']); j = int((meta['y1'] - y) / meta['res'])
+        if not (0 <= i < meta['w'] and 0 <= j < meta['h']) or a[j, i, 2] < 0.5: return 0.0
+        v = float(a[j, i, 1])
+        return min(1.0, max(0.0, (v - 0.4) / 0.2)) if name_ in late else v
+    g.update(topo_sheet=topo_sheet, topo_survey=topo_survey, topo_built=topo_built)
+    for y_, row in e.get('table', {}).items():
+        y_ = int(y_)
+        if y_ not in TABLE: TABLE[y_] = dict(TABLE[max([k for k in TABLE if k < y_] or [min(TABLE)])])   # a new row starts as the row before it
+        TABLE[y_].update(row)
+    g['_YEARS'] = sorted(TABLE)
+    lm = e.get('landmarks_dir', f"{cfg.get('work', '')}/landmarks")
+    g['LM_SKIP'], g['LM_FOOTPRINTS'] = f'{lm}/skip_gids.json', f'{lm}/footprints.json'
+    g['SANBORN'] = e.get('sanborn', f"{cfg.get('work', '')}/sanborn/lost_buildings.geojson")
+    # San Francisco's own history, off
+    g.update(LANDMARKS=[], LANDMARK_SITES={}, LANDMARK_GAPS={}, MADE_LAND=[], SHORE62=[], STRUCTURES=[], CABLE_LINES=[],
+             BRIDGE_TOWERS={}, PIER_FACTS=[], DATED_PIERS={}, UNDATED_TALL={}, RECORD_YEAR_FIX={}, MISSION_BAY_YARD=[],
+             PPIE_YEARS=(0, -1), YARD_YEARS=(0, 0), GGP_BOX=(0.0, 0.0, 0.0, 0.0), DUNE_X=-1e9, _BURN=[], _CABLE_GEOM=[])
+    _TOPO['shorefill'] = None
+    g['near_embarcadero'] = lambda x, y, d: False
+    g['freeway_year'] = lambda name_, x, y: None
+    g['ppie_footprint'] = lambda x, y: False
+    g['_north1895'] = lambda x, y: False
+    g['_treasure_island'] = lambda x, y: False
+
+    def rails(era):
+        """the city's rail.json lines of their year (no SF cable lines, no rail-history when the city has none)"""
+        if era is None: return []
+        out = []
+        p = f'{CITY}/base/rail.json'
+        if os.path.exists(p):
+            for x0, y0, x1, y1, kind, yr in json.load(open(p))['segs']:
+                # an undated segment (year 0: Vancouver's SkyTrain and rails) stands from rail_undated_from, else in no era
+                if (yr or e.get('rail_undated_from') or 9999) <= era: out.append((x0, y0, x1, y1, kind))
+        p = f'{CITY}/base/rail-history.json'
+        if os.path.exists(p):
+            for rt in json.load(open(p))['routes']:
+                if (rt['year'] or 0) > era or (rt['ended'] and era >= rt['ended']): continue
+                for ln in rt['lines']:
+                    for (a, b) in zip(ln, ln[1:]): out.append((a[0], a[1], b[0], b[1], rt['kind']))
+        return out
+    g['rails'] = rails
+    ry = e.get('record_years')
+    if ry:
+        _span = {}
+
+        def spans():
+            if not _span: _span.update({int(k): v for k, v in json.load(open(ry))['records'].items()})
+            return _span
+        _place = g['place_record']
+
+        def fix_records(recs, era):
+            """the city's record spans (record_years): 'from' replaces the record's year, 'until' is kept on it"""
+            if era is None: return recs
+            S = spans()
+            for b in recs:
+                s = S.get(int(b['gid']))
+                if s:
+                    b['year'] = s[0]
+                    if s[2]: b['until'] = float(s[2])       # a float year (record_years.py)
+            return recs
+
+        def place_record(b, era):
+            if era is not None and b.get('until') and when(era) >= b['until']: return None
+            return _place(b, era)
+        g.update(fix_records=fix_records, place_record=place_record)
+
+
+if os.environ.get('CITY', 'sf') != 'sf':
+    _other_city(os.environ['CITY'])
