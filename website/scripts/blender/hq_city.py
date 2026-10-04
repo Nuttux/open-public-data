@@ -1077,6 +1077,24 @@ if E('LIVE_DUMP'):
 if E('FREEWAYS', '1') == '1':
     import freeways_hq; freeways_hq.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), d, log, ERA, keep=EA.freeway_keep(ERA))    # a past year: the ways already open (era.freeway_keep)
 
+# (04/10 B2b) TODAY'S STANDING STRUCTURES of another city: its dated viaducts (era.py STRUCTURES, read from city.json
+# eras.era_py.structures - Vancouver's Georgia and Dunsmuir viaducts, 1971-72, decks from LidarBC 2025) drawn in today's scene with
+# the era chain's own builder at year TODAY_YEAR (FREEWAYS=0 there: freeways_hq reads San Francisco's freeways.json).
+# CITY_STRUCTURES=1 (city.json env); unset (SF) = nothing.
+if ERA is None and E('CITY_STRUCTURES', '0') == '1':
+    try:
+        _st = EA.build_structures(bpy, float(E('TODAY_YEAR', '2026.0')), ground, M.get('concrete_struct') or M.get('concrete') or M['sidewalk'],
+                                  (BOX or [-9000, -9000, 9000, 9000]), log, M=None)
+        log('city structures today:', 'none in the box' if _st is None else _st.name)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log('city structures today: FAILED', ex)
+
+# (04/10 B2b) QUAY_WALL=1 (Vancouver): the seawall along the city's coastline as geometry (quay_wall.py); unset (SF) = nothing
+if E('QUAY_WALL', '0') == '1':
+    try: import quay_wall, cityconf; quay_wall.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), cityconf, log)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log('quay_wall: FAILED', ex)
+
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()
 cam_d = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_d); sc.collection.objects.link(cam); sc.camera = cam
