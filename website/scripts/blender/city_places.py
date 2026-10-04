@@ -90,6 +90,15 @@ def lakes(min_m2=1000.0):
             pa = Polygon(ring)
             if pa.area < min_m2: continue
             out.append(dict(id=f'v_lake_{len(out)}', kind='lake', name=None, ring=ring, holes=holes, area_m2=round(pa.area)))
+    for w in out:   # the level: over the lake bed's own bumps (the DTM over water is noisy: the lowest third + 0.12 left islands of terrain)
+        p = Polygon(w['ring'], w['holes']).buffer(-2.0)
+        if p.is_empty: continue
+        x0_, y0_, x1_, y1_ = p.bounds; X, Y = np.meshgrid(np.arange(x0_, x1_, 3.0), np.arange(y0_, y1_, 3.0))
+        from shapely import contains_xy
+        m = contains_xy(p, X, Y)
+        if m.sum() < 4: continue
+        zz = lm_dem.sample_arr(X[m], Y[m]); zz = zz[~np.isnan(zz)]
+        if len(zz): w['z'] = round(float(np.percentile(zz, 97)) + 0.15, 2)
     names = {'Lost Lagoon': (-123.142, 49.2945), 'Trout Lake': (-123.0625, 49.2565), 'Beaver Lake': (-123.141, 49.3045)}
     for w in out:
         p = Polygon(w['ring'])
@@ -98,7 +107,7 @@ def lakes(min_m2=1000.0):
     os.makedirs(C.work('landmarks'), exist_ok=True)
     json.dump(dict(source='city_places.py lakes: Metro Vancouver Land Cover Classification 2020 (5 m) water class not in city/sea.png; '
                           'Open Government Licence - Metro Vancouver', water=out), open(C.work('landmarks', 'water.json'), 'w'))
-    print('LAKES', len(out), 'named', {w['name']: w['area_m2'] for w in out if w['name']}, 'largest', sorted(w['area_m2'] for w in out)[-6:])
+    print('LAKES', len(out), 'named', {w['name']: (w['area_m2'], w.get('z')) for w in out if w['name']}, 'largest', sorted(w['area_m2'] for w in out)[-6:])
     miss = [nm for nm in names if nm not in {w['name'] for w in out}]
     if miss: print('  not in the land cover as open water:', miss)
 

@@ -93,6 +93,7 @@ def lakes(C):
         samples = [C.tg(x + (cx - x) * t, y + (cy - y) * t) for (x, y) in r[::max(1, len(r) // 16)] for t in (0.25, 0.5)]
         samples.sort()
         z = samples[len(samples) // 3] + 0.12
+        if w.get('z') is not None: z = max(z, float(w['z']))   # (04/10 B2b) a level the city's water.json gives (city_places.py: over the lake bed's bumps)
         if w['kind'] == 'tidal': z = max(z, 0.10); col = hexc('#2c3d3c')
         elif w['kind'] == 'tank': col = hexc('#3a4540')
         else: col = hexc(LAKE_COL.get(w['name'] or '', '#394a39'))
