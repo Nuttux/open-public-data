@@ -172,6 +172,10 @@ def _registry():
     ]
     # the places families (lm_places.auto_places): a sidecar-registered model, or a
     # new model for a landmark above (it then takes over the builder and the regions)
+    # (04/10 B2b) another city: SF's own landmarks (hard rings / SF frames) never stand there; its places dir
+    # (cities/<city>/places/models, citysnap) holds only that city's models, every one of them enabled
+    other = os.environ.get('CITY', 'sf') != 'sf'
+    if other: L = []
     have = {l.key: l for l in L}
     for key, j in P.auto_places():
         regs = [Region(ring=[tuple(q) for q in r]) for r in j.get('clear', []) if len(r) >= 3]
@@ -182,7 +186,7 @@ def _registry():
             L.append(Landmark(key, j['name'], j['built'], j.get('gone'), P.auto_builder(key, j), regs, pad=j.get('pad', 800.0),
                               note=j.get('note', ''), replaces=True, streets=j.get('streets', False), notree=nt))
     every = os.environ.get('LM_ALL') == '1'
-    return [l for l in L if l.regions and (every or l.key in ENABLED or l.key in _extra())]
+    return [l for l in L if l.regions and (every or other or l.key in ENABLED or l.key in _extra())]
 
 def _extra():
     # LM_KEYS=a,b: build these too (the landmarks agent's A/B tests, one model at a time)
