@@ -5,6 +5,7 @@ c1/osm_rail_bridges.json):
   railway=rail (main, yard, spur, industrial, crossover): 1920.0 (CONVENTION: the East False Creek flats were filled in 1917 for the
     Canadian Northern yards, Wikipedia 'False Creek'; the CPR's Burrard Inlet tracks are older; individual tracks are not dated)
   no OSM way within 6 m: 1920.0 (CONVENTION, same)
+rail.json kind 'streetcar' (today's heritage track, not the BCER network): null = in no era (undated).
 Segments outside the 300 m stay undated (no era draws them: era.py rail_undated_from null).
 rail_history: the lost streetcar line inside the box, on today's centreline: Hastings Street east of Main (BC Electric Railway; the last
   revenue streetcar ran on Hastings, Main to Kootenay Loop, ended 24 Apr 1955: SOURCED, TransLink Buzzer blog 'From Rails to Rubber',
@@ -24,6 +25,8 @@ years = {}; cnt = {}
 for k, (x0, y0, x1, y1, kind, yr) in enumerate(R['segs']):
     mx, my = (x0 + x1) / 2, (y0 + y1) / 2
     if not c.in_box(mx, my, 300): continue
+    if kind != 'other':                       # rail.json 'streetcar' (today's heritage / demo track): undated -> in no era
+        years[str(k)] = None; cnt['streetcar_undated'] = cnt.get('streetcar_undated', 0) + 1; continue
     best = min(((dseg((mx, my), a, b), t, sd) for a, b, t, sd in segs), default=(99, None, None))
     if best[0] < 6 and best[1] == 'subway': y = 1986.0; lab = 'skytrain_1986'
     else: y = 1920.0; lab = 'rail_1920_convention'

@@ -7,8 +7,9 @@ street. A slot is BUILT in a mosaic year when its mean built p (c1/built.py) >= 
 napl<Y> G) >= 0.45 (in the Hogan's Alley block the block-level share alone); it must lie >= 70 % on free land.
 BIG buildings (anywhere in the box): components of built p >= 0.65 on free land, >= 200 m2, solid (area / min rectangle >= 0.65) ->
 the minimum rotated rectangle; the same building across years = IoU >= 0.3.
-A building is kept when built in >= 2 consecutive mosaic years (noise filter, CONVENTION) or, for HOUSES in the Hogan's Alley block, in
-any mosaic year up to 1967 (the clearance is dated by the event, not by the photos). Gaps between seen years are filled.
+A building is kept when built in >= 2 consecutive mosaic years (noise filter, CONVENTION); a HOUSE needs them up to 1967 (houses first
+seen 1972+ on free land were lawns / cleared lots in the 04/10 random sample) or, in the Hogan's Alley block, any mosaic up to 1967
+(the clearance is dated by the event, not by the photos). Gaps between seen years are filled.
 DATES (era.py: y0, gone_by):
   first seen 1950 -> y0 = median SOURCED roll year of today's records within 120 m, capped 1949 (CONVENTION, record_years' undated rule)
   else y0 = midpoint between the mosaic it is absent from and the first it is seen in (SOURCED bracket, midpoint CONVENTION)
@@ -17,6 +18,7 @@ DATES (era.py: y0, gone_by):
     standing through 1967 by event: 1970.0 (Wikipedia 'Hogan's Alley, Vancouver': 'destroyed circa 1970'; 'Viaduct construction
     lasted from 1967-1971'), inside the 1967-1972 bracket the mosaics give
     last seen 1982 -> 1984.0 (CONVENTION: the last photo; the 2015 footprints prove it gone)
+No lost building under a structure's deck in a year the structure stands (viaduct ramps read as roofs): CONVENTION.
 HEIGHT: house 2 storeys 7.5 m frame, commercial 2 storeys 8 m brick, industrial 1 storey 6 m: CONVENTION by kind (no flight date, so no
 sun angle for shadow lengths)."""
 import json, math, collections, numpy as np, cv2
@@ -74,6 +76,10 @@ for Y in YEARS:
 def gshare(Y, x, y):
     m, g = GM[Y]; i = int((x - m['x0']) / m['res']); j = int((m['y1'] - y) / m['res'])
     return float(g[j, i]) if 0 <= i < m['w'] and 0 <= j < m['h'] else 0.0
+# no lost building under a deck that stood that year (the photo reads a viaduct ramp as a roof): CONVENTION, structures.json
+from shapely.geometry import LineString
+STR = [(st_['y0'], st_['y1'], LineString(st_['path']).buffer(st_['w'] / 2 + 3)) for st_ in json.load(open(f'{c.OUT}/structures.json'))]
+def under_deck(ring, Y): return any(a <= Y + 0.5 < b and g.intersects(Polygon(ring)) for a, b, g in STR)
 seen = collections.defaultdict(list); big = []
 for Y in YEARS:
     P = np.load(f'{c.OUT}/built_{Y}.npz')['p'].astype(np.float32)
@@ -81,7 +87,7 @@ for Y in YEARS:
         cx = s['ring'][0][0] + 3.25; cy = (s['ring'][0][1] + s['ring'][2][1]) / 2
         # in the Hogan's Alley block (all of it free land since the viaduct) the block-level share alone decides (houses stood on every
         # lot of a built block face: CONVENTION); elsewhere the slot's own built p must agree
-        if gshare(Y, cx, cy) >= 0.45 and (in_ha(cx, cy) or mean_in(P, s['q']) >= HOUSE_P): seen[k].append(Y)
+        if gshare(Y, cx, cy) >= 0.45 and (in_ha(cx, cy) or mean_in(P, s['q']) >= HOUSE_P) and not under_deck(s['ring'], Y): seen[k].append(Y)
     m = ((P >= 0.65) & (free > 0)).astype(np.uint8); m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
     n, lab, st, _ = cv2.connectedComponentsWithStats(m)
     for k in range(1, n):
@@ -90,6 +96,7 @@ for Y in YEARS:
         pts = np.c_[xs + st[k, 0], ys + st[k, 1]].astype(np.float32); rect = cv2.minAreaRect(pts)
         if st[k, 4] / max(rect[1][0] * rect[1][1], 1) < 0.65: continue
         ring = [px2w(*p) for p in cv2.boxPoints(rect)]
+        if under_deck(ring, Y): continue
         big.append(dict(Y=Y, ring=ring, area=float(st[k, 4])))
 # identity of big buildings across years
 B = []
@@ -124,8 +131,17 @@ def add(ring, kind, s, ha):
                                       storeys=st, height_m=h, height_src='CONVENTION by kind', area='va1', hogans_alley=bool(ha))))
 for k, s in seen.items():
     r = slots[k]['ring']; cx = r[0][0] + 3.25; cy = (r[0][1] + r[2][1]) / 2; ha = in_ha(cx, cy)
-    if consec(s) or (ha and min(s) <= 1967): add([tuple(p) for p in r], 'house', s, ha)
-    else: drop['house_single_year'] += 1
+    # a house must be seen in two consecutive mosaics up to 1967 (the random-sample check of 04/10: houses first seen in 1972-1982
+    # on free land were lawns of the new estates and cleared lots, 7 of 7 false), then it keeps its later consecutive sightings
+    e = sorted(y for y in s if y <= 1967)
+    if ha and e: add([tuple(p) for p in r], 'house', s, ha)
+    elif consec(e):
+        run = [e[0]]
+        for y in YEARS[YEARS.index(e[0]) + 1:]:
+            if y in s: run.append(y)
+            else: break
+        add([tuple(p) for p in r], 'house', run, ha)
+    else: drop['house_not_two_photos_to_1967'] += 1
 for b in B:
     cx, cy = b['poly'].centroid.x, b['poly'].centroid.y
     if not c.in_box(cx, cy): continue
