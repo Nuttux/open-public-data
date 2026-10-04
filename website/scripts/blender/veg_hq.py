@@ -68,7 +68,12 @@ PALMS = ('date_palm', 'fan_palm', 'queen_palm', 'small_palm')
 FOREST_H = {'euc': (22.0, 32.0), 'cypress': (14.0, 21.0), 'pine': (16.0, 23.0), 'redwood': (20.0, 28.0),
             'round': (9.0, 14.0), 'plane': (10.0, 15.0)}
 OPEN_ZONES = ('urban', 'coast_band', 'park', 'garden', 'square')
-CAN_ZONES = ('urban', 'coast_band')      # CANOPY=1: where the measured crowns replace the masses
+CAN_ZONES = tuple(z for z in os.environ.get('CAN_ZONES', 'urban,coast_band').split(',') if z)      # CANOPY=1: where the measured crowns replace the masses
+# (04/10 B2b, Vancouver) a city whose scene has no canopy masses (no 192-vertex Basic tree meshes) plants its woods from the
+# measured crowns too: CAN_ZONES=urban,coast_band,park,forest,stanley,garden. LiDAR segments a closed conifer stand into few,
+# narrow crowns (~40/ha, 3.9 m median): VEG_FOREST_FILL=n adds about n more trees per crown in the closed zones (not OPEN_ZONES),
+# scattered within VEG_FOREST_R m, the stand's own species. Defaults (SF): urban,coast_band, 0 = as before.
+VEG_FOREST_FILL = float(os.environ.get('VEG_FOREST_FILL', '0')); VEG_FOREST_R = float(os.environ.get('VEG_FOREST_R', '7'))
 SITE_MEDIAN = 2
 # [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
 # not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
@@ -342,6 +347,14 @@ class Kinds:
             s_ = min(s_, 1.1 * self.hmax[k] / max(0.5, self.heights[k]), 1.6 * sh)
             self._count(('canopy', a))
             yield x, y, k, s_, 6.283 * hp(x, y, 5)
+            if VEG_FOREST_FILL > 0 and a not in PALMS and self.zones[self.zone(x, y)]['name'] not in OPEN_ZONES:
+                nf = int(VEG_FOREST_FILL) + (1 if hp(x, y, 41) < VEG_FOREST_FILL % 1 else 0)
+                for m in range(nf):
+                    t_, r_ = 6.283 * hp(x, y, 140 + m), VEG_FOREST_R * (0.45 + 0.55 * math.sqrt(hp(x, y, 170 + m)))
+                    x2, y2 = x + r_ * math.cos(t_), y + r_ * math.sin(t_)
+                    if (round(x2 / 2.5), round(y2 / 2.5)) in seen: continue
+                    self._count(('canopy', a + '+fill'))
+                    yield x2, y2, k, s_ * (0.7 + 0.25 * hp(x2, y2, 8)), 6.283 * hp(x2, y2, 5)
             # A STAND, NOT ONE TREE: a segment much wider than the capped proto
             # draws (the watershed keeps a closed gum or cypress stand whole,
             # up to 160 m) is filled with more of its trees, scattered over its
