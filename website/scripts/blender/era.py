@@ -1336,6 +1336,21 @@ def hero_mesh_filter(pos, col, era):
     return (P, C) if len(P) else None
 
 
+def _hag(st, P):
+    """a structure's own deck height over the smoothed ground at each point of P (its path resampled from its start): the
+    structure's 'hag' [[arc length m, height m], ...] interpolated (another city's dated viaducts: LiDAR or a ramp); 0 without it"""
+    H = st.get('hag')
+    if not H: return [0.0] * len(P)
+    s_, out = 0.0, []
+    for i, p in enumerate(P):
+        if i: s_ += math.hypot(p[0] - P[i - 1][0], p[1] - P[i - 1][1])
+        k = 0
+        while k < len(H) - 2 and H[k + 1][0] < s_: k += 1
+        (a, ha), (b, hb) = H[k], H[min(k + 1, len(H) - 1)]
+        out.append(ha if b <= a else ha + (hb - ha) * min(1.0, max(0.0, (s_ - a) / (b - a))))
+    return out
+
+
 def lost_ways(era, ground, box=None):
     """the lost double-deck viaducts of the year as freeways_hq ways (one way
     per deck, points every 3 m, deck top = the ground smoothed over ±40 m +
@@ -1353,11 +1368,12 @@ def lost_ways(era, ground, box=None):
         P.append(path[-1])
         g = [ground(x, y) or 0.0 for x, y in P]
         gs = [sum(g[max(0, i - 13):i + 14]) / len(g[max(0, i - 13):i + 14]) for i in range(len(g))]
+        H = _hag(st, P)
         s_ = [0.0]
         for i in range(1, len(P)): s_.append(s_[-1] + _m.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]))
         for j, dz in enumerate(st['decks']):
             ways.append(dict(id=880000 + 10 * k_ + j, hw='motorway', lanes=3 if st['w'] >= 14 else 2, width=st['w'],
-                             s=s_, pts=[[x, y, gs[i] + dz] for i, (x, y) in enumerate(P)], hag=[gs[i] + dz - g[i] for i in range(len(P))],
+                             s=s_, pts=[[x, y, gs[i] + dz + H[i]] for i, (x, y) in enumerate(P)], hag=[gs[i] + dz + H[i] - g[i] for i in range(len(P))],
                              name=st['k']))
     return ways
 
@@ -1397,11 +1413,12 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
         P.append(path[-1])
         g = [ground(p.x, p.y) or 0.0 for p in P]
         gs = [sum(g[max(0, i - 20):i + 21]) / len(g[max(0, i - 20):i + 21]) for i in range(len(g))]
+        H = _hag(st, [(p.x, p.y) for p in P])
         hw = st['w'] / 2
         for dz in st['decks']:
             for i in range(len(P) - 1):
                 a, b = P[i], P[i + 1]; t = (b - a).normalized(); n_ = Vector((-t.y, t.x, 0))
-                za, zb = gs[i] + dz, gs[i + 1] + dz
+                za, zb = gs[i] + dz + H[i], gs[i + 1] + dz + H[i + 1]
                 A, B = Vector((a.x, a.y, za)), Vector((b.x, b.y, zb))
                 # the slab, 1.2 m deep
                 for (s0, s1, z0, z1) in ((-hw, hw, -1.2, 0.0), (-hw, -hw + 0.4, 0.0, 1.0), (hw - 0.4, hw, 0.0, 1.0)):
@@ -1412,12 +1429,12 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
         # bents every 24 m: two columns and a cap beam under each deck
         for i in range(0, len(P) - 1, 12):
             a = P[i]; t = (P[min(i + 1, len(P) - 1)] - P[max(i - 1, 0)]).normalized(); n_ = Vector((-t.y, t.x, 0))
-            top = gs[i] + max(st['decks']) - 1.2
+            top = gs[i] + max(st['decks']) + H[i] - 1.2
             for side in (-1, 1):
                 c = a + n_ * side * (hw - 2.0)
                 box3(Vector((c.x - 0.6, c.y - 0.6, g[i] - 0.5)), Vector((1.2, 0, 0)), Vector((0, 1.2, 0)), Vector((0, 0, top - g[i] + 0.5)))
             for dz in st['decks']:
-                o = a - n_ * hw + Vector((0, 0, gs[i] + dz - 2.4)) - t * 0.8
+                o = a - n_ * hw + Vector((0, 0, gs[i] + dz + H[i] - 2.4)) - t * 0.8
                 box3(o, n_ * st['w'], t * 1.6, Vector((0, 0, 1.2)))
         log('lost structure standing:', st['k'], 'decks', st['decks'])
     if not F: return None
@@ -1475,7 +1492,7 @@ def sanborn_all():
                 cx, cy = sum(p[0] for p in r) / len(r), sum(p[1] for p in r) / len(r)
                 mat = (pr.get('material') or 'frame'); st = int(pr.get('storeys') or 2)
                 h = float(pr.get('height_m') or 3.4 * st)
-                y0 = 1900.0 if pr.get('area') == 'wa' else 1907.0
+                y0 = float(pr['y0']) if pr.get('y0') is not None else (1900.0 if pr.get('area') == 'wa' else 1907.0)   # another city's geojson dates each building
                 gone = pr.get('gone_by'); gsrc = 'sanborn'
                 if gone is None:
                     gone = 1960.0; gsrc = 'CONVENTION 1960'
@@ -2418,6 +2435,11 @@ def _other_city(name):
              BRIDGE_TOWERS={}, PIER_FACTS=[], DATED_PIERS={}, UNDATED_TALL={}, RECORD_YEAR_FIX={}, MISSION_BAY_YARD=[],
              PPIE_YEARS=(0, -1), YARD_YEARS=(0, 0), GGP_BOX=(0.0, 0.0, 0.0, 0.0), DUNE_X=-1e9, _BURN=[], _CABLE_GEOM=[])
     _TOPO['shorefill'] = None
+    # the city's own dated structures (eras.era_py.structures: a JSON list as STRUCTURES, optional 'hag' [[s, h]] per structure);
+    # lost_fw_hq false: draw them with the plain builder (freeways_hq reads San Francisco's freeways.json)
+    if e.get('structures'):
+        g['STRUCTURES'] = [dict(st, dem=tuple(st['dem']) if st.get('dem') else None) for st in json.load(open(e['structures']))]
+    if e.get('lost_fw_hq') is False: os.environ['LOST_FW_HQ'] = '0'
     g['near_embarcadero'] = lambda x, y, d: False
     g['freeway_year'] = lambda name_, x, y: None
     g['ppie_footprint'] = lambda x, y: False
@@ -2430,10 +2452,15 @@ def _other_city(name):
         out = []
         p = f'{CITY}/base/rail.json'
         if os.path.exists(p):
-            for x0, y0, x1, y1, kind, yr in json.load(open(p))['segs']:
-                # an undated segment (year 0: Vancouver's SkyTrain and rails) stands from rail_undated_from, else in no era
+            ry_ = json.load(open(e['rail_years']))['years'] if e.get('rail_years') else {}
+            for k_, (x0, y0, x1, y1, kind, yr) in enumerate(json.load(open(p))['segs']):
+                # a segment dated in rail_years (eras.era_py) stands from that year (null: in no era); an undated one (year 0:
+                # Vancouver's SkyTrain and rails) stands from rail_undated_from, else in no era
+                if str(k_) in ry_:
+                    if ry_[str(k_)] is not None and ry_[str(k_)] <= era: out.append((x0, y0, x1, y1, kind))
+                    continue
                 if (yr or e.get('rail_undated_from') or 9999) <= era: out.append((x0, y0, x1, y1, kind))
-        p = f'{CITY}/base/rail-history.json'
+        p = e.get('rail_history') or f'{CITY}/base/rail-history.json'      # the city's lost lines (eras.era_py.rail_history wins)
         if os.path.exists(p):
             for rt in json.load(open(p))['routes']:
                 if (rt['year'] or 0) > era or (rt['ended'] and era >= rt['ended']): continue
