@@ -221,7 +221,9 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         so = b.mix(b.math('MULTIPLY', trk, 0.55), so, b.mix(1.0, so, (1.3, 1.25, 1.15), 'MULTIPLY'))
         so = b.mix(b.ramp(b.noise(1 / 0.5, 2.0, vec=b.vmap(1.0, loc=(9.0, 2.0, 0))), 0.0, 0.5, 0.62, 0.72), so, b.mix(1.0, so, (0.62, 0.58, 0.55), 'MULTIPLY'))
     # UNDER TREES: litter and shaded grass, dark olive-brown
-    du = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(1.3, 22.0, 0))), 0.0, 1.0, 0.4, 0.7), (0.10, 0.085, 0.034), (0.145, 0.125, 0.045))
+    du = b.mix(b.ramp(b.noise(1 / 5.0, 3.0, vec=b.vmap(1.0, loc=(1.3, 22.0, 0))), 0.0, 1.0, 0.4, 0.7),
+               *(((0.10, 0.085, 0.034), (0.145, 0.125, 0.045)) if os.environ.get('GROUND_UNDER', 'litter') != 'green' else
+                 ((0.030, 0.052, 0.018), (0.050, 0.078, 0.026))))   # (04/10 B2b) GROUND_UNDER=green: a rain forest's fern and salal floor (Vancouver), not ochre litter
     # ASPHALT (a lot, a yard, a playground): worn warm grey, its tone
     # drifting over 40 m, oil and tyre wear, a crack's weeds now and then
     ap = b.mix(b.ramp(b.noise(1 / 40.0, 2.0, vec=b.vmap(1.0, loc=(-41.0, 13.0, 0))), 0.0, 1.0, 0.3, 0.7), (0.085, 0.082, 0.076), (0.13, 0.125, 0.115))
