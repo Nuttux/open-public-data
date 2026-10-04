@@ -2394,7 +2394,7 @@ def sea():
     L_(mth('ADD', w1.outputs['Fac'], mth('MULTIPLY', w2.outputs['Fac'], 0.35)), bm.inputs['Height']); L_(bm.outputs[0], wat.inputs['Normal'])
     fn = nt.nodes.new('ShaderNodeTexNoise'); fn.inputs['Scale'].default_value = 0.4; fn.inputs['Detail'].default_value = 12; L_(geo.outputs['Position'], fn.inputs['Vector'])
     foam = mth('GREATER_THAN', mth('MULTIPLY', mth('SUBTRACT', 1.0, mth('DIVIDE', dist, 5.0, clamp=True)), mth('ADD', fn.outputs['Fac'], 0.3)), 0.5)
-    if ERA is not None:
+    if ERA is not None or os.environ.get('SEA_FOAM', '1') == '0':   # (04/10 B2b) SEA_FOAM=0: no foam band (Vancouver's seawalls: a torn-paper edge)
         # the foam line is TODAY's shore (the mask's distance): in another year
         # it drew today's Treasure Island, Marina and bay fill as white
         # outlines on the water (1936 z5 1:0)
