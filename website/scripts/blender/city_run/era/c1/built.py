@@ -7,7 +7,6 @@ import sys, json, numpy as np, cv2
 import common as c
 YEARS = [int(a) for a in sys.argv[1:]] or [1950, 1959, 1967, 1972, 1978, 1982]
 e0, n1, Wd, Hd = c.grid()
-OFF = json.load(open(f'{c.OUT}/align.json'))['adopted']
 recs = c.records(60)
 
 
@@ -49,8 +48,9 @@ def feats(a):
 
 out = {}
 for Y in YEARS:
-    dE, dN = OFF[str(Y)]
-    a = c.napl(Y); a = np.roll(np.roll(a, dN, 0), -dE, 1)          # aligned[j, i] = photo[j - dN, i + dE]
+    O = np.load(f'{c.OUT}/offsets_{Y}.npy')                       # local field (c1/offsets.py): photo minus footprints, E/N m
+    a0 = c.napl(Y, 200); J, I = np.mgrid[0:Hd, 0:Wd].astype(np.float32)
+    a = cv2.remap(a0, I + 140 + O[0], J + 140 - O[1], cv2.INTER_LINEAR)   # aligned[j, i] = photo[j - dN, i + dE] (pad-200 crop: +140)
     F = feats(a); nf = F.shape[-1]
     pos = np.zeros((Hd, Wd), np.uint8)
     for b in recs:
