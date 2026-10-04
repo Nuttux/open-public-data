@@ -74,6 +74,9 @@ CAN_ZONES = tuple(z for z in os.environ.get('CAN_ZONES', 'urban,coast_band').spl
 # narrow crowns (~40/ha, 3.9 m median): VEG_FOREST_FILL=n adds about n more trees per crown in the closed zones (not OPEN_ZONES),
 # scattered within VEG_FOREST_R m, the stand's own species. Defaults (SF): urban,coast_band, 0 = as before.
 VEG_FOREST_FILL = float(os.environ.get('VEG_FOREST_FILL', '0')); VEG_FOREST_R = float(os.environ.get('VEG_FOREST_R', '7'))
+# VEG_FOREST_SUB=a:b,...: in the closed zones a crown of archetype a is drawn as b (Vancouver: plane:redwood - the LiDAR's broadleaf
+# 'plane' crowns in Stanley Park are its firs, cedars and hemlocks; a London plane is a street tree). Unset (SF): none.
+VEG_FOREST_SUB = dict(p.split(':') for p in os.environ.get('VEG_FOREST_SUB', '').split(',') if ':' in p)
 SITE_MEDIAN = 2
 # [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
 # not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
@@ -340,6 +343,7 @@ class Kinds:
             if self.zones[self.zone(x, y)]['name'] not in CAN_ZONES: continue
             a = self.can_names[int(C['k'][i])]
             if a not in self.kinds_of: a = 'round'
+            if VEG_FOREST_SUB and a in VEG_FOREST_SUB and VEG_FOREST_SUB[a] in self.kinds_of and self.zones[self.zone(x, y)]['name'] not in OPEN_ZONES: a = VEG_FOREST_SUB[a]
             a = self._sub(a, x, y)
             h, w = float(C['h'][i]), float(C['w'][i]); k = self._kind(a, x, y, h=h)
             sh, sw = h / max(0.5, self.heights[k]), w / max(0.5, self.widths[k])
