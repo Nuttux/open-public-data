@@ -214,6 +214,12 @@ def overrides(recs, bbox=None):
             # shows gone, piers drawn as houses, rebuilt lots) beside city_places' 'gids'; a 'gids' entry wins. SF's file has neither key
             for k, v in j.get('today', {}).items(): _OV.setdefault(int(k), v)
             _OV_ADD += list(j.get('today_add', []))
+            # (B3 fix 3) TODAY_LIDAR=<json> (today_lidar.py: new towers LiDAR 2025 measures, the records they replace, the
+            # demolished ones), same keys; set in another city's city.json env only, unset (SF) = nothing
+            if os.environ.get('TODAY_LIDAR'):
+                t = json.load(open(os.environ['TODAY_LIDAR']))
+                for k, v in t.get('today', {}).items(): _OV.setdefault(int(k), v)
+                _OV_ADD += list(t.get('today_add', []))
         except Exception as ex: print('[overrides] unreadable', ex, flush=True); _OV = {}; _OV_ADD = []
     if not _OV and not _OV_ADD: return recs
     out = []
