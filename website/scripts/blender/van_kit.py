@@ -178,9 +178,14 @@ def from_colour(S, VC, b, wm0, wall_mat, body, trim, accent, gcol, roof_tex, era
     """(INTEG 06/10) VAN_COLOUR on: van_colour's draw is the building's one colour source. The spec takes VC's colours so
     the type's own parts (porch, the Special's base and balcony, portico, balconies, slab edges, loggia, dormer) wear the
     same paint, in VC's units (the roof as a tint on the shingle texture, the Special's base as a brick tint or stucco);
-    the cladding stays VC's except a tower / podium the skin made concrete. -> (wall_mat, spec)"""
+    the cladding stays the type's (brick: see below). -> (wall_mat, body, spec)"""
     S = dict(S)
-    if wm0 == 'concrete' and wall_mat == 'stucco': wall_mat = 'concrete'
+    # the cladding is the type's (siding / stucco / concrete: their paint is the display colour either way); brick is the one
+    # material whose paint is a tint on the texture, so VC's brick (already a tint) stands, and a type's brick takes VC's
+    # colour as a tint when the texture can reach it, else reads as VC's painted wall
+    if wall_mat != 'brick':
+        if wm0 == 'brick' and VC.brick_ok(body): wall_mat, body = 'brick', VC.brick_tint(body)
+        elif wm0 != 'brick': wall_mat = wm0
     S['paint'] = (body, trim, accent); S['mat'] = wall_mat
     if gcol is not None: S['glass'] = tuple(gcol)
     S['roof'] = VC.roof_pitched(b, 'roof_shingle', None, roof_tex, era)[1]
@@ -188,7 +193,7 @@ def from_colour(S, VC, b, wm0, wall_mat, body, trim, accent, gcol, roof_tex, era
     if v.get('base'):
         S['brick_mat'] = v.get('base_mat') or 'brick'
         S['brick'] = VC.brick_tint(v['base']) if S['brick_mat'] == 'brick' else tuple(v['base'])
-    return wall_mat, S
+    return wall_mat, body, S
 
 
 def roof_form(S, b, roof, area, fill, LIDAR_R):

@@ -815,7 +815,7 @@ def building(b, ground, out):
             if FA['bays'] == 0: bay_kind = None
     if VC and not LM and PS is None and not OV.get('facade_col') and not b.get('wall'):
         _wm0 = wall_mat; wall_mat, body, trim, accent, gcol = VC.walls(b, style, sub, wall_mat, body, trim, accent, gcol, ERA)   # (VAN_COLOUR H1)
-        if VS and VC.active(ERA): wall_mat, VS = VK.from_colour(VS, VC, b, _wm0, wall_mat, body, trim, accent, gcol, _ROOF_TEX, ERA)   # (INTEG) one colour source: VC's draw, van_kit's parts follow
+        if VS and VC.active(ERA): wall_mat, body, VS = VK.from_colour(VS, VC, b, _wm0, wall_mat, body, trim, accent, gcol, _ROOF_TEX, ERA)   # (INTEG) one colour source: VC's draw, van_kit's parts follow
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body, nbay=(FA or {}).get('bays'),
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
