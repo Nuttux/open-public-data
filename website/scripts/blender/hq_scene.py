@@ -21,6 +21,12 @@ T0 = time.time()
 def log(*a): print(f'[{time.time() - T0:6.1f}s]', *a, flush=True)
 
 d = json.load(open(os.path.join(SD, 'scene.json')))
+# STREETS_FROM=<layer,...>: another city's export names its street asphalt otherwise (Vancouver's
+# whole-city export has only 'street-uncovered'): those layers are read as 'streets' (asphalt, kerbs,
+# sidewalks, markings, kerb cars, street trees all hang off it). Unset (SF) = nothing
+for _sl in [s for s in os.environ.get('STREETS_FROM', '').split(',') if s]:
+    for _m in d['meshes']:
+        if _m.get('layer') == _sl: _m['layer'] = 'streets'
 # the true ground (USGS 3DEP) under everything, before anything is built on it
 # (terrain_hq.py, landmarks agent: the engine's relief is squeezed N-S 1.2649x)
 import terrain_hq; terrain_hq.correct_scene(d, log, box=([float(v) for v in E('BOX').split(',')] if E('BOX') else d['box']), sd=SD)

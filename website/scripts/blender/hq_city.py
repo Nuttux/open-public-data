@@ -23,6 +23,12 @@ PH = os.path.expanduser('~/code/qipu-assets/polyhaven')
 T0 = time.time()
 def log(*a): print(f'[{time.time() - T0:7.1f}s]', *a, flush=True)
 d = json.load(open(os.path.join(SD, 'scene.json')))
+# STREETS_FROM=<layer,...>: another city's export names its street asphalt otherwise (Vancouver's
+# whole-city export has only 'street-uncovered'): those layers are read as 'streets' (asphalt, kerbs,
+# sidewalks, markings, kerb cars, street trees all hang off it). Unset (SF) = nothing
+for _sl in [s for s in os.environ.get('STREETS_FROM', '').split(',') if s]:
+    for _m in d['meshes']:
+        if _m.get('layer') == _sl: _m['layer'] = 'streets'
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 BOX = [float(v) for v in E('BOX').split(',')] if E('BOX') else None
