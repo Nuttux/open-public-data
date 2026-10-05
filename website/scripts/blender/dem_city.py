@@ -26,9 +26,13 @@ RES = float(sys.argv[1]) if len(sys.argv) > 1 else 2.0
 T = 2000.0
 PAD = 1500.0                                   # past the box: the frames' margins see beyond the city limits
 SRC = C.CFG['dem']['sources']
+REFILL = int(os.environ.get('DEM_REFILL', '0'))
 OUT = C.work('landmarks', 'dem', f'{RES:g}m'); os.makedirs(OUT, exist_ok=True)
 
 def tile_range():
+    ext = C.CFG['dem'].get('extent')            # (fix4) [x0, y0, x1, y1] world m: the whole render grid with its margins
+    if ext:
+        return (range(int(np.floor(ext[0] / T)), int(np.ceil(ext[2] / T))), range(int(np.floor(ext[1] / T)), int(np.ceil(ext[3] / T))))
     s, w, n, e = C.BBOX
     x0, y0 = C.proj(w, s); x1, y1 = C.proj(e, n)
     return (range(int(np.floor((x0 - PAD) / T)), int(np.ceil((x1 + PAD) / T))),
@@ -66,12 +70,19 @@ def _open():
 def one(ij):
     i, j = ij; n = int(T / RES)
     p = f'{OUT}/t_{i}_{j}.npy'
-    if os.path.exists(p): return
+    first = 0
+    if os.path.exists(p):
+        # (fix4) DEM_REFILL=k: a tile on disk with nodata is filled from sources k.. only (a later, coarser source:
+        # MRDEM-30 under the North Shore mountains the lidar never flew); its own values stay
+        if not REFILL: return
+        old = np.load(p)
+        if not (old < -9000).any(): return
+        first = REFILL
     dss, trs = _open()
     for attempt in range(4):
         try:
-            out = np.full((n, n), np.nan, np.float32)
-            for ds, tr in zip(dss, trs):
+            out = np.full((n, n), np.nan, np.float32) if not first else np.where(old < -9000, np.nan, old).astype(np.float32)
+            for ds, tr in list(zip(dss, trs))[first:]:
                 m = np.isnan(out)
                 if not m.any(): break
                 out[m] = sample(ds, tr, i, j, n)[m]

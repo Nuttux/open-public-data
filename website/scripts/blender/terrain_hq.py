@@ -365,6 +365,12 @@ def _correct(d, log, box, sd, res, far, pad, t0):
     cnx = int(math.ceil((ex1 - gx0) / far)) + 1; cny = int(math.ceil((ey1 - gy0) / far)) + 1
     fi0 = max(0, int(math.floor((fb[0] - gx0) / far))); fj0 = max(0, int(math.floor((fb[1] - gy0) / far)))
     fi1 = min(cnx - 1, int(math.ceil((fb[2] - gx0) / far))); fj1 = min(cny - 1, int(math.ceil((fb[3] - gy0) / far)))
+    if fi1 <= fi0 or fj1 <= fj0:
+        # (fix4) the frame lies beyond the engine's ground (Vancouver's edge frames: the North Shore, Richmond): no fine
+        # block (it had negative dimensions: Traceback, engine terrain kept); the whole extent at `far`, and the frame's
+        # own land comes from _surround (the DEM tiles). A frame that overlaps the ground (all of SF's) is unchanged.
+        log(f'terrain_hq: box {tuple(round(v) for v in fb)} beyond the ground ({ex0:.0f},{ey0:.0f},{ex1:.0f},{ey1:.0f}): coarse only')
+        res, ratio, fi0, fj0, fi1, fj1 = far, 1, 0, 0, cnx - 1, cny - 1
     colours = TC                                             # per corner rgb
     def build_grid(x0, y0, step, nx, ny):
         xs = x0 + np.arange(nx) * step; ys = y0 + np.arange(ny) * step
