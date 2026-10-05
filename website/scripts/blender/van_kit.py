@@ -37,7 +37,9 @@ import cityconf as CC
 
 ON = os.environ.get('VAN_TYPES', '0') == '1' and not CC.SF
 TYPES_FILE = os.environ.get('VT_FILE') or CC.work('lidar', 'types.json')
-PAL_FILE = os.environ.get('VT_PAL') or CC.work('look', 'colour', 'palettes.json')
+# the colour agent's palettes: VT_PAL, else a copy beside the types (lidar/*.json ships to the pods), else its own file (Mac only:
+# look/ is not in lmk_pod.sh's city list)
+PAL_FILE = os.environ.get('VT_PAL') or next((p for p in (CC.work('lidar', 'type_palettes.json'), CC.work('look', 'colour', 'palettes.json')) if os.path.exists(p)), CC.work('look', 'colour', 'palettes.json'))
 VT, PAL = {}, {}
 
 # ── the types' levers ──
@@ -88,7 +90,7 @@ PLACEHOLDER = {
                               roof=_p((0.32, 0.32, 0.33, 2), (0.38, 0.34, 0.30, 1)), glass=_p((0.20, 0.22, 0.24, 1))),
     'west_end_walkup':   dict(walls=_p((0.93, 0.91, 0.86, 2), (0.90, 0.84, 0.80, 1), (0.84, 0.88, 0.84, 1), (0.84, 0.86, 0.88, 1), (0.92, 0.88, 0.74, 1)), trim=_p((0.95, 0.95, 0.93, 2), (0.36, 0.36, 0.36, 1)),
                               roof=_p((0.40, 0.40, 0.40, 1)), glass=_p((0.22, 0.26, 0.28, 1))),
-    'concrete_tower':    dict(walls=_p((0.84, 0.83, 0.80, 2), (0.76, 0.75, 0.72, 2), (0.88, 0.86, 0.80, 1)), trim=_p((0.90, 0.90, 0.88, 2)),
+    'concrete_tower':    dict(walls=_p((0.93, 0.92, 0.89, 2), (0.88, 0.87, 0.84, 2), (0.92, 0.89, 0.82, 1)), trim=_p((0.95, 0.95, 0.93, 2)),   # (vat test: the West End's towers are white and cream; 0.84 rendered mid grey)
                               roof=_p((0.48, 0.48, 0.47, 1)), glass=_p((0.24, 0.27, 0.28, 1), (0.30, 0.28, 0.25, 1))),
     'point_tower':       dict(walls=_p((0.92, 0.92, 0.91, 2), (0.80, 0.82, 0.83, 1)), trim=_p((0.94, 0.94, 0.93, 2)),
                               roof=_p((0.52, 0.52, 0.51, 1)), glass=_p((0.36, 0.52, 0.52, 3), (0.44, 0.56, 0.62, 2), (0.56, 0.64, 0.68, 1.5), (0.30, 0.40, 0.44, 1))),
