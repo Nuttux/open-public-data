@@ -6,7 +6,15 @@ lip. hq_city calls build() when QUAY_WALL=1 (city.json env); unset (SF) = never 
 The line: landmarks/coast_land.npz (coast_land_city.py: the render's own sea, blurred), the zero of its signed distance
 (marching squares, linear: a smooth line, not the 4 m cells); kept inside the city limits (city.json block.limits, lon/lat)
 and off the beaches (land-cover sand within 12 m inland). Height: the ground 3 m inland (the promenade) + QW_UP (0.25 m),
-at most QW_MAX (5 m: a higher bank keeps its own slope above), down to QW_DOWN (-1.5 m) under the water."""
+at most QW_MAX (5 m: a higher bank keeps its own slope above), down to QW_DOWN (-1.5 m) under the water.
+
+(V-VEG 05/10) QW_LINE=osm: the wall stands on the OSM coastline (veg/shore_pnw.npz, ground_city.py: natural=coastline,
+land on its left), off the segments OSM beaches touch, instead of on coast_land's line, which runs a median 11 m (p75 24 m,
+p95 68 m) seaward of it: van_vp1b drew that strip of the HRDEM's shore as a wide pale band in front of the seawall.
+QW_SINK=1: seaward of the OSM coastline (to 60 m) the terrain's vertices go under the sea sheet (a wall: to QW_SINK_Z,
+-0.4 m; a beach: on a 4 cm/m shelf from 0.10 m at the line), and where the render's sea sheet is cut away there
+(coast_land says land) a water surface ('ocean', the sea's own material without its land cut) covers the strip.
+Unset (default) = the B2b behaviour above."""
 import os, json
 import numpy as np
 
@@ -39,11 +47,93 @@ def _segments(cl, box, pad=60.0):
         for k in range(0, len(pts) - 1, 2): out.append((pts[k], pts[k + 1], n))
     return out
 
+def _shore(C):
+    p = C.work('veg', 'shore_pnw.npz')
+    return np.load(p) if os.path.exists(p) else None
+
+def _osm_segments(S, box, pad=60.0):
+    """[(p, q, n_land, beach)] of the OSM coastline inside box + pad"""
+    seg = S['seg'].astype(np.float64); fl = S['beach']
+    mx, my = (seg[:, 0] + seg[:, 2]) / 2, (seg[:, 1] + seg[:, 3]) / 2
+    k = np.nonzero((mx > box[0] - pad) & (mx < box[2] + pad) & (my > box[1] - pad) & (my < box[3] + pad))[0]
+    out = []
+    for i in k:
+        a, b, c, d = seg[i]; L = float(np.hypot(c - a, d - b))
+        if L < 1e-3: continue
+        n = (-(d - b) / L, (c - a) / L)                                  # left of the way = land
+        # long OSM segments split to <= 4 m pieces (the wall's top follows the ground)
+        m = max(1, int(np.ceil(L / 4.0)))
+        for j in range(m):
+            t0, t1 = j / m, (j + 1) / m
+            out.append(((a + (c - a) * t0, b + (d - b) * t0), (a + (c - a) * t1, b + (d - b) * t1), n, bool(fl[i])))
+    return out
+
+def _sd(S, X, Y):
+    """signed distance to the OSM coastline (m, + land; nan off the grid) and the beach flag at world points"""
+    sd = S['sd2']; bg = S['beach_grid']; r_, x0, y0 = float(S['res']), float(S['x0']), float(S['y0'])
+    c = np.floor((X - x0) / r_).astype(np.int64); r = np.floor((Y - y0) / r_).astype(np.int64)
+    ok = (c >= 0) & (c < sd.shape[1]) & (r >= 0) & (r < sd.shape[0])
+    v = np.full(X.shape, np.nan, np.float32); b = np.zeros(X.shape, bool)
+    v[ok] = sd[r[ok], c[ok]].astype(np.float32) / 2.0
+    if bg.shape == sd.shape: b[ok] = bg[r[ok], c[ok]] > 0
+    return v, b
+
+def sink(bpy, sc, C, box, log=print, pad=60.0):
+    """QW_SINK=1: the terrain seaward of the OSM coastline under the sea sheet, and a water surface where the sea sheet is cut"""
+    S = _shore(C)
+    if S is None: log('quay_wall sink: no shore_pnw.npz'); return 0
+    zw = float(os.environ.get('QW_SINK_Z', '-0.4')); n_tot = 0
+    for ob in [o for o in bpy.data.objects if o.type == 'MESH' and o.name.split('.')[0] == 'terrain']:
+        me = ob.data; nv = len(me.vertices)
+        co = np.empty(nv * 3, np.float32); me.vertices.foreach_get('co', co); co = co.reshape(-1, 3)
+        W = np.array(ob.matrix_world, np.float64)
+        X = co[:, 0] * W[0, 0] + co[:, 1] * W[0, 1] + co[:, 2] * W[0, 2] + W[0, 3]
+        Y = co[:, 0] * W[1, 0] + co[:, 1] * W[1, 1] + co[:, 2] * W[1, 2] + W[1, 3]
+        inb = (X > box[0] - pad) & (X < box[2] + pad) & (Y > box[1] - pad) & (Y < box[3] + pad)
+        s_, bch = _sd(S, X, Y)
+        sea = inb & ~np.isnan(s_) & (s_ < -0.5) & (s_ > -60.0)
+        tgt = np.where(bch, 0.10 + 0.04 * np.nan_to_num(s_), zw).astype(np.float32)
+        low = sea & (co[:, 2] > tgt)
+        if low.any() and abs(W[2, 2] - 1.0) < 1e-6 and abs(W[2, 3]) < 1e-6:
+            co[low, 2] = tgt[low]; me.vertices.foreach_set('co', co.ravel()); me.update()
+            n_tot += int(low.sum())
+    # the water surface over the strip the sea sheet leaves cut (coast_land: land), 2 m cells at the sheet's height + 5 mm
+    cl = C.work('landmarks', 'coast_land.npz'); sea_m = bpy.data.materials.get('sea')
+    nq = 0
+    if os.path.exists(cl) and sea_m is not None:
+        z = np.load(cl); cres, cx0, cy1 = float(z['res']), float(z['x0']), float(z['y1']); CS = z['sd_dm'].astype(np.float32) / 10.0
+        R = 2.0; xs = np.arange(box[0] - pad, box[2] + pad, R) + R / 2; ys = np.arange(box[1] - pad, box[3] + pad, R) + R / 2
+        GX, GY = np.meshgrid(xs, ys)
+        s_, bch = _sd(S, GX.ravel(), GY.ravel()); s_ = s_.reshape(GX.shape)
+        cc = np.clip(((GX - cx0) / cres).astype(np.int64), 0, CS.shape[1] - 1); rr = np.clip(((cy1 - GY) / cres).astype(np.int64), 0, CS.shape[0] - 1)
+        need = ~np.isnan(s_) & (s_ < -0.5) & (s_ > -60.0) & (CS[rr, cc] > -4.0)
+        jj, ii = np.nonzero(need)
+        if len(ii):
+            m_ = sea_m.copy(); m_.name = 'sea_fill'
+            for nd_ in m_.node_tree.nodes:      # the sea's land cut (transparent where sea.png says land) held at 'water'
+                if nd_.type == 'MIX_SHADER' and any(l_.from_node.type == 'BSDF_TRANSPARENT' for l_ in nd_.inputs[1].links):
+                    for l_ in list(nd_.inputs[0].links): m_.node_tree.links.remove(l_)
+                    nd_.inputs[0].default_value = 1.0
+            x0_, y0_ = xs[ii] - R / 2, ys[jj] - R / 2; zf = 0.125
+            V = np.stack([np.c_[x0_, y0_], np.c_[x0_ + R, y0_], np.c_[x0_ + R, y0_ + R], np.c_[x0_, y0_ + R]], 1).reshape(-1, 2)
+            V = np.c_[V, np.full(len(V), zf)]
+            F = np.arange(len(V)).reshape(-1, 4)
+            me = bpy.data.meshes.new('ocean'); me.from_pydata(V.tolist(), [], F.tolist()); me.update()
+            ob = bpy.data.objects.new('ocean', me); sc.collection.objects.link(ob); me.materials.append(m_)
+            nq = len(ii)
+    log(f'quay_wall sink: {n_tot} terrain vertices under the sea, {nq} water cells ({nq * 4} m2) over the cut strip')
+    return n_tot
+
 def build(bpy, sc, M, ground, box, cityconf, log=print):
     C = cityconf
     cl = C.work('landmarks', 'coast_land.npz')
     if not os.path.exists(cl): log('quay_wall: no coast_land.npz'); return 0
-    segs = _segments(cl, box)
+    osm_ = os.environ.get('QW_LINE', '') == 'osm' and _shore(C) is not None
+    if os.environ.get('QW_SINK', '0') == '1':
+        try: sink(bpy, sc, C, box, log)
+        except Exception as ex:
+            import traceback; traceback.print_exc(); log('quay_wall sink: FAILED', ex)
+    segs = _osm_segments(_shore(C), box) if osm_ else _segments(cl, box)
     if not segs: log('quay_wall: no coastline in the box'); return 0
     # the city limits (lon/lat -> world), grown 40 m (the wall stands at the limit's water edge): even-odd test + edge distance
     lim = (C.CFG.get('block') or {}).get('limits'); inside = lambda x, y: True
@@ -74,11 +164,14 @@ def build(bpy, sc, M, ground, box, cityconf, log=print):
         g = ground(x + n[0] * 3.0, y + n[1] * 3.0)
         return min(max(g if g is not None else 0.6, 0.6) + up, qmax)
     V, F = [], []; n_seg = n_skip = 0
-    for p, q, n in segs:
+    for sg in segs:
+        p, q, n = sg[:3]
         mx, my = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2
         if not (box[0] - 30 <= mx <= box[2] + 30 and box[1] - 30 <= my <= box[3] + 30): continue
         if not inside(mx, my): continue
-        if sand is not None and sand(mx + n[0] * 6.0, my + n[1] * 6.0): n_skip += 1; continue
+        if osm_:
+            if sg[3]: n_skip += 1; continue                                   # an OSM beach: no wall
+        elif sand is not None and sand(mx + n[0] * 6.0, my + n[1] * 6.0): n_skip += 1; continue
         ta, tb = top(p[0], p[1], n), top(q[0], q[1], n)
         ia, ib = (p[0] + n[0] * cap, p[1] + n[1] * cap), (q[0] + n[0] * cap, q[1] + n[1] * cap)
         k = len(V)
@@ -90,5 +183,5 @@ def build(bpy, sc, M, ground, box, cityconf, log=print):
     me = bpy.data.meshes.new('quay_wall'); me.from_pydata(V, [], F); me.update()
     ob = bpy.data.objects.new('quay_wall', me); sc.collection.objects.link(ob)
     me.materials.append(M.get('concrete_struct') or M.get('concrete') or M['sidewalk'])
-    log(f'quay_wall: {n_seg} pieces, {n_skip} on beaches skipped')
+    log(f'quay_wall: {n_seg} pieces, {n_skip} on beaches skipped' + (' (OSM coastline)' if osm_ else ''))
     return n_seg

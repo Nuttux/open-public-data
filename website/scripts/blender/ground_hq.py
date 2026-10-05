@@ -22,6 +22,14 @@ CLS_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_cls.npy'
 META_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_meta.json'
 TONE_PATH = '/Users/daniel/code/qipu-render-work/ground/ground_tone.npy'
 TONE_K = float(os.environ.get('GROUND_TONE', '1.1'))   # how much of the photo's detail (log2 of the ratio per unit)
+# (V-VEG 05/10) GROUND_PNW=1 (Vancouver): the class map ground_city.py rebuilt from LCC 2020 + OSM (yards, boulevards and
+# verges lawn, sidewalks concrete, sand only on the beaches, the seawall's promenade; it ships in veg/, the folder the pod
+# stages whole), a rain-city palette (a mossy green under everything instead of the hills' cured grass, a deeper lawn)
+# and no paving over thin lawn strips (_urban_clean read a boulevard as a speck). Unset (SF) = the map and colours above.
+PNW = os.environ.get('GROUND_PNW', '0') == '1'
+if PNW:
+    CLS_PATH = '/Users/daniel/code/qipu-render-work/veg/ground_pnw.npy'
+    META_PATH = '/Users/daniel/code/qipu-render-work/veg/ground_pnw.json'
 CLS = ['none', 'sand', 'lawn', 'drygrass', 'scrub', 'tree', 'soil', 'asphalt', 'concrete', 'gravel', 'marsh', 'water', 'wetsand', 'turf']
 CI = {n: k for k, n in enumerate(CLS)}
 PACK = [(('sand',), ('wetsand',), ('lawn',)),
@@ -91,7 +99,7 @@ def _inland_water(c, fx, fy, r, keep=12.0, it=40):
     print(f'ground_hq V2: {n0} m2 of inland photo water re-classed from its neighbours ({int(todo.sum())} to asphalt)')
     return c
 
-def _urban_clean(c, rad=7, pave_min=0.55):
+def _urban_clean(c, rad=7, pave_min=0.55, soft_names=('lawn', 'soil', 'drygrass', 'scrub', 'gravel', 'sand')):
     """[GROUND_V2] in paved surroundings (asphalt + concrete >= `pave_min` of
     the 15 x 15 m window) the photo's gravel is pale concrete, and a speck of
     lawn, soil, cured grass, scrub or gravel (a speck) is the paving
@@ -101,7 +109,7 @@ def _urban_clean(c, rad=7, pave_min=0.55):
     pv = _box(((c == CI['asphalt']) | (c == CI['concrete'])).astype(np.float32), rad)
     urb = pv >= pave_min
     c = c.copy(); c[urb & (c == CI['gravel'])] = CI['concrete']
-    soft = urb & np.isin(c, [CI[n] for n in ('lawn', 'soil', 'drygrass', 'scrub', 'gravel', 'sand')])
+    soft = urb & np.isin(c, [CI[n] for n in soft_names])
     if soft.any():
         # (an opening: what a 5 x 5 m square cannot fit in is a speck; numpy only, Blender has no scipy)
         er = _box(soft.astype(np.float32), 2) > 0.999
@@ -128,7 +136,8 @@ def weights(x0, y0, x1, y1):
     cnt = np.stack([_box((c == k).astype(np.float32), BLUR) for k in range(len(CLS))])
     cnt[0] *= 0.5                                                  # 'none' only where nothing else is
     c = np.where(c > 0, cnt.argmax(0).astype(np.uint8), 0).astype(np.uint8); del cnt
-    if V2: c = _urban_clean(_inland_water(c, fx, fy, r))
+    if V2 and PNW: c = _urban_clean(c, soft_names=('soil', 'drygrass', 'gravel', 'sand'))     # (the shore is ground_city's own)
+    elif V2: c = _urban_clean(_inland_water(c, fx, fy, r))
     maps = []
     for grp in PACK:
         ch = []
@@ -273,6 +282,11 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     # the wild ground (cured grass, brush, rock: hill_ground's hills), then
     # each class over it by its share
     x = hill
+    if PNW:
+        # [GROUND_PNW] under everything the ground does not name: a damp mossy green, never the hills' cured gold
+        x = b.mix(b.ramp(b.noise(1 / 9.0, 3.0, vec=b.vmap(1.0, loc=(4.4, -6.1, 0))), 0.0, 1.0, 0.3, 0.7), (0.040, 0.068, 0.024), (0.060, 0.092, 0.030))
+        x = b.mix(b.ramp(b.noise(1 / 1.5, 2.0), 0.0, 0.5, 0.55, 0.75), x, b.mix(1.0, x, (0.8, 0.86, 0.82), 'MULTIPLY'))
+        hill = x
     # a house's yard is a garden and a patio, not a vacant lot: bare earth
     # (and half the cured grass) within a few metres of a house takes
     # hill_ground's garden (integ1: Alamo's and Twin Peaks' backyards read as
@@ -299,7 +313,8 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
     if scan is not None:
         # a lush irrigated green (the beauty bar: a flight simulator's
         # parks, not the photo's olive) with a third of the scan's own tint
-        lush = b.mix(b.ramp(b.noise(1 / 25.0, 2.0, vec=b.vmap(1.0, loc=(2.0, 11.0, 0))), 0.0, 1.0, 0.3, 0.7), (0.086, 0.146, 0.019), (0.104, 0.166, 0.024))
+        lush = b.mix(b.ramp(b.noise(1 / 25.0, 2.0, vec=b.vmap(1.0, loc=(2.0, 11.0, 0))), 0.0, 1.0, 0.3, 0.7),
+                     *(((0.064, 0.125, 0.030), (0.082, 0.145, 0.036)) if PNW else ((0.086, 0.146, 0.019), (0.104, 0.166, 0.024))))   # [GROUND_PNW] a deeper, bluer rain-fed green
         lw = b.mix(0.25, lush, b.mix(1.0, scan, (0.80, 0.90, 0.58), 'MULTIPLY'))
         lw = b.mix(b.ramp(b.noise(1 / 40.0, 2.0, vec=b.vmap(1.0, loc=(9.0, 3.0, 0))), 0.0, 0.35, 0.4, 0.75), lw, b.mix(1.0, lw, (1.1, 1.04, 0.85), 'MULTIPLY'))
         sp_ = b.n('ShaderNodeSeparateXYZ'); b.put(sp_.inputs[0], b.pos)

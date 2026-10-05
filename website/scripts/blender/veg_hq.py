@@ -177,6 +177,10 @@ class Kinds:
             self.can = dict(x=cx[sel], y=cy[sel], h=Q['height'][sel], w=Q['crown'][sel], k=Q['kind'][sel]); self.can_names = [str(v) for v in Q['kind_names']]
             log('veg canopy crowns in the region:', int(sel.sum()), 'of', len(cx))
         self.stats = {}
+        # [VEG_KIT=pnw] no tree seaward of the OSM coastline (quay_wall QW_SINK puts that strip under the sea)
+        self.shore = None
+        if self.pnw and os.path.exists(os.path.join(VEG, 'shore_pnw.npz')):
+            S_ = np.load(os.path.join(VEG, 'shore_pnw.npz')); self.shore = (S_['sd2'], float(S_['x0']), float(S_['y0']), float(S_['res']))
         log('veg data: listed street trees', nst, 'OSM tree hints', nh, 'zones', len(self.zones))
 
     def _add(self, name, coll, w, h, tall, hmax):
@@ -184,6 +188,12 @@ class Kinds:
         self.protos.append(coll); self.widths.append(w); self.heights.append(h)
         self.tall.append(tall); self.hmax.append(hmax); self.names.append(name)
         return len(self.protos) - 1
+
+    def wet(self, x, y):
+        """[VEG_KIT=pnw] seaward of the OSM coastline by more than 0.5 m"""
+        if self.shore is None: return False
+        sd, x0, y0, r_ = self.shore; c, r = int((x - x0) / r_), int((y - y0) / r_)
+        return 0 <= r < sd.shape[0] and 0 <= c < sd.shape[1] and -120 < int(sd[r, c]) < -1
 
     def _count(self, k):
         self.stats[k] = self.stats.get(k, 0) + 1
@@ -301,6 +311,7 @@ class Kinds:
 
     def street4(self, ox, oy, x, y, park, crown, on_street=None, roofed=None):
         """(kind, crown, x, y) for a register tree; None = no tree there"""
+        if self.shore is not None and self.wet(x, y): self._count(('street', 'wet')); return None
         co, idx, dist = self.kst.find((ox, oy, 0.0)) if self.kst is not None else (None, None, None)
         dbh = 0.0; site = 0; hreg = None
         if idx is not None and dist <= 2.3:
@@ -364,6 +375,7 @@ class Kinds:
             x, y = float(C['x'][i]), float(C['y'][i])
             if (round(x / 2.5), round(y / 2.5)) in seen: continue
             if self.zones[self.zone(x, y)]['name'] not in CAN_ZONES: continue
+            if self.shore is not None and self.wet(x, y): self._count(('canopy', 'wet')); continue
             a = self.can_names[int(C['k'][i])]
             if a not in self.kinds_of: a = 'round'
             if VEG_FOREST_SUB and a in VEG_FOREST_SUB and VEG_FOREST_SUB[a] in self.kinds_of and self.zones[self.zone(x, y)]['name'] not in OPEN_ZONES: a = VEG_FOREST_SUB[a]
@@ -380,6 +392,7 @@ class Kinds:
                     t_, r_ = 6.283 * hp(x, y, 140 + m), VEG_FOREST_R * (0.45 + 0.55 * math.sqrt(hp(x, y, 170 + m)))
                     x2, y2 = x + r_ * math.cos(t_), y + r_ * math.sin(t_)
                     if (round(x2 / 2.5), round(y2 / 2.5)) in seen: continue
+                    if self.shore is not None and self.wet(x2, y2): continue
                     self._count(('canopy', a + '+fill'))
                     yield x2, y2, k, s_ * (0.7 + 0.25 * hp(x2, y2, 8)), 6.283 * hp(x2, y2, 5)
             # A STAND, NOT ONE TREE: a segment much wider than the capped proto
