@@ -236,7 +236,7 @@ def ai(years, d, out):
     # (i7) ERA PROMPTS: the tile prompts say 'every street is dry grey asphalt with road markings'; before lane paint (era.py marks: 1970s) the AI
     # drew today's lane and stall markings onto 1938 / 1959 streets. Years before 1970 get the same prompts with the markings replaced.
     if min(years) < EC.MARKS_FROM:
-        src = open(f'{d}/lr_run9.py').read(); anc = "GUIDE = ("
+        src = open(f'{d}/lr_run9.py').read(); anc = "MODEL = os.environ.get('MODEL'"
         add = ("for _k in list(P):\n    P[_k + '_nomarks'] = P[_k].replace('with road markings', 'with no road markings, no lane lines and no painted parking stalls (before the 1970s)')\n")
         if '_nomarks' not in src: src = src.replace(anc, add + anc, 1); open(f'{d}/lr_run9.py', 'w').write(src)
         for fn in ('P.txt', 'PALL.txt'):
@@ -272,7 +272,7 @@ def ai(years, d, out):
                        ' shows them; every building, roof, street and yard the render shows intact stays intact, with no ash on it.')
             fire_tiles = os.environ.get('FIRE_TILES', '1') == '1'
             if Y0 in EC.FIRE_YEARS and not fire_tiles: ex += FIRE_EX
-            src = open(f'{d}/lr_run9.py').read(); anc = "GUIDE = ("
+            src = open(f'{d}/lr_run9.py').read(); anc = "MODEL = os.environ.get('MODEL'"
             if '_ERA_RP' not in src:
                 code = '_ERA_RP = %r\n_ERA_EX = %r\nfor _k in list(P):\n    if _k.endswith(\'_nomarks\'):\n        for _a, _b in _ERA_RP: P[_k] = P[_k].replace(_a, _b)\n        P[_k] = P[_k] + _ERA_EX\n' % (rp, ex)
                 # (03/10 era_auto) RULE NOTREE (Daniel's blind side-by-side i17b, 1915, 5 of 5 for B): before 1930 the base wording says no trees;
