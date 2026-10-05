@@ -8,9 +8,9 @@
 #   keys     today's core, post (quilt + finish), the key rules (K1-K3), the anachronism CHECK with the automatic re-paint, check again
 #   film     the chain's segments (prep, switch dates tsw.py, final_all), the film (GRADE=1, TSW_DIR) + a sheet
 set -eu
-eval "$(python3 ${0:A:h}/eracity.py sh)"   # per city: ERA_SNAP, ERA_OVERLAY (CITY unset = SF's literals); the prep tools stay era_anim/auto/prep  # ERA_CITY
+eval "$(python3 ${0:A:h}/eracity.py sh)"   # per city: ERA_SNAP, ERA_OVERLAY (CITY unset = SF's literals); the prep tools are this folder's prep/ (city-aware copies)  # ERA_CITY
 A=$1; STEP=$2; YS=(${=${3:-1985 2006}}); export ERA_AREA=$A
-D=${0:A:h}; P=/Users/daniel/code/qipu-render-work/era_anim/auto/prep; W=/Users/daniel/code/qipu-render-work
+D=${0:A:h}; P=$D/prep; W=/Users/daniel/code/qipu-render-work
 RUN=$(python3 -c "import json;print(json.load(open('$A'))['RUN'])"); WQ=$(python3 -c "import json;print(json.load(open('$A'))['WQ'].rstrip('/'))")
 TAG=$(python3 -c "import json;a=json.load(open('$A'));print(a['tag'])"); OVL=$(python3 -c "import json;a=json.load(open('$A'));print(a.get('overlay',''))"); SNAPN=$(python3 -c "import json;a=json.load(open('$A'));print(a.get('snap','$ERA_SNAP'))"); IT=$(python3 -c "import json;a=json.load(open('$A'));print(a['iter'])")
 WPFX=$(python3 -c "import json;a=json.load(open('$A'));print(a['wpfx'])"); export WPFX

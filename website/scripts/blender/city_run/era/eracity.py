@@ -67,12 +67,27 @@ PERIOD_PROMPTS_BEFORE = V['period_prompts_before']; EARLY_PROMPTS_BEFORE = V['ea
 SNAP_ROOT = V['snap_root']; SNAP = V['snap']; OVERLAY = V['overlay']; RAIL_OVERLAY = V['rail_overlay']
 ERA_CLAUSE_BEFORE = V['era_clause_before']; NOTREE_BEFORE = V['notree_before']; COBBLE_BEFORE = V['cobble_before']; K9_YEAR = str(V['k9_year'])
 ASH_FROM, ASH_UNTIL = (FIRE_STATE[0] + 1, FIRE_STATE[1]) if V['fire_state'] else (-1, -2)
+PREP_SNAP = SNAP_ROOT + SNAP   # the snapshot the prep tools import (prep/common.SNAP; an area's 'snap' wins)
 BURN_SNAPS = tuple(V['burn_snaps']); BURN_SNAP = V['burn_snap']; BURN_ENGINE = V['burn_engine']; VIEW_CX, VIEW_CY, VIEW_Z = V['view_ref']
 
 
 def moment(Y):
     """the float year a key year's render stands for (era.when): the fire checkpoint is 28 May 1906 (SF), else the year's middle"""
     return 1906 + 147 / 365.0 if Y == FIRE_CHECKPOINT else Y + 0.5
+
+
+
+def fire_moment():
+    """the fire's float moment (prep/common.FIRE, seg.json 'fire': 18 Apr 1906 for SF); no fire checkpoint = -1 (no segment holds it)"""
+    return 1906 + 107 / 365.0 if FIRE_CHECKPOINT else -1.0
+
+
+def apply_city_env():
+    """another city: its city.json 'env' as defaults of os.environ (as citysnap.sh writes them atop the snapshot's hq_city), so the CPU
+    prep tools read the records the render drew (TODAY_LIDAR, PLACES_OV, HEIGHTS...); an explicit env wins; SF: nothing"""
+    if CITY == 'sf': return
+    for k, v in _c.get('env', {}).items(): os.environ.setdefault(k, str(v))
+    os.environ.setdefault('CITY', CITY)
 
 
 if __name__ == '__main__':
