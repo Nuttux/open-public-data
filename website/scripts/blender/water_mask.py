@@ -73,6 +73,56 @@ def close_limit_gap(raw, gap=150.0):
     print('limit gap: candidates', int(cand.sum()), 'made land', int(land.sum()), f'({land.sum() * RES * RES / 1e4:.1f} ha)')
     return raw
 
+def close_port_notches(raw, zmin=1.5):
+    """(fix5, 05/10, not SF) the same engine gap as close_limit_gap, enclosed: Burrard Inlet's port terminals carry
+    deep 'water' notches with city terrain all round. Inside the city limits, a water pixel that ESA WorldCover
+    (engine base/surround-landcover-fine.bin) calls land, the city's finer land cover (ground/ground_cls_raw.npy, if any)
+    does not call water, AND whose LiDAR DEM (landmarks/dem, the HRDEM tiles of
+    dem_city.py) stands above zmin m is land. The inlet, False Creek and the river are WorldCover water (or DEM ~0): kept."""
+    import cv2
+    cj = f'{D}/../city.json'
+    if not os.path.exists(cj): print('port notches: no city.json, skipped'); return raw
+    cfg = json.load(open(cj)); eng, pj = cfg['engine'], cfg['proj']
+    lim = (cfg.get('block') or {}).get('limits')
+    if not lim: print('port notches: no limits, skipped'); return raw
+    lj = json.load(open(f'{eng}/base/surround-landcover.json')); fw, fh = lj['fine']['w'], lj['fine']['h']
+    fine = np.fromfile(f'{eng}/base/{lj["fine"]["file"]}', np.uint8).reshape(fh, fw)
+    w_, s_, e_, n_ = lj['bbox4326']
+    g = json.load(open(lim if os.path.isabs(lim) else f'{D}/../{lim}'))
+    g = g['geometry'] if 'geometry' in g else g['features'][0]['geometry']
+    polys = [g['coordinates']] if g['type'] == 'Polygon' else g['coordinates']
+    inside = np.zeros((H, W), np.uint8)
+    for pg in polys:
+        rr = []
+        for r in pg:
+            r = np.asarray(r, float); Xr = (r[:, 0] - pj['lon0']) * pj['mpd'] * pj['cosl']; Yr = (r[:, 1] - pj['lat0']) * pj['mpd']
+            rr.append(np.stack([(Xr - ox) / RES, H - (Yr - oy) / RES], 1).round().astype(np.int32))
+        cv2.fillPoly(inside, rr[:1], 255)
+        if len(rr) > 1: cv2.fillPoly(inside, rr[1:], 0)
+    yy, xx = np.nonzero((raw > 0) & (inside > 0))
+    X, Y = ox + (xx + 0.5) * RES, oy + (H - yy - 0.5) * RES
+    lon = pj['lon0'] + X / (pj['mpd'] * pj['cosl']); lat = pj['lat0'] + Y / pj['mpd']
+    fi = np.clip(np.floor((lon - w_) / (e_ - w_) * fw).astype(int), 0, fw - 1); fj = np.clip(np.floor((lat - s_) / (n_ - s_) * fh).astype(int), 0, fh - 1)
+    f = fine[fj, fi]; k = (f >= 2) & (f < 255)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import lm_dem
+    lm_dem.ROOT = os.path.join(os.path.dirname(eng.rstrip('/')), 'landmarks', 'dem')
+    z = np.full(k.sum(), np.nan, np.float32); z[:] = lm_dem.sample_arr(X[k], Y[k])
+    hit = np.zeros(len(xx), bool); hit[np.nonzero(k)[0]] = np.nan_to_num(z, nan=-99) > zmin
+    gm = os.path.join(os.path.dirname(eng.rstrip('/')), 'ground', 'ground_meta.json')   # the finer land cover, where the city has one
+    if os.path.exists(gm):                    # (Metro Vancouver LCC 2020, 5 m): WorldCover's 18 m cells call marinas' floats land
+        M = json.load(open(gm)); G = np.load(os.path.join(os.path.dirname(gm), 'ground_cls_raw.npy'), mmap_mode='r'); h = np.nonzero(hit)[0]
+        gi = np.floor((Y[h] - M['y0']) / M['res']).astype(int); gj = np.floor((X[h] - M['x0']) / M['res']).astype(int)
+        inn = (gi >= 0) & (gi < G.shape[0]) & (gj >= 0) & (gj < G.shape[1]); cls = np.full(len(h), -1)
+        cls[inn] = np.asarray(G[gi[inn], gj[inn]]); hit[h[cls == M['classes'].index('water')]] = False
+    hm = np.zeros((H, W), np.uint8); hm[yy[hit], xx[hit]] = 1           # solid land only: a 14 m opening drops floats and
+    hm = cv2.morphologyEx(hm, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7)))   # dock fingers
+    hit &= hm[yy, xx] > 0
+    raw = raw.copy(); raw[yy[hit], xx[hit]] = 0
+    print('port notches: water inside limits', len(xx), 'WorldCover land', int(k.sum()), 'made land (DEM >', zmin, 'm)', int(hit.sum()),
+          f'({hit.sum() * RES * RES / 1e4:.1f} ha)')
+    return raw
+
 img = Image.new('L', (W, H), 0); dr = ImageDraw.Draw(img)
 n = 0
 for m in d['meshes']:
@@ -93,6 +143,7 @@ if os.environ.get('CITY', 'sf') != 'sf':
 raw = np.asarray(img, dtype=np.uint8).copy()
 if os.environ.get('CITY', 'sf') != 'sf':
     raw = close_limit_gap(raw)
+    raw = close_port_notches(raw)
 # outside the exported box nothing was exported: carry the box's own edge
 # outward, so a bay that runs off the frame keeps running
 bx0, bx1 = int(PAD / RES), W - int(PAD / RES) - 1

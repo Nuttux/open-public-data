@@ -16,6 +16,7 @@ except what those scripts read themselves. Another city reads qipu-render-work/c
      roof_rn_seam  false: SF's NAIP roof-photo box seam fix (post_sb ROOF_RN_SEAM)
      colour_table  '' : the gid-keyed facade colour table post_sb colour2 locks to (SF fa_table_v3)
      areas         '' : the risk probes file for the post sheet (SF city_run/run/areas.json)
+     quay_lip      1 (absent = 1, SF): post_sb QUAY_LIP seawall lip painted on the AI output; 0 where the render has its own seawall (Vancouver: QUAY_WALL)
      city_root     the block planner's coverage root (sb.py CITY_ROOT), default cities/<city>/blocks
 Import from any city_run script: sys.path.insert(0, <city_run>); import citycfg as CC."""
 import json, math, os

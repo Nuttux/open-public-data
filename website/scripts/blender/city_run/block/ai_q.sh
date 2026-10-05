@@ -2,11 +2,11 @@
 # (city_run/block/ai_q.sh: BLK_DIR, BLK_TAG, BLK_CKPT; SF defaults = work_b14/ai_q.sh of 03/10; post/autoreroll from this branch's city_run/run)
 # b8v2 after the render (30/09 night, b8 fix agent): check + mosaic + AI windows (v8_rail5 on rail tiles) -> the shared L8 on ONE Vast card
 # -> all tiles on K cards (autoreroll_card.py = rrq.py chunk queue, key nfC = a normal paint, tiles pulled every 30 s, card down in finally)
-# -> registry -> autoreroll auto (detect + up to 2 re-roll rounds) -> post (QUAY_LIP=1, ROOF_RN_SEAM=1, exp/combo post_sb) -> publish block_b14.
+# -> registry -> autoreroll auto (detect + up to 2 re-roll rounds) -> post (QUAY_LIP = city.json block.quay_lip, default 1 = SF; ROOF_RN_SEAM=1, exp/combo post_sb) -> publish block_b14.
 #   zsh ai_q.sh [--from N] [K=6]      log: logs/ai_q.log (STEP / ABORT / AI_Q_DONE)
 set -u
 HERE=${0:A:h}; V=${BLK_DIR:?BLK_DIR = the block work dir}; TAG=${BLK_TAG:-${${V:t}#work_}}   # (city_run/block) the block line for any city: CITY unset = SF
-eval "$(cd $HERE/.. && python3 -c 'import citycfg as C; print("CITY_SF=%d BLK_SNAP_DEF=%s BLK_OVL_DEF=%s PIER_CTX=%d" % (C.SF, C.BLOCK["snapshot"], C.BLOCK["overlay"] or "-", C.BLOCK["pier_ctx"]))')"
+eval "$(cd $HERE/.. && python3 -c 'import citycfg as C; print("CITY_SF=%d BLK_SNAP_DEF=%s BLK_OVL_DEF=%s PIER_CTX=%d QUAY_LIP=%d" % (C.SF, C.BLOCK["snapshot"], C.BLOCK["overlay"] or "-", C.BLOCK["pier_ctx"], int(C.BLOCK.get("quay_lip", 1))))')"
 W=/Users/daniel/code/qipu-render-work; B=$HERE; CK=${BLK_CKPT:-block_$TAG}
 RUN=${BLK_RUN:-${HERE:h}/run}
 FROM=1; [ "${1:-}" = --from ] && { FROM=$2; shift 2; }; K=${1:-8}
@@ -88,9 +88,9 @@ if [ $FROM -le 4 ]; then
   say "autoreroll: $(grep -E '^SCAN|^PICK|flagged tiles|CARD FAILED' $V/logs/autoreroll.log | tr '\n' ' ' | cut -c1-400)"
 fi
 if [ $FROM -le 5 ]; then
-  say "STEP 5 post (QUAY_LIP=1 ROOF_RN_SEAM=1)"
+  say "STEP 5 post (QUAY_LIP=$QUAY_LIP ROOF_RN_SEAM=1)"
   rm -f $V/city/sb/b8/final/f_*.done
-  ( cd $RUN && CITY_ROOT=$V/city QUAY_LIP=1 ROOF_RN_SEAM=1 ROOF_FLAT_TONE=1 python3 post_sb.py b8 quilt,finish ) > $V/logs/post.log 2>&1
+  ( cd $RUN && CITY_ROOT=$V/city QUAY_LIP=$QUAY_LIP ROOF_RN_SEAM=1 ROOF_FLAT_TONE=1 python3 post_sb.py b8 quilt,finish ) > $V/logs/post.log 2>&1
   ls $V/city/sb/b8/final/f_*.done >/dev/null 2>&1 && [ -d $V/city/layer/tiles/9 ] || abort "post failed (logs/post.log)"
 fi
 if [ $FROM -le 6 ]; then
