@@ -1396,6 +1396,7 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None, mat_top
     from mathutils import Vector
     V, F = [], []
     TOPF = []    # (B3-fix) the slab tops, for mat_top (a bridge's roadway); None (SF) = one material
+    if mat_top is None and M is not None and globals().get('CITY_DECK_TOP'): mat_top = M.get('asphalt')   # (V-ERAS) dated city bridges in an era scene
 
     def box3(o, a, b, c):
         p = [o, o + a, o + a + b, o + b, o + c, o + a + c, o + a + b + c, o + b + c]
@@ -2435,8 +2436,12 @@ def freeway_keep(era):
 def _other_city(name):
     g = globals()
     # (the path is joined, not one literal: citysnap.sh re-points every 'qipu-render-work/' literal at cities/<city>/ and would double it)
-    cfg = json.load(open(os.environ.get('ERA_CITY_JSON') or os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', name, 'city.json')))
+    _cj = os.environ.get('ERA_CITY_JSON') or os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', name, 'city.json')
+    cfg = json.load(open(_cj))
     e = cfg.get('eras', {}).get('era_py', {})
+    # (05/10 V-ERAS) cities/<city>/assets/eras.env.json 'era_py' (optional): era keys added without editing city.json; a key there wins
+    _ee = os.path.join(os.path.dirname(_cj), 'assets', 'eras.env.json')
+    if os.path.exists(_ee): e = dict(e, **json.load(open(_ee)).get('era_py', {}))
     g['CITY'] = cfg['engine']
     g['CHECKPOINTS'] = tuple(e.get('checkpoints', [None]))
     g['CHECKPOINT_DATE'] = {int(k): v for k, v in e.get('checkpoint_date', {}).items()}
@@ -2485,6 +2490,16 @@ def _other_city(name):
     if e.get('structures'):
         g['STRUCTURES'] = [dict(st, dem=tuple(st['dem']) if st.get('dem') else None) for st in json.load(open(e['structures']))]
     if e.get('lost_fw_hq') is False: os.environ['LOST_FW_HQ'] = '0'
+    # (05/10 V-ERAS) today's bridge decks, DATED (era_py.bridges = bridges_city.py's json, era_py.bridge_dates = c1/bridge_dates.py's
+    # {decks: {k: {y0, y1}}, default}): a past year draws only the decks standing then (no 1985 Cambie deck in 1982); today's scene keeps
+    # its own CITY_BRIDGES (hq_city replaces these by key, so nothing is drawn twice); slab tops get the asphalt (CITY_DECK_TOP)
+    if e.get('bridges') and os.path.exists(e['bridges']):
+        _bd = json.load(open(e['bridge_dates'])) if e.get('bridge_dates') and os.path.exists(e['bridge_dates']) else {}
+        _df = _bd.get('default', dict(y0=2025.0, y1=9999.0))
+        for _b in json.load(open(e['bridges'])):
+            _d = _bd.get('decks', {}).get(_b['k'], _df)
+            g['STRUCTURES'].append(dict(_b, y0=float(_d['y0']), y1=float(_d.get('y1', 9999.0)), dem=None))
+        g['CITY_DECK_TOP'] = True
     g['near_embarcadero'] = lambda x, y, d: False
     g['freeway_year'] = lambda name_, x, y: None
     g['ppie_footprint'] = lambda x, y: False

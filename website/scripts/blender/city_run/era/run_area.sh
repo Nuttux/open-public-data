@@ -21,6 +21,7 @@ render)
   cat > $RUN/LAUNCH_render.sh <<EOF
 #!/bin/zsh
 # era_auto $IT: render ${YS} of the area (auto_render.sh, PAR 1 on 24/48 GB lmk pods). Balance first; never start a run the balance can't finish.
+export CITY=$ERA_CITY   # the city this launcher was written for  # ERA_CITY
 cd $W; python3 cloud/pod.py balance; python3 speed/vast/vast.py credit
 MAXH=${MAXH:-1.2} SNAPN=$SNAPN nohup zsh $D/auto_render.sh $RUN ea${IT}r$(date +%H%M) ${NPODS:-4} '$TAG*' $OVL > /dev/null 2>&1 &
 # watcher: tail -F $RUN/render.log | grep -E --line-buffered "ready|rendered|failed|no pod|DONE|down|Traceback|scp|link"
@@ -42,6 +43,7 @@ ai)
   cat > $RUN/LAUNCH_ai.sh <<EOF
 #!/bin/zsh
 # era_auto $IT: AI paint of the masked tiles, one Vast 5090 card per year (gpu.py, RunPod fallback), pulled every 5 min, cards down at the end.
+export CITY=$ERA_CITY   # the city this launcher was written for  # ERA_CITY
 cd $W; python3 cloud/pod.py balance; python3 speed/vast/vast.py credit
 nohup zsh $D/auto_ai.sh $RUN ea${IT}v$(date +%H%M) ${YS} > /dev/null 2>&1 &
 # watcher: tail -F $RUN/ai_ea${IT}v$(date +%H%M).log | grep -E --line-buffered "up|done|DONE|no pod|failed|short|Traceback|down"

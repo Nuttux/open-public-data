@@ -68,6 +68,10 @@ def lists(Y0, Y1, wbox, pad=400.0):
         h = max(dk) + 1.6
         s = dict(key=st['k'], kind=st['kind'], gone=a, y0=st['y0'], y1=st['y1'], dem=st.get('dem'), h=h, w=st['w'],
                  line=LineString(st['path']), chunks=_chunks_path(st['path'], st['w'], lambda t: h, gz))
+        if st.get('zabs') and st.get('hag'):   # (V-ERAS) a city bridge (bridges_city.py): its deck at ABSOLUTE z (hag [[s m, z]]),  # ERA_CITY
+            _S, _Z = np.asarray(st['hag'], float).T   # so each chunk reaches from its own ground to the deck + parapet  # ERA_CITY
+            for c_ in s['chunks']: c_['h'] = max(0.3, float(np.interp(c_['t'] * s['line'].length, _S, _Z)) - c_['zg'] + 1.6)  # ERA_CITY
+            s['h'] = max([c_['h'] for c_ in s['chunks']] + [0.3])  # ERA_CITY
         s['path_len_m'] = s['line'].length; (gone if a else new).append(s)
     for e in LOST.LOST:                                        # the lost halls / terminals (era_lost)
         f = e['form']; c = f.get('c')
