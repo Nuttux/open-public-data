@@ -1,0 +1,11 @@
+[["pool/001","character_house","walls",[0.50,0.32,0.60,0.42]],["pool/001","character_house","trim",[0.38,0.43,0.50,0.47]],
+ ["pool/002","character_house","walls",[0.25,0.42,0.38,0.60]],["pool/002","character_house","walls",[0.60,0.42,0.70,0.55]],["pool/002","character_house","roof",[0.35,0.24,0.60,0.30]],
+ ["pool/003","character_house","walls",[0.55,0.20,0.75,0.30]],
+ ["pool/006","character_house","walls",[0.10,0.35,0.30,0.50]],["pool/006","character_house","walls",[0.65,0.35,0.85,0.48]],["pool/006","character_house","roof",[0.30,0.10,0.50,0.20]],["pool/006","character_house","trim",[0.45,0.62,0.60,0.66]],
+ ["pool/008","character_house","walls",[0.62,0.50,0.75,0.65]],["pool/008","character_house","roof",[0.45,0.30,0.60,0.36]],
+ ["pool/010","character_house","walls",[0.45,0.18,0.55,0.25]],
+ ["pool/014","character_house","walls",[0.05,0.10,0.25,0.30]],["pool/014","character_house","trim",[0.55,0.60,0.60,0.75]],
+ ["pool/022","character_house","walls",[0.15,0.45,0.25,0.55]],["pool/022","character_house","walls",[0.60,0.38,0.70,0.48]],
+ ["pool/041","character_house","walls",[0.12,0.45,0.30,0.60]],["pool/041","character_house","trim",[0.45,0.48,0.75,0.52]],
+ ["pool/042","character_house","walls",[0.10,0.35,0.30,0.48]],["pool/042","character_house","walls",[0.80,0.45,0.95,0.60]],["pool/042","character_house","roof",[0.08,0.27,0.30,0.32]],
+ ["pool/080","character_house","walls",[0.60,0.30,0.75,0.40]],["pool/080","character_house","walls",[0.65,0.55,0.80,0.65]],["pool/080","character_house","trim",[0.60,0.42,0.80,0.46]]]

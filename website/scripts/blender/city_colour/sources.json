@@ -1,0 +1,2759 @@
+{
+ "pool/001": {
+  "url": "https://commons.wikimedia.org/wiki/File:1050_Nicola_Street,_Vancouver.jpg",
+  "title": "File:1050 Nicola Street, Vancouver.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Torecles",
+  "date": "2008-07-25",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.5,
+     0.32,
+     0.6,
+     0.42
+    ],
+    "rgb": [
+     0.109,
+     0.204,
+     0.222
+    ],
+    "exposure": 1.08
+   },
+   {
+    "type": "character_house",
+    "role": "trim",
+    "box": [
+     0.38,
+     0.43,
+     0.5,
+     0.47
+    ],
+    "rgb": [
+     0.491,
+     0.502,
+     0.498
+    ],
+    "exposure": 1.08
+   }
+  ]
+ },
+ "pool/002": {
+  "url": "https://commons.wikimedia.org/wiki/File:1550_Harwood_St._picture_by_Simone_Viegas.jpg",
+  "title": "File:1550 Harwood St. picture by Simone Viegas.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Simoneviegas",
+  "date": "2020-06-20",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.25,
+     0.42,
+     0.38,
+     0.6
+    ],
+    "rgb": [
+     0.31,
+     0.345,
+     0.358
+    ],
+    "exposure": 1.078
+   },
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.6,
+     0.42,
+     0.7,
+     0.55
+    ],
+    "rgb": [
+     0.31,
+     0.329,
+     0.346
+    ],
+    "exposure": 1.078
+   },
+   {
+    "type": "character_house",
+    "role": "roof",
+    "box": [
+     0.35,
+     0.24,
+     0.6,
+     0.3
+    ],
+    "rgb": [
+     0.468,
+     0.458,
+     0.464
+    ],
+    "exposure": 1.078
+   }
+  ]
+ },
+ "pool/003": {
+  "url": "https://commons.wikimedia.org/wiki/File:1554_East_10th_Avenue.JPG",
+  "title": "File:1554 East 10th Avenue.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "11 May 2010 (original upload date)",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.2,
+     0.75,
+     0.3
+    ],
+    "rgb": [
+     0.508,
+     0.63,
+     0.693
+    ],
+    "exposure": 1.148
+   }
+  ]
+ },
+ "pool/006": {
+  "url": "https://commons.wikimedia.org/wiki/File:2020_Dec_11_photo_of_1390_Thurlow_St,_Vancouver_01.jpg",
+  "title": "File:2020 Dec 11 photo of 1390 Thurlow St, Vancouver 01.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Luke Shwart",
+  "date": "2020-12-11 13:06:55",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.1,
+     0.35,
+     0.3,
+     0.5
+    ],
+    "rgb": [
+     0.027,
+     0.067,
+     0.075
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.65,
+     0.35,
+     0.85,
+     0.48
+    ],
+    "rgb": [
+     0.251,
+     0.263,
+     0.241
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "character_house",
+    "role": "trim",
+    "box": [
+     0.45,
+     0.62,
+     0.6,
+     0.66
+    ],
+    "rgb": [
+     0.053,
+     0.11,
+     0.12
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/008": {
+  "url": "https://commons.wikimedia.org/wiki/File:2033-2035_East_2nd_Avenue.JPG",
+  "title": "File:2033-2035 East 2nd Avenue.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "1 July 2010 (original upload date)",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.62,
+     0.5,
+     0.75,
+     0.65
+    ],
+    "rgb": [
+     0.411,
+     0.384,
+     0.355
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/010": {
+  "url": "https://commons.wikimedia.org/wiki/File:2919_East_29th_Avenue.JPG",
+  "title": "File:2919 East 29th Avenue.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "11 May 2010 (original upload date)",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.45,
+     0.18,
+     0.55,
+     0.25
+    ],
+    "rgb": [
+     0.739,
+     0.804,
+     0.798
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/014": {
+  "url": "https://commons.wikimedia.org/wiki/File:6120_McDonald_St.JPG",
+  "title": "File:6120 McDonald St.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "26 May 2010 (original upload date)",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.05,
+     0.1,
+     0.25,
+     0.3
+    ],
+    "rgb": [
+     0.531,
+     0.539,
+     0.522
+    ],
+    "exposure": 1.296
+   },
+   {
+    "type": "character_house",
+    "role": "trim",
+    "box": [
+     0.55,
+     0.6,
+     0.6,
+     0.75
+    ],
+    "rgb": [
+     0.394,
+     0.377,
+     0.274
+    ],
+    "exposure": 1.296
+   }
+  ]
+ },
+ "pool/022": {
+  "url": "https://commons.wikimedia.org/wiki/File:Barclay_Heritage_Square_03.jpg",
+  "title": "File:Barclay Heritage Square 03.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Joe Mabel",
+  "date": "Taken on\u00a022 March 2007",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.15,
+     0.45,
+     0.25,
+     0.55
+    ],
+    "rgb": [
+     0.247,
+     0.269,
+     0.194
+    ],
+    "exposure": 1.056
+   },
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.6,
+     0.38,
+     0.7,
+     0.48
+    ],
+    "rgb": [
+     0.355,
+     0.329,
+     0.23
+    ],
+    "exposure": 1.056
+   }
+  ]
+ },
+ "pool/041": {
+  "url": "https://commons.wikimedia.org/wiki/File:House_in_Vancouver_(433449684).jpg",
+  "title": "File:House in Vancouver (433449684).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-03-25 05:16",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.12,
+     0.45,
+     0.3,
+     0.6
+    ],
+    "rgb": [
+     0.303,
+     0.264,
+     0.373
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "character_house",
+    "role": "trim",
+    "box": [
+     0.45,
+     0.48,
+     0.75,
+     0.52
+    ],
+    "rgb": [
+     0.258,
+     0.251,
+     0.215
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/042": {
+  "url": "https://commons.wikimedia.org/wiki/File:House_in_Vancouver_(433449690).jpg",
+  "title": "File:House in Vancouver (433449690).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-03-25 05:16",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.1,
+     0.35,
+     0.3,
+     0.48
+    ],
+    "rgb": [
+     0.422,
+     0.345,
+     0.322
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.8,
+     0.45,
+     0.95,
+     0.6
+    ],
+    "rgb": [
+     0.351,
+     0.362,
+     0.335
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "character_house",
+    "role": "roof",
+    "box": [
+     0.08,
+     0.27,
+     0.3,
+     0.32
+    ],
+    "rgb": [
+     0.404,
+     0.419,
+     0.47
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/080": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_BC_old-and-new.jpg",
+  "title": "File:Vancouver BC old-and-new.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Joe Mabel",
+  "date": "2007-03-22",
+  "used": [
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.6,
+     0.3,
+     0.75,
+     0.4
+    ],
+    "rgb": [
+     0.37,
+     0.376,
+     0.347
+    ],
+    "exposure": 1.222
+   },
+   {
+    "type": "character_house",
+    "role": "walls",
+    "box": [
+     0.65,
+     0.55,
+     0.8,
+     0.65
+    ],
+    "rgb": [
+     0.196,
+     0.203,
+     0.17
+    ],
+    "exposure": 1.222
+   },
+   {
+    "type": "character_house",
+    "role": "trim",
+    "box": [
+     0.6,
+     0.42,
+     0.8,
+     0.46
+    ],
+    "rgb": [
+     0.701,
+     0.714,
+     0.718
+    ],
+    "exposure": 1.222
+   }
+  ]
+ },
+ "pool/081": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_spcials_01.jpg",
+  "title": "File:Vancouver spcials 01.jpg",
+  "licence": "CC BY 2.0",
+  "author": "Jason V from Vancouver, Canada",
+  "date": "2005-09-07 20:02",
+  "used": [
+   {
+    "type": "vancouver_special",
+    "role": "walls",
+    "box": [
+     0.53,
+     0.32,
+     0.61,
+     0.43
+    ],
+    "rgb": [
+     0.491,
+     0.515,
+     0.425
+    ],
+    "exposure": 1.185
+   },
+   {
+    "type": "vancouver_special",
+    "role": "base",
+    "box": [
+     0.65,
+     0.62,
+     0.85,
+     0.72
+    ],
+    "rgb": [
+     0.218,
+     0.138,
+     0.091
+    ],
+    "exposure": 1.185
+   }
+  ]
+ },
+ "pool/082": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_specials_02.jpg",
+  "title": "File:Vancouver specials 02.jpg",
+  "licence": "CC BY 2.0",
+  "author": "Richard Eriksson from Vancouver, Canada",
+  "date": "2006-04-02 17:47",
+  "used": [
+   {
+    "type": "vancouver_special",
+    "role": "base",
+    "box": [
+     0.8,
+     0.55,
+     0.95,
+     0.7
+    ],
+    "rgb": [
+     0.308,
+     0.258,
+     0.208
+    ],
+    "exposure": 1.048
+   }
+  ]
+ },
+ "pool/083": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_specials_04.jpg",
+  "title": "File:Vancouver specials 04.jpg",
+  "licence": "CC BY 2.0",
+  "author": "Richard Eriksson from Vancouver, Canada",
+  "date": "2007-05-09 17:52",
+  "used": [
+   {
+    "type": "vancouver_special",
+    "role": "walls",
+    "box": [
+     0.1,
+     0.3,
+     0.25,
+     0.45
+    ],
+    "rgb": [
+     0.441,
+     0.436,
+     0.41
+    ],
+    "exposure": 1.146
+   },
+   {
+    "type": "vancouver_special",
+    "role": "base",
+    "box": [
+     0.1,
+     0.75,
+     0.25,
+     0.9
+    ],
+    "rgb": [
+     0.127,
+     0.094,
+     0.067
+    ],
+    "exposure": 1.146
+   },
+   {
+    "type": "vancouver_special",
+    "role": "trim",
+    "box": [
+     0.1,
+     0.61,
+     0.4,
+     0.64
+    ],
+    "rgb": [
+     0.408,
+     0.408,
+     0.394
+    ],
+    "exposure": 1.146
+   }
+  ]
+ },
+ "pool/084": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_specials_06.jpg",
+  "title": "File:Vancouver specials 06.jpg",
+  "licence": "CC BY 2.0",
+  "author": "Ivan Oyarzun from vancouver, canada",
+  "date": "2006-10-03 07:28",
+  "used": [
+   {
+    "type": "vancouver_special",
+    "role": "walls",
+    "box": [
+     0.45,
+     0.15,
+     0.6,
+     0.25
+    ],
+    "rgb": [
+     0.257,
+     0.266,
+     0.234
+    ],
+    "exposure": 0.914
+   },
+   {
+    "type": "vancouver_special",
+    "role": "base",
+    "box": [
+     0.62,
+     0.46,
+     0.85,
+     0.56
+    ],
+    "rgb": [
+     0.152,
+     0.164,
+     0.158
+    ],
+    "exposure": 0.914
+   }
+  ]
+ },
+ "pool/097": {
+  "url": "https://commons.wikimedia.org/wiki/File:Marpole_house_3.jpg",
+  "title": "File:Marpole house 3.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Claire13",
+  "date": "2011-12-05",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.4,
+     0.6,
+     0.6,
+     0.7
+    ],
+    "rgb": [
+     0.106,
+     0.094,
+     0.079
+    ],
+    "exposure": 0.884
+   }
+  ]
+ },
+ "pool/098": {
+  "url": "https://commons.wikimedia.org/wiki/File:Marpole_house_4.jpg",
+  "title": "File:Marpole house 4.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Claire13",
+  "date": "2011-12-05",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.65,
+     0.55,
+     0.95,
+     0.65
+    ],
+    "rgb": [
+     0.47,
+     0.367,
+     0.237
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "postwar_bungalow",
+    "role": "base",
+    "box": [
+     0.22,
+     0.2,
+     0.38,
+     0.5
+    ],
+    "rgb": [
+     0.523,
+     0.402,
+     0.327
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "postwar_bungalow",
+    "role": "roof",
+    "box": [
+     0.5,
+     0.27,
+     0.9,
+     0.31
+    ],
+    "rgb": [
+     0.368,
+     0.297,
+     0.269
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/096": {
+  "url": "https://commons.wikimedia.org/wiki/File:Marpole_house_2.jpg",
+  "title": "File:Marpole house 2.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Claire13",
+  "date": "2011-12-05",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.25,
+     0.55,
+     0.45,
+     0.65
+    ],
+    "rgb": [
+     0.773,
+     0.459,
+     0.41
+    ],
+    "exposure": 1.012
+   },
+   {
+    "type": "postwar_bungalow",
+    "role": "roof",
+    "box": [
+     0.3,
+     0.4,
+     0.7,
+     0.44
+    ],
+    "rgb": [
+     0.416,
+     0.273,
+     0.23
+    ],
+    "exposure": 1.012
+   }
+  ]
+ },
+ "pool/035": {
+  "url": "https://commons.wikimedia.org/wiki/File:Gardner_House.JPG",
+  "title": "File:Gardner House.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "25 May 2010 (original upload date)",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.7,
+     0.25,
+     0.92,
+     0.42
+    ],
+    "rgb": [
+     0.937,
+     0.826,
+     0.666
+    ],
+    "exposure": 0.884
+   }
+  ]
+ },
+ "pool/070": {
+  "url": "https://commons.wikimedia.org/wiki/File:Tacky_Vancouver_House_(431036332).jpg",
+  "title": "File:Tacky Vancouver House (431036332).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-03-22 20:47",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.05,
+     0.45,
+     0.25,
+     0.6
+    ],
+    "rgb": [
+     0.316,
+     0.272,
+     0.203
+    ],
+    "exposure": 0.822
+   }
+  ]
+ },
+ "pool/100": {
+  "url": "https://commons.wikimedia.org/wiki/File:Marpole_house_6.jpg",
+  "title": "File:Marpole house 6.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Claire13",
+  "date": "2011-12-05",
+  "used": [
+   {
+    "type": "postwar_bungalow",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.35,
+     0.7,
+     0.45
+    ],
+    "rgb": [
+     0.633,
+     0.568,
+     0.528
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/031": {
+  "url": "https://commons.wikimedia.org/wiki/File:Concrete_House_in_Vancouver_-_Flickr_-_pnwra.jpg",
+  "title": "File:Concrete House in Vancouver - Flickr - pnwra.jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "Taken on\u00a027 December 2006, 09:38",
+  "used": [
+   {
+    "type": "modern_infill",
+    "role": "walls",
+    "box": [
+     0.62,
+     0.3,
+     0.75,
+     0.4
+    ],
+    "rgb": [
+     0.78,
+     0.785,
+     0.781
+    ],
+    "exposure": 1.241
+   }
+  ]
+ },
+ "pool/043": {
+  "url": "https://commons.wikimedia.org/wiki/File:House_in_Vancouver_(433449696).jpg",
+  "title": "File:House in Vancouver (433449696).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-03-25 05:16",
+  "used": [
+   {
+    "type": "modern_infill",
+    "role": "walls",
+    "box": [
+     0.35,
+     0.2,
+     0.5,
+     0.32
+    ],
+    "rgb": [
+     0.346,
+     0.287,
+     0.309
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "modern_infill",
+    "role": "roof",
+    "box": [
+     0.12,
+     0.25,
+     0.25,
+     0.35
+    ],
+    "rgb": [
+     0.257,
+     0.265,
+     0.304
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/054": {
+  "url": "https://commons.wikimedia.org/wiki/File:Modern_House_in_Vancouver_(409820499).jpg",
+  "title": "File:Modern House in Vancouver (409820499).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-03-04 04:20",
+  "used": [
+   {
+    "type": "modern_infill",
+    "role": "walls",
+    "box": [
+     0.7,
+     0.3,
+     0.85,
+     0.45
+    ],
+    "rgb": [
+     0.503,
+     0.487,
+     0.504
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "modern_infill",
+    "role": "trim",
+    "box": [
+     0.1,
+     0.46,
+     0.3,
+     0.5
+    ],
+    "rgb": [
+     0.512,
+     0.535,
+     0.563
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/062": {
+  "url": "https://commons.wikimedia.org/wiki/File:Modern_Vancouver_House_(490844707).jpg",
+  "title": "File:Modern Vancouver House (490844707).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-05-06 09:17",
+  "used": [
+   {
+    "type": "modern_infill",
+    "role": "walls",
+    "box": [
+     0.15,
+     0.35,
+     0.3,
+     0.5
+    ],
+    "rgb": [
+     0.364,
+     0.391,
+     0.36
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "modern_infill",
+    "role": "trim",
+    "box": [
+     0.75,
+     0.45,
+     0.85,
+     0.5
+    ],
+    "rgb": [
+     0.486,
+     0.512,
+     0.518
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/063": {
+  "url": "https://commons.wikimedia.org/wiki/File:Modern_Vancouver_House_-_Flickr_-_pnwra.jpg",
+  "title": "File:Modern Vancouver House - Flickr - pnwra.jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "Taken on\u00a027 December 2006, 08:53",
+  "used": [
+   {
+    "type": "modern_infill",
+    "role": "walls",
+    "box": [
+     0.7,
+     0.5,
+     0.8,
+     0.6
+    ],
+    "rgb": [
+     0.492,
+     0.544,
+     0.605
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "laneway_house/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Laneway_house_in_Vancouver.jpg",
+  "title": "File:Laneway house in Vancouver.jpg",
+  "licence": "CC BY-SA 2.0",
+  "author": "Mike",
+  "date": "2015-09-03 22:54:34",
+  "used": [
+   {
+    "type": "laneway_house",
+    "role": "walls",
+    "box": [
+     0.4,
+     0.5,
+     0.55,
+     0.65
+    ],
+    "rgb": [
+     0.413,
+     0.412,
+     0.413
+    ],
+    "exposure": 0.984
+   },
+   {
+    "type": "laneway_house",
+    "role": "roof",
+    "box": [
+     0.3,
+     0.15,
+     0.45,
+     0.25
+    ],
+    "rgb": [
+     0.24,
+     0.263,
+     0.252
+    ],
+    "exposure": 0.984
+   },
+   {
+    "type": "laneway_house",
+    "role": "trim",
+    "box": [
+     0.62,
+     0.5,
+     0.66,
+     0.7
+    ],
+    "rgb": [
+     0.279,
+     0.28,
+     0.298
+    ],
+    "exposure": 0.984
+   }
+  ]
+ },
+ "pool/103": {
+  "url": "https://commons.wikimedia.org/wiki/File:1020_Nicola_St_Vancouver.jpg",
+  "title": "File:1020 Nicola St Vancouver.jpg",
+  "licence": "CC0",
+  "author": "Canadian2006",
+  "date": "2025-12-26",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.3,
+     0.15,
+     0.45,
+     0.25
+    ],
+    "rgb": [
+     0.619,
+     0.631,
+     0.636
+    ],
+    "exposure": 0.963
+   }
+  ]
+ },
+ "pool/105": {
+  "url": "https://commons.wikimedia.org/wiki/File:1460_Nelson_St_Vancouver_a.jpg",
+  "title": "File:1460 Nelson St Vancouver a.jpg",
+  "licence": "CC0",
+  "author": "Canadian2006",
+  "date": "2025-12-26",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.25,
+     0.35,
+     0.35,
+     0.55
+    ],
+    "rgb": [
+     0.46,
+     0.397,
+     0.366
+    ],
+    "exposure": 0.904
+   }
+  ]
+ },
+ "pool/106": {
+  "url": "https://commons.wikimedia.org/wiki/File:1460_Nelson_St_Vancouver.jpg",
+  "title": "File:1460 Nelson St Vancouver.jpg",
+  "licence": "CC BY 4.0",
+  "author": "Canadian2006",
+  "date": "2025-06-30",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.38,
+     0.25,
+     0.5,
+     0.4
+    ],
+    "rgb": [
+     0.746,
+     0.638,
+     0.575
+    ],
+    "exposure": 0.959
+   }
+  ]
+ },
+ "pool/107": {
+  "url": "https://commons.wikimedia.org/wiki/File:2016_366_69_Hampton_Court_(25659074535).jpg",
+  "title": "File:2016 366 69 Hampton Court (25659074535).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Edna Winti",
+  "date": "2016-03-09 18:01",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.05,
+     0.25,
+     0.25,
+     0.45
+    ],
+    "rgb": [
+     0.33,
+     0.291,
+     0.282
+    ],
+    "exposure": 1.003
+   }
+  ]
+ },
+ "pool/134": {
+  "url": "https://commons.wikimedia.org/wiki/File:Nelson_Plaza_Vancouver_2023_a.jpg",
+  "title": "File:Nelson Plaza Vancouver 2023 a.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Canadian2006",
+  "date": "2023-06-28",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.25,
+     0.65,
+     0.4
+    ],
+    "rgb": [
+     0.533,
+     0.522,
+     0.502
+    ],
+    "exposure": 1.176
+   },
+   {
+    "type": "west_end_walkup",
+    "role": "trim",
+    "box": [
+     0.15,
+     0.08,
+     0.4,
+     0.12
+    ],
+    "rgb": [
+     0.668,
+     0.618,
+     0.539
+    ],
+    "exposure": 1.176
+   }
+  ]
+ },
+ "pool/135": {
+  "url": "https://commons.wikimedia.org/wiki/File:Nelson_Plaza_Vancouver_2023_b.jpg",
+  "title": "File:Nelson Plaza Vancouver 2023 b.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Canadian2006",
+  "date": "2023-06-28",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.45,
+     0.55,
+     0.65,
+     0.7
+    ],
+    "rgb": [
+     0.489,
+     0.523,
+     0.54
+    ],
+    "exposure": 1.228
+   },
+   {
+    "type": "west_end_walkup",
+    "role": "trim",
+    "box": [
+     0.6,
+     0.4,
+     0.7,
+     0.5
+    ],
+    "rgb": [
+     0.333,
+     0.349,
+     0.396
+    ],
+    "exposure": 1.228
+   }
+  ]
+ },
+ "pool/144": {
+  "url": "https://commons.wikimedia.org/wiki/File:Queen_Charlotte_Apartments,_Vancouver_(2013)_-_1.jpg",
+  "title": "File:Queen Charlotte Apartments, Vancouver (2013) - 1.jpg",
+  "licence": "CC BY-SA 1.0",
+  "author": "User:Another Believer",
+  "date": "6 July 2013\u00a0(according to Exif data)",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.6,
+     0.45,
+     0.75,
+     0.6
+    ],
+    "rgb": [
+     0.703,
+     0.655,
+     0.663
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/145": {
+  "url": "https://commons.wikimedia.org/wiki/File:Queen_Charlotte_Apartments,_Vancouver_(2013)_-_2.jpg",
+  "title": "File:Queen Charlotte Apartments, Vancouver (2013) - 2.jpg",
+  "licence": "CC BY-SA 1.0",
+  "author": "User:Another Believer",
+  "date": "6 July 2013\u00a0(according to Exif data)",
+  "used": [
+   {
+    "type": "west_end_walkup",
+    "role": "walls",
+    "box": [
+     0.35,
+     0.3,
+     0.45,
+     0.5
+    ],
+    "rgb": [
+     0.76,
+     0.742,
+     0.755
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "concrete_tower/06": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_(BC,_Canada),_St_Andrew%27s_Wesley_United_Church_--_2022_--_1932.jpg",
+  "title": "File:Vancouver (BC, Canada), St Andrew's Wesley United Church -- 2022 -- 1932.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Dietmar Rabich",
+  "date": "Taken on\u00a013 June 2022, 10:49",
+  "used": [
+   {
+    "type": "concrete_tower",
+    "role": "walls",
+    "box": [
+     0.12,
+     0.15,
+     0.22,
+     0.35
+    ],
+    "rgb": [
+     0.473,
+     0.471,
+     0.472
+    ],
+    "exposure": 0.978
+   },
+   {
+    "type": "concrete_tower",
+    "role": "walls",
+    "box": [
+     0.68,
+     0.4,
+     0.78,
+     0.55
+    ],
+    "rgb": [
+     0.791,
+     0.841,
+     0.878
+    ],
+    "exposure": 0.978
+   },
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.42,
+     0.55,
+     0.5,
+     0.7
+    ],
+    "rgb": [
+     0.73,
+     0.716,
+     0.704
+    ],
+    "exposure": 0.978
+   }
+  ]
+ },
+ "pool/120": {
+  "url": "https://commons.wikimedia.org/wiki/File:Dense_west_end_apartments_from_Burrard_Street_Bridge_(7735482928).jpg",
+  "title": "File:Dense west end apartments from Burrard Street Bridge (7735482928).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Robert Ashworth from Bellingham, WA., USA",
+  "date": "2012-08-07 14:02",
+  "used": [
+   {
+    "type": "concrete_tower",
+    "role": "walls",
+    "box": [
+     0.72,
+     0.1,
+     0.78,
+     0.5
+    ],
+    "rgb": [
+     0.787,
+     0.788,
+     0.788
+    ],
+    "exposure": 1.001
+   },
+   {
+    "type": "concrete_tower",
+    "role": "glass",
+    "box": [
+     0.85,
+     0.2,
+     0.95,
+     0.35
+    ],
+    "rgb": [
+     0.716,
+     0.725,
+     0.732
+    ],
+    "exposure": 1.001
+   }
+  ]
+ },
+ "pool/160": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_(2650849467).jpg",
+  "title": "File:Vancouver (2650849467).jpg",
+  "licence": "CC BY-SA 2.0",
+  "author": "TravelingOtter from Houston, Texas, USA",
+  "date": "2008-06-22 12:42",
+  "used": [
+   {
+    "type": "concrete_tower",
+    "role": "walls",
+    "box": [
+     0.75,
+     0.3,
+     0.85,
+     0.45
+    ],
+    "rgb": [
+     0.377,
+     0.337,
+     0.289
+    ],
+    "exposure": 0.866
+   },
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.3,
+     0.3,
+     0.4,
+     0.5
+    ],
+    "rgb": [
+     0.499,
+     0.525,
+     0.511
+    ],
+    "exposure": 0.866
+   }
+  ]
+ },
+ "pool/113": {
+  "url": "https://commons.wikimedia.org/wiki/File:Building_near_Stanley_Park_on_Beach_Ave,_Vancouver,_BC_02.jpg",
+  "title": "File:Building near Stanley Park on Beach Ave, Vancouver, BC 02.jpg",
+  "licence": "CC BY 3.0",
+  "author": "Joe Mabel",
+  "date": "2015-03-18",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.3,
+     0.2,
+     0.45,
+     0.4
+    ],
+    "rgb": [
+     0.513,
+     0.594,
+     0.788
+    ],
+    "exposure": 1.145
+   },
+   {
+    "type": "point_tower",
+    "role": "walls",
+    "box": [
+     0.2,
+     0.15,
+     0.25,
+     0.4
+    ],
+    "rgb": [
+     0.529,
+     0.581,
+     0.63
+    ],
+    "exposure": 1.145
+   }
+  ]
+ },
+ "point_tower/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Waterfront_Tower,_Coal_Harbour,_Vancouver_(4287881576).jpg",
+  "title": "File:Waterfront Tower, Coal Harbour, Vancouver (4287881576).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Reg Natarajan from Vancouver, Bogot\u00e1",
+  "date": "2005-06-20 19:29",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.45,
+     0.3,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.243,
+     0.358,
+     0.62
+    ],
+    "exposure": 0.8
+   }
+  ]
+ },
+ "point_tower/02": {
+  "url": "https://commons.wikimedia.org/wiki/File:Coal_Harbour_(218231767).jpeg",
+  "title": "File:Coal Harbour (218231767).jpeg",
+  "licence": "CC BY 3.0",
+  "author": "Ian Spence",
+  "date": "1 July 2017, 17:38:49 (UTC)",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.15,
+     0.25,
+     0.25,
+     0.45
+    ],
+    "rgb": [
+     0.21,
+     0.284,
+     0.402
+    ],
+    "exposure": 1.074
+   },
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.55,
+     0.45,
+     0.6,
+     0.6
+    ],
+    "rgb": [
+     0.74,
+     0.85,
+     1.0
+    ],
+    "exposure": 1.074
+   }
+  ]
+ },
+ "point_tower/04": {
+  "url": "https://commons.wikimedia.org/wiki/File:Two_Harbour_Green.jpg",
+  "title": "File:Two Harbour Green.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Klazu",
+  "date": "2015-05-29 11:47:19",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "walls",
+    "box": [
+     0.45,
+     0.3,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.503,
+     0.552,
+     0.599
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.4,
+     0.6,
+     0.5,
+     0.7
+    ],
+    "rgb": [
+     0.388,
+     0.477,
+     0.534
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "point_tower/05": {
+  "url": "https://commons.wikimedia.org/wiki/File:Bayshore_Tower.jpg",
+  "title": "File:Bayshore Tower.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "David G. Gordon",
+  "date": "2015-06-16",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.5,
+     0.3,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.594,
+     0.718,
+     0.768
+    ],
+    "exposure": 0.8
+   }
+  ]
+ },
+ "pool/131": {
+  "url": "https://commons.wikimedia.org/wiki/File:Landmark_33.jpg",
+  "title": "File:Landmark 33.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Klazu",
+  "date": "2015-05-29 15:01:25",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "walls",
+    "box": [
+     0.4,
+     0.3,
+     0.55,
+     0.5
+    ],
+    "rgb": [
+     0.392,
+     0.383,
+     0.376
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/143": {
+  "url": "https://commons.wikimedia.org/wiki/File:Quay_West_I.jpg",
+  "title": "File:Quay West I.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Klazu",
+  "date": "2014-05-05 18:07:48",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.35,
+     0.3,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.282,
+     0.385,
+     0.505
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/122": {
+  "url": "https://commons.wikimedia.org/wiki/File:English_Bay_Residences.jpg",
+  "title": "File:English Bay Residences.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Msayachack",
+  "date": "2019-03-26",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "walls",
+    "box": [
+     0.6,
+     0.15,
+     0.75,
+     0.3
+    ],
+    "rgb": [
+     0.686,
+     0.723,
+     0.79
+    ],
+    "exposure": 1.268
+   },
+   {
+    "type": "point_tower",
+    "role": "glass",
+    "box": [
+     0.15,
+     0.3,
+     0.3,
+     0.5
+    ],
+    "rgb": [
+     0.28,
+     0.366,
+     0.4
+    ],
+    "exposure": 1.268
+   }
+  ]
+ },
+ "pool/146": {
+  "url": "https://commons.wikimedia.org/wiki/File:Residential_towers_in_Vancouver,_BC._(4943374473).jpg",
+  "title": "File:Residential towers in Vancouver, BC. (4943374473).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Robert Ashworth from Bellingham, WA., USA",
+  "date": "2010-08-30 19:09",
+  "used": [
+   {
+    "type": "point_tower",
+    "role": "walls",
+    "box": [
+     0.2,
+     0.3,
+     0.35,
+     0.5
+    ],
+    "rgb": [
+     0.429,
+     0.445,
+     0.45
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "point_tower",
+    "role": "trim",
+    "box": [
+     0.66,
+     0.3,
+     0.69,
+     0.6
+    ],
+    "rgb": [
+     0.583,
+     0.082,
+     0.121
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "podium/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_podium_building_1.JPG",
+  "title": "File:Vancouver podium building 1.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Architectsea",
+  "date": "2014-01-01 11:19:12",
+  "used": [
+   {
+    "type": "podium",
+    "role": "walls",
+    "box": [
+     0.5,
+     0.3,
+     0.7,
+     0.5
+    ],
+    "rgb": [
+     0.477,
+     0.466,
+     0.446
+    ],
+    "exposure": 0.88
+   }
+  ]
+ },
+ "pool/139": {
+  "url": "https://commons.wikimedia.org/wiki/File:Pacific_Boulevard_-_panoramio.jpg",
+  "title": "File:Pacific Boulevard - panoramio.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Larry LaRose",
+  "date": "Taken on\u00a023 April 2011",
+  "used": [
+   {
+    "type": "podium",
+    "role": "walls",
+    "box": [
+     0.02,
+     0.3,
+     0.12,
+     0.45
+    ],
+    "rgb": [
+     0.342,
+     0.351,
+     0.334
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/053": {
+  "url": "https://commons.wikimedia.org/wiki/File:Mid-rise_Housing_Complex_on_a_Brownfield_Redevelopment_Site_-_BC_Complexe_r%C3%A9sidentiel_de_taille_moyenne_situ%C3%A9_sur_le_site_d%27un_r%C3%A9am%C3%A9nagement_urbain_de_friche_contamin%C3%A9e_(20504585022).jpg",
+  "title": "File:Mid-rise Housing Complex on a Brownfield Redevelopment Site - BC Complexe r\u00e9sidentiel de taille moyenne situ\u00e9 sur le site d'un r\u00e9am\u00e9nagement urbain de friche contamin\u00e9e (20504585022).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Municipal Affairs and Housing",
+  "date": "14 February 2005\u00a0(according to Exif data",
+  "used": [
+   {
+    "type": "podium",
+    "role": "walls",
+    "box": [
+     0.88,
+     0.3,
+     0.95,
+     0.45
+    ],
+    "rgb": [
+     0.852,
+     0.805,
+     0.678
+    ],
+    "exposure": 0.8
+   },
+   {
+    "type": "podium",
+    "role": "trim",
+    "box": [
+     0.55,
+     0.3,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.77,
+     0.711,
+     0.611
+    ],
+    "exposure": 0.8
+   }
+  ]
+ },
+ "pool/171": {
+  "url": "https://commons.wikimedia.org/wiki/File:View_of_Vancouver_(4747073961).jpg",
+  "title": "File:View of Vancouver (4747073961).jpg",
+  "licence": "CC BY-SA 2.0",
+  "author": "DARREN ST0NE",
+  "date": "2010-06-26 03:26",
+  "used": [
+   {
+    "type": "podium",
+    "role": "glass",
+    "box": [
+     0.05,
+     0.3,
+     0.25,
+     0.5
+    ],
+    "rgb": [
+     0.282,
+     0.458,
+     0.426
+    ],
+    "exposure": 1.014
+   },
+   {
+    "type": "podium",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.45,
+     0.7,
+     0.55
+    ],
+    "rgb": [
+     0.58,
+     0.706,
+     0.68
+    ],
+    "exposure": 1.014
+   }
+  ]
+ },
+ "pool/112": {
+  "url": "https://commons.wikimedia.org/wiki/File:Building_near_Stanley_Park_on_Beach_Ave,_Vancouver,_BC_01.jpg",
+  "title": "File:Building near Stanley Park on Beach Ave, Vancouver, BC 01.jpg",
+  "licence": "CC BY 3.0",
+  "author": "Joe Mabel",
+  "date": "2015-03-18",
+  "used": [
+   {
+    "type": "stucco_lowrise",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.3,
+     0.65,
+     0.4
+    ],
+    "rgb": [
+     0.587,
+     0.63,
+     0.638
+    ],
+    "exposure": 1.105
+   }
+  ]
+ },
+ "pool/136": {
+  "url": "https://commons.wikimedia.org/wiki/File:Normandie_Apartments_Vancouver.JPG",
+  "title": "File:Normandie Apartments Vancouver.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Canadian2006",
+  "date": "2012-04-21",
+  "used": [
+   {
+    "type": "stucco_lowrise",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.4,
+     0.7,
+     0.6
+    ],
+    "rgb": [
+     0.725,
+     0.744,
+     0.757
+    ],
+    "exposure": 0.8
+   },
+   {
+    "type": "stucco_lowrise",
+    "role": "trim",
+    "box": [
+     0.25,
+     0.42,
+     0.28,
+     0.6
+    ],
+    "rgb": [
+     0.598,
+     0.613,
+     0.381
+    ],
+    "exposure": 0.8
+   }
+  ]
+ },
+ "heritage_brick/03": {
+  "url": "https://commons.wikimedia.org/wiki/File:Gastown-19.JPG",
+  "title": "File:Gastown-19.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2015-08-03",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.75,
+     0.1,
+     0.95,
+     0.3
+    ],
+    "rgb": [
+     0.741,
+     0.515,
+     0.406
+    ],
+    "exposure": 1.02
+   }
+  ]
+ },
+ "heritage_brick/07": {
+  "url": "https://commons.wikimedia.org/wiki/File:Gastown-16.JPG",
+  "title": "File:Gastown-16.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2015-08-03",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.5,
+     0.0,
+     0.6,
+     0.18
+    ],
+    "rgb": [
+     0.499,
+     0.471,
+     0.431
+    ],
+    "exposure": 0.907
+   },
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.85,
+     0.25,
+     0.95,
+     0.4
+    ],
+    "rgb": [
+     0.326,
+     0.148,
+     0.145
+    ],
+    "exposure": 0.907
+   }
+  ]
+ },
+ "pool/137": {
+  "url": "https://commons.wikimedia.org/wiki/File:Old_Skyline2.jpg",
+  "title": "File:Old Skyline2.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Alamb",
+  "date": "2011-11-28",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.3,
+     0.45,
+     0.45,
+     0.55
+    ],
+    "rgb": [
+     0.674,
+     0.393,
+     0.336
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "heritage_brick",
+    "role": "trim",
+    "box": [
+     0.4,
+     0.4,
+     0.6,
+     0.43
+    ],
+    "rgb": [
+     0.618,
+     0.398,
+     0.336
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "pool/164": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Manhattan_Apts_2010.jpg",
+  "title": "File:Vancouver Manhattan Apts 2010.jpg",
+  "licence": "CC BY-SA 3.0",
+  "author": "Canadian2006",
+  "date": "2010-06-05",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.3,
+     0.3,
+     0.45,
+     0.45
+    ],
+    "rgb": [
+     0.433,
+     0.405,
+     0.36
+    ],
+    "exposure": 0.888
+   }
+  ]
+ },
+ "pool/169": {
+  "url": "https://commons.wikimedia.org/wiki/File:Victoria_Court.JPG",
+  "title": "File:Victoria Court.JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Iota 9",
+  "date": "1 July 2010 (original upload date)",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.65,
+     0.3,
+     0.8,
+     0.45
+    ],
+    "rgb": [
+     0.542,
+     0.488,
+     0.34
+    ],
+    "exposure": 1.21
+   }
+  ]
+ },
+ "institutional/05": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Film_School_acting-makeup_campus.JPG",
+  "title": "File:Vancouver Film School acting-makeup campus.JPG",
+  "licence": "CC BY 2.5",
+  "author": "No machine-readable author provided. Floatonfilms.com assumed (based on copyright claims).",
+  "date": "24 March 2005\u00a0(according to Exif data)",
+  "used": [
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.4,
+     0.2,
+     0.55,
+     0.4
+    ],
+    "rgb": [
+     0.66,
+     0.489,
+     0.295
+    ],
+    "exposure": 0.868
+   },
+   {
+    "type": "heritage_brick",
+    "role": "base",
+    "box": [
+     0.6,
+     0.7,
+     0.75,
+     0.8
+    ],
+    "rgb": [
+     0.467,
+     0.437,
+     0.361
+    ],
+    "exposure": 0.868
+   }
+  ]
+ },
+ "chinatown_society/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Chinatown,_Vancouver_3.jpg",
+  "title": "File:Chinatown, Vancouver 3.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "XeresNelro",
+  "date": "2007-08-20 18:10:34",
+  "used": [
+   {
+    "type": "chinatown_society",
+    "role": "walls",
+    "box": [
+     0.35,
+     0.15,
+     0.5,
+     0.25
+    ],
+    "rgb": [
+     0.38,
+     0.339,
+     0.322
+    ],
+    "exposure": 1.02
+   }
+  ]
+ },
+ "chinatown_society/02": {
+  "url": "https://commons.wikimedia.org/wiki/File:Mah_Society_Building,_15_May_2024.jpg",
+  "title": "File:Mah Society Building, 15 May 2024.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "\u674e\u6708\u6587",
+  "date": "2024-05-15 16:06:57",
+  "used": [
+   {
+    "type": "chinatown_society",
+    "role": "trim",
+    "box": [
+     0.2,
+     0.1,
+     0.5,
+     0.15
+    ],
+    "rgb": [
+     0.43,
+     0.591,
+     0.776
+    ],
+    "exposure": 0.924
+   },
+   {
+    "type": "chinatown_society",
+    "role": "walls",
+    "box": [
+     0.15,
+     0.4,
+     0.25,
+     0.6
+    ],
+    "rgb": [
+     0.646,
+     0.545,
+     0.484
+    ],
+    "exposure": 0.924
+   }
+  ]
+ },
+ "chinatown_society/03": {
+  "url": "https://commons.wikimedia.org/wiki/File:Chin_Wing_Chun_Society_Building,_28_May_2024.jpg",
+  "title": "File:Chin Wing Chun Society Building, 28 May 2024.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "\u674e\u6708\u6587",
+  "date": "2024-05-28 16:12:43",
+  "used": [
+   {
+    "type": "chinatown_society",
+    "role": "walls",
+    "box": [
+     0.2,
+     0.35,
+     0.3,
+     0.55
+    ],
+    "rgb": [
+     0.73,
+     0.71,
+     0.643
+    ],
+    "exposure": 1.125
+   }
+  ]
+ },
+ "chinatown_society/05": {
+  "url": "https://commons.wikimedia.org/wiki/File:Yue_Shan_Society_Buildings,_28_May_2024.jpg",
+  "title": "File:Yue Shan Society Buildings, 28 May 2024.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "\u674e\u6708\u6587",
+  "date": "2024-05-28 12:48:38",
+  "used": [
+   {
+    "type": "chinatown_society",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.45,
+     0.65,
+     0.55
+    ],
+    "rgb": [
+     0.637,
+     0.349,
+     0.287
+    ],
+    "exposure": 1.16
+   },
+   {
+    "type": "chinatown_society",
+    "role": "trim",
+    "box": [
+     0.3,
+     0.25,
+     0.5,
+     0.32
+    ],
+    "rgb": [
+     0.354,
+     0.321,
+     0.295
+    ],
+    "exposure": 1.16
+   }
+  ]
+ },
+ "chinatown_society/06": {
+  "url": "https://commons.wikimedia.org/wiki/File:Orange_%26_brick_(361234638).jpg",
+  "title": "File:Orange & brick (361234638).jpg",
+  "licence": "CC BY-SA 2.0",
+  "author": "Mike from Vancouver, Canada",
+  "date": "2007-01-13 15:58",
+  "used": [
+   {
+    "type": "chinatown_society",
+    "role": "walls",
+    "box": [
+     0.15,
+     0.45,
+     0.25,
+     0.65
+    ],
+    "rgb": [
+     0.677,
+     0.533,
+     0.447
+    ],
+    "exposure": 1.108
+   },
+   {
+    "type": "chinatown_society",
+    "role": "trim",
+    "box": [
+     0.4,
+     0.7,
+     0.6,
+     0.73
+    ],
+    "rgb": [
+     0.815,
+     0.429,
+     0.247
+    ],
+    "exposure": 1.108
+   }
+  ]
+ },
+ "townhouse/02": {
+  "url": "https://commons.wikimedia.org/wiki/File:The_Point_at_Kits_(463378253).jpg",
+  "title": "File:The Point at Kits (463378253).jpg",
+  "licence": "CC BY 2.0",
+  "author": "pnwra",
+  "date": "2007-04-17 16:11",
+  "used": [
+   {
+    "type": "townhouse",
+    "role": "walls",
+    "box": [
+     0.18,
+     0.3,
+     0.28,
+     0.45
+    ],
+    "rgb": [
+     0.573,
+     0.417,
+     0.272
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "townhouse",
+    "role": "walls",
+    "box": [
+     0.32,
+     0.45,
+     0.4,
+     0.6
+    ],
+    "rgb": [
+     0.641,
+     0.699,
+     0.739
+    ],
+    "exposure": 1.35
+   },
+   {
+    "type": "townhouse",
+    "role": "trim",
+    "box": [
+     0.02,
+     0.15,
+     0.85,
+     0.18
+    ],
+    "rgb": [
+     0.23,
+     0.232,
+     0.249
+    ],
+    "exposure": 1.35
+   }
+  ]
+ },
+ "townhouse/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Townhouses_(West_Hastings_Street)_Maisons_en_rang%C3%A9e,_Vancouver_(rue_Hastings_Ouest)_(20519670691).jpg",
+  "title": "File:Vancouver Townhouses (West Hastings Street) Maisons en rang\u00e9e, Vancouver (rue Hastings Ouest) (20519670691).jpg",
+  "licence": "CC BY 2.0",
+  "author": "Municipal Affairs and Housing",
+  "date": "24 January 2008\u00a0(according to Exif data)",
+  "used": [
+   {
+    "type": "townhouse",
+    "role": "walls",
+    "box": [
+     0.9,
+     0.55,
+     1.0,
+     0.75
+    ],
+    "rgb": [
+     0.162,
+     0.192,
+     0.206
+    ],
+    "exposure": 1.053
+   }
+  ]
+ },
+ "institutional/00": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_School_Board_headquarters,_Vancouver,_BC.jpg",
+  "title": "File:Vancouver School Board headquarters, Vancouver, BC.jpg",
+  "licence": "CC BY 4.0",
+  "author": "kennethaw88",
+  "date": "2017-05-07 19:35:53",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.1,
+     0.45,
+     0.25,
+     0.6
+    ],
+    "rgb": [
+     0.325,
+     0.305,
+     0.304
+    ],
+    "exposure": 1.195
+   },
+   {
+    "type": "institutional",
+    "role": "glass",
+    "box": [
+     0.5,
+     0.1,
+     0.7,
+     0.2
+    ],
+    "rgb": [
+     0.645,
+     0.707,
+     0.764
+    ],
+    "exposure": 1.195
+   }
+  ]
+ },
+ "institutional/01": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_School_of_Economics.jpg",
+  "title": "File:Vancouver School of Economics.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Crystalg923",
+  "date": "2017-02-07",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.2,
+     0.55,
+     0.4,
+     0.7
+    ],
+    "rgb": [
+     0.729,
+     0.695,
+     0.672
+    ],
+    "exposure": 0.912
+   }
+  ]
+ },
+ "institutional/02": {
+  "url": "https://commons.wikimedia.org/wiki/File:Royal_Bank_Chambers_Vancouver_02.JPG",
+  "title": "File:Royal Bank Chambers Vancouver 02.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2015-08-02",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.45,
+     0.4,
+     0.55,
+     0.55
+    ],
+    "rgb": [
+     0.665,
+     0.66,
+     0.633
+    ],
+    "exposure": 0.882
+   },
+   {
+    "type": "heritage_brick",
+    "role": "walls",
+    "box": [
+     0.05,
+     0.2,
+     0.15,
+     0.35
+    ],
+    "rgb": [
+     0.565,
+     0.526,
+     0.463
+    ],
+    "exposure": 0.882
+   }
+  ]
+ },
+ "institutional/03": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_school_of_theology_(UBC-2009).JPG",
+  "title": "File:Vancouver school of theology (UBC-2009).JPG",
+  "licence": "CC BY-SA 3.0",
+  "author": "Leoboudv",
+  "date": "2009-05-07",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.62,
+     0.3,
+     0.72,
+     0.55
+    ],
+    "rgb": [
+     0.758,
+     0.759,
+     0.769
+    ],
+    "exposure": 0.962
+   }
+  ]
+ },
+ "institutional/04": {
+  "url": "https://commons.wikimedia.org/wiki/File:Royal_Bank_Chambers_Vancouver_03.JPG",
+  "title": "File:Royal Bank Chambers Vancouver 03.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2015-08-02",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.3,
+     0.35,
+     0.45,
+     0.5
+    ],
+    "rgb": [
+     0.559,
+     0.594,
+     0.563
+    ],
+    "exposure": 1.023
+   }
+  ]
+ },
+ "institutional/06": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Japanese_School_and_Hall.jpg",
+  "title": "File:Vancouver Japanese School and Hall.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Cordovanorth",
+  "date": "2016-06-22 15:25:49",
+  "used": [
+   {
+    "type": "institutional",
+    "role": "walls",
+    "box": [
+     0.35,
+     0.3,
+     0.45,
+     0.45
+    ],
+    "rgb": [
+     0.794,
+     0.795,
+     0.792
+    ],
+    "exposure": 1.103
+   }
+  ]
+ },
+ "industrial_shed/01": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_(BC,_Canada),_Vancouver_Centerm_Terminal_--_2022_--_1858.jpg",
+  "title": "File:Vancouver (BC, Canada), Vancouver Centerm Terminal -- 2022 -- 1858.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Dietmar Rabich",
+  "date": "Taken on\u00a012 June 2022, 18:11",
+  "used": [
+   {
+    "type": "industrial_shed",
+    "role": "roof",
+    "box": [
+     0.4,
+     0.59,
+     0.62,
+     0.65
+    ],
+    "rgb": [
+     0.502,
+     0.496,
+     0.506
+    ],
+    "exposure": 1.002
+   }
+  ]
+ },
+ "industrial_shed/03": {
+  "url": "https://commons.wikimedia.org/wiki/File:Vancouver_(BC,_Canada),_Vancouver_Centerm_Terminal_--_2022_--_1848.jpg",
+  "title": "File:Vancouver (BC, Canada), Vancouver Centerm Terminal -- 2022 -- 1848.jpg",
+  "licence": "CC BY-SA 4.0",
+  "author": "Dietmar Rabich",
+  "date": "Taken on\u00a012 June 2022, 18:08",
+  "used": [
+   {
+    "type": "industrial_shed",
+    "role": "roof",
+    "box": [
+     0.4,
+     0.72,
+     0.6,
+     0.78
+    ],
+    "rgb": [
+     0.451,
+     0.4,
+     0.351
+    ],
+    "exposure": 0.918
+   }
+  ]
+ },
+ "granville_island_shed/03": {
+  "url": "https://commons.wikimedia.org/wiki/File:Granville_Island_05.JPG",
+  "title": "File:Granville Island 05.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2016-03-20 17:41:54",
+  "used": [
+   {
+    "type": "granville_island_shed",
+    "role": "walls",
+    "box": [
+     0.0,
+     0.42,
+     0.15,
+     0.55
+    ],
+    "rgb": [
+     0.162,
+     0.182,
+     0.164
+    ],
+    "exposure": 0.867
+   },
+   {
+    "type": "granville_island_shed",
+    "role": "walls",
+    "box": [
+     0.55,
+     0.15,
+     0.65,
+     0.3
+    ],
+    "rgb": [
+     0.552,
+     0.287,
+     0.259
+    ],
+    "exposure": 0.867
+   },
+   {
+    "type": "granville_island_shed",
+    "role": "roof",
+    "box": [
+     0.7,
+     0.25,
+     0.9,
+     0.32
+    ],
+    "rgb": [
+     0.353,
+     0.531,
+     0.559
+    ],
+    "exposure": 0.867
+   }
+  ]
+ },
+ "granville_island_shed/04": {
+  "url": "https://commons.wikimedia.org/wiki/File:Granville_Island_Vancouver_05.JPG",
+  "title": "File:Granville Island Vancouver 05.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2016-03-20 17:34:50",
+  "used": [
+   {
+    "type": "granville_island_shed",
+    "role": "walls",
+    "box": [
+     0.4,
+     0.3,
+     0.5,
+     0.45
+    ],
+    "rgb": [
+     0.295,
+     0.285,
+     0.26
+    ],
+    "exposure": 0.897
+   },
+   {
+    "type": "granville_island_shed",
+    "role": "roof",
+    "box": [
+     0.65,
+     0.35,
+     0.8,
+     0.42
+    ],
+    "rgb": [
+     0.212,
+     0.21,
+     0.208
+    ],
+    "exposure": 0.897
+   },
+   {
+    "type": "granville_island_shed",
+    "role": "trim",
+    "box": [
+     0.55,
+     0.47,
+     0.65,
+     0.53
+    ],
+    "rgb": [
+     0.28,
+     0.221,
+     0.115
+    ],
+    "exposure": 0.897
+   }
+  ]
+ },
+ "granville_island_shed/05": {
+  "url": "https://commons.wikimedia.org/wiki/File:Granville_Island_Vancouver_02.JPG",
+  "title": "File:Granville Island Vancouver 02.JPG",
+  "licence": "CC BY-SA 4.0",
+  "author": "Xicotencatl",
+  "date": "2016-03-20 17:31:00",
+  "used": [
+   {
+    "type": "granville_island_shed",
+    "role": "walls",
+    "box": [
+     0.48,
+     0.44,
+     0.6,
+     0.5
+    ],
+    "rgb": [
+     0.526,
+     0.386,
+     0.318
+    ],
+    "exposure": 1.35
+   }
+  ]
+ }
+}

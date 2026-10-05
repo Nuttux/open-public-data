@@ -1,0 +1,9 @@
+[["pool/143","point_tower","glass",[0.35,0.30,0.60,0.50]],
+ ["pool/122","point_tower","walls",[0.60,0.15,0.75,0.30]],["pool/122","point_tower","glass",[0.15,0.30,0.30,0.50]],
+ ["pool/146","point_tower","walls",[0.20,0.30,0.35,0.50]],["pool/146","point_tower","trim",[0.66,0.30,0.69,0.60]],
+ ["podium/00","podium","walls",[0.50,0.30,0.70,0.50]],
+ ["pool/139","podium","walls",[0.02,0.30,0.12,0.45]],
+ ["pool/053","podium","walls",[0.88,0.30,0.95,0.45]],["pool/053","podium","trim",[0.55,0.30,0.60,0.50]],
+ ["pool/171","podium","glass",[0.05,0.30,0.25,0.50]],["pool/171","podium","walls",[0.55,0.45,0.70,0.55]],
+ ["pool/112","stucco_lowrise","walls",[0.55,0.30,0.65,0.40]],
+ ["pool/136","stucco_lowrise","walls",[0.55,0.40,0.70,0.60]],["pool/136","stucco_lowrise","trim",[0.25,0.42,0.28,0.60]]]

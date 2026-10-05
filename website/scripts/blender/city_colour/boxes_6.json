@@ -1,0 +1,12 @@
+[["townhouse/02","townhouse","walls",[0.18,0.30,0.28,0.45]],["townhouse/02","townhouse","walls",[0.32,0.45,0.40,0.60]],["townhouse/02","townhouse","trim",[0.02,0.15,0.85,0.18]],
+ ["townhouse/00","townhouse","walls",[0.90,0.55,1.00,0.75]],
+ ["institutional/00","institutional","walls",[0.10,0.45,0.25,0.60]],["institutional/00","institutional","glass",[0.50,0.10,0.70,0.20]],
+ ["institutional/01","institutional","walls",[0.20,0.55,0.40,0.70]],
+ ["institutional/02","institutional","walls",[0.45,0.40,0.55,0.55]],["institutional/02","heritage_brick","walls",[0.05,0.20,0.15,0.35]],
+ ["institutional/03","institutional","walls",[0.62,0.30,0.72,0.55]],
+ ["institutional/04","institutional","walls",[0.30,0.35,0.45,0.50]],
+ ["institutional/06","institutional","walls",[0.35,0.30,0.45,0.45]],
+ ["industrial_shed/01","industrial_shed","roof",[0.40,0.59,0.62,0.65]],
+ ["industrial_shed/03","industrial_shed","roof",[0.40,0.72,0.60,0.78]],
+ ["granville_island_shed/03","granville_island_shed","walls",[0.00,0.42,0.15,0.55]],["granville_island_shed/03","granville_island_shed","walls",[0.55,0.15,0.65,0.30]],["granville_island_shed/03","granville_island_shed","roof",[0.70,0.25,0.90,0.32]],
+ ["granville_island_shed/04","granville_island_shed","walls",[0.40,0.30,0.50,0.45]],["granville_island_shed/04","granville_island_shed","roof",[0.65,0.35,0.80,0.42]],["granville_island_shed/04","granville_island_shed","trim",[0.55,0.47,0.65,0.53]]]

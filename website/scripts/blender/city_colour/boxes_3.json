@@ -1,0 +1,11 @@
+[["pool/144","west_end_walkup","walls",[0.60,0.45,0.75,0.60]],
+ ["pool/145","west_end_walkup","walls",[0.35,0.30,0.45,0.50]],
+ ["concrete_tower/06","concrete_tower","walls",[0.12,0.15,0.22,0.35]],["concrete_tower/06","concrete_tower","walls",[0.68,0.40,0.78,0.55]],["concrete_tower/06","institutional","walls",[0.42,0.55,0.50,0.70]],
+ ["pool/120","concrete_tower","walls",[0.72,0.10,0.78,0.50]],["pool/120","concrete_tower","glass",[0.85,0.20,0.95,0.35]],
+ ["pool/160","concrete_tower","walls",[0.75,0.30,0.85,0.45]],["pool/160","concrete_tower","walls",[0.05,0.30,0.15,0.50]],["pool/160","point_tower","glass",[0.30,0.30,0.40,0.50]],
+ ["pool/113","point_tower","glass",[0.30,0.20,0.45,0.40]],["pool/113","point_tower","walls",[0.20,0.15,0.25,0.40]],
+ ["point_tower/00","point_tower","glass",[0.45,0.30,0.60,0.50]],
+ ["point_tower/02","point_tower","glass",[0.15,0.25,0.25,0.45]],["point_tower/02","point_tower","glass",[0.55,0.45,0.60,0.60]],
+ ["point_tower/04","point_tower","walls",[0.45,0.30,0.60,0.50]],["point_tower/04","point_tower","glass",[0.40,0.60,0.50,0.70]],
+ ["point_tower/05","point_tower","glass",[0.50,0.30,0.60,0.50]],
+ ["pool/131","point_tower","walls",[0.40,0.30,0.55,0.50]]]
