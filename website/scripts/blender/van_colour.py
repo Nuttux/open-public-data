@@ -181,7 +181,8 @@ class Colour:
 
 
 def _types_table():
-    p = _first(os.environ.get('VAN_TYPES'))
+    _vt = os.environ.get('VAN_TYPES')
+    p = _first(_vt) if _vt not in (None, '', '0', '1') else None     # (INTEG) VAN_TYPES=1 is van_kit's switch, not a path; the type comes on b['vtype']
     if not p:
         try:
             import cityconf as CC

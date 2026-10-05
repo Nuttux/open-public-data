@@ -82,6 +82,7 @@ def glass_for(yr, rng):
 # 555 California (Bank of America Center, 1969): carnelian granite, bronze glass
 # in vertical bays up the serrated plan (the record's 42-sided ring gives the saw)
 SF = os.environ.get('CITY', 'sf') == 'sf'    # the gid tables and SF places below are San Francisco's own
+VK = None if SF else __import__('van_kit').load()     # (V-TYPES 05/10) another city's building types (van_kit.py, VAN_TYPES=1); SF: None
 VC = None if SF else __import__('van_colour').load()   # (VAN_COLOUR) another city's own wall / roof / glass colours (van_colour.py); SF never loads it
 HERO = {} if not SF else {137915: dict(fsys='piers', body=(0.29, 0.16, 0.13), gcol=(0.18, 0.14, 0.12, 0.35), pier=1.6, top='flat')}
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
@@ -501,6 +502,11 @@ def building(b, ground, out):
     if b.get('standin'): b = standin(b)
     if b.get('ruin'): return ruin(b, ground, out)
     rng = random.Random(b['gid'] * 7919 + 13)
+    # (V-TYPES, CITY!=sf) the record's type (van_types.py): its street / lane / party walls where the record has none
+    VS = VK.spec(b) if (VK and not b.get('standin') and not b.get('ruin')) else None
+    if VS and VS['roles'] and len(VS['roles']) == len(b['ring']) and not any(b.get('roles') or []): b = dict(b, roles=VS['roles'])
+    if VS and VS.get('shop'): b = dict(b, shop=True)
+    if VS: b = dict(b, vtype=VS['type'])                   # (INTEG) van_colour (VC.vtype) reads the type van_kit draws: one type per building
     # (FAITHFUL, default off) the building as street photos / aerials saw it: typology, storeys, garage,
     # bays, facade / trim colour, material (qipu-render-work/faithful/fa_build.py -> FA_FILE)
     FA = _faithful().get(str(b['gid'])) if (ERA is None and not b.get('_bkpart') and b['gid'] not in LANDMARK) else None
@@ -528,6 +534,7 @@ def building(b, ground, out):
     zfoot = min(zs) - 0.6                  # walls run into the lowest ground
     style = b.get('_style') or style_of(b)
     if BK.fire_rebuilt(b, style, ERA): style = 'stucco'      # (BK_FIRE) the burned district's 'old' house: an Edwardian flat
+    if VS: style = VS['style']
     top = zg + max(3.0, b['h'])
     storeys = b['st'] or max(1, round(b['h'] / 3.4))
     # a storey count its height cannot hold (a 70 m tower "of 2 storeys"):
@@ -563,6 +570,7 @@ def building(b, ground, out):
     if FA: OV = dict(OV, **{k_: FA[k_] for k_ in ('style', 'roof_col') if FA.get(k_)})     # (FAITHFUL) typology / roof colour
     if OV.get('style') in STYLE_OF_SUB: style, sub = STYLE_OF_SUB[OV['style']], OV['style']
     elif OV.get('style') in ('vic', 'stucco', 'midcentury', 'block'): style = OV['style']
+    if VS and not OV.get('style'): style, sub = VS['style'], VS['sub']      # (V-TYPES) the type's levers
     PS = pier_shed(b)                                        # (24/09) a finger-pier shed of the port
     if PS is not None: style, sub = 'block', 'pier'
     if LM: style, sub = 'vic', LM['sub']
@@ -606,6 +614,12 @@ def building(b, ground, out):
         if _a >= 280 and _fill >= 0.88 and min(max(_u) - min(_u), max(_v) - min(_v)) >= 9:
             if yr_w < 1950: roof = 'saw' if x_ < 0.28 else ('barrel' if x_ < 0.55 else roof)
             elif yr_w < 1975: roof = 'saw' if x_ < 0.18 else roof
+    if VS:
+        # (V-TYPES) the type's roof: the LiDAR's form where it measured one (pitched up to the type's footprint size), a
+        # shed where the fit refused a mono-pitch, else the type's draw; a flat-roofed character house loses its gable kit
+        _a = abs(ring_area(ring)); _u = [x * walls[f0].t.x + y * walls[f0].t.y for x, y in ring]; _v = [x * walls[f0].n.x + y * walls[f0].n.y for x, y in ring]
+        roof, LR = VK.roof_form(VS, b, roof, _a, _a / max(1.0, (max(_u) - min(_u)) * (max(_v) - min(_v))), LIDAR_R)
+        if VS['type'] == 'character_house' and roof == 'flat': style = 'midcentury'
     if b.get('_bkpart'): roof = 'flat'                        # (a measured part: the flat roof the LiDAR saw)
     roof_mat = 'roof_tile' if (sub == 'med' or (sub == 'sunset' and RD.random('rmat') < 0.5)) else 'roof_shingle'
     # the roof axis: u along the front, v into the lot
@@ -614,14 +628,20 @@ def building(b, ground, out):
         # the measured ridge: along v (a front gable) or along u (a side gable)
         rd_ = Vector((math.cos(math.radians(LR[1])), math.sin(math.radians(LR[1])), 0))
         if abs(rd_.dot(ax_u)) > abs(rd_.dot(ax_v)): ax_u, ax_v = ax_v.copy(), -ax_u
+    elif VS and VS.get('side_gable') and roof == 'gable': ax_u, ax_v = ax_v.copy(), -ax_u      # (V-TYPES) the ridge along the street
     us = [Vector((x, y, 0)).dot(ax_u) for x, y in ring]
     vs = [Vector((x, y, 0)).dot(ax_v) for x, y in ring]
     umin, umax = min(us), max(us); uc = (umin + umax) / 2; hw = (umax - umin) / 2
     pitch = math.radians(LM.get('pitch') or {'vic': 50, 'med': 24, 'sunset': 26}.get(style if style == 'vic' else sub, 28))
     if LR and roof in ('gable', 'hip'): pitch = math.radians(min(55.0, max(16.0, LR[2])))
+    elif VS and VS['pitch']: pitch = math.radians(VS['pitch'])
     vmin, vmax = min(vs), max(vs); vc = (vmin + vmax) / 2; hs_ = min(hw, (vmax - vmin) / 2)
     rise = min(hw * math.tan(pitch), 0.55 * (top - zg)) if roof == 'gable' else (min(hs_ * math.tan(pitch), 0.55 * (top - zg)) if roof == 'hip' else 0.0)
     eave = top - rise
+    if VS and roof in ('gable', 'hip', 'shed'):
+        # (V-TYPES) a pitched house stands to the LiDAR's ridge, its walls to the LiDAR's eave (van_kit.massing)
+        if roof == 'shed': rise = VK.shed_rise(VS, vmax - vmin, pitch, top - zg)
+        top, eave = VK.massing(VS, b, LR, zg, top, top - rise, rise, VS['raised_v'], vmax - vmin, pitch); rise = top - eave
     if roof == 'gable':
         def rz(p):  # roof height over a point
             return eave + max(0.0, hw - abs(p.dot(ax_u) - uc)) * math.tan(pitch) * (rise / (hw * math.tan(pitch)))
@@ -630,6 +650,11 @@ def building(b, ground, out):
         def rz(p):  # a hip: the height grows with the distance to the nearest eave
             u_, v_ = p.dot(ax_u), p.dot(ax_v)
             return eave + max(0.0, min(u_ - umin, umax - u_, v_ - vmin, vmax - v_)) * kh_
+    elif roof == 'shed':
+        _hi = (VS or {}).get('r', 0.5) < 0.5                 # (V-TYPES) a mono-pitch: high at the back or at the front
+        def rz(p):
+            t_ = min(1.0, max(0.0, (p.dot(ax_v) - vmin) / max(0.1, vmax - vmin)))
+            return eave + rise * (t_ if _hi else 1.0 - t_)
     else:
         def rz(p): return top
 
@@ -701,6 +726,7 @@ def building(b, ground, out):
         else: wall_mat, body = 'concrete', wrng.choice(WORKS)
         trim = wrng.choice((mix(body, (0.0, 0.0, 0.0), 0.12), mix(body, (0.0, 0.0, 0.0), 0.12), (0.30, 0.31, 0.32), (0.92, 0.91, 0.88)))
         accent = wrng.choice(((0.62, 0.63, 0.62), (0.62, 0.63, 0.62), (0.48, 0.50, 0.51), (0.30, 0.40, 0.52), (0.58, 0.22, 0.17), (0.30, 0.38, 0.32), (0.86, 0.84, 0.80)))
+    if VS: (body, trim, accent), wall_mat = VS['paint'], VS['mat']     # (V-TYPES) the type's paint (palettes.json, else placeholders) and cladding
 
     # ── BCOL_REAL (realcolour pilot, default off): the facade measured on
     # registered street photos (KartaView, CC BY-SA), or drawn from the
@@ -726,6 +752,7 @@ def building(b, ground, out):
     if sub == 'postwar': raised = 2.7                          # the garage row at the street
     if FA and FA.get('garage') is not None and style in ('vic', 'stucco', 'midcentury'):   # (FAITHFUL) a garage at the street, or none
         raised = max(raised, 2.6) if FA['garage'] else min(raised, 1.5)
+    if VS: raised = VS['raised_v']
     first = zg + raised
     nfl = max(1, storeys if raised < 2 else max(1, storeys - 1))
     # the post-war flats: as many floors as the height holds (the roll counts
@@ -733,6 +760,7 @@ def building(b, ground, out):
     if sub == 'postwar': nfl = max(1, round((eave - first - 0.4) / 2.85))
     fh = max(2.6, (eave - first) / nfl)
     if first + fh > eave: first = zg + 0.3; fh = max(2.4, (eave - first) / nfl)
+    if VS: nfl, fh = VK.floors(VS, eave, first, nfl, fh)
     hood = None if stripped else {'italianate': 'pediment', 'stick': 'cap', 'edwardian': 'cap'}.get(sub)
     # (25/09) THE TRACT BUILDER'S FRONT (1918-61: the Sunset, Parkside, the
     # Richmond, the Excelsior): a run shares its massing, garage and entry, but
@@ -774,6 +802,7 @@ def building(b, ground, out):
             wall_mat = 'concrete'; body = trng.choice(STONE + [(0.74, 0.62, 0.50), (0.66, 0.50, 0.40)])     # punched granite, limestone, terracotta
         H_ = HERO.get(b['gid'])
         if H_: fsys, body, gcol, wall_mat = H_['fsys'], H_['body'], H_['gcol'], 'concrete'
+    if VS: fsys, gcol, body, wall_mat = VK.skin(VS, fsys, gcol, body, wall_mat, b['year'] or 1990)     # (V-TYPES) the tower / podium skin
     if FA:     # (FAITHFUL) the photo's colours and material have the last word; bays counted on the photo
         if FA.get('facade_col'): body = hexcol(FA['facade_col'])
         if FA.get('trim_col'): trim = hexcol(FA['trim_col'])
@@ -784,10 +813,13 @@ def building(b, ground, out):
         if n_arcbay and FA.get('bays') is not None:      # (v3) a round bay the footprint carries is drawn by the ring itself
             FA = dict(FA, bays=max(0, int(FA['bays']) - n_arcbay))
             if FA['bays'] == 0: bay_kind = None
-    if VC and not LM and PS is None and not OV.get('facade_col') and not b.get('wall'): wall_mat, body, trim, accent, gcol = VC.walls(b, style, sub, wall_mat, body, trim, accent, gcol, ERA)   # (VAN_COLOUR H1)
+    if VC and not LM and PS is None and not OV.get('facade_col') and not b.get('wall'):
+        _wm0 = wall_mat; wall_mat, body, trim, accent, gcol = VC.walls(b, style, sub, wall_mat, body, trim, accent, gcol, ERA)   # (VAN_COLOUR H1)
+        if VS and VC.active(ERA): wall_mat, VS = VK.from_colour(VS, VC, b, _wm0, wall_mat, body, trim, accent, gcol, _ROOF_TEX, ERA)   # (INTEG) one colour source: VC's draw, van_kit's parts follow
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body, nbay=(FA or {}).get('bays'),
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
+    if VS: ctx.update(vt=VS['type'], vs=VS, vwalls=walls, vroles=roles, mull=(VS['paint'][1] if VS['type'] == 'point_tower' else ctx['mull']))
 
     # the house's side and back walls (24/09): in SF the street front is the
     # painted one; a party wall standing clear of its neighbour is plain grey
@@ -812,6 +844,7 @@ def building(b, ground, out):
         if sw_: side_, back_ = sw_
         if FA and FA.get('facade_col'):     # (FAITHFUL) the street photos saw this building's exposed walls: they carry its real paint
             side_, back_ = (wall_mat, body), (wall_mat, body)
+    if VS: side_, back_ = (wall_mat, body), (wall_mat, body)          # (V-TYPES) a detached house is clad all round
     if PS is not None and PS.get('bulkhead', 'beaux') != 'none': ctx['bulk_w'] = bulk_wall(walls)
     # ── walls ──
     for i, w in enumerate(walls):
@@ -836,7 +869,7 @@ def building(b, ground, out):
                 w.box('trim', w.L - 0.16, w.L, first - raised, eave, 0.0, 0.05, trim)
             w.box('trim' if wall_mat == 'siding' else 'concrete', -0.02, w.L + 0.02, zfoot, zg + 0.35, 0.0, 0.06, (0.55, 0.53, 0.50))
         # gable end: the wall above the eave follows the roof
-        if roof in ('gable', 'hip'):
+        if roof in ('gable', 'hip', 'shed'):
             pts = [0.0, w.L]
             ua, ub = w.a.dot(ax_u), w.b.dot(ax_u)
             if (ua - uc) * (ub - uc) < 0: pts.insert(1, w.L * (uc - ua) / (ub - ua))
@@ -885,7 +918,7 @@ def building(b, ground, out):
             rear_deck(w, rng.uniform(0.4, max(0.5, w.L - 3.6)), first, zg, trim, rng)
         # (24/09) the city's LOD: the backs were bare boxes; now stacked decks
         # and their stairs, or an enclosed back porch built out
-        if role == 0 and i != f0 and style in ('vic', 'stucco', 'midcentury') and not LM and sub != 'works' and LOD >= 1 and w.L > 4.0:
+        if role == 0 and i != f0 and style in ('vic', 'stucco', 'midcentury') and not LM and sub not in ('works', 'garage', 'laneway', 'townhouse') and LOD >= 1 and w.L > 4.0:
             rear_kit(w, b, first, fh, nfl, eave, zg, trim, wmat_, wcol_)
 
     # ── the pier shed's bulkhead on the Embarcadero ──
@@ -983,8 +1016,8 @@ def building(b, ground, out):
         wf.box('trim', -0.1, wf.L + 0.1, eave - 0.35, eave - 0.1, 0.0, 0.22, trim)
 
     # ── roof ──
-    if roof in ('gable', 'hip'):
-        oring = offset_ring(ring, 0.35)
+    if roof in ('gable', 'hip', 'shed'):
+        oring = offset_ring(ring, VS.get('oh', 0.35) if VS else 0.35)
         pts2 = [Vector((x, y, 0)) for x, y in oring]
         tris = tessellate_polygon([pts2])
         f = lambda p: p.dot(ax_u) - uc
@@ -1001,8 +1034,9 @@ def building(b, ground, out):
         if VC: roof_mat, rc_ = VC.roof_pitched(b, roof_mat, rc_, _ROOF_TEX, ERA)     # (VAN_COLOUR H2) the city's roof; a measured one still wins
         roof_mat, rc_ = measured_pitched(b, roof_mat, rc_)     # ROOFS: the measured roof, if any
         if OV.get('roof_col'): rc_ = hexcol(OV['roof_col'])
+        if VS and VS.get('roof') and not (VC and VC.active(ERA)): rc_ = VS['roof']     # (V-TYPES) the type's roof colour (INTEG: only without VAN_COLOUR)
         for t in tris:
-            for tri in (split_tri([pts2[k].copy() for k in t], f) if roof == 'gable' else split_all([pts2[k].copy() for k in t])):
+            for tri in (split_tri([pts2[k].copy() for k in t], f) if roof == 'gable' else (split_all([pts2[k].copy() for k in t]) if roof == 'hip' else [[pts2[k].copy() for k in t]])):
                 top_ = [Vector((p.x, p.y, rz(p) + 0.05)) for p in tri]
                 out.poly(roof_mat, top_, rc_)
         # the ridge cap along the top
@@ -1023,6 +1057,7 @@ def building(b, ground, out):
             a, c = Vector((*oring[i], 0)), Vector((*oring[(i + 1) % len(oring)], 0))
             za, zc = rz(a) + 0.05, rz(c) + 0.05
             out.poly('trim', [Vector((a.x, a.y, za - 0.22)), Vector((c.x, c.y, zc - 0.22)), Vector((c.x, c.y, zc)), Vector((a.x, a.y, za))], trim)
+        if VS: VK.after_roof(ctx, b, ring, walls, f0, roof, rz, out, top)      # (V-TYPES) the dormer
     elif roof in ('saw', 'barrel'):
         rc_ = measured_flat(b, flat_roof(b, rng, ax_u))
         works_roof(roof, ring, top, ax_u, ax_v, rc_, ctx, out)
@@ -1051,6 +1086,7 @@ def building(b, ground, out):
             out.poly(cm_, [Vector((a.x, a.y, top + 0.05)), Vector((c.x, c.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05)), Vector((ia.x, ia.y, top + 0.05))], cc_)
             out.poly(cm_, [Vector((ic.x, ic.y, top - 0.02)), Vector((ia.x, ia.y, top - 0.02)), Vector((ia.x, ia.y, top + 0.05)), Vector((ic.x, ic.y, top + 0.05))], cc_)
         roof_kit(ring, inner, deck, top, b, rng, out, dict(ctx, rc=rc_, roles=roles, storeys=storeys, ax_u=ax_u, ax_v=ax_v))
+        if VS: VK.after_roof(ctx, b, ring, walls, f0, roof, rz, out, top, deck)   # (V-TYPES) the planted podium roof
         # a roof deck on about one flat-roofed house in five (at the city's LOD roof_kit lays it)
         if style in ('vic', 'stucco', 'midcentury') and rng.random() < 0.2 * EA.rel('deck', ERA) and LOD == 0:
             cx = sum(p[0] for p in ring) / n; cy = sum(p[1] for p in ring) / n
@@ -2240,11 +2276,16 @@ def facade(w, is_front, b, rng, c):
     holes = []; L = w.L
     style, sub = c['style'], c['sub']
     if c.get('fsys'):
-        tower_skin(w, is_front, b, rng, c); return holes
+        tower_skin(w, is_front, b, rng, c)
+        if c.get('vt'): VK.after_skin(w, is_front, b, c)          # (V-TYPES) the point tower's slab edges and balconies
+        return holes
     if c['sub'] == 'pier':
         pier_wall(w, is_front, b, c); return holes
     if c['sub'] == 'works':
         works_front(w, is_front, b, c); return holes
+    if c.get('vt'):
+        own = VK.facade_own(w, is_front, b, rng, c)            # (V-TYPES) a wall the type draws whole (the garage on the lane)
+        if own is not None: return own
     first, fh, nfl, eave, zg = c['first'], c['fh'], c['nfl'], c['eave'], c['zg']
     trim, body, accent = c['trim'], c['body'], c['accent']
     # window proportions by era: tall Victorian sashes, squarer later
@@ -2256,6 +2297,7 @@ def facade(w, is_front, b, rng, c):
     elif sub == 'modern': ww, wh = 1.8, 1.6
     elif sub == 'tower': ww, wh = 1.5, min(2.4, fh * 0.72)
     else: ww, wh = 1.3, min(1.8, fh * 0.52)
+    if c.get('vt'): ww, wh = VK.win(c, fh, ww, wh)              # (V-TYPES) the type's windows
     sill = (fh - wh) * 0.45
     hood = c['hood'] if is_front else None
     bay_u = []
@@ -2333,9 +2375,10 @@ def facade(w, is_front, b, rng, c):
             door_u = (du0, du0 + 1.0)
             holes.append((door_u[0], door_u[1], first, first + 2.3))
             w.opening(door_u[0], door_u[1], first, first + 2.3, 'door', trim, 0.35, rng, accent)
-            if style == 'vic' or sub == 'edwardian':
+            if (style == 'vic' or sub == 'edwardian') and not c.get('vt'):
                 w.box('trim', du0 - 0.25, du0 + 1.25, first + 2.35, first + 2.6, 0.0, 0.5, trim)       # an entry hood
-            if LOD < 2: stoop(w, door_u[0] - 0.2, door_u[1] + 0.2, zg, first, trim, style)
+            if c.get('vt') and c['vt'] == 'character_house': pass      # (V-TYPES) the porch draws its own steps
+            elif LOD < 2: stoop(w, door_u[0] - 0.2, door_u[1] + 0.2, zg, first, trim, style)
             elif FINE and 0.35 <= first - zg <= 1.95:
                 stoop_fine(w, door_u[0] - 0.22, door_u[1] + 0.22, zg, first, trim, body, style, b, c['ground'])
     # the entry of an apartment house: double doors in a surround, a canopy
@@ -2389,7 +2432,7 @@ def facade(w, is_front, b, rng, c):
             if z1 > hu[2] + 0.2: spans = cut(spans, hu, 0.4)
         if f == 0 and door_u: spans = cut(spans, door_u, 0.4)
         for s0, s1 in spans:
-            if sub == 'sunset' and is_front and f == 0 and s1 - s0 > 3.0:
+            if sub in ('sunset', 'bungalow') and is_front and f == 0 and s1 - s0 > 3.0:
                 # the picture window of a Sunset living room
                 u0, u1 = s0 + 0.3, min(s1 - 0.3, s0 + 3.2)
                 holes.append((u0, u1, z0 - 0.2, z1)); w.opening(u0, u1, z0 - 0.2, z1, 'tall', trim, 0.15, rng)
@@ -2403,7 +2446,7 @@ def facade(w, is_front, b, rng, c):
                 u0, u1 = uc_ - ww / 2, uc_ + ww / 2
                 holes.append((u0, u1, z0, z1))
                 if tw_: w.opening(u0, u1, z0, z1, 'tw', trim, 0.18, rng, body=tw_); continue
-                w.opening(u0, u1, z0, z1, 'tall' if style == 'block' or sub in ('modern', 'postwar') else 'dh', trim, 0.18, rng, hood=hood)
+                w.opening(u0, u1, z0, z1, 'tall' if style == 'block' or sub in ('modern', 'postwar') or (c.get('vs') or {}).get('tall') else 'dh', trim, 0.18, rng, hood=hood)
                 # balconies on a modern front
                 if sub == 'modern' and is_front and f > 0 and j % 2 == 0 and LOD == 0:
                     w.box('concrete', u0 - 0.3, min(L - 0.2, u1 + gap + 0.3), z0 - sill - 0.15, z0 - sill, 0.0, 1.2, (0.8, 0.8, 0.78))
@@ -2420,6 +2463,7 @@ def facade(w, is_front, b, rng, c):
         if free:
             f_ = rng.choice(free); u0 = (f_[0] + f_[1]) / 2 - 1.4
             fire_escape(w, u0, u0 + 2.8, first, fh, nfl, eave, rng)
+    if c.get('vt'): VK.after_facade(w, is_front, b, rng, c, holes, door_u)     # (V-TYPES) porch, Special front, portico, balconies, arches, loggia
     return holes
 
 
