@@ -82,6 +82,7 @@ def glass_for(yr, rng):
 # 555 California (Bank of America Center, 1969): carnelian granite, bronze glass
 # in vertical bays up the serrated plan (the record's 42-sided ring gives the saw)
 SF = os.environ.get('CITY', 'sf') == 'sf'    # the gid tables and SF places below are San Francisco's own
+VC = None if SF else __import__('van_colour').load()   # (VAN_COLOUR) another city's own wall / roof / glass colours (van_colour.py); SF never loads it
 HERO = {} if not SF else {137915: dict(fsys='piers', body=(0.29, 0.16, 0.13), gcol=(0.18, 0.14, 0.12, 0.35), pier=1.6, top='flat')}
 BLINDS = [(0.93, 0.91, 0.86), (0.93, 0.91, 0.86), (0.86, 0.80, 0.68), (0.70, 0.66, 0.60), (0.52, 0.48, 0.44), (0.40, 0.33, 0.27), (0.70, 0.30, 0.24), (0.36, 0.44, 0.52)]
 BLOCK = [(0.78, 0.72, 0.64), (0.62, 0.36, 0.28), (0.86, 0.84, 0.80), (0.70, 0.68, 0.64), (0.82, 0.76, 0.66),
@@ -783,6 +784,7 @@ def building(b, ground, out):
         if n_arcbay and FA.get('bays') is not None:      # (v3) a round bay the footprint carries is drawn by the ring itself
             FA = dict(FA, bays=max(0, int(FA['bays']) - n_arcbay))
             if FA['bays'] == 0: bay_kind = None
+    if VC and not LM and PS is None and not OV.get('facade_col') and not b.get('wall'): wall_mat, body, trim, accent, gcol = VC.walls(b, style, sub, wall_mat, body, trim, accent, gcol, ERA)   # (VAN_COLOUR H1)
     ctx = dict(style=style, sub=sub, first=first, fh=fh, nfl=nfl, eave=eave, zg=zg, trim=trim, body=body, nbay=(FA or {}).get('bays'),
                accent=accent, roof=roof, hood=hood, bay=bay_kind, wall_mat=wall_mat, bay_left=LM.get('bay_left'),
                fsys=fsys, gcol=gcol, rd=RD, ground=ground, sv=SV, year=b['year'] or 1950, mull=((0.80, 0.81, 0.82) if (fsys and (b['year'] or 1960) >= 2010) else None))
@@ -996,6 +998,7 @@ def building(b, ground, out):
                 for g_ in fs_: parts = [q for t_ in parts for q in split_tri(t_, g_)]
                 return parts
         rc_ = roof_colour(b, rng) if roof_mat == 'roof_shingle' else rng.choice(TILE_TINTS)
+        if VC: roof_mat, rc_ = VC.roof_pitched(b, roof_mat, rc_, _ROOF_TEX, ERA)     # (VAN_COLOUR H2) the city's roof; a measured one still wins
         roof_mat, rc_ = measured_pitched(b, roof_mat, rc_)     # ROOFS: the measured roof, if any
         if OV.get('roof_col'): rc_ = hexcol(OV['roof_col'])
         for t in tris:
@@ -1031,6 +1034,7 @@ def building(b, ground, out):
         rmat_ = 'roof_big' if abs(ring_area(ring)) > 1500 else 'roof_flat'
         pts2 = [Vector((x, y, deck)) for x, y in inner]
         rc_ = flat_roof(b, rng, ax_u)
+        if VC: rc_ = VC.roof_flat(b, rc_, _FLAT_TEX, ERA)                   # (VAN_COLOUR H3)
         rc_ = measured_flat(b, rc_)                            # ROOFS: the measured roof, if any
         if OV.get('roof_col'): rc_ = (*hexcol(OV['roof_col']), rc_[3] if len(rc_) > 3 else 0.5)
         for t in tessellate_polygon([pts2]):
@@ -1682,6 +1686,7 @@ def flat_roof(b, rng, ax_u):
 def _load_roofs():
     import os, json
     if os.environ.get('ROOFS', '0') != '1': return {}
+    if not SF and not os.environ.get('ROOFS_FILE'): return {}      # another city: never the frozen SF roofs.json next to the scripts
     # a pass reads the copy frozen next to its snapshot of the scripts; a test the live one
     here = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'roofs.json')
     p = os.environ.get('ROOFS_FILE') or (here if os.path.exists(here) else '/Users/daniel/code/qipu-render-work/roofs/roofs.json')
