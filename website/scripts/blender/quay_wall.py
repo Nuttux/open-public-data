@@ -11,9 +11,14 @@ at most QW_MAX (5 m: a higher bank keeps its own slope above), down to QW_DOWN (
 (V-VEG 05/10) QW_LINE=osm: the wall stands on the OSM coastline (veg/shore_pnw.npz, ground_city.py: natural=coastline,
 land on its left), off the segments OSM beaches touch, instead of on coast_land's line, which runs a median 11 m (p75 24 m,
 p95 68 m) seaward of it: van_vp1b drew that strip of the HRDEM's shore as a wide pale band in front of the seawall.
-QW_SINK=1: seaward of the OSM coastline (to 60 m) the terrain's vertices go under the sea sheet (a wall: to QW_SINK_Z,
+QW_SINK=1: seaward of the OSM coastline the terrain's vertices go under the sea sheet (a wall: to QW_SINK_Z,
 -0.4 m; a beach: on a 4 cm/m shelf from 0.10 m at the line), and where the render's sea sheet is cut away there
 (coast_land says land) a water surface ('ocean', the sea's own material without its land cut) covers the strip.
+QW_BLVD=1 (the boulevards; here because build() is the city's last ground-edge hook in hq_city): Vancouver's street mesh
+is the whole right of way, so its boulevards (the grass strip between kerb and sidewalk on nearly every street) and its
+sidewalks rendered as asphalt. Where ground_city.py's class map (veg/ground_pnw.npy) says lawn or sidewalk concrete and
+the 'streets' mesh is the surface, a 1 m cell of the terrain's own material (it paints the class map: the lawn, the pale
+sidewalk) is laid 3 cm over the asphalt ('ground_blvd').
 Unset (default) = the B2b behaviour above."""
 import os, json
 import numpy as np
@@ -74,9 +79,18 @@ def _sd(S, X, Y):
     c = np.floor((X - x0) / r_).astype(np.int64); r = np.floor((Y - y0) / r_).astype(np.int64)
     ok = (c >= 0) & (c < sd.shape[1]) & (r >= 0) & (r < sd.shape[0])
     v = np.full(X.shape, np.nan, np.float32); b = np.zeros(X.shape, bool)
-    v[ok] = sd[r[ok], c[ok]].astype(np.float32) / 2.0
+    v[ok] = sd[r[ok], c[ok]].astype(np.float32) * (float(S['unit']) if 'unit' in S.files else 0.5)
     if bg.shape == sd.shape: b[ok] = bg[r[ok], c[ok]] > 0
     return v, b
+
+def _sink(S, X, Y):
+    """shore_pnw's sink grid (ground_city: seaward, within 30 m or on the land cover's water / mud / sand, inside the city) at world points"""
+    if 'sink' not in S.files: return np.ones(np.shape(X), bool)
+    g = S['sink']; r_, x0, y0 = float(S['res']), float(S['x0']), float(S['y0'])
+    c = np.floor((np.asarray(X) - x0) / r_).astype(np.int64); r = np.floor((np.asarray(Y) - y0) / r_).astype(np.int64)
+    ok = (c >= 0) & (c < g.shape[1]) & (r >= 0) & (r < g.shape[0]); out = np.zeros(np.shape(X), bool)
+    out[ok] = g[r[ok], c[ok]] > 0
+    return out
 
 def sink(bpy, sc, C, box, log=print, pad=60.0):
     """QW_SINK=1: the terrain seaward of the OSM coastline under the sea sheet, and a water surface where the sea sheet is cut"""
@@ -91,7 +105,7 @@ def sink(bpy, sc, C, box, log=print, pad=60.0):
         Y = co[:, 0] * W[1, 0] + co[:, 1] * W[1, 1] + co[:, 2] * W[1, 2] + W[1, 3]
         inb = (X > box[0] - pad) & (X < box[2] + pad) & (Y > box[1] - pad) & (Y < box[3] + pad)
         s_, bch = _sd(S, X, Y)
-        sea = inb & ~np.isnan(s_) & (s_ < -0.5) & (s_ > -60.0)
+        sea = inb & ~np.isnan(s_) & (s_ < -0.5) & _sink(S, X, Y)
         tgt = np.where(bch, 0.10 + 0.04 * np.nan_to_num(s_), zw).astype(np.float32)
         low = sea & (co[:, 2] > tgt)
         if low.any() and abs(W[2, 2] - 1.0) < 1e-6 and abs(W[2, 3]) < 1e-6:
@@ -106,7 +120,7 @@ def sink(bpy, sc, C, box, log=print, pad=60.0):
         GX, GY = np.meshgrid(xs, ys)
         s_, bch = _sd(S, GX.ravel(), GY.ravel()); s_ = s_.reshape(GX.shape)
         cc = np.clip(((GX - cx0) / cres).astype(np.int64), 0, CS.shape[1] - 1); rr = np.clip(((cy1 - GY) / cres).astype(np.int64), 0, CS.shape[0] - 1)
-        need = ~np.isnan(s_) & (s_ < -0.5) & (s_ > -60.0) & (CS[rr, cc] > -4.0)
+        need = ~np.isnan(s_) & (s_ < -0.5) & (CS[rr, cc] > -10.0) & _sink(S, GX.ravel(), GY.ravel()).reshape(GX.shape)     # (10 m into the sheet's own water: sea.png and coast_land's blur differ by a few m)
         jj, ii = np.nonzero(need)
         if len(ii):
             m_ = sea_m.copy(); m_.name = 'sea_fill'
@@ -124,11 +138,44 @@ def sink(bpy, sc, C, box, log=print, pad=60.0):
     log(f'quay_wall sink: {n_tot} terrain vertices under the sea, {nq} water cells ({nq * 4} m2) over the cut strip')
     return n_tot
 
+def boulevards(bpy, sc, C, box, log=print):
+    """QW_BLVD=1: lawn and sidewalk cells of ground_pnw.npy over the 'streets' mesh, as 1 m quads of the terrain material"""
+    gp = C.work('veg', 'ground_pnw.npy'); st = bpy.data.objects.get('streets'); tr = bpy.data.objects.get('terrain')
+    if not (os.path.exists(gp) and st is not None and tr is not None and tr.active_material is not None):
+        log('quay_wall boulevards: no class map / streets / terrain material'); return 0
+    from mathutils.bvhtree import BVHTree
+    gm = json.load(open(C.work('veg', 'ground_pnw.json'))); G = np.load(gp, mmap_mode='r'); cl = gm['classes']
+    i0, j0 = int(np.floor(box[0] - gm['x0'])), int(np.floor(box[1] - gm['y0'])); i1, j1 = int(np.ceil(box[2] - gm['x0'])), int(np.ceil(box[3] - gm['y0']))
+    i0, j0, i1, j1 = max(0, i0), max(0, j0), min(G.shape[1], i1), min(G.shape[0], j1)
+    if i1 <= i0 or j1 <= j0: return 0
+    sub = np.asarray(G[j0:j1, i0:i1])
+    want = np.isin(sub, [cl.index('lawn'), cl.index('concrete')])
+    jj, ii = np.nonzero(want)
+    if not len(ii): return 0
+    dg = bpy.context.evaluated_depsgraph_get(); bvh = BVHTree.FromObject(st, dg)
+    from mathutils import Vector
+    X = gm['x0'] + i0 + ii + 0.5; Y = gm['y0'] + j0 + jj + 0.5
+    V, F = [], []; dn = Vector((0, 0, -1))
+    for x, y in zip(X.tolist(), Y.tolist()):
+        h = bvh.ray_cast(Vector((x, y, 2000.0)), dn)
+        if h[0] is None: continue
+        z = h[0].z + 0.03; k = len(V)
+        V += [(x - 0.5, y - 0.5, z), (x + 0.5, y - 0.5, z), (x + 0.5, y + 0.5, z), (x - 0.5, y + 0.5, z)]; F.append((k, k + 1, k + 2, k + 3))
+    if not F: log('quay_wall boulevards: none on the streets mesh'); return 0
+    me = bpy.data.meshes.new('ground_blvd'); me.from_pydata(V, [], F); me.update()
+    ob = bpy.data.objects.new('ground_blvd', me); sc.collection.objects.link(ob); me.materials.append(tr.active_material)
+    log(f'quay_wall boulevards: {len(F)} m2 of lawn / sidewalk over the right of way ({len(ii)} candidate cells)')
+    return len(F)
+
 def build(bpy, sc, M, ground, box, cityconf, log=print):
     C = cityconf
     cl = C.work('landmarks', 'coast_land.npz')
     if not os.path.exists(cl): log('quay_wall: no coast_land.npz'); return 0
     osm_ = os.environ.get('QW_LINE', '') == 'osm' and _shore(C) is not None
+    if os.environ.get('QW_BLVD', '0') == '1':
+        try: boulevards(bpy, sc, C, box, log)
+        except Exception as ex:
+            import traceback; traceback.print_exc(); log('quay_wall boulevards: FAILED', ex)
     if os.environ.get('QW_SINK', '0') == '1':
         try: sink(bpy, sc, C, box, log)
         except Exception as ex:

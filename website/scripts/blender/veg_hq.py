@@ -181,6 +181,16 @@ class Kinds:
         self.shore = None
         if self.pnw and os.path.exists(os.path.join(VEG, 'shore_pnw.npz')):
             S_ = np.load(os.path.join(VEG, 'shore_pnw.npz')); self.shore = (S_['sd2'], float(S_['x0']), float(S_['y0']), float(S_['res']))
+            self.shore_u = float(S_['unit']) if 'unit' in S_.files else 0.5
+        # [VEG_KIT=pnw] the boulevards: Vancouver's street mesh is the whole right of way (kerb, boulevard and sidewalk drawn
+        # as asphalt), so half the register's boulevard trees found no open ground within reach and were dropped (Kitsilano
+        # 12_14: 1582 of 3329). A listed tree on the street mesh whose point ground_city.py calls lawn, sidewalk or canopy
+        # (not carriageway asphalt) stays where the register has it (quay_wall QW_BLVD lays the boulevard's grass there)
+        self.gmap = None
+        gp_ = os.path.join(VEG, 'ground_pnw.npy')
+        if self.pnw and os.path.exists(gp_):
+            gm_ = json.load(open(os.path.join(VEG, 'ground_pnw.json')))
+            self.gmap = (np.load(gp_, mmap_mode='r'), float(gm_['x0']), float(gm_['y0']), [gm_['classes'].index(n) for n in ('lawn', 'concrete', 'tree', 'scrub')])
         log('veg data: listed street trees', nst, 'OSM tree hints', nh, 'zones', len(self.zones))
 
     def _add(self, name, coll, w, h, tall, hmax):
@@ -193,7 +203,13 @@ class Kinds:
         """[VEG_KIT=pnw] seaward of the OSM coastline by more than 0.5 m"""
         if self.shore is None: return False
         sd, x0, y0, r_ = self.shore; c, r = int((x - x0) / r_), int((y - y0) / r_)
-        return 0 <= r < sd.shape[0] and 0 <= c < sd.shape[1] and -120 < int(sd[r, c]) < -1
+        return 0 <= r < sd.shape[0] and 0 <= c < sd.shape[1] and int(sd[r, c]) * self.shore_u < -0.5
+
+    def boulevard(self, x, y):
+        """[VEG_KIT=pnw] ground_city's class at x, y is lawn, sidewalk or canopy (not the carriageway)"""
+        if self.gmap is None: return False
+        G, x0, y0, ok = self.gmap; i, j = int(x - x0), int(y - y0)
+        return 0 <= j < G.shape[0] and 0 <= i < G.shape[1] and int(G[j, i]) in ok
 
     def _count(self, k):
         self.stats[k] = self.stats.get(k, 0) + 1
@@ -343,7 +359,10 @@ class Kinds:
                 self._count(('street', 'te_snapped')); x, y = mv
             else: self._count(('street', 'te_median_kept')); kept_median = True
         elif on_street is not None and (TREE_ROAD or site != SITE_MEDIAN):       # the list's median trees stay on their median (TREE_ROAD: only on a real one)
-            p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
+            if self.gmap is not None and idx is not None and dist <= 2.3 and self.boulevard(x, y):
+                p = (x, y)          # [VEG_KIT=pnw] on its boulevard: it stays (not moved 4 m into a front yard)
+                if on_street(x, y): self._count(('street', 'boulevard_kept'))
+            else: p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
             if p is None:
                 self._count(('street', 'in_road_dropped')); return None
             if p != (x, y): self._count(('street', 'off_road')); x, y = p

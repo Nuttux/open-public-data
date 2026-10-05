@@ -26,7 +26,7 @@ What this does (each rule a CONVENTION, from open data only):
      OSM coastline to 3 m inland where no beach is (the wall's coping); seaward of the coastline the class is water
   7  nothing changes outside the city box, on industrial / commercial / retail / railway / port land, or under a road
 shore_pnw.npz (quay_wall.py, QW_LINE=osm): the OSM coastline (natural=coastline, land on its left) as segments with a
-beach flag, and its signed distance (+ land) on a 2 m grid, 0.5 m steps, +-63 m.
+beach flag, and its signed distance (+ land) on a 2 m grid, 1 m steps, +-127 m.
 Sources: Metro Vancouver LCC 2020 (OGL-MV) via ground_cls.npy; OpenStreetMap (ODbL), fetched 05/10 into
 ground/osm_veg/{osm,coast}.json (q.txt there); critic/osm/highways.json (ODbL, 25/09)."""
 import json, math, os, sys, time, collections
@@ -47,6 +47,7 @@ RES_LANDUSE = ('residential',)
 GREEN_LANDUSE = ('grass', 'meadow', 'recreation_ground', 'village_green', 'cemetery', 'allotments', 'greenery')
 GREEN_LEISURE = ('park', 'garden', 'pitch', 'golf_course', 'playground', 'dog_park')
 AUTO_VEG = 0.04
+UNIT = 1.0          # shore_pnw.npz sd2 step (m): int8 -> +-127 m (0.5 m saturated at 63 m: Coal Harbour's flats lie further out)
 GREY_LANDUSE = ('industrial', 'commercial', 'retail', 'railway', 'construction', 'brownfield', 'port')
 
 
@@ -147,19 +148,33 @@ def nn_fill(G, todo, pad=64, T=2048):
     return out, left
 
 
-def shore(M, B):
+def shore(M, B, G0=None):
     """the OSM coastline: segments (x0 y0 x1 y1, land on the left), a beach flag, its signed distance on a 2 m grid
     (int8, 0.5 m steps, + land); returns it"""
     from scipy import ndimage as nd
     from PIL import Image, ImageDraw
     j = json.load(open(os.path.join(OSM, 'coast.json')))
-    S = []
-    for e in j['elements']:
-        g = e.get('geometry') or []
-        if len(g) < 2: continue
-        x, y = C.proj(np.array([p['lon'] for p in g]), np.array([p['lat'] for p in g]))
+    S = []; WAY = []; WAY_N = []
+    # the ways chained end to start (OSM splits the coastline into ways; a join between two is a bend like any other)
+    G_ = [[(p['lon'], p['lat']) for p in (e.get('geometry') or [])] for e in j['elements']]
+    G_ = [g for g in G_ if len(g) >= 2]
+    st = {}
+    for i, g in enumerate(G_): st.setdefault((round(g[0][0], 7), round(g[0][1], 7)), i)
+    ends = {(round(g[-1][0], 7), round(g[-1][1], 7)) for g in G_}
+    used = set(); chains = []
+    order = [i for i, g in enumerate(G_) if (round(g[0][0], 7), round(g[0][1], 7)) not in ends] + list(range(len(G_)))
+    for i in order:
+        if i in used: continue
+        ch = []; k = i
+        while k is not None and k not in used:
+            used.add(k); ch += G_[k] if not ch else G_[k][1:]
+            k = st.get((round(G_[k][-1][0], 7), round(G_[k][-1][1], 7)))
+        chains.append(ch)
+    for g in chains:
+        x, y = C.proj(np.array([p[0] for p in g]), np.array([p[1] for p in g]))
         S += [(x[i], y[i], x[i + 1], y[i + 1]) for i in range(len(g) - 1)]
-    S = np.array(S, np.float64)
+        WAY += [len(WAY_N)] * (len(g) - 1); WAY_N.append(len(g))
+    S = np.array(S, np.float64); WAYA = np.array(WAY, np.int64)
     R = 2.0; X0, Y0 = M['x0'], M['y0']; ny, nx = M['shape']; W_, H_ = int(nx / R), int(ny / R)
     im = Image.new('I', (W_, H_), 0); dr = ImageDraw.Draw(im)
     for k, (a, b, c, d) in enumerate(S):
@@ -172,8 +187,28 @@ def shore(M, B):
         r1 = min(H_, r0 + 512)
         k = ID[ii[r0:r1], jj[r0:r1]] - 1; gy = Y0 + (np.arange(r0, r1) + 0.5) * R
         a, b, c, d = S[k, 0], S[k, 1], S[k, 2], S[k, 3]
-        cr = (c - a) * (gy[:, None] - b) - (d - b) * (gx[None, :] - a)    # > 0: left of the segment = land
-        sd8[r0:r1] = np.clip(np.round(np.where(cr >= 0, 1.0, -1.0) * dist[r0:r1] * R * 2), -127, 127).astype(np.int8)
+        # THE SIDE, robustly: the nearest of the segment and its two neighbours on the same way, and where that nearest point
+        # is a shared vertex, the side of the two segments' summed normals (the 'pseudo-normal'); one segment's own side
+        # alone flips a wedge beyond every bend (a 100 m strip of downtown read as sea, north of False Creek)
+        PX = np.broadcast_to(gx[None, :], k.shape); PY = np.broadcast_to(gy[:, None], k.shape)
+        best = np.full(k.shape, np.inf); side = np.zeros(k.shape)
+        for o in (-1, 0, 1):
+            kk = np.clip(k + o, 0, len(S) - 1); same = WAYA[kk] == WAYA[k]
+            a, b, c, d = S[kk, 0], S[kk, 1], S[kk, 2], S[kk, 3]
+            dx, dy = c - a, d - b; L2 = np.maximum(dx * dx + dy * dy, 1e-12)
+            t = np.clip(((PX - a) * dx + (PY - b) * dy) / L2, 0, 1)
+            qx, qy = a + t * dx, b + t * dy; dd = (PX - qx) ** 2 + (PY - qy) ** 2
+            nx_, ny_ = -dy, dx                                                # left normal (land side)
+            # at a shared end vertex: the neighbour's normal added
+            kp = np.clip(kk - 1, 0, len(S) - 1); kn = np.clip(kk + 1, 0, len(S) - 1)
+            at0 = (t <= 1e-9) & (WAYA[kp] == WAYA[kk]) & (kp != kk); at1 = (t >= 1 - 1e-9) & (WAYA[kn] == WAYA[kk]) & (kn != kk)
+            nx_ = nx_ + np.where(at0, -(S[kp, 3] - S[kp, 1]), 0) + np.where(at1, -(S[kn, 3] - S[kn, 1]), 0)
+            ny_ = ny_ + np.where(at0, S[kp, 2] - S[kp, 0], 0) + np.where(at1, S[kn, 2] - S[kn, 0], 0)
+            sg = np.sign((PX - qx) * nx_ + (PY - qy) * ny_)
+            upd = same & (dd < best - 1e-9)
+            best = np.where(upd, dd, best); side = np.where(upd, sg, side)
+        side[side == 0] = 1
+        sd8[r0:r1] = np.clip(np.round(side * np.sqrt(best) / UNIT), -127, 127).astype(np.int8)
     del dist, ii, jj, ID
     # beach flag per segment: OSM beach / sand within 15 m of its midpoint
     bi = (B[::2, ::2][:H_, :W_] & BIT['beach']) > 0
@@ -181,10 +216,27 @@ def shore(M, B):
     mx, my = (S[:, 0] + S[:, 2]) / 2, (S[:, 1] + S[:, 3]) / 2
     ci = np.clip(((mx - X0) / R).astype(int), 0, W_ - 1); ri = np.clip(((my - Y0) / R).astype(int), 0, H_ - 1)
     fl = bb[ri, ci].astype(np.uint8)
-    np.savez_compressed(os.path.join(OUTD, 'shore_pnw.npz'), sd2=sd8, x0=X0, y0=Y0, res=R, seg=S.astype(np.float32), beach=fl,
+    # where quay_wall QW_SINK may put the terrain under the sea: seaward of the coastline, within 30 m of it or where the
+    # land cover sees water, mud, sand or bare ground (not the port's paved terminals OSM leaves seaward of its line),
+    # inside the city limits (+40 m)
+    sink = (sd8.astype(np.float32) * UNIT < -0.5)
+    if G0 is not None:
+        g2 = G0[::2, ::2][:H_, :W_]
+        wet = np.isin(g2, [CI[n] for n in ('water', 'gravel', 'sand', 'wetsand', 'marsh', 'soil', 'drygrass')])
+        sink &= (sd8.astype(np.float32) * UNIT > -30.0) | wet; del g2, wet
+    lim = (C.CFG.get('block') or {}).get('limits')
+    if lim and os.path.exists(lim):
+        gj = json.load(open(lim))['geometry']; polys = gj['coordinates'] if gj['type'] == 'MultiPolygon' else [gj['coordinates']]
+        im = Image.new('L', (W_, H_), 0); dr = ImageDraw.Draw(im)
+        for poly in polys:
+            x, y = C.proj(np.array([p[0] for p in poly[0]]), np.array([p[1] for p in poly[0]]))
+            dr.polygon(list(zip(((x - X0) / R).tolist(), ((y - Y0) / R).tolist())), fill=1)
+        inl = nd.binary_dilation(np.asarray(im, np.uint8) > 0, iterations=20); sink &= inl; del im, dr
+    print('shore: sink cells', int(sink.sum()), f'({int(sink.sum()) * R * R / 1e6:.2f} km2)')
+    np.savez_compressed(os.path.join(OUTD, 'shore_pnw.npz'), sd2=sd8, unit=UNIT, sink=sink.astype(np.uint8), x0=X0, y0=Y0, res=R, seg=S.astype(np.float32), beach=fl,
                         beach_grid=bb.astype(np.uint8), source='OSM natural=coastline (ODbL, 05/10), land left; beach = ground_city rule 5 beaches within 15 m')
     print('shore: segments', len(S), 'beach segments', int(fl.sum()), 'grid', sd8.shape)
-    return sd8, R
+    return sd8, R, sink
 
 
 def build():
@@ -192,7 +244,7 @@ def build():
     t0 = time.time(); M = _meta()
     G0 = np.load(os.path.join(GRD, 'ground_cls.npy'))
     B = masks(M); print('masks', f'{time.time() - t0:.0f}s', flush=True)
-    sd8, R = shore(M, B); print('shore', f'{time.time() - t0:.0f}s', flush=True)
+    sd8, R, sink2 = shore(M, B, G0); print('shore', f'{time.time() - t0:.0f}s', flush=True)
     G, left = nn_fill(G0, G0 == 0); print('none filled', int((G0 == 0).sum()), 'left', left, f'{time.time() - t0:.0f}s', flush=True)
     ny, nx = G.shape; ci = (np.arange(nx) / R).astype(int).clip(0, sd8.shape[1] - 1)
     # rule 2b: a block OSM has no landuse for counts as residential where it LOOKS like one on the land cover: some
@@ -225,9 +277,10 @@ def build():
         g[(g == CI['sand']) & ~bch3] = CI['gravel']
         g[bch & np.isin(g, [CI['asphalt'], CI['gravel'], CI['concrete'], CI['lawn'], CI['drygrass'], CI['none'], CI['wetsand'], CI['scrub']])] = CI['sand']
         # rule 6: the shore line, the promenade
-        s_ = sd8[(np.arange(r0, r1) / R).astype(int).clip(0, sd8.shape[0] - 1)][:, ci].astype(np.float32) / 2.0
+        s_ = sd8[(np.arange(r0, r1) / R).astype(int).clip(0, sd8.shape[0] - 1)][:, ci].astype(np.float32) * UNIT
         g[(s_ >= 0) & (s_ < 3.0) & ~bch3 & (g != CI['water'])] = CI['concrete']
-        g[(s_ < -1.0) & (s_ > -60.0) & ~bch & (g != CI['sand'])] = CI['water']
+        k_ = sink2[(np.arange(r0, r1) / R).astype(int).clip(0, sink2.shape[0] - 1)][:, ci]
+        g[(s_ < -1.0) & k_ & ~bch & (g != CI['sand'])] = CI['water']
         g[((b & BIT['prom']) > 0) & ~bch & (g != CI['water'])] = CI['concrete']
         g[(g == 0)] = CI['asphalt']
         print(f'rows {r0}-{r1}', f'{time.time() - t0:.0f}s', flush=True)
