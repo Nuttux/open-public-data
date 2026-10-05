@@ -155,7 +155,8 @@ def main():
         if vf >= 0.4:
             if p['bt'] in LIDAR_ONLY_T: continue
             if p['oh']: H, hs = max(p['oh'], np.percentile(val, 90) if len(val) else 0), p['ohs'] + ' (LiDAR top void)'
-            elif len(val) >= 10: H, hs = float(np.percentile(val, 98)), 'lidar highest valid (top void)'
+            elif len(val) >= 10 and (val >= 0.6 * np.percentile(val, 98)).mean() >= 0.15:     # a tower's walls, not a stray tree / edge
+                H, hs = float(np.percentile(val, 98)), 'lidar highest valid (top void)'
             else: continue
         else:
             H, hs = float(np.percentile(val, 90)), 'lidar p90'
@@ -165,7 +166,11 @@ def main():
         # too small for the LiDAR tower: tower_split's rings, the 2015 outline of a rebuilt lot)
         tv = np.isfinite(nd) & (nd >= 0.6 * H); und = tv & (dr < nd - 15)
         uf = und.sum() / max(1, tv.sum())
-        if D >= H - max(8.0, 0.2 * H) and not (uf >= 0.5 and und.sum() >= 100): continue
+        big_gap = uf >= 0.5 and und.sum() >= 100
+        if D >= H - max(8.0, 0.2 * H) and not big_gap: continue
+        # a void top: the height is OSM's (or the highest wall return), so only where nothing near it is drawn (an outline
+        # whose OSM height is its tower's must not become one fat box over a drawn podium + tower)
+        if vf >= 0.4 and D >= 0.6 * H and not big_gap: continue
         tallm = mk & ((ndsm[r0:r1, c0:c1] >= 0.6 * H) | ~np.isfinite(ndsm[r0:r1, c0:c1]))
         tf = tallm.sum() / mk.sum()
         geo = g
