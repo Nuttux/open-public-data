@@ -3,7 +3,9 @@ as a bool raster on the area's core grid (QC, L9 px), projected like the renders
 burn_core() -> (H, W) bool, cached in WQ/burn_core.npy. Run as a script to write a check overlay: python3 burnmask.py <render.jpg (core grid)> <out.jpg>"""
 import os, sys, json, math, numpy as np, cv2
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import eracity as EC   # per city (CITY unset = SF's literals)  # ERA_CITY
-sys.path.insert(0, EC.BURN_SNAP); import qc   # read-only import (the qc reader)
+for _p in EC.BURN_SNAPS:
+    if os.path.exists(_p + '/qc.py'): sys.path.insert(0, _p); break   # (03/10) a cloud box may carry only one snapshot: the first one that has the qc reader
+import qc   # read-only import (the qc reader)
 A = json.load(open(os.environ['ERA_AREA'])); QC = A['QC']; WQ = A['WQ']
 CITY = EC.BURN_ENGINE; VW = '/Users/daniel/code/qipu-render-work/cloud/viewer'
 CA = math.cos(math.pi / 6); SA = 0.42; KX = math.sqrt(2) * CA; KY = math.sqrt(2) * SA; ZT = math.sqrt(2 * (CA * CA - SA * SA))

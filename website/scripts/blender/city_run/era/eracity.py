@@ -18,7 +18,16 @@ states only what differs; a key set to null switches the SF thing off):
   overlay                 auto_render's default overlay dir (SF block52/qh/kt/k7)
   rail_overlay            keys.py M9's era.py dir when the area has no overlay (SF block52/era_auto/overlay/k8)
   burn_snap, burn_engine  burnmask.py's qc reader dir and engine (SF snap/combo7, opd-render us/sf/city)
+  era_clause_before       keys.py: every AI window before this year gets its era clause + STREET_PERIOD wording (SF 1970, 03/10)
+  notree_before           keys.py NOTREE: the base wording says no street trees before (SF 1930)
+  cobble_before           keys.py STREET_PERIOD: basalt blocks / cobbles before, simple period markings after (SF 1920)
+  k9_year                 hybrid.py K9 default (env K9_YEAR overrides): today's markings never copied before (SF '1920', 03/10)
+  burn_snaps              burnmask.py: snapshots searched for the qc reader, first hit wins (SF combo7, combo5, transit/snap;
+                          another city: [burn_snap])
   view_ref                [CX, CY, zoom] of the z9 camera the area grids (QC, RA) are in (cloud/viewer/realref.js; SF's REF)
+  A city may also keep era keys in cities/<CITY>/assets/eras.env.json "pipeline" (read after city.json, wins over it;
+  the file is optional; it is where the re-sync of 05/10 put keys rather than editing city.json).
+  ash_from/ash_until (keys.py K4R) follow fire_state: (last pre-fire + 1, last ash year); no fire = never.
     python3 eracity.py sh     -> the shell assignments (ERA_*) auto_render.sh / run_area.sh eval
     python3 eracity.py json   -> the resolved values"""
 import os, sys, json
@@ -32,6 +41,8 @@ SF = dict(
     overlay='/Volumes/QIPU-SSD/qipu-render-work/combo/block52/qh/kt/k7',
     rail_overlay='/Volumes/QIPU-SSD/qipu-render-work/combo/block52/era_auto/overlay/k8',
     burn_snap='/Users/daniel/code/qipu-render-work/snap/combo7', burn_engine='/Users/daniel/code/opd-render/website/public/data/us/sf/city',
+    era_clause_before=1970, notree_before=1930, cobble_before=1920, k9_year='1920',
+    burn_snaps=('/Users/daniel/code/qipu-render-work/snap/combo7', '/Users/daniel/code/qipu-render-work/snap/combo5', '/Users/daniel/code/qipu-render-work/transit/snap'),
     view_ref=(241.427019126574, 707.0567508859249, 0.06898352692062097))
 V = dict(SF)
 if CITY != 'sf':
@@ -39,6 +50,12 @@ if CITY != 'sf':
     _p = os.environ.get('ERA_CITY_JSON') or os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', CITY, 'city.json')
     _c = json.load(open(_p))
     V.update({k: (tuple(v) if isinstance(v, list) else v) for k, v in _c.get('eras', {}).get('pipeline', {}).items() if k in SF})
+    _pp = dict(_c.get('eras', {}).get('pipeline', {}))
+    _e = os.path.join(os.path.dirname(_p), 'assets', 'eras.env.json')
+    if os.path.exists(_e):
+        _pe = json.load(open(_e)).get('pipeline', {}); _pp.update(_pe)
+        V.update({k: (tuple(v) if isinstance(v, list) else v) for k, v in _pe.items() if k in SF})
+    if 'burn_snaps' not in _pp: V['burn_snaps'] = (V['burn_snap'],)
     if 'view_ref' not in _c.get('eras', {}).get('pipeline', {}): V['view_ref'] = tuple(_c['ref'])
     if 'burn_engine' not in _c.get('eras', {}).get('pipeline', {}): V['burn_engine'] = _c['engine']
 
@@ -48,7 +65,9 @@ MARKS_FROM = V['marks_from']; K5_FROM, K5_UNTIL = V['k5']; OLD_PAVEMENT_BEFORE =
 BIKE_GREEN_FROM = V['bike_green_from']; RED_LANE_BEFORE = str(V['red_lane_before'])
 PERIOD_PROMPTS_BEFORE = V['period_prompts_before']; EARLY_PROMPTS_BEFORE = V['early_prompts_before']; KEY_TODAY_FROM = V['key_today_from']
 SNAP_ROOT = V['snap_root']; SNAP = V['snap']; OVERLAY = V['overlay']; RAIL_OVERLAY = V['rail_overlay']
-BURN_SNAP = V['burn_snap']; BURN_ENGINE = V['burn_engine']; VIEW_CX, VIEW_CY, VIEW_Z = V['view_ref']
+ERA_CLAUSE_BEFORE = V['era_clause_before']; NOTREE_BEFORE = V['notree_before']; COBBLE_BEFORE = V['cobble_before']; K9_YEAR = str(V['k9_year'])
+ASH_FROM, ASH_UNTIL = (FIRE_STATE[0] + 1, FIRE_STATE[1]) if V['fire_state'] else (-1, -2)
+BURN_SNAPS = tuple(V['burn_snaps']); BURN_SNAP = V['burn_snap']; BURN_ENGINE = V['burn_engine']; VIEW_CX, VIEW_CY, VIEW_Z = V['view_ref']
 
 
 def moment(Y):

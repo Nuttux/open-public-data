@@ -10,6 +10,7 @@ FILES = ['run_area.sh', 'auto_render.sh', 'auto_ai.sh', 'auto_jobs.py', 'keys.py
 # rewrites that are not a plain literal (the copy's text -> the original's text); SF's values make them equal (checked below by eval)
 FRAGS = [("' It is ' + EC.CITY_NAME + ' in %d: no modern", "' It is San Francisco in %d: no modern"),
          ("D=${0:A:h}; P=/Users/daniel/code/qipu-render-work/era_anim/auto/prep;", "D=/Users/daniel/code/qipu-render-work/era_anim/auto; P=$D/prep;"),
+         ("' It is ' + EC.CITY_NAME + ' in %d: only cars", "' It is San Francisco in %d: only cars"),
          ("mom = EC.moment;", "mom = lambda Y: 1906 + 147 / 365.0 if Y == 1906 else Y + 0.5;"),
          ("EC.FIRE_STATE[0]", "1905"), ("EC.FIRE_STATE[1]", "1908")]
 assert ' It is ' + EC.CITY_NAME + ' in %d: no modern' == ' It is San Francisco in %d: no modern' and EC.FIRE_STATE == (1905, 1908)
