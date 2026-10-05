@@ -4,12 +4,13 @@
 # water pixels are the render's, and water words on dry tiles invented ponds in SF, R13) with the light line made northern and one
 # per-kind clause (prep_b8 picks the key per tile from block.prompt_areas). Nothing SF: no bay, cable cars, Victorians, California light.
 # v2 (06/10 var test VR1): 'green roof gardens' / 'dense mature street trees' / 'half hidden under trees' made the AI plant gardens on bare
-# tower roofs and canopy over West End lots -> no tree COUNT words; tree SPECIES only, and trees / gardens only where the render has them.
+# tower roofs and canopy over West End lots -> no tree COUNT words; tree SPECIES only. v3 (VR3): even a negated 'roof gardens' planted
+# gardens on Coal Harbour's low roofs -> no garden noun at all; the SOLID-style 'keeps exactly the surface the render shows'.
 V_BASE = BASE_DRY.replace('at clear midday: high sun, neutral daylight,',
                           'at clear midday in Vancouver, British Columbia: high sun, clean, cool Pacific Northwest daylight,')
 assert V_BASE != BASE_DRY and 'water' not in V_BASE and V_BASE.startswith('Turn this 3D render into a real aerial photograph')
 V_GREEN = (' Vancouver is a lush, green Pacific Northwest city: lawns and leaves are deep green, conifers dark green, nothing dry or dusty.'
-           ' Trees, lawns and roof gardens appear only where the render shows them; every bare roof, street and lot stays bare.')
+           ' Every roof, street and lot keeps exactly the surface the render shows.')
 V_KIND = {
     'towers': (' Downtown Vancouver: slender residential towers with blue-green and green-grey tinted glass curtain walls, thin light mullions'
                ' and glass balcony bands; concrete and brick towers stay concrete and brick.' + GLASS),
