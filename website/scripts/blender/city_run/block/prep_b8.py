@@ -15,12 +15,13 @@ shutil.copy(f'{B}/R_pt.jpg', f'{O}/R_{WN}.jpg'); json.dump(dict(ox=OX, oy=OY), o
 C = Image.open(f'{B}/R.class.png')
 if CC.BLOCK['rails']: sys.path.insert(0, H); import rails_b8; RL = rails_b8.rail_len([f'{gx},{gy}' for gx in XS for gy in YS])
 else: RL = {f'{gx},{gy}': 0 for gx in XS for gy in YS}   # no rail data for this city: one prompt key
+AK = CC.prompt_area_keys([(gx, gy) for gx in XS for gy in YS]) if CC.BLOCK.get('prompt_areas') else {}   # city area keys (SF: none)
 L = []; keep = []; nr = 0
 for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]
     for gx in XS:
         if wat[:, gx - OX:gx - OX + 1024].mean() > 0.95: keep.append(f'{gx}_{gy}'); continue
-        k = RK if RL[f'{gx},{gy}'] >= 10 else 'v5_dry'; nr += k != 'v5_dry'
+        k = RK if RL[f'{gx},{gy}'] >= 10 else AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
         sd = int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16); L.append(f'C9:{gx},{gy} out/{WN}/{gx}_{gy}.jpg - {k} {sd}')
 json.dump(keep, open(f'{O}/water_tiles.json', 'w')); n = int(os.environ.get('SPLIT', 1))
 for s in range(n):
@@ -29,4 +30,4 @@ for s in range(n):
     json.dump(dict(jobs=f'P{sfx}.txt', nf9=1, nfkey='nfC', out=CFG.get('out', 'B8') + sfx.upper()), open(f'{O}/SL8{sfx}.json', 'w'))
 for f in ('sl8v.py', 'run_pyv.py'): shutil.copy(f'{H}/work_ai/{f}', O)
 open(f'{O}/lr_run9.py', 'w').write(CC.prompt_text(open(f'{H}/lr_run9_b8.py').read()))   # SF: a byte-identical copy
-print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep))
+print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep)) if not AK else print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep), 'area keys', {k: list(AK.values()).count(k) for k in sorted(set(AK.values()))})

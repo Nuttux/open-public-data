@@ -11,6 +11,9 @@ except what those scripts read themselves. Another city reads qipu-render-work/c
      snapshot      render snapshot name (lmk_pod.sh up <snap>), default '<city>1'
      overlay       render overlay files (one path per line in overlay.txt), default none
      prompt_subs   [[old, new], ...] applied to lr_run9's prompt text when prep copies it (SF: none -> byte-identical)
+     prompt_add    '' : a python snippet (path; relative = to city_run/) pasted into lr_run9 before 'MODEL = os.environ': the city's keys
+     prompt_areas  '' : rules json (path; relative = to city_run/) {default, rules: [{key, poly lon/lat}]}: prep_b8 keys a tile by its centre
+     look_refs     {} : {key: image path} real aerial photos sl8v.py gives the L8/L9 passes as a look reference (image 2 / 3); none = off
      rails         false: no rail prompt key (SF: rails_b8.py OSM rails + RAILKEY v8_rail5)
      pier_ctx      false: SF's Piers 15/17 lawn -> concrete fix in the AI input
      roof_rn_seam  false: SF's NAIP roof-photo box seam fix (post_sb ROOF_RN_SEAM)
@@ -117,7 +120,28 @@ def prompt_text(src):
     for a, b in BLOCK.get('prompt_subs', []):
         assert a in src, f'prompt_subs: {a!r} not in lr_run9'
         src = src.replace(a, b)
+    if BLOCK.get('prompt_add'):   # the city's own keys, pasted before the model loads (sl8v.py execs lr_run9 up to that line)
+        m = 'MODEL = os.environ'; add = open(city_path(BLOCK['prompt_add'])).read().rstrip(); assert src.count(m) == 1 and m not in add
+        src = src.replace(m, f"# ---- {CITY} prompt keys ({os.path.basename(BLOCK['prompt_add'])}) ----\n" + add + '\n' + m)
     return src
+
+def city_path(p):
+    """a block path from city.json: absolute as is, else relative to city_run/"""
+    return p if os.path.isabs(p) else os.path.join(HERE, p)
+
+def prompt_area_keys(tiles):
+    """{(gx, gy): key} for 1024-px AI tiles at L9 (gx, gy) from block.prompt_areas (first rule whose lon/lat polygon holds the tile centre)"""
+    J_ = json.load(open(city_path(BLOCK['prompt_areas'])))
+    def inside(x, y, poly):
+        c = False
+        for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+            if (y0 > y) != (y1 > y) and x < x0 + (y - y0) * (x1 - x0) / (y1 - y0): c = not c
+        return c
+    out = {}
+    for gx, gy in tiles:
+        lon, lat = (float(v) for v in lonlat_of_l9(gx + 512, gy + 512))
+        out[(gx, gy)] = next((r['key'] for r in J_['rules'] if inside(lon, lat, r['poly'])), J_['default'])
+    return out
 
 if __name__ == '__main__':
     print(json.dumps(dict(city=CITY, ref=[CX, CY, SCALE], lonlat0=[LON0, LAT0], kxm=KXM, kym=KYM, block=BLOCK,
