@@ -223,7 +223,18 @@ def shore(M, B, G0=None):
     if G0 is not None:
         g2 = G0[::2, ::2][:H_, :W_]
         wet = np.isin(g2, [CI[n] for n in ('water', 'gravel', 'sand', 'wetsand', 'marsh', 'soil', 'drygrass')])
-        sink &= (sd8.astype(np.float32) * UNIT > -30.0) | wet; del g2, wet
+        # (+ OSM marinas and piers: Coal Harbour's floating docks are paved to the land cover, solid land to the engine's
+        # mask; the render drew them as flat grey mud islands in the harbour)
+        im = Image.new('L', (W_, H_), 0); dr = ImageDraw.Draw(im)
+        for t, gs, typ in _ways(json.load(open(os.path.join(OSM, 'osm.json')))):
+            if t.get('leisure') == 'marina' or t.get('man_made') == 'pier':
+                for g in gs:
+                    x, y = C.proj(np.array([p['lon'] for p in g]), np.array([p['lat'] for p in g]))
+                    pts = list(zip(((x - X0) / R).tolist(), ((y - Y0) / R).tolist()))
+                    if len(g) > 3 and g[0] == g[-1]: dr.polygon(pts, fill=1)
+                    elif len(pts) >= 2: dr.line(pts, fill=1, width=3)
+        mar = np.asarray(im, np.uint8) > 0; del im, dr
+        sink &= (sd8.astype(np.float32) * UNIT > -30.0) | wet | mar; del g2, wet, mar
     lim = (C.CFG.get('block') or {}).get('limits')
     if lim and os.path.exists(lim):
         gj = json.load(open(lim))['geometry']; polys = gj['coordinates'] if gj['type'] == 'MultiPolygon' else [gj['coordinates']]
