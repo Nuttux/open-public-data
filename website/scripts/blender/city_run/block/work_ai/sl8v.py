@@ -20,6 +20,9 @@ def gen(imgs, prompt, seed, lat, lv=9):
     kw = dict(latents=lat) if CFG.get(f'nf{lv}', CFG.get('nf')) else {}
     return pipe(image=imgs, prompt=prompt, width=1024, height=1024, num_inference_steps=4, guidance_scale=1.0,
                 generator=torch.Generator('cpu').manual_seed(int(seed)), **kw).images[0]
+LK = {k_: Image.open(f'{WH_R}/{f_}').convert('RGB') for k_, f_ in CFG.get('look', {}).items()}   # per-key look reference photos (city.json block.look_refs; SF: none)
+for im_ in LK.values(): im_.thumbnail((1024, 1024), Image.LANCZOS)
+LOOK = ' Match the photographic look (colour, light, materials, texture) of image {n}, a real aerial photograph of this city, not its content: nothing of image {n} is copied.'
 x_ = np.arange(1024) + 0.5; rp = np.clip(np.minimum(x_ - 224, 800 - x_) / 64, 0, 1); WT = np.outer(rp, rp)[..., None].astype(np.float32)
 def rgb2lab(a):
     a = a / 255.0; a = np.where(a > 0.04045, ((a + 0.055) / 1.055) ** 2.4, a / 12.92)
@@ -61,7 +64,7 @@ for w, T in win.items():
         for X in AX:
             k, s = TK.get((X, Y)) or min(TK.items(), key=lambda kv: abs(kv[0][0] - X) + abs(kv[0][1] - Y))[1]
             l8 = R.crop((X - 512 - ox, Y - 512 - oy, X + 1536 - ox, Y + 1536 - oy)).resize((1024, 1024), Image.LANCZOS); t1 = time.time()
-            o8 = gen([l8], P[k], s, NF(8, (X - 512) // 32, (Y - 512) // 32), 8); n += 1
+            o8 = gen([l8] + ([LK[k]] if k in LK else []), P[k] + (LOOK.format(n=2) if k in LK else ''), s, NF(8, (X - 512) // 32, (Y - 512) // 32), 8); n += 1
             cx, cy = (X - MX) // 2, (Y - MY) // 2   # the L8 tile's top-left in canvas px (canvas origin = MX-512 L9 -> tile at (X-512-(MX-512))/2)
             acc[cy:cy + 1024, cx:cx + 1024] += np.asarray(o8, np.float32) * WT; ws[cy:cy + 1024, cx:cx + 1024] += WT
             log.write(json.dumps(dict(l8=[X, Y], s=round(time.time() - t1, 1), key=k, seed=int(s))) + '\n'); log.flush()
@@ -70,5 +73,5 @@ for w, T in win.items():
     for gx, gy, k, s in T:
         t1 = time.time(); px, py = (gx - MX) // 2 + 256, (gy - MY) // 2 + 256
         im = M.crop((px, py, px + 512, py + 512)).resize((1024, 1024), Image.LANCZOS); l9 = R.crop((gx - ox, gy - oy, gx - ox + 1024, gy - oy + 1024))
-        o = gen([im, l9], ANCHOR(P[k]), s, NF(9, gx // 16, gy // 16)); o.save(f'{OUTD}/{gx}_{gy}.jpg', quality=95); n += 1
+        o = gen([im, l9] + ([LK[k]] if k in LK else []), ANCHOR(P[k]) + (LOOK.format(n=3) if k in LK else ''), s, NF(9, gx // 16, gy // 16)); o.save(f'{OUTD}/{gx}_{gy}.jpg', quality=95); n += 1
         log.write(json.dumps(dict(out=f'{gx}_{gy}', s=round(time.time() - t1, 1), key=k, seed=int(s), nf=CFG.get('nf', 0))) + '\n'); log.flush()

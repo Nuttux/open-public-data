@@ -24,10 +24,13 @@ for gy in YS:
         k = RK if RL[f'{gx},{gy}'] >= 10 else AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
         sd = int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16); L.append(f'C9:{gx},{gy} out/{WN}/{gx}_{gy}.jpg - {k} {sd}')
 json.dump(keep, open(f'{O}/water_tiles.json', 'w')); n = int(os.environ.get('SPLIT', 1))
+LOOK = {}
+for k_, f_ in CC.BLOCK.get('look_refs', {}).items():   # per-key look reference photos for sl8v (SF: none); 1024 px copies next to the jobs
+    im_ = Image.open(CC.city_path(f_)).convert('RGB'); im_.thumbnail((1024, 1024), Image.LANCZOS); im_.save(f'{O}/look_{k_}.jpg', quality=92); LOOK[k_] = f'look_{k_}.jpg'
 for s in range(n):
     part = L[s::n] if n > 1 else L; sfx = f'_{s}' if n > 1 else ''
     open(f'{O}/P{sfx}.txt', 'w').write(f'#MOSAIC {WN}\n' + '\n'.join(part) + '\n')
-    json.dump(dict(jobs=f'P{sfx}.txt', nf9=1, nfkey='nfC', out=CFG.get('out', 'B8') + sfx.upper()), open(f'{O}/SL8{sfx}.json', 'w'))
+    json.dump(dict(jobs=f'P{sfx}.txt', nf9=1, nfkey='nfC', out=CFG.get('out', 'B8') + sfx.upper(), **({'look': LOOK} if LOOK else {})), open(f'{O}/SL8{sfx}.json', 'w'))
 for f in ('sl8v.py', 'run_pyv.py'): shutil.copy(f'{H}/work_ai/{f}', O)
 open(f'{O}/lr_run9.py', 'w').write(CC.prompt_text(open(f'{H}/lr_run9_b8.py').read()))   # SF: a byte-identical copy
 print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep)) if not AK else print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep), 'area keys', {k: list(AK.values()).count(k) for k in sorted(set(AK.values()))})
