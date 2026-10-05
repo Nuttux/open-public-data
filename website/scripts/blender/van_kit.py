@@ -246,9 +246,10 @@ def _G(): return sys.modules['gen_buildings']
 def porch(w, c, b, door_u):
     """the character house's front porch: a deck on brick piers, tapered posts, a rail, a shed roof"""
     S = c['vs']; L = w.L; zg, first, eave, trim, body = c['zg'], c['first'], c['eave'], c['trim'], c['body']
-    if L < 4.5 or first - zg < 0.5: return
+    if L < 3.2 or first - zg < 0.5: return
     r = random.Random(int(b['gid']) * 131 + 17)
     full = L < 8.5 or r.random() < 0.45
+    if L < 4.5: full = True
     pw = L - 0.3 if full else min(L - 0.6, max(3.2, L * r.uniform(0.5, 0.65)))
     if door_u: u0 = max(0.15, min(L - pw - 0.15, (door_u[0] + door_u[1]) / 2 - pw / 2))
     else: u0 = 0.15 if r.random() < 0.5 else L - pw - 0.15

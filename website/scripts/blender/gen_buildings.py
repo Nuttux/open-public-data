@@ -2366,9 +2366,10 @@ def facade(w, is_front, b, rng, c):
             door_u = (du0, du0 + 1.0)
             holes.append((door_u[0], door_u[1], first, first + 2.3))
             w.opening(door_u[0], door_u[1], first, first + 2.3, 'door', trim, 0.35, rng, accent)
-            if style == 'vic' or sub == 'edwardian':
+            if (style == 'vic' or sub == 'edwardian') and not c.get('vt'):
                 w.box('trim', du0 - 0.25, du0 + 1.25, first + 2.35, first + 2.6, 0.0, 0.5, trim)       # an entry hood
-            if LOD < 2: stoop(w, door_u[0] - 0.2, door_u[1] + 0.2, zg, first, trim, style)
+            if c.get('vt') and c['vt'] == 'character_house': pass      # (V-TYPES) the porch draws its own steps
+            elif LOD < 2: stoop(w, door_u[0] - 0.2, door_u[1] + 0.2, zg, first, trim, style)
             elif FINE and 0.35 <= first - zg <= 1.95:
                 stoop_fine(w, door_u[0] - 0.22, door_u[1] + 0.22, zg, first, trim, body, style, b, c['ground'])
     # the entry of an apartment house: double doors in a surround, a canopy
