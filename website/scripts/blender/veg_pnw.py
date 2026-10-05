@@ -285,3 +285,11 @@ def arch_of(genus, species='', cultivar=''):
     for rx, a in _RX:
         if rx.search(s): return a
     return 'unknown'
+
+
+# crown width (m) from the register's DBH (in): a + b * DBH, at most c (veg_hq.CROWN_DBH's form). Vancouver street
+# trees: DBH median ~7 in; a 30 in Norway maple ~14 m across, a Kwanzan cherry wider than tall
+CROWN_DBH = {'v_dfir': (2.0, 0.22, 12), 'v_cedar': (2.5, 0.30, 14), 'v_hemlock': (2.0, 0.24, 11), 'v_maple': (2.0, 0.40, 18),
+             'v_purple': (1.8, 0.32, 9), 'v_cherry': (2.0, 0.42, 11), 'v_oak': (2.2, 0.40, 17), 'v_ash': (2.0, 0.38, 15),
+             'v_linden': (1.8, 0.32, 12), 'v_beech': (2.2, 0.42, 16), 'v_orn': (1.6, 0.32, 8), 'v_elm': (2.2, 0.42, 18),
+             'v_column': (1.0, 0.14, 5)}

@@ -78,6 +78,10 @@ VEG_FOREST_FILL = float(os.environ.get('VEG_FOREST_FILL', '0')); VEG_FOREST_R = 
 # 'plane' crowns in Stanley Park are its firs, cedars and hemlocks; a London plane is a street tree). Unset (SF): none.
 VEG_FOREST_SUB = dict(p.split(':') for p in os.environ.get('VEG_FOREST_SUB', '').split(',') if ':' in p)
 SITE_MEDIAN = 2
+# (V-VEG 05/10) VEG_KIT=pnw (Vancouver): the Pacific Northwest kit (veg_pnw.py: Douglas-fir, redcedar, hemlock, the
+# city's street species by genus + cultivar) and its files (veg_pnw.npz, veg_zones_pnw.json, canopy_pnw.npz, veg_city.py
+# pnw); a listed tree drawn at its register height. Unset (SF) = the kit and the files above, unchanged.
+VEG_KIT = os.environ.get('VEG_KIT', '')
 # [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
 # not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
 TREE_ROAD = os.environ.get('TREE_ROAD', '0') == '1'
@@ -114,6 +118,14 @@ class Kinds:
         self.protos, self.widths, self.heights, self.tall, self.hmax, self.names = [], [], [], [], [], []
         idx = {}
         K = VP.kit(); faces = {}
+        self.pnw = VEG_KIT == 'pnw'; self.crown_dbh = CROWN_DBH; self.conifers = CONIFERS
+        files = ('veg.npz', 'veg_zones.json', 'canopy_trees.npz')
+        if self.pnw:
+            import veg_pnw as VPN
+            K = dict(K); K.update(VPN.kit(VP))
+            P_OF = dict(VPN.PROTO_OF); P_OF['pine'] = (PROTO_OF3 if self.v3 else PROTO_OF)['pine']
+            self.crown_dbh = dict(CROWN_DBH, **VPN.CROWN_DBH); self.conifers = CONIFERS + VPN.CONIFERS
+            files = ('veg_pnw.npz', 'veg_zones_pnw.json', 'canopy_pnw.npz')
         for nm in sorted({p for ps in P_OF.values() for p in ps}):
             if nm.startswith('ph:'):
                 t_, h_ = PH_SIZE[nm[3:]]
@@ -127,9 +139,11 @@ class Kinds:
         self.arch_of_kind = {}
         for a, ks in self.kinds_of.items():
             for k in ks: self.arch_of_kind.setdefault(k, a)
+        if self.pnw:       # the old archetypes (SF's names in older data) drawn as this kit's
+            for a, b in VPN.ALIAS.items(): self.kinds_of.setdefault(a, self.kinds_of[b])
         log('veg protos (name w h faces):', [(n, round(w, 1), round(h, 1), faces.get(n)) for n, w, h in zip(self.names, self.widths, self.heights)])
         # the data
-        D = np.load(os.path.join(VEG, 'veg.npz')); J = json.load(open(os.path.join(VEG, 'veg_zones.json')))
+        D = np.load(os.path.join(VEG, files[0])); J = json.load(open(os.path.join(VEG, files[1])))
         self.ARCH = J['arch']; self.HARCH = J['hint_arch']; self.street_mix = J['street_mix']
         self.zones = J['zones']; self.Z = D['zone']; self.zo = D['zone_origin']
         from mathutils.kdtree import KDTree
@@ -142,6 +156,7 @@ class Kinds:
             kd.balance(); return kd, len(ii)
         self.st_arch, self.st_dbh = D['st_arch'], D['st_dbh']
         self.st_site = D['st_site'] if 'st_site' in D.files else np.zeros(len(self.st_arch), np.uint8)
+        self.st_h = D['st_h'] if (self.pnw and 'st_h' in D.files) else None
         self.kst, nst = tree_of(D['st_x'], D['st_y'])
         sp_ = os.path.join(VEG, 'veg_sub.npz')
         self.st_sub = None
@@ -154,7 +169,7 @@ class Kinds:
         # planted at its measured height and width in the open zones (CAN_ZONES),
         # where the engine's canopy masses (discs of a coarser measure) are then
         # no longer planted; the woods and parks keep their masses
-        cp = os.path.join(VEG, 'canopy_trees.npz')
+        cp = os.path.join(VEG, files[2])
         self.canopy_on = os.environ.get('CANOPY', '0') == '1' and os.path.exists(cp)
         if self.canopy_on:
             Q = np.load(cp); cx, cy = Q['x'], Q['y']
@@ -192,7 +207,7 @@ class Kinds:
 
     def _sub(self, a, x, y, idx=None):
         """v3: the 'round' class as its species (listed: its own; else by share)"""
-        if not self.v3 or a != 'round': return a
+        if not self.v3 or a != 'round' or self.pnw: return a
         if idx is not None and self.st_sub is not None:
             s_ = self.sub_names[int(self.st_sub[idx])]
             return s_ or 'round'
@@ -224,8 +239,9 @@ class Kinds:
         if idx is not None and dist <= 4.0:
             h = self.HARCH[int(self.h_arch[idx])]
             if h in self.kinds_of: return h, z['name']
-            keep = {a: w for a, w in mix.items() if (a in CONIFERS) == (h == 'conifer') and a not in PALMS}
-            mix = keep or (dict(pine=0.5, cypress=0.5) if h == 'conifer' else dict(round=0.6, plane=0.25, euc=0.15))
+            keep = {a: w for a, w in mix.items() if (a in self.conifers) == (h == 'conifer') and a not in PALMS}
+            mix = keep or ((dict(v_dfir=0.5, v_cedar=0.5) if h == 'conifer' else dict(v_maple=0.6, v_ash=0.4)) if self.pnw else
+                           (dict(pine=0.5, cypress=0.5) if h == 'conifer' else dict(round=0.6, plane=0.25, euc=0.15)))
         S = z['stand']
         if S and hp(x, y, 33) < 0.75: return _draw(mix, self._stand(x, y, S)), z['name']
         return _draw(mix, hp(x, y, 34)), z['name']
@@ -286,9 +302,10 @@ class Kinds:
     def street4(self, ox, oy, x, y, park, crown, on_street=None, roofed=None):
         """(kind, crown, x, y) for a register tree; None = no tree there"""
         co, idx, dist = self.kst.find((ox, oy, 0.0)) if self.kst is not None else (None, None, None)
-        dbh = 0.0; site = 0
+        dbh = 0.0; site = 0; hreg = None
         if idx is not None and dist <= 2.3:
             a = self.ARCH[int(self.st_arch[idx])]; dbh = float(self.st_dbh[idx]); site = int(self.st_site[idx])
+            if self.st_h is not None and float(self.st_h[idx]) > 0: hreg = float(self.st_h[idx])
             if a == 'none':
                 self._count(('street', 'none'))
                 if self.drop_none: return None
@@ -301,10 +318,10 @@ class Kinds:
             return self.mass4(x, y, crown, on_street, roofed)
         else:
             a = self._sub(_draw(self.street_mix, hp(x, y, 35)), x, y); self._count(('street', 'unlisted'))
-        if self.v3 and dbh > 0 and a in CROWN_DBH:
-            p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
+        if self.v3 and dbh > 0 and a in self.crown_dbh:
+            p_ = self.crown_dbh[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
         k = self._kind(a, x, y, crown=crown if a not in PALMS else None,
-                       h=(6.0 if (a in PALMS and 0 < dbh < 14) else None)); self._count(('arch', a))
+                       h=(6.0 if (a in PALMS and 0 < dbh < 14) else hreg)); self._count(('arch', a))
         te = _tree_edge(); kept_median = False
         if te is not None and on_street is not None and idx is not None and dist <= 2.3 and (idx in te[1] or idx in te[0]):
             # [TREE_EDGE, street_edge 28/09] tree_edge_prep.py decided: a median tree with a median in the data stays; any other
@@ -326,8 +343,14 @@ class Kinds:
             if p is None: self._count(('street', 'road_dropped')); return None
             self._count(('street', 'road_moved')); x, y = p
         if a in PALMS: return k, self._palm_crown(k, x, y), x, y
-        if dbh > 0 and a in CROWN_DBH:
-            p_ = CROWN_DBH[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
+        if dbh > 0 and a in self.crown_dbh:
+            p_ = self.crown_dbh[a]; crown = max(2.5, min(p_[2], p_[0] + p_[1] * dbh))
+        if hreg is not None:
+            # [VEG_KIT=pnw] the register's height class sizes the tree with its DBH crown (height weighs more: the silhouette;
+            # a conifer by its height almost alone): the crown handed back gives hq_city.tree_scale that scale
+            sh, sw = hreg / max(0.5, self.heights[k]), crown / max(0.5, self.widths[k])
+            s_ = sh ** 0.85 * sw ** 0.15 if a in self.conifers else sh ** 0.6 * sw ** 0.4
+            crown = s_ * self.widths[k]; self._count(('street', 'reg_height'))
         return k, crown, x, y
 
     def canopy(self, seen=()):
@@ -347,7 +370,7 @@ class Kinds:
             a = self._sub(a, x, y)
             h, w = float(C['h'][i]), float(C['w'][i]); k = self._kind(a, x, y, h=h)
             sh, sw = h / max(0.5, self.heights[k]), w / max(0.5, self.widths[k])
-            s_ = sh if a in PALMS else sh ** 0.6 * sw ** 0.4
+            s_ = sh if a in PALMS else (sh ** 0.85 * sw ** 0.15 if (self.pnw and a in self.conifers) else sh ** 0.6 * sw ** 0.4)
             s_ = min(s_, 1.1 * self.hmax[k] / max(0.5, self.heights[k]), 1.6 * sh)
             self._count(('canopy', a))
             yield x, y, k, s_, 6.283 * hp(x, y, 5)
