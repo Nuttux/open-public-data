@@ -165,6 +165,16 @@ def _sea_depth(X, Y):
         D = np.minimum(D, 15.0)
     return D.astype(np.float32)
 
+SHORE_CLAMP = os.environ.get('SHORE_CLAMP', '0') == '1'           # (fix4 05/10, Vancouver; unset = SF, nothing)
+def _shore_clamp(Z, X, Y, wm):
+    """the water within 20 m of the line, which _sea_depth leaves at the ground's own height: the HRDEM's tidal mud
+    stood over the sea sheet (0.12) as brown patches off Coal Harbour / the Waterfront (van_vp1b). Where the sea mask
+    AND coast_land both say water, the node goes under the sheet on a gentle slope from the line (0.10 m at the line,
+    4 cm a metre down: no lit step); land in coast_land (beaches, tidal flats it calls land) keeps its height."""
+    lm, sdn = _coast(X, Y)
+    w = wm & (lm == 0) & ~np.isnan(sdn)
+    return np.where(w, np.minimum(Z, 0.10 + 0.04 * np.minimum(sdn, 0.0)), Z).astype(Z.dtype)
+
 SEA_MASK_SOUTH = float(os.environ.get('SEA_MASK_SOUTH', -5760.0))      # (world y) the engine's sea mask has no water south of this
 def _mask_off(g, X, Y):
     """where the render's sea mask does not speak: outside its square, and
@@ -386,6 +396,7 @@ def _correct(d, log, box, sd, res, far, pad, t0):
             # mask calls the upper beach water, a sunk node dug a pit whose lit
             # walls read as peach lines along Fort Funston (gnd18)
             Z = np.where(wm & (_coast(X, Y)[0] != 1), np.minimum(Z, np.where(_sea_depth(X, Y) > 0, -_sea_depth(X, Y), np.inf)), Z)
+            if SHORE_CLAMP: Z = _shore_clamp(Z, X, Y, wm)
             # pier sheds over the water stand on a deck (without ground under
             # their corners hq_city's generator skipped them: hollow piers)
             pm, rings = _pier_nodes(recs_, x0, y0, step, nx, ny, wm)
