@@ -74,12 +74,14 @@ def lakes(min_m2=1000.0):
     L = W & ~Sd
     n, lab, st, _ = cv2.connectedComponentsWithStats(L.astype(np.uint8), connectivity=8)
     S8 = cv2.dilate(S.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (21, 21))) > 0      # +20 m
+    S14 = cv2.dilate(S.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))) > 0      # +14 m: the cut above + one cell
     out = []
     for i in range(1, n):
         a = st[i, cv2.CC_STAT_AREA] * res * res
         if a < min_m2: continue
         m = (lab == i)
         if (m & S8).sum() > 0.25 * m.sum(): continue                          # a fringe of the sea (docks, marinas), not a lake
+        if (m & S14).any(): continue      # (fix4) touches the sea (cut off it only by the +12 m margin): tidal flat, slough, marina = sea level, no lake of its own
         cs, hier = cv2.findContours(m.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         def world(c):
             c = cv2.approxPolyDP(c, 0.6, True)[:, 0, :].astype(np.float64)
