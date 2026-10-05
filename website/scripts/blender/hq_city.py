@@ -1093,7 +1093,8 @@ if ERA is None and E('CITY_STRUCTURES', '0') == '1':
         # stand with them, and every deck gets the asphalt on top; unset = the era structures alone, one material
         _brf = E('CITY_BRIDGES', '')
         if _brf and os.path.exists(_brf):
-            _br = json.load(open(_brf)); EA.STRUCTURES = list(EA.STRUCTURES) + _br; log('city bridges:', len(_br), 'from', _brf)
+            _br = json.load(open(_brf)); _bk = {b_['k'] for b_ in _br}   # (V-ERAS) era.py's dated copies of these decks give way to today's file
+            EA.STRUCTURES = [s_ for s_ in EA.STRUCTURES if s_['k'] not in _bk] + _br; log('city bridges:', len(_br), 'from', _brf)
         elif _brf: log('city bridges: MISSING', _brf)
         _st = EA.build_structures(bpy, float(E('TODAY_YEAR', '2026.0')), ground, M.get('concrete_struct') or M.get('concrete') or M['sidewalk'],
                                   (BOX or [-9000, -9000, 9000, 9000]), log, M=None, mat_top=M['asphalt'] if _brf else None)

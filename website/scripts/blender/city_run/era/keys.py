@@ -219,14 +219,14 @@ def ai(years, d, out):
                                                            and int(k.split('_')[1]) + 1024 > y0 for x0, y0, x1, y1 in gb)]; log('K4P', Y, len(sel), 'tiles')
         if os.environ.get('SPLIT'):             # SPLIT=i/n: every n-th tile from i (a year on several cards)
             i_, n_ = map(int, os.environ['SPLIT'].split('/')); sel = sel[i_::n_]
-        sfx = _fire_sfx(Y, sel) if (os.environ.get('FIRE_TILES') == '1' and Y in EC.FIRE_YEARS) else {}
+        sfx = _fire_sfx(Y, sel) if (os.environ.get('FIRE_TILES', '1') == '1' and Y in EC.FIRE_YEARS) else {}
         sd = (lambda v: str((int(v) * 7 + 1) % 2147483647)) if os.environ.get('K4P') == '1' else (lambda v: v)      # K4P: a new seed
         L += [f'#MOSAIC {w}'] + [f'C9:{k.replace("_", ",")} out/{w}/{k}.jpg - {key(k)}{sfx.get(k, "")} {sd(P7[k][4])}' for k in sel]; n[Y] = len(sel)
         if not os.path.exists(f'{d}/R_{w}.jpg'): os.link(f'{RUN}/ctx_{Y}/R_pt.jpg', f'{d}/R_{w}.jpg')
         json.dump(dict(ox=BOX, oy=BOY), open(f'{d}/R_{w}.json', 'w'))
         if not os.path.exists(f'{d}/C_{w}.png'): os.link(f'{RUN}/ctx_{Y}/R.class.png', f'{d}/C_{w}.png')
-    if os.environ.get('FIRE_TILES') == '1' and min(years) in EC.FIRE_YEARS or os.environ.get('K4P') == '1':   # (k25) the L8 seed table follows:
-        sfa = _fire_sfx(min(years), list(P7)) if (os.environ.get('FIRE_TILES') == '1' and min(years) in EC.FIRE_YEARS) else {}   # its fire wording,
+    if os.environ.get('FIRE_TILES', '1') == '1' and min(years) in EC.FIRE_YEARS or os.environ.get('K4P') == '1':   # (k25) the L8 seed table follows:
+        sfa = _fire_sfx(min(years), list(P7)) if (os.environ.get('FIRE_TILES', '1') == '1' and min(years) in EC.FIRE_YEARS) else {}   # its fire wording,
         sda = (lambda v: str((int(v) * 7 + 1) % 2147483647)) if os.environ.get('K4P') == '1' else (lambda v: v)       # its new seeds (K4P)
         LA = ['#MOSAIC all'] + [f'C9:{k.replace("_", ",")} x - {key(k)}{sfa.get(k, "")} {sda(P7[k][4])}' for k in P7]
     open(f'{d}/P.txt', 'w').write('\n'.join(L) + '\n'); open(f'{d}/PALL.txt', 'w').write('\n'.join(LA) + '\n')
@@ -252,21 +252,47 @@ def ai(years, d, out):
         # lawns onto 1905 / 1906 (i13: two cars and a row of trees on the ashes of 1906). Before 1930 the street wording is the period's, and the
         # fire year (1906-1907) says what stood in the burned district. Applied to the _nomarks prompts this window uses. ERA_PROMPTS=0: off.
         Y0 = min(years)
-        if Y0 < EC.PERIOD_PROMPTS_BEFORE and os.environ.get('ERA_PROMPTS', '1') == '1':
-            if Y0 < EC.EARLY_PROMPTS_BEFORE: rp = [('dark asphalt streets with cars', 'dark cobblestone and packed-earth streets with only a few horse-drawn wagons and no automobiles'),
+        # (03/10 era_auto, checks agent BUG 1) the era wording used to sit inside 'Y0 < 1930': 1938 / 1959 windows (i16, wa4) got today's prompt
+        # word for word (and STREET_PERIOD's 1920-69 branch never ran). Now every window before 1970 gets its era clause; 1970+ unchanged.
+        if Y0 < EC.ERA_CLAUSE_BEFORE and os.environ.get('ERA_PROMPTS', '1') == '1':
+            if Y0 >= EC.PERIOD_PROMPTS_BEFORE: rp = [('dark asphalt streets with cars', 'dark asphalt streets with cars of the %ds' % (Y0 // 10 * 10))]
+            elif Y0 < EC.EARLY_PROMPTS_BEFORE: rp = [('dark asphalt streets with cars', 'dark cobblestone and packed-earth streets with only a few horse-drawn wagons and no automobiles'),
                                 ('asphalt', 'cobblestone')]
             else: rp = [('dark asphalt streets with cars', 'dark cobblestone and early-paved streets with a few early automobiles and horse-drawn wagons')]
             ex = ' It is ' + EC.CITY_NAME + ' in %d: no modern cars, no traffic lights, no modern street furniture, no lawns or trees that the render does not show.' % Y0
+            if Y0 >= EC.PERIOD_PROMPTS_BEFORE:   # (1930-69 ERA CLAUSE, main 03/10) period cars of the decade, no today's street kit, modest street trees only where rendered
+                ex = (' It is ' + EC.CITY_NAME + ' in %d: only cars of the %ds (no modern cars or SUVs), no bike lanes, no modern street furniture,'
+                      ' no solar panels, no smart signage; modest street trees only where the render shows them.' % (Y0, Y0 // 10 * 10))
             FIRE_EX = (' These are the weeks after the 1906 earthquake and fire: inside the burned district only grey ash, rubble, '
                        'blackened brick shells and standing chimneys remain; no trees, no lawns, no vehicles there.')
-            ROOFLESS = (' The flat grey ash ground and the low rubble heaps round the chimneys are not roofs: paint no roof, house, tree or lawn there.')
+            ROOFLESS = (' The flat grey ash ground and the low rubble heaps round the chimneys are not roofs: paint no roof, house, tree or lawn there.'
+                        # (k25 rev 6, ASH_LOTS) ruins only where buildings stood: the render keeps an open yard's paving in 1906 as in 1905
+                        ' Chimneys, ruins and rubble heaps appear only where the render shows them; an open paved yard or street the render shows stays paved.')
             EDGE_EX = (' The 1906 fire burned only part of this view: grey ash, rubble, roofless brick shells and standing chimneys only where the render'
                        ' shows them; every building, roof, street and yard the render shows intact stays intact, with no ash on it.')
-            fire_tiles = os.environ.get('FIRE_TILES') == '1'
+            fire_tiles = os.environ.get('FIRE_TILES', '1') == '1'
             if Y0 in EC.FIRE_YEARS and not fire_tiles: ex += FIRE_EX
             src = open(f'{d}/lr_run9.py').read(); anc = "GUIDE = ("
             if '_ERA_RP' not in src:
                 code = '_ERA_RP = %r\n_ERA_EX = %r\nfor _k in list(P):\n    if _k.endswith(\'_nomarks\'):\n        for _a, _b in _ERA_RP: P[_k] = P[_k].replace(_a, _b)\n        P[_k] = P[_k] + _ERA_EX\n' % (rp, ex)
+                # (03/10 era_auto) RULE NOTREE (Daniel's blind side-by-side i17b, 1915, 5 of 5 for B): before 1930 the base wording says no trees;
+                # bare streets and yards unless the render shows a tree (the AI had painted ~6 % green where the render had 0.2 % trees). NOTREE=0: off.
+                if os.environ.get('NOTREE', '1') == '1' and Y0 < EC.NOTREE_BEFORE:
+                    code += ("for _k in [k_ for k_ in P if k_.endswith('_nomarks')]:\n    P[_k] = (P[_k].replace('roofs, walls, streets and trees.', 'roofs, walls and streets.')"
+                             ".replace(', height and tree exactly', ' and height exactly')\n        .replace(', no lawns or trees that the render does not show.', "
+                             "'. The streets have no trees: sidewalks, lots and yards stay bare paving or packed earth exactly as in the render; a tree appears only where the render shows one.'))\n")
+                # (k25 rev 3) RULE STREET_PERIOD: the ERA_RP / _nomarks replacements match NOTHING in the v5_dry prompts the era windows use (they
+                # name no street surface: 'dark asphalt streets with cars' and 'with road markings' are LIGHT_* / DRY wording), so the AI painted
+                # today's asphalt with a yellow centre line and white edge lines on the 1906 streets (i17a cmp_114260_35868). The period's street
+                # surface is now SAID, appended to every era prompt: before 1920 basalt blocks / cobbles with the tracks where the render has them
+                # (SOURCED in outline: Sonoma basalt blocks on the car-line streets from the 1880s, era.pavement); 1920-1969 no painted lines
+                # (era.py marks from the 1970s). STREET_PERIOD=0: off.
+                if os.environ.get('STREET_PERIOD', '1') == '1' and Y0 < EC.ERA_CLAUSE_BEFORE:
+                    sw = (' Every street is paved with dark grey basalt blocks or cobblestones, with the streetcar and cable-car tracks exactly where the'
+                          ' render shows them; there is no asphalt and there are no painted lines or road markings anywhere.') if Y0 < EC.COBBLE_BEFORE else \
+                         (' Simple period road markings only (painted centre lines, lane lines, crosswalks); no bike lanes, no green or red coloured'
+                          ' lanes, no modern symbols.')   # (main 03/10 18:00) painted centre / lane lines and crosswalks were standard on SF streets from the 1920s-30s
+                    code += "for _k in [k_ for k_ in P if k_.endswith('_nomarks')]:\n    P[_k] = P[_k] + %r\n" % sw
                 if Y0 in EC.FIRE_YEARS and fire_tiles:    # (k25 FIRE_TILES) the fire wording per tile
                     code += ("for _k in [k_ for k_ in P if k_.endswith('_nomarks')]:\n    P[_k + '_fire'] = P[_k] + %r\n    P[_k + '_fireedge'] = P[_k] + %r\n"
                              % (FIRE_EX + ROOFLESS, EDGE_EX + ROOFLESS))
@@ -303,7 +329,7 @@ def post(Y):
     xs = [x for x in g['xs'] if x + 1024 > QC[0] and x < QC[2]]; ys = [y for y in g['ys'] if y + 1024 > QC[1] and y < QC[3]]
     json.dump(dict(Q=QC, xs=xs, ys=ys, kinds=g['kinds']), open(f'{R}/sb/{sid}/geom.json', 'w'))
     log('POST', Y, 'new tiles', len(new))
-    subprocess.run(f'cd {W_}/city/run && CITY_ROOT={R} FIN_BH=1024 python3 post_sb.py {sid} quilt,finish | grep -v "^compose band\\|^colour band" | tail -4', shell=True, check=True)
+    subprocess.run(f'cd {EC.POST_SB_DIR} && CITY_ROOT={R} FIN_BH=1024 python3 post_sb.py {sid} quilt,finish | grep -v "^compose band\\|^colour band" | tail -4', shell=True, check=True)
     fin = np.concatenate([np.asarray(Image.open(f'{R}/sb/{sid}/final/f_{y0}.png').convert('RGB')) for y0 in range(0, QH, 1024)], 0)[:QH]
     base = np.asarray(Image.open(f'{RUN}/paint/key_2026.png').convert('RGB'))
     m = np.asarray(Image.open(f'{RUN}/mask_{Y}.png'))[sl8].astype(np.float32)[..., None] / 255
@@ -311,6 +337,9 @@ def post(Y):
     Image.fromarray(fin).save(f'{RUN}/paint/raw_{Y}.png', compress_level=1); Image.fromarray(key).save(f'{RUN}/paint/key_{Y}.png', compress_level=1)
     shutil.copy(f'{RUN}/paint/key_{Y}.png', f'{RUN}/paint/key_{Y}_post.png')
     log('KEY', Y, 'changed px', int((np.abs(key.astype(np.int16) - base).max(-1) > 0).sum()))
+    # (k25 rev 3) K4R is part of the post of the ash years (1906-1908): every crown on the ash is caught (small ones repaired, the rest
+    # listed in k4p_<Y>.json for the K4P re-paint round the run's chain does on a card). K4_REPAIR=0: off.
+    if EC.ASH_FROM <= Y <= EC.ASH_UNTIL and os.environ.get('K4_REPAIR', '1') == '1': k4r(Y)
 
 def compose(Y):
     """re-apply the current mask to the year's AI painting (raw_<Y>, already quilted) without a new quilt: key_<Y>_post.png"""
@@ -438,8 +467,9 @@ def k4p_merge(Y):
     Y = int(Y); old = np.asarray(Image.open(f'{RUN}/paint/key_{Y}_prek4p.png').convert('RGB')).astype(np.float32)
     new = np.asarray(Image.open(f'{RUN}/paint/key_{Y}_post.png').convert('RGB')).astype(np.float32)
     M = np.zeros(old.shape[:2], bool)
-    for x0, y0, x1, y1 in json.load(open(f'{RUN}/k4p_{Y}.json'))['boxes']: M[max(0, y0 - 40):y1 + 40, max(0, x0 - 40):x1 + 40] = True
+    for x0, y0, x1, y1 in json.load(open(f'{RUN}/k4p_{Y}.json'))['boxes']: M[max(0, y0 - 96):y1 + 96, max(0, x0 - 96):x1 + 96] = True   # (rev 3) 96 px: a crown's cut top (i17a)
     f = feather(M, 16); out = old * (1 - f) + new * f
-    Image.fromarray(np.round(out).astype(np.uint8)).save(f'{RUN}/paint/key_{Y}_post.png', compress_level=1); log('K4P_MERGE', Y, int(M.sum()))
+    o_ = Image.fromarray(np.round(out).astype(np.uint8)); o_.save(f'{RUN}/paint/key_{Y}_post.png', compress_level=1); o_.save(f'{RUN}/paint/key_{Y}.png', compress_level=1)
+    log('K4P_MERGE', Y, int(M.sum()))
 
 if __name__ == '__main__': globals()[sys.argv[1]](*sys.argv[2:])

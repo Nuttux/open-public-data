@@ -8,9 +8,9 @@
 #   keys     today's core, post (quilt + finish), the key rules (K1-K3), the anachronism CHECK with the automatic re-paint, check again
 #   film     the chain's segments (prep, switch dates tsw.py, final_all), the film (GRADE=1, TSW_DIR) + a sheet
 set -eu
-eval "$(python3 ${0:A:h}/eracity.py sh)"   # per city: ERA_SNAP, ERA_OVERLAY (CITY unset = SF's literals); the prep tools stay era_anim/auto/prep  # ERA_CITY
+eval "$(python3 ${0:A:h}/eracity.py sh)"   # per city: ERA_SNAP, ERA_OVERLAY (CITY unset = SF's literals); the prep tools are this folder's prep/ (city-aware copies)  # ERA_CITY
 A=$1; STEP=$2; YS=(${=${3:-1985 2006}}); export ERA_AREA=$A
-D=${0:A:h}; P=/Users/daniel/code/qipu-render-work/era_anim/auto/prep; W=/Users/daniel/code/qipu-render-work
+D=${0:A:h}; P=$D/prep; W=/Users/daniel/code/qipu-render-work
 RUN=$(python3 -c "import json;print(json.load(open('$A'))['RUN'])"); WQ=$(python3 -c "import json;print(json.load(open('$A'))['WQ'].rstrip('/'))")
 TAG=$(python3 -c "import json;a=json.load(open('$A'));print(a['tag'])"); OVL=$(python3 -c "import json;a=json.load(open('$A'));print(a.get('overlay',''))"); SNAPN=$(python3 -c "import json;a=json.load(open('$A'));print(a.get('snap','$ERA_SNAP'))"); IT=$(python3 -c "import json;a=json.load(open('$A'));print(a['iter'])")
 WPFX=$(python3 -c "import json;a=json.load(open('$A'));print(a['wpfx'])"); export WPFX
@@ -21,6 +21,7 @@ render)
   cat > $RUN/LAUNCH_render.sh <<EOF
 #!/bin/zsh
 # era_auto $IT: render ${YS} of the area (auto_render.sh, PAR 1 on 24/48 GB lmk pods). Balance first; never start a run the balance can't finish.
+export CITY=$ERA_CITY   # the city this launcher was written for  # ERA_CITY
 cd $W; python3 cloud/pod.py balance; python3 speed/vast/vast.py credit
 MAXH=${MAXH:-1.2} SNAPN=$SNAPN nohup zsh $D/auto_render.sh $RUN ea${IT}r$(date +%H%M) ${NPODS:-4} '$TAG*' $OVL > /dev/null 2>&1 &
 # watcher: tail -F $RUN/render.log | grep -E --line-buffered "ready|rendered|failed|no pod|DONE|down|Traceback|scp|link"
@@ -42,6 +43,7 @@ ai)
   cat > $RUN/LAUNCH_ai.sh <<EOF
 #!/bin/zsh
 # era_auto $IT: AI paint of the masked tiles, one Vast 5090 card per year (gpu.py, RunPod fallback), pulled every 5 min, cards down at the end.
+export CITY=$ERA_CITY   # the city this launcher was written for  # ERA_CITY
 cd $W; python3 cloud/pod.py balance; python3 speed/vast/vast.py credit
 nohup zsh $D/auto_ai.sh $RUN ea${IT}v$(date +%H%M) ${YS} > /dev/null 2>&1 &
 # watcher: tail -F $RUN/ai_ea${IT}v$(date +%H%M).log | grep -E --line-buffered "up|done|DONE|no pod|failed|short|Traceback|down"

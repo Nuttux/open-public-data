@@ -18,7 +18,20 @@ states only what differs; a key set to null switches the SF thing off):
   overlay                 auto_render's default overlay dir (SF block52/qh/kt/k7)
   rail_overlay            keys.py M9's era.py dir when the area has no overlay (SF block52/era_auto/overlay/k8)
   burn_snap, burn_engine  burnmask.py's qc reader dir and engine (SF snap/combo7, opd-render us/sf/city)
+  era_clause_before       keys.py: every AI window before this year gets its era clause + STREET_PERIOD wording (SF 1970, 03/10)
+  notree_before           keys.py NOTREE: the base wording says no street trees before (SF 1930)
+  cobble_before           keys.py STREET_PERIOD: basalt blocks / cobbles before, simple period markings after (SF 1920)
+  k9_year                 hybrid.py K9 default (env K9_YEAR overrides): today's markings never copied before (SF '1920', 03/10)
+  burn_snaps              burnmask.py: snapshots searched for the qc reader, first hit wins (SF combo7, combo5, transit/snap;
+                          another city: [burn_snap])
+  pod_sh, pod_snap        auto_render.sh: the pod script and the snapshot root ON the pod (SF block52's frozen lmk_pod_L.sh, /root/q/qw/snap;
+                          another city: cloud/lmk_pod.sh with CITY, /root/q/qw/cities/<city>/snap)
+  render_sh               auto_render.sh: the job runner (SF block52/render_b8.sh; another city: city_run/block/render_b8.sh, CITY-aware)
+  post_sb_dir             keys.py post: the folder of post_sb.py (SF city/run; another city: city_run/run, CITY-aware via citycfg)
   view_ref                [CX, CY, zoom] of the z9 camera the area grids (QC, RA) are in (cloud/viewer/realref.js; SF's REF)
+  A city may also keep era keys in cities/<CITY>/assets/eras.env.json "pipeline" (read after city.json, wins over it;
+  the file is optional; it is where the re-sync of 05/10 put keys rather than editing city.json).
+  ash_from/ash_until (keys.py K4R) follow fire_state: (last pre-fire + 1, last ash year); no fire = never.
     python3 eracity.py sh     -> the shell assignments (ERA_*) auto_render.sh / run_area.sh eval
     python3 eracity.py json   -> the resolved values"""
 import os, sys, json
@@ -32,6 +45,10 @@ SF = dict(
     overlay='/Volumes/QIPU-SSD/qipu-render-work/combo/block52/qh/kt/k7',
     rail_overlay='/Volumes/QIPU-SSD/qipu-render-work/combo/block52/era_auto/overlay/k8',
     burn_snap='/Users/daniel/code/qipu-render-work/snap/combo7', burn_engine='/Users/daniel/code/opd-render/website/public/data/us/sf/city',
+    era_clause_before=1970, notree_before=1930, cobble_before=1920, k9_year='1920',
+    burn_snaps=('/Users/daniel/code/qipu-render-work/snap/combo7', '/Users/daniel/code/qipu-render-work/snap/combo5', '/Users/daniel/code/qipu-render-work/transit/snap'),
+    pod_sh='/Volumes/QIPU-SSD/qipu-render-work/combo/block52/qh/kt/lmk_pod_L.sh', pod_snap='/root/q/qw/snap', render_sh='/Users/daniel/code/qipu-render-work/combo/block52/render_b8.sh',
+    post_sb_dir='/Users/daniel/code/qipu-render-work/city/run',
     view_ref=(241.427019126574, 707.0567508859249, 0.06898352692062097))
 V = dict(SF)
 if CITY != 'sf':
@@ -39,6 +56,17 @@ if CITY != 'sf':
     _p = os.environ.get('ERA_CITY_JSON') or os.path.join('/Users/daniel/code', 'qipu-render-work', 'cities', CITY, 'city.json')
     _c = json.load(open(_p))
     V.update({k: (tuple(v) if isinstance(v, list) else v) for k, v in _c.get('eras', {}).get('pipeline', {}).items() if k in SF})
+    _pp = dict(_c.get('eras', {}).get('pipeline', {}))
+    _e = os.path.join(os.path.dirname(_p), 'assets', 'eras.env.json')
+    if os.path.exists(_e):
+        _pe = json.load(open(_e)).get('pipeline', {}); _pp.update(_pe)
+        V.update({k: (tuple(v) if isinstance(v, list) else v) for k, v in _pe.items() if k in SF})
+    _R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # city_run/
+    if 'pod_sh' not in _pp: V['pod_sh'] = '/Users/daniel/code/qipu-render-work/cloud/lmk_pod.sh'
+    if 'pod_snap' not in _pp: V['pod_snap'] = f'/root/q/qw/cities/{CITY}/snap'
+    if 'render_sh' not in _pp: V['render_sh'] = os.path.join(_R, 'block', 'render_b8.sh')
+    if 'post_sb_dir' not in _pp: V['post_sb_dir'] = os.path.join(_R, 'run')
+    if 'burn_snaps' not in _pp: V['burn_snaps'] = (V['burn_snap'],)
     if 'view_ref' not in _c.get('eras', {}).get('pipeline', {}): V['view_ref'] = tuple(_c['ref'])
     if 'burn_engine' not in _c.get('eras', {}).get('pipeline', {}): V['burn_engine'] = _c['engine']
 
@@ -48,7 +76,11 @@ MARKS_FROM = V['marks_from']; K5_FROM, K5_UNTIL = V['k5']; OLD_PAVEMENT_BEFORE =
 BIKE_GREEN_FROM = V['bike_green_from']; RED_LANE_BEFORE = str(V['red_lane_before'])
 PERIOD_PROMPTS_BEFORE = V['period_prompts_before']; EARLY_PROMPTS_BEFORE = V['early_prompts_before']; KEY_TODAY_FROM = V['key_today_from']
 SNAP_ROOT = V['snap_root']; SNAP = V['snap']; OVERLAY = V['overlay']; RAIL_OVERLAY = V['rail_overlay']
-BURN_SNAP = V['burn_snap']; BURN_ENGINE = V['burn_engine']; VIEW_CX, VIEW_CY, VIEW_Z = V['view_ref']
+ERA_CLAUSE_BEFORE = V['era_clause_before']; NOTREE_BEFORE = V['notree_before']; COBBLE_BEFORE = V['cobble_before']; K9_YEAR = str(V['k9_year'])
+ASH_FROM, ASH_UNTIL = (FIRE_STATE[0] + 1, FIRE_STATE[1]) if V['fire_state'] else (-1, -2)
+PREP_SNAP = SNAP_ROOT + SNAP   # the snapshot the prep tools import (prep/common.SNAP; an area's 'snap' wins)
+POST_SB_DIR = V['post_sb_dir']; POD_SH = V['pod_sh']; POD_SNAP = V['pod_snap']; RENDER_SH = V['render_sh']
+BURN_SNAPS = tuple(V['burn_snaps']); BURN_SNAP = V['burn_snap']; BURN_ENGINE = V['burn_engine']; VIEW_CX, VIEW_CY, VIEW_Z = V['view_ref']
 
 
 def moment(Y):
@@ -56,8 +88,22 @@ def moment(Y):
     return 1906 + 147 / 365.0 if Y == FIRE_CHECKPOINT else Y + 0.5
 
 
+
+def fire_moment():
+    """the fire's float moment (prep/common.FIRE, seg.json 'fire': 18 Apr 1906 for SF); no fire checkpoint = -1 (no segment holds it)"""
+    return 1906 + 107 / 365.0 if FIRE_CHECKPOINT else -1.0
+
+
+def apply_city_env():
+    """another city: its city.json 'env' as defaults of os.environ (as citysnap.sh writes them atop the snapshot's hq_city), so the CPU
+    prep tools read the records the render drew (TODAY_LIDAR, PLACES_OV, HEIGHTS...); an explicit env wins; SF: nothing"""
+    if CITY == 'sf': return
+    for k, v in _c.get('env', {}).items(): os.environ.setdefault(k, str(v))
+    os.environ.setdefault('CITY', CITY)
+
+
 if __name__ == '__main__':
     if sys.argv[1:] == ['sh']:
-        for k, v in dict(ERA_SNAP=SNAP, ERA_OVERLAY=OVERLAY, ERA_CITY=CITY).items(): print(f"{k}='{v}'")
+        for k, v in dict(ERA_SNAP=SNAP, ERA_OVERLAY=OVERLAY, ERA_CITY=CITY, ERA_POD_SH=POD_SH, ERA_POD_SNAP=POD_SNAP, ERA_RENDER_SH=RENDER_SH).items(): print(f"{k}='{v}'")
     else:
         print(json.dumps(dict(CITY=CITY, **{k: V[k] for k in sorted(V)}), indent=1))
