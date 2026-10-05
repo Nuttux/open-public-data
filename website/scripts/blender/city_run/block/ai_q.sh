@@ -91,7 +91,9 @@ if [ $FROM -le 5 ]; then
   say "STEP 5 post (QUAY_LIP=$QUAY_LIP ROOF_RN_SEAM=1)"
   rm -f $V/city/sb/b8/final/f_*.done
   ( cd $RUN && CITY_ROOT=$V/city QUAY_LIP=$QUAY_LIP ROOF_RN_SEAM=1 ROOF_FLAT_TONE=1 python3 post_sb.py b8 quilt,finish ) > $V/logs/post.log 2>&1
-  ls $V/city/sb/b8/final/f_*.done >/dev/null 2>&1 && [ -d $V/city/layer/tiles/9 ] || abort "post failed (logs/post.log)"
+  NB_=$(python3 -c "import json; q=json.load(open('$V/block.json'))['Q']; print(-(-(q[3]-q[1]) // 1536))")   # (vf1 05/10) every band, not just one: post_sb can stop silently (b22, vp1b)
+  ND_=$(ls $V/city/sb/b8/final/f_*.done 2>/dev/null | wc -l | tr -d ' ')
+  [ -n "$NB_" ] && [ "$ND_" -ge "$NB_" ] && [ -d $V/city/layer/tiles/9 ] || abort "post incomplete: $ND_ of $NB_ bands (logs/post.log)"
 fi
 if [ $FROM -le 6 ]; then
   say "STEP 6 publish $CK"

@@ -123,6 +123,12 @@ def main():
     if os.path.exists(bp):
         bl = [LineString(d['path']).buffer(d.get('w', 10) / 2 + 15) for d in json.load(open(bp)) if len(d['path']) > 1]
         features.rasterize([(g, 1) for g in bl], out=bridges_m, transform=T)
+        # (vf1 05/10) under a deck the DSM is the deck: an OSM outline there (Granville Island under the Granville Bridge)
+        # read the deck as its roof -> office blocks through the deck. Deck cells (w/2 + 3 m) are no evidence for an outline.
+        deck_m = np.zeros((NY, NX), np.uint8)
+        features.rasterize([(LineString(d['path']).buffer(d.get('w', 10) / 2 + 3), 1) for d in json.load(open(bp)) if len(d['path']) > 1], out=deck_m, transform=T)
+        deck_m = deck_m.astype(bool)
+    else: deck_m = np.zeros((NY, NX), bool)
     bridges_m = bridges_m.astype(bool)
     # OSM outlines
     polys = []; seen = set()
@@ -150,6 +156,9 @@ def main():
     for p in polys:
         g = p['g']; r0, r1, c0, c1 = window(g)
         mk = mask_in(g, r0, r1, c0, c1)
+        if mk is not None:   # mostly under a deck (>= 40 %): its LiDAR is the deck's, keep what is drawn
+            mk0 = mk.sum(); mk = mk & ~deck_m[r0:r1, c0:c1]
+            if mk.sum() < 0.6 * mk0: continue
         if mk is None or mk.sum() < 30: continue
         nd = ndsm[r0:r1, c0:c1][mk]; vo = ~np.isfinite(nd); vf = vo.mean(); val = nd[~vo]
         if vf >= 0.4:
@@ -265,12 +274,34 @@ def main():
         skip[b['gid']] = dict(skip=True, why=f"today_lidar: gone in LiDAR 2025 ({low:.0%} of it < 2 m above ground, DSM {lift:+.1f} m over the ground around), drawn {b['h']:.0f} m")
         nd_ += 1
     log('demolished records dropped', nd_)
-    j = dict(meta=dict(by='today_lidar.py (B3 fix 3)', grid=GRID, tall=TALL, adds=len(adds), replaced=len(skip) - nd_, demolished=nd_,
+    # ---- UNDER A DECK (vf1 05/10): a drawn record whose height was measured off the deck above it (2015 heights read the
+    # Granville Bridge as Granville Island's roofs -> blocks through the deck): height from its part off the deck, else 3 levels
+    nu_ = 0
+    for i, b in enumerate(recs):
+        if b['gid'] in skip: continue
+        rg = RG[i]
+        if rg.is_empty or rg.area < 20: continue
+        r0, r1, c0, c1 = window(rg, 0)
+        mk = mask_in(rg, r0, r1, c0, c1)
+        if mk is None or mk.sum() < 8: continue
+        dk = mk & deck_m[r0:r1, c0:c1]
+        if dk.sum() < 0.4 * mk.sum(): continue
+        dz = ndsm[r0:r1, c0:c1][dk]; dz = dz[np.isfinite(dz)]
+        if len(dz) < 8: continue
+        D = float(np.median(dz))
+        if D < 6 or b['h'] < D - 4: continue
+        off = ndsm[r0:r1, c0:c1][mk & ~dk]; off = off[np.isfinite(off)]
+        if len(off) >= 30 and np.percentile(off, 90) < D - 4: h, src = float(max(3.0, np.percentile(off, 90))), 'LiDAR p90 off the deck'
+        else: h, src = min(b['h'], 3 * LEVEL_M), '3 levels (all under the deck)'
+        skip[b['gid']] = dict(h=round(h, 1), why=f"today_lidar: under a bridge deck ({D:.0f} m), drawn {b['h']:.0f} m -> {h:.0f} m ({src})")
+        nu_ += 1
+    log('records under a deck lowered', nu_)
+    j = dict(meta=dict(by='today_lidar.py (B3 fix 3)', grid=GRID, tall=TALL, adds=len(adds), replaced=len(skip) - nd_ - nu_, demolished=nd_, under_deck=nu_,
                        src='LidarBC 2025 DSM/DEM; OSM outlines (ODbL, (c) OpenStreetMap contributors)'),
              today=skip, today_add=adds)
     json.dump(j, open(OUT, 'w')); log('wrote', OUT)
     # after: the drawn raster with the changes
-    after = [b for b in recs if b['gid'] not in skip] + adds
+    after = [b for b in recs if not skip.get(b['gid'], {}).get('skip')] + adds
     drawn2 = drawn_raster(after)
     aft = missing_blobs(ndsm, drawn2, onosm, planar, bridges_m)
     log('tall (>=40 m) LiDAR structures missing AFTER', len(aft), 'm2', sum(b['m2'] for b in aft), '| drawn records', len(recs), '->', len(after))
