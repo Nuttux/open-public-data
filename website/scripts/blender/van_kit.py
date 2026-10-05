@@ -45,14 +45,14 @@ VT, PAL = {}, {}
 # mat: the cladding; win: (window width m, height as a share of the floor); area_lr: the largest footprint the LiDAR's
 # pitched fit is drawn on (the generator's own limit is 800 m2, 500 for a block)
 T = {
-    'character_house':   dict(style='vic', sub='craftsman', roofs=(('gable', 0.6), ('hip', 0.4)), pitch=42, raised=(1.0, 1.6), mat='siding', win=(0.9, 0.6), house=True),
-    'vancouver_special': dict(style='midcentury', sub='vspecial', roofs=(('hip', 0.6), ('gable', 0.4)), pitch=20, raised=(0.25, 0.4), mat='stucco', win=(1.9, 0.46), tall=True, house=True),
-    'postwar_bungalow':  dict(style='midcentury', sub='bungalow', roofs=(('hip', 0.5), ('gable', 0.5)), pitch=24, raised=(0.6, 1.0), mat='stucco', win=(1.3, 0.5), tall=True, house=True),
-    'stucco_house':      dict(style='midcentury', sub='vstucco', roofs=(('hip', 0.8), ('gable', 0.2)), pitch=30, raised=(0.3, 0.6), mat='stucco', win=(1.2, 0.56), tall=True, house=True),
-    'modern_infill':     dict(style='midcentury', sub='infill', roofs=(('flat', 0.6), ('gable', 0.25), ('shed', 0.15)), pitch=24, raised=(0.2, 0.45), mat='siding', win=(1.7, 0.64), tall=True, house=True, area_lr=1500),
+    'character_house':   dict(oh=0.5, style='vic', sub='craftsman', roofs=(('gable', 0.6), ('hip', 0.4)), pitch=42, raised=(1.0, 1.6), mat='siding', win=(0.9, 0.6), house=True),
+    'vancouver_special': dict(style='midcentury', sub='vspecial', roofs=(('gable', 0.75), ('hip', 0.25)), pitch=16, side_gable=True, oh=0.75, raised=(0.25, 0.4), mat='stucco', win=(1.9, 0.46), tall=True, house=True),
+    'postwar_bungalow':  dict(oh=0.6, style='midcentury', sub='bungalow', roofs=(('hip', 0.5), ('gable', 0.5)), pitch=24, raised=(0.6, 1.0), mat='stucco', win=(1.3, 0.5), tall=True, house=True),
+    'stucco_house':      dict(oh=0.5, style='midcentury', sub='vstucco', roofs=(('hip', 0.8), ('gable', 0.2)), pitch=30, raised=(0.3, 0.6), mat='stucco', win=(1.2, 0.56), tall=True, house=True),
+    'modern_infill':     dict(oh=0.25, style='midcentury', sub='infill', roofs=(('flat', 0.6), ('gable', 0.25), ('shed', 0.15)), pitch=24, raised=(0.2, 0.45), mat='siding', win=(1.7, 0.64), tall=True, house=True, area_lr=1500),
     'laneway_house':     dict(style='midcentury', sub='laneway', roofs=(('gable', 0.5), ('flat', 0.3), ('shed', 0.2)), pitch=32, raised=(0.15, 0.25), mat='siding', win=(1.2, 0.56), tall=True, house=True),
     'accessory':         dict(style='midcentury', sub='garage', roofs=(('gable', 0.4), ('hip', 0.2), ('flat', 0.4)), pitch=22, raised=(0.1, 0.1), mat='siding', win=(1.0, 0.4), tall=True, house=True),
-    'townhouse':         dict(style='midcentury', sub='townhouse', roofs=(('gable', 0.7), ('hip', 0.3)), pitch=30, raised=(0.4, 0.8), mat='siding', win=(1.2, 0.55), tall=True, house=True, area_lr=4000),
+    'townhouse':         dict(oh=0.45, style='midcentury', sub='townhouse', roofs=(('gable', 0.7), ('hip', 0.3)), pitch=30, raised=(0.4, 0.8), mat='siding', win=(1.2, 0.55), tall=True, house=True, area_lr=4000),
     'west_end_walkup':   dict(style='block', sub='apartment', roofs=(('flat', 1.0),), pitch=20, raised=(0.4, 0.9), mat='stucco', win=(1.5, 0.5), tall=True),
     'stucco_lowrise':    dict(style='block', sub='apartment', roofs=(('hip', 0.5), ('gable', 0.2), ('flat', 0.3)), pitch=26, raised=(0.3, 0.8), mat='stucco', win=(1.3, 0.5), tall=True, area_lr=4000),
     'concrete_tower':    dict(style='block', sub='tower', roofs=(('flat', 1.0),), pitch=0, raised=(0.4, 0.4), mat='concrete', win=(1.6, 0.6), tall=True),
@@ -291,11 +291,13 @@ def special_front(w, c, b, holes):
             w.rect('brick', us[i], us[i + 1], zs[j], zs[j + 1], 0.04, S['brick'])
     band(w, 'concrete', -0.02, L + 0.02, zt, zt + 0.12, 0.08, mix(S['brick'], (0.85, 0.85, 0.82), 0.6))     # the sill course
     if L >= 7.0:
-        bw = L * (0.42 + 0.2 * S['r']); u0 = (L - bw) / 2; zs_ = first + fh - 0.12
-        band(w, 'concrete', u0, u0 + bw, zs_, zs_ + 0.2, 1.25, (0.80, 0.79, 0.76))
-        w.box('metal', u0, u0 + bw, zs_ + 0.98, zs_ + 1.06, 1.17, 1.25, (0.20, 0.20, 0.21))
-        w.rect('curtain', u0, u0 + bw, zs_ + 0.2, zs_ + 0.98, 1.22, (0.30, 0.30, 0.31))
-        for uu in (u0, u0 + bw - 0.06): w.box('metal', uu, uu + 0.06, zs_ + 0.2, zs_ + 1.06, 0.0, 1.25, (0.20, 0.20, 0.21))
+        # (refs: Commons 'Vancouver specials 01/02/04', CC BY 2.0: the balcony runs most of the front, white pickets mostly)
+        bw = L * (0.6 + 0.3 * S['r']); u0 = (L - bw) / 2; zs_ = first + fh - 0.12
+        rail = (0.93, 0.93, 0.91) if S['r'] < 0.7 else (0.22, 0.22, 0.23)
+        band(w, 'concrete', u0, u0 + bw, zs_, zs_ + 0.2, 1.3, (0.82, 0.81, 0.78))
+        w.box('metal', u0, u0 + bw, zs_ + 0.98, zs_ + 1.06, 1.22, 1.3, rail)
+        w.rect('curtain', u0, u0 + bw, zs_ + 0.2, zs_ + 0.98, 1.27, mix(rail, (0.45, 0.45, 0.45), 0.35))
+        for uu in (u0, u0 + bw - 0.06): w.box('metal', uu, uu + 0.06, zs_ + 0.2, zs_ + 1.06, 0.0, 1.3, rail)
 
 
 def portico(w, c, b, door_u):

@@ -626,6 +626,7 @@ def building(b, ground, out):
         # the measured ridge: along v (a front gable) or along u (a side gable)
         rd_ = Vector((math.cos(math.radians(LR[1])), math.sin(math.radians(LR[1])), 0))
         if abs(rd_.dot(ax_u)) > abs(rd_.dot(ax_v)): ax_u, ax_v = ax_v.copy(), -ax_u
+    elif VS and VS.get('side_gable') and roof == 'gable': ax_u, ax_v = ax_v.copy(), -ax_u      # (V-TYPES) the ridge along the street
     us = [Vector((x, y, 0)).dot(ax_u) for x, y in ring]
     vs = [Vector((x, y, 0)).dot(ax_v) for x, y in ring]
     umin, umax = min(us), max(us); uc = (umin + umax) / 2; hw = (umax - umin) / 2
@@ -1011,7 +1012,7 @@ def building(b, ground, out):
 
     # ── roof ──
     if roof in ('gable', 'hip', 'shed'):
-        oring = offset_ring(ring, 0.35)
+        oring = offset_ring(ring, VS.get('oh', 0.35) if VS else 0.35)
         pts2 = [Vector((x, y, 0)) for x, y in oring]
         tris = tessellate_polygon([pts2])
         f = lambda p: p.dot(ax_u) - uc
