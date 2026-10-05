@@ -1,7 +1,7 @@
 """quay_wall.py (04/10 B2b, the Vancouver pilot's fix 5): a city's SEAWALL as geometry - a vertical concrete face along its
 coastline from below the water to the promenade, with a coping on top. Vancouver's shore inside the city limits is a seawall
 almost all the way round (downtown, Coal Harbour, Stanley Park, False Creek); van_vp1 drew it as a torn-paper edge with a grey
-lip. hq_city calls build() when QUAY_WALL=1 (city.json env); unset (SF) = never imported. numpy + PIL only (Blender's python).
+lip. hq_city calls build() when QUAY_WALL=1 (city.json env); unset (SF) = never imported. numpy only (Blender's python has no PIL, shapely or cv2).
 
 The line: landmarks/coast_land.npz (coast_land_city.py: the render's own sea, blurred), the zero of its signed distance
 (marching squares, linear: a smooth line, not the 4 m cells); kept inside the city limits (city.json block.limits, lon/lat)
@@ -40,30 +40,26 @@ def _segments(cl, box, pad=60.0):
     return out
 
 def build(bpy, sc, M, ground, box, cityconf, log=print):
-    from PIL import Image, ImageDraw
     C = cityconf
     cl = C.work('landmarks', 'coast_land.npz')
     if not os.path.exists(cl): log('quay_wall: no coast_land.npz'); return 0
     segs = _segments(cl, box)
     if not segs: log('quay_wall: no coastline in the box'); return 0
-    # the city limits, rasterised at 2 m over the box, grown 40 m (the wall stands at the limit's water edge)
+    # the city limits (lon/lat -> world), grown 40 m (the wall stands at the limit's water edge): even-odd test + edge distance
     lim = (C.CFG.get('block') or {}).get('limits'); inside = lambda x, y: True
     if lim and os.path.exists(lim):
         g = json.load(open(lim))['geometry']; polys = g['coordinates'] if g['type'] == 'MultiPolygon' else [g['coordinates']]
-        bx0, by0, bx1, by1 = box[0] - 100, box[1] - 100, box[2] + 100, box[3] + 100; rs = 2.0
-        W_, H_ = int((bx1 - bx0) / rs) + 1, int((by1 - by0) / rs) + 1
-        im = Image.new('L', (W_, H_), 0); dr = ImageDraw.Draw(im)
+        E_ = []
         for poly in polys:
-            for k, ring in enumerate(poly):
-                xy = [((C.proj(lo, la)[0] - bx0) / rs, (by1 - C.proj(lo, la)[1]) / rs) for lo, la in ring]
-                dr.polygon(xy, fill=255 if k == 0 else 0, outline=255 if k == 0 else 0)
-        Lm = np.asarray(im) > 0
-        k_ = 20; Lm = np.pad(Lm, k_)
-        cs = np.pad(np.cumsum(np.cumsum(Lm.astype(np.int32), 0), 1), ((1, 0), (1, 0)))
-        n_ = 2 * k_ + 1; Lg = (cs[n_:, n_:] - cs[:-n_, n_:] - cs[n_:, :-n_] + cs[:-n_, :-n_]) > 0
+            for ring in poly:
+                P_ = np.array([C.proj(lo, la) for lo, la in ring], np.float64)
+                E_.append(np.c_[P_, np.roll(P_, -1, 0)])
+        E_ = np.concatenate(E_); ax, ay, bx, by = E_.T
         def inside(x, y):
-            i, j = int((x - bx0) / rs), int((by1 - y) / rs)
-            return 0 <= j < Lg.shape[0] and 0 <= i < Lg.shape[1] and bool(Lg[j, i])
+            c = ((ay > y) != (by > y)) & (x < (bx - ax) * (y - ay) / np.where(by == ay, 1e-12, by - ay) + ax)
+            if c.sum() % 2: return True
+            dx, dy = bx - ax, by - ay; t = np.clip(((x - ax) * dx + (y - ay) * dy) / np.maximum(dx * dx + dy * dy, 1e-12), 0, 1)
+            return bool((np.hypot(ax + t * dx - x, ay + t * dy - y) < 40.0).any())
     sand = None
     try:
         gm = json.load(open(C.work('ground', 'ground_meta.json'))); G = np.load(C.work('ground', 'ground_cls.npy'), mmap_mode='r'); si = gm['classes'].index('sand')
