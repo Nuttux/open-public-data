@@ -1,0 +1,100 @@
+{
+ "character_house": [
+  "Kitsilano house Vancouver",
+  "Mount Pleasant Vancouver house",
+  "Craftsman house Vancouver",
+  "Strathcona Vancouver houses",
+  "heritage house Vancouver"
+ ],
+ "vancouver_special": [
+  "Vancouver Special house",
+  "Vancouver Special"
+ ],
+ "postwar_bungalow": [
+  "bungalow Vancouver house",
+  "house Dunbar Vancouver",
+  "house Renfrew Vancouver",
+  "house Killarney Vancouver",
+  "house East Vancouver",
+  "single-family house Vancouver",
+  "Vancouver house 1950s"
+ ],
+ "modern_infill": [
+  "modern house Vancouver",
+  "contemporary house Vancouver",
+  "new house Kerrisdale"
+ ],
+ "laneway_house": [
+  "laneway house Vancouver",
+  "laneway house",
+  "coach house Vancouver",
+  "lane house Vancouver"
+ ],
+ "west_end_walkup": [
+  "West End Vancouver apartment",
+  "Davie Street apartment building Vancouver",
+  "Barclay Street Vancouver",
+  "Comox Street Vancouver"
+ ],
+ "concrete_tower": [
+  "West End Vancouver tower",
+  "Vancouver 1970s apartment tower",
+  "concrete apartment tower Vancouver"
+ ],
+ "point_tower": [
+  "Coal Harbour Vancouver towers",
+  "Yaletown towers",
+  "Vancouver glass condo towers",
+  "Vancouver skyline residential towers"
+ ],
+ "podium": [
+  "Yaletown podium tower",
+  "Vancouver townhouse podium tower",
+  "Vancouverism tower podium",
+  "Vancouver tower townhouses base",
+  "Downtown Vancouver residential towers street",
+  "Yaletown Vancouver"
+ ],
+ "stucco_lowrise": [
+  "Kitsilano apartment building",
+  "Fairview Vancouver apartment",
+  "Marpole apartment Vancouver",
+  "three-storey walk-up Vancouver",
+  "apartment building Vancouver",
+  "Kitsilano Vancouver",
+  "Vancouver low-rise apartment"
+ ],
+ "heritage_brick": [
+  "Gastown building",
+  "Water Street Gastown",
+  "Gastown Vancouver brick",
+  "Hastings Street heritage building Vancouver"
+ ],
+ "chinatown_society": [
+  "Chinatown Vancouver society building",
+  "Pender Street Chinatown Vancouver",
+  "Chinatown Vancouver"
+ ],
+ "townhouse": [
+  "townhouses Vancouver",
+  "row houses Vancouver",
+  "townhouse Kitsilano"
+ ],
+ "institutional": [
+  "school Vancouver building",
+  "church Vancouver",
+  "Vancouver General Hospital",
+  "community centre Vancouver"
+ ],
+ "industrial_shed": [
+  "warehouse Vancouver industrial",
+  "Port of Vancouver warehouse",
+  "industrial building Vancouver",
+  "False Creek Flats"
+ ],
+ "granville_island_shed": [
+  "Granville Island",
+  "Granville Island Public Market",
+  "Granville Island buildings"
+ ]
+}

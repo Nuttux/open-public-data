@@ -1,0 +1,11 @@
+[["heritage_brick/03","heritage_brick","walls",[0.75,0.10,0.95,0.30]],
+ ["heritage_brick/07","heritage_brick","walls",[0.50,0.00,0.60,0.18]],["heritage_brick/07","heritage_brick","walls",[0.85,0.25,0.95,0.40]],
+ ["pool/137","heritage_brick","walls",[0.30,0.45,0.45,0.55]],["pool/137","heritage_brick","trim",[0.40,0.40,0.60,0.43]],
+ ["pool/164","heritage_brick","walls",[0.30,0.30,0.45,0.45]],
+ ["pool/169","heritage_brick","walls",[0.65,0.30,0.80,0.45]],
+ ["institutional/05","heritage_brick","walls",[0.40,0.20,0.55,0.40]],["institutional/05","heritage_brick","base",[0.60,0.70,0.75,0.80]],
+ ["chinatown_society/00","chinatown_society","walls",[0.35,0.15,0.50,0.25]],
+ ["chinatown_society/02","chinatown_society","trim",[0.20,0.10,0.50,0.15]],["chinatown_society/02","chinatown_society","walls",[0.15,0.40,0.25,0.60]],
+ ["chinatown_society/03","chinatown_society","walls",[0.20,0.35,0.30,0.55]],
+ ["chinatown_society/05","chinatown_society","walls",[0.55,0.45,0.65,0.55]],["chinatown_society/05","chinatown_society","trim",[0.30,0.25,0.50,0.32]],
+ ["chinatown_society/06","chinatown_society","walls",[0.15,0.45,0.25,0.65]],["chinatown_society/06","chinatown_society","trim",[0.40,0.70,0.60,0.73]]]
