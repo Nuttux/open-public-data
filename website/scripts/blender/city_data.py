@@ -210,6 +210,10 @@ def overrides(recs, bbox=None):
         try:
             j = json.load(open(OV_FILE)) if os.path.exists(OV_FILE) else {}
             _OV = {int(k): v for k, v in j.get('gids', {}).items()}; _OV_ADD = list(j.get('add', []))
+            # (B3-fix) another city's 'what stands today' layer, written by its own script (today_lidar.py: records LiDAR 2025
+            # shows gone, piers drawn as houses, rebuilt lots) beside city_places' 'gids'; a 'gids' entry wins. SF's file has neither key
+            for k, v in j.get('today', {}).items(): _OV.setdefault(int(k), v)
+            _OV_ADD += list(j.get('today_add', []))
         except Exception as ex: print('[overrides] unreadable', ex, flush=True); _OV = {}; _OV_ADD = []
     if not _OV and not _OV_ADD: return recs
     out = []

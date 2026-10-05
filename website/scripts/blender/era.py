@@ -1378,7 +1378,7 @@ def lost_ways(era, ground, box=None):
     return ways
 
 
-def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
+def build_structures(bpy, era, ground, mat, box=None, log=print, M=None, mat_top=None):
     """the lost viaducts as geometry: with the freeways agent's builder
     (freeways_hq.build_ways, when there and M is given) drawn like today's
     viaducts; else each deck a slab with parapets, carried on two-column
@@ -1395,6 +1395,7 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
             pass
     from mathutils import Vector
     V, F = [], []
+    TOPF = []    # (B3-fix) the slab tops, for mat_top (a bridge's roadway); None (SF) = one material
 
     def box3(o, a, b, c):
         p = [o, o + a, o + a + b, o + b, o + c, o + a + c, o + a + b + c, o + b + c]
@@ -1415,10 +1416,14 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
         gs = [sum(g[max(0, i - 20):i + 21]) / len(g[max(0, i - 20):i + 21]) for i in range(len(g))]
         H = _hag(st, [(p.x, p.y) for p in P])
         hw = st['w'] / 2
+        # (B3-fix, another city's bridges) zabs: 'hag' is the deck top's own elevation (LiDAR 2025 DSM over the water and the
+        # land alike), not a height over the smoothed ground (a sea floor under a bridge); San Francisco's structures have no zabs
+        ZA = st.get('zabs')
+        def zdeck(i, dz): return (H[i] + dz) if ZA else (gs[i] + dz + H[i])
         for dz in st['decks']:
             for i in range(len(P) - 1):
                 a, b = P[i], P[i + 1]; t = (b - a).normalized(); n_ = Vector((-t.y, t.x, 0))
-                za, zb = gs[i] + dz + H[i], gs[i + 1] + dz + H[i + 1]
+                za, zb = zdeck(i, dz), zdeck(i + 1, dz)
                 A, B = Vector((a.x, a.y, za)), Vector((b.x, b.y, zb))
                 # the slab, 1.2 m deep
                 for (s0, s1, z0, z1) in ((-hw, hw, -1.2, 0.0), (-hw, -hw + 0.4, 0.0, 1.0), (hw - 0.4, hw, 0.0, 1.0)):
@@ -1426,20 +1431,60 @@ def build_structures(bpy, era, ground, mat, box=None, log=print, M=None):
                     k = len(V); top = [x + Vector((0, 0, z1 - z0)) for x in q]; V.extend(tuple(x) for x in q + top)
                     for f in ((0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)):
                         F.append(tuple(k + j for j in f))
+                    if z0 == -1.2 and mat_top is not None: TOPF.append(len(F) - 5)     # the slab's top face, not a parapet's
         # bents every 24 m: two columns and a cap beam under each deck
-        for i in range(0, len(P) - 1, 12):
+        BI = range(0, len(P) - 1, 12)
+        if st.get('bent'):
+            # (B3-fix) a bridge's own pier spacing: 'bent' m over land, 'bent_w' m where the ground under it is water (< 0.5 m)
+            BI, s_ = [], 1e9
+            for i in range(len(P) - 1):
+                s_ += 2.0
+                if s_ >= (st.get('bent_w', st['bent']) if g[i] < 0.5 else st['bent']): BI.append(i); s_ = 0.0
+        for i in BI:
             a = P[i]; t = (P[min(i + 1, len(P) - 1)] - P[max(i - 1, 0)]).normalized(); n_ = Vector((-t.y, t.x, 0))
-            top = gs[i] + max(st['decks']) + H[i] - 1.2
+            top = zdeck(i, max(st['decks'])) - 1.2
+            if st.get('bent') and top - g[i] < 1.5: continue     # (B3-fix) no bent where the deck meets the ground
             for side in (-1, 1):
                 c = a + n_ * side * (hw - 2.0)
                 box3(Vector((c.x - 0.6, c.y - 0.6, g[i] - 0.5)), Vector((1.2, 0, 0)), Vector((0, 1.2, 0)), Vector((0, 0, top - g[i] + 0.5)))
             for dz in st['decks']:
-                o = a - n_ * hw + Vector((0, 0, gs[i] + dz + H[i] - 2.4)) - t * 0.8
+                o = a - n_ * hw + Vector((0, 0, zdeck(i, dz) - 2.4)) - t * 0.8
                 box3(o, n_ * st['w'], t * 1.6, Vector((0, 0, 1.2)))
+        # (B3-fix) pylons: [arc length m, height over the deck m] - a bridge's towers (Burrard's, Lions Gate's) as two plain
+        # piers either side of the deck joined by a beam at the top
+        for s_p, hp in st.get('pylons', []):
+            i = min(len(P) - 2, max(0, int(round(s_p / 2.0)))); a = P[i]
+            t = (P[i + 1] - P[max(i - 1, 0)]).normalized(); n_ = Vector((-t.y, t.x, 0)); zt = zdeck(i, max(st['decks'])) + hp
+            for side in (-1, 1):
+                c = a + n_ * side * (hw + 1.6) - t * 2.0 - n_ * 1.6
+                box3(Vector((c.x, c.y, g[i] - 0.5)), t * 4.0, n_ * 3.2, Vector((0, 0, zt - g[i] + 0.5)))
+            o = a - n_ * (hw + 1.6) + Vector((0, 0, zt - 3.0)) - t * 1.5
+            box3(o, n_ * (2 * hw + 3.2), t * 3.0, Vector((0, 0, 3.0)))
+        # (B3-fix) truss: [[s0, s1, h], ...] - a through truss over the deck (Burrard's centre span): on each side a top chord,
+        # posts every 8 m and one diagonal per panel, cross beams overhead; 0.6 m members
+        for s0_, s1_, ht in st.get('truss', []):
+            ks = list(range(max(0, int(s0_ / 2.0)), min(len(P) - 1, int(s1_ / 2.0)) + 1, 4))
+            for side in (-1, 1):
+                prev = None
+                for i in ks:
+                    a = P[i]; t = (P[min(i + 1, len(P) - 1)] - P[max(i - 1, 0)]).normalized(); n_ = Vector((-t.y, t.x, 0))
+                    z0 = zdeck(i, max(st['decks'])); c = a + n_ * side * (hw - 0.3)
+                    bot = Vector((c.x, c.y, z0)); top = Vector((c.x, c.y, z0 + ht))
+                    box3(bot - Vector((0.3, 0.3, 0)), Vector((0.6, 0, 0)), Vector((0, 0.6, 0)), Vector((0, 0, ht)))
+                    if prev is not None:
+                        pb, pt = prev
+                        box3(pt - Vector((0, 0, 0.6)), top - pt, n_ * 0.6, Vector((0, 0, 0.6)))
+                        box3(pb, top - pb, n_ * 0.5, t * 0.5)
+                    if side == 1: box3(top - n_ * (2 * hw - 0.6) - Vector((0, 0, 0.5)), n_ * (2 * hw - 0.6), t * 0.5, Vector((0, 0, 0.5)))
+                    prev = (bot, top)
         log('lost structure standing:', st['k'], 'decks', st['decks'])
     if not F: return None
     me = bpy.data.meshes.new('lost_structures'); me.from_pydata(V, [], F); me.update()
     ob = bpy.data.objects.new('lost_structures', me); bpy.context.scene.collection.objects.link(ob); me.materials.append(mat)
+    if mat_top is not None and TOPF:
+        me.materials.append(mat_top); mi = [0] * len(me.polygons)
+        for f in TOPF: mi[f] = 1
+        me.polygons.foreach_set('material_index', mi); me.update()
     return ob
 
 

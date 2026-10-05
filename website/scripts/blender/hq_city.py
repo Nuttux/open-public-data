@@ -1089,8 +1089,14 @@ if E('FREEWAYS', '1') == '1':
 # CITY_STRUCTURES=1 (city.json env); unset (SF) = nothing.
 if ERA is None and E('CITY_STRUCTURES', '0') == '1':
     try:
+        # (B3-fix) CITY_BRIDGES=<json> (bridges_city.py: OSM bridge ways, decks at the LidarBC 2025 DSM, piers, pylons, a truss)
+        # stand with them, and every deck gets the asphalt on top; unset = the era structures alone, one material
+        _brf = E('CITY_BRIDGES', '')
+        if _brf and os.path.exists(_brf):
+            _br = json.load(open(_brf)); EA.STRUCTURES = list(EA.STRUCTURES) + _br; log('city bridges:', len(_br), 'from', _brf)
+        elif _brf: log('city bridges: MISSING', _brf)
         _st = EA.build_structures(bpy, float(E('TODAY_YEAR', '2026.0')), ground, M.get('concrete_struct') or M.get('concrete') or M['sidewalk'],
-                                  (BOX or [-9000, -9000, 9000, 9000]), log, M=None)
+                                  (BOX or [-9000, -9000, 9000, 9000]), log, M=None, mat_top=M['asphalt'] if _brf else None)
         log('city structures today:', 'none in the box' if _st is None else _st.name)
     except Exception as ex:
         import traceback; traceback.print_exc(); log('city structures today: FAILED', ex)
