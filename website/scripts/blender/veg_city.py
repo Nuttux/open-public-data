@@ -364,5 +364,102 @@ def preview():
     draw((cx - 500, cy - 500, cx + 500, cy + 500), 0.5, f'{WRK}/preview_crop.png', True)
 
 
+# ── the PNW kit (V-VEG 05/10, veg_pnw.py; veg_hq reads these with VEG_KIT=pnw) ──
+# veg/veg_pnw.npz, veg/veg_zones_pnw.json, veg/canopy_pnw.npz: the same contract as veg.npz / veg_zones.json /
+# canopy_trees.npz, the archetypes veg_pnw's (genus + species + CULTIVAR: 'Kwanzan' a cherry, 'Atropurpurea' a purple
+# plum, 'Dawyck' a column), st_h the register's height class (m). The finish() files stay as they were (other
+# branches render with them).
+# the split inside each leaf type, per zone (CONVENTION after the woods' published make-up: Stanley Park and Pacific
+# Spirit = second-growth Douglas-fir, western redcedar, western hemlock, with bigleaf maple and red alder in the
+# gaps); the conifer share of each zone is MEASURED on LCC 2020; None = the register's own mix of that leaf type
+PNW_MIX = {
+    'forest': (dict(v_dfir=0.45, v_cedar=0.33, v_hemlock=0.22), dict(v_maple=0.45, v_ash=0.55)),
+    'stanley': (dict(v_dfir=0.42, v_cedar=0.36, v_hemlock=0.22), dict(v_maple=0.5, v_ash=0.5)),
+    'park': (dict(v_dfir=0.38, v_cedar=0.37, v_hemlock=0.1, pine=0.15), None),
+    'garden': (dict(v_dfir=0.25, v_cedar=0.4, v_hemlock=0.1, pine=0.25), None),
+    'urban': (None, None),
+}
+PNW_STAND = {'urban': 0, 'park': 30, 'forest': 35, 'stanley': 35, 'garden': 20}
+PNW_TALL = ('v_maple', 'v_oak', 'v_elm', 'v_ash', 'v_linden', 'v_beech')        # broadleaf crowns >= 18 m tall
+
+def pnw():
+    import veg_pnw as VP
+    from scipy.spatial import cKDTree
+    from veg_canopy import hp, _draw
+    ARCH_P = ['unknown', 'none'] + list(VP.ARCHS) + ['pine']; AIP = {a: i for i, a in enumerate(ARCH_P)}
+    R = list(csv.DictReader(open(TREES_CSV, encoding='utf-8-sig'), delimiter=';'))
+    X, Y, A, D, H = [], [], [], [], []; miss = collections.Counter(); bycult = collections.Counter()
+    for r in R:
+        if not r['geo_point_2d']: continue
+        lat, lon = map(float, r['geo_point_2d'].split(','))
+        x, y = C.proj(lon, lat)
+        a = VP.arch_of(r['genus_name'], r['species_name'], r.get('cultivar_name', ''))
+        if a == 'unknown': miss[f"{r['genus_name']} {r['species_name']}"] += 1
+        bycult[(r['genus_name'].strip().upper(), a)] += 1
+        X.append(x); Y.append(y); A.append(AIP[a])
+        try: D.append(float(r['diameter_cm']) / 2.54)
+        except ValueError: D.append(0.0)
+        try: H.append(float(r['height_m']))
+        except ValueError: H.append(0.0)
+    X, Y, D, H = (np.array(v, np.float32) for v in (X, Y, D, H)); A = np.array(A, np.uint8)
+    D[(D < 0.5) | (D > 120)] = 0.0
+    cnt = collections.Counter(ARCH_P[a] for a in A)
+    print('register trees', len(X), dict(cnt.most_common()))
+    print('  unmapped (drawn from the street mix):', sum(miss.values()), miss.most_common(12))
+    mix_street = {a: n for a, n in cnt.items() if a not in ('unknown', 'none')}
+    tot = sum(mix_street.values()); mix_street = {a: round(v / tot, 4) for a, v in mix_street.items()}
+    reg_con = {a: v for a, v in mix_street.items() if a in VP.CONIFERS}
+    reg_dec = {a: v for a, v in mix_street.items() if a not in VP.CONIFERS}
+    tall_dec = {a: v for a, v in reg_dec.items() if a in PNW_TALL}
+    # zones (as finish(): parks, LCC woods, Stanley Park, the two gardens), mixes from PNW_MIX
+    ZA, ZO, Z0, meas = zones()
+    Z = []
+    for z in Z0:
+        nm = z['name']; c = meas[nm]['conifer_share']; con, dec = PNW_MIX[nm]
+        con = con or reg_con; dec = dec or reg_dec
+        mix = {}
+        for a, v in con.items(): mix[a] = mix.get(a, 0) + c * v / sum(con.values())
+        for a, v in dec.items(): mix[a] = mix.get(a, 0) + (1 - c) * v / sum(dec.values())
+        Z.append(dict(name=nm, mix={a: round(v, 4) for a, v in mix.items() if v > 0.001}, stand=PNW_STAND[nm]))
+    # the LiDAR crowns (canopy_raw: x y z h crown conifer), those a listed tree stands in dropped (as finish())
+    T = np.load(f'{WRK}/canopy_raw.npy')
+    d, _ = cKDTree(np.c_[X, Y]).query(T[:, :2])
+    T = T[d > np.maximum(2.5, 0.35 * T[:, 4])]
+    x0, y1, res = ZO; arch = []; byz = collections.Counter()
+    for x, y, z, h, cw, cf in T:
+        c_, r_ = int((x - x0) / res), int((y1 - y) / res)
+        zi = int(ZA[r_, c_]) if 0 <= r_ < ZA.shape[0] and 0 <= c_ < ZA.shape[1] else 0
+        zn = Z[zi]
+        if zn['name'] != 'urban':
+            mix = {a: v for a, v in zn['mix'].items() if (a in VP.CONIFERS) == bool(cf)} or zn['mix']
+            S = zn['stand']
+            u = hp(math.floor(x / S), math.floor(y / S), 43) if S and hp(x, y, 33) < 0.6 else hp(x, y, 34)
+            a = _draw(mix, u)
+        elif cf: a = _draw(reg_con, hp(x, y, 34))
+        elif h >= 18: a = _draw(tall_dec, hp(x, y, 34))
+        else: a = _draw(reg_dec, hp(x, y, 34))
+        arch.append(a); byz[(zn['name'], a)] += 1
+    names = sorted(set(arch)); ai = np.array([names.index(s) for s in arch], np.uint8)
+    src = ('LidarBC 2025 DSM/DEM 1 m (OGL-BC), Metro Vancouver LCC 2020 (OGL-MV), City of Vancouver public-trees + '
+           'parks-polygon-representation (OGL-Vancouver), building footprints 2015 (engine, OGL-Vancouver)')
+    np.savez_compressed(f'{OUT}/canopy_pnw.npz', x=T[:, 0], y=T[:, 1], z=T[:, 2], height=T[:, 3], crown=T[:, 4], kind=ai,
+                        kind_names=np.array(names), conifer=T[:, 5].astype(np.uint8),
+                        meta=json.dumps(dict(kit='veg_pnw', kept=len(T), date=time.strftime('%Y-%m-%d'), sources=src,
+                                             conventions='leaf type from LCC 2020; species: zone mix (veg_city.PNW_MIX) or the register mix of that leaf type (urban)')))
+    HN = ARCH_P + ['conifer', 'broad']
+    hi = np.full(len(T), HN.index('broad'), np.uint8); hi[T[:, 5] > 0] = HN.index('conifer')
+    np.savez_compressed(f'{OUT}/veg_pnw.npz', st_x=X, st_y=Y, st_arch=A, st_dbh=D, st_site=np.zeros(len(X), np.uint8), st_h=H,
+                        h_x=T[:, 0].copy(), h_y=T[:, 1].copy(), h_arch=hi, zone=ZA, zone_origin=ZO)
+    json.dump(dict(arch=ARCH_P, hint_arch=HN, street_mix=mix_street, zones=Z,
+                   meta=dict(city=C.CITY, kit='veg_pnw', sources=src, zone_measures=meas, register_conifer_mix=reg_con,
+                             register_broadleaf_mix=reg_dec, genus_arch={f'{g} -> {a}': n for (g, a), n in bycult.most_common(80)},
+                             notes='st_dbh inches; st_h = register height_m (the class midpoint, m); zone mixes: conifer share '
+                                   'measured on LCC 2020, split = convention (veg_city.PNW_MIX)')),
+              open(f'{OUT}/veg_zones_pnw.json', 'w'), indent=1)
+    print('zones', {z['name']: z['mix'] for z in Z})
+    print('canopy crowns kept', len(T), 'by zone/kind', dict(sorted(byz.items(), key=lambda kv: -kv[1])[:30]))
+    print('street mix', mix_street)
+
+
 if __name__ == '__main__':
-    {'register': register, 'canopy': canopy, 'finish': finish, 'preview': preview}[sys.argv[1]]()
+    {'register': register, 'canopy': canopy, 'finish': finish, 'preview': preview, 'pnw': pnw}[sys.argv[1]]()
