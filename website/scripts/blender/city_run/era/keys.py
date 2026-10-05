@@ -329,7 +329,7 @@ def post(Y):
     xs = [x for x in g['xs'] if x + 1024 > QC[0] and x < QC[2]]; ys = [y for y in g['ys'] if y + 1024 > QC[1] and y < QC[3]]
     json.dump(dict(Q=QC, xs=xs, ys=ys, kinds=g['kinds']), open(f'{R}/sb/{sid}/geom.json', 'w'))
     log('POST', Y, 'new tiles', len(new))
-    subprocess.run(f'cd {W_}/city/run && CITY_ROOT={R} FIN_BH=1024 python3 post_sb.py {sid} quilt,finish | grep -v "^compose band\\|^colour band" | tail -4', shell=True, check=True)
+    subprocess.run(f'cd {EC.POST_SB_DIR} && CITY_ROOT={R} FIN_BH=1024 python3 post_sb.py {sid} quilt,finish | grep -v "^compose band\\|^colour band" | tail -4', shell=True, check=True)
     fin = np.concatenate([np.asarray(Image.open(f'{R}/sb/{sid}/final/f_{y0}.png').convert('RGB')) for y0 in range(0, QH, 1024)], 0)[:QH]
     base = np.asarray(Image.open(f'{RUN}/paint/key_2026.png').convert('RGB'))
     m = np.asarray(Image.open(f'{RUN}/mask_{Y}.png'))[sl8].astype(np.float32)[..., None] / 255

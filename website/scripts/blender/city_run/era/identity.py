@@ -16,6 +16,7 @@ FRAGS = [("' It is ' + EC.CITY_NAME + ' in %d: no modern", "' It is San Francisc
          ("P=${0:A:h};", "P=/Users/daniel/code/qipu-render-work/era_anim/auto/prep;"),
          ("sys.path.insert(0,'${0:A:h}'); import common", "sys.path.insert(0,'/Users/daniel/code/qipu-render-work/era_anim/auto/prep'); import common"),
          ("bash $ERA_RENDER_SH $p", "bash $B/render_b8.sh $p"),   # SF: B=$W/combo/block52, the same file
+         ("cd {EC.POST_SB_DIR} && CITY_ROOT=", "cd {W_}/city/run && CITY_ROOT="),   # SF: W_/city/run
          ("FIRE = EC.fire_moment()", "FIRE = 1906 + 107 / 365.0"), ("    return EC.moment(Y)", "    return 1906 + 147 / 365.0 if Y == 1906 else Y + 0.5"),
          ("os.path.dirname(os.path.abspath(__file__))); import common as _CMe", "'/Users/daniel/code/qipu-render-work/era_anim/auto/prep'); import common as _CMe"),
          ("os.path.dirname(os.path.abspath(__file__))); import common as CM; S.SNAP", "'/Users/daniel/code/qipu-render-work/era_anim/auto/prep'); import common as CM; S.SNAP"),
