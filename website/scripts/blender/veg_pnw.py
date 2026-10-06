@@ -84,7 +84,7 @@ RAMPS = {
     'v_cedar':   ('#5a3d2c', '#8a6248', '#24401f', '#557a36', '#557a36'),
     'v_hemlock': ('#4a3d34', '#6d5d50', '#182c1f', '#36593c', '#36593c'),
     'v_maple':   ('#4f463c', '#766a5c', '#29501f', '#5e8f36', '#5e8f36'),
-    'v_purple':  ('#3d302c', '#5e4a44', '#2e1419', '#64293a', '#64293a'),
+    'v_purple':  ('#3d302c', '#5e4a44', '#2b161a', '#552d33', '#552d33'),   # (VT2 06/10) was #64293a: a crimson-pink the AI read as blossom; P. cerasifera 'Nigra' in July is a dark purple-brown
     'v_cherry':  ('#4d3a33', '#6f564b', '#2f4f22', '#68903e', '#68903e'),
     'v_oak':     ('#4a4038', '#6b5f52', '#22411d', '#4f7a33', '#4f7a33'),
     'v_ash':     ('#5d554b', '#857a6c', '#355a24', '#74a046', '#74a046'),
@@ -96,7 +96,7 @@ RAMPS = {
 }
 # the v4 leaf gain (veg_protos._material: leaf stops x V4_GAIN x this); SF's
 # conifers take 1.35-1.5, its broadleaf 1.1-1.45
-GAINS = {'v_dfir': 1.35, 'v_cedar': 1.35, 'v_hemlock': 1.35, 'v_maple': 1.25, 'v_purple': 1.2, 'v_cherry': 1.25,
+GAINS = {'v_dfir': 1.35, 'v_cedar': 1.35, 'v_hemlock': 1.35, 'v_maple': 1.25, 'v_purple': 1.1, 'v_cherry': 1.25,
          'v_oak': 1.3, 'v_ash': 1.2, 'v_linden': 1.25, 'v_beech': 1.3, 'v_orn': 1.25, 'v_elm': 1.25, 'v_column': 1.25}
 
 # envelope profiles (t = 0 crown base .. 1 top) added to veg_v4.PROF
