@@ -256,9 +256,14 @@ def m_canadaplace():
     return K, tuple(cc), z0, [list(P.buffer(3).exterior.coords)], [68768]
 
 def m_harbourctr():
-    """HARBOUR CENTRE (1977): a slim concrete office shaft with its round Lookout 'saucer' and a mast on top, rising out of
-    a block-wide podium (the old Spencer's store, 7 floors). Engine gid 68728 is the whole block at the LiDAR's 133 m: here
-    the podium at 30 m and the tower at its spot (landmarks/list.json engine_xy); saucer top ~134 m, mast to ~165 m."""
+    """HARBOUR CENTRE (1977): a slim concrete office shaft with two exterior glass elevators running up one face, crowned by
+    the Lookout: a round 'flying saucer' far wider than the shaft (its underside a shallow cone, a band of glazing, the
+    revolving restaurant's level), a low drum and a mast on top; rising out of a block-wide podium (the old Spencer's store,
+    7 floors). Engine gid 68728 is the whole block at the LiDAR's 133 m: here the podium at 30 m and the tower at its spot
+    (landmarks/list.json engine_xy); Lookout rim ~41 m across, its roof ~128 m, mast to ~160 m.
+    (VT2 06/10) vt1 read the old one as a white cylinder with dark stripes and a dome cap: a 22 m shaft under a 35 m
+    smooth-shaded lathe that closed in a dome, 8 m black strips on all four faces. Now: a 19 m shaft with chamfered corners
+    and narrow window slots, the elevators as two bronze glass strips, a flat-shaded saucer 2.2x the shaft, a flat roof."""
     b = rec(68728); P = Polygon(b['ring']).buffer(0); _, U, V, _, _ = axes(P); K = lm_kit.Kit()
     t = np.array([1318.0, 3148.1]); z0 = z_at(*t)
     R = ccw(list(P.simplify(0.5).exterior.coords)[:-1])
@@ -266,16 +271,25 @@ def m_harbourctr():
     K.prism('lm_paint', R, zb, 30, hexc('#b9b3a6'), top=True, top_col=hexc('#9c9a93'), top_mat='lm_matte')
     K.prism('lm_matte', scaled(R, (P.centroid.x, P.centroid.y), 1.002), 4, 28, hexc('#3a4046'), top=False)   # the podium's dark glazing bands
     K.prism('lm_paint', R, 28, 30.5, hexc('#c9c3b6'), top=False)
-    h = 11.0
-    sq = [tuple(t + U * a + V * b_) for a, b_ in ((-h, -h), (h, -h), (h, h), (-h, h))]
-    K.prism('lm_paint', ccw(sq), 30, 118, hexc('#cdc6b8'), top=True)
-    for s in (-1, 1):
-        for A in (U, V):
-            g = [tuple(t + A * (s * (h + 0.15)) + (V if A is U else U) * w) for w in (-4.0, 4.0)]
-            K.prism('lm_matte', ccw([g[0], g[1], tuple(np.add(g[1], A * s * 0.3)), tuple(np.add(g[0], A * s * 0.3))]), 32, 117, DARK, top=False)
-    K.lathe('lm_paint', t[0], t[1], 0, [(6.0, 116.0), (13.0, 119.5), (17.5, 123.0), (17.5, 127.0), (15.0, 131.0), (9.0, 133.5), (4.0, 134.2)], hexc('#d8d4ca'), n=32)
-    K.lathe('lm_matte', t[0], t[1], 0, [(17.7, 123.4), (17.7, 126.6)], DARK, n=32, cap=False)          # the Lookout's glazing
-    K.cyl('lm_steel', (t[0], t[1], 134.0), (t[0], t[1], 165.0), 0.9, STEEL, n=8, r1=0.3)
+    h, ch = 9.5, 2.5                                   # the shaft: 19 m square, corners chamfered 2.5 m
+    oct_ = [(-h + ch, -h), (h - ch, -h), (h, -h + ch), (h, h - ch), (h - ch, h), (-h + ch, h), (-h, h - ch), (-h, -h + ch)]
+    K.prism('lm_paint', ccw([tuple(t + U * a + V * b_) for a, b_ in oct_]), 30, 117, hexc('#c4bdb0'), top=True)
+    # the office windows: narrow dark slots, 4 a face (concrete reads between them)
+    for A, B_ in ((U, V), (V, U), (-U, V), (-V, U)):
+        for w in (-5.4, -1.8, 1.8, 5.4):
+            g = [t + A * (h + 0.1) + B_ * (w - 0.55), t + A * (h + 0.1) + B_ * (w + 0.55)]
+            K.prism('lm_matte', ccw([tuple(g[0]), tuple(g[1]), tuple(g[1] + A * 0.25), tuple(g[0] + A * 0.25)]), 33, 114, hexc('#454b50'), top=False)
+    # the two exterior glass elevators, on the face most turned to the south (Hastings Street, the camera's side)
+    F = min((U, V, -U, -V), key=lambda a: a[1]); S_ = np.array([-F[1], F[0]])
+    for w in (-3.6, 3.6):
+        g = [t + F * h + S_ * (w - 1.3), t + F * h + S_ * (w + 1.3)]
+        K.prism('lm_steel', ccw([tuple(g[0]), tuple(g[1]), tuple(g[1] + F * 1.7), tuple(g[0] + F * 1.7)]), 30, 121, hexc('#8a6a32'), top=True)
+    # the Lookout: shallow cone underneath, the glazing band, the roof rim, a low drum (flat-shaded: no dome)
+    K.lathe('lm_paint', t[0], t[1], 0, [(9.0, 113.0), (15.0, 116.5), (20.5, 120.0), (20.5, 120.6)], hexc('#d3cec3'), n=40, smooth=False, cap=False)
+    K.lathe('lm_matte', t[0], t[1], 0, [(20.7, 120.6), (20.7, 125.0)], hexc('#2b333b'), n=40, smooth=False, cap=False)    # glazing, restaurant level
+    K.lathe('lm_paint', t[0], t[1], 0, [(20.6, 125.0), (20.6, 126.2), (17.0, 127.6), (11.0, 128.2), (0.0, 128.2)], hexc('#b7b3aa'), n=40, smooth=False)
+    K.lathe('lm_paint', t[0], t[1], 0, [(6.5, 128.0), (6.5, 132.0), (0.0, 132.0)], hexc('#c9c5bb'), n=24, smooth=False)
+    K.cyl('lm_steel', (t[0], t[1], 132.0), (t[0], t[1], 160.0), 0.8, STEEL, n=8, r1=0.3)
     return K, tuple(t), z0, [list(P.buffer(2).exterior.coords)], [68728]
 
 def m_vanhouse():
