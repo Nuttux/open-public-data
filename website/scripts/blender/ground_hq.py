@@ -260,6 +260,16 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         # Embarcadero Plaza, lotA leaned pink again)
         for_ = lambda x_: b.mix(1.0, b.mix(1.0, b.mix(1.0, x_, NEU, 'MULTIPLY'), WARM, 'MULTIPLY'), (1.0, 1.0, float(os.environ.get('PAVE_B', '1.1'))), 'MULTIPLY')
     ap = for_(ap); co = for_(co); gv = for_(gv)
+    if PNW and os.environ.get('GROUND_PNW_TONE', '1') == '1':
+        # (VT2 06/10) [GROUND_PNW] measured on vt1's renders (V6 light, Vancouver; GROUND_V2 off): the asphalt class (paths,
+        # parking, the courts of MacLean Park's housing) rendered sRGB ~136,132,120, a tan the eye and the AI read as MUD;
+        # concrete 180,176,167 (the rail lands' pale plain). Linear gains to a neutral parking-lot asphalt ~105,105,103 and a
+        # sidewalk concrete ~165,163,158; gravel is now rule 8's RAIL BALLAST (ground_city: OSM tracks + railway land):
+        # dark grey-brown stone ~98,92,84 (its predicted render 0.31,0.29,0.24 linear, from concrete's measured gain)
+        ap = b.mix(1.0, ap, (0.57, 0.61, 0.72), 'MULTIPLY')
+        co = b.mix(1.0, co, (0.82, 0.84, 0.89), 'MULTIPLY')
+        gv = b.mix(1.0, gv, (0.39, 0.37, 0.37), 'MULTIPLY')
+        gv = b.mix(b.ramp(b.noise(1 / 0.18, 2.0, vec=b.vmap(1.0, loc=(2.0, -5.0, 0))), 0.0, 1.0, 0.45, 0.75), gv, b.mix(1.0, gv, (1.25, 1.22, 1.18), 'MULTIPLY'))   # the stones' grain
     # SAND: Ocean Beach's pale buff, wind ripples, darker drifts (a buff-grey
     # albedo rendered lilac-white at Crissy, gnd8/9, and pink-white under
     # the harder sun of 53c5109c5 (integ1: sRGB 205,190,180): the albedo
@@ -296,7 +306,7 @@ def shade(b, sample, W, old, hill, lw, g, NEU, yd=None, yardf=None, scan=None):
         hill = b.mix(b.math('MULTIPLY', yardf, 0.5), hill, yd); x = hill
     # CURED GRASS glows gold in the low sun, not khaki: warmer and richer
     # where the photo finds dry grass (Twin Peaks, Bernal, San Bruno)
-    if not V2:
+    if not V2 and not PNW:   # (VT2 06/10) [GROUND_PNW] no cured gold in Vancouver either: its few dry-grass cells are the meadow below
         x = b.mix(b.math('MULTIPLY', sh(dry), 0.85), x, b.mix(1.0, x, (1.24, 1.05, 0.56), 'MULTIPLY'))
     else:
         # [GROUND_V2] no cured gold (BAR 27/09 23:05: lush, verdant, never

@@ -19,8 +19,10 @@ DZ = {'ballast': 0.07, 'ties': 0.13, 'rails': 0.25}
 HALF = {'ballast': 2.2, 'ties': 1.3, 'rails': 0.045}
 CAR_SLOT = 16.0
 CAR_SHARE = 0.36
-# albedos for the V6 light as the ground's ballast (ground_hq GROUND_PNW gravel, VT2): dark grey-brown stone, darker ties
-MATS = {'ballast': ((0.095, 0.083, 0.068), 0.95, 0.0), 'ties': ((0.050, 0.042, 0.034), 0.9, 0.0), 'rails': ((0.32, 0.30, 0.28), 0.35, 0.7)}
+# albedos for the V6 light, to render as the ground's ballast (ground_hq GROUND_PNW gravel, VT2: ~98,92,84 sRGB): the light's
+# measured linear gain on the ground (vt1 18_11: concrete albedo x NEU (0.95,1,0.66) x WARM (1.2,1.03,0.78) -> 0.456,0.434,0.386)
+# is x1.40, x1.52, x2.88, so a plain albedo leans hard to yellow, as the ground's paving does; ties darker, rails bare steel
+MATS = {'ballast': ((0.087, 0.070, 0.033), 0.95, 0.0), 'ties': ((0.045, 0.036, 0.017), 0.9, 0.0), 'rails': ((0.30, 0.27, 0.20), 0.35, 0.7)}
 CARS = {'box_rust': (0.26, 0.09, 0.05), 'box_brown': (0.17, 0.10, 0.06), 'hopper_grey': (0.40, 0.39, 0.37), 'hopper_brown': (0.24, 0.14, 0.08),
         'tank_black': (0.07, 0.068, 0.065), 'well_red': (0.30, 0.07, 0.05), 'well_blue': (0.06, 0.13, 0.26), 'well_white': (0.55, 0.55, 0.53),
         'well_green': (0.08, 0.20, 0.12), 'frame': (0.08, 0.075, 0.07)}
