@@ -241,6 +241,7 @@ def shore(M, B, G0=None):
                     elif len(pts) >= 2: dr.line(pts, fill=1, width=3)
         mar = np.asarray(im, np.uint8) > 0; del im, dr
         sink &= (sd8.astype(np.float32) * UNIT > -30.0) | wet | mar; del g2, wet, mar
+        if os.environ.get('SHORE_FLOATS', '1') == '1': sink |= float_fields(sink, sd8, X0, Y0, R, G0)[0]      # (VT3 06/10)
     lim = (C.CFG.get('block') or {}).get('limits')
     if lim and os.path.exists(lim):
         gj = json.load(open(lim))['geometry']; polys = gj['coordinates'] if gj['type'] == 'MultiPolygon' else [gj['coordinates']]
@@ -466,6 +467,73 @@ def post():
     print('share after ', J_['share_pct'], f'{time.time() - t0:.0f}s')
 
 
+# (VT3 06/10) THE FLOAT FIELDS: a marina's floats and its moored boats, packed, are 'Paved' to LCC 2020 at 5 m, land to the
+# engine's sea mask and a 1-2 m plateau to the 2016 DTM; seaward of the OSM coastline but more than 30 m out and not LCC
+# water, so the sink rule kept them, and the render drew False Creek Fishermen's Wharf (crop 15_13) as a floating grey
+# slab of raw terrain, cut by the float lines that WERE sunk (3,424 m2 above the sea sheet). A piece of that kept seaward
+# land (its pieces merged across a 2 m sunk line) up to FLOAT_MAX m2, touching an OSM floating pier or marina within 6 m,
+# with buildings (LCC Buildings / Shadow) on less than 30 % and an OSM fixed pier / breakwater on less than 15 % of it,
+# goes under the sea too. Port terminals (no floats,
+# tens of ha) and Canada Place (buildings) stay.
+FLOAT_MAX = float(os.environ.get('FLOAT_MAX', '20000'))
+
+def float_fields(sink, sd8, X0, Y0, R, G0=None):
+    """(cells to add to the sink grid, [(m2, x, y)] of the pieces) on shore_pnw's grid"""
+    from scipy import ndimage as nd
+    from PIL import Image, ImageDraw
+    H_, W_ = sink.shape
+    keep = (sd8.astype(np.float32) * UNIT < -0.5) & ~sink
+    im = Image.new('L', (W_, H_), 0); dr = ImageDraw.Draw(im)
+    for t, gs, typ in _ways(json.load(open(os.path.join(OSM, 'osm.json')))):
+        if t.get('leisure') == 'marina' or (t.get('man_made') == 'pier' and t.get('floating') == 'yes'):
+            for g in gs:
+                x, y = C.proj(np.array([p['lon'] for p in g]), np.array([p['lat'] for p in g]))
+                pts = list(zip(((x - X0) / R).tolist(), ((y - Y0) / R).tolist()))
+                if len(g) > 3 and g[0] == g[-1] and t.get('leisure') == 'marina': dr.polygon(pts, fill=1)
+                elif len(pts) >= 2: dr.line(pts, fill=1, width=3)
+    flt = nd.binary_dilation(np.asarray(im, np.uint8) > 0, iterations=3); del im, dr
+    im = Image.new('L', (W_, H_), 0); dr = ImageDraw.Draw(im)        # the fixed piers and breakwaters (real decks: kept)
+    for t, gs, typ in _ways(json.load(open(os.path.join(OSM, 'osm.json')))):
+        if t.get('man_made') in ('pier', 'breakwater', 'groyne') and t.get('floating') != 'yes':
+            for g in gs:
+                x, y = C.proj(np.array([p['lon'] for p in g]), np.array([p['lat'] for p in g]))
+                pts = list(zip(((x - X0) / R).tolist(), ((y - Y0) / R).tolist()))
+                if len(g) > 3 and g[0] == g[-1]: dr.polygon(pts, fill=1)
+                elif len(pts) >= 2: dr.line(pts, fill=1, width=4)
+    fix = np.asarray(im, np.uint8) > 0; del im, dr
+    lab, n = nd.label(nd.binary_dilation(keep, iterations=1))
+    add = np.zeros_like(sink); pieces = []
+    for i, sl in enumerate(nd.find_objects(lab), 1):
+        m = (lab[sl] == i) & keep[sl]; a = float(m.sum()) * R * R
+        if a == 0 or a > FLOAT_MAX or not (flt[sl] & m).any() or float(fix[sl][m].mean()) >= 0.15: continue
+        if G0 is not None:
+            r_ = np.arange(sl[0].start, sl[0].stop) * int(round(R)); c_ = np.arange(sl[1].start, sl[1].stop) * int(round(R))
+            ok_r = r_ < G0.shape[0]; ok_c = c_ < G0.shape[1]
+            g_ = np.asarray(G0[r_[ok_r]][:, c_[ok_c]]); mm = m[np.ix_(ok_r, ok_c)]
+            if mm.any() and float((g_[mm] == CI['none']).mean()) >= 0.3: continue
+        add[sl] |= m; jj, ii = np.nonzero(m)
+        pieces.append((int(a), round(X0 + (ii.mean() + sl[1].start + 0.5) * R), round(Y0 + (jj.mean() + sl[0].start + 0.5) * R)))
+    return add, pieces
+
+
+def floats():
+    """the float-field rule on the existing veg/shore_pnw.npz (idempotent): its sink grid gains the float fields"""
+    P = os.path.join(OUTD, 'shore_pnw.npz'); S = dict(np.load(P))
+    G0 = np.load(os.path.join(GRD, 'ground_cls.npy'), mmap_mode='r')
+    sink = S['sink'].astype(bool); X0, Y0, R = float(S['x0']), float(S['y0']), float(S['res'])
+    add, pieces = float_fields(sink, S['sd2'], X0, Y0, R, G0)
+    new = add & ~sink
+    S['sink'] = (sink | add).astype(S['sink'].dtype)
+    np.savez_compressed(P + '.tmp.npz', **S); os.replace(P + '.tmp.npz', P)
+    print('float fields:', len(pieces), 'pieces,', int(new.sum()), 'cells added', f'({int(new.sum()) * R * R:.0f} m2)'); print(sorted(pieces, key=lambda p: -p[0]))
+    # and their ground class water (rule 6 on the build's sink grid), on the 1 m class map
+    GP = os.path.join(OUTD, 'ground_pnw.npy'); G = np.load(GP); k = int(round(R))
+    wet = np.repeat(np.repeat(new & (S['sd2'].astype(np.float32) * UNIT < -1.0), k, 0), k, 1)[:G.shape[0], :G.shape[1]]
+    wet = wet & ~np.isin(G[:wet.shape[0], :wet.shape[1]], [CI['water'], CI['sand']])
+    G[:wet.shape[0], :wet.shape[1]][wet] = CI['water']; np.save(GP + '.tmp.npy', G); os.replace(GP + '.tmp.npy', GP)
+    print('ground_pnw cells -> water', int(wet.sum()))
+
+
 WOODS_ZONES = tuple(z for z in os.environ.get('WOODS_ZONES', 'stanley,forest,garden').split(',') if z)
 LCC_UNDER = (6, 7, 13, 15, 16)       # LCC 2020: Conifer, Deciduous, Shadow, Conifer/Paved, Deciduous/Paved
 LCC_OPEN_UNDER = (2, 3, 5, 8)        # LCC 2020: Paved, Other built, Soil, Shrub (10b)
@@ -539,4 +607,4 @@ def stats():
 
 
 if __name__ == '__main__':
-    {'build': build, 'stats': stats, 'post': post, 'woods': woods}[sys.argv[1]]()
+    {'build': build, 'stats': stats, 'post': post, 'woods': woods, 'floats': floats}[sys.argv[1]]()
