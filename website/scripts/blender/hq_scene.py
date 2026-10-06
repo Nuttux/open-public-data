@@ -301,7 +301,10 @@ def road_mat():
     # resurfaced stretches: fresh (darker, cooler) and old (lighter, warmer)
     age = b.noise(0.012, 2.0)
     # [GROUND_V2] fresh stretches a dark NEUTRAL, not cool: the cool ones added to the blue cast (below)
-    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.046, 0.045, 0.043) if E('GROUND_V2', '1') == '1' else (0.035, 0.037, 0.042), 'MIX')
+    # (VT2 06/10) ROAD_V2=<0|1>: these three road bits alone, apart from the rest of GROUND_V2 (Vancouver's snapshot turns GROUND_V2
+    # off: its streets rendered slate blue, sRGB 93,107,128 sunlit, vt1 23_19 = SF's own pre-fix 100,111,126); unset = GROUND_V2's value (SF)
+    RV2 = E('ROAD_V2', E('GROUND_V2', '1')) == '1'
+    c = b.mix(b.ramp(age, 0.0, 0.45, 0.55, 0.7), c, (0.046, 0.045, 0.043) if RV2 else (0.035, 0.037, 0.042), 'MIX')
     c = b.mix(b.ramp(age, 0.45, 0.0, 0.25, 0.4), c, (0.15, 0.14, 0.125))
     c = b.mix(b.ramp(b.noise(0.12, 5.0), 0.0, 0.25), c, (0.55, 0.55, 0.55), 'MULTIPLY')
     # tar snakes: meandering sealed cracks, dark and a little glossy
@@ -318,7 +321,7 @@ def road_mat():
     # the whole street's albedo in one knob (node 'road_k', env ROAD_K): its
     # value times a warm tint, so a brighter street never turns blue-grey
     k_ = float(E('ROAD_K', 1.0))
-    if E('GROUND_V2', '1') == '1':
+    if RV2:
         # [GROUND_V2, assets_ground 28/09] the de-blue bias the ground's paving
         # already has (ground_hq WARM x hill_ground NEU): under the V6 sky fill
         # a grey albedo rendered sRGB 100,111,126 (b0_s54 raw): slate blue, and
@@ -331,7 +334,7 @@ def road_mat():
     c.node.name = 'road_k'
     b.put(b.pr.inputs['Base Color'], c)
     b.put(b.pr.inputs['Roughness'], b.math('SUBTRACT', 0.86, b.math('MULTIPLY', cover, 0.3)))
-    if E('GROUND_V2', '1') == '1' and 'Specular IOR Level' in b.pr.inputs:
+    if RV2 and 'Specular IOR Level' in b.pr.inputs:
         # [GROUND_V2] a dull asphalt: its sheen mirrored the V6 sky as a blue cast (a3_street_o06 still 84,88,94 raw)
         b.pr.inputs['Specular IOR Level'].default_value = 0.25
     b.put(b.pr.inputs['Metallic'], b.math('MULTIPLY', cover, 0.5))
