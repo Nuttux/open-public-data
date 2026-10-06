@@ -82,6 +82,16 @@ SITE_MEDIAN = 2
 # city's street species by genus + cultivar) and its files (veg_pnw.npz, veg_zones_pnw.json, canopy_pnw.npz, veg_city.py
 # pnw); a listed tree drawn at its register height. Unset (SF) = the kit and the files above, unchanged.
 VEG_KIT = os.environ.get('VEG_KIT', '')
+# (VT3 06/10) VEG_GAPFILL=1 [VEG_KIT=pnw] A CLOSED CANOPY WHERE THE LAND COVER SEES ONE: the LiDAR crowns (+ VEG_FOREST_FILL)
+# covered 62 % of Stanley Park's forest from above against LCC 2020's 84-90 % tree (152 crowns/ha of ~4.5 m radius, placed
+# at random: their discs overlap, the floor shows between them and the AI painted it as mown lawn). After the measured
+# crowns, every 2 m cell of the box in a zone of VEG_GAPFILL_ZONES whose ground_city class is 'tree' and that no crown
+# covers (a disc of VEG_GAPFILL_K x the drawn radius) gets one more tree of the stand: leaf type from the LiDAR hint within
+# 4 m, else the zone's measured mix (mass_arch), height of the nearest measured crown x 0.7-1.0 (a younger tree under
+# the old ones). Unset (SF, and Vancouver until VT3) = nothing added.
+VEG_GAPFILL = os.environ.get('VEG_GAPFILL', '0') == '1'
+VEG_GAPFILL_ZONES = tuple(z for z in os.environ.get('VEG_GAPFILL_ZONES', 'stanley,forest').split(',') if z)
+VEG_GAPFILL_K = float(os.environ.get('VEG_GAPFILL_K', '1.0'))
 # [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
 # not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
 TREE_ROAD = os.environ.get('TREE_ROAD', '0') == '1'
@@ -119,6 +129,7 @@ class Kinds:
         idx = {}
         K = VP.kit(); faces = {}
         self.pnw = VEG_KIT == 'pnw'; self.crown_dbh = CROWN_DBH; self.conifers = CONIFERS
+        self.box = box
         files = ('veg.npz', 'veg_zones.json', 'canopy_trees.npz')
         if self.pnw:
             import veg_pnw as VPN
@@ -191,6 +202,7 @@ class Kinds:
         if self.pnw and os.path.exists(gp_):
             gm_ = json.load(open(os.path.join(VEG, 'ground_pnw.json')))
             self.gmap = (np.load(gp_, mmap_mode='r'), float(gm_['x0']), float(gm_['y0']), [gm_['classes'].index(n) for n in ('lawn', 'concrete', 'tree', 'scrub')])
+            self.gmap_tree = gm_['classes'].index('tree')
         log('veg data: listed street trees', nst, 'OSM tree hints', nh, 'zones', len(self.zones))
 
     def _add(self, name, coll, w, h, tall, hmax):
@@ -384,6 +396,58 @@ class Kinds:
         return k, crown, x, y
 
     def canopy(self, seen=()):
+        """the measured crowns (_canopy_measured); [VEG_GAPFILL] then the gaps of a closed canopy filled"""
+        if not (VEG_GAPFILL and self.pnw and self.canopy_on and self.gmap is not None and self.box is not None):
+            yield from self._canopy_measured(seen); return
+        G, gx0, gy0, _ = self.gmap; ti = self.gmap_tree
+        bx0, by0, bx1, by1 = self.box; R = 2.0
+        X0, Y0 = math.floor(bx0 / R) * R - 40, math.floor(by0 / R) * R - 40
+        nx, ny = int(math.ceil((bx1 + 40 - X0) / R)), int(math.ceil((by1 + 40 - Y0) / R))
+        cov = np.zeros((ny, nx), bool); ar = np.arange(-30, 31)
+        def stamp(x, y, r):
+            r = min(r, 60.0) / R; c, w = (x - X0) / R, (y - Y0) / R; ri = int(math.ceil(r))
+            i0, i1, j0, j1 = max(0, int(w) - ri), min(ny, int(w) + ri + 2), max(0, int(c) - ri), min(nx, int(c) + ri + 2)
+            if i0 >= i1 or j0 >= j1: return
+            yy = (np.arange(i0, i1) + 0.5 - w)[:, None]; xx = (np.arange(j0, j1) + 0.5 - c)[None, :]
+            cov[i0:i1, j0:j1] |= (yy * yy + xx * xx) <= r * r
+        hs = []
+        for t in self._canopy_measured(seen):
+            x, y, k, s_, _ = t; stamp(x, y, VEG_GAPFILL_K * 0.5 * self.widths[k] * s_); hs.append((x, y, s_ * self.heights[k]))
+            yield t
+        if not hs: return
+        from mathutils.kdtree import KDTree
+        kt = KDTree(len(hs))
+        for q_, (a, b, _) in enumerate(hs): kt.insert((float(a), float(b), 0.0), q_)
+        kt.balance()
+        # the candidate cells: in the box, a closed zone, ground class 'tree', not yet covered
+        cx = X0 + (np.arange(nx) + 0.5) * R; cy = Y0 + (np.arange(ny) + 0.5) * R
+        CX, CY = np.meshgrid(cx, cy)
+        inb = (CX >= bx0) & (CX < bx1) & (CY >= by0) & (CY < by1)
+        gi, gj = (CY - gy0).astype(int), (CX - gx0).astype(int)
+        ok = inb & (gi >= 0) & (gi < G.shape[0]) & (gj >= 0) & (gj < G.shape[1])
+        tr = np.zeros_like(ok); tr[ok] = np.asarray(G)[gi[ok], gj[ok]] == ti
+        zx0, zy1, zres = self.zo
+        zr, zc = ((zy1 - CY) / zres).astype(int), ((CX - zx0) / zres).astype(int)
+        zok = (zr >= 0) & (zr < self.Z.shape[0]) & (zc >= 0) & (zc < self.Z.shape[1])
+        zi = np.zeros(CX.shape, int); zi[zok] = self.Z[zr[zok], zc[zok]]
+        zin = np.isin(zi, [i for i, z in enumerate(self.zones) if z['name'] in VEG_GAPFILL_ZONES and z['name'] in CAN_ZONES])
+        cand = np.argwhere(tr & zin & ~cov)
+        n_ = 0
+        for i, j in cand:
+            if cov[i, j]: continue
+            x = float(cx[j] + R * (hp(cx[j], cy[i], 181) - 0.5)); y = float(cy[i] + R * (hp(cx[j], cy[i], 182) - 0.5))
+            if (round(x / 2.5), round(y / 2.5)) in seen or self.wet(x, y): continue
+            a, _z = self.mass_arch(x, y)
+            if a not in self.kinds_of or a in PALMS: a = 'v_dfir' if a in self.conifers else 'v_maple'
+            q_ = kt.find((x, y, 0.0))[1]; h = float(hs[q_][2]) * (0.7 + 0.3 * hp(x, y, 183))
+            k = self._kind(a, x, y, h=h)
+            s_ = min(h / max(0.5, self.heights[k]), 1.1 * self.hmax[k] / max(0.5, self.heights[k]))
+            stamp(x, y, VEG_GAPFILL_K * 0.5 * self.widths[k] * s_)
+            self._count(('canopy', a + '+gap')); n_ += 1
+            yield x, y, k, s_, 6.283 * hp(x, y, 5)
+        self.stats[('diag', 'gapfill candidate cells')] = int(len(cand)); self.stats[('diag', 'gapfill trees')] = n_
+
+    def _canopy_measured(self, seen=()):
         """(x, y, kind, scale, rot) per measured crown: the species' proto
         scaled between its measured height and width (height weighs more: the
         silhouette over the roofs), capped at the proto's HMAX; none where the

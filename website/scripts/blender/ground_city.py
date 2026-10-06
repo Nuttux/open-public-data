@@ -25,6 +25,12 @@ What this does (each rule a CONVENTION, from open data only):
   6  the seawall's PROMENADE: OSM ways named '*Seawall*' buffered to 7 m are concrete, and so is the strip from the
      OSM coastline to 3 m inland where no beach is (the wall's coping); seaward of the coastline the class is water
   7  nothing changes outside the city box, on industrial / commercial / retail / railway / port land, or under a road
+  10 (VT3 06/10) THE WOODS' FLOOR: in the closed woods (veg_city zones stanley, forest, garden: WOODS_ZONES), a cell the
+     land cover sees under canopy or in its shadow (LCC Conifer, Deciduous, Shadow, Conifer/Paved, Deciduous/Paved) that
+     rules 1-2 made lawn / asphalt / gravel / dry grass / soil, off every OSM road, path, parking, sidewalk, promenade and
+     beach, is 'tree' (the shaded fern-and-duff floor; veg_hq VEG_GAPFILL plants its crowns): rule 2 had turned LCC's
+     tree-over-paved mixed pixels (a trail under the firs) into mown lawn, 5.7 % of Stanley Park's forest; 10b: a lawn
+     rule 2 made there of LCC Paved / Other built / Soil / Shrub off the OSM ways is scrub (the understorey)
 shore_pnw.npz (quay_wall.py, QW_LINE=osm): the OSM coastline (natural=coastline, land on its left) as segments with a
 beach flag, and its signed distance (+ land) on a 2 m grid, 1 m steps, +-127 m.
 Sources: Metro Vancouver LCC 2020 (OGL-MV) via ground_cls.npy; OpenStreetMap (ODbL), fetched 05/10 into
@@ -297,6 +303,8 @@ def build():
         print(f'rows {r0}-{r1}', f'{time.time() - t0:.0f}s', flush=True)
     if os.environ.get('GROUND_POST', '1') == '1':     # (VT2 06/10) rules 8, 9, 4b
         BB = masks2(M); print('post', dict(post_rules(G, G0, B, BB, auto4)), flush=True); del BB
+    if os.environ.get('GROUND_WOODS', '1') == '1':    # (VT3 06/10) rule 10
+        print('woods', woods_rule(G, B), flush=True)
     np.save(os.path.join(OUTD, 'ground_pnw.npy'), G)
     share = {CLS[k]: round(float(v) / G.size * 100, 2) for k, v in zip(*np.unique(G, return_counts=True))}
     share0 = {CLS[k]: round(float(v) / G0.size * 100, 2) for k, v in zip(*np.unique(G0, return_counts=True))}
@@ -458,6 +466,64 @@ def post():
     print('share after ', J_['share_pct'], f'{time.time() - t0:.0f}s')
 
 
+WOODS_ZONES = tuple(z for z in os.environ.get('WOODS_ZONES', 'stanley,forest,garden').split(',') if z)
+LCC_UNDER = (6, 7, 13, 15, 16)       # LCC 2020: Conifer, Deciduous, Shadow, Conifer/Paved, Deciduous/Paved
+LCC_OPEN_UNDER = (2, 3, 5, 8)        # LCC 2020: Paved, Other built, Soil, Shrub (10b)
+
+def woods_rule(G, B):
+    """rule 10 on G in place: {cells changed by class}; B = masks(M) (roads, paths, parking, sidewalks, promenade, beaches)"""
+    from scipy import ndimage as nd
+    import veg_city as VC, rasterio
+    M = _meta(); x0, y0 = M['x0'], M['y0']
+    D = np.load(os.path.join(OUTD, 'veg_pnw.npz')); Z, (zx0, zy1, zr) = D['zone'], D['zone_origin']
+    names = [z['name'] for z in json.load(open(os.path.join(OUTD, 'veg_zones_pnw.json')))['zones']]
+    W4 = np.isin(Z, [i for i, n in enumerate(names) if n in WOODS_ZONES])
+    with rasterio.open(VC.LCC) as s_: lwkt = s_.crs.to_wkt()
+    src = [CI[n] for n in ('lawn', 'asphalt', 'gravel', 'drygrass', 'soil')]
+    keep = BIT['paved'] | BIT['side'] | BIT['prom'] | BIT['beach']
+    lab, nl = nd.label(nd.binary_dilation(W4, iterations=2)); ch = collections.Counter()
+    for sl in nd.find_objects(lab):
+        # the component's box on the 1 m class grid (zone row 0 = north at zy1; class row 0 = south at y0)
+        X0, X1 = zx0 + sl[1].start * zr, zx0 + sl[1].stop * zr; Ytop, Ybot = zy1 - sl[0].start * zr, zy1 - sl[0].stop * zr
+        c0, c1 = max(0, int(X0 - x0)), min(G.shape[1], int(math.ceil(X1 - x0))); r0, r1 = max(0, int(Ybot - y0)), min(G.shape[0], int(math.ceil(Ytop - y0)))
+        if c0 >= c1 or r0 >= r1: continue
+        g = G[r0:r1, c0:c1]; b = B[r0:r1, c0:c1]
+        xs = x0 + np.arange(c0, c1) + 0.5; ys = y0 + np.arange(r0, r1) + 0.5
+        zc = ((xs - zx0) / zr).astype(int).clip(0, Z.shape[1] - 1); zrow = ((zy1 - ys) / zr).astype(int).clip(0, Z.shape[0] - 1)
+        inw = W4[zrow][:, zc]
+        cand = inw & np.isin(g, src) & ((b & keep) == 0)
+        if not cand.any(): continue
+        ii, jj = np.nonzero(cand)
+        U, V = VC._to(lwkt, xs[jj], ys[ii])
+        L = np.nan_to_num(VC._sample([(VC.LCC, (-1e12, -1e12, 1e12, 1e12))], np.asarray(U), np.asarray(V)), nan=0).astype(np.uint8)
+        hit = np.isin(L, LCC_UNDER)
+        for k in src: ch[CLS[k]] += int((hit & (g[ii, jj] == k)).sum())
+        # 10b: a 'lawn' rule 2 made of the woods' open Paved / Other built / Soil / Shrub cells (a trail or clearing OSM has
+        # no way for, 8 ha in Stanley Park) is the understorey (scrub), not a mown lawn; LCC's own grass stays lawn
+        und = (g[ii, jj] == CI['lawn']) & np.isin(L, LCC_OPEN_UNDER)
+        ch['lawn -> scrub'] += int(und.sum())
+        g[ii[hit], jj[hit]] = CI['tree']; g[ii[und], jj[und]] = CI['scrub']
+    return dict(ch)
+
+
+def woods():
+    """rule 10 on the existing veg/ground_pnw.npy (idempotent; WOODS_KEEP=path keeps the old map there on first run)"""
+    t0 = time.time(); M = _meta(); P = os.path.join(OUTD, 'ground_pnw.npy'); J = os.path.join(OUTD, 'ground_pnw.json')
+    G = np.load(P); before = np.bincount(G.ravel(), minlength=len(CLS))
+    B = masks(M); print('masks', f'{time.time() - t0:.0f}s', flush=True)
+    ch = woods_rule(G, B); del B
+    after = np.bincount(G.ravel(), minlength=len(CLS))
+    keep = os.environ.get('WOODS_KEEP', '')
+    if keep and not os.path.exists(keep): os.replace(P, keep); print('old map ->', keep)
+    np.save(P + '.tmp.npy', G); os.replace(P + '.tmp.npy', P)
+    J_ = json.load(open(J)); J_['woods'] = dict(script='ground_city.py woods (VT3 06/10)', at=time.strftime('%Y-%m-%d %H:%M'), changed=ch,
+                                              zones=list(WOODS_ZONES), lcc_under=list(LCC_UNDER),
+                                              rule='10: in the closed woods, LCC canopy/shadow cells rules 1-2 made lawn/asphalt/gravel/drygrass/soil, off OSM roads/paths/parking/sidewalks/promenade/beaches -> tree; 10b: lawn there on LCC Paved/Other built/Soil/Shrub -> scrub')
+    J_['share_pct'] = {CLS[k]: round(float(v) / G.size * 100, 2) for k, v in enumerate(after) if v}
+    json.dump(J_, open(J, 'w'), indent=1)
+    print('changed', ch, f'{time.time() - t0:.0f}s')
+
+
 BOXES = {'stanley': (-123.1440, 49.3020), 'kits': (-123.1640, 49.2680), 'mtpleasant': (-123.1000, 49.2600),
          'westend': (-123.1360, 49.2860), 'kits_point': (-123.1470, 49.2760)}
 
@@ -473,4 +539,4 @@ def stats():
 
 
 if __name__ == '__main__':
-    {'build': build, 'stats': stats, 'post': post}[sys.argv[1]]()
+    {'build': build, 'stats': stats, 'post': post, 'woods': woods}[sys.argv[1]]()
