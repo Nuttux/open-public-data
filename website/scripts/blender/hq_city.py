@@ -1107,6 +1107,11 @@ if E('QUAY_WALL', '0') == '1':
     try: import quay_wall, cityconf; quay_wall.build(bpy, sc, M, ground, (BOX or [-9000, -9000, 9000, 9000]), cityconf, log)
     except Exception as ex:
         import traceback; traceback.print_exc(); log('quay_wall: FAILED', ex)
+# (VT2 06/10) RAIL_CITY=1 (Vancouver): today's heavy-rail tracks on their ballast + freight cars in the yards (rail_city.py); unset (SF) = nothing
+if E('RAIL_CITY', '0') == '1':
+    try: import rail_city, cityconf; rail_city.build(bpy, sc, ground, (BOX or [-9000, -9000, 9000, 9000]), cityconf, log)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log('rail_city: FAILED', ex)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

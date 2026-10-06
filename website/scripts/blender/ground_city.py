@@ -295,6 +295,8 @@ def build():
         g[((b & BIT['prom']) > 0) & ~bch & (g != CI['water'])] = CI['concrete']
         g[(g == 0)] = CI['asphalt']
         print(f'rows {r0}-{r1}', f'{time.time() - t0:.0f}s', flush=True)
+    if os.environ.get('GROUND_POST', '1') == '1':     # (VT2 06/10) rules 8, 9, 4b
+        BB = masks2(M); print('post', dict(post_rules(G, G0, B, BB, auto4)), flush=True); del BB
     np.save(os.path.join(OUTD, 'ground_pnw.npy'), G)
     share = {CLS[k]: round(float(v) / G.size * 100, 2) for k, v in zip(*np.unique(G, return_counts=True))}
     share0 = {CLS[k]: round(float(v) / G0.size * 100, 2) for k, v in zip(*np.unique(G0, return_counts=True))}
@@ -303,6 +305,157 @@ def build():
               rules='see ground_city.py docstring (V-VEG 05/10)', source=M.get('source', '') + '; OpenStreetMap (ODbL) 05/10')
     json.dump(M2, open(os.path.join(OUTD, 'ground_pnw.json'), 'w'), indent=1)
     print('before', share0); print('after ', share); print('changed', M2['changed_share'], f'{time.time() - t0:.0f}s')
+
+
+
+# ---- (VT2 06/10) rules 8, 9, 4b on the built map: `ground_city.py post` (idempotent; build() runs it too) ----
+# vt1 (06/10) showed: the CPR / Waterfront / False Creek Flats yards as a pale beige plain (their LCC cells are Paved / Other
+# built = asphalt / concrete, drawn as a lot), which the AI painted as an invented park; arterials and downtown streets as
+# full right-of-way asphalt (commercial land is not 'soft', so rule 2 never gave their sidewalks back: secondary lanes=4
+# median 34.8 m of asphalt across); bare 'soil' patches >= 300 m2 in parks.
+#   8  RAIL: OSM railway=rail (any service: main, yard, siding, spur, crossover; not in a tunnel / building passage /
+#      covered, not on a bridge) buffered to BALLAST_W are gravel (= ballast; ground_hq GROUND_PNW shades gravel as
+#      ballast); inside OSM landuse=railway, asphalt / concrete / soil / grass / sand cells off the street right of way and
+#      off parking are gravel too (the yard between the tracks)
+#   9  RIGHT OF WAY: the scene's street mesh (STREETS_FROM layers, the City's whole right of way) rasterised; inside it and
+#      off the carriageway (OSM centreline buffered to its width: the OSM width tag, else lanes x LANE_W + 1 m gutters, never
+#      under the class width of ROAD_W for a two-way street; service ways and cycle tracks as rule 2), the cells are the
+#      boulevard: in residential / park areas lawn (OSM sidewalks concrete), elsewhere concrete (the commercial sidewalk);
+#      inside the carriageway a cell rule 2 made lawn where the land cover saw Paved is asphalt again
+#   4b soil in a park (OSM green land) is lawn unless on a pitch (the ball diamonds' real infields) or construction land
+RAIL_OSM = C.work('transit', 'rail_osm.json')   # Overpass 06/10 (ODbL), cities/vancouver/transit/rail_q.txt
+BALLAST_W = 4.4
+LANE_W = 3.3
+B2 = {'row': 1, 'car': 2, 'track': 4, 'yard': 8, 'pitch': 16, 'parking': 32}
+
+
+def carriageway_w(t):
+    """kerb-to-kerb width (m) of an OSM highway way, None = not a road"""
+    h = t.get('highway')
+    if h == 'service': return SERVICE_W.get(t.get('service'), 4.5)
+    w0 = ROAD_W.get(h)
+    if w0 is None: return None
+    try: wt = float(str(t.get('width', '')).replace('m', '').split(';')[0])
+    except ValueError: wt = 0.0
+    if 3.0 <= wt <= 40.0: return wt
+    try: n = int(str(t.get('lanes', '')).split(';')[0])
+    except ValueError: n = 0
+    if n <= 0: return w0
+    w = n * LANE_W + 1.0
+    return w if t.get('oneway') in ('yes', '-1', 'true') else max(w, w0)
+
+
+def row_mask(M):
+    """the street mesh's right of way on the class grid (bool), cached packed in veg/row_pnw.npz"""
+    ny, nx = M['shape']; cache = os.path.join(OUTD, 'row_pnw.npz')
+    if os.path.exists(cache):
+        z = np.load(cache); return np.unpackbits(z['m'], count=ny * nx).reshape(ny, nx).astype(bool)
+    import base64
+    from PIL import Image, ImageDraw
+    lays = [l for l in os.environ.get('STREETS_FROM', 'street-uncovered').split(',') if l] + ['streets']
+    d = json.load(open(C.work('city', 'scene.json'))); im = Image.new('L', (nx, ny), 0); dr = ImageDraw.Draw(im); nt = 0
+    for m in d['meshes']:
+        if m.get('layer') not in lays or m.get('instanced'): continue
+        T = np.frombuffer(base64.b64decode(m['pos']), np.float32).reshape(-1, 3, 3)[:, :, :2].astype(np.float64)
+        T[:, :, 0] -= M['x0']; T[:, :, 1] -= M['y0']
+        for t in T.tolist(): dr.polygon([tuple(p) for p in t], fill=1)
+        nt += len(T)
+    del d
+    a = np.asarray(im, np.uint8) > 0; del im, dr
+    np.savez_compressed(cache, m=np.packbits(a.ravel()), shape=np.array([ny, nx]), layers=','.join(lays), tris=nt)
+    print('row mask: triangles', nt, 'cells', int(a.sum()), flush=True)
+    return a
+
+
+def masks2(M):
+    """B2 bit field: right of way, carriageway (lanes widths), rail tracks, rail yards, pitches, parking"""
+    cv = Canvas(M); B = np.zeros((cv.ny, cv.nx), np.uint8); n = collections.Counter()
+    B[row_mask(M)] |= B2['row']
+    hw = json.load(open(C.work('critic', 'osm', 'highways.json'))); osm = json.load(open(os.path.join(OSM, 'osm.json')))
+    rl = json.load(open(RAIL_OSM)) if os.path.exists(RAIL_OSM) else {'elements': []}
+    jobs = collections.defaultdict(list)
+    for e in hw['elements']:
+        t = e.get('tags', {}); g = e.get('geometry')
+        if not g or e['type'] != 'way' or t.get('tunnel') == 'yes' or t.get('bridge') == 'yes': continue
+        w = carriageway_w(t)
+        if w is not None: jobs['car'].append(('l', g, w))
+        elif t.get('highway') == 'cycleway': jobs['car'].append(('l', g, 2.5))
+    for t, gs, typ in _ways(rl):
+        if t.get('railway') == 'rail' and t.get('tunnel') in (None, 'no') and t.get('bridge') in (None, 'no') and t.get('covered') in (None, 'no'):
+            jobs['track'] += [('l', g, BALLAST_W) for g in gs]
+        if t.get('landuse') == 'railway' and (typ == 'relation' or all(len(g) > 2 and g[0] == g[-1] for g in gs)):
+            jobs['yard'] += [('a', g, 0) for g in gs]
+    for t, gs, typ in _ways(osm):
+        closed = typ == 'relation' or all(len(g) > 2 and g[0] == g[-1] for g in gs)
+        if closed and t.get('leisure') == 'pitch': jobs['pitch'] += [('a', g, 0) for g in gs]
+        if closed and t.get('amenity') == 'parking': jobs['parking'] += [('a', g, 0) for g in gs]
+    for key, js in jobs.items():
+        im, dr = cv.new()
+        for kind, g, w in js:
+            p = cv.pts(g)
+            if kind == 'a' and len(p) >= 3: dr.polygon(p, fill=1); n[key] += 1
+            elif kind == 'l' and len(p) >= 2: dr.line(p, fill=1, width=max(1, int(round(w)))); n[key] += 1
+        a = np.asarray(im, dtype=np.uint8); B |= (a * B2[key]).astype(np.uint8); del a, im, dr
+    print('osm drawn (post)', dict(n), flush=True)
+    return B
+
+
+def post_rules(G, G0, B, BB, auto4=None):
+    """rules 8, 9, 4b on G in place (row blocks); returns a Counter of changed cells per rule"""
+    ny, nx = G.shape; ch = collections.Counter(); ci4 = None
+    if auto4 is not None: ci4 = (np.arange(nx) // 4).clip(0, auto4.shape[1] - 1)
+    for r0 in range(0, ny, 2048):
+        r1 = min(ny, r0 + 2048); g = G[r0:r1]; b = B[r0:r1]; bb = BB[r0:r1]; g0 = G0[r0:r1]
+        auto = auto4[(np.arange(r0, r1) // 4).clip(0, auto4.shape[0] - 1)][:, ci4] if auto4 is not None else False
+        soft = (((b & (BIT['res'] | BIT['green'])) > 0) | auto) & ((b & BIT['grey']) == 0)
+        row = (bb & B2['row']) > 0; car = (bb & B2['car']) > 0; side = (b & BIT['side']) > 0
+        trk = (bb & B2['track']) > 0; yard = (bb & B2['yard']) > 0; park_ = (bb & B2['parking']) > 0
+        water = g == CI['water']
+        # rule 9: the right of way
+        off = row & ~car & ~trk
+        m_ = off & soft & ~side & np.isin(g, [CI['asphalt'], CI['gravel'], CI['drygrass'], CI['tree'], CI['none'], CI['soil'], CI['sand']])
+        g[m_] = CI['lawn']; ch['9 row boulevard lawn'] += int(m_.sum())
+        m_ = off & soft & side & (g != CI['concrete']) & ~water; g[m_] = CI['concrete']; ch['9 row sidewalk (soft)'] += int(m_.sum())
+        m_ = off & ~soft & np.isin(g, [CI['asphalt'], CI['gravel'], CI['drygrass'], CI['tree'], CI['none'], CI['soil'], CI['sand']])
+        g[m_] = CI['concrete']; ch['9 row sidewalk'] += int(m_.sum())
+        m_ = row & car & (g == CI['lawn']) & (g0 == CI['asphalt']); g[m_] = CI['asphalt']; ch['9 carriageway asphalt again'] += int(m_.sum())
+        # rule 8: rail
+        m_ = trk & ~water & (g != CI['gravel']); g[m_] = CI['gravel']; ch['8 track ballast'] += int(m_.sum())
+        m_ = yard & ~row & ~park_ & np.isin(g, [CI['asphalt'], CI['concrete'], CI['soil'], CI['drygrass'], CI['sand'], CI['none']])
+        g[m_] = CI['gravel']; ch['8 yard ballast'] += int(m_.sum())
+        # rule 4b: no bare soil in a park but on a pitch or construction land
+        m_ = (g == CI['soil']) & ((b & BIT['green']) > 0) & ((bb & B2['pitch']) == 0) & ((b & BIT['soilok']) == 0)
+        g[m_] = CI['lawn']; ch['4b park soil lawn'] += int(m_.sum())
+    return ch
+
+
+def _auto4(G0):
+    from scipy import ndimage as nd
+    G4 = np.asarray(G0[::4, ::4])
+    v4 = nd.uniform_filter(np.isin(G4, [CI['lawn'], CI['tree'], CI['scrub'], CI['drygrass']]).astype(np.float32), 15)
+    b4 = nd.uniform_filter((G4 == 0).astype(np.float32), 15)
+    return (v4 >= AUTO_VEG) & (b4 < 0.5)
+
+
+def post():
+    """rules 8, 9, 4b on the existing veg/ground_pnw.npy (the old map kept as ground_pnw.npy.pre_post on first run)"""
+    t0 = time.time(); M = _meta(); P = os.path.join(OUTD, 'ground_pnw.npy'); J = os.path.join(OUTD, 'ground_pnw.json')
+    G0 = np.load(os.path.join(GRD, 'ground_cls.npy'), mmap_mode='r')
+    G = np.load(P); before = np.bincount(G.ravel(), minlength=len(CLS))
+    B = masks(M); print('masks', f'{time.time() - t0:.0f}s', flush=True)
+    BB = masks2(M); print('masks2', f'{time.time() - t0:.0f}s', flush=True)
+    ch = post_rules(G, G0, B, BB, _auto4(G0)); del B, BB
+    after = np.bincount(G.ravel(), minlength=len(CLS))
+    keep = os.environ.get('POST_KEEP', '')
+    if keep and not os.path.exists(keep): os.replace(P, keep); print('old map ->', keep)
+    np.save(P + '.tmp.npy', G); os.replace(P + '.tmp.npy', P)
+    J_ = json.load(open(J)); J_['post'] = dict(script='ground_city.py post (VT2 06/10)', at=time.strftime('%Y-%m-%d %H:%M'), changed=dict(ch),
+                                             rules='8 rail ballast, 9 right of way boulevards / sidewalks (lanes widths), 4b park soil',
+                                             source='OSM railway / landuse=railway (Overpass 06/10, ODbL); scene street mesh (City right of way)')
+    J_['share_pct'] = {CLS[k]: round(float(v) / G.size * 100, 2) for k, v in enumerate(after) if v}
+    json.dump(J_, open(J, 'w'), indent=1)
+    print('changed', dict(ch)); print('share before', {CLS[k]: round(float(v) / G.size * 100, 2) for k, v in enumerate(before) if v})
+    print('share after ', J_['share_pct'], f'{time.time() - t0:.0f}s')
 
 
 BOXES = {'stanley': (-123.1440, 49.3020), 'kits': (-123.1640, 49.2680), 'mtpleasant': (-123.1000, 49.2600),
@@ -320,4 +473,4 @@ def stats():
 
 
 if __name__ == '__main__':
-    {'build': build, 'stats': stats}[sys.argv[1]]()
+    {'build': build, 'stats': stats, 'post': post}[sys.argv[1]]()
