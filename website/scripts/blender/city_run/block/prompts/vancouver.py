@@ -21,11 +21,11 @@ V_KIND = {
     'lowrise': (' Fairview and False Creek South: three- and four-storey wood-frame and concrete apartment blocks and townhouses with dark'
                 ' shingle or flat roofs.'),
     'houses_w': (' Vancouver\'s west side: large wooden Craftsman and Tudor-style houses with steep gable roofs of dark charcoal asphalt'
-                 ' shingle, some with moss, wooden siding in deep colours, clipped hedges and deep green lawns; its street trees are tall maples,'
-                 ' flowering cherries and dark conifers.'),
+                 ' shingle, some with moss, wooden siding in deep colours, clipped hedges and deep green lawns; its street trees are mixed'
+                 ' broadleaf trees, mostly tall maples, and dark conifers, all in full green summer leaf.'),
     'houses_e': (' East Vancouver: narrow wooden houses with steep gable roofs of dark grey asphalt shingle, mixed with boxy two-storey houses'
                  ' with a shallow-pitched roof and stucco-and-brick walls, wooden siding in deep colours, small green front gardens, back'
-                 ' lanes with garages, and grass boulevards; its street trees are maples and flowering cherries.'),
+                 ' lanes with garages, and grass boulevards; its street trees are mixed broadleaf trees, mostly maples, in full green summer leaf.'),
     'park': (' Stanley Park: a dense, tall temperate rainforest of dark-green Douglas fir, western red cedar and hemlock with lighter'
              ' deciduous maples at its edges, mown green lawns, and the paths, roads and seawall exactly where the render shows them.'),
     'port': (' The working port and industrial flats: flat warehouse roofs of grey and white metal, concrete wharves, rail yards, asphalt'
@@ -34,3 +34,13 @@ V_KIND = {
 }
 for k_, c_ in V_KIND.items(): P['van_' + k_] = V_BASE + c_ + ('' if k_ == 'port' else V_GREEN)
 P['van_base'] = V_BASE + V_GREEN   # no area kind
+# (VT2 06/10) vt1: the CPR / Waterfront yards were painted as an invented park. prep_b8 adds '_rail' to the tile's area key
+# where >= block.rail_min m of OSM heavy-rail track crosses it (rails_city.py); the render now draws the tracks (rail_city.py)
+# on ballast (ground_city rule 8). No vegetation noun at all (a negated 'garden' planted gardens, VR3).
+V_RAIL = (' The railway tracks and rail yards stay exactly where the render shows them: parallel steel rails on dark grey-brown'
+          ' gravel ballast and wooden ties, freight cars standing on the yard tracks; a rail yard is bare ballast and track from edge to edge.')
+V_KEEP = ' Every roof, street, lot and track keeps exactly the surface the render shows.'   # V_GREEN's 'nothing dry or dusty' would green the yards
+for k_, c_ in V_KIND.items(): P['van_' + k_ + '_rail'] = V_BASE + c_ + V_RAIL + ('' if k_ == 'port' else V_KEEP)
+P['van_base_rail'] = V_BASE + V_RAIL + V_KEEP
+# (VT2 06/10) vt1's East Van and Kits were painted with too many pink cherries: the houses keys no longer name 'flowering
+# cherries' (the register's share, 18.7k of 184k street trees, is drawn green: summer); 'mixed broadleaf ... summer leaf'

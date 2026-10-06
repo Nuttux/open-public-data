@@ -13,7 +13,9 @@ if not os.path.exists(f'{B}/R_pt.jpg'):
     subprocess.run(['python3', f'{H}/pretone_block.py', 'b8', f'{B}/R_pt.jpg'], env=dict(os.environ, CAMO='0', ROOFN='1', PT_DIR=B), check=True)
 shutil.copy(f'{B}/R_pt.jpg', f'{O}/R_{WN}.jpg'); json.dump(dict(ox=OX, oy=OY), open(f'{O}/R_{WN}.json', 'w')); shutil.copy(f'{B}/R.class.png', f'{O}/C_{WN}.png')
 C = Image.open(f'{B}/R.class.png')
-if CC.BLOCK['rails']: sys.path.insert(0, H); import rails_b8; RL = rails_b8.rail_len([f'{gx},{gy}' for gx in XS for gy in YS])
+RS = ''   # (VT2 06/10) another city's rails: block.rails = its rail_osm.json path -> the tile's area key + block.rail_suffix where >= block.rail_min m of track
+if CC.BLOCK['rails'] and isinstance(CC.BLOCK['rails'], str) and not CC.SF: sys.path.insert(0, H); import rails_city; RL = rails_city.rail_len([f'{gx},{gy}' for gx in XS for gy in YS]); RS = CC.BLOCK.get('rail_suffix', '_rail')
+elif CC.BLOCK['rails']: sys.path.insert(0, H); import rails_b8; RL = rails_b8.rail_len([f'{gx},{gy}' for gx in XS for gy in YS])
 else: RL = {f'{gx},{gy}': 0 for gx in XS for gy in YS}   # no rail data for this city: one prompt key
 AK = CC.prompt_area_keys([(gx, gy) for gx in XS for gy in YS]) if CC.BLOCK.get('prompt_areas') else {}   # city area keys (SF: none)
 L = []; keep = []; nr = 0
@@ -21,7 +23,8 @@ for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]
     for gx in XS:
         if wat[:, gx - OX:gx - OX + 1024].mean() > 0.95: keep.append(f'{gx}_{gy}'); continue
-        k = RK if RL[f'{gx},{gy}'] >= 10 else AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
+        if RS: k = AK.get((gx, gy), 'v5_dry') + (RS if RL[f'{gx},{gy}'] >= CC.BLOCK.get('rail_min', 60) else ''); nr += k.endswith(RS)
+        else: k = RK if RL[f'{gx},{gy}'] >= 10 else AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
         sd = int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16); L.append(f'C9:{gx},{gy} out/{WN}/{gx}_{gy}.jpg - {k} {sd}')
 json.dump(keep, open(f'{O}/water_tiles.json', 'w')); n = int(os.environ.get('SPLIT', 1))
 LOOK = {}
