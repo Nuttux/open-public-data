@@ -17,7 +17,7 @@ Which type a building is: the record's own key (b['vtype'], set by the types pas
 (VAN_TYPES or look/types/types.json when it carries a gid map), else a rule on the record (use, year, height, footprint,
 district). Draws are seeded by gid on their own Random, so no other draw of the generator moves.
 
-Env: VAN_COLOUR=0 off · VAN_PAL=<palettes.json> · VAN_TYPES=<gid->type json> · VAN_SAT (1.0) · VAN_COLOUR_ERAS=1 also in
+Env: VAN_COLOUR=0 off · VAN_PAL=<palettes.json> · VAN_TYPES=<gid->type json> · VAN_SAT (1.0) · VAN_WALL_GAIN=r,g,b (VT2) · VAN_COLOUR_ERAS=1 also in
 past years (default: today only)."""
 import json, math, os, random
 
@@ -53,6 +53,10 @@ class Colour:
     def __init__(self, pal, types, pal_path):
         self.P, self.T, self.path = pal, types, pal_path
         self.sat = float(os.environ.get('VAN_SAT', 1.0))
+        # (VT2 06/10) VAN_WALL_GAIN=r,g,b: a linear gain on a painted (non-brick) wall's body, the V6 light's cast taken off. vt1's walls
+        # (class-mask wall regions, 23_19 + 12_14) rendered x0.63, x0.73, x0.86 of their palettes' linear mean (55 % blue-hued vs 0-29 %
+        # in the palettes; saturation median 0.125 vs 0.24 for character houses): the cast fully, the exposure in part (shaded faces)
+        self.wgain = tuple(float(v) for v in os.environ['VAN_WALL_GAIN'].split(',')) if os.environ.get('VAN_WALL_GAIN') else None
         self.eras = os.environ.get('VAN_COLOUR_ERAS', '0') == '1'
         self._cc = None
         self.n = {}                                      # draws per type (the hook's own tally, printed by stats())
@@ -132,7 +136,9 @@ class Colour:
         mat = self.material(t, w, rng)
         bw = w
         if mat == 'brick': bw = self.brick_tint(w)
-        else: bw = self.satur(w, self.sat)
+        else:
+            bw = self.satur(w, self.sat)
+            if self.wgain: bw = tuple(min(0.92, (max(0.0, v) ** 2.2) * g) ** (1 / 2.2) for v, g in zip(bw, self.wgain))   # emit()'s 2.2
         gl = gcol
         if gcol is not None and P.get('glass'):
             g = self.pick(rng, P['glass']); gl = (*g, 0.3 if t in ('point_tower', 'podium') else 0.15)
