@@ -11,6 +11,11 @@ V_BASE = BASE_DRY.replace('at clear midday: high sun, neutral daylight,',
 assert V_BASE != BASE_DRY and 'water' not in V_BASE and V_BASE.startswith('Turn this 3D render into a real aerial photograph')
 V_GREEN = (' Vancouver is a lush, green Pacific Northwest city: lawns and leaves are deep green, conifers dark green, nothing dry or dusty.'
            ' Every roof, street and lot keeps exactly the surface the render shows.')
+V_WOODS = (' an old-growth temperate rainforest, a dense, closed, tall canopy of dark-green Douglas fir, western red cedar and western'
+           ' hemlock crowns touching each other, with a few lighter bigleaf maples and red alders; the shaded forest floor between the'
+           ' trunks is dark fern and salal understorey; the paths, roads and seawall stay exactly where the render shows them.')
+V_GREEN_WOODS = (' Vancouver is a lush, green Pacific Northwest city: leaves are deep green, conifers dark green, nothing dry or dusty.'
+                 ' Every roof, street and lot keeps exactly the surface the render shows.')
 V_KIND = {
     'towers': (' Downtown Vancouver: slender residential towers with blue-green and green-grey tinted glass curtain walls, thin light mullions'
                ' and glass balcony bands; concrete and brick towers stay concrete and brick.' + GLASS),
@@ -26,13 +31,16 @@ V_KIND = {
     'houses_e': (' East Vancouver: narrow wooden houses with steep gable roofs of dark grey asphalt shingle, mixed with boxy two-storey houses'
                  ' with a shallow-pitched roof and stucco-and-brick walls, wooden siding in deep colours, small green front gardens, back'
                  ' lanes with garages, and grass boulevards; its street trees are mixed broadleaf trees, mostly maples, in full green summer leaf.'),
-    'park': (' Stanley Park: a dense, tall temperate rainforest of dark-green Douglas fir, western red cedar and hemlock with lighter'
-             ' deciduous maples at its edges, mown green lawns, and the paths, roads and seawall exactly where the render shows them.'),
+    # (VT3 06/10) vt2 painted Stanley Park's floor between thin crowns as striped mown grass: the key named 'mown green lawns' and
+    # V_GREEN 'lawns'. Now an old-growth clause with no ground-cover noun but the understorey (a negated word plants it, VR3);
+    # the render's real openings (Brockton Oval, the Pavilion) keep their surface by 'keeps exactly the surface the render shows'
+    'park': (' Stanley Park:' + V_WOODS),
+    'forest': (' Pacific Spirit Park:' + V_WOODS),
     'port': (' The working port and industrial flats: flat warehouse roofs of grey and white metal, concrete wharves, rail yards, asphalt'
              ' and gravel yards, and cranes and container stacks only where the render shows them; plain and functional.'),
     'gi': (' Granville Island: low industrial sheds and market halls of corrugated metal painted in bright colours, with flat tar roofs.'),
 }
-for k_, c_ in V_KIND.items(): P['van_' + k_] = V_BASE + c_ + ('' if k_ == 'port' else V_GREEN)
+for k_, c_ in V_KIND.items(): P['van_' + k_] = V_BASE + c_ + ('' if k_ == 'port' else V_GREEN_WOODS if k_ in ('park', 'forest') else V_GREEN)
 P['van_base'] = V_BASE + V_GREEN   # no area kind
 # (VT2 06/10) vt1: the CPR / Waterfront yards were painted as an invented park. prep_b8 adds '_rail' to the tile's area key
 # where >= block.rail_min m of OSM heavy-rail track crosses it (rails_city.py); the render now draws the tracks (rail_city.py)
@@ -44,3 +52,4 @@ for k_, c_ in V_KIND.items(): P['van_' + k_ + '_rail'] = V_BASE + c_ + V_RAIL + 
 P['van_base_rail'] = V_BASE + V_RAIL + V_KEEP
 # (VT2 06/10) vt1's East Van and Kits were painted with too many pink cherries: the houses keys no longer name 'flowering
 # cherries' (the register's share, 18.7k of 184k street trees, is drawn green: summer); 'mixed broadleaf ... summer leaf'
+assert all('lawn' not in P[k_] and 'stripe' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'van_forest', 'van_park_rail', 'van_forest_rail'))   # (VT3) the woods keys name no lawn
