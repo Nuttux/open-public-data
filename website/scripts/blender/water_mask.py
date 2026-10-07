@@ -123,6 +123,56 @@ def close_port_notches(raw, zmin=1.5):
           f'({hit.sum() * RES * RES / 1e4:.1f} ha)')
     return raw
 
+def river_lcc(raw, zone_y=None, min_px=250):
+    """(FIX4 07/10, not SF) the Fraser's arms from the city's finer land cover. The engine's water south of the city is its
+    open-water sheet minus the 'surround' land, and that surround (ESA WorldCover, 18 m, coarse triangles) covers half
+    the North Arm off Musqueam / Sea Island (render sw: the river ~40 % of its width) and leaves Mitchell Island open
+    (render evs: the sheet over the island, its trees standing in water). South of world y = zone_y (the river reaches;
+    nothing north of it changes: the inlet, False Creek, English Bay keep the City's shoreline), wherever
+    ground/ground_cls_raw.npy (Metro Vancouver LCC 2020, 5 m, the whole region) has a class, the water is LCC 'water':
+    the arms at full width, the sloughs, the islands land. Specks opened away; water patches < min_px (1,000 m2) dropped.
+    RIVER_LCC=0 = before; RIVER_ZONE_Y overrides zone_y (default -3000: 49.229 N, south of every inlet shore)."""
+    import cv2
+    cj = f'{D}/../city.json'
+    if not os.path.exists(cj): print('river lcc: no city.json, skipped'); return raw
+    cfg = json.load(open(cj)); eng = cfg['engine']
+    gm = os.path.join(os.path.dirname(eng.rstrip('/')), 'ground', 'ground_meta.json')
+    if not os.path.exists(gm): print('river lcc: no land cover, skipped'); return raw
+    if zone_y is None: zone_y = float(os.environ.get('RIVER_ZONE_Y', -3000.0))
+    M = json.load(open(gm)); G = np.load(os.path.join(os.path.dirname(gm), 'ground_cls_raw.npy'), mmap_mode='r')
+    i0 = max(0, int(np.ceil(H - (zone_y - oy) / RES)))           # first sea row whose centre lies south of zone_y
+    if i0 >= H: return raw
+    Ys = oy + (H - np.arange(i0, H) - 0.5) * RES; Xs = ox + (np.arange(W) + 0.5) * RES
+    gi = np.floor((Ys - M['y0']) / M['res']).astype(int); gj = np.floor((Xs - M['x0']) / M['res']).astype(int)
+    ri = (gi >= 0) & (gi < G.shape[0]); ci = (gj >= 0) & (gj < G.shape[1])
+    cls = np.full((H - i0, W), 255, np.uint8)
+    cls[np.ix_(ri, ci)] = np.asarray(G[gi[ri]][:, gj[ci]])
+    have = (cls != 255) & (cls != M['classes'].index('none'))     # 'none' (LCC Buildings / Shadow): the engine's answer stays
+    wat = (cls == M['classes'].index('water')).astype(np.uint8)
+    wat = cv2.morphologyEx(wat, cv2.MORPH_OPEN, np.ones((2, 2), np.uint8))
+    n, lab, st, _ = cv2.connectedComponentsWithStats(wat, connectivity=8)
+    small = np.zeros(n, bool); small[1:] = st[1:, cv2.CC_STAT_AREA] < min_px; wat[small[lab]] = 0
+    lw = os.path.join(os.path.dirname(eng.rstrip('/')), 'lidar', 'nowater_sea2m.npz')       # lidar_water_city.py
+    if os.path.exists(lw) and os.environ.get('RIVER_LIDAR', '1') == '1':
+        # the LiDAR's no-return water (2025) joined to it where it is one sheet with the land cover's water: the log-boom
+        # sloughs LCC calls 'other built' between thin channels. Not on LCC buildings (dark roofs return nothing either)
+        z = np.load(lw); assert int(z['w']) == W and int(z['h']) == H and float(z['ox']) == ox and float(z['oy']) == oy, 'nowater grid != sea grid'
+        lv = (z['frac'][i0:] > 160) & np.unpackbits(z['cov'][i0:], axis=1, count=W).astype(bool)
+        bld = cv2.dilate((cls == M['classes'].index('none')).astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+        lv = cv2.morphologyEx((lv & ~bld).astype(np.uint8), cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+        n, lab, st, _ = cv2.connectedComponentsWithStats(lv, connectivity=8)
+        touch = np.zeros(n, bool); touch[np.unique(lab[cv2.dilate(wat, np.ones((7, 7), np.uint8)) > 0])] = True
+        keep = touch & (st[:, cv2.CC_STAT_AREA] >= min_px); keep[0] = False
+        add = keep[lab] & (wat == 0) & have
+        print(f'river lcc: + LiDAR no-return water joined to it {add.sum() * RES * RES / 1e4:.0f} ha ({int(keep.sum())} patches)')
+        wat[add] = 1
+    sub = raw[i0:].copy(); before = sub[have] > 0
+    sub[have] = np.where(wat[have] > 0, 255, 0).astype(np.uint8); after = sub[have] > 0
+    raw = raw.copy(); raw[i0:] = sub
+    print(f'river lcc: zone y < {zone_y:.0f} ({have.sum() * RES * RES / 1e6:.1f} km2 with a class): water {before.sum() * RES * RES / 1e4:.0f} ha -> '
+          f'{after.sum() * RES * RES / 1e4:.0f} ha; made water {(after & ~before).sum() * RES * RES / 1e4:.0f} ha, made land {(before & ~after).sum() * RES * RES / 1e4:.0f} ha')
+    return raw
+
 img = Image.new('L', (W, H), 0); dr = ImageDraw.Draw(img)
 n = 0
 for m in d['meshes']:
@@ -144,6 +194,7 @@ raw = np.asarray(img, dtype=np.uint8).copy()
 if os.environ.get('CITY', 'sf') != 'sf':
     raw = close_limit_gap(raw)
     raw = close_port_notches(raw)
+    if os.environ.get('RIVER_LCC', '1') == '1': raw = river_lcc(raw)
 # outside the exported box nothing was exported: carry the box's own edge
 # outward, so a bay that runs off the frame keeps running
 bx0, bx1 = int(PAD / RES), W - int(PAD / RES) - 1
