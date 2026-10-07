@@ -789,6 +789,16 @@ if VEG:
         def on_street(x, y):
             if sbv.ray_cast(Vector((x, y, 3000.0)), Vector((0, 0, -1)))[0] is None: return False
             return not _mdp or _mdk.find((x, y, 0.0))[2] > 1.1
+    if E('TREE_KERB_SNAP', '0') == '1' and _kp:
+        # (FIX4 07/10, Vancouver; unset = SF, nothing) a listed tree left in the road: the nearest kerb point, 0.8 m on past it
+        def _kerb_snap(x, y):
+            q_ = _kk.find((x, y, 0.0))
+            if q_[2] > 8.0: return None
+            kx, ky = q_[0].x, q_[0].y; dx, dy = kx - x, ky - y; L_ = math.hypot(dx, dy)
+            if L_ < 1e-3: return (kx, ky)
+            px, py = kx + dx / L_ * 0.8, ky + dy / L_ * 0.8
+            return (px, py) if not roofed(px, py) else (kx, ky)
+        VK.kerb_snap = _kerb_snap
     protos, widths, heights, TALL, HMAX = VK.protos, VK.widths, VK.heights, VK.tall, VK.hmax
 else:
     STREET = [t for a in ('island_tree_01', 'island_tree_02', 'island_tree_03', 'tree_small_02', 'jacaranda_tree') for t in load_collection(a)]
@@ -1112,6 +1122,12 @@ if E('RAIL_CITY', '0') == '1':
     try: import rail_city, cityconf; rail_city.build(bpy, sc, ground, (BOX or [-9000, -9000, 9000, 9000]), cityconf, log)
     except Exception as ex:
         import traceback; traceback.print_exc(); log('rail_city: FAILED', ex)
+# (FIX4 07/10) PORT_CITY=1 (Vancouver): the terminals' container stacks, STS cranes, bulk piles, silos (port_city.py, data from
+# port_city_prep.py: LiDAR 2025); unset (SF) = nothing
+if E('PORT_CITY', '0') == '1':
+    try: import port_city, cityconf; port_city.build(bpy, sc, ground, (BOX or [-9000, -9000, 9000, 9000]), cityconf, log)
+    except Exception as ex:
+        import traceback; traceback.print_exc(); log('port_city: FAILED', ex)
 
 # ── camera, light, render in tiles ───────────────────────────────────────────
 fwd = Vector(d['camForward']).normalized()

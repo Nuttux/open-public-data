@@ -35,6 +35,10 @@ def build(sc, ground0, box=None, log=print, streets_obj=None):
                                      for s_ in (-0.9, 0.0, 0.9) for q_ in (-1.1, 1.1))]
         log(f'port_containers: {n0 - len(C)} stacks off the streets')
     if not C: return None
+    return emit(bpy, sc, C, ground0, log)
+
+def emit(bpy, sc, C, ground0, log=print, name='port_boxes'):
+    """the boxes of the stacks C ([{x, y, a, L, t, c}]) as one mesh (also port_city.py's, FIX4 07/10: another city's yards)"""
     V, F, FC, VU = [], [], [], []
     for c in C:
         a = c['a']; ux, uy = math.cos(a), math.sin(a); vx, vy = -uy, ux; L = c['L']
@@ -50,12 +54,12 @@ def build(sc, ground0, box=None, log=print, streets_obj=None):
             dark = tuple(x * 0.72 for x in col)
             F += [(k + 4, k + 5, k + 6, k + 7), (k, k + 1, k + 5, k + 4), (k + 1, k + 2, k + 6, k + 5), (k + 2, k + 3, k + 7, k + 6), (k + 3, k, k + 4, k + 7)]
             FC += [col, col, dark, col, tuple(x * 0.9 for x in col)]     # the door end darker (the gear)
-    me = bpy.data.meshes.new('port_boxes'); me.from_pydata(V, [], F); me.update()
+    me = bpy.data.meshes.new(name); me.from_pydata(V, [], F); me.update()
     ca = me.color_attributes.new('bcol', 'FLOAT_COLOR', 'FACE')
     for i, col in enumerate(FC): ca.data[i].color = (*col, 1.0)
     at = me.attributes.new('cu', 'FLOAT', 'POINT'); at.data.foreach_set('value', VU)
     me.update()
-    ob = bpy.data.objects.new('port_boxes', me); sc.collection.objects.link(ob); me.materials.append(_mat())
+    ob = bpy.data.objects.new(name, me); sc.collection.objects.link(ob); me.materials.append(_mat())
     log(f'port_containers: {len(C)} stacks, {len(FC) // 5} boxes')
     return ob
 
