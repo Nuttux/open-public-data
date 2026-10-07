@@ -16,6 +16,7 @@ def bmask(m): m = m > 128; return m[..., 1] & ~m[..., 0] & ~m[..., 2]
 def sandy(rgb):
     a = rgb.astype(np.int16); r, g, b = a[..., 0], a[..., 1], a[..., 2]
     return (r - b >= 18) & (g - b >= 8) & (r >= g - 4) & (r + g + b >= 390)
+def seaish(rgb): a = rgb.astype(np.int16); return (a[..., 2] - a[..., 0] >= 40) & (a[..., 2] - a[..., 1] >= 12) & (a[..., 2] >= 120)
 def greenish(rgb): a = rgb.astype(np.int16); return (a[..., 1] > a[..., 0] + 6) & (a[..., 1] > a[..., 2] + 2)
 
 def measure(code, mask=None, rgb=None):
@@ -23,7 +24,12 @@ def measure(code, mask=None, rgb=None):
     d = dict(bld=float((bmask(mask) if mask is not None else np.isin(code, (2, 6))).sum()) / n,
              open=float(np.isin(code, (0, 1, 3)).sum()) / n, ground=float(gr.sum()) / n,
              tree=float((code == 3).sum()) / n, water=float((code == 1).sum()) / n)
-    if rgb is not None: d.update(sand=float((gr & sandy(rgb)).sum()) / n, grass=float((gr & greenish(rgb)).sum()) / n)
+    if rgb is not None:
+        d.update(sand=float((gr & sandy(rgb)).sum()) / n, grass=float((gr & greenish(rgb)).sum()) / n)
+        # (step2 07/10) Vancouver's class pass leaves the near-shore sea of English Bay as code 7 'other' (27-39 % of 72960_35200 / 72960_34560):
+        # sea-coloured code-7 px (not a building) count as water and open, so those tiles get van_shore
+        s7 = float(((code == 7) & seaish(rgb) & ~(bmask(mask) if mask is not None else False)).sum()) / n
+        d['water'] += s7; d['open'] += s7
     return d
 
 def open_key(d):
@@ -36,7 +42,7 @@ def open_key(d):
     if d['tree'] >= TREE_WOODS: return 'van_woods'
     return 'van_meadow'
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
-WATER_SHORE = 0.30
+WATER_SHORE = 0.25
 KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
 def block_content(blk, tiles, ox, oy, s=4):

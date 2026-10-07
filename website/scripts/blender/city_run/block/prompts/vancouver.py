@@ -63,9 +63,9 @@ V_OPEN = ('Turn this 3D render into a real aerial photograph taken from the air 
           ' move nothing.')
 V_LUSH = ' Everything is lush and green, nothing dry or dusty.'   # not on the beach key: it would green the sand
 V_OPEN_KIND = {
-    'beach': (' A wide public sandy beach on Vancouver\'s west side: pale tan sand, long rows of grey bleached driftwood logs lying'
-              ' parallel to each other across the sand, the paved seawall path running along the back of the beach, and low tufts of'
-              ' dune grass where the sand meets the park; the open sand stays open sand from edge to edge.'),
+    'beach': (' A wide public sandy beach on Vancouver\'s west side: pale tan sand with a few scattered single grey bleached'
+              ' driftwood logs, the paved seawall path running along the back of the beach, and low tufts of'
+              ' dune grass where the sand meets the park; sand only where the render shows sand, and grass and trees exactly where the render shows them.'),
     'meadow': (' A big open public park on Vancouver\'s west side: wide, flat, open green meadow grass, a few single broadleaf trees and dark'
                ' conifers standing apart, and narrow gravel and asphalt footpaths, all in full green summer leaf; the open grass stays'
                ' open grass from edge to edge.'),
@@ -79,11 +79,13 @@ _NOBLD = ('build', 'house', 'home', 'roof', 'wall', 'tower', 'footprint', 'store
           'hut', 'pavilion', 'structure', 'residen', 'apartment', 'tudor', 'craftsman', 'garage', 'lot ', 'lots', 'street', 'chimney', 'water')
 assert all(w_ not in P['van_' + k_].lower().replace('seawall', 'sea_path').replace('understorey', 'underlayer') for k_ in list(V_OPEN_KIND) + ['park', 'forest'] for w_ in _NOBLD), 'an open-ground key names a building word'
 assert all('lawn' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'van_forest', 'van_woods'))
+# (step2 b, 07/10) the 'long rows of parallel driftwood logs' clause painted dense grey log rows (read as pipes / bleachers, 30 of kits'
+# 37 remaining invent flags) and sand over meadows: a few scattered single logs now.
 # (OPEN-GROUND step2 07/10) van_shore: a mostly-open tile with >= 30 % render sea (tile_content.WATER_SHORE). The open keys name no water, and
 # on houses_w / meadow the AI ignored the sea of whole shoreline tiles (Tudor streets, a painted horizon). This one names the sea where the render has it.
 P['van_shore'] = (V_OPEN.replace('existing ground, paths and trees.', 'existing sea, sand, paths and trees.')
                   + ' A stretch of the shore on Vancouver\'s west side: the calm deep blue sea of English Bay with natural sun glitter covers exactly'
                     ' the area the render shows as sea, seen from above out to the edge of the frame; only where the render shows land, a pale tan'
-                    ' sandy beach with grey bleached driftwood logs and the paved seawall path.')
+                    ' sandy beach with a few scattered single driftwood logs, and grass and trees exactly where the render shows them.')
 assert all(w_ not in P['van_shore'].lower().replace('seawall', 'sea_path') for w_ in _NOBLD if w_ != 'water') and 'horizon' not in P['van_shore'] and 'sky' not in P['van_shore']
 
