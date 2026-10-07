@@ -92,6 +92,9 @@ VEG_KIT = os.environ.get('VEG_KIT', '')
 VEG_GAPFILL = os.environ.get('VEG_GAPFILL', '0') == '1'
 VEG_GAPFILL_ZONES = tuple(z for z in os.environ.get('VEG_GAPFILL_ZONES', 'stanley,forest').split(',') if z)
 VEG_GAPFILL_K = float(os.environ.get('VEG_GAPFILL_K', '1.0'))
+# (VEG-EXTEND 07/10) [pnw] beyond the LiDAR crowns (LidarBC 2025 stops at y ~ 9 km: the North Shore, the far rows and
+# columns) a box has no measured crown to take the stand height from: the gaps are then filled at VEG_GAPFILL_H m (0 = none, the old rule)
+VEG_GAPFILL_H = float(os.environ.get('VEG_GAPFILL_H', '28'))
 # [TREE_ROAD, 30/09, block52_v8: round trees on the Embarcadero's lanes] TREE_ROAD=1: hq_city passes a STRICT on-road test (asphalt hit,
 # not a laid median; no 1.2 m kerb tolerance), every tree on the road is moved within 2 m off it or dropped, median-coded ones too
 TREE_ROAD = os.environ.get('TREE_ROAD', '0') == '1'
@@ -420,11 +423,11 @@ class Kinds:
         for t in self._canopy_measured(seen):
             x, y, k, s_, _ = t; stamp(x, y, VEG_GAPFILL_K * 0.5 * self.widths[k] * s_); hs.append((x, y, s_ * self.heights[k]))
             yield t
-        if not hs: return
+        if not hs and VEG_GAPFILL_H <= 0: return
         from mathutils.kdtree import KDTree
-        kt = KDTree(len(hs))
+        kt = KDTree(len(hs)) if hs else None
         for q_, (a, b, _) in enumerate(hs): kt.insert((float(a), float(b), 0.0), q_)
-        kt.balance()
+        if kt is not None: kt.balance()
         # the candidate cells: in the box, a closed zone, ground class 'tree', not yet covered
         cx = X0 + (np.arange(nx) + 0.5) * R; cy = Y0 + (np.arange(ny) + 0.5) * R
         CX, CY = np.meshgrid(cx, cy)
@@ -445,7 +448,7 @@ class Kinds:
             if (round(x / 2.5), round(y / 2.5)) in seen or self.wet(x, y): continue
             a, _z = self.mass_arch(x, y)
             if a not in self.kinds_of or a in PALMS: a = 'v_dfir' if a in self.conifers else 'v_maple'
-            q_ = kt.find((x, y, 0.0))[1]; h = float(hs[q_][2]) * (0.7 + 0.3 * hp(x, y, 183))
+            h = (float(hs[kt.find((x, y, 0.0))[1]][2]) if kt is not None else VEG_GAPFILL_H) * (0.7 + 0.3 * hp(x, y, 183))
             k = self._kind(a, x, y, h=h)
             s_ = min(h / max(0.5, self.heights[k]), 1.1 * self.hmax[k] / max(0.5, self.heights[k]))
             stamp(x, y, VEG_GAPFILL_K * 0.5 * self.widths[k] * s_)
