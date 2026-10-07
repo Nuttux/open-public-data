@@ -34,7 +34,7 @@ def open_key(d):
     if d['tree'] >= TREE_WOODS: return 'van_woods'
     return 'van_meadow'
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
-KEEP_AREA = ('van_park', 'van_forest')   # area keys already open-ground (Stanley Park, Pacific Spirit: QA'd faithful) stay
+KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
 def block_content(blk, tiles, ox, oy, s=4):
     """{(gx, gy): measure} for 1024-px tiles of a block dir (R.class.png / R.mask.png / R.jpg), read at 1/s (cv2 reduced decode)"""

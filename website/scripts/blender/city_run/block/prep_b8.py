@@ -21,7 +21,8 @@ AK = CC.prompt_area_keys([(gx, gy) for gx in XS for gy in YS]) if CC.BLOCK.get('
 CK = {}   # (OPEN-GROUND 07/10, CITY != sf) content keys: a mostly-open tile (render buildings <= 8 %, open >= 60 %) -> van_beach / van_meadow / van_woods
 if not CC.SF and AK and os.environ.get('CONTENT_KEYS', '1') == '1':   # (block/tile_content.py) instead of its area key (houses_w invented mansions on Jericho's meadows)
     sys.path.insert(0, H); import tile_content as TC_; TCD = TC_.block_content(B, [(gx, gy) for gx in XS for gy in YS], OX, OY)
-    CK = {t: TC_.open_key(d) for t, d in TCD.items() if TC_.open_key(d) and AK.get(t) not in TC_.KEEP_AREA}; json.dump({f'{gx}_{gy}': d for (gx, gy), d in TCD.items()}, open(f'{O}/content.json', 'w'))
+    CK = {t: TC_.open_key(d) for t, d in TCD.items() if TC_.open_key(d) and AK.get(t) not in TC_.KEEP_AREA}
+    CK.update({t: AK[t] + '_bld' for t, d in TCD.items() if AK.get(t) in TC_.KEEP_AREA and d['bld'] > TC_.BLD_MAX})   # woods area tile with real buildings: the old building-naming text; json.dump({f'{gx}_{gy}': d for (gx, gy), d in TCD.items()}, open(f'{O}/content.json', 'w'))
 L = []; keep = []; nr = 0
 for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]

@@ -72,6 +72,10 @@ V_OPEN_KIND = {
     'woods': (' A Pacific Northwest park woodland:' + V_WOODS),
 }
 for k_, c_ in V_OPEN_KIND.items(): P['van_' + k_] = V_OPEN + c_ + ('' if k_ == 'beach' else V_LUSH)
+# (OPEN-GROUND 07/10) the woods area keys too: on V_BASE (building / roof / tower words) kits' van_forest tiles got invented houses in
+# Pacific Spirit (16 of 119 tiles flagged by block/invent_det.py). Same woods clause, on the building-free V_OPEN.
+for k_ in ('park', 'forest'): P['van_' + k_ + '_bld'] = P['van_' + k_]; P['van_' + k_] = V_OPEN + V_KIND[k_] + V_LUSH   # _bld = the old V_BASE text, for woods tiles with render buildings (prep_b8)
 _NOBLD = ('build', 'house', 'home', 'roof', 'wall', 'tower', 'footprint', 'storey', 'stories', 'mansion', 'villa', 'cottage', 'cabin', 'shed',
           'hut', 'pavilion', 'structure', 'residen', 'apartment', 'tudor', 'craftsman', 'garage', 'lot ', 'lots', 'street', 'chimney', 'water')
-assert all(w_ not in P['van_' + k_].lower().replace('seawall', 'sea_path').replace('understorey', 'underlayer') for k_ in V_OPEN_KIND for w_ in _NOBLD), 'an open-ground key names a building word'
+assert all(w_ not in P['van_' + k_].lower().replace('seawall', 'sea_path').replace('understorey', 'underlayer') for k_ in list(V_OPEN_KIND) + ['park', 'forest'] for w_ in _NOBLD), 'an open-ground key names a building word'
+assert all('lawn' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'van_forest', 'van_woods'))

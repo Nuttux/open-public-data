@@ -33,6 +33,12 @@ TH_NEW = dict(quay=5000, bridge=4000, roofgrn=3000, garden=8000, flat=2)
 # the look_regain detectors re-roll a tile only where they are quiet on clean b8 tiles (their own TH flagged 20 of 40 random tiles);
 # the rest of them go to the report only
 TH_DET_AUTO = dict(roof_road=30000, water_roof=5000, street_teal=12000, lawn=20000, water_street=15000)
+# (OPEN-GROUND 07/10) CITY != sf: + 'invent' (block/invent_det.py): roof-like AI px (low chroma, not green, far from the render) in big
+# thick straight-edged blobs where the render has only grass / trees / sand, far from any render building (kits vt: Tudor mansions on
+# Jericho / Locarno / Spanish Banks). Kits x2 scan: 93 / 1391 tiles, 10 / 10 of a random sample true; 6_13 / 11_15 house rows 0. SF: off.
+INVENT = os.environ.get('CITY', '') not in ('', 'sf')
+if INVENT:
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'block')); import invent_det; TH_NEW['invent'] = invent_det.TH_INVENT
 FLAT_DE = float(os.environ.get('FLAT_DE', 10.0)); QUAY_R = int(os.environ.get('QUAY_R', 300)); MAX_TRIES = int(os.environ.get('MAX_TRIES', 2))
 _G = {}
 def _det():
@@ -90,6 +96,7 @@ def scores(win, t, o):
     flat = cv2.blur(np.abs(cv2.Laplacian(Lr[..., 0], cv2.CV_32F)), (15, 15)) < 6
     d['garden'] = big(np.isin(c, (2, 4)) & flat & green(o) & ~nd.binary_dilation(green(r) | (c == 3), iterations=6), 2)
     d['tree_roof'] = sum(h[0] for h in tree_roof_hits(c))
+    if INVENT: d['invent'] = invent_det.invent(o, r, c)[0]
     return d
 
 def tree_roof_hits(c, x0=0, y0=0):
