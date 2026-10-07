@@ -5,6 +5,7 @@
 W=/Users/daniel/code/qipu-render-work; POD=$1; N=$2; J=$3; OUT=$4; PG=$5; . $W/cloud/state/lmk_$POD/env
 # (city_run/block, B1) CITY unset = SF: snap/<N>, city/ (as block52/render_b8.sh); another city: lmk_pod.sh's cities/<city>/snap, cities/<city>/city
 if [ "${CITY:-sf}" = sf ]; then SNR=snap; CDR=city; else SNR=cities/$CITY/snap; CDR=cities/$CITY/city; fi; HERE=$(cd "$(dirname "$0")" && pwd)
+CDR=${BLK_CDR:-$CDR}   # (FIX4 07/10) BLK_CDR: another scene dir under $W (cities/vancouver/city_fix4: the Fraser sea.png); unset = as before
 SSHO="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ServerAliveInterval=30 -o ConnectTimeout=20"
 X() { ssh -p $PORT $SSHO root@$IP "$@"; }
 one() { L=$1; IJ=$2; BD=$3; shift 3; touch $W/cloud/state/lmk_$POD/last; t0=$(date +%s)
