@@ -53,3 +53,25 @@ P['van_base_rail'] = V_BASE + V_RAIL + V_KEEP
 # (VT2 06/10) vt1's East Van and Kits were painted with too many pink cherries: the houses keys no longer name 'flowering
 # cherries' (the register's share, 18.7k of 184k street trees, is drawn green: summer); 'mixed broadleaf ... summer leaf'
 assert all('lawn' not in P[k_] and 'stripe' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'van_forest', 'van_park_rail', 'van_forest_rail'))   # (VT3) the woods keys name no lawn
+# (OPEN-GROUND 07/10) kits vt: the houses_w key painted big Tudor mansions over Jericho / Locarno / Spanish Banks meadows and beach,
+# where the render has only grass, trees and sand (city_today/kits_beach_strip.jpg). prep_b8 now gives a mostly-open tile (render
+# buildings <= 8 %, open ground >= 60 %, block/tile_content.py) one of these keys. They are written from scratch, NOT on V_BASE:
+# BASE names building / roof / walls / tower / footprint, and even a negated noun plants the thing (VR3). No water word (BASE_DRY rule).
+V_OPEN = ('Turn this 3D render into a real aerial photograph taken from the air at clear midday in Vancouver, British Columbia: high sun,'
+          ' clean, cool Pacific Northwest daylight, crisp and sharp, real photographic materials on the existing ground, paths and trees.'
+          ' Strict edit: keep every path, tree and open surface exactly where it is, same framing and camera; add nothing, remove nothing,'
+          ' move nothing.')
+V_LUSH = ' Everything is lush and green, nothing dry or dusty.'   # not on the beach key: it would green the sand
+V_OPEN_KIND = {
+    'beach': (' A wide public sandy beach on Vancouver\'s west side: pale tan sand, long rows of grey bleached driftwood logs lying'
+              ' parallel to each other across the sand, the paved seawall path running along the back of the beach, and low tufts of'
+              ' dune grass where the sand meets the park; the open sand stays open sand from edge to edge.'),
+    'meadow': (' A big open public park on Vancouver\'s west side: wide, flat, open green meadow grass, a few single broadleaf trees and dark'
+               ' conifers standing apart, and narrow gravel and asphalt footpaths, all in full green summer leaf; the open grass stays'
+               ' open grass from edge to edge.'),
+    'woods': (' A Pacific Northwest park woodland:' + V_WOODS),
+}
+for k_, c_ in V_OPEN_KIND.items(): P['van_' + k_] = V_OPEN + c_ + ('' if k_ == 'beach' else V_LUSH)
+_NOBLD = ('build', 'house', 'home', 'roof', 'wall', 'tower', 'footprint', 'storey', 'stories', 'mansion', 'villa', 'cottage', 'cabin', 'shed',
+          'hut', 'pavilion', 'structure', 'residen', 'apartment', 'tudor', 'craftsman', 'garage', 'lot ', 'lots', 'street', 'chimney', 'water')
+assert all(w_ not in P['van_' + k_].lower().replace('seawall', 'sea_path').replace('understorey', 'underlayer') for k_ in V_OPEN_KIND for w_ in _NOBLD), 'an open-ground key names a building word'
