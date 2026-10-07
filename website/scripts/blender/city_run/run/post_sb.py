@@ -433,6 +433,9 @@ def step_finish(sid, only=None):
         mem('colour')
         out, s4 = piers(out, ren, code)
         mem('piers')
+        if not CC.SF:   # (OPEN-GROUND step2 07/10) crude landmark models locked to the render (block/lmk_lock.py; Canada Place painted as houses)
+            sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'block')); import lmk_lock as LL_
+            out, s4['lmk_lock'] = LL_.lock(out, ren, code, box, os.environ.get('CITY', ''))
         fin = out[inner]; Image.fromarray(fin).save(f'{D}/final/f_{y0}.png', compress_level=1)
         nt = 0                                            # z9 tiles (512 px; Q and bands are multiples of 512)
         for ty in range((Q[1] + y0) // 512, (Q[1] + y0 + fin.shape[0]) // 512):

@@ -1,0 +1,7 @@
+{"_doc": "(OPEN-GROUND step2 07/10) landmark models locked to the render after the AI (post_sb lmk_lock, CITY != sf): code-4 (landmark) render px inside each L9 box [x0, y0, x1, y1] (+ PAD). Boxes = the render's code-4 components in work_ct_dt, checked by eye (og_test/dt_lmk.jpg). The crude models get painted as something else (Canada Place = red-roof houses + glass pyramids, audit sheet 01).",
+ "vancouver": {
+  "canada_place": [93368, 33188, 96292, 34232],
+  "bc_place": [92240, 38444, 94604, 40096],
+  "harbour_centre": [93208, 34480, 93996, 35980],
+  "science_world": [98256, 40824, 99164, 41340]
+ }}
