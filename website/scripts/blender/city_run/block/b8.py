@@ -101,6 +101,7 @@ def registry():
     for d in ('tiles_a', 'tiles_b'):
         for f in glob.glob(f'{V}/{d}/*_*.jpg'):
             t = f'{R}/tiles/{os.path.basename(f)}'
+            if os.path.exists(t) and not os.path.samefile(f, t): os.remove(t)   # (OPEN-GROUND step2) a repainted tile: the registry kept the OLD paint
             if not os.path.exists(t): os.link(f, t); n += 1
     kinds = {k: 'render' for k in json.load(open(f'{V}/ai/water_tiles.json'))}
     json.dump(dict(Q=Q, xs=XS, ys=YS, kinds=kinds), open(f'{R}/sb/b8/geom.json', 'w'))
