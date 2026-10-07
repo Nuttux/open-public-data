@@ -375,6 +375,12 @@ class Kinds:
                 p = (x, y)          # [VEG_KIT=pnw] on its boulevard: it stays (not moved 4 m into a front yard)
                 if on_street(x, y): self._count(('street', 'boulevard_kept'))
             else: p = self._off_street(x, y, on_street, roofed, reach=2.0 if TREE_ROAD else 4.0)
+            if p is None and getattr(self, 'kerb_snap', None) is not None:
+                # (FIX4 07/10, TREE_KERB_SNAP=1, another city) a listed tree the reach could not get off the asphalt goes to its
+                # street's edge (the nearest kerb, 0.8 m past it) instead of away: Vancouver's sidewalk tree pits stand 1.2-4 m
+                # inside the engine's road surface (4.6 % of the register dropped a crop, up to 13 %)
+                p = self.kerb_snap(x, y)
+                if p is not None: self._count(('street', 'kerb_snapped'))
             if p is None:
                 self._count(('street', 'in_road_dropped')); return None
             if p != (x, y): self._count(('street', 'off_road')); x, y = p

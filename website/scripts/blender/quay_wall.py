@@ -112,7 +112,7 @@ def sink(bpy, sc, C, box, log=print, pad=60.0):
             co[low, 2] = tgt[low]; me.vertices.foreach_set('co', co.ravel()); me.update()
             n_tot += int(low.sum())
     # the water surface over the strip the sea sheet leaves cut (coast_land: land), 2 m cells at the sheet's height + 5 mm
-    cl = C.work('landmarks', 'coast_land.npz'); sea_m = bpy.data.materials.get('sea')
+    cl = os.environ.get('COAST_LAND_FILE') or C.work('landmarks', 'coast_land.npz'); sea_m = bpy.data.materials.get('sea')
     nq = 0
     if os.path.exists(cl) and sea_m is not None:
         z = np.load(cl); cres, cx0, cy1 = float(z['res']), float(z['x0']), float(z['y1']); CS = z['sd_dm'].astype(np.float32) / 10.0
@@ -169,7 +169,7 @@ def boulevards(bpy, sc, C, box, log=print):
 
 def build(bpy, sc, M, ground, box, cityconf, log=print):
     C = cityconf
-    cl = C.work('landmarks', 'coast_land.npz')
+    cl = os.environ.get('COAST_LAND_FILE') or C.work('landmarks', 'coast_land.npz')
     if not os.path.exists(cl): log('quay_wall: no coast_land.npz'); return 0
     osm_ = os.environ.get('QW_LINE', '') == 'osm' and _shore(C) is not None
     if os.environ.get('QW_BLVD', '0') == '1':

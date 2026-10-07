@@ -488,7 +488,7 @@ def _correct(d, log, box, sd, res, far, pad, t0):
     log(f'terrain_hq: scene re-draped ({time.time() - t0:.1f}s)')
     return True
 
-COAST = '/Users/daniel/code/qipu-render-work/landmarks/coast_land.npz'
+COAST = os.environ.get('COAST_LAND_FILE') or '/Users/daniel/code/qipu-render-work/landmarks/coast_land.npz'   # (FIX4) COAST_LAND_FILE: a rebuilt line (unset = SF / live)
 _CL = None
 def _coast(X, Y):
     """(land: 1 land, 0 water, -1 outside the coastline mask; sd: signed
