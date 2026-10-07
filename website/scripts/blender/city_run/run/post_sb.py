@@ -80,7 +80,11 @@ def compose(out, ren, code):
     near = nd.distance_transform_edt(~wat) <= 60; cand = near & np.isin(code, (4, 7)); plant = np.zeros_like(wat)
     for y in range(0, out.shape[0], 2048):
         s = slice(y, min(out.shape[0], y + 2048)); La, Lr = lab(out[s])[..., 1], lab(ren[s])[..., 1]; plant[s] = cand[s] & (La < 120) & (Lr >= 124)
-    m = wat | touch | plant; out[m] = ren[m]; rim = (al > 0) & ~wat & ~m
+    m = wat | touch | plant
+    if not CC.SF:   # (OPEN-GROUND step2 07/10) another city: the render's sea the class pass left as code 0 / 7 (block/shore_water.py)
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'block')); import shore_water as SW_
+        sw = SW_.render_water(ren, code) & ~m; st['shore_water'] = int(sw.sum()); m |= sw; del sw
+    out[m] = ren[m]; rim = (al > 0) & ~wat & ~m
     if rim.any(): out[rim] = (out[rim] * (1 - al[rim][:, None]) + ren[rim] * al[rim][:, None]).astype(np.uint8)
     st.update(docks_render=int(touch.sum()), plants_fixed=int(plant.sum())); return out, st
 

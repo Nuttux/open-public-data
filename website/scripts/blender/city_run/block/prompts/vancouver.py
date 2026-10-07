@@ -79,3 +79,11 @@ _NOBLD = ('build', 'house', 'home', 'roof', 'wall', 'tower', 'footprint', 'store
           'hut', 'pavilion', 'structure', 'residen', 'apartment', 'tudor', 'craftsman', 'garage', 'lot ', 'lots', 'street', 'chimney', 'water')
 assert all(w_ not in P['van_' + k_].lower().replace('seawall', 'sea_path').replace('understorey', 'underlayer') for k_ in list(V_OPEN_KIND) + ['park', 'forest'] for w_ in _NOBLD), 'an open-ground key names a building word'
 assert all('lawn' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'van_forest', 'van_woods'))
+# (OPEN-GROUND step2 07/10) van_shore: a mostly-open tile with >= 30 % render sea (tile_content.WATER_SHORE). The open keys name no water, and
+# on houses_w / meadow the AI ignored the sea of whole shoreline tiles (Tudor streets, a painted horizon). This one names the sea where the render has it.
+P['van_shore'] = (V_OPEN.replace('existing ground, paths and trees.', 'existing sea, sand, paths and trees.')
+                  + ' A stretch of the shore on Vancouver\'s west side: the calm deep blue sea of English Bay with natural sun glitter covers exactly'
+                    ' the area the render shows as sea, seen from above out to the edge of the frame; only where the render shows land, a pale tan'
+                    ' sandy beach with grey bleached driftwood logs and the paved seawall path.')
+assert all(w_ not in P['van_shore'].lower().replace('seawall', 'sea_path') for w_ in _NOBLD if w_ != 'water') and 'horizon' not in P['van_shore'] and 'sky' not in P['van_shore']
+

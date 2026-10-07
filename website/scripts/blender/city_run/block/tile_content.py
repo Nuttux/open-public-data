@@ -30,10 +30,13 @@ def open_key(d):
     """content key for a mostly-open tile, or None (keep the area key). Tuned on kits (07/10, CITY_TODAY_LOG OPEN-GROUND): open tiles
     (Jericho / Locarno / Spanish Banks) bld 0.000-0.080, house tiles (6_13, 11_15, 8_13 east) bld >= 0.10."""
     if d['bld'] > BLD_MAX or d['open'] < OPEN_MIN: return None
-    if d.get('sand', 0) >= SAND_MIN or (d['water'] >= 0.3 and d.get('sand', 0) >= 0.02): return 'van_beach'
+    if d['water'] >= WATER_SHORE: return 'van_shore'   # (step2 07/10) a lot of render sea: the water-safe key (open keys name no water;
+    #   the AI painted Tudor streets / a horizon over the sea of kits 8_13 and 6_13's shore row on houses_w / meadow)
+    if d.get('sand', 0) >= SAND_MIN: return 'van_beach'
     if d['tree'] >= TREE_WOODS: return 'van_woods'
     return 'van_meadow'
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
+WATER_SHORE = 0.30
 KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
 def block_content(blk, tiles, ox, oy, s=4):
