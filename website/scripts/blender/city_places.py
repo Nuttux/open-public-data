@@ -29,7 +29,8 @@ from lm_kit import hexc
 lm_dem.ROOT = C.work('landmarks', 'dem')
 from shapely.geometry import Polygon, Point, shape
 from shapely import affinity
-MODELS = C.work('places', 'models'); os.makedirs(MODELS, exist_ok=True)
+MODELS = os.environ.get('PLACES_MODELS_OUT') or C.work('places', 'models'); os.makedirs(MODELS, exist_ok=True)   # (FIX4) a test set elsewhere
+SKIP_OUT = os.environ.get('LM_SKIP_OUT') or C.work('landmarks', 'skip_gids.json')
 
 def osm_ways():
     """{way id: (tags, shapely polygon in world m)} of the city's OSM building tiles (newbuildings/osm)"""
@@ -227,32 +228,111 @@ def m_rogers():
         K.prism('lm_matte', [(x - 2.5, y - 2), (x + 2.5, y - 2), (x + 2.5, y + 2), (x - 2.5, y + 2)], 35.5, 37.3, hexc('#a5a8a8'))
     return K, c, z0, [list(P.buffer(3).exterior.coords)], [68388]
 
+def _lidar_win(key, box):
+    """(FIX4 07/10) the 2025 LiDAR DSM / DEM on a 1 m world grid over box (rows from the north), cached in landmarks/work so a
+    rerun needs no tiles: (x0, y1, dsm, dem)"""
+    f = C.work('landmarks', 'work', f'fix4_{key}.npz')
+    if not os.path.exists(f):
+        import lidar_city as LC
+        X, Y, S, D = LC.grid(box, 1.0)
+        np.savez_compressed(f, x0=float(box[0]), y1=float(box[3]), dsm=S.astype(np.float32), dem=D.astype(np.float32))
+    z = np.load(f); return float(z['x0']), float(z['y1']), z['dsm'], z['dem']
+
+def _mask_polys(m, x0, y1, simp=1.0, min_area=40.0):
+    """shapely polygons (world m) of a boolean 1 m mask (rows from y1 down)"""
+    import cv2
+    cs, _ = cv2.findContours(m.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE); out = []
+    for c in cs:
+        if len(c) < 3: continue
+        q = Polygon([(x0 + px + 0.5, y1 - py - 0.5) for px, py in c[:, 0, :]]).buffer(0.5).simplify(simp)
+        if q.area >= min_area: out.append(q)
+    return out
+
 def m_canadaplace():
-    """CANADA PLACE (1986): the long pier building at the foot of Howe St - the convention hall and cruise terminal, low and
-    white, under its five white fabric sails in a row along the pier (peaks ~45 m, LiDAR); footprint gid 68768."""
+    """CANADA PLACE (1986): the pier at the foot of Howe St - Vancouver Convention Centre East under the sails, the cruise-ship
+    terminal on its decks, the Pan Pacific hotel block at the shore end, a lower rounded roof at the bow; footprint gid 68768.
+    (FIX4 07/10) The audit: 'crude white box, 3 sails', painted as red-roofed houses and glass pyramids. The 2025 LiDAR DSM
+    (over the water the DEM is empty: heights are DSM - z0) gives every part: the hotel block (DSM > 60 m, roof p85), the
+    hall (24-60 m, its roof the median ~28 m DSM), the bow roof (~26 m) and the sails - TEN peaks in two rows of five
+    (47-55 m DSM, ~25 m over the hall roof): the membrane is the measured DSM itself (1 m, lightly smoothed) over the sail
+    band, white, a steel mast at every peak; the deck at its DSM median (~16 m) all round with the promenade's railing,
+    dark glazing under the deck edge, the bow and the shore end glazed (the glass facades). Commons photos (refs
+    port-terminals 51, downtown 51: viewing only) for the look."""
+    import cv2
+    from scipy import ndimage as nd
+    import shapely
     b = rec(68768); P = Polygon(b['ring']).buffer(0); cc, U, V, hl, hs = axes(P); z0 = z_at(*P.representative_point().coords[0]); K = lm_kit.Kit()
-    c = (P.centroid.x, P.centroid.y)
-    land = np.array(C.proj(-123.1125, 49.2875))                     # the shore end (Canada Place Way): the sails stand at the far end
+    land = np.array(C.proj(-123.1125, 49.2875))
     if np.dot(np.subtract(land, cc), U) > 0: U = -U                   # U points out to sea
+    bx = [math.floor(v) - 10 for v in P.bounds[:2]] + [math.ceil(v) + 10 for v in P.bounds[2:]]
+    x0, y1, S, _ = _lidar_win('canadaplace', tuple(bx))
+    H_, W_ = S.shape; XX, YY = np.meshgrid(x0 + np.arange(W_) + 0.5, y1 - np.arange(H_) - 0.5)
+    inP = shapely.contains_xy(P.buffer(1.0), XX, YY); Sf = np.where(inP, np.nan_to_num(S, nan=0.0), 0.0)
     R = ccw(list(P.simplify(0.8).exterior.coords)[:-1])
-    K.prism('lm_paint', R, -3, 20, hexc('#dcdcd6'), top=True, top_col=hexc('#c6c6c0'), top_mat='lm_matte')
-    K.prism('lm_matte', scaled(R, c, 1.003), 2, 6, DARK, top=False)                            # the promenade glazing
-    for k in range(5):
-        u = hl - 40.0 - k * 31.0                                         # the five sails over the outer half, the bow first
-        from shapely.geometry import LineString
-        cut = P.intersection(LineString([tuple(cc + U * u - V * 2000), tuple(cc + U * u + V * 2000)]))   # the pier's cross-section there
-        segs = list(getattr(cut, 'geoms', [cut])); sg = max(segs, key=lambda g: g.length); base = np.array(sg.interpolate(0.5, normalized=True).coords[0])
-        n = 10; ang0 = math.atan2(U[1], U[0])
-        prof = [(22.0, 19.5), (15.0, 26.5), (8.5, 34.5), (3.5, 41.5), (0.8, 45.5)]
-        rings = []
-        for r, z in prof:
-            ring = []
-            for i in range(n):
-                a = ang0 + 2 * math.pi * i / n; rr = r * (1.0 if i % 2 == 0 else 0.78)            # the scalloped edge between the cables
-                ring.append((base[0] + rr * math.cos(a), base[1] + rr * math.sin(a), z))
-            rings.append(ring)
-        K.loft('lm_paint', rings, WHITE, cap_top=True, smooth=True)
-        K.cyl('lm_steel', (base[0], base[1], 40.0), (base[0], base[1], 48.5), 0.35, STEEL, n=6)
+    tower = nd.binary_opening(Sf > 60, iterations=2)
+    hall = nd.binary_opening((Sf > 23.5) & ~nd.binary_dilation(tower, iterations=3), iterations=3)
+    deck = float(np.median(Sf[inP & ~hall & ~tower & (Sf > 8)])) - z0 if (inP & ~hall & ~tower & (Sf > 8)).any() else 12.0
+    WALL = hexc('#e7e6df'); GL = hexc('#55656c'); ROOF = hexc('#d2d1ca')
+    # the pier and its decks (the cruise terminal's level): white walls, dark glazing under the deck edge
+    K.prism('lm_paint', R, -3, deck, WALL, top=True, top_col=hexc('#c4c3bc'), top_mat='lm_matte')
+    K.prism('lm_matte', scaled(R, (P.centroid.x, P.centroid.y), 1.002), 1.5, deck - 2.0, GL, top=False)
+    # the promenade: a pale walk 4 m wide round the deck, its railing a thin white band
+    ring_in = P.buffer(-4.0)
+    if not ring_in.is_empty:
+        Ri = ccw(list(ring_in.simplify(0.8).exterior.coords)[:-1]) if ring_in.geom_type == 'Polygon' else None
+        K.prism('lm_paint', scaled(R, (P.centroid.x, P.centroid.y), 1.003), deck, deck + 1.1, hexc('#f4f3ee'), top=False)
+        if Ri: K.prism('lm_matte', Ri, deck, deck + 0.25, hexc('#bdb9ad'), top=True)
+    # the sails' band (DSM > hall roof + 3 m): where it ends seaward the bow begins
+    zroof = float(np.median(Sf[hall])) if hall.any() else 28.0
+    sail = nd.binary_opening(hall & (Sf > zroof + 3.0), iterations=1)
+    sail &= ~nd.binary_dilation(tower, iterations=25)                     # not the hotel's terraces
+    lab, n = nd.label(sail); sz = nd.sum(sail, lab, range(1, n + 1)); sail = np.isin(lab, 1 + np.nonzero(sz >= 150)[0])
+    us = (XX[sail] - cc[0]) * U[0] + (YY[sail] - cc[1]) * U[1]; ucut = float(us.max()) + 8.0 if len(us) else hl
+    # the hall and the bow: each part at its own measured roof, white walls glazed at the foot
+    from shapely.geometry import box as sbox
+    cut = affinity.rotate(sbox(ucut, -500, ucut + 1000, 500), math.degrees(math.atan2(U[1], U[0])), origin=(0, 0))
+    cut = affinity.translate(cut, cc[0], cc[1]); parts = []
+    for q in _mask_polys(hall, x0, y1, simp=1.2, min_area=300.0):
+        for g_, bow_ in ((q.difference(cut), False), (q.intersection(cut), True)):
+            for gg in getattr(g_, 'geoms', [g_]):
+                if gg.geom_type == 'Polygon' and gg.area >= 150: parts.append((gg, bow_))
+    for q, bow in parts:
+        qi = shapely.contains_xy(q, XX, YY) & hall
+        if not qi.any(): continue
+        zr = float(np.percentile(Sf[qi & ~sail], 40) if (qi & ~sail).any() else np.percentile(Sf[qi], 40)) - z0
+        Rq = ccw(list(q.exterior.coords)[:-1])
+        K.prism('lm_paint', Rq, deck, zr, WALL if not bow else hexc('#e9e7dc'), top=True, top_col=ROOF if not bow else hexc('#e6dfc6'), top_mat='lm_matte')
+        K.prism('lm_matte', scaled(Rq, (q.centroid.x, q.centroid.y), 1.004), deck + 0.3, deck + 4.0, GL, top=False)
+        if bow: K.prism('lm_matte', scaled(Rq, (q.centroid.x, q.centroid.y), 1.006), deck + 4.0, zr - 1.5, hexc('#7d9097'), top=False)   # the bow's glass
+    # the hotel block at the shore end: banded white with dark window strips
+    tp = _mask_polys(tower, x0, y1, simp=1.0, min_area=200.0); ztop = 0.0
+    for q in tp:
+        qi = shapely.contains_xy(q, XX, YY) & tower; zt = float(np.percentile(Sf[qi], 85)) - z0; ztop = max(ztop, zt)
+        Rq = ccw(list(q.exterior.coords)[:-1]); c_ = (q.centroid.x, q.centroid.y)
+        K.prism('lm_paint', Rq, deck, zt, hexc('#e3e1d9'), top=True, top_col=hexc('#a9a8a2'), top_mat='lm_matte')
+        for k in range(int((zt - deck - 6) // 3.2)):
+            z_ = deck + 4 + k * 3.2; K.prism('lm_matte', scaled(Rq, c_, 1.004), z_, z_ + 1.7, hexc('#3c4a52'), top=False)
+    # the sails: the measured membrane (DSM > roof + 3 m in the hall), 1 m cells, white; masts at the peaks
+    Zs = nd.gaussian_filter(np.where(sail, Sf, zroof), 0.8)
+    grow = nd.binary_dilation(sail, iterations=2)
+    Zs = np.where(sail, np.maximum(Zs, zroof), zroof) - z0
+    idx = -np.ones(sail.shape, np.int64); ys, xs = np.nonzero(grow); idx[ys, xs] = np.arange(len(ys))
+    verts = [(x0 + j + 0.5, y1 - i - 0.5, float(Zs[i, j])) for i, j in zip(ys, xs)]
+    faces = []
+    a, b_, c_, d_ = idx[:-1, :-1], idx[:-1, 1:], idx[1:, 1:], idx[1:, :-1]
+    ok = (a >= 0) & (b_ >= 0) & (c_ >= 0) & (d_ >= 0)
+    for i, j in zip(*np.nonzero(ok)): faces.append((int(a[i, j]), int(d_[i, j]), int(c_[i, j]), int(b_[i, j])))
+    K.mesh('lm_paint', verts, faces, hexc('#f6f6f2'), smooth=True)
+    # the masts stand at the sail band's two long edges, one at each end of every cross ridge (the DSM's bright points)
+    edge = nd.distance_transform_edt(sail) <= 4.0
+    mx = nd.maximum_filter(np.where(sail, Sf, 0), size=13); pk = sail & edge & (Sf >= mx) & (Sf > zroof + 16)
+    pys, pxs = np.nonzero(pk); peaks = []
+    for i, j in sorted(zip(pys, pxs), key=lambda t: -Sf[t]):
+        x, y = x0 + j + 0.5, y1 - i - 0.5
+        if all(math.hypot(x - p[0], y - p[1]) > 11 for p in peaks): peaks.append((x, y, float(Sf[i, j]) - z0))
+    for x, y, z in peaks: K.cyl('lm_steel', (x, y, z - 6.0), (x, y, z + 3.5), 0.3, STEEL, n=6, r1=0.15)
+    print('canada place: deck %.1f, roof %.1f, hall parts %d, hotel %.1f m, sail cells %d, peaks %d (%s)' %
+          (deck, zroof - z0, len(parts), ztop, int(sail.sum()), len(peaks), ', '.join('%.0f' % p[2] for p in peaks)))
     return K, tuple(cc), z0, [list(P.buffer(3).exterior.coords)], [68768]
 
 def m_harbourctr():
@@ -364,22 +444,63 @@ def poly_h(P, q=90):
 
 SILVER = hexc('#c9ced3'); GLASS = hexc('#9fb0b4')
 
+def _icosphere(n_sub):
+    """unit icosphere: (verts, triangles)"""
+    t = (1 + 5 ** 0.5) / 2
+    V = [(-1, t, 0), (1, t, 0), (-1, -t, 0), (1, -t, 0), (0, -1, t), (0, 1, t), (0, -1, -t), (0, 1, -t), (t, 0, -1), (t, 0, 1), (-t, 0, -1), (-t, 0, 1)]
+    V = [tuple(np.array(v) / np.linalg.norm(v)) for v in V]
+    F = [(0, 11, 5), (0, 5, 1), (0, 1, 7), (0, 7, 10), (0, 10, 11), (1, 5, 9), (5, 11, 4), (11, 10, 2), (10, 7, 6), (7, 1, 8),
+         (3, 9, 4), (3, 4, 2), (3, 2, 6), (3, 6, 8), (3, 8, 9), (4, 9, 5), (2, 4, 11), (6, 2, 10), (8, 6, 7), (9, 8, 1)]
+    for _ in range(n_sub):
+        mid = {}; F2 = []
+        def m(a, b):
+            k = (min(a, b), max(a, b))
+            if k not in mid:
+                v = (np.array(V[a]) + np.array(V[b])) / 2; V.append(tuple(v / np.linalg.norm(v))); mid[k] = len(V) - 1
+            return mid[k]
+        for a, b, c in F:
+            ab, bc, ca = m(a, b), m(b, c), m(c, a); F2 += [(a, ab, ca), (b, bc, ab), (c, ca, bc), (ab, bc, ca)]
+        F = F2
+    return V, F
+
 def m_sciworld():
-    """SCIENCE WORLD (Expo Centre, 1986): the silver geodesic sphere at the head of False Creek, on a low glazed base.
+    """SCIENCE WORLD (Expo Centre, 1986): the silver geodesic sphere at the head of False Creek, on a low white base.
     2025 LiDAR: top 46.1 m over the ground; the sphere's sections (r 16.8 m at 30 m, 15.8 at 35, 12.8 at 40, 6.6 at 44)
-    fit a ball of R 16.5 m centred 29.6 m up at (1911.5, 1875.8); the base under it ~13 m (DSM p50). Footprint gid 68330
-    (the 2015 record: a 40 m drum over the whole 6,200 m2 outline)."""
+    fit a ball of R 16.5 m centred 29.6 m up at (1911.5, 1875.8); the base under it ~11 m (DSM p50 in the 18-45 m ring,
+    16 m p90: the south wing). Footprint gid 68330 (the 2015 record: a 40 m drum over the whole 6,200 m2 outline).
+    (FIX4 07/10) The audit: painted as a glass ball on a brown wooden pavilion (the render: a smooth white ball over a dark
+    glazed floor and a matte tan deck). Now the ball is a geodesic icosphere (1,280 flat triangles, alternate panels a shade
+    apart: the facets read at 9 cm/px), and the base white / pale grey with a thin glazing band and a light deck. (No mast:
+    the LiDAR has no point over 18.4 m within 70 m of the ball but the ball itself.)"""
     b = rec(68330); P = Polygon(b['ring']).buffer(0); c = (1911.5, 1875.8); z0 = z_at(*c); K = lm_kit.Kit()
     R = ccw(list(P.simplify(0.8).exterior.coords)[:-1]); zb = min(z_at(*p) for p in R) - z0 - 1.5
-    K.prism('lm_matte', R, zb, 4.5, DARK, top=False)                                            # glazed ground floor
-    K.prism('lm_paint', R, 4.5, 9.0, CONC, top=True, top_col=hexc('#b9bab5'), top_mat='lm_matte')  # the base's deck
-    K.cyl('lm_paint', (c[0], c[1], 8.5), (c[0], c[1], 14.0), 9.0, CONC, n=24)                   # the drum the sphere sits on
-    Rs, zc, prof = 16.5, 29.6, []
-    for k in range(13):                                                                          # flat facets: geodesic look
-        a = -math.pi / 2 + math.pi * k / 12; prof.append((max(0.25, Rs * math.cos(a)), zc + Rs * math.sin(a)))
-    prof[0] = (max(prof[0][0], 6.0), prof[0][1])
-    K.lathe('lm_steel', c[0], c[1], 0, prof, SILVER, n=30, smooth=False)
+    WH = hexc('#e9e9e4'); K.prism('lm_paint', R, zb, 9.0, WH, top=True, top_col=hexc('#d6d7d3'), top_mat='lm_matte')   # the white base, light deck
+    K.prism('lm_matte', scaled(R, (P.centroid.x, P.centroid.y), 1.003), 1.0, 3.6, hexc('#5f6e76'), top=False)        # glazing band at the foot
+    K.prism('lm_paint', scaled(R, (P.centroid.x, P.centroid.y), 1.004), 8.4, 9.2, hexc('#f4f4f0'), top=False)         # the deck's white edge
+    K.cyl('lm_paint', (c[0], c[1], 8.5), (c[0], c[1], 14.0), 9.0, hexc('#dcdcd7'), n=24)                             # the drum the sphere sits on
+    Rs, zc = 16.5, 29.6; Vs, Fs = _icosphere(3)
+    A_ = hexc('#cfd4d8'); B_ = hexc('#b4bbc1')
+    for k, (a, b_, c_) in enumerate(Fs):
+        tri = [(c[0] + Rs * Vs[i][0], c[1] + Rs * Vs[i][1], zc + Rs * Vs[i][2]) for i in (a, b_, c_)]
+        if (tri[0][2] + tri[1][2] + tri[2][2]) / 3 < zc - Rs * 0.82: continue                # hidden in the drum
+        K.face('lm_steel', tri, A_ if (k % 4) else B_)
     return K, c, z0, [list(P.buffer(3).exterior.coords)], [68330]
+
+def m_suntower():
+    """SUN TOWER (1912, W. T. Whiteway; 128 W Pender at Beatty): the beaux-arts office tower, once the British Empire's
+    tallest, its buff terracotta shaft topped by a green copper dome and lantern. Engine: podium gid 68461 (32.5 m, kept)
+    and the LiDAR tower split 2000000293 (207 m2, a flat 74 m box: the audit found no dome). 2025 LiDAR over the ground:
+    area >= 60 m 184 m2, >= 65 m 109, >= 70 m 16, top 76.2 at (1581.3, 2730.7): a shaft to ~61 m, the dome from there
+    (r ~7.6 m at 60, 5.9 at 65, 2.3 at 70) and the lantern to 76 m. (FIX4 07/10)"""
+    b = rec(2000000293); P = Polygon(b['ring']).buffer(0); c = (1581.3, 2730.4); z0 = z_at(*c); K = lm_kit.Kit()
+    R = ccw(list(P.simplify(0.4).exterior.coords)[:-1]); zb = min(z_at(*p) for p in R) - z0 - 1.0; pc = (P.centroid.x, P.centroid.y)
+    BUFF = hexc('#cdb994'); CU = hexc('#6f9a86')
+    K.prism('lm_paint', R, zb, 59.0, BUFF, top=True, top_col=hexc('#9c927f'), top_mat='lm_matte')
+    for z_ in np.arange(36.0, 58.0, 3.6): K.prism('lm_matte', scaled(R, pc, 1.004), z_, z_ + 1.6, hexc('#4a4a46'), top=False)   # window rows
+    K.prism('lm_paint', scaled(R, pc, 1.03), 59.0, 60.5, hexc('#e0d3b6'), top=False)                                         # the cornice
+    K.lathe('lm_paint', c[0], c[1], 0, [(7.6, 60.5), (7.6, 62.0), (7.0, 64.5), (5.9, 66.5), (4.2, 68.6), (2.4, 70.3), (1.4, 71.0)], CU, n=24, smooth=True)
+    K.lathe('lm_paint', c[0], c[1], 0, [(1.5, 71.0), (1.5, 73.6), (0.9, 74.2), (0.2, 76.2)], hexc('#5f8a76'), n=12, smooth=False)  # the lantern
+    return K, c, z0, [list(P.buffer(1.0).exterior.coords)], [2000000293]
 
 def m_spacectr():
     """H. R. MACMILLAN SPACE CENTRE / MUSEUM OF VANCOUVER (1968): a round building under its conical 'Haida hat' roof in
@@ -428,6 +549,18 @@ def m_marine():
     step(130, (949.6, 3444.6), 82.0, 88.5, CU, CU)                                                  # the crown
     step(40, (949.6, 3444.6), 88.5, 93.0, CU, CU)
     K.cyl('lm_steel', (949.6, 3444.6, 93.0), (949.6, 3444.6, 95.0), 0.6, STEEL, n=6, r1=0.2)
+    # (FIX4 07/10, audit: 'present, weak') the shaft's vertical piers - light terracotta ribs every ~3 m on each face,
+    # dark spandrels between - the Deco striping that tells it from the glass towers round it
+    sh = Polygon(scaled(R, (953.0, 3446.5), math.sqrt(1102 / P.area))).buffer(0)
+    ext = list(sh.exterior.coords)
+    for (ax_, ay_), (bx_, by_) in zip(ext[:-1], ext[1:]):
+        L_ = math.hypot(bx_ - ax_, by_ - ay_)
+        if L_ < 6: continue
+        ux_, uy_ = (bx_ - ax_) / L_, (by_ - ay_) / L_; nx_, ny_ = uy_, -ux_
+        for k in range(1, int(L_ // 3.1)):
+            px_, py_ = ax_ + ux_ * k * L_ / int(L_ // 3.1), ay_ + uy_ * k * L_ / int(L_ // 3.1)
+            q = [(px_ - ux_ * 0.35, py_ - uy_ * 0.35), (px_ + ux_ * 0.35, py_ + uy_ * 0.35), (px_ + ux_ * 0.35 + nx_ * 0.3, py_ + uy_ * 0.35 + ny_ * 0.3), (px_ - ux_ * 0.35 + nx_ * 0.3, py_ - uy_ * 0.35 + ny_ * 0.3)]
+            K.prism('lm_paint', ccw(q), 24.0, 66.0, TR, top=True)
     return K, (949.6, 3444.6), z0, [list(P.buffer(2).exterior.coords)], [58310, 2108422663]
 
 AQ_BLD = (89121125, 89121128, 398623351, 510312270, 1495285063, 1495290850, 1495290857, 1495290860, 1495302922, 1495302929,
@@ -523,6 +656,7 @@ MODELS_DEF = {
     'v_spacectr': (m_spacectr, 'H. R. MacMillan Space Centre', 1968, 'Space Centre and Museum of Vancouver, Vanier Park'),
     'v_bloedel': (m_bloedel, 'Bloedel Conservatory', 1969, 'triodetic dome, Queen Elizabeth Park'),
     'v_marine': (m_marine, 'Marine Building', 1930, 'Art Deco office tower, 1930'),
+    'v_suntower': (m_suntower, 'Sun Tower', 1912, 'the 1912 Sun Tower, its copper dome'),
     'v_aquarium': (m_aquarium, 'Vancouver Aquarium', 1956, 'opened 1956, the halls as they stand today'),
     'v_sppavilion': (m_sppavilion, 'Stanley Park Pavilion', 1913, 'the park pavilion by the Malkin Bowl'),
     'v_playland': (m_playland, 'Playland', 1958, 'the PNE amusement park; its wooden coaster opened 1958'),
@@ -535,7 +669,7 @@ def models():
         save(K, key, name, built, datum, z0, clear, gids, note)
         skip['by_landmark'][key] = gids; skip['built'][key] = built
     skip['gids'] = sorted({g for v in skip['by_landmark'].values() for g in v})
-    json.dump(skip, open(C.work('landmarks', 'skip_gids.json'), 'w'), indent=0)
+    json.dump(skip, open(SKIP_OUT, 'w'), indent=0)
     return set(skip['gids'])
 
 if __name__ == '__main__':
@@ -544,5 +678,5 @@ if __name__ == '__main__':
     if what in ('all', 'lakes'): lakes()
     if what in ('all', 'models'): mg = models()
     if what in ('all', 'big'):
-        if not mg and os.path.exists(C.work('landmarks', 'skip_gids.json')): mg = set(json.load(open(C.work('landmarks', 'skip_gids.json')))['gids'])
+        if not mg and os.path.exists(SKIP_OUT): mg = set(json.load(open(SKIP_OUT))['gids'])
         big(mg)

@@ -208,7 +208,7 @@ PHANTOMS = {137672} if os.environ.get('CITY', 'sf') == 'sf' else set()   # gids 
 HG |= PHANTOMS
 # and the footprints a landmarks_hq model replaces (lm_prep.py writes the list;
 # a pass reads the copy frozen in its snapshot, a test the live one)
-_sk = [q for q in (os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if os.path.exists(q)]
+_sk = [q for q in ((os.environ.get('LM_SKIP_FILE') or ''), os.path.join(HERE, 'skip_gids.json'), '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json') if q and os.path.exists(q)]   # (FIX4) LM_SKIP_FILE first when set
 if _sk:     # a landmark replaces its footprints only once it's built (ERA None = today)
     _skj = json.load(open(_sk[0])); _skb = _skj.get('built', {})
     HG |= {int(g) for k_, v_ in _skj['by_landmark'].items() if ERA is None or ERA >= _skb.get(k_, 0) for g in v_}

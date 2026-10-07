@@ -10,7 +10,7 @@ state of each place in places/SIGNATURE.md."""
 import math, os
 import numpy as np
 
-MODELS = '/Users/daniel/code/qipu-render-work/places/models'
+MODELS = os.environ.get('PLACES_MODELS_DIR') or '/Users/daniel/code/qipu-render-work/places/models'   # (FIX4 07/10) a test set of another city's models; unset = SF / live
 
 def load_into(K, key, dz):
     """append places/models/<key>.npz to the kit, raised by dz; False when absent"""

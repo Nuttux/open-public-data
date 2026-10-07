@@ -14,9 +14,10 @@ from scipy import ndimage as nd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cityconf as C
 Image.MAX_IMAGE_PIXELS = None
-ap = argparse.ArgumentParser(); ap.add_argument('--res', type=float, default=4.0); ap.add_argument('--sigma', type=float, default=3.0); a = ap.parse_args()
+ap = argparse.ArgumentParser(); ap.add_argument('--res', type=float, default=4.0); ap.add_argument('--sigma', type=float, default=3.0)
+ap.add_argument('--sea', default=C.work('city')); ap.add_argument('--out', default=C.work('landmarks', 'coast_land.npz')); a = ap.parse_args()   # (FIX4) --sea / --out: a test scene dir
 if C.CITY == 'sf': sys.exit('SF has its own coastline mask (tools/coastmask.py)')
-sj = json.load(open(C.work('city', 'sea.json'))); sp = np.asarray(Image.open(C.work('city', 'sea.png')))[:, :, 0].astype(np.float32) / 255
+sj = json.load(open(os.path.join(a.sea, 'sea.json'))); sp = np.asarray(Image.open(os.path.join(a.sea, 'sea.png')))[:, :, 0].astype(np.float32) / 255
 sres = sj['w'] / sp.shape[1]
 sea = cv2.GaussianBlur(sp, (0, 0), a.sigma / sres) > 0.5
 k = int(round(a.res / sres)); ny, nx = sea.shape[0] // k, sea.shape[1] // k
@@ -45,7 +46,7 @@ if ext:
     land, nx, ny, x0g, y1g = big, NX, NY, gx0, gy1
 sd = np.where(land, nd.distance_transform_edt(land), -nd.distance_transform_edt(~land)) * a.res
 sd_dm = np.clip(np.round(sd * 10), -32000, 32000).astype(np.int16)
-out = C.work('landmarks', 'coast_land.npz'); os.makedirs(os.path.dirname(out), exist_ok=True)
+out = a.out; os.makedirs(os.path.dirname(out), exist_ok=True)
 np.savez_compressed(out, land=np.packbits(land, axis=1), nx=np.int64(nx), ny=np.int64(ny), x0=np.float64(x0g), y1=np.float64(y1g),
                     res=np.float64(a.res), sd_dm=sd_dm,
                     source=np.array(f'city/sea.png (water_mask.py), blurred {a.sigma} m, {a.res} m cells (beyond its square: engine base/landmask, WorldCover); land 1; sd_dm = signed distance to the line, decimetres, + on land'))

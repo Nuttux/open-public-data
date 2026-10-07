@@ -136,7 +136,7 @@ LANDMARKS = [
 # is skipped (skip_gids.json). Before the landmark, the site held what these
 # entries say: the landmark going up (`build`: start, completion — a record
 # flagged 'rise'), and older buildings the record has lost (`before`).
-LM_SKIP = '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json'
+LM_SKIP = os.environ.get('LM_SKIP_FILE') or '/Users/daniel/code/qipu-render-work/landmarks/skip_gids.json'   # (FIX4) LM_SKIP_FILE: another city's test list
 LM_FOOTPRINTS = '/Users/daniel/code/qipu-render-work/landmarks/footprints.json'
 LANDMARK_SITES = {
     # SOURCED: Wikipedia 'Transamerica Pyramid' — construction from December
