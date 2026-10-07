@@ -24,6 +24,12 @@ grep -v '^ *$' $J | xargs -P ${PAR:-2} -L 1 bash -c 'one "$@"' _
 scp -q -P $PORT $SSHO $HERE/pod_post_b8.py root@$IP:/root/q/pod_post_b8.py
 PY=$(X "[ -x /root/v12/bin/python ] && echo /root/v12/bin/python || echo python3")
 X "$PY -c 'import OpenEXR' 2>/dev/null || $PY -m pip install -q OpenEXR 2>&1 | tail -1; cd /root/q && $PY pod_post_b8.py /root/q/out/lmk /root/q/out/${POD}_post '$PG' | tail -3"
+# (06/10 CITY-TODAY, Daniel's link saturated) Vancouver only: at most FETCH_MAX (2) pod->Mac fetches at once across all render_q pods (mkdir semaphore, stale pids freed)
+SEM=""; if [ "${CITY:-sf}" = vancouver ]; then while [ -z "$SEM" ]; do
+  for s_ in $(seq 1 ${FETCH_MAX:-2}); do mkdir $W/.van_fetch_sem_$s_ 2>/dev/null && { SEM=$W/.van_fetch_sem_$s_; echo $$ > $SEM/pid; break; }; done
+  [ -n "$SEM" ] || { for d_ in $W/.van_fetch_sem_*; do p_=$(cat $d_/pid 2>/dev/null); [ -n "$p_" ] && ! kill -0 $p_ 2>/dev/null && rm -rf $d_; done; sleep 15; }
+done; trap '[ -n "$SEM" ] && rm -rf $SEM' EXIT; fi
 mkdir -p $OUT; bash $W/cloud/lmk_pod.sh $POD fetch /root/q/out/${POD}_post/ $OUT/
 X "for f in /root/q/out/lmk/*.log; do cp \$f /root/q/out/${POD}_post/ 2>/dev/null; done"; bash $W/cloud/lmk_pod.sh $POD fetch /root/q/out/${POD}_post/ $OUT/ >/dev/null 2>&1
+[ -n "$SEM" ] && rm -rf $SEM; SEM=""
 ls $OUT | wc -l
