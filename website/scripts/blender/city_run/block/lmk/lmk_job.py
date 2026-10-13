@@ -52,7 +52,7 @@ for name in sorted(os.listdir(WH_R)):
     lp = np.asarray(q(patch), np.float32); l1 = np.asarray(Image.fromarray(m8).resize((W // 4, H // 4), Image.BILINEAR).filter(ImageFilter.GaussianBlur(6)), np.float32)
     lb = np.asarray(base.resize((W // 4, H // 4), Image.BILINEAR).filter(ImageFilter.GaussianBlur(6)), np.float32)
     wm = np.asarray(Image.fromarray((mask * 255).astype(np.uint8)).resize((W // 4, H // 4), Image.BILINEAR).filter(ImageFilter.GaussianBlur(10)), np.float32)[..., None] / 255.; wm = np.clip(wm * 2.0, 0, 1)
-    l1 = l1 * wm + lb * (1 - wm)   # outside the landmark the sea / ground keeps the painted tile's tone (pass 1 regrades the whole window)
+    l1 = lb if J.get('lockbase') else l1 * wm + lb * (1 - wm)   # lockbase: the whole landmark keeps the painted tile's current tone   # outside the landmark the sea / ground keeps the painted tile's tone (pass 1 regrades the whole window)
     dl = np.asarray(Image.fromarray(((l1 - lp) * 0.6 + 128).clip(0, 255).astype(np.uint8)).resize((W, H), Image.BICUBIC), np.float32) - 128
     patch = np.where(pw > 1e-3, patch + dl * J.get('lock', 1.0), patch).clip(0, 255).astype(np.uint8)
     Image.fromarray(patch).save(f'{OUT}/{name}/patch.png'); Image.fromarray((pw[..., 0] > 1e-3).astype(np.uint8) * 255).save(f'{OUT}/{name}/cover.png')

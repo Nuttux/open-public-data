@@ -6,14 +6,14 @@ order (NOT van_ct_lmk itself) that has it. RERUN after any block merge, then rer
 import os, sys, json, shutil
 import numpy as np
 from PIL import Image
-W = '/Users/daniel/code/qipu-render-work'; H = os.environ.get('LMK_HOME', '/Volumes/QIPU-SSD/qipu-render-work/combo/vancouver/lmk')   # patches / jobs / out live on the SSD, not in git; PD = f'{H}/patches'
+W = '/Users/daniel/code/qipu-render-work'; H = os.path.dirname(os.path.abspath(__file__)); PD = f'{H}/patches'
 QF = '/Volumes/QIPU-SSD/qipu-render-work/combo/vancouver/city_today/qa_fail.txt'
 def block_src():   # same list, same order as merge_city_today.SRC, minus van_ct_lmk
     ex = os.environ.get('EXCLUDE', '').split(',') + ['van_ct_' + l.strip() for l in (open(QF) if os.path.exists(QF) else []) if l.strip()]
     s = [x for x in ['van_ct_' + b for b in 'dt kits fv evn evm ws sc evs sw sp2 sp1 ps'.split()] if os.path.isdir(f'{W}/cloud/ckpt_{x}/tiles/9') and x not in ex]
     return s + [x for x in ['van_surround'] if os.path.isdir(f'{W}/cloud/ckpt_{x}/tiles/9')]
 def main(dry=False):
-    SRC = block_src(); names = sorted(d for d in os.listdir(PD) if os.path.exists(f'{PD}/{d}/patch.png') and not os.path.exists(f'{PD}/{d}/DISABLED'))
+    SRC = block_src(); names = sorted((d for d in os.listdir(PD) if os.path.exists(f'{PD}/{d}/patch.png') and not os.path.exists(f'{PD}/{d}/DISABLED')), key=lambda d: (json.load(open(f'{PD}/{d}/canvas.json')).get('order', 0), d))   # canvas.json order: later patches on top
     cache = {}; n_missing = 0
     def base(tx, ty):
         if (tx, ty) in cache: return cache[(tx, ty)]

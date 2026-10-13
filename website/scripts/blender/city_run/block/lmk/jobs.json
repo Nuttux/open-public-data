@@ -309,5 +309,178 @@
    140,
    52
   ]
+ },
+ "hc_podium": {
+  "canvas": [
+   92582,
+   34601,
+   94630,
+   36649
+  ],
+  "subject": "the 1970s concrete podium of a downtown tower",
+  "c4": [
+   [
+    93208,
+    35290,
+    93996,
+    35980
+   ]
+  ],
+  "cut": [
+   [
+    [
+     93290,
+     35280
+    ],
+    [
+     93510,
+     35280
+    ],
+    [
+     93510,
+     35420
+    ],
+    [
+     93290,
+     35420
+    ]
+   ]
+  ],
+  "paste": false,
+  "order": 1,
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver. The plain pale grey-blue block under the tower is a 1970s concrete mid-rise podium building: pale concrete and beige panel walls with continuous horizontal bands of dark windows, and a flat roof of grey membrane with a low parapet and rooftop mechanical equipment, ventilation housings and skylights. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp, highly detailed real aerial photograph with exactly the geometry of image 2. The plain pale grey-blue block under the tower is a 1970s concrete mid-rise podium building: pale concrete and beige panel walls with continuous horizontal bands of dark windows, and a flat roof of grey membrane with a low parapet and rooftop mechanical equipment, ventilation housings and skylights. Keep everything else exactly as in image 2. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering."
+ },
+ "cp_west": {
+  "canvas": [
+   92108,
+   32782,
+   95090,
+   34830
+  ],
+  "subject": "a long cruise-ship terminal pier building",
+  "c4": [
+   [
+    92408,
+    33380,
+    94790,
+    34232
+   ]
+  ],
+  "xmax": 94790,
+  "upfill": [
+   260,
+   94100
+  ],
+  "order": 1,
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver. The pale clay-grey 3D model is the western half of a long cruise-ship terminal pier building: repaint it with real materials. White tensile-fabric sails with steel masts stand on the roof exactly where the model has sail shapes; the roof around them is white-grey; the walls are pale concrete with bands of dark glass; at the far western end stands a tall hotel tower with white and dark glass horizontal bands. The sea around is untouched. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp, highly detailed real aerial photograph with exactly the geometry of image 2, a 3D render of the same place. The western half of the pier building: white tensile-fabric sails with steel masts exactly where image 2 has sail shapes, no other sails, a white-grey roof, pale concrete walls with bands of dark glass, and a tall hotel tower with white and dark glass bands at the far west. Keep everything else exactly as in image 2. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering."
+ },
+ "cp_east": {
+  "canvas": [
+   94490,
+   32782,
+   96592,
+   34830
+  ],
+  "subject": "a long cruise-ship terminal pier building",
+  "c4": [
+   [
+    94790,
+    33380,
+    96292,
+    34232
+   ]
+  ],
+  "xmin": 94790,
+  "upfill": [
+   260,
+   94100
+  ],
+  "lockbase": true,
+  "order": 1,
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver. The pale clay-grey 3D model is the eastern half of a long pier building: a flat white roof with rooftop mechanical equipment, ventilation housings, skylights and low railings, a long flat raised pavilion roof, pale concrete walls and a long band of dark glass. There are no sails, no masts, no peaks and nothing standing above the roof; the roof keeps its current white-grey tone. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp, highly detailed real aerial photograph with exactly the geometry of image 2. The eastern half of a long pier building: flat white-grey roofs with rooftop mechanical equipment, ventilation housings, skylights and low railings, pale concrete walls and a long band of dark glass. No sails, no masts, no peaks, nothing standing above the roof. Keep everything else exactly as in image 2. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering."
+ },
+ "ccw_walls": {
+  "canvas": [
+   90533,
+   32523,
+   92581,
+   34571
+  ],
+  "subject": "the walls of a waterfront building",
+  "poly": [
+   [
+    [
+     91655,
+     33685
+    ],
+    [
+     92215,
+     33362
+    ],
+    [
+     92228,
+     33585
+    ],
+    [
+     92278,
+     33592
+    ],
+    [
+     92278,
+     33672
+    ],
+    [
+     92060,
+     33778
+    ],
+    [
+     91880,
+     33890
+    ],
+    [
+     91660,
+     33990
+    ],
+    [
+     91655,
+     33900
+    ]
+   ],
+   [
+    [
+     90835,
+     33450
+    ],
+    [
+     91245,
+     33597
+    ],
+    [
+     91230,
+     33610
+    ],
+    [
+     91160,
+     33745
+    ],
+    [
+     91050,
+     33732
+    ],
+    [
+     90835,
+     33655
+    ]
+   ]
+  ],
+  "paste": false,
+  "order": 1,
+  "pad": 5,
+  "rim": 4,
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver. The two long side walls of this building under its green roof are a smooth dark blue-grey glass curtain wall with a fine grid of thin mullions and sky reflections, completely flat, with no balconies, no railings and no apartments. At the foot of the right wall is a pale concrete quay with a straight concrete edge meeting the dark teal water. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp, highly detailed real aerial photograph with exactly the geometry of image 2. The two long side walls of the building under its green roof are a smooth dark blue-grey glass curtain wall with a fine grid of thin mullions and sky reflections, completely flat, with no balconies, no railings and no apartments; at the foot of the right wall a pale concrete quay with a straight concrete edge meets the dark teal water. Keep the green roof and everything else exactly as in image 2. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street, tree and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering."
  }
 }

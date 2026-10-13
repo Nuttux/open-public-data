@@ -3,7 +3,7 @@ mean colour matched on a ring around the box). Writes patches/stripe_fix/{patch.
 import json, os
 from lib import *
 from scipy import ndimage as nd
-H = os.environ.get('LMK_HOME', '/Volumes/QIPU-SSD/qipu-render-work/combo/vancouver/lmk')   # patches / jobs / out live on the SSD, not in git
+H = os.path.dirname(os.path.abspath(__file__))
 BOXES = [((87060, 29815, 87350, 29975), (420, 0)), ((87815, 29560, 87905, 29610), (-180, 0)), ((86440, 29925, 86525, 29965), (200, 0))]   # L9 px (x0, y0, x1, y1), found on the painted tiles 13/10
 CV = [86200, 29300, 88400, 30300]
 cx0, cy0, cx1, cy1 = CV; cur = np.asarray(tiles(*CV)).astype(np.float32); patch = cur.copy(); al = np.zeros(cur.shape[:2], np.float32)
