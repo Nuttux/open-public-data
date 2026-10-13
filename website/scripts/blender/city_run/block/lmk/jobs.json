@@ -1,0 +1,313 @@
+{
+ "canada_place": {
+  "canvas": [
+   92108,
+   32782,
+   96592,
+   34830
+  ],
+  "subject": "a long cruise-ship terminal pier building",
+  "c4": [
+   [
+    92408,
+    33380,
+    96292,
+    34232
+   ]
+  ],
+  "skirt": 70,
+  "up": [
+   260,
+   94100
+  ],
+  "mode9": "anchor",
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver, British Columbia. The pale clay-grey 3D model is a long cruise-ship terminal pier building. Repaint it with real materials: white tensile-fabric sails with steel masts exist ONLY in the western (left) half, exactly where the model has sail shapes; the whole eastern (right) half is a plain flat white-grey roof deck with low railings and one flat pavilion roof, with no sails, no masts, no peaks and nothing standing on it; the pier walls are pale concrete with bands of dark glass, with the sea around. At the western end stands a tall hotel tower with white and dark glass horizontal bands. Strict edit: keep the exact outline, size, height and position of everything, keep every other building, street and the water exactly where they are, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp, highly detailed real aerial photograph with exactly the geometry of image 2, a 3D render of the same place: every building stands exactly there. Image 1 shows the real look of a long cruise-ship terminal pier building: white tensile-fabric sails with steel masts only in the western (left) half where image 2 has sail shapes, and a plain flat white-grey roof deck without sails or masts in the eastern (right) half; keep the same outline, size and height as image 2. Keep every other building, street and the water exactly as in image 2. Do not add any new building or object, and do not write any text or lettering."
+ },
+ "bc_place": {
+  "canvas": [
+   91772,
+   37620,
+   95072,
+   40920
+  ],
+  "subject": "BC Place stadium in Vancouver: a round stadium with a white translucent fabric roof made of fine radial panels with a bright white central opening, a ring of tall white steel masts with thin steel cables, and pale grey concrete walls with a dark base band; one single round roof and one single central opening",
+  "k8": 3,
+  "mode9": "sharp",
+  "c4": [
+   [
+    92240,
+    38444,
+    94604,
+    40096
+   ]
+  ]
+ },
+ "rogers_arena": {
+  "canvas": [
+   94464,
+   37852,
+   96512,
+   39900
+  ],
+  "subject": "Rogers Arena in Vancouver, an ice hockey arena: a large pale grey metal-clad flat roof with skylights and rooftop vents, curved dark glass and grey concrete concourse walls with green-grey cladding; real textured roofing, not a smooth white blob",
+  "c4": [
+   [
+    94868,
+    38524,
+    96108,
+    39228
+   ]
+  ]
+ },
+ "harbour_centre": {
+  "canvas": [
+   92578,
+   34180,
+   94626,
+   36280
+  ],
+  "subject": "Harbour Centre tower in Vancouver: a tall concrete and dark glass tower topped by a flying-saucer shaped revolving lookout disc with a ring of dark windows and a white and gold band, and a slim antenna above; exactly one disc, at the top of the shaft only",
+  "k9": 1.5,
+  "mode9": "anchor",
+  "c4": [
+   [
+    93208,
+    34480,
+    93996,
+    35980
+   ]
+  ]
+ },
+ "science_world": {
+  "canvas": [
+   97688,
+   40058,
+   99736,
+   42106
+  ],
+  "subject": "Science World in Vancouver: a large geodesic sphere clad in silver-white triangular stainless-steel panels standing on a low cream-grey concrete building on the edge of False Creek, with a stone seawall below",
+  "c4": [
+   [
+    98256,
+    40824,
+    99168,
+    41340
+   ]
+  ]
+ },
+ "marine_building": {
+  "canvas": [
+   89234,
+   33094,
+   91282,
+   35142
+  ],
+  "subject": "the Marine Building in Vancouver: a 1930 art deco skyscraper clad in cream and pale green-grey terracotta with vertical piers and stepped setbacks, topped by the same low stepped crown as the model with a small low pale green copper roof, no taller than the model's crown",
+  "c4": [
+   [
+    89988,
+    33732,
+    90528,
+    34504
+   ]
+  ]
+ },
+ "vancouver_house": {
+  "canvas": [
+   80400,
+   38776,
+   82448,
+   40824
+  ],
+  "subject": "Vancouver House at the Granville Bridge: a slender twisted residential tower that is narrow at its base and widens upward, with white cantilevered balcony slabs and glass curtain walls",
+  "c4": [
+   [
+    81144,
+    39132,
+    81704,
+    40468
+   ]
+  ]
+ },
+ "cp_skirt": {
+  "canvas": [
+   93000,
+   32782,
+   96592,
+   34830
+  ],
+  "subject": "the pier base of a harbour pier",
+  "c4": [
+   [
+    93300,
+    33380,
+    96292,
+    34232
+   ]
+  ],
+  "skirt": 75,
+  "only_skirt": true,
+  "xmin": 93900,
+  "p8": "Turn this into a crisp, sharp real aerial photograph at clear midday in Vancouver. The grey-brown zone along the sea edge below the deck of this long pier is the pier's own base: a plain grey concrete wall with concrete piles and dark rock riprap reaching down into the sea, with no windows, no glass and no buildings. Strict edit: keep everything else exactly where it is, same framing and camera. Do not add any new building or object, and do not write any text or lettering.",
+  "p9": "Turn image 1, a soft aerial photograph, into a crisp, sharp real aerial photograph with exactly the geometry of image 2. The grey-brown zone along the sea edge below the deck of the pier is its base: a plain grey concrete wall with concrete piles and dark rock riprap reaching down into the sea, with no windows, no glass and no buildings. Keep everything else exactly as in image 2. Do not add any new building or object, and do not write any text or lettering."
+ },
+ "ccw": {
+  "canvas": [
+   90533,
+   32523,
+   92581,
+   34571
+  ],
+  "subject": "Vancouver Convention Centre West: a very large flat roof that is one continuous green living roof, a meadow of grasses and wildflowers in deep green with a few pale paths and skylights, on a waterfront building whose side walls are grey concrete and opaque dark glass, standing on a pier at the edge of the sea; solid and opaque, nothing seen through it",
+  "poly": [
+   [
+    [
+     90835,
+     33150
+    ],
+    [
+     91000,
+     33185
+    ],
+    [
+     91300,
+     33245
+    ],
+    [
+     91540,
+     33290
+    ],
+    [
+     91700,
+     33305
+    ],
+    [
+     91940,
+     33340
+    ],
+    [
+     92220,
+     33363
+    ],
+    [
+     92227,
+     33600
+    ],
+    [
+     92280,
+     33600
+    ],
+    [
+     91655,
+     33945
+    ],
+    [
+     91655,
+     33690
+    ],
+    [
+     91650,
+     33650
+    ],
+    [
+     91630,
+     33615
+    ],
+    [
+     91570,
+     33575
+    ],
+    [
+     91500,
+     33555
+    ],
+    [
+     91360,
+     33550
+    ],
+    [
+     91300,
+     33575
+    ],
+    [
+     91240,
+     33600
+    ],
+    [
+     91160,
+     33650
+    ],
+    [
+     91160,
+     33900
+    ],
+    [
+     91105,
+     33905
+    ],
+    [
+     90835,
+     33900
+    ]
+   ]
+  ],
+  "skirt": 0,
+  "paste": true
+ },
+ "house": {
+  "canvas": [
+   98311,
+   40083,
+   100359,
+   42131
+  ],
+  "subject": "a park lawn",
+  "p8": "In this aerial photograph, remove the small house with the grey gabled roof, the white garage and the two small sheds on the lawn and replace them with a continuous green park lawn and one or two small trees, matching the surrounding grass, paths and trees exactly. Change nothing else, same framing and camera. Do not add any building, and do not write any text.",
+  "p9": "Image 1 is a soft aerial photograph and image 2 the same place. Output a crisp, sharp, highly detailed real aerial photograph of image 2 with the small house, the white garage and the two small sheds replaced by continuous green park lawn and one or two small trees, matching the surrounding grass exactly. Change nothing else, same framing and camera. Do not add any building, and do not write any text.",
+  "poly": [
+   [
+    [
+     99290,
+     41080
+    ],
+    [
+     99510,
+     41080
+    ],
+    [
+     99510,
+     41275
+    ],
+    [
+     99290,
+     41275
+    ]
+   ],
+   [
+    [
+     99160,
+     40940
+    ],
+    [
+     99360,
+     40940
+    ],
+    [
+     99360,
+     41125
+    ],
+    [
+     99160,
+     41125
+    ]
+   ]
+  ],
+  "paste": false,
+  "fill": [
+   88,
+   140,
+   52
+  ]
+ }
+}

@@ -6,8 +6,9 @@ PAD = 24
 T = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lmk_lock.json')))
 
 def lock(out, ren, code, box, city):
-    n = 0
+    n = 0; off = [] if os.environ.get('LMK_LOCK_ALL') else T.get('off', {}).get(city, [])   # (LMK1 13/10) retired per landmark, see lmk_lock.json 'off'
     for name, (x0, y0, x1, y1) in T.get(city, {}).items():
+        if name in off: continue
         a0, b0 = max(0, y0 - PAD - box[1]), max(0, x0 - PAD - box[0]); a1, b1 = min(out.shape[0], y1 + PAD - box[1]), min(out.shape[1], x1 + PAD - box[0])
         if a1 <= a0 or b1 <= b0: continue
         s = (slice(a0, a1), slice(b0, b1)); m = code[s] == 4

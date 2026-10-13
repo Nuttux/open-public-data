@@ -1,7 +1,37 @@
-{"_doc": "(OPEN-GROUND step2 07/10) landmark models locked to the render after the AI (post_sb lmk_lock, CITY != sf): code-4 (landmark) render px inside each L9 box [x0, y0, x1, y1] (+ PAD). Boxes = the render's code-4 components in work_ct_dt, checked by eye (og_test/dt_lmk.jpg). The crude models get painted as something else (Canada Place = red-roof houses + glass pyramids, audit sheet 01).",
+{
+ "_doc": "(OPEN-GROUND step2 07/10) landmark models locked to the render after the AI (post_sb lmk_lock, CITY != sf): code-4 (landmark) render px inside each L9 box [x0, y0, x1, y1] (+ PAD). Boxes = the render's code-4 components in work_ct_dt, checked by eye (og_test/dt_lmk.jpg). The crude models get painted as something else (Canada Place = red-roof houses + glass pyramids, audit sheet 01).",
  "vancouver": {
-  "canada_place": [93368, 33188, 96292, 34232],
-  "bc_place": [92240, 38444, 94604, 40096],
-  "harbour_centre": [93208, 34480, 93996, 35980],
-  "science_world": [98256, 40824, 99164, 41340]
- }}
+  "canada_place": [
+   93368,
+   33188,
+   96292,
+   34232
+  ],
+  "bc_place": [
+   92240,
+   38444,
+   94604,
+   40096
+  ],
+  "harbour_centre": [
+   93208,
+   34480,
+   93996,
+   35980
+  ],
+  "science_world": [
+   98256,
+   40824,
+   99164,
+   41340
+  ]
+ },
+ "_doc2": "(LMK1 13/10) 'off' = per city list of landmarks whose render-paste is retired because a painted patch (lmk/patches + rebuild_lmk_tiles.py, FLUX.2 klein on the painted look) replaces it. A name not in 'off' keeps the paste (canada_place: its painted patch FAILED QA 3 times). LMK_LOCK_ALL=1 forces every box back on. SF has no boxes: untouched.",
+ "off": {
+  "vancouver": [
+   "bc_place",
+   "harbour_centre",
+   "science_world"
+  ]
+ }
+}
