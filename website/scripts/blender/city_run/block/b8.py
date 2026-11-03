@@ -88,6 +88,7 @@ def registry():
     for i, j, bd in G.crops():
         x0, x1, y0, y1 = map(float, bd.split(',')); full = bd == '0,1,0,1'; base = f'{R}/crops/{i}_{j}' if full else f'{R}/pieces/{i}_{j}'
         for src, sfx in ((f'{V}/render/b8b_{i}_{j}_z9_{i}_{j}.jpg', '.jpg'),) + tuple((f'{V}/render/b8p_{i}_{j}_z9_{i}_{j}{s}', s) for s in ('.class.png', '.mask.png', '.gid.png', '.part.png')):
+            if os.path.exists(base + sfx) and not os.path.samefile(src, base + sfx): os.remove(base + sfx)   # (12/10) a re-rendered crop (FIX4 swap): the registry kept the OLD render
             if not os.path.exists(base + sfx): os.link(src, base + sfx)
         if not full:
             w, h = Image.open(base + '.jpg').size; pieces.append([base, round(i * 5120 + x0 * 5120), round(j * 3072 + (1 - y1) * 3072), w, h])

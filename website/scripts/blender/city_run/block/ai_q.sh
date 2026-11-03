@@ -39,6 +39,7 @@ if [ $FROM -le 2 ] && [ ! -s $V/l8/l8_b8.jpg ]; then
   n=$(ssh -p $PORT $SSHO root@$IP "ls /root/B8L | wc -l"); [ "$n" -ge 8 ] || { rsync -a -e "ssh -p $PORT ${SSHO[*]}" $V/ai_l8/ root@$IP:/root/B8L/; n=$(ssh -p $PORT $SSHO root@$IP "ls /root/B8L | wc -l"); }
   [ "$n" -ge 8 ] || abort "L8 window upload incomplete ($n files)"
   FP8=$(python3 -c "import json; print(json.load(open('speed/gpus/$L8L.json')).get('fp8', '3'))")
+  [ -n "$FP8" ] || FP8=3   # (14/10) an unreadable/empty fp8 -> bf16 9B -> CUDA OOM on a 32 GB 5090
   ssh -p $PORT $SSHO root@$IP "mkdir -p /root/lr/out; cd /root/B8L; FP8=$FP8 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True HF_HOME=/root/hf HF_HUB_OFFLINE=1 nohup /usr/local/bin/python -u run_pyv.py sl8v.py /root/B8L > /root/B8L/run.out 2>&1 < /dev/null &"
   say "L8 runner started (FP8=$FP8)"; t0=$(date +%s)
   while :; do
@@ -50,7 +51,7 @@ if [ $FROM -le 2 ] && [ ! -s $V/l8/l8_b8.jpg ]; then
     [ $(( $(date +%s) - t0 )) -gt 12000 ] && abort "L8 over 200 min"
     sleep 60
   done
-  mkdir -p $V/l8; scp -q -P $PORT $SSHO "root@$IP:/root/lr/out/B8L/l8_b8.*" $V/l8/ || abort "L8 not pulled"
+  mkdir -p $V/l8; for t_ in 1 2 3 4 5 6 7 8; do rsync -a --partial --append --timeout=120 -e "ssh -p $PORT ${SSHO[*]}" "root@$IP:/root/lr/out/B8L/l8_b8.*" $V/l8/ && break; say "L8 pull try $t_ failed (stall), resume in 30 s"; sleep 30; done; [ -s $V/l8/l8_b8.jpg ] || abort "L8 not pulled"   # (12/10) slow shared link: retry before the trap downs the card
   python3 speed/gpu.py down $L8L "$TAG shared L8 ($CITY_SF: 1 = SF)" >> $LOG 2>&1
   say "L8 pulled ($(ls -la $V/l8/l8_b8.jpg | awk '{print $5}') bytes) in $(( ($(date +%s) - t0) / 60 )) min; card down"
 fi
@@ -76,9 +77,9 @@ PY
   done
   wait
   for k in $(seq 0 $((K - 1))); do say "group $k: $(grep -E 'ALL_DONE|ABORT' $V/tq/g$k/card.log | tail -1 | cut -c1-200)"; done
-  mkdir -p $V/tiles_a; for k in $(seq 0 $((K - 1))); do cp -n $V/tq/g$k/out/RR0/*.jpg $V/tiles_a/ 2>/dev/null; done
+  mkdir -p $V/tiles_a; for k in $(seq 0 $((K - 1))); do cp $V/tq/g$k/out/RR0/*.jpg $V/tiles_a/ 2>/dev/null; done   # (12/10) overwrite: a partial repaint's old copy of a P tile must not survive
 fi
-NT=$(grep -c '^C9:' $V/ai/P.txt); ND=$(ls $V/tiles_a | grep -c '^[0-9]')
+NT=$(grep -c '^C9:' $V/ai/P.txt); ND=$(grep '^C9:' $V/ai/P.txt | awk '{print substr($1,4)}' | tr , _ | while read t_; do [ -s $V/tiles_a/$t_.jpg ] && echo; done | wc -l | tr -d ' ')   # (12/10) P tiles present, not kept ones (a partial repaint's kept tiles hid missing tiles)
 [ $ND -ge $NT ] || [ $((NT - ND)) -le ${ALLOW_MISSING:-0} ] || abort "AI tiles missing: $ND of $NT (resume --from 3: finished groups are skipped)"
 [ $ND -ge $NT ] || { say "WARN: $((NT - ND)) AI tiles missing, the post uses the render there (FALLBACK_RENDER=1)"; export FALLBACK_RENDER=1; }
 if [ $FROM -le 4 ]; then

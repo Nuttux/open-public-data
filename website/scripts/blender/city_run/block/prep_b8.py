@@ -23,13 +23,14 @@ if not CC.SF and AK and os.environ.get('CONTENT_KEYS', '1') == '1':   # (block/t
     sys.path.insert(0, H); import tile_content as TC_; TCD = TC_.block_content(B, [(gx, gy) for gx in XS for gy in YS], OX, OY)
     CK = {t: TC_.open_key(d) for t, d in TCD.items() if TC_.open_key(d) and AK.get(t) not in TC_.KEEP_AREA}
     CK.update({t: AK[t] + '_bld' for t, d in TCD.items() if AK.get(t) in TC_.KEEP_AREA and d['bld'] > TC_.BLD_MAX})   # woods area tile with real buildings: the old building-naming text; json.dump({f'{gx}_{gy}': d for (gx, gy), d in TCD.items()}, open(f'{O}/content.json', 'w'))
-L = []; keep = []; nr = 0
+L = []; keep = []; nr = 0; KOV = json.load(open(os.environ['KEY_OVR'])) if os.environ.get('KEY_OVR') else {}
 for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]
     for gx in XS:
         if wat[:, gx - OX:gx - OX + 1024].mean() > 0.95: keep.append(f'{gx}_{gy}'); continue
         if RS: k = AK.get((gx, gy), 'v5_dry') + RS if RL[f'{gx},{gy}'] >= CC.BLOCK.get('rail_min', 60) else CK.get((gx, gy)) or AK.get((gx, gy), 'v5_dry'); nr += k.endswith(RS)
         else: k = RK if RL[f'{gx},{gy}'] >= 10 else CK.get((gx, gy)) or AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
+        k = KOV.get(f'{gx}_{gy}', k)   # (12/10) KEY_OVR json {tile: key}: hand override after an eye check (fv port strip: render lawn, AI container yards)
         sd = int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16); L.append(f'C9:{gx},{gy} out/{WN}/{gx}_{gy}.jpg - {k} {sd}')
 json.dump(keep, open(f'{O}/water_tiles.json', 'w')); n = int(os.environ.get('SPLIT', 1))
 LOOK = {}
