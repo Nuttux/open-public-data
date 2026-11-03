@@ -40,5 +40,8 @@ for s in range(n):
     open(f'{O}/P{sfx}.txt', 'w').write(f'#MOSAIC {WN}\n' + '\n'.join(part) + '\n')
     json.dump(dict(jobs=f'P{sfx}.txt', nf9=1, nfkey='nfC', out=CFG.get('out', 'B8') + sfx.upper(), **({'look': LOOK} if LOOK else {})), open(f'{O}/SL8{sfx}.json', 'w'))
 for f in ('sl8v.py', 'run_pyv.py'): shutil.copy(f'{H}/work_ai/{f}', O)
-open(f'{O}/lr_run9.py', 'w').write(CC.prompt_text(open(f'{H}/lr_run9_b8.py').read()))   # SF: a byte-identical copy
+_src = CC.prompt_text(open(f'{H}/lr_run9_b8.py').read())   # SF: a byte-identical copy
+if os.environ.get('ERA_YEAR') and not CC.SF:   # (4D 03/11) a past year: era_prompts.py rewrites every van_* key (one rule for all tiles)
+    sys.path.insert(0, H); import era_prompts as EP_; _src = EP_.patch(_src, os.environ['ERA_YEAR']); print('ERA_PROMPTS', os.environ['ERA_YEAR'])
+open(f'{O}/lr_run9.py', 'w').write(_src)
 print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep)) if not AK else print('tiles AI', len(L), 'rail-key', nr, 'water(render)', len(keep), 'area keys', {k: list(AK.values()).count(k) for k in sorted(set(AK.values()))}, 'content keys', {k: list(CK.values()).count(k) for k in sorted(set(CK.values()))})
