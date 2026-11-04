@@ -622,6 +622,13 @@ if E('GID_PASS') == '1':   # every face a building draws carries its gid as colo
     def _poly_gid(self, mat, pts, col=(1, 1, 1)):
         g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
     G.Out.poly = _poly_gid
+elif E('GID_ATTR') == '1':   # (render-10x) ONE scene for beauty AND the ID pass: faces keep their colour ('bcol'), and the
+    # same gid colour the ID pass would have put in 'bcol' goes in a second face attribute 'gid' (gen_buildings.emit)
+    _poly0 = G.Out.poly
+    def _poly_gidattr(self, mat, pts, col=(1, 1, 1)):
+        _poly0(self, mat, pts, col); g_ = getattr(G, '_GID', 0)
+        self.__dict__.setdefault('gidc', {}).setdefault(mat, []).append(((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
+    G.Out.poly = _poly_gidattr
 _SCF = 0
 if ERA is None and E('SCAFFOLD', '0') == '1':   # (28/09, assets_urban) today's scaffolds (DataSF DPW scaffolding permits): urban_build.py
     import urban_build as UB, random as _rnd
@@ -630,7 +637,7 @@ CH = 6000; nfaces = 0; _bfail = []
 for c0 in range(0, len(recs), CH):
     out = G.Out()
     for b in recs[c0:c0 + CH]:
-        if E('GID_PASS') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
+        if E('GID_PASS') == '1' or E('GID_ATTR') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
         try:
             G.building(b, ground_s, out)     # (DataSF's own footprints reach ~300 m past the county line, onto the surround: they were skipped)
             if _SCF and b.get('_scaffold'): UB.scaffold(out, b, ground_s, _rnd.Random(int(b['gid'])))
@@ -1185,6 +1192,41 @@ if any(E(k_) for k_ in ('BCOL_SPREAD', 'BCOL_VSPREAD', 'ROOF_VALUE', 'WALL_VALUE
             _SPREAD.append(mx_); _VSP.append(pw_); _VK.append((vk_, roof_))
         log(f'bcol spread: {mat_.name} mean {np.round(mean_, 3).tolist()}')
 
+# ── SAVE_BLEND (render-10x, 04/11): build once, render many ─────────────────
+# SAVE_BLEND=<file.blend>: stop here with the scene built (lights, Cycles settings, colour spread
+# included) and save it, images packed, so render_blend.py renders the pyramid frames of many jobs
+# from it on a GPU without building again. The build needs no GPU: a CPU box builds it.
+if E('SAVE_BLEND'):
+    if E('LOOKS') or E('CAMPATH') or E('CLAY') == '1': sys.exit('SAVE_BLEND: LOOKS / CAMPATH / CLAY jobs are not supported')
+    # images made in memory (the ground maps, masks) are not packed by pack_all and would come back blank: pack each
+    # (float ones as EXR, 8-bit as PNG: lossless), and keep a pixel hash per image that render_blend.py checks on load
+    import hashlib as _hl; _ih = {}
+    for im_ in bpy.data.images:
+        if im_.source != 'GENERATED' or im_.size[0] * im_.size[1] == 0: continue
+        a_ = np.empty(im_.size[0] * im_.size[1] * im_.channels, np.float32); im_.pixels.foreach_get(a_)
+        _ih[im_.name] = _hl.sha1(a_.tobytes()).hexdigest()
+        if im_.is_float: im_.file_format = 'OPEN_EXR'
+        im_.pack()
+    # image FILES (textures, the same in every scene): packed only with BLEND_PACK_FILES=1; by default they stay files and
+    # their paths relative to the build root (HOME's parent) go in the scene and in <blend>.files.json, so a card gets
+    # the texture set once and render_blend.py points the images at its copy (R10X_ROOT)
+    _rt = os.path.dirname(os.path.abspath(os.path.expanduser('~'))); _fl = {}
+    if E('BLEND_PACK_FILES', '0') == '1':
+        try: bpy.ops.file.pack_all()
+        except Exception as ex: log('SAVE_BLEND: pack_all failed', ex)
+    else:
+        for im_ in bpy.data.images:
+            if im_.packed_file or im_.source not in ('FILE', 'SEQUENCE', 'TILED') or not im_.filepath or im_.users == 0: continue
+            p_ = os.path.abspath(bpy.path.abspath(im_.filepath))
+            if not p_.startswith(_rt + '/'): sys.exit(f'SAVE_BLEND: image {im_.name} outside the build root: {p_}')
+            _fl[im_.name] = os.path.relpath(p_, _rt)
+        json.dump(sorted(set(_fl.values())), open(E('SAVE_BLEND') + '.files.json', 'w'))
+    sc['r10x_files'] = json.dumps(_fl)
+    sc['r10x_images'] = json.dumps(_ih); log('SAVE_BLEND: packed', len(_ih), 'generated images')
+    sc['r10x_gid_attr'] = E('GID_ATTR') == '1'   # beauty + ID pass from this one scene (render_blend.py sets GID_ATTR)
+    bpy.ops.wm.save_as_mainfile(filepath=E('SAVE_BLEND'), compress=E('BLEND_COMPRESS', '1') == '1', check_existing=False)
+    log('SAVE_BLEND', E('SAVE_BLEND'), f"{os.path.getsize(E('SAVE_BLEND')) / 1e6:.0f} MB"); sys.exit(0)
+
 # ── CAMPATH: many camera positions from one built scene (the film) ──────────
 # CAMPATH=<file.json>: [{"tx": x, "ty": y, "ortho": metres across, "out": path.png}, ...]
 # (tx, ty) the world point at the frame's centre (z = 0 plane); the camera is
@@ -1285,12 +1327,13 @@ if E('MODE') == 'pyramid':
                 else: e_.inputs['Color'].default_value = (0, 0, 0, 1)
                 nt_.links.new(e_.outputs[0], o_.inputs['Surface']); return m_
             gm_, bm_ = _em('ai_gid', 'bcol'), _em('ai_black', None); mats_ = {}
+            gm2_ = _em('ai_gid2', 'gid') if E('GID_ATTR') == '1' else None   # (render-10x) a GID_ATTR scene keeps the gid in 'gid'
             for o_ in bpy.data.objects:
                 if o_.type != 'MESH' or not o_.data.materials: continue
                 # keyed by the MESH (26/09): objects sharing a mesh (instances) saw the ID material the first had put on it,
                 # and the restore put it back -> every frame after the first of a multi-frame run came out in ID colours
                 if o_.data.name not in mats_: mats_[o_.data.name] = list(o_.data.materials)
-                w_ = gm_ if bld_(o_.name) else bm_
+                w_ = (gm2_ if gm2_ and o_.data.attributes.get('gid') is not None else gm_) if bld_(o_.name) else bm_
                 for s_ in range(len(o_.data.materials)): o_.data.materials[s_] = w_
             vl_ = bpy.context.view_layer; sp_, z_, nm_, dn_, fw_ = sc.cycles.samples, vl_.use_pass_z, vl_.use_pass_normal, sc.cycles.use_denoising, sc.cycles.filter_width
             wb_ = sc.world; sc.world = None; sc.render.engine = 'CYCLES'; sc.view_settings.view_transform = 'Raw'; sc.view_settings.look = 'None'; sc.view_settings.exposure = 0

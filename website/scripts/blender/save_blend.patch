@@ -1,0 +1,38 @@
+# ── CAMPATH: many camera positions from one built scene (the film) ──────────
+>>>>
+# ── SAVE_BLEND (render-10x, 04/11): build once, render many ─────────────────
+# SAVE_BLEND=<file.blend>: stop here with the scene built (lights, Cycles settings, colour spread
+# included) and save it, images packed, so render_blend.py renders the pyramid frames of many jobs
+# from it on a GPU without building again. The build needs no GPU: a CPU box builds it.
+if E('SAVE_BLEND'):
+    if E('LOOKS') or E('CAMPATH') or E('CLAY') == '1': sys.exit('SAVE_BLEND: LOOKS / CAMPATH / CLAY jobs are not supported')
+    # images made in memory (the ground maps, masks) are not packed by pack_all and would come back blank: pack each
+    # (float ones as EXR, 8-bit as PNG: lossless), and keep a pixel hash per image that render_blend.py checks on load
+    import hashlib as _hl; _ih = {}
+    for im_ in bpy.data.images:
+        if im_.source != 'GENERATED' or im_.size[0] * im_.size[1] == 0: continue
+        a_ = np.empty(im_.size[0] * im_.size[1] * im_.channels, np.float32); im_.pixels.foreach_get(a_)
+        _ih[im_.name] = _hl.sha1(a_.tobytes()).hexdigest()
+        if im_.is_float: im_.file_format = 'OPEN_EXR'
+        im_.pack()
+    # image FILES (textures, the same in every scene): packed only with BLEND_PACK_FILES=1; by default they stay files and
+    # their paths relative to the build root (HOME's parent) go in the scene and in <blend>.files.json, so a card gets
+    # the texture set once and render_blend.py points the images at its copy (R10X_ROOT)
+    _rt = os.path.dirname(os.path.abspath(os.path.expanduser('~'))); _fl = {}
+    if E('BLEND_PACK_FILES', '0') == '1':
+        try: bpy.ops.file.pack_all()
+        except Exception as ex: log('SAVE_BLEND: pack_all failed', ex)
+    else:
+        for im_ in bpy.data.images:
+            if im_.packed_file or im_.source not in ('FILE', 'SEQUENCE', 'TILED') or not im_.filepath or im_.users == 0: continue
+            p_ = os.path.abspath(bpy.path.abspath(im_.filepath))
+            if not p_.startswith(_rt + '/'): sys.exit(f'SAVE_BLEND: image {im_.name} outside the build root: {p_}')
+            _fl[im_.name] = os.path.relpath(p_, _rt)
+        json.dump(sorted(set(_fl.values())), open(E('SAVE_BLEND') + '.files.json', 'w'))
+    sc['r10x_files'] = json.dumps(_fl)
+    sc['r10x_images'] = json.dumps(_ih); log('SAVE_BLEND: packed', len(_ih), 'generated images')
+    sc['r10x_gid_attr'] = E('GID_ATTR') == '1'   # beauty + ID pass from this one scene (render_blend.py sets GID_ATTR)
+    bpy.ops.wm.save_as_mainfile(filepath=E('SAVE_BLEND'), compress=E('BLEND_COMPRESS', '1') == '1', check_existing=False)
+    log('SAVE_BLEND', E('SAVE_BLEND'), f"{os.path.getsize(E('SAVE_BLEND')) / 1e6:.0f} MB"); sys.exit(0)
+
+# ── CAMPATH: many camera positions from one built scene (the film) ──────────

@@ -3077,6 +3077,14 @@ def emit(bpy, out, mats, name='gen'):
         flat = []
         for c in C: flat.extend((c[0] ** 2.2, c[1] ** 2.2, c[2] ** 2.2, c[3] if len(c) > 3 else 1.0))
         at.data.foreach_set('color', flat)
+        # (render-10x) GID_ATTR: the gid colour per face as a second attribute, set before validate like 'bcol'
+        G_ = (getattr(out, 'gidc', None) or {}).get(k)
+        if G_ is not None:
+            if len(G_) == len(C):
+                ag = me.color_attributes.new('gid', 'FLOAT_COLOR', 'FACE'); fg = []
+                for c in G_: fg.extend((c[0] ** 2.2, c[1] ** 2.2, c[2] ** 2.2, 1.0))
+                ag.data.foreach_set('color', fg)
+            else: print(f'GID_ATTR: {name}.{k}: {len(G_)} gid rows for {len(C)} faces, no gid attribute', flush=True)
         me.validate(clean_customdata=False)
         # BTEX_REAL (realcolour pilot, variant B; default off): UV 'rtex' into the projected-photo atlas (rc_tex.py)
         if ERA is None and __import__('os').environ.get('BTEX_REAL', '0') == '1':

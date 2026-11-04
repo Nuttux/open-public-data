@@ -1,0 +1,31 @@
+if E('GID_PASS') == '1':   # every face a building draws carries its gid as colour (24 bit), for the ID pass only
+    _poly0 = G.Out.poly
+    def _poly_gid(self, mat, pts, col=(1, 1, 1)):
+        g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
+    G.Out.poly = _poly_gid
+>>>>
+if E('GID_PASS') == '1':   # every face a building draws carries its gid as colour (24 bit), for the ID pass only
+    _poly0 = G.Out.poly
+    def _poly_gid(self, mat, pts, col=(1, 1, 1)):
+        g_ = getattr(G, '_GID', 0); _poly0(self, mat, pts, ((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
+    G.Out.poly = _poly_gid
+elif E('GID_ATTR') == '1':   # (render-10x) ONE scene for beauty AND the ID pass: faces keep their colour ('bcol'), and the
+    # same gid colour the ID pass would have put in 'bcol' goes in a second face attribute 'gid' (gen_buildings.emit)
+    _poly0 = G.Out.poly
+    def _poly_gidattr(self, mat, pts, col=(1, 1, 1)):
+        _poly0(self, mat, pts, col); g_ = getattr(G, '_GID', 0)
+        self.__dict__.setdefault('gidc', {}).setdefault(mat, []).append(((g_ >> 16) / 255, ((g_ >> 8) & 255) / 255, (g_ & 255) / 255))
+    G.Out.poly = _poly_gidattr
+====
+        if E('GID_PASS') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
+>>>>
+        if E('GID_PASS') == '1' or E('GID_ATTR') == '1': G._GID = int(b['gid'])   # AI layer: building-ID pass (see _ai_passes)
+====
+            gm_, bm_ = _em('ai_gid', 'bcol'), _em('ai_black', None); mats_ = {}
+>>>>
+            gm_, bm_ = _em('ai_gid', 'bcol'), _em('ai_black', None); mats_ = {}
+            gm2_ = _em('ai_gid2', 'gid') if E('GID_ATTR') == '1' else None   # (render-10x) a GID_ATTR scene keeps the gid in 'gid'
+====
+                w_ = gm_ if bld_(o_.name) else bm_
+>>>>
+                w_ = (gm2_ if gm2_ and o_.data.attributes.get('gid') is not None else gm_) if bld_(o_.name) else bm_
