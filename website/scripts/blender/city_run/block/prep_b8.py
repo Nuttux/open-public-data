@@ -22,7 +22,8 @@ CK = {}   # (OPEN-GROUND 07/10, CITY != sf) content keys: a mostly-open tile (re
 if not CC.SF and AK and os.environ.get('CONTENT_KEYS', '1') == '1':   # (block/tile_content.py) instead of its area key (houses_w invented mansions on Jericho's meadows)
     sys.path.insert(0, H); import tile_content as TC_; TCD = TC_.block_content(B, [(gx, gy) for gx in XS for gy in YS], OX, OY)
     CK = {t: TC_.open_key(d) for t, d in TCD.items() if TC_.open_key(d) and AK.get(t) not in TC_.KEEP_AREA}
-    CK.update({t: AK[t] + '_bld' for t, d in TCD.items() if AK.get(t) in TC_.KEEP_AREA and d['bld'] > TC_.BLD_MAX})   # woods area tile with real buildings: the old building-naming text; json.dump({f'{gx}_{gy}': d for (gx, gy), d in TCD.items()}, open(f'{O}/content.json', 'w'))
+    CK.update({t: AK[t] + '_bld' for t, d in TCD.items() if AK.get(t) in TC_.KEEP_AREA and d['bld'] > TC_.BLD_MAX})
+    CK.update({t: TC_.water_key(d) for t, d in TCD.items() if TC_.water_key(d)})   # (r2) mostly water: the water-safe key, whatever the area map says   # woods area tile with real buildings: the old building-naming text; json.dump({f'{gx}_{gy}': d for (gx, gy), d in TCD.items()}, open(f'{O}/content.json', 'w'))
 L = []; keep = []; nr = 0; KOV = json.load(open(os.environ['KEY_OVR'])) if os.environ.get('KEY_OVR') else {}
 for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]
@@ -33,6 +34,12 @@ for gy in YS:
         k = KOV.get(f'{gx}_{gy}', k)   # (12/10) KEY_OVR json {tile: key}: hand override after an eye check (fv port strip: render lawn, AI container yards)
         sd = int(hashlib.sha1(f'pilot:{gx},{gy}'.encode()).hexdigest()[:8], 16); L.append(f'C9:{gx},{gy} out/{WN}/{gx}_{gy}.jpg - {k} {sd}')
 json.dump(keep, open(f'{O}/water_tiles.json', 'w')); n = int(os.environ.get('SPLIT', 1))
+if CK and L:   # (r2) the shared L8's anchors (sl8v: origin = the queued tiles' min // 1024, step 1024, crop X-512 .. X+1536): water-heavy anchors -> the water key
+    qx = [int(l.split()[0][3:].split(',')[0]) for l in L]; qy = [int(l.split()[0][3:].split(',')[1]) for l in L]
+    AXS = range(min(qx) // 1024 * 1024, max(qx) + 1024, 1024); AYS = range(min(qy) // 1024 * 1024, max(qy) + 1024, 1024)
+    TCA = TC_.block_content(B, [(X, Y) for X in AXS for Y in AYS], OX, OY, size=2048, off=512)
+    L8K = {f'{X}_{Y}': TC_.water_key(d, TC_.WATER_L8) for (X, Y), d in TCA.items() if TC_.water_key(d, TC_.WATER_L8)}
+    json.dump(L8K, open(f'{O}/l8_keys.json', 'w')); print('L8 anchor water keys', len(L8K), 'of', len(TCA), {k: list(L8K.values()).count(k) for k in sorted(set(L8K.values()))})
 LOOK = {}
 for k_, f_ in CC.BLOCK.get('look_refs', {}).items():   # per-key look reference photos for sl8v (SF: none); 1024 px copies next to the jobs
     im_ = Image.open(CC.city_path(f_)).convert('RGB'); im_.thumbnail((1024, 1024), Image.LANCZOS); im_.save(f'{O}/look_{k_}.jpg', quality=92); LOOK[k_] = f'look_{k_}.jpg'

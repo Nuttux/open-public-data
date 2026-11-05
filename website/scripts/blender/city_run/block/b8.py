@@ -60,7 +60,8 @@ def prep():
     A = f'{V}/ai'; T = [l for l in open(f'{A}/P.txt') if l.startswith('C9:')]
     xs = [int(l.split()[0][3:].split(',')[0]) for l in T]; ys = [int(l.split()[0][3:].split(',')[1]) for l in T]
     org = [min(xs) // 1024 * 1024, min(ys) // 1024 * 1024]            # sl8v's anchor origin of the WHOLE window (MX, MY)
-    for d, part, cfg in (('ai_l8', T, dict(l8_only=1, out='B8L')), ('ai_a', T[0::2], dict(l8_from=f'l8_{WIN}.jpg', origin=org, out='B8A')),
+    L8K = json.load(open(f'{A}/l8_keys.json')) if os.path.exists(f'{A}/l8_keys.json') else {}   # (r2) water-heavy L8 anchors' keys (prep_b8)
+    for d, part, cfg in (('ai_l8', T, dict(l8_only=1, out='B8L', **({'l8_keys': L8K} if L8K else {}))), ('ai_a', T[0::2], dict(l8_from=f'l8_{WIN}.jpg', origin=org, out='B8A')),
                          ('ai_b', T[1::2], dict(l8_from=f'l8_{WIN}.jpg', origin=org, out='B8B'))):
         D = f'{V}/{d}'; os.makedirs(D, exist_ok=True)
         for f in (f'R_{WIN}.jpg', f'R_{WIN}.json', f'C_{WIN}.png', 'run_pyv.py', 'lr_run9.py'):

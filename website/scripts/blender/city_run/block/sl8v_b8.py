@@ -65,6 +65,7 @@ for w, T in win.items():
             cx_, cy_ = (X - MX) // 2, (Y - MY) // 2   # (b8) an anchor whose 1024 canvas px no queued tile's L8 crop touches is skipped: identical output
             if CFG.get('skip_unused', 1) and not ((TX_[:, 0] < cx_ + 1024) & (TX_[:, 0] + 512 > cx_) & (TX_[:, 1] < cy_ + 1024) & (TX_[:, 1] + 512 > cy_)).any(): nsk += 1; continue
             k, s = TK.get((X, Y)) or min(TK.items(), key=lambda kv: abs(kv[0][0] - X) + abs(kv[0][1] - Y))[1]
+            k = CFG.get('l8_keys', {}).get(f'{X}_{Y}', k)   # (r2) a water-heavy anchor: the water-safe key (prep_b8), not its nearest window's
             l8 = R.crop((X - 512 - ox, Y - 512 - oy, X + 1536 - ox, Y + 1536 - oy)).resize((1024, 1024), Image.LANCZOS); t1 = time.time()
             o8 = gen([l8], P[k], s, NF(8, (X - 512) // 32, (Y - 512) // 32), 8); n += 1
             cx, cy = (X - MX) // 2, (Y - MY) // 2   # the L8 tile's top-left in canvas px (canvas origin = MX-512 L9 -> tile at (X-512-(MX-512))/2)

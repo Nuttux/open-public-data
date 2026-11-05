@@ -32,28 +32,44 @@ def measure(code, mask=None, rgb=None):
         d['water'] += s7; d['open'] += s7
     return d
 
+def water_key(d, lim=None):
+    """(r2 05/11) the water-safe key for a window (or an L8 anchor crop) whose class pass is mostly water, or None. present_v1:
+    the area map gave 'East Vancouver houses' to open False Creek windows (water 63-76 %, a few buildings, so open_key's
+    building cap kept the area key) and to the L8 anchors over them; the L8 painted a suburb, hills and a horizon over the
+    water and the L9 windows, held to the L8, kept it through every re-roll. Water >= lim: few buildings -> the shore key
+    (beach or hard edge, shore_key), buildings -> van_water_bld (the buildings key that names the water)."""
+    if d['water'] < (WATER_MAJ if lim is None else lim): return None
+    return shore_key(d) if d['bld'] <= BLD_MAX else 'van_water_bld'
+
+def shore_key(d):
+    """(r2) van_shore named 'a sandy beach with driftwood logs' for all land on a shore tile: every seawall and rip-rap edge
+    got an invented beach. A beach only where the render ground is sandy (the scene's shore type decides that: seawall
+    shores render rock and paving), else the hard-edge shore key."""
+    return 'van_shore' if d.get('sand', 0) >= SAND_MIN else 'van_shore_wall'
+
 def open_key(d):
     """content key for a mostly-open tile, or None (keep the area key). Tuned on kits (07/10, CITY_TODAY_LOG OPEN-GROUND): open tiles
     (Jericho / Locarno / Spanish Banks) bld 0.000-0.080, house tiles (6_13, 11_15, 8_13 east) bld >= 0.10."""
     if d['bld'] > BLD_MAX or d['open'] < OPEN_MIN: return None
-    if d['water'] >= WATER_SHORE: return 'van_shore'   # (step2 07/10) a lot of render sea: the water-safe key (open keys name no water;
+    if d['water'] >= WATER_SHORE: return shore_key(d)   # (step2 07/10) a lot of render sea: the water-safe key (open keys name no water;
     #   the AI painted Tudor streets / a horizon over the sea of kits 8_13 and 6_13's shore row on houses_w / meadow)
     if d.get('sand', 0) >= SAND_MIN: return 'van_beach'
     if d['tree'] >= TREE_WOODS: return 'van_woods'
     return 'van_meadow'
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
 WATER_SHORE = 0.25
+WATER_MAJ, WATER_L8 = 0.40, 0.30   # (r2) water share for the water rule: a window / an L8 anchor crop (2048 L9 px)
 KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
-def block_content(blk, tiles, ox, oy, s=4):
+def block_content(blk, tiles, ox, oy, s=4, size=1024, off=0):
     """{(gx, gy): measure} for 1024-px tiles of a block dir (R.class.png / R.mask.png / R.jpg), read at 1/s (cv2 reduced decode)"""
     import cv2
     rd = cv2.IMREAD_REDUCED_COLOR_4 if s == 4 else cv2.IMREAD_REDUCED_COLOR_2 if s == 2 else cv2.IMREAD_COLOR
     C = codeof(cv2.imread(f'{blk}/R.class.png', rd)[..., ::-1])
     M = cv2.imread(f'{blk}/R.mask.png', rd)[..., ::-1] if os.path.exists(f'{blk}/R.mask.png') else None
-    R = cv2.imread(f'{blk}/R.jpg', rd)[..., ::-1]; n = 1024 // s; out = {}
+    R = cv2.imread(f'{blk}/R.jpg', rd)[..., ::-1]; n = size // s; out = {}
     for gx, gy in tiles:
-        x, y = (gx - ox) // s, (gy - oy) // s
+        x, y = max(0, (gx - off - ox) // s), max(0, (gy - off - oy) // s)   # size/off: an L8 anchor's crop (X-512, 2048 px), clipped
         out[(gx, gy)] = measure(C[y:y + n, x:x + n], None if M is None else M[y:y + n, x:x + n], R[y:y + n, x:x + n])
     return out
 

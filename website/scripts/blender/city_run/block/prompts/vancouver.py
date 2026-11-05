@@ -38,6 +38,8 @@ V_KIND = {
     'forest': (' Pacific Spirit Park:' + V_WOODS),
     'port': (' The working port and industrial flats: flat warehouse roofs of grey and white metal, concrete wharves, rail yards, asphalt'
              ' and gravel yards, and cranes and container stacks only where the render shows them; plain and functional.'),
+    'midrise': (' Southeast False Creek: six- to twelve-storey concrete, brick and glass apartment buildings with flat roofs, set along'
+                ' wide paved streets.'),
     'gi': (' Granville Island: low industrial sheds and market halls of corrugated metal painted in bright colours, with flat tar roofs.'),
 }
 for k_, c_ in V_KIND.items(): P['van_' + k_] = V_BASE + c_ + ('' if k_ == 'port' else V_GREEN_WOODS if k_ in ('park', 'forest') else V_GREEN)
@@ -89,3 +91,17 @@ P['van_shore'] = (V_OPEN.replace('existing ground, paths and trees.', 'existing 
                     ' sandy beach with a few scattered single driftwood logs, and grass and trees exactly where the render shows them.')
 assert all(w_ not in P['van_shore'].lower().replace('seawall', 'sea_path') for w_ in _NOBLD if w_ != 'water') and 'horizon' not in P['van_shore'] and 'sky' not in P['van_shore']
 
+
+# (r2 05/11) van_shore named a sandy beach with driftwood logs for all shore land: the seawalls of False Creek got invented
+# beaches. van_shore_wall (tile_content.shore_key: no sandy render ground) names the hard edge instead; no sand or log word.
+P['van_shore_wall'] = (V_OPEN.replace('existing ground, paths and trees.', 'existing sea, paths and trees.')
+                       + ' A stretch of Vancouver\'s seawall: the calm deep blue-green sea with natural sun glitter covers exactly the area the'
+                         ' render shows as sea, seen from above out to the edge of the frame; where the render shows land, a hard shore edge of'
+                         ' grey granite rip-rap boulders, the paved seawall walk and its railing, and grass and trees exactly where the render shows them.')
+assert 'sand' not in P['van_shore_wall'] and 'log' not in P['van_shore_wall'] and 'beach' not in P['van_shore_wall']
+# (r2) van_water_bld: a window that is mostly water but holds buildings (tile_content.water_key). The building keys name no water
+# (dry-tile rule) and on 63-76 % water the AI filled it with a suburb and a horizon; this one keeps the buildings key's text and names the water.
+P['van_water_bld'] = (V_BASE + ' Vancouver\'s waterfront: the calm deep blue-green water with natural sun glitter covers exactly the area the'
+                      ' render shows as water, seen from above out to the edge of the frame; the buildings, piers, walks and trees stand exactly'
+                      ' where the render shows them.' + V_GREEN)
+assert 'horizon' not in P['van_water_bld'] and 'sky' not in P['van_water_bld']
