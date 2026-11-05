@@ -111,3 +111,4 @@ assert 'horizon' not in P['van_water_bld'] and 'sky' not in P['van_water_bld']
 P['van_yard'] = (V_OPEN + ' Open working ground in Vancouver: bare grey gravel, packed earth and worn asphalt, plain, even and'
                  ' unplanted where the render shows bare ground; trees and paths exactly where the render shows them.')
 assert all(w_ not in P['van_yard'].lower() for w_ in _NOBLD) and 'lush' not in P['van_yard'] and 'lawn' not in P['van_yard']
+

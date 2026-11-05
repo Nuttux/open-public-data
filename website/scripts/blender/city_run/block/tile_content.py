@@ -62,7 +62,7 @@ def open_key(d):
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
 WATER_SHORE = 0.25
 GRASS_MEADOW = 0.35   # (r2) green share of the render ground for the meadow key
-WATER_MAJ, WATER_L8 = 0.40, 0.30   # (r2) water share for the water rule: a window / an L8 anchor crop (2048 L9 px)
+WATER_MAJ, WATER_L8, WATER_ALL = 0.40, 0.30, 0.95   # (r2) water share for the water rule: a window / an L8 anchor crop (2048 L9 px)
 KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
 def block_content(blk, tiles, ox, oy, s=4, size=1024, off=0):

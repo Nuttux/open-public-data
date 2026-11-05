@@ -28,9 +28,9 @@ L = []; keep = []; nr = 0; KOV = json.load(open(os.environ['KEY_OVR'])) if os.en
 for gy in YS:
     c = np.asarray(C.crop((0, gy - OY, C.size[0], gy - OY + 1024)).convert('RGB')) > 128; wat = (~c[..., 0]) & (~c[..., 1]) & c[..., 2]
     for gx in XS:
-        # (r2 05/11) > 95 % water windows were left to the render: flat render water beside painted glitter made a hard seam.
-        # With the water rule (content keys) they are painted too, on their water key
-        if wat[:, gx - OX:gx - OX + 1024].mean() > 0.95 and not CK.get((gx, gy)): keep.append(f'{gx}_{gy}'); continue
+        # (r2 05/11) > 95 % water windows stay the render's: painted on van_shore_wall they got an invented rip-rap shore, on an
+        # all-water key a whole invented island town (klein needs something in the frame). The cost is a seam to painted water.
+        if wat[:, gx - OX:gx - OX + 1024].mean() > 0.95: keep.append(f'{gx}_{gy}'); continue
         if RS: k = AK.get((gx, gy), 'v5_dry') + RS if RL[f'{gx},{gy}'] >= CC.BLOCK.get('rail_min', 60) else CK.get((gx, gy)) or AK.get((gx, gy), 'v5_dry'); nr += k.endswith(RS)
         else: k = RK if RL[f'{gx},{gy}'] >= 10 else CK.get((gx, gy)) or AK.get((gx, gy), 'v5_dry'); nr += k == RK != 'v5_dry'
         k = KOV.get(f'{gx}_{gy}', k)   # (12/10) KEY_OVR json {tile: key}: hand override after an eye check (fv port strip: render lawn, AI container yards)
