@@ -39,7 +39,7 @@ V_KIND = {
     'port': (' The working port and industrial flats: flat warehouse roofs of grey and white metal, concrete wharves, rail yards, asphalt'
              ' and gravel yards, and cranes and container stacks only where the render shows them; plain and functional.'),
     'midrise': (' Southeast False Creek: six- to twelve-storey concrete, brick and glass apartment buildings with flat roofs, set along'
-                ' wide paved streets.'),
+                ' wide paved streets; low flat-roofed sheds and open yards stay low, plain and flat as the render shows them.'),
     'gi': (' Granville Island: low industrial sheds and market halls of corrugated metal painted in bright colours, with flat tar roofs.'),
 }
 for k_, c_ in V_KIND.items(): P['van_' + k_] = V_BASE + c_ + ('' if k_ == 'port' else V_GREEN_WOODS if k_ in ('park', 'forest') else V_GREEN)
@@ -105,3 +105,9 @@ P['van_water_bld'] = (V_BASE + ' Vancouver\'s waterfront: the calm deep blue-gre
                       ' render shows as water, seen from above out to the edge of the frame; the buildings, piers, walks and trees stand exactly'
                       ' where the render shows them.' + V_GREEN)
 assert 'horizon' not in P['van_water_bld'] and 'sky' not in P['van_water_bld']
+
+# (r2 05/11) van_yard: an open window whose render ground is not green (tile_content.open_key): a gravel works yard was painted
+# as a lawn field on van_meadow. Plain bare ground; no green or lush words, no building words (open-key rule).
+P['van_yard'] = (V_OPEN + ' Open working ground in Vancouver: bare grey gravel, packed earth and worn asphalt with tyre tracks, plain and'
+                 ' unplanted where the render shows bare ground; trees and paths exactly where the render shows them.')
+assert all(w_ not in P['van_yard'].lower() for w_ in _NOBLD) and 'lush' not in P['van_yard'] and 'lawn' not in P['van_yard']

@@ -55,9 +55,13 @@ def open_key(d):
     #   the AI painted Tudor streets / a horizon over the sea of kits 8_13 and 6_13's shore row on houses_w / meadow)
     if d.get('sand', 0) >= SAND_MIN: return 'van_beach'
     if d['tree'] >= TREE_WOODS: return 'van_woods'
+    # (r2 05/11) a gravel works yard south of False Creek (render ground grey, grass 0.12-0.13 of the window) got van_meadow and
+    # was painted as a lawn field: meadow only where the render ground is mostly green, else the bare-yard key
+    if d.get('grass', 1.0) < GRASS_MEADOW * max(d.get('ground', 0.0), 1e-6): return 'van_yard'
     return 'van_meadow'
 BLD_MAX, OPEN_MIN, SAND_MIN, TREE_WOODS = 0.08, 0.60, 0.06, 0.55
 WATER_SHORE = 0.25
+GRASS_MEADOW = 0.35   # (r2) green share of the render ground for the meadow key
 WATER_MAJ, WATER_L8 = 0.40, 0.30   # (r2) water share for the water rule: a window / an L8 anchor crop (2048 L9 px)
 KEEP_AREA = ('van_park', 'van_forest')   # woods area keys (building-free since 07/10) stay; with buildings > BLD_MAX -> <key>_bld (prep_b8)
 
