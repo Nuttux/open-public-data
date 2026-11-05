@@ -87,8 +87,8 @@ assert all('lawn' not in P[k_] and 'mown' not in P[k_] for k_ in ('van_park', 'v
 # on houses_w / meadow the AI ignored the sea of whole shoreline tiles (Tudor streets, a painted horizon). This one names the sea where the render has it.
 P['van_shore'] = (V_OPEN.replace('existing ground, paths and trees.', 'existing sea, sand, paths and trees.')
                   + ' A stretch of the shore on Vancouver\'s west side: the calm deep blue sea of English Bay with natural sun glitter covers exactly'
-                    ' the area the render shows as sea, seen from above out to the edge of the frame; only where the render shows land, a pale tan'
-                    ' sandy beach with a few scattered single driftwood logs, and grass and trees exactly where the render shows them.')
+                    ' the area the render shows as sea, seen from above out to the edge of the frame; only where the render shows land, a bare'
+                    ' beach of pale grey-tan sand and wet gravel, and grass and trees exactly where the render shows them.')   # (r2) no driftwood: logs were invented on every shore
 assert all(w_ not in P['van_shore'].lower().replace('seawall', 'sea_path') for w_ in _NOBLD if w_ != 'water') and 'horizon' not in P['van_shore'] and 'sky' not in P['van_shore']
 
 
@@ -108,6 +108,6 @@ assert 'horizon' not in P['van_water_bld'] and 'sky' not in P['van_water_bld']
 
 # (r2 05/11) van_yard: an open window whose render ground is not green (tile_content.open_key): a gravel works yard was painted
 # as a lawn field on van_meadow. Plain bare ground; no green or lush words, no building words (open-key rule).
-P['van_yard'] = (V_OPEN + ' Open working ground in Vancouver: bare grey gravel, packed earth and worn asphalt with tyre tracks, plain and'
+P['van_yard'] = (V_OPEN + ' Open working ground in Vancouver: bare grey gravel, packed earth and worn asphalt, plain, even and'
                  ' unplanted where the render shows bare ground; trees and paths exactly where the render shows them.')
 assert all(w_ not in P['van_yard'].lower() for w_ in _NOBLD) and 'lush' not in P['van_yard'] and 'lawn' not in P['van_yard']
